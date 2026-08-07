@@ -141,42 +141,64 @@
   
   /* --- Mission Vision Section --- */
   .mission-vision-section {
-    padding: 80px 20px;
-    background-color: #ffffff;
+    padding: 100px 20px;
+    background: radial-gradient(circle at top right, rgba(236,92,10,0.05) 0%, rgba(255,255,255,1) 40%, rgba(0,123,62,0.05) 100%);
+    position: relative;
   }
   .mv-container {
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+    gap: 40px;
   }
   .mv-card {
-    background: #fff;
-    padding: 40px 30px;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-    border-top: 4px solid #007b3e;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: linear-gradient(145deg, #ffffff, #fdfdfd);
+    padding: 50px 40px;
+    border-radius: 24px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.06);
+    border: 1px solid rgba(236,92,10,0.1);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
     overflow: hidden;
+    z-index: 1;
   }
-  .mv-card:nth-child(2) { border-top-color: #ec5c0a; }
-  .mv-card:nth-child(3) { border-top-color: #00a3ff; }
   
-  .mv-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+  .mv-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, #ec5c0a, #007b3e);
+    z-index: 2;
   }
+
+  .mv-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 25px 50px rgba(0,123,62,0.12);
+    border-color: rgba(0,123,62,0.3);
+  }
+
+  .mv-icon {
+    font-size: 3rem;
+    margin-bottom: 25px;
+    background: linear-gradient(135deg, #ec5c0a, #007b3e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+  }
+
   .mv-card h2 {
-    font-size: 1.8rem;
-    font-weight: 700;
+    font-size: 2rem;
+    font-weight: 800;
     margin-bottom: 20px;
-    color: #1a1a1a;
+    background: linear-gradient(90deg, #ec5c0a, #007b3e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
   .mv-card p {
-    font-size: 1.05rem;
-    line-height: 1.7;
+    font-size: 1.1rem;
+    line-height: 1.8;
     color: #555;
     text-align: justify;
   }
@@ -250,18 +272,21 @@
       
       <!-- Card 1 -->
       <div class="mv-card">
+        <div class="mv-icon">⚙️</div>
         <h2>What we do</h2>
         <p>We are certified manufacturers &amp; distributor of energy saving Vidyut saathi card in Pan India. Basically, we help people to save electricity, their hard earned money and ozone layer too. We provide saving cards and it's partnership to start the business. Depending upon the scale of business we have 3 types of partnerships: Area Channel, Exclusive area channel and District channel partnership.</p>
       </div>
       
       <!-- Card 2 -->
       <div class="mv-card">
+        <div class="mv-icon">👁️</div>
         <h2>Our Vision</h2>
         <p>We are trying to give the world a development beyond the engineering which is all based on science. For that, we are working on an idea to make this planet a better place to live in. Our vision is to make an ozone friendly, human friendly and nature friendly earth.</p>
       </div>
 
       <!-- Card 3 -->
       <div class="mv-card">
+        <div class="mv-icon">🎯</div>
         <h2>Our Mission</h2>
         <p><b>Save electricity, save nature and save ozone layer</b> is the only mission of Vidyut saathi energy savers pvt ltd. By controlling the leakage of electricity, we can save the electrical energy as well as ozone layer. Other than this our mission is to spread awareness about energy saving while keeping in mind the protection of ozone layer.</p>
       </div>
