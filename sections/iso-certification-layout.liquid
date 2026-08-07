@@ -1,0 +1,603 @@
+{%- style -%}
+  /* --- Global & Variables --- */
+  :root {
+    --iso-primary: {{ section.settings.primary_color | default: '#ec5c0a' }};
+    --iso-secondary: #007b3e;
+    --iso-bg: {{ section.settings.bg_color | default: '#fff8ef' }};
+    --iso-text-dark: #1a1a1a;
+    --iso-text-light: #4a4a4a;
+    --iso-radius: 16px;
+    --iso-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+    --iso-shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.12);
+  }
+  
+  .iso-wrapper {
+    font-family: 'Poppins', 'Inter', sans-serif;
+    color: var(--iso-text-dark);
+    background-color: var(--iso-bg);
+    overflow: hidden;
+  }
+
+  /* --- Typography --- */
+  .iso-heading {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    color: var(--iso-text-dark);
+  }
+  .iso-subheading {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    line-height: 1.6;
+    color: var(--iso-text-light);
+  }
+  
+  /* --- Hero Section --- */
+  .iso-hero {
+    position: relative;
+    padding: clamp(60px, 10vw, 100px) 20px;
+    text-align: center;
+    background: linear-gradient(135deg, var(--iso-bg) 0%, #ffffff 100%);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+  }
+  .iso-hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .iso-hero h1 {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 800;
+    margin-bottom: 15px;
+    color: var(--iso-text-dark);
+  }
+  .iso-hero p {
+    font-size: clamp(1.1rem, 2.5vw, 1.25rem);
+    color: var(--iso-text-light);
+  }
+
+  /* --- Certificate Showcase & Details --- */
+  .iso-showcase {
+    padding: clamp(60px, 8vw, 100px) 20px;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .iso-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+  @media (min-width: 912px) {
+    .iso-grid { grid-template-columns: 1fr 1fr; gap: 60px; }
+  }
+
+  /* Certificate Image Box */
+  .iso-cert-box {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: var(--iso-radius);
+    box-shadow: var(--iso-shadow);
+    text-align: center;
+    position: relative;
+    transition: transform 0.3s ease;
+  }
+  .iso-cert-box:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--iso-shadow-hover);
+  }
+  .iso-cert-img-wrapper {
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.05);
+    background: #f9f9f9;
+  }
+  .iso-cert-img-wrapper img, .iso-cert-img-wrapper svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .iso-cert-btn {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 14px 30px;
+    background: var(--iso-primary);
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: background 0.3s ease;
+  }
+  .iso-cert-btn:hover {
+    background: #d45007;
+  }
+
+  /* Details Box */
+  .iso-details-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .iso-details-box h2 {
+    font-size: clamp(2rem, 3.5vw, 2.5rem);
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  .iso-main-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--iso-text-light);
+    margin-bottom: 30px;
+  }
+  
+  .iso-data-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  @media (min-width: 600px) {
+    .iso-data-grid { grid-template-columns: 1fr 1fr; }
+  }
+  .iso-data-item {
+    background: #ffffff;
+    padding: 15px 20px;
+    border-radius: 12px;
+    border-left: 4px solid var(--iso-primary);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+  }
+  .iso-data-label {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--iso-text-light);
+    margin-bottom: 5px;
+  }
+  .iso-data-value {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--iso-text-dark);
+  }
+
+  /* --- Commitment Cards --- */
+  .iso-commitment {
+    background: #ffffff;
+    padding: clamp(60px, 8vw, 100px) 20px;
+  }
+  .comm-container {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .comm-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-top: 40px;
+  }
+  @media (min-width: 600px) {
+    .comm-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 1024px) {
+    .comm-grid { grid-template-columns: repeat(4, 1fr); }
+  }
+  
+  .comm-card {
+    background: var(--iso-bg);
+    padding: 40px 20px;
+    border-radius: var(--iso-radius);
+    text-align: center;
+    border: 1px solid rgba(0,0,0,0.03);
+    transition: transform 0.3s ease;
+  }
+  .comm-card:hover {
+    transform: translateY(-5px);
+  }
+  .comm-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    color: var(--iso-primary);
+  }
+  .comm-card h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--iso-text-dark);
+  }
+
+  /* --- Why it Matters Split Section --- */
+  .iso-why {
+    padding: clamp(60px, 8vw, 100px) 20px;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+  @media (min-width: 912px) {
+    .why-grid { grid-template-columns: 1fr 1fr; gap: 80px; }
+    .why-grid.reverse .why-text { order: 1; }
+    .why-grid.reverse .why-img { order: 2; }
+  }
+  .why-img {
+    border-radius: var(--iso-radius);
+    overflow: hidden;
+    box-shadow: var(--iso-shadow);
+  }
+  .why-img img, .why-img svg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .why-text h2 {
+    font-size: clamp(2rem, 3vw, 2.5rem);
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  .why-text p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--iso-text-light);
+    margin-bottom: 15px;
+  }
+
+  /* --- CTA Section --- */
+  .iso-cta {
+    background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%);
+    color: #ffffff;
+    padding: clamp(60px, 8vw, 100px) 20px;
+    text-align: center;
+  }
+  .iso-cta-content {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .iso-cta h2 {
+    color: #ffffff;
+    margin-bottom: 15px;
+  }
+  .iso-cta p {
+    color: #cccccc;
+    margin-bottom: 30px;
+  }
+  .iso-cta-btn {
+    display: inline-block;
+    padding: 15px 40px;
+    background: var(--iso-primary);
+    color: #ffffff;
+    font-size: 1.05rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+  .iso-cta-btn:hover {
+    background: #d45007;
+    transform: translateY(-3px);
+  }
+{%- endstyle -%}
+
+<div class="iso-wrapper">
+  
+  <!-- Hero Section -->
+  <section class="iso-hero">
+    <div class="iso-hero-content">
+      <h1>{{ section.settings.hero_title }}</h1>
+      <p>{{ section.settings.hero_subtitle }}</p>
+    </div>
+  </section>
+
+  <!-- Showcase & Details -->
+  <section class="iso-showcase">
+    <div class="iso-grid">
+      
+      <!-- Certificate Viewer -->
+      <div class="iso-cert-box">
+        <div class="iso-cert-img-wrapper">
+          {%- if section.settings.cert_image != blank -%}
+            {{ section.settings.cert_image | image_url: width: 800 | image_tag: loading: 'lazy', alt: 'ISO Certificate Preview' }}
+          {%- else -%}
+            {{ 'document' | placeholder_svg_tag: 'placeholder-svg' }}
+          {%- endif -%}
+        </div>
+        
+        {%- if section.settings.cert_pdf_url != blank -%}
+          <a href="{{ section.settings.cert_pdf_url }}" target="_blank" rel="noopener noreferrer" class="iso-cert-btn">
+            {{ section.settings.cert_btn_text }}
+          </a>
+        {%- else -%}
+          <button class="iso-cert-btn" style="opacity:0.6; cursor:not-allowed;" title="Upload PDF in Theme Editor">
+            {{ section.settings.cert_btn_text }}
+          </button>
+        {%- endif -%}
+      </div>
+
+      <!-- Text Details -->
+      <div class="iso-details-box">
+        <h2>{{ section.settings.details_heading }}</h2>
+        <div class="iso-main-text">
+          {{ section.settings.details_text }}
+        </div>
+        
+        <div class="iso-data-grid">
+          {%- if section.settings.detail_standard != blank -%}
+            <div class="iso-data-item">
+              <div class="iso-data-label">Standard</div>
+              <div class="iso-data-value">{{ section.settings.detail_standard }}</div>
+            </div>
+          {%- endif -%}
+          
+          {%- if section.settings.detail_body != blank -%}
+            <div class="iso-data-item">
+              <div class="iso-data-label">Certification Body</div>
+              <div class="iso-data-value">{{ section.settings.detail_body }}</div>
+            </div>
+          {%- endif -%}
+          
+          {%- if section.settings.detail_number != blank -%}
+            <div class="iso-data-item">
+              <div class="iso-data-label">Certificate No.</div>
+              <div class="iso-data-value">{{ section.settings.detail_number }}</div>
+            </div>
+          {%- endif -%}
+          
+          {%- if section.settings.detail_issue != blank -%}
+            <div class="iso-data-item">
+              <div class="iso-data-label">Issue Date</div>
+              <div class="iso-data-value">{{ section.settings.detail_issue }}</div>
+            </div>
+          {%- endif -%}
+          
+          {%- if section.settings.detail_expiry != blank -%}
+            <div class="iso-data-item">
+              <div class="iso-data-label">Expiry Date</div>
+              <div class="iso-data-value">{{ section.settings.detail_expiry }}</div>
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- Commitment Cards -->
+  <section class="iso-commitment">
+    <div class="comm-container">
+      <h2 class="iso-heading" style="text-align: center;">Our Commitment to Quality</h2>
+      <div class="comm-grid">
+        <div class="comm-card">
+          <div class="comm-icon">⭐</div>
+          <h3>{{ section.settings.comm_1 }}</h3>
+        </div>
+        <div class="comm-card">
+          <div class="comm-icon">🤝</div>
+          <h3>{{ section.settings.comm_2 }}</h3>
+        </div>
+        <div class="comm-card">
+          <div class="comm-icon">📈</div>
+          <h3>{{ section.settings.comm_3 }}</h3>
+        </div>
+        <div class="comm-card">
+          <div class="comm-icon">🏆</div>
+          <h3>{{ section.settings.comm_4 }}</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why it Matters -->
+  <section class="iso-why">
+    <div class="why-grid">
+      <div class="why-text">
+        <h2>{{ section.settings.why_heading }}</h2>
+        <div class="iso-main-text">
+          {{ section.settings.why_text }}
+        </div>
+      </div>
+      <div class="why-img">
+        {%- if section.settings.why_image != blank -%}
+          {{ section.settings.why_image | image_url: width: 800, height: 600, crop: 'center' | image_tag: loading: 'lazy' }}
+        {%- else -%}
+          {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+        {%- endif -%}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="iso-cta">
+    <div class="iso-cta-content">
+      <h2 class="iso-heading">{{ section.settings.cta_heading }}</h2>
+      <p class="iso-subheading">{{ section.settings.cta_text }}</p>
+      <a href="{{ section.settings.cta_link }}" class="iso-cta-btn">{{ section.settings.cta_btn_text }}</a>
+    </div>
+  </section>
+
+</div>
+
+{% schema %}
+{
+  "name": "ISO Certification",
+  "settings": [
+    {
+      "type": "color",
+      "id": "primary_color",
+      "label": "Primary Accent Color",
+      "default": "#ec5c0a"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#fff8ef"
+    },
+    {
+      "type": "header",
+      "content": "Hero Section"
+    },
+    {
+      "type": "text",
+      "id": "hero_title",
+      "label": "Hero Title",
+      "default": "ISO Certification"
+    },
+    {
+      "type": "text",
+      "id": "hero_subtitle",
+      "label": "Hero Subtitle",
+      "default": "Internationally recognized standards for quality, reliability, and excellence."
+    },
+    {
+      "type": "header",
+      "content": "Certificate PDF & Display"
+    },
+    {
+      "type": "image_picker",
+      "id": "cert_image",
+      "label": "Certificate Preview Image",
+      "info": "Upload a PNG/JPG screenshot of your official certificate."
+    },
+    {
+      "type": "url",
+      "id": "cert_pdf_url",
+      "label": "Certificate PDF Link",
+      "info": "Upload your PDF to Shopify Files, copy the URL, and paste it here."
+    },
+    {
+      "type": "text",
+      "id": "cert_btn_text",
+      "label": "Button Text",
+      "default": "View Full Certificate"
+    },
+    {
+      "type": "header",
+      "content": "Certification Details"
+    },
+    {
+      "type": "text",
+      "id": "details_heading",
+      "label": "Heading",
+      "default": "Our Certification"
+    },
+    {
+      "type": "richtext",
+      "id": "details_text",
+      "label": "Main Description",
+      "default": "<p>Proudly ISO 9001:2015 Certified (IAF Certified), Vidhyut Saathi follows internationally recognized quality management standards. IAF (International Accreditation Forum) is one of the world's most respected accreditation associations, ensuring that our certification is globally recognized. This reflects our commitment to quality, reliability, transparency, and consistent customer satisfaction—giving our customers and business partners greater confidence in every product and service we deliver.</p>"
+    },
+    {
+      "type": "text",
+      "id": "detail_standard",
+      "label": "ISO Standard",
+      "default": "ISO 9001:2015"
+    },
+    {
+      "type": "text",
+      "id": "detail_body",
+      "label": "Accreditation Body",
+      "default": "IAF"
+    },
+    {
+      "type": "text",
+      "id": "detail_number",
+      "label": "Certificate Number",
+      "info": "Leave blank if not applicable."
+    },
+    {
+      "type": "text",
+      "id": "detail_issue",
+      "label": "Issue Date",
+      "info": "Leave blank if not applicable."
+    },
+    {
+      "type": "text",
+      "id": "detail_expiry",
+      "label": "Expiry Date",
+      "info": "Leave blank if not applicable."
+    },
+    {
+      "type": "header",
+      "content": "Our Commitment Cards"
+    },
+    {
+      "type": "text",
+      "id": "comm_1",
+      "label": "Card 1 Title",
+      "default": "Quality Focus"
+    },
+    {
+      "type": "text",
+      "id": "comm_2",
+      "label": "Card 2 Title",
+      "default": "Customer Trust"
+    },
+    {
+      "type": "text",
+      "id": "comm_3",
+      "label": "Card 3 Title",
+      "default": "Continuous Improvement"
+    },
+    {
+      "type": "text",
+      "id": "comm_4",
+      "label": "Card 4 Title",
+      "default": "Professional Standards"
+    },
+    {
+      "type": "header",
+      "content": "Why ISO Matters Section"
+    },
+    {
+      "type": "text",
+      "id": "why_heading",
+      "label": "Heading",
+      "default": "Why ISO Certification Matters"
+    },
+    {
+      "type": "richtext",
+      "id": "why_text",
+      "label": "Description Text",
+      "default": "<p>An ISO 9001:2015 certification demonstrates our commitment to structured quality processes, consistency, and professionalism. It gives our customers confidence that our energy-saving technology and franchise support systems meet rigorous, internationally recognized standards for continuous improvement.</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "why_image",
+      "label": "Supporting Image"
+    },
+    {
+      "type": "header",
+      "content": "CTA Section"
+    },
+    {
+      "type": "text",
+      "id": "cta_heading",
+      "label": "Heading",
+      "default": "Committed to Quality and Excellence"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Supporting Text",
+      "default": "Partner with a certified, trusted leader in energy-saving solutions."
+    },
+    {
+      "type": "text",
+      "id": "cta_btn_text",
+      "label": "Button Text",
+      "default": "Contact Us"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "ISO Certification Layout"
+    }
+  ]
+}
+{% endschema %}
