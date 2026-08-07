@@ -323,12 +323,40 @@
     </div>
   </section>
 
+  <!-- Dynamic Image Gallery -->
+  {%- if section.blocks.size > 0 -%}
+  <section style="padding: 80px 20px; max-width: 1200px; margin: 0 auto;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'image' and block.settings.image != blank -%}
+          <div style="border-radius: var(--about-radius); overflow: hidden; box-shadow: var(--about-shadow);" {{ block.shopify_attributes }}>
+            {{ block.settings.image | image_url: width: 800 | image_tag: style: 'width: 100%; height: 100%; object-fit: cover; display: block;', loading: 'lazy' }}
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </section>
+  {%- endif -%}
+
 </div>
 
 {% schema %}
 {
   "name": "About Us Layout",
   "settings": [],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Gallery Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Select Image"
+        }
+      ]
+    }
+  ],
   "presets": [
     {
       "name": "About Us Layout"
