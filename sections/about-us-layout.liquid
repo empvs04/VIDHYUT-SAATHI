@@ -50,6 +50,29 @@
   @media screen and (max-width: 600px) {
     .page-header_title { font-size: 2.2rem !important; }
   }
+  
+  /* --- Marquee CSS Animation --- */
+  @keyframes scroll-right {
+    0% { transform: translateX(-100%) translateY(-50%); }
+    100% { transform: translateX(100%) translateY(-50%); }
+  }
+  .moving-text {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: max-content;
+    white-space: nowrap;
+    z-index: 1;
+    opacity: 0.8;
+    pointer-events: none;
+    line-height: 1;
+    font-size: clamp(80px, 12vw, 150px);
+    font-weight: 900;
+    background: linear-gradient(90deg, #ec5c0a, #ffcc00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: scroll-right 25s linear infinite;
+  }
 {%- endstyle -%}
 
 <div class="about-us-wrapper" style="position: relative;">
@@ -71,8 +94,8 @@
     <section class="about-hero page-header page-header_align_center" style="background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%); min-height: 500px; padding-top: 80px; padding-bottom: 80px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
   {%- endif -%}
   
-    <!-- Moving Colorful Marquee Background -->
-    <marquee direction="right" scrollamount="15" loop="infinite" style="font-size: clamp(80px, 12vw, 150px); font-weight: 900; background: linear-gradient(90deg, #ec5c0a, #ffcc00); -webkit-background-clip: text; -webkit-text-fill-color: transparent; position: absolute; top: 50%; transform: translateY(-50%); width: 100%; z-index: 1; opacity: 0.8; margin: 0; padding: 0; pointer-events: none; line-height: 1;">About Us &nbsp; &nbsp; &nbsp; &nbsp; About Us &nbsp; &nbsp; &nbsp; &nbsp; About Us</marquee>
+    <!-- Moving Colorful Marquee Background (CSS Animation) -->
+    <div class="moving-text">About Us &nbsp; &nbsp; &nbsp; &nbsp; About Us &nbsp; &nbsp; &nbsp; &nbsp; About Us &nbsp; &nbsp; &nbsp; &nbsp; About Us &nbsp; &nbsp; &nbsp; &nbsp; About Us</div>
 
     <div class="page-header_wrapper" style="width: 100%; text-align: center; position: relative; z-index: 2;">
       <h1 class="page-header_title" style="color: #ffffff; font-size: clamp(40px, 6vw, 60px); font-weight: 800; line-height: 1.2; margin-bottom: 15px;">About Vidhyut Saathi</h1>
