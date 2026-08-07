@@ -71,7 +71,62 @@
     background: linear-gradient(90deg, #ec5c0a, #ffcc00);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    -webkit-text-fill-color: transparent;
     animation: scroll-right 25s linear infinite;
+  }
+  
+  /* --- Company Info Section --- */
+  .company-info-section {
+    padding: 80px 20px;
+    background-color: #f9f9f9;
+  }
+  .company-info-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+  }
+  .company-info-text .gradient-heading {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    background: linear-gradient(45deg, #0052cc, #00a3ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+  }
+  .company-info-text p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #444;
+    margin-bottom: 15px;
+    text-align: justify;
+  }
+  .company-info-image-container {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  }
+  .company-info-image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+  .company-info-image-container:hover img {
+    transform: scale(1.05);
+  }
+  
+  @media screen and (max-width: 900px) {
+    .company-info-container {
+      grid-template-columns: 1fr;
+    }
+    .company-info-text .gradient-heading {
+      font-size: 2rem;
+    }
   }
 {%- endstyle -%}
 
@@ -109,6 +164,34 @@
     </div>
   </section>
 
+  <!-- About Company Section -->
+  <section class="company-info-section">
+    <div class="company-info-container">
+      
+      <!-- Text Side -->
+      <div class="company-info-text">
+        <h2 class="gradient-heading">About Vidhyut Saathi</h2>
+        <p><b>Vidhyut Saathi Energy Savers Pvt Ltd</b> is a leading Indian startup working in energy saver cards. People these days are proactive in saving electric energy as electricity is also a basic source that we need to survive. Vidyut Saathi is one of the innovative products of this generation to lower your electricity bills.</p>
+        <p>This card is designed on a unique US - German Nano-technology which is completely eco-friendly, certified and tested. It is made up of 20,000 negative ions which stops the leakage of electricity as a result it protects the ozone layer. It reduces 20% to 30% of your electricity bills just by application. There are no technical modifications required. Moreover, the usage of this card is 100% legal and we too are certified to distribute this technology.</p>
+        <p>Without any maintenance cost, it is performing well at domestic as well as commercial platforms. In short, energy saving is now totally eco friendly, pocket friendly and most importantly ozone layer friendly.</p>
+      </div>
+
+      <!-- Image Side -->
+      <div class="company-info-image">
+        <div class="company-info-image-container tilt-element">
+          {%- if section.settings.company_info_image != blank -%}
+            {{ section.settings.company_info_image | image_url: width: 800 | image_tag: loading: 'lazy' }}
+          {%- else -%}
+            <div style="background: #e0e0e0; width: 100%; aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; color: #666; text-align: center; padding: 20px;">
+              <p>Please upload an image in the Theme Editor<br>(Right Side About Image)</p>
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+
+    </div>
+  </section>
+
 </div>
 
 {% schema %}
@@ -120,6 +203,12 @@
       "id": "hero_bg_image",
       "label": "Hero 3D Background Image",
       "info": "Upload a 3D background image. It will have a parallax scroll effect."
+    },
+    {
+      "type": "image_picker",
+      "id": "company_info_image",
+      "label": "Right Side About Image",
+      "info": "Upload the image for the right side of the About Company section."
     }
   ],
   "blocks": [
