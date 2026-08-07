@@ -66,11 +66,14 @@
   {%- endfor -%}
 
   {%- if hero_bg_url != blank -%}
-    <section class="about-hero page-header page-header_align_center" style="background-image: linear-gradient(rgba(26,26,26,0.65), rgba(51,51,51,0.65)), url('{{ hero_bg_url }}'); background-size: cover; background-repeat: no-repeat; background-attachment: scroll; background-position: center center; background-color: #1a1a1a; min-height: 500px; padding-top: 80px; padding-bottom: 80px; display: flex; align-items: center; justify-content: center; position: relative;">
+    <section class="about-hero page-header page-header_align_center" style="background-image: linear-gradient(rgba(26,26,26,0.65), rgba(51,51,51,0.65)), url('{{ hero_bg_url }}'); background-size: cover; background-repeat: no-repeat; background-attachment: scroll; background-position: center center; background-color: #1a1a1a; min-height: 500px; padding-top: 80px; padding-bottom: 80px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
   {%- else -%}
-    <section class="about-hero page-header page-header_align_center" style="background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%); min-height: 500px; padding-top: 80px; padding-bottom: 80px; display: flex; align-items: center; justify-content: center; position: relative;">
+    <section class="about-hero page-header page-header_align_center" style="background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%); min-height: 500px; padding-top: 80px; padding-bottom: 80px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
   {%- endif -%}
   
+    <!-- Moving Colorful Marquee Background -->
+    <marquee direction="right" scrollamount="15" loop="infinite" style="font-size: clamp(80px, 12vw, 150px); font-weight: 900; background: linear-gradient(90deg, #ec5c0a, #ffcc00); -webkit-background-clip: text; -webkit-text-fill-color: transparent; position: absolute; top: 50%; transform: translateY(-50%); width: 100%; z-index: 1; opacity: 0.8; margin: 0; padding: 0; pointer-events: none; line-height: 1;">About Us &nbsp; &nbsp; &nbsp; &nbsp; About Us &nbsp; &nbsp; &nbsp; &nbsp; About Us</marquee>
+
     <div class="page-header_wrapper" style="width: 100%; text-align: center; position: relative; z-index: 2;">
       <h1 class="page-header_title" style="color: #ffffff; font-size: clamp(40px, 6vw, 60px); font-weight: 800; line-height: 1.2; margin-bottom: 15px;">About Vidhyut Saathi</h1>
       <div class="page-header_breadcrumbs" style="color: #ffffff; font-size: 16px; font-weight: 500;">
