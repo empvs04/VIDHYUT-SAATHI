@@ -17,6 +17,32 @@
     overflow: hidden;
   }
 
+  /* --- Premium 3D & Reveal Utilities --- */
+  .reveal-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+  }
+  .reveal-up.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .tilt-element {
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    will-change: transform;
+    /* Added subtle shadow to enhance 3D pop */
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+  }
+  
+  .glass-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+  }
+
   /* --- Hero Section --- */
   .about-hero {
     position: relative;
@@ -266,10 +292,10 @@
   </section>
 
   <!-- What We Do -->
-  <section class="about-what-we-do">
+  <section class="about-what-we-do reveal-up">
     <div class="about-grid">
       <div class="about-grid-content">
-        <h2>What We Do</h2>
+        <h2 style="background: -webkit-linear-gradient(45deg, #ec5c0a, #ff9e5e); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">What We Do</h2>
         <p>At Vidhyut Saathi, we transform everyday electricity consumption into an opportunity for savings and growth. We help homes, shops, commercial establishments, and industries unlock the power of smarter energy utilization.</p>
         <p>But our impact doesn't stop there. We are creating a nationwide ecosystem where consumers can reduce expenses, and aspiring entrepreneurs can build profitable district-level ventures through our exclusive franchise network.</p>
         <p style="font-weight: 600; color: var(--about-primary); margin-top: 15px;">
@@ -277,15 +303,15 @@
         </p>
       </div>
       <div class="about-stats">
-        <div class="stat-box">
+        <div class="stat-box tilt-element">
           <div class="stat-value">20-30%</div>
           <div class="stat-label">Monthly Bill Savings</div>
         </div>
-        <div class="stat-box">
+        <div class="stat-box tilt-element">
           <div class="stat-value">#1</div>
           <div class="stat-label">Energy Saver Card</div>
         </div>
-        <div class="stat-box" style="grid-column: span 2;">
+        <div class="stat-box tilt-element" style="grid-column: span 2;">
           <div class="stat-value" style="font-size: 2rem;">Pan-India</div>
           <div class="stat-label">Exclusive Franchise Network</div>
         </div>
@@ -295,16 +321,16 @@
 
   <!-- Vision & Mission -->
   <section class="about-vision-mission">
-    <div class="vm-container">
-      <div class="vm-card">
+    <div class="vm-container reveal-up">
+      <div class="vm-card glass-card tilt-element">
         <div class="vm-icon">👁️</div>
-        <h3>Our Vision</h3>
+        <h3 style="background: -webkit-linear-gradient(45deg, #007b3e, #00b359); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Our Vision</h3>
         <p>To create a future where every Indian family pays less for electricity, every entrepreneur has the opportunity to build wealth, and every unit of energy is used wisely for the benefit of our nation and future generations.</p>
         <p>We envision a future where advanced technology is accessible to every citizen, making smarter power consumption a standard that protects the environment and reduces economic strain on every family.</p>
       </div>
-      <div class="vm-card">
+      <div class="vm-card glass-card tilt-element">
         <div class="vm-icon">🎯</div>
-        <h3>Our Mission</h3>
+        <h3 style="background: -webkit-linear-gradient(45deg, #ec5c0a, #ff9e5e); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Our Mission</h3>
         <p>To help millions of Indians reduce their electricity expenses through innovative technology while creating life-changing business opportunities through our exclusive district franchise network.</p>
         <p>By saving electricity, creating entrepreneurs, generating employment, and promoting environmental awareness, we are committed to building a stronger, greener, and more self-reliant India.</p>
         <p style="font-weight: 600; margin-top: 10px;">Creating a legacy of savings, success, and sustainability for generations to come.</p>
@@ -313,9 +339,9 @@
   </section>
 
   <!-- Who We Are -->
-  <section class="about-who">
-    <div class="about-who-content">
-      <h2>Who We Are</h2>
+  <section class="about-who reveal-up">
+    <div class="about-who-content tilt-element" style="background: rgba(0,0,0,0.5); padding: 40px; border-radius: 20px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1);">
+      <h2 style="background: -webkit-linear-gradient(45deg, #ffffff, #aaaaaa); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Who We Are</h2>
       <p>We are believers in a simple idea: <strong>when electricity is saved, everyone wins.</strong></p>
       <p>At Vidhyut Saathi, we don't measure success by products sold—we measure it by electricity saved, money retained by families, businesses created by entrepreneurs, and the positive difference we make in people's lives.</p>
       
@@ -325,11 +351,11 @@
 
   <!-- Dynamic Image Gallery -->
   {%- if section.blocks.size > 0 -%}
-  <section style="padding: 80px 20px; max-width: 1200px; margin: 0 auto;">
+  <section style="padding: 80px 20px; max-width: 1200px; margin: 0 auto;" class="reveal-up">
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
       {%- for block in section.blocks -%}
         {%- if block.type == 'image' and block.settings.image != blank -%}
-          <div style="border-radius: var(--about-radius); overflow: hidden; box-shadow: var(--about-shadow);" {{ block.shopify_attributes }}>
+          <div class="tilt-element" style="border-radius: var(--about-radius); overflow: hidden; box-shadow: var(--about-shadow); border: 2px solid #fff;" {{ block.shopify_attributes }}>
             {{ block.settings.image | image_url: width: 800 | image_tag: style: 'width: 100%; height: 100%; object-fit: cover; display: block;', loading: 'lazy' }}
           </div>
         {%- endif -%}
@@ -339,6 +365,55 @@
   {%- endif -%}
 
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  /* --- Reveal Animations on Scroll --- */
+  const revealElements = document.querySelectorAll('.reveal-up');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  
+  revealElements.forEach(el => revealObserver.observe(el));
+
+  /* --- 3D Hover Tilt Effect --- */
+  const tiltElements = document.querySelectorAll('.tilt-element');
+  
+  tiltElements.forEach(el => {
+    el.addEventListener('mousemove', (e) => {
+      const rect = el.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      
+      // Calculate rotation (max 12 degrees)
+      const rotateX = ((y - centerY) / centerY) * -12; 
+      const rotateY = ((x - centerX) / centerX) * 12;
+      
+      // Apply 3D transform with slight scale up
+      el.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.03, 1.03, 1.03)`;
+    });
+    
+    el.addEventListener('mouseleave', () => {
+      // Snap back to 0 rotation with smooth transition
+      el.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+      el.style.transition = 'transform 0.6s cubic-bezier(0.23, 1, 0.32, 1)';
+    });
+    
+    el.addEventListener('mouseenter', () => {
+      // Fast transition when entering
+      el.style.transition = 'transform 0.1s linear';
+    });
+  });
+});
+</script>
 
 {% schema %}
 {
