@@ -328,25 +328,21 @@
   {%- endfor -%}
 
   {%- if hero_bg_url != blank -%}
-    <section class="about-hero" style="background-image: linear-gradient(rgba(26,26,26,0.65), rgba(51,51,51,0.65)), url('{{ hero_bg_url }}'); background-position: center; background-size: cover; background-repeat: no-repeat; background-attachment: fixed; position: relative; overflow: hidden;">
+    <section class="about-hero page-header page-header_align_center" style="background-image: linear-gradient(rgba(26,26,26,0.65), rgba(51,51,51,0.65)), url('{{ hero_bg_url }}'); background-size: cover; background-repeat: no-repeat; background-attachment: scroll; background-position: center center; background-color: #1a1a1a; min-height: 500px; padding-top: 80px; padding-bottom: 80px; display: flex; align-items: center; justify-content: center; position: relative;">
   {%- else -%}
-    <section class="about-hero" style="background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%); position: relative; overflow: hidden;">
+    <section class="about-hero page-header page-header_align_center" style="background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%); min-height: 500px; padding-top: 80px; padding-bottom: 80px; display: flex; align-items: center; justify-content: center; position: relative;">
   {%- endif -%}
-    <div class="v-bg-animations">
-      <div class="v-blob v-blob-1"></div>
-      <div class="v-blob v-blob-2"></div>
-      <div class="v-blob v-blob-3"></div>
-      <div class="v-sparks">
-        <div class="v-spark"></div><div class="v-spark"></div><div class="v-spark"></div><div class="v-spark"></div><div class="v-spark"></div>
+  
+    <div class="page-header_wrapper" style="width: 100%; text-align: center; position: relative; z-index: 2;">
+      <h1 class="page-header_title" style="color: #ffffff; font-size: clamp(40px, 6vw, 60px); font-weight: 800; line-height: 1.2; margin-bottom: 15px;">About Vidhyut Saathi</h1>
+      <div class="page-header_breadcrumbs" style="color: #ffffff; font-size: 16px; font-weight: 500;">
+        <div class="breadcrumbs">
+          <a href="/" class="home" style="color: var(--about-primary); text-decoration: none; transition: color 0.3s;">Home</a> 
+          <span class="divider" style="margin: 0 10px; color: rgba(255,255,255,0.5);">/</span> 
+          <span class="current">About Us</span>
+        </div>
       </div>
     </div>
-    <div class="page-header_wrapper"><div class="tpc-container"><div class="page-header_content"><div class="header__shape_1"></div>
-    <marquee class="large-heading hidden-xs" direction="left" scrollamount="12" loop="infinite" style="font-size: 100px; font-weight: 800; color: rgba(255,255,255,0.05); position: absolute; top: 20%; left: 0; width: 100%; z-index: 1;">About Us</marquee>
-    <div style="position: relative; z-index: 2;">
-      <h1 class="page-header_title" style="color: #ffffff; font-size: 60px; line-height: 72px;">About Vidhyut Saathi</h1>
-      <div class="page-header_breadcrumbs" style="color: #ffffff; font-size: 16px; line-height: 27px;"><div class="breadcrumbs"><a href="/" class="home" style="color: var(--about-primary); text-decoration: none;">Home</a> <span class="divider">/</span> <span class="current">About Us</span></div><!-- .breadcrumbs --></div>
-    </div>
-    </div></div></div>
   </section>
 
   <!-- What We Do -->
