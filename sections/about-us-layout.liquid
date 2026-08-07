@@ -44,12 +44,20 @@
     z-index: 2;
   }
 
+  @keyframes slideRight {
+    0% { transform: translateX(-150%); }
+    100% { transform: translateX(150%); }
+  }
+
   .about-hero-title {
     font-size: 3.5rem;
     font-weight: 800;
     line-height: 1.1;
     margin-bottom: 24px;
     color: var(--about-text-dark);
+    white-space: nowrap;
+    display: inline-block;
+    animation: slideRight 15s linear infinite;
   }
 
   .about-hero-title span {
