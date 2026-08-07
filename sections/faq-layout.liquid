@@ -1,0 +1,576 @@
+{%- style -%}
+  /* --- Global & Variables --- */
+  :root {
+    --faq-primary: {{ section.settings.primary_color | default: '#ec5c0a' }};
+    --faq-secondary: #007b3e;
+    --faq-bg: {{ section.settings.bg_color | default: '#f9f9f9' }};
+    --faq-text-dark: #1a1a1a;
+    --faq-text-light: #555555;
+    --faq-radius: 12px;
+    --faq-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    --faq-shadow-hover: 0 10px 25px rgba(0, 0, 0, 0.08);
+    --faq-border: #eaeaea;
+  }
+  
+  .faq-wrapper {
+    font-family: 'Poppins', 'Inter', sans-serif;
+    color: var(--faq-text-dark);
+    background-color: var(--faq-bg);
+    overflow: hidden;
+  }
+
+  /* --- Typography --- */
+  .faq-heading {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    color: var(--faq-text-dark);
+  }
+  .faq-subheading {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    line-height: 1.6;
+    color: var(--faq-text-light);
+  }
+  
+  /* --- Hero Section --- */
+  .faq-hero {
+    position: relative;
+    padding: clamp(60px, 8vw, 80px) 20px;
+    text-align: center;
+    background: linear-gradient(135deg, #ffffff 0%, var(--faq-bg) 100%);
+    border-bottom: 1px solid var(--faq-border);
+  }
+  .faq-hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .faq-hero h1 {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 800;
+    margin-bottom: 15px;
+    color: var(--faq-text-dark);
+  }
+  
+  /* --- Search Bar --- */
+  .faq-search-container {
+    max-width: 600px;
+    margin: 30px auto 0;
+    position: relative;
+  }
+  .faq-search-input {
+    width: 100%;
+    padding: 16px 20px 16px 50px;
+    font-size: 1.05rem;
+    border: 2px solid var(--faq-border);
+    border-radius: 50px;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    font-family: inherit;
+    background: #ffffff;
+  }
+  .faq-search-input:focus {
+    border-color: var(--faq-primary);
+    box-shadow: 0 0 0 4px rgba(236,92,10,0.1);
+  }
+  .faq-search-icon {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+    font-size: 1.2rem;
+  }
+
+  /* --- FAQ Layout --- */
+  .faq-content-section {
+    padding: clamp(50px, 6vw, 80px) 20px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  /* Optional Categories */
+  .faq-categories {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 40px;
+  }
+  .faq-cat-btn {
+    padding: 10px 20px;
+    background: #ffffff;
+    border: 1px solid var(--faq-border);
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--faq-text-light);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .faq-cat-btn.active, .faq-cat-btn:hover {
+    background: var(--faq-primary);
+    color: #ffffff;
+    border-color: var(--faq-primary);
+  }
+
+  /* Accordion Item */
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .faq-item {
+    background: #ffffff;
+    border-radius: var(--faq-radius);
+    box-shadow: var(--faq-shadow);
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+  }
+  .faq-item:hover {
+    box-shadow: var(--faq-shadow-hover);
+  }
+  
+  .faq-question {
+    width: 100%;
+    text-align: left;
+    padding: 24px;
+    background: transparent;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--faq-text-dark);
+    font-family: inherit;
+    transition: color 0.2s ease;
+  }
+  .faq-question:focus-visible {
+    outline: 2px solid var(--faq-primary);
+    outline-offset: -2px;
+  }
+  .faq-question:hover {
+    color: var(--faq-primary);
+  }
+  
+  .faq-icon {
+    flex-shrink: 0;
+    margin-left: 15px;
+    width: 24px;
+    height: 24px;
+    position: relative;
+  }
+  .faq-icon::before, .faq-icon::after {
+    content: '';
+    position: absolute;
+    background: var(--faq-text-dark);
+    transition: transform 0.3s ease;
+  }
+  .faq-icon::before {
+    top: 11px;
+    left: 4px;
+    width: 16px;
+    height: 2px;
+  }
+  .faq-icon::after {
+    top: 4px;
+    left: 11px;
+    width: 2px;
+    height: 16px;
+  }
+  .faq-item.is-open .faq-icon::after {
+    transform: rotate(90deg);
+  }
+  .faq-item.is-open .faq-icon::before {
+    transform: rotate(180deg);
+  }
+  .faq-item.is-open .faq-question {
+    color: var(--faq-primary);
+    border-bottom: 1px solid var(--faq-border);
+  }
+  
+  .faq-answer-wrapper {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.3s ease;
+  }
+  .faq-item.is-open .faq-answer-wrapper {
+    grid-template-rows: 1fr;
+  }
+  .faq-answer {
+    overflow: hidden;
+  }
+  .faq-answer-inner {
+    padding: 24px;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--faq-text-light);
+  }
+  
+  /* Rich Text Formatting inside Answer */
+  .faq-answer-inner p { margin-bottom: 15px; }
+  .faq-answer-inner p:last-child { margin-bottom: 0; }
+  .faq-answer-inner ul, .faq-answer-inner ol { margin-left: 20px; margin-bottom: 15px; }
+  .faq-answer-inner li { margin-bottom: 8px; }
+  
+  .faq-no-results {
+    text-align: center;
+    padding: 40px;
+    font-size: 1.1rem;
+    color: var(--faq-text-light);
+    display: none;
+    background: #ffffff;
+    border-radius: var(--faq-radius);
+  }
+
+  /* --- CTA Section --- */
+  .faq-cta {
+    background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%);
+    color: #ffffff;
+    padding: clamp(60px, 8vw, 100px) 20px;
+    text-align: center;
+  }
+  .faq-cta-content {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .faq-cta h2 {
+    color: #ffffff;
+    margin-bottom: 15px;
+  }
+  .faq-cta p {
+    color: #cccccc;
+    margin-bottom: 30px;
+  }
+  .faq-cta-btn {
+    display: inline-block;
+    padding: 15px 40px;
+    background: var(--faq-primary);
+    color: #ffffff;
+    font-size: 1.05rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+  .faq-cta-btn:hover {
+    background: #d45007;
+    transform: translateY(-3px);
+  }
+{%- endstyle -%}
+
+<!-- SEO Structured Data -->
+{%- if section.blocks.size > 0 -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {%- for block in section.blocks -%}
+      {
+        "@type": "Question",
+        "name": {{ block.settings.question | json }},
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": {{ block.settings.answer | strip_html | json }}
+        }
+      }{% unless forloop.last %},{% endunless %}
+    {%- endfor -%}
+  ]
+}
+</script>
+{%- endif -%}
+
+<div class="faq-wrapper">
+  
+  <!-- Hero Section -->
+  <section class="faq-hero">
+    <div class="faq-hero-content">
+      <h1>{{ section.settings.hero_title }}</h1>
+      <p class="faq-subheading">{{ section.settings.hero_subtitle }}</p>
+      
+      {%- if section.settings.enable_search -%}
+        <div class="faq-search-container">
+          <span class="faq-search-icon">🔍</span>
+          <input type="text" id="faqSearchInput" class="faq-search-input" placeholder="Search FAQs..." aria-label="Search FAQs">
+        </div>
+      {%- endif -%}
+    </div>
+  </section>
+
+  <!-- FAQ Content -->
+  <section class="faq-content-section">
+    <div class="faq-list" id="faqList">
+      {%- for block in section.blocks -%}
+        <div class="faq-item" data-category="{{ block.settings.category | handleize }}" {{ block.shopify_attributes }}>
+          <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-{{ block.id }}">
+            <span class="faq-question-text">{{ block.settings.question }}</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-answer-wrapper" id="faq-answer-{{ block.id }}" role="region">
+            <div class="faq-answer">
+              <div class="faq-answer-inner faq-answer-text">
+                {{ block.settings.answer }}
+              </div>
+            </div>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+    <div class="faq-no-results" id="faqNoResults">
+      No FAQs found. Please try another search.
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="faq-cta">
+    <div class="faq-cta-content">
+      <h2 class="faq-heading">{{ section.settings.cta_heading }}</h2>
+      <p class="faq-subheading">{{ section.settings.cta_text }}</p>
+      <a href="{{ section.settings.cta_link }}" class="faq-cta-btn">{{ section.settings.cta_btn_text }}</a>
+    </div>
+  </section>
+
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const faqItems = document.querySelectorAll('.faq-item');
+  const searchInput = document.getElementById('faqSearchInput');
+  const noResultsMsg = document.getElementById('faqNoResults');
+  const allowMultipleOpen = false; // Set to true if you want multiple open at once
+
+  // Accordion Logic
+  faqItems.forEach(item => {
+    const questionBtn = item.querySelector('.faq-question');
+    questionBtn.addEventListener('click', () => {
+      const isOpen = item.classList.contains('is-open');
+
+      // If we only want one open at a time (especially for mobile)
+      if (!allowMultipleOpen) {
+        faqItems.forEach(otherItem => {
+          if (otherItem !== item) {
+            otherItem.classList.remove('is-open');
+            otherItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+          }
+        });
+      }
+
+      // Toggle current
+      if (isOpen) {
+        item.classList.remove('is-open');
+        questionBtn.setAttribute('aria-expanded', 'false');
+      } else {
+        item.classList.add('is-open');
+        questionBtn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  // Search Logic
+  if (searchInput) {
+    searchInput.addEventListener('input', function(e) {
+      const searchTerm = e.target.value.toLowerCase().trim();
+      let visibleCount = 0;
+
+      faqItems.forEach(item => {
+        const questionText = item.querySelector('.faq-question-text').textContent.toLowerCase();
+        const answerText = item.querySelector('.faq-answer-text').textContent.toLowerCase();
+
+        if (questionText.includes(searchTerm) || answerText.includes(searchTerm)) {
+          item.style.display = 'block';
+          visibleCount++;
+        } else {
+          item.style.display = 'none';
+        }
+      });
+
+      if (visibleCount === 0) {
+        noResultsMsg.style.display = 'block';
+      } else {
+        noResultsMsg.style.display = 'none';
+      }
+    });
+  }
+});
+</script>
+
+{% schema %}
+{
+  "name": "FAQ Layout",
+  "settings": [
+    {
+      "type": "color",
+      "id": "primary_color",
+      "label": "Primary Accent Color",
+      "default": "#ec5c0a"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#f9f9f9"
+    },
+    {
+      "type": "header",
+      "content": "Hero Section"
+    },
+    {
+      "type": "text",
+      "id": "hero_title",
+      "label": "Hero Title",
+      "default": "Frequently Asked Questions"
+    },
+    {
+      "type": "text",
+      "id": "hero_subtitle",
+      "label": "Hero Subtitle",
+      "default": "Find answers to common questions about Vidhyut Saathi Card, installation, warranty, safety, business opportunities and more."
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_search",
+      "label": "Enable Search Bar",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "CTA Section"
+    },
+    {
+      "type": "text",
+      "id": "cta_heading",
+      "label": "Heading",
+      "default": "Still Have Questions?"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Supporting Text",
+      "default": "Reach out to our support team and we will be happy to assist you."
+    },
+    {
+      "type": "text",
+      "id": "cta_btn_text",
+      "label": "Button Text",
+      "default": "Contact Us"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "Button Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "FAQ Question",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "info": "Use this field to paste the official answer."
+        },
+        {
+          "type": "text",
+          "id": "category",
+          "label": "Category",
+          "info": "Optional tag for organization."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ Layout",
+      "blocks": [
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "1. What is Vidhyut Saathi Card & how does it works?",
+            "answer": "<p>[Official answer pending - please insert via Shopify Customize]</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "2. Is the Vidhyut Saathi Card suitable for homes, shops, offices, factories, and institutions?",
+            "answer": "<p>[Official answer pending - please insert via Shopify Customize]</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "3. How many Vidhyut Saathi Cards are required for my premises?",
+            "answer": "<p>[Official answer pending - please insert via Shopify Customize]</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "4. How to install the Vidhyut Saathi Card?",
+            "answer": "<p>[Official answer pending - please insert via Shopify Customize]</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "5. What is the product life and warranty of the Vidhyut Saathi Card?",
+            "answer": "<p>[Official answer pending - please insert via Shopify Customize]</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "6. Does the Vidhyut Saathi Card require any maintenance after installation?",
+            "answer": "<p>[Official answer pending - please insert via Shopify Customize]</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "7. Is the Vidhyut Saathi Card safe and legal to use?",
+            "answer": "<p>[Official answer pending - please insert via Shopify Customize]</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "8. How can I become a Vidhyut Saathi Dealer or Exclusive District Franchise Partner?",
+            "answer": "<p>[Official answer pending - please insert via Shopify Customize]</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "9. Why is Vidhyut Saathi considered India's No. 1 Electric Saver Card Company?",
+            "answer": "<p>[Official answer pending - please insert via Shopify Customize]</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "10. What are the benefits of becoming a Vidhyut Saathi Dealer or Exclusive District Franchise Partner?",
+            "answer": "<p>[Official answer pending - please insert via Shopify Customize]</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "11. How can I start my business with Vidhyut Saathi?",
+            "answer": "<p>[Official answer pending - please insert via Shopify Customize]</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
