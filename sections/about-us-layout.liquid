@@ -323,9 +323,96 @@
     font-size: 0.75rem;
   }
 
+  /* --- Services 3-Column Dark Section --- */
+  .services-section {
+    padding: 100px 20px;
+    background: #080808;
+    color: #ffffff;
+    position: relative;
+    overflow: hidden;
+  }
+  .services-section::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%; right: -50%; bottom: -50%;
+    background: radial-gradient(circle, rgba(0,123,62,0.05) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .services-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    position: relative;
+    z-index: 2;
+  }
+  .service-card {
+    background: rgba(25, 25, 25, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 60px 40px;
+    border-radius: 30px;
+    text-align: center;
+    position: relative;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  }
+  .service-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    border-radius: 30px;
+    box-shadow: inset 0 0 0 2px transparent;
+    transition: all 0.5s ease;
+    pointer-events: none;
+  }
+  
+  .service-card:hover {
+    transform: translateY(-15px);
+    background: rgba(30, 30, 30, 0.9);
+  }
+  .service-card:nth-child(1):hover::after { box-shadow: inset 0 0 0 2px rgba(236,92,10,0.5); }
+  .service-card:nth-child(2):hover::after { box-shadow: inset 0 0 0 2px rgba(0,123,62,0.5); }
+  .service-card:nth-child(3):hover::after { box-shadow: inset 0 0 0 2px rgba(0,163,255,0.5); }
+  
+  .service-icon-wrapper {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    position: relative;
+    background: linear-gradient(135deg, rgba(236,92,10,0.1), rgba(0,123,62,0.1));
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .service-icon-wrapper img {
+    width: 60%;
+    height: auto;
+    object-fit: contain;
+  }
+  
+  .service-card h3 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    color: #ffffff;
+    letter-spacing: 1px;
+  }
+  .service-card p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #b0b0b0;
+  }
+
   @media screen and (max-width: 900px) {
     .wwa-container { grid-template-columns: 1fr; }
     .wwa-bottom-row { grid-template-columns: 1fr; }
+    .services-container { grid-template-columns: 1fr; }
   }
 {%- endstyle -%}
 
@@ -464,6 +551,53 @@
       </div>
 
     </div>
+    </div>
+  </section>
+
+  <!-- Core Services / Benefits (Dark Theme) -->
+  <section class="services-section">
+    <div class="services-container">
+      
+      <!-- Card 1 -->
+      <div class="service-card tilt-element">
+        <div class="service-icon-wrapper">
+          {%- if section.settings.service_1_icon != blank -%}
+            {{ section.settings.service_1_icon | image_url: width: 200 | image_tag: loading: 'lazy' }}
+          {%- else -%}
+            ⚡
+          {%- endif -%}
+        </div>
+        <h3>Save Electricity</h3>
+        <p>Electricity is an essential part of economy. It is very important to stop its wastage by using Vidhyut Saathi card.</p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="service-card tilt-element">
+        <div class="service-icon-wrapper" style="background: linear-gradient(135deg, rgba(0,123,62,0.1), rgba(0,163,255,0.1));">
+          {%- if section.settings.service_2_icon != blank -%}
+            {{ section.settings.service_2_icon | image_url: width: 200 | image_tag: loading: 'lazy' }}
+          {%- else -%}
+            🌍
+          {%- endif -%}
+        </div>
+        <h3>Save Ozone</h3>
+        <p>Ozone layer plays vital role in protecting human health. Use Vidhyut Saathi card to save the layer from Chloro-fluoro carbon.</p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="service-card tilt-element">
+        <div class="service-icon-wrapper" style="background: linear-gradient(135deg, rgba(0,163,255,0.1), rgba(236,92,10,0.1));">
+          {%- if section.settings.service_3_icon != blank -%}
+            {{ section.settings.service_3_icon | image_url: width: 200 | image_tag: loading: 'lazy' }}
+          {%- else -%}
+            💰
+          {%- endif -%}
+        </div>
+        <h3>Save Money</h3>
+        <p>One who earns knows the value of hard earned money. All saving freak people can now save money on electricity bills too.</p>
+      </div>
+
+    </div>
   </section>
 
 </div>
@@ -494,6 +628,22 @@
       "type": "image_picker",
       "id": "ceo_image",
       "label": "CEO Profile Picture"
+    },
+    {
+      "type": "image_picker",
+      "id": "service_1_icon",
+      "label": "Save Electricity Icon",
+      "info": "Upload an icon image (transparent PNG recommended)."
+    },
+    {
+      "type": "image_picker",
+      "id": "service_2_icon",
+      "label": "Save Ozone Icon"
+    },
+    {
+      "type": "image_picker",
+      "id": "service_3_icon",
+      "label": "Save Money Icon"
     }
   ],
   "blocks": [
