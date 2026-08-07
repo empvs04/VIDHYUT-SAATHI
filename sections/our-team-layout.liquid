@@ -1,0 +1,522 @@
+{%- style -%}
+  /* --- Global & Variables --- */
+  :root {
+    --team-primary: {{ section.settings.primary_color | default: '#ec5c0a' }};
+    --team-secondary: #007b3e;
+    --team-bg: {{ section.settings.bg_color | default: '#fff8ef' }};
+    --team-text-dark: #1a1a1a;
+    --team-text-light: #4a4a4a;
+    --team-radius: 16px;
+    --team-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+    --team-shadow-hover: 0 20px 40px rgba(236, 92, 10, 0.15);
+  }
+  
+  .our-team-wrapper {
+    font-family: 'Poppins', 'Inter', sans-serif;
+    color: var(--team-text-dark);
+    background-color: var(--team-bg);
+    overflow: hidden;
+  }
+
+  /* --- Typography --- */
+  .team-section-heading {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    color: var(--team-text-dark);
+  }
+  .team-section-subheading {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    line-height: 1.6;
+    color: var(--team-text-light);
+  }
+  
+  /* --- Hero Section --- */
+  .team-hero {
+    position: relative;
+    padding: clamp(60px, 10vw, 120px) 20px;
+    text-align: center;
+    background: linear-gradient(135deg, var(--team-bg) 0%, #ffe8d6 100%);
+    overflow: hidden;
+  }
+  .team-hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+  .team-hero h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    margin-bottom: 15px;
+    color: var(--team-text-dark);
+  }
+  .team-hero h1 span {
+    color: var(--team-primary);
+  }
+  .team-hero p {
+    font-size: clamp(1.1rem, 2.5vw, 1.25rem);
+    color: var(--team-text-light);
+    margin-bottom: 40px;
+  }
+  .team-hero-image-wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+    border-radius: var(--team-radius);
+    overflow: hidden;
+    box-shadow: var(--team-shadow);
+  }
+  .team-hero-image-wrapper img, .team-hero-image-wrapper svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+  }
+  
+  /* --- Intro Section --- */
+  .team-intro {
+    padding: clamp(60px, 8vw, 100px) 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .team-intro-text {
+    font-size: clamp(1rem, 2vw, 1.15rem);
+    line-height: 1.8;
+    color: var(--team-text-light);
+    margin-top: 30px;
+    text-align: justify;
+    text-align-last: center;
+  }
+  @media (max-width: 768px) {
+    .team-intro-text {
+      text-align: left;
+      text-align-last: left;
+    }
+  }
+
+  /* --- Dynamic Team Grid --- */
+  .team-members {
+    padding: 0 20px clamp(60px, 8vw, 100px);
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 30px;
+    margin-top: 50px;
+  }
+  @media (min-width: 600px) {
+    .team-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 912px) {
+    .team-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (min-width: 1280px) {
+    .team-grid { grid-template-columns: repeat(4, 1fr); }
+  }
+  
+  .team-card {
+    background: #ffffff;
+    border-radius: var(--team-radius);
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+  }
+  .team-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--team-shadow-hover);
+  }
+  
+  .team-image-box {
+    width: 100%;
+    aspect-ratio: 1 / 1.1;
+    overflow: hidden;
+    position: relative;
+    background: #f4f4f4;
+  }
+  .team-image-box img, .team-image-box svg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  .team-card:hover .team-image-box img {
+    transform: scale(1.05);
+  }
+  
+  .team-info {
+    padding: 24px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .team-name {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--team-text-dark);
+    margin-bottom: 4px;
+  }
+  .team-role {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--team-primary);
+    margin-bottom: 12px;
+  }
+  .team-bio {
+    font-size: 0.9rem;
+    color: var(--team-text-light);
+    line-height: 1.6;
+    margin-bottom: 20px;
+    flex-grow: 1;
+  }
+  .team-social {
+    margin-top: auto;
+  }
+  .team-social a {
+    color: var(--team-text-dark);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.85rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.2s ease;
+  }
+  .team-social a:hover {
+    color: var(--team-primary);
+  }
+
+  /* --- What We Bring Section --- */
+  .team-bring {
+    background: #ffffff;
+    padding: clamp(60px, 8vw, 100px) 20px;
+  }
+  .bring-container {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .bring-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 20px;
+    margin-top: 40px;
+  }
+  @media (min-width: 600px) {
+    .bring-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 1024px) {
+    .bring-grid { grid-template-columns: repeat(4, 1fr); }
+  }
+  
+  .bring-card {
+    background: var(--team-bg);
+    padding: 30px 20px;
+    border-radius: var(--team-radius);
+    text-align: center;
+    border: 1px solid rgba(0,0,0,0.03);
+    transition: background 0.3s ease;
+  }
+  .bring-card:hover {
+    background: #ffe8d6;
+  }
+  .bring-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+  }
+  .bring-card h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--team-text-dark);
+  }
+
+  /* --- CTA Section --- */
+  .team-cta {
+    padding: clamp(60px, 8vw, 100px) 20px;
+    text-align: center;
+  }
+  .team-cta-content {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .team-btn {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 15px 35px;
+    background: var(--team-primary);
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: background 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 15px rgba(236,92,10,0.25);
+  }
+  .team-btn:hover {
+    background: #d45007;
+    transform: translateY(-3px);
+  }
+{%- endstyle -%}
+
+<div class="our-team-wrapper">
+  
+  <!-- Hero Section -->
+  <section class="team-hero">
+    <div class="team-hero-content">
+      <h1>{{ section.settings.hero_title }}</h1>
+      <p>{{ section.settings.hero_subtitle }}</p>
+    </div>
+    <div class="team-hero-image-wrapper">
+      {%- if section.settings.hero_image != blank -%}
+        {{ section.settings.hero_image | image_url: width: 1440 | image_tag: loading: 'lazy', sizes: '(max-width: 1440px) 100vw, 1440px' }}
+      {%- else -%}
+        {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
+      {%- endif -%}
+    </div>
+  </section>
+
+  <!-- Intro Section -->
+  <section class="team-intro">
+    <h2 class="team-section-heading">{{ section.settings.intro_heading }}</h2>
+    <div class="team-intro-text">
+      {{ section.settings.intro_text }}
+    </div>
+  </section>
+
+  <!-- Dynamic Team Grid -->
+  <section class="team-members">
+    {%- if section.blocks.size > 0 -%}
+      <div class="team-grid">
+        {%- for block in section.blocks -%}
+          <div class="team-card" {{ block.shopify_attributes }}>
+            <div class="team-image-box">
+              {%- if block.settings.image != blank -%}
+                {{ block.settings.image | image_url: width: 400, height: 440, crop: 'center' | image_tag: loading: 'lazy', alt: block.settings.name }}
+              {%- else -%}
+                {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+              {%- endif -%}
+            </div>
+            <div class="team-info">
+              <h3 class="team-name">{{ block.settings.name }}</h3>
+              <p class="team-role">{{ block.settings.role }}</p>
+              {%- if block.settings.bio != blank -%}
+                <p class="team-bio">{{ block.settings.bio }}</p>
+              {%- endif -%}
+              {%- if block.settings.social_url != blank -%}
+                <div class="team-social">
+                  <a href="{{ block.settings.social_url }}" target="_blank" rel="noopener noreferrer">
+                    View Profile <span>→</span>
+                  </a>
+                </div>
+              {%- endif -%}
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- else -%}
+      <div style="text-align: center; padding: 40px; color: var(--team-text-light); background: #ffffff; border-radius: var(--team-radius);">
+        <p>Your team members will appear here. Add blocks in the Shopify Theme Editor.</p>
+      </div>
+    {%- endif -%}
+  </section>
+
+  <!-- What We Bring Section -->
+  <section class="team-bring">
+    <div class="bring-container">
+      <h2 class="team-section-heading" style="text-align: center;">{{ section.settings.bring_heading }}</h2>
+      <div class="bring-grid">
+        <div class="bring-card">
+          <div class="bring-icon">🏭</div>
+          <h3>{{ section.settings.bring_1 }}</h3>
+        </div>
+        <div class="bring-card">
+          <div class="bring-icon">⚙️</div>
+          <h3>{{ section.settings.bring_2 }}</h3>
+        </div>
+        <div class="bring-card">
+          <div class="bring-icon">📈</div>
+          <h3>{{ section.settings.bring_3 }}</h3>
+        </div>
+        <div class="bring-card">
+          <div class="bring-icon">🤝</div>
+          <h3>{{ section.settings.bring_4 }}</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="team-cta">
+    <div class="team-cta-content">
+      <h2 class="team-section-heading">{{ section.settings.cta_heading }}</h2>
+      <p class="team-section-subheading">{{ section.settings.cta_text }}</p>
+      <a href="{{ section.settings.cta_link }}" class="team-btn">{{ section.settings.cta_btn_text }}</a>
+    </div>
+  </section>
+
+</div>
+
+{% schema %}
+{
+  "name": "Our Team Layout",
+  "settings": [
+    {
+      "type": "color",
+      "id": "primary_color",
+      "label": "Primary Accent Color",
+      "default": "#ec5c0a"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#fff8ef"
+    },
+    {
+      "type": "header",
+      "content": "Hero Section"
+    },
+    {
+      "type": "text",
+      "id": "hero_title",
+      "label": "Hero Title",
+      "default": "Our Team"
+    },
+    {
+      "type": "text",
+      "id": "hero_subtitle",
+      "label": "Hero Subtitle",
+      "default": "The people behind our vision, innovation and growth"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Company/Team Image"
+    },
+    {
+      "type": "header",
+      "content": "Introduction"
+    },
+    {
+      "type": "text",
+      "id": "intro_heading",
+      "label": "Heading",
+      "default": "Meet the Team Behind Vidhyut Saathi"
+    },
+    {
+      "type": "richtext",
+      "id": "intro_text",
+      "label": "Introduction Text",
+      "default": "<p>Behind Vidhyut Saathi Energy Savers Pvt. Ltd. is a dynamic team of industry experts, engineers, business strategists, and customer success professionals committed to driving sustainable growth. Our team works closely with every franchise partner, providing comprehensive training, technical expertise, sales support, and strategic marketing assistance to ensure long-term business success. We don't just supply products—we build profitable partnerships backed by innovation, transparency, and continuous guidance. With a customer-first approach and a passion for excellence, our professionals are dedicated to helping entrepreneurs expand confidently while delivering high-quality energy-saving solutions that create lasting value for homes, businesses, industries, and institutions across India.</p>"
+    },
+    {
+      "type": "header",
+      "content": "What We Bring Cards"
+    },
+    {
+      "type": "text",
+      "id": "bring_heading",
+      "label": "Section Heading",
+      "default": "What We Bring"
+    },
+    {
+      "type": "text",
+      "id": "bring_1",
+      "label": "Card 1 Title",
+      "default": "Industry Expertise"
+    },
+    {
+      "type": "text",
+      "id": "bring_2",
+      "label": "Card 2 Title",
+      "default": "Technical Excellence"
+    },
+    {
+      "type": "text",
+      "id": "bring_3",
+      "label": "Card 3 Title",
+      "default": "Business Strategy"
+    },
+    {
+      "type": "text",
+      "id": "bring_4",
+      "label": "Card 4 Title",
+      "default": "Customer Success"
+    },
+    {
+      "type": "header",
+      "content": "CTA Section"
+    },
+    {
+      "type": "text",
+      "id": "cta_heading",
+      "label": "Heading",
+      "default": "Building Success Together"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Supporting Text",
+      "default": "Partner with our team for continuous innovation, support, and long-term growth in the energy sector."
+    },
+    {
+      "type": "text",
+      "id": "cta_btn_text",
+      "label": "Button Text",
+      "default": "Contact Us"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "Button Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "team_member",
+      "name": "Team Member",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Member Photo",
+          "info": "Recommended: Square or portrait image."
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name",
+          "default": "Member Name"
+        },
+        {
+          "type": "text",
+          "id": "role",
+          "label": "Designation",
+          "default": "Designation"
+        },
+        {
+          "type": "textarea",
+          "id": "bio",
+          "label": "Short Description",
+          "default": "A short description of the team member's role and expertise."
+        },
+        {
+          "type": "url",
+          "id": "social_url",
+          "label": "Profile/Social URL (Optional)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Our Team Layout",
+      "blocks": []
+    }
+  ]
+}
+{% endschema %}
