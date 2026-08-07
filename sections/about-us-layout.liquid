@@ -317,8 +317,17 @@
 <div class="about-us-wrapper" style="position: relative;">
   
   <!-- Hero Section -->
+  {%- assign hero_bg_url = blank -%}
   {%- if section.settings.hero_bg_image != blank -%}
     {%- assign hero_bg_url = section.settings.hero_bg_image | image_url: width: 2000 -%}
+  {%- endif -%}
+  {%- for block in section.blocks -%}
+    {%- if block.type == 'hero_background' and block.settings.image != blank -%}
+      {%- assign hero_bg_url = block.settings.image | image_url: width: 2000 -%}
+    {%- endif -%}
+  {%- endfor -%}
+
+  {%- if hero_bg_url != blank -%}
     <section class="about-hero" style="background-image: linear-gradient(rgba(26,26,26,0.65), rgba(51,51,51,0.65)), url('{{ hero_bg_url }}'); background-position: center; background-size: cover; background-repeat: no-repeat; background-attachment: fixed; position: relative; overflow: hidden;">
   {%- else -%}
     <section class="about-hero" style="background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%); position: relative; overflow: hidden;">
@@ -477,8 +486,20 @@ document.addEventListener('DOMContentLoaded', function() {
   ],
   "blocks": [
     {
+      "type": "hero_background",
+      "name": "Top Header Photo (Hero)",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Upload Top Header Photo"
+        }
+      ]
+    },
+    {
       "type": "image",
-      "name": "Gallery Image",
+      "name": "Bottom Gallery Image",
       "settings": [
         {
           "type": "image_picker",
