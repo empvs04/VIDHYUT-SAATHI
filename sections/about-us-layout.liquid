@@ -317,7 +317,12 @@
 <div class="about-us-wrapper" style="position: relative;">
   
   <!-- Hero Section -->
-  <section class="about-hero" style="background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%); position: relative; overflow: hidden;">
+  {%- if section.settings.hero_bg_image != blank -%}
+    {%- assign hero_bg_url = section.settings.hero_bg_image | image_url: width: 2000 -%}
+    <section class="about-hero" style="background: linear-gradient(rgba(26,26,26,0.65), rgba(51,51,51,0.65)), url({{ hero_bg_url }}) center/cover no-repeat fixed; position: relative; overflow: hidden;">
+  {%- else -%}
+    <section class="about-hero" style="background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%); position: relative; overflow: hidden;">
+  {%- endif -%}
     <div class="v-bg-animations">
       <div class="v-blob v-blob-1"></div>
       <div class="v-blob v-blob-2"></div>
@@ -462,7 +467,14 @@ document.addEventListener('DOMContentLoaded', function() {
 {% schema %}
 {
   "name": "About Us Layout",
-  "settings": [],
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "hero_bg_image",
+      "label": "Hero 3D Background Image",
+      "info": "Upload a 3D background image. It will have a parallax scroll effect."
+    }
+  ],
   "blocks": [
     {
       "type": "image",
