@@ -722,9 +722,9 @@
     position: relative;
     width: 140px;
     height: 140px;
-    margin: 25px auto 10px auto;
+    margin: 25px auto 12px auto;
     border-radius: 50%;
-    overflow: hidden;
+    overflow: hidden !important;
     background: linear-gradient(135deg, #fceade, #e8f5e9);
     border: 3.5px solid #007b3e;
     box-shadow: 0 8px 20px rgba(0, 123, 62, 0.18);
@@ -736,6 +736,7 @@
     object-fit: cover;
     object-position: center;
     border-radius: 50%;
+    display: block;
     transition: transform 0.5s ease;
   }
   .team-card:hover .team-img-wrapper img {
@@ -743,19 +744,15 @@
   }
 
   .team-role-tag {
-    position: absolute;
-    bottom: 15px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(255, 255, 255, 0.92);
-    backdrop-filter: blur(10px);
+    display: inline-block;
+    background: rgba(236, 92, 10, 0.08);
     border: 1px solid rgba(236, 92, 10, 0.25);
-    padding: 6px 18px;
+    padding: 5px 16px;
     border-radius: 30px;
     font-size: 0.82rem;
     font-weight: 800;
     color: #ec5c0a;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    margin-bottom: 12px;
     white-space: nowrap;
   }
 
@@ -1106,9 +1103,9 @@
                 {%- else -%}
                   <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #fff3eb, #e8f5e9); font-size: 4rem;">👤</div>
                 {%- endif -%}
-                <div class="team-role-tag">{{ block.settings.role | default: "Team Leader" }}</div>
               </div>
               <div class="team-info">
+                <div class="team-role-tag">{{ block.settings.role | default: "Team Leader" }}</div>
                 <h3 class="team-name">{{ block.settings.name | default: "Team Member" }}</h3>
                 <p class="team-bio">{{ block.settings.bio | default: "Dedicated to driving energy-saving innovation and sustainable growth across India." }}</p>
                 <div class="team-socials">
@@ -1137,9 +1134,9 @@
               {%- else -%}
                 <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #fff3eb, #e8f5e9); font-size: 4rem;">👤</div>
               {%- endif -%}
-              <div class="team-role-tag">Founder &amp; CEO</div>
             </div>
             <div class="team-info">
+              <div class="team-role-tag">Founder &amp; CEO</div>
               <h3 class="team-name">Jyoti Bajaj</h3>
               <p class="team-bio">Visionary founder spearheading Vidhyut Saathi's mission to save electricity &amp; protect the ozone layer nationwide.</p>
               <div class="team-socials">
@@ -1160,9 +1157,9 @@
               {%- else -%}
                 <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #e8f5e9, #e0f7fa); font-size: 4rem;">⚡</div>
               {%- endif -%}
-              <div class="team-role-tag">Chief Tech Officer</div>
             </div>
             <div class="team-info">
+              <div class="team-role-tag">Chief Tech Officer</div>
               <h3 class="team-name">Innovation &amp; R&amp;D Team</h3>
               <p class="team-bio">Engineers optimizing 10N:20,000 negative ion US-German nano-technology for maximum bill reduction.</p>
               <div class="team-socials">
@@ -1183,9 +1180,9 @@
               {%- else -%}
                 <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #fff3eb, #fefae0); font-size: 4rem;">💼</div>
               {%- endif -%}
-              <div class="team-role-tag">Head of Operations</div>
             </div>
             <div class="team-info">
+              <div class="team-role-tag">Head of Operations</div>
               <h3 class="team-name">Pan-India Franchise Team</h3>
               <p class="team-bio">Managing Area, Exclusive &amp; District Channel Partnerships across 20+ states in India.</p>
               <div class="team-socials">
@@ -1206,9 +1203,9 @@
               {%- else -%}
                 <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #f0f4f8, #e8f5e9); font-size: 4rem;">🤝</div>
               {%- endif -%}
-              <div class="team-role-tag">Customer Support Lead</div>
             </div>
             <div class="team-info">
+              <div class="team-role-tag">Customer Support Lead</div>
               <h3 class="team-name">Client Success Team</h3>
               <p class="team-bio">24/7 dedicated support ensuring 100% satisfaction &amp; seamless installation for over 20 Lakh+ users.</p>
               <div class="team-socials">
