@@ -418,12 +418,15 @@
 
   /* --- Section 6: Trust & Live Achievements Showcase --- */
   .trust-achievements-section {
-    padding: 110px 20px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 100px 20px;
     background: linear-gradient(135deg, #0b1329 0%, #152243 50%, #0d1b3a 100%);
     color: #ffffff;
     position: relative;
     overflow: hidden;
     z-index: 1;
+    clear: both;
   }
   .trust-achievements-section::before {
     content: '';
@@ -453,29 +456,38 @@
     margin: 0 auto;
     position: relative;
     z-index: 2;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   /* Badge & Section Header */
   .trust-header {
     text-align: center;
-    margin-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 900px;
+    margin: 0 auto 60px auto;
   }
   .trust-top-badge {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
     background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.15);
-    padding: 8px 22px;
+    padding: 10px 24px;
     border-radius: 50px;
-    font-size: 0.95rem;
+    font-size: 0.92rem;
     font-weight: 600;
     color: #ff9d5c;
     letter-spacing: 0.5px;
-    margin-bottom: 25px;
+    margin: 0 auto 25px auto;
     box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    text-align: center;
   }
   .trust-top-badge .pulse-dot {
     width: 10px;
@@ -834,8 +846,10 @@
           {%- endif -%}
         </div>
         <h3>Save Money</h3>
-        <p>One who earns knows the value of hard earned money. All saving freak people can now save money on electricity bills too.</p>
       </div>
+
+    </div>
+  </section>
 
   <!-- Section 6: Trust, Live Customer Growth & US-German Nano-Tech Showcase -->
   <section class="trust-achievements-section">
