@@ -1,17 +1,19 @@
 {%- style -%}
+  @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
   /* --- Base Variables & Reset --- */
   :root {
     --about-primary: #ec5c0a;
     --about-secondary: #007b3e;
-    --about-bg: #fff8ef;
+    --about-bg: #fffbf5;
     --about-text-dark: #1a1a1a;
     --about-text-light: #555555;
-    --about-radius: 20px;
-    --about-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    --about-radius: 24px;
+    --about-shadow: 0 15px 45px rgba(236, 92, 10, 0.08);
   }
   
   .about-us-wrapper {
-    font-family: 'Poppins', 'Inter', sans-serif;
+    font-family: 'Outfit', 'Plus Jakarta Sans', 'Poppins', sans-serif;
     color: var(--about-text-dark);
     background-color: var(--about-bg);
     overflow: hidden;
@@ -21,7 +23,7 @@
   .reveal-up {
     opacity: 0;
     transform: translateY(40px);
-    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+    transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
   }
   .reveal-up.active {
     opacity: 1;
@@ -32,15 +34,15 @@
     transform-style: preserve-3d;
     transform: perspective(1000px);
     will-change: transform;
-    /* Added subtle shadow to enhance 3D pop */
-    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   }
   
   .glass-card {
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
   }
   
   /* --- Responsive --- */
@@ -77,26 +79,22 @@
   
   /* --- Company Info Section --- */
   .company-info-section {
-    padding: 80px 20px;
-    background-color: #f9f9f9;
+    padding: 100px 20px;
+    background: linear-gradient(180deg, #ffffff 0%, #fff9f3 50%, #fff5eb 100%);
+    position: relative;
   }
   .company-info-container {
-    max-width: 1200px;
+    max-width: 1240px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 50px;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 60px;
     align-items: center;
   }
-  /* --- Animated Text Gradient --- */
-  @keyframes color-shift {
-    0% { background-position: 0% 50%; }
-    100% { background-position: 200% 50%; }
-  }
   .company-info-text .gradient-heading {
-    font-size: 2.5rem;
-    font-weight: 800;
-    margin-bottom: 20px;
+    font-size: clamp(32px, 4vw, 44px);
+    font-weight: 900;
+    margin-bottom: 25px;
     background: linear-gradient(90deg, #ec5c0a, #007b3e, #ec5c0a);
     background-size: 200% auto;
     -webkit-background-clip: text;
@@ -105,65 +103,52 @@
     animation: color-shift 4s linear infinite;
   }
   .company-info-text p {
-    font-size: 1.1rem;
-    line-height: 1.8;
+    font-size: 1.12rem;
+    line-height: 1.85;
     color: #444;
-    margin-bottom: 15px;
-    text-align: justify;
+    margin-bottom: 18px;
   }
   .company-info-image-container {
     position: relative;
-    border-radius: 20px;
+    border-radius: 28px;
     overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    box-shadow: 0 25px 50px rgba(236, 92, 10, 0.12), 0 0 0 1px rgba(236, 92, 10, 0.2);
+    background: linear-gradient(135deg, #fceade, #e8f5e9);
   }
   .company-info-image-container img {
     width: 100%;
     height: auto;
     display: block;
-    transition: transform 0.5s ease;
+    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
   }
   .company-info-image-container:hover img {
-    transform: scale(1.05);
-  }
-  
-  @media screen and (max-width: 900px) {
-    .company-info-container {
-      grid-template-columns: 1fr;
-    }
-    .company-info-text .gradient-heading {
-      font-size: 2rem;
-    }
-    .mv-container {
-      grid-template-columns: 1fr;
-    }
+    transform: scale(1.06);
   }
   
   /* --- Mission Vision Section --- */
   .mission-vision-section {
-    padding: 100px 20px;
-    background: radial-gradient(circle at top right, rgba(236,92,10,0.05) 0%, rgba(255,255,255,1) 40%, rgba(0,123,62,0.05) 100%);
+    padding: 110px 20px;
+    background: radial-gradient(circle at top right, rgba(236,92,10,0.08) 0%, rgba(255,255,255,1) 50%, rgba(0,123,62,0.08) 100%);
     position: relative;
   }
   .mv-container {
-    max-width: 1200px;
+    max-width: 1240px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
+    gap: 35px;
   }
   .mv-card {
-    background: linear-gradient(145deg, #ffffff, #fdfdfd);
-    padding: 50px 40px;
-    border-radius: 24px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.06);
-    border: 1px solid rgba(236,92,10,0.1);
+    background: #ffffff;
+    padding: 50px 35px;
+    border-radius: 28px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+    border: 1px solid rgba(236,92,10,0.15);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
     overflow: hidden;
     z-index: 1;
   }
-  
   .mv-card::before {
     content: '';
     position: absolute;
@@ -172,44 +157,43 @@
     background: linear-gradient(90deg, #ec5c0a, #007b3e);
     z-index: 2;
   }
-
   .mv-card:hover {
     transform: translateY(-15px);
-    box-shadow: 0 25px 50px rgba(0,123,62,0.12);
-    border-color: rgba(0,123,62,0.3);
+    box-shadow: 0 30px 60px rgba(236,92,10,0.15), 0 0 25px rgba(0,123,62,0.1);
+    border-color: rgba(0,123,62,0.4);
   }
-
   .mv-icon {
-    font-size: 3rem;
-    margin-bottom: 25px;
-    background: linear-gradient(135deg, #ec5c0a, #007b3e);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    display: inline-block;
+    font-size: 2.8rem;
+    margin-bottom: 22px;
+    width: 75px;
+    height: 75px;
+    border-radius: 22px;
+    background: linear-gradient(135deg, rgba(236,92,10,0.1), rgba(0,123,62,0.1));
+    border: 1px solid rgba(236,92,10,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.04);
   }
-
   .mv-card h2 {
-    font-size: 2rem;
-    font-weight: 800;
-    margin-bottom: 20px;
-    background: linear-gradient(90deg, #ec5c0a, #007b3e);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    font-size: 1.85rem;
+    font-weight: 900;
+    margin-bottom: 18px;
+    color: #1a1a1a;
   }
   .mv-card p {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     line-height: 1.8;
     color: #555;
-    text-align: justify;
   }
 
   /* --- Who We Are Section --- */
   .who-we-are-section {
-    padding: 100px 20px;
-    background: #ffffff;
+    padding: 110px 20px;
+    background: linear-gradient(180deg, #ffffff 0%, #fffbf6 100%);
   }
   .wwa-container {
-    max-width: 1200px;
+    max-width: 1240px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -220,7 +204,8 @@
     position: relative;
     border-radius: 30px;
     overflow: hidden;
-    box-shadow: 0 25px 50px rgba(0,0,0,0.1);
+    box-shadow: 0 25px 50px rgba(0,123,62,0.12);
+    border: 1px solid rgba(0,123,62,0.2);
   }
   .wwa-image-wrapper img {
     width: 100%;
@@ -229,26 +214,27 @@
     transition: transform 0.6s ease;
   }
   .wwa-image-wrapper:hover img {
-    transform: scale(1.05);
-  }
-  .wwa-image-wrapper:hover img {
-    transform: scale(1.05);
+    transform: scale(1.06);
   }
   .wwa-subtitle {
-    font-size: 1rem;
-    font-weight: 700;
+    font-size: 0.9rem;
+    font-weight: 800;
     letter-spacing: 2px;
-    margin-bottom: 15px;
-    display: inline-block;
-    padding: 6px 16px;
-    background: rgba(0,123,62,0.1);
+    margin-bottom: 18px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 20px;
+    background: rgba(0,123,62,0.08);
+    border: 1px solid rgba(0,123,62,0.25);
     border-radius: 30px;
     color: #007b3e;
   }
   .wwa-title {
-    font-size: 2.5rem;
-    font-weight: 800;
-    margin-bottom: 25px;
+    font-size: clamp(30px, 4vw, 42px);
+    font-weight: 900;
+    line-height: 1.25;
+    margin-bottom: 22px;
     color: #1a1a1a;
   }
   .wwa-title span {
@@ -257,8 +243,8 @@
     -webkit-text-fill-color: transparent;
   }
   .wwa-text {
-    font-size: 1.1rem;
-    line-height: 1.8;
+    font-size: 1.12rem;
+    line-height: 1.85;
     color: #555;
     margin-bottom: 30px;
   }
@@ -266,45 +252,54 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 30px;
-    border-top: 1px solid #eee;
+    border-top: 1px solid rgba(236,92,10,0.15);
     padding-top: 30px;
   }
   .wwa-ceo {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 16px;
+    background: #ffffff;
+    padding: 14px 20px;
+    border-radius: 20px;
+    border: 1px solid rgba(0,123,62,0.2);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.04);
   }
   .wwa-ceo img {
-    width: 60px;
-    height: 60px;
+    width: 62px;
+    height: 62px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid #007b3e;
+    border: 3px solid #007b3e;
+    box-shadow: 0 0 12px rgba(0,123,62,0.3);
   }
   .wwa-ceo-info h4 {
-    margin: 0 0 5px 0;
-    font-size: 1.2rem;
-    font-weight: 700;
+    margin: 0 0 4px 0;
+    font-size: 1.25rem;
+    font-weight: 800;
     color: #1a1a1a;
   }
   .wwa-ceo-info span {
     font-size: 0.9rem;
     color: #ec5c0a;
-    font-weight: 600;
+    font-weight: 700;
     display: block;
   }
   .wwa-features {
     list-style: none;
     padding: 0;
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
   }
   .wwa-features li {
     position: relative;
-    padding-left: 30px;
-    margin-bottom: 12px;
+    padding-left: 32px;
     font-size: 1.05rem;
-    font-weight: 600;
-    color: #333;
+    font-weight: 700;
+    color: #2d3748;
   }
   .wwa-features li::before {
     content: '✓';
@@ -314,95 +309,73 @@
     transform: translateY(-50%);
     color: white;
     background: linear-gradient(135deg, #ec5c0a, #007b3e);
-    width: 20px;
-    height: 20px;
+    width: 22px;
+    height: 22px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
+    font-weight: 900;
+    box-shadow: 0 4px 10px rgba(236,92,10,0.3);
   }
 
   /* --- Services 3-Column Light Section --- */
   .services-section {
-    padding: 100px 20px;
-    background: #f9f9f9;
+    padding: 110px 20px;
+    background: linear-gradient(180deg, #fffbf6 0%, #ffffff 100%);
     color: #1a1a1a;
     position: relative;
     overflow: hidden;
   }
-  .services-section::before {
-    content: '';
-    position: absolute;
-    top: -50%; left: -50%; right: -50%; bottom: -50%;
-    background: radial-gradient(circle, rgba(0,123,62,0.05) 0%, transparent 60%);
-    pointer-events: none;
-  }
   .services-container {
-    max-width: 1200px;
+    max-width: 1240px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
+    gap: 35px;
     position: relative;
     z-index: 2;
   }
   .service-card {
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    padding: 60px 40px;
-    border-radius: 30px;
+    background: #ffffff;
+    padding: 60px 35px;
+    border-radius: 28px;
     text-align: center;
     position: relative;
     transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border: 1px solid rgba(236, 92, 10, 0.15);
+    box-shadow: 0 12px 35px rgba(0,0,0,0.05);
   }
-  .service-card::after {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    border-radius: 30px;
-    box-shadow: inset 0 0 0 2px transparent;
-    transition: all 0.5s ease;
-    pointer-events: none;
-  }
-  
   .service-card:hover {
     transform: translateY(-15px);
-    background: #ffffff;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    box-shadow: 0 25px 50px rgba(236,92,10,0.18), 0 0 25px rgba(0,123,62,0.12);
+    border-color: rgba(0,123,62,0.4);
   }
-  .service-card:nth-child(1):hover::after { box-shadow: inset 0 0 0 2px rgba(236,92,10,0.5); }
-  .service-card:nth-child(2):hover::after { box-shadow: inset 0 0 0 2px rgba(0,123,62,0.5); }
-  .service-card:nth-child(3):hover::after { box-shadow: inset 0 0 0 2px rgba(0,163,255,0.5); }
-  
   .service-icon-wrapper {
-    width: 120px;
-    height: 120px;
-    margin: 0 auto 30px;
+    width: 110px;
+    height: 110px;
+    margin: 0 auto 28px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 4rem;
+    font-size: 3.5rem;
     position: relative;
-    background: linear-gradient(135deg, rgba(236,92,10,0.1), rgba(0,123,62,0.1));
-    border: 1px solid rgba(0,0,0,0.05);
+    background: linear-gradient(135deg, rgba(236,92,10,0.12), rgba(0,123,62,0.12));
+    border: 1px solid rgba(236,92,10,0.25);
+    box-shadow: 0 8px 20px rgba(236,92,10,0.1);
   }
   .service-icon-wrapper img {
     width: 60%;
     height: auto;
     object-fit: contain;
   }
-  
   .service-card h3 {
     font-size: 1.8rem;
-    font-weight: 800;
-    margin-bottom: 20px;
+    font-weight: 900;
+    margin-bottom: 18px;
     color: #1a1a1a;
-    letter-spacing: 1px;
   }
   .service-card p {
     font-size: 1.05rem;
@@ -411,8 +384,10 @@
   }
 
   @media screen and (max-width: 900px) {
+    .company-info-container { grid-template-columns: 1fr; }
     .wwa-container { grid-template-columns: 1fr; }
     .wwa-bottom-row { grid-template-columns: 1fr; }
+    .mv-container { grid-template-columns: 1fr; }
     .services-container { grid-template-columns: 1fr; }
   }
 
