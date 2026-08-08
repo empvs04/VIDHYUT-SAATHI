@@ -79,7 +79,7 @@
   
   /* --- Company Info Section --- */
   .company-info-section {
-    padding: 85px 20px;
+    padding: 100px 20px;
     background: linear-gradient(180deg, #ffffff 0%, #fff9f3 50%, #fff5eb 100%);
     position: relative;
   }
@@ -110,10 +110,9 @@
   }
   .company-info-image-container {
     position: relative;
-    width: 100%;
     border-radius: 28px;
     overflow: hidden;
-    box-shadow: 0 25px 60px rgba(236, 92, 10, 0.15), 0 0 0 1px rgba(236, 92, 10, 0.2);
+    box-shadow: 0 25px 50px rgba(236, 92, 10, 0.12), 0 0 0 1px rgba(236, 92, 10, 0.2);
     background: linear-gradient(135deg, #fceade, #e8f5e9);
   }
   .company-info-image-container img {
@@ -128,7 +127,7 @@
   
   /* --- Mission Vision Section --- */
   .mission-vision-section {
-    padding: 90px 20px;
+    padding: 110px 20px;
     background: radial-gradient(circle at top right, rgba(236,92,10,0.08) 0%, rgba(255,255,255,1) 50%, rgba(0,123,62,0.08) 100%);
     position: relative;
   }
@@ -190,7 +189,7 @@
 
   /* --- Who We Are Section --- */
   .who-we-are-section {
-    padding: 90px 20px;
+    padding: 110px 20px;
     background: linear-gradient(180deg, #ffffff 0%, #fffbf6 100%);
   }
   .wwa-container {
@@ -203,10 +202,9 @@
   }
   .wwa-image-wrapper {
     position: relative;
-    width: 100%;
-    border-radius: 28px;
+    border-radius: 30px;
     overflow: hidden;
-    box-shadow: 0 25px 60px rgba(0,123,62,0.15);
+    box-shadow: 0 25px 50px rgba(0,123,62,0.12);
     border: 1px solid rgba(0,123,62,0.2);
   }
   .wwa-image-wrapper img {
@@ -324,7 +322,7 @@
 
   /* --- Services 3-Column Light Section --- */
   .services-section {
-    padding: 90px 20px;
+    padding: 110px 20px;
     background: linear-gradient(180deg, #fffbf6 0%, #ffffff 100%);
     color: #1a1a1a;
     position: relative;
@@ -397,7 +395,7 @@
   .trust-achievements-section {
     width: 100%;
     box-sizing: border-box;
-    padding: 90px 20px;
+    padding: 100px 20px;
     background: linear-gradient(180deg, #fefae0 0%, #fff8ef 50%, #ffffff 100%);
     color: #1a1a1a;
     position: relative;
@@ -439,7 +437,7 @@
     align-items: center;
     justify-content: center;
     max-width: 900px;
-    margin: 0 auto 50px auto;
+    margin: 0 auto 60px auto;
   }
   .trust-top-badge {
     display: inline-flex;
@@ -630,7 +628,7 @@
   .our-team-section {
     width: 100%;
     box-sizing: border-box;
-    padding: 90px 20px;
+    padding: 100px 20px;
     background: linear-gradient(180deg, #ffffff 0%, #fef8f3 50%, #fff4ea 100%);
     position: relative;
     overflow: hidden;
@@ -656,7 +654,7 @@
   .our-team-header {
     text-align: center;
     max-width: 850px;
-    margin: 0 auto 50px auto;
+    margin: 0 auto 60px auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -722,14 +720,10 @@
 
   .team-img-wrapper {
     position: relative;
-    width: 170px;
-    height: 170px;
-    margin: 30px auto 16px auto;
-    border-radius: 50%;
+    width: 100%;
+    aspect-ratio: 1/1.1;
     overflow: hidden;
     background: linear-gradient(135deg, #fceade, #e8f5e9);
-    border: 4px solid #007b3e;
-    box-shadow: 0 10px 28px rgba(0, 123, 62, 0.22);
   }
   .team-img-wrapper img {
     width: 100%;
@@ -742,15 +736,19 @@
   }
 
   .team-role-tag {
-    display: inline-block;
-    background: rgba(236, 92, 10, 0.09);
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(10px);
     border: 1px solid rgba(236, 92, 10, 0.25);
-    padding: 4px 16px;
+    padding: 6px 18px;
     border-radius: 30px;
     font-size: 0.82rem;
     font-weight: 800;
     color: #ec5c0a;
-    margin-bottom: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
     white-space: nowrap;
   }
 
@@ -802,159 +800,11 @@
     box-shadow: 0 6px 15px rgba(236, 92, 10, 0.3);
   }
 
-  /* ==========================================================================
-     MOBILE & TABLET RESPONSIVE SYSTEM (100% Pixel-Perfect Mobile Optimization)
-     ========================================================================== */
-
   @media screen and (max-width: 1024px) {
-    .company-info-container,
-    .wwa-container { grid-template-columns: 1fr; gap: 40px; }
-    .mv-container,
-    .services-container,
-    .trust-grid { grid-template-columns: repeat(2, 1fr); gap: 25px; }
-    .team-grid { grid-template-columns: repeat(2, 1fr); gap: 25px; }
+    .team-grid { grid-template-columns: repeat(2, 1fr); }
   }
-
-  @media screen and (max-width: 768px) {
-    .about-us-wrapper { overflow-x: hidden; }
-
-    /* Section Padding Adjustments for Mobile */
-    .company-info-section,
-    .mission-vision-section,
-    .who-we-are-section,
-    .services-section,
-    .trust-achievements-section,
-    .our-team-section {
-      padding: 45px 16px !important;
-    }
-
-    /* Mobile Section Headers */
-    .company-info-text,
-    .wwa-content,
-    .trust-header,
-    .our-team-header {
-      text-align: center;
-    }
-    
-    .company-info-text .gradient-heading,
-    .wwa-title,
-    .trust-title,
-    .our-team-title {
-      font-size: clamp(24px, 6.5vw, 32px) !important;
-      text-align: center;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .company-info-text p,
-    .wwa-text,
-    .trust-subtitle,
-    .our-team-subtitle {
-      font-size: 0.98rem !important;
-      line-height: 1.7 !important;
-      text-align: center;
-    }
-
-    /* Mobile Image Containers - Perfectly Proportioned */
-    .company-info-image-container,
-    .wwa-image-wrapper {
-      max-width: 320px !important;
-      width: 100% !important;
-      margin: 0 auto !important;
-      border-radius: 20px !important;
-    }
-
-    /* Grids to Single Column on Mobile */
-    .mv-container,
-    .services-container,
-    .trust-grid,
-    .team-grid {
-      grid-template-columns: 1fr !important;
-      gap: 20px !important;
-    }
-
-    /* Card Padding for Mobile */
-    .mv-card,
-    .service-card,
-    .trust-card {
-      padding: 35px 22px !important;
-      border-radius: 20px !important;
-    }
-
-    /* Mobile Team Cards */
-    .team-card {
-      padding: 20px 15px !important;
-      border-radius: 20px !important;
-    }
-    .team-img-wrapper {
-      width: 110px !important;
-      height: 110px !important;
-      margin: 15px auto 10px auto !important;
-    }
-    .team-name {
-      font-size: 1.2rem !important;
-    }
-    .team-bio {
-      font-size: 0.88rem !important;
-      margin-bottom: 15px !important;
-    }
-
-    /* Who We Are Mobile Row */
-    .wwa-bottom-row {
-      grid-template-columns: 1fr !important;
-      gap: 20px !important;
-      padding-top: 20px !important;
-    }
-    .wwa-ceo {
-      justify-content: center !important;
-      margin: 0 auto !important;
-      max-width: 280px !important;
-    }
-    .wwa-features {
-      align-items: center !important;
-      width: fit-content !important;
-      margin: 0 auto !important;
-    }
-
-    /* Mobile Ticker Bar */
-    .trust-live-bar {
-      flex-direction: column !important;
-      text-align: center !important;
-      padding: 16px 14px !important;
-      gap: 12px !important;
-      border-radius: 16px !important;
-    }
-    .trust-live-info {
-      flex-direction: column !important;
-      gap: 8px !important;
-    }
-    .trust-live-text {
-      font-size: 0.95rem !important;
-      text-align: center !important;
-    }
-    .trust-features-pills {
-      justify-content: center !important;
-      gap: 8px !important;
-    }
-    .trust-pill {
-      font-size: 0.82rem !important;
-      padding: 5px 12px !important;
-    }
-  }
-
-  @media screen and (max-width: 480px) {
-    .moving-text {
-      font-size: 60px !important;
-    }
-    .page-header_title {
-      font-size: 2rem !important;
-    }
-    .trust-top-badge,
-    .our-team-badge,
-    .wwa-subtitle {
-      font-size: 0.8rem !important;
-      padding: 6px 14px !important;
-    }
+  @media screen and (max-width: 600px) {
+    .team-grid { grid-template-columns: 1fr; }
   }
 {%- endstyle -%}
 
@@ -1249,9 +1099,9 @@
                 {%- else -%}
                   <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #fff3eb, #e8f5e9); font-size: 4rem;">👤</div>
                 {%- endif -%}
+                <div class="team-role-tag">{{ block.settings.role | default: "Team Leader" }}</div>
               </div>
               <div class="team-info">
-                <div class="team-role-tag">{{ block.settings.role | default: "Team Leader" }}</div>
                 <h3 class="team-name">{{ block.settings.name | default: "Team Member" }}</h3>
                 <p class="team-bio">{{ block.settings.bio | default: "Dedicated to driving energy-saving innovation and sustainable growth across India." }}</p>
                 <div class="team-socials">
@@ -1280,9 +1130,9 @@
               {%- else -%}
                 <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #fff3eb, #e8f5e9); font-size: 4rem;">👤</div>
               {%- endif -%}
+              <div class="team-role-tag">Founder &amp; CEO</div>
             </div>
             <div class="team-info">
-              <div class="team-role-tag">Founder &amp; CEO</div>
               <h3 class="team-name">Jyoti Bajaj</h3>
               <p class="team-bio">Visionary founder spearheading Vidhyut Saathi's mission to save electricity &amp; protect the ozone layer nationwide.</p>
               <div class="team-socials">
@@ -1303,9 +1153,9 @@
               {%- else -%}
                 <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #e8f5e9, #e0f7fa); font-size: 4rem;">⚡</div>
               {%- endif -%}
+              <div class="team-role-tag">Chief Tech Officer</div>
             </div>
             <div class="team-info">
-              <div class="team-role-tag">Chief Tech Officer</div>
               <h3 class="team-name">Innovation &amp; R&amp;D Team</h3>
               <p class="team-bio">Engineers optimizing 10N:20,000 negative ion US-German nano-technology for maximum bill reduction.</p>
               <div class="team-socials">
@@ -1326,9 +1176,9 @@
               {%- else -%}
                 <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #fff3eb, #fefae0); font-size: 4rem;">💼</div>
               {%- endif -%}
+              <div class="team-role-tag">Head of Operations</div>
             </div>
             <div class="team-info">
-              <div class="team-role-tag">Head of Operations</div>
               <h3 class="team-name">Pan-India Franchise Team</h3>
               <p class="team-bio">Managing Area, Exclusive &amp; District Channel Partnerships across 20+ states in India.</p>
               <div class="team-socials">
@@ -1349,9 +1199,9 @@
               {%- else -%}
                 <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #f0f4f8, #e8f5e9); font-size: 4rem;">🤝</div>
               {%- endif -%}
+              <div class="team-role-tag">Customer Support Lead</div>
             </div>
             <div class="team-info">
-              <div class="team-role-tag">Customer Support Lead</div>
               <h3 class="team-name">Client Success Team</h3>
               <p class="team-bio">24/7 dedicated support ensuring 100% satisfaction &amp; seamless installation for over 20 Lakh+ users.</p>
               <div class="team-socials">
