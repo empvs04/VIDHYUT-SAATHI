@@ -1174,6 +1174,8 @@
             <div class="team-img-wrapper">
               {%- if section.settings.team_2_image != blank -%}
                 {{ section.settings.team_2_image | image_url: width: 600 | image_tag: loading: 'lazy', alt: 'Tech Lead' }}
+              {%- elsif section.settings.who_we_are_image != blank -%}
+                {{ section.settings.who_we_are_image | image_url: width: 600 | image_tag: loading: 'lazy', alt: 'Tech Lead' }}
               {%- else -%}
                 <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #e8f5e9, #e0f7fa); font-size: 4rem;">⚡</div>
               {%- endif -%}
@@ -1195,6 +1197,8 @@
             <div class="team-img-wrapper">
               {%- if section.settings.team_3_image != blank -%}
                 {{ section.settings.team_3_image | image_url: width: 600 | image_tag: loading: 'lazy', alt: 'Operations Head' }}
+              {%- elsif section.settings.company_info_image != blank -%}
+                {{ section.settings.company_info_image | image_url: width: 600 | image_tag: loading: 'lazy', alt: 'Operations Head' }}
               {%- else -%}
                 <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #fff3eb, #fefae0); font-size: 4rem;">💼</div>
               {%- endif -%}
@@ -1216,6 +1220,8 @@
             <div class="team-img-wrapper">
               {%- if section.settings.team_4_image != blank -%}
                 {{ section.settings.team_4_image | image_url: width: 600 | image_tag: loading: 'lazy', alt: 'Customer Success' }}
+              {%- elsif section.settings.ceo_image != blank -%}
+                {{ section.settings.ceo_image | image_url: width: 600 | image_tag: loading: 'lazy', alt: 'Customer Success' }}
               {%- else -%}
                 <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #f0f4f8, #e8f5e9); font-size: 4rem;">🤝</div>
               {%- endif -%}
