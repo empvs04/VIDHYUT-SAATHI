@@ -649,11 +649,187 @@
   @media screen and (max-width: 1024px) {
     .trust-grid { grid-template-columns: repeat(2, 1fr); }
   }
-  @media screen and (max-width: 640px) {
-    .trust-grid { grid-template-columns: 1fr; }
-    .trust-live-bar { flex-direction: column; text-align: center; justify-content: center; }
-    .trust-live-info { flex-direction: column; }
-    .trust-features-pills { justify-content: center; }
+  /* --- Section 7: Our Awesome Team Showcase --- */
+  .our-team-section {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 100px 20px;
+    background: linear-gradient(180deg, #ffffff 0%, #fef8f3 50%, #fff4ea 100%);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    clear: both;
+  }
+  .our-team-section::before {
+    content: '';
+    position: absolute;
+    top: 10%; right: -5%; width: 450px; height: 450px;
+    background: radial-gradient(circle, rgba(236,92,10,0.1) 0%, transparent 70%);
+    filter: blur(50px);
+    pointer-events: none;
+  }
+
+  .our-team-container {
+    max-width: 1240px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  .our-team-header {
+    text-align: center;
+    max-width: 850px;
+    margin: 0 auto 60px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .our-team-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: rgba(0, 123, 62, 0.08);
+    border: 1px solid rgba(0, 123, 62, 0.25);
+    padding: 8px 22px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #007b3e;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0, 123, 62, 0.08);
+  }
+  .our-team-title {
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 18px;
+    color: #1a1a1a;
+  }
+  .our-team-title span {
+    background: linear-gradient(90deg, #ec5c0a, #007b3e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .our-team-subtitle {
+    font-size: 1.1rem;
+    color: #555555;
+    line-height: 1.7;
+  }
+
+  /* Team Grid */
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+  }
+
+  .team-card {
+    background: #ffffff;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 12px 35px rgba(0,0,0,0.06);
+    border: 1px solid rgba(236, 92, 10, 0.12);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+  .team-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 25px 50px rgba(236, 92, 10, 0.15);
+    border-color: rgba(236, 92, 10, 0.4);
+  }
+
+  .team-img-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1/1.1;
+    overflow: hidden;
+    background: linear-gradient(135deg, #fceade, #e8f5e9);
+  }
+  .team-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+  .team-card:hover .team-img-wrapper img {
+    transform: scale(1.08);
+  }
+
+  .team-role-tag {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(236, 92, 10, 0.25);
+    padding: 6px 18px;
+    border-radius: 30px;
+    font-size: 0.82rem;
+    font-weight: 800;
+    color: #ec5c0a;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    white-space: nowrap;
+  }
+
+  .team-info {
+    padding: 25px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+  }
+  .team-name {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #1a1a1a;
+    margin-bottom: 8px;
+  }
+  .team-bio {
+    font-size: 0.92rem;
+    color: #666666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+
+  .team-socials {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: auto;
+  }
+  .team-social-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #f8fafc;
+    border: 1px solid rgba(0,0,0,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    color: #444;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  .team-social-btn:hover {
+    background: #ec5c0a;
+    color: #ffffff;
+    border-color: #ec5c0a;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(236, 92, 10, 0.3);
+  }
+
+  @media screen and (max-width: 1024px) {
+    .team-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media screen and (max-width: 600px) {
+    .team-grid { grid-template-columns: 1fr; }
   }
 {%- endstyle -%}
 
@@ -917,6 +1093,152 @@
     </div>
   </section>
 
+  <!-- Section 7: Our Awesome Team Showcase -->
+  <section class="our-team-section">
+    <div class="our-team-container">
+      
+      <!-- Section Header -->
+      <div class="our-team-header reveal-up active">
+        <div class="our-team-badge">
+          <span class="pulse-dot"></span>
+          <span>MEET THE VISIONARIES</span>
+        </div>
+        <h2 class="our-team-title">
+          Our Awesome <span>Team</span>
+        </h2>
+        <p class="our-team-subtitle">
+          The passionate innovators, engineers, and leaders driving India's energy-saving revolution at Vidhyut Saathi.
+        </p>
+      </div>
+
+      <!-- 4-Card Team Grid -->
+      <div class="team-grid">
+        
+        {%- if section.blocks.size > 0 -%}
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'team_member' -%}
+              <div class="team-card tilt-element" {{ block.shopify_attributes }}>
+                <div class="team-img-wrapper">
+                  {%- if block.settings.photo != blank -%}
+                    {{ block.settings.photo | image_url: width: 600 | image_tag: loading: 'lazy', alt: block.settings.name }}
+                  {%- else -%}
+                    <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #fff3eb, #e8f5e9); font-size: 4rem;">👤</div>
+                  {%- endif -%}
+                  <div class="team-role-tag">{{ block.settings.role | default: "Team Leader" }}</div>
+                </div>
+                <div class="team-info">
+                  <h3 class="team-name">{{ block.settings.name | default: "Team Member" }}</h3>
+                  <p class="team-bio">{{ block.settings.bio | default: "Dedicated to driving energy-saving innovation and sustainable growth across India." }}</p>
+                  <div class="team-socials">
+                    {%- if block.settings.linkedin != blank -%}
+                      <a href="{{ block.settings.linkedin }}" target="_blank" class="team-social-btn" title="LinkedIn">in</a>
+                    {%- else -%}
+                      <a href="#" class="team-social-btn" title="LinkedIn">in</a>
+                    {%- endif -%}
+                    <a href="mailto:emp.vs04@gmail.com" class="team-social-btn" title="Email">✉</a>
+                    <a href="https://wa.me/919999999999" target="_blank" class="team-social-btn" title="WhatsApp">💬</a>
+                  </div>
+                </div>
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        {%- else -%}
+          
+          <!-- Default Team Cards (Editable in Theme Settings) -->
+
+          <!-- Card 1: Founder & CEO -->
+          <div class="team-card tilt-element">
+            <div class="team-img-wrapper">
+              {%- if section.settings.team_1_image != blank -%}
+                {{ section.settings.team_1_image | image_url: width: 600 | image_tag: loading: 'lazy', alt: 'Jyoti Bajaj' }}
+              {%- elsif section.settings.ceo_image != blank -%}
+                {{ section.settings.ceo_image | image_url: width: 600 | image_tag: loading: 'lazy', alt: 'Jyoti Bajaj' }}
+              {%- else -%}
+                <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #fff3eb, #e8f5e9); font-size: 4rem;">👤</div>
+              {%- endif -%}
+              <div class="team-role-tag">Founder &amp; CEO</div>
+            </div>
+            <div class="team-info">
+              <h3 class="team-name">Jyoti Bajaj</h3>
+              <p class="team-bio">Visionary founder spearheading Vidhyut Saathi's mission to save electricity &amp; protect the ozone layer nationwide.</p>
+              <div class="team-socials">
+                <a href="#" class="team-social-btn" title="LinkedIn">in</a>
+                <a href="mailto:emp.vs04@gmail.com" class="team-social-btn" title="Email">✉</a>
+                <a href="#" class="team-social-btn" title="WhatsApp">💬</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: Tech & Innovation Lead -->
+          <div class="team-card tilt-element">
+            <div class="team-img-wrapper">
+              {%- if section.settings.team_2_image != blank -%}
+                {{ section.settings.team_2_image | image_url: width: 600 | image_tag: loading: 'lazy', alt: 'Tech Lead' }}
+              {%- else -%}
+                <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #e8f5e9, #e0f7fa); font-size: 4rem;">⚡</div>
+              {%- endif -%}
+              <div class="team-role-tag">Chief Tech Officer</div>
+            </div>
+            <div class="team-info">
+              <h3 class="team-name">Innovation &amp; R&amp;D Team</h3>
+              <p class="team-bio">Engineers optimizing 10N:20,000 negative ion US-German nano-technology for maximum bill reduction.</p>
+              <div class="team-socials">
+                <a href="#" class="team-social-btn" title="LinkedIn">in</a>
+                <a href="mailto:emp.vs04@gmail.com" class="team-social-btn" title="Email">✉</a>
+                <a href="#" class="team-social-btn" title="WhatsApp">💬</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: Operations & Channel Head -->
+          <div class="team-card tilt-element">
+            <div class="team-img-wrapper">
+              {%- if section.settings.team_3_image != blank -%}
+                {{ section.settings.team_3_image | image_url: width: 600 | image_tag: loading: 'lazy', alt: 'Operations Head' }}
+              {%- else -%}
+                <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #fff3eb, #fefae0); font-size: 4rem;">💼</div>
+              {%- endif -%}
+              <div class="team-role-tag">Head of Operations</div>
+            </div>
+            <div class="team-info">
+              <h3 class="team-name">Pan-India Franchise Team</h3>
+              <p class="team-bio">Managing Area, Exclusive &amp; District Channel Partnerships across 20+ states in India.</p>
+              <div class="team-socials">
+                <a href="#" class="team-social-btn" title="LinkedIn">in</a>
+                <a href="mailto:emp.vs04@gmail.com" class="team-social-btn" title="Email">✉</a>
+                <a href="#" class="team-social-btn" title="WhatsApp">💬</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4: Customer Success Lead -->
+          <div class="team-card tilt-element">
+            <div class="team-img-wrapper">
+              {%- if section.settings.team_4_image != blank -%}
+                {{ section.settings.team_4_image | image_url: width: 600 | image_tag: loading: 'lazy', alt: 'Customer Success' }}
+              {%- else -%}
+                <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #f0f4f8, #e8f5e9); font-size: 4rem;">🤝</div>
+              {%- endif -%}
+              <div class="team-role-tag">Customer Support Lead</div>
+            </div>
+            <div class="team-info">
+              <h3 class="team-name">Client Success Team</h3>
+              <p class="team-bio">24/7 dedicated support ensuring 100% satisfaction &amp; seamless installation for over 20 Lakh+ users.</p>
+              <div class="team-socials">
+                <a href="#" class="team-social-btn" title="LinkedIn">in</a>
+                <a href="mailto:emp.vs04@gmail.com" class="team-social-btn" title="Email">✉</a>
+                <a href="#" class="team-social-btn" title="WhatsApp">💬</a>
+              </div>
+            </div>
+          </div>
+
+        {%- endif -%}
+
+      </div>
+
+    </div>
+  </section>
+
 </div>
 
 {% schema %}
@@ -947,6 +1269,34 @@
       "label": "CEO Profile Picture"
     },
     {
+      "type": "header",
+      "content": "Our Awesome Team Photo Pickers"
+    },
+    {
+      "type": "image_picker",
+      "id": "team_1_image",
+      "label": "Team Member 1 Photo (Founder & CEO)"
+    },
+    {
+      "type": "image_picker",
+      "id": "team_2_image",
+      "label": "Team Member 2 Photo (Tech Lead)"
+    },
+    {
+      "type": "image_picker",
+      "id": "team_3_image",
+      "label": "Team Member 3 Photo (Operations)"
+    },
+    {
+      "type": "image_picker",
+      "id": "team_4_image",
+      "label": "Team Member 4 Photo (Customer Care)"
+    },
+    {
+      "type": "header",
+      "content": "Service Card Icons"
+    },
+    {
       "type": "image_picker",
       "id": "service_1_icon",
       "label": "Save Electricity Icon",
@@ -973,6 +1323,40 @@
           "type": "image_picker",
           "id": "image",
           "label": "Upload Top Header Photo"
+        }
+      ]
+    },
+    {
+      "type": "team_member",
+      "name": "Custom Team Member",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "photo",
+          "label": "Member Photo"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Member Name",
+          "default": "Team Member Name"
+        },
+        {
+          "type": "text",
+          "id": "role",
+          "label": "Member Role / Designation",
+          "default": "Energy Saver Expert"
+        },
+        {
+          "type": "text",
+          "id": "bio",
+          "label": "Short Description / Quote",
+          "default": "Dedicated to driving energy-saving innovation and sustainable growth across India."
+        },
+        {
+          "type": "text",
+          "id": "linkedin",
+          "label": "LinkedIn Profile URL"
         }
       ]
     }
