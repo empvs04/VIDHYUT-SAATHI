@@ -804,11 +804,159 @@
     box-shadow: 0 6px 15px rgba(236, 92, 10, 0.3);
   }
 
+  /* ==========================================================================
+     MOBILE & TABLET RESPONSIVE SYSTEM (100% Pixel-Perfect Mobile Optimization)
+     ========================================================================== */
+
   @media screen and (max-width: 1024px) {
-    .team-grid { grid-template-columns: repeat(2, 1fr); }
+    .company-info-container,
+    .wwa-container { grid-template-columns: 1fr; gap: 40px; }
+    .mv-container,
+    .services-container,
+    .trust-grid { grid-template-columns: repeat(2, 1fr); gap: 25px; }
+    .team-grid { grid-template-columns: repeat(2, 1fr); gap: 25px; }
   }
-  @media screen and (max-width: 600px) {
-    .team-grid { grid-template-columns: 1fr; }
+
+  @media screen and (max-width: 768px) {
+    .about-us-wrapper { overflow-x: hidden; }
+
+    /* Section Padding Adjustments for Mobile */
+    .company-info-section,
+    .mission-vision-section,
+    .who-we-are-section,
+    .services-section,
+    .trust-achievements-section,
+    .our-team-section {
+      padding: 45px 16px !important;
+    }
+
+    /* Mobile Section Headers */
+    .company-info-text,
+    .wwa-content,
+    .trust-header,
+    .our-team-header {
+      text-align: center;
+    }
+    
+    .company-info-text .gradient-heading,
+    .wwa-title,
+    .trust-title,
+    .our-team-title {
+      font-size: clamp(24px, 6.5vw, 32px) !important;
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .company-info-text p,
+    .wwa-text,
+    .trust-subtitle,
+    .our-team-subtitle {
+      font-size: 0.98rem !important;
+      line-height: 1.7 !important;
+      text-align: center;
+    }
+
+    /* Mobile Image Containers - Perfectly Proportioned */
+    .company-info-image-container,
+    .wwa-image-wrapper {
+      max-width: 320px !important;
+      width: 100% !important;
+      margin: 0 auto !important;
+      border-radius: 20px !important;
+    }
+
+    /* Grids to Single Column on Mobile */
+    .mv-container,
+    .services-container,
+    .trust-grid,
+    .team-grid {
+      grid-template-columns: 1fr !important;
+      gap: 20px !important;
+    }
+
+    /* Card Padding for Mobile */
+    .mv-card,
+    .service-card,
+    .trust-card {
+      padding: 35px 22px !important;
+      border-radius: 20px !important;
+    }
+
+    /* Mobile Team Cards */
+    .team-card {
+      padding: 20px 15px !important;
+      border-radius: 20px !important;
+    }
+    .team-img-wrapper {
+      width: 110px !important;
+      height: 110px !important;
+      margin: 15px auto 10px auto !important;
+    }
+    .team-name {
+      font-size: 1.2rem !important;
+    }
+    .team-bio {
+      font-size: 0.88rem !important;
+      margin-bottom: 15px !important;
+    }
+
+    /* Who We Are Mobile Row */
+    .wwa-bottom-row {
+      grid-template-columns: 1fr !important;
+      gap: 20px !important;
+      padding-top: 20px !important;
+    }
+    .wwa-ceo {
+      justify-content: center !important;
+      margin: 0 auto !important;
+      max-width: 280px !important;
+    }
+    .wwa-features {
+      align-items: center !important;
+      width: fit-content !important;
+      margin: 0 auto !important;
+    }
+
+    /* Mobile Ticker Bar */
+    .trust-live-bar {
+      flex-direction: column !important;
+      text-align: center !important;
+      padding: 16px 14px !important;
+      gap: 12px !important;
+      border-radius: 16px !important;
+    }
+    .trust-live-info {
+      flex-direction: column !important;
+      gap: 8px !important;
+    }
+    .trust-live-text {
+      font-size: 0.95rem !important;
+      text-align: center !important;
+    }
+    .trust-features-pills {
+      justify-content: center !important;
+      gap: 8px !important;
+    }
+    .trust-pill {
+      font-size: 0.82rem !important;
+      padding: 5px 12px !important;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .moving-text {
+      font-size: 60px !important;
+    }
+    .page-header_title {
+      font-size: 2rem !important;
+    }
+    .trust-top-badge,
+    .our-team-badge,
+    .wwa-subtitle {
+      font-size: 0.8rem !important;
+      padding: 6px 14px !important;
+    }
   }
 {%- endstyle -%}
 
