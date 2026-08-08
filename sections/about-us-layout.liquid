@@ -1089,33 +1089,32 @@
       <!-- 4-Card Team Grid -->
       <div class="team-grid">
         
-        {%- if section.blocks.size > 0 -%}
-          {%- for block in section.blocks -%}
-            {%- if block.type == 'team_member' -%}
-              <div class="team-card tilt-element" {{ block.shopify_attributes }}>
-                <div class="team-img-wrapper">
-                  {%- if block.settings.photo != blank -%}
-                    {{ block.settings.photo | image_url: width: 600 | image_tag: loading: 'lazy', alt: block.settings.name }}
+        {%- assign team_blocks = section.blocks | where: 'type', 'team_member' -%}
+        {%- if team_blocks.size > 0 -%}
+          {%- for block in team_blocks -%}
+            <div class="team-card tilt-element" {{ block.shopify_attributes }}>
+              <div class="team-img-wrapper">
+                {%- if block.settings.photo != blank -%}
+                  {{ block.settings.photo | image_url: width: 600 | image_tag: loading: 'lazy', alt: block.settings.name }}
+                {%- else -%}
+                  <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #fff3eb, #e8f5e9); font-size: 4rem;">👤</div>
+                {%- endif -%}
+                <div class="team-role-tag">{{ block.settings.role | default: "Team Leader" }}</div>
+              </div>
+              <div class="team-info">
+                <h3 class="team-name">{{ block.settings.name | default: "Team Member" }}</h3>
+                <p class="team-bio">{{ block.settings.bio | default: "Dedicated to driving energy-saving innovation and sustainable growth across India." }}</p>
+                <div class="team-socials">
+                  {%- if block.settings.linkedin != blank -%}
+                    <a href="{{ block.settings.linkedin }}" target="_blank" class="team-social-btn" title="LinkedIn">in</a>
                   {%- else -%}
-                    <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #fff3eb, #e8f5e9); font-size: 4rem;">👤</div>
+                    <a href="#" class="team-social-btn" title="LinkedIn">in</a>
                   {%- endif -%}
-                  <div class="team-role-tag">{{ block.settings.role | default: "Team Leader" }}</div>
-                </div>
-                <div class="team-info">
-                  <h3 class="team-name">{{ block.settings.name | default: "Team Member" }}</h3>
-                  <p class="team-bio">{{ block.settings.bio | default: "Dedicated to driving energy-saving innovation and sustainable growth across India." }}</p>
-                  <div class="team-socials">
-                    {%- if block.settings.linkedin != blank -%}
-                      <a href="{{ block.settings.linkedin }}" target="_blank" class="team-social-btn" title="LinkedIn">in</a>
-                    {%- else -%}
-                      <a href="#" class="team-social-btn" title="LinkedIn">in</a>
-                    {%- endif -%}
-                    <a href="mailto:emp.vs04@gmail.com" class="team-social-btn" title="Email">✉</a>
-                    <a href="https://wa.me/919999999999" target="_blank" class="team-social-btn" title="WhatsApp">💬</a>
-                  </div>
+                  <a href="mailto:emp.vs04@gmail.com" class="team-social-btn" title="Email">✉</a>
+                  <a href="https://wa.me/919999999999" target="_blank" class="team-social-btn" title="WhatsApp">💬</a>
                 </div>
               </div>
-            {%- endif -%}
+            </div>
           {%- endfor -%}
         {%- else -%}
           
