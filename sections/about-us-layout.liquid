@@ -612,8 +612,8 @@
 
   /* --- Upgraded Section 4: Who We Are (Masterclass Glassmorphic Showcase) --- */
   .who-we-are-section {
-    padding: 70px 20px;
-    background: linear-gradient(180deg, #ffffff 0%, #fffbf6 50%, #ffffff 100%);
+    padding: 75px 20px;
+    background: radial-gradient(circle at 20% 50%, rgba(236,92,10,0.06) 0%, #ffffff 40%, rgba(0,123,62,0.06) 100%);
     position: relative;
     overflow: hidden;
   }
@@ -621,7 +621,7 @@
     max-width: 1280px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1.05fr;
     gap: 40px;
     align-items: stretch; /* Left & Right Containers match exact equal height line */
   }
@@ -637,12 +637,12 @@
     position: relative;
     width: 100%;
     height: 100%;
-    min-height: 480px;
+    min-height: 500px;
     border-radius: 30px;
     overflow: hidden;
-    box-shadow: 0 25px 60px rgba(0, 123, 62, 0.15);
-    border: 1px solid rgba(0, 123, 62, 0.25);
-    background: linear-gradient(135deg, #111827, #1f2937);
+    box-shadow: 0 30px 70px rgba(0, 123, 62, 0.18), 0 0 0 2px rgba(255, 204, 0, 0.35);
+    border: 1px solid rgba(0, 123, 62, 0.3);
+    background: linear-gradient(135deg, #0f172a, #1e293b);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -655,47 +655,49 @@
     transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
   }
   .wwa-image-wrapper:hover img {
-    transform: scale(1.05);
+    transform: scale(1.06);
   }
   
   /* Left Overlay Glass Badges */
   .wwa-img-badge {
     position: absolute;
     padding: 10px 18px;
-    background: rgba(15, 23, 42, 0.88);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 204, 0, 0.5);
+    background: rgba(15, 23, 42, 0.9);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 204, 0, 0.6);
     border-radius: 50px;
     color: #ffffff;
     font-size: 0.82rem;
     font-weight: 800;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    letter-spacing: 0.5px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
     z-index: 5;
     display: flex;
     align-items: center;
     gap: 8px;
+    white-space: nowrap;
   }
   .wwa-img-badge-top {
-    top: 20px;
-    left: 20px;
-    border-color: rgba(236, 92, 10, 0.5);
+    top: 22px;
+    left: 22px;
+    background: linear-gradient(135deg, rgba(236, 92, 10, 0.95), rgba(15, 23, 42, 0.95));
   }
   .wwa-img-badge-bottom {
-    bottom: 20px;
-    right: 20px;
-    border-color: rgba(0, 123, 62, 0.5);
+    bottom: 22px;
+    right: 22px;
+    background: linear-gradient(135deg, rgba(0, 123, 62, 0.95), rgba(15, 23, 42, 0.95));
   }
 
   /* Right Content Container */
   .wwa-content {
     background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border: 1px solid rgba(0, 123, 62, 0.18);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 123, 62, 0.2);
     border-radius: 30px;
     padding: 42px 38px;
-    box-shadow: 0 20px 50px rgba(0, 123, 62, 0.06);
+    box-shadow: 0 20px 50px rgba(0, 123, 62, 0.07);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -711,18 +713,19 @@
     align-items: center;
     gap: 8px;
     padding: 8px 18px;
-    background: rgba(0,123,62,0.08);
+    background: linear-gradient(135deg, rgba(0,123,62,0.1), rgba(236,92,10,0.1));
     border: 1px solid rgba(0,123,62,0.25);
     border-radius: 50px;
     color: #007b3e;
     width: fit-content;
+    box-shadow: 0 4px 12px rgba(0,123,62,0.08);
   }
 
   .wwa-title {
-    font-size: clamp(28px, 3.2vw, 40px);
+    font-size: clamp(26px, 3.1vw, 38px);
     font-weight: 900;
     line-height: 1.25;
-    margin-bottom: 18px;
+    margin-bottom: 16px;
     color: #1a1a1a;
   }
 
@@ -736,7 +739,34 @@
     font-size: 1.02rem;
     line-height: 1.75;
     color: #555;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
+  }
+
+  /* Metric Stat Boxes */
+  .wwa-metrics-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 22px;
+  }
+  .wwa-metric-box {
+    background: linear-gradient(135deg, rgba(236,92,10,0.06), rgba(0,123,62,0.06));
+    border: 1px solid rgba(0,123,62,0.15);
+    border-radius: 16px;
+    padding: 12px 10px;
+    text-align: center;
+  }
+  .wwa-metric-box h4 {
+    font-size: 1.1rem;
+    font-weight: 900;
+    color: #ec5c0a;
+    margin: 0 0 2px 0;
+  }
+  .wwa-metric-box p {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #555;
+    margin: 0 !important;
   }
 
   /* Bottom CEO & Features Row */
@@ -745,7 +775,7 @@
     grid-template-columns: 1.1fr 0.9fr;
     gap: 20px;
     border-top: 1px solid rgba(0,123,62,0.15);
-    padding-top: 24px;
+    padding-top: 22px;
     margin-top: auto;
   }
 
@@ -753,16 +783,16 @@
     display: flex;
     align-items: center;
     gap: 14px;
-    background: linear-gradient(135deg, rgba(236,92,10,0.05), rgba(0,123,62,0.05));
-    padding: 14px 18px;
+    background: linear-gradient(135deg, rgba(236,92,10,0.06), rgba(0,123,62,0.06));
+    padding: 12px 16px;
     border-radius: 20px;
     border: 1px solid rgba(0,123,62,0.2);
     box-shadow: 0 8px 20px rgba(0,0,0,0.03);
   }
 
   .wwa-ceo img {
-    width: 58px;
-    height: 58px;
+    width: 54px;
+    height: 54px;
     border-radius: 50%;
     object-fit: cover;
     border: 3px solid #007b3e;
@@ -772,13 +802,13 @@
 
   .wwa-ceo-info h4 {
     margin: 0 0 2px 0;
-    font-size: 1.15rem;
+    font-size: 1.1rem;
     font-weight: 800;
     color: #1a1a1a;
   }
 
   .wwa-ceo-info span {
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     color: #ec5c0a;
     font-weight: 700;
     display: block;
@@ -791,13 +821,13 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 10px;
+    gap: 8px;
   }
 
   .wwa-features li {
     position: relative;
-    padding-left: 28px;
-    font-size: 0.9rem;
+    padding-left: 26px;
+    font-size: 0.86rem;
     font-weight: 800;
     color: #2d3748;
   }
@@ -810,22 +840,23 @@
     transform: translateY(-50%);
     color: white;
     background: linear-gradient(135deg, #ec5c0a, #007b3e);
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: 900;
     box-shadow: 0 4px 10px rgba(236,92,10,0.3);
   }
 
   @media screen and (max-width: 900px) {
     .wwa-container { grid-template-columns: 1fr; gap: 30px; }
-    .wwa-image-wrapper { min-height: 320px; }
+    .wwa-image-wrapper { min-height: 340px; }
     .wwa-content { padding: 30px 22px; }
     .wwa-bottom-row { grid-template-columns: 1fr; }
+    .wwa-metrics-row { grid-template-columns: repeat(3, 1fr); }
   }
 
   /* --- Services 3-Column Light Section --- */
@@ -1489,7 +1520,7 @@
     </div>
   </section>
 
-  <!-- Who We Are Section (Upgraded Equal Height Showcase) -->
+  <!-- Who We Are Section (Masterclass Equal Height Showcase) -->
   <section class="who-we-are-section">
     <div class="wwa-container">
       
@@ -1517,9 +1548,25 @@
       <!-- Right Side Content -->
       <div class="wwa-content reveal-up active">
         <div>
-          <div class="wwa-subtitle">🌱 WHO WE ARE</div>
+          <div class="wwa-subtitle">🌱 WHO WE ARE | GREEN TECH LEADERS</div>
           <h3 class="wwa-title">We Specialise in Certified <span>Energy &amp; Fuel Saving Innovations</span></h3>
-          <p class="wwa-text">Vidhyut Saathi is India's leading ISO-certified energy innovation enterprise. Engineered with US-German nanotechnology and 20,000 negative ions, we specialize in power saver cards that protect the environment, eliminate power loss, and reduce electricity bills by 20% to 30% for domestic, commercial &amp; industrial clients nationwide.</p>
+          <p class="wwa-text">Vidhyut Saathi is India's leading ISO-certified energy innovation enterprise. Engineered with US-German nanotechnology and 20,000 negative ions, we eliminate electrical power leakage, protect the environment, and deliver guaranteed 20% to 30% bill savings nationwide.</p>
+          
+          <!-- Key Metrics Boxes -->
+          <div class="wwa-metrics-row">
+            <div class="wwa-metric-box">
+              <h4>20%-30%</h4>
+              <p>Bill Savings</p>
+            </div>
+            <div class="wwa-metric-box">
+              <h4>20,000</h4>
+              <p>Negative Ions</p>
+            </div>
+            <div class="wwa-metric-box">
+              <h4>100%</h4>
+              <p>Legal &amp; Certified</p>
+            </div>
+          </div>
         </div>
         
         <div class="wwa-bottom-row">
@@ -1527,7 +1574,7 @@
             {%- if section.settings.ceo_image != blank -%}
               {{ section.settings.ceo_image | image_url: width: 150 | image_tag: loading: 'lazy', alt: 'Jyoti Bajaj' }}
             {%- else -%}
-              <div style="width: 58px; height: 58px; border-radius: 50%; background: linear-gradient(135deg, #ec5c0a, #007b3e); color: white; display:flex; align-items:center; justify-content:center; font-size: 1.5rem;">👤</div>
+              <div style="width: 54px; height: 54px; border-radius: 50%; background: linear-gradient(135deg, #ec5c0a, #007b3e); color: white; display:flex; align-items:center; justify-content:center; font-size: 1.4rem;">👤</div>
             {%- endif -%}
             <div class="wwa-ceo-info">
               <h4>Jyoti Bajaj</h4>
@@ -1536,7 +1583,7 @@
           </div>
           
           <ul class="wwa-features">
-            <li>20%-30% Electricity Savings</li>
+            <li>20%-30% Bill Savings</li>
             <li>100% Legal &amp; Govt Certified</li>
             <li>Zero Maintenance Cost</li>
           </ul>
