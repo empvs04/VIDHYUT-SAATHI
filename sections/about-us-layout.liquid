@@ -610,7 +610,7 @@
     }
   }
 
-  /* --- Upgraded Section 4: Who We Are (Masterclass Glassmorphic Showcase) --- */
+  /* --- Masterpiece Section: Who We Are Showcase --- */
   .who-we-are-section {
     padding: 75px 20px;
     background: radial-gradient(circle at 20% 50%, rgba(236,92,10,0.06) 0%, #ffffff 40%, rgba(0,123,62,0.06) 100%);
@@ -621,8 +621,8 @@
     max-width: 1280px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1.05fr;
-    gap: 40px;
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
     align-items: stretch; /* Left & Right Containers match exact equal height line */
   }
   
@@ -637,12 +637,13 @@
     position: relative;
     width: 100%;
     height: 100%;
-    min-height: 500px;
-    border-radius: 30px;
+    min-height: 460px;
+    max-height: 520px;
+    border-radius: 28px;
     overflow: hidden;
-    box-shadow: 0 30px 70px rgba(0, 123, 62, 0.18), 0 0 0 2px rgba(255, 204, 0, 0.35);
+    box-shadow: 0 25px 60px rgba(0, 123, 62, 0.16), 0 0 0 2px rgba(255, 204, 0, 0.4);
     border: 1px solid rgba(0, 123, 62, 0.3);
-    background: linear-gradient(135deg, #0f172a, #1e293b);
+    background: #0f172a;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -651,8 +652,10 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
     display: block;
     transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    border-radius: 28px;
   }
   .wwa-image-wrapper:hover img {
     transform: scale(1.06);
@@ -661,31 +664,31 @@
   /* Left Overlay Glass Badges */
   .wwa-img-badge {
     position: absolute;
-    padding: 10px 18px;
-    background: rgba(15, 23, 42, 0.9);
+    padding: 8px 16px;
+    background: rgba(15, 23, 42, 0.92);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     border: 1px solid rgba(255, 204, 0, 0.6);
     border-radius: 50px;
     color: #ffffff;
-    font-size: 0.82rem;
+    font-size: 0.78rem;
     font-weight: 800;
     letter-spacing: 0.5px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-    z-index: 5;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    z-index: 10;
     display: flex;
     align-items: center;
     gap: 8px;
     white-space: nowrap;
   }
   .wwa-img-badge-top {
-    top: 22px;
-    left: 22px;
+    top: 18px;
+    left: 18px;
     background: linear-gradient(135deg, rgba(236, 92, 10, 0.95), rgba(15, 23, 42, 0.95));
   }
   .wwa-img-badge-bottom {
-    bottom: 22px;
-    right: 22px;
+    bottom: 18px;
+    right: 18px;
     background: linear-gradient(135deg, rgba(0, 123, 62, 0.95), rgba(15, 23, 42, 0.95));
   }
 
@@ -695,8 +698,8 @@
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(0, 123, 62, 0.2);
-    border-radius: 30px;
-    padding: 42px 38px;
+    border-radius: 28px;
+    padding: 38px 34px;
     box-shadow: 0 20px 50px rgba(0, 123, 62, 0.07);
     display: flex;
     flex-direction: column;
@@ -708,7 +711,7 @@
     font-size: 0.85rem;
     font-weight: 800;
     letter-spacing: 1.5px;
-    margin-bottom: 16px;
+    margin-bottom: 14px;
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -725,7 +728,7 @@
     font-size: clamp(26px, 3.1vw, 38px);
     font-weight: 900;
     line-height: 1.25;
-    margin-bottom: 16px;
+    margin-bottom: 14px;
     color: #1a1a1a;
   }
 
@@ -739,7 +742,7 @@
     font-size: 1.02rem;
     line-height: 1.75;
     color: #555;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
   }
 
   /* Metric Stat Boxes */
@@ -747,17 +750,22 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 12px;
-    margin-bottom: 22px;
+    margin-bottom: 20px;
   }
   .wwa-metric-box {
     background: linear-gradient(135deg, rgba(236,92,10,0.06), rgba(0,123,62,0.06));
-    border: 1px solid rgba(0,123,62,0.15);
+    border: 1px solid rgba(0,123,62,0.18);
     border-radius: 16px;
     padding: 12px 10px;
     text-align: center;
+    transition: transform 0.3s ease;
+  }
+  .wwa-metric-box:hover {
+    transform: translateY(-3px);
+    border-color: #007b3e;
   }
   .wwa-metric-box h4 {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     font-weight: 900;
     color: #ec5c0a;
     margin: 0 0 2px 0;
@@ -773,16 +781,16 @@
   .wwa-bottom-row {
     display: grid;
     grid-template-columns: 1.1fr 0.9fr;
-    gap: 20px;
+    gap: 16px;
     border-top: 1px solid rgba(0,123,62,0.15);
-    padding-top: 22px;
+    padding-top: 20px;
     margin-top: auto;
   }
 
   .wwa-ceo {
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 12px;
     background: linear-gradient(135deg, rgba(236,92,10,0.06), rgba(0,123,62,0.06));
     padding: 12px 16px;
     border-radius: 20px;
@@ -791,8 +799,8 @@
   }
 
   .wwa-ceo img {
-    width: 54px;
-    height: 54px;
+    width: 52px;
+    height: 52px;
     border-radius: 50%;
     object-fit: cover;
     border: 3px solid #007b3e;
@@ -827,7 +835,7 @@
   .wwa-features li {
     position: relative;
     padding-left: 26px;
-    font-size: 0.86rem;
+    font-size: 0.85rem;
     font-weight: 800;
     color: #2d3748;
   }
@@ -853,7 +861,7 @@
 
   @media screen and (max-width: 900px) {
     .wwa-container { grid-template-columns: 1fr; gap: 30px; }
-    .wwa-image-wrapper { min-height: 340px; }
+    .wwa-image-wrapper { min-height: 340px; max-height: none; }
     .wwa-content { padding: 30px 22px; }
     .wwa-bottom-row { grid-template-columns: 1fr; }
     .wwa-metrics-row { grid-template-columns: repeat(3, 1fr); }
