@@ -432,7 +432,11 @@
 <div class="our-team-wrapper">
   
   <!-- Hero Section (Section 1: Our Team Showcase) -->
-  {%- assign team_hero_bg_url = 'vidhyut-saathi-team-bg.jpg' | asset_url -%}
+  {%- if section.settings.hero_bg_image != blank -%}
+    {%- assign team_hero_bg_url = section.settings.hero_bg_image | image_url: width: 1920 -%}
+  {%- else -%}
+    {%- assign team_hero_bg_url = 'vidhyut-saathi-team-bg.jpg' | asset_url -%}
+  {%- endif -%}
 
   <section class="team-page-hero" style="background-image: url('{{ team_hero_bg_url }}');">
     
@@ -446,7 +450,7 @@
         <div class="col-12 text-center">
           <nav aria-label="breadcrumb" class="breadcumb--con text-center">
             <h1 class="w-text title wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
-              Our Vidhyut Saathi Team
+              {{ section.settings.hero_title | default: "Our Vidhyut Saathi Team" }}
             </h1>
             <ol class="breadcrumb justify-content-center wow fadeInUp" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
               <li class="breadcrumb-item"><a href="/">Home</a></li>
@@ -469,10 +473,10 @@
           <div class="who-we-contant heading-primary-sub">
             
             <div class="dream-dots text-left fadeInUp" data-wow-delay="0.2s">
-              <span class="gradient-text blue animate-charcter">⚡ VIDHYUT SAATHI TEAM</span>
+              <span class="gradient-text blue animate-charcter">{{ section.settings.sec2_badge | default: "⚡ VIDHYUT SAATHI TEAM" }}</span>
             </div>
 
-            <h4 class="sec2-team-title fadeInUp" data-wow-delay="0.3s">Vidhyut Saathi Team</h4>
+            <h4 class="sec2-team-title fadeInUp" data-wow-delay="0.3s">{{ section.settings.sec2_title | default: "Vidhyut Saathi Team" }}</h4>
 
             <p class="sec2-team-text fadeInUp" data-wow-delay="0.4s">
               Our expert team of Vidhyut Saathi dedicatedly done its work to help you get an amazing power saving card. They are rigorously investing their time, combining it with experience to create an exposure for many people who wants to foster this awesome idea of saving energy, money and nature. Our team has completed various training programs to implement the card and to help people switch towards energy saving products.
@@ -488,8 +492,12 @@
         <!-- Image Side -->
         <div class="team-sec2-col-img heading-primary-main">
           <div class="welcome-meter heading-primary-main">
-            {%- assign team_avatar_url = 'vidhyut-saathi-team-bg.jpg' | asset_url -%}
-            <img src="{{ team_avatar_url }}" class="avatar team-avatar-img" decoding="async" loading="lazy" width="1000" height="1000" alt="Vidhyut Saathi Team">
+            {%- if section.settings.sec2_image != blank -%}
+              {{ section.settings.sec2_image | image_url: width: 1200 | image_tag: class: 'avatar team-avatar-img', loading: 'lazy', decoding: 'async', alt: 'Vidhyut Saathi Team' }}
+            {%- else -%}
+              {%- assign team_avatar_url = 'vidhyut-saathi-team-bg.jpg' | asset_url -%}
+              <img src="{{ team_avatar_url }}" class="avatar team-avatar-img" decoding="async" loading="lazy" width="1000" height="1000" alt="Vidhyut Saathi Team">
+            {%- endif -%}
           </div>
         </div>
 
