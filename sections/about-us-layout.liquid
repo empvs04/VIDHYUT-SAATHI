@@ -723,9 +723,20 @@
     .team-grid::-webkit-scrollbar {
       display: none;
     }
+    .trust-card {
+      flex: 0 0 90% !important;
+      width: 90% !important;
+      max-width: 90% !important;
+      scroll-snap-align: center !important;
+      scroll-snap-stop: always !important;
+      box-sizing: border-box !important;
+      padding: 28px 20px !important;
+      margin: 0 5% !important;
+      border-radius: 24px !important;
+      box-shadow: 0 12px 30px rgba(236, 92, 10, 0.12) !important;
+    }
     .mv-card,
     .service-card,
-    .trust-card,
     .team-card {
       flex: 0 0 100% !important;
       width: 100% !important;
@@ -1362,9 +1373,51 @@
   @media screen and (max-width: 1024px) {
     .trust-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
   }
-  @media screen and (max-width: 600px) {
-    .trust-grid { grid-template-columns: 1fr; }
-    .trust-live-bar { flex-direction: column; text-align: center; }
+  @media screen and (max-width: 768px) {
+    .trust-live-bar {
+      flex-direction: column !important;
+      text-align: center !important;
+      align-items: center !important;
+      padding: 22px 18px !important;
+      gap: 16px !important;
+      border-radius: 22px !important;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(255, 245, 235, 0.98)) !important;
+      border: 1.5px solid rgba(236, 92, 10, 0.3) !important;
+      box-shadow: 0 10px 30px rgba(236, 92, 10, 0.1) !important;
+      margin-top: 25px !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
+    .trust-live-info {
+      flex-direction: column !important;
+      align-items: center !important;
+      text-align: center !important;
+      gap: 10px !important;
+      width: 100% !important;
+    }
+    .trust-live-badge {
+      margin: 0 auto !important;
+      padding: 6px 16px !important;
+      font-size: 0.8rem !important;
+      width: fit-content !important;
+    }
+    .trust-live-text {
+      font-size: 0.95rem !important;
+      line-height: 1.5 !important;
+      text-align: center !important;
+    }
+    .trust-features-pills {
+      justify-content: center !important;
+      gap: 8px !important;
+      width: 100% !important;
+      flex-wrap: wrap !important;
+    }
+    .trust-pill {
+      font-size: 0.76rem !important;
+      padding: 6px 14px !important;
+      text-align: center !important;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04) !important;
+    }
   }
 
   /* Live Customer Growing Ticker Bar */
