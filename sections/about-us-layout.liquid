@@ -816,12 +816,41 @@
       letter-spacing: -0.5px !important;
     }
 
-    .company-info-text h2,
-    .wwa-title,
-    .our-team-title {
-      font-size: clamp(26px, 6.5vw, 38px) !important;
-      color: #0b1120 !important;
-      -webkit-text-stroke: 0.6px #0b1120 !important;
+    /* Section 2 Mobile 3-Line Color Formatting */
+    .sec2-heading-custom {
+      font-size: clamp(24px, 6vw, 32px) !important;
+      text-align: center !important;
+    }
+    .sec2-line1,
+    .sec2-line2,
+    .sec2-line3 {
+      display: block !important;
+      margin-bottom: 2px !important;
+    }
+    .sec2-line1 {
+      color: #000000 !important;
+      -webkit-text-stroke: 0.5px #000000 !important;
+      font-weight: 900 !important;
+    }
+    .sec2-word-orange {
+      color: #ec5c0a !important;
+      -webkit-text-stroke: 0.5px #ec5c0a !important;
+      font-weight: 900 !important;
+      display: inline-block !important;
+      margin-right: 4px !important;
+    }
+    .sec2-word-mix {
+      background: linear-gradient(90deg, #ec5c0a 48%, #007b3e 52%) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      -webkit-text-stroke: 0.4px #ec5c0a !important;
+      font-weight: 900 !important;
+      display: inline-block !important;
+    }
+    .sec2-line3 {
+      color: #000000 !important;
+      -webkit-text-stroke: 0.5px #000000 !important;
+      font-weight: 900 !important;
     }
 
     .wwa-title span,
@@ -1255,11 +1284,35 @@
     animation: blink-dot 1.5s infinite;
   }
 
-  .trust-title {
-    font-size: clamp(28px, 3.8vw, 46px);
+  /* --- Section 2 Custom Heading Styling --- */
+  .sec2-heading-custom {
+    font-size: clamp(28px, 3.2vw, 44px);
     font-weight: 900;
-    line-height: 1.25;
-    margin-bottom: 16px;
+    line-height: 1.3;
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
+  }
+  .sec2-line1, .sec2-line3 {
+    color: #0b1120;
+    font-weight: 900;
+  }
+  .sec2-word-orange {
+    color: #ec5c0a;
+    font-weight: 900;
+  }
+  .sec2-word-mix {
+    background: linear-gradient(90deg, #ec5c0a 48%, #007b3e 52%);
+    background-size: 100% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 900;
+  }
+
+  .company-info-text h2 {
+    font-size: clamp(28px, 3.2vw, 44px);
+    font-weight: 900;
+    line-height: 1.3;
+    margin-bottom: 20px;
     color: #1a1a1a;
   }
   .trust-title .highlight-gradient {
@@ -1901,7 +1954,14 @@
           <span>⚡ INDIA'S #1 ELECTRIC POWER SAVER CARD</span>
         </div>
 
-        <h2 class="gradient-heading">Pioneering Green Energy & Power Savings Across India</h2>
+        <h2 class="sec2-heading-custom">
+          <span class="sec2-line1">Pioneering</span>
+          <span class="sec2-line2">
+            <span class="sec2-word-orange">Green</span>
+            <span class="sec2-word-mix">Energy &amp; Power</span>
+          </span>
+          <span class="sec2-line3">Savings Across India</span>
+        </h2>
         
         <p><b>Vidhyut Saathi</b> is India's leading energy innovation enterprise. Engineered with breakthrough <b>US-German Nanotechnology</b> and <b>20,000 negative ions</b>, our Electric Power Saving Card stabilizes electrical current, eliminates power leakage, and effortlessly cuts monthly electricity bills by <b>20% to 30%</b> — 100% legally with zero maintenance.</p>
 
