@@ -178,6 +178,113 @@
       padding: 8px 20px !important;
     }
   }
+  /* --- Section 2: Vidhyut Saathi Team Overview --- */
+  .team-sec2-section {
+    padding: clamp(60px, 8vw, 100px) 20px;
+    background: #ffffff;
+    position: relative;
+  }
+  .team-sec2-container {
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+  .team-sec2-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 40px;
+  }
+  .team-sec2-col-text {
+    flex: 1 1 500px;
+  }
+  .team-sec2-col-img {
+    flex: 1 1 450px;
+    display: flex;
+    justify-content: center;
+  }
+
+  /* Gradient Badge */
+  .dream-dots {
+    display: inline-block;
+    margin-bottom: 16px;
+  }
+  .gradient-text.animate-charcter {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(90deg, #ec5c0a 0%, #ff9a00 50%, #007b3e 100%);
+    color: #ffffff;
+    font-size: 0.88rem;
+    font-weight: 900;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 7px 18px;
+    border-radius: 50px;
+    box-shadow: 0 4px 15px rgba(236, 92, 10, 0.25);
+  }
+
+  /* Heading & Text */
+  .sec2-team-title {
+    font-size: clamp(28px, 3.6vw, 44px);
+    font-weight: 900;
+    color: #0b1120;
+    line-height: 1.25;
+    margin-bottom: 22px;
+    letter-spacing: -0.5px;
+  }
+  .sec2-team-text {
+    font-size: 1.02rem;
+    line-height: 1.8;
+    color: #334155;
+    margin-bottom: 18px;
+    text-align: justify;
+  }
+
+  /* 3D Image Frame */
+  .welcome-meter {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12);
+    border: 3px solid #ffffff;
+    outline: 2px solid rgba(236, 92, 10, 0.2);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    background: #090e1a;
+  }
+  .welcome-meter:hover {
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: 0 25px 50px rgba(236, 92, 10, 0.2);
+  }
+  .team-avatar-img {
+    width: 100%;
+    height: auto;
+    max-height: 520px;
+    object-fit: cover;
+    display: block;
+    border-radius: 20px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .team-sec2-row {
+      flex-direction: column;
+      gap: 30px;
+    }
+    .sec2-team-title {
+      font-size: clamp(24px, 6vw, 32px) !important;
+      font-weight: 900 !important;
+      -webkit-text-stroke: 0.5px #0b1120 !important;
+      text-align: center !important;
+    }
+    .dream-dots {
+      display: flex;
+      justify-content: center;
+    }
+    .sec2-team-text {
+      font-size: 0.96rem !important;
+      line-height: 1.7 !important;
+      text-align: left !important;
+    }
+  }
 {%- endstyle -%}
 
 <div class="our-team-wrapper">
@@ -208,6 +315,44 @@
       </div>
     </div>
 
+  </section>
+
+  <!-- Section 2: Vidhyut Saathi Team Overview -->
+  <section class="team-sec2-section">
+    <div class="team-sec2-container">
+      <div class="team-sec2-row">
+        
+        <!-- Text Side -->
+        <div class="team-sec2-col-text heading-primary-sub">
+          <div class="who-we-contant heading-primary-sub">
+            
+            <div class="dream-dots text-left fadeInUp" data-wow-delay="0.2s">
+              <span class="gradient-text blue animate-charcter">⚡ VIDHYUT SAATHI TEAM</span>
+            </div>
+
+            <h4 class="sec2-team-title fadeInUp" data-wow-delay="0.3s">Vidhyut Saathi Team</h4>
+
+            <p class="sec2-team-text fadeInUp" data-wow-delay="0.4s">
+              Our expert team of Vidhyut Saathi dedicatedly done its work to help you get an amazing power saving card. They are rigorously investing their time, combining it with experience to create an exposure for many people who wants to foster this awesome idea of saving energy, money and nature. Our team has completed various training programs to implement the card and to help people switch towards energy saving products.
+            </p>
+
+            <p class="sec2-team-text fadeInUp" data-wow-delay="0.4s">
+              As India is playing a very important role worldwide in saving power and fuel. Similarly, Vidhyut Saathi is also a positive contribution by our team to the power saving agenda of our nation. We are providing a certified and safe product and trying to convey our efforts for your comfort.
+            </p>
+
+          </div>
+        </div>
+
+        <!-- Image Side -->
+        <div class="team-sec2-col-img heading-primary-main">
+          <div class="welcome-meter heading-primary-main">
+            {%- assign team_avatar_url = 'vidhyut-saathi-team-bg.jpg' | asset_url -%}
+            <img src="{{ team_avatar_url }}" class="avatar team-avatar-img" decoding="async" loading="lazy" width="1000" height="1000" alt="Vidhyut Saathi Team">
+          </div>
+        </div>
+
+      </div>
+    </div>
   </section>
 
   <!-- Intro Section -->
