@@ -264,26 +264,168 @@
     border-radius: 20px;
   }
 
-  @media screen and (max-width: 768px) {
-    .team-sec2-row {
-      flex-direction: column;
-      gap: 30px;
+  /* --- Section 3: Meet Our Awesome Team Grid --- */
+  .team-sec3-section {
+    padding: clamp(60px, 8vw, 100px) 20px;
+    background: #fff8ef;
+    position: relative;
+  }
+  .team-sec3-container {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .team-sec3-header {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  .team-sec3-header small {
+    display: inline-block;
+    background: linear-gradient(90deg, #ec5c0a, #007b3e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 0.95rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .team-sec3-header h2 {
+    font-size: clamp(28px, 3.8vw, 46px);
+    font-weight: 900;
+    color: #0b1120;
+    letter-spacing: -0.5px;
+    line-height: 1.25;
+  }
+
+  .team-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+  }
+  @media screen and (max-width: 1100px) {
+    .team-cards-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
     }
-    .sec2-team-title {
+  }
+  @media screen and (max-width: 768px) {
+    .team-cards-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    .team-sec3-header h2 {
       font-size: clamp(24px, 6vw, 32px) !important;
       font-weight: 900 !important;
       -webkit-text-stroke: 0.5px #0b1120 !important;
-      text-align: center !important;
     }
-    .dream-dots {
-      display: flex;
-      justify-content: center;
+  }
+  @media screen and (max-width: 480px) {
+    .team-cards-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
     }
-    .sec2-team-text {
-      font-size: 0.96rem !important;
-      line-height: 1.7 !important;
-      text-align: left !important;
-    }
+  }
+
+  /* Single Card Styling */
+  .single-card {
+    background: #ffffff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0,0,0,0.06);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    display: flex;
+    flex-direction: column;
+  }
+  .single-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(236, 92, 10, 0.15);
+    border-color: rgba(236, 92, 10, 0.3);
+  }
+
+  .single-card-image {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1.05;
+    overflow: hidden;
+    background: #f8fafc;
+  }
+  .single-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    transition: transform 0.5s ease;
+  }
+  .single-card:hover .single-card-image img {
+    transform: scale(1.06);
+  }
+
+  /* Social Overlay List */
+  .single-card-social {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    list-style: none;
+    padding: 6px 12px;
+    margin: 0;
+    background: rgba(15, 23, 42, 0.88);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    z-index: 2;
+  }
+  .single-card:hover .single-card-social {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  .single-card-social li a {
+    color: #ffffff;
+    font-size: 0.85rem;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    background: rgba(255,255,255,0.12);
+  }
+  .single-card-social li a:hover {
+    background: #ec5c0a;
+    color: #ffffff;
+    transform: scale(1.15);
+  }
+
+  /* Content */
+  .single-card-content {
+    padding: 16px 14px;
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .single-card-content h3 {
+    font-size: 1.08rem;
+    font-weight: 800;
+    color: #0b1120;
+    margin-bottom: 4px;
+    line-height: 1.3;
+  }
+  .single-card-content p {
+    font-size: 0.86rem;
+    font-weight: 700;
+    color: #ec5c0a;
+    margin: 0;
+    line-height: 1.4;
   }
 {%- endstyle -%}
 
@@ -355,82 +497,275 @@
     </div>
   </section>
 
-  <!-- Intro Section -->
-  <section class="team-intro">
-    <h2 class="team-section-heading">{{ section.settings.intro_heading }}</h2>
-    <div class="team-intro-text">
-      {{ section.settings.intro_text }}
-    </div>
-  </section>
+  <!-- Section 3: Meet Our Awesome Team Grid -->
+  <section class="team-sec3-section">
+    <div class="team-sec3-container">
+      
+      <div class="team-sec3-header">
+        <small class="fadeInUp" data-wow-delay="0.1s">Persons Who Guide You</small>
+        <h2 class="fadeInUp" data-wow-delay="0.2s">Meet Our Awesome Team</h2>
+      </div>
 
-  <!-- Dynamic Team Grid -->
-  <section class="team-members">
-    {%- if section.blocks.size > 0 -%}
-      <div class="team-grid">
-        {%- for block in section.blocks -%}
-          <div class="team-card" {{ block.shopify_attributes }}>
-            <div class="team-image-box">
-              {%- if block.settings.image != blank -%}
-                {{ block.settings.image | image_url: width: 400, height: 440, crop: 'center' | image_tag: loading: 'lazy', alt: block.settings.name }}
-              {%- else -%}
-                {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
-              {%- endif -%}
-            </div>
-            <div class="team-info">
-              <h3 class="team-name">{{ block.settings.name }}</h3>
-              <p class="team-role">{{ block.settings.role }}</p>
-              {%- if block.settings.bio != blank -%}
-                <p class="team-bio">{{ block.settings.bio }}</p>
-              {%- endif -%}
-              {%- if block.settings.social_url != blank -%}
-                <div class="team-social">
-                  <a href="{{ block.settings.social_url }}" target="_blank" rel="noopener noreferrer">
-                    View Profile <span>→</span>
-                  </a>
-                </div>
-              {%- endif -%}
-            </div>
+      <div class="team-cards-grid">
+        
+        <!-- Member 1: Jyoti Bajaj -->
+        <div class="single-card single-card-rotate">
+          <div class="single-card-image">
+            {%- assign img_jyoti = 'vidhyut-saathi-team-bg.jpg' | asset_url -%}
+            <img src="{{ img_jyoti }}" alt="Jyoti Bajaj" decoding="async" loading="lazy" width="500" height="500">
+            <ul class="single-card-social social-list">
+              <li><a href="https://www.facebook.com/" target="_blank" rel="noopener"><i class="fa fa-facebook-square">🌐</i></a></li>
+              <li><a href="https://www.instagram.com/" target="_blank" rel="noopener"><i class="fa fa-instagram">📸</i></a></li>
+              <li><a href="https://twitter.com/" target="_blank" rel="noopener"><i class="fa fa-twitter">🐦</i></a></li>
+              <li><a href="https://linkedin.com/" target="_blank" rel="noopener"><i class="fa fa-linkedin">💼</i></a></li>
+            </ul>
           </div>
-        {%- endfor -%}
-      </div>
-    {%- else -%}
-      <div style="text-align: center; padding: 40px; color: var(--team-text-light); background: #ffffff; border-radius: var(--team-radius);">
-        <p>Your team members will appear here. Add blocks in the Shopify Theme Editor.</p>
-      </div>
-    {%- endif -%}
-  </section>
+          <div class="single-card-content">
+            <h3>Jyoti Bajaj</h3>
+            <p>Sales &amp; Marketing Head</p>
+          </div>
+        </div>
 
-  <!-- What We Bring Section -->
-  <section class="team-bring">
-    <div class="bring-container">
-      <h2 class="team-section-heading" style="text-align: center;">{{ section.settings.bring_heading }}</h2>
-      <div class="bring-grid">
-        <div class="bring-card">
-          <div class="bring-icon">🏭</div>
-          <h3>{{ section.settings.bring_1 }}</h3>
+        <!-- Member 2: Shabnam Saxena -->
+        <div class="single-card single-card-rotate">
+          <div class="single-card-image">
+            <img src="{{ img_jyoti }}" alt="Shabnam Saxena" decoding="async" loading="lazy" width="500" height="500">
+            <ul class="single-card-social social-list">
+              <li><a href="https://www.facebook.com/" target="_blank" rel="noopener"><i class="fa fa-facebook-square">🌐</i></a></li>
+              <li><a href="https://www.instagram.com/" target="_blank" rel="noopener"><i class="fa fa-instagram">📸</i></a></li>
+              <li><a href="https://twitter.com/" target="_blank" rel="noopener"><i class="fa fa-twitter">🐦</i></a></li>
+              <li><a href="https://linkedin.com/" target="_blank" rel="noopener"><i class="fa fa-linkedin">💼</i></a></li>
+            </ul>
+          </div>
+          <div class="single-card-content">
+            <h3>Shabnam Saxena</h3>
+            <p>Senior Sales Manager</p>
+          </div>
         </div>
-        <div class="bring-card">
-          <div class="bring-icon">⚙️</div>
-          <h3>{{ section.settings.bring_2 }}</h3>
-        </div>
-        <div class="bring-card">
-          <div class="bring-icon">📈</div>
-          <h3>{{ section.settings.bring_3 }}</h3>
-        </div>
-        <div class="bring-card">
-          <div class="bring-icon">🤝</div>
-          <h3>{{ section.settings.bring_4 }}</h3>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- CTA Section -->
-  <section class="team-cta">
-    <div class="team-cta-content">
-      <h2 class="team-section-heading">{{ section.settings.cta_heading }}</h2>
-      <p class="team-section-subheading">{{ section.settings.cta_text }}</p>
-      <a href="{{ section.settings.cta_link }}" class="team-btn">{{ section.settings.cta_btn_text }}</a>
+        <!-- Member 3: Riya Juneja -->
+        <div class="single-card single-card-rotate">
+          <div class="single-card-image">
+            <img src="{{ img_jyoti }}" alt="Riya Juneja" decoding="async" loading="lazy" width="500" height="500">
+            <ul class="single-card-social social-list">
+              <li><a href="https://www.facebook.com/" target="_blank" rel="noopener"><i class="fa fa-facebook-square">🌐</i></a></li>
+              <li><a href="https://www.instagram.com/" target="_blank" rel="noopener"><i class="fa fa-instagram">📸</i></a></li>
+              <li><a href="https://twitter.com/" target="_blank" rel="noopener"><i class="fa fa-twitter">🐦</i></a></li>
+              <li><a href="https://linkedin.com/" target="_blank" rel="noopener"><i class="fa fa-linkedin">💼</i></a></li>
+            </ul>
+          </div>
+          <div class="single-card-content">
+            <h3>Riya Juneja</h3>
+            <p>Training Manager</p>
+          </div>
+        </div>
+
+        <!-- Member 4: Vaishali Sharma -->
+        <div class="single-card single-card-rotate">
+          <div class="single-card-image">
+            <img src="{{ img_jyoti }}" alt="Vaishali Sharma" decoding="async" loading="lazy" width="500" height="500">
+            <ul class="single-card-social social-list">
+              <li><a href="https://www.facebook.com/" target="_blank" rel="noopener"><i class="fa fa-facebook-square">🌐</i></a></li>
+              <li><a href="https://www.instagram.com/" target="_blank" rel="noopener"><i class="fa fa-instagram">📸</i></a></li>
+              <li><a href="https://twitter.com/" target="_blank" rel="noopener"><i class="fa fa-twitter">🐦</i></a></li>
+              <li><a href="https://linkedin.com/" target="_blank" rel="noopener"><i class="fa fa-linkedin">💼</i></a></li>
+            </ul>
+          </div>
+          <div class="single-card-content">
+            <h3>Vaishali Sharma</h3>
+            <p>Relationship Manager</p>
+          </div>
+        </div>
+
+        <!-- Member 5: Khushi Rajput -->
+        <div class="single-card single-card-rotate">
+          <div class="single-card-image">
+            <img src="{{ img_jyoti }}" alt="Khushi Rajput" decoding="async" loading="lazy" width="500" height="500">
+            <ul class="single-card-social social-list">
+              <li><a href="https://www.facebook.com/" target="_blank" rel="noopener"><i class="fa fa-facebook-square">🌐</i></a></li>
+              <li><a href="https://www.instagram.com/" target="_blank" rel="noopener"><i class="fa fa-instagram">📸</i></a></li>
+              <li><a href="https://twitter.com/" target="_blank" rel="noopener"><i class="fa fa-twitter">🐦</i></a></li>
+              <li><a href="https://linkedin.com/" target="_blank" rel="noopener"><i class="fa fa-linkedin">💼</i></a></li>
+            </ul>
+          </div>
+          <div class="single-card-content">
+            <h3>Khushi Rajput</h3>
+            <p>Senior Sales Executive</p>
+          </div>
+        </div>
+
+        <!-- Member 6: Charu Wadhwa -->
+        <div class="single-card single-card-rotate">
+          <div class="single-card-image">
+            <img src="{{ img_jyoti }}" alt="Charu Wadhwa" decoding="async" loading="lazy" width="500" height="500">
+            <ul class="single-card-social social-list">
+              <li><a href="https://www.facebook.com/" target="_blank" rel="noopener"><i class="fa fa-facebook-square">🌐</i></a></li>
+              <li><a href="https://www.instagram.com/" target="_blank" rel="noopener"><i class="fa fa-instagram">📸</i></a></li>
+              <li><a href="https://twitter.com/" target="_blank" rel="noopener"><i class="fa fa-twitter">🐦</i></a></li>
+              <li><a href="https://linkedin.com/" target="_blank" rel="noopener"><i class="fa fa-linkedin">💼</i></a></li>
+            </ul>
+          </div>
+          <div class="single-card-content">
+            <h3>Charu Wadhwa</h3>
+            <p>Sales Consultant</p>
+          </div>
+        </div>
+
+        <!-- Member 7: Gunjan Goyal -->
+        <div class="single-card single-card-rotate">
+          <div class="single-card-image">
+            <img src="{{ img_jyoti }}" alt="Gunjan Goyal" decoding="async" loading="lazy" width="500" height="500">
+            <ul class="single-card-social social-list">
+              <li><a href="https://www.facebook.com/" target="_blank" rel="noopener"><i class="fa fa-facebook-square">🌐</i></a></li>
+              <li><a href="https://www.instagram.com/" target="_blank" rel="noopener"><i class="fa fa-instagram">📸</i></a></li>
+              <li><a href="https://twitter.com/" target="_blank" rel="noopener"><i class="fa fa-twitter">🐦</i></a></li>
+              <li><a href="https://linkedin.com/" target="_blank" rel="noopener"><i class="fa fa-linkedin">💼</i></a></li>
+            </ul>
+          </div>
+          <div class="single-card-content">
+            <h3>Gunjan Goyal</h3>
+            <p>Sales Development Representative</p>
+          </div>
+        </div>
+
+        <!-- Member 8: Himani Arora -->
+        <div class="single-card single-card-rotate">
+          <div class="single-card-image">
+            <img src="{{ img_jyoti }}" alt="Himani Arora" decoding="async" loading="lazy" width="500" height="500">
+            <ul class="single-card-social social-list">
+              <li><a href="https://www.facebook.com/" target="_blank" rel="noopener"><i class="fa fa-facebook-square">🌐</i></a></li>
+              <li><a href="https://www.instagram.com/" target="_blank" rel="noopener"><i class="fa fa-instagram">📸</i></a></li>
+              <li><a href="https://twitter.com/" target="_blank" rel="noopener"><i class="fa fa-twitter">🐦</i></a></li>
+              <li><a href="https://linkedin.com/" target="_blank" rel="noopener"><i class="fa fa-linkedin">💼</i></a></li>
+            </ul>
+          </div>
+          <div class="single-card-content">
+            <h3>Himani Arora</h3>
+            <p>Marketing Analyst</p>
+          </div>
+        </div>
+
+        <!-- Member 9: Prerna Mittal -->
+        <div class="single-card single-card-rotate">
+          <div class="single-card-image">
+            <img src="{{ img_jyoti }}" alt="Prerna Mittal" decoding="async" loading="lazy" width="500" height="500">
+            <ul class="single-card-social social-list">
+              <li><a href="https://www.facebook.com/" target="_blank" rel="noopener"><i class="fa fa-facebook-square">🌐</i></a></li>
+              <li><a href="https://www.instagram.com/" target="_blank" rel="noopener"><i class="fa fa-instagram">📸</i></a></li>
+              <li><a href="https://twitter.com/" target="_blank" rel="noopener"><i class="fa fa-twitter">🐦</i></a></li>
+              <li><a href="https://linkedin.com/" target="_blank" rel="noopener"><i class="fa fa-linkedin">💼</i></a></li>
+            </ul>
+          </div>
+          <div class="single-card-content">
+            <h3>Prerna Mittal</h3>
+            <p>Accounting Manager</p>
+          </div>
+        </div>
+
+        <!-- Member 10: Seema Ahlawat -->
+        <div class="single-card single-card-rotate">
+          <div class="single-card-image">
+            <img src="{{ img_jyoti }}" alt="Seema Ahlawat" decoding="async" loading="lazy" width="500" height="500">
+            <ul class="single-card-social social-list">
+              <li><a href="https://www.facebook.com/" target="_blank" rel="noopener"><i class="fa fa-facebook-square">🌐</i></a></li>
+              <li><a href="https://www.instagram.com/" target="_blank" rel="noopener"><i class="fa fa-instagram">📸</i></a></li>
+              <li><a href="https://twitter.com/" target="_blank" rel="noopener"><i class="fa fa-twitter">🐦</i></a></li>
+              <li><a href="https://linkedin.com/" target="_blank" rel="noopener"><i class="fa fa-linkedin">💼</i></a></li>
+            </ul>
+          </div>
+          <div class="single-card-content">
+            <h3>Seema Ahlawat</h3>
+            <p>Sales Executive</p>
+          </div>
+        </div>
+
+        <!-- Member 11: Renuka Kumari -->
+        <div class="single-card single-card-rotate">
+          <div class="single-card-image">
+            <img src="{{ img_jyoti }}" alt="Renuka Kumari" decoding="async" loading="lazy" width="500" height="500">
+            <ul class="single-card-social social-list">
+              <li><a href="https://www.facebook.com/" target="_blank" rel="noopener"><i class="fa fa-facebook-square">🌐</i></a></li>
+              <li><a href="https://www.instagram.com/" target="_blank" rel="noopener"><i class="fa fa-instagram">📸</i></a></li>
+              <li><a href="https://twitter.com/" target="_blank" rel="noopener"><i class="fa fa-twitter">🐦</i></a></li>
+              <li><a href="https://linkedin.com/" target="_blank" rel="noopener"><i class="fa fa-linkedin">💼</i></a></li>
+            </ul>
+          </div>
+          <div class="single-card-content">
+            <h3>Renuka Kumari</h3>
+            <p>Sales Associate</p>
+          </div>
+        </div>
+
+        <!-- Member 12: Simran Mishra -->
+        <div class="single-card single-card-rotate">
+          <div class="single-card-image">
+            <img src="{{ img_jyoti }}" alt="Simran Mishra" decoding="async" loading="lazy" width="500" height="500">
+            <ul class="single-card-social social-list">
+              <li><a href="https://www.facebook.com/" target="_blank" rel="noopener"><i class="fa fa-facebook-square">🌐</i></a></li>
+              <li><a href="https://www.instagram.com/" target="_blank" rel="noopener"><i class="fa fa-instagram">📸</i></a></li>
+              <li><a href="https://twitter.com/" target="_blank" rel="noopener"><i class="fa fa-twitter">🐦</i></a></li>
+              <li><a href="https://linkedin.com/" target="_blank" rel="noopener"><i class="fa fa-linkedin">💼</i></a></li>
+            </ul>
+          </div>
+          <div class="single-card-content">
+            <h3>Simran Mishra</h3>
+            <p>Sales Executive</p>
+          </div>
+        </div>
+
+        <!-- Member 13: Bhavya Malik -->
+        <div class="single-card single-card-rotate">
+          <div class="single-card-image">
+            <img src="{{ img_jyoti }}" alt="Bhavya Malik" decoding="async" loading="lazy" width="500" height="500">
+            <ul class="single-card-social social-list">
+              <li><a href="https://www.facebook.com/" target="_blank" rel="noopener"><i class="fa fa-facebook-square">🌐</i></a></li>
+              <li><a href="https://www.instagram.com/" target="_blank" rel="noopener"><i class="fa fa-instagram">📸</i></a></li>
+              <li><a href="https://twitter.com/" target="_blank" rel="noopener"><i class="fa fa-twitter">🐦</i></a></li>
+              <li><a href="https://linkedin.com/" target="_blank" rel="noopener"><i class="fa fa-linkedin">💼</i></a></li>
+            </ul>
+          </div>
+          <div class="single-card-content">
+            <h3>Bhavya Malik</h3>
+            <p>Sales Executive</p>
+          </div>
+        </div>
+
+        <!-- Member 14: Saloni Bhushan -->
+        <div class="single-card single-card-rotate">
+          <div class="single-card-image">
+            <img src="{{ img_jyoti }}" alt="Saloni Bhushan" decoding="async" loading="lazy" width="500" height="500">
+            <ul class="single-card-social social-list">
+              <li><a href="https://www.facebook.com/" target="_blank" rel="noopener"><i class="fa fa-facebook-square">🌐</i></a></li>
+              <li><a href="https://www.instagram.com/" target="_blank" rel="noopener"><i class="fa fa-instagram">📸</i></a></li>
+              <li><a href="https://twitter.com/" target="_blank" rel="noopener"><i class="fa fa-twitter">🐦</i></a></li>
+              <li><a href="https://linkedin.com/" target="_blank" rel="noopener"><i class="fa fa-linkedin">💼</i></a></li>
+            </ul>
+          </div>
+          <div class="single-card-content">
+            <h3>Saloni Bhushan</h3>
+            <p>Sales Executive</p>
+          </div>
+        </div>
+
+        <!-- Member 15: Ritika Balgani -->
+        <div class="single-card single-card-rotate">
+          <div class="single-card-image">
+            <img src="{{ img_jyoti }}" alt="Ritika Balgani" decoding="async" loading="lazy" width="500" height="500">
+            <ul class="single-card-social social-list">
+              <li><a href="https://www.facebook.com/" target="_blank" rel="noopener"><i class="fa fa-facebook-square">🌐</i></a></li>
+              <li><a href="https://www.instagram.com/" target="_blank" rel="noopener"><i class="fa fa-instagram">📸</i></a></li>
+              <li><a href="https://twitter.com/" target="_blank" rel="noopener"><i class="fa fa-twitter">🐦</i></a></li>
+              <li><a href="https://linkedin.com/" target="_blank" rel="noopener"><i class="fa fa-linkedin">💼</i></a></li>
+            </ul>
+          </div>
+          <div class="single-card-content">
+            <h3>Ritika Balgani</h3>
+            <p>Sales Executive</p>
+          </div>
+        </div>
+
+      </div>
+
     </div>
   </section>
 
