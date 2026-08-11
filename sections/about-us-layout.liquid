@@ -1116,11 +1116,7 @@
 
           <!-- 3D Card Main Wrapper -->
           <div class="card-3d-wrapper">
-            {%- if section.settings.company_info_image != blank -%}
-              {{ section.settings.company_info_image | image_url: width: 900 | image_tag: loading: 'lazy', class: 'card-3d-image', alt: 'Vidhyut Saathi 3D Electric Power Saving Card' }}
-            {%- else -%}
-              <img src="{{ 'vidhyut-power-saver-card.jpg' | asset_url }}" class="card-3d-image" alt="Vidhyut Saathi 3D Electric Power Saving Card" loading="lazy" width="900" height="570">
-            {%- endif -%}
+            <img src="{{ 'vidhyut-power-saver-card.jpg' | asset_url }}" class="card-3d-image" alt="Vidhyut Saathi 3D Electric Power Saving Card" loading="lazy" width="900" height="570">
 
             <!-- Glare Effect Overlay -->
             <div class="card-3d-glare" id="card3dGlare"></div>
