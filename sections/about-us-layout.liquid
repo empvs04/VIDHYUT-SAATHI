@@ -1384,15 +1384,17 @@
   @media screen and (max-width: 1024px) {
     .trust-grid { grid-template-columns: repeat(2, 1fr); }
   }
-  /* --- Upgraded Section 7: Leadership & Visionaries Showcase --- */
+  /* --- Unique VIP Executive Section 7: Leadership & Visionaries Showcase --- */
   .our-team-section {
     width: 100%;
     box-sizing: border-box;
-    padding: 45px 20px;
-    background: radial-gradient(circle at 80% 80%, rgba(236,92,10,0.06) 0%, #ffffff 50%, rgba(0,123,62,0.06) 100%);
+    padding: 60px 20px;
+    background: linear-gradient(180deg, #090e1a 0%, #0b1726 50%, #06120c 100%);
     position: relative;
     overflow: hidden;
     z-index: 1;
+    border-top: 1px solid rgba(0, 255, 117, 0.2);
+    border-bottom: 1px solid rgba(255, 204, 0, 0.2);
   }
 
   .our-team-container {
@@ -1404,8 +1406,8 @@
 
   .our-team-header {
     text-align: center;
-    max-width: 850px;
-    margin: 0 auto 35px auto;
+    max-width: 880px;
+    margin: 0 auto 40px auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1415,36 +1417,38 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
-    background: linear-gradient(135deg, rgba(0, 123, 62, 0.1), rgba(236, 92, 10, 0.1));
-    border: 1px solid rgba(0, 123, 62, 0.25);
-    padding: 8px 22px;
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid rgba(255, 204, 0, 0.5);
+    padding: 8px 24px;
     border-radius: 50px;
-    font-size: 0.88rem;
-    font-weight: 800;
-    color: #007b3e;
+    font-size: 0.85rem;
+    font-weight: 900;
+    color: #ffcc00;
     letter-spacing: 1px;
     margin-bottom: 18px;
-    box-shadow: 0 4px 12px rgba(0, 123, 62, 0.08);
+    box-shadow: 0 0 20px rgba(255, 204, 0, 0.15);
   }
   .our-team-title {
-    font-size: clamp(28px, 3.8vw, 46px);
+    font-size: clamp(28px, 4vw, 48px);
     font-weight: 900;
     line-height: 1.25;
     margin-bottom: 16px;
-    color: #1a1a1a;
+    color: #ffffff;
   }
   .our-team-title span {
-    background: linear-gradient(90deg, #ec5c0a, #007b3e);
+    background: linear-gradient(90deg, #ffcc00, #00ff75, #ec5c0a);
+    background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    animation: color-shift 4s linear infinite;
   }
   .our-team-subtitle {
     font-size: 1.05rem;
-    color: #555555;
+    color: #94a3b8;
     line-height: 1.75;
   }
 
-  /* 4-Card Equal Height Team Grid */
+  /* VIP 4-Card Equal Height Executive Grid */
   .team-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -1453,13 +1457,13 @@
   }
 
   .team-card {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
+    background: rgba(15, 23, 42, 0.88);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border-radius: 28px;
     overflow: hidden;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.04);
-    border: 1px solid rgba(236, 92, 10, 0.18);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    border: 1.5px solid rgba(255, 204, 0, 0.25);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
     display: flex;
@@ -1472,25 +1476,25 @@
   .team-card::before {
     content: '';
     position: absolute;
-    top: 0; left: 0; right: 0; height: 5px;
-    background: linear-gradient(90deg, #ec5c0a, #ffcc00, #007b3e);
+    top: 0; left: 0; right: 0; height: 4px;
+    background: linear-gradient(90deg, #ffcc00, #00ff75, #ec5c0a);
   }
   .team-card:hover {
-    transform: translateY(-12px);
-    box-shadow: 0 25px 60px rgba(236, 92, 10, 0.15), 0 0 25px rgba(0, 123, 62, 0.1);
-    border-color: rgba(0, 123, 62, 0.4);
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 25px 60px rgba(0, 255, 117, 0.2), 0 0 35px rgba(255, 204, 0, 0.15);
+    border-color: #00ff75;
   }
 
   .team-img-wrapper {
     position: relative;
-    width: 120px;
-    height: 120px;
-    margin: 0 auto 16px auto;
+    width: 125px;
+    height: 125px;
+    margin: 0 auto 18px auto;
     border-radius: 50%;
-    overflow: hidden !important;
-    background: linear-gradient(135deg, #fceade, #e8f5e9);
-    border: 3.5px solid #007b3e;
-    box-shadow: 0 8px 20px rgba(0, 123, 62, 0.18);
+    overflow: visible !important;
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    border: 3.5px solid #00ff75;
+    box-shadow: 0 0 20px rgba(0, 255, 117, 0.4);
     flex-shrink: 0;
   }
   .team-img-wrapper img {
@@ -1505,21 +1509,31 @@
   .team-card:hover .team-img-wrapper img {
     transform: scale(1.08);
   }
+  .team-status-indicator {
+    position: absolute;
+    bottom: 4px;
+    right: 4px;
+    width: 16px;
+    height: 16px;
+    background: #00ff75;
+    border: 3px solid #0f172a;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #00ff75;
+  }
 
   .team-role-tag {
     display: inline-block;
-    background: linear-gradient(135deg, rgba(236, 92, 10, 0.1), rgba(0, 123, 62, 0.1));
-    border: 1px solid rgba(236, 92, 10, 0.25);
-    padding: 6px 14px;
+    padding: 6px 16px;
     border-radius: 50px;
     font-size: 0.78rem;
-    font-weight: 800;
-    color: #ec5c0a;
-    margin-bottom: 12px;
+    font-weight: 900;
+    margin-bottom: 14px;
     white-space: nowrap;
     width: fit-content;
     margin-left: auto;
     margin-right: auto;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
   }
 
   .team-info {
@@ -1530,14 +1544,15 @@
     justify-content: space-between;
   }
   .team-name {
-    font-size: 1.25rem;
-    font-weight: 800;
-    color: #1a1a1a;
+    font-size: 1.3rem;
+    font-weight: 900;
+    color: #ffffff;
     margin-bottom: 8px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
   }
   .team-bio {
     font-size: 0.9rem;
-    color: #555555;
+    color: #cbd5e1;
     line-height: 1.65;
     margin-bottom: 20px;
     flex-grow: 1;
@@ -1547,29 +1562,30 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 12px;
     margin-top: auto;
   }
   .team-social-btn {
-    width: 36px;
-    height: 36px;
+    width: 38px;
+    height: 38px;
     border-radius: 50%;
-    background: #ffffff;
-    border: 1px solid rgba(236, 92, 10, 0.2);
+    background: rgba(30, 41, 59, 0.9);
+    border: 1px solid rgba(255, 204, 0, 0.3);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.9rem;
-    color: #444;
+    font-size: 0.95rem;
+    color: #ffcc00;
     text-decoration: none;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
   }
   .team-social-btn:hover {
-    background: linear-gradient(135deg, #ec5c0a, #007b3e);
-    color: #ffffff !important;
+    background: linear-gradient(135deg, #ffcc00, #00ff75);
+    color: #090e1a !important;
     transform: translateY(-3px);
-    box-shadow: 0 8px 18px rgba(236, 92, 10, 0.3);
+    box-shadow: 0 0 20px rgba(0, 255, 117, 0.5);
+    border-color: transparent;
   }
 
   @media screen and (max-width: 1024px) {
@@ -2021,25 +2037,25 @@
     </div>
   </section>
 
-  <!-- Section 7: Leadership & Visionaries Showcase -->
+  <!-- Section 7: VIP Cyber Dark Executive Leadership Showcase -->
   <section class="our-team-section">
     <div class="our-team-container">
       
       <!-- Section Header -->
       <div class="our-team-header reveal-up active">
         <div class="our-team-badge">
-          <span class="pulse-dot"></span>
-          <span>🚀 LEADERSHIP &amp; VISIONARIES</span>
+          <span class="pulse-dot" style="background:#ffcc00;"></span>
+          <span>🚀 EXECUTIVE LEADERSHIP BOARD</span>
         </div>
         <h2 class="our-team-title">
           Pioneers Driving India's <span>Green Energy Revolution</span>
         </h2>
         <p class="our-team-subtitle">
-          The passionate visionaries, R&amp;D engineers, and enterprise leaders behind Vidhyut Saathi's breakthrough 20,000 Negative Ion Nanotechnology.
+          The visionary leaders, R&amp;D engineers, and franchise strategists behind Vidhyut Saathi's Pan-India expansion.
         </p>
       </div>
 
-      <!-- 4-Card Leadership Grid (Equal Height Glassmorphic Grid) -->
+      <!-- 4-Card VIP Cyber Dark Leadership Grid -->
       <div class="team-grid">
         
         {%- assign team_blocks = section.blocks | where: 'type', 'team_member' -%}
@@ -2050,11 +2066,12 @@
                 {%- if block.settings.photo != blank -%}
                   {{ block.settings.photo | image_url: width: 600 | image_tag: loading: 'lazy', alt: block.settings.name }}
                 {%- else -%}
-                  <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #fff3eb, #e8f5e9); font-size: 3.5rem;">👤</div>
+                  <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #1e293b, #0f172a); font-size: 3.5rem;">👤</div>
                 {%- endif -%}
+                <span class="team-status-indicator" title="Active Executive"></span>
               </div>
               <div class="team-info">
-                <div class="team-role-tag">{{ block.settings.role | default: "Leadership Team" }}</div>
+                <div class="team-role-tag" style="background: linear-gradient(90deg, #ffcc00, #ec5c0a); color: #090e1a;">{{ block.settings.role | default: "Leadership Team" }}</div>
                 <h3 class="team-name">{{ block.settings.name | default: "Team Member" }}</h3>
                 <p class="team-bio">{{ block.settings.bio | default: "Dedicated to driving energy-saving innovation and sustainable growth across India." }}</p>
                 <div class="team-socials">
@@ -2071,7 +2088,7 @@
           {%- endfor -%}
         {%- else -%}
           
-          <!-- Default Leadership Cards (Editable in Theme Settings) -->
+          <!-- Default VIP Executive Cards -->
 
           <!-- Card 1: Founder & CEO -->
           <div class="team-card reveal-up active">
@@ -2081,11 +2098,12 @@
               {%- elsif section.settings.ceo_image != blank -%}
                 {{ section.settings.ceo_image | image_url: width: 600 | image_tag: loading: 'lazy', alt: 'Jyoti Bajaj' }}
               {%- else -%}
-                <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #fff3eb, #e8f5e9); font-size: 3.5rem;">👤</div>
+                <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #1e293b, #0f172a); font-size: 3.5rem;">👤</div>
               {%- endif -%}
+              <span class="team-status-indicator" title="Active Executive"></span>
             </div>
             <div class="team-info">
-              <div class="team-role-tag">Founder &amp; CEO</div>
+              <div class="team-role-tag" style="background: linear-gradient(90deg, #ffcc00, #ec5c0a); color: #090e1a;">Founder &amp; CEO</div>
               <h3 class="team-name">Jyoti Bajaj</h3>
               <p class="team-bio">Visionary founder spearheading Vidhyut Saathi's mission to save electricity &amp; protect the ozone layer nationwide.</p>
               <div class="team-socials">
@@ -2104,11 +2122,12 @@
               {%- elsif section.settings.who_we_are_image != blank -%}
                 {{ section.settings.who_we_are_image | image_url: width: 600 | image_tag: loading: 'lazy', alt: 'Tech Lead' }}
               {%- else -%}
-                <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #e8f5e9, #e0f7fa); font-size: 3.5rem;">⚡</div>
+                <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #1e293b, #0f172a); font-size: 3.5rem;">⚡</div>
               {%- endif -%}
+              <span class="team-status-indicator" title="Active Executive"></span>
             </div>
             <div class="team-info">
-              <div class="team-role-tag">Chief Tech Officer</div>
+              <div class="team-role-tag" style="background: linear-gradient(90deg, #00ff75, #007b3e); color: #090e1a;">Chief Tech Officer</div>
               <h3 class="team-name">Innovation &amp; R&amp;D Team</h3>
               <p class="team-bio">Engineers optimizing 10N:20,000 negative ion US-German nano-technology for maximum bill reduction.</p>
               <div class="team-socials">
@@ -2127,11 +2146,12 @@
               {%- elsif section.settings.company_info_image != blank -%}
                 {{ section.settings.company_info_image | image_url: width: 600 | image_tag: loading: 'lazy', alt: 'Operations Head' }}
               {%- else -%}
-                <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #fff3eb, #fefae0); font-size: 3.5rem;">💼</div>
+                <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #1e293b, #0f172a); font-size: 3.5rem;">💼</div>
               {%- endif -%}
+              <span class="team-status-indicator" title="Active Executive"></span>
             </div>
             <div class="team-info">
-              <div class="team-role-tag">Head of Operations</div>
+              <div class="team-role-tag" style="background: linear-gradient(90deg, #00d2ff, #0072ff); color: #ffffff;">Head of Operations</div>
               <h3 class="team-name">Franchise &amp; B2B Team</h3>
               <p class="team-bio">Managing Area, Exclusive &amp; District Channel Partnerships across 20+ states in Pan India.</p>
               <div class="team-socials">
@@ -2150,11 +2170,12 @@
               {%- elsif section.settings.ceo_image != blank -%}
                 {{ section.settings.ceo_image | image_url: width: 600 | image_tag: loading: 'lazy', alt: 'Customer Success' }}
               {%- else -%}
-                <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #f0f4f8, #e8f5e9); font-size: 3.5rem;">🤝</div>
+                <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #1e293b, #0f172a); font-size: 3.5rem;">🤝</div>
               {%- endif -%}
+              <span class="team-status-indicator" title="Active Executive"></span>
             </div>
             <div class="team-info">
-              <div class="team-role-tag">Customer Support Lead</div>
+              <div class="team-role-tag" style="background: linear-gradient(90deg, #e0c3fc, #8ec5fc); color: #090e1a;">Customer Support Lead</div>
               <h3 class="team-name">Client Success Team</h3>
               <p class="team-bio">24/7 dedicated support ensuring 100% satisfaction &amp; seamless installation for over 20 Lakh+ users.</p>
               <div class="team-socials">
