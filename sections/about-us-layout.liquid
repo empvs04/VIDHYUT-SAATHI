@@ -925,36 +925,94 @@
   .wwa-ceo {
     display: flex;
     align-items: center;
-    gap: 12px;
-    background: linear-gradient(135deg, rgba(236,92,10,0.06), rgba(0,123,62,0.06));
-    padding: 12px 16px;
-    border-radius: 20px;
-    border: 1px solid rgba(0,123,62,0.2);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.03);
+    gap: 16px;
+    background: linear-gradient(135deg, rgba(9, 14, 26, 0.95) 0%, rgba(0, 51, 17, 0.95) 100%);
+    padding: 16px 22px;
+    border-radius: 26px;
+    border: 1.5px solid rgba(255, 204, 0, 0.6);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2), 0 0 25px rgba(255, 204, 0, 0.2);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .wwa-ceo::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, #ffcc00, #00ff75, #ec5c0a);
+  }
+  .wwa-ceo:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(0, 255, 117, 0.3);
+    border-color: #00ff75;
   }
 
-  .wwa-ceo img {
-    width: 52px;
-    height: 52px;
+  .wwa-ceo-avatar-stage {
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .wwa-ceo img, .wwa-ceo-placeholder {
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid #007b3e;
-    box-shadow: 0 0 12px rgba(0,123,62,0.3);
-    flex-shrink: 0;
+    border: 3px solid #ffcc00;
+    box-shadow: 0 0 16px rgba(255, 204, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .wwa-ceo-badge-tag {
+    display: inline-block;
+    background: linear-gradient(90deg, #ffcc00, #ec5c0a);
+    color: #090e1a;
+    font-size: 0.7rem;
+    font-weight: 900;
+    padding: 3px 10px;
+    border-radius: 30px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 3px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
   }
 
   .wwa-ceo-info h4 {
     margin: 0 0 2px 0;
-    font-size: 1.1rem;
-    font-weight: 800;
-    color: #1a1a1a;
+    font-size: 1.15rem;
+    font-weight: 900;
+    color: #ffffff;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
   }
 
   .wwa-ceo-info span {
     font-size: 0.82rem;
-    color: #ec5c0a;
-    font-weight: 700;
+    color: #00ff75;
+    font-weight: 800;
     display: block;
+  }
+
+  .wwa-ceo-chat-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 204, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    color: #ffcc00;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin-left: auto;
+  }
+  .wwa-ceo-chat-btn:hover {
+    background: linear-gradient(135deg, #ffcc00, #00ff75);
+    color: #090e1a;
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(0, 255, 117, 0.5);
   }
 
   .wwa-features {
@@ -1858,15 +1916,19 @@
         
         <div class="wwa-bottom-row">
           <div class="wwa-ceo">
-            {%- if section.settings.ceo_image != blank -%}
-              {{ section.settings.ceo_image | image_url: width: 150 | image_tag: loading: 'lazy', alt: 'Jyoti Bajaj' }}
-            {%- else -%}
-              <div style="width: 54px; height: 54px; border-radius: 50%; background: linear-gradient(135deg, #ec5c0a, #007b3e); color: white; display:flex; align-items:center; justify-content:center; font-size: 1.4rem;">👤</div>
-            {%- endif -%}
-            <div class="wwa-ceo-info">
-              <h4>Jyoti Bajaj</h4>
-              <span>Founder &amp; CEO, Vidhyut Saathi</span>
+            <div class="wwa-ceo-avatar-stage">
+              {%- if section.settings.ceo_image != blank -%}
+                {{ section.settings.ceo_image | image_url: width: 150 | image_tag: loading: 'lazy', alt: 'Jyoti Bajaj' }}
+              {%- else -%}
+                <div class="wwa-ceo-placeholder" style="background: linear-gradient(135deg, #1e293b, #0f172a); color: #ffcc00; font-size: 1.5rem;">👑</div>
+              {%- endif -%}
             </div>
+            <div class="wwa-ceo-info">
+              <span class="wwa-ceo-badge-tag">🏆 FOUNDER &amp; CEO</span>
+              <h4>Jyoti Bajaj</h4>
+              <span>Enterprise Visionary Leader</span>
+            </div>
+            <a href="mailto:emp.vs04@gmail.com" class="wwa-ceo-chat-btn" title="Contact Founder &amp; CEO">✉</a>
           </div>
           
           <ul class="wwa-features">
