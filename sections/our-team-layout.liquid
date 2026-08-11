@@ -178,10 +178,10 @@
       padding: 8px 20px !important;
     }
   }
-  /* --- Section 2: Vidhyut Saathi Team Overview --- */
+  /* --- Section 2: Lucrative Styling Enhancements --- */
   .team-sec2-section {
-    padding: clamp(60px, 8vw, 100px) 20px;
-    background: #ffffff;
+    padding: clamp(70px, 9vw, 110px) 20px;
+    background: linear-gradient(180deg, #ffffff 0%, #fff9f2 100%);
     position: relative;
   }
   .team-sec2-container {
@@ -225,13 +225,24 @@
 
   /* Heading & Text */
   .sec2-team-title {
-    font-size: clamp(28px, 3.6vw, 44px);
+    font-size: clamp(30px, 3.8vw, 46px);
     font-weight: 900;
     color: #0b1120;
     line-height: 1.25;
     margin-bottom: 22px;
     letter-spacing: -0.5px;
   }
+  .title-gradient-span {
+    background: linear-gradient(90deg, #ec5c0a 0%, #ff9a00 50%, #007b3e 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: block;
+    font-size: clamp(20px, 2.5vw, 28px);
+    margin-top: 4px;
+    font-weight: 800;
+  }
+
   .sec2-team-text {
     font-size: 1.02rem;
     line-height: 1.8;
@@ -240,7 +251,63 @@
     text-align: justify;
   }
 
-  /* 3D Image Frame */
+  /* Stat Pills Bar */
+  .team-stat-pills {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin: 26px 0 20px 0;
+  }
+  .team-stat-pill {
+    background: #ffffff;
+    border: 1px solid rgba(236, 92, 10, 0.15);
+    border-radius: 16px;
+    padding: 14px 12px;
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  }
+  .team-stat-pill:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(236, 92, 10, 0.15);
+    border-color: #ec5c0a;
+  }
+  .stat-num {
+    display: block;
+    font-size: 1.3rem;
+    font-weight: 900;
+    color: #ec5c0a;
+    line-height: 1.2;
+  }
+  .stat-label {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #475569;
+    margin-top: 2px;
+  }
+
+  /* Highlights */
+  .team-highlights {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 20px;
+  }
+  .team-highlight-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0, 123, 62, 0.08);
+    border: 1px solid rgba(0, 123, 62, 0.2);
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-size: 0.88rem;
+    font-weight: 800;
+    color: #007b3e;
+  }
+
+  /* 3D Image Frame & Floating Badge */
   .welcome-meter {
     position: relative;
     border-radius: 24px;
@@ -262,6 +329,33 @@
     object-fit: cover;
     display: block;
     border-radius: 20px;
+  }
+  .team-floating-badge {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+    background: rgba(15, 23, 42, 0.88);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 204, 0, 0.5);
+    color: #ffffff;
+    padding: 8px 18px;
+    border-radius: 30px;
+    font-size: 0.84rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+  }
+  .pulse-dot-green {
+    width: 8px;
+    height: 8px;
+    background-color: #00ff75;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #00ff75;
+    animation: blink-dot 1.5s infinite;
   }
 
   /* --- Section 3: Meet Our Awesome Team Grid --- */
@@ -473,10 +567,13 @@
           <div class="who-we-contant heading-primary-sub">
             
             <div class="dream-dots text-left fadeInUp" data-wow-delay="0.2s">
-              <span class="gradient-text blue animate-charcter">{{ section.settings.sec2_badge | default: "⚡ VIDHYUT SAATHI TEAM" }}</span>
+              <span class="gradient-text blue animate-charcter">{{ section.settings.sec2_badge | default: "⚡ DEDICATED ENERGY INNOVATORS" }}</span>
             </div>
 
-            <h4 class="sec2-team-title fadeInUp" data-wow-delay="0.3s">{{ section.settings.sec2_title | default: "Vidhyut Saathi Team" }}</h4>
+            <h4 class="sec2-team-title fadeInUp" data-wow-delay="0.3s">
+              {{ section.settings.sec2_title | default: "Vidhyut Saathi Team" }}
+              <span class="title-gradient-span">Pioneering Energy Savings Across India</span>
+            </h4>
 
             <p class="sec2-team-text fadeInUp" data-wow-delay="0.4s">
               Our expert team of Vidhyut Saathi dedicatedly done its work to help you get an amazing power saving card. They are rigorously investing their time, combining it with experience to create an exposure for many people who wants to foster this awesome idea of saving energy, money and nature. Our team has completed various training programs to implement the card and to help people switch towards energy saving products.
@@ -486,12 +583,46 @@
               As India is playing a very important role worldwide in saving power and fuel. Similarly, Vidhyut Saathi is also a positive contribution by our team to the power saving agenda of our nation. We are providing a certified and safe product and trying to convey our efforts for your comfort.
             </p>
 
+            <!-- Lucrative Stat Pills -->
+            <div class="team-stat-pills fadeInUp" data-wow-delay="0.5s">
+              <div class="team-stat-pill">
+                <span class="stat-num">100+</span>
+                <span class="stat-label">Experts &amp; Engineers</span>
+              </div>
+              <div class="team-stat-pill">
+                <span class="stat-num">20,000</span>
+                <span class="stat-label">Negative Ion Tech</span>
+              </div>
+              <div class="team-stat-pill">
+                <span class="stat-num">20+</span>
+                <span class="stat-label">States Pan-India</span>
+              </div>
+            </div>
+
+            <!-- Value Highlights -->
+            <div class="team-highlights fadeInUp" data-wow-delay="0.6s">
+              <div class="team-highlight-item">
+                <span class="highlight-icon">📜</span>
+                <span>ISO Certified &amp; Govt. Compliant</span>
+              </div>
+              <div class="team-highlight-item">
+                <span class="highlight-icon">💡</span>
+                <span>100% Legal &amp; Safe Power Savings</span>
+              </div>
+            </div>
+
           </div>
         </div>
 
         <!-- Image Side -->
         <div class="team-sec2-col-img heading-primary-main">
           <div class="welcome-meter heading-primary-main">
+            <!-- Floating Badge -->
+            <div class="team-floating-badge">
+              <span class="pulse-dot-green"></span>
+              <span>⭐ Certified Leadership Team</span>
+            </div>
+
             {%- if section.settings.sec2_image != blank -%}
               <img src="{{ section.settings.sec2_image | image_url: width: 1200 }}" class="avatar team-avatar-img" decoding="async" loading="lazy" width="1000" height="1000" alt="Vidhyut Saathi Team">
             {%- elsif section.settings.hero_image != blank -%}
