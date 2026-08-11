@@ -361,17 +361,19 @@
   /* --- Section 3: Untitled UI Minimalist Luxury Design (Dribbble Inspired) --- */
   @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600;1,700&display=swap');
 
-  /* Animated Color-Changing Background */
+  /* Animated Brand Orange Color-Changing Background (1s Interval Shift) */
   .team-sec3-section {
     padding: clamp(45px, 5vw, 65px) 20px;
-    background: linear-gradient(-45deg, #fffcf5, #f6f3eb, #fff8f2, #f3f8f4, #fff5ec);
+    background: linear-gradient(-45deg, #ffedd5, #fff7ed, #fdba74, #fff8f2, #fed7aa, #ffedd5);
     background-size: 400% 400%;
-    animation: gradientShiftBG 14s ease infinite;
+    animation: orangeGradientShift 3s ease-in-out infinite;
     position: relative;
   }
-  @keyframes gradientShiftBG {
+  @keyframes orangeGradientShift {
     0% { background-position: 0% 50%; }
+    25% { background-position: 50% 100%; }
     50% { background-position: 100% 50%; }
+    75% { background-position: 50% 0%; }
     100% { background-position: 0% 50%; }
   }
 
