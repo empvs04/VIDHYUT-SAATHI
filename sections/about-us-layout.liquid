@@ -77,7 +77,7 @@
     animation: scroll-right 25s linear infinite;
   }
   
-  /* --- Upgraded Section 2: Lucrative & 3D Card Showcase --- */
+  /* --- Upgraded Section 2: Equal Height & Responsive 3D Card Showcase --- */
   .company-info-section {
     padding: 70px 20px;
     background: radial-gradient(circle at 80% 20%, rgba(236, 92, 10, 0.07) 0%, rgba(255, 255, 255, 1) 45%, rgba(0, 123, 62, 0.07) 100%);
@@ -85,13 +85,34 @@
     overflow: hidden;
   }
   .company-info-container {
-    max-width: 1240px;
+    max-width: 1280px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 60px;
-    align-items: center;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: stretch; /* Both containers match exact height */
   }
+  
+  /* Left Text Container - Styled Card matching Right Side */
+  .company-info-text {
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(236, 92, 10, 0.18);
+    border-radius: 28px;
+    padding: 42px 38px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.04);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    transition: all 0.4s ease;
+  }
+  .company-info-text:hover {
+    box-shadow: 0 25px 60px rgba(236, 92, 10, 0.08);
+    border-color: rgba(236, 92, 10, 0.3);
+  }
+
   .company-badge {
     display: inline-flex;
     align-items: center;
@@ -105,6 +126,7 @@
     color: #ec5c0a;
     letter-spacing: 0.5px;
     margin-bottom: 20px;
+    width: fit-content;
     box-shadow: 0 4px 15px rgba(236, 92, 10, 0.1);
   }
   .company-badge .pulse-dot {
@@ -121,10 +143,10 @@
     100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(236, 92, 10, 0); }
   }
   .company-info-text .gradient-heading {
-    font-size: clamp(32px, 3.8vw, 46px);
+    font-size: clamp(28px, 3vw, 40px);
     font-weight: 900;
     line-height: 1.25;
-    margin-bottom: 22px;
+    margin-bottom: 20px;
     background: linear-gradient(90deg, #ec5c0a, #007b3e, #ec5c0a);
     background-size: 200% auto;
     -webkit-background-clip: text;
@@ -133,37 +155,37 @@
     animation: color-shift 4s linear infinite;
   }
   .company-info-text p {
-    font-size: 1.08rem;
-    line-height: 1.8;
+    font-size: 1.02rem;
+    line-height: 1.75;
     color: #444;
     margin-bottom: 16px;
   }
   .company-feature-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-    margin: 25px 0 32px 0;
+    gap: 14px;
+    margin: 22px 0 28px 0;
   }
   .company-feature-item {
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 14px 16px;
-    background: rgba(255, 255, 255, 0.95);
+    padding: 12px 14px;
+    background: #ffffff;
     border: 1px solid rgba(236, 92, 10, 0.15);
     border-radius: 16px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.03);
     transition: all 0.3s ease;
   }
   .company-feature-item:hover {
     transform: translateY(-3px);
     border-color: #ec5c0a;
-    box-shadow: 0 12px 25px rgba(236, 92, 10, 0.15);
+    box-shadow: 0 10px 22px rgba(236, 92, 10, 0.15);
   }
   .company-feature-icon {
-    font-size: 1.4rem;
-    width: 42px;
-    height: 42px;
+    font-size: 1.3rem;
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -172,32 +194,33 @@
     flex-shrink: 0;
   }
   .company-feature-text h4 {
-    font-size: 0.92rem;
+    font-size: 0.88rem;
     font-weight: 800;
     color: #1a1a1a;
     margin: 0 0 2px 0;
   }
   .company-feature-text p {
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     color: #666;
     margin: 0 !important;
     line-height: 1.3 !important;
   }
   .company-cta-group {
     display: flex;
-    gap: 16px;
+    gap: 14px;
     flex-wrap: wrap;
     align-items: center;
+    margin-top: auto;
   }
   .company-btn-primary {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
-    padding: 15px 32px;
+    padding: 14px 30px;
     background: linear-gradient(135deg, #ec5c0a, #f1721b);
     color: #ffffff !important;
-    font-size: 0.98rem;
+    font-size: 0.95rem;
     font-weight: 800;
     text-decoration: none;
     border-radius: 50px;
@@ -214,11 +237,11 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
-    padding: 15px 28px;
+    padding: 14px 26px;
     background: #ffffff;
     color: #007b3e !important;
     border: 2px solid #007b3e;
-    font-size: 0.98rem;
+    font-size: 0.95rem;
     font-weight: 800;
     text-decoration: none;
     border-radius: 50px;
@@ -231,48 +254,81 @@
     transform: translateY(-3px);
     box-shadow: 0 12px 25px rgba(0, 123, 62, 0.25);
   }
+
+  /* Right 3D Showcase Container - Equal Height Matching Left */
   .company-info-image {
     perspective: 1200px;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(10, 14, 26, 0.96), rgba(26, 32, 48, 0.96));
+    border: 1px solid rgba(255, 204, 0, 0.3);
+    border-radius: 28px;
+    padding: 40px 30px;
+    box-shadow: 0 20px 50px rgba(10, 14, 26, 0.3);
+    overflow: hidden;
   }
+  
+  /* 3D Ambient Background Glow */
+  .company-info-image::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 320px; height: 320px;
+    background: radial-gradient(circle, rgba(236, 92, 10, 0.35) 0%, rgba(0, 200, 255, 0.2) 50%, rgba(0,0,0,0) 75%);
+    filter: blur(40px);
+    pointer-events: none;
+  }
+
   .card-3d-stage {
     position: relative;
     width: 100%;
-    max-width: 520px;
-    border-radius: 28px;
+    max-width: 480px;
+    margin: auto;
+    border-radius: 24px;
     transform-style: preserve-3d;
     transition: transform 0.15s ease-out;
     will-change: transform;
     cursor: pointer;
+    animation: cardFloat3D 6s ease-in-out infinite alternate;
   }
+
+  @keyframes cardFloat3D {
+    0% { transform: perspective(1000px) translateY(0px) rotateX(2deg) rotateY(-2deg); }
+    100% { transform: perspective(1000px) translateY(-12px) rotateX(-2deg) rotateY(4deg); }
+  }
+
   .card-3d-wrapper {
     position: relative;
-    border-radius: 24px;
+    border-radius: 22px;
     overflow: hidden;
     background: #0a0e1a;
-    box-shadow: 0 25px 60px rgba(236, 92, 10, 0.25), 0 0 40px rgba(0, 123, 62, 0.2), 0 0 0 2px rgba(255, 204, 0, 0.3);
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6), 0 0 50px rgba(236, 92, 10, 0.3), 0 0 0 2px rgba(255, 204, 0, 0.4);
     transform-style: preserve-3d;
     transition: box-shadow 0.4s ease;
   }
+  .card-3d-stage:hover {
+    animation-play-state: paused;
+  }
   .card-3d-stage:hover .card-3d-wrapper {
-    box-shadow: 0 35px 80px rgba(236, 92, 10, 0.45), 0 0 60px rgba(0, 200, 255, 0.35), 0 0 0 3px rgba(255, 204, 0, 0.7);
+    box-shadow: 0 40px 90px rgba(0, 0, 0, 0.8), 0 0 70px rgba(0, 200, 255, 0.4), 0 0 0 3px rgba(255, 204, 0, 0.8);
   }
   .card-3d-image {
     width: 100%;
     height: auto;
     display: block;
-    border-radius: 24px;
+    border-radius: 22px;
     transform: translateZ(10px);
     transition: transform 0.4s ease;
   }
   .card-3d-glare {
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    border-radius: 24px;
-    background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0) 70%);
+    border-radius: 22px;
+    background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 70%);
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s ease;
@@ -281,42 +337,51 @@
   }
   .card-float-badge {
     position: absolute;
-    padding: 9px 16px;
-    background: rgba(10, 14, 26, 0.9);
+    padding: 8px 15px;
+    background: rgba(10, 14, 26, 0.92);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 204, 0, 0.4);
+    border: 1px solid rgba(255, 204, 0, 0.5);
     border-radius: 50px;
     color: #ffffff;
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     font-weight: 800;
     letter-spacing: 0.5px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
     z-index: 10;
     pointer-events: none;
     transform: translateZ(50px);
     display: flex;
     align-items: center;
     gap: 8px;
+    white-space: nowrap;
   }
   .card-float-badge-top {
-    top: -15px;
-    left: -15px;
-    background: linear-gradient(135deg, rgba(236, 92, 10, 0.95), rgba(10, 14, 26, 0.9));
+    top: -14px;
+    left: -10px;
+    background: linear-gradient(135deg, rgba(236, 92, 10, 0.95), rgba(10, 14, 26, 0.95));
   }
   .card-float-badge-bottom {
-    bottom: -15px;
-    right: -15px;
-    background: linear-gradient(135deg, rgba(0, 123, 62, 0.95), rgba(10, 14, 26, 0.9));
+    bottom: -14px;
+    right: -10px;
+    background: linear-gradient(135deg, rgba(0, 123, 62, 0.95), rgba(10, 14, 26, 0.95));
   }
   .card-float-badge span.highlight {
     color: #ffcc00;
   }
+
+  /* Responsive Alignment for Mobile & Tablets */
   @media screen and (max-width: 900px) {
-    .company-info-container { grid-template-columns: 1fr; gap: 40px; }
+    .company-info-section { padding: 40px 16px; }
+    .company-info-container {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+    .company-info-text { padding: 28px 20px; }
+    .company-info-image { padding: 35px 20px; min-height: 340px; }
     .company-feature-grid { grid-template-columns: 1fr; }
-    .card-float-badge-top { top: -10px; left: 0; }
-    .card-float-badge-bottom { bottom: -10px; right: 0; }
+    .card-float-badge-top { top: -10px; left: 0; font-size: 0.7rem; padding: 6px 12px; }
+    .card-float-badge-bottom { bottom: -10px; right: 0; font-size: 0.7rem; padding: 6px 12px; }
   }
   
   /* --- Mission Vision Section --- */
