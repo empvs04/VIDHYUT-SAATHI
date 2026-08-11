@@ -502,268 +502,279 @@
     <div class="team-sec3-container">
       
       <div class="team-sec3-header">
-        <small class="fadeInUp" data-wow-delay="0.1s">Persons Who Guide You</small>
-        <h2 class="fadeInUp" data-wow-delay="0.2s">Meet Our Awesome Team</h2>
+        <small class="fadeInUp" data-wow-delay="0.1s">{{ section.settings.sec3_subheading | default: "Persons Who Guide You" }}</small>
+        <h2 class="fadeInUp" data-wow-delay="0.2s">{{ section.settings.sec3_heading | default: "Meet Our Awesome Team" }}</h2>
       </div>
 
       <div class="team-cards-grid">
-        
-        <!-- Member 1: Jyoti Bajaj -->
-        <div class="single-card single-card-rotate">
-          <div class="single-card-image">
-            {%- assign img_jyoti = 'vidhyut-saathi-team-bg.jpg' | asset_url -%}
-            <img src="{{ img_jyoti }}" alt="Jyoti Bajaj" decoding="async" loading="lazy" width="500" height="500">
-            <ul class="single-card-social social-list">
-              <li><a href="https://www.facebook.com/" target="_blank" rel="noopener"><i class="fa fa-facebook-square">🌐</i></a></li>
-              <li><a href="https://www.instagram.com/" target="_blank" rel="noopener"><i class="fa fa-instagram">📸</i></a></li>
-              <li><a href="https://twitter.com/" target="_blank" rel="noopener"><i class="fa fa-twitter">🐦</i></a></li>
-              <li><a href="https://linkedin.com/" target="_blank" rel="noopener"><i class="fa fa-linkedin">💼</i></a></li>
-            </ul>
+        {%- if section.blocks.size > 0 -%}
+          {%- for block in section.blocks -%}
+            <div class="single-card single-card-rotate" {{ block.shopify_attributes }}>
+              <div class="single-card-image">
+                {%- if block.settings.image != blank -%}
+                  {{ block.settings.image | image_url: width: 500, height: 500, crop: 'center' | image_tag: loading: 'lazy', alt: block.settings.name, width: 500, height: 500 }}
+                {%- else -%}
+                  {%- assign default_img = 'vidhyut-saathi-team-bg.jpg' | asset_url -%}
+                  <img src="{{ default_img }}" alt="{{ block.settings.name | default: 'Team Member' }}" decoding="async" loading="lazy" width="500" height="500">
+                {%- endif -%}
+                
+                <ul class="single-card-social social-list">
+                  <li><a href="{{ block.settings.facebook_url | default: 'https://www.facebook.com/' }}" target="_blank" rel="noopener"><i class="fa fa-facebook-square">🌐</i></a></li>
+                  <li><a href="{{ block.settings.instagram_url | default: 'https://www.instagram.com/' }}" target="_blank" rel="noopener"><i class="fa fa-instagram">📸</i></a></li>
+                  <li><a href="{{ block.settings.twitter_url | default: 'https://twitter.com/' }}" target="_blank" rel="noopener"><i class="fa fa-twitter">🐦</i></a></li>
+                  <li><a href="{{ block.settings.linkedin_url | default: 'https://linkedin.com/' }}" target="_blank" rel="noopener"><i class="fa fa-linkedin">💼</i></a></li>
+                </ul>
+              </div>
+              <div class="single-card-content">
+                <h3>{{ block.settings.name | default: 'Team Member' }}</h3>
+                <p>{{ block.settings.role | default: 'Designation' }}</p>
+              </div>
+            </div>
+          {%- endfor -%}
+        {%- else -%}
+          <!-- Default 15 Team Members Fallback (Editable via Shopify Customize Blocks) -->
+          {%- assign default_img = 'vidhyut-saathi-team-bg.jpg' | asset_url -%}
+          
+          <div class="single-card single-card-rotate">
+            <div class="single-card-image">
+              <img src="{{ default_img }}" alt="Jyoti Bajaj" decoding="async" loading="lazy" width="500" height="500">
+              <ul class="single-card-social social-list">
+                <li><a href="https://www.facebook.com/" target="_blank" rel="noopener"><i class="fa fa-facebook-square">🌐</i></a></li>
+                <li><a href="https://www.instagram.com/" target="_blank" rel="noopener"><i class="fa fa-instagram">📸</i></a></li>
+                <li><a href="https://twitter.com/" target="_blank" rel="noopener"><i class="fa fa-twitter">🐦</i></a></li>
+                <li><a href="https://linkedin.com/" target="_blank" rel="noopener"><i class="fa fa-linkedin">💼</i></a></li>
+              </ul>
+            </div>
+            <div class="single-card-content">
+              <h3>Jyoti Bajaj</h3>
+              <p>Sales &amp; Marketing Head</p>
+            </div>
           </div>
-          <div class="single-card-content">
-            <h3>Jyoti Bajaj</h3>
-            <p>Sales &amp; Marketing Head</p>
-          </div>
-        </div>
 
-        <!-- Member 2: Shabnam Saxena -->
-        <div class="single-card single-card-rotate">
-          <div class="single-card-image">
-            <img src="{{ img_jyoti }}" alt="Shabnam Saxena" decoding="async" loading="lazy" width="500" height="500">
-            <ul class="single-card-social social-list">
-              <li><a href="https://www.facebook.com/" target="_blank" rel="noopener"><i class="fa fa-facebook-square">🌐</i></a></li>
-              <li><a href="https://www.instagram.com/" target="_blank" rel="noopener"><i class="fa fa-instagram">📸</i></a></li>
-              <li><a href="https://twitter.com/" target="_blank" rel="noopener"><i class="fa fa-twitter">🐦</i></a></li>
-              <li><a href="https://linkedin.com/" target="_blank" rel="noopener"><i class="fa fa-linkedin">💼</i></a></li>
-            </ul>
+          <div class="single-card single-card-rotate">
+            <div class="single-card-image">
+              <img src="{{ default_img }}" alt="Shabnam Saxena" decoding="async" loading="lazy" width="500" height="500">
+              <ul class="single-card-social social-list">
+                <li><a href="https://www.facebook.com/" target="_blank" rel="noopener"><i class="fa fa-facebook-square">🌐</i></a></li>
+                <li><a href="https://www.instagram.com/" target="_blank" rel="noopener"><i class="fa fa-instagram">📸</i></a></li>
+                <li><a href="https://twitter.com/" target="_blank" rel="noopener"><i class="fa fa-twitter">🐦</i></a></li>
+                <li><a href="https://linkedin.com/" target="_blank" rel="noopener"><i class="fa fa-linkedin">💼</i></a></li>
+              </ul>
+            </div>
+            <div class="single-card-content">
+              <h3>Shabnam Saxena</h3>
+              <p>Senior Sales Manager</p>
+            </div>
           </div>
-          <div class="single-card-content">
-            <h3>Shabnam Saxena</h3>
-            <p>Senior Sales Manager</p>
-          </div>
-        </div>
 
-        <!-- Member 3: Riya Juneja -->
-        <div class="single-card single-card-rotate">
-          <div class="single-card-image">
-            <img src="{{ img_jyoti }}" alt="Riya Juneja" decoding="async" loading="lazy" width="500" height="500">
-            <ul class="single-card-social social-list">
-              <li><a href="https://www.facebook.com/" target="_blank" rel="noopener"><i class="fa fa-facebook-square">🌐</i></a></li>
-              <li><a href="https://www.instagram.com/" target="_blank" rel="noopener"><i class="fa fa-instagram">📸</i></a></li>
-              <li><a href="https://twitter.com/" target="_blank" rel="noopener"><i class="fa fa-twitter">🐦</i></a></li>
-              <li><a href="https://linkedin.com/" target="_blank" rel="noopener"><i class="fa fa-linkedin">💼</i></a></li>
-            </ul>
+          <div class="single-card single-card-rotate">
+            <div class="single-card-image">
+              <img src="{{ default_img }}" alt="Riya Juneja" decoding="async" loading="lazy" width="500" height="500">
+              <ul class="single-card-social social-list">
+                <li><a href="https://www.facebook.com/" target="_blank" rel="noopener"><i class="fa fa-facebook-square">🌐</i></a></li>
+                <li><a href="https://www.instagram.com/" target="_blank" rel="noopener"><i class="fa fa-instagram">📸</i></a></li>
+                <li><a href="https://twitter.com/" target="_blank" rel="noopener"><i class="fa fa-twitter">🐦</i></a></li>
+                <li><a href="https://linkedin.com/" target="_blank" rel="noopener"><i class="fa fa-linkedin">💼</i></a></li>
+              </ul>
+            </div>
+            <div class="single-card-content">
+              <h3>Riya Juneja</h3>
+              <p>Training Manager</p>
+            </div>
           </div>
-          <div class="single-card-content">
-            <h3>Riya Juneja</h3>
-            <p>Training Manager</p>
-          </div>
-        </div>
 
-        <!-- Member 4: Vaishali Sharma -->
-        <div class="single-card single-card-rotate">
-          <div class="single-card-image">
-            <img src="{{ img_jyoti }}" alt="Vaishali Sharma" decoding="async" loading="lazy" width="500" height="500">
-            <ul class="single-card-social social-list">
-              <li><a href="https://www.facebook.com/" target="_blank" rel="noopener"><i class="fa fa-facebook-square">🌐</i></a></li>
-              <li><a href="https://www.instagram.com/" target="_blank" rel="noopener"><i class="fa fa-instagram">📸</i></a></li>
-              <li><a href="https://twitter.com/" target="_blank" rel="noopener"><i class="fa fa-twitter">🐦</i></a></li>
-              <li><a href="https://linkedin.com/" target="_blank" rel="noopener"><i class="fa fa-linkedin">💼</i></a></li>
-            </ul>
+          <div class="single-card single-card-rotate">
+            <div class="single-card-image">
+              <img src="{{ default_img }}" alt="Vaishali Sharma" decoding="async" loading="lazy" width="500" height="500">
+              <ul class="single-card-social social-list">
+                <li><a href="https://www.facebook.com/" target="_blank" rel="noopener"><i class="fa fa-facebook-square">🌐</i></a></li>
+                <li><a href="https://www.instagram.com/" target="_blank" rel="noopener"><i class="fa fa-instagram">📸</i></a></li>
+                <li><a href="https://twitter.com/" target="_blank" rel="noopener"><i class="fa fa-twitter">🐦</i></a></li>
+                <li><a href="https://linkedin.com/" target="_blank" rel="noopener"><i class="fa fa-linkedin">💼</i></a></li>
+              </ul>
+            </div>
+            <div class="single-card-content">
+              <h3>Vaishali Sharma</h3>
+              <p>Relationship Manager</p>
+            </div>
           </div>
-          <div class="single-card-content">
-            <h3>Vaishali Sharma</h3>
-            <p>Relationship Manager</p>
-          </div>
-        </div>
 
-        <!-- Member 5: Khushi Rajput -->
-        <div class="single-card single-card-rotate">
-          <div class="single-card-image">
-            <img src="{{ img_jyoti }}" alt="Khushi Rajput" decoding="async" loading="lazy" width="500" height="500">
-            <ul class="single-card-social social-list">
-              <li><a href="https://www.facebook.com/" target="_blank" rel="noopener"><i class="fa fa-facebook-square">🌐</i></a></li>
-              <li><a href="https://www.instagram.com/" target="_blank" rel="noopener"><i class="fa fa-instagram">📸</i></a></li>
-              <li><a href="https://twitter.com/" target="_blank" rel="noopener"><i class="fa fa-twitter">🐦</i></a></li>
-              <li><a href="https://linkedin.com/" target="_blank" rel="noopener"><i class="fa fa-linkedin">💼</i></a></li>
-            </ul>
+          <div class="single-card single-card-rotate">
+            <div class="single-card-image">
+              <img src="{{ default_img }}" alt="Khushi Rajput" decoding="async" loading="lazy" width="500" height="500">
+              <ul class="single-card-social social-list">
+                <li><a href="https://www.facebook.com/" target="_blank" rel="noopener"><i class="fa fa-facebook-square">🌐</i></a></li>
+                <li><a href="https://www.instagram.com/" target="_blank" rel="noopener"><i class="fa fa-instagram">📸</i></a></li>
+                <li><a href="https://twitter.com/" target="_blank" rel="noopener"><i class="fa fa-twitter">🐦</i></a></li>
+                <li><a href="https://linkedin.com/" target="_blank" rel="noopener"><i class="fa fa-linkedin">💼</i></a></li>
+              </ul>
+            </div>
+            <div class="single-card-content">
+              <h3>Khushi Rajput</h3>
+              <p>Senior Sales Executive</p>
+            </div>
           </div>
-          <div class="single-card-content">
-            <h3>Khushi Rajput</h3>
-            <p>Senior Sales Executive</p>
-          </div>
-        </div>
 
-        <!-- Member 6: Charu Wadhwa -->
-        <div class="single-card single-card-rotate">
-          <div class="single-card-image">
-            <img src="{{ img_jyoti }}" alt="Charu Wadhwa" decoding="async" loading="lazy" width="500" height="500">
-            <ul class="single-card-social social-list">
-              <li><a href="https://www.facebook.com/" target="_blank" rel="noopener"><i class="fa fa-facebook-square">🌐</i></a></li>
-              <li><a href="https://www.instagram.com/" target="_blank" rel="noopener"><i class="fa fa-instagram">📸</i></a></li>
-              <li><a href="https://twitter.com/" target="_blank" rel="noopener"><i class="fa fa-twitter">🐦</i></a></li>
-              <li><a href="https://linkedin.com/" target="_blank" rel="noopener"><i class="fa fa-linkedin">💼</i></a></li>
-            </ul>
+          <div class="single-card single-card-rotate">
+            <div class="single-card-image">
+              <img src="{{ default_img }}" alt="Charu Wadhwa" decoding="async" loading="lazy" width="500" height="500">
+              <ul class="single-card-social social-list">
+                <li><a href="https://www.facebook.com/" target="_blank" rel="noopener"><i class="fa fa-facebook-square">🌐</i></a></li>
+                <li><a href="https://www.instagram.com/" target="_blank" rel="noopener"><i class="fa fa-instagram">📸</i></a></li>
+                <li><a href="https://twitter.com/" target="_blank" rel="noopener"><i class="fa fa-twitter">🐦</i></a></li>
+                <li><a href="https://linkedin.com/" target="_blank" rel="noopener"><i class="fa fa-linkedin">💼</i></a></li>
+              </ul>
+            </div>
+            <div class="single-card-content">
+              <h3>Charu Wadhwa</h3>
+              <p>Sales Consultant</p>
+            </div>
           </div>
-          <div class="single-card-content">
-            <h3>Charu Wadhwa</h3>
-            <p>Sales Consultant</p>
-          </div>
-        </div>
 
-        <!-- Member 7: Gunjan Goyal -->
-        <div class="single-card single-card-rotate">
-          <div class="single-card-image">
-            <img src="{{ img_jyoti }}" alt="Gunjan Goyal" decoding="async" loading="lazy" width="500" height="500">
-            <ul class="single-card-social social-list">
-              <li><a href="https://www.facebook.com/" target="_blank" rel="noopener"><i class="fa fa-facebook-square">🌐</i></a></li>
-              <li><a href="https://www.instagram.com/" target="_blank" rel="noopener"><i class="fa fa-instagram">📸</i></a></li>
-              <li><a href="https://twitter.com/" target="_blank" rel="noopener"><i class="fa fa-twitter">🐦</i></a></li>
-              <li><a href="https://linkedin.com/" target="_blank" rel="noopener"><i class="fa fa-linkedin">💼</i></a></li>
-            </ul>
+          <div class="single-card single-card-rotate">
+            <div class="single-card-image">
+              <img src="{{ default_img }}" alt="Gunjan Goyal" decoding="async" loading="lazy" width="500" height="500">
+              <ul class="single-card-social social-list">
+                <li><a href="https://www.facebook.com/" target="_blank" rel="noopener"><i class="fa fa-facebook-square">🌐</i></a></li>
+                <li><a href="https://www.instagram.com/" target="_blank" rel="noopener"><i class="fa fa-instagram">📸</i></a></li>
+                <li><a href="https://twitter.com/" target="_blank" rel="noopener"><i class="fa fa-twitter">🐦</i></a></li>
+                <li><a href="https://linkedin.com/" target="_blank" rel="noopener"><i class="fa fa-linkedin">💼</i></a></li>
+              </ul>
+            </div>
+            <div class="single-card-content">
+              <h3>Gunjan Goyal</h3>
+              <p>Sales Development Representative</p>
+            </div>
           </div>
-          <div class="single-card-content">
-            <h3>Gunjan Goyal</h3>
-            <p>Sales Development Representative</p>
-          </div>
-        </div>
 
-        <!-- Member 8: Himani Arora -->
-        <div class="single-card single-card-rotate">
-          <div class="single-card-image">
-            <img src="{{ img_jyoti }}" alt="Himani Arora" decoding="async" loading="lazy" width="500" height="500">
-            <ul class="single-card-social social-list">
-              <li><a href="https://www.facebook.com/" target="_blank" rel="noopener"><i class="fa fa-facebook-square">🌐</i></a></li>
-              <li><a href="https://www.instagram.com/" target="_blank" rel="noopener"><i class="fa fa-instagram">📸</i></a></li>
-              <li><a href="https://twitter.com/" target="_blank" rel="noopener"><i class="fa fa-twitter">🐦</i></a></li>
-              <li><a href="https://linkedin.com/" target="_blank" rel="noopener"><i class="fa fa-linkedin">💼</i></a></li>
-            </ul>
+          <div class="single-card single-card-rotate">
+            <div class="single-card-image">
+              <img src="{{ default_img }}" alt="Himani Arora" decoding="async" loading="lazy" width="500" height="500">
+              <ul class="single-card-social social-list">
+                <li><a href="https://www.facebook.com/" target="_blank" rel="noopener"><i class="fa fa-facebook-square">🌐</i></a></li>
+                <li><a href="https://www.instagram.com/" target="_blank" rel="noopener"><i class="fa fa-instagram">📸</i></a></li>
+                <li><a href="https://twitter.com/" target="_blank" rel="noopener"><i class="fa fa-twitter">🐦</i></a></li>
+                <li><a href="https://linkedin.com/" target="_blank" rel="noopener"><i class="fa fa-linkedin">💼</i></a></li>
+              </ul>
+            </div>
+            <div class="single-card-content">
+              <h3>Himani Arora</h3>
+              <p>Marketing Analyst</p>
+            </div>
           </div>
-          <div class="single-card-content">
-            <h3>Himani Arora</h3>
-            <p>Marketing Analyst</p>
-          </div>
-        </div>
 
-        <!-- Member 9: Prerna Mittal -->
-        <div class="single-card single-card-rotate">
-          <div class="single-card-image">
-            <img src="{{ img_jyoti }}" alt="Prerna Mittal" decoding="async" loading="lazy" width="500" height="500">
-            <ul class="single-card-social social-list">
-              <li><a href="https://www.facebook.com/" target="_blank" rel="noopener"><i class="fa fa-facebook-square">🌐</i></a></li>
-              <li><a href="https://www.instagram.com/" target="_blank" rel="noopener"><i class="fa fa-instagram">📸</i></a></li>
-              <li><a href="https://twitter.com/" target="_blank" rel="noopener"><i class="fa fa-twitter">🐦</i></a></li>
-              <li><a href="https://linkedin.com/" target="_blank" rel="noopener"><i class="fa fa-linkedin">💼</i></a></li>
-            </ul>
+          <div class="single-card single-card-rotate">
+            <div class="single-card-image">
+              <img src="{{ default_img }}" alt="Prerna Mittal" decoding="async" loading="lazy" width="500" height="500">
+              <ul class="single-card-social social-list">
+                <li><a href="https://www.facebook.com/" target="_blank" rel="noopener"><i class="fa fa-facebook-square">🌐</i></a></li>
+                <li><a href="https://www.instagram.com/" target="_blank" rel="noopener"><i class="fa fa-instagram">📸</i></a></li>
+                <li><a href="https://twitter.com/" target="_blank" rel="noopener"><i class="fa fa-twitter">🐦</i></a></li>
+                <li><a href="https://linkedin.com/" target="_blank" rel="noopener"><i class="fa fa-linkedin">💼</i></a></li>
+              </ul>
+            </div>
+            <div class="single-card-content">
+              <h3>Prerna Mittal</h3>
+              <p>Accounting Manager</p>
+            </div>
           </div>
-          <div class="single-card-content">
-            <h3>Prerna Mittal</h3>
-            <p>Accounting Manager</p>
-          </div>
-        </div>
 
-        <!-- Member 10: Seema Ahlawat -->
-        <div class="single-card single-card-rotate">
-          <div class="single-card-image">
-            <img src="{{ img_jyoti }}" alt="Seema Ahlawat" decoding="async" loading="lazy" width="500" height="500">
-            <ul class="single-card-social social-list">
-              <li><a href="https://www.facebook.com/" target="_blank" rel="noopener"><i class="fa fa-facebook-square">🌐</i></a></li>
-              <li><a href="https://www.instagram.com/" target="_blank" rel="noopener"><i class="fa fa-instagram">📸</i></a></li>
-              <li><a href="https://twitter.com/" target="_blank" rel="noopener"><i class="fa fa-twitter">🐦</i></a></li>
-              <li><a href="https://linkedin.com/" target="_blank" rel="noopener"><i class="fa fa-linkedin">💼</i></a></li>
-            </ul>
+          <div class="single-card single-card-rotate">
+            <div class="single-card-image">
+              <img src="{{ default_img }}" alt="Seema Ahlawat" decoding="async" loading="lazy" width="500" height="500">
+              <ul class="single-card-social social-list">
+                <li><a href="https://www.facebook.com/" target="_blank" rel="noopener"><i class="fa fa-facebook-square">🌐</i></a></li>
+                <li><a href="https://www.instagram.com/" target="_blank" rel="noopener"><i class="fa fa-instagram">📸</i></a></li>
+                <li><a href="https://twitter.com/" target="_blank" rel="noopener"><i class="fa fa-twitter">🐦</i></a></li>
+                <li><a href="https://linkedin.com/" target="_blank" rel="noopener"><i class="fa fa-linkedin">💼</i></a></li>
+              </ul>
+            </div>
+            <div class="single-card-content">
+              <h3>Seema Ahlawat</h3>
+              <p>Sales Executive</p>
+            </div>
           </div>
-          <div class="single-card-content">
-            <h3>Seema Ahlawat</h3>
-            <p>Sales Executive</p>
-          </div>
-        </div>
 
-        <!-- Member 11: Renuka Kumari -->
-        <div class="single-card single-card-rotate">
-          <div class="single-card-image">
-            <img src="{{ img_jyoti }}" alt="Renuka Kumari" decoding="async" loading="lazy" width="500" height="500">
-            <ul class="single-card-social social-list">
-              <li><a href="https://www.facebook.com/" target="_blank" rel="noopener"><i class="fa fa-facebook-square">🌐</i></a></li>
-              <li><a href="https://www.instagram.com/" target="_blank" rel="noopener"><i class="fa fa-instagram">📸</i></a></li>
-              <li><a href="https://twitter.com/" target="_blank" rel="noopener"><i class="fa fa-twitter">🐦</i></a></li>
-              <li><a href="https://linkedin.com/" target="_blank" rel="noopener"><i class="fa fa-linkedin">💼</i></a></li>
-            </ul>
+          <div class="single-card single-card-rotate">
+            <div class="single-card-image">
+              <img src="{{ default_img }}" alt="Renuka Kumari" decoding="async" loading="lazy" width="500" height="500">
+              <ul class="single-card-social social-list">
+                <li><a href="https://www.facebook.com/" target="_blank" rel="noopener"><i class="fa fa-facebook-square">🌐</i></a></li>
+                <li><a href="https://www.instagram.com/" target="_blank" rel="noopener"><i class="fa fa-instagram">📸</i></a></li>
+                <li><a href="https://twitter.com/" target="_blank" rel="noopener"><i class="fa fa-twitter">🐦</i></a></li>
+                <li><a href="https://linkedin.com/" target="_blank" rel="noopener"><i class="fa fa-linkedin">💼</i></a></li>
+              </ul>
+            </div>
+            <div class="single-card-content">
+              <h3>Renuka Kumari</h3>
+              <p>Sales Associate</p>
+            </div>
           </div>
-          <div class="single-card-content">
-            <h3>Renuka Kumari</h3>
-            <p>Sales Associate</p>
-          </div>
-        </div>
 
-        <!-- Member 12: Simran Mishra -->
-        <div class="single-card single-card-rotate">
-          <div class="single-card-image">
-            <img src="{{ img_jyoti }}" alt="Simran Mishra" decoding="async" loading="lazy" width="500" height="500">
-            <ul class="single-card-social social-list">
-              <li><a href="https://www.facebook.com/" target="_blank" rel="noopener"><i class="fa fa-facebook-square">🌐</i></a></li>
-              <li><a href="https://www.instagram.com/" target="_blank" rel="noopener"><i class="fa fa-instagram">📸</i></a></li>
-              <li><a href="https://twitter.com/" target="_blank" rel="noopener"><i class="fa fa-twitter">🐦</i></a></li>
-              <li><a href="https://linkedin.com/" target="_blank" rel="noopener"><i class="fa fa-linkedin">💼</i></a></li>
-            </ul>
+          <div class="single-card single-card-rotate">
+            <div class="single-card-image">
+              <img src="{{ default_img }}" alt="Simran Mishra" decoding="async" loading="lazy" width="500" height="500">
+              <ul class="single-card-social social-list">
+                <li><a href="https://www.facebook.com/" target="_blank" rel="noopener"><i class="fa fa-facebook-square">🌐</i></a></li>
+                <li><a href="https://www.instagram.com/" target="_blank" rel="noopener"><i class="fa fa-instagram">📸</i></a></li>
+                <li><a href="https://twitter.com/" target="_blank" rel="noopener"><i class="fa fa-twitter">🐦</i></a></li>
+                <li><a href="https://linkedin.com/" target="_blank" rel="noopener"><i class="fa fa-linkedin">💼</i></a></li>
+              </ul>
+            </div>
+            <div class="single-card-content">
+              <h3>Simran Mishra</h3>
+              <p>Sales Executive</p>
+            </div>
           </div>
-          <div class="single-card-content">
-            <h3>Simran Mishra</h3>
-            <p>Sales Executive</p>
-          </div>
-        </div>
 
-        <!-- Member 13: Bhavya Malik -->
-        <div class="single-card single-card-rotate">
-          <div class="single-card-image">
-            <img src="{{ img_jyoti }}" alt="Bhavya Malik" decoding="async" loading="lazy" width="500" height="500">
-            <ul class="single-card-social social-list">
-              <li><a href="https://www.facebook.com/" target="_blank" rel="noopener"><i class="fa fa-facebook-square">🌐</i></a></li>
-              <li><a href="https://www.instagram.com/" target="_blank" rel="noopener"><i class="fa fa-instagram">📸</i></a></li>
-              <li><a href="https://twitter.com/" target="_blank" rel="noopener"><i class="fa fa-twitter">🐦</i></a></li>
-              <li><a href="https://linkedin.com/" target="_blank" rel="noopener"><i class="fa fa-linkedin">💼</i></a></li>
-            </ul>
+          <div class="single-card single-card-rotate">
+            <div class="single-card-image">
+              <img src="{{ default_img }}" alt="Bhavya Malik" decoding="async" loading="lazy" width="500" height="500">
+              <ul class="single-card-social social-list">
+                <li><a href="https://www.facebook.com/" target="_blank" rel="noopener"><i class="fa fa-facebook-square">🌐</i></a></li>
+                <li><a href="https://www.instagram.com/" target="_blank" rel="noopener"><i class="fa fa-instagram">📸</i></a></li>
+                <li><a href="https://twitter.com/" target="_blank" rel="noopener"><i class="fa fa-twitter">🐦</i></a></li>
+                <li><a href="https://linkedin.com/" target="_blank" rel="noopener"><i class="fa fa-linkedin">💼</i></a></li>
+              </ul>
+            </div>
+            <div class="single-card-content">
+              <h3>Bhavya Malik</h3>
+              <p>Sales Executive</p>
+            </div>
           </div>
-          <div class="single-card-content">
-            <h3>Bhavya Malik</h3>
-            <p>Sales Executive</p>
-          </div>
-        </div>
 
-        <!-- Member 14: Saloni Bhushan -->
-        <div class="single-card single-card-rotate">
-          <div class="single-card-image">
-            <img src="{{ img_jyoti }}" alt="Saloni Bhushan" decoding="async" loading="lazy" width="500" height="500">
-            <ul class="single-card-social social-list">
-              <li><a href="https://www.facebook.com/" target="_blank" rel="noopener"><i class="fa fa-facebook-square">🌐</i></a></li>
-              <li><a href="https://www.instagram.com/" target="_blank" rel="noopener"><i class="fa fa-instagram">📸</i></a></li>
-              <li><a href="https://twitter.com/" target="_blank" rel="noopener"><i class="fa fa-twitter">🐦</i></a></li>
-              <li><a href="https://linkedin.com/" target="_blank" rel="noopener"><i class="fa fa-linkedin">💼</i></a></li>
-            </ul>
+          <div class="single-card single-card-rotate">
+            <div class="single-card-image">
+              <img src="{{ default_img }}" alt="Saloni Bhushan" decoding="async" loading="lazy" width="500" height="500">
+              <ul class="single-card-social social-list">
+                <li><a href="https://www.facebook.com/" target="_blank" rel="noopener"><i class="fa fa-facebook-square">🌐</i></a></li>
+                <li><a href="https://www.instagram.com/" target="_blank" rel="noopener"><i class="fa fa-instagram">📸</i></a></li>
+                <li><a href="https://twitter.com/" target="_blank" rel="noopener"><i class="fa fa-twitter">🐦</i></a></li>
+                <li><a href="https://linkedin.com/" target="_blank" rel="noopener"><i class="fa fa-linkedin">💼</i></a></li>
+              </ul>
+            </div>
+            <div class="single-card-content">
+              <h3>Saloni Bhushan</h3>
+              <p>Sales Executive</p>
+            </div>
           </div>
-          <div class="single-card-content">
-            <h3>Saloni Bhushan</h3>
-            <p>Sales Executive</p>
-          </div>
-        </div>
 
-        <!-- Member 15: Ritika Balgani -->
-        <div class="single-card single-card-rotate">
-          <div class="single-card-image">
-            <img src="{{ img_jyoti }}" alt="Ritika Balgani" decoding="async" loading="lazy" width="500" height="500">
-            <ul class="single-card-social social-list">
-              <li><a href="https://www.facebook.com/" target="_blank" rel="noopener"><i class="fa fa-facebook-square">🌐</i></a></li>
-              <li><a href="https://www.instagram.com/" target="_blank" rel="noopener"><i class="fa fa-instagram">📸</i></a></li>
-              <li><a href="https://twitter.com/" target="_blank" rel="noopener"><i class="fa fa-twitter">🐦</i></a></li>
-              <li><a href="https://linkedin.com/" target="_blank" rel="noopener"><i class="fa fa-linkedin">💼</i></a></li>
-            </ul>
+          <div class="single-card single-card-rotate">
+            <div class="single-card-image">
+              <img src="{{ default_img }}" alt="Ritika Balgani" decoding="async" loading="lazy" width="500" height="500">
+              <ul class="single-card-social social-list">
+                <li><a href="https://www.facebook.com/" target="_blank" rel="noopener"><i class="fa fa-facebook-square">🌐</i></a></li>
+                <li><a href="https://www.instagram.com/" target="_blank" rel="noopener"><i class="fa fa-instagram">📸</i></a></li>
+                <li><a href="https://twitter.com/" target="_blank" rel="noopener"><i class="fa fa-twitter">🐦</i></a></li>
+                <li><a href="https://linkedin.com/" target="_blank" rel="noopener"><i class="fa fa-linkedin">💼</i></a></li>
+              </ul>
+            </div>
+            <div class="single-card-content">
+              <h3>Ritika Balgani</h3>
+              <p>Sales Executive</p>
+            </div>
           </div>
-          <div class="single-card-content">
-            <h3>Ritika Balgani</h3>
-            <p>Sales Executive</p>
-          </div>
-        </div>
-
+        {%- endif -%}
       </div>
 
     </div>
