@@ -493,7 +493,9 @@
         <div class="team-sec2-col-img heading-primary-main">
           <div class="welcome-meter heading-primary-main">
             {%- if section.settings.sec2_image != blank -%}
-              {{ section.settings.sec2_image | image_url: width: 1200 | image_tag: class: 'avatar team-avatar-img', loading: 'lazy', decoding: 'async', alt: 'Vidhyut Saathi Team' }}
+              <img src="{{ section.settings.sec2_image | image_url: width: 1200 }}" class="avatar team-avatar-img" decoding="async" loading="lazy" width="1000" height="1000" alt="Vidhyut Saathi Team">
+            {%- elsif section.settings.hero_image != blank -%}
+              <img src="{{ section.settings.hero_image | image_url: width: 1200 }}" class="avatar team-avatar-img" decoding="async" loading="lazy" width="1000" height="1000" alt="Vidhyut Saathi Team">
             {%- else -%}
               {%- assign team_avatar_url = 'vidhyut-saathi-team-bg.jpg' | asset_url -%}
               <img src="{{ team_avatar_url }}" class="avatar team-avatar-img" decoding="async" loading="lazy" width="1000" height="1000" alt="Vidhyut Saathi Team">
@@ -825,7 +827,12 @@
     {
       "type": "image_picker",
       "id": "hero_image",
-      "label": "Company/Team Image"
+      "label": "Company/Team Image (Section 2 Main Photo)"
+    },
+    {
+      "type": "image_picker",
+      "id": "sec2_image",
+      "label": "Section 2 Team Overview Photo"
     },
     {
       "type": "header",
