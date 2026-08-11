@@ -77,40 +77,36 @@
     animation: scroll-right 25s linear infinite;
   }
   
-  /* --- Upgraded Section 2: Equal Height & Responsive 3D Card Showcase --- */
+  /* ==========================================================================
+     Section 2: 5D Ultra-Futuristic Card Showcase & Responsive Container
+     ========================================================================== */
   .company-info-section {
     padding: 70px 20px;
-    background: radial-gradient(circle at 80% 20%, rgba(236, 92, 10, 0.07) 0%, rgba(255, 255, 255, 1) 45%, rgba(0, 123, 62, 0.07) 100%);
+    background: radial-gradient(circle at 80% 20%, rgba(236, 92, 10, 0.08) 0%, rgba(255, 255, 255, 1) 45%, rgba(0, 123, 62, 0.08) 100%);
     position: relative;
-    overflow: hidden;
   }
+
   .company-info-container {
     max-width: 1280px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 40px;
-    align-items: stretch; /* Both containers match exact height */
+    align-items: center;
   }
-  
-  /* Left Text Container - Styled Card matching Right Side */
+
+  /* Left Text Container */
   .company-info-text {
-    background: rgba(255, 255, 255, 0.92);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border: 1px solid rgba(236, 92, 10, 0.18);
-    border-radius: 28px;
-    padding: 42px 38px;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.04);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(236, 92, 10, 0.2);
+    border-radius: 30px;
+    padding: 40px 36px;
+    box-shadow: 0 20px 50px rgba(236, 92, 10, 0.07);
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 100%;
-    transition: all 0.4s ease;
-  }
-  .company-info-text:hover {
-    box-shadow: 0 25px 60px rgba(236, 92, 10, 0.08);
-    border-color: rgba(236, 92, 10, 0.3);
   }
 
   .company-badge {
@@ -122,13 +118,14 @@
     border: 1px solid rgba(236, 92, 10, 0.3);
     border-radius: 50px;
     font-size: 0.85rem;
-    font-weight: 700;
+    font-weight: 800;
     color: #ec5c0a;
     letter-spacing: 0.5px;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
     width: fit-content;
     box-shadow: 0 4px 15px rgba(236, 92, 10, 0.1);
   }
+
   .company-badge .pulse-dot {
     width: 8px;
     height: 8px;
@@ -137,16 +134,12 @@
     box-shadow: 0 0 0 0 rgba(236, 92, 10, 0.7);
     animation: pulse-ring 1.8s infinite;
   }
-  @keyframes pulse-ring {
-    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(236, 92, 10, 0.7); }
-    70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(236, 92, 10, 0); }
-    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(236, 92, 10, 0); }
-  }
+
   .company-info-text .gradient-heading {
-    font-size: clamp(28px, 3vw, 40px);
+    font-size: clamp(28px, 3.2vw, 42px);
     font-weight: 900;
-    line-height: 1.25;
-    margin-bottom: 20px;
+    line-height: 1.22;
+    margin-bottom: 18px;
     background: linear-gradient(90deg, #ec5c0a, #007b3e, #ec5c0a);
     background-size: 200% auto;
     -webkit-background-clip: text;
@@ -154,18 +147,21 @@
     display: inline-block;
     animation: color-shift 4s linear infinite;
   }
+
   .company-info-text p {
     font-size: 1.02rem;
     line-height: 1.75;
     color: #444;
     margin-bottom: 16px;
   }
+
   .company-feature-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 14px;
-    margin: 22px 0 28px 0;
+    margin: 20px 0 26px 0;
   }
+
   .company-feature-item {
     display: flex;
     align-items: center;
@@ -177,11 +173,13 @@
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.03);
     transition: all 0.3s ease;
   }
+
   .company-feature-item:hover {
     transform: translateY(-3px);
     border-color: #ec5c0a;
     box-shadow: 0 10px 22px rgba(236, 92, 10, 0.15);
   }
+
   .company-feature-icon {
     font-size: 1.3rem;
     width: 40px;
@@ -193,25 +191,28 @@
     background: linear-gradient(135deg, rgba(236, 92, 10, 0.15), rgba(0, 123, 62, 0.15));
     flex-shrink: 0;
   }
+
   .company-feature-text h4 {
     font-size: 0.88rem;
     font-weight: 800;
     color: #1a1a1a;
     margin: 0 0 2px 0;
   }
+
   .company-feature-text p {
     font-size: 0.78rem;
     color: #666;
     margin: 0 !important;
     line-height: 1.3 !important;
   }
+
   .company-cta-group {
     display: flex;
     gap: 14px;
     flex-wrap: wrap;
     align-items: center;
-    margin-top: auto;
   }
+
   .company-btn-primary {
     display: inline-flex;
     align-items: center;
@@ -227,11 +228,13 @@
     box-shadow: 0 12px 30px rgba(236, 92, 10, 0.35);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   }
+
   .company-btn-primary:hover {
     transform: translateY(-4px) scale(1.03);
     box-shadow: 0 18px 40px rgba(236, 92, 10, 0.5);
     background: linear-gradient(135deg, #f1721b, #007b3e);
   }
+
   .company-btn-secondary {
     display: inline-flex;
     align-items: center;
@@ -248,6 +251,7 @@
     box-shadow: 0 8px 20px rgba(0, 123, 62, 0.1);
     transition: all 0.3s ease;
   }
+
   .company-btn-secondary:hover {
     background: #007b3e;
     color: #ffffff !important;
@@ -255,133 +259,152 @@
     box-shadow: 0 12px 25px rgba(0, 123, 62, 0.25);
   }
 
-  /* Right 3D Showcase Container - Equal Height Matching Left */
+  /* Right 5D Holographic Card Stage Container */
   .company-info-image {
     perspective: 1200px;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(10, 14, 26, 0.96), rgba(26, 32, 48, 0.96));
-    border: 1px solid rgba(255, 204, 0, 0.3);
-    border-radius: 28px;
-    padding: 40px 30px;
-    box-shadow: 0 20px 50px rgba(10, 14, 26, 0.3);
-    overflow: hidden;
+    background: linear-gradient(135deg, #090e1a 0%, #151d30 50%, #0d1527 100%);
+    border: 1px solid rgba(255, 204, 0, 0.4);
+    border-radius: 30px;
+    padding: 45px 30px;
+    box-shadow: 0 25px 60px rgba(10, 14, 26, 0.4), inset 0 0 30px rgba(0, 200, 255, 0.1);
   }
-  
-  /* 3D Ambient Background Glow */
+
+  /* Layer 1: Ambient 5D Pulsating Energy Ring Background */
   .company-info-image::before {
     content: '';
     position: absolute;
     top: 50%; left: 50%;
     transform: translate(-50%, -50%);
     width: 320px; height: 320px;
-    background: radial-gradient(circle, rgba(236, 92, 10, 0.35) 0%, rgba(0, 200, 255, 0.2) 50%, rgba(0,0,0,0) 75%);
-    filter: blur(40px);
+    background: radial-gradient(circle, rgba(236, 92, 10, 0.4) 0%, rgba(0, 200, 255, 0.25) 45%, rgba(0, 0, 0, 0) 75%);
+    filter: blur(45px);
     pointer-events: none;
+    animation: energyPulse5D 4s ease-in-out infinite alternate;
   }
 
-  .card-3d-stage {
+  @keyframes energyPulse5D {
+    0% { transform: translate(-50%, -50%) scale(0.85); opacity: 0.6; }
+    100% { transform: translate(-50%, -50%) scale(1.15); opacity: 1; }
+  }
+
+  /* Layer 2: 5D Card Floating Stage */
+  .card-5d-stage {
     position: relative;
     width: 100%;
-    max-width: 480px;
-    margin: auto;
-    border-radius: 24px;
+    max-width: 450px;
+    margin: 0 auto;
+    border-radius: 22px;
     transform-style: preserve-3d;
     transition: transform 0.15s ease-out;
     will-change: transform;
     cursor: pointer;
-    animation: cardFloat3D 6s ease-in-out infinite alternate;
+    animation: floatCard5D 6s ease-in-out infinite alternate;
   }
 
-  @keyframes cardFloat3D {
-    0% { transform: perspective(1000px) translateY(0px) rotateX(2deg) rotateY(-2deg); }
-    100% { transform: perspective(1000px) translateY(-12px) rotateX(-2deg) rotateY(4deg); }
+  @keyframes floatCard5D {
+    0% { transform: perspective(1000px) translateY(0px) rotateX(4deg) rotateY(-3deg); }
+    50% { transform: perspective(1000px) translateY(-10px) rotateX(-2deg) rotateY(3deg); }
+    100% { transform: perspective(1000px) translateY(-5px) rotateX(3deg) rotateY(-4deg); }
   }
 
-  .card-3d-wrapper {
+  .card-5d-stage:hover {
+    animation-play-state: paused;
+  }
+
+  /* Layer 3: Metallic Chamfered 3D Card Shell */
+  .card-5d-wrapper {
     position: relative;
+    width: 100%;
     border-radius: 22px;
     overflow: hidden;
-    background: #0a0e1a;
-    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6), 0 0 50px rgba(236, 92, 10, 0.3), 0 0 0 2px rgba(255, 204, 0, 0.4);
+    background: #000000;
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.7), 0 0 45px rgba(236, 92, 10, 0.35), 0 0 0 2px rgba(255, 204, 0, 0.5);
     transform-style: preserve-3d;
     transition: box-shadow 0.4s ease;
   }
-  .card-3d-stage:hover {
-    animation-play-state: paused;
+
+  .card-5d-stage:hover .card-5d-wrapper {
+    box-shadow: 0 45px 95px rgba(0, 0, 0, 0.85), 0 0 75px rgba(0, 200, 255, 0.5), 0 0 0 3px rgba(255, 204, 0, 0.9);
   }
-  .card-3d-stage:hover .card-3d-wrapper {
-    box-shadow: 0 40px 90px rgba(0, 0, 0, 0.8), 0 0 70px rgba(0, 200, 255, 0.4), 0 0 0 3px rgba(255, 204, 0, 0.8);
-  }
-  .card-3d-image {
+
+  .card-5d-image {
     width: 100%;
     height: auto;
     display: block;
     border-radius: 22px;
-    transform: translateZ(10px);
+    transform: translateZ(15px);
     transition: transform 0.4s ease;
+    object-fit: cover;
   }
-  .card-3d-glare {
+
+  /* Layer 4: Interactive Holographic Glare & Foil Reflection */
+  .card-5d-glare {
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
     border-radius: 22px;
-    background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 70%);
+    background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0) 70%);
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s ease;
     mix-blend-mode: overlay;
-    transform: translateZ(30px);
+    transform: translateZ(35px);
   }
+
+  /* Layer 5: Floating 3D Holographic Badges popping in Z-Space */
   .card-float-badge {
     position: absolute;
-    padding: 8px 15px;
-    background: rgba(10, 14, 26, 0.92);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 204, 0, 0.5);
+    padding: 8px 16px;
+    background: rgba(9, 14, 26, 0.92);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 204, 0, 0.6);
     border-radius: 50px;
     color: #ffffff;
     font-size: 0.78rem;
     font-weight: 800;
     letter-spacing: 0.5px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-    z-index: 10;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    z-index: 20;
     pointer-events: none;
-    transform: translateZ(50px);
+    transform: translateZ(65px);
     display: flex;
     align-items: center;
     gap: 8px;
     white-space: nowrap;
   }
+
   .card-float-badge-top {
-    top: -14px;
-    left: -10px;
-    background: linear-gradient(135deg, rgba(236, 92, 10, 0.95), rgba(10, 14, 26, 0.95));
+    top: -16px;
+    left: -12px;
+    background: linear-gradient(135deg, rgba(236, 92, 10, 0.95), rgba(9, 14, 26, 0.95));
   }
+
   .card-float-badge-bottom {
-    bottom: -14px;
-    right: -10px;
-    background: linear-gradient(135deg, rgba(0, 123, 62, 0.95), rgba(10, 14, 26, 0.95));
+    bottom: -16px;
+    right: -12px;
+    background: linear-gradient(135deg, rgba(0, 123, 62, 0.95), rgba(9, 14, 26, 0.95));
   }
+
   .card-float-badge span.highlight {
     color: #ffcc00;
   }
 
-  /* Responsive Alignment for Mobile & Tablets */
+  /* Tablet & Mobile Responsive Alignment */
   @media screen and (max-width: 900px) {
-    .company-info-section { padding: 40px 16px; }
+    .company-info-section { padding: 35px 16px; }
     .company-info-container {
       grid-template-columns: 1fr;
       gap: 30px;
     }
     .company-info-text { padding: 28px 20px; }
-    .company-info-image { padding: 35px 20px; min-height: 340px; }
+    .company-info-image { padding: 35px 20px; }
     .company-feature-grid { grid-template-columns: 1fr; }
-    .card-float-badge-top { top: -10px; left: 0; font-size: 0.7rem; padding: 6px 12px; }
-    .card-float-badge-bottom { bottom: -10px; right: 0; font-size: 0.7rem; padding: 6px 12px; }
+    .card-float-badge-top { top: -12px; left: 0; font-size: 0.7rem; padding: 6px 12px; }
+    .card-float-badge-bottom { bottom: -12px; right: 0; font-size: 0.7rem; padding: 6px 12px; }
   }
   
   /* --- Mission Vision Section --- */
@@ -1169,28 +1192,28 @@
         </div>
       </div>
 
-      <!-- 3D Interactive Card Showcase Side -->
+      <!-- 5D Interactive Card Showcase Side -->
       <div class="company-info-image reveal-up active">
-        <div class="card-3d-stage" id="card3dStage">
+        <div class="card-5d-stage" id="card5dStage">
           
           <!-- Floating Top Badge -->
           <div class="card-float-badge card-float-badge-top">
-            <span>🏆</span>
-            <span><span class="highlight">ISO-CERTIFIED</span> | US-GERMAN TECH</span>
+            <span>⚡</span>
+            <span>US-GERMAN NANOTECH | <span class="highlight">20,000 IONS</span></span>
           </div>
 
-          <!-- 3D Card Main Wrapper -->
-          <div class="card-3d-wrapper">
-            <img src="{{ 'vidhyut-power-saver-card.jpg' | asset_url }}" class="card-3d-image" alt="Vidhyut Saathi 3D Electric Power Saving Card" loading="lazy" width="900" height="570">
+          <!-- 5D Card Main Wrapper -->
+          <div class="card-5d-wrapper">
+            <img src="{{ 'vidhyut-power-saver-card.jpg' | asset_url }}" class="card-5d-image" alt="Vidhyut Saathi 5D Electric Power Saving Card" loading="lazy" width="900" height="570">
 
             <!-- Glare Effect Overlay -->
-            <div class="card-3d-glare" id="card3dGlare"></div>
+            <div class="card-5d-glare" id="card5dGlare"></div>
           </div>
 
           <!-- Floating Bottom Badge -->
           <div class="card-float-badge card-float-badge-bottom">
-            <span>⚡</span>
-            <span>ION: 20000 | <span class="highlight">20%-30% SAVINGS</span></span>
+            <span>🏆</span>
+            <span><span class="highlight">ISO-CERTIFIED</span> | 20%-30% SAVINGS</span>
           </div>
 
         </div>
@@ -1552,8 +1575,8 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    const cardStage = document.getElementById('card3dStage');
-    const cardGlare = document.getElementById('card3dGlare');
+    const cardStage = document.getElementById('card5dStage');
+    const cardGlare = document.getElementById('card5dGlare');
 
     if (cardStage) {
       cardStage.addEventListener('mousemove', function(e) {
@@ -1564,22 +1587,22 @@
         const centerX = rect.width / 2;
         const centerY = rect.height / 2;
         
-        const rotateX = ((y - centerY) / centerY) * -18;
-        const rotateY = ((x - centerX) / centerX) * 18;
+        const rotateX = ((y - centerY) / centerY) * -22;
+        const rotateY = ((x - centerX) / centerX) * 22;
 
-        cardStage.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
+        cardStage.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.06, 1.06, 1.06)`;
         
         if (cardGlare) {
           cardGlare.style.opacity = '1';
           const glareX = (x / rect.width) * 100;
           const glareY = (y / rect.height) * 100;
-          cardGlare.style.background = `radial-gradient(circle at ${glareX}% ${glareY}%, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0) 70%)`;
+          cardGlare.style.background = `radial-gradient(circle at ${glareX}% ${glareY}%, rgba(255, 255, 255, 0.65) 0%, rgba(255, 255, 255, 0) 70%)`;
         }
       });
 
       cardStage.addEventListener('mouseleave', function() {
-        cardStage.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
-        cardStage.style.transition = 'transform 0.5s ease';
+        cardStage.style.transform = '';
+        cardStage.style.transition = 'transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
         if (cardGlare) {
           cardGlare.style.opacity = '0';
         }
