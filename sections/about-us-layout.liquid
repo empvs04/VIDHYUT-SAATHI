@@ -971,37 +971,19 @@
     .services-container { grid-template-columns: 1fr; }
   }
 
-  /* --- Section 6: Trust & Live Achievements Showcase (Brand Color Match) --- */
+  /* --- Upgraded Section 6: Trust & Live Achievements Showcase --- */
   .trust-achievements-section {
     width: 100%;
     box-sizing: border-box;
-    padding: 55px 20px;
-    background: linear-gradient(180deg, #fefae0 0%, #fff8ef 50%, #ffffff 100%);
+    padding: 75px 20px;
+    background: radial-gradient(circle at 50% 30%, rgba(236,92,10,0.06) 0%, #ffffff 50%, rgba(0,123,62,0.06) 100%);
     color: #1a1a1a;
     position: relative;
     overflow: hidden;
     z-index: 1;
-    clear: both;
   }
-  .trust-achievements-section::before {
-    content: '';
-    position: absolute;
-    top: -20%; left: -10%; width: 500px; height: 500px;
-    background: radial-gradient(circle, rgba(236,92,10,0.12) 0%, transparent 70%);
-    filter: blur(60px);
-    pointer-events: none;
-  }
-  .trust-achievements-section::after {
-    content: '';
-    position: absolute;
-    bottom: -20%; right: -10%; width: 500px; height: 500px;
-    background: radial-gradient(circle, rgba(0,123,62,0.12) 0%, transparent 70%);
-    filter: blur(60px);
-    pointer-events: none;
-  }
-
   .trust-achievements-container {
-    max-width: 1240px;
+    max-width: 1280px;
     margin: 0 auto;
     position: relative;
     z-index: 2;
@@ -1017,45 +999,39 @@
     align-items: center;
     justify-content: center;
     max-width: 900px;
-    margin: 0 auto 60px auto;
+    margin: 0 auto 50px auto;
   }
   .trust-top-badge {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
-    background: rgba(236, 92, 10, 0.08);
+    background: linear-gradient(135deg, rgba(236, 92, 10, 0.1), rgba(0, 123, 62, 0.1));
     border: 1px solid rgba(236, 92, 10, 0.3);
     padding: 10px 24px;
     border-radius: 50px;
-    font-size: 0.92rem;
-    font-weight: 700;
-    color: #d94e00;
+    font-size: 0.88rem;
+    font-weight: 800;
+    color: #ec5c0a;
     letter-spacing: 0.5px;
-    margin: 0 auto 25px auto;
+    margin: 0 auto 20px auto;
     box-shadow: 0 4px 15px rgba(236, 92, 10, 0.1);
-    text-align: center;
   }
   .trust-top-badge .pulse-dot {
-    width: 10px;
-    height: 10px;
+    width: 8px;
+    height: 8px;
     background-color: #007b3e;
     border-radius: 50%;
     box-shadow: 0 0 10px #007b3e;
     animation: blink-dot 1.5s infinite;
   }
-  @keyframes blink-dot {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.4; transform: scale(1.3); }
-  }
 
   .trust-title {
-    font-size: clamp(32px, 5vw, 50px);
+    font-size: clamp(28px, 3.8vw, 46px);
     font-weight: 900;
     line-height: 1.25;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
     color: #1a1a1a;
-    letter-spacing: -0.5px;
   }
   .trust-title .highlight-gradient {
     background: linear-gradient(90deg, #ec5c0a, #007b3e, #ec5c0a);
@@ -1065,79 +1041,164 @@
     animation: color-shift 4s linear infinite;
   }
   .trust-subtitle {
-    font-size: 1.15rem;
-    color: #4a5568;
+    font-size: 1.05rem;
+    color: #555555;
     max-width: 780px;
     margin: 0 auto;
-    line-height: 1.7;
+    line-height: 1.75;
   }
 
-  /* 4-Card Grid */
+  /* 4-Card Equal Height Grid */
   .trust-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 25px;
-    margin-bottom: 50px;
+    gap: 24px;
+    align-items: stretch; /* All 4 cards stretch to exact same height */
+    margin-bottom: 45px;
   }
 
   .trust-card {
-    background: #ffffff;
-    border: 1px solid rgba(236, 92, 10, 0.15);
-    border-radius: 24px;
-    padding: 40px 28px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(236, 92, 10, 0.18);
+    border-radius: 28px;
+    padding: 38px 24px;
     text-align: center;
     position: relative;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.04);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
   }
   .trust-card::before {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0; height: 5px;
-    background: linear-gradient(90deg, #ec5c0a, #007b3e);
-    transition: all 0.3s ease;
+    background: linear-gradient(90deg, #ec5c0a, #ffcc00, #007b3e);
   }
   .trust-card:hover {
     transform: translateY(-12px);
     border-color: rgba(0, 123, 62, 0.4);
-    box-shadow: 0 20px 40px rgba(0, 123, 62, 0.12), 0 0 25px rgba(236, 92, 10, 0.08);
+    box-shadow: 0 25px 60px rgba(0, 123, 62, 0.14), 0 0 25px rgba(236, 92, 10, 0.1);
   }
 
   .trust-icon-box {
-    width: 70px;
-    height: 70px;
-    margin: 0 auto 22px;
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 18px;
     border-radius: 20px;
-    background: linear-gradient(135deg, rgba(236,92,10,0.1), rgba(0,123,62,0.1));
-    border: 1px solid rgba(236,92,10,0.2);
+    background: linear-gradient(135deg, rgba(236,92,10,0.12), rgba(0,123,62,0.12));
+    border: 1px solid rgba(236,92,10,0.25);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2.2rem;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.04);
+    font-size: 2.4rem;
+    box-shadow: 0 8px 20px rgba(236,92,10,0.08);
+    flex-shrink: 0;
   }
   .trust-number {
-    font-size: clamp(2.2rem, 3vw, 2.8rem);
+    font-size: clamp(2.1rem, 2.8vw, 2.6rem);
     font-weight: 900;
     line-height: 1.1;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     color: #1a1a1a;
-    font-family: 'Poppins', sans-serif;
   }
   .trust-number span {
     color: #ec5c0a;
   }
   .trust-card-title {
-    font-size: 1.15rem;
+    font-size: 1.1rem;
     font-weight: 800;
     color: #1a1a1a;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
   }
   .trust-card-desc {
-    font-size: 0.95rem;
+    font-size: 0.92rem;
     color: #555555;
-    line-height: 1.6;
+    line-height: 1.65;
+    margin-bottom: 18px;
+    flex-grow: 1;
+  }
+  .trust-card-badge {
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    background: linear-gradient(135deg, rgba(236, 92, 10, 0.08), rgba(0, 123, 62, 0.08));
+    border: 1px solid rgba(236, 92, 10, 0.2);
+    border-radius: 50px;
+    font-size: 0.78rem;
+    font-weight: 800;
+    color: #ec5c0a;
+  }
+
+  /* Live Customer Growing Ticker Bar */
+  .trust-live-bar {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(0, 123, 62, 0.25);
+    border-radius: 24px;
+    padding: 22px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 15px 35px rgba(0, 123, 62, 0.06);
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .trust-live-info {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .trust-live-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    background: linear-gradient(135deg, rgba(0,123,62,0.12), rgba(236,92,10,0.12));
+    border: 1px solid rgba(0,123,62,0.3);
+    border-radius: 50px;
+    font-size: 0.78rem;
+    font-weight: 800;
+    color: #007b3e;
+  }
+  .trust-live-text {
+    font-size: 1.02rem;
+    font-weight: 800;
+    color: #1a1a1a;
+  }
+  .trust-live-text span {
+    color: #ec5c0a;
+  }
+  .trust-features-pills {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .trust-pill {
+    padding: 6px 14px;
+    background: #ffffff;
+    border: 1px solid rgba(236, 92, 10, 0.2);
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: #333;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+  }
+
+  @media screen and (max-width: 1024px) {
+    .trust-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  }
+  @media screen and (max-width: 600px) {
+    .trust-grid { grid-template-columns: 1fr; }
+    .trust-live-bar { flex-direction: column; text-align: center; }
   }
 
   /* Live Customer Growing Ticker Bar */
@@ -1713,39 +1774,59 @@
         </p>
       </div>
 
-      <!-- 4-Card Achievements Grid -->
+      <!-- 4-Card Achievements Grid (Equal Height Glassmorphic Grid) -->
       <div class="trust-grid">
         
         <!-- Card 1 -->
-        <div class="trust-card tilt-element">
-          <div class="trust-icon-box">👥</div>
-          <div class="trust-number">20 Lakh<span>+</span></div>
-          <div class="trust-card-title">Happy Card Users</div>
-          <p class="trust-card-desc">Rapidly expanding customer base across residential, commercial & industrial sectors in Pan India.</p>
+        <div class="trust-card reveal-up active">
+          <div>
+            <div class="trust-icon-box">👥</div>
+            <div class="trust-number">20 Lakh<span>+</span></div>
+            <div class="trust-card-title">Happy Card Users</div>
+            <p class="trust-card-desc">Rapidly expanding customer base across residential, commercial &amp; industrial sectors Pan-India.</p>
+          </div>
+          <div class="trust-card-badge">
+            <span>⚡ Pan-India Reach</span>
+          </div>
         </div>
 
         <!-- Card 2 -->
-        <div class="trust-card tilt-element">
-          <div class="trust-icon-box">🔬</div>
-          <div class="trust-number">10N<span>:20,000</span></div>
-          <div class="trust-card-title">US-German Nano Tech</div>
-          <p class="trust-card-desc">Advanced eco-friendly negative ion energy saver engineered for zero electricity leakage.</p>
+        <div class="trust-card reveal-up active">
+          <div>
+            <div class="trust-icon-box">🔬</div>
+            <div class="trust-number">10N<span>:20,000</span></div>
+            <div class="trust-card-title">US-German Nano Tech</div>
+            <p class="trust-card-desc">Advanced eco-friendly negative ion energy saver engineered for zero power leakage.</p>
+          </div>
+          <div class="trust-card-badge">
+            <span>🔬 Terahertz Technology</span>
+          </div>
         </div>
 
         <!-- Card 3 -->
-        <div class="trust-card tilt-element">
-          <div class="trust-icon-box">⭐</div>
-          <div class="trust-number">100<span>%</span></div>
-          <div class="trust-card-title">Positive Feedback & Results</div>
-          <p class="trust-card-desc">Verified 20% to 30% reduction in electricity bills with legal & ISO certified technology.</p>
+        <div class="trust-card reveal-up active">
+          <div>
+            <div class="trust-icon-box">⭐</div>
+            <div class="trust-number">100<span>%</span></div>
+            <div class="trust-card-title">Positive Results</div>
+            <p class="trust-card-desc">Verified 20% to 30% reduction in electricity bills with legal &amp; ISO certified technology.</p>
+          </div>
+          <div class="trust-card-badge">
+            <span>📜 ISO 9001 Certified</span>
+          </div>
         </div>
 
         <!-- Card 4 -->
-        <div class="trust-card tilt-element">
-          <div class="trust-icon-box">🤝</div>
-          <div class="trust-number">100<span>%</span></div>
-          <div class="trust-card-title">Client Satisfaction & Care</div>
-          <p class="trust-card-desc">Dedicated 24/7 customer support ensuring smooth installation and guaranteed satisfaction.</p>
+        <div class="trust-card reveal-up active">
+          <div>
+            <div class="trust-icon-box">🤝</div>
+            <div class="trust-number">100<span>%</span></div>
+            <div class="trust-card-title">Client Satisfaction</div>
+            <p class="trust-card-desc">Dedicated 24/7 customer support ensuring smooth installation and guaranteed peace of mind.</p>
+          </div>
+          <div class="trust-card-badge">
+            <span>📞 24/7 Support Care</span>
+          </div>
         </div>
 
       </div>
