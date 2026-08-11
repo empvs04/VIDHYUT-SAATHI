@@ -1403,20 +1403,32 @@
   /* --- Section 7: White & Brand-Orange Shimmering Executive Leadership --- */
   @keyframes logoGradientPulse {
     0% {
-      background: radial-gradient(circle at 20% 30%, rgba(236, 92, 10, 0.12) 0%, #ffffff 50%, rgba(255, 154, 0, 0.08) 100%);
+      background: radial-gradient(circle at 20% 30%, rgba(236, 92, 10, 0.14) 0%, #ffffff 50%, rgba(0, 123, 62, 0.08) 100%);
     }
     50% {
-      background: radial-gradient(circle at 80% 70%, rgba(255, 107, 0, 0.16) 0%, #fff6ed 50%, rgba(236, 92, 10, 0.1) 100%);
+      background: radial-gradient(circle at 80% 70%, rgba(255, 154, 0, 0.18) 0%, #fff5ea 50%, rgba(236, 92, 10, 0.12) 100%);
     }
     100% {
-      background: radial-gradient(circle at 20% 30%, rgba(236, 92, 10, 0.12) 0%, #ffffff 50%, rgba(255, 154, 0, 0.08) 100%);
+      background: radial-gradient(circle at 20% 30%, rgba(236, 92, 10, 0.14) 0%, #ffffff 50%, rgba(0, 123, 62, 0.08) 100%);
     }
+  }
+
+  @keyframes foilShimmer {
+    0% { transform: translateX(-100%) rotate(45deg); opacity: 0; }
+    50% { opacity: 0.4; }
+    100% { transform: translateX(200%) rotate(45deg); opacity: 0; }
+  }
+
+  @keyframes statusPulseGreen {
+    0% { box-shadow: 0 0 0 0 rgba(0, 200, 83, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(0, 200, 83, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(0, 200, 83, 0); }
   }
 
   .our-team-section {
     width: 100%;
     box-sizing: border-box;
-    padding: 55px 20px;
+    padding: 60px 20px;
     animation: logoGradientPulse 8s ease infinite;
     position: relative;
     overflow: hidden;
@@ -1435,7 +1447,7 @@
   .our-team-header {
     text-align: center;
     max-width: 880px;
-    margin: 0 auto 35px auto;
+    margin: 0 auto 40px auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1445,8 +1457,8 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
-    background: linear-gradient(135deg, rgba(236, 92, 10, 0.12), rgba(0, 123, 62, 0.12));
-    border: 1px solid rgba(236, 92, 10, 0.3);
+    background: linear-gradient(135deg, rgba(236, 92, 10, 0.15), rgba(0, 123, 62, 0.15));
+    border: 1.5px solid rgba(236, 92, 10, 0.35);
     padding: 8px 24px;
     border-radius: 50px;
     font-size: 0.88rem;
@@ -1454,7 +1466,7 @@
     color: #ec5c0a;
     letter-spacing: 1px;
     margin-bottom: 18px;
-    box-shadow: 0 4px 15px rgba(236, 92, 10, 0.1);
+    box-shadow: 0 6px 20px rgba(236, 92, 10, 0.15);
   }
   .our-team-title {
     font-size: clamp(28px, 4vw, 48px);
@@ -1481,16 +1493,14 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 24px;
-    align-items: stretch; /* All 4 cards stretch to exact same height */
+    align-items: stretch;
   }
 
   .team-card {
-    background: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    background: #ffffff;
     border-radius: 28px;
     overflow: hidden;
-    box-shadow: 0 15px 40px rgba(236, 92, 10, 0.08);
+    box-shadow: 0 16px 45px rgba(236, 92, 10, 0.08);
     border: 2px solid rgba(236, 92, 10, 0.22);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
@@ -1498,18 +1508,33 @@
     flex-direction: column;
     text-align: center;
     height: 100%;
-    padding: 34px 20px 28px 20px;
+    padding: 36px 22px 28px 22px;
     justify-content: space-between;
   }
   .team-card::before {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0; height: 5px;
-    background: linear-gradient(90deg, #ec5c0a, #ff9a00, #007b3e);
+    background: linear-gradient(90deg, #ec5c0a, #ff9a00, #007b3e, #ec5c0a);
+    background-size: 200% auto;
+    animation: color-shift 4s linear infinite;
+  }
+  .team-card::after {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%; width: 200%; height: 200%;
+    background: linear-gradient(45deg, transparent 40%, rgba(255, 255, 255, 0.65) 50%, transparent 60%);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .team-card:hover::after {
+    opacity: 1;
+    animation: foilShimmer 1.2s ease-in-out infinite;
   }
   .team-card:hover {
-    transform: translateY(-12px);
-    box-shadow: 0 25px 60px rgba(236, 92, 10, 0.22), 0 0 30px rgba(255, 154, 0, 0.18);
+    transform: translateY(-16px) scale(1.02);
+    box-shadow: 0 30px 70px rgba(236, 92, 10, 0.25), 0 0 35px rgba(0, 123, 62, 0.18);
     border-color: #ec5c0a;
   }
 
@@ -1517,13 +1542,18 @@
     position: relative;
     width: 125px;
     height: 125px;
-    margin: 0 auto 18px auto;
+    margin: 0 auto 20px auto;
     border-radius: 50%;
     overflow: visible !important;
     background: linear-gradient(135deg, #fff3eb, #e8f5e9);
     border: 3.5px solid #ec5c0a;
-    box-shadow: 0 8px 24px rgba(236, 92, 10, 0.25);
+    box-shadow: 0 10px 25px rgba(236, 92, 10, 0.28), 0 0 18px rgba(0, 123, 62, 0.15);
     flex-shrink: 0;
+    transition: transform 0.4s ease;
+  }
+  .team-card:hover .team-img-wrapper {
+    transform: scale(1.05);
+    border-color: #ff9a00;
   }
   .team-img-wrapper img {
     width: 100%;
@@ -1543,17 +1573,17 @@
     right: 4px;
     width: 16px;
     height: 16px;
-    background: #007b3e;
+    background: #00c853;
     border: 3px solid #ffffff;
     border-radius: 50%;
-    box-shadow: 0 0 10px rgba(0, 123, 62, 0.6);
+    animation: statusPulseGreen 2s infinite;
   }
 
   .team-role-tag {
     display: inline-block;
-    padding: 6px 16px;
+    padding: 7px 18px;
     border-radius: 50px;
-    font-size: 0.78rem;
+    font-size: 0.8rem;
     font-weight: 900;
     margin-bottom: 14px;
     white-space: nowrap;
@@ -1561,7 +1591,12 @@
     margin-left: auto;
     margin-right: auto;
     letter-spacing: 0.5px;
-    box-shadow: 0 4px 12px rgba(236, 92, 10, 0.25);
+    box-shadow: 0 4px 15px rgba(236, 92, 10, 0.28);
+    transition: all 0.3s ease;
+  }
+  .team-card:hover .team-role-tag {
+    transform: scale(1.06);
+    box-shadow: 0 6px 20px rgba(236, 92, 10, 0.4);
   }
 
   .team-info {
@@ -1572,7 +1607,7 @@
     justify-content: space-between;
   }
   .team-name {
-    font-size: 1.3rem;
+    font-size: 1.35rem;
     font-weight: 900;
     color: #1a1a1a;
     margin-bottom: 8px;
@@ -1582,7 +1617,7 @@
     color: #ec5c0a;
   }
   .team-bio {
-    font-size: 0.9rem;
+    font-size: 0.92rem;
     color: #555555;
     line-height: 1.65;
     margin-bottom: 20px;
@@ -1597,25 +1632,25 @@
     margin-top: auto;
   }
   .team-social-btn {
-    width: 38px;
-    height: 38px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     background: #ffffff;
-    border: 1.5px solid rgba(236, 92, 10, 0.3);
+    border: 1.5px solid rgba(236, 92, 10, 0.35);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.95rem;
+    font-size: 1rem;
     color: #ec5c0a;
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     box-shadow: 0 4px 12px rgba(0,0,0,0.04);
   }
   .team-social-btn:hover {
     background: linear-gradient(135deg, #ec5c0a, #ff6b00);
     color: #ffffff !important;
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(236, 92, 10, 0.35);
+    transform: translateY(-4px) rotate(360deg);
+    box-shadow: 0 8px 22px rgba(236, 92, 10, 0.45);
     border-color: transparent;
   }
 
