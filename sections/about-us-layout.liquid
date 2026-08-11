@@ -47,9 +47,9 @@
   
   /* --- Hero Showcase Section --- */
   .about-hero {
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center 30%;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-position: center 25% !important;
     background-color: #090e1a;
     min-height: 520px;
     padding: 30px 20px;
@@ -59,6 +59,8 @@
     justify-content: flex-end;
     position: relative;
     overflow: hidden;
+    image-rendering: -webkit-optimize-contrast;
+    -webkit-backface-visibility: hidden;
   }
   .hero-breadcrumb-pill {
     position: relative;
@@ -76,27 +78,50 @@
     margin-bottom: 10px;
   }
   
+  /* --- Left to Right Moving Marquee Text --- */
+  @keyframes scroll-left-to-right {
+    0% { transform: translateX(-50%) translateY(-50%); }
+    100% { transform: translateX(50%) translateY(-50%); }
+  }
+  .moving-text {
+    position: absolute;
+    top: 45%;
+    left: 0;
+    white-space: nowrap;
+    z-index: 1;
+    opacity: 0.28;
+    pointer-events: none;
+    line-height: 1;
+    font-size: clamp(55px, 8.5vw, 120px);
+    font-weight: 900;
+    background: linear-gradient(90deg, #ec5c0a, #ffcc00, #007b3e, #ec5c0a);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: scroll-left-to-right 16s linear infinite;
+  }
+
   /* --- Responsive --- */
   @media screen and (max-width: 900px) {
     .page-header_title { font-size: 3rem !important; }
   }
   @media screen and (max-width: 768px) {
     .about-hero {
-      min-height: 230px !important;
-      height: 56vw !important;
-      background-size: 100% 100% !important; /* Fits entire team photo without side cropping */
-      background-position: center center !important;
-      padding: 10px !important;
+      min-height: 260px !important;
+      height: 60vw !important;
+      background-size: cover !important;
+      background-position: center 15% !important;
+      padding: 12px 10px !important;
     }
     .hero-breadcrumb-pill {
-      padding: 5px 14px !important;
-      font-size: 0.72rem !important;
+      padding: 6px 16px !important;
+      font-size: 0.75rem !important;
       gap: 6px !important;
-      margin-bottom: 2px !important;
+      margin-bottom: 4px !important;
     }
     .hero-breadcrumb-pill span,
     .hero-breadcrumb-pill a {
-      font-size: 0.72rem !important;
+      font-size: 0.75rem !important;
     }
   }
   @media screen and (max-width: 600px) {
@@ -1740,6 +1765,9 @@
 
   <section class="about-hero page-header page-header_align_center" style="background-image: url('{{ hero_bg_url }}');">
     
+    <!-- Left to Right Moving Marquee Text -->
+    <div class="moving-text">About Vidhyut Saathi &nbsp; &nbsp; &nbsp; About Vidhyut Saathi &nbsp; &nbsp; &nbsp; About Vidhyut Saathi &nbsp; &nbsp; &nbsp; About Vidhyut Saathi</div>
+
     <!-- Floating Minimal Breadcrumbs Bar at Bottom of Hero -->
     <div class="hero-breadcrumb-pill">
       <a href="/" style="color: #ffcc00; text-decoration: none; font-weight: 800; font-size: 0.92rem;">Home</a>
