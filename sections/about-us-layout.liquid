@@ -601,10 +601,16 @@
     width: fit-content;
   }
   @media screen and (max-width: 768px) {
-    .mission-vision-section {
+    .mission-vision-section,
+    .services-section,
+    .trust-achievements-section,
+    .our-team-section {
       padding: 35px 16px;
     }
-    .mv-container {
+    .mv-container,
+    .services-container,
+    .trust-grid,
+    .team-grid {
       display: flex !important;
       grid-template-columns: none !important;
       overflow-x: auto !important;
@@ -614,10 +620,16 @@
       gap: 0 !important;
       scrollbar-width: none;
     }
-    .mv-container::-webkit-scrollbar {
+    .mv-container::-webkit-scrollbar,
+    .services-container::-webkit-scrollbar,
+    .trust-grid::-webkit-scrollbar,
+    .team-grid::-webkit-scrollbar {
       display: none;
     }
-    .mv-card {
+    .mv-card,
+    .service-card,
+    .trust-card,
+    .team-card {
       flex: 0 0 100% !important;
       width: 100% !important;
       scroll-snap-align: center !important;
@@ -625,14 +637,20 @@
       box-sizing: border-box !important;
       padding: 32px 22px !important;
     }
-    .mv-slider-dots {
+    .mv-slider-dots,
+    .services-slider-dots,
+    .trust-slider-dots,
+    .team-slider-dots {
       display: flex !important;
       justify-content: center;
       align-items: center;
       gap: 8px;
       margin-top: 18px;
     }
-    .mv-dot {
+    .mv-dot,
+    .services-dot,
+    .trust-dot,
+    .team-dot {
       width: 10px;
       height: 10px;
       border-radius: 50%;
@@ -641,7 +659,10 @@
       cursor: pointer;
       transition: all 0.3s ease;
     }
-    .mv-dot.active {
+    .mv-dot.active,
+    .services-dot.active,
+    .trust-dot.active,
+    .team-dot.active {
       width: 28px;
       border-radius: 20px;
       background: linear-gradient(90deg, #ec5c0a, #007b3e);
@@ -650,7 +671,10 @@
     }
   }
   @media screen and (min-width: 769px) {
-    .mv-slider-dots {
+    .mv-slider-dots,
+    .services-slider-dots,
+    .trust-slider-dots,
+    .team-slider-dots {
       display: none !important;
     }
   }
@@ -1849,6 +1873,13 @@
       </div>
 
     </div>
+
+    <!-- Mobile Slider Dots (Mobile Only) -->
+    <div class="services-slider-dots">
+      <span class="services-dot active" data-index="0"></span>
+      <span class="services-dot" data-index="1"></span>
+      <span class="services-dot" data-index="2"></span>
+    </div>
   </section>
 
   <!-- Section 6: Trust, Live Customer Growth & US-German Nano-Tech Showcase -->
@@ -1924,6 +1955,14 @@
           </div>
         </div>
 
+      </div>
+
+      <!-- Mobile Slider Dots (Mobile Only) -->
+      <div class="trust-slider-dots">
+        <span class="trust-dot active" data-index="0"></span>
+        <span class="trust-dot" data-index="1"></span>
+        <span class="trust-dot" data-index="2"></span>
+        <span class="trust-dot" data-index="3"></span>
       </div>
 
       <!-- Dynamic Live Growth Ticker Bar -->
@@ -2096,6 +2135,14 @@
 
       </div>
 
+      <!-- Mobile Slider Dots (Mobile Only) -->
+      <div class="team-slider-dots">
+        <span class="team-dot active" data-index="0"></span>
+        <span class="team-dot" data-index="1"></span>
+        <span class="team-dot" data-index="2"></span>
+        <span class="team-dot" data-index="3"></span>
+      </div>
+
     </div>
   </section>
 
@@ -2142,12 +2189,13 @@
     }
 
     // =========================================================================
-    // Mobile-Only Auto Slider for Section 3 (3-Seconds Auto Rotate & Click Dots)
+    // Mobile-Only Auto Sliders (3-Seconds Auto Rotate & Click Dots)
+    // For Section 3, Section 5, Section 6, and Section 7
     // =========================================================================
-    (function setupMobileMvSlider() {
-      const container = document.querySelector('.mv-container');
-      const cards = document.querySelectorAll('.mv-card');
-      const dots = document.querySelectorAll('.mv-dot');
+    function createMobileSlider(containerSelector, cardSelector, dotSelector) {
+      const container = document.querySelector(containerSelector);
+      const cards = document.querySelectorAll(cardSelector);
+      const dots = document.querySelectorAll(dotSelector);
       if (!container || cards.length === 0) return;
 
       let currentIndex = 0;
@@ -2194,7 +2242,6 @@
         }
       }
 
-      // Dot click navigation
       dots.forEach((dot, index) => {
         dot.addEventListener('click', function() {
           goToSlide(index);
@@ -2202,13 +2249,11 @@
         });
       });
 
-      // Pause on user touch interaction
       container.addEventListener('touchstart', stopAutoSlide, { passive: true });
       container.addEventListener('touchend', function() {
         setTimeout(startAutoSlide, 2000);
       }, { passive: true });
 
-      // Update dot on manual swipe scroll
       container.addEventListener('scroll', function() {
         if (!isMobile()) return;
         const slideWidth = container.clientWidth;
@@ -2221,7 +2266,6 @@
         }
       });
 
-      // Window resize handler
       window.addEventListener('resize', function() {
         if (isMobile()) {
           startAutoSlide();
@@ -2230,11 +2274,15 @@
         }
       });
 
-      // Initial start
       if (isMobile()) {
         startAutoSlide();
       }
-    })();
+    }
+
+    createMobileSlider('.mv-container', '.mv-card', '.mv-dot');
+    createMobileSlider('.services-container', '.service-card', '.services-dot');
+    createMobileSlider('.trust-grid', '.trust-card', '.trust-dot');
+    createMobileSlider('.team-grid', '.team-card', '.team-dot');
   });
 </script>
 
