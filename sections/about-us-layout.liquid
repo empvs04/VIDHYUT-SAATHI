@@ -45,9 +45,59 @@
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
   }
   
+  /* --- Hero Showcase Section --- */
+  .about-hero {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center 30%;
+    background-color: #090e1a;
+    min-height: 520px;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-breadcrumb-pill {
+    position: relative;
+    z-index: 2;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 204, 0, 0.5);
+    border-radius: 50px;
+    padding: 10px 26px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+  
   /* --- Responsive --- */
   @media screen and (max-width: 900px) {
     .page-header_title { font-size: 3rem !important; }
+  }
+  @media screen and (max-width: 768px) {
+    .about-hero {
+      min-height: 230px !important;
+      height: 56vw !important;
+      background-size: 100% 100% !important; /* Fits entire team photo without side cropping */
+      background-position: center center !important;
+      padding: 10px !important;
+    }
+    .hero-breadcrumb-pill {
+      padding: 5px 14px !important;
+      font-size: 0.72rem !important;
+      gap: 6px !important;
+      margin-bottom: 2px !important;
+    }
+    .hero-breadcrumb-pill span,
+    .hero-breadcrumb-pill a {
+      font-size: 0.72rem !important;
+    }
   }
   @media screen and (max-width: 600px) {
     .page-header_title { font-size: 2.2rem !important; }
@@ -1570,10 +1620,10 @@
   <!-- Hero Section (Clean Full-Width Official Vidhyut Saathi Team Showcase) -->
   {%- assign hero_bg_url = 'vidhyut-saathi-team-bg.jpg' | asset_url -%}
 
-  <section class="about-hero page-header page-header_align_center" style="background-image: url('{{ hero_bg_url }}'); background-size: cover; background-repeat: no-repeat; background-attachment: scroll; background-position: center 30%; background-color: #090e1a; min-height: 520px; padding: 30px 20px; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; position: relative; overflow: hidden;">
+  <section class="about-hero page-header page-header_align_center" style="background-image: url('{{ hero_bg_url }}');">
     
     <!-- Floating Minimal Breadcrumbs Bar at Bottom of Hero -->
-    <div style="position: relative; z-index: 2; background: rgba(0, 0, 0, 0.65); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 204, 0, 0.5); border-radius: 50px; padding: 10px 26px; box-shadow: 0 8px 25px rgba(0,0,0,0.5); display: inline-flex; align-items: center; gap: 12px; margin-bottom: 10px;">
+    <div class="hero-breadcrumb-pill">
       <a href="/" style="color: #ffcc00; text-decoration: none; font-weight: 800; font-size: 0.92rem;">Home</a>
       <span style="color: rgba(255,255,255,0.5); font-size: 0.85rem;">/</span>
       <span style="color: #ffffff; font-weight: 700; font-size: 0.92rem;">About Us</span>
