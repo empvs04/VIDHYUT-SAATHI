@@ -2223,7 +2223,7 @@
     }
 
     // =========================================================================
-    // Mobile-Only Auto Sliders (3-Seconds Auto Rotate & Click Dots)
+    // Mobile-Only Viewport-Triggered Auto Sliders (Starts from Card 1 on Scroll)
     // For Section 3, Section 5, Section 6, and Section 7
     // =========================================================================
     function createMobileSlider(containerSelector, cardSelector, dotSelector) {
@@ -2232,20 +2232,23 @@
       const dots = document.querySelectorAll(dotSelector);
       if (!container || cards.length === 0) return;
 
+      const parentSection = container.closest('section') || container;
+
       let currentIndex = 0;
       let autoInterval = null;
+      let isVisibleInViewport = false;
 
       function isMobile() {
         return window.innerWidth <= 768;
       }
 
-      function goToSlide(index) {
+      function goToSlide(index, smooth = true) {
         if (!isMobile()) return;
         currentIndex = (index + cards.length) % cards.length;
         const slideWidth = container.clientWidth;
         container.scrollTo({
           left: slideWidth * currentIndex,
-          behavior: 'smooth'
+          behavior: smooth ? 'smooth' : 'auto'
         });
         updateDots(currentIndex);
       }
@@ -2262,7 +2265,7 @@
 
       function startAutoSlide() {
         stopAutoSlide();
-        if (isMobile()) {
+        if (isMobile() && isVisibleInViewport) {
           autoInterval = setInterval(function() {
             goToSlide(currentIndex + 1);
           }, 3000); // Auto rotate every 3 seconds
@@ -2276,6 +2279,31 @@
         }
       }
 
+      // IntersectionObserver: Trigger 3s timer ONLY when section scrolls into mobile viewport
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              isVisibleInViewport = true;
+              if (isMobile()) {
+                goToSlide(0, false); // Always start from Card 1 when user reaches section
+                startAutoSlide();
+              }
+            } else {
+              isVisibleInViewport = false;
+              stopAutoSlide(); // Pause when scrolled off-screen
+            }
+          });
+        }, {
+          threshold: 0.2
+        });
+
+        observer.observe(parentSection);
+      } else {
+        isVisibleInViewport = true;
+        if (isMobile()) startAutoSlide();
+      }
+
       dots.forEach((dot, index) => {
         dot.addEventListener('click', function() {
           goToSlide(index);
@@ -2285,7 +2313,9 @@
 
       container.addEventListener('touchstart', stopAutoSlide, { passive: true });
       container.addEventListener('touchend', function() {
-        setTimeout(startAutoSlide, 2000);
+        if (isVisibleInViewport) {
+          setTimeout(startAutoSlide, 2000);
+        }
       }, { passive: true });
 
       container.addEventListener('scroll', function() {
@@ -2302,15 +2332,11 @@
 
       window.addEventListener('resize', function() {
         if (isMobile()) {
-          startAutoSlide();
+          if (isVisibleInViewport) startAutoSlide();
         } else {
           stopAutoSlide();
         }
       });
-
-      if (isMobile()) {
-        startAutoSlide();
-      }
     }
 
     createMobileSlider('.mv-container', '.mv-card', '.mv-dot');
