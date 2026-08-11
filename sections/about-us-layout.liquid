@@ -610,104 +610,180 @@
     }
   }
 
-  /* --- Who We Are Section --- */
+  /* --- Upgraded Section 4: Who We Are (Masterclass Glassmorphic Showcase) --- */
   .who-we-are-section {
-    padding: 55px 20px;
-    background: linear-gradient(180deg, #ffffff 0%, #fffbf6 100%);
+    padding: 70px 20px;
+    background: linear-gradient(180deg, #ffffff 0%, #fffbf6 50%, #ffffff 100%);
+    position: relative;
+    overflow: hidden;
   }
   .wwa-container {
-    max-width: 1240px;
+    max-width: 1280px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 60px;
+    gap: 40px;
+    align-items: stretch; /* Left & Right Containers match exact equal height line */
+  }
+  
+  /* Left Media Container */
+  .wwa-image {
+    height: 100%;
+    display: flex;
     align-items: center;
+    justify-content: center;
   }
   .wwa-image-wrapper {
     position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 480px;
     border-radius: 30px;
     overflow: hidden;
-    box-shadow: 0 25px 50px rgba(0,123,62,0.12);
-    border: 1px solid rgba(0,123,62,0.2);
+    box-shadow: 0 25px 60px rgba(0, 123, 62, 0.15);
+    border: 1px solid rgba(0, 123, 62, 0.25);
+    background: linear-gradient(135deg, #111827, #1f2937);
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .wwa-image-wrapper img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
     display: block;
-    transition: transform 0.6s ease;
+    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
   }
   .wwa-image-wrapper:hover img {
-    transform: scale(1.06);
+    transform: scale(1.05);
   }
-  .wwa-subtitle {
-    font-size: 0.9rem;
+  
+  /* Left Overlay Glass Badges */
+  .wwa-img-badge {
+    position: absolute;
+    padding: 10px 18px;
+    background: rgba(15, 23, 42, 0.88);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 204, 0, 0.5);
+    border-radius: 50px;
+    color: #ffffff;
+    font-size: 0.82rem;
     font-weight: 800;
-    letter-spacing: 2px;
-    margin-bottom: 18px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .wwa-img-badge-top {
+    top: 20px;
+    left: 20px;
+    border-color: rgba(236, 92, 10, 0.5);
+  }
+  .wwa-img-badge-bottom {
+    bottom: 20px;
+    right: 20px;
+    border-color: rgba(0, 123, 62, 0.5);
+  }
+
+  /* Right Content Container */
+  .wwa-content {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(0, 123, 62, 0.18);
+    border-radius: 30px;
+    padding: 42px 38px;
+    box-shadow: 0 20px 50px rgba(0, 123, 62, 0.06);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  .wwa-subtitle {
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    margin-bottom: 16px;
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 8px 20px;
+    padding: 8px 18px;
     background: rgba(0,123,62,0.08);
     border: 1px solid rgba(0,123,62,0.25);
-    border-radius: 30px;
+    border-radius: 50px;
     color: #007b3e;
+    width: fit-content;
   }
+
   .wwa-title {
-    font-size: clamp(30px, 4vw, 42px);
+    font-size: clamp(28px, 3.2vw, 40px);
     font-weight: 900;
     line-height: 1.25;
-    margin-bottom: 22px;
+    margin-bottom: 18px;
     color: #1a1a1a;
   }
+
   .wwa-title span {
     background: linear-gradient(90deg, #ec5c0a, #007b3e);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
+
   .wwa-text {
-    font-size: 1.12rem;
-    line-height: 1.85;
+    font-size: 1.02rem;
+    line-height: 1.75;
     color: #555;
-    margin-bottom: 30px;
+    margin-bottom: 24px;
   }
+
+  /* Bottom CEO & Features Row */
   .wwa-bottom-row {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-    border-top: 1px solid rgba(236,92,10,0.15);
-    padding-top: 30px;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 20px;
+    border-top: 1px solid rgba(0,123,62,0.15);
+    padding-top: 24px;
+    margin-top: auto;
   }
+
   .wwa-ceo {
     display: flex;
     align-items: center;
-    gap: 16px;
-    background: #ffffff;
-    padding: 14px 20px;
+    gap: 14px;
+    background: linear-gradient(135deg, rgba(236,92,10,0.05), rgba(0,123,62,0.05));
+    padding: 14px 18px;
     border-radius: 20px;
     border: 1px solid rgba(0,123,62,0.2);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.03);
   }
+
   .wwa-ceo img {
-    width: 62px;
-    height: 62px;
+    width: 58px;
+    height: 58px;
     border-radius: 50%;
     object-fit: cover;
     border: 3px solid #007b3e;
     box-shadow: 0 0 12px rgba(0,123,62,0.3);
+    flex-shrink: 0;
   }
+
   .wwa-ceo-info h4 {
-    margin: 0 0 4px 0;
-    font-size: 1.25rem;
+    margin: 0 0 2px 0;
+    font-size: 1.15rem;
     font-weight: 800;
     color: #1a1a1a;
   }
+
   .wwa-ceo-info span {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: #ec5c0a;
     font-weight: 700;
     display: block;
   }
+
   .wwa-features {
     list-style: none;
     padding: 0;
@@ -717,13 +793,15 @@
     justify-content: center;
     gap: 10px;
   }
+
   .wwa-features li {
     position: relative;
-    padding-left: 32px;
-    font-size: 1.05rem;
-    font-weight: 700;
+    padding-left: 28px;
+    font-size: 0.9rem;
+    font-weight: 800;
     color: #2d3748;
   }
+
   .wwa-features li::before {
     content: '✓';
     position: absolute;
@@ -732,15 +810,22 @@
     transform: translateY(-50%);
     color: white;
     background: linear-gradient(135deg, #ec5c0a, #007b3e);
-    width: 22px;
-    height: 22px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     font-weight: 900;
     box-shadow: 0 4px 10px rgba(236,92,10,0.3);
+  }
+
+  @media screen and (max-width: 900px) {
+    .wwa-container { grid-template-columns: 1fr; gap: 30px; }
+    .wwa-image-wrapper { min-height: 320px; }
+    .wwa-content { padding: 30px 22px; }
+    .wwa-bottom-row { grid-template-columns: 1fr; }
   }
 
   /* --- Services 3-Column Light Section --- */
@@ -1404,51 +1489,60 @@
     </div>
   </section>
 
-  <!-- Who We Are Section -->
+  <!-- Who We Are Section (Upgraded Equal Height Showcase) -->
   <section class="who-we-are-section">
     <div class="wwa-container">
       
-      <!-- Left Side Image/Video -->
-      <div class="wwa-image tilt-element">
+      <!-- Left Side Image Showcase -->
+      <div class="wwa-image reveal-up active">
         <div class="wwa-image-wrapper">
+          <div class="wwa-img-badge wwa-img-badge-top">
+            <span>🏆</span>
+            <span>ISO 9001:2015 CERTIFIED</span>
+          </div>
+
           {%- if section.settings.who_we_are_image != blank -%}
-            {{ section.settings.who_we_are_image | image_url: width: 800 | image_tag: loading: 'lazy' }}
+            {{ section.settings.who_we_are_image | image_url: width: 800 | image_tag: loading: 'lazy', alt: 'Vidhyut Saathi Technology Showcase' }}
           {%- else -%}
-            <div style="background: #1a1a1a; width: 100%; aspect-ratio: 1/1; display: flex; align-items: flex-end; justify-content: center; padding: 20px;">
-              <p style="color: white; opacity: 0.5;">Upload "Who We Are" Image in Theme Editor</p>
-            </div>
+            <img src="{{ 'vidhyut-power-saver-card.jpg' | asset_url }}" alt="Vidhyut Saathi Technology" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
           {%- endif -%}
+
+          <div class="wwa-img-badge wwa-img-badge-bottom">
+            <span>⚡</span>
+            <span>20 LAKHS+ HAPPY USERS</span>
+          </div>
         </div>
       </div>
 
       <!-- Right Side Content -->
-      <div class="wwa-content">
-        <div class="wwa-subtitle">WHO WE ARE</div>
-        <h3 class="wwa-title">We are specialized and certified in <span>energy and fuel saving products</span></h3>
-        <p class="wwa-text">We are an innovation in this technology driven world. We are an ISO certified distributors of energy saving cards which can save upto 30% of electricity and help in saving ozone layer.</p>
+      <div class="wwa-content reveal-up active">
+        <div>
+          <div class="wwa-subtitle">🌱 WHO WE ARE</div>
+          <h3 class="wwa-title">We Specialise in Certified <span>Energy &amp; Fuel Saving Innovations</span></h3>
+          <p class="wwa-text">Vidhyut Saathi is India's leading ISO-certified energy innovation enterprise. Engineered with US-German nanotechnology and 20,000 negative ions, we specialize in power saver cards that protect the environment, eliminate power loss, and reduce electricity bills by 20% to 30% for domestic, commercial &amp; industrial clients nationwide.</p>
+        </div>
         
         <div class="wwa-bottom-row">
           <div class="wwa-ceo">
             {%- if section.settings.ceo_image != blank -%}
-              {{ section.settings.ceo_image | image_url: width: 150 | image_tag: loading: 'lazy' }}
+              {{ section.settings.ceo_image | image_url: width: 150 | image_tag: loading: 'lazy', alt: 'Jyoti Bajaj' }}
             {%- else -%}
-              <div style="width: 60px; height: 60px; border-radius: 50%; background: #eee; display:flex; align-items:center; justify-content:center;">👤</div>
+              <div style="width: 58px; height: 58px; border-radius: 50%; background: linear-gradient(135deg, #ec5c0a, #007b3e); color: white; display:flex; align-items:center; justify-content:center; font-size: 1.5rem;">👤</div>
             {%- endif -%}
             <div class="wwa-ceo-info">
               <h4>Jyoti Bajaj</h4>
-              <span>CEO, Vidhyut Saathi</span>
+              <span>Founder &amp; CEO, Vidhyut Saathi</span>
             </div>
           </div>
           
           <ul class="wwa-features">
-            <li>Save 20-30% Electricity</li>
-            <li>We guarantee trusted service</li>
-            <li>Experts in technology fields</li>
+            <li>20%-30% Electricity Savings</li>
+            <li>100% Legal &amp; Govt Certified</li>
+            <li>Zero Maintenance Cost</li>
           </ul>
         </div>
       </div>
 
-    </div>
     </div>
   </section>
 
