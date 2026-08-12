@@ -528,17 +528,58 @@
 
   /* Tablet & Mobile Responsive Alignment */
   @media screen and (max-width: 900px) {
-    .company-info-section { padding: 35px 16px; }
+    .company-info-section { padding: 30px 14px; }
     .company-info-container {
       grid-template-columns: 1fr;
-      gap: 30px;
+      gap: 24px;
     }
-    .company-info-text { padding: 28px 20px; text-align: center; }
-    .company-info-image { padding: 35px 20px; }
-    .company-feature-grid { grid-template-columns: 1fr; text-align: left; }
-    .company-feature-grid-banner { grid-template-columns: repeat(2, 1fr); }
-    .card-float-badge-top { top: -12px; left: 0; font-size: 0.7rem; padding: 6px 12px; }
-    .card-float-badge-bottom { bottom: -12px; right: 0; font-size: 0.7rem; padding: 6px 12px; }
+    .company-info-text {
+      padding: 24px 18px;
+      text-align: center;
+      align-items: center;
+    }
+    .company-info-image {
+      padding: 24px 14px;
+      border-radius: 22px;
+      width: 100%;
+      box-sizing: border-box;
+      overflow: visible;
+    }
+    .card-5d-stage {
+      max-width: 100%;
+      margin: 0 auto;
+    }
+    .company-bottom-banner {
+      margin-top: 20px;
+      padding: 20px 16px;
+      border-radius: 22px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .company-tagline-pill {
+      font-size: 0.76rem;
+      padding: 8px 12px;
+      gap: 4px;
+      line-height: 1.45;
+      text-align: center;
+      justify-content: center;
+    }
+    .company-feature-grid-banner {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+    .card-float-badge-top {
+      top: -12px;
+      left: 0;
+      font-size: 0.68rem;
+      padding: 5px 10px;
+    }
+    .card-float-badge-bottom {
+      bottom: -12px;
+      right: 0;
+      font-size: 0.68rem;
+      padding: 5px 10px;
+    }
     
     /* Center Section 2 Buttons on Mobile */
     .company-cta-group,
@@ -547,117 +588,35 @@
       width: 100% !important;
       gap: 12px !important;
       margin: 14px auto 0 auto !important;
+      flex-direction: column !important;
     }
     .company-btn-primary,
     .company-btn-secondary {
       width: 100% !important;
-      max-width: 320px !important;
+      max-width: 100% !important;
+      padding: 14px 20px !important;
       justify-content: center !important;
       text-align: center !important;
+      box-sizing: border-box !important;
       margin: 0 auto !important;
     }
   }
 
-  @keyframes floatCard5D {
-    0% { transform: perspective(1000px) translateY(0px) rotateX(4deg) rotateY(-3deg); }
-    50% { transform: perspective(1000px) translateY(-10px) rotateX(-2deg) rotateY(3deg); }
-    100% { transform: perspective(1000px) translateY(-5px) rotateX(3deg) rotateY(-4deg); }
-  }
-
-  .card-5d-stage:hover {
-    animation-play-state: paused;
-  }
-
-  /* Layer 3: Metallic Chamfered 3D Card Shell */
-  .card-5d-wrapper {
-    position: relative;
-    width: 100%;
-    border-radius: 22px;
-    overflow: hidden;
-    background: #000000;
-    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.7), 0 0 45px rgba(236, 92, 10, 0.35), 0 0 0 2px rgba(255, 204, 0, 0.5);
-    transform-style: preserve-3d;
-    transition: box-shadow 0.4s ease;
-  }
-
-  .card-5d-stage:hover .card-5d-wrapper {
-    box-shadow: 0 45px 95px rgba(0, 0, 0, 0.85), 0 0 75px rgba(0, 200, 255, 0.5), 0 0 0 3px rgba(255, 204, 0, 0.9);
-  }
-
-  .card-5d-image {
-    width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 22px;
-    transform: translateZ(15px);
-    transition: transform 0.4s ease;
-    object-fit: cover;
-  }
-
-  /* Layer 4: Interactive Holographic Glare & Foil Reflection */
-  .card-5d-glare {
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    border-radius: 22px;
-    background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0) 70%);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-    mix-blend-mode: overlay;
-    transform: translateZ(35px);
-  }
-
-  /* Layer 5: Floating 3D Holographic Badges popping in Z-Space */
-  .card-float-badge {
-    position: absolute;
-    padding: 8px 16px;
-    background: rgba(9, 14, 26, 0.92);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border: 1px solid rgba(255, 204, 0, 0.6);
-    border-radius: 50px;
-    color: #ffffff;
-    font-size: 0.78rem;
-    font-weight: 800;
-    letter-spacing: 0.5px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-    z-index: 20;
-    pointer-events: none;
-    transform: translateZ(65px);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    white-space: nowrap;
-  }
-
-  .card-float-badge-top {
-    top: -16px;
-    left: -12px;
-    background: linear-gradient(135deg, rgba(236, 92, 10, 0.95), rgba(9, 14, 26, 0.95));
-  }
-
-  .card-float-badge-bottom {
-    bottom: -16px;
-    right: -12px;
-    background: linear-gradient(135deg, rgba(0, 123, 62, 0.95), rgba(9, 14, 26, 0.95));
-  }
-
-  .card-float-badge span.highlight {
-    color: #ffcc00;
-  }
-
-  /* Tablet & Mobile Responsive Alignment */
-  @media screen and (max-width: 900px) {
-    .company-info-section { padding: 35px 16px; }
-    .company-info-container {
+  @media screen and (max-width: 550px) {
+    .company-feature-grid-banner {
       grid-template-columns: 1fr;
-      gap: 30px;
+      gap: 10px;
     }
-    .company-info-text { padding: 28px 20px; }
-    .company-info-image { padding: 35px 20px; }
-    .company-feature-grid { grid-template-columns: 1fr; }
-    .card-float-badge-top { top: -12px; left: 0; font-size: 0.7rem; padding: 6px 12px; }
-    .card-float-badge-bottom { bottom: -12px; right: 0; font-size: 0.7rem; padding: 6px 12px; }
+    .company-feature-item {
+      padding: 10px 12px;
+      gap: 10px;
+    }
+    .company-feature-text h4 {
+      font-size: 0.85rem;
+    }
+    .company-feature-text p {
+      font-size: 0.75rem;
+    }
   }
   
   /* --- Upgraded Section 3: Mission, Vision & What We Do Grid --- */
