@@ -193,24 +193,24 @@
   .req-tabs-nav {
     display: flex;
     justify-content: center;
-    gap: 12px;
+    gap: 10px;
     flex-wrap: wrap;
     background: rgba(255, 255, 255, 0.06);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 60px;
-    padding: 10px;
+    padding: 8px;
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
   }
 
   .req-tab-btn {
-    padding: 12px 24px;
+    padding: 10px 20px;
     background: transparent;
     border: 1.5px solid transparent;
     border-radius: 50px;
     color: #cbd5e1;
-    font-size: 0.95rem;
+    font-size: 0.92rem;
     font-weight: 800;
     cursor: pointer;
     transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
@@ -232,9 +232,9 @@
   }
   .req-tab-btn .tab-count {
     background: rgba(255, 255, 255, 0.2);
-    padding: 2px 10px;
+    padding: 2px 8px;
     border-radius: 20px;
-    font-size: 0.82rem;
+    font-size: 0.78rem;
     font-weight: 900;
   }
 
@@ -434,7 +434,53 @@
     box-shadow: 0 15px 35px rgba(236, 92, 10, 0.6);
   }
 
-  /* --- Real Example Spotlight (User's Exact Scenario) --- */
+  /* Special Detailed Multi-Row Grid for High Load / Commercial Tab */
+  .req-multi-rows-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 14px;
+  }
+  @media (max-width: 768px) {
+    .req-multi-rows-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .req-multi-row-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 204, 0, 0.3);
+    border-radius: 14px;
+    padding: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  .req-multi-row-left {
+    text-align: left;
+  }
+  .req-multi-row-kw {
+    font-size: 0.98rem;
+    font-weight: 900;
+    color: #00ff66;
+  }
+  .req-multi-row-bill {
+    font-size: 0.82rem;
+    color: #cbd5e1;
+  }
+  .req-multi-row-cards {
+    background: rgba(236, 92, 10, 0.25);
+    border: 1px solid #ec5c0a;
+    color: #ffcc00;
+    font-size: 0.92rem;
+    font-weight: 900;
+    padding: 6px 12px;
+    border-radius: 8px;
+    white-space: nowrap;
+  }
+
+  /* --- Real Scenario Spotlight (User's Exact Scenario) --- */
   .req-example-spotlight {
     background: linear-gradient(135deg, rgba(0, 123, 62, 0.2), rgba(236, 92, 10, 0.2));
     border: 2px solid #00ff66;
@@ -580,8 +626,8 @@
     }
     .req-tab-btn {
       flex-shrink: 0 !important;
-      padding: 8px 16px !important;
-      font-size: 0.82rem !important;
+      padding: 8px 14px !important;
+      font-size: 0.8rem !important;
       white-space: nowrap !important;
     }
     .req-card-info-dashboard {
@@ -632,17 +678,17 @@
           <span style="color: #ffcc00;">/</span>
           <span style="color: #ffffff; font-weight: 700;">Required Cards</span>
           <span style="color: rgba(255,255,255,0.3); margin: 0 4px;">|</span>
-          <span style="color: #ffcc00; font-weight: 800;"><span class="pulse-dot"></span> Interactive Tabs</span>
+          <span style="color: #ffcc00; font-weight: 800;"><span class="pulse-dot"></span> Card Requirements</span>
         </div>
       </div>
 
       <div class="req-hero-header">
         <div class="req-badge-top">
           <span class="pulse-dot"></span>
-          <span>⚡ INTERACTIVE CARD REQUIREMENT DASHBOARD</span>
+          <span>⚡ OFFICIAL CARD REQUIREMENT GUIDE</span>
         </div>
-        <h1>Required Vidhyut Saathi Card <span>Select Your Load &amp; Card Quantity</span></h1>
-        <p class="req-hero-subheading">Select any Card Tab below to see complete load specifications, monthly electricity bill range, 1-Phase / 3-Phase requirement, and expected monthly bill savings.</p>
+        <h1>Required Vidhyut Saathi Card <span>Select Your Card Quantity Tab</span></h1>
+        <p class="req-hero-subheading">Aapke ghar, shop, ya factory me kitne cards lagenge? Har tab par click karke exact KW load, bill amount, 1-Phase / 3-Phase requirement, aur complete info dekhein.</p>
       </div>
 
       <!-- Golden Rule Banner -->
@@ -657,7 +703,7 @@
         <div class="req-golden-pill">⚡ 3-Phase Meter = Add +1 Extra Card</div>
       </div>
 
-      <!-- INTERACTIVE TABS NAVIGATION BAR -->
+      <!-- INTERACTIVE TABS NAVIGATION BAR (Clean & Precise) -->
       <div class="req-tabs-wrapper">
         <div class="req-tabs-nav" id="reqTabsNav">
           <button class="req-tab-btn active" data-tab="tab1">
@@ -676,7 +722,13 @@
             💳 5 Cards <span class="tab-count">25-30 KW</span>
           </button>
           <button class="req-tab-btn" data-tab="tab6">
-            🏬 6-10 Cards <span class="tab-count">31-60 KW</span>
+            💳 6 Cards <span class="tab-count">31-36 KW</span>
+          </button>
+          <button class="req-tab-btn" data-tab="tab7">
+            🏬 7-10 Cards <span class="tab-count">37-60 KW</span>
+          </button>
+          <button class="req-tab-btn" data-tab="tab8">
+            🏭 10+ Industrial <span class="tab-count">60+ KW</span>
           </button>
         </div>
       </div>
@@ -689,7 +741,7 @@
           <div class="req-card-info-dashboard">
             <div class="req-info-details-left">
               <div class="req-dash-header">
-                <h3 class="req-dash-title">💳 1 Vidhyut Saathi Card <span>Requirement Details</span></h3>
+                <h3 class="req-dash-title">💳 1 Vidhyut Saathi Card <span>Information</span></h3>
                 <span class="req-dash-tag">Ideal for Small Load</span>
               </div>
 
@@ -734,7 +786,7 @@
           <div class="req-card-info-dashboard">
             <div class="req-info-details-left">
               <div class="req-dash-header">
-                <h3 class="req-dash-title">💳 2 Vidhyut Saathi Cards <span>Requirement Details</span></h3>
+                <h3 class="req-dash-title">💳 2 Vidhyut Saathi Cards <span>Information</span></h3>
                 <span class="req-dash-tag">Ideal for Medium Homes &amp; Shops</span>
               </div>
 
@@ -779,7 +831,7 @@
           <div class="req-card-info-dashboard">
             <div class="req-info-details-left">
               <div class="req-dash-header">
-                <h3 class="req-dash-title">💳 3 Vidhyut Saathi Cards <span>Requirement Details</span></h3>
+                <h3 class="req-dash-title">💳 3 Vidhyut Saathi Cards <span>Information</span></h3>
                 <span class="req-dash-tag">Ideal for Large Villas &amp; Commercial</span>
               </div>
 
@@ -824,7 +876,7 @@
           <div class="req-card-info-dashboard">
             <div class="req-info-details-left">
               <div class="req-dash-header">
-                <h3 class="req-dash-title">💳 4 Vidhyut Saathi Cards <span>Requirement Details</span></h3>
+                <h3 class="req-dash-title">💳 4 Vidhyut Saathi Cards <span>Information</span></h3>
                 <span class="req-dash-tag">Heavy Commercial Load</span>
               </div>
 
@@ -869,7 +921,7 @@
           <div class="req-card-info-dashboard">
             <div class="req-info-details-left">
               <div class="req-dash-header">
-                <h3 class="req-dash-title">💳 5 Vidhyut Saathi Cards <span>Requirement Details</span></h3>
+                <h3 class="req-dash-title">💳 5 Vidhyut Saathi Cards <span>Information</span></h3>
                 <span class="req-dash-tag">Commercial &amp; Mini Industrial</span>
               </div>
 
@@ -909,37 +961,151 @@
           </div>
         </div>
 
-        <!-- TAB 6 PANEL: 6-10 Cards Required (Commercial & Industrial) -->
+        <!-- TAB 6 PANEL: 6 Cards Required -->
         <div class="req-tab-panel" id="tab6">
           <div class="req-card-info-dashboard">
             <div class="req-info-details-left">
               <div class="req-dash-header">
-                <h3 class="req-dash-title">🏬 6 to 10+ Cards <span>Commercial &amp; Industrial</span></h3>
-                <span class="req-dash-tag">Heavy Industrial &amp; Enterprise</span>
+                <h3 class="req-dash-title">💳 6 Vidhyut Saathi Cards <span>Information</span></h3>
+                <span class="req-dash-tag">Commercial &amp; Heavy Load</span>
               </div>
 
               <div class="req-specs-grid">
                 <div class="req-spec-box">
                   <span class="req-spec-label">🔌 Connected KW Load</span>
-                  <span class="req-spec-value highlight">31 – 60+ KW Load</span>
+                  <span class="req-spec-value highlight">31 – 36 KW Load</span>
                 </div>
                 <div class="req-spec-box">
                   <span class="req-spec-label">🧾 Monthly Electricity Bill</span>
-                  <span class="req-spec-value">₹30,001 – ₹60,000+ / month</span>
+                  <span class="req-spec-value">₹30,001 – ₹36,000 / month</span>
                 </div>
                 <div class="req-spec-box">
                   <span class="req-spec-label">⚡ Single Phase Meter</span>
-                  <span class="req-spec-value highlight">6 to 10 Cards</span>
+                  <span class="req-spec-value highlight">6 Cards Required</span>
                 </div>
                 <div class="req-spec-box">
                   <span class="req-spec-label">🔌 3-Phase Meter (+1 Extra)</span>
-                  <span class="req-spec-value highlight-orange">7 to 11+ Cards</span>
+                  <span class="req-spec-value highlight-orange">7 Cards Required</span>
                 </div>
               </div>
 
               <div class="req-apps-banner">
-                <h4>🏭 Suitable Applications &amp; Heavy Machinery:</h4>
-                <p>Designed for Heavy Industrial Plants, Textile Mills, Chemical Factories, Large Hospitals, Educational Institutions, Government Buildings with high KV/KW transformers.</p>
+                <h4>🏭 Suitable Applications:</h4>
+                <p>Ideal for Large Commercial Complexes, Departmental Stores, Multi-story Offices, Marriage Halls, and Commercial Establishments with 31-36 KW Load.</p>
+              </div>
+            </div>
+
+            <div class="req-info-visual-right">
+              <div class="req-card-thumb-wrapper">
+                {%- assign saver_card_img = 'vidhyut-power-saver-card.jpg' | asset_url -%}
+                <img src="{{ saver_card_img }}" alt="6 Vidhyut Saathi Cards Showcase" loading="lazy">
+              </div>
+              <div class="req-savings-tag">💰 Monthly Bill Savings: 20% – 30%</div>
+              <a href="/products/vidhyut-saathi-card" class="req-tab-order-btn">Order 6 Cards Pack &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 7 PANEL: 7-10 Cards (37 to 60 KW Step-by-Step Clear Breakdown) -->
+        <div class="req-tab-panel" id="tab7">
+          <div class="req-card-info-dashboard">
+            <div class="req-info-details-left">
+              <div class="req-dash-header">
+                <h3 class="req-dash-title">🏬 7 to 10 Cards <span>Detailed Range Breakdown</span></h3>
+                <span class="req-dash-tag">37 KW to 60 KW Load</span>
+              </div>
+
+              <p style="color: #cbd5e1; font-size: 0.95rem; margin: 0 0 10px 0;">Niche 37 KW se 60 KW load aur bill range ke hisab se <strong>exact cards count</strong> ka complete clear breakdown diya gaya hai:</p>
+
+              <!-- Clear Step-by-Step Multi-Row Grid for 7, 8, 9, 10 Cards -->
+              <div class="req-multi-rows-grid">
+                
+                <div class="req-multi-row-card">
+                  <div class="req-multi-row-left">
+                    <div class="req-multi-row-kw">🔌 37 – 42 KW Load</div>
+                    <div class="req-multi-row-bill">Bill: ₹36,001 – ₹42,000</div>
+                  </div>
+                  <div class="req-multi-row-cards">7 Cards (3P: 8)</div>
+                </div>
+
+                <div class="req-multi-row-card">
+                  <div class="req-multi-row-left">
+                    <div class="req-multi-row-kw">🔌 43 – 48 KW Load</div>
+                    <div class="req-multi-row-bill">Bill: ₹42,001 – ₹48,000</div>
+                  </div>
+                  <div class="req-multi-row-cards">8 Cards (3P: 9)</div>
+                </div>
+
+                <div class="req-multi-row-card">
+                  <div class="req-multi-row-left">
+                    <div class="req-multi-row-kw">🔌 49 – 54 KW Load</div>
+                    <div class="req-multi-row-bill">Bill: ₹48,001 – ₹54,000</div>
+                  </div>
+                  <div class="req-multi-row-cards">9 Cards (3P: 10)</div>
+                </div>
+
+                <div class="req-multi-row-card">
+                  <div class="req-multi-row-left">
+                    <div class="req-multi-row-kw">🔌 55 – 60 KW Load</div>
+                    <div class="req-multi-row-bill">Bill: ₹54,001 – ₹60,000</div>
+                  </div>
+                  <div class="req-multi-row-cards">10 Cards (3P: 11)</div>
+                </div>
+
+              </div>
+
+              <div class="req-apps-banner" style="margin-top: 14px;">
+                <h4>🏬 Suitable Establishments:</h4>
+                <p>Hotels, Hospitals, Commercial Malls, Educational Institutions, Large Offices, and Heavy Commercial Establishments with continuous load up to 60 KW.</p>
+              </div>
+            </div>
+
+            <div class="req-info-visual-right">
+              <div class="req-card-thumb-wrapper">
+                {%- assign saver_card_img = 'vidhyut-power-saver-card.jpg' | asset_url -%}
+                <img src="{{ saver_card_img }}" alt="7-10 Cards Pack Showcase" loading="lazy">
+              </div>
+              <div class="req-savings-tag">💰 Commercial Savings: 20% – 30%</div>
+              <a href="/pages/contact" class="req-tab-order-btn">Order Commercial Pack &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 8 PANEL: 10+ Industrial Cards (60+ KW Heavy Load) -->
+        <div class="req-tab-panel" id="tab8">
+          <div class="req-card-info-dashboard">
+            <div class="req-info-details-left">
+              <div class="req-dash-header">
+                <h3 class="req-dash-title">🏭 10+ Cards <span>Industrial &amp; Heavy Machinery</span></h3>
+                <span class="req-dash-tag">60+ KW Heavy Industrial</span>
+              </div>
+
+              <p style="color: #cbd5e1; font-size: 0.95rem; margin: 0 0 10px 0;">60 KW se upar heavy industrial load par <strong>har 6 KW load par 1 Card</strong> calculate hota hai:</p>
+
+              <!-- Industrial Real Examples Breakdown Grid -->
+              <div class="req-multi-rows-grid">
+                
+                <div class="req-multi-row-card">
+                  <div class="req-multi-row-left">
+                    <div class="req-multi-row-kw">🏭 90 KW Industrial Load</div>
+                    <div class="req-multi-row-bill">Bill: ₹2,40,000 / month</div>
+                  </div>
+                  <div class="req-multi-row-cards">40 Cards (3P: 41)</div>
+                </div>
+
+                <div class="req-multi-row-card">
+                  <div class="req-multi-row-left">
+                    <div class="req-multi-row-kw">🏭 180 KW Industrial Load</div>
+                    <div class="req-multi-row-bill">Bill: ₹1,20,000 / month</div>
+                  </div>
+                  <div class="req-multi-row-cards">30 Cards (3P: 31)</div>
+                </div>
+
+              </div>
+
+              <div class="req-apps-banner" style="margin-top: 14px;">
+                <h4>🏭 Industrial Machinery &amp; Plants:</h4>
+                <p>Textile Mills, Chemical Processing Plants, Rice Mills, Heavy Manufacturing Units, Cold Storages, and High KV Transformer Connections.</p>
               </div>
             </div>
 
@@ -948,7 +1114,7 @@
                 {%- assign saver_card_img = 'vidhyut-power-saver-card.jpg' | asset_url -%}
                 <img src="{{ saver_card_img }}" alt="Industrial Cards Pack Showcase" loading="lazy">
               </div>
-              <div class="req-savings-tag">💰 Industrial Bill Savings: 20% – 30%</div>
+              <div class="req-savings-tag">💰 Industrial Savings: 20% – 30%</div>
               <a href="/pages/contact" class="req-tab-order-btn">Consult Industrial Specialist &rarr;</a>
             </div>
           </div>
