@@ -251,6 +251,41 @@
     text-align: justify;
   }
 
+  /* Full-Width Bottom Banner Below Section 2 Grid */
+  .team-sec2-bottom-banner {
+    width: 100%;
+    margin-top: 36px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(236, 92, 10, 0.2);
+    border-radius: 26px;
+    padding: 28px 32px;
+    box-shadow: 0 16px 45px rgba(236, 92, 10, 0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    box-sizing: border-box;
+  }
+
+  .team-stat-pills-banner {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    width: 100%;
+  }
+
+  .team-highlights-banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 4px;
+  }
+
   /* Stat Pills Bar */
   .team-stat-pills {
     display: grid;
@@ -478,6 +513,16 @@
       font-size: clamp(28px, 6.5vw, 38px) !important;
       font-weight: 900 !important;
     }
+    .team-sec2-bottom-banner {
+      margin-top: 24px !important;
+      padding: 20px 16px !important;
+      border-radius: 20px !important;
+      gap: 16px !important;
+    }
+    .team-stat-pills-banner {
+      grid-template-columns: repeat(3, 1fr) !important;
+      gap: 8px !important;
+    }
     .team-stat-pills {
       grid-template-columns: repeat(3, 1fr) !important;
       gap: 8px !important;
@@ -494,12 +539,14 @@
       font-size: 0.68rem !important;
       line-height: 1.2 !important;
     }
-    .team-highlights {
+    .team-highlights,
+    .team-highlights-banner {
       flex-direction: column !important;
       gap: 8px !important;
       width: 100% !important;
     }
-    .team-highlight-item {
+    .team-highlight-item,
+    .team-highlights-banner .team-highlight-item {
       width: 100% !important;
       justify-content: center !important;
       font-size: 0.82rem !important;
@@ -511,6 +558,10 @@
     .team-cards-grid {
       grid-template-columns: repeat(2, 1fr);
       gap: 12px;
+    }
+    .team-stat-pills-banner {
+      grid-template-columns: 1fr !important;
+      gap: 10px !important;
     }
   }
 
@@ -640,34 +691,6 @@
               We don't just supply products—we build profitable partnerships backed by innovation, transparency, and continuous guidance. With a customer-first approach and a passion for excellence, our professionals are dedicated to helping entrepreneurs expand confidently while delivering high-quality energy-saving solutions that create lasting value for homes, businesses, industries, and institutions across India.
             </p>
 
-            <!-- Lucrative Stat Pills -->
-            <div class="team-stat-pills fadeInUp" data-wow-delay="0.5s">
-              <div class="team-stat-pill">
-                <span class="stat-num">100+</span>
-                <span class="stat-label">Experts &amp; Engineers</span>
-              </div>
-              <div class="team-stat-pill">
-                <span class="stat-num">20,000</span>
-                <span class="stat-label">Negative Ion Tech</span>
-              </div>
-              <div class="team-stat-pill">
-                <span class="stat-num">20+</span>
-                <span class="stat-label">States Pan-India</span>
-              </div>
-            </div>
-
-            <!-- Value Highlights -->
-            <div class="team-highlights fadeInUp" data-wow-delay="0.6s">
-              <div class="team-highlight-item">
-                <span class="highlight-icon">📜</span>
-                <span>ISO Certified &amp; Govt. Compliant</span>
-              </div>
-              <div class="team-highlight-item">
-                <span class="highlight-icon">💡</span>
-                <span>100% Legal &amp; Safe Power Savings</span>
-              </div>
-            </div>
-
           </div>
         </div>
 
@@ -686,6 +709,41 @@
         </div>
 
       </div>
+
+      <!-- Dedicated Full-Width Sub-Section Bar Below Section 2 Grid -->
+      <div class="team-sec2-bottom-banner fadeInUp" data-wow-delay="0.5s">
+        
+        <!-- 3 Stat Pills Row -->
+        <div class="team-stat-pills-banner">
+          <div class="team-stat-pill">
+            <span class="stat-num">100+</span>
+            <span class="stat-label">Experts &amp; Engineers</span>
+          </div>
+          <div class="team-stat-pill">
+            <span class="stat-num">20,000</span>
+            <span class="stat-label">Negative Ion Tech</span>
+          </div>
+          <div class="team-stat-pill">
+            <span class="stat-num">20+</span>
+            <span class="stat-label">States Pan-India</span>
+          </div>
+        </div>
+
+        <!-- 2 Highlight Badges Row -->
+        <div class="team-highlights-banner">
+          <div class="team-highlight-item">
+            <span class="highlight-icon">📜</span>
+            <span>ISO Certified &amp; Govt. Compliant</span>
+          </div>
+          <div class="team-highlight-item">
+            <span class="highlight-icon">💡</span>
+            <span>100% Legal &amp; Safe Power Savings</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
     </div>
   </section>
 
