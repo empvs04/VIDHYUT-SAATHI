@@ -396,9 +396,285 @@
     border-radius: 50px;
     transition: background 0.3s ease, transform 0.3s ease;
   }
-  .iso-cta-btn:hover {
-    background: #d45007;
-    transform: translateY(-3px);
+  /* --- Section 2: Government Approved & Official ISO Showcase --- */
+  .iso-official-cert-section {
+    padding: clamp(60px, 8vw, 100px) 20px;
+    background: linear-gradient(180deg, #090e1a 0%, #111827 50%, #090e1a 100%);
+    color: #ffffff;
+    position: relative;
+    overflow: hidden;
+    border-top: 1px solid rgba(255, 204, 0, 0.15);
+    border-bottom: 1px solid rgba(255, 204, 0, 0.15);
+  }
+  
+  .iso-official-cert-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 100%; max-width: 1200px;
+    height: 100%;
+    background: radial-gradient(circle at 50% 30%, rgba(236, 92, 10, 0.15) 0%, rgba(0, 123, 62, 0.1) 40%, rgba(0, 0, 0, 0) 70%);
+    pointer-events: none;
+  }
+
+  .iso-cert-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  .iso-cert-header {
+    text-align: center;
+    max-width: 880px;
+    margin: 0 auto 50px auto;
+  }
+
+  .iso-gov-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 24px;
+    background: linear-gradient(135deg, rgba(255, 204, 0, 0.15), rgba(236, 92, 10, 0.15));
+    border: 1px solid rgba(255, 204, 0, 0.5);
+    border-radius: 50px;
+    color: #ffcc00;
+    font-size: 0.88rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    box-shadow: 0 8px 25px rgba(255, 204, 0, 0.15);
+    margin-bottom: 20px;
+  }
+
+  .iso-cert-header h2 {
+    font-size: clamp(30px, 4vw, 48px);
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    color: #ffffff;
+  }
+
+  .iso-cert-header h2 span {
+    background: linear-gradient(90deg, #ffcc00, #ec5c0a, #00ff66);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .iso-cert-header p {
+    font-size: 1.1rem;
+    color: #9ca3af;
+    line-height: 1.75;
+  }
+
+  /* Main 5D Holographic Certificate Canvas Grid */
+  .iso-cert-display-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+  @media (min-width: 992px) {
+    .iso-cert-display-grid {
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 60px;
+    }
+  }
+
+  /* Certificate Frame Stage */
+  .cert-frame-stage {
+    position: relative;
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(20px);
+    border: 2px solid rgba(255, 204, 0, 0.4);
+    border-radius: 28px;
+    padding: 24px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.7), 0 0 50px rgba(236, 92, 10, 0.25);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .cert-frame-stage:hover {
+    border-color: rgba(255, 204, 0, 0.9);
+    box-shadow: 0 40px 100px rgba(0,0,0,0.85), 0 0 75px rgba(236, 92, 10, 0.4);
+    transform: translateY(-5px);
+  }
+
+  /* Security Wax Stamp Badge */
+  .cert-stamp-badge {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    width: 95px;
+    height: 95px;
+    background: radial-gradient(circle, #ffcc00 0%, #d4af37 50%, #aa7c11 100%);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #000000;
+    font-weight: 900;
+    font-size: 0.68rem;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.6), 0 0 0 4px rgba(255,204,0,0.4);
+    z-index: 10;
+    transform: rotate(12deg);
+    border: 2px dashed #000000;
+  }
+  .cert-stamp-badge span.big {
+    font-size: 0.95rem;
+    line-height: 1;
+    font-weight: 900;
+  }
+
+  .cert-document-preview {
+    width: 100%;
+    border-radius: 18px;
+    overflow: hidden;
+    background: #ffffff;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+    position: relative;
+  }
+
+  .cert-document-preview img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+  }
+
+  /* Right Side: Key Features & Accreditation Cards */
+  .cert-highlights-box {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .cert-highlight-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 20px;
+    padding: 24px 28px;
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    transition: all 0.3s ease;
+  }
+
+  .cert-highlight-card:hover {
+    background: rgba(255, 255, 255, 0.09);
+    border-color: rgba(236, 92, 10, 0.5);
+    transform: translateX(8px);
+  }
+
+  .cert-card-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, rgba(236, 92, 10, 0.25), rgba(0, 123, 62, 0.25));
+    border: 1px solid rgba(255, 204, 0, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+
+  .cert-card-content h3 {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 6px 0;
+  }
+
+  .cert-card-content p {
+    font-size: 0.92rem;
+    color: #cbd5e1;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* Accreditation Logos Bar */
+  .accreditation-logos-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+  }
+
+  .accred-tag {
+    padding: 6px 14px;
+    background: rgba(255, 204, 0, 0.1);
+    border: 1px solid rgba(255, 204, 0, 0.3);
+    border-radius: 50px;
+    font-size: 0.78rem;
+    font-weight: 800;
+    color: #ffcc00;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* Verification Link Bar */
+  .cert-verification-bar {
+    margin-top: 50px;
+    background: linear-gradient(135deg, rgba(236, 92, 10, 0.15), rgba(0, 123, 62, 0.15));
+    border: 1px solid rgba(255, 204, 0, 0.5);
+    border-radius: 24px;
+    padding: 28px 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+  }
+
+  .cert-verify-info {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .cert-verify-info .icon {
+    font-size: 2.2rem;
+  }
+
+  .cert-verify-text h4 {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 4px 0;
+  }
+
+  .cert-verify-text p {
+    font-size: 0.92rem;
+    color: #9ca3af;
+    margin: 0;
+  }
+
+  .cert-verify-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 32px;
+    background: linear-gradient(135deg, #007b3e, #00a854);
+    color: #ffffff !important;
+    font-weight: 800;
+    font-size: 0.95rem;
+    text-decoration: none;
+    border-radius: 50px;
+    box-shadow: 0 10px 25px rgba(0, 123, 62, 0.4);
+    transition: all 0.3s ease;
+  }
+
+  .cert-verify-btn:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 15px 35px rgba(0, 123, 62, 0.6);
+    background: linear-gradient(135deg, #ec5c0a, #f1721b);
   }
 {%- endstyle -%}
 
@@ -489,6 +765,108 @@
         </div>
       </div>
       
+    </div>
+  </section>
+
+  <!-- Section 2: Government Approved & Official ISO 9001:2015 Certificate Showcase -->
+  <section class="iso-official-cert-section">
+    <div class="iso-cert-container">
+      
+      <!-- Section Header -->
+      <div class="iso-cert-header reveal-up active">
+        <div class="iso-gov-badge">
+          <span>🏛️ GOVT. COMPLIANT & IAF ACCREDITED</span>
+        </div>
+        <h2>Official ISO 9001:2015 <span>Certificate Showcase</span></h2>
+        <p>
+          Vidhyut Saathi Energy Savers Private Limited is audited by <strong>ICV Assessments Pvt. Ltd.</strong> and holds an internationally accredited <strong>ISO 9001:2015 Quality Management Systems Certification</strong> recognized globally under <strong>IAF</strong> &amp; <strong>EGAC</strong> frameworks.
+        </p>
+      </div>
+
+      <!-- Main Display Grid -->
+      <div class="iso-cert-display-grid">
+        
+        <!-- Left: Lucrative Certificate Showcase Canvas Stage -->
+        <div class="cert-frame-stage reveal-up active">
+          <div class="cert-stamp-badge">
+            <span>OFFICIAL</span>
+            <span class="big">VERIFIED</span>
+            <span>AUDITED</span>
+          </div>
+
+          <div class="cert-document-preview">
+            {%- if section.settings.cert_image != blank -%}
+              {{ section.settings.cert_image | image_url: width: 1000 | image_tag: loading: 'lazy', alt: 'Official ISO 9001:2015 Certificate of Registration - Vidhyut Saathi' }}
+            {%- else -%}
+              {{ 'document' | placeholder_svg_tag: 'placeholder-svg' }}
+            {%- endif -%}
+          </div>
+        </div>
+
+        <!-- Right: Government Compliance & Certification Standards Highlights -->
+        <div class="cert-highlights-box reveal-up active">
+          
+          <!-- Highlight 1: Government & Legal Status -->
+          <div class="cert-highlight-card">
+            <div class="cert-card-icon">📜</div>
+            <div class="cert-card-content">
+              <h3>100% Legal &amp; Govt. Approved HSN Code</h3>
+              <p>Manufactured and marketed under applicable Indian regulations. Falls under BIS Exempt Product Category with approved HSN classification.</p>
+            </div>
+          </div>
+
+          <!-- Highlight 2: IAF & EGAC International Accreditation -->
+          <div class="cert-highlight-card">
+            <div class="cert-card-icon">🌍</div>
+            <div class="cert-card-content">
+              <h3>IAF &amp; EGAC Internationally Accredited</h3>
+              <p>Certified under Multilateral Recognition Arrangement (IAF) &amp; EGAC (QMS Certification CAB #011907A) for global quality assurance.</p>
+
+              <div class="accreditation-logos-bar">
+                <span class="accred-tag">✔ IAF Accredited</span>
+                <span class="accred-tag">✔ EGAC Certified</span>
+                <span class="accred-tag">✔ ICV Audited</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Highlight 3: Certified Scope of Operation -->
+          <div class="cert-highlight-card">
+            <div class="cert-card-icon">⚡</div>
+            <div class="cert-card-content">
+              <h3>Certified Scope of Operations</h3>
+              <p>Official Scope: Manufacturer, Sales, Purchase, Import &amp; Export of Electric &amp; Fuel Energy Saver Cards.</p>
+            </div>
+          </div>
+
+          <!-- Highlight 4: Verified Certificate Registration Details -->
+          <div class="cert-highlight-card">
+            <div class="cert-card-icon">🔒</div>
+            <div class="cert-card-content">
+              <h3>Active Registration Details</h3>
+              <p>Certificate No: <strong>IN/12523440/8795</strong> | Issued: <strong>24/02/2026</strong> | Valid Till: <strong>23/02/2029</strong></p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Live Online Verification Bar -->
+      <div class="cert-verification-bar reveal-up active">
+        <div class="cert-verify-info">
+          <div class="icon">🔍</div>
+          <div class="cert-verify-text">
+            <h4>Verify Certificate Authenticity Online</h4>
+            <p>Check authenticity directly on ICV Assessments portal using Certificate No: <strong>IN/12523440/8795</strong></p>
+          </div>
+        </div>
+
+        <a href="https://www.icvassessments.com" target="_blank" rel="noopener noreferrer" class="cert-verify-btn">
+          Verify Certificate Online &rarr;
+        </a>
+      </div>
+
     </div>
   </section>
 
