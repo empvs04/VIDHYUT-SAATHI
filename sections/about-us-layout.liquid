@@ -237,6 +237,55 @@
     margin-bottom: 16px;
   }
 
+  .company-bottom-banner {
+    max-width: 1280px;
+    margin: 32px auto 0 auto;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(236, 92, 10, 0.2);
+    border-radius: 30px;
+    padding: 30px 34px;
+    box-shadow: 0 20px 50px rgba(236, 92, 10, 0.07);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+  }
+
+  .company-tagline-pill {
+    padding: 10px 24px;
+    background: linear-gradient(135deg, rgba(236, 92, 10, 0.08), rgba(0, 123, 62, 0.08));
+    border: 1px solid rgba(236, 92, 10, 0.25);
+    border-radius: 50px;
+    font-weight: 800;
+    font-size: 0.88rem;
+    color: #ec5c0a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(236, 92, 10, 0.08);
+  }
+
+  .company-feature-grid-banner {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    width: 100%;
+  }
+
+  .company-cta-group-center {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-top: 4px;
+  }
+
   .company-feature-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -487,15 +536,17 @@
     .company-info-text { padding: 28px 20px; text-align: center; }
     .company-info-image { padding: 35px 20px; }
     .company-feature-grid { grid-template-columns: 1fr; text-align: left; }
+    .company-feature-grid-banner { grid-template-columns: repeat(2, 1fr); }
     .card-float-badge-top { top: -12px; left: 0; font-size: 0.7rem; padding: 6px 12px; }
     .card-float-badge-bottom { bottom: -12px; right: 0; font-size: 0.7rem; padding: 6px 12px; }
     
     /* Center Section 2 Buttons on Mobile */
-    .company-cta-group {
+    .company-cta-group,
+    .company-cta-group-center {
       justify-content: center !important;
       width: 100% !important;
       gap: 12px !important;
-      margin: 20px auto 0 auto !important;
+      margin: 14px auto 0 auto !important;
     }
     .company-btn-primary,
     .company-btn-secondary {
@@ -1977,57 +2028,6 @@
         <p><b>Vidhyut Saathi Energy Savers Pvt. Ltd.</b> is more than a company—it is a mission to empower every Indian family to save money, every entrepreneur to build wealth, and every citizen to contribute towards a greener and stronger India. Through our revolutionary <b>Vidhyut Saathi Card</b> – India's First Energy Saver Card powered by Advanced US-German Nano Technology, we are helping homes, shops, offices, businesses, and industries save <b>20%–30%</b> on their monthly electricity bills while promoting smarter energy consumption.</p>
 
         <p>In a time when electricity costs are rising and environmental challenges are growing, every unit of electricity saved becomes a contribution to your family's future and our nation's progress. Beyond energy savings, Vidhyut Saathi is creating a powerful Pan-India network of entrepreneurs through its exclusive district franchise model, enabling individuals to build successful businesses and create lasting financial freedom.</p>
-
-        <!-- Lucrative Tagline Pill -->
-        <div style="margin-bottom: 18px; padding: 10px 18px; background: linear-gradient(135deg, rgba(236, 92, 10, 0.08), rgba(0, 123, 62, 0.08)); border: 1px solid rgba(236, 92, 10, 0.25); border-radius: 50px; font-weight: 800; font-size: 0.82rem; color: #ec5c0a; display: flex; align-items: center; justify-content: center; gap: 6px; flex-wrap: wrap; text-align: center;">
-          <span>Save Electricity</span> • <span>Save Money</span> • <span>Protect Nature</span> • <span>Empower India</span> • <span>Build Your Future</span>
-        </div>
-
-        <!-- Lucrative Feature Grid -->
-        <div class="company-feature-grid">
-          <div class="company-feature-item">
-            <div class="company-feature-icon">💰</div>
-            <div class="company-feature-text">
-              <h4>20% - 30% Bill Savings</h4>
-              <p>Instant reduction on monthly electricity bills</p>
-            </div>
-          </div>
-
-          <div class="company-feature-item">
-            <div class="company-feature-icon">⚡</div>
-            <div class="company-feature-text">
-              <h4>20,000 Negative Ions</h4>
-              <p>US-German Terahertz Nano-Tech</p>
-            </div>
-          </div>
-
-          <div class="company-feature-item">
-            <div class="company-feature-icon">📜</div>
-            <div class="company-feature-text">
-              <h4>100% Legal &amp; Certified</h4>
-              <p>ISO-Certified &amp; Govt. Compliant</p>
-            </div>
-          </div>
-
-          <div class="company-feature-item">
-            <div class="company-feature-icon">🌱</div>
-            <div class="company-feature-text">
-              <h4>Ozone &amp; Eco Friendly</h4>
-              <p>Zero maintenance &amp; protects environment</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Lucrative CTAs -->
-        <div class="company-cta-group">
-          <a href="/products/vidhyut-saathi-electric-power-saver-card" class="company-btn-primary">
-            <span>🛒 Order Saver Card</span>
-            <span style="font-size: 1.2rem;">→</span>
-          </a>
-          <a href="/pages/b2c" class="company-btn-secondary">
-            <span>📊 Calculate Your Savings</span>
-          </a>
-        </div>
       </div>
 
       <!-- 5D Interactive Card Showcase Side -->
@@ -2055,6 +2055,62 @@
           </div>
 
         </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom Full-Width Feature & Tagline Banner (Below Section 2 2-Column Grid) -->
+    <div class="company-bottom-banner reveal-up active">
+      
+      <!-- Lucrative Tagline Pill -->
+      <div class="company-tagline-pill">
+        <span>Save Electricity</span> • <span>Save Money</span> • <span>Protect Nature</span> • <span>Empower India</span> • <span>Build Your Future</span>
+      </div>
+
+      <!-- Lucrative Feature Grid (4-Column Full-Width Grid) -->
+      <div class="company-feature-grid-banner">
+        <div class="company-feature-item">
+          <div class="company-feature-icon">💰</div>
+          <div class="company-feature-text">
+            <h4>20% - 30% Bill Savings</h4>
+            <p>Instant reduction on monthly electricity bills</p>
+          </div>
+        </div>
+
+        <div class="company-feature-item">
+          <div class="company-feature-icon">⚡</div>
+          <div class="company-feature-text">
+            <h4>20,000 Negative Ions</h4>
+            <p>US-German Terahertz Nano-Tech</p>
+          </div>
+        </div>
+
+        <div class="company-feature-item">
+          <div class="company-feature-icon">📜</div>
+          <div class="company-feature-text">
+            <h4>100% Legal &amp; Certified</h4>
+            <p>ISO-Certified &amp; Govt. Compliant</p>
+          </div>
+        </div>
+
+        <div class="company-feature-item">
+          <div class="company-feature-icon">🌱</div>
+          <div class="company-feature-text">
+            <h4>Ozone &amp; Eco Friendly</h4>
+            <p>Zero maintenance &amp; protects environment</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lucrative CTAs -->
+      <div class="company-cta-group-center">
+        <a href="/products/vidhyut-saathi-electric-power-saver-card" class="company-btn-primary">
+          <span>🛒 Order Saver Card</span>
+          <span style="font-size: 1.2rem;">→</span>
+        </a>
+        <a href="/pages/b2c" class="company-btn-secondary">
+          <span>📊 Calculate Your Savings</span>
+        </a>
       </div>
 
     </div>
