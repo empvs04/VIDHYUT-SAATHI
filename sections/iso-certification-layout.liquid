@@ -676,6 +676,106 @@
     box-shadow: 0 15px 35px rgba(0, 123, 62, 0.6);
     background: linear-gradient(135deg, #ec5c0a, #f1721b);
   }
+  /* Visual Certificate Document Fallback Mockup */
+  .official-cert-card-mockup {
+    background: #ffffff;
+    color: #1a1a1a;
+    padding: 30px 24px;
+    border-radius: 12px;
+    border: 8px double #d4af37;
+    position: relative;
+    box-shadow: inset 0 0 25px rgba(212, 175, 55, 0.15);
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+  }
+  .cert-mock-icv {
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: #0088cc;
+    font-family: 'Outfit', sans-serif;
+    letter-spacing: -1px;
+    margin-bottom: 2px;
+  }
+  .cert-mock-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #0088cc;
+    font-style: italic;
+    margin-bottom: 12px;
+  }
+  .cert-mock-sub {
+    font-size: 0.85rem;
+    color: #555;
+    margin-bottom: 6px;
+  }
+  .cert-mock-company {
+    font-size: 1.15rem;
+    font-weight: 900;
+    color: #003366;
+    margin: 10px 0;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+  .cert-mock-address {
+    font-size: 0.75rem;
+    color: #666;
+    margin-bottom: 12px;
+  }
+  .cert-mock-iso {
+    font-size: 2rem;
+    font-weight: 900;
+    color: #1a1a1a;
+    letter-spacing: 1px;
+    margin: 10px 0 2px 0;
+    font-family: 'Outfit', sans-serif;
+  }
+  .cert-mock-qms {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #444;
+    margin-bottom: 12px;
+  }
+  .cert-mock-scope {
+    font-size: 0.78rem;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 8px 12px;
+    border-radius: 8px;
+    margin: 10px 0;
+    text-align: center;
+    font-family: sans-serif;
+  }
+  .cert-mock-table {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 12px;
+    font-size: 0.78rem;
+    text-align: left;
+    margin: 12px 0;
+    background: #fffcf0;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ffe8a3;
+    font-family: sans-serif;
+  }
+  .cert-mock-seals {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 15px;
+    gap: 8px;
+  }
+  .cert-seal-badge {
+    font-size: 0.7rem;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 50px;
+    background: #003366;
+    color: #ffffff;
+    font-family: sans-serif;
+  }
+  .cert-seal-red {
+    background: #cc0000;
+  }
 {%- endstyle -%}
 
 <div class="iso-wrapper">
@@ -701,7 +801,32 @@
           {%- if section.settings.cert_image != blank -%}
             {{ section.settings.cert_image | image_url: width: 800 | image_tag: loading: 'lazy', alt: 'ISO Certificate Preview' }}
           {%- else -%}
-            {{ 'document' | placeholder_svg_tag: 'placeholder-svg' }}
+            <div class="official-cert-card-mockup">
+              <div class="cert-mock-icv">Icv</div>
+              <div class="cert-mock-title">Certificate of Registration</div>
+              <div class="cert-mock-sub">This is to certify that the Management System of</div>
+              <div class="cert-mock-company">VIDHYUT SAATHI ENERGY SAVERS PRIVATE LIMITED</div>
+              <div class="cert-mock-address">SCO-77A, 3RD FLOOR, ASHOKA COMPLEX, DELHI ROAD, ROHTAK - 124001, HARYANA, INDIA.</div>
+              <div class="cert-mock-sub">has been audited by ICV and found to be in compliance with:</div>
+              <div class="cert-mock-iso">ISO 9001:2015</div>
+              <div class="cert-mock-qms">(Quality Management Systems)</div>
+              <div class="cert-mock-scope">
+                <strong>SCOPE:</strong> MANUFACTURER, SALES, PURCHASE, IMPORT, EXPORT OF ELECTRIC &amp; FUEL ENERGY SAVER CARD.
+              </div>
+              <div class="cert-mock-table">
+                <div><strong>Cert No:</strong> IN/12523440/8795</div>
+                <div><strong>Issue Date:</strong> 24/02/2026</div>
+                <div><strong>1st Surv:</strong> 24/01/2027</div>
+                <div><strong>2nd Surv:</strong> 24/01/2028</div>
+                <div><strong>Expiry Date:</strong> 23/02/2029</div>
+                <div><strong>Accreditation:</strong> IAF &amp; EGAC</div>
+              </div>
+              <div class="cert-mock-seals">
+                <span class="cert-seal-badge">⭐ IAF Member</span>
+                <span class="cert-seal-badge">📜 EGAC Accredited</span>
+                <span class="cert-seal-badge cert-seal-red">✔ Certified Stamp</span>
+              </div>
+            </div>
           {%- endif -%}
         </div>
         
@@ -798,7 +923,32 @@
             {%- if section.settings.cert_image != blank -%}
               {{ section.settings.cert_image | image_url: width: 1000 | image_tag: loading: 'lazy', alt: 'Official ISO 9001:2015 Certificate of Registration - Vidhyut Saathi' }}
             {%- else -%}
-              {{ 'document' | placeholder_svg_tag: 'placeholder-svg' }}
+              <div class="official-cert-card-mockup">
+                <div class="cert-mock-icv">Icv</div>
+                <div class="cert-mock-title">Certificate of Registration</div>
+                <div class="cert-mock-sub">This is to certify that the Management System of</div>
+                <div class="cert-mock-company">VIDHYUT SAATHI ENERGY SAVERS PRIVATE LIMITED</div>
+                <div class="cert-mock-address">SCO-77A, 3RD FLOOR, ASHOKA COMPLEX, DELHI ROAD, ROHTAK - 124001, HARYANA, INDIA.</div>
+                <div class="cert-mock-sub">has been audited by ICV and found to be in compliance with:</div>
+                <div class="cert-mock-iso">ISO 9001:2015</div>
+                <div class="cert-mock-qms">(Quality Management Systems)</div>
+                <div class="cert-mock-scope">
+                  <strong>SCOPE:</strong> MANUFACTURER, SALES, PURCHASE, IMPORT, EXPORT OF ELECTRIC &amp; FUEL ENERGY SAVER CARD.
+                </div>
+                <div class="cert-mock-table">
+                  <div><strong>Cert No:</strong> IN/12523440/8795</div>
+                  <div><strong>Issue Date:</strong> 24/02/2026</div>
+                  <div><strong>1st Surv:</strong> 24/01/2027</div>
+                  <div><strong>2nd Surv:</strong> 24/01/2028</div>
+                  <div><strong>Expiry Date:</strong> 23/02/2029</div>
+                  <div><strong>Accreditation:</strong> IAF &amp; EGAC</div>
+                </div>
+                <div class="cert-mock-seals">
+                  <span class="cert-seal-badge">⭐ IAF Member</span>
+                  <span class="cert-seal-badge">📜 EGAC Accredited</span>
+                  <span class="cert-seal-badge cert-seal-red">✔ Certified Stamp</span>
+                </div>
+              </div>
             {%- endif -%}
           </div>
         </div>
