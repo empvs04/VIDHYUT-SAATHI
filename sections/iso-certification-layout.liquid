@@ -858,34 +858,10 @@
       <div class="iso-cert-box">
         <div class="iso-cert-img-wrapper">
           {%- if section.settings.cert_image != blank -%}
-            {{ section.settings.cert_image | image_url: width: 800 | image_tag: loading: 'lazy', alt: 'ISO Certificate Preview' }}
+            {{ section.settings.cert_image | image_url: width: 800 | image_tag: loading: 'lazy', alt: 'ISO 9001:2015 Certificate of Registration - Vidhyut Saathi' }}
           {%- else -%}
-            <div class="official-cert-card-mockup">
-              <div class="cert-mock-icv">Icv</div>
-              <div class="cert-mock-title">Certificate of Registration</div>
-              <div class="cert-mock-sub">This is to certify that the Management System of</div>
-              <div class="cert-mock-company">VIDHYUT SAATHI ENERGY SAVERS PRIVATE LIMITED</div>
-              <div class="cert-mock-address">SCO-77A, 3RD FLOOR, ASHOKA COMPLEX, DELHI ROAD, ROHTAK - 124001, HARYANA, INDIA.</div>
-              <div class="cert-mock-sub">has been audited by ICV and found to be in compliance with:</div>
-              <div class="cert-mock-iso">ISO 9001:2015</div>
-              <div class="cert-mock-qms">(Quality Management Systems)</div>
-              <div class="cert-mock-scope">
-                <strong>SCOPE:</strong> MANUFACTURER, SALES, PURCHASE, IMPORT, EXPORT OF ELECTRIC &amp; FUEL ENERGY SAVER CARD.
-              </div>
-              <div class="cert-mock-table">
-                <div><strong>Cert No:</strong> IN/12523440/8795</div>
-                <div><strong>Issue Date:</strong> 24/02/2026</div>
-                <div><strong>1st Surv:</strong> 24/01/2027</div>
-                <div><strong>2nd Surv:</strong> 24/01/2028</div>
-                <div><strong>Expiry Date:</strong> 23/02/2029</div>
-                <div><strong>Accreditation:</strong> IAF &amp; EGAC</div>
-              </div>
-              <div class="cert-mock-seals">
-                <span class="cert-seal-badge">⭐ IAF Member</span>
-                <span class="cert-seal-badge">📜 EGAC Accredited</span>
-                <span class="cert-seal-badge cert-seal-red">✔ Certified Stamp</span>
-              </div>
-            </div>
+            {%- assign iso_cert_img_url = 'iso-certificate.png' | asset_url -%}
+            <img src="{{ iso_cert_img_url }}" alt="Official ISO 9001:2015 Certificate of Registration - Vidhyut Saathi" loading="lazy" width="800" height="1130" style="width: 100%; height: auto; display: block; border-radius: 14px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
           {%- endif -%}
         </div>
         
@@ -986,32 +962,8 @@
             {%- if section.settings.cert_image != blank -%}
               {{ section.settings.cert_image | image_url: width: 1000 | image_tag: loading: 'lazy', alt: 'Official ISO 9001:2015 Certificate of Registration - Vidhyut Saathi' }}
             {%- else -%}
-              <div class="official-cert-card-mockup">
-                <div class="cert-mock-icv">Icv</div>
-                <div class="cert-mock-title">Certificate of Registration</div>
-                <div class="cert-mock-sub">This is to certify that the Management System of</div>
-                <div class="cert-mock-company">VIDHYUT SAATHI ENERGY SAVERS PRIVATE LIMITED</div>
-                <div class="cert-mock-address">SCO-77A, 3RD FLOOR, ASHOKA COMPLEX, DELHI ROAD, ROHTAK - 124001, HARYANA, INDIA.</div>
-                <div class="cert-mock-sub">has been audited by ICV and found to be in compliance with:</div>
-                <div class="cert-mock-iso">ISO 9001:2015</div>
-                <div class="cert-mock-qms">(Quality Management Systems)</div>
-                <div class="cert-mock-scope">
-                  <strong>SCOPE:</strong> MANUFACTURER, SALES, PURCHASE, IMPORT, EXPORT OF ELECTRIC &amp; FUEL ENERGY SAVER CARD.
-                </div>
-                <div class="cert-mock-table">
-                  <div><strong>Cert No:</strong> IN/12523440/8795</div>
-                  <div><strong>Issue Date:</strong> 24/02/2026</div>
-                  <div><strong>1st Surv:</strong> 24/01/2027</div>
-                  <div><strong>2nd Surv:</strong> 24/01/2028</div>
-                  <div><strong>Expiry Date:</strong> 23/02/2029</div>
-                  <div><strong>Accreditation:</strong> IAF &amp; EGAC</div>
-                </div>
-                <div class="cert-mock-seals">
-                  <span class="cert-seal-badge">⭐ IAF Member</span>
-                  <span class="cert-seal-badge">📜 EGAC Accredited</span>
-                  <span class="cert-seal-badge cert-seal-red">✔ Certified Stamp</span>
-                </div>
-              </div>
+              {%- assign iso_cert_img_url = 'iso-certificate.png' | asset_url -%}
+              <img src="{{ iso_cert_img_url }}" alt="Official ISO 9001:2015 Certificate of Registration - Vidhyut Saathi" loading="lazy" width="1000" height="1414" style="width: 100%; height: auto; display: block; border-radius: 14px; box-shadow: 0 15px 40px rgba(0,0,0,0.2);">
             {%- endif -%}
           </div>
         </div>
