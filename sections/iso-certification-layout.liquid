@@ -32,131 +32,254 @@
     color: var(--iso-text-light);
   }
   
-  /* --- Hero Section --- */
+  /* --- Premium Hero Section --- */
   .iso-hero {
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-position: center center !important;
+    background-color: #090e1a;
+    min-height: 480px;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
     position: relative;
-    padding: clamp(60px, 10vw, 100px) 20px;
-    text-align: center;
-    background: linear-gradient(135deg, var(--iso-bg) 0%, #ffffff 100%);
-    border-bottom: 1px solid rgba(0,0,0,0.05);
+    overflow: hidden;
   }
-  .iso-hero-content {
-    max-width: 800px;
-    margin: 0 auto;
+  .hero-breadcrumb-pill {
+    position: relative;
+    z-index: 2;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 204, 0, 0.5);
+    border-radius: 50px;
+    padding: 10px 26px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
   }
-  .iso-hero h1 {
-    font-size: clamp(2.5rem, 5vw, 3.5rem);
-    font-weight: 800;
-    margin-bottom: 15px;
-    color: var(--iso-text-dark);
+  .hero-breadcrumb-pill span, .hero-breadcrumb-pill a {
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
   }
-  .iso-hero p {
-    font-size: clamp(1.1rem, 2.5vw, 1.25rem);
-    color: var(--iso-text-light);
+  
+  /* --- Left to Right Moving Marquee Text --- */
+  @keyframes scroll-left-to-right {
+    0% { transform: translateX(-50%) translateY(0); }
+    100% { transform: translateX(50%) translateY(0); }
+  }
+  .moving-text {
+    position: absolute;
+    top: 65px;
+    left: 0;
+    white-space: nowrap;
+    z-index: 1;
+    opacity: 0.45;
+    pointer-events: none;
+    line-height: 1;
+    font-size: clamp(38px, 5.5vw, 85px);
+    font-weight: 900;
+    background: linear-gradient(90deg, #ec5c0a, #ff9900, #007b3e, #ec5c0a);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: scroll-left-to-right 16s linear infinite;
   }
 
-  /* --- Certificate Showcase & Details --- */
+  /* --- Premium Certificate Showcase & Details --- */
   .iso-showcase {
     padding: clamp(60px, 8vw, 100px) 20px;
-    max-width: 1280px;
-    margin: 0 auto;
+    background: radial-gradient(circle at 80% 20%, rgba(236, 92, 10, 0.05) 0%, #ffffff 45%, rgba(0, 123, 62, 0.05) 100%);
+    position: relative;
   }
   .iso-grid {
+    max-width: 1280px;
+    margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr;
     gap: 40px;
-    align-items: start;
+    align-items: center;
   }
   @media (min-width: 912px) {
-    .iso-grid { grid-template-columns: 1fr 1fr; gap: 60px; }
+    .iso-grid { grid-template-columns: 1fr 1.2fr; gap: 60px; }
   }
 
-  /* Certificate Image Box */
+  /* 3D Certificate Viewer Box */
   .iso-cert-box {
-    background: #ffffff;
-    padding: 20px;
-    border-radius: var(--iso-radius);
-    box-shadow: var(--iso-shadow);
-    text-align: center;
+    perspective: 1200px;
     position: relative;
-    transition: transform 0.3s ease;
-  }
-  .iso-cert-box:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--iso-shadow-hover);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
   .iso-cert-img-wrapper {
     width: 100%;
-    border-radius: 8px;
+    border-radius: 20px;
     overflow: hidden;
-    border: 1px solid rgba(0,0,0,0.05);
-    background: #f9f9f9;
+    background: #000;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25), 0 0 40px rgba(236, 92, 10, 0.15), 0 0 0 2px rgba(255, 204, 0, 0.5);
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.6s ease;
+  }
+  .iso-cert-img-wrapper:hover {
+    transform: translateY(-10px) rotateX(5deg) rotateY(-5deg);
+    box-shadow: 0 35px 75px rgba(0, 0, 0, 0.3), 0 0 60px rgba(236, 92, 10, 0.25), 0 0 0 3px rgba(255, 204, 0, 0.8);
   }
   .iso-cert-img-wrapper img, .iso-cert-img-wrapper svg {
     width: 100%;
     height: auto;
     display: block;
+    transform: translateZ(20px);
   }
   .iso-cert-btn {
-    display: inline-block;
-    margin-top: 25px;
-    padding: 14px 30px;
-    background: var(--iso-primary);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    padding: 16px 36px;
+    background: linear-gradient(135deg, #ec5c0a, #f1721b);
     color: #ffffff;
-    font-size: 1rem;
-    font-weight: 600;
+    font-size: 1.05rem;
+    font-weight: 800;
     text-decoration: none;
     border-radius: 50px;
-    transition: background 0.3s ease;
+    box-shadow: 0 12px 30px rgba(236, 92, 10, 0.35);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   }
   .iso-cert-btn:hover {
-    background: #d45007;
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 18px 40px rgba(236, 92, 10, 0.5);
+    background: linear-gradient(135deg, #f1721b, #007b3e);
   }
 
   /* Details Box */
   .iso-details-box {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(236, 92, 10, 0.2);
+    border-radius: 30px;
+    padding: 40px;
+    box-shadow: 0 20px 50px rgba(236, 92, 10, 0.07);
     display: flex;
     flex-direction: column;
     justify-content: center;
   }
-  .iso-details-box h2 {
-    font-size: clamp(2rem, 3.5vw, 2.5rem);
-    font-weight: 700;
+  .iso-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 18px;
+    background: linear-gradient(135deg, rgba(236, 92, 10, 0.12), rgba(0, 123, 62, 0.12));
+    border: 1px solid rgba(236, 92, 10, 0.3);
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: #ec5c0a;
+    letter-spacing: 0.5px;
     margin-bottom: 20px;
+    width: fit-content;
+    box-shadow: 0 4px 15px rgba(236, 92, 10, 0.1);
+  }
+  .iso-badge .pulse-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #ec5c0a;
+    border-radius: 50%;
+    box-shadow: 0 0 0 0 rgba(236, 92, 10, 0.7);
+    animation: pulse-ring 1.8s infinite;
+  }
+  @keyframes pulse-ring {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(236, 92, 10, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(236, 92, 10, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(236, 92, 10, 0); }
+  }
+
+  .iso-details-box h2 {
+    font-size: clamp(26px, 3vw, 42px);
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    background: linear-gradient(90deg, #ec5c0a, #007b3e, #ec5c0a);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: color-shift 4s linear infinite;
+  }
+  @keyframes color-shift {
+    to { background-position: 200% center; }
   }
   .iso-main-text {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: var(--iso-text-light);
-    margin-bottom: 30px;
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: #444;
+    margin-bottom: 35px;
   }
   
   .iso-data-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 15px;
+    gap: 16px;
   }
   @media (min-width: 600px) {
     .iso-data-grid { grid-template-columns: 1fr 1fr; }
   }
   .iso-data-item {
     background: #ffffff;
-    padding: 15px 20px;
-    border-radius: 12px;
-    border-left: 4px solid var(--iso-primary);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+    padding: 16px 20px;
+    border-radius: 16px;
+    border-left: 4px solid #007b3e;
+    border-right: 1px solid rgba(0, 123, 62, 0.1);
+    border-top: 1px solid rgba(0, 123, 62, 0.1);
+    border-bottom: 1px solid rgba(0, 123, 62, 0.1);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.04);
+    transition: all 0.3s ease;
+  }
+  .iso-data-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 123, 62, 0.1);
+    border-left-color: #ec5c0a;
   }
   .iso-data-label {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     text-transform: uppercase;
+    font-weight: 800;
     letter-spacing: 0.5px;
-    color: var(--iso-text-light);
-    margin-bottom: 5px;
+    color: #888;
+    margin-bottom: 6px;
   }
   .iso-data-value {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--iso-text-dark);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #1a1a1a;
+  }
+
+  /* Responsive fixes */
+  @media screen and (max-width: 768px) {
+    .iso-hero {
+      min-height: 260px !important;
+      height: 60vw !important;
+      padding: 12px 10px !important;
+    }
+    .moving-text {
+      top: 38px !important;
+      font-size: 32px !important;
+      opacity: 0.70 !important;
+    }
+    .iso-details-box {
+      padding: 24px 20px;
+    }
+    .iso-cert-btn {
+      width: 100%;
+      max-width: 320px;
+    }
   }
 
   /* --- Commitment Cards --- */
@@ -281,11 +404,14 @@
 
 <div class="iso-wrapper">
   
-  <!-- Hero Section -->
-  <section class="iso-hero">
-    <div class="iso-hero-content">
-      <h1>{{ section.settings.hero_title }}</h1>
-      <p>{{ section.settings.hero_subtitle }}</p>
+  <!-- Premium Hero Section -->
+  <section class="iso-hero page-header page-header_align_center" 
+           style="{% if section.settings.hero_bg != blank %}background-image: url('{{ section.settings.hero_bg | image_url: width: 1920 }}');{% else %}background-image: linear-gradient(135deg, #090e1a, #151d30);{% endif %}">
+    <div class="moving-text">{{ section.settings.hero_title }} &nbsp; &nbsp; &nbsp; &nbsp; {{ section.settings.hero_title }} &nbsp; &nbsp; &nbsp; &nbsp; {{ section.settings.hero_title }} &nbsp; &nbsp; &nbsp; &nbsp; {{ section.settings.hero_title }}</div>
+    <div class="hero-breadcrumb-pill">
+      <a href="/">Home</a>
+      <span style="color: #ffcc00;">/</span>
+      <span style="color: #ffffff; font-weight: 700; font-size: 0.92rem;">{{ section.settings.hero_title }}</span>
     </div>
   </section>
 
@@ -316,6 +442,10 @@
 
       <!-- Text Details -->
       <div class="iso-details-box">
+        <div class="iso-badge">
+          <div class="pulse-dot"></div>
+          100% Verified & Compliant
+        </div>
         <h2>{{ section.settings.details_heading }}</h2>
         <div class="iso-main-text">
           {{ section.settings.details_text }}
@@ -331,7 +461,7 @@
           
           {%- if section.settings.detail_body != blank -%}
             <div class="iso-data-item">
-              <div class="iso-data-label">Certification Body</div>
+              <div class="iso-data-label">Accreditation Body</div>
               <div class="iso-data-value">{{ section.settings.detail_body }}</div>
             </div>
           {%- endif -%}
@@ -352,7 +482,7 @@
           
           {%- if section.settings.detail_expiry != blank -%}
             <div class="iso-data-item">
-              <div class="iso-data-label">Expiry Date</div>
+              <div class="iso-data-label">Valid Until</div>
               <div class="iso-data-value">{{ section.settings.detail_expiry }}</div>
             </div>
           {%- endif -%}
@@ -438,6 +568,12 @@
       "content": "Hero Section"
     },
     {
+      "type": "image_picker",
+      "id": "hero_bg",
+      "label": "Hero Background Image",
+      "info": "Upload a background image for the hero section."
+    },
+    {
       "type": "text",
       "id": "hero_title",
       "label": "Hero Title",
@@ -497,25 +633,25 @@
       "type": "text",
       "id": "detail_body",
       "label": "Accreditation Body",
-      "default": "IAF"
+      "default": "ICV Assessments Pvt. Ltd. (IAF & EGAC)"
     },
     {
       "type": "text",
       "id": "detail_number",
       "label": "Certificate Number",
-      "info": "Leave blank if not applicable."
+      "default": "IN/12523440/8795"
     },
     {
       "type": "text",
       "id": "detail_issue",
       "label": "Issue Date",
-      "info": "Leave blank if not applicable."
+      "default": "24/02/2026"
     },
     {
       "type": "text",
       "id": "detail_expiry",
       "label": "Expiry Date",
-      "info": "Leave blank if not applicable."
+      "default": "23/02/2029"
     },
     {
       "type": "header",
