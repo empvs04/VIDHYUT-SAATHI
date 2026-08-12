@@ -568,10 +568,6 @@
   .req-sector-panel.active {
     display: block;
   }
-  @keyframes fadeInPanel {
-    from { opacity: 0; transform: translateY(14px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
 
   /* Practical Example Cards Layout */
   .req-examples-grid {
@@ -580,7 +576,6 @@
     gap: 32px;
   }
 
-  /* Example Box Styling (Matches exact graphics in prompt) */
   .req-example-card {
     border-radius: 24px;
     overflow: hidden;
@@ -630,11 +625,34 @@
     align-items: center;
     margin-bottom: 20px;
   }
-  @media (min-width: 768px) {
+  @media (min-width: 900px) {
     .req-ex-content-grid {
-      grid-template-columns: 1.2fr 1fr;
-      gap: 30px;
+      grid-template-columns: 300px 1fr 1fr;
+      gap: 24px;
     }
+  }
+
+  /* Building Photo Showcase Box */
+  .req-building-img-box {
+    width: 100%;
+    height: 200px;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border: 2px solid #e2e8f0;
+    flex-shrink: 0;
+    position: relative;
+    background: #0f172a;
+  }
+  .req-building-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+  .req-building-img-box:hover img {
+    transform: scale(1.06);
   }
 
   .req-customer-info {
@@ -693,11 +711,12 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    font-size: 0.98rem;
+    font-size: 0.95rem;
     font-weight: 800;
     color: #334155;
     border-bottom: 1px dashed #cbd5e1;
     padding-bottom: 6px;
+    gap: 10px;
   }
   .req-calc-line:last-child {
     border-bottom: none;
@@ -705,7 +724,7 @@
   }
   .req-calc-line strong {
     color: #0f172a;
-    font-size: 1.05rem;
+    font-size: 1.02rem;
   }
 
   .req-ex-consider {
@@ -801,6 +820,10 @@
     }
     .req-ex-body {
       padding: 18px 16px !important;
+    }
+    .req-building-img-box {
+      height: 180px !important;
+      max-width: 100% !important;
     }
     .req-calc-matrix-box {
       flex-direction: column !important;
@@ -1286,7 +1309,7 @@
           <span>💡 REAL WORLD PRACTICAL SELECTION EXAMPLES</span>
         </div>
         <h2>Card Selection Examples <span>&amp; Calculation Scenarios</span></h2>
-        <p>Aapke convenience ke liye niche Residential, Commercial, aur Industrial sectors ke real customer examples diye gaye hain. Samjhein ki connected load, monthly bill, aur meter connection ke hisab se final cards kaise select hote hain.</p>
+        <p>Aapke convenience ke liye niche Residential, Commercial, aur Industrial sectors ke real customer examples photo ke saath diye gaye hain. Samjhein ki connected load, monthly bill, aur meter connection ke hisab se final cards kaise select hote hain.</p>
       </div>
 
       <!-- Sector Switcher Tabs Navigation -->
@@ -1314,6 +1337,12 @@
             <div class="req-ex-body">
               <div class="req-ex-content-grid">
                 
+                <!-- Building Photo Showcase -->
+                <div class="req-building-img-box">
+                  {%- assign res_house_1 = 'residential-house-1.png' | asset_url -%}
+                  <img src="{{ res_house_1 }}" alt="Residential House - Mr. Rohan, Mumbai" loading="lazy">
+                </div>
+
                 <div class="req-customer-info">
                   <div class="req-c-row">
                     <div class="req-c-icon">👤</div>
@@ -1378,6 +1407,12 @@
             <div class="req-ex-body">
               <div class="req-ex-content-grid">
                 
+                <!-- Building Photo Showcase -->
+                <div class="req-building-img-box">
+                  {%- assign res_house_2 = 'residential-house-2.png' | asset_url -%}
+                  <img src="{{ res_house_2 }}" alt="Residential Villa - Mr. Rahul Mohan" loading="lazy">
+                </div>
+
                 <div class="req-customer-info">
                   <div class="req-c-row">
                     <div class="req-c-icon">👤</div>
@@ -1449,6 +1484,12 @@
             <div class="req-ex-body">
               <div class="req-ex-content-grid">
                 
+                <!-- Building Photo Showcase -->
+                <div class="req-building-img-box">
+                  {%- assign com_build_1 = 'commercial-building-1.png' | asset_url -%}
+                  <img src="{{ com_build_1 }}" alt="Commercial Building - Mr. Deepak Sawlani" loading="lazy">
+                </div>
+
                 <div class="req-customer-info">
                   <div class="req-c-row">
                     <div class="req-c-icon">👤</div>
@@ -1513,6 +1554,12 @@
             <div class="req-ex-body">
               <div class="req-ex-content-grid">
                 
+                <!-- Building Photo Showcase -->
+                <div class="req-building-img-box">
+                  {%- assign com_build_2 = 'commercial-building-2.png' | asset_url -%}
+                  <img src="{{ com_build_2 }}" alt="Commercial Complex - Mr. Satyajeet" loading="lazy">
+                </div>
+
                 <div class="req-customer-info">
                   <div class="req-c-row">
                     <div class="req-c-icon">👤</div>
@@ -1584,6 +1631,12 @@
             <div class="req-ex-body">
               <div class="req-ex-content-grid">
                 
+                <!-- Building Photo Showcase -->
+                <div class="req-building-img-box">
+                  {%- assign ind_fact_1 = 'industrial-factory-1.png' | asset_url -%}
+                  <img src="{{ ind_fact_1 }}" alt="Industrial Factory - Mr. Rajeev Sharma" loading="lazy">
+                </div>
+
                 <div class="req-customer-info">
                   <div class="req-c-row">
                     <div class="req-c-icon">👤</div>
@@ -1648,6 +1701,12 @@
             <div class="req-ex-body">
               <div class="req-ex-content-grid">
                 
+                <!-- Building Photo Showcase -->
+                <div class="req-building-img-box">
+                  {%- assign ind_fact_2 = 'industrial-factory-2.png' | asset_url -%}
+                  <img src="{{ ind_fact_2 }}" alt="Industrial Facility - Mr. Ashish Patel" loading="lazy">
+                </div>
+
                 <div class="req-customer-info">
                   <div class="req-c-row">
                     <div class="req-c-icon">👤</div>
@@ -1707,7 +1766,7 @@
         </div>
       </div>
 
-      <!-- Sector Bottom Fixed Banner -->
+      <!-- Sector Bottom Fixed Rule Banner -->
       <div class="req-sector-rule-footer">
         <span>⚡ 3-PHASE CONNECTION &rarr; ADD 1 EXTRA CARD FOR ALL PREMISES ⚡</span>
       </div>
