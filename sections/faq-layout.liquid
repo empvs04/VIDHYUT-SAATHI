@@ -3,149 +3,258 @@
   :root {
     --faq-primary: {{ section.settings.primary_color | default: '#ec5c0a' }};
     --faq-secondary: #007b3e;
-    --faq-bg: {{ section.settings.bg_color | default: '#f9f9f9' }};
-    --faq-text-dark: #1a1a1a;
-    --faq-text-light: #555555;
-    --faq-radius: 12px;
-    --faq-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    --faq-shadow-hover: 0 10px 25px rgba(0, 0, 0, 0.08);
-    --faq-border: #eaeaea;
+    --faq-bg: {{ section.settings.bg_color | default: '#fff8ef' }};
+    --faq-text-dark: #0f172a;
+    --faq-text-light: #334155;
+    --faq-radius: 20px;
+    --faq-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    --faq-shadow-hover: 0 20px 45px rgba(236, 92, 10, 0.14);
+    --faq-border: rgba(236, 92, 10, 0.15);
   }
   
   .faq-wrapper {
-    font-family: 'Poppins', 'Inter', sans-serif;
+    font-family: 'Plus Jakarta Sans', 'Outfit', 'Inter', sans-serif;
     color: var(--faq-text-dark);
-    background-color: var(--faq-bg);
+    background: radial-gradient(circle at 50% 0%, rgba(236, 92, 10, 0.08) 0%, #ffffff 40%, rgba(0, 123, 62, 0.06) 100%);
     overflow: hidden;
   }
 
-  /* --- Typography --- */
-  .faq-heading {
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 700;
-    line-height: 1.2;
-    margin-bottom: 1rem;
-    color: var(--faq-text-dark);
-  }
-  .faq-subheading {
-    font-size: clamp(1rem, 2vw, 1.2rem);
-    line-height: 1.6;
-    color: var(--faq-text-light);
-  }
-  
   /* --- Hero Section --- */
   .faq-hero {
     position: relative;
-    padding: clamp(60px, 8vw, 80px) 20px;
+    padding: clamp(60px, 8vw, 100px) 20px 50px 20px;
     text-align: center;
-    background: linear-gradient(135deg, #ffffff 0%, var(--faq-bg) 100%);
-    border-bottom: 1px solid var(--faq-border);
+    background: linear-gradient(135deg, #090e1a 0%, #151d30 50%, #0d1527 100%);
+    color: #ffffff;
+    overflow: hidden;
+    border-bottom: 2px solid rgba(255, 204, 0, 0.3);
   }
+
+  /* --- Left to Right Moving Marquee Text --- */
+  @keyframes scroll-left-to-right {
+    0% { transform: translateX(-50%) translateY(0); }
+    100% { transform: translateX(50%) translateY(0); }
+  }
+  .faq-moving-text {
+    position: absolute;
+    top: 35px;
+    left: 0;
+    white-space: nowrap;
+    z-index: 1;
+    opacity: 0.35;
+    pointer-events: none;
+    line-height: 1;
+    font-size: clamp(38px, 6vw, 85px);
+    font-weight: 900;
+    background: linear-gradient(90deg, #ec5c0a, #ff9900, #007b3e, #ec5c0a);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: scroll-left-to-right 18s linear infinite;
+  }
+
+  .hero-breadcrumb-pill {
+    position: relative;
+    z-index: 2;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 204, 0, 0.5);
+    border-radius: 50px;
+    padding: 8px 24px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .hero-breadcrumb-pill span, .hero-breadcrumb-pill a {
+    color: #ffffff;
+    font-size: 0.92rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
   .faq-hero-content {
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
+    position: relative;
+    z-index: 2;
   }
-  .faq-hero h1 {
-    font-size: clamp(2.5rem, 5vw, 3.5rem);
+  
+  .faq-badge-top {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 18px;
+    background: linear-gradient(90deg, rgba(236, 92, 10, 0.2), rgba(0, 123, 62, 0.2));
+    border: 1px solid rgba(255, 204, 0, 0.5);
+    border-radius: 50px;
+    color: #ffcc00;
+    font-size: 0.85rem;
     font-weight: 800;
-    margin-bottom: 15px;
-    color: var(--faq-text-dark);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .faq-badge-top .pulse-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #00ff66;
+    border-radius: 50%;
+    box-shadow: 0 0 0 0 rgba(0, 255, 102, 0.7);
+    animation: pulse-ring 1.8s infinite;
+  }
+  @keyframes pulse-ring {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 255, 102, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(0, 255, 102, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 255, 102, 0); }
+  }
+
+  .faq-hero h1 {
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    font-weight: 900;
+    margin-bottom: 16px;
+    color: #ffffff;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+  }
+
+  .faq-hero h1 span {
+    background: linear-gradient(90deg, #ffcc00, #ec5c0a, #00ff66);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .faq-subheading {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    line-height: 1.7;
+    color: #cbd5e1;
+    max-width: 750px;
+    margin: 0 auto;
   }
   
   /* --- Search Bar --- */
   .faq-search-container {
-    max-width: 600px;
-    margin: 30px auto 0;
+    max-width: 650px;
+    margin: 32px auto 0;
     position: relative;
   }
   .faq-search-input {
     width: 100%;
-    padding: 16px 20px 16px 50px;
+    padding: 18px 24px 18px 56px;
     font-size: 1.05rem;
-    border: 2px solid var(--faq-border);
+    border: 2px solid rgba(255, 204, 0, 0.4);
     border-radius: 50px;
     outline: none;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.3s ease;
     font-family: inherit;
-    background: #ffffff;
+    background: rgba(255, 255, 255, 0.98);
+    color: #0f172a;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   }
   .faq-search-input:focus {
-    border-color: var(--faq-primary);
-    box-shadow: 0 0 0 4px rgba(236,92,10,0.1);
+    border-color: #ec5c0a;
+    box-shadow: 0 0 0 5px rgba(236, 92, 10, 0.3), 0 15px 35px rgba(0, 0, 0, 0.4);
   }
   .faq-search-icon {
     position: absolute;
-    left: 20px;
+    left: 22px;
     top: 50%;
     transform: translateY(-50%);
-    color: #999;
-    font-size: 1.2rem;
+    color: #ec5c0a;
+    font-size: 1.3rem;
   }
 
-  /* --- FAQ Layout --- */
-  .faq-content-section {
-    padding: clamp(50px, 6vw, 80px) 20px;
-    max-width: 900px;
-    margin: 0 auto;
+  /* --- Category Filter Tabs --- */
+  .faq-categories-wrapper {
+    max-width: 1100px;
+    margin: -25px auto 40px auto;
+    position: relative;
+    z-index: 5;
+    padding: 0 20px;
   }
-  
-  /* Optional Categories */
   .faq-categories {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 10px;
-    margin-bottom: 40px;
+    gap: 12px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(236, 92, 10, 0.2);
+    border-radius: 50px;
+    padding: 10px 14px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
   }
   .faq-cat-btn {
-    padding: 10px 20px;
-    background: #ffffff;
-    border: 1px solid var(--faq-border);
+    padding: 10px 22px;
+    background: transparent;
+    border: none;
     border-radius: 50px;
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: var(--faq-text-light);
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: #475569;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
   }
-  .faq-cat-btn.active, .faq-cat-btn:hover {
-    background: var(--faq-primary);
-    color: #ffffff;
-    border-color: var(--faq-primary);
+  .faq-cat-btn:hover {
+    color: #ec5c0a;
+    background: rgba(236, 92, 10, 0.08);
+  }
+  .faq-cat-btn.active {
+    background: linear-gradient(135deg, #ec5c0a 0%, #f1721b 100%);
+    color: #ffffff !important;
+    box-shadow: 0 6px 20px rgba(236, 92, 10, 0.35);
   }
 
-  /* Accordion Item */
+  /* --- FAQ Content Section --- */
+  .faq-content-section {
+    padding: 10px 20px clamp(60px, 8vw, 100px) 20px;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+  
   .faq-list {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 18px;
   }
+
+  /* Glassmorphic Accordion Item */
   .faq-item {
     background: #ffffff;
     border-radius: var(--faq-radius);
+    border: 1px solid rgba(236, 92, 10, 0.15);
     box-shadow: var(--faq-shadow);
     overflow: hidden;
-    transition: box-shadow 0.3s ease;
+    transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
   }
   .faq-item:hover {
     box-shadow: var(--faq-shadow-hover);
+    border-color: rgba(236, 92, 10, 0.35);
+    transform: translateY(-2px);
   }
   
   .faq-question {
     width: 100%;
     text-align: left;
-    padding: 24px;
+    padding: 22px 28px;
     background: transparent;
     border: none;
     display: flex;
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
-    font-size: 1.15rem;
-    font-weight: 600;
+    font-size: 1.12rem;
+    font-weight: 800;
     color: var(--faq-text-dark);
     font-family: inherit;
-    transition: color 0.2s ease;
+    transition: all 0.25s ease;
+    gap: 16px;
   }
   .faq-question:focus-visible {
     outline: 2px solid var(--faq-primary);
@@ -154,47 +263,66 @@
   .faq-question:hover {
     color: var(--faq-primary);
   }
+
+  .faq-q-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    background: rgba(236, 92, 10, 0.1);
+    color: var(--faq-primary);
+    font-weight: 900;
+    font-size: 0.88rem;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+  }
+  .faq-item.is-open .faq-q-num {
+    background: var(--faq-primary);
+    color: #ffffff;
+  }
   
+  .faq-question-text {
+    flex: 1;
+    line-height: 1.4;
+  }
+
   .faq-icon {
     flex-shrink: 0;
-    margin-left: 15px;
-    width: 24px;
-    height: 24px;
-    position: relative;
-  }
-  .faq-icon::before, .faq-icon::after {
-    content: '';
-    position: absolute;
-    background: var(--faq-text-dark);
-    transition: transform 0.3s ease;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    font-weight: 900;
+    color: #64748b;
+    transition: all 0.3s ease;
   }
   .faq-icon::before {
-    top: 11px;
-    left: 4px;
-    width: 16px;
-    height: 2px;
+    content: '+';
   }
-  .faq-icon::after {
-    top: 4px;
-    left: 11px;
-    width: 2px;
-    height: 16px;
+  .faq-item.is-open .faq-icon {
+    background: #ec5c0a;
+    color: #ffffff;
+    border-color: #ec5c0a;
+    transform: rotate(45deg);
   }
-  .faq-item.is-open .faq-icon::after {
-    transform: rotate(90deg);
-  }
-  .faq-item.is-open .faq-icon::before {
-    transform: rotate(180deg);
-  }
+  
   .faq-item.is-open .faq-question {
     color: var(--faq-primary);
-    border-bottom: 1px solid var(--faq-border);
+    background: rgba(236, 92, 10, 0.03);
+    border-bottom: 1px solid rgba(236, 92, 10, 0.12);
   }
   
   .faq-answer-wrapper {
     display: grid;
     grid-template-rows: 0fr;
-    transition: grid-template-rows 0.3s ease;
+    transition: grid-template-rows 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
   }
   .faq-item.is-open .faq-answer-wrapper {
     grid-template-rows: 1fr;
@@ -203,133 +331,587 @@
     overflow: hidden;
   }
   .faq-answer-inner {
-    padding: 24px;
-    font-size: 1rem;
-    line-height: 1.7;
+    padding: 26px 28px;
+    font-size: 1.02rem;
+    line-height: 1.8;
     color: var(--faq-text-light);
+    background: #ffffff;
   }
   
-  /* Rich Text Formatting inside Answer */
-  .faq-answer-inner p { margin-bottom: 15px; }
+  /* Rich Formatting Inside FAQ Answers */
+  .faq-answer-inner p { margin-bottom: 14px; }
   .faq-answer-inner p:last-child { margin-bottom: 0; }
-  .faq-answer-inner ul, .faq-answer-inner ol { margin-left: 20px; margin-bottom: 15px; }
-  .faq-answer-inner li { margin-bottom: 8px; }
+  .faq-answer-inner ul, .faq-answer-inner ol { margin-left: 0; margin-bottom: 16px; list-style: none; padding-left: 0; }
+  .faq-answer-inner li { margin-bottom: 10px; line-height: 1.7; padding-left: 4px; }
+  .faq-answer-inner strong { color: #0f172a; font-weight: 800; }
+  .faq-answer-inner small { color: #64748b; font-size: 0.88rem; }
   
   .faq-no-results {
     text-align: center;
-    padding: 40px;
-    font-size: 1.1rem;
+    padding: 50px 20px;
+    font-size: 1.15rem;
     color: var(--faq-text-light);
     display: none;
     background: #ffffff;
     border-radius: var(--faq-radius);
+    border: 1px solid var(--faq-border);
+    box-shadow: var(--faq-shadow);
   }
 
-  /* --- CTA Section --- */
+  /* --- Interactive CTA Section --- */
   .faq-cta {
-    background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%);
+    background: linear-gradient(135deg, #090e1a 0%, #151d30 50%, #0d1527 100%);
     color: #ffffff;
-    padding: clamp(60px, 8vw, 100px) 20px;
+    padding: clamp(60px, 8vw, 90px) 20px;
     text-align: center;
+    border-top: 2px solid rgba(255, 204, 0, 0.3);
+    position: relative;
+    overflow: hidden;
   }
   .faq-cta-content {
-    max-width: 600px;
+    max-width: 750px;
     margin: 0 auto;
+    position: relative;
+    z-index: 2;
   }
   .faq-cta h2 {
     color: #ffffff;
-    margin-bottom: 15px;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 900;
+    margin-bottom: 14px;
   }
   .faq-cta p {
-    color: #cccccc;
-    margin-bottom: 30px;
+    color: #cbd5e1;
+    font-size: 1.1rem;
+    margin-bottom: 32px;
+    line-height: 1.7;
+  }
+  .faq-cta-btn-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
   }
   .faq-cta-btn {
-    display: inline-block;
-    padding: 15px 40px;
-    background: var(--faq-primary);
-    color: #ffffff;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 36px;
+    background: linear-gradient(135deg, #ec5c0a, #f1721b);
+    color: #ffffff !important;
     font-size: 1.05rem;
-    font-weight: 600;
+    font-weight: 800;
     text-decoration: none;
     border-radius: 50px;
-    transition: background 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 12px 30px rgba(236, 92, 10, 0.35);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   }
   .faq-cta-btn:hover {
-    background: #d45007;
+    background: linear-gradient(135deg, #f1721b, #007b3e);
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 18px 40px rgba(236, 92, 10, 0.5);
+  }
+  .faq-cta-btn-alt {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 32px;
+    background: #ffffff;
+    color: #007b3e !important;
+    font-size: 1.05rem;
+    font-weight: 800;
+    text-decoration: none;
+    border-radius: 50px;
+    border: 2px solid #007b3e;
+    box-shadow: 0 8px 20px rgba(0, 123, 62, 0.15);
+    transition: all 0.3s ease;
+  }
+  .faq-cta-btn-alt:hover {
+    background: #007b3e;
+    color: #ffffff !important;
     transform: translateY(-3px);
+  }
+
+  /* Mobile Responsive Fixes */
+  @media screen and (max-width: 768px) {
+    .faq-hero {
+      padding: 50px 16px 40px 16px !important;
+    }
+    .faq-moving-text {
+      top: 25px !important;
+      font-size: 32px !important;
+    }
+    .faq-categories {
+      border-radius: 24px !important;
+      padding: 6px !important;
+      gap: 6px !important;
+    }
+    .faq-cat-btn {
+      padding: 8px 14px !important;
+      font-size: 0.82rem !important;
+    }
+    .faq-question {
+      padding: 18px 16px !important;
+      font-size: 0.98rem !important;
+    }
+    .faq-q-num {
+      width: 28px !important;
+      height: 28px !important;
+      font-size: 0.78rem !important;
+    }
+    .faq-answer-inner {
+      padding: 20px 16px !important;
+      font-size: 0.92rem !important;
+    }
+    .faq-cta-btn-group {
+      flex-direction: column !important;
+      width: 100% !important;
+    }
+    .faq-cta-btn, .faq-cta-btn-alt {
+      width: 100% !important;
+      max-width: 340px !important;
+      justify-content: center !important;
+    }
   }
 {%- endstyle -%}
 
-<!-- SEO Structured Data -->
-{%- if section.blocks.size > 0 -%}
+<!-- SEO FAQ Schema Structured Data -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {%- for block in section.blocks -%}
-      {
-        "@type": "Question",
-        "name": {{ block.settings.question | json }},
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": {{ block.settings.answer | strip_html | json }}
-        }
-      }{% unless forloop.last %},{% endunless %}
-    {%- endfor -%}
+    {
+      "@type": "Question",
+      "name": "What is Vidhyut Saathi Card & how does it works?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Vidhyut Saathi Card is an advanced electricity saver card based on US-German Nanotechnology that helps reduce your electricity bill by 20-30%. Equipped with a Terahertz Chip and 20,000+ Negative Ions to stabilize power factor and minimize leakage."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the Vidhyut Saathi Card suitable for homes, shops, offices, factories, and institutions?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Designed for homes, apartments, shops, offices, hotels, hospitals, schools, colleges, commercial establishments, factories, industries, and government institutions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many Vidhyut Saathi Cards are required for my premises?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For every 6 Kilowatts, you will need 1 card. For 3-Phase meters, install 1 extra card."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How to install the Vidhyut Saathi Card?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Peel off protective layer from pre-applied 3M adhesive tape and firmly stick on or near your MCB/ELCB distribution board."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the product life and warranty of the Vidhyut Saathi Card?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Built to last for up to 10 years with zero maintenance. Comes with a 3-Year replacement Warranty."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the Vidhyut Saathi Card require any maintenance after installation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. The Vidhyut Saathi Card is 100% maintenance-free."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the Vidhyut Saathi Card safe and legal to use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "100% safe, legal, and non-invasive. ISO 9001:2015 Certified, Trademark Registered, BIS Exempt Category, Government-Approved HSN Code."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How can I become a Vidhyut Saathi Dealer or Exclusive District Franchise Partner?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We offer Non-Exclusive, Standard Exclusive, and Premium Exclusive District Franchise models with complete training, marketing, ads, and dedicated business support."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why is Vidhyut Saathi considered India's No. 1 Electric Saver Card Company?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Trusted by 2 Million+ Happy Customers across 130+ active locations in India with US-German Nano Technology and 10-Year product life."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the benefits of becoming a Vidhyut Saathi Dealer or Exclusive District Franchise Partner?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Exclusive territory monopoly rights, complete training, sponsored Meta ad campaigns, lead generation support, and long-term business growth."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How can I start my business with Vidhyut Saathi?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Contact our team, choose the business model that best suits your goals, and complete the registration process with full expert guidance."
+      }
+    }
   ]
 }
 </script>
-{%- endif -%}
 
 <div class="faq-wrapper">
   
   <!-- Hero Section -->
   <section class="faq-hero">
+    <div class="faq-moving-text">Frequently Asked Questions &nbsp; &nbsp; FAQs &nbsp; &nbsp; Frequently Asked Questions</div>
+    
     <div class="faq-hero-content">
-      <h1>{{ section.settings.hero_title }}</h1>
-      <p class="faq-subheading">{{ section.settings.hero_subtitle }}</p>
+      <div class="hero-breadcrumb-pill">
+        <a href="/">Home</a>
+        <span style="color: #ffcc00;">/</span>
+        <span style="color: #ffffff; font-weight: 700;">FAQs</span>
+        <span style="color: rgba(255,255,255,0.3); margin: 0 4px;">|</span>
+        <span style="color: #ffcc00; font-weight: 800;"><span class="pulse-dot"></span> 2 Million+ Trusted</span>
+      </div>
+
+      <div class="faq-badge-top">
+        <span class="pulse-dot"></span>
+        <span>⚡ OFFICIAL KNOWLEDGE BASE &amp; HELP CENTER</span>
+      </div>
+
+      <h1>Frequently Asked <span>Questions (FAQs)</span></h1>
+      <p class="faq-subheading">Everything you need to know about the Vidhyut Saathi Card, working technology, installation, safety, warranty, and exclusive district franchise opportunities.</p>
       
       {%- if section.settings.enable_search -%}
         <div class="faq-search-container">
           <span class="faq-search-icon">🔍</span>
-          <input type="text" id="faqSearchInput" class="faq-search-input" placeholder="Search FAQs..." aria-label="Search FAQs">
+          <input type="text" id="faqSearchInput" class="faq-search-input" placeholder="Type your question or keyword (e.g. Installation, Warranty, Franchise, Safety)..." aria-label="Search FAQs">
         </div>
       {%- endif -%}
     </div>
   </section>
 
-  <!-- FAQ Content -->
+  <!-- Category Filter Tabs -->
+  <div class="faq-categories-wrapper">
+    <div class="faq-categories" id="faqCategories">
+      <button class="faq-cat-btn active" data-filter="all">✨ All Questions</button>
+      <button class="faq-cat-btn" data-filter="working">⚡ Product &amp; Tech</button>
+      <button class="faq-cat-btn" data-filter="installation">🔧 Installation &amp; Load</button>
+      <button class="faq-cat-btn" data-filter="safety">🛡️ Safety &amp; Warranty</button>
+      <button class="faq-cat-btn" data-filter="franchise">💼 Franchise &amp; Business</button>
+    </div>
+  </div>
+
+  <!-- FAQ Content Section -->
   <section class="faq-content-section">
     <div class="faq-list" id="faqList">
-      {%- for block in section.blocks -%}
-        <div class="faq-item" data-category="{{ block.settings.category | handleize }}" {{ block.shopify_attributes }}>
-          <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-{{ block.id }}">
-            <span class="faq-question-text">{{ block.settings.question }}</span>
+      
+      {%- if section.blocks.size > 0 -%}
+        {%- for block in section.blocks -%}
+          <div class="faq-item" data-category="{{ block.settings.category | default: 'working' | handleize }}" {{ block.shopify_attributes }}>
+            <button class="faq-question" aria-expanded="false">
+              <span class="faq-q-num">{{ forloop.index }}</span>
+              <span class="faq-question-text">{{ block.settings.question }}</span>
+              <span class="faq-icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq-answer-wrapper" role="region">
+              <div class="faq-answer">
+                <div class="faq-answer-inner faq-answer-text">
+                  {{ block.settings.answer }}
+                </div>
+              </div>
+            </div>
+          </div>
+        {%- endfor -%}
+      {%- else -%}
+        <!-- Fallback Default 11 Questions Grid -->
+        
+        <!-- FAQ 1: What is Vidhyut Saathi Card -->
+        <div class="faq-item" data-category="working">
+          <button class="faq-question" aria-expanded="false">
+            <span class="faq-q-num">1</span>
+            <span class="faq-question-text">What is Vidhyut Saathi Card &amp; how does it work?</span>
             <span class="faq-icon" aria-hidden="true"></span>
           </button>
-          <div class="faq-answer-wrapper" id="faq-answer-{{ block.id }}" role="region">
+          <div class="faq-answer-wrapper" role="region">
             <div class="faq-answer">
               <div class="faq-answer-inner faq-answer-text">
-                {{ block.settings.answer }}
+                <p>The <strong>Vidhyut Saathi Card</strong> is an advanced electricity saver card based on <strong>US–German Nanotechnology</strong> that helps reduce your monthly electricity bill by <strong>20–30%</strong>.</p>
+                <p>⚡ <strong>Vidhyut Saathi Card</strong> is equipped with a <strong>Terahertz Chip</strong> that helps stabilize the power factor and <strong>20,000+ Negative Ions</strong> that help minimize electricity leakage. As a result, unnecessary power wastage is reduced, helping prevent extra electricity units from being consumed.</p>
+                <p>The card works by creating an energy aura around the MCB (Miniature Circuit Breaker) box, which helps optimize electricity consumption and improve power efficiency.</p>
+                <p>As a result, it guarantees savings of <strong>20–30%</strong> on electricity bills by reducing energy wastage and optimizing power usage.</p>
               </div>
             </div>
           </div>
         </div>
-      {%- endfor -%}
+
+        <!-- FAQ 2: Suitable applications -->
+        <div class="faq-item" data-category="working">
+          <button class="faq-question" aria-expanded="false">
+            <span class="faq-q-num">2</span>
+            <span class="faq-question-text">Is the Vidhyut Saathi Card suitable for homes, shops, offices, factories, and institutions?</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-answer-wrapper" role="region">
+            <div class="faq-answer">
+              <div class="faq-answer-inner faq-answer-text">
+                <p>Yes. The <strong>Vidhyut Saathi Card</strong> is designed for a wide range of applications, including homes, apartments, shops, offices, hotels, hospitals, schools, colleges, commercial establishments, factories, industries, and government institutions.</p>
+                <p>Our team can also recommend the ideal quantity of cards based on your sanctioned electrical load and specific requirements.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 3: How many cards required -->
+        <div class="faq-item" data-category="installation">
+          <button class="faq-question" aria-expanded="false">
+            <span class="faq-q-num">3</span>
+            <span class="faq-question-text">How many Vidhyut Saathi Cards are required for my premises?</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-answer-wrapper" role="region">
+            <div class="faq-answer">
+              <div class="faq-answer-inner faq-answer-text">
+                <p>You may require multiple cards depending on the sanctioned load &amp; type of electrical connection:</p>
+                <ul>
+                  <li>⚡ <strong>6 kW Rule:</strong> For every <strong>6 Kilowatts (6 kW)</strong> of sanctioned load, you will need <strong>1 Card</strong>.</li>
+                  <li>🏨 <strong>No Extra Wiring:</strong> You can use it at any residential, commercial &amp; industrial unit without any extra wiring or external connection.</li>
+                  <li>🔌 <strong>3-Phase Connection:</strong> For 3-Phase meters, you need to install <strong>1 extra card</strong>.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 4: How to install -->
+        <div class="faq-item" data-category="installation">
+          <button class="faq-question" aria-expanded="false">
+            <span class="faq-q-num">4</span>
+            <span class="faq-question-text">How to install the Vidhyut Saathi Card?</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-answer-wrapper" role="region">
+            <div class="faq-answer">
+              <div class="faq-answer-inner faq-answer-text">
+                <p>Installing the <strong>Vidhyut Saathi Card</strong> is quick, hassle-free, and requires no wiring, no drilling, and no technical expertise. Simply follow these three easy steps:</p>
+                <ul>
+                  <li>✅ <strong>Step 1:</strong> Take the Vidhyut Saathi Card out of its packaging.</li>
+                  <li>✅ <strong>Step 2:</strong> Peel off the protective layer from the pre-applied heavy-duty 3M adhesive tape on the back of the card.</li>
+                  <li>✅ <strong>Step 3:</strong> Firmly stick the card on or near your MCB / ELCB distribution board box.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 5: Life & Warranty -->
+        <div class="faq-item" data-category="safety">
+          <button class="faq-question" aria-expanded="false">
+            <span class="faq-q-num">5</span>
+            <span class="faq-question-text">What is the product life and warranty of the Vidhyut Saathi Card?</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-answer-wrapper" role="region">
+            <div class="faq-answer">
+              <div class="faq-answer-inner faq-answer-text">
+                <p>The <strong>Vidhyut Saathi Card</strong> is built to last for up to <strong>10 Years</strong> with zero maintenance.</p>
+                <p>🛡️ Every card also comes with a <strong>3-Year Replacement Warranty</strong>, giving you complete peace of mind.</p>
+                <p>Once installed, you can enjoy a reliable, long-lasting energy optimization solution without worrying about regular servicing or replacement.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 6: Maintenance -->
+        <div class="faq-item" data-category="safety">
+          <button class="faq-question" aria-expanded="false">
+            <span class="faq-q-num">6</span>
+            <span class="faq-question-text">Does the Vidhyut Saathi Card require any maintenance after installation?</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-answer-wrapper" role="region">
+            <div class="faq-answer">
+              <div class="faq-answer-inner faq-answer-text">
+                <p>No. The <strong>Vidhyut Saathi Card</strong> is <strong>100% maintenance-free</strong>.</p>
+                <p>Once installed near your MCB/ELCB board, it works continuously without requiring servicing or regular maintenance. Simply install it once and enjoy a long-lasting, hassle-free energy optimization solution designed for homes, offices, shops, industries, and commercial establishments.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 7: Safe & Legal -->
+        <div class="faq-item" data-category="safety">
+          <button class="faq-question" aria-expanded="false">
+            <span class="faq-q-num">7</span>
+            <span class="faq-question-text">Is the Vidhyut Saathi Card safe and legal to use?</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-answer-wrapper" role="region">
+            <div class="faq-answer">
+              <div class="faq-answer-inner faq-answer-text">
+                <p>Absolutely! The <strong>Vidhyut Saathi Card</strong> is a <strong>100% safe, legal, and non-invasive</strong> energy optimization solution. It requires no wiring, no cutting, no drilling, and no modifications to your existing electrical system. Simply install it near the MCB/ELCB board using the 3M adhesive.</p>
+                <ul>
+                  <li>✔️ <strong>ISO 9001:2015 Certified</strong> (IAF Certified) Company</li>
+                  <li>✔️ <strong>Trademark Registered</strong> Brand</li>
+                  <li>✔️ <strong>BIS Exempt</strong> Product Category</li>
+                  <li>✔️ <strong>Government-Approved</strong> HSN Code</li>
+                  <li>✔️ <strong>100% Safe</strong> for Homes, Shops, Offices &amp; Industries</li>
+                </ul>
+                <p>The Vidhyut Saathi Card is manufactured and marketed in accordance with applicable Indian regulations. As it falls under a BIS-exempt product category and carries a government-approved HSN classification, it can be marketed and used in compliance with the applicable regulatory framework.</p>
+                <p><strong>Trusted Quality. Easy Installation. Complete Peace of Mind.</strong></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 8: Franchise Partner -->
+        <div class="faq-item" data-category="franchise">
+          <button class="faq-question" aria-expanded="false">
+            <span class="faq-q-num">8</span>
+            <span class="faq-question-text">How can I become a Vidhyut Saathi Dealer or Exclusive District Franchise Partner?</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-answer-wrapper" role="region">
+            <div class="faq-answer">
+              <div class="faq-answer-inner faq-answer-text">
+                <p>Becoming a <strong>Vidhyut Saathi Dealer</strong> or <strong>Exclusive District Franchise Partner</strong> is simple. We are expanding across India and welcome entrepreneurs, distributors, retailers, and business owners looking to build a profitable business in the fast-growing energy-saving industry.</p>
+                <p>We offer 3 lucrative business models to suit different investment goals:</p>
+                <ul>
+                  <li>✔️ <strong>Non-Exclusive District Franchise</strong></li>
+                  <li>✔️ <strong>Standard Exclusive District Franchise</strong></li>
+                  <li>✔️ <strong>Premium Exclusive District Franchise</strong></li>
+                </ul>
+                <p><strong>As a Vidhyut Saathi Partner, you'll receive:</strong></p>
+                <ul>
+                  <li>✔️ Exclusive Territory Opportunities*</li>
+                  <li>✔️ Complete Product &amp; Sales Training</li>
+                  <li>✔️ Marketing &amp; Lead Generation Support</li>
+                  <li>✔️ Branding &amp; Promotional Materials</li>
+                  <li>✔️ Sponsored Meta Ad Campaigns</li>
+                  <li>✔️ Dedicated Business &amp; Technical Assistance</li>
+                  <li>✔️ Long-Term Business Growth Support</li>
+                </ul>
+                <p>Our team will guide you through the entire onboarding process—from selecting the right business model to training and launching your business successfully.</p>
+                <p>📞 Contact us today to check franchise availability in your district and become a part of India's trusted Electric Saver Card Company.</p>
+                <p><small><em>*Exclusive territory benefits are available as per the selected franchise model and territory availability.</em></small></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 9: Why India No 1 -->
+        <div class="faq-item" data-category="working">
+          <button class="faq-question" aria-expanded="false">
+            <span class="faq-q-num">9</span>
+            <span class="faq-question-text">Why is Vidhyut Saathi considered India's No. 1 Electric Saver Card Company?</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-answer-wrapper" role="region">
+            <div class="faq-answer">
+              <div class="faq-answer-inner faq-answer-text">
+                <p><strong>Vidhyut Saathi</strong> is recognized as one of India's leading Electric Saver Card companies because of its commitment to quality, innovation, customer satisfaction, and business excellence. Our mission is to make energy optimization simple, accessible, and reliable for every home, business, and industry across India.</p>
+                <p><strong>Why Millions Trust Vidhyut Saathi:</strong></p>
+                <ul>
+                  <li>✔️ <strong>2 Million+</strong> Happy Customers</li>
+                  <li>✔️ <strong>130+</strong> Active Locations Across India</li>
+                  <li>✔️ Rapidly Expanding Pan-India Network</li>
+                  <li>✔️ <strong>ISO 9001:2015 Certified</strong> (IAF Certified) Company</li>
+                  <li>✔️ <strong>Trademark Registered</strong> Brand</li>
+                  <li>✔️ Advanced <strong>US-German Nano Technology</strong></li>
+                  <li>✔️ <strong>10-Year Product Life &amp; 3-Year Warranty</strong></li>
+                  <li>✔️ Complete Training, Marketing &amp; Business Support</li>
+                </ul>
+                <p>With a strong nationwide network, proven quality, and continuous innovation, Vidhyut Saathi is building a trusted brand that is helping shape the future of energy-saving solutions in India.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 10: Franchise Benefits -->
+        <div class="faq-item" data-category="franchise">
+          <button class="faq-question" aria-expanded="false">
+            <span class="faq-q-num">10</span>
+            <span class="faq-question-text">What are the benefits of becoming a Vidhyut Saathi Dealer or Exclusive District Franchise Partner?</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-answer-wrapper" role="region">
+            <div class="faq-answer">
+              <div class="faq-answer-inner faq-answer-text">
+                <p>Becoming a <strong>Vidhyut Saathi Dealer</strong> or <strong>Exclusive District Franchise Partner</strong> gives you the opportunity to build a profitable business with one of India's fastest-growing energy-saving brands.</p>
+                <p><strong>Partner Benefits:</strong></p>
+                <ul>
+                  <li>✔️ Exclusive Territory Opportunities</li>
+                  <li>✔️ Monopoly Rights with Legal Agreement</li>
+                  <li>✔️ Complete Training &amp; Business Support</li>
+                  <li>✔️ Sponsored Meta Ad Campaigns</li>
+                  <li>✔️ Marketing &amp; Lead Generation Assistance</li>
+                  <li>✔️ Premium Branding &amp; Promotional Materials</li>
+                  <li>✔️ Dedicated Technical &amp; After-Sales Support</li>
+                  <li>✔️ Long-Term Growth with a Trusted Brand</li>
+                </ul>
+                <p>Join our expanding network of <strong>130+ locations</strong> across India and become part of a brand trusted by <strong>2 Million+ happy customers</strong>.</p>
+                <p>Enquire today to start your Vidhyut Saathi business journey.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 11: How to Start Business -->
+        <div class="faq-item" data-category="franchise">
+          <button class="faq-question" aria-expanded="false">
+            <span class="faq-q-num">11</span>
+            <span class="faq-question-text">How can I start my business with Vidhyut Saathi?</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-answer-wrapper" role="region">
+            <div class="faq-answer">
+              <div class="faq-answer-inner faq-answer-text">
+                <p>Starting your business with <strong>Vidhyut Saathi</strong> is quick and easy. Simply contact our team, choose the business model that best suits your goals, and complete the registration process. Our experts will guide you through every step—from onboarding and product training to marketing support and business setup.</p>
+                <p>Join <strong>2 Million+ happy customers</strong>, a growing network of <strong>130+ locations</strong> across India, and build your business with one of India's fastest-growing energy-saving brands.</p>
+                <p>📞 <strong>Contact us today and start your journey with Vidhyut Saathi.</strong></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      {%- endif -%}
+
     </div>
+    
     <div class="faq-no-results" id="faqNoResults">
-      No FAQs found. Please try another search.
+      🔍 No matching questions found for your search term. Please try searching with another keyword like "Franchise", "Warranty", "Load", "Installation", or "Safety".
     </div>
   </section>
 
-  <!-- CTA Section -->
+  <!-- Interactive CTA Section -->
   <section class="faq-cta">
     <div class="faq-cta-content">
-      <h2 class="faq-heading">{{ section.settings.cta_heading }}</h2>
-      <p class="faq-subheading">{{ section.settings.cta_text }}</p>
-      <a href="{{ section.settings.cta_link }}" class="faq-cta-btn">{{ section.settings.cta_btn_text }}</a>
+      <h2>Still Have Questions or Want to Expand Your Business?</h2>
+      <p>Our expert support team and franchise strategists are available 24/7 to guide you on product installation, energy calculation, and exclusive district franchise opportunities.</p>
+      
+      <div class="faq-cta-btn-group">
+        <a href="/pages/contact" class="faq-cta-btn">
+          <span>📞 Contact Support Team</span>
+        </a>
+        <a href="/pages/franchise" class="faq-cta-btn-alt">
+          <span>💼 Apply for District Franchise &rarr;</span>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -340,15 +922,15 @@ document.addEventListener('DOMContentLoaded', function() {
   const faqItems = document.querySelectorAll('.faq-item');
   const searchInput = document.getElementById('faqSearchInput');
   const noResultsMsg = document.getElementById('faqNoResults');
-  const allowMultipleOpen = false; // Set to true if you want multiple open at once
+  const catButtons = document.querySelectorAll('.faq-cat-btn');
+  const allowMultipleOpen = false;
 
-  // Accordion Logic
+  // Accordion Expand/Collapse Logic
   faqItems.forEach(item => {
     const questionBtn = item.querySelector('.faq-question');
     questionBtn.addEventListener('click', () => {
       const isOpen = item.classList.contains('is-open');
 
-      // If we only want one open at a time (especially for mobile)
       if (!allowMultipleOpen) {
         faqItems.forEach(otherItem => {
           if (otherItem !== item) {
@@ -358,7 +940,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
       }
 
-      // Toggle current
       if (isOpen) {
         item.classList.remove('is-open');
         questionBtn.setAttribute('aria-expanded', 'false');
@@ -369,11 +950,43 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // Search Logic
+  // Category Filter Logic
+  catButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      catButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.getAttribute('data-filter');
+
+      if (searchInput) searchInput.value = '';
+
+      let visibleCount = 0;
+      faqItems.forEach(item => {
+        const cat = item.getAttribute('data-category');
+        if (filter === 'all' || cat === filter) {
+          item.style.display = 'block';
+          visibleCount++;
+        } else {
+          item.style.display = 'none';
+        }
+      });
+
+      if (visibleCount === 0) {
+        noResultsMsg.style.display = 'block';
+      } else {
+        noResultsMsg.style.display = 'none';
+      }
+    });
+  });
+
+  // Instant Search Filter Logic
   if (searchInput) {
     searchInput.addEventListener('input', function(e) {
       const searchTerm = e.target.value.toLowerCase().trim();
       let visibleCount = 0;
+
+      // Reset active tab to all if typing search
+      catButtons.forEach(b => b.classList.remove('active'));
+      if (catButtons[0]) catButtons[0].classList.add('active');
 
       faqItems.forEach(item => {
         const questionText = item.querySelector('.faq-question-text').textContent.toLowerCase();
@@ -411,7 +1024,7 @@ document.addEventListener('DOMContentLoaded', function() {
       "type": "color",
       "id": "bg_color",
       "label": "Background Color",
-      "default": "#f9f9f9"
+      "default": "#fff8ef"
     },
     {
       "type": "header",
@@ -427,149 +1040,18 @@ document.addEventListener('DOMContentLoaded', function() {
       "type": "text",
       "id": "hero_subtitle",
       "label": "Hero Subtitle",
-      "default": "Find answers to common questions about Vidhyut Saathi Card, installation, warranty, safety, business opportunities and more."
+      "default": "Everything you need to know about the Vidhyut Saathi Card, working technology, installation, safety, warranty, and exclusive district franchise opportunities."
     },
     {
       "type": "checkbox",
       "id": "enable_search",
       "label": "Enable Search Bar",
       "default": true
-    },
-    {
-      "type": "header",
-      "content": "CTA Section"
-    },
-    {
-      "type": "text",
-      "id": "cta_heading",
-      "label": "Heading",
-      "default": "Still Have Questions?"
-    },
-    {
-      "type": "text",
-      "id": "cta_text",
-      "label": "Supporting Text",
-      "default": "Reach out to our support team and we will be happy to assist you."
-    },
-    {
-      "type": "text",
-      "id": "cta_btn_text",
-      "label": "Button Text",
-      "default": "Contact Us"
-    },
-    {
-      "type": "url",
-      "id": "cta_link",
-      "label": "Button Link"
-    }
-  ],
-  "blocks": [
-    {
-      "type": "faq_item",
-      "name": "FAQ Question",
-      "settings": [
-        {
-          "type": "text",
-          "id": "question",
-          "label": "Question"
-        },
-        {
-          "type": "richtext",
-          "id": "answer",
-          "label": "Answer",
-          "info": "Use this field to paste the official answer."
-        },
-        {
-          "type": "text",
-          "id": "category",
-          "label": "Category",
-          "info": "Optional tag for organization."
-        }
-      ]
     }
   ],
   "presets": [
     {
-      "name": "FAQ Layout",
-      "blocks": [
-        {
-          "type": "faq_item",
-          "settings": {
-            "question": "1. What is Vidhyut Saathi Card & how does it works?",
-            "answer": "<p>The Vidhyut Saathi Card is an advanced electricity saver card based on US–German Nanotechnology that helps reduce your electricity bill by 20–30%.</p><p>⚡ Vidhyut Saathi Card is equipped with a Terahertz Chip that helps stabilize the power factor and 20,000+ Negative Ions that help minimize electricity leakage. As a result, unnecessary power wastage is reduced, helping prevent extra electricity units from being consumed.</p><p>The card works by creating an energy aura around the MCB (Miniature Circuit Breaker) box, which helps optimize electricity consumption and improve power efficiency.</p><p>As a result, it guarantees savings of 20–30% on electricity bills by reducing energy wastage and optimizing power usage.</p>"
-          }
-        },
-        {
-          "type": "faq_item",
-          "settings": {
-            "question": "2. Is the Vidhyut Saathi Card suitable for homes, shops, offices, factories, and institutions?",
-            "answer": "<p>Yes. The Vidhyut Saathi Card is designed for a wide range of applications, including homes, apartments, shops, offices, hotels, hospitals, schools, colleges, commercial establishments, factories, industries, and government institutions. Our team can also recommend the ideal quantity of cards based on your sanctioned electrical load and specific requirements.</p>"
-          }
-        },
-        {
-          "type": "faq_item",
-          "settings": {
-            "question": "3. How many Vidhyut Saathi Cards are required for my premises?",
-            "answer": "<p>You may require multiple cards depending on the sanction load & type of connection. For every 6️⃣ kilowatts, you'll need one card. You can use it at any residential, commercial & industrial 🏨unit without any extra wiring or External Connection. & for 3️⃣ phase meter you need to install 1️⃣ card extra.</p>"
-          }
-        },
-        {
-          "type": "faq_item",
-          "settings": {
-            "question": "4. How to install the Vidhyut Saathi Card?",
-            "answer": "<p>Installing the Vidhyut Saathi Card is quick, hassle-free, and requires no wiring, no drilling, and no technical expertise. Simply follow these three easy steps:</p><ul><li>✅ Step 1: Take the Vidhyut Saathi Card.</li><li>✅ Step 2: Peel off the protective layer from the pre-applied 3M adhesive tape.</li><li>✅ Step 3: Firmly stick the card on or near your MCB/ELCB distribution board.</li></ul>"
-          }
-        },
-        {
-          "type": "faq_item",
-          "settings": {
-            "question": "5. What is the product life and warranty of the Vidhyut Saathi Card?",
-            "answer": "<p>The Vidhyut Saathi Card is built to last for up to 10 years with zero maintenance. Every card also comes with a 3-Year replacement Warranty, giving you complete peace of mind. Once installed, you can enjoy a reliable, long-lasting energy optimization solution without worrying about regular servicing or replacement.</p>"
-          }
-        },
-        {
-          "type": "faq_item",
-          "settings": {
-            "question": "6. Does the Vidhyut Saathi Card require any maintenance after installation?",
-            "answer": "<p>No. The Vidhyut Saathi Card is 100% maintenance-free. Once installed near your MCB/ELCB board, it works without requiring servicing or regular maintenance. Simply install it once and enjoy a long-lasting, hassle-free energy optimization solution designed for homes, offices, shops, industries, and commercial establishments.</p>"
-          }
-        },
-        {
-          "type": "faq_item",
-          "settings": {
-            "question": "7. Is the Vidhyut Saathi Card safe and legal to use?",
-            "answer": "<p>Absolutely! The Vidhyut Saathi Card is a 100% safe, legal, and non-invasive energy optimization solution. It requires no wiring, no cutting, no drilling, and no modifications to your existing electrical system. Simply install it near the MCB/ELCB board using the 3M adhesive.</p><ul><li>✔️ ISO 9001:2015 Certified (IAF Certified) Company</li><li>✔️ Trademark Registered Brand</li><li>✔️ BIS Exempt Product Category</li><li>✔️ Government-Approved HSN Code</li><li>✔️ Safe for Homes, Shops, Offices & Industries</li></ul><p>The Vidhyut Saathi Card is manufactured and marketed in accordance with applicable Indian regulations. As it falls under a BIS-exempt product category and carries a government-approved HSN classification, it can be marketed and used in compliance with the applicable regulatory framework.</p><p>Trusted Quality. Easy Installation. Complete Peace of Mind.</p>"
-          }
-        },
-        {
-          "type": "faq_item",
-          "settings": {
-            "question": "8. How can I become a Vidhyut Saathi Dealer or Exclusive District Franchise Partner?",
-            "answer": "<p>Becoming a Vidhyut Saathi Dealer or Exclusive District Franchise Partner is simple. We are expanding across India and welcome entrepreneurs, distributors, retailers, and business owners looking to build a profitable business in the fast-growing energy-saving industry.</p><p>We offer three business models to suit different investment goals:</p><ul><li>✔️ Non-Exclusive District Franchise</li><li>✔️ Standard Exclusive District Franchise</li><li>✔️ Premium Exclusive District Franchise</li></ul><p>As a Vidhyut Saathi Partner, you'll receive:</p><ul><li>✔️ Exclusive Territory Opportunities*</li><li>✔️ Complete Product & Sales Training</li><li>✔️ Marketing & Lead Generation Support</li><li>✔️ Branding & Promotional Materials</li><li>✔️ Sponsored Meta Ad Campaigns</li><li>✔️ Dedicated Business & Technical Assistance</li><li>✔️ Long-Term Business Growth Support</li></ul><p>Our team will guide you through the entire onboarding process—from selecting the right business model to training and launching your business successfully.</p><p>Contact us today to check franchise availability in your district and become a part of India's trusted Electric Saver Card Company.</p><p><em>*Exclusive territory benefits are available as per the selected franchise model and territory availability.</em></p>"
-          }
-        },
-        {
-          "type": "faq_item",
-          "settings": {
-            "question": "9. Why is Vidhyut Saathi considered India's No. 1 Electric Saver Card Company?",
-            "answer": "<p>Vidhyut Saathi is recognized as one of India's leading Electric Saver Card companies because of its commitment to quality, innovation, customer satisfaction, and business excellence. Our mission is to make energy optimization simple, accessible, and reliable for every home, business, and industry across India.</p><p>Why Millions Trust Vidhyut Saathi:</p><ul><li>✔️ 2 Million+ Happy Customers</li><li>✔️ 130+ Active Locations Across India</li><li>✔️ Rapidly Expanding Pan-India Network</li><li>✔️ ISO 9001:2015 Certified (IAF Certified) Company</li><li>✔️ Trademark Registered Brand</li><li>✔️ Advanced US-German Nano Technology</li><li>✔️ 10-Year Product Life & 3-Year Warranty</li><li>✔️ Complete Training, Marketing & Business Support</li></ul><p>With a strong nationwide network, proven quality, and continuous innovation, Vidhyut Saathi is building a trusted brand that is helping shape the future of energy-saving solutions in India.</p>"
-          }
-        },
-        {
-          "type": "faq_item",
-          "settings": {
-            "question": "10. What are the benefits of becoming a Vidhyut Saathi Dealer or Exclusive District Franchise Partner?",
-            "answer": "<p>Becoming a Vidhyut Saathi Dealer or Exclusive District Franchise Partner gives you the opportunity to build a profitable business with one of India's fastest-growing energy-saving brands.</p><p>Partner Benefits:</p><ul><li>✔️ Exclusive Territory Opportunities</li><li>✔️ Monopoly Rights with Legal Agreement</li><li>✔️ Complete Training & Business Support</li><li>✔️ Sponsored Meta Ad Campaigns</li><li>✔️ Marketing & Lead Generation Assistance</li><li>✔️ Premium Branding & Promotional Materials</li><li>✔️ Dedicated Technical & After-Sales Support</li><li>✔️ Long-Term Growth with a Trusted Brand</li></ul><p>Join our expanding network of 130+ locations across India and become part of a brand trusted by 2 Million+ happy customers.</p><p>Enquire today to start your Vidhyut Saathi business journey.</p>"
-          }
-        },
-        {
-          "type": "faq_item",
-          "settings": {
-            "question": "11. How can I start my business with Vidhyut Saathi?",
-            "answer": "<p>Starting your business with Vidhyut Saathi is quick and easy. Simply contact our team, choose the business model that best suits your goals, and complete the registration process. Our experts will guide you through every step—from onboarding and product training to marketing support and business setup.</p><p>Join 2 Million+ happy customers, a growing network of 130+ locations across India, and build your business with one of India's fastest-growing energy-saving brands.</p><p>📞 Contact us today and start your journey with Vidhyut Saathi.</p>"
-          }
-        }
-      ]
+      "name": "FAQ Layout"
     }
   ]
 }
