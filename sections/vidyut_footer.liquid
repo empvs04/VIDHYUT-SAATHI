@@ -523,22 +523,14 @@
       
       <!-- Card 1: Brand & Contact Info -->
       <div class="vs-bento-dock-card v-anim-footer">
-        <div class="vs-card-brand-header" style="margin-bottom: 16px;">
-          <a href="/" class="vs-logo-white-card" style="padding: 10px 20px; background: #ffffff; border-radius: 16px; display: inline-block;">
+        <div class="vs-card-brand-header" style="margin-bottom: 22px;">
+          <a href="/" class="vs-logo-white-card" style="padding: 12px 24px; background: #ffffff; border-radius: 16px; display: inline-block; box-shadow: 0 4px 20px rgba(255,255,255,0.15);">
             {% if section.settings.footer_logo != blank %}
-              <img src="{{ section.settings.footer_logo | img_url: 'master' }}" alt="Vidhyut Saathi" loading="lazy" style="height: 65px; width: auto; display: block;">
+              <img src="{{ section.settings.footer_logo | img_url: 'master' }}" alt="Vidhyut Saathi" loading="lazy" style="height: 75px; width: auto; display: block; object-fit: contain;">
             {% else %}
-              <img src="{{ 'vidhyut-saathi-logo.png' | asset_url }}" alt="Vidhyut Saathi" loading="lazy" style="height: 65px; width: auto; display: block;">
+              <img src="{{ 'vidhyut-saathi-logo.png' | asset_url }}" alt="Vidhyut Saathi" loading="lazy" style="height: 75px; width: auto; display: block; object-fit: contain;">
             {% endif %}
           </a>
-        </div>
-
-        <div class="vs-footer-product-photo-box" style="margin-bottom: 20px; border-radius: 16px; overflow: hidden; border: 1px solid rgba(255,255,255,0.12); box-shadow: 0 10px 25px rgba(0,0,0,0.3); background: #ffffff; padding: 6px;">
-          {% if section.settings.footer_brand_photo != blank %}
-            <img src="{{ section.settings.footer_brand_photo | img_url: 'master' }}" alt="Vidhyut Saathi Power Saver" loading="lazy" style="width: 100%; height: auto; max-height: 180px; object-fit: contain; display: block; border-radius: 12px;">
-          {% else %}
-            <img src="{{ 'vidhyut-power-saver-card.jpg' | asset_url }}" alt="Vidhyut Saathi Power Saver" loading="lazy" style="width: 100%; height: auto; max-height: 180px; object-fit: cover; display: block; border-radius: 12px;">
-          {% endif %}
         </div>
 
         <div class="vs-dock-contact-list">
