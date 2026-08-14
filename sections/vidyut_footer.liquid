@@ -1,122 +1,89 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
 {%- style -%}
-  /* ================= DRIBBBLE AGENCY DISPLAY FOOTER ================= */
-  .vs-agency-footer {
-    background-color: #080808;
+  /* ================= DRIBBBLE EXACT REPLICA FOOTER ================= */
+  .vs-dribbble-footer {
+    background-color: #050505;
     color: #a1a1aa;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    padding: 70px 0 30px 0;
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    padding: 80px 0 40px 0;
     position: relative;
     overflow: hidden;
     border-top: 1px solid #18181b;
     -webkit-tap-highlight-color: transparent;
   }
 
-  .vs-agency-container {
-    max-width: 1360px;
+  .vs-dribbble-container {
+    max-width: 1380px;
     margin: 0 auto;
     padding: 0 2rem;
     position: relative;
     z-index: 5;
   }
 
-  /* GIANT DISPLAY WORDMARK & LOGO HEADER (Dribbble Style) */
-  .vs-giant-wordmark-wrap {
+  /* GIANT STACKED WORDMARK (EXACT DRIBBBLE STYLE) */
+  .vs-giant-stack {
     width: 100%;
-    text-align: center;
-    margin-bottom: 60px;
-    user-select: none;
-    overflow: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px;
-  }
-
-  .vs-agency-logo-pill {
-    background: #ffffff;
-    padding: 8px 18px;
-    border-radius: 12px;
-    display: inline-block;
-    box-shadow: 0 4px 20px rgba(255,255,255,0.1);
-  }
-
-  .vs-agency-logo-pill img {
-    height: 42px;
-    width: auto;
-    display: block;
-  }
-
-  .vs-giant-wordmark {
-    font-size: clamp(3rem, 10.5vw, 10rem);
-    font-weight: 900;
-    line-height: 0.85;
-    letter-spacing: -0.04em;
-    text-transform: uppercase;
-    color: #f4f4f5;
-    margin: 10px 0 0 0;
-    display: flex;
     justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 15px;
-    width: 100%;
+    margin-bottom: 70px;
+    user-select: none;
   }
 
-  .vs-wordmark-primary {
-    color: #fafafa;
-    font-family: 'Inter', sans-serif;
-  }
-
-  .vs-wordmark-accent {
-    color: #f17e39;
+  .vs-giant-line {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(4rem, 16vw, 15rem);
     font-weight: 900;
-  }
-
-  .vs-wordmark-sub {
-    font-size: clamp(0.85rem, 2vw, 1.4rem);
-    letter-spacing: 4px;
-    font-weight: 700;
-    color: #71717a;
+    line-height: 0.78;
+    letter-spacing: -0.05em;
     text-transform: uppercase;
+    color: #f5f4ef;
+    margin: 0;
+    text-align: center;
+    width: 100%;
     display: block;
-    margin-top: 5px;
   }
 
-  /* Main Grid below Wordmark */
-  .vs-agency-grid {
+  .vs-giant-line-accent {
+    color: #f5f4ef;
+    position: relative;
+  }
+
+  .vs-giant-line-accent::after {
+    content: '★';
+    font-size: 0.35em;
+    color: #f17e39;
+    vertical-align: super;
+    margin-left: 10px;
+  }
+
+  /* 4 MINIMALIST COLUMNS (EXACT DRIBBBLE LAYOUT) */
+  .vs-dribbble-grid {
     display: grid;
-    grid-template-columns: 1.1fr 1.2fr 1.3fr 1.8fr;
+    grid-template-columns: 1fr 1fr 1fr 1.4fr;
     gap: 40px;
     padding-top: 40px;
-    padding-bottom: 60px;
-    border-top: 1px solid #27272a;
+    padding-bottom: 70px;
   }
 
-  .vs-agency-col h5 {
+  .vs-dribbble-col h5 {
+    font-family: 'Syne', sans-serif;
     color: #ffffff;
-    font-size: 0.85rem;
+    font-size: 0.95rem;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 2px;
     margin: 0 0 24px 0;
-    display: flex;
-    align-items: center;
-    gap: 8px;
   }
 
-  .vs-agency-col h5::before {
-    content: '';
-    width: 4px;
-    height: 14px;
-    background: #f17e39;
-    border-radius: 2px;
-  }
-
-  .vs-agency-links {
+  .vs-dribbble-links {
     list-style: none;
     padding: 0;
     margin: 0;
@@ -125,243 +92,191 @@
     gap: 12px;
   }
 
-  .vs-agency-links a {
-    color: #a1a1aa;
+  .vs-dribbble-links a {
+    color: #8e8e93;
     text-decoration: none;
-    font-size: 0.95rem;
-    font-weight: 500;
+    font-size: 0.85rem;
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-    transition: all 0.3s ease;
+    letter-spacing: 1px;
+    transition: all 0.25s ease;
     display: inline-flex;
     align-items: center;
     gap: 8px;
     width: fit-content;
   }
 
-  .vs-agency-links a:hover {
+  .vs-dribbble-links a:hover {
     color: #ffffff;
     transform: translateX(4px);
   }
 
-  /* Highlighted Required Cards Link */
-  .vs-agency-req-card {
+  /* Highlighted Required Cards */
+  .vs-req-card-link {
     color: #f17e39 !important;
-    font-weight: 700 !important;
   }
 
-  .vs-agency-req-card span {
+  .vs-req-card-link span {
     background: #f17e39;
     color: #000000;
-    font-size: 0.68rem;
+    font-size: 0.65rem;
     padding: 2px 6px;
     border-radius: 4px;
     font-weight: 900;
   }
 
-  /* Certifications List (Agency Style) */
-  .vs-agency-certs {
+  /* Studio / Contact Block (Exact Dribbble Style) */
+  .vs-studio-block {
     display: flex;
     flex-direction: column;
-    gap: 16px;
-  }
-
-  .vs-agency-cert-item {
-    display: flex;
-    align-items: center;
     gap: 14px;
-    text-decoration: none;
-    color: #e4e4e7;
-    background: #121215;
-    border: 1px solid #27272a;
-    padding: 12px 16px;
-    border-radius: 12px;
-    transition: all 0.3s ease;
-  }
-
-  .vs-agency-cert-item:hover {
-    border-color: #f17e39;
-    background: #18181b;
-    transform: translateY(-2px);
-  }
-
-  .vs-agency-cert-img {
-    width: 44px;
-    height: 44px;
-    background: #ffffff;
-    border-radius: 8px;
-    padding: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-
-  .vs-agency-cert-img img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-  }
-
-  .vs-agency-cert-text strong {
-    display: block;
-    font-size: 0.9rem;
-    color: #ffffff;
-    font-weight: 700;
-  }
-
-  .vs-agency-cert-text span {
-    font-size: 0.75rem;
-    color: #22c55e;
+    font-size: 0.88rem;
+    color: #a1a1aa;
+    text-transform: uppercase;
+    letter-spacing: 1px;
     font-weight: 600;
   }
 
-  /* Contact Details Column */
-  .vs-contact-block {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    font-size: 0.95rem;
-  }
-
-  .vs-contact-line {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    line-height: 1.5;
-  }
-
-  .vs-contact-line i {
-    color: #f17e39;
-    margin-top: 4px;
-    font-size: 1rem;
-    width: 18px;
-    flex-shrink: 0;
-  }
-
-  .vs-contact-line a {
-    color: #e4e4e7;
+  .vs-studio-block a {
+    color: #ffffff;
     text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
     transition: color 0.3s ease;
   }
 
-  .vs-contact-line a:hover {
-    color: #ffffff;
+  .vs-studio-block a:hover {
+    color: #f17e39;
   }
 
-  /* Agency Bottom Strip */
-  .vs-agency-bottom {
+  .vs-studio-address {
+    color: #8e8e93;
+    font-size: 0.82rem;
+    line-height: 1.6;
+    margin-top: 6px;
+    text-transform: uppercase;
+  }
+
+  /* Recognition Badges in Column 3 */
+  .vs-dribbble-badge-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 15px;
+  }
+
+  .vs-dribbble-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #121214;
+    border: 1px solid #27272a;
+    padding: 8px 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    width: fit-content;
+    transition: all 0.3s ease;
+  }
+
+  .vs-dribbble-badge:hover {
+    border-color: #f17e39;
+    transform: translateY(-2px);
+  }
+
+  .vs-dribbble-badge img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    background: #ffffff;
+    border-radius: 4px;
+    padding: 2px;
+  }
+
+  /* DRIBBBLE BOTTOM STRIP */
+  .vs-dribbble-bottom {
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
     gap: 20px;
     padding-top: 30px;
-    border-top: 1px solid #18181b;
+    border-top: 1px solid #1c1c1e;
   }
 
-  .vs-copyright {
-    font-size: 0.82rem;
-    font-weight: 700;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: #71717a;
-  }
-
-  .vs-agency-socials {
-    display: flex;
-    gap: 20px;
-  }
-
-  .vs-agency-socials a {
-    color: #a1a1aa;
-    text-decoration: none;
-    font-size: 0.85rem;
+  .vs-dribbble-copy {
+    font-size: 0.78rem;
     font-weight: 700;
     letter-spacing: 1.5px;
     text-transform: uppercase;
-    transition: color 0.3s ease;
+    color: #636366;
   }
 
-  .vs-agency-socials a:hover {
-    color: #f17e39;
-  }
-
-  .vs-agency-tagline {
-    font-size: 0.82rem;
+  .vs-dribbble-tagline {
+    font-size: 0.78rem;
     font-weight: 800;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: #f17e39;
+    color: #f5f4ef;
     display: flex;
     align-items: center;
     gap: 6px;
   }
 
+  .vs-dribbble-tagline i {
+    color: #f17e39;
+  }
+
   /* Mobile Responsive */
   @media (max-width: 1024px) {
-    .vs-agency-grid {
+    .vs-dribbble-grid {
       grid-template-columns: repeat(2, 1fr);
-      gap: 36px;
+      gap: 40px;
     }
   }
 
   @media (max-width: 640px) {
-    .vs-agency-footer {
-      padding: 50px 0 25px 0;
+    .vs-dribbble-footer {
+      padding: 50px 0 30px 0;
     }
-    .vs-agency-container {
+    .vs-dribbble-container {
       padding: 0 1.2rem;
     }
-    .vs-giant-wordmark-wrap {
+    .vs-giant-stack {
       margin-bottom: 40px;
     }
-    .vs-giant-wordmark {
-      flex-direction: column;
-      gap: 0;
-    }
-    .vs-agency-grid {
+    .vs-dribbble-grid {
       grid-template-columns: 1fr;
-      gap: 32px;
+      gap: 36px;
     }
-    .vs-agency-bottom {
+    .vs-dribbble-bottom {
       flex-direction: column;
       text-align: center;
       gap: 16px;
     }
-    .vs-agency-socials {
-      justify-content: center;
-    }
   }
 {%- endstyle -%}
 
-<footer class="vs-agency-footer" id="section-{{ section.id }}">
-  <div class="vs-agency-container">
+<footer class="vs-dribbble-footer" id="section-{{ section.id }}">
+  <div class="vs-dribbble-container">
     
-    <!-- GIANT AGENCY DISPLAY WORDMARK & BRAND LOGO -->
-    <div class="vs-giant-wordmark-wrap v-anim-footer">
-      <a href="/" class="vs-agency-logo-pill">
-        {% if section.settings.footer_logo != blank %}
-          <img src="{{ section.settings.footer_logo | img_url: 'master' }}" alt="Vidhyut Saathi" loading="lazy">
-        {% else %}
-          <img src="{{ '20221102_123113 (1).png' | asset_url }}" alt="Vidhyut Saathi" loading="lazy">
-        {% endif %}
-      </a>
-
-      <h1 class="vs-giant-wordmark">
-        <span class="vs-wordmark-primary">VIDHYUT</span>
-        <span class="vs-wordmark-accent">SAATHI</span>
-      </h1>
-      <span class="vs-wordmark-sub">ENERGY SAVERS PVT. LIMITED</span>
+    <!-- GIANT STACKED WORDMARK (EXACT DRIBBBLE ARTWORK STYLE) -->
+    <div class="vs-giant-stack v-anim-footer">
+      <span class="vs-giant-line">VIDHYUT</span>
+      <span class="vs-giant-line vs-giant-line-accent">SAATHI</span>
     </div>
 
-    <!-- 4-COLUMN MINIMALIST AGENCY GRID WITH ALL COMPANY INFO -->
-    <div class="vs-agency-grid">
+    <!-- 4 MINIMALIST COLUMNS (EXACT DRIBBBLE FOOTER GRID) -->
+    <div class="vs-dribbble-grid">
       
-      <!-- Column 1: Useful Links -->
-      <div class="vs-agency-col v-anim-footer">
-        <h5>Useful Links</h5>
-        <ul class="vs-agency-links">
+      <!-- Column 1: VIDHYUT -->
+      <div class="vs-dribbble-col v-anim-footer">
+        <h5>VIDHYUT</h5>
+        <ul class="vs-dribbble-links">
           <li><a href="/">Home</a></li>
           <li><a href="/pages/about-us">About Us</a></li>
           <li><a href="/pages/b2c">Why Vidhyut Saathi</a></li>
@@ -372,13 +287,13 @@
         </ul>
       </div>
 
-      <!-- Column 2: Our Solutions -->
-      <div class="vs-agency-col v-anim-footer">
-        <h5>Our Solutions</h5>
-        <ul class="vs-agency-links">
+      <!-- Column 2: SAATHI -->
+      <div class="vs-dribbble-col v-anim-footer">
+        <h5>SAATHI</h5>
+        <ul class="vs-dribbble-links">
           <li><a href="/products/vidhyut-saathi-electric-power-saver-card">Vidhyut Saathi Card</a></li>
           <li>
-            <a href="/pages/required-cards" class="vs-agency-req-card">
+            <a href="/pages/required-cards" class="vs-req-card-link">
               Required Cards <span>HOT</span>
             </a>
           </li>
@@ -389,82 +304,65 @@
         </ul>
       </div>
 
-      <!-- Column 3: Recognitions & Certifications -->
-      <div class="vs-agency-col v-anim-footer">
-        <h5>Recognitions</h5>
-        <div class="vs-agency-certs">
-          
-          <a href="/pages/iso-certification" class="vs-agency-cert-item">
-            <div class="vs-agency-cert-img">
-              {% if section.settings.iso_cert_image != blank %}
-                <img src="{{ section.settings.iso_cert_image | img_url: 'medium' }}" alt="ISO Certification" loading="lazy">
-              {% else %}
-                <img src="{{ 'iso-certificate.jpg' | asset_url }}" alt="ISO Certification" loading="lazy">
-              {% endif %}
-            </div>
-            <div class="vs-agency-cert-text">
-              <strong>ISO 9001 Certified</strong>
-              <span>✓ Quality Guaranteed</span>
-            </div>
+      <!-- Column 3: SOCIALS & RECOGNITIONS -->
+      <div class="vs-dribbble-col v-anim-footer">
+        <h5>SOCIALS</h5>
+        <ul class="vs-dribbble-links">
+          {% if section.settings.social_fb != blank %}<li><a href="{{ section.settings.social_fb }}" target="_blank">Facebook</a></li>{% else %}<li><a href="#">Facebook</a></li>{% endif %}
+          {% if section.settings.social_insta != blank %}<li><a href="{{ section.settings.social_insta }}" target="_blank">Instagram</a></li>{% else %}<li><a href="#">Instagram</a></li>{% endif %}
+          {% if section.settings.social_yt != blank %}<li><a href="{{ section.settings.social_yt }}" target="_blank">YouTube</a></li>{% else %}<li><a href="#">YouTube</a></li>{% endif %}
+        </ul>
+
+        <div class="vs-dribbble-badge-list">
+          <a href="/pages/iso-certification" class="vs-dribbble-badge">
+            {% if section.settings.iso_cert_image != blank %}
+              <img src="{{ section.settings.iso_cert_image | img_url: 'small' }}" alt="ISO" loading="lazy">
+            {% else %}
+              <img src="{{ 'iso-certificate.jpg' | asset_url }}" alt="ISO" loading="lazy">
+            {% endif %}
+            <span>ISO 9001 CERTIFIED</span>
           </a>
 
-          <div class="vs-agency-cert-item">
-            <div class="vs-agency-cert-img">
-              {% if section.settings.startup_india_image != blank %}
-                <img src="{{ section.settings.startup_india_image | img_url: 'medium' }}" alt="Startup India" loading="lazy">
-              {% else %}
-                <img src="{{ 'startup-india.svg' | asset_url }}" alt="Startup India" loading="lazy">
-              {% endif %}
-            </div>
-            <div class="vs-agency-cert-text">
-              <strong>Startup India</strong>
-              <span>✓ Govt. Recognized</span>
-            </div>
+          <div class="vs-dribbble-badge">
+            {% if section.settings.startup_india_image != blank %}
+              <img src="{{ section.settings.startup_india_image | img_url: 'small' }}" alt="Startup India" loading="lazy">
+            {% else %}
+              <img src="{{ 'startup-india.svg' | asset_url }}" alt="Startup India" loading="lazy">
+            {% endif %}
+            <span>STARTUP INDIA</span>
           </div>
-
         </div>
       </div>
 
-      <!-- Column 4: Full Contact Info & Address -->
-      <div class="vs-agency-col v-anim-footer">
-        <h5>Contact &amp; Office</h5>
-        <div class="vs-contact-block">
-          <div class="vs-contact-line">
-            <i class="fa-solid fa-envelope"></i>
+      <!-- Column 4: STUDIO / CONTACT -->
+      <div class="vs-dribbble-col v-anim-footer">
+        <h5>STUDIO</h5>
+        <div class="vs-studio-block">
+          <div>
             <a href="mailto:{{ section.settings.email | default: 'info@vidhyutsaathi.com' }}">{{ section.settings.email | default: 'info@vidhyutsaathi.com' }}</a>
           </div>
 
-          <div class="vs-contact-line">
-            <i class="fa-solid fa-phone"></i>
-            <div>
-              <a href="tel:+918199036060">+91-8199036060</a><br>
-              <a href="tel:+919053110707">+91-9053110707</a>
-            </div>
+          <div>
+            <a href="tel:+918199036060">+91-8199036060</a><br>
+            <a href="tel:+919053110707">+91-9053110707</a>
           </div>
 
-          <div class="vs-contact-line">
-            <i class="fa-solid fa-location-dot"></i>
-            <span>{{ section.settings.address | default: "SCO-77A, 3rd Floor, Ashoka Complex, Delhi Road Rohtak - 124001, Haryana." }}</span>
+          <div class="vs-studio-address">
+            {{ section.settings.address | default: "SCO-77A, 3rd Floor, Ashoka Complex, Delhi Road Rohtak - 124001, Haryana." }}
           </div>
         </div>
       </div>
 
     </div>
 
-    <!-- AGENCY BOTTOM STRIP -->
-    <div class="vs-agency-bottom v-anim-footer">
-      <div class="vs-copyright">
-        Copyright &copy; {{ 'now' | date: "%Y" }} Vidhyut Saathi. All rights reserved.
+    <!-- DRIBBBLE BOTTOM STRIP -->
+    <div class="vs-dribbble-bottom v-anim-footer">
+      <div class="vs-dribbble-copy">
+        COPYRIGHT &copy; {{ 'now' | date: "%Y" }}
       </div>
 
-      <div class="vs-agency-socials">
-        {% if section.settings.social_fb != blank %}<a href="{{ section.settings.social_fb }}" target="_blank">Facebook</a>{% endif %}
-        {% if section.settings.social_insta != blank %}<a href="{{ section.settings.social_insta }}" target="_blank">Instagram</a>{% endif %}
-        {% if section.settings.social_yt != blank %}<a href="{{ section.settings.social_yt }}" target="_blank">YouTube</a>{% endif %}
-      </div>
-
-      <div class="vs-agency-tagline">
-        <i class="fa-solid fa-bolt"></i> 20,000 ION TECH
+      <div class="vs-dribbble-tagline">
+        <i class="fa-solid fa-sparkles"></i> WE ARE VIDHYUT SAATHI
       </div>
     </div>
 
@@ -472,12 +370,12 @@
 </footer>
 
 <script>
-  function initAgencyFooterAnimations() {
+  function initDribbbleFooterAnimations() {
     if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
       gsap.registerPlugin(ScrollTrigger);
       const elements = document.querySelectorAll('#section-{{ section.id }} .v-anim-footer');
       gsap.fromTo(elements, 
-        { y: 40, opacity: 0 },
+        { y: 50, opacity: 0 },
         {
           scrollTrigger: { trigger: "#section-{{ section.id }}", start: "top 95%" },
           y: 0, opacity: 1, duration: 0.8, stagger: 0.12, ease: "power3.out", clearProps: "transform"
@@ -485,16 +383,15 @@
       );
     }
   }
-  document.addEventListener("DOMContentLoaded", initAgencyFooterAnimations);
-  if (window.Shopify && Shopify.designMode) { setTimeout(initAgencyFooterAnimations, 200); }
+  document.addEventListener("DOMContentLoaded", initDribbbleFooterAnimations);
+  if (window.Shopify && Shopify.designMode) { setTimeout(initDribbbleFooterAnimations, 200); }
 </script>
 
 {% schema %}
 {
-  "name": "Vidhyut Display Footer",
+  "name": "Vidhyut Dribbble Footer",
   "settings": [
     { "type": "header", "content": "Brand Settings" },
-    { "type": "image_picker", "id": "footer_logo", "label": "Footer Logo" },
     { "type": "text", "id": "address", "label": "Address", "default": "SCO-77A, 3rd Floor, Ashoka Complex, Delhi Road Rohtak - 124001, Haryana." },
     { "type": "text", "id": "email", "label": "Email Address", "default": "info@vidhyutsaathi.com" },
     
@@ -508,7 +405,7 @@
     { "type": "url", "id": "social_yt", "label": "YouTube URL" }
   ],
   "presets": [
-    { "name": "Vidhyut Display Footer" }
+    { "name": "Vidhyut Dribbble Footer" }
   ]
 }
 {% endschema %}
