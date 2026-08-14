@@ -858,10 +858,9 @@
       <div class="iso-cert-box">
         <div class="iso-cert-img-wrapper">
           {%- if section.settings.cert_image != blank -%}
-            {{ section.settings.cert_image | image_url: width: 800 | image_tag: loading: 'lazy', alt: 'ISO 9001:2015 Certificate of Registration - Vidhyut Saathi' }}
+            {{ section.settings.cert_image | image_url: width: 2400 | image_tag: loading: 'eager', alt: 'ISO 9001:2015 Certificate of Registration - Vidhyut Saathi', style: 'width: 100%; height: auto; display: block; image-rendering: -webkit-optimize-contrast;' }}
           {%- else -%}
-            {%- assign iso_cert_img_url = 'iso-certificate.png' | asset_url -%}
-            <img src="{{ iso_cert_img_url }}" alt="Official ISO 9001:2015 Certificate of Registration - Vidhyut Saathi" loading="lazy" width="800" height="1130" style="width: 100%; height: auto; display: block; border-radius: 14px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
+            <img src="{{ 'iso-certificate.jpg' | asset_url }}" alt="Official ISO 9001:2015 Certificate of Registration - Vidhyut Saathi" loading="eager" width="2400" height="3394" style="width: 100%; height: auto; display: block; border-radius: 14px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); image-rendering: -webkit-optimize-contrast;">
           {%- endif -%}
         </div>
         
@@ -960,10 +959,9 @@
 
           <div class="cert-document-preview">
             {%- if section.settings.cert_image != blank -%}
-              {{ section.settings.cert_image | image_url: width: 1000 | image_tag: loading: 'lazy', alt: 'Official ISO 9001:2015 Certificate of Registration - Vidhyut Saathi' }}
+              {{ section.settings.cert_image | image_url: width: 2400 | image_tag: loading: 'eager', alt: 'Official ISO 9001:2015 Certificate of Registration - Vidhyut Saathi', style: 'width: 100%; height: auto; display: block; image-rendering: -webkit-optimize-contrast;' }}
             {%- else -%}
-              {%- assign iso_cert_img_url = 'iso-certificate.png' | asset_url -%}
-              <img src="{{ iso_cert_img_url }}" alt="Official ISO 9001:2015 Certificate of Registration - Vidhyut Saathi" loading="lazy" width="1000" height="1414" style="width: 100%; height: auto; display: block; border-radius: 14px; box-shadow: 0 15px 40px rgba(0,0,0,0.2);">
+              <img src="{{ 'iso-certificate.jpg' | asset_url }}" alt="Official ISO 9001:2015 Certificate of Registration - Vidhyut Saathi" loading="eager" width="2400" height="3394" style="width: 100%; height: auto; display: block; border-radius: 14px; box-shadow: 0 15px 40px rgba(0,0,0,0.2); image-rendering: -webkit-optimize-contrast;">
             {%- endif -%}
           </div>
         </div>

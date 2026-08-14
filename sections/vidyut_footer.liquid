@@ -523,7 +523,7 @@
       
       <!-- Card 1: Brand & Contact Info -->
       <div class="vs-bento-dock-card v-anim-footer">
-        <div class="vs-card-brand-header">
+        <div class="vs-card-brand-header" style="margin-bottom: 16px;">
           <a href="/" class="vs-logo-white-card">
             {% if section.settings.footer_logo != blank %}
               <img src="{{ section.settings.footer_logo | img_url: 'master' }}" alt="Vidhyut Saathi" loading="lazy">
@@ -531,7 +531,14 @@
               <img src="{{ '20221102_123113 (1).png' | asset_url }}" alt="Vidhyut Saathi" loading="lazy">
             {% endif %}
           </a>
-          <span class="vs-shield-badge"><i class="fa-solid fa-shield-halved"></i> 20,000 ION Tech</span>
+        </div>
+
+        <div class="vs-footer-product-photo-box" style="margin-bottom: 20px; border-radius: 16px; overflow: hidden; border: 1px solid rgba(255,255,255,0.12); box-shadow: 0 10px 25px rgba(0,0,0,0.3); background: #ffffff; padding: 6px;">
+          {% if section.settings.footer_brand_photo != blank %}
+            <img src="{{ section.settings.footer_brand_photo | img_url: 'master' }}" alt="Vidhyut Saathi Power Saver" loading="lazy" style="width: 100%; height: auto; max-height: 180px; object-fit: contain; display: block; border-radius: 12px;">
+          {% else %}
+            <img src="{{ 'vidhyut-power-saver-card.jpg' | asset_url }}" alt="Vidhyut Saathi Power Saver" loading="lazy" style="width: 100%; height: auto; max-height: 180px; object-fit: cover; display: block; border-radius: 12px;">
+          {% endif %}
         </div>
 
         <div class="vs-dock-contact-list">
