@@ -8,7 +8,7 @@
     background-color: #080808;
     color: #a1a1aa;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    padding: 80px 0 30px 0;
+    padding: 70px 0 30px 0;
     position: relative;
     overflow: hidden;
     border-top: 1px solid #18181b;
@@ -23,28 +23,46 @@
     z-index: 5;
   }
 
-  /* GIANT DISPLAY WORDMARK (Dribbble Style) */
+  /* GIANT DISPLAY WORDMARK & LOGO HEADER (Dribbble Style) */
   .vs-giant-wordmark-wrap {
     width: 100%;
     text-align: center;
-    margin-bottom: 70px;
+    margin-bottom: 60px;
     user-select: none;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .vs-agency-logo-pill {
+    background: #ffffff;
+    padding: 8px 18px;
+    border-radius: 12px;
+    display: inline-block;
+    box-shadow: 0 4px 20px rgba(255,255,255,0.1);
+  }
+
+  .vs-agency-logo-pill img {
+    height: 42px;
+    width: auto;
+    display: block;
   }
 
   .vs-giant-wordmark {
-    font-size: clamp(3.2rem, 11vw, 10.5rem);
+    font-size: clamp(3rem, 10.5vw, 10rem);
     font-weight: 900;
     line-height: 0.85;
     letter-spacing: -0.04em;
     text-transform: uppercase;
     color: #f4f4f5;
-    margin: 0;
+    margin: 10px 0 0 0;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 15px;
     width: 100%;
   }
 
@@ -59,13 +77,13 @@
   }
 
   .vs-wordmark-sub {
-    font-size: clamp(1rem, 2.5vw, 1.8rem);
+    font-size: clamp(0.85rem, 2vw, 1.4rem);
     letter-spacing: 4px;
     font-weight: 700;
     color: #71717a;
     text-transform: uppercase;
     display: block;
-    margin-top: 15px;
+    margin-top: 5px;
   }
 
   /* Main Grid below Wordmark */
@@ -73,7 +91,7 @@
     display: grid;
     grid-template-columns: 1.1fr 1.2fr 1.3fr 1.8fr;
     gap: 40px;
-    padding-top: 20px;
+    padding-top: 40px;
     padding-bottom: 60px;
     border-top: 1px solid #27272a;
   }
@@ -85,6 +103,17 @@
     text-transform: uppercase;
     letter-spacing: 2px;
     margin: 0 0 24px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .vs-agency-col h5::before {
+    content: '';
+    width: 4px;
+    height: 14px;
+    background: #f17e39;
+    border-radius: 2px;
   }
 
   .vs-agency-links {
@@ -191,7 +220,7 @@
   .vs-contact-block {
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 16px;
     font-size: 0.95rem;
   }
 
@@ -207,6 +236,7 @@
     margin-top: 4px;
     font-size: 1rem;
     width: 18px;
+    flex-shrink: 0;
   }
 
   .vs-contact-line a {
@@ -308,8 +338,16 @@
 <footer class="vs-agency-footer" id="section-{{ section.id }}">
   <div class="vs-agency-container">
     
-    <!-- GIANT AGENCY DISPLAY WORDMARK -->
+    <!-- GIANT AGENCY DISPLAY WORDMARK & BRAND LOGO -->
     <div class="vs-giant-wordmark-wrap v-anim-footer">
+      <a href="/" class="vs-agency-logo-pill">
+        {% if section.settings.footer_logo != blank %}
+          <img src="{{ section.settings.footer_logo | img_url: 'master' }}" alt="Vidhyut Saathi" loading="lazy">
+        {% else %}
+          <img src="{{ '20221102_123113 (1).png' | asset_url }}" alt="Vidhyut Saathi" loading="lazy">
+        {% endif %}
+      </a>
+
       <h1 class="vs-giant-wordmark">
         <span class="vs-wordmark-primary">VIDHYUT</span>
         <span class="vs-wordmark-accent">SAATHI</span>
@@ -317,7 +355,7 @@
       <span class="vs-wordmark-sub">ENERGY SAVERS PVT. LIMITED</span>
     </div>
 
-    <!-- 4-COLUMN MINIMALIST AGENCY GRID -->
+    <!-- 4-COLUMN MINIMALIST AGENCY GRID WITH ALL COMPANY INFO -->
     <div class="vs-agency-grid">
       
       <!-- Column 1: Useful Links -->
@@ -351,7 +389,7 @@
         </ul>
       </div>
 
-      <!-- Column 3: Recognitions -->
+      <!-- Column 3: Recognitions & Certifications -->
       <div class="vs-agency-col v-anim-footer">
         <h5>Recognitions</h5>
         <div class="vs-agency-certs">
@@ -387,9 +425,9 @@
         </div>
       </div>
 
-      <!-- Column 4: Contact & Studio Info -->
+      <!-- Column 4: Full Contact Info & Address -->
       <div class="vs-agency-col v-anim-footer">
-        <h5>Contact &amp; Studio</h5>
+        <h5>Contact &amp; Office</h5>
         <div class="vs-contact-block">
           <div class="vs-contact-line">
             <i class="fa-solid fa-envelope"></i>
@@ -416,7 +454,7 @@
     <!-- AGENCY BOTTOM STRIP -->
     <div class="vs-agency-bottom v-anim-footer">
       <div class="vs-copyright">
-        Copyright &copy; {{ 'now' | date: "%Y" }} Vidhyut Saathi
+        Copyright &copy; {{ 'now' | date: "%Y" }} Vidhyut Saathi. All rights reserved.
       </div>
 
       <div class="vs-agency-socials">
@@ -456,6 +494,7 @@
   "name": "Vidhyut Display Footer",
   "settings": [
     { "type": "header", "content": "Brand Settings" },
+    { "type": "image_picker", "id": "footer_logo", "label": "Footer Logo" },
     { "type": "text", "id": "address", "label": "Address", "default": "SCO-77A, 3rd Floor, Ashoka Complex, Delhi Road Rohtak - 124001, Haryana." },
     { "type": "text", "id": "email", "label": "Email Address", "default": "info@vidhyutsaathi.com" },
     
