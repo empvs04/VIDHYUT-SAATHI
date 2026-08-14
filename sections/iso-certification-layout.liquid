@@ -854,25 +854,17 @@
   <section class="iso-showcase">
     <div class="iso-grid">
       
-      <!-- Certificate Viewer -->
+      <!-- Certificate Viewer with 300 DPI PDF.js Ultra-HD Vector Canvas -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
       <div class="iso-cert-box">
-        <div class="iso-cert-img-wrapper">
-          {%- if section.settings.cert_image != blank -%}
-            {{ section.settings.cert_image | image_url: width: 2400 | image_tag: loading: 'eager', alt: 'ISO 9001:2015 Certificate of Registration - Vidhyut Saathi', style: 'width: 100%; height: auto; display: block; image-rendering: -webkit-optimize-contrast;' }}
-          {%- else -%}
-            <img src="{{ 'iso-certificate.jpg' | asset_url }}" alt="Official ISO 9001:2015 Certificate of Registration - Vidhyut Saathi" loading="eager" width="2400" height="3394" style="width: 100%; height: auto; display: block; border-radius: 14px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); image-rendering: -webkit-optimize-contrast;">
-          {%- endif -%}
+        <div class="iso-cert-img-wrapper" id="iso-canvas-container-1">
+          <canvas id="iso-pdf-canvas-1" style="width: 100%; height: auto; display: block; border-radius: 14px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);"></canvas>
+          <img id="iso-pdf-fallback-1" src="{{ 'iso-certificate.jpg' | asset_url }}" alt="Official ISO 9001:2015 Certificate of Registration - Vidhyut Saathi" loading="eager" width="2400" height="3394" style="width: 100%; height: auto; display: none; border-radius: 14px; image-rendering: -webkit-optimize-contrast;">
         </div>
         
-        {%- if section.settings.cert_pdf_url != blank -%}
-          <a href="{{ section.settings.cert_pdf_url }}" target="_blank" rel="noopener noreferrer" class="iso-cert-btn">
-            {{ section.settings.cert_btn_text }}
-          </a>
-        {%- else -%}
-          <button class="iso-cert-btn" style="opacity:0.6; cursor:not-allowed;" title="Upload PDF in Theme Editor">
-            {{ section.settings.cert_btn_text }}
-          </button>
-        {%- endif -%}
+        <a href="{{ 'iso-certificate.pdf' | asset_url }}" target="_blank" rel="noopener noreferrer" class="iso-cert-btn" download="Vidhyut_Saathi_ISO_9001_Certificate.pdf">
+          <i class="fa-solid fa-file-pdf" style="margin-right: 8px;"></i> Download Full HD ISO Certificate (PDF)
+        </a>
       </div>
 
       <!-- Text Details -->
@@ -958,11 +950,8 @@
           </div>
 
           <div class="cert-document-preview">
-            {%- if section.settings.cert_image != blank -%}
-              {{ section.settings.cert_image | image_url: width: 2400 | image_tag: loading: 'eager', alt: 'Official ISO 9001:2015 Certificate of Registration - Vidhyut Saathi', style: 'width: 100%; height: auto; display: block; image-rendering: -webkit-optimize-contrast;' }}
-            {%- else -%}
-              <img src="{{ 'iso-certificate.jpg' | asset_url }}" alt="Official ISO 9001:2015 Certificate of Registration - Vidhyut Saathi" loading="eager" width="2400" height="3394" style="width: 100%; height: auto; display: block; border-radius: 14px; box-shadow: 0 15px 40px rgba(0,0,0,0.2); image-rendering: -webkit-optimize-contrast;">
-            {%- endif -%}
+            <canvas id="iso-pdf-canvas-2" style="width: 100%; height: auto; display: block; border-radius: 14px; box-shadow: 0 15px 40px rgba(0,0,0,0.2);"></canvas>
+            <img id="iso-pdf-fallback-2" src="{{ 'iso-certificate.jpg' | asset_url }}" alt="Official ISO 9001:2015 Certificate of Registration - Vidhyut Saathi" loading="eager" width="2400" height="3394" style="width: 100%; height: auto; display: none; border-radius: 14px; box-shadow: 0 15px 40px rgba(0,0,0,0.2); image-rendering: -webkit-optimize-contrast;">
           </div>
         </div>
 
@@ -1087,6 +1076,44 @@
   </section>
 
 </div>
+
+<script>
+  function renderIsoPdfCertificate() {
+    const pdfUrl = "{{ 'iso-certificate.pdf' | asset_url }}";
+    if (typeof pdfjsLib !== 'undefined' && pdfUrl) {
+      pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+      
+      pdfjsLib.getDocument(pdfUrl).promise.then(function(pdf) {
+        pdf.getPage(1).then(function(page) {
+          const scale = 2.5; // High resolution 300 DPI render scale
+          const viewport = page.getViewport({ scale: scale });
+          
+          ['iso-pdf-canvas-1', 'iso-pdf-canvas-2'].forEach(function(canvasId) {
+            const canvas = document.getElementById(canvasId);
+            if (canvas) {
+              const context = canvas.getContext('2d');
+              canvas.height = viewport.height;
+              canvas.width = viewport.width;
+              page.render({ canvasContext: context, viewport: viewport });
+            }
+          });
+        });
+      }).catch(function(err) {
+        console.warn('PDF.js rendering fallback to image:', err);
+        const fallback1 = document.getElementById('iso-pdf-fallback-1');
+        if (fallback1) fallback1.style.display = 'block';
+        const canvas1 = document.getElementById('iso-pdf-canvas-1');
+        if (canvas1) canvas1.style.display = 'none';
+        const fallback2 = document.getElementById('iso-pdf-fallback-2');
+        if (fallback2) fallback2.style.display = 'block';
+        const canvas2 = document.getElementById('iso-pdf-canvas-2');
+        if (canvas2) canvas2.style.display = 'none';
+      });
+    }
+  }
+  document.addEventListener("DOMContentLoaded", renderIsoPdfCertificate);
+  if (window.Shopify && Shopify.designMode) { setTimeout(renderIsoPdfCertificate, 300); }
+</script>
 
 {% schema %}
 {
