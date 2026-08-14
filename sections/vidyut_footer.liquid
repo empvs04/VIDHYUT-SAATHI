@@ -3,375 +3,283 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
 {%- style -%}
-  /* ================= BENTO GLASSFOOTER ================= */
-  .vs-bento-footer {
-    background: radial-gradient(circle at 50% 0%, #1e293b 0%, #0f172a 60%, #020617 100%);
-    color: #cbd5e1;
+  /* ================= SLEEK ACCENT FOOTER ================= */
+  .vs-sleek-footer {
+    background-color: #0b1120;
+    color: #94a3b8;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    padding: 70px 0 30px 0;
+    padding: 70px 0 0 0;
     position: relative;
-    overflow: hidden;
+    border-top: 1px solid #1e293b;
     -webkit-tap-highlight-color: transparent;
   }
 
-  /* Decorative Ambient Glow Spheres */
-  .vs-bento-footer::before {
+  /* Glowing Accent Top Bar */
+  .vs-sleek-footer::before {
     content: '';
     position: absolute;
-    top: -100px;
-    left: 20%;
-    width: 300px;
-    height: 300px;
-    background: rgba(241, 126, 57, 0.15);
-    filter: blur(100px);
-    border-radius: 50%;
-    pointer-events: none;
+    top: -1px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #f17e39 0%, #007b3e 50%, #3b82f6 100%);
   }
 
-  .vs-bento-footer::after {
-    content: '';
-    position: absolute;
-    bottom: -50px;
-    right: 10%;
-    width: 350px;
-    height: 350px;
-    background: rgba(0, 123, 62, 0.15);
-    filter: blur(120px);
-    border-radius: 50%;
-    pointer-events: none;
-  }
-
-  .vs-bento-container {
-    max-width: 1320px;
+  .vs-footer-container {
+    max-width: 1300px;
     margin: 0 auto;
     padding: 0 1.5rem;
-    position: relative;
-    z-index: 5;
   }
 
-  /* CTA Ribbon Banner */
-  .vs-footer-cta-ribbon {
-    background: linear-gradient(135deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.02) 100%);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    backdrop-filter: blur(16px);
-    border-radius: 20px;
-    padding: 24px 32px;
-    margin-bottom: 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 20px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-  }
-
-  .vs-cta-text h3 {
-    color: #ffffff;
-    font-size: 1.35rem;
-    font-weight: 700;
-    margin: 0 0 6px 0;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .vs-cta-text h3 i {
-    color: #f17e39;
-  }
-
-  .vs-cta-text p {
-    color: #94a3b8;
-    margin: 0;
-    font-size: 0.95rem;
-  }
-
-  .vs-cta-btn-group {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-  }
-
-  .vs-cta-btn {
-    background: linear-gradient(135deg, #f17e39 0%, #d96924 100%);
-    color: #ffffff !important;
-    padding: 14px 24px;
-    border-radius: 12px;
-    font-weight: 600;
-    font-size: 0.95rem;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    box-shadow: 0 10px 25px rgba(241, 126, 57, 0.3);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .vs-cta-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 15px 30px rgba(241, 126, 57, 0.5);
-  }
-
-  .vs-cta-btn-alt {
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    color: #ffffff !important;
-    padding: 14px 24px;
-    border-radius: 12px;
-    font-weight: 600;
-    font-size: 0.95rem;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    transition: all 0.3s ease;
-  }
-
-  .vs-cta-btn-alt:hover {
-    background: rgba(255, 255, 255, 0.15);
-    transform: translateY(-3px);
-  }
-
-  /* Main Bento Grid */
-  .vs-bento-grid {
+  /* Main Grid */
+  .vs-footer-main-grid {
     display: grid;
-    grid-template-columns: 2.2fr 1fr 1fr 1.3fr;
+    grid-template-columns: 2.2fr 1.1fr 1.2fr 1.3fr;
+    gap: 40px;
+    padding-bottom: 50px;
+  }
+
+  /* Brand Column */
+  .vs-brand-col {
+    display: flex;
+    flex-direction: column;
     gap: 20px;
   }
 
-  .vs-bento-card {
-    background: linear-gradient(145deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(12px);
-    border-radius: 20px;
-    padding: 26px;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-  }
-
-  .vs-bento-card:hover {
-    border-color: rgba(241, 126, 57, 0.3);
-    transform: translateY(-4px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-  }
-
-  /* Card 1: Brand & Contact Hero */
-  .vs-brand-header {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    margin-bottom: 20px;
-  }
-
-  .vs-brand-logo-pill {
+  .vs-brand-logo-box {
     background: #ffffff;
-    padding: 8px 14px;
-    border-radius: 12px;
+    padding: 10px 18px;
+    border-radius: 14px;
     display: inline-block;
+    width: fit-content;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
   }
 
-  .vs-brand-logo-pill img {
-    height: 36px;
+  .vs-brand-logo-box img {
+    height: 40px;
     width: auto;
     display: block;
   }
 
   .vs-brand-logo-fallback {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     font-weight: 800;
     color: #f17e39;
     margin: 0;
+    letter-spacing: 0.5px;
   }
 
-  .vs-tag-badge {
-    background: rgba(0, 123, 62, 0.2);
-    border: 1px solid rgba(0, 123, 62, 0.4);
-    color: #4ade80;
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 0.78rem;
-    font-weight: 600;
+  .vs-live-status-pill {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-  }
-
-  .vs-contact-pills {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 16px;
-  }
-
-  .vs-contact-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    background: rgba(0, 0, 0, 0.25);
-    padding: 12px 14px;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    text-decoration: none;
-    color: #e2e8f0;
-    transition: all 0.3s ease;
-    min-height: 48px; /* Touch friendly */
-  }
-
-  .vs-contact-item:hover {
-    background: rgba(241, 126, 57, 0.15);
-    border-color: rgba(241, 126, 57, 0.4);
-    color: #ffffff;
-    transform: translateX(4px);
-  }
-
-  .vs-contact-icon {
-    width: 34px;
-    height: 34px;
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.08);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #f17e39;
-    font-size: 0.95rem;
-    flex-shrink: 0;
-  }
-
-  .vs-contact-details span {
-    display: block;
-    font-size: 0.72rem;
-    color: #94a3b8;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    gap: 8px;
+    background: rgba(0, 123, 62, 0.12);
+    border: 1px solid rgba(0, 123, 62, 0.3);
+    color: #4ade80;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.8rem;
     font-weight: 600;
+    width: fit-content;
   }
 
-  .vs-contact-details strong {
-    font-size: 0.88rem;
-    color: #f8fafc;
-    word-break: break-word;
+  .vs-pulse-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #22c55e;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #22c55e;
+    animation: vsPulse 2s infinite;
   }
 
-  /* Headings inside Bento */
-  .vs-bento-title {
-    color: #ffffff;
-    font-size: 1.1rem;
-    font-weight: 700;
-    margin: 0 0 16px 0;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  @keyframes vsPulse {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
   }
 
-  .vs-bento-title::before {
-    content: '';
-    width: 4px;
-    height: 18px;
-    background: #f17e39;
-    border-radius: 2px;
-  }
-
-  /* Navigation Links */
-  .vs-bento-links {
+  .vs-info-list {
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 14px;
   }
 
-  .vs-bento-links a {
+  .vs-info-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    font-size: 0.93rem;
+    line-height: 1.5;
+  }
+
+  .vs-info-list i {
+    color: #f17e39;
+    font-size: 1.1rem;
+    margin-top: 3px;
+    flex-shrink: 0;
+    width: 20px;
+    text-align: center;
+  }
+
+  .vs-info-list a {
     color: #94a3b8;
     text-decoration: none;
-    font-size: 0.95rem;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    transition: all 0.3s ease;
-    padding: 8px 0; /* Comfortable touch target for mobile */
-    min-height: 40px;
+    transition: color 0.3s ease;
   }
 
-  .vs-bento-links a i {
-    font-size: 0.75rem;
+  .vs-info-list a:hover {
+    color: #ffffff;
+  }
+
+  /* Columns Headings */
+  .vs-col-title {
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 22px;
+    position: relative;
+    padding-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .vs-col-title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 30px;
+    height: 3px;
+    background: #f17e39;
+    border-radius: 2px;
+  }
+
+  /* Links List */
+  .vs-nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .vs-nav-links a {
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 0.93rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 0;
+    transition: all 0.3s ease;
+  }
+
+  .vs-nav-links a i {
+    font-size: 0.7rem;
     color: #f17e39;
     transition: transform 0.3s ease;
   }
 
-  .vs-bento-links a:hover {
+  .vs-nav-links a:hover {
     color: #ffffff;
-    transform: translateX(5px);
+    transform: translateX(6px);
   }
 
-  .vs-bento-links a:hover i {
-    transform: translateX(3px);
+  .vs-nav-links a:hover i {
+    transform: translateX(4px);
   }
 
-  /* Certifications Showcase Card */
-  .vs-cert-showcase {
+  /* Highlighted Link Pill */
+  .vs-highlight-link {
+    background: rgba(241, 126, 57, 0.12);
+    border: 1px solid rgba(241, 126, 57, 0.3);
+    color: #f17e39 !important;
+    padding: 6px 12px !important;
+    border-radius: 8px;
+    margin-top: 4px;
+    width: fit-content;
+  }
+
+  .vs-highlight-link:hover {
+    background: #f17e39;
+    color: #ffffff !important;
+  }
+
+  .vs-highlight-link:hover i {
+    color: #ffffff !important;
+  }
+
+  /* Certifications Showcase */
+  .vs-cert-stack {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 16px;
   }
 
-  .vs-cert-badge-box {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+  .vs-cert-card-item {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 14px;
-    padding: 12px;
+    padding: 14px;
     display: flex;
     align-items: center;
     gap: 14px;
+    text-decoration: none;
     transition: all 0.3s ease;
   }
 
-  .vs-cert-badge-box:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(74, 222, 128, 0.5);
+  .vs-cert-card-item:hover {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(0, 123, 62, 0.5);
+    transform: translateY(-3px);
   }
 
-  .vs-cert-img-wrap {
-    width: 55px;
-    height: 55px;
+  .vs-cert-img-box {
+    width: 54px;
+    height: 54px;
     background: #ffffff;
     border-radius: 10px;
     padding: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     flex-shrink: 0;
   }
 
-  .vs-cert-img-wrap img {
+  .vs-cert-img-box img {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
   }
 
-  .vs-cert-meta h5 {
-    color: #f8fafc;
-    margin: 0 0 2px 0;
+  .vs-cert-info h5 {
+    color: #ffffff;
+    margin: 0 0 4px 0;
     font-size: 0.92rem;
     font-weight: 600;
   }
 
-  .vs-cert-meta span {
+  .vs-cert-info span {
     color: #4ade80;
     font-size: 0.78rem;
-    font-weight: 500;
     display: inline-flex;
     align-items: center;
     gap: 4px;
   }
 
   /* Bottom Bar */
-  .vs-bento-bottom {
-    margin-top: 40px;
-    padding-top: 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  .vs-footer-bottom-bar {
+    background: #070c18;
+    border-top: 1px solid #1e293b;
+    padding: 24px 0;
+  }
+
+  .vs-bottom-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -379,20 +287,20 @@
     gap: 16px;
   }
 
-  .vs-copyright-text {
+  .vs-copy-text {
     font-size: 0.88rem;
     color: #64748b;
   }
 
-  .vs-social-pills {
+  .vs-social-row {
     display: flex;
-    gap: 10px;
+    gap: 12px;
   }
 
-  .vs-social-pills a {
-    width: 42px;
-    height: 42px;
-    border-radius: 12px;
+  .vs-social-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.08);
     color: #94a3b8;
@@ -401,189 +309,132 @@
     justify-content: center;
     text-decoration: none;
     transition: all 0.3s ease;
-    font-size: 1rem;
   }
 
-  .vs-social-pills a:hover {
+  .vs-social-btn:hover {
     background: #f17e39;
     border-color: #f17e39;
     color: #ffffff;
     transform: translateY(-3px);
   }
 
-  /* ================= MOBILE OPTIMIZATIONS ================= */
+  /* Mobile Responsive */
   @media (max-width: 1024px) {
-    .vs-bento-grid {
+    .vs-footer-main-grid {
       grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
+      gap: 30px;
     }
   }
 
-  @media (max-width: 680px) {
-    .vs-bento-footer {
-      padding: 45px 0 25px 0;
+  @media (max-width: 640px) {
+    .vs-sleek-footer {
+      padding-top: 45px;
     }
-    .vs-bento-container {
-      padding: 0 1rem;
-    }
-    .vs-footer-cta-ribbon {
-      padding: 20px 18px;
-      flex-direction: column;
-      text-align: center;
-      gap: 16px;
-      margin-bottom: 20px;
-    }
-    .vs-cta-text h3 {
-      font-size: 1.15rem;
-      justify-content: center;
-    }
-    .vs-cta-btn-group {
-      width: 100%;
-      flex-direction: column;
-    }
-    .vs-cta-btn, .vs-cta-btn-alt {
-      width: 100%;
-      box-sizing: border-box;
-      padding: 12px 16px;
-    }
-    .vs-bento-grid {
+    .vs-footer-main-grid {
       grid-template-columns: 1fr;
-      gap: 14px;
+      gap: 28px;
+      padding-bottom: 35px;
     }
-    .vs-bento-card {
-      padding: 20px 18px;
-    }
-    .vs-brand-header {
-      flex-wrap: wrap;
-    }
-    .vs-bento-bottom {
+    .vs-bottom-content {
       flex-direction: column;
       text-align: center;
-      gap: 16px;
-      margin-top: 30px;
-    }
-    .vs-social-pills {
-      justify-content: center;
     }
   }
 {%- endstyle -%}
 
-<footer class="vs-bento-footer" id="section-{{ section.id }}">
-  <div class="vs-bento-container">
+<footer class="vs-sleek-footer" id="section-{{ section.id }}">
+  <div class="vs-footer-container">
     
-    <!-- Top CTA Ribbon -->
-    <div class="vs-footer-cta-ribbon v-anim-footer">
-      <div class="vs-cta-text">
-        <h3><i class="fa-solid fa-bolt"></i> Save Electricity &amp; Reduce Energy Bills</h3>
-        <p>Explore Vidhyut Saathi's Govt. Certified Nano-Technology Products.</p>
-      </div>
-      <div class="vs-cta-btn-group">
-        <a href="{{ section.settings.link_get_card | default: '/products/vidhyut-saathi-electric-power-saver-card' }}" class="vs-cta-btn">
-          <i class="fa-solid fa-cart-shopping"></i> Get Saathi Card
-        </a>
-        <a href="{{ section.settings.link_franchise | default: '/pages/contact' }}" class="vs-cta-btn-alt">
-          <i class="fa-solid fa-handshake"></i> Become Franchise Partner
-        </a>
-      </div>
-    </div>
-
-    <!-- Bento Grid Section -->
-    <div class="vs-bento-grid">
+    <!-- Main Footer Grid -->
+    <div class="vs-footer-main-grid">
       
-      <!-- Card 1: Brand & Direct Contact -->
-      <div class="vs-bento-card v-anim-footer">
-        <div class="vs-brand-header">
-          <div class="vs-brand-logo-pill">
-            {% if section.settings.footer_logo != blank %}
-              <img src="{{ section.settings.footer_logo | img_url: 'master' }}" alt="Vidhyut Saathi" loading="lazy">
-            {% else %}
-              <h2 class="vs-brand-logo-fallback">VIDHYUT SAATHI</h2>
-            {% endif %}
-          </div>
-          <span class="vs-tag-badge"><i class="fa-solid fa-shield-halved"></i> 100% Certified</span>
+      <!-- Brand & Contact -->
+      <div class="vs-brand-col v-anim-footer">
+        <a href="/" class="vs-brand-logo-box">
+          {% if section.settings.footer_logo != blank %}
+            <img src="{{ section.settings.footer_logo | img_url: 'master' }}" alt="Vidhyut Saathi" loading="lazy">
+          {% else %}
+            <h2 class="vs-brand-logo-fallback">VIDHYUT SAATHI</h2>
+          {% endif %}
+        </a>
+
+        <div class="vs-live-status-pill">
+          <span class="vs-pulse-dot"></span> Certified Energy Saving Solutions
         </div>
 
-        <div class="vs-contact-pills">
-          <a href="https://maps.google.com/?q=Ashoka+Complex+Delhi+Road+Rohtak+Haryana" target="_blank" class="vs-contact-item">
-            <div class="vs-contact-icon"><i class="fa-solid fa-location-dot"></i></div>
-            <div class="vs-contact-details">
-              <span>Headquarters</span>
-              <strong>SCO-77A, 3rd Floor, Ashoka Complex, Rohtak</strong>
+        <ul class="vs-info-list">
+          <li>
+            <i class="fa-solid fa-location-dot"></i>
+            <span>{{ section.settings.address | default: "SCO-77A, 3rd Floor, Ashoka Complex, Delhi Road Rohtak - 124001, Haryana." }}</span>
+          </li>
+          <li>
+            <i class="fa-solid fa-envelope"></i>
+            <a href="mailto:{{ section.settings.email | default: 'info@vidhyutsaathi.com' }}">{{ section.settings.email | default: 'info@vidhyutsaathi.com' }}</a>
+          </li>
+          <li>
+            <i class="fa-solid fa-phone"></i>
+            <div>
+              <a href="tel:+918199036060">+91-8199036060</a> / <a href="tel:+919053110707">+91-9053110707</a>
             </div>
-          </a>
-
-          <a href="mailto:{{ section.settings.email | default: 'info@vidhyutsaathi.com' }}" class="vs-contact-item">
-            <div class="vs-contact-icon"><i class="fa-solid fa-envelope"></i></div>
-            <div class="vs-contact-details">
-              <span>Official Email</span>
-              <strong>{{ section.settings.email | default: 'info@vidhyutsaathi.com' }}</strong>
-            </div>
-          </a>
-
-          <a href="tel:+918199036060" class="vs-contact-item">
-            <div class="vs-contact-icon"><i class="fa-solid fa-phone-volume"></i></div>
-            <div class="vs-contact-details">
-              <span>Helpline Numbers</span>
-              <strong>+91-8199036060 / +91-9053110707</strong>
-            </div>
-          </a>
-        </div>
-      </div>
-
-      <!-- Card 2: Useful Links -->
-      <div class="vs-bento-card v-anim-footer">
-        <h4 class="vs-bento-title">Useful Links</h4>
-        <ul class="vs-bento-links">
-          <li><a href="{{ section.settings.link_home | default: '/' }}"><i class="fa-solid fa-chevron-right"></i> Home</a></li>
-          <li><a href="{{ section.settings.link_about | default: '/pages/about-us' }}"><i class="fa-solid fa-chevron-right"></i> About Us</a></li>
-          <li><a href="{{ section.settings.link_why_us | default: '/pages/b2c' }}"><i class="fa-solid fa-chevron-right"></i> Why Vidhyut Saathi</a></li>
-          <li><a href="{{ section.settings.link_privacy | default: '/policies/privacy-policy' }}"><i class="fa-solid fa-chevron-right"></i> Privacy Policy</a></li>
-          <li><a href="{{ section.settings.link_terms | default: '/policies/terms-of-service' }}"><i class="fa-solid fa-chevron-right"></i> Terms &amp; Conditions</a></li>
-          <li><a href="{{ section.settings.link_disclaimer | default: '/pages/disclaimer' }}"><i class="fa-solid fa-chevron-right"></i> Disclaimer</a></li>
-          <li><a href="{{ section.settings.link_contact | default: '/pages/contact' }}"><i class="fa-solid fa-chevron-right"></i> Contact Us</a></li>
+          </li>
         </ul>
       </div>
 
-      <!-- Card 3: Our Solutions / Important Links -->
-      <div class="vs-bento-card v-anim-footer">
-        <h4 class="vs-bento-title">Our Solutions</h4>
-        <ul class="vs-bento-links">
-          <li><a href="{{ section.settings.link_card | default: '/products/vidhyut-saathi-electric-power-saver-card' }}"><i class="fa-solid fa-chevron-right"></i> Vidhyut Saathi Card</a></li>
-          <li><a href="{{ section.settings.link_fuel | default: '/pages/b2c' }}"><i class="fa-solid fa-chevron-right"></i> Fuel Saving Saathi</a></li>
-          <li><a href="{{ section.settings.link_get_card | default: '/products/vidhyut-saathi-electric-power-saver-card' }}"><i class="fa-solid fa-chevron-right"></i> Get Card</a></li>
-          <li><a href="{{ section.settings.link_franchise | default: '/pages/contact' }}"><i class="fa-solid fa-chevron-right"></i> Get Franchise</a></li>
-          <li><a href="{{ section.settings.link_faq | default: '/pages/faq' }}"><i class="fa-solid fa-chevron-right"></i> FAQs &amp; Help</a></li>
+      <!-- Column 2: Useful Links -->
+      <div class="vs-nav-col v-anim-footer">
+        <h4 class="vs-col-title">Useful Links</h4>
+        <ul class="vs-nav-links">
+          <li><a href="/"><i class="fa-solid fa-chevron-right"></i> Home</a></li>
+          <li><a href="/pages/about-us"><i class="fa-solid fa-chevron-right"></i> About Us</a></li>
+          <li><a href="/pages/b2c"><i class="fa-solid fa-chevron-right"></i> Why Vidhyut Saathi</a></li>
+          <li><a href="/policies/privacy-policy"><i class="fa-solid fa-chevron-right"></i> Privacy Policy</a></li>
+          <li><a href="/policies/terms-of-service"><i class="fa-solid fa-chevron-right"></i> Terms &amp; Conditions</a></li>
+          <li><a href="/pages/disclaimer"><i class="fa-solid fa-chevron-right"></i> Disclaimer</a></li>
+          <li><a href="/pages/contact"><i class="fa-solid fa-chevron-right"></i> Contact Us</a></li>
         </ul>
       </div>
 
-      <!-- Card 4: Certifications & Recognition -->
-      <div class="vs-bento-card v-anim-footer">
-        <h4 class="vs-bento-title">Recognitions</h4>
-        <div class="vs-cert-showcase">
+      <!-- Column 3: Important Solutions (Required Cards Included) -->
+      <div class="vs-nav-col v-anim-footer">
+        <h4 class="vs-col-title">Our Solutions</h4>
+        <ul class="vs-nav-links">
+          <li><a href="/products/vidhyut-saathi-electric-power-saver-card"><i class="fa-solid fa-chevron-right"></i> Vidhyut Saathi Card</a></li>
+          <li><a href="/pages/required-cards" class="vs-highlight-link"><i class="fa-solid fa-bolt"></i> Required Cards</a></li>
+          <li><a href="/pages/b2c"><i class="fa-solid fa-chevron-right"></i> Fuel Saving Saathi</a></li>
+          <li><a href="/products/vidhyut-saathi-electric-power-saver-card"><i class="fa-solid fa-chevron-right"></i> Get Card</a></li>
+          <li><a href="/pages/contact"><i class="fa-solid fa-chevron-right"></i> Get Franchise</a></li>
+          <li><a href="/pages/faq"><i class="fa-solid fa-chevron-right"></i> FAQ</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 4: Certifications -->
+      <div class="vs-cert-col v-anim-footer">
+        <h4 class="vs-col-title">Certifications</h4>
+        <div class="vs-cert-stack">
           
-          <a href="/pages/iso-certification" class="vs-cert-badge-box" style="text-decoration: none;">
-            <div class="vs-cert-img-wrap">
+          <a href="/pages/iso-certification" class="vs-cert-card-item">
+            <div class="vs-cert-img-box">
               {% if section.settings.iso_cert_image != blank %}
                 <img src="{{ section.settings.iso_cert_image | img_url: 'medium' }}" alt="ISO Certification" loading="lazy">
               {% else %}
                 <img src="{{ 'iso-certificate.jpg' | asset_url }}" alt="ISO Certification" loading="lazy">
               {% endif %}
             </div>
-            <div class="vs-cert-meta">
+            <div class="vs-cert-info">
               <h5>ISO 9001 Certified</h5>
-              <span><i class="fa-solid fa-circle-check"></i> Quality Verified</span>
+              <span><i class="fa-solid fa-circle-check"></i> Quality Guaranteed</span>
             </div>
           </a>
 
-          <div class="vs-cert-badge-box">
-            <div class="vs-cert-img-wrap">
+          <div class="vs-cert-card-item">
+            <div class="vs-cert-img-box">
               {% if section.settings.startup_india_image != blank %}
                 <img src="{{ section.settings.startup_india_image | img_url: 'medium' }}" alt="Startup India" loading="lazy">
               {% else %}
                 <img src="{{ 'startup-india.svg' | asset_url }}" alt="Startup India" loading="lazy">
               {% endif %}
             </div>
-            <div class="vs-cert-meta">
+            <div class="vs-cert-info">
               <h5>Startup India</h5>
               <span><i class="fa-solid fa-circle-check"></i> Govt. Recognized</span>
             </div>
@@ -594,23 +445,25 @@
 
     </div>
 
-    <!-- Bottom copyright bar -->
-    <div class="vs-bento-bottom v-anim-footer">
-      <div class="vs-copyright-text">
-        &copy; {{ 'now' | date: "%Y" }} <strong>Vidhyut Saathi</strong>. All rights reserved. Built for energy efficiency.
+  </div>
+
+  <!-- Bottom Bar -->
+  <div class="vs-footer-bottom-bar">
+    <div class="vs-footer-container vs-bottom-content">
+      <div class="vs-copy-text">
+        &copy; {{ 'now' | date: "%Y" }} <strong>Vidhyut Saathi</strong>. All rights reserved.
       </div>
-      <div class="vs-social-pills">
-        {% if section.settings.social_fb != blank %}<a href="{{ section.settings.social_fb }}" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>{% endif %}
-        {% if section.settings.social_insta != blank %}<a href="{{ section.settings.social_insta }}" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>{% endif %}
-        {% if section.settings.social_yt != blank %}<a href="{{ section.settings.social_yt }}" target="_blank" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>{% endif %}
+      <div class="vs-social-row">
+        {% if section.settings.social_fb != blank %}<a href="{{ section.settings.social_fb }}" target="_blank" aria-label="Facebook" class="vs-social-btn"><i class="fa-brands fa-facebook-f"></i></a>{% endif %}
+        {% if section.settings.social_insta != blank %}<a href="{{ section.settings.social_insta }}" target="_blank" aria-label="Instagram" class="vs-social-btn"><i class="fa-brands fa-instagram"></i></a>{% endif %}
+        {% if section.settings.social_yt != blank %}<a href="{{ section.settings.social_yt }}" target="_blank" aria-label="YouTube" class="vs-social-btn"><i class="fa-brands fa-youtube"></i></a>{% endif %}
       </div>
     </div>
-
   </div>
 </footer>
 
 <script>
-  function initBentoFooterAnimations() {
+  function initSleekFooterAnimations() {
     if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
       gsap.registerPlugin(ScrollTrigger);
       const elements = document.querySelectorAll('#section-{{ section.id }} .v-anim-footer');
@@ -623,35 +476,19 @@
       );
     }
   }
-  document.addEventListener("DOMContentLoaded", initBentoFooterAnimations);
-  if (window.Shopify && Shopify.designMode) { setTimeout(initBentoFooterAnimations, 200); }
+  document.addEventListener("DOMContentLoaded", initSleekFooterAnimations);
+  if (window.Shopify && Shopify.designMode) { setTimeout(initSleekFooterAnimations, 200); }
 </script>
 
 {% schema %}
 {
-  "name": "Vidhyut Bento Footer",
+  "name": "Vidhyut Sleek Footer",
   "settings": [
     { "type": "header", "content": "Brand Settings" },
     { "type": "image_picker", "id": "footer_logo", "label": "Footer Logo" },
     { "type": "text", "id": "address", "label": "Address", "default": "SCO-77A, 3rd Floor, Ashoka Complex, Delhi Road Rohtak - 124001, Haryana." },
     { "type": "text", "id": "email", "label": "Email Address", "default": "info@vidhyutsaathi.com" },
     
-    { "type": "header", "content": "Useful Links Customization" },
-    { "type": "url", "id": "link_home", "label": "Home Link" },
-    { "type": "url", "id": "link_about", "label": "About Us Link" },
-    { "type": "url", "id": "link_why_us", "label": "Why Us Link" },
-    { "type": "url", "id": "link_privacy", "label": "Privacy Policy Link" },
-    { "type": "url", "id": "link_terms", "label": "Terms Link" },
-    { "type": "url", "id": "link_disclaimer", "label": "Disclaimer Link" },
-    { "type": "url", "id": "link_contact", "label": "Contact Link" },
-
-    { "type": "header", "content": "Solutions Links Customization" },
-    { "type": "url", "id": "link_card", "label": "Vidhyut Saathi Card Link" },
-    { "type": "url", "id": "link_fuel", "label": "Fuel Saving Link" },
-    { "type": "url", "id": "link_get_card", "label": "Get Card Link" },
-    { "type": "url", "id": "link_franchise", "label": "Get Franchise Link" },
-    { "type": "url", "id": "link_faq", "label": "FAQ Link" },
-
     { "type": "header", "content": "Certifications" },
     { "type": "image_picker", "id": "iso_cert_image", "label": "ISO Certificate Image" },
     { "type": "image_picker", "id": "startup_india_image", "label": "Startup India Logo" },
@@ -662,7 +499,7 @@
     { "type": "url", "id": "social_yt", "label": "YouTube URL" }
   ],
   "presets": [
-    { "name": "Vidhyut Bento Footer" }
+    { "name": "Vidhyut Sleek Footer" }
   ]
 }
 {% endschema %}
