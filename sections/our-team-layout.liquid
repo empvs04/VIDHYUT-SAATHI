@@ -637,17 +637,17 @@
     border-color: #ec5c0a;
   }
 
-  /* Trending Circular Avatar Stage */
+  /* Trending Circular Avatar Stage - Ultra HD 180px Image Size */
   .untitled-card-image-wrapper {
-    width: 140px;
-    height: 140px;
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
     margin: 0 auto 18px auto;
     position: relative;
     overflow: visible !important;
     background: linear-gradient(135deg, #fff3eb 0%, #e8f5e9 100%);
     border: 4px solid #ec5c0a;
-    box-shadow: 0 12px 30px rgba(236, 92, 10, 0.28), 0 0 20px rgba(0, 123, 62, 0.15);
+    box-shadow: 0 14px 35px rgba(236, 92, 10, 0.25), 0 0 20px rgba(0, 123, 62, 0.12);
     flex-shrink: 0;
     transition: transform 0.4s ease, border-color 0.4s ease;
   }
@@ -671,10 +671,10 @@
   /* Floating Status Dot */
   .untitled-status-dot {
     position: absolute;
-    bottom: 4px;
-    right: 4px;
-    width: 18px;
-    height: 18px;
+    bottom: 6px;
+    right: 6px;
+    width: 20px;
+    height: 20px;
     background: #00c853;
     border: 3.5px solid #ffffff;
     border-radius: 50%;
@@ -682,13 +682,13 @@
     z-index: 5;
   }
 
-  /* Member Info Footer */
+  /* Member Info Footer - Name First, Designation Second */
   .untitled-card-footer {
     background: transparent;
     border-radius: 0;
     padding: 0;
     text-align: center;
-    margin-top: 6px;
+    margin-top: 4px;
     border: none;
     box-shadow: none;
     display: flex;
@@ -699,11 +699,11 @@
     flex-grow: 1;
   }
   .member-name {
-    font-size: 1.25rem;
+    font-size: 1.3rem;
     font-weight: 900;
     color: #0f172a;
     line-height: 1.25;
-    margin-bottom: 10px;
+    margin: 0 0 8px 0;
     letter-spacing: -0.3px;
     transition: color 0.3s ease;
   }
@@ -711,55 +711,28 @@
     color: #ec5c0a;
   }
   .member-role {
-    font-size: 0.8rem;
-    font-weight: 900;
-    color: #ffffff;
-    margin: 0 0 16px 0;
+    font-size: 0.86rem;
+    font-weight: 800;
+    font-family: 'Inter', 'Poppins', sans-serif;
+    color: #ec5c0a;
+    margin: 0;
     line-height: 1.3;
-    background: linear-gradient(135deg, #ec5c0a 0%, #ff7700 100%);
-    border: 1px solid rgba(236, 92, 10, 0.3);
+    background: linear-gradient(135deg, rgba(236, 92, 10, 0.1), rgba(0, 123, 62, 0.08));
+    border: 1.5px solid rgba(236, 92, 10, 0.28);
     padding: 6px 18px;
     border-radius: 50px;
     display: inline-block;
     text-transform: uppercase;
-    letter-spacing: 0.6px;
-    box-shadow: 0 4px 15px rgba(236, 92, 10, 0.3);
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 12px rgba(236, 92, 10, 0.08);
     transition: all 0.3s ease;
   }
   .untitled-card:hover .member-role {
     transform: scale(1.05);
-    box-shadow: 0 6px 20px rgba(236, 92, 10, 0.45);
-  }
-
-  /* Social Action Pills */
-  .untitled-card-socials {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    margin-top: auto;
-  }
-  .untitled-social-btn {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    background: rgba(236, 92, 10, 0.08);
-    border: 1px solid rgba(236, 92, 10, 0.2);
-    color: #ec5c0a !important;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 800;
-    font-size: 0.92rem;
-    text-decoration: none;
-    transition: all 0.3s ease;
-  }
-  .untitled-social-btn:hover {
-    background: #ec5c0a;
-    color: #ffffff !important;
+    background: linear-gradient(135deg, #ec5c0a 0%, #ff7700 100%);
+    color: #ffffff;
     border-color: #ec5c0a;
-    transform: translateY(-3px);
-    box-shadow: 0 6px 18px rgba(236, 92, 10, 0.35);
+    box-shadow: 0 6px 20px rgba(236, 92, 10, 0.35);
   }
 {%- endstyle -%}
 
@@ -928,25 +901,20 @@
               <div class="untitled-card-image-wrapper">
                 <span class="untitled-status-dot"></span>
                 {%- if block.settings.image != blank -%}
-                  {{ block.settings.image | image_url: width: 400, height: 400, crop: 'center' | image_tag: loading: 'lazy', alt: block.settings.name, class: 'untitled-member-img' }}
+                  {{ block.settings.image | image_url: width: 450, height: 450, crop: 'center' | image_tag: loading: 'lazy', alt: block.settings.name, class: 'untitled-member-img' }}
                 {%- else -%}
                   {%- assign default_img = 'vidhyut-saathi-team-bg.jpg' | asset_url -%}
                   <img src="{{ default_img }}" alt="{{ block.settings.name | default: 'Team Member' }}" class="untitled-member-img" decoding="async" loading="lazy">
                 {%- endif -%}
               </div>
               <div class="untitled-card-footer">
-                <p class="member-role">{{ block.settings.role | default: 'Designation' }}</p>
                 <h3 class="member-name">{{ block.settings.name | default: 'Team Member' }}</h3>
-                <div class="untitled-card-socials">
-                  <a href="#" class="untitled-social-btn" title="LinkedIn">in</a>
-                  <a href="mailto:emp.vs04@gmail.com" class="untitled-social-btn" title="Email">✉</a>
-                  <a href="#" class="untitled-social-btn" title="WhatsApp">💬</a>
-                </div>
+                <p class="member-role">{{ block.settings.role | default: 'Designation' }}</p>
               </div>
             </div>
           {%- endfor -%}
         {%- else -%}
-          <!-- Default 15 Team Members Fallback (Untitled UI Style) -->
+          <!-- Default 15 Team Members Fallback (Lucrative Circular Avatar Style) -->
           {%- assign default_img = 'vidhyut-saathi-team-bg.jpg' | asset_url -%}
           
           <div class="untitled-card team-card-item sales management">
@@ -955,13 +923,8 @@
               <img src="{{ default_img }}" alt="Jyoti Bajaj" class="untitled-member-img" decoding="async" loading="lazy">
             </div>
             <div class="untitled-card-footer">
-              <p class="member-role">Sales &amp; Marketing Head</p>
               <h3 class="member-name">Jyoti Bajaj</h3>
-              <div class="untitled-card-socials">
-                <a href="#" class="untitled-social-btn" title="LinkedIn">in</a>
-                <a href="mailto:emp.vs04@gmail.com" class="untitled-social-btn" title="Email">✉</a>
-                <a href="#" class="untitled-social-btn" title="WhatsApp">💬</a>
-              </div>
+              <p class="member-role">Sales &amp; Marketing Head</p>
             </div>
           </div>
 
@@ -971,13 +934,8 @@
               <img src="{{ default_img }}" alt="Shabnam Saxena" class="untitled-member-img" decoding="async" loading="lazy">
             </div>
             <div class="untitled-card-footer">
-              <p class="member-role">Senior Sales Manager</p>
               <h3 class="member-name">Shabnam Saxena</h3>
-              <div class="untitled-card-socials">
-                <a href="#" class="untitled-social-btn" title="LinkedIn">in</a>
-                <a href="mailto:emp.vs04@gmail.com" class="untitled-social-btn" title="Email">✉</a>
-                <a href="#" class="untitled-social-btn" title="WhatsApp">💬</a>
-              </div>
+              <p class="member-role">Senior Sales Manager</p>
             </div>
           </div>
 
@@ -987,13 +945,8 @@
               <img src="{{ default_img }}" alt="Riya Juneja" class="untitled-member-img" decoding="async" loading="lazy">
             </div>
             <div class="untitled-card-footer">
-              <p class="member-role">Training Manager</p>
               <h3 class="member-name">Riya Juneja</h3>
-              <div class="untitled-card-socials">
-                <a href="#" class="untitled-social-btn" title="LinkedIn">in</a>
-                <a href="mailto:emp.vs04@gmail.com" class="untitled-social-btn" title="Email">✉</a>
-                <a href="#" class="untitled-social-btn" title="WhatsApp">💬</a>
-              </div>
+              <p class="member-role">Training Manager</p>
             </div>
           </div>
 
@@ -1003,18 +956,14 @@
               <img src="{{ default_img }}" alt="Vaishali Sharma" class="untitled-member-img" decoding="async" loading="lazy">
             </div>
             <div class="untitled-card-footer">
-              <p class="member-role">Relationship Manager</p>
               <h3 class="member-name">Vaishali Sharma</h3>
-              <div class="untitled-card-socials">
-                <a href="#" class="untitled-social-btn" title="LinkedIn">in</a>
-                <a href="mailto:emp.vs04@gmail.com" class="untitled-social-btn" title="Email">✉</a>
-                <a href="#" class="untitled-social-btn" title="WhatsApp">💬</a>
-              </div>
+              <p class="member-role">Relationship Manager</p>
             </div>
           </div>
 
           <div class="untitled-card team-card-item sales">
             <div class="untitled-card-image-wrapper">
+              <span class="untitled-status-dot"></span>
               <img src="{{ default_img }}" alt="Khushi Rajput" class="untitled-member-img" decoding="async" loading="lazy">
             </div>
             <div class="untitled-card-footer">
@@ -1025,6 +974,7 @@
 
           <div class="untitled-card team-card-item sales">
             <div class="untitled-card-image-wrapper">
+              <span class="untitled-status-dot"></span>
               <img src="{{ default_img }}" alt="Charu Wadhwa" class="untitled-member-img" decoding="async" loading="lazy">
             </div>
             <div class="untitled-card-footer">
@@ -1035,6 +985,7 @@
 
           <div class="untitled-card team-card-item sales">
             <div class="untitled-card-image-wrapper">
+              <span class="untitled-status-dot"></span>
               <img src="{{ default_img }}" alt="Gunjan Goyal" class="untitled-member-img" decoding="async" loading="lazy">
             </div>
             <div class="untitled-card-footer">
@@ -1045,6 +996,7 @@
 
           <div class="untitled-card team-card-item sales">
             <div class="untitled-card-image-wrapper">
+              <span class="untitled-status-dot"></span>
               <img src="{{ default_img }}" alt="Himani Arora" class="untitled-member-img" decoding="async" loading="lazy">
             </div>
             <div class="untitled-card-footer">
@@ -1055,6 +1007,7 @@
 
           <div class="untitled-card team-card-item accounts management">
             <div class="untitled-card-image-wrapper">
+              <span class="untitled-status-dot"></span>
               <img src="{{ default_img }}" alt="Prerna Mittal" class="untitled-member-img" decoding="async" loading="lazy">
             </div>
             <div class="untitled-card-footer">
@@ -1065,6 +1018,7 @@
 
           <div class="untitled-card team-card-item sales">
             <div class="untitled-card-image-wrapper">
+              <span class="untitled-status-dot"></span>
               <img src="{{ default_img }}" alt="Seema Ahlawat" class="untitled-member-img" decoding="async" loading="lazy">
             </div>
             <div class="untitled-card-footer">
@@ -1075,6 +1029,7 @@
 
           <div class="untitled-card team-card-item sales">
             <div class="untitled-card-image-wrapper">
+              <span class="untitled-status-dot"></span>
               <img src="{{ default_img }}" alt="Renuka Kumari" class="untitled-member-img" decoding="async" loading="lazy">
             </div>
             <div class="untitled-card-footer">
@@ -1085,6 +1040,7 @@
 
           <div class="untitled-card team-card-item sales">
             <div class="untitled-card-image-wrapper">
+              <span class="untitled-status-dot"></span>
               <img src="{{ default_img }}" alt="Simran Mishra" class="untitled-member-img" decoding="async" loading="lazy">
             </div>
             <div class="untitled-card-footer">
@@ -1095,6 +1051,7 @@
 
           <div class="untitled-card team-card-item sales">
             <div class="untitled-card-image-wrapper">
+              <span class="untitled-status-dot"></span>
               <img src="{{ default_img }}" alt="Bhavya Malik" class="untitled-member-img" decoding="async" loading="lazy">
             </div>
             <div class="untitled-card-footer">
@@ -1105,6 +1062,7 @@
 
           <div class="untitled-card team-card-item sales">
             <div class="untitled-card-image-wrapper">
+              <span class="untitled-status-dot"></span>
               <img src="{{ default_img }}" alt="Saloni Bhushan" class="untitled-member-img" decoding="async" loading="lazy">
             </div>
             <div class="untitled-card-footer">
@@ -1115,6 +1073,7 @@
 
           <div class="untitled-card team-card-item sales">
             <div class="untitled-card-image-wrapper">
+              <span class="untitled-status-dot"></span>
               <img src="{{ default_img }}" alt="Ritika Balgani" class="untitled-member-img" decoding="async" loading="lazy">
             </div>
             <div class="untitled-card-footer">
