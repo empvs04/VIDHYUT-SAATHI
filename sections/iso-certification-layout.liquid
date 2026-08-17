@@ -850,78 +850,8 @@
     </div>
   </section>
 
-  <!-- Showcase & Details -->
-  <section class="iso-showcase">
-    <div class="iso-grid">
-      
-      <!-- Certificate Viewer with 300 DPI PDF.js Ultra-HD Vector Canvas -->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-      <div class="iso-cert-box">
-        <div class="iso-cert-img-wrapper" id="iso-canvas-container-1">
-          <canvas id="iso-pdf-canvas-1" style="width: 100%; height: auto; display: block; border-radius: 14px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);"></canvas>
-          <img id="iso-pdf-fallback-1" src="{{ 'iso-certificate.jpg' | asset_url }}" alt="Official ISO 9001:2015 Certificate of Registration - Vidhyut Saathi" loading="eager" width="2400" height="3394" style="width: 100%; height: auto; display: none; border-radius: 14px; image-rendering: -webkit-optimize-contrast;">
-        </div>
-        
-        <a href="{{ 'iso-certificate.pdf' | asset_url }}" target="_blank" rel="noopener noreferrer" class="iso-cert-btn" download="Vidhyut_Saathi_ISO_9001_Certificate.pdf">
-          <i class="fa-solid fa-file-pdf" style="margin-right: 8px;"></i> Download Full HD ISO Certificate (PDF)
-        </a>
-      </div>
-
-      <!-- Text Details -->
-      <div class="iso-details-box">
-        <div class="iso-badge">
-          <div class="pulse-dot"></div>
-          100% Verified & Compliant
-        </div>
-        <h2>{{ section.settings.details_heading | default: "ISO 9001:2015 Certified (IAF Certified)" }}</h2>
-        <div class="iso-main-text">
-          {%- if section.settings.details_text != blank -%}
-            {{ section.settings.details_text }}
-          {%- else -%}
-            <p>Proudly ISO 9001:2015 Certified (IAF Certified), Vidhyut Saathi follows internationally recognized quality management standards. IAF (International Accreditation Forum) is one of the world's most respected accreditation associations, ensuring that our certification is globally recognized. This reflects our commitment to quality, reliability, transparency, and consistent customer satisfaction—giving our customers and business partners greater confidence in every product and service we deliver.</p>
-          {%- endif -%}
-        </div>
-        
-        <div class="iso-data-grid">
-          {%- if section.settings.detail_standard != blank -%}
-            <div class="iso-data-item">
-              <div class="iso-data-label">Standard</div>
-              <div class="iso-data-value">{{ section.settings.detail_standard }}</div>
-            </div>
-          {%- endif -%}
-          
-          {%- if section.settings.detail_body != blank -%}
-            <div class="iso-data-item">
-              <div class="iso-data-label">Accreditation Body</div>
-              <div class="iso-data-value">{{ section.settings.detail_body }}</div>
-            </div>
-          {%- endif -%}
-          
-          {%- if section.settings.detail_number != blank -%}
-            <div class="iso-data-item">
-              <div class="iso-data-label">Certificate No.</div>
-              <div class="iso-data-value">{{ section.settings.detail_number }}</div>
-            </div>
-          {%- endif -%}
-          
-          {%- if section.settings.detail_issue != blank -%}
-            <div class="iso-data-item">
-              <div class="iso-data-label">Issue Date</div>
-              <div class="iso-data-value">{{ section.settings.detail_issue }}</div>
-            </div>
-          {%- endif -%}
-          
-          {%- if section.settings.detail_expiry != blank -%}
-            <div class="iso-data-item">
-              <div class="iso-data-label">Valid Until</div>
-              <div class="iso-data-value">{{ section.settings.detail_expiry }}</div>
-            </div>
-          {%- endif -%}
-        </div>
-      </div>
-      
-    </div>
-  </section>
+  <!-- Certificate Viewer with 300 DPI PDF.js Ultra-HD Vector Canvas -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 
   <!-- Section 2: Government Approved & Official ISO 9001:2015 Certificate Showcase -->
   <section class="iso-official-cert-section">
@@ -1022,58 +952,7 @@
     </div>
   </section>
 
-  <!-- Commitment Cards -->
-  <section class="iso-commitment">
-    <div class="comm-container">
-      <h2 class="iso-heading" style="text-align: center;">Our Commitment to Quality</h2>
-      <div class="comm-grid">
-        <div class="comm-card">
-          <div class="comm-icon">⭐</div>
-          <h3>{{ section.settings.comm_1 }}</h3>
-        </div>
-        <div class="comm-card">
-          <div class="comm-icon">🤝</div>
-          <h3>{{ section.settings.comm_2 }}</h3>
-        </div>
-        <div class="comm-card">
-          <div class="comm-icon">📈</div>
-          <h3>{{ section.settings.comm_3 }}</h3>
-        </div>
-        <div class="comm-card">
-          <div class="comm-icon">🏆</div>
-          <h3>{{ section.settings.comm_4 }}</h3>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Why it Matters -->
-  <section class="iso-why">
-    <div class="why-grid">
-      <div class="why-text">
-        <h2>{{ section.settings.why_heading }}</h2>
-        <div class="iso-main-text">
-          {{ section.settings.why_text }}
-        </div>
-      </div>
-      <div class="why-img">
-        {%- if section.settings.why_image != blank -%}
-          {{ section.settings.why_image | image_url: width: 800, height: 600, crop: 'center' | image_tag: loading: 'lazy' }}
-        {%- else -%}
-          {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
-        {%- endif -%}
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA Section -->
-  <section class="iso-cta">
-    <div class="iso-cta-content">
-      <h2 class="iso-heading">{{ section.settings.cta_heading }}</h2>
-      <p class="iso-subheading">{{ section.settings.cta_text }}</p>
-      <a href="{{ section.settings.cta_link }}" class="iso-cta-btn">{{ section.settings.cta_btn_text }}</a>
-    </div>
-  </section>
 
 </div>
 
