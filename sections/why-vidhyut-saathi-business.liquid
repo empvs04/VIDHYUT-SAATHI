@@ -407,54 +407,71 @@
     margin: 0;
   }
 
-  /* Split Comparison Container */
+  /* Split Comparison Container - Lucrative Upgrade */
   .wvs-comparison-wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 30px;
-    margin-bottom: 45px;
-  }
-
-  /* Scratch Box (Negative / Red Theme) */
-  .wvs-comp-box-scratch {
-    background: #fff5f5;
-    border: 2px solid #feb2b2;
-    border-radius: 32px;
-    padding: clamp(28px, 4vw, 44px);
-    box-shadow: 0 10px 30px rgba(229, 62, 62, 0.05);
+    gap: 32px;
+    margin-bottom: 50px;
     position: relative;
   }
 
+  /* Scratch Box (Negative / Traditional Red Contrast Theme) */
+  .wvs-comp-box-scratch {
+    background: linear-gradient(160deg, #fffafa 0%, #fff1f2 100%);
+    border: 2px solid #fecdd3;
+    border-radius: 36px;
+    padding: clamp(30px, 4vw, 48px);
+    box-shadow: 0 15px 40px rgba(225, 29, 72, 0.06);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .wvs-comp-box-scratch::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, #f43f5e 0%, #e11d48 100%);
+  }
+
   .wvs-comp-header-scratch {
-    border-bottom: 2px dashed #fbb6ce;
-    padding-bottom: 20px;
+    border-bottom: 2px dashed #fecdd3;
+    padding-bottom: 22px;
     margin-bottom: 28px;
   }
 
   .wvs-comp-badge-scratch {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
     padding: 6px 16px;
-    background: #fed7d7;
-    color: #9b2c2c;
-    font-size: 0.8rem;
+    background: #ffe4e6;
+    color: #9f1239;
+    font-size: 0.82rem;
     font-weight: 900;
     border-radius: 50px;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
     text-transform: uppercase;
     letter-spacing: 1px;
+    border: 1px solid #fda4af;
   }
 
   .wvs-comp-header-scratch h3 {
-    font-size: 1.5rem;
+    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+    font-size: clamp(22px, 2.8vw, 32px);
     font-weight: 900;
-    color: #742a2a;
-    margin: 0;
+    color: #881337;
+    margin: 0 0 6px 0;
   }
 
   .wvs-comp-header-scratch p {
-    font-size: 0.95rem;
-    color: #9b2c2c;
-    margin: 6px 0 0 0;
+    font-size: 0.98rem;
+    color: #9f1239;
+    font-weight: 700;
+    margin: 0;
   }
 
   .wvs-scratch-grid {
@@ -465,64 +482,101 @@
 
   .wvs-scratch-item {
     background: #ffffff;
-    border: 1.5px solid #fed7d7;
-    border-radius: 16px;
+    border: 1.5px solid #ffe4e6;
+    border-radius: 20px;
     padding: 16px 18px;
     display: flex;
+    flex-direction: column;
+    gap: 6px;
+    box-shadow: 0 4px 12px rgba(225, 29, 72, 0.04);
+    opacity: 0.88;
+    transition: all 0.3s ease;
+  }
+
+  .wvs-scratch-item:hover {
+    opacity: 1;
+    border-color: #f43f5e;
+    transform: translateY(-2px);
+  }
+
+  .wvs-scratch-item-title {
+    display: flex;
     align-items: center;
-    gap: 12px;
-    font-weight: 800;
-    color: #9b2c2c;
+    gap: 8px;
+    font-weight: 900;
+    color: #be123c;
     font-size: 0.98rem;
-    box-shadow: 0 4px 12px rgba(229, 62, 62, 0.05);
   }
 
-  .wvs-scratch-item i {
-    font-size: 1.2rem;
-    color: #e53e3e;
+  .wvs-scratch-item-title i {
+    color: #e11d48;
+    font-size: 1.1rem;
   }
 
-  /* Vidhyut Saathi Box (Positive / Green & Gold Theme) */
+  .wvs-scratch-item-desc {
+    font-size: 0.82rem;
+    color: #9f1239;
+    font-weight: 600;
+    margin: 0;
+    line-height: 1.35;
+  }
+
+  /* Vidhyut Saathi Box (Lucrative Ecosystem / Green & Gold Theme) */
   .wvs-comp-box-vs {
-    background: linear-gradient(145deg, #ffffff 0%, #f0fdf4 100%);
-    border: 2px solid #86efac;
-    border-radius: 32px;
-    padding: clamp(28px, 4vw, 44px);
-    box-shadow: 0 15px 40px rgba(0, 123, 62, 0.12);
+    background: linear-gradient(160deg, #ffffff 0%, #f0fdf4 50%, #dcfce7 100%);
+    border: 2.5px solid #86efac;
+    border-radius: 36px;
+    padding: clamp(30px, 4vw, 48px);
+    box-shadow: 0 20px 60px rgba(0, 123, 62, 0.16);
     position: relative;
+    overflow: hidden;
+  }
+
+  .wvs-comp-box-vs::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, #007b3e 0%, #00b853 50%, #ec5c0a 100%);
   }
 
   .wvs-comp-header-vs {
-    border-bottom: 2px dashed #bbf7d0;
-    padding-bottom: 20px;
+    border-bottom: 2px dashed #86efac;
+    padding-bottom: 22px;
     margin-bottom: 28px;
   }
 
   .wvs-comp-badge-vs {
-    display: inline-block;
-    padding: 6px 16px;
-    background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
-    color: #007b3e;
-    font-size: 0.8rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 18px;
+    background: linear-gradient(135deg, #15803d 0%, #007b3e 100%);
+    color: #ffffff;
+    font-size: 0.82rem;
     font-weight: 900;
     border-radius: 50px;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 1.2px;
+    box-shadow: 0 6px 18px rgba(0, 123, 62, 0.25);
   }
 
   .wvs-comp-header-vs h3 {
-    font-size: 1.5rem;
+    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+    font-size: clamp(22px, 2.8vw, 32px);
     font-weight: 900;
     color: #0f2c4a;
-    margin: 0;
+    margin: 0 0 6px 0;
   }
 
   .wvs-comp-header-vs p {
-    font-size: 0.95rem;
+    font-size: 0.98rem;
     color: #007b3e;
     font-weight: 800;
-    margin: 6px 0 0 0;
+    margin: 0;
   }
 
   .wvs-vs-grid {
@@ -534,40 +588,102 @@
   .wvs-vs-item {
     background: #ffffff;
     border: 1.5px solid #bbf7d0;
-    border-radius: 16px;
-    padding: 16px 18px;
-    box-shadow: 0 4px 15px rgba(0, 123, 62, 0.06);
-    transition: transform 0.25s ease;
+    border-radius: 20px;
+    padding: 18px;
+    box-shadow: 0 6px 20px rgba(0, 123, 62, 0.08);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .wvs-vs-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: #007b3e;
+    border-radius: 4px 0 0 4px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
   }
 
   .wvs-vs-item:hover {
-    transform: translateY(-3px);
+    transform: translateY(-5px) scale(1.02);
     border-color: #007b3e;
+    box-shadow: 0 14px 30px rgba(0, 123, 62, 0.18);
+  }
+
+  .wvs-vs-item:hover::before {
+    opacity: 1;
   }
 
   .wvs-vs-item-title {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     font-weight: 900;
     color: #007b3e;
     display: flex;
     align-items: center;
     gap: 8px;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
+  }
+
+  .wvs-vs-item-title i {
+    font-size: 1.1rem;
+    color: #ec5c0a;
   }
 
   .wvs-vs-item-desc {
     font-size: 0.85rem;
-    color: #475569;
-    font-weight: 600;
+    color: #334155;
+    font-weight: 700;
     margin: 0;
-    line-height: 1.4;
+    line-height: 1.45;
   }
 
-  /* Point 05 Bottom Banner & CTA */
+  /* Point 05 Bottom Banner & CTA - Ultra Lucrative Banner */
   .wvs-p5-cta-banner {
-    background: linear-gradient(135deg, #091d34 0%, #0f2c4a 100%);
-    border: 2px solid #ec5c0a;
-    border-radius: 28px;
+    background: linear-gradient(135deg, #091d34 0%, #0f2c4a 60%, #1e3a8a 100%);
+    border: 2.5px solid #ec5c0a;
+    border-radius: 32px;
+    padding: clamp(34px, 4vw, 48px) 28px;
+    text-align: center;
+    color: #ffffff;
+    box-shadow: 0 25px 60px rgba(9, 29, 52, 0.35);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .wvs-p5-cta-banner::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(236, 92, 10, 0.3) 0%, rgba(0, 0, 0, 0) 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .wvs-p5-cta-banner h4 {
+    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+    font-size: clamp(22px, 2.8vw, 34px);
+    font-weight: 900;
+    color: #ffffff;
+    margin: 0;
+    letter-spacing: -0.3px;
+    line-height: 1.3;
+  }
+
+  .wvs-p5-cta-banner h4 span {
+    color: #ffcc00;
+  }
     padding: clamp(30px, 4vw, 44px) 24px;
     text-align: center;
     color: #ffffff;
@@ -1057,53 +1173,71 @@
         <!-- Scratch Box (The Hard Way) -->
         <div class="wvs-comp-box-scratch">
           <div class="wvs-comp-header-scratch">
-            <span class="wvs-comp-badge-scratch">Building From Scratch</span>
-            <h3>The Traditional Hard Way</h3>
-            <p>Creating everything from scratch requires massive capital & effort</p>
+            <span class="wvs-comp-badge-scratch"><i class="fa-solid fa-triangle-exclamation"></i> Traditional Path</span>
+            <h3>Building From Scratch</h3>
+            <p>Creating everything from zero requires massive capital, high risk & years of effort</p>
           </div>
 
           <div class="wvs-scratch-grid">
-            <div class="wvs-scratch-item"><i class="fa-solid fa-circle-xmark"></i> Brand</div>
-            <div class="wvs-scratch-item"><i class="fa-solid fa-circle-xmark"></i> Product</div>
-            <div class="wvs-scratch-item"><i class="fa-solid fa-circle-xmark"></i> Marketing</div>
-            <div class="wvs-scratch-item"><i class="fa-solid fa-circle-xmark"></i> Sales System</div>
-            <div class="wvs-scratch-item"><i class="fa-solid fa-circle-xmark"></i> Training</div>
-            <div class="wvs-scratch-item"><i class="fa-solid fa-circle-xmark"></i> Support</div>
+            <div class="wvs-scratch-item">
+              <div class="wvs-scratch-item-title"><i class="fa-solid fa-circle-xmark"></i> Brand</div>
+              <p class="wvs-scratch-item-desc">No brand recognition or customer trust</p>
+            </div>
+            <div class="wvs-scratch-item">
+              <div class="wvs-scratch-item-title"><i class="fa-solid fa-circle-xmark"></i> Product</div>
+              <p class="wvs-scratch-item-desc">Costly R&D, manufacturing & testing</p>
+            </div>
+            <div class="wvs-scratch-item">
+              <div class="wvs-scratch-item-title"><i class="fa-solid fa-circle-xmark"></i> Marketing</div>
+              <p class="wvs-scratch-item-desc">Trial-and-error ads with unknown ROI</p>
+            </div>
+            <div class="wvs-scratch-item">
+              <div class="wvs-scratch-item-title"><i class="fa-solid fa-circle-xmark"></i> Sales System</div>
+              <p class="wvs-scratch-item-desc">No proven scripts or demonstration process</p>
+            </div>
+            <div class="wvs-scratch-item">
+              <div class="wvs-scratch-item-title"><i class="fa-solid fa-circle-xmark"></i> Training</div>
+              <p class="wvs-scratch-item-desc">Zero guidance or sales mentorship</p>
+            </div>
+            <div class="wvs-scratch-item">
+              <div class="wvs-scratch-item-title"><i class="fa-solid fa-circle-xmark"></i> Support</div>
+              <p class="wvs-scratch-item-desc">Solving operational & technical hurdles alone</p>
+            </div>
           </div>
         </div>
 
         <!-- Vidhyut Saathi Box (The Fast Track) -->
         <div class="wvs-comp-box-vs">
           <div class="wvs-comp-header-vs">
-            <span class="wvs-comp-badge-vs">With Vidhyut Saathi</span>
-            <h3>The Proven Business Ecosystem</h3>
-            <p>Foundation is already built—you just focus on market growth</p>
+            <span class="wvs-comp-badge-vs"><i class="fa-solid fa-bolt"></i> Ready Business Ecosystem</span>
+            <h3>With Vidhyut Saathi</h3>
+            <p>The entire foundation is built—you just focus on local market growth</p>
           </div>
 
           <div class="wvs-vs-grid">
             <div class="wvs-vs-item">
               <div class="wvs-vs-item-title"><i class="fa-solid fa-bolt"></i> PRODUCT</div>
-              <p class="wvs-vs-item-desc">Ready-to-market Electric Saver Card</p>
+              <p class="wvs-vs-item-desc">Ready-to-market flagship Electric Saver Card</p>
             </div>
             <div class="wvs-vs-item">
               <div class="wvs-vs-item-title"><i class="fa-solid fa-tag"></i> BRAND</div>
-              <p class="wvs-vs-item-desc">Growing Pan-India Brand identity</p>
+              <p class="wvs-vs-item-desc">Growing Pan-India Brand & market identity</p>
             </div>
             <div class="wvs-vs-item">
               <div class="wvs-vs-item-title"><i class="fa-solid fa-location-dot"></i> MARKET</div>
-              <p class="wvs-vs-item-desc">District-Level Business Opportunity</p>
+              <p class="wvs-vs-item-desc">Exclusive District-Level territory opportunity</p>
             </div>
             <div class="wvs-vs-item">
               <div class="wvs-vs-item-title"><i class="fa-solid fa-bullhorn"></i> MARKETING</div>
-              <p class="wvs-vs-item-desc">Campaign & Promotional Support</p>
+              <p class="wvs-vs-item-desc">Campaign materials & promotional support</p>
             </div>
             <div class="wvs-vs-item">
               <div class="wvs-vs-item-title"><i class="fa-solid fa-graduation-cap"></i> TRAINING</div>
-              <p class="wvs-vs-item-desc">Product & Sales Guidance</p>
+              <p class="wvs-vs-item-desc">Product demo & sales conversion guidance</p>
             </div>
             <div class="wvs-vs-item">
               <div class="wvs-vs-item-title"><i class="fa-solid fa-handshake"></i> SUPPORT</div>
-              <p class="wvs-vs-item-desc">Business Growth Assistance</p>
+              <p class="wvs-vs-item-desc">Continuous business growth assistance</p>
             </div>
           </div>
         </div>
@@ -1111,7 +1245,7 @@
 
       <!-- Point 05 Action Banner & Franchise CTA Button -->
       <div class="wvs-p5-cta-banner">
-        <h4>WE BUILD THE FOUNDATION. <span>YOU BUILD THE MARKET.</span> TURN A PRODUCT INTO YOUR BUSINESS.</h4>
+        <h4>WE BUILD THE FOUNDATION. <span>YOU BUILD THE MARKET.</span><br>TURN A PRODUCT INTO YOUR BUSINESS.</h4>
         <a href="{{ section.settings.franchise_cta_link | default: '/pages/contact' }}" class="wvs-btn-cta-franchise">
           <span>Become A Franchise Partner</span>
           <i class="fa-solid fa-arrow-right-long"></i>
