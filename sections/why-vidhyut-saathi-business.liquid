@@ -872,17 +872,14 @@
   }
 
   /* Slider Dots Styling for Mobile */
-  .wvs-slider-dots-p4, .wvs-slider-dots-p6 {
+  .wvs-slider-dots-p4, .wvs-slider-dots-p5, .wvs-slider-dots-p6 {
     display: none;
   }
 
-  /* Responsive Design & Mobile Auto Slider */
+  /* Responsive Design & Mobile Auto Sliders */
   @media (max-width: 991px) {
     .wvs-p4-grid, .wvs-p6-grid {
       grid-template-columns: repeat(2, 1fr);
-    }
-    .wvs-comparison-wrapper {
-      grid-template-columns: 1fr;
     }
   }
 
@@ -891,7 +888,7 @@
       padding: clamp(35px, 5vw, 60px) 14px;
     }
     .wvs-p4-head, .wvs-p5-head, .wvs-p6-head {
-      margin-bottom: 35px;
+      margin-bottom: 30px;
     }
 
     /* Point 04 Horizontal Slider on Mobile */
@@ -911,6 +908,26 @@
     }
     .wvs-sector-card {
       flex: 0 0 88%;
+      scroll-snap-align: center;
+    }
+
+    /* Point 05 Horizontal Slider on Mobile */
+    .wvs-comparison-wrapper {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      gap: 16px;
+      padding: 10px 4px 20px 4px;
+      margin-bottom: 10px;
+      scrollbar-width: none;
+    }
+    .wvs-comparison-wrapper::-webkit-scrollbar {
+      display: none;
+    }
+    .wvs-comp-box-scratch, .wvs-comp-box-vs {
+      flex: 0 0 90%;
       scroll-snap-align: center;
     }
 
@@ -935,7 +952,7 @@
     }
 
     /* Active Pagination Dots */
-    .wvs-slider-dots-p4, .wvs-slider-dots-p6 {
+    .wvs-slider-dots-p4, .wvs-slider-dots-p5, .wvs-slider-dots-p6 {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -960,11 +977,18 @@
     .wvs-scratch-grid, .wvs-vs-grid {
       grid-template-columns: 1fr;
     }
+
+    .wvs-p5-cta-banner {
+      padding: 28px 18px;
+    }
   }
 
   @media (max-width: 480px) {
     .wvs-sector-card, .wvs-pillar-card {
       flex: 0 0 92%;
+    }
+    .wvs-comp-box-scratch, .wvs-comp-box-vs {
+      flex: 0 0 94%;
     }
     .wvs-btn-cta-franchise {
       width: 100%;
@@ -1243,6 +1267,9 @@
         </div>
       </div>
 
+      <!-- Mobile Pagination Dots for Point 05 Slider -->
+      <div class="wvs-slider-dots-p5"></div>
+
       <!-- Point 05 Action Banner & Franchise CTA Button -->
       <div class="wvs-p5-cta-banner">
         <h4>WE BUILD THE FOUNDATION. <span>YOU BUILD THE MARKET.</span><br>TURN A PRODUCT INTO YOUR BUSINESS.</h4>
@@ -1460,10 +1487,12 @@
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', function() {
         initMobileAutoSliderSec4('.wvs-p4-grid', '.wvs-sector-card', '.wvs-slider-dots-p4');
+        initMobileAutoSliderSec4('.wvs-comparison-wrapper', '.wvs-comp-box-scratch, .wvs-comp-box-vs', '.wvs-slider-dots-p5');
         initMobileAutoSliderSec4('.wvs-p6-grid', '.wvs-pillar-card', '.wvs-slider-dots-p6');
       });
     } else {
       initMobileAutoSliderSec4('.wvs-p4-grid', '.wvs-sector-card', '.wvs-slider-dots-p4');
+      initMobileAutoSliderSec4('.wvs-comparison-wrapper', '.wvs-comp-box-scratch, .wvs-comp-box-vs', '.wvs-slider-dots-p5');
       initMobileAutoSliderSec4('.wvs-p6-grid', '.wvs-pillar-card', '.wvs-slider-dots-p6');
     }
   })();
