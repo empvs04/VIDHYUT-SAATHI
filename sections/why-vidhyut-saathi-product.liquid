@@ -693,37 +693,48 @@
       font-size: 0.78rem;
     }
     .wvs-p2-header-wrapper {
-      display: grid;
-      grid-template-columns: 46px 1fr 46px;
+      display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-items: center;
-      gap: 6px;
+      justify-content: center;
+      gap: 16px;
       width: 100%;
     }
+    .wvs-tower-photo-left {
+      order: 1;
+    }
+    .wvs-p2-header-center {
+      order: 2;
+      width: 100%;
+      text-align: center;
+    }
+    .wvs-tower-photo-right {
+      order: 3;
+    }
     .wvs-tower-photo-box {
-      width: 46px;
-      height: 46px;
-      border-radius: 12px;
-      padding: 2px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      width: clamp(65px, 15vw, 80px);
+      height: clamp(65px, 15vw, 80px);
+      border-radius: 18px;
+      padding: 3px;
+      box-shadow: 0 8px 20px rgba(9, 29, 52, 0.2);
     }
     .wvs-tower-real-img {
-      border-radius: 10px;
+      border-radius: 15px;
     }
     .wvs-p2-line-main {
       white-space: normal;
-      font-size: clamp(13px, 3.6vw, 18px);
+      font-size: clamp(20px, 5.2vw, 28px);
       font-weight: 900;
       line-height: 1.25;
-      margin-bottom: 6px;
-      letter-spacing: -0.3px;
+      margin-bottom: 12px;
+      letter-spacing: -0.4px;
     }
     .wvs-p2-pill-highlight {
-      padding: 5px 12px;
-      font-size: clamp(10px, 2.5vw, 12px);
-      gap: 4px;
-      border-width: 1.5px;
-      letter-spacing: 0.3px;
+      padding: 10px 22px;
+      font-size: clamp(13px, 3.5vw, 17px);
+      gap: 8px;
+      border-width: 2px;
+      letter-spacing: 0.5px;
     }
     .wvs-p2-card {
       padding: 24px 18px;
