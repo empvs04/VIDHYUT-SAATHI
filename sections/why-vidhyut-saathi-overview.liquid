@@ -418,7 +418,8 @@
         </div>
 
         <h2 class="wvs-sec2-title">
-          {{ section.settings.heading_main | default: "Electricity is everywhere. Opportunity is unlimited." }}
+          {{ section.settings.heading_line1 | default: "Electricity is everywhere." }}<br>
+          <span>{{ section.settings.heading_line2 | default: "Opportunity is unlimited." }}</span>
         </h2>
 
         <p class="wvs-sec2-desc">
@@ -559,9 +560,15 @@
     },
     {
       "type": "text",
-      "id": "heading_main",
-      "label": "Main Heading",
-      "default": "Electricity is everywhere. Opportunity is unlimited."
+      "id": "heading_line1",
+      "label": "Heading Line 1",
+      "default": "Electricity is everywhere."
+    },
+    {
+      "type": "text",
+      "id": "heading_line2",
+      "label": "Heading Line 2",
+      "default": "Opportunity is unlimited."
     },
     {
       "type": "textarea",
