@@ -323,85 +323,39 @@
     pointer-events: none;
   }
 
+  /* 3D Continuous Floating & 360 Gyro Motion Animation */
+  @keyframes wvs-card-360-float {
+    0% {
+      transform: perspective(1000px) rotateY(0deg) rotateX(4deg) translateY(0px) scale(1.01);
+    }
+    25% {
+      transform: perspective(1000px) rotateY(10deg) rotateX(-5deg) translateY(-8px) scale(1.02);
+    }
+    50% {
+      transform: perspective(1000px) rotateY(0deg) rotateX(6deg) translateY(0px) scale(1.01);
+    }
+    75% {
+      transform: perspective(1000px) rotateY(-10deg) rotateX(-4deg) translateY(8px) scale(1.02);
+    }
+    100% {
+      transform: perspective(1000px) rotateY(0deg) rotateX(4deg) translateY(0px) scale(1.01);
+    }
+  }
+
   .wvs-8d-card-img {
     width: 100%;
     height: 100%;
     object-fit: fill;
     display: block;
     border-radius: 19px;
-    transform: scale(1.015);
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: wvs-card-360-float 7s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+    transition: transform 0.4s ease;
+    will-change: transform;
   }
 
   .wvs-8d-card-frame:hover .wvs-8d-card-img {
-    transform: scale(1.04);
-  }
-
-  .wvs-8d-badge-top-left {
-    position: absolute;
-    top: 14px;
-    left: 14px;
-    z-index: 5;
-    background: rgba(9, 29, 52, 0.88);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid #38bdf8;
-    border-radius: 50px;
-    padding: 6px 14px;
-    color: #38bdf8;
-    font-size: 0.78rem;
-    font-weight: 800;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-  }
-
-  .wvs-8d-badge-top {
-    position: absolute;
-    top: 14px;
-    right: 14px;
-    z-index: 5;
-    background: rgba(9, 29, 52, 0.88);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid #ffcc00;
-    border-radius: 50px;
-    padding: 6px 14px;
-    color: #ffcc00;
-    font-size: 0.78rem;
-    font-weight: 800;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-  }
-
-  .wvs-8d-badge-bottom {
-    position: absolute;
-    bottom: 14px;
-    left: 14px;
-    z-index: 5;
-    background: rgba(0, 123, 62, 0.92);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: 50px;
-    padding: 6px 14px;
-    color: #ffffff;
-    font-size: 0.78rem;
-    font-weight: 800;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-  }
-
-  .wvs-8d-badge-bottom-right {
-    position: absolute;
-    bottom: 14px;
-    right: 14px;
-    z-index: 5;
-    background: rgba(9, 29, 52, 0.88);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid #fb923c;
-    border-radius: 50px;
-    padding: 6px 14px;
-    color: #fb923c;
-    font-size: 0.78rem;
-    font-weight: 800;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    animation-play-state: paused;
+    transform: perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1.04);
   }
 
   /* --- POINT 02: WHY THE PRODUCT MATTERS (LUCRATIVE CARDS) --- */
@@ -781,13 +735,9 @@
         </div>
       </div>
 
-      <!-- RIGHT 8D CARD DISPLAY -->
+      <!-- RIGHT 3D ROTATING CARD DISPLAY -->
       <div class="wvs-p1-right">
         <div class="wvs-8d-card-frame">
-          <span class="wvs-8d-badge-top-left">🔬 Nano-Tech</span>
-          <span class="wvs-8d-badge-top">⚡ Save 20%-30%</span>
-          <span class="wvs-8d-badge-bottom">🛡️ ISO-Certified</span>
-          <span class="wvs-8d-badge-bottom-right">⚡ Terahertz Chip</span>
           <div class="wvs-8d-card-inner">
             <div class="wvs-card-sheen"></div>
             {%- if section.settings.card_custom_image != blank -%}
