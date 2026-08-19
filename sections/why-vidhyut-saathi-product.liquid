@@ -210,12 +210,59 @@
     border-radius: inherit;
   }
 
-  /* --- CENTRE TEXT COLUMN --- */
+  /* --- CENTRE TEXT COLUMN (ULTRA LUCRATIVE HERO SHELL) --- */
   .wvs-p2-header-center {
     text-align: center;
-    padding: 24px 16px;
+    padding: 10px 16px;
     position: relative;
     z-index: 5;
+  }
+
+  .wvs-p2-hero-card {
+    background: #FFFFFF;
+    border: 2px solid #F17022;
+    border-radius: 28px;
+    padding: clamp(22px, 3.2vw, 36px) clamp(18px, 3.5vw, 42px);
+    box-shadow: 0 20px 50px rgba(241, 112, 34, 0.14), 0 6px 20px rgba(0, 0, 0, 0.04);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+  }
+
+  .wvs-p2-hero-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 25px 60px rgba(241, 112, 34, 0.22), 0 8px 25px rgba(0, 0, 0, 0.06);
+  }
+
+  /* Top Decorative Glowing Energy Strip */
+  .wvs-p2-hero-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #009A44 0%, #F17022 50%, #FDBA00 100%);
+  }
+
+  .wvs-p2-mini-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px;
+    background: #FFF7ED;
+    border: 1px solid #F17022;
+    color: #F17022;
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border-radius: 50px;
+    margin-bottom: 16px;
+  }
+
+  .wvs-p2-mini-tag i {
+    color: #FDBA00;
   }
 
   .wvs-p2-title {
@@ -226,50 +273,57 @@
   .wvs-p2-line-main {
     display: block;
     font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
-    font-size: clamp(17px, 2.4vw, 34px);
+    font-size: clamp(18px, 2.5vw, 32px);
     font-weight: 800;
     color: #231F20;
-    letter-spacing: -0.3px;
-    line-height: 1.28;
-    margin-bottom: 16px;
+    letter-spacing: -0.4px;
+    line-height: 1.25;
+    margin-bottom: 18px;
     text-transform: uppercase;
-    white-space: nowrap;
+  }
+
+  .wvs-p2-line-main .wvs-highlight-orange-box {
+    color: #F17022;
+    background: rgba(241, 112, 34, 0.08);
+    padding: 2px 10px;
+    border-radius: 8px;
+    border: 1px dashed rgba(241, 112, 34, 0.3);
+    display: inline-block;
   }
 
   .wvs-p2-pill-highlight {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    padding: 12px 32px;
-    background: linear-gradient(135deg, #009A44, #00b855);
-    border: 2.5px solid #F17022;
+    gap: 12px;
+    padding: 14px 34px;
+    background: #009A44;
+    border: 2px solid #FDBA00;
     color: #ffffff;
     border-radius: 50px;
     font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
-    font-size: clamp(14px, 1.8vw, 21px);
+    font-size: clamp(15px, 2.0vw, 22px);
     font-weight: 800;
-    letter-spacing: 0.8px;
+    letter-spacing: 1px;
     text-transform: uppercase;
-    box-shadow: 0 12px 35px rgba(0, 154, 68, 0.3), 0 0 0 4px rgba(241, 112, 34, 0.12);
+    box-shadow: 0 12px 35px rgba(0, 154, 68, 0.3);
     transition: all 0.35s ease;
-    white-space: nowrap;
   }
 
   .wvs-p2-pill-highlight i {
     color: #FDBA00;
-    font-size: 1.1em;
+    font-size: 1.15em;
     flex-shrink: 0;
   }
 
   .wvs-p2-pill-highlight span {
     color: #FDBA00;
-    letter-spacing: 1px;
   }
 
   .wvs-p2-pill-highlight:hover {
     transform: translateY(-3px) scale(1.03);
-    box-shadow: 0 18px 45px rgba(0, 154, 68, 0.4), 0 0 0 6px rgba(241, 112, 34, 0.18);
+    background: #008239;
+    box-shadow: 0 18px 45px rgba(0, 154, 68, 0.45);
   }
 
   .wvs-p3-title {
@@ -956,15 +1010,23 @@
             >
           </div>
 
-          <!-- CENTRE: HEADING TEXT -->
+          <!-- CENTRE: HEADING TEXT (ULTRA LUCRATIVE HERO CARD) -->
           <div class="wvs-p2-header-center">
-            <h3 class="wvs-p2-title">
-              <span class="wvs-p2-line-main">ELECTRICITY IS NOT A ONE-TIME EXPENSE.</span>
-              <span class="wvs-p2-pill-highlight">
-                <i class="fa-solid fa-calculator"></i>
-                <span>IT'S A MONTHLY EXPENSE.</span>
-              </span>
-            </h3>
+            <div class="wvs-p2-hero-card">
+              <div class="wvs-p2-mini-tag">
+                <i class="fa-solid fa-bolt"></i>
+                <span>ESSENTIAL RECURRING UTILITY MARKET</span>
+              </div>
+              <h3 class="wvs-p2-title">
+                <span class="wvs-p2-line-main">
+                  ELECTRICITY IS NOT A <span class="wvs-highlight-orange-box">ONE-TIME EXPENSE</span>
+                </span>
+                <span class="wvs-p2-pill-highlight">
+                  <i class="fa-solid fa-calculator"></i>
+                  <span>IT'S A MONTHLY EXPENSE.</span>
+                </span>
+              </h3>
+            </div>
           </div>
 
           <!-- RIGHT TALL ELECTRICITY POLE -->
