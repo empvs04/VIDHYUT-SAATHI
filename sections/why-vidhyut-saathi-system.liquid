@@ -78,16 +78,17 @@
 
   .wvs-engine-card {
     background: #ffffff;
-    border: 2px solid #e2e8f0;
-    border-radius: 20px;
-    padding: 24px 20px;
+    border: 2px solid rgba(241, 112, 34, 0.18);
+    border-radius: 24px;
+    padding: 28px 22px;
     position: relative;
     transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.03);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
+    overflow: hidden;
   }
 
   .wvs-engine-card::before {
@@ -97,58 +98,68 @@
     left: 0;
     right: 0;
     height: 5px;
-    background: linear-gradient(90deg, #F17022, #FDBA00);
-    border-radius: 20px 20px 0 0;
-    opacity: 0;
+    background: linear-gradient(90deg, #009A44 0%, #25D300 35%, #F17022 70%, #FDBA00 100%);
+    border-radius: 24px 24px 0 0;
+    opacity: 0.8;
     transition: opacity 0.3s ease;
   }
 
   .wvs-engine-card:hover {
     transform: translateY(-8px);
     border-color: #F17022;
-    box-shadow: 0 20px 40px rgba(241, 112, 34, 0.15);
+    box-shadow: 0 22px 50px rgba(241, 112, 34, 0.2), 0 0 0 4px rgba(241, 112, 34, 0.08);
   }
 
   .wvs-engine-card:hover::before {
     opacity: 1;
+    height: 6px;
   }
 
   .wvs-engine-icon {
-    width: 54px;
-    height: 54px;
-    border-radius: 16px;
-    background: #009A44;
+    width: 58px;
+    height: 58px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #009A44 0%, #00b853 100%);
+    border: 2px solid #FDBA00;
     color: #FDBA00;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     margin-bottom: 16px;
-    box-shadow: 0 8px 20px rgba(0, 154, 68, 0.2);
-    transition: transform 0.3s ease;
+    box-shadow: 0 10px 24px rgba(0, 154, 68, 0.3);
+    transition: all 0.35s ease;
     flex-shrink: 0;
   }
 
   .wvs-engine-card:hover .wvs-engine-icon {
-    transform: scale(1.1) rotate(5deg);
-    background: #F17022;
+    transform: scale(1.12) rotate(6deg);
+    background: linear-gradient(135deg, #F17022 0%, #FB5900 100%);
+    border-color: #ffffff;
     color: #ffffff;
+    box-shadow: 0 12px 28px rgba(241, 112, 34, 0.4);
   }
 
   .wvs-engine-step-num {
-    font-size: 0.78rem;
-    font-weight: 800;
+    display: inline-block;
+    padding: 3px 12px;
+    background: #FFF7ED;
+    border: 1px solid #F17022;
+    border-radius: 50px;
+    font-size: 0.76rem;
+    font-weight: 900;
     color: #F17022;
     letter-spacing: 1.5px;
     text-transform: uppercase;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
+    box-shadow: 0 3px 8px rgba(241, 112, 34, 0.1);
   }
 
   .wvs-engine-card h4 {
     font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
-    font-size: 1.15rem;
-    font-weight: 800;
-    color: #231F20;
+    font-size: 1.18rem;
+    font-weight: 900;
+    color: #111111;
     margin-bottom: 8px;
     letter-spacing: -0.3px;
   }
@@ -163,21 +174,22 @@
 
   .wvs-engine-banner {
     text-align: center;
-    padding: 24px 20px;
-    background: #009A44;
-    border: 2px solid #F17022;
+    padding: 26px 22px;
+    background: linear-gradient(135deg, #009A44 0%, #007b3e 50%, #00b853 100%);
+    border: 2.5px solid #FDBA00;
     color: #ffffff;
-    border-radius: 24px;
+    border-radius: 26px;
     font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
     font-size: clamp(16px, 2.2vw, 22px);
     font-weight: 900;
     letter-spacing: 1.2px;
     text-transform: uppercase;
-    box-shadow: 0 15px 40px rgba(0, 154, 68, 0.25);
+    box-shadow: 0 18px 45px rgba(0, 154, 68, 0.35), 0 0 20px rgba(253, 186, 0, 0.2);
   }
 
   .wvs-engine-banner span {
     color: #FDBA00;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.2);
   }
 
   /* --- POINT 08: THE FRANCHISE ADVANTAGE --- */
@@ -209,19 +221,22 @@
 
   .wvs-eco-box {
     border-radius: 28px;
-    padding: 36px 30px;
+    padding: clamp(28px, 3.5vw, 40px) clamp(20px, 3vw, 32px);
     position: relative;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.05);
+    transition: transform 0.35s ease;
   }
 
   .wvs-eco-box-growth {
     background: linear-gradient(145deg, #ffffff 0%, #fff7ed 100%);
-    border: 2px solid #fdba74;
+    border: 2.5px solid #F17022;
+    box-shadow: 0 18px 45px rgba(241, 112, 34, 0.12);
   }
 
   .wvs-eco-box-support {
     background: linear-gradient(145deg, #ffffff 0%, #f0fdf4 100%);
-    border: 2px solid #86efac;
+    border: 2.5px solid #009A44;
+    box-shadow: 0 18px 45px rgba(0, 154, 68, 0.12);
   }
 
   .wvs-eco-title {
@@ -253,45 +268,55 @@
   .wvs-eco-item {
     display: flex;
     align-items: flex-start;
-    gap: 14px;
+    gap: 16px;
     background: #ffffff;
-    border-radius: 16px;
-    padding: 16px 18px;
-    border: 1px solid rgba(0, 0, 0, 0.06);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
-    transition: transform 0.3s ease;
+    border-radius: 18px;
+    padding: 16px 20px;
+    border: 1.5px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.03);
+    transition: all 0.3s ease;
   }
 
   .wvs-eco-item:hover {
-    transform: translateX(6px);
+    transform: translateX(8px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  }
+
+  .wvs-eco-box-growth .wvs-eco-item:hover {
+    border-color: #F17022;
+  }
+
+  .wvs-eco-box-support .wvs-eco-item:hover {
+    border-color: #009A44;
   }
 
   .wvs-eco-item-icon {
-    width: 38px;
-    height: 38px;
-    border-radius: 10px;
+    width: 42px;
+    height: 42px;
+    border-radius: 14px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1rem;
+    font-size: 1.1rem;
     flex-shrink: 0;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
   }
 
   .wvs-eco-box-growth .wvs-eco-item-icon {
-    background: #FFF7ED;
-    color: #F17022;
+    background: linear-gradient(135deg, #F17022 0%, #FB5900 100%);
+    color: #ffffff;
   }
 
   .wvs-eco-box-support .wvs-eco-item-icon {
-    background: #F0FDF4;
-    color: #009A44;
+    background: linear-gradient(135deg, #009A44 0%, #00b853 100%);
+    color: #ffffff;
   }
 
   .wvs-eco-item-content h5 {
     font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
-    font-size: 1.02rem;
+    font-size: 1.05rem;
     font-weight: 900;
-    color: #231F20;
+    color: #111111;
     margin: 0 0 4px 0;
   }
 
@@ -304,13 +329,13 @@
   }
 
   .wvs-p8-cta-banner {
-    background: #009A44;
-    border: 2px solid #F17022;
-    border-radius: 24px;
+    background: linear-gradient(135deg, #009A44 0%, #007b3e 50%, #00b853 100%);
+    border: 2.5px solid #FDBA00;
+    border-radius: 26px;
     padding: 28px 24px;
     text-align: center;
     color: #ffffff;
-    box-shadow: 0 15px 40px rgba(0, 154, 68, 0.25);
+    box-shadow: 0 18px 45px rgba(0, 154, 68, 0.35), 0 0 20px rgba(253, 186, 0, 0.2);
   }
 
   .wvs-p8-cta-title {
@@ -324,6 +349,7 @@
 
   .wvs-p8-cta-title span {
     color: #FDBA00;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.2);
   }
 
   /* --- POINT 09: BUILT FOR ENTREPRENEURS --- */
@@ -347,46 +373,49 @@
 
   .wvs-p9-card {
     background: #ffffff;
-    border: 2px solid #f1f5f9;
-    border-radius: 22px;
-    padding: 30px 24px;
+    border: 2px solid rgba(241, 112, 34, 0.18);
+    border-radius: 24px;
+    padding: 32px 24px;
     position: relative;
     transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.03);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
   }
 
   .wvs-p9-card:hover {
     transform: translateY(-8px);
     border-color: #F17022;
-    box-shadow: 0 20px 45px rgba(241, 112, 34, 0.15);
+    box-shadow: 0 22px 50px rgba(241, 112, 34, 0.2), 0 0 0 4px rgba(241, 112, 34, 0.08);
   }
 
   .wvs-p9-card-icon {
-    width: 54px;
-    height: 54px;
-    border-radius: 16px;
-    background: #FFF7ED;
-    border: 1.5px solid #F17022;
+    width: 58px;
+    height: 58px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #FFF7ED 0%, #FFEDD5 100%);
+    border: 2px solid #F17022;
     color: #F17022;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     margin-bottom: 18px;
-    transition: transform 0.3s ease;
+    transition: all 0.35s ease;
+    box-shadow: 0 6px 18px rgba(241, 112, 34, 0.15);
   }
 
   .wvs-p9-card:hover .wvs-p9-card-icon {
-    transform: scale(1.1) rotate(-5deg);
-    background: #F17022;
+    transform: scale(1.12) rotate(-6deg);
+    background: linear-gradient(135deg, #F17022 0%, #FB5900 100%);
+    border-color: #ffffff;
     color: #ffffff;
+    box-shadow: 0 10px 25px rgba(241, 112, 34, 0.35);
   }
 
   .wvs-p9-card h4 {
     font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
-    font-size: 1.15rem;
+    font-size: 1.18rem;
     font-weight: 900;
-    color: #231F20;
+    color: #111111;
     margin-bottom: 8px;
     letter-spacing: -0.3px;
   }
@@ -401,13 +430,13 @@
 
   /* WHAT MATTERS MOST Section */
   .wvs-matters-box {
-    background: #009A44;
-    border: 2px solid #FDBA00;
+    background: linear-gradient(135deg, #009A44 0%, #008038 100%);
+    border: 2.5px solid #FDBA00;
     border-radius: 28px;
-    padding: 36px 30px;
+    padding: 38px 30px;
     text-align: center;
     color: #ffffff;
-    box-shadow: 0 20px 50px rgba(0, 154, 68, 0.25);
+    box-shadow: 0 20px 50px rgba(0, 154, 68, 0.3), 0 0 20px rgba(253, 186, 0, 0.2);
   }
 
   .wvs-matters-title {
@@ -418,6 +447,7 @@
     margin-bottom: 24px;
     letter-spacing: 1px;
     text-transform: uppercase;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.2);
   }
 
   .wvs-matters-grid {
@@ -427,24 +457,27 @@
   }
 
   .wvs-matter-pill {
-    background: rgba(255, 255, 255, 0.08);
-    border: 1.5px solid rgba(255, 204, 0, 0.4);
-    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 2px solid #FDBA00;
+    border-radius: 18px;
     padding: 16px 20px;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 12px;
     font-size: 1.05rem;
-    font-weight: 800;
+    font-weight: 900;
     color: #ffffff;
-    transition: all 0.3s ease;
+    transition: all 0.35s ease;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
   }
 
   .wvs-matter-pill:hover {
-    background: rgba(236, 92, 10, 0.25);
-    border-color: #ec5c0a;
-    transform: translateY(-3px);
+    background: rgba(241, 112, 34, 0.4);
+    border-color: #ffffff;
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
   }
 
   .wvs-matter-pill i {
@@ -531,6 +564,19 @@
       box-sizing: border-box;
       scroll-snap-align: start;
       margin: 0;
+      padding: 24px 18px;
+    }
+    .wvs-eco-item {
+      display: flex;
+      align-items: flex-start;
+      text-align: left;
+      padding: 14px 16px;
+      gap: 14px;
+    }
+    .wvs-eco-item-icon {
+      width: 38px;
+      height: 38px;
+      flex-shrink: 0;
     }
 
     /* Point 09 Mobile 100% Clean Full Width Slider */
@@ -556,6 +602,19 @@
       box-sizing: border-box;
       scroll-snap-align: start;
       margin: 0;
+      padding: 24px 18px;
+    }
+    .wvs-matter-pill {
+      justify-content: flex-start;
+      text-align: left;
+      padding: 14px 18px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .wvs-matter-pill i {
+      width: 24px;
+      text-align: center;
+      flex-shrink: 0;
     }
 
     /* Active Pagination Dots */
