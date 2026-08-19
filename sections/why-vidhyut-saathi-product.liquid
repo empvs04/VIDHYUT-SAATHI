@@ -446,7 +446,12 @@
     margin: 0;
   }
 
-  /* Mobile Responsive Enhancements */
+  /* Slider Dots Styling for Mobile */
+  .wvs-slider-dots-p2, .wvs-slider-dots-p3 {
+    display: none;
+  }
+
+  /* Mobile Responsive & Auto-Slider Enhancements */
   @media (max-width: 991px) {
     .wvs-sec3-wrapper {
       padding: clamp(35px, 5vw, 60px) 14px;
@@ -468,12 +473,6 @@
     .wvs-specs-row {
       justify-content: center;
     }
-    .wvs-p2-grid {
-      grid-template-columns: 1fr;
-    }
-    .wvs-p3-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
   }
 
   @media (max-width: 768px) {
@@ -492,6 +491,69 @@
     }
     .wvs-tech-card {
       padding: 24px 18px;
+    }
+
+    /* Slider 1: Point 02 Market Cards Horizontal Auto-Slider */
+    .wvs-p2-grid {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      gap: 16px;
+      padding: 10px 4px 20px 4px;
+      margin-bottom: 10px;
+      scrollbar-width: none;
+    }
+    .wvs-p2-grid::-webkit-scrollbar {
+      display: none;
+    }
+    .wvs-p2-card {
+      flex: 0 0 88%;
+      scroll-snap-align: center;
+    }
+
+    /* Slider 2: Point 03 Tech Cards Horizontal Auto-Slider */
+    .wvs-p3-grid {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      gap: 16px;
+      padding: 10px 4px 20px 4px;
+      margin-bottom: 10px;
+      scrollbar-width: none;
+    }
+    .wvs-p3-grid::-webkit-scrollbar {
+      display: none;
+    }
+    .wvs-tech-card {
+      flex: 0 0 88%;
+      scroll-snap-align: center;
+    }
+
+    /* Active Pagination Dots */
+    .wvs-slider-dots-p2, .wvs-slider-dots-p3 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      margin-top: 4px;
+      margin-bottom: 30px;
+    }
+    .wvs-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #cbd5e1;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .wvs-dot.active {
+      width: 26px;
+      border-radius: 20px;
+      background: #ec5c0a;
     }
   }
 
@@ -512,8 +574,8 @@
       padding: 4px 10px;
       font-size: 0.72rem;
     }
-    .wvs-p3-grid {
-      grid-template-columns: 1fr;
+    .wvs-p2-card, .wvs-tech-card {
+      flex: 0 0 92%;
     }
     .wvs-specs-row {
       flex-direction: column;
@@ -609,6 +671,7 @@
         <h3 class="wvs-sec3-main-title">Electricity is Not a One-Time Expense.<br>It's a Monthly Expense.</h3>
       </div>
 
+      <!-- 4 Market Cards Container (Auto Slider on Mobile) -->
       <div class="wvs-p2-grid">
         <div class="wvs-p2-card">
           <div class="wvs-p2-icon"><i class="fa-solid fa-house-user"></i></div>
@@ -633,10 +696,13 @@
           <h4>Existing Market Demand</h4>
           <p>The market isn't created by the product alone—the market already exists wherever electricity is consumed.</p>
         </div>
+      </div>
 
-        <div class="wvs-p2-callout">
-          <p>Vidhyut Saathi gives entrepreneurs an opportunity to take an <strong>energy-saving solution into that existing market.</strong></p>
-        </div>
+      <!-- Mobile Pagination Dots for Slider 1 -->
+      <div class="wvs-slider-dots-p2"></div>
+
+      <div class="wvs-p2-callout">
+        <p>Vidhyut Saathi gives entrepreneurs an opportunity to take an <strong>energy-saving solution into that existing market.</strong></p>
       </div>
     </div>
 
@@ -653,6 +719,7 @@
         </p>
       </div>
 
+      <!-- 6 Tech Cards Container (Auto Slider on Mobile) -->
       <div class="wvs-p3-grid">
         <div class="wvs-tech-card">
           <span class="wvs-tech-num">01</span>
@@ -696,9 +763,109 @@
           <p>Promotes smarter and more responsible energy consumption for a sustainable future.</p>
         </div>
       </div>
+
+      <!-- Mobile Pagination Dots for Slider 2 -->
+      <div class="wvs-slider-dots-p3"></div>
     </div>
   </div>
 </div>
+
+<script>
+  (function() {
+    function initMobileAutoSlider(gridSelector, cardSelector, dotsSelector) {
+      const grid = document.querySelector(gridSelector);
+      const cards = document.querySelectorAll(cardSelector);
+      const dotsContainer = document.querySelector(dotsSelector);
+
+      if (!grid || cards.length === 0 || !dotsContainer) return;
+
+      dotsContainer.innerHTML = '';
+      cards.forEach(function(_, index) {
+        const dot = document.createElement('span');
+        dot.className = 'wvs-dot' + (index === 0 ? ' active' : '');
+        dot.addEventListener('click', function() {
+          scrollToSlide(index);
+        });
+        dotsContainer.appendChild(dot);
+      });
+
+      const dots = dotsContainer.querySelectorAll('.wvs-dot');
+      let currentIndex = 0;
+      let intervalId = null;
+
+      function scrollToSlide(index) {
+        if (index >= cards.length) index = 0;
+        if (index < 0) index = cards.length - 1;
+        currentIndex = index;
+        const targetCard = cards[currentIndex];
+        if (targetCard) {
+          const scrollLeft = targetCard.offsetLeft - (grid.clientWidth - targetCard.clientWidth) / 2;
+          grid.scrollTo({ left: scrollLeft, behavior: 'smooth' });
+        }
+        updateDots();
+      }
+
+      function updateDots() {
+        dots.forEach(function(dot, i) {
+          if (i === currentIndex) {
+            dot.classList.add('active');
+          } else {
+            dot.classList.remove('active');
+          }
+        });
+      }
+
+      function startAutoPlay() {
+        if (window.innerWidth <= 768 && !intervalId) {
+          intervalId = setInterval(function() {
+            scrollToSlide(currentIndex + 1);
+          }, 3000);
+        }
+      }
+
+      function stopAutoPlay() {
+        if (intervalId) {
+          clearInterval(intervalId);
+          intervalId = null;
+        }
+      }
+
+      grid.addEventListener('scroll', function() {
+        if (window.innerWidth > 768) return;
+        const gridCenter = grid.scrollLeft + grid.clientWidth / 2;
+        cards.forEach(function(card, idx) {
+          const cardCenter = card.offsetLeft + card.clientWidth / 2;
+          if (Math.abs(gridCenter - cardCenter) < card.clientWidth / 2) {
+            currentIndex = idx;
+            updateDots();
+          }
+        });
+      });
+
+      grid.addEventListener('touchstart', stopAutoPlay);
+      grid.addEventListener('touchend', startAutoPlay);
+
+      startAutoPlay();
+      window.addEventListener('resize', function() {
+        if (window.innerWidth > 768) {
+          stopAutoPlay();
+        } else {
+          startAutoPlay();
+        }
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function() {
+        initMobileAutoSlider('.wvs-p2-grid', '.wvs-p2-card', '.wvs-slider-dots-p2');
+        initMobileAutoSlider('.wvs-p3-grid', '.wvs-tech-card', '.wvs-slider-dots-p3');
+      });
+    } else {
+      initMobileAutoSlider('.wvs-p2-grid', '.wvs-p2-card', '.wvs-slider-dots-p2');
+      initMobileAutoSlider('.wvs-p3-grid', '.wvs-tech-card', '.wvs-slider-dots-p3');
+    }
+  })();
+</script>
 
 {% schema %}
 {
