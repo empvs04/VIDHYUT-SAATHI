@@ -216,21 +216,22 @@
   }
 
   .wvs-p2-hero-card {
-    background: #FFFFFF;
-    border: 2px solid #F17022;
-    border-radius: 26px;
-    padding: clamp(20px, 2.5vw, 32px) clamp(14px, 2.2vw, 28px);
-    box-shadow: 0 20px 50px rgba(241, 112, 34, 0.14), 0 6px 20px rgba(0, 0, 0, 0.04);
+    background: radial-gradient(circle at 50% 0%, #FFFFFF 0%, #FFFDF9 60%, #FFF7ED 100%);
+    border: 2.5px solid #F17022;
+    border-radius: 28px;
+    padding: clamp(24px, 2.8vw, 36px) clamp(16px, 2.4vw, 32px);
+    box-shadow: 0 22px 55px rgba(241, 112, 34, 0.18), 0 0 0 4px rgba(0, 154, 68, 0.08);
     position: relative;
     overflow: hidden;
-    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     width: 100%;
     box-sizing: border-box;
   }
 
   .wvs-p2-hero-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 25px 60px rgba(241, 112, 34, 0.22), 0 8px 25px rgba(0, 0, 0, 0.06);
+    transform: translateY(-5px) scale(1.01);
+    box-shadow: 0 28px 65px rgba(241, 112, 34, 0.25), 0 0 0 6px rgba(0, 154, 68, 0.14);
+    border-color: #FB5900;
   }
 
   /* Top Decorative Glowing Energy Strip */
@@ -240,29 +241,31 @@
     top: 0;
     left: 0;
     right: 0;
-    height: 5px;
-    background: linear-gradient(90deg, #009A44 0%, #F17022 50%, #FDBA00 100%);
+    height: 6px;
+    background: linear-gradient(90deg, #009A44 0%, #25D300 30%, #F17022 65%, #FDBA00 100%);
   }
 
   .wvs-p2-mini-tag {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 6px 16px;
-    background: #FFF7ED;
-    border: 1px solid #F17022;
+    padding: 7px 18px;
+    background: linear-gradient(135deg, #FFF7ED 0%, #FFEDD5 100%);
+    border: 1.5px solid #F17022;
     color: #F17022;
-    font-size: clamp(0.72rem, 1.2vw, 0.82rem);
-    font-weight: 800;
+    font-size: clamp(0.72rem, 1.2vw, 0.84rem);
+    font-weight: 900;
     letter-spacing: 1.5px;
     text-transform: uppercase;
     border-radius: 50px;
-    margin-bottom: 16px;
+    margin-bottom: 18px;
     white-space: nowrap;
+    box-shadow: 0 4px 15px rgba(241, 112, 34, 0.12);
   }
 
   .wvs-p2-mini-tag i {
     color: #FDBA00;
+    font-size: 0.95em;
   }
 
   .wvs-p2-title {
@@ -274,42 +277,62 @@
     display: block;
     white-space: nowrap;
     font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
-    font-size: clamp(16px, 2.1vw, 29px);
-    font-weight: 800;
+    font-size: clamp(16px, 2.2vw, 30px);
+    font-weight: 900;
     color: #231F20;
     letter-spacing: -0.4px;
     line-height: 1.25;
-    margin-bottom: 16px;
+    margin-bottom: 18px;
     text-transform: uppercase;
   }
 
   .wvs-p2-line-main .wvs-highlight-orange-box {
     color: #F17022;
-    background: rgba(241, 112, 34, 0.08);
-    padding: 2px 8px;
-    border-radius: 8px;
-    border: 1px dashed rgba(241, 112, 34, 0.3);
+    background: linear-gradient(135deg, #FFF7ED 0%, #FFEDD5 100%);
+    padding: 4px 14px;
+    border-radius: 12px;
+    border: 2px solid #F17022;
     display: inline-block;
+    box-shadow: 0 6px 18px rgba(241, 112, 34, 0.15);
+    letter-spacing: -0.2px;
   }
 
   .wvs-p2-pill-highlight {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    padding: 12px 30px;
-    background: #009A44;
-    border: 2px solid #FDBA00;
+    gap: 12px;
+    padding: 14px 34px;
+    background: linear-gradient(135deg, #009A44 0%, #00b853 100%);
+    border: 2.5px solid #FDBA00;
     color: #ffffff;
     border-radius: 50px;
     font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
     font-size: clamp(14px, 1.8vw, 21px);
-    font-weight: 800;
-    letter-spacing: 0.8px;
+    font-weight: 900;
+    letter-spacing: 1px;
     text-transform: uppercase;
-    box-shadow: 0 12px 35px rgba(0, 154, 68, 0.3);
+    box-shadow: 0 14px 38px rgba(0, 154, 68, 0.35), 0 0 20px rgba(253, 186, 0, 0.25);
     transition: all 0.35s ease;
     white-space: nowrap;
+  }
+
+  .wvs-p2-pill-highlight i {
+    color: #FDBA00;
+    font-size: 1.2em;
+    flex-shrink: 0;
+  }
+
+  .wvs-p2-pill-highlight span {
+    color: #FDBA00;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .wvs-p2-pill-highlight:hover {
+    transform: translateY(-3px) scale(1.03);
+    background: linear-gradient(135deg, #00b853 0%, #25D300 100%);
+    border-color: #ffffff;
+    box-shadow: 0 18px 48px rgba(37, 211, 0, 0.4), 0 0 25px rgba(253, 186, 0, 0.4);
   }
 
   .wvs-p2-pill-highlight i {
