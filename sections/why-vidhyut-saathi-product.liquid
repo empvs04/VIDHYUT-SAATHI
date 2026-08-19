@@ -90,105 +90,37 @@
     font-weight: 900;
   }
 
-  /* Hierarchy Block for Point 01 Title */
-  .wvs-hierarchy-list {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+  /* Clean Typographic Hierarchy for Point 01 Title */
+  .wvs-h4-title {
+    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
     margin-bottom: 22px;
+    line-height: 1.25;
   }
 
-  .wvs-hierarchy-item {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 12px 18px;
-    border-radius: 16px;
-    background: #ffffff;
-    border: 2px solid #e2e8f0;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .wvs-hierarchy-item:hover {
-    transform: translateX(6px);
-  }
-
-  /* Level 1: SIMPLE TO INSTALL */
-  .wvs-hierarchy-item.wvs-h-level-1 {
-    border-color: #cbd5e1;
-    border-left: 6px solid #0f2c4a;
-    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-  }
-
-  .wvs-h-level-1 .wvs-h-badge {
-    background: #0f2c4a;
-    color: #ffffff;
-  }
-
-  .wvs-h-level-1 .wvs-h-text {
-    font-size: clamp(20px, 2.5vw, 30px);
+  .wvs-h4-part-1 {
+    display: block;
+    font-size: clamp(28px, 3.8vw, 44px);
     font-weight: 900;
     color: #0f2c4a;
-    letter-spacing: -0.4px;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
   }
 
-  /* Level 2: EASY TO DEMONSTRATE */
-  .wvs-hierarchy-item.wvs-h-level-2 {
-    border-color: #fdba74;
-    border-left: 6px solid #ec5c0a;
-    background: linear-gradient(135deg, #ffffff 0%, #fff7ed 100%);
-  }
-
-  .wvs-h-level-2 .wvs-h-badge {
-    background: #ec5c0a;
-    color: #ffffff;
-  }
-
-  .wvs-h-level-2 .wvs-h-text {
-    font-size: clamp(18px, 2.2vw, 26px);
+  .wvs-h4-part-2 {
+    display: block;
+    font-size: clamp(23px, 3.0vw, 36px);
     font-weight: 900;
     color: #ec5c0a;
-    letter-spacing: -0.3px;
+    letter-spacing: -0.4px;
+    margin-bottom: 8px;
   }
 
-  /* Level 3: BUILT FOR LONG-TERM USE */
-  .wvs-hierarchy-item.wvs-h-level-3 {
-    border-color: #86efac;
-    border-left: 6px solid #007b3e;
-    background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);
-  }
-
-  .wvs-h-level-3 .wvs-h-badge {
-    background: #007b3e;
-    color: #ffffff;
-  }
-
-  .wvs-h-level-3 .wvs-h-text {
-    font-size: clamp(16px, 1.9vw, 23px);
+  .wvs-h4-part-3 {
+    display: block;
+    font-size: clamp(19px, 2.4vw, 28px);
     font-weight: 900;
     color: #007b3e;
-    letter-spacing: -0.2px;
-  }
-
-  .wvs-h-badge {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
-    border-radius: 10px;
-    font-family: 'Outfit', sans-serif;
-    font-size: 0.95rem;
-    font-weight: 900;
-    flex-shrink: 0;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-  }
-
-  .wvs-h-text {
-    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
-    text-transform: uppercase;
-    line-height: 1.25;
+    letter-spacing: -0.3px;
   }
 
   .wvs-p2-title {
@@ -807,20 +739,11 @@
     <div class="wvs-p1-row">
       <!-- LEFT CONTENT -->
       <div class="wvs-p1-left">
-        <div class="wvs-hierarchy-list">
-          <div class="wvs-hierarchy-item wvs-h-level-1">
-            <span class="wvs-h-badge">01</span>
-            <span class="wvs-h-text">SIMPLE TO INSTALL.</span>
-          </div>
-          <div class="wvs-hierarchy-item wvs-h-level-2">
-            <span class="wvs-h-badge">02</span>
-            <span class="wvs-h-text">EASY TO DEMONSTRATE.</span>
-          </div>
-          <div class="wvs-hierarchy-item wvs-h-level-3">
-            <span class="wvs-h-badge">03</span>
-            <span class="wvs-h-text">BUILT FOR LONG-TERM USE.</span>
-          </div>
-        </div>
+        <h3 class="wvs-h4-title">
+          <span class="wvs-h4-part-1">SIMPLE TO INSTALL.</span>
+          <span class="wvs-h4-part-2">EASY TO DEMONSTRATE.</span>
+          <span class="wvs-h4-part-3">BUILT FOR LONG-TERM USE.</span>
+        </h3>
         <p>
           Designed for hassle-free installation near the MCB without complicated wiring or any changes to the existing electrical setup. It allows entrepreneurs to easily demonstrate savings to customers.
         </p>
