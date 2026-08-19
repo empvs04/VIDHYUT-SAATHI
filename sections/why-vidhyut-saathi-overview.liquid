@@ -53,16 +53,18 @@
 
   .wvs-sec2-title {
     font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
-    font-size: clamp(34px, 4.2vw, 56px);
+    font-size: clamp(24px, 3.2vw, 44px);
     font-weight: 800;
-    line-height: 1.18;
+    line-height: 1.25;
     color: #0f2c4a;
     margin-bottom: 20px;
     letter-spacing: -0.5px;
   }
 
-  .wvs-sec2-title span {
-    color: #ec5c0a;
+  .wvs-sec2-title .wvs-line {
+    display: block;
+    white-space: nowrap;
+    color: #0f2c4a;
   }
 
   .wvs-sec2-desc {
@@ -391,6 +393,9 @@
   }
 
   @media (max-width: 600px) {
+    .wvs-sec2-title .wvs-line {
+      white-space: normal;
+    }
     .wvs-center-sectors-grid {
       grid-template-columns: repeat(2, 1fr);
     }
@@ -418,8 +423,8 @@
         </div>
 
         <h2 class="wvs-sec2-title">
-          {{ section.settings.heading_line1 | default: "Electricity is everywhere." }}<br>
-          <span>{{ section.settings.heading_line2 | default: "Opportunity is unlimited." }}</span>
+          <span class="wvs-line">{{ section.settings.heading_line1 | default: "Electricity is everywhere." }}</span>
+          <span class="wvs-line">{{ section.settings.heading_line2 | default: "Opportunity is unlimited." }}</span>
         </h2>
 
         <p class="wvs-sec2-desc">
