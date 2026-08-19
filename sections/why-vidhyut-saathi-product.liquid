@@ -816,31 +816,57 @@
       padding: 5px 12px;
       font-size: 0.78rem;
     }
-    /* Mobile: keep pole layout as 3-col grid but shorter poles */
+    /* Mobile: Ultra-lucrative stacked layout with top/bottom tower banners and full-width card */
     .wvs-p2-header-wrapper {
-      grid-template-columns: clamp(60px, 18vw, 100px) 1fr clamp(60px, 18vw, 100px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+      width: 100%;
+      background: none;
     }
-    .wvs-tower-pole-col {
-      height: clamp(140px, 38vw, 200px);
+    .wvs-tower-pole-col-left {
+      order: 1;
+      width: 100%;
+      max-width: 320px;
+      height: 150px;
+      border-radius: 20px;
     }
     .wvs-p2-header-center {
-      padding: 16px 10px;
+      order: 2;
+      width: 100%;
+      padding: 0;
+    }
+    .wvs-tower-pole-col-right {
+      order: 3;
+      width: 100%;
+      max-width: 320px;
+      height: 150px;
+      border-radius: 20px;
+    }
+    .wvs-p2-hero-card {
+      padding: 24px 16px;
+      border-radius: 24px;
     }
     .wvs-p2-line-main {
       white-space: normal;
-      font-size: clamp(15px, 4.5vw, 22px);
-      font-weight: 700;
-      line-height: 1.25;
-      margin-bottom: 12px;
-      letter-spacing: -0.4px;
+      font-size: clamp(16px, 4.8vw, 22px);
+      font-weight: 800;
+      line-height: 1.3;
+      margin-bottom: 16px;
+    }
+    .wvs-p2-line-main .wvs-highlight-orange-box {
+      white-space: normal;
+      display: inline-block;
+      padding: 3px 8px;
+      margin-top: 4px;
     }
     .wvs-p2-pill-highlight {
-      padding: 10px 22px;
-      font-size: clamp(13px, 3.5vw, 17px);
-      gap: 8px;
-      border-width: 2px;
-      letter-spacing: 0.5px;
-      font-weight: 700;
+      width: 100%;
+      white-space: normal;
+      font-size: 0.95rem;
+      padding: 12px 18px;
+      box-sizing: border-box;
     }
     .wvs-p2-card {
       padding: 24px 18px;
