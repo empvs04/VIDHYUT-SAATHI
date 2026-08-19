@@ -61,10 +61,37 @@
     letter-spacing: -0.5px;
   }
 
-  .wvs-sec2-title .wvs-line {
+  .wvs-sec2-title .wvs-line-1 {
     display: block;
     white-space: nowrap;
     color: #0f2c4a;
+    font-weight: 900;
+  }
+
+  .wvs-sec2-title .wvs-line-2 {
+    display: block;
+    white-space: nowrap;
+    background: linear-gradient(135deg, #ec5c0a 0%, #ffcc00 40%, #007b3e 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 900;
+    filter: drop-shadow(0 2px 8px rgba(236, 92, 10, 0.15));
+  }
+
+  .wvs-num-highlight {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: linear-gradient(135deg, #ec5c0a 0%, #007b3e 100%);
+    color: #ffffff;
+    border-radius: 50%;
+    font-weight: 900;
+    font-size: 1.3rem;
+    box-shadow: 0 6px 20px rgba(236, 92, 10, 0.25);
+    margin-right: 8px;
+    vertical-align: middle;
   }
 
   .wvs-sec2-desc {
@@ -486,8 +513,8 @@
         </div>
 
         <h2 class="wvs-sec2-title">
-          <span class="wvs-line">{{ section.settings.heading_line1 | default: "Electricity is everywhere." }}</span>
-          <span class="wvs-line">{{ section.settings.heading_line2 | default: "Opportunity is unlimited." }}</span>
+          <span class="wvs-line-1">{{ section.settings.heading_line1 | default: "Electricity is everywhere." }}</span>
+          <span class="wvs-line-2">{{ section.settings.heading_line2 | default: "Opportunity is unlimited." }}</span>
         </h2>
 
         <p class="wvs-sec2-desc">
@@ -549,7 +576,9 @@
           <i class="fa-solid fa-bolt"></i>
           <span>HIGH SAVINGS DEMAND</span>
         </div>
-        <h3 class="wvs-center-title">7 Electricity Consumption Sectors</h3>
+        <h3 class="wvs-center-title">
+          <span class="wvs-num-highlight">7</span> Electricity Consumption Sectors
+        </h3>
         <p class="wvs-center-subtitle">
           Every place that consumes electricity represents a high-potential customer market for Vidhyut Saathi.
         </p>
