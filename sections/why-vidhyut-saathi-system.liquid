@@ -1,0 +1,1017 @@
+{%- comment -%}
+  Why Vidhyut Saathi Section 5 - Business Engine, Franchise Advantage & Built for Entrepreneurs (Points 07, 08, 09)
+{%- endcomment -%}
+
+{%- style -%}
+  .wvs-sec5-wrapper {
+    position: relative;
+    background: linear-gradient(180deg, #f8fafc 0%, #ffffff 50%, #f1f5f9 100%);
+    padding: clamp(60px, 8vw, 110px) 0;
+    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+    color: #0f2c4a;
+    overflow: hidden;
+  }
+
+  .wvs-sec5-container {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .wvs-sec5-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 22px;
+    background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+    border: 1.5px solid #fdba74;
+    color: #ec5c0a;
+    font-size: 0.88rem;
+    font-weight: 900;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    border-radius: 50px;
+    margin-bottom: 20px;
+    box-shadow: 0 6px 20px rgba(236, 92, 10, 0.1);
+  }
+
+  .wvs-sec5-main-title {
+    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+    font-size: clamp(26px, 3.8vw, 46px);
+    font-weight: 900;
+    line-height: 1.2;
+    color: #0f2c4a;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+  }
+
+  .wvs-sec5-subhead {
+    font-size: clamp(16px, 1.8vw, 20px);
+    line-height: 1.6;
+    color: #ec5c0a;
+    font-weight: 900;
+    margin-bottom: 35px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* --- POINT 07: THE VIDHYUT SAATHI BUSINESS ENGINE --- */
+  .wvs-p7-section {
+    margin-bottom: 100px;
+  }
+
+  .wvs-p7-head {
+    text-align: center;
+    max-width: 860px;
+    margin: 0 auto 50px auto;
+  }
+
+  /* 8-Step Engine Flywheel Grid */
+  .wvs-engine-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+    margin-bottom: 35px;
+  }
+
+  .wvs-engine-card {
+    background: #ffffff;
+    border: 2px solid #e2e8f0;
+    border-radius: 20px;
+    padding: 24px 20px;
+    position: relative;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.03);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .wvs-engine-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #ec5c0a, #ffcc00);
+    border-radius: 20px 20px 0 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .wvs-engine-card:hover {
+    transform: translateY(-8px);
+    border-color: #fdba74;
+    box-shadow: 0 20px 40px rgba(236, 92, 10, 0.15);
+  }
+
+  .wvs-engine-card:hover::before {
+    opacity: 1;
+  }
+
+  .wvs-engine-icon {
+    width: 54px;
+    height: 54px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #091d34 0%, #0b2545 100%);
+    color: #ffcc00;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    margin-bottom: 16px;
+    box-shadow: 0 8px 20px rgba(9, 29, 52, 0.2);
+    transition: transform 0.3s ease;
+  }
+
+  .wvs-engine-card:hover .wvs-engine-icon {
+    transform: scale(1.1) rotate(5deg);
+    background: linear-gradient(135deg, #ec5c0a 0%, #ff7b00 100%);
+    color: #ffffff;
+  }
+
+  .wvs-engine-step-num {
+    font-size: 0.78rem;
+    font-weight: 900;
+    color: #ec5c0a;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .wvs-engine-card h4 {
+    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 900;
+    color: #0f2c4a;
+    margin-bottom: 8px;
+    letter-spacing: -0.3px;
+  }
+
+  .wvs-engine-card p {
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: #64748b;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .wvs-engine-banner {
+    text-align: center;
+    padding: 24px 20px;
+    background: linear-gradient(135deg, #091d34 0%, #0b2545 100%);
+    border: 2px solid #ec5c0a;
+    color: #ffffff;
+    border-radius: 24px;
+    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+    font-size: clamp(16px, 2.2vw, 22px);
+    font-weight: 900;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    box-shadow: 0 15px 40px rgba(9, 29, 52, 0.25);
+  }
+
+  .wvs-engine-banner span {
+    color: #ffcc00;
+  }
+
+  /* --- POINT 08: THE FRANCHISE ADVANTAGE --- */
+  .wvs-p8-section {
+    margin-bottom: 100px;
+  }
+
+  .wvs-p8-head {
+    text-align: center;
+    max-width: 880px;
+    margin: 0 auto 50px auto;
+  }
+
+  .wvs-p8-intro-text {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #475569;
+    max-width: 820px;
+    margin: 0 auto 35px auto;
+    font-weight: 600;
+  }
+
+  .wvs-split-ecosystem {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-bottom: 35px;
+  }
+
+  .wvs-eco-box {
+    border-radius: 28px;
+    padding: 36px 30px;
+    position: relative;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.04);
+  }
+
+  .wvs-eco-box-growth {
+    background: linear-gradient(145deg, #ffffff 0%, #fff7ed 100%);
+    border: 2px solid #fdba74;
+  }
+
+  .wvs-eco-box-support {
+    background: linear-gradient(145deg, #ffffff 0%, #f0fdf4 100%);
+    border: 2px solid #86efac;
+  }
+
+  .wvs-eco-title {
+    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.35rem;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 2px dashed rgba(0, 0, 0, 0.1);
+  }
+
+  .wvs-eco-box-growth .wvs-eco-title {
+    color: #ec5c0a;
+  }
+
+  .wvs-eco-box-support .wvs-eco-title {
+    color: #007b3e;
+  }
+
+  .wvs-eco-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .wvs-eco-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 16px 18px;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+    transition: transform 0.3s ease;
+  }
+
+  .wvs-eco-item:hover {
+    transform: translateX(6px);
+  }
+
+  .wvs-eco-item-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .wvs-eco-box-growth .wvs-eco-item-icon {
+    background: #ffedd5;
+    color: #ec5c0a;
+  }
+
+  .wvs-eco-box-support .wvs-eco-item-icon {
+    background: #dcfce7;
+    color: #007b3e;
+  }
+
+  .wvs-eco-item-content h5 {
+    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.02rem;
+    font-weight: 900;
+    color: #0f2c4a;
+    margin: 0 0 4px 0;
+  }
+
+  .wvs-eco-item-content p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #64748b;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .wvs-p8-cta-banner {
+    background: linear-gradient(135deg, #091d34 0%, #0b2545 100%);
+    border: 2px solid #007b3e;
+    border-radius: 24px;
+    padding: 28px 24px;
+    text-align: center;
+    color: #ffffff;
+    box-shadow: 0 15px 40px rgba(9, 29, 52, 0.25);
+  }
+
+  .wvs-p8-cta-title {
+    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+    font-size: clamp(20px, 2.8vw, 30px);
+    font-weight: 900;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .wvs-p8-cta-title span {
+    color: #ffcc00;
+  }
+
+  /* --- POINT 09: BUILT FOR ENTREPRENEURS --- */
+  .wvs-p9-section {
+    margin-bottom: 40px;
+  }
+
+  .wvs-p9-head {
+    text-align: center;
+    max-width: 860px;
+    margin: 0 auto 50px auto;
+  }
+
+  /* 5 Archetypes Grid */
+  .wvs-p9-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+
+  .wvs-p9-card {
+    background: #ffffff;
+    border: 2px solid #f1f5f9;
+    border-radius: 22px;
+    padding: 30px 24px;
+    position: relative;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.03);
+  }
+
+  .wvs-p9-card:hover {
+    transform: translateY(-8px);
+    border-color: #ec5c0a;
+    box-shadow: 0 20px 45px rgba(236, 92, 10, 0.15);
+  }
+
+  .wvs-p9-card-icon {
+    width: 54px;
+    height: 54px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+    border: 1.5px solid #fdba74;
+    color: #ec5c0a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    margin-bottom: 18px;
+    transition: transform 0.3s ease;
+  }
+
+  .wvs-p9-card:hover .wvs-p9-card-icon {
+    transform: scale(1.1) rotate(-5deg);
+    background: linear-gradient(135deg, #ec5c0a 0%, #ff7b00 100%);
+    color: #ffffff;
+  }
+
+  .wvs-p9-card h4 {
+    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 900;
+    color: #0f2c4a;
+    margin-bottom: 8px;
+    letter-spacing: -0.3px;
+  }
+
+  .wvs-p9-card p {
+    font-size: 0.94rem;
+    line-height: 1.6;
+    color: #64748b;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  /* WHAT MATTERS MOST Section */
+  .wvs-matters-box {
+    background: linear-gradient(135deg, #091d34 0%, #0b2545 100%);
+    border: 2px solid #ffcc00;
+    border-radius: 28px;
+    padding: 36px 30px;
+    text-align: center;
+    color: #ffffff;
+    box-shadow: 0 20px 50px rgba(9, 29, 52, 0.3);
+  }
+
+  .wvs-matters-title {
+    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+    font-size: clamp(20px, 2.5vw, 28px);
+    font-weight: 900;
+    color: #ffcc00;
+    margin-bottom: 24px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .wvs-matters-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .wvs-matter-pill {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1.5px solid rgba(255, 204, 0, 0.4);
+    border-radius: 16px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: #ffffff;
+    transition: all 0.3s ease;
+  }
+
+  .wvs-matter-pill:hover {
+    background: rgba(236, 92, 10, 0.25);
+    border-color: #ec5c0a;
+    transform: translateY(-3px);
+  }
+
+  .wvs-matter-pill i {
+    color: #ffcc00;
+  }
+
+  /* Dots Navigation for Mobile Auto-Sliders */
+  .wvs-slider-dots-p7, .wvs-slider-dots-p8, .wvs-slider-dots-p9 {
+    display: none;
+  }
+
+  /* Responsive Design & Clean 100% Mobile Sliders */
+  @media (max-width: 991px) {
+    .wvs-engine-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .wvs-p9-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .wvs-split-ecosystem {
+      grid-template-columns: 1fr;
+    }
+    .wvs-matters-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .wvs-sec5-wrapper {
+      padding: clamp(35px, 5vw, 60px) 14px;
+    }
+
+    /* Point 07 Mobile 100% Clean Full Width Slider */
+    .wvs-engine-grid {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      gap: 0;
+      padding: 10px 0 20px 0;
+      margin-bottom: 10px;
+      scrollbar-width: none;
+      width: 100%;
+    }
+    .wvs-engine-grid::-webkit-scrollbar {
+      display: none;
+    }
+    .wvs-engine-card {
+      flex: 0 0 100%;
+      width: 100%;
+      min-width: 100%;
+      box-sizing: border-box;
+      scroll-snap-align: start;
+      margin: 0;
+    }
+
+    /* Point 08 Mobile 100% Clean Full Width Slider */
+    .wvs-split-ecosystem {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      gap: 0;
+      padding: 10px 0 20px 0;
+      margin-bottom: 10px;
+      scrollbar-width: none;
+      width: 100%;
+    }
+    .wvs-split-ecosystem::-webkit-scrollbar {
+      display: none;
+    }
+    .wvs-eco-box {
+      flex: 0 0 100%;
+      width: 100%;
+      min-width: 100%;
+      box-sizing: border-box;
+      scroll-snap-align: start;
+      margin: 0;
+    }
+
+    /* Point 09 Mobile 100% Clean Full Width Slider */
+    .wvs-p9-grid {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      gap: 0;
+      padding: 10px 0 20px 0;
+      margin-bottom: 10px;
+      scrollbar-width: none;
+      width: 100%;
+    }
+    .wvs-p9-grid::-webkit-scrollbar {
+      display: none;
+    }
+    .wvs-p9-card {
+      flex: 0 0 100%;
+      width: 100%;
+      min-width: 100%;
+      box-sizing: border-box;
+      scroll-snap-align: start;
+      margin: 0;
+    }
+
+    /* Active Pagination Dots */
+    .wvs-slider-dots-p7, .wvs-slider-dots-p8, .wvs-slider-dots-p9 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      margin-top: 6px;
+      margin-bottom: 24px;
+    }
+
+    .wvs-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #cbd5e1;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .wvs-dot.active {
+      width: 26px;
+      border-radius: 20px;
+      background: #ec5c0a;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .wvs-engine-card, .wvs-eco-box, .wvs-p9-card {
+      padding: 24px 18px;
+    }
+    .wvs-matters-box {
+      padding: 28px 18px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="wvs-sec5-wrapper">
+  <div class="wvs-sec5-container">
+
+    <!-- POINT 07: THE VIDHYUT SAATHI BUSINESS ENGINE -->
+    <div class="wvs-p7-section">
+      <div class="wvs-p7-head">
+        <div class="wvs-sec5-badge">
+          <i class="fa-solid fa-gears"></i>
+          <span>07 — THE VIDHYUT SAATHI BUSINESS ENGINE</span>
+        </div>
+        <h2 class="wvs-sec5-main-title">
+          WE TURN A PRODUCT INTO A BUSINESS SYSTEM.
+        </h2>
+        <div class="wvs-sec5-subhead">
+          A COMPLETE 8-STAGE ECOSYSTEM BUILT FOR YOUR SUCCESS
+        </div>
+      </div>
+
+      <!-- 8-Step Engine Grid (Auto Slider on Mobile) -->
+      <div class="wvs-engine-grid">
+        <!-- 01 PRODUCT -->
+        <div class="wvs-engine-card">
+          <div class="wvs-engine-icon"><i class="fa-solid fa-microchip"></i></div>
+          <span class="wvs-engine-step-num">STEP 01</span>
+          <h4>PRODUCT</h4>
+          <p>Vidhyut Saathi Electric Saver Card</p>
+        </div>
+
+        <!-- 02 BRAND -->
+        <div class="wvs-engine-card">
+          <div class="wvs-engine-icon"><i class="fa-solid fa-award"></i></div>
+          <span class="wvs-engine-step-num">STEP 02</span>
+          <h4>BRAND</h4>
+          <p>A Growing National Identity</p>
+        </div>
+
+        <!-- 03 MARKETING -->
+        <div class="wvs-engine-card">
+          <div class="wvs-engine-icon"><i class="fa-solid fa-bullhorn"></i></div>
+          <span class="wvs-engine-step-num">STEP 03</span>
+          <h4>MARKETING</h4>
+          <p>Creative + Campaign Resources</p>
+        </div>
+
+        <!-- 04 LEADS -->
+        <div class="wvs-engine-card">
+          <div class="wvs-engine-icon"><i class="fa-solid fa-user-group"></i></div>
+          <span class="wvs-engine-step-num">STEP 04</span>
+          <h4>LEADS</h4>
+          <p>Potential Customer Enquiries</p>
+        </div>
+
+        <!-- 05 SALES -->
+        <div class="wvs-engine-card">
+          <div class="wvs-engine-icon"><i class="fa-solid fa-chart-line-up"></i></div>
+          <span class="wvs-engine-step-num">STEP 05</span>
+          <h4>SALES</h4>
+          <p>Demonstration + Conversion</p>
+        </div>
+
+        <!-- 06 INSTALLATION -->
+        <div class="wvs-engine-card">
+          <div class="wvs-engine-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+          <span class="wvs-engine-step-num">STEP 06</span>
+          <h4>INSTALLATION</h4>
+          <p>Product Deployment</p>
+        </div>
+
+        <!-- 07 MARKET -->
+        <div class="wvs-engine-card">
+          <div class="wvs-engine-icon"><i class="fa-solid fa-city"></i></div>
+          <span class="wvs-engine-step-num">STEP 07</span>
+          <h4>MARKET</h4>
+          <p>Build Your District Customer Base</p>
+        </div>
+
+        <!-- 08 GROWTH -->
+        <div class="wvs-engine-card">
+          <div class="wvs-engine-icon"><i class="fa-solid fa-rocket"></i></div>
+          <span class="wvs-engine-step-num">STEP 08</span>
+          <h4>GROWTH</h4>
+          <p>Expand Your Business</p>
+        </div>
+      </div>
+
+      <!-- Mobile Pagination Dots -->
+      <div class="wvs-slider-dots-p7"></div>
+
+      <!-- Point 07 Tagline Banner -->
+      <div class="wvs-engine-banner">
+        YOU DON'T JUST SELL A CARD. <span>YOU BUILD A LOCAL MARKET AROUND IT.</span>
+      </div>
+    </div>
+
+
+    <!-- POINT 08: THE FRANCHISE ADVANTAGE -->
+    <div class="wvs-p8-section">
+      <div class="wvs-p8-head">
+        <div class="wvs-sec5-badge">
+          <i class="fa-solid fa-shield-halved"></i>
+          <span>08 — THE FRANCHISE ADVANTAGE</span>
+        </div>
+        <h2 class="wvs-sec5-main-title">
+          YOUR DISTRICT. YOUR BUSINESS. OUR BRAND.
+        </h2>
+        <div class="wvs-sec5-subhead">
+          YOU BRING THE AMBITION. WE BRING THE BUSINESS ECOSYSTEM.
+        </div>
+        <p class="wvs-p8-intro-text">
+          With Vidhyut Saathi, you don't have to build a brand, product and support system from the ground up. You get the opportunity to build your local market under a growing Pan-India brand, while our ecosystem supports you with the essential tools to move faster.
+        </p>
+      </div>
+
+      <!-- Split Growth vs Support Matrix (Auto Slider on Mobile) -->
+      <div class="wvs-split-ecosystem">
+        <!-- LEFT: YOU FOCUS ON GROWTH -->
+        <div class="wvs-eco-box wvs-eco-box-growth">
+          <div class="wvs-eco-title">
+            <i class="fa-solid fa-rocket"></i>
+            <span>YOU FOCUS ON GROWTH</span>
+          </div>
+
+          <div class="wvs-eco-list">
+            <div class="wvs-eco-item">
+              <div class="wvs-eco-item-icon"><i class="fa-solid fa-magnifying-glass-location"></i></div>
+              <div class="wvs-eco-item-content">
+                <h5>Find Customers</h5>
+                <p>Build a strong local customer base across your area.</p>
+              </div>
+            </div>
+
+            <div class="wvs-eco-item">
+              <div class="wvs-eco-item-icon"><i class="fa-solid fa-handshake"></i></div>
+              <div class="wvs-eco-item-content">
+                <h5>Build Relationships</h5>
+                <p>Create trust and long-term business connections.</p>
+              </div>
+            </div>
+
+            <div class="wvs-eco-item">
+              <div class="wvs-eco-item-icon"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+              <div class="wvs-eco-item-content">
+                <h5>Generate Sales</h5>
+                <p>Turn market opportunities into consistent revenue.</p>
+              </div>
+            </div>
+
+            <div class="wvs-eco-item">
+              <div class="wvs-eco-item-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+              <div class="wvs-eco-item-content">
+                <h5>Develop Your Territory</h5>
+                <p>Establish your presence across your designated district.</p>
+              </div>
+            </div>
+
+            <div class="wvs-eco-item">
+              <div class="wvs-eco-item-icon"><i class="fa-solid fa-users-gear"></i></div>
+              <div class="wvs-eco-item-content">
+                <h5>Grow Your Team</h5>
+                <p>Build a sales network and scale your business operations.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: WE SUPPORT YOUR JOURNEY -->
+        <div class="wvs-eco-box wvs-eco-box-support">
+          <div class="wvs-eco-title">
+            <i class="fa-solid fa-hand-holding-hand"></i>
+            <span>WE SUPPORT YOUR JOURNEY</span>
+          </div>
+
+          <div class="wvs-eco-list">
+            <div class="wvs-eco-item">
+              <div class="wvs-eco-item-icon"><i class="fa-solid fa-box-open"></i></div>
+              <div class="wvs-eco-item-content">
+                <h5>Product</h5>
+                <p>A ready-to-market flagship Electric Saver Card product.</p>
+              </div>
+            </div>
+
+            <div class="wvs-eco-item">
+              <div class="wvs-eco-item-icon"><i class="fa-solid fa-copyright"></i></div>
+              <div class="wvs-eco-item-content">
+                <h5>Branding</h5>
+                <p>Professional brand & promotional resource assets.</p>
+              </div>
+            </div>
+
+            <div class="wvs-eco-item">
+              <div class="wvs-eco-item-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+              <div class="wvs-eco-item-content">
+                <h5>Training</h5>
+                <p>Product, demonstration & step-by-step sales guidance.</p>
+              </div>
+            </div>
+
+            <div class="wvs-eco-item">
+              <div class="wvs-eco-item-icon"><i class="fa-solid fa-rectangle-ad"></i></div>
+              <div class="wvs-eco-item-content">
+                <h5>Marketing</h5>
+                <p>Campaigns & promotional support as per your model.</p>
+              </div>
+            </div>
+
+            <div class="wvs-eco-item">
+              <div class="wvs-eco-item-icon"><i class="fa-solid fa-chart-diagram"></i></div>
+              <div class="wvs-eco-item-content">
+                <h5>Business Guidance</h5>
+                <p>Ongoing support to help you develop and scale your market.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Pagination Dots -->
+      <div class="wvs-slider-dots-p8"></div>
+
+      <!-- Point 08 CTA Banner -->
+      <div class="wvs-p8-cta-banner">
+        <h3 class="wvs-p8-cta-title">
+          WE BUILD THE FOUNDATION. <span>YOU BUILD THE MARKET.</span>
+        </h3>
+      </div>
+    </div>
+
+
+    <!-- POINT 09: BUILT FOR ENTREPRENEURS -->
+    <div class="wvs-p9-section">
+      <div class="wvs-p9-head">
+        <div class="wvs-sec5-badge">
+          <i class="fa-solid fa-user-astronaut"></i>
+          <span>09 — BUILT FOR ENTREPRENEURS</span>
+        </div>
+        <h2 class="wvs-sec5-main-title">
+          YOU DON'T NEED TO BE AN ENERGY EXPERT.
+        </h2>
+        <div class="wvs-sec5-subhead">
+          A VERSATILE BUSINESS OPPORTUNITY DESIGNED FOR DIVERSE BACKGROUNDS
+        </div>
+      </div>
+
+      <!-- 5 Persona Profile Cards (Auto Slider on Mobile) -->
+      <div class="wvs-p9-grid">
+        <!-- 01 First-Time Entrepreneur -->
+        <div class="wvs-p9-card">
+          <div class="wvs-p9-card-icon"><i class="fa-solid fa-seedling"></i></div>
+          <h4>A First-Time Entrepreneur</h4>
+          <p>Looking for your first structured business opportunity with ready products and brand support.</p>
+        </div>
+
+        <!-- 02 Distributor -->
+        <div class="wvs-p9-card">
+          <div class="wvs-p9-card-icon"><i class="fa-solid fa-boxes-stacked"></i></div>
+          <h4>A Distributor</h4>
+          <p>Looking to add a high-demand new product category to your existing distribution portfolio.</p>
+        </div>
+
+        <!-- 03 Existing Business Owner -->
+        <div class="wvs-p9-card">
+          <div class="wvs-p9-card-icon"><i class="fa-solid fa-store"></i></div>
+          <h4>An Existing Business Owner</h4>
+          <p>Looking for another high-margin growth vertical to expand your business revenue streams.</p>
+        </div>
+
+        <!-- 04 Sales Professional -->
+        <div class="wvs-p9-card">
+          <div class="wvs-p9-card-icon"><i class="fa-solid fa-user-tie"></i></div>
+          <h4>A Sales Professional</h4>
+          <p>Ready to leverage your networking skills and build your own independent enterprise.</p>
+        </div>
+
+        <!-- 05 Growth-Focused Entrepreneur -->
+        <div class="wvs-p9-card">
+          <div class="wvs-p9-card-icon"><i class="fa-solid fa-chart-pie"></i></div>
+          <h4>A Growth-Focused Entrepreneur</h4>
+          <p>Looking for a scalable district-level opportunity with Pan-India brand backing.</p>
+        </div>
+      </div>
+
+      <!-- Mobile Pagination Dots -->
+      <div class="wvs-slider-dots-p9"></div>
+
+      <!-- WHAT MATTERS MOST Section -->
+      <div class="wvs-matters-box">
+        <div class="wvs-matters-title">WHAT MATTERS MOST?</div>
+        <div class="wvs-matters-grid">
+          <div class="wvs-matter-pill">
+            <i class="fa-solid fa-fire-flame-curved"></i>
+            <span>Your ambition.</span>
+          </div>
+          <div class="wvs-matter-pill">
+            <i class="fa-solid fa-brain"></i>
+            <span>Your market understanding.</span>
+          </div>
+          <div class="wvs-matter-pill">
+            <i class="fa-solid fa-hammer"></i>
+            <span>Your willingness to build.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  (function() {
+    function initMobileAutoSliderSec5(gridSelector, cardSelector, dotsSelector) {
+      const grid = document.querySelector(gridSelector);
+      const cards = document.querySelectorAll(cardSelector);
+      const dotsContainer = document.querySelector(dotsSelector);
+
+      if (!grid || cards.length === 0 || !dotsContainer) return;
+
+      dotsContainer.innerHTML = '';
+      cards.forEach(function(_, index) {
+        const dot = document.createElement('span');
+        dot.className = 'wvs-dot' + (index === 0 ? ' active' : '');
+        dot.addEventListener('click', function() {
+          scrollToSlide(index);
+        });
+        dotsContainer.appendChild(dot);
+      });
+
+      const dots = dotsContainer.querySelectorAll('.wvs-dot');
+      let currentIndex = 0;
+      let intervalId = null;
+      let isSectionVisible = false;
+
+      function scrollToSlide(index) {
+        if (index >= cards.length) index = 0;
+        if (index < 0) index = cards.length - 1;
+        currentIndex = index;
+        const targetCard = cards[currentIndex];
+        if (targetCard) {
+          const scrollLeft = targetCard.offsetLeft - (grid.clientWidth - targetCard.clientWidth) / 2;
+          grid.scrollTo({ left: scrollLeft, behavior: 'smooth' });
+        }
+        updateDots();
+      }
+
+      function updateDots() {
+        dots.forEach(function(dot, i) {
+          if (i === currentIndex) {
+            dot.classList.add('active');
+          } else {
+            dot.classList.remove('active');
+          }
+        });
+      }
+
+      function startAutoPlay() {
+        if (window.innerWidth <= 768 && isSectionVisible && !intervalId) {
+          intervalId = setInterval(function() {
+            scrollToSlide(currentIndex + 1);
+          }, 3200);
+        }
+      }
+
+      function stopAutoPlay() {
+        if (intervalId) {
+          clearInterval(intervalId);
+          intervalId = null;
+        }
+      }
+
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              isSectionVisible = true;
+              startAutoPlay();
+            } else {
+              isSectionVisible = false;
+              stopAutoPlay();
+            }
+          });
+        }, { threshold: 0.2 });
+
+        observer.observe(grid);
+      } else {
+        isSectionVisible = true;
+        startAutoPlay();
+      }
+
+      grid.addEventListener('scroll', function() {
+        const scrollPosition = grid.scrollLeft + grid.clientWidth / 2;
+        cards.forEach(function(card, index) {
+          const cardLeft = card.offsetLeft;
+          const cardRight = cardLeft + card.clientWidth;
+          if (scrollPosition >= cardLeft && scrollPosition <= cardRight) {
+            if (currentIndex !== index) {
+              currentIndex = index;
+              updateDots();
+            }
+          }
+        });
+      });
+
+      window.addEventListener('resize', function() {
+        if (window.innerWidth > 768) {
+          stopAutoPlay();
+        } else {
+          startAutoPlay();
+        }
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      initMobileAutoSliderSec5('.wvs-engine-grid', '.wvs-engine-card', '.wvs-slider-dots-p7');
+      initMobileAutoSliderSec5('.wvs-split-ecosystem', '.wvs-eco-box', '.wvs-slider-dots-p8');
+      initMobileAutoSliderSec5('.wvs-p9-grid', '.wvs-p9-card', '.wvs-slider-dots-p9');
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "WVS Section 5 System",
+  "settings": [],
+  "presets": [
+    {
+      "name": "WVS Section 5 System"
+    }
+  ]
+}
+{% endschema %}
