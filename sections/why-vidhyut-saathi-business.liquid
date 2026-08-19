@@ -964,7 +964,7 @@
     display: none;
   }
 
-  /* Responsive Design & Mobile Auto Sliders */
+  /* Responsive Design & Mobile Clean Full-Width Sliders */
   @media (max-width: 991px) {
     .wvs-p4-grid, .wvs-p6-grid {
       grid-template-columns: repeat(2, 1fr);
@@ -973,70 +973,43 @@
 
   @media (max-width: 768px) {
     .wvs-sec4-wrapper {
-      padding: clamp(35px, 5vw, 60px) 14px;
+      padding: clamp(30px, 5vw, 50px) 14px;
     }
     .wvs-p4-head, .wvs-p5-head, .wvs-p6-head {
-      margin-bottom: 30px;
+      margin-bottom: 25px;
     }
 
-    /* Point 04 Horizontal Slider on Mobile */
-    .wvs-p4-grid {
-      display: flex;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
-      gap: 16px;
-      padding: 10px 4px 20px 4px;
-      margin-bottom: 10px;
-      scrollbar-width: none;
-    }
-    .wvs-p4-grid::-webkit-scrollbar {
-      display: none;
-    }
-    .wvs-sector-card {
-      flex: 0 0 88%;
-      scroll-snap-align: center;
-    }
-
-    /* Point 05 Horizontal Slider on Mobile */
-    .wvs-comparison-wrapper {
-      display: flex;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
-      gap: 16px;
-      padding: 10px 4px 20px 4px;
-      margin-bottom: 10px;
-      scrollbar-width: none;
-    }
-    .wvs-comparison-wrapper::-webkit-scrollbar {
-      display: none;
-    }
-    .wvs-comp-box-scratch, .wvs-comp-box-vs {
-      flex: 0 0 90%;
-      scroll-snap-align: center;
-    }
-
-    /* Point 06 Horizontal Slider on Mobile */
+    /* Point 04, 05, 06 Clean Full-Width Sliders - No Side Card Borders Peeking Out */
+    .wvs-p4-grid,
+    .wvs-comparison-wrapper,
     .wvs-p6-grid {
       display: flex;
       overflow-x: auto;
       scroll-snap-type: x mandatory;
       scroll-behavior: smooth;
       -webkit-overflow-scrolling: touch;
-      gap: 16px;
-      padding: 10px 4px 20px 4px;
-      margin-bottom: 10px;
+      gap: 0;
+      padding: 10px 0 20px 0;
+      margin-bottom: 12px;
       scrollbar-width: none;
+      width: 100%;
     }
+    .wvs-p4-grid::-webkit-scrollbar,
+    .wvs-comparison-wrapper::-webkit-scrollbar,
     .wvs-p6-grid::-webkit-scrollbar {
       display: none;
     }
+
+    .wvs-sector-card,
+    .wvs-comp-box-scratch,
+    .wvs-comp-box-vs,
     .wvs-pillar-card {
-      flex: 0 0 88%;
-      scroll-snap-align: center;
+      flex: 0 0 100%;
+      width: 100%;
+      min-width: 100%;
+      box-sizing: border-box;
+      scroll-snap-align: start;
+      margin: 0;
     }
 
     /* Active Pagination Dots */
@@ -1045,7 +1018,7 @@
       justify-content: center;
       align-items: center;
       gap: 8px;
-      margin-top: 4px;
+      margin-top: 6px;
       margin-bottom: 24px;
     }
     .wvs-dot {
@@ -1067,16 +1040,19 @@
     }
 
     .wvs-p5-cta-banner {
-      padding: 28px 18px;
+      padding: 26px 16px;
     }
   }
 
   @media (max-width: 480px) {
-    .wvs-sector-card, .wvs-pillar-card {
-      flex: 0 0 92%;
-    }
-    .wvs-comp-box-scratch, .wvs-comp-box-vs {
-      flex: 0 0 94%;
+    .wvs-sector-card,
+    .wvs-comp-box-scratch,
+    .wvs-comp-box-vs,
+    .wvs-pillar-card {
+      flex: 0 0 100%;
+      width: 100%;
+      min-width: 100%;
+      padding: 26px 16px;
     }
     .wvs-btn-cta-franchise {
       width: 100%;

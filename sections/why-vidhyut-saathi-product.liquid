@@ -584,44 +584,29 @@
       padding: 24px 18px;
     }
 
-    /* Slider 1: Point 02 Market Cards Horizontal Auto-Slider */
-    .wvs-p2-grid {
+    /* Slider 1 & 2: Point 02 & Point 03 Full-Width Clean Mobile Sliders */
+    .wvs-p2-grid, .wvs-p3-grid {
       display: flex;
       overflow-x: auto;
       scroll-snap-type: x mandatory;
       scroll-behavior: smooth;
       -webkit-overflow-scrolling: touch;
-      gap: 16px;
-      padding: 10px 4px 20px 4px;
+      gap: 0;
+      padding: 10px 0 20px 0;
       margin-bottom: 10px;
       scrollbar-width: none;
+      width: 100%;
     }
-    .wvs-p2-grid::-webkit-scrollbar {
+    .wvs-p2-grid::-webkit-scrollbar, .wvs-p3-grid::-webkit-scrollbar {
       display: none;
     }
-    .wvs-p2-card {
-      flex: 0 0 88%;
-      scroll-snap-align: center;
-    }
-
-    /* Slider 2: Point 03 Tech Cards Horizontal Auto-Slider */
-    .wvs-p3-grid {
-      display: flex;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
-      gap: 16px;
-      padding: 10px 4px 20px 4px;
-      margin-bottom: 10px;
-      scrollbar-width: none;
-    }
-    .wvs-p3-grid::-webkit-scrollbar {
-      display: none;
-    }
-    .wvs-tech-card {
-      flex: 0 0 88%;
-      scroll-snap-align: center;
+    .wvs-p2-card, .wvs-tech-card {
+      flex: 0 0 100%;
+      width: 100%;
+      min-width: 100%;
+      box-sizing: border-box;
+      scroll-snap-align: start;
+      margin: 0;
     }
 
     /* Active Pagination Dots */
@@ -630,7 +615,7 @@
       justify-content: center;
       align-items: center;
       gap: 8px;
-      margin-top: 4px;
+      margin-top: 6px;
       margin-bottom: 30px;
     }
     .wvs-dot {
