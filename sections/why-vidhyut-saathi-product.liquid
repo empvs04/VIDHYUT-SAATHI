@@ -406,12 +406,16 @@
         <div class="wvs-8d-card-frame">
           <span class="wvs-8d-badge-top">⚡ Save 20%-30%</span>
           <span class="wvs-8d-badge-bottom">🛡️ ISO-Certified</span>
-          <img 
-            src="{{ 'vidhyut_card_3d_render.jpg' | asset_url }}" 
-            alt="Vidhyut Saathi 8D 3D Card Render" 
-            class="wvs-8d-card-img"
-            loading="lazy"
-          >
+          {%- if section.settings.card_custom_image != blank -%}
+            {{ section.settings.card_custom_image | image_url: width: 800 | image_tag: class: 'wvs-8d-card-img', loading: 'lazy' }}
+          {%- else -%}
+            <img 
+              src="{{ 'vidhyut_card_3d_render.jpg' | asset_url }}" 
+              alt="Vidhyut Saathi 8D 3D Card Render" 
+              class="wvs-8d-card-img"
+              loading="lazy"
+            >
+          {%- endif -%}
         </div>
       </div>
     </div>
@@ -522,6 +526,11 @@
       "id": "main_title",
       "label": "Main Title",
       "default": "Meet The Vidhyut Saathi Electric Saver Card"
+    },
+    {
+      "type": "image_picker",
+      "id": "card_custom_image",
+      "label": "Custom Product / Card Image"
     }
   ],
   "presets": [
