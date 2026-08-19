@@ -146,22 +146,28 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
-    padding: 15px 34px;
-    background: #25D300;
-    color: #231F20;
-    font-size: 1rem;
-    font-weight: 800;
-    border-radius: 8px;
+    padding: 16px 36px;
+    background: linear-gradient(135deg, #009A44 0%, #00b853 100%);
+    border: 2px solid #FDBA00;
+    color: #ffffff;
+    font-size: 1.05rem;
+    font-weight: 900;
+    border-radius: 50px;
     text-decoration: none;
-    box-shadow: 0 10px 25px rgba(37, 211, 0, 0.25);
-    transition: all 0.3s ease;
+    box-shadow: 0 12px 35px rgba(0, 154, 68, 0.35);
+    transition: all 0.35s ease;
+  }
+
+  .wvs-btn-primary span {
+    color: #ffffff;
   }
 
   .wvs-btn-primary:hover {
-    background: #FB5900;
+    background: linear-gradient(135deg, #00b853 0%, #25D300 100%);
+    border-color: #ffffff;
     color: #ffffff;
-    transform: translateY(-3px);
-    box-shadow: 0 14px 30px rgba(251, 89, 0, 0.3);
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 18px 45px rgba(37, 211, 0, 0.4);
   }
 
   /* Right Side Column */
@@ -351,12 +357,13 @@
   }
 
   .wvs-center-sector-card:hover i {
-    transform: scale(1.15);
+    transform: scale(1.15) rotate(-5deg);
     color: #009A44;
   }
 
   .wvs-center-sector-card h5 {
-    font-size: 0.95rem;
+    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.98rem;
     font-weight: 800;
     color: #231F20;
     margin: 0;
@@ -364,31 +371,57 @@
 
   /* --- 3. 4 PILLARS & TAGLINE STRIP --- */
   .wvs-pillars-bar {
-    background: #009A44;
-    border-radius: 24px;
-    padding: 30px;
+    background: linear-gradient(135deg, #009A44 0%, #007b3e 50%, #00b853 100%);
+    border: 2.5px solid #FDBA00;
+    border-radius: 28px;
+    padding: 24px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+    gap: 16px;
     text-align: center;
     color: #ffffff;
     margin-bottom: 30px;
-    box-shadow: 0 12px 35px rgba(0, 154, 68, 0.2);
+    box-shadow: 0 20px 50px rgba(0, 154, 68, 0.3), 0 0 25px rgba(253, 186, 0, 0.25);
+  }
+
+  .wvs-pillar-box {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1.5px solid rgba(253, 186, 0, 0.4);
+    border-radius: 20px;
+    padding: 20px 14px;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .wvs-pillar-box:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: #FDBA00;
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
   }
 
   .wvs-pillar-box h6 {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     font-weight: 900;
     color: #FDBA00;
-    margin: 0 0 6px 0;
+    margin: 0 0 8px 0;
     letter-spacing: 1px;
+    text-transform: uppercase;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
 
   .wvs-pillar-box p {
-    font-size: 0.88rem;
+    font-size: 0.92rem;
     color: #ffffff;
     margin: 0;
-    font-weight: 600;
+    font-weight: 700;
+    line-height: 1.4;
   }
 
   .wvs-tagline-banner {
