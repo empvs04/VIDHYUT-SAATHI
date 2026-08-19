@@ -1,60 +1,44 @@
 {%- style -%}
   /* ==========================================================================
-     WHY VIDHYUT SAATHI - SECTION 2: LUCRATIVE SPLIT LAYOUT (MATCHING REFERENCE)
+     WHY VIDHYUT SAATHI - SECTION 2: PERFECTLY ALIGNED & CENTERED SECTORS
      ========================================================================== */
 
-  .wvs-ref-section {
+  .wvs-sec2-wrapper {
     font-family: 'Plus Jakarta Sans', 'Outfit', 'Inter', sans-serif;
     position: relative;
     background-color: #ffffff;
-    padding: clamp(60px, 8vw, 110px) 20px;
+    padding: clamp(50px, 6vw, 90px) 20px;
     overflow: hidden;
     color: #0b2545;
   }
 
-  /* Background Outline Leaf Vectors */
-  .wvs-ref-bg-vector-left {
-    position: absolute;
-    top: 5%;
-    left: -40px;
-    width: 280px;
-    height: 280px;
-    opacity: 0.12;
-    pointer-events: none;
-    z-index: 1;
-  }
-
-  .wvs-ref-bg-vector-bottom {
-    position: absolute;
-    bottom: -30px;
-    left: 10%;
-    width: 320px;
-    height: 320px;
-    opacity: 0.08;
-    pointer-events: none;
-    z-index: 1;
-  }
-
-  .wvs-ref-container {
+  .wvs-sec2-container {
     max-width: 1240px;
     margin: 0 auto;
     position: relative;
     z-index: 2;
-    display: grid;
-    grid-template-columns: 1fr 1.05fr;
-    align-items: center;
-    gap: clamp(40px, 6vw, 80px);
   }
 
-  /* --- LEFT COLUMN: CONTENT --- */
-  .wvs-ref-left {
+  /* --- 1. EQUAL HEIGHT SPLIT ROW --- */
+  .wvs-split-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: clamp(30px, 5vw, 60px);
+    margin-bottom: 60px;
+    min-height: 480px;
+  }
+
+  /* Left Side Column */
+  .wvs-split-left {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: flex-start;
+    height: 100%;
   }
 
-  /* Top Badge Pill */
-  .wvs-ref-badge {
+  .wvs-sec2-badge {
     display: inline-block;
     padding: 6px 18px;
     background: #eedbc5;
@@ -64,147 +48,98 @@
     letter-spacing: 1.5px;
     text-transform: uppercase;
     border-radius: 6px;
-    margin-bottom: 22px;
+    margin-bottom: 20px;
   }
 
-  /* Large Main Title */
-  .wvs-ref-title {
+  .wvs-sec2-title {
     font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
-    font-size: clamp(38px, 4.8vw, 64px);
+    font-size: clamp(34px, 4.2vw, 56px);
     font-weight: 800;
-    line-height: 1.15;
+    line-height: 1.18;
     color: #0f2c4a;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
     letter-spacing: -0.5px;
   }
 
-  .wvs-ref-title span {
+  .wvs-sec2-title span {
     color: #ec5c0a;
   }
 
-  /* Subtitle & Paragraph Content */
-  .wvs-ref-description {
-    font-size: clamp(16px, 1.8vw, 19px);
+  .wvs-sec2-desc {
+    font-size: clamp(15px, 1.6vw, 18px);
     line-height: 1.65;
     color: #4a5568;
-    margin-bottom: 28px;
-    max-width: 540px;
+    margin-bottom: 24px;
   }
 
-  .wvs-ref-highlight-text {
+  .wvs-sec2-highlight {
     background: #f8fafc;
     border-left: 4px solid #007b3e;
     border-radius: 0 12px 12px 0;
-    padding: 16px 20px;
-    font-size: 0.98rem;
+    padding: 14px 18px;
+    font-size: 0.95rem;
     line-height: 1.6;
     color: #2d3748;
-    margin-bottom: 30px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    margin-bottom: 28px;
   }
 
-  .wvs-ref-highlight-text strong {
+  .wvs-sec2-highlight strong {
     color: #007b3e;
   }
 
-  /* Sector Chips Grid (7 Places) */
-  .wvs-ref-sectors-label {
-    font-size: 0.85rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: #a0aec0;
-    margin-bottom: 12px;
-  }
-
-  .wvs-ref-chips {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 36px;
-  }
-
-  .wvs-chip {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: #edf2f7;
-    border-radius: 50px;
-    padding: 6px 14px;
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: #2d3748;
-    transition: all 0.2s ease;
-  }
-
-  .wvs-chip:hover {
-    background: #ec5c0a;
-    color: #ffffff;
-  }
-
-  .wvs-chip i {
-    font-size: 0.85rem;
-    color: #ec5c0a;
-  }
-
-  .wvs-chip:hover i {
-    color: #ffffff;
-  }
-
-  /* Action Area with Hand-drawn Doodle Arrow */
-  .wvs-ref-action-wrap {
+  .wvs-sec2-action {
     position: relative;
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 16px;
   }
 
-  .wvs-doodle-arrow {
+  .wvs-action-arrow {
     position: absolute;
-    left: -45px;
-    top: -25px;
-    width: 42px;
-    height: 42px;
+    left: -40px;
+    top: -20px;
+    width: 36px;
+    height: 36px;
     pointer-events: none;
   }
 
-  .wvs-ref-btn {
+  .wvs-btn-primary {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
-    padding: 16px 36px;
+    padding: 15px 34px;
     background: #091d34;
     color: #eedbc5;
-    font-size: 1.05rem;
+    font-size: 1rem;
     font-weight: 800;
     border-radius: 8px;
     text-decoration: none;
-    box-shadow: 0 10px 25px rgba(9, 29, 52, 0.25);
+    box-shadow: 0 10px 25px rgba(9, 29, 52, 0.2);
     transition: all 0.3s ease;
   }
 
-  .wvs-ref-btn:hover {
+  .wvs-btn-primary:hover {
     background: #ec5c0a;
     color: #ffffff;
     transform: translateY(-3px);
     box-shadow: 0 14px 30px rgba(236, 92, 10, 0.3);
   }
 
-  /* --- RIGHT COLUMN: CHARACTER & ABSTRACT PETAL BACKDROP --- */
-  .wvs-ref-right {
-    position: relative;
+  /* Right Side Column (Matching Height & Centered Character) */
+  .wvs-split-right {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 520px;
+    position: relative;
+    height: 100%;
+    min-height: 460px;
   }
 
-  /* Abstract Petal Graphics Backdrop */
-  .wvs-petals-backdrop {
+  .wvs-petals-bg {
     position: absolute;
-    width: 460px;
-    height: 460px;
+    width: 380px;
+    height: 380px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -212,287 +147,379 @@
     z-index: 1;
   }
 
-  /* Individual Stylized Leaves matching the screenshot */
-  .wvs-petal-1 {
+  .wvs-p1 {
     position: absolute;
-    width: 220px;
-    height: 220px;
+    width: 190px;
+    height: 190px;
     background: #0b2545;
-    border-radius: 0 100px 0 100px;
-    top: 15px;
-    left: 40px;
+    border-radius: 0 90px 0 90px;
+    top: 10px;
+    left: 30px;
     transform: rotate(-15deg);
   }
 
-  .wvs-petal-2 {
+  .wvs-p2 {
     position: absolute;
-    width: 210px;
-    height: 210px;
+    width: 180px;
+    height: 180px;
     background: #eedbc5;
-    border-radius: 100px 0 100px 0;
-    bottom: 25px;
+    border-radius: 90px 0 90px 0;
+    bottom: 20px;
     right: 20px;
     transform: rotate(20deg);
   }
 
-  .wvs-petal-3 {
+  .wvs-p3 {
     position: absolute;
-    width: 190px;
-    height: 190px;
+    width: 160px;
+    height: 160px;
     background: #d8f3dc;
-    border-radius: 0 100px 0 100px;
-    bottom: 40px;
+    border-radius: 0 90px 0 90px;
+    bottom: 30px;
     left: 10px;
     transform: rotate(45deg);
     opacity: 0.85;
   }
 
-  .wvs-petal-4 {
-    position: absolute;
-    width: 180px;
-    height: 180px;
-    background: #f7fafc;
-    border-radius: 100px 0 100px 0;
-    top: 30px;
-    right: 30px;
-    transform: rotate(-30deg);
-  }
-
-  /* Character Image Frame */
-  .wvs-character-frame {
+  .wvs-char-box {
     position: relative;
     z-index: 2;
-    max-width: 420px;
+    max-width: 360px;
     width: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
   }
 
-  .wvs-character-img {
+  .wvs-char-img {
     width: 100%;
-    max-width: 380px;
-    height: auto;
+    max-height: 440px;
     object-fit: contain;
-    filter: drop-shadow(0 20px 35px rgba(0, 0, 0, 0.15));
-    transition: transform 0.4s ease;
+    filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.15));
   }
 
-  .wvs-character-frame:hover .wvs-character-img {
-    transform: scale(1.02);
-  }
-
-  /* Floating 4-Pillar Glass Cards around Character */
-  .wvs-floating-badge {
+  .wvs-float-badge-1 {
     position: absolute;
+    top: 30px;
+    right: -10px;
     z-index: 3;
-    background: rgba(255, 255, 255, 0.92);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(236, 92, 10, 0.2);
-    border-radius: 14px;
-    padding: 10px 18px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(236, 92, 10, 0.25);
+    border-radius: 12px;
+    padding: 8px 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
     display: flex;
     align-items: center;
-    gap: 10px;
-    font-size: 0.88rem;
+    gap: 8px;
+    font-size: 0.85rem;
     font-weight: 800;
     color: #0b2545;
   }
 
-  .wvs-badge-top-right {
-    top: 40px;
-    right: -10px;
-    animation: wvs-float-slow 4s ease-in-out infinite;
+  .wvs-float-badge-2 {
+    position: absolute;
+    bottom: 40px;
+    left: -15px;
+    z-index: 3;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 123, 62, 0.25);
+    border-radius: 12px;
+    padding: 8px 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: #0b2545;
   }
 
-  .wvs-badge-bottom-left {
-    bottom: 50px;
-    left: -20px;
-    animation: wvs-float-slow 4s ease-in-out infinite 2s;
+  /* --- 2. CENTERED ELECTRICITY CONSUMPTION SECTORS SHOWCASE --- */
+  .wvs-sectors-centerpiece {
+    background: linear-gradient(135deg, #fffbf5 0%, #ffffff 50%, #f0fdf4 100%);
+    border: 2px solid rgba(236, 92, 10, 0.15);
+    border-radius: 28px;
+    padding: clamp(30px, 4vw, 50px) 24px;
+    margin-bottom: 50px;
+    text-align: center;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.04);
   }
 
-  .wvs-floating-badge i {
+  .wvs-center-head {
+    max-width: 700px;
+    margin: 0 auto 36px auto;
+  }
+
+  .wvs-center-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 18px;
+    background: rgba(236, 92, 10, 0.1);
+    border: 1px solid rgba(236, 92, 10, 0.3);
+    border-radius: 50px;
     color: #ec5c0a;
-    font-size: 1.1rem;
+    font-size: 0.82rem;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
   }
 
-  @keyframes wvs-float-slow {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-8px); }
+  .wvs-center-title {
+    font-size: clamp(24px, 3vw, 36px);
+    font-weight: 900;
+    color: #0f172a;
+    margin-bottom: 10px;
   }
 
-  /* Bottom 4 Pillars Bar */
-  .wvs-ref-pillars-bar {
-    grid-column: 1 / -1;
-    margin-top: 20px;
-    background: #f8fafc;
-    border: 1px solid #e2e8f0;
+  .wvs-center-subtitle {
+    font-size: 1.05rem;
+    color: #64748b;
+    margin: 0;
+  }
+
+  .wvs-center-sectors-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 12px;
+  }
+
+  .wvs-center-sector-card {
+    background: #ffffff;
+    border: 1.5px solid #e2e8f0;
     border-radius: 20px;
-    padding: 24px 30px;
+    padding: 22px 10px;
+    text-align: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+  }
+
+  .wvs-center-sector-card:hover {
+    transform: translateY(-8px);
+    border-color: #ec5c0a;
+    box-shadow: 0 14px 30px rgba(236, 92, 10, 0.18);
+    background: #fff7ed;
+  }
+
+  .wvs-center-sector-card i {
+    font-size: 2.2rem;
+    color: #ec5c0a;
+    margin-bottom: 12px;
+    display: inline-block;
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+
+  .wvs-center-sector-card:hover i {
+    transform: scale(1.15);
+    color: #007b3e;
+  }
+
+  .wvs-center-sector-card h5 {
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 0;
+  }
+
+  /* --- 3. 4 PILLARS & TAGLINE STRIP --- */
+  .wvs-pillars-bar {
+    background: #091d34;
+    border-radius: 24px;
+    padding: 30px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
     text-align: center;
+    color: #ffffff;
+    margin-bottom: 30px;
+    box-shadow: 0 12px 35px rgba(9, 29, 52, 0.25);
   }
 
   .wvs-pillar-box h6 {
-    font-size: 1.05rem;
+    font-size: 1.1rem;
     font-weight: 900;
-    color: #0b2545;
-    margin: 0 0 4px 0;
+    color: #ffcc00;
+    margin: 0 0 6px 0;
     letter-spacing: 1px;
   }
 
   .wvs-pillar-box p {
-    font-size: 0.85rem;
-    color: #718096;
+    font-size: 0.88rem;
+    color: #cbd5e1;
     margin: 0;
     font-weight: 600;
   }
 
-  /* Tagline Strip */
-  .wvs-ref-tagline-strip {
-    grid-column: 1 / -1;
-    background: linear-gradient(90deg, #0b2545 0%, #007b3e 50%, #ec5c0a 100%);
-    border-radius: 16px;
-    padding: 20px 30px;
+  .wvs-tagline-banner {
+    background: linear-gradient(135deg, #ec5c0a 0%, #ff7b00 45%, #007b3e 100%);
+    border-radius: 20px;
+    padding: 24px 30px;
     text-align: center;
     color: #ffffff;
-    font-size: clamp(16px, 2vw, 22px);
+    font-size: clamp(18px, 2.2vw, 24px);
     font-weight: 900;
     letter-spacing: 1.5px;
-    box-shadow: 0 10px 30px rgba(11, 37, 69, 0.2);
+    box-shadow: 0 12px 35px rgba(236, 92, 10, 0.25);
   }
 
-  /* Responsive Layout */
+  /* Responsive Rules */
+  @media (max-width: 1024px) {
+    .wvs-center-sectors-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
   @media (max-width: 991px) {
-    .wvs-ref-container {
+    .wvs-split-row {
       grid-template-columns: 1fr;
       text-align: center;
+      min-height: auto;
     }
-    .wvs-ref-left {
+    .wvs-split-left {
       align-items: center;
     }
-    .wvs-ref-description {
-      max-width: 100%;
-    }
-    .wvs-ref-chips {
+    .wvs-sec2-action {
       justify-content: center;
     }
-    .wvs-ref-action-wrap {
-      justify-content: center;
-    }
-    .wvs-doodle-arrow {
+    .wvs-action-arrow {
       display: none;
     }
-    .wvs-ref-pillars-bar {
+    .wvs-pillars-bar {
       grid-template-columns: repeat(2, 1fr);
     }
   }
 
-  @media (max-width: 576px) {
-    .wvs-ref-pillars-bar {
+  @media (max-width: 600px) {
+    .wvs-center-sectors-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .wvs-pillars-bar {
       grid-template-columns: 1fr;
     }
-    .wvs-petals-backdrop {
-      width: 320px;
-      height: 320px;
+    .wvs-petals-bg {
+      width: 300px;
+      height: 300px;
     }
-    .wvs-badge-top-right, .wvs-badge-bottom-left {
+    .wvs-float-badge-1, .wvs-float-badge-2 {
       display: none;
     }
   }
 {%- endstyle -%}
 
-<div class="wvs-ref-section">
-  <!-- Background Vector Leaf Outlines -->
-  <svg class="wvs-ref-bg-vector-left" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M100 10C50 10 10 50 10 100C10 150 50 190 100 190C150 190 190 150 190 100C190 50 150 10 100 10Z" stroke="#ec5c0a" stroke-width="2" stroke-dasharray="4 4"/>
-  </svg>
+<div class="wvs-sec2-wrapper">
+  <div class="wvs-sec2-container">
+    <!-- 1. EQUAL HEIGHT SPLIT HERO ROW -->
+    <div class="wvs-split-row">
+      <!-- LEFT COLUMN -->
+      <div class="wvs-split-left">
+        <div class="wvs-sec2-badge">
+          {{ section.settings.badge_text | default: "WHY VIDHYUT SAATHI" }}
+        </div>
 
-  <div class="wvs-ref-container">
-    <!-- LEFT COLUMN: CONTENT -->
-    <div class="wvs-ref-left">
-      <!-- Badge Pill -->
-      <div class="wvs-ref-badge">
-        {{ section.settings.badge_text | default: "WHY VIDHYUT SAATHI" }}
+        <h2 class="wvs-sec2-title">
+          {{ section.settings.heading_main | default: "Electricity is everywhere. Opportunity is unlimited." }}
+        </h2>
+
+        <p class="wvs-sec2-desc">
+          {{ section.settings.description | default: "Everywhere electricity is consumed, there is an opportunity to introduce smarter energy-saving solutions. Vidhyut Saathi brings together an innovative Electric Saver Card, a growing national brand and a structured district-level franchise business model to help ambitious entrepreneurs build and grow their own local market." }}
+        </p>
+
+        <div class="wvs-sec2-highlight">
+          With product support, branding, marketing assistance, training and business guidance, you get more than a franchise—you get an <strong>ecosystem designed to help you build your market.</strong>
+        </div>
+
+        <div class="wvs-sec2-action">
+          <svg class="wvs-action-arrow" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 15 Q 25 35, 40 25 M 32 18 L 40 25 L 35 32" stroke="#4a5568" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+
+          <a href="{{ section.settings.cta_link | default: '/pages/contact' }}" class="wvs-btn-primary">
+            <span>Get Started</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
       </div>
 
-      <!-- Main Title -->
-      <h2 class="wvs-ref-title">
-        {{ section.settings.heading_main | default: "Electricity is everywhere. Opportunity is unlimited." }}
-      </h2>
+      <!-- RIGHT COLUMN (CONTAINED & CENTERED) -->
+      <div class="wvs-split-right">
+        <!-- Abstract Petal Shapes Backdrop -->
+        <div class="wvs-petals-bg">
+          <div class="wvs-p1"></div>
+          <div class="wvs-p2"></div>
+          <div class="wvs-p3"></div>
+        </div>
 
-      <!-- Description Paragraph -->
-      <p class="wvs-ref-description">
-        {{ section.settings.description | default: "Homes. Shops. Offices. Factories. Hotels. Hospitals. Institutions. Everywhere electricity is consumed, there is an opportunity to introduce smarter energy-saving solutions. Vidhyut Saathi is building that opportunity — one district at a time." }}
-      </p>
+        <!-- Floating Badges -->
+        <div class="wvs-float-badge-1">
+          <i class="fa-solid fa-shield-halved"></i>
+          <span>Product + Brand</span>
+        </div>
 
-      <!-- Highlight Card -->
-      <div class="wvs-ref-highlight-text">
-        Vidhyut Saathi brings together an <strong>innovative Electric Saver Card</strong>, a growing national brand and a structured district-level franchise business model to help ambitious entrepreneurs build and grow their own local market.
-      </div>
+        <div class="wvs-float-badge-2">
+          <i class="fa-solid fa-chart-line"></i>
+          <span>Market + Support</span>
+        </div>
 
-      <!-- Sector Chips -->
-      <div class="wvs-ref-sectors-label">Electricity Consumption Sectors</div>
-      <div class="wvs-ref-chips">
-        <span class="wvs-chip"><i class="fa-solid fa-house"></i> Homes</span>
-        <span class="wvs-chip"><i class="fa-solid fa-store"></i> Shops</span>
-        <span class="wvs-chip"><i class="fa-solid fa-building"></i> Offices</span>
-        <span class="wvs-chip"><i class="fa-solid fa-industry"></i> Factories</span>
-        <span class="wvs-chip"><i class="fa-solid fa-hotel"></i> Hotels</span>
-        <span class="wvs-chip"><i class="fa-solid fa-hospital"></i> Hospitals</span>
-        <span class="wvs-chip"><i class="fa-solid fa-school"></i> Institutions</span>
-      </div>
-
-      <!-- Action Button with Hand-drawn Doodle Arrow -->
-      <div class="wvs-ref-action-wrap">
-        <!-- SVG Hand-drawn Arrow -->
-        <svg class="wvs-doodle-arrow" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M10 15 Q 25 35, 40 25 M 32 18 L 40 25 L 35 32" stroke="#4a5568" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-
-        <a href="{{ section.settings.cta_link | default: '/pages/contact' }}" class="wvs-ref-btn">
-          <span>Get Started</span>
-        </a>
-      </div>
-    </div>
-
-    <!-- RIGHT COLUMN: CHARACTER & ABSTRACT PETAL BACKDROP -->
-    <div class="wvs-ref-right">
-      <!-- Multi-Colored Petals Backdrop -->
-      <div class="wvs-petals-backdrop">
-        <div class="wvs-petal-1"></div>
-        <div class="wvs-petal-2"></div>
-        <div class="wvs-petal-3"></div>
-        <div class="wvs-petal-4"></div>
-      </div>
-
-      <!-- Floating Feature Badges -->
-      <div class="wvs-floating-badge wvs-badge-top-right">
-        <i class="fa-solid fa-shield-halved"></i>
-        <span>Product + Brand</span>
-      </div>
-
-      <div class="wvs-floating-badge wvs-badge-bottom-left">
-        <i class="fa-solid fa-chart-line"></i>
-        <span>Market + Support</span>
-      </div>
-
-      <!-- Character Image -->
-      <div class="wvs-character-frame">
-        <img 
-          src="{{ 'indian_entrepreneur.jpg' | asset_url }}" 
-          alt="Vidhyut Saathi Entrepreneur" 
-          class="wvs-character-img"
-          loading="lazy"
-        >
+        <!-- Character Image -->
+        <div class="wvs-char-box">
+          <img 
+            src="{{ 'indian_entrepreneur.jpg' | asset_url }}" 
+            alt="Vidhyut Saathi Business Partner" 
+            class="wvs-char-img"
+            loading="lazy"
+          >
+        </div>
       </div>
     </div>
 
-    <!-- 4 PILLARS BAR BELOW -->
-    <div class="wvs-ref-pillars-bar">
+    <!-- 2. CENTERED ELECTRICITY CONSUMPTION SECTORS SHOWCASE -->
+    <div class="wvs-sectors-centerpiece">
+      <div class="wvs-center-head">
+        <div class="wvs-center-badge">
+          <i class="fa-solid fa-bolt"></i>
+          <span>HIGH SAVINGS DEMAND</span>
+        </div>
+        <h3 class="wvs-center-title">7 Electricity Consumption Sectors</h3>
+        <p class="wvs-center-subtitle">
+          Every place that consumes electricity represents a high-potential customer market for Vidhyut Saathi.
+        </p>
+      </div>
+
+      <div class="wvs-center-sectors-grid">
+        <div class="wvs-center-sector-card">
+          <i class="fa-solid fa-house-chimney"></i>
+          <h5>Homes</h5>
+        </div>
+        <div class="wvs-center-sector-card">
+          <i class="fa-solid fa-store"></i>
+          <h5>Shops</h5>
+        </div>
+        <div class="wvs-center-sector-card">
+          <i class="fa-solid fa-building"></i>
+          <h5>Offices</h5>
+        </div>
+        <div class="wvs-center-sector-card">
+          <i class="fa-solid fa-industry"></i>
+          <h5>Factories</h5>
+        </div>
+        <div class="wvs-center-sector-card">
+          <i class="fa-solid fa-hotel"></i>
+          <h5>Hotels</h5>
+        </div>
+        <div class="wvs-center-sector-card">
+          <i class="fa-solid fa-hospital"></i>
+          <h5>Hospitals</h5>
+        </div>
+        <div class="wvs-center-sector-card">
+          <i class="fa-solid fa-school"></i>
+          <h5>Institutions</h5>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. 4-PILLAR ECOSYSTEM BAR -->
+    <div class="wvs-pillars-bar">
       <div class="wvs-pillar-box">
         <h6>📦 PRODUCT</h6>
         <p>Innovative Electric Saver Card</p>
@@ -511,8 +538,8 @@
       </div>
     </div>
 
-    <!-- TAGLINE STRIP -->
-    <div class="wvs-ref-tagline-strip">
+    <!-- 4. TAGLINE BANNER -->
+    <div class="wvs-tagline-banner">
       YOUR DISTRICT. YOUR BUSINESS. YOUR OPPORTUNITY.
     </div>
   </div>
@@ -522,7 +549,7 @@
 {
   "name": "Why Vidhyut Section 2",
   "tag": "section",
-  "class": "section-why-vidhyut-ref-overview",
+  "class": "section-why-vidhyut-sec2",
   "settings": [
     {
       "type": "text",
@@ -540,7 +567,7 @@
       "type": "textarea",
       "id": "description",
       "label": "Description Text",
-      "default": "Homes. Shops. Offices. Factories. Hotels. Hospitals. Institutions. Everywhere electricity is consumed, there is an opportunity to introduce smarter energy-saving solutions. Vidhyut Saathi is building that opportunity — one district at a time."
+      "default": "Everywhere electricity is consumed, there is an opportunity to introduce smarter energy-saving solutions. Vidhyut Saathi brings together an innovative Electric Saver Card, a growing national brand and a structured district-level franchise business model to help ambitious entrepreneurs build and grow their own local market."
     },
     {
       "type": "url",
