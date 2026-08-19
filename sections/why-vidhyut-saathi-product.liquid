@@ -792,6 +792,7 @@
       const dots = dotsContainer.querySelectorAll('.wvs-dot');
       let currentIndex = 0;
       let intervalId = null;
+      let isSectionVisible = false;
 
       function scrollToSlide(index) {
         if (index >= cards.length) index = 0;
@@ -816,7 +817,7 @@
       }
 
       function startAutoPlay() {
-        if (window.innerWidth <= 768 && !intervalId) {
+        if (window.innerWidth <= 768 && isSectionVisible && !intervalId) {
           intervalId = setInterval(function() {
             scrollToSlide(currentIndex + 1);
           }, 3000);
@@ -828,6 +829,26 @@
           clearInterval(intervalId);
           intervalId = null;
         }
+      }
+
+      // Intersection Observer to trigger 3-second timer ONLY when section is scrolled into view
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              isSectionVisible = true;
+              startAutoPlay();
+            } else {
+              isSectionVisible = false;
+              stopAutoPlay();
+            }
+          });
+        }, { threshold: 0.2 });
+
+        observer.observe(grid);
+      } else {
+        isSectionVisible = true;
+        startAutoPlay();
       }
 
       grid.addEventListener('scroll', function() {
@@ -843,13 +864,14 @@
       });
 
       grid.addEventListener('touchstart', stopAutoPlay);
-      grid.addEventListener('touchend', startAutoPlay);
+      grid.addEventListener('touchend', function() {
+        if (isSectionVisible) startAutoPlay();
+      });
 
-      startAutoPlay();
       window.addEventListener('resize', function() {
         if (window.innerWidth > 768) {
           stopAutoPlay();
-        } else {
+        } else if (isSectionVisible) {
           startAutoPlay();
         }
       });
