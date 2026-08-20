@@ -1039,30 +1039,58 @@
       flex-shrink: 0;
     }
 
-    /* Point 09 Vision Cards Mobile Stack */
+    /* Point 09 Vision Cards Mobile 100% Touch Auto-Slider */
     .wvs-vision-grid {
-      flex-direction: column;
-      gap: 16px;
+      display: flex;
+      flex-direction: row;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      gap: 0;
+      padding: 10px 0 20px 0;
+      margin-bottom: 10px;
+      scrollbar-width: none;
+      width: 100%;
+    }
+    .wvs-vision-grid::-webkit-scrollbar {
+      display: none;
     }
     .wvs-vision-card {
       flex: 0 0 100%;
       width: 100%;
       min-width: 100%;
-      max-width: 100%;
-      padding: 26px 20px;
+      box-sizing: border-box;
+      scroll-snap-align: start;
+      margin: 0;
+      padding: 28px 20px;
     }
 
-    /* Point 10 Mobile Optimization */
-    .wvs-p10-section {
-      padding: 35px 16px;
-      border-radius: 24px;
-    }
+    /* Point 10 Stats Grid Mobile 100% Touch Auto-Slider */
     .wvs-stats-grid {
-      grid-template-columns: 1fr;
-      gap: 16px;
+      display: flex;
+      flex-direction: row;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      gap: 0;
+      padding: 10px 0 20px 0;
+      margin-bottom: 10px;
+      scrollbar-width: none;
+      width: 100%;
+    }
+    .wvs-stats-grid::-webkit-scrollbar {
+      display: none;
     }
     .wvs-stat-box {
-      padding: 24px 16px;
+      flex: 0 0 100%;
+      width: 100%;
+      min-width: 100%;
+      box-sizing: border-box;
+      scroll-snap-align: start;
+      margin: 0;
+      padding: 28px 20px;
     }
     .wvs-stat-num {
       font-size: clamp(36px, 8vw, 52px);
@@ -1420,6 +1448,8 @@
           <p>Partners who don't simply represent a brand—<strong>but help take that brand to new territories.</strong></p>
         </div>
       </div>
+      <!-- Mobile Pagination Dots for Point 09 -->
+      <div class="wvs-slider-dots-vision"></div>
     </div>
 
     <!-- POINT 10: OUR JOURNEY IS ALREADY UNDERWAY -->
@@ -1450,6 +1480,8 @@
           <div class="wvs-stat-label">Customers</div>
         </div>
       </div>
+      <!-- Mobile Pagination Dots for Point 10 -->
+      <div class="wvs-slider-dots-stats"></div>
 
       <div class="wvs-p10-callout-wrap">
         <div class="wvs-p10-callout">
@@ -1604,7 +1636,8 @@
     document.addEventListener('DOMContentLoaded', function() {
       initMobileAutoSliderSec5('.wvs-engine-grid', '.wvs-engine-card', '.wvs-slider-dots-p7');
       initMobileAutoSliderSec5('.wvs-split-ecosystem', '.wvs-eco-box', '.wvs-slider-dots-p8');
-      initMobileAutoSliderSec5('.wvs-p9-grid', '.wvs-p9-card', '.wvs-slider-dots-p9');
+      initMobileAutoSliderSec5('.wvs-vision-grid', '.wvs-vision-card', '.wvs-slider-dots-vision');
+      initMobileAutoSliderSec5('.wvs-stats-grid', '.wvs-stat-box', '.wvs-slider-dots-stats');
     });
   })();
 </script>
