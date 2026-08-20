@@ -204,6 +204,46 @@
     height: 8px;
   }
 
+  .wvs-sector-image-wrap {
+    width: calc(100% + 48px);
+    margin: -34px -24px 20px -24px;
+    height: 160px;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 3px solid rgba(241, 112, 34, 0.18);
+  }
+
+  .wvs-sector-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+
+  .wvs-sector-card:hover .wvs-sector-img {
+    transform: scale(1.08);
+  }
+
+  .wvs-sector-image-badge {
+    position: absolute;
+    bottom: 10px;
+    left: 14px;
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: #ffffff;
+    font-size: 0.76rem;
+    font-weight: 800;
+    padding: 5px 12px;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  }
+
   .wvs-sector-header {
     display: flex;
     align-items: center;
@@ -1125,6 +1165,10 @@
       <div class="wvs-p4-grid">
         <!-- 1. RESIDENTIAL -->
         <div class="wvs-sector-card">
+          <div class="wvs-sector-image-wrap">
+            <img src="{{ 'wvs-residential-sector.jpg' | asset_url }}" alt="Residential Energy Sector" class="wvs-sector-img" loading="lazy">
+            <span class="wvs-sector-image-badge"><i class="fa-solid fa-house-user"></i> Residential Market</span>
+          </div>
           <div class="wvs-sector-header">
             <div class="wvs-sector-icon"><i class="fa-solid fa-house-chimney-user"></i></div>
             <span class="wvs-sector-tag">⚡ Volume Market</span>
@@ -1160,6 +1204,10 @@
 
         <!-- 2. COMMERCIAL -->
         <div class="wvs-sector-card">
+          <div class="wvs-sector-image-wrap">
+            <img src="{{ 'wvs-commercial-sector.jpg' | asset_url }}" alt="Commercial Energy Sector" class="wvs-sector-img" loading="lazy">
+            <span class="wvs-sector-image-badge"><i class="fa-solid fa-building"></i> Commercial Hubs</span>
+          </div>
           <div class="wvs-sector-header">
             <div class="wvs-sector-icon"><i class="fa-solid fa-store"></i></div>
             <span class="wvs-sector-tag">💰 High Billing</span>
@@ -1195,6 +1243,10 @@
 
         <!-- 3. INDUSTRIAL -->
         <div class="wvs-sector-card">
+          <div class="wvs-sector-image-wrap">
+            <img src="{{ 'wvs-industrial-sector.jpg' | asset_url }}" alt="Industrial Manufacturing Sector" class="wvs-sector-img" loading="lazy">
+            <span class="wvs-sector-image-badge"><i class="fa-solid fa-factory"></i> Industrial Plants</span>
+          </div>
           <div class="wvs-sector-header">
             <div class="wvs-sector-icon"><i class="fa-solid fa-industry"></i></div>
             <span class="wvs-sector-tag">🏭 Heavy Load</span>
@@ -1230,6 +1282,10 @@
 
         <!-- 4. INSTITUTIONAL -->
         <div class="wvs-sector-card">
+          <div class="wvs-sector-image-wrap">
+            <img src="{{ 'wvs-institutional-sector.jpg' | asset_url }}" alt="Institutional Campus Sector" class="wvs-sector-img" loading="lazy">
+            <span class="wvs-sector-image-badge"><i class="fa-solid fa-hospital-user"></i> Hospitals & Campus</span>
+          </div>
           <div class="wvs-sector-header">
             <div class="wvs-sector-icon"><i class="fa-solid fa-building-columns"></i></div>
             <span class="wvs-sector-tag">🏛️ Bulk Contracts</span>
