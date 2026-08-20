@@ -419,6 +419,10 @@
     color: #ffcc00;
   }
 
+  .wvs-p4-mobile-poster-card {
+    display: none !important;
+  }
+
   /* ==========================================================================
      POINT 05: FROM PRODUCT TO BUSINESS (COMPARISON MATRIX)
      ========================================================================== */
@@ -1321,6 +1325,24 @@
       scroll-snap-align: start;
       margin: 0;
     }
+
+    .wvs-p4-callout-banner {
+      display: none !important;
+    }
+    .wvs-p4-mobile-poster-card {
+      display: block !important;
+      width: 100%;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 14px 40px rgba(0, 154, 68, 0.22);
+      border: 2.5px solid #009A44;
+      margin-top: 15px;
+    }
+    .wvs-p4-poster-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 18px;
     }
 
     /* Active Pagination Dots */
@@ -1562,6 +1584,16 @@
       <!-- Bottom Callout Banner for 04 -->
       <div class="wvs-p4-callout-banner">
         <p>⚡ ONE PRODUCT. MULTIPLE SECTORS. <span>THOUSANDS OF POTENTIAL CUSTOMERS</span> IN EVERY MARKET.</p>
+      </div>
+
+      <!-- Mobile Only Dedicated Poster Card for 04 -->
+      <div class="wvs-p4-mobile-poster-card">
+        <img 
+          src="{{ 'wvs-multiple-sectors-poster.jpg' | asset_url }}" 
+          alt="One Product. Multiple Sectors. Thousands of Potential Customers in Every Market" 
+          class="wvs-p4-poster-img"
+          loading="lazy"
+        >
       </div>
     </div>
 
