@@ -419,7 +419,7 @@
     color: #ffcc00;
   }
 
-  .wvs-p4-mobile-poster-card {
+  .wvs-p4-mobile-callout-poster {
     display: none !important;
   }
 
@@ -1277,6 +1277,25 @@
       line-height: 1.2;
     }
 
+    .wvs-p4-callout-banner {
+      display: none !important;
+    }
+    .wvs-p4-mobile-callout-poster {
+      display: block !important;
+      width: 100%;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 12px 35px rgba(0, 154, 68, 0.2);
+      border: 2.5px solid #009A44;
+      margin-top: 15px;
+    }
+    .wvs-p4-callout-poster-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 18px;
+    }
+
     .wvs-sec4-wrapper {
       padding: clamp(30px, 5vw, 50px) 14px;
     }
@@ -1325,24 +1344,6 @@
       scroll-snap-align: start;
       margin: 0;
     }
-
-    .wvs-p4-callout-banner {
-      display: none !important;
-    }
-    .wvs-p4-mobile-poster-card {
-      display: block !important;
-      width: 100%;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 14px 40px rgba(0, 154, 68, 0.22);
-      border: 2.5px solid #009A44;
-      margin-top: 15px;
-    }
-    .wvs-p4-poster-img {
-      width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 18px;
     }
 
     /* Active Pagination Dots */
@@ -1586,12 +1587,12 @@
         <p>⚡ ONE PRODUCT. MULTIPLE SECTORS. <span>THOUSANDS OF POTENTIAL CUSTOMERS</span> IN EVERY MARKET.</p>
       </div>
 
-      <!-- Mobile Only Dedicated Poster Card for 04 -->
-      <div class="wvs-p4-mobile-poster-card">
+      <!-- MOBILE ONLY DEDICATED GRAPHIC CALLOUT POSTER CARD FOR 04 -->
+      <div class="wvs-p4-mobile-callout-poster">
         <img 
-          src="{{ 'wvs-multiple-sectors-poster.jpg' | asset_url }}" 
-          alt="One Product. Multiple Sectors. Thousands of Potential Customers in Every Market" 
-          class="wvs-p4-poster-img"
+          src="{{ 'wvs-one-product-poster.jpg' | asset_url }}" 
+          alt="ONE PRODUCT. MULTIPLE SECTORS. THOUSANDS OF POTENTIAL CUSTOMERS IN EVERY MARKET." 
+          class="wvs-p4-callout-poster-img"
           loading="lazy"
         >
       </div>
