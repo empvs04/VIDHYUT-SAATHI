@@ -1249,6 +1249,30 @@
       backdrop-filter: blur(4px);
     }
 
+    .wvs-mcomp-phone-badge {
+      position: absolute;
+      top: 10px;
+      left: 6px;
+      background: linear-gradient(135deg, #009A44 0%, #007b3e 100%);
+      color: #ffffff;
+      font-size: 0.68rem;
+      font-weight: 900;
+      padding: 4px 8px;
+      border-radius: 50px;
+      border: 1.5px solid #86efac;
+      box-shadow: 0 6px 18px rgba(0, 154, 68, 0.45);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      z-index: 4;
+      animation: pulseGreenGlow 2s infinite alternate;
+    }
+
+    @keyframes pulseGreenGlow {
+      0% { box-shadow: 0 4px 12px rgba(0, 154, 68, 0.4); transform: scale(1); }
+      100% { box-shadow: 0 8px 22px rgba(0, 154, 68, 0.7); transform: scale(1.05); }
+    }
+
     .wvs-sec4-wrapper {
       padding: clamp(30px, 5vw, 50px) 14px;
     }
@@ -1708,6 +1732,9 @@
             <!-- RIGHT: HAPPY SUCCESSFUL BUSINESSMAN -->
             <div class="wvs-mcomp-photo-col wvs-photo-happy">
               <img src="{{ 'wvs-happy-man.jpg' | asset_url }}" alt="Successful Vidhyut Saathi Partner" class="wvs-mcomp-person-img" loading="lazy">
+              <div class="wvs-mcomp-phone-badge">
+                <i class="fa-solid fa-indian-rupee-sign"></i> <span>3 - 4 LAKHS / MO</span>
+              </div>
               <div class="wvs-mcomp-photo-overlay-green"><i class="fa-solid fa-chart-line"></i> Guaranteed Ecosystem</div>
             </div>
           </div>
