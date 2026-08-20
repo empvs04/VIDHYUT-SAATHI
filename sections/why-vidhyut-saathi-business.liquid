@@ -1036,6 +1036,27 @@
     .wvs-p4-grid, .wvs-p6-grid {
       grid-template-columns: repeat(2, 1fr);
     }
+    .wvs-p4-callout-banner {
+      display: none !important;
+    }
+    .wvs-p4-mobile-callout-poster {
+      display: block !important;
+      width: 100%;
+      max-width: 100%;
+      border-radius: 26px;
+      overflow: hidden;
+      box-shadow: 0 16px 45px rgba(0, 154, 68, 0.25), 0 0 30px rgba(241, 112, 34, 0.15);
+      border: 3.5px solid #009A44;
+      margin: 25px auto 35px auto;
+      background: #ffffff;
+      box-sizing: border-box;
+    }
+    .wvs-p4-callout-poster-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 22px;
+    }
   }
 
   /* Mobile Point-by-Point Comparison Matrix */
@@ -1275,25 +1296,6 @@
       font-size: clamp(24px, 5.5vw, 36px);
       letter-spacing: 1px;
       line-height: 1.2;
-    }
-
-    .wvs-p4-callout-banner {
-      display: none !important;
-    }
-    .wvs-p4-mobile-callout-poster {
-      display: block !important;
-      width: 100%;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 12px 35px rgba(0, 154, 68, 0.2);
-      border: 2.5px solid #009A44;
-      margin-top: 15px;
-    }
-    .wvs-p4-callout-poster-img {
-      width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 18px;
     }
 
     .wvs-sec4-wrapper {
@@ -1586,18 +1588,17 @@
       <div class="wvs-p4-callout-banner">
         <p>⚡ ONE PRODUCT. MULTIPLE SECTORS. <span>THOUSANDS OF POTENTIAL CUSTOMERS</span> IN EVERY MARKET.</p>
       </div>
-
-      <!-- MOBILE ONLY DEDICATED GRAPHIC CALLOUT POSTER CARD FOR 04 -->
-      <div class="wvs-p4-mobile-callout-poster">
-        <img 
-          src="{{ 'wvs-one-product-poster.jpg' | asset_url }}" 
-          alt="ONE PRODUCT. MULTIPLE SECTORS. THOUSANDS OF POTENTIAL CUSTOMERS IN EVERY MARKET." 
-          class="wvs-p4-callout-poster-img"
-          loading="lazy"
-        >
-      </div>
     </div>
 
+    <!-- MOBILE ONLY DEDICATED GRAPHIC CALLOUT POSTER CARD (DISPLAYED DIRECTLY ABOVE 05 BADGE) -->
+    <div class="wvs-p4-mobile-callout-poster">
+      <img 
+        src="{{ 'wvs-one-product-poster.jpg' | asset_url }}" 
+        alt="ONE PRODUCT. MULTIPLE SECTORS. THOUSANDS OF POTENTIAL CUSTOMERS IN EVERY MARKET." 
+        class="wvs-p4-callout-poster-img"
+        loading="lazy"
+      >
+    </div>
 
     <!-- ==========================================================================
        05 — FROM PRODUCT TO BUSINESS
