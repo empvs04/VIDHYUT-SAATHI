@@ -455,6 +455,109 @@
     .wvs-lady-img-card {
       height: 320px;
     }
+    .wvs-pillars-bar {
+      display: none !important;
+    }
+    body .wvs-mobile-4pillars-stack,
+    .wvs-mobile-4pillars-stack {
+      display: flex !important;
+      flex-direction: column;
+      gap: 14px;
+      width: 100%;
+      margin-bottom: 25px;
+    }
+    .wvs-m-pillar-card {
+      background: linear-gradient(135deg, #ffffff 0%, #f7fdf9 100%);
+      border: 2px solid #86efac;
+      border-radius: 24px;
+      padding: 16px 14px;
+      display: grid;
+      grid-template-columns: 74px 1fr;
+      gap: 12px;
+      align-items: center;
+      box-shadow: 0 10px 30px rgba(0, 154, 68, 0.12), 0 0 15px rgba(241, 112, 34, 0.05);
+      position: relative;
+      overflow: hidden;
+    }
+    .wvs-m-pillar-card::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 6px;
+      background: linear-gradient(180deg, #009A44 0%, #F17022 100%);
+      border-radius: 24px 0 0 24px;
+    }
+    .wvs-m-pillar-left {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .wvs-m-pillar-circle {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);
+      border: 2.5px solid #009A44;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: #009A44;
+      box-shadow: 0 6px 18px rgba(0, 154, 68, 0.2), inset 0 2px 4px rgba(255, 255, 255, 0.8);
+    }
+    .wvs-m-pillar-right {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+    }
+    .wvs-m-pillar-head {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 2px;
+    }
+    .wvs-m-num-tag {
+      background: linear-gradient(135deg, #009A44 0%, #007b3e 100%);
+      color: #ffffff;
+      font-size: 0.76rem;
+      font-weight: 900;
+      padding: 3px 8px;
+      border-radius: 8px;
+      letter-spacing: 0.5px;
+      box-shadow: 0 3px 8px rgba(0, 154, 68, 0.3);
+    }
+    .wvs-m-pillar-head h4 {
+      font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 900;
+      color: #004d25;
+      margin: 0;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .wvs-m-divider {
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, #F17022 0%, rgba(241, 112, 34, 0.15) 100%);
+      margin: 3px 0 5px 0;
+      border-radius: 2px;
+    }
+    .wvs-m-pillar-right h5 {
+      font-size: 0.94rem;
+      font-weight: 900;
+      color: #0f172a;
+      margin: 0 0 2px 0;
+      line-height: 1.3;
+    }
+    .wvs-m-pillar-right p {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #64748b;
+      margin: 0;
+      line-height: 1.3;
+    }
   }
 
   @media (max-width: 576px) {
@@ -499,6 +602,10 @@
     font-weight: 800;
     color: #231F20;
     margin: 0;
+  }
+
+  .wvs-mobile-4pillars-stack {
+    display: none !important;
   }
 
   /* --- 3. 4 PILLARS & TAGLINE STRIP --- */
@@ -878,7 +985,7 @@
       </div>
     </div>
 
-    <!-- 3. 4-PILLAR ECOSYSTEM BAR -->
+    <!-- 3. 4-PILLAR ECOSYSTEM BAR (DESKTOP) -->
     <div class="wvs-pillars-bar">
       <div class="wvs-pillar-box">
         <h6>📦 PRODUCT</h6>
@@ -895,6 +1002,81 @@
       <div class="wvs-pillar-box">
         <h6>🤝 SUPPORT</h6>
         <p>Training, Marketing & Guidance</p>
+      </div>
+    </div>
+
+    <!-- 4-PILLAR ECOSYSTEM ULTRA-LUCRATIVE CARDS (MOBILE ONLY) -->
+    <div class="wvs-mobile-4pillars-stack">
+      <!-- 01 PRODUCT -->
+      <div class="wvs-m-pillar-card">
+        <div class="wvs-m-pillar-left">
+          <div class="wvs-m-pillar-circle">
+            <i class="fa-solid fa-box-open"></i>
+          </div>
+        </div>
+        <div class="wvs-m-pillar-right">
+          <div class="wvs-m-pillar-head">
+            <span class="wvs-m-num-tag">01</span>
+            <h4>PRODUCT</h4>
+          </div>
+          <div class="wvs-m-divider"></div>
+          <h5>Innovative Electric Saver Card</h5>
+          <p>Advanced Technology. Real Savings.</p>
+        </div>
+      </div>
+
+      <!-- 02 BRAND -->
+      <div class="wvs-m-pillar-card">
+        <div class="wvs-m-pillar-left">
+          <div class="wvs-m-pillar-circle">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+        </div>
+        <div class="wvs-m-pillar-right">
+          <div class="wvs-m-pillar-head">
+            <span class="wvs-m-num-tag">02</span>
+            <h4>BRAND</h4>
+          </div>
+          <div class="wvs-m-divider"></div>
+          <h5>Growing National Energy Brand</h5>
+          <p>Trusted by Lakh+ Customers Across India</p>
+        </div>
+      </div>
+
+      <!-- 03 MARKET -->
+      <div class="wvs-m-pillar-card">
+        <div class="wvs-m-pillar-left">
+          <div class="wvs-m-pillar-circle">
+            <i class="fa-solid fa-chart-line"></i>
+          </div>
+        </div>
+        <div class="wvs-m-pillar-right">
+          <div class="wvs-m-pillar-head">
+            <span class="wvs-m-num-tag">03</span>
+            <h4>MARKET</h4>
+          </div>
+          <div class="wvs-m-divider"></div>
+          <h5>District-Level Business Model</h5>
+          <p>Low Investment. High Returns.</p>
+        </div>
+      </div>
+
+      <!-- 04 SUPPORT -->
+      <div class="wvs-m-pillar-card">
+        <div class="wvs-m-pillar-left">
+          <div class="wvs-m-pillar-circle">
+            <i class="fa-solid fa-headset"></i>
+          </div>
+        </div>
+        <div class="wvs-m-pillar-right">
+          <div class="wvs-m-pillar-head">
+            <span class="wvs-m-num-tag">04</span>
+            <h4>SUPPORT</h4>
+          </div>
+          <div class="wvs-m-divider"></div>
+          <h5>Training, Marketing & Guidance</h5>
+          <p>Complete Support at Every Step</p>
+        </div>
       </div>
     </div>
 
