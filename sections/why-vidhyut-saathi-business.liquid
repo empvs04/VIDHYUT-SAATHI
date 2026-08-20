@@ -419,8 +419,8 @@
     color: #ffcc00;
   }
 
-  .wvs-p4-mobile-callout-poster {
-    display: none;
+  .wvs-p5-mobile-top-poster {
+    display: none !important;
   }
 
   /* ==========================================================================
@@ -1039,24 +1039,24 @@
     .wvs-p4-callout-banner {
       display: none !important;
     }
-    body .wvs-p4-mobile-callout-poster,
-    .wvs-p4-mobile-callout-poster {
+    body .wvs-p5-mobile-top-poster,
+    .wvs-p5-mobile-top-poster {
       display: block !important;
-      width: 100%;
-      max-width: 100%;
-      border-radius: 26px;
-      overflow: hidden;
-      box-shadow: 0 16px 45px rgba(0, 154, 68, 0.25), 0 0 30px rgba(241, 112, 34, 0.15);
-      border: 3.5px solid #009A44;
-      margin: 25px auto 35px auto;
-      background: #ffffff;
-      box-sizing: border-box;
+      width: 100% !important;
+      max-width: 100% !important;
+      margin: 0 auto 30px auto !important;
+      border-radius: 26px !important;
+      overflow: hidden !important;
+      border: 3.5px solid #009A44 !important;
+      box-shadow: 0 16px 45px rgba(0, 154, 68, 0.28), 0 0 30px rgba(241, 112, 34, 0.18) !important;
+      background: #ffffff !important;
+      box-sizing: border-box !important;
     }
-    .wvs-p4-callout-poster-img {
-      width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 22px;
+    .wvs-p5-poster-img {
+      width: 100% !important;
+      height: auto !important;
+      display: block !important;
+      border-radius: 22px !important;
     }
   }
 
@@ -1591,21 +1591,21 @@
       </div>
     </div>
 
-    <!-- MOBILE ONLY DEDICATED GRAPHIC CALLOUT POSTER CARD (DISPLAYED DIRECTLY ABOVE 05 BADGE) -->
-    <div class="wvs-p4-mobile-callout-poster">
-      <img 
-        src="{{ 'wvs-one-product-poster.jpg' | asset_url }}" 
-        alt="ONE PRODUCT. MULTIPLE SECTORS. THOUSANDS OF POTENTIAL CUSTOMERS IN EVERY MARKET." 
-        class="wvs-p4-callout-poster-img"
-        loading="lazy"
-      >
-    </div>
-
     <!-- ==========================================================================
        05 — FROM PRODUCT TO BUSINESS
        ========================================================================== -->
     <div class="wvs-p5-section">
       <div class="wvs-p5-head">
+        <!-- MOBILE ONLY GRAPHIC POSTER CARD DIRECTLY ABOVE 05 BADGE -->
+        <div class="wvs-p5-mobile-top-poster">
+          <img 
+            src="{{ 'wvs-one-product-poster.jpg' | asset_url }}" 
+            alt="ONE PRODUCT. MULTIPLE SECTORS. THOUSANDS OF POTENTIAL CUSTOMERS IN EVERY MARKET." 
+            class="wvs-p5-poster-img"
+            loading="eager"
+          >
+        </div>
+
         <div class="wvs-sec4-badge">
           <i class="fa-solid fa-rocket"></i>
           <span>{{ section.settings.badge_p5 | default: "05 — FROM PRODUCT TO BUSINESS" }}</span>
