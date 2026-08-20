@@ -736,6 +736,81 @@
     background: #f0fdf4;
   }
 
+  /* Point 03 2-Column Split Layout with 3D Pop-Out Nano Tech Chip */
+  .wvs-p3-split-row {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: 32px;
+    align-items: center;
+    margin-bottom: 25px;
+  }
+
+  .wvs-p3-chip-col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .wvs-p3-chip-popout-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 340px;
+    height: 380px;
+    border-radius: 28px;
+    overflow: hidden;
+    border: 2.5px solid #009A44;
+    box-shadow: 0 18px 45px rgba(0, 154, 68, 0.2);
+    background: #0f172a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .wvs-p3-chip-popout-wrap::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(0, 154, 68, 0.3) 0%, transparent 75%);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .wvs-p3-chip-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+
+  .wvs-p3-chip-popout-wrap:hover .wvs-p3-chip-img {
+    transform: scale(1.06);
+  }
+
+  .wvs-p3-chip-floating-badge {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    right: 16px;
+    z-index: 3;
+    background: rgba(15, 23, 42, 0.92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: #ffffff;
+    font-size: 0.8rem;
+    font-weight: 900;
+    padding: 10px 16px;
+    border-radius: 50px;
+    border: 1.5px solid rgba(0, 154, 68, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    letter-spacing: 0.8px;
+  }
+
   .wvs-tech-num {
     position: absolute;
     top: 18px;
@@ -816,6 +891,14 @@
     }
     .wvs-specs-row {
       justify-content: center;
+    }
+    .wvs-p3-split-row {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    .wvs-p3-chip-popout-wrap {
+      max-width: 100%;
+      height: 240px;
     }
   }
 
@@ -1337,48 +1420,62 @@
         </p>
       </div>
 
-      <!-- 6 Tech Cards Container (Auto Slider on Mobile) -->
-      <div class="wvs-p3-grid">
-        <div class="wvs-tech-card">
-          <span class="wvs-tech-num">01</span>
-          <div class="wvs-tech-icon"><i class="fa-solid fa-bolt"></i></div>
-          <h5>Smart Energy Efficiency</h5>
-          <p>Supporting smarter and more efficient electricity usage across all appliances.</p>
+      <!-- 2-COLUMN SPLIT: 3D TECH CHIP LEFT, 6 CARDS RIGHT -->
+      <div class="wvs-p3-split-row">
+        <!-- LEFT: 3D POP-OUT NANO TECH CHIP -->
+        <div class="wvs-p3-chip-col">
+          <div class="wvs-p3-chip-popout-wrap">
+            <img src="{{ 'wvs-nano-tech-chip.jpg' | asset_url }}" alt="US German Nano Tech Terahertz Chip" class="wvs-p3-chip-img" loading="lazy">
+            <div class="wvs-p3-chip-floating-badge">
+              <i class="fa-solid fa-microchip" style="color: #009A44;"></i>
+              <span>20,000+ NEGATIVE IONS</span>
+            </div>
+          </div>
         </div>
 
-        <div class="wvs-tech-card">
-          <span class="wvs-tech-num">02</span>
-          <div class="wvs-tech-icon"><i class="fa-solid fa-sack-dollar"></i></div>
-          <h5>Electricity Savings</h5>
-          <p>Designed to help reduce unnecessary electricity consumption and monthly expenses.</p>
-        </div>
+        <!-- RIGHT: 6 TECH CARDS GRID -->
+        <div class="wvs-p3-grid">
+          <div class="wvs-tech-card">
+            <span class="wvs-tech-num">01</span>
+            <div class="wvs-tech-icon"><i class="fa-solid fa-bolt"></i></div>
+            <h5>Smart Energy Efficiency</h5>
+            <p>Supporting smarter and more efficient electricity usage across all appliances.</p>
+          </div>
 
-        <div class="wvs-tech-card">
-          <span class="wvs-tech-num">03</span>
-          <div class="wvs-tech-icon"><i class="fa-solid fa-plug"></i></div>
-          <h5>Easy MCB Installation</h5>
-          <p>Simple installation near the MCB without complicated wiring or modifications.</p>
-        </div>
+          <div class="wvs-tech-card">
+            <span class="wvs-tech-num">02</span>
+            <div class="wvs-tech-icon"><i class="fa-solid fa-sack-dollar"></i></div>
+            <h5>Electricity Savings</h5>
+            <p>Designed to help reduce unnecessary electricity consumption and monthly expenses.</p>
+          </div>
 
-        <div class="wvs-tech-card">
-          <span class="wvs-tech-num">04</span>
-          <div class="wvs-tech-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
-          <h5>Zero Regular Maintenance</h5>
-          <p>Designed for completely hassle-free, long-term operational use.</p>
-        </div>
+          <div class="wvs-tech-card">
+            <span class="wvs-tech-num">03</span>
+            <div class="wvs-tech-icon"><i class="fa-solid fa-plug"></i></div>
+            <h5>Easy MCB Installation</h5>
+            <p>Simple installation near the MCB without complicated wiring or modifications.</p>
+          </div>
 
-        <div class="wvs-tech-card">
-          <span class="wvs-tech-num">05</span>
-          <div class="wvs-tech-icon"><i class="fa-solid fa-hourglass-start"></i></div>
-          <h5>10-Year Product Life</h5>
-          <p>10-year long product life ensuring continuous long-term value for customers.</p>
-        </div>
+          <div class="wvs-tech-card">
+            <span class="wvs-tech-num">04</span>
+            <div class="wvs-tech-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+            <h5>Zero Regular Maintenance</h5>
+            <p>Designed for completely hassle-free, long-term operational use.</p>
+          </div>
 
-        <div class="wvs-tech-card">
-          <span class="wvs-tech-num">06</span>
-          <div class="wvs-tech-icon"><i class="fa-solid fa-leaf"></i></div>
-          <h5>Responsible Energy</h5>
-          <p>Promotes smarter and more responsible energy consumption for a sustainable future.</p>
+          <div class="wvs-tech-card">
+            <span class="wvs-tech-num">05</span>
+            <div class="wvs-tech-icon"><i class="fa-solid fa-hourglass-start"></i></div>
+            <h5>10-Year Product Life</h5>
+            <p>10-year long product life ensuring continuous long-term value for customers.</p>
+          </div>
+
+          <div class="wvs-tech-card">
+            <span class="wvs-tech-num">06</span>
+            <div class="wvs-tech-icon"><i class="fa-solid fa-leaf"></i></div>
+            <h5>Responsible Energy</h5>
+            <p>Promotes smarter and more responsible energy consumption for a sustainable future.</p>
+          </div>
         </div>
       </div>
 
