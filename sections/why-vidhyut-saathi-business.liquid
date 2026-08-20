@@ -774,6 +774,19 @@
     display: block;
   }
 
+  .wvs-btn-cta-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    width: 100%;
+  }
+
+  .wvs-hand-left,
+  .wvs-hand-right {
+    display: none;
+  }
+
   .wvs-btn-cta-franchise {
     display: inline-flex;
     align-items: center;
@@ -1292,11 +1305,77 @@
       letter-spacing: 0.3px;
     }
 
+    .wvs-p5-cta-banner {
+      background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 50%, #e6f7ed 100%) !important;
+      border: 3px solid #009A44 !important;
+      border-radius: 28px !important;
+      padding: 32px 14px !important;
+      box-shadow: 0 16px 45px rgba(0, 154, 68, 0.25), 0 0 25px rgba(241, 112, 34, 0.15) !important;
+    }
+
     .wvs-p5-cta-banner h4 {
       font-family: 'Bebas Neue', 'Anton', 'Impact', sans-serif;
       font-size: clamp(24px, 5.5vw, 36px);
       letter-spacing: 1px;
       line-height: 1.2;
+    }
+
+    .wvs-btn-cta-wrapper {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 6px !important;
+      width: 100% !important;
+      margin-top: 10px !important;
+    }
+
+    .wvs-hand-left,
+    .wvs-hand-right {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      font-size: 1.7rem !important;
+      line-height: 1 !important;
+      flex-shrink: 0 !important;
+      user-select: none;
+    }
+
+    .wvs-hand-left {
+      animation: wvs-hand-move-right 0.9s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate !important;
+    }
+
+    .wvs-hand-right {
+      animation: wvs-hand-move-left 0.9s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate !important;
+    }
+
+    @keyframes wvs-hand-move-right {
+      0% {
+        transform: translateX(0px);
+      }
+      100% {
+        transform: translateX(8px);
+      }
+    }
+
+    @keyframes wvs-hand-move-left {
+      0% {
+        transform: translateX(0px);
+      }
+      100% {
+        transform: translateX(-8px);
+      }
+    }
+
+    .wvs-btn-cta-franchise {
+      width: 100% !important;
+      max-width: 275px !important;
+      padding: 14px 16px !important;
+      font-size: 0.86rem !important;
+      border-radius: 50px !important;
+      background: linear-gradient(135deg, #F17022 0%, #ec5c0a 100%) !important;
+      box-shadow: 0 10px 25px rgba(241, 112, 34, 0.45) !important;
+      letter-spacing: 0.5px !important;
+      white-space: nowrap !important;
     }
 
     .wvs-sec4-wrapper {
@@ -1783,10 +1862,14 @@
           <span class="wvs-cta-line-orange">YOU BUILD THE MARKET.</span>
           <span class="wvs-cta-line-green">TURN A PRODUCT INTO YOUR BUSINESS.</span>
         </h4>
-        <a href="{{ section.settings.franchise_cta_link | default: '/pages/contact' }}" class="wvs-btn-cta-franchise">
-          <span>Become A Franchise Partner</span>
-          <i class="fa-solid fa-arrow-right-long"></i>
-        </a>
+        <div class="wvs-btn-cta-wrapper">
+          <span class="wvs-hand-left" aria-hidden="true">👉</span>
+          <a href="{{ section.settings.franchise_cta_link | default: '/pages/contact' }}" class="wvs-btn-cta-franchise">
+            <span>Become A Franchise Partner</span>
+            <i class="fa-solid fa-arrow-right-long"></i>
+          </a>
+          <span class="wvs-hand-right" aria-hidden="true">👈</span>
+        </div>
       </div>
     </div>
 
