@@ -386,6 +386,10 @@
     line-height: 1.2;
   } }
 
+  .wvs-p2-mobile-poster-card {
+    display: none;
+  }
+
   .wvs-sec3-subhead {
     font-size: clamp(16px, 1.8vw, 20px);
     line-height: 1.6;
@@ -1125,18 +1129,23 @@
       max-width: 100%;
     }
     .wvs-p2-hero-card {
-      background-image: linear-gradient(180deg, rgba(15, 23, 42, 0.22) 0%, rgba(15, 23, 42, 0.52) 100%), url("{{ 'wvs-power-grid.jpg' | asset_url }}");
-      background-size: cover;
-      background-position: center top;
+      display: none !important;
+    }
+    .wvs-p2-mobile-poster-card {
+      display: block !important;
+      width: 100%;
       border: 3.5px solid #F17022;
-      padding: 48px 24px;
-      min-height: 340px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      border-radius: 28px;
+      overflow: hidden;
       box-shadow: 0 20px 50px rgba(241, 112, 34, 0.3), 0 0 30px rgba(0, 154, 68, 0.25);
-      border-radius: 32px;
+      background: #ffffff;
+      margin: 0 auto;
+    }
+    .wvs-p2-poster-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 24px;
     }
     .wvs-p2-mini-tag {
       background: linear-gradient(135deg, #F17022 0%, #ec5c0a 100%);
@@ -1392,6 +1401,16 @@
                   <span>IT'S A MONTHLY EXPENSE.</span>
                 </span>
               </h3>
+            </div>
+
+            <!-- MOBILE ONLY DEDICATED GRAPHIC POSTER CARD (MATCHING USER IMAGE) -->
+            <div class="wvs-p2-mobile-poster-card">
+              <img 
+                src="{{ 'wvs-power-grid-poster.jpg' | asset_url }}" 
+                alt="Electricity Is Not A One-Time Expense - Mobile Poster" 
+                class="wvs-p2-poster-img"
+                loading="eager"
+              >
             </div>
           </div>
 
