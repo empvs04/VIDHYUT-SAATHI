@@ -305,55 +305,68 @@
     align-items: center;
   }
 
-  .wvs-lady-img-card {
+  .wvs-lady-popout-wrap {
     position: relative;
-    border-radius: 28px;
-    overflow: hidden;
-    background: linear-gradient(145deg, #ffffff 0%, #fff7ed 100%);
-    border: 2.5px solid #F17022;
-    box-shadow: 0 15px 40px rgba(241, 112, 34, 0.18);
-    height: 380px;
     width: 100%;
-    max-width: 280px;
+    max-width: 320px;
+    height: 420px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+  }
+
+  /* Radial Ambient Glow backdrop behind presenter woman */
+  .wvs-lady-popout-wrap::before {
+    content: '';
+    position: absolute;
+    bottom: 10px;
+    width: 90%;
+    height: 75%;
+    background: radial-gradient(circle at 50% 50%, rgba(241, 112, 34, 0.25) 0%, rgba(0, 154, 68, 0.18) 55%, transparent 80%);
+    border-radius: 50%;
+    filter: blur(28px);
+    z-index: 0;
+    pointer-events: none;
   }
 
   .wvs-lady-real-img {
+    position: relative;
+    z-index: 2;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    object-position: center top;
+    object-fit: contain;
+    object-position: center bottom;
     display: block;
-    transition: transform 0.4s ease;
+    filter: drop-shadow(0 18px 30px rgba(15, 23, 42, 0.22));
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), filter 0.4s ease;
   }
 
-  .wvs-lady-img-card:hover .wvs-lady-real-img {
-    transform: scale(1.05);
+  .wvs-lady-popout-wrap:hover .wvs-lady-real-img {
+    transform: scale(1.05) translateY(-8px);
+    filter: drop-shadow(0 25px 40px rgba(241, 112, 34, 0.35));
   }
 
-  .wvs-lady-badge {
+  .wvs-lady-floating-pill {
     position: absolute;
-    bottom: 14px;
-    left: 12px;
-    right: 12px;
-    background: rgba(15, 23, 42, 0.9);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    color: #F17022;
-    font-size: 0.76rem;
+    bottom: 8px;
+    z-index: 3;
+    background: linear-gradient(135deg, #F17022 0%, #ec5c0a 100%);
+    color: #ffffff;
+    font-size: 0.82rem;
     font-weight: 900;
-    padding: 8px 12px;
+    padding: 9px 20px;
     border-radius: 50px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    display: flex;
+    box-shadow: 0 8px 22px rgba(241, 112, 34, 0.45);
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
     gap: 8px;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+    letter-spacing: 0.8px;
+    border: 2.5px solid #ffffff;
+    transition: transform 0.3s ease;
   }
 
-  .wvs-lady-badge span {
-    color: #ffffff;
-    letter-spacing: 0.5px;
+  .wvs-lady-popout-wrap:hover .wvs-lady-floating-pill {
+    transform: translateY(-4px);
   }
 
   .wvs-sectors-content-col {
@@ -763,18 +776,18 @@
     <!-- 2. ELECTRICITY CONSUMPTION SECTORS SHOWCASE (2-COLUMN WITH POINTING LADY) -->
     <div class="wvs-sectors-centerpiece">
       <div class="wvs-sectors-split-row">
-        <!-- LEFT: POINTING WOMAN IMAGE CARD -->
+        <!-- LEFT: POINTING WOMAN POP-OUT IMAGE -->
         <div class="wvs-sectors-lady-col">
-          <div class="wvs-lady-img-card">
+          <div class="wvs-lady-popout-wrap">
             <img 
               src="{{ 'wvs-pointing-woman.jpg' | asset_url }}" 
               alt="Vidhyut Saathi Presenter" 
               class="wvs-lady-real-img"
               loading="lazy"
             >
-            <div class="wvs-lady-badge">
-              <i class="fa-solid fa-arrow-right-long"></i>
-              <span>HIGH POTENTIAL MARKETS</span>
+            <div class="wvs-lady-floating-pill">
+              <i class="fa-solid fa-arrow-right"></i>
+              <span>HIGH SAVINGS SECTORS</span>
             </div>
           </div>
         </div>
