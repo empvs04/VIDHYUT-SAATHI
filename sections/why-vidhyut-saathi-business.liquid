@@ -1452,13 +1452,16 @@
     }
 
     /* Active Pagination Dots */
-    .wvs-slider-dots-p4, .wvs-slider-dots-p5, .wvs-slider-dots-p6 {
+    .wvs-slider-dots-p4, .wvs-slider-dots-p6 {
       display: flex;
       justify-content: center;
       align-items: center;
       gap: 8px;
       margin-top: 6px;
       margin-bottom: 24px;
+    }
+    .wvs-slider-dots-p5 {
+      display: none !important;
     }
     .wvs-dot {
       width: 10px;
@@ -2110,12 +2113,10 @@
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', function() {
         initMobileAutoSliderSec4('.wvs-p4-grid', '.wvs-sector-card', '.wvs-slider-dots-p4');
-        initMobileAutoSliderSec4('.wvs-mobile-vs-comparison', '.wvs-mcomp-card', '.wvs-slider-dots-p5');
         initMobileAutoSliderSec4('.wvs-p6-grid', '.wvs-pillar-card', '.wvs-slider-dots-p6');
       });
     } else {
       initMobileAutoSliderSec4('.wvs-p4-grid', '.wvs-sector-card', '.wvs-slider-dots-p4');
-      initMobileAutoSliderSec4('.wvs-mobile-vs-comparison', '.wvs-mcomp-card', '.wvs-slider-dots-p5');
       initMobileAutoSliderSec4('.wvs-p6-grid', '.wvs-pillar-card', '.wvs-slider-dots-p6');
     }
   })();
