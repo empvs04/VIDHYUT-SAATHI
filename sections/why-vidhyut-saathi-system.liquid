@@ -91,6 +91,17 @@
     overflow: hidden;
   }
 
+  .wvs-engine-arrow-down {
+    display: none;
+  }
+
+  .wvs-engine-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
   .wvs-engine-card::before {
     content: '';
     position: absolute;
@@ -1054,29 +1065,118 @@
       padding: 8px 22px;
     }
 
-    /* Point 07 Mobile 100% Clean Full Width Slider */
+    /* Point 07 Mobile Vertical Flow with Downward Arrows */
     .wvs-engine-grid {
-      display: flex;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
-      gap: 0;
-      padding: 10px 0 20px 0;
-      margin-bottom: 10px;
-      scrollbar-width: none;
-      width: 100%;
-    }
-    .wvs-engine-grid::-webkit-scrollbar {
-      display: none;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 0 !important;
+      width: 100% !important;
+      margin-bottom: 25px !important;
+      overflow: visible !important;
+      padding: 0 !important;
     }
     .wvs-engine-card {
-      flex: 0 0 100%;
-      width: 100%;
-      min-width: 100%;
-      box-sizing: border-box;
-      scroll-snap-align: start;
-      margin: 0;
+      width: 100% !important;
+      flex: none !important;
+      min-width: 100% !important;
+      box-sizing: border-box !important;
+      background: #ffffff !important;
+      border: 2px solid #F17022 !important;
+      border-radius: 20px !important;
+      padding: 16px 18px !important;
+      display: grid !important;
+      grid-template-columns: 46px 1fr !important;
+      gap: 14px !important;
+      align-items: center !important;
+      text-align: left !important;
+      box-shadow: 0 8px 24px rgba(241, 112, 34, 0.12) !important;
+      margin: 0 !important;
+      scroll-snap-align: none !important;
+    }
+    .wvs-engine-card:nth-of-type(even) {
+      border-color: #009A44 !important;
+      box-shadow: 0 8px 24px rgba(0, 154, 68, 0.12) !important;
+    }
+    .wvs-engine-icon {
+      width: 44px !important;
+      height: 44px !important;
+      font-size: 1.2rem !important;
+      margin-bottom: 0 !important;
+      border-radius: 14px !important;
+    }
+    .wvs-engine-content {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: flex-start !important;
+      text-align: left !important;
+    }
+    .wvs-engine-step-num {
+      font-size: 0.68rem !important;
+      padding: 2px 8px !important;
+      margin-bottom: 3px !important;
+      background: #FFF7ED !important;
+      border-color: #F17022 !important;
+      color: #F17022 !important;
+    }
+    .wvs-engine-card:nth-of-type(even) .wvs-engine-step-num {
+      background: #f0fdf4 !important;
+      border-color: #009A44 !important;
+      color: #009A44 !important;
+    }
+    .wvs-engine-card h4 {
+      font-size: 1.05rem !important;
+      font-weight: 900 !important;
+      color: #0f2c4a !important;
+      margin: 0 0 2px 0 !important;
+      line-height: 1.2 !important;
+      letter-spacing: 0.3px !important;
+    }
+    .wvs-engine-card p {
+      font-size: 0.82rem !important;
+      font-weight: 600 !important;
+      color: #475569 !important;
+      margin: 0 !important;
+      line-height: 1.3 !important;
+    }
+    .wvs-engine-arrow-down {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: 36px !important;
+      height: 36px !important;
+      border-radius: 50% !important;
+      background: linear-gradient(135deg, #F17022 0%, #009A44 100%) !important;
+      color: #ffffff !important;
+      font-size: 1.05rem !important;
+      margin: 8px auto !important;
+      box-shadow: 0 6px 18px rgba(241, 112, 34, 0.35) !important;
+      border: 2.5px solid #ffffff !important;
+      animation: wvs-bounce-down 1.4s ease-in-out infinite !important;
+    }
+    @keyframes wvs-bounce-down {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(5px); }
+    }
+    .wvs-engine-banner {
+      background: linear-gradient(135deg, #F17022 0%, #FB5900 45%, #009A44 100%) !important;
+      border: none !important;
+      color: #ffffff !important;
+      font-size: 0.88rem !important;
+      font-weight: 900 !important;
+      padding: 18px 16px !important;
+      border-radius: 24px !important;
+      text-align: center !important;
+      line-height: 1.4 !important;
+      box-shadow: 0 14px 35px rgba(241, 112, 34, 0.3) !important;
+      letter-spacing: 0.8px !important;
+      margin-top: 20px !important;
+    }
+    .wvs-banner-nextline {
+      display: block !important;
+      margin-top: 3px !important;
+    }
+    .wvs-slider-dots-p7 {
+      display: none !important;
     }
 
     /* Point 08 Mobile 100% Clean Full Width Slider */
@@ -1317,79 +1417,121 @@
         </div>
       </div>
 
-      <!-- 8-Step Engine Grid (Auto Slider on Mobile) -->
+      <!-- 8-Step Engine Grid (Vertical Downward Flow on Mobile) -->
       <div class="wvs-engine-grid">
         <!-- 01 PRODUCT -->
         <div class="wvs-engine-card">
           <div class="wvs-engine-icon"><i class="fa-solid fa-microchip"></i></div>
-          <span class="wvs-engine-step-num">STEP 01</span>
-          <h4>PRODUCT</h4>
-          <p>Vidhyut Saathi Electric Saver Card</p>
+          <div class="wvs-engine-content">
+            <span class="wvs-engine-step-num">STEP 01</span>
+            <h4>PRODUCT</h4>
+            <p>Vidhyut Saathi Electric Saver Card</p>
+          </div>
+        </div>
+
+        <div class="wvs-engine-arrow-down" aria-hidden="true">
+          <i class="fa-solid fa-arrow-down"></i>
         </div>
 
         <!-- 02 BRAND -->
         <div class="wvs-engine-card">
           <div class="wvs-engine-icon"><i class="fa-solid fa-award"></i></div>
-          <span class="wvs-engine-step-num">STEP 02</span>
-          <h4>BRAND</h4>
-          <p>A Growing National Identity</p>
+          <div class="wvs-engine-content">
+            <span class="wvs-engine-step-num">STEP 02</span>
+            <h4>BRAND</h4>
+            <p>A Growing National Identity</p>
+          </div>
+        </div>
+
+        <div class="wvs-engine-arrow-down" aria-hidden="true">
+          <i class="fa-solid fa-arrow-down"></i>
         </div>
 
         <!-- 03 MARKETING -->
         <div class="wvs-engine-card">
           <div class="wvs-engine-icon"><i class="fa-solid fa-bullhorn"></i></div>
-          <span class="wvs-engine-step-num">STEP 03</span>
-          <h4>MARKETING</h4>
-          <p>Creative + Campaign Resources</p>
+          <div class="wvs-engine-content">
+            <span class="wvs-engine-step-num">STEP 03</span>
+            <h4>MARKETING</h4>
+            <p>Creative + Campaign Resources</p>
+          </div>
+        </div>
+
+        <div class="wvs-engine-arrow-down" aria-hidden="true">
+          <i class="fa-solid fa-arrow-down"></i>
         </div>
 
         <!-- 04 LEADS -->
         <div class="wvs-engine-card">
           <div class="wvs-engine-icon"><i class="fa-solid fa-user-group"></i></div>
-          <span class="wvs-engine-step-num">STEP 04</span>
-          <h4>LEADS</h4>
-          <p>Potential Customer Enquiries</p>
+          <div class="wvs-engine-content">
+            <span class="wvs-engine-step-num">STEP 04</span>
+            <h4>LEADS</h4>
+            <p>Potential Customer Enquiries</p>
+          </div>
+        </div>
+
+        <div class="wvs-engine-arrow-down" aria-hidden="true">
+          <i class="fa-solid fa-arrow-down"></i>
         </div>
 
         <!-- 05 SALES -->
         <div class="wvs-engine-card">
           <div class="wvs-engine-icon"><i class="fa-solid fa-chart-line"></i></div>
-          <span class="wvs-engine-step-num">STEP 05</span>
-          <h4>SALES</h4>
-          <p>Demonstration + Conversion</p>
+          <div class="wvs-engine-content">
+            <span class="wvs-engine-step-num">STEP 05</span>
+            <h4>SALES</h4>
+            <p>Demonstration + Conversion</p>
+          </div>
+        </div>
+
+        <div class="wvs-engine-arrow-down" aria-hidden="true">
+          <i class="fa-solid fa-arrow-down"></i>
         </div>
 
         <!-- 06 INSTALLATION -->
         <div class="wvs-engine-card">
           <div class="wvs-engine-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
-          <span class="wvs-engine-step-num">STEP 06</span>
-          <h4>INSTALLATION</h4>
-          <p>Product Deployment</p>
+          <div class="wvs-engine-content">
+            <span class="wvs-engine-step-num">STEP 06</span>
+            <h4>INSTALLATION</h4>
+            <p>Product Deployment</p>
+          </div>
+        </div>
+
+        <div class="wvs-engine-arrow-down" aria-hidden="true">
+          <i class="fa-solid fa-arrow-down"></i>
         </div>
 
         <!-- 07 MARKET -->
         <div class="wvs-engine-card">
           <div class="wvs-engine-icon"><i class="fa-solid fa-city"></i></div>
-          <span class="wvs-engine-step-num">STEP 07</span>
-          <h4>MARKET</h4>
-          <p>Build Your District Customer Base</p>
+          <div class="wvs-engine-content">
+            <span class="wvs-engine-step-num">STEP 07</span>
+            <h4>MARKET</h4>
+            <p>Build Your District Customer Base</p>
+          </div>
+        </div>
+
+        <div class="wvs-engine-arrow-down" aria-hidden="true">
+          <i class="fa-solid fa-arrow-down"></i>
         </div>
 
         <!-- 08 GROWTH -->
         <div class="wvs-engine-card">
           <div class="wvs-engine-icon"><i class="fa-solid fa-rocket"></i></div>
-          <span class="wvs-engine-step-num">STEP 08</span>
-          <h4>GROWTH</h4>
-          <p>Expand Your Business</p>
+          <div class="wvs-engine-content">
+            <span class="wvs-engine-step-num">STEP 08</span>
+            <h4>GROWTH</h4>
+            <p>Expand Your Business</p>
+          </div>
         </div>
       </div>
 
-      <!-- Mobile Pagination Dots -->
-      <div class="wvs-slider-dots-p7"></div>
-
       <!-- Point 07 Tagline Banner -->
       <div class="wvs-engine-banner">
-        YOU DON'T JUST SELL A CARD. <span>YOU BUILD A LOCAL MARKET AROUND IT.</span>
+        <span>YOU DON'T JUST SELL A CARD.</span>
+        <span class="wvs-banner-nextline">YOU BUILD A LOCAL MARKET AROUND IT.</span>
       </div>
     </div>
 
