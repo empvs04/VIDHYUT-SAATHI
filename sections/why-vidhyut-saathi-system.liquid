@@ -726,27 +726,47 @@
     letter-spacing: 1.5px;
   }
 
+  .wvs-p10-callout-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 15px;
+  }
+
   .wvs-p10-callout {
-    text-align: center;
-    font-size: clamp(16px, 2vw, 21px);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: clamp(15px, 2vw, 20px);
     font-weight: 800;
-    color: #334155;
-    background: #ffffff;
-    display: inline-block;
-    padding: 16px 36px;
+    color: #1e293b;
+    background: linear-gradient(135deg, #FFFFFF 0%, #FFF7ED 100%);
+    padding: 16px 32px;
     border-radius: 50px;
-    border: 2px solid rgba(0, 154, 68, 0.3);
-    box-shadow: 0 10px 30px rgba(0, 154, 68, 0.1);
+    border: 2px solid #F17022;
+    box-shadow: 0 12px 35px rgba(241, 112, 34, 0.18), 0 0 25px rgba(0, 154, 68, 0.1);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
   }
 
-  .wvs-p10-callout strong {
-    color: #009A44;
-    font-weight: 900;
+  .wvs-p10-callout:hover {
+    transform: scale(1.03);
+    box-shadow: 0 16px 45px rgba(241, 112, 34, 0.28);
   }
 
-  .wvs-p10-callout strong {
+  .wvs-callout-highlight {
     color: #009A44;
     font-weight: 900;
+    background: #F0FDF4;
+    padding: 6px 18px;
+    border-radius: 50px;
+    border: 1.5px solid #009A44;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 15px rgba(0, 154, 68, 0.12);
   }
 
   /* ==========================================================================
@@ -1432,8 +1452,13 @@
         </div>
       </div>
 
-      <div class="wvs-p10-callout">
-        And we are still expanding. <strong>THE NEXT DISTRICT COULD BE YOURS.</strong>
+      <div class="wvs-p10-callout-wrap">
+        <div class="wvs-p10-callout">
+          <span><i class="fa-solid fa-earth-asia" style="color: #F17022;"></i> And we are still expanding.</span>
+          <span class="wvs-callout-highlight">
+            <i class="fa-solid fa-location-dot"></i> THE NEXT DISTRICT COULD BE YOURS.
+          </span>
+        </div>
       </div>
     </div>
 
