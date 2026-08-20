@@ -693,6 +693,10 @@
     color: #ffcc00;
   }
 
+  .wvs-p2-mobile-callout-poster {
+    display: none;
+  }
+
   /* --- POINT 03: WHAT MAKES THE CARD DIFFERENT? (6 TECH CARDS) --- */
   .wvs-p3-section {
     text-align: center;
@@ -1159,7 +1163,22 @@
       font-size: 1.1rem;
     }
     .wvs-p2-callout {
-      padding: 24px 16px;
+      display: none !important;
+    }
+    .wvs-p2-mobile-callout-poster {
+      display: block !important;
+      width: 100%;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 12px 35px rgba(0, 154, 68, 0.2);
+      border: 2.5px solid #009A44;
+      margin-top: 15px;
+    }
+    .wvs-p2-callout-poster-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 18px;
     }
     .wvs-tech-card {
       padding: 24px 18px;
@@ -1428,6 +1447,16 @@
 
       <div class="wvs-p2-callout">
         <p>Vidhyut Saathi gives entrepreneurs an opportunity to take an <strong>energy-saving solution into that existing market.</strong></p>
+      </div>
+
+      <!-- MOBILE ONLY DEDICATED GRAPHIC CALLOUT POSTER CARD -->
+      <div class="wvs-p2-mobile-callout-poster">
+        <img 
+          src="{{ 'wvs-energy-solution-poster.jpg' | asset_url }}" 
+          alt="Vidhyut Saathi gives entrepreneurs an opportunity to take an energy-saving solution into that existing market" 
+          class="wvs-p2-callout-poster-img"
+          loading="lazy"
+        >
       </div>
     </div>
 
