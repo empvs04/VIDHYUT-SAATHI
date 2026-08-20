@@ -329,6 +329,19 @@
     pointer-events: none;
   }
 
+  .wvs-lady-desktop-only {
+    display: block !important;
+  }
+  .wvs-lady-mobile-only {
+    display: none !important;
+  }
+  .wvs-lady-desktop-only-inline {
+    display: inline-block !important;
+  }
+  .wvs-lady-mobile-only-inline {
+    display: none !important;
+  }
+
   .wvs-lady-real-img {
     position: relative;
     z-index: 2;
@@ -581,6 +594,16 @@
       order: 1;
       min-height: 320px;
     }
+    .wvs-lady-desktop-only,
+    .wvs-lady-desktop-only-inline {
+      display: none !important;
+    }
+    .wvs-lady-mobile-only {
+      display: block !important;
+    }
+    .wvs-lady-mobile-only-inline {
+      display: inline-block !important;
+    }
     .wvs-sec2-title {
       font-size: clamp(22px, 5.5vw, 36px);
       font-weight: 900;
@@ -781,17 +804,26 @@
     <!-- 2. ELECTRICITY CONSUMPTION SECTORS SHOWCASE (2-COLUMN WITH POINTING LADY) -->
     <div class="wvs-sectors-centerpiece">
       <div class="wvs-sectors-split-row">
-        <!-- LEFT: POINTING WOMAN POP-OUT IMAGE -->
+        <!-- LEFT: POINTING WOMAN POP-OUT IMAGE (DESKTOP RIGHT / MOBILE DOWNWARDS) -->
         <div class="wvs-sectors-lady-col">
           <div class="wvs-lady-popout-wrap">
+            <!-- DESKTOP IMAGE: POINTING TO THE RIGHT -->
             <img 
               src="{{ 'wvs-pointing-woman.jpg' | asset_url }}" 
-              alt="Vidhyut Saathi Presenter" 
-              class="wvs-lady-real-img"
+              alt="Vidhyut Saathi Presenter Desktop" 
+              class="wvs-lady-real-img wvs-lady-desktop-only"
+              loading="lazy"
+            >
+            <!-- MOBILE IMAGE: POINTING DOWNWARDS -->
+            <img 
+              src="{{ 'wvs-pointing-down-woman.jpg' | asset_url }}" 
+              alt="Vidhyut Saathi Presenter Mobile" 
+              class="wvs-lady-real-img wvs-lady-mobile-only"
               loading="lazy"
             >
             <div class="wvs-lady-floating-pill">
-              <i class="fa-solid fa-arrow-right"></i>
+              <i class="fa-solid fa-arrow-right wvs-lady-desktop-only-inline"></i>
+              <i class="fa-solid fa-arrow-down wvs-lady-mobile-only-inline"></i>
               <span>HIGH SAVINGS SECTORS</span>
             </div>
           </div>
