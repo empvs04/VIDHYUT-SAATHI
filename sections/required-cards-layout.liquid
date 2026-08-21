@@ -119,16 +119,54 @@
 .vscc .btn-ghost:hover { background: var(--green-t); }
 
 .vscc .hero-features-strip {
-  display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px 20px;
-  padding-top: 24px; border-top: 1px solid var(--line);
-  font-size: 13.5px; color: var(--muted);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  padding-top: 24px;
+  border-top: 1.5px solid var(--line);
+  margin-top: 12px;
 }
-@media(min-width:640px){
-  .vscc .hero-features-strip { grid-template-columns: repeat(4, auto); justify-content: start; gap: 32px; }
+@media(min-width: 640px) {
+  .vscc .hero-features-strip {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+  }
 }
-.vscc .hf-item { display: flex; align-items: center; gap: 8px; }
-.vscc .hf-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--orange); flex-shrink: 0; }
-.vscc .hf-item b { color: var(--green); font-weight: 700; }
+
+.vscc .hf-item {
+  background: #ffffff;
+  border: 1.5px solid #e5e0cf;
+  border-radius: 14px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.vscc .hf-item:hover {
+  transform: translateY(-2px);
+  border-color: #f0631b;
+}
+
+.vscc .hf-val {
+  font-family: 'Space Grotesk', 'IBM Plex Mono', monospace;
+  font-weight: 800;
+  font-size: 16.5px;
+  color: #f0631b;
+  line-height: 1.1;
+  margin-bottom: 3px;
+}
+
+.vscc .hf-lbl {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  line-height: 1.25;
+}
 
 /* ---- HERO DESKTOP GRID & GENTLEMAN ADVISOR IMAGE ---- */
 .vscc .hero-grid-container {
@@ -994,10 +1032,22 @@
             <a href="#vscc-chart" class="btn-ghost">View Full Chart</a>
           </div>
           <div class="hero-features-strip">
-            <div class="hf-item"><span class="hf-dot"></span> <b>20–30%</b> bill savings</div>
-            <div class="hf-item"><span class="hf-dot"></span> <b>10 Yr</b> product life</div>
-            <div class="hf-item"><span class="hf-dot"></span> <b>3 Yr</b> warranty</div>
-            <div class="hf-item"><span class="hf-dot"></span> <b>ISO</b> certified</div>
+            <div class="hf-item">
+              <div class="hf-val">20–30%</div>
+              <div class="hf-lbl">Bill Savings</div>
+            </div>
+            <div class="hf-item">
+              <div class="hf-val">10 Yr</div>
+              <div class="hf-lbl">Product Life</div>
+            </div>
+            <div class="hf-item">
+              <div class="hf-val">3 Yr</div>
+              <div class="hf-lbl">Warranty</div>
+            </div>
+            <div class="hf-item">
+              <div class="hf-val">ISO</div>
+              <div class="hf-lbl">Certified</div>
+            </div>
           </div>
         </div>
 
