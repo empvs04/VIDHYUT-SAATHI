@@ -247,6 +247,42 @@
   .vscc .calc-outer-box { padding: 40px 32px 32px; }
 }
 
+@media(min-width: 900px) {
+  .vscc .calc-outer-box {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 36px !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    align-items: stretch !important;
+  }
+
+  .vscc .c-inputs-card {
+    background: #fbf8f0 !important;
+    border: 1.5px solid #f0631b !important;
+    border-radius: 24px !important;
+    padding: 36px 32px 32px !important;
+    box-shadow: 0 4px 24px rgba(240,99,27,0.08) !important;
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+  }
+
+  .vscc .c-output-card {
+    background: #ffffff !important;
+    border: 1.5px solid var(--line) !important;
+    border-radius: 24px !important;
+    padding: 36px 32px 32px !important;
+    box-shadow: 0 12px 36px rgba(10,74,44,0.08) !important;
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+}
+
 .vscc .live-calc-badge {
   position: absolute;
   top: -14px;
@@ -983,10 +1019,10 @@
       </div>
 
       <div class="calc-outer-box">
-        <div class="live-calc-badge">⚡ LIVE CALCULATOR</div>
+        <!-- LEFT CONTAINER: CALCULATION INPUTS -->
+        <div class="c-inputs-card">
+          <div class="live-calc-badge">⚡ LIVE CALCULATOR</div>
 
-        <!-- INPUTS -->
-        <div class="c-inputs" style="padding-top:10px;">
           <!-- KW Slider -->
           <div class="field">
             <div class="field-label">
@@ -1021,10 +1057,14 @@
               <button class="tog-btn" id="vscc-btnThree">Three Phase</button>
             </div>
           </div>
+
+          <p class="calc-note" style="background:transparent;border:none;padding:0;color:var(--muted-2);font-size:12px;line-height:1.65;margin-top:auto;">
+            Rule of thumb: 1 card per 6 KW of load, or 1 card per ₹6,000 of monthly bill — whichever gives the bigger number. Three-phase connections always get one additional card. Savings and quote figures update instantly as you adjust the sliders.
+          </p>
         </div>
 
-        <!-- OUTPUT -->
-        <div class="c-output" style="padding-top:10px;">
+        <!-- RIGHT CONTAINER: CARDS OUTPUT & 3D CARD IMAGE -->
+        <div class="c-output-card">
           <div class="res-label">CARDS REQUIRED</div>
           <div class="res-number">
             <span id="vscc-resultNum">1</span>
@@ -1073,12 +1113,7 @@
               Call for Quote
             </a>
           </div>
-
-          <p class="calc-note" style="background:transparent;border:none;padding:0;color:var(--muted-2);font-size:12px;line-height:1.65;">
-            Rule of thumb: 1 card per 6 KW of load, or 1 card per ₹6,000 of monthly bill — whichever gives the bigger number. Three-phase connections always get one additional card. Savings and quote figures update instantly as you adjust the sliders.
-          </p>
         </div>
-
       </div>
     </div>
   </section>
