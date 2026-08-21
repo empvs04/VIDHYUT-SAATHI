@@ -226,7 +226,7 @@
   /* Right Column Gentleman Image Presentation */
   .vsc-hero-img-card {
     position: relative;
-    width: 100%; max-width: 580px;
+    width: 100%; max-width: 450px;
     border-radius: 24px; overflow: hidden;
     background: #FFFFFF; border: 3px solid #FFFFFF;
     box-shadow: 
@@ -237,8 +237,11 @@
   .vsc-hero-img-card:hover { transform: translateY(-4px); }
 
   .vsc-hero-img {
-    width: 100%; height: auto; display: block; object-fit: cover;
+    width: 100%; height: auto; display: block; object-fit: cover; object-position: center top;
     aspect-ratio: 4/3;
+  }
+  @media (min-width: 920px) {
+    .vsc-hero-img { aspect-ratio: 4/4.8; max-height: 520px; }
   }
 
   /* Floating Badge Overlay */
