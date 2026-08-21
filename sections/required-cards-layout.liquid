@@ -1,3 +1,747 @@
+{%- style -%}
+  /* ================================================================
+     VIDHYUT SAATHI — CARD CALCULATOR (Brand Theme)
+     Primary: #F17022 (Orange) | Secondary: #009A44 (Green)
+     Background: #FFFFFF | Warm: #FFF7ED | Ink: #111111
+  ================================================================ */
+  :root {
+    --vs-orange: #F17022;
+    --vs-orange-deep: #C2410C;
+    --vs-orange-tint: #FFF7ED;
+    --vs-green: #009A44;
+    --vs-green-deep: #006B30;
+    --vs-green-tint: #E6F4EA;
+    --vs-gold: #FDBA00;
+    --vs-ink: #111111;
+    --vs-muted: #475569;
+    --vs-muted-2: #94A3B8;
+    --vs-bg: #FFFFFF;
+    --vs-bg-warm: #FFF7ED;
+    --vs-panel: #FFFFFF;
+    --vs-panel-2: #F8FAFC;
+    --vs-line: #E2E8F0;
+    --vs-line-soft: #F1F5F9;
+    --vs-radius: 16px;
+    --vs-maxw: 1140px;
+    --vs-tap: 48px;
+  }
+
+  .vsc-wrap { max-width: var(--vs-maxw); margin: 0 auto; padding: 0 20px; }
+  @media (min-width: 640px) { .vsc-wrap { padding: 0 32px; } }
+
+  /* ---- HERO ---- */
+  .vsc-hero {
+    position: relative;
+    padding: clamp(48px, 7vw, 88px) 0 clamp(40px, 5vw, 64px);
+    background: #FFFFFF;
+    overflow: hidden;
+    border-bottom: 3px solid #F17022;
+  }
+  .vsc-hero-orb-1 {
+    position: absolute; top: -120px; left: -80px;
+    width: 450px; height: 450px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(241,112,34,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .vsc-hero-orb-2 {
+    position: absolute; bottom: -120px; right: -80px;
+    width: 450px; height: 450px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,154,68,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .vsc-hero-inner { position: relative; z-index: 2; }
+  .vsc-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--vs-green-tint); border: 1.5px solid var(--vs-green);
+    color: var(--vs-green); font-size: 11.5px; font-weight: 700;
+    letter-spacing: .12em; text-transform: uppercase;
+    padding: 7px 14px; border-radius: 50px; margin-bottom: 20px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+  .vsc-eyebrow-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--vs-orange); flex-shrink: 0;
+    box-shadow: 0 0 0 3px rgba(241,112,34,.2);
+    animation: vsc-pulse 1.8s infinite;
+  }
+  @keyframes vsc-pulse {
+    0%   { box-shadow: 0 0 0 0   rgba(241,112,34,.6); }
+    70%  { box-shadow: 0 0 0 10px rgba(241,112,34,0); }
+    100% { box-shadow: 0 0 0 0   rgba(241,112,34,0); }
+  }
+  .vsc-hero h1 {
+    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+    font-size: clamp(28px, 7vw, 56px);
+    font-weight: 900; line-height: 1.1;
+    color: var(--vs-ink); margin: 0 0 16px; max-width: 800px;
+  }
+  .vsc-hero h1 em { font-style: normal; color: var(--vs-orange); }
+  .vsc-lead {
+    color: var(--vs-muted); font-size: clamp(15px, 2.5vw, 17px);
+    line-height: 1.65; max-width: 580px; margin: 0 0 28px;
+  }
+  .vsc-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+  .vsc-btn-primary {
+    background: var(--vs-orange); color: #fff; font-weight: 800;
+    padding: 14px 26px; border-radius: 12px; text-decoration: none;
+    font-size: 15px; border: none; cursor: pointer;
+    min-height: var(--vs-tap); display: inline-flex; align-items: center; justify-content: center;
+    box-shadow: 0 8px 24px rgba(241,112,34,.35); transition: all .2s;
+  }
+  .vsc-btn-primary:hover { background: var(--vs-orange-deep); transform: translateY(-2px); }
+  .vsc-btn-ghost {
+    border: 2px solid var(--vs-green); color: var(--vs-green); background: #fff;
+    padding: 14px 26px; border-radius: 12px; text-decoration: none;
+    font-size: 15px; font-weight: 800;
+    min-height: var(--vs-tap); display: inline-flex; align-items: center; justify-content: center;
+    transition: all .2s;
+  }
+  .vsc-btn-ghost:hover { background: var(--vs-green-tint); transform: translateY(-2px); }
+
+  /* ---- SECTION COMMON ---- */
+  .vsc-section { padding: clamp(40px, 6vw, 72px) 0; }
+  .vsc-section-head { max-width: 640px; margin: 0 0 32px; }
+  .vsc-section-eyebrow {
+    font-size: 11.5px; font-weight: 700; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--vs-orange);
+    margin-bottom: 8px; font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+  .vsc-section h2 {
+    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+    font-size: clamp(22px, 5vw, 34px); font-weight: 900;
+    color: var(--vs-ink); margin: 0 0 10px;
+  }
+  .vsc-section .vsc-desc { color: var(--vs-muted); font-size: 15px; line-height: 1.65; margin: 0; }
+
+  /* ---- CALCULATOR ---- */
+  .vsc-calc {
+    background: var(--vs-panel);
+    border: 1.5px solid var(--vs-line);
+    border-radius: 22px;
+    display: grid; grid-template-columns: 1fr;
+    overflow: hidden;
+    box-shadow: 0 24px 60px -24px rgba(0,154,68,.15), 0 1px 0 rgba(0,0,0,.03);
+  }
+  @media (min-width: 860px) { .vsc-calc { grid-template-columns: 1fr 1fr; } }
+
+  .vsc-calc-inputs { padding: 24px; }
+  @media (min-width: 520px) { .vsc-calc-inputs { padding: 32px; } }
+  @media (min-width: 860px) { .vsc-calc-inputs { padding: 40px; border-right: 1.5px solid var(--vs-line); } }
+
+  .vsc-field { margin-bottom: 26px; }
+  .vsc-field label {
+    display: flex; justify-content: space-between; align-items: baseline; gap: 10px;
+    font-weight: 800; color: var(--vs-ink); margin-bottom: 12px;
+    font-size: 12px; letter-spacing: .06em; text-transform: uppercase;
+  }
+  .vsc-field label .vsc-lval {
+    color: var(--vs-orange); font-size: 17px; font-weight: 900; letter-spacing: 0;
+    text-transform: none;
+  }
+  input[type="range"].vsc-slider {
+    width: 100%; -webkit-appearance: none; appearance: none;
+    height: 8px; border-radius: 50px; outline: none; margin: 6px 0; touch-action: pan-y;
+    background: linear-gradient(90deg, var(--vs-green) 0%, var(--vs-green) var(--fill, 5%), var(--vs-line) var(--fill, 5%));
+  }
+  input[type="range"].vsc-slider::-webkit-slider-thumb {
+    -webkit-appearance: none; width: 28px; height: 28px; border-radius: 50%;
+    background: var(--vs-orange); border: 4px solid #fff; cursor: pointer;
+    box-shadow: 0 3px 10px rgba(0,0,0,.2);
+  }
+  input[type="range"].vsc-slider::-moz-range-thumb {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--vs-orange); border: 4px solid #fff; cursor: pointer;
+  }
+  .vsc-num-input {
+    width: 100%; background: var(--vs-panel-2); border: 1.5px solid var(--vs-line);
+    color: var(--vs-ink); font-size: 17px; font-weight: 700;
+    padding: 13px 14px; border-radius: 12px; outline: none;
+    min-height: var(--vs-tap); font-family: 'Plus Jakarta Sans', sans-serif;
+    transition: border-color .2s, background .2s;
+  }
+  .vsc-num-input:focus { border-color: var(--vs-orange); background: #fff; }
+  .vsc-prefix-wrap { position: relative; }
+  .vsc-prefix {
+    position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+    color: var(--vs-muted-2); pointer-events: none; font-size: 17px; font-weight: 700;
+  }
+  .vsc-prefix-wrap .vsc-num-input { padding-left: 28px; }
+
+  .vsc-toggle-group { display: flex; gap: 10px; }
+  .vsc-toggle-btn {
+    flex: 1; padding: 13px 8px; border-radius: 12px; border: 1.5px solid var(--vs-line);
+    background: var(--vs-panel-2); color: var(--vs-muted); font-weight: 800; font-size: 14px;
+    cursor: pointer; text-align: center; transition: all .15s; min-height: var(--vs-tap);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .vsc-toggle-btn.vsc-active {
+    border-color: var(--vs-green); color: var(--vs-green-deep); background: var(--vs-green-tint);
+    box-shadow: 0 4px 14px rgba(0,154,68,.15);
+  }
+
+  /* ---- OUTPUT ---- */
+  .vsc-calc-output {
+    padding: 24px; display: flex; flex-direction: column;
+    background: var(--vs-panel-2);
+  }
+  @media (min-width: 520px) { .vsc-calc-output { padding: 32px; } }
+  @media (min-width: 860px) { .vsc-calc-output { padding: 40px; background: var(--vs-panel); } }
+
+  .vsc-result-label {
+    color: var(--vs-muted); font-size: 11.5px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: .14em; margin-bottom: 8px;
+  }
+  .vsc-result-number {
+    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif; font-weight: 900;
+    font-size: clamp(48px, 13vw, 72px); line-height: 1; color: var(--vs-green-deep);
+    display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
+  }
+  .vsc-result-number .vsc-unit {
+    font-size: 17px; color: var(--vs-muted); font-weight: 700;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+
+  /* Card mock */
+  .vsc-card-mock {
+    margin: 18px 0; padding: 14px 16px; border-radius: 14px;
+    position: relative; overflow: hidden;
+    background: linear-gradient(135deg, #0b2440, #173a5c 55%, #0b2440);
+    min-height: 76px; display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .vsc-card-mock .vsc-card-banner {
+    position: absolute; top: 8px; right: -28px; background: var(--vs-orange); color: #fff;
+    font-size: 9px; font-weight: 800; padding: 3px 34px; transform: rotate(28deg); letter-spacing: .03em;
+  }
+  .vsc-card-chip { width: 28px; height: 20px; border-radius: 4px; background: linear-gradient(135deg, #e8c766, var(--vs-gold)); }
+  .vsc-card-label { color: #cfe0f0; font-size: 10px; letter-spacing: .08em; font-weight: 700; text-transform: uppercase; }
+
+  /* Chip meter */
+  .vsc-chip-meter { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 18px; }
+  .vsc-chip-icon {
+    width: 22px; height: 15px; border-radius: 3px;
+    background: var(--vs-line); border: 1px solid var(--vs-line); transition: .2s;
+  }
+  .vsc-chip-icon.vsc-lit {
+    background: linear-gradient(135deg, #e8c766, var(--vs-gold));
+    border-color: var(--vs-gold);
+  }
+
+  /* Breakdown */
+  .vsc-breakdown {
+    background: var(--vs-panel); border: 1.5px solid var(--vs-line);
+    border-radius: 14px; padding: 16px; font-size: 13.5px;
+    color: var(--vs-muted); line-height: 1.9; margin-bottom: 16px;
+  }
+  @media (min-width: 860px) { .vsc-breakdown { background: var(--vs-panel-2); } }
+  .vsc-breakdown-row { display: flex; justify-content: space-between; gap: 12px; }
+  .vsc-breakdown-row b { color: var(--vs-ink); font-weight: 800; }
+  .vsc-breakdown-row.vsc-win b { color: var(--vs-green); }
+  .vsc-breakdown hr { border: none; border-top: 1px dashed var(--vs-line); margin: 8px 0; }
+  .vsc-note { font-size: 12.5px; color: var(--vs-muted-2); line-height: 1.6; margin-top: auto; }
+
+  /* ---- CHART TABLE ---- */
+  .vsc-table-scroll { overflow-x: auto; display: none; }
+  @media (min-width: 700px) { .vsc-table-scroll { display: block; } }
+  .vsc-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .vsc-table thead th {
+    text-align: left; padding: 12px 16px; color: var(--vs-muted);
+    font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+    border-bottom: 2px solid var(--vs-line);
+  }
+  .vsc-table tbody td { padding: 13px 16px; border-bottom: 1px solid var(--vs-line-soft); color: var(--vs-muted); }
+  .vsc-table tbody td.vsc-strong { color: var(--vs-ink); font-weight: 800; }
+  .vsc-table tbody td.vsc-amber { color: var(--vs-orange); font-weight: 800; }
+  .vsc-table tbody tr:hover td { background: var(--vs-bg-warm); }
+
+  /* Chart mobile cards */
+  .vsc-chart-cards { display: flex; flex-direction: column; gap: 10px; }
+  @media (min-width: 700px) { .vsc-chart-cards { display: none; } }
+  .vsc-chart-card {
+    background: var(--vs-panel); border: 1.5px solid var(--vs-line);
+    border-radius: 14px; padding: 14px 16px;
+    display: flex; justify-content: space-between; align-items: center; gap: 12px;
+  }
+  .vsc-chart-card .vsc-cc-left b { display: block; font-size: 14.5px; margin-bottom: 2px; color: var(--vs-ink); }
+  .vsc-chart-card .vsc-cc-left span { color: var(--vs-muted); font-size: 12.5px; }
+  .vsc-chart-card .vsc-cc-right { text-align: right; flex-shrink: 0; }
+  .vsc-chart-card .vsc-n1 { color: var(--vs-orange); font-weight: 800; font-size: 15px; }
+  .vsc-chart-card .vsc-n2 { color: var(--vs-green); font-weight: 800; font-size: 12px; margin-top: 2px; }
+
+  /* Rule box */
+  .vsc-rule-box {
+    display: flex; gap: 12px; align-items: flex-start;
+    background: var(--vs-green-tint); border: 1.5px solid var(--vs-green);
+    border-radius: 14px; padding: 16px 20px; margin-top: 20px;
+    font-size: 13.5px; color: var(--vs-green-deep); line-height: 1.65;
+  }
+  .vsc-rule-box b { color: var(--vs-orange); }
+
+  /* ---- EXAMPLES ---- */
+  .vsc-tabs { display: flex; gap: 8px; margin-bottom: 24px; flex-wrap: wrap; }
+  .vsc-tab-btn {
+    padding: 11px 18px; border-radius: 50px; border: 1.5px solid var(--vs-line);
+    background: #fff; color: var(--vs-muted); font-weight: 800; font-size: 13.5px;
+    cursor: pointer; min-height: 44px; transition: all .2s;
+  }
+  .vsc-tab-btn.vsc-active { background: var(--vs-green); border-color: var(--vs-green); color: #fff; }
+  .vsc-example-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+  @media (min-width: 700px) { .vsc-example-grid { grid-template-columns: 1fr 1fr; gap: 22px; } }
+  .vsc-example-card {
+    background: var(--vs-panel); border: 1.5px solid var(--vs-line);
+    border-radius: 18px; padding: 22px;
+  }
+  .vsc-example-card h4 { margin: 0 0 4px; font-size: 16.5px; font-weight: 800; color: var(--vs-ink); }
+  .vsc-example-sub { color: var(--vs-muted-2); font-size: 12px; margin-bottom: 16px; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; }
+  .vsc-example-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px; }
+  .vsc-stat-box { background: var(--vs-panel-2); border: 1.5px solid var(--vs-line); border-radius: 12px; padding: 12px 14px; }
+  .vsc-stat-box .vsc-sk { color: var(--vs-muted-2); font-size: 10.5px; text-transform: uppercase; letter-spacing: .06em; font-weight: 700; }
+  .vsc-stat-box .vsc-sv { font-weight: 900; font-size: 16px; margin-top: 4px; color: var(--vs-ink); }
+  .vsc-example-result {
+    display: flex; justify-content: space-between; align-items: center;
+    background: var(--vs-orange-tint); border: 1.5px solid var(--vs-orange);
+    border-radius: 12px; padding: 12px 16px;
+  }
+  .vsc-example-result .vsc-rl { font-size: 12px; color: var(--vs-orange); font-weight: 700; }
+  .vsc-example-result .vsc-rn { font-weight: 900; color: var(--vs-orange-deep); font-size: 20px; }
+  .vsc-example-why { font-size: 12.5px; color: var(--vs-muted); margin-top: 12px; line-height: 1.65; }
+  .vsc-example-panel { display: none; }
+  .vsc-example-panel.vsc-active { display: grid; }
+
+  /* ---- BADGES ---- */
+  .vsc-badges {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;
+  }
+  @media (min-width: 600px) {
+    .vsc-badges {
+      grid-template-columns: repeat(5, 1fr); gap: 1px;
+      background: var(--vs-line); border: 1.5px solid var(--vs-line);
+      border-radius: 18px; overflow: hidden;
+    }
+  }
+  .vsc-badge {
+    background: var(--vs-panel); padding: 22px 14px; text-align: center;
+    border-radius: 14px; border: 1.5px solid var(--vs-line);
+  }
+  @media (min-width: 600px) { .vsc-badge { border-radius: 0; border: none; padding: 28px 14px; } }
+  .vsc-badge .vsc-big { font-family: 'Outfit', sans-serif; font-weight: 900; font-size: 22px; color: var(--vs-orange); }
+  .vsc-badge .vsc-blbl { font-size: 12px; color: var(--vs-muted); margin-top: 6px; line-height: 1.4; }
+
+  /* ---- CTA BAND ---- */
+  .vsc-cta-band {
+    background: linear-gradient(135deg, var(--vs-green-deep), var(--vs-green));
+    border-radius: 22px; color: #fff;
+    padding: clamp(32px, 5vw, 52px) clamp(24px, 5vw, 48px); text-align: center;
+  }
+  .vsc-cta-band h3 {
+    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+    font-size: clamp(20px, 5vw, 30px); font-weight: 900; margin: 0 0 12px;
+  }
+  .vsc-cta-band p { color: rgba(255,255,255,.8); margin: 0 0 26px; font-size: 15px; max-width: 480px; margin-left: auto; margin-right: auto; }
+  .vsc-cta-band .vsc-btn-primary { background: #fff; color: var(--vs-green-deep); box-shadow: none; }
+  .vsc-cta-band .vsc-btn-primary:hover { background: var(--vs-orange-tint); }
+
+  /* ---- MOBILE STICKY RESULT ---- */
+  .vsc-sticky {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 999;
+    background: var(--vs-green-deep); color: #fff;
+    padding: 12px 18px;
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    box-shadow: 0 -6px 20px rgba(0,0,0,.18);
+    transform: translateY(100%); transition: transform .25s ease;
+  }
+  .vsc-sticky.vsc-sticky-show { transform: translateY(0); }
+  @media (min-width: 860px) { .vsc-sticky { display: none !important; } }
+  .vsc-sticky .vsc-stxt { font-size: 12.5px; color: rgba(255,255,255,.75); }
+  .vsc-sticky .vsc-snum { font-weight: 900; font-size: 22px; }
+  .vsc-sticky-btn {
+    background: var(--vs-orange); color: #fff; font-weight: 800; font-size: 13.5px;
+    padding: 10px 18px; border-radius: 10px; text-decoration: none; flex-shrink: 0;
+  }
+{%- endstyle -%}
+
+<div>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="vsc-hero">
+    <div class="vsc-hero-orb-1"></div>
+    <div class="vsc-hero-orb-2"></div>
+    <div class="vsc-wrap vsc-hero-inner">
+      <div class="vsc-eyebrow">
+        <span class="vsc-eyebrow-dot"></span>
+        India's No. 1 Electric Saver Card Company
+      </div>
+      <h1>How many <em>Vidhyut Saathi</em> cards does your connection need?</h1>
+      <p class="vsc-lead">Enter your connected load and your monthly bill — the calculator checks both and always recommends the higher requirement, exactly the way our installation team does it on site.</p>
+      <div class="vsc-ctas">
+        <a href="#vsc-calculator" class="vsc-btn-primary">Calculate Now ↓</a>
+        <a href="#vsc-chart" class="vsc-btn-ghost">View Full Chart</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CALCULATOR ===================== -->
+  <section class="vsc-section" id="vsc-calculator">
+    <div class="vsc-wrap">
+      <div class="vsc-section-head">
+        <div class="vsc-section-eyebrow">Card Calculator</div>
+        <h2>Get your exact card count</h2>
+        <p class="vsc-desc">One card saves 20–30% on a small load — bigger connections and heavier bills both call for more coverage. We calculate it both ways and take whichever number is higher.</p>
+      </div>
+
+      <div class="vsc-calc">
+        <!-- Inputs -->
+        <div class="vsc-calc-inputs">
+          <div class="vsc-field">
+            <label>Connected Load <span class="vsc-lval" id="vsc-kwVal">10 KW</span></label>
+            <input type="range" class="vsc-slider" id="vsc-kwSlider" min="1" max="200" value="10" step="1">
+            <div style="margin-top:12px;">
+              <input type="number" inputmode="numeric" pattern="[0-9]*" class="vsc-num-input" id="vsc-kwNumber" value="10" min="1" max="2000">
+            </div>
+          </div>
+
+          <div class="vsc-field">
+            <label>Monthly Electricity Bill <span class="vsc-lval" id="vsc-billVal">₹6,000</span></label>
+            <div class="vsc-prefix-wrap">
+              <span class="vsc-prefix">₹</span>
+              <input type="number" inputmode="numeric" pattern="[0-9]*" class="vsc-num-input" id="vsc-billNumber" value="6000" min="0" step="500">
+            </div>
+          </div>
+
+          <div class="vsc-field" style="margin-bottom:0;">
+            <label>Connection Type</label>
+            <div class="vsc-toggle-group">
+              <div class="vsc-toggle-btn vsc-active" id="vsc-btnSingle">⚡ Single Phase</div>
+              <div class="vsc-toggle-btn" id="vsc-btnThree">🔌 Three Phase</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Output -->
+        <div class="vsc-calc-output">
+          <div class="vsc-result-label">Cards required</div>
+          <div class="vsc-result-number">
+            <span id="vsc-resultNum">1</span>
+            <span class="vsc-unit" id="vsc-resultUnit">Card</span>
+          </div>
+
+          <div class="vsc-card-mock">
+            <div class="vsc-card-banner">SAVE 20–30%</div>
+            <div class="vsc-card-chip"></div>
+            <div class="vsc-card-label">VIDHYUT SAATHI · TERAHERTZ CHIP</div>
+          </div>
+
+          <div class="vsc-chip-meter" id="vsc-chipMeter"></div>
+
+          <div class="vsc-breakdown">
+            <div class="vsc-breakdown-row"><span>Based on KW load (⌈KW ÷ 6⌉)</span><b id="vsc-kwCards">1</b></div>
+            <div class="vsc-breakdown-row"><span>Based on bill amount (⌈Bill ÷ ₹6,000⌉)</span><b id="vsc-billCards">1</b></div>
+            <hr>
+            <div class="vsc-breakdown-row vsc-win"><span>Higher requirement considered</span><b id="vsc-baseWin">1</b></div>
+            <div class="vsc-breakdown-row" id="vsc-phaseRow" style="display:none;"><span>+ 1 extra for 3-phase connection</span><b>+1</b></div>
+          </div>
+
+          <p class="vsc-note">Rule of thumb: 1 card per 6 KW of load, or 1 card per ₹6,000 of monthly bill — whichever gives the bigger number. Three-phase connections always get one additional card.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FULL CHART ===================== -->
+  <section class="vsc-section" id="vsc-chart" style="background: var(--vs-panel-2, #F8FAFC);">
+    <div class="vsc-wrap">
+      <div class="vsc-section-head">
+        <div class="vsc-section-eyebrow">Reference</div>
+        <h2>Full requirement chart</h2>
+        <p class="vsc-desc">The same logic as the calculator above, laid out by connection size — from a single home to a full industrial load.</p>
+      </div>
+
+      <!-- Desktop Table -->
+      <div class="vsc-table-scroll">
+        <table class="vsc-table">
+          <thead>
+            <tr>
+              <th>KW Connection</th>
+              <th>Bill Amount</th>
+              <th>Single Phase Cards</th>
+              <th>Three Phase Cards</th>
+            </tr>
+          </thead>
+          <tbody id="vsc-chartBody"></tbody>
+        </table>
+      </div>
+
+      <!-- Mobile Cards -->
+      <div class="vsc-chart-cards" id="vsc-chartCards"></div>
+
+      <div class="vsc-rule-box">
+        ⚡ <span><b>Always calculate by both</b> KW load and bill amount, and consider the higher of the two. Add <b>1 extra card</b> automatically for any three-phase connection.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== WORKED EXAMPLES ===================== -->
+  <section class="vsc-section" id="vsc-examples">
+    <div class="vsc-wrap">
+      <div class="vsc-section-head">
+        <div class="vsc-section-eyebrow">Worked Examples</div>
+        <h2>See the logic in action</h2>
+        <p class="vsc-desc">Real scenarios where the KW-based count and the bill-based count disagree — and why we always go with the larger one.</p>
+      </div>
+
+      <div class="vsc-tabs">
+        <button class="vsc-tab-btn vsc-active" data-vtab="res">🏠 Residential</button>
+        <button class="vsc-tab-btn" data-vtab="com">🏢 Commercial</button>
+        <button class="vsc-tab-btn" data-vtab="ind">🏭 Industrial</button>
+      </div>
+
+      <!-- Residential -->
+      <div class="vsc-example-grid vsc-example-panel vsc-active" data-vpanel="res">
+        <div class="vsc-example-card">
+          <h4>Mr. Rohan — Mumbai</h4>
+          <div class="vsc-example-sub">Low load, high bill</div>
+          <div class="vsc-example-stats">
+            <div class="vsc-stat-box"><div class="vsc-sk">Load</div><div class="vsc-sv">5 KW</div></div>
+            <div class="vsc-stat-box"><div class="vsc-sk">Bill</div><div class="vsc-sv">₹18,000</div></div>
+          </div>
+          <div class="vsc-example-result"><span class="vsc-rl">Cards required</span><span class="vsc-rn">3 Cards</span></div>
+          <p class="vsc-example-why">5 KW only needs 1 card, but ₹18,000 needs 3 — the bill-based count wins.</p>
+        </div>
+        <div class="vsc-example-card">
+          <h4>Mr. Rahul Mohan</h4>
+          <div class="vsc-example-sub">Higher load, lower bill</div>
+          <div class="vsc-example-stats">
+            <div class="vsc-stat-box"><div class="vsc-sk">Load</div><div class="vsc-sv">15 KW</div></div>
+            <div class="vsc-stat-box"><div class="vsc-sk">Bill</div><div class="vsc-sv">₹10,000</div></div>
+          </div>
+          <div class="vsc-example-result"><span class="vsc-rl">Cards required</span><span class="vsc-rn">3 Cards</span></div>
+          <p class="vsc-example-why">15 KW needs 3 cards, while ₹10,000 only needs 2 — the KW-based count wins.</p>
+        </div>
+      </div>
+
+      <!-- Commercial -->
+      <div class="vsc-example-grid vsc-example-panel" data-vpanel="com">
+        <div class="vsc-example-card">
+          <h4>Mr. Deepak Sawlani</h4>
+          <div class="vsc-example-sub">Low load, high bill</div>
+          <div class="vsc-example-stats">
+            <div class="vsc-stat-box"><div class="vsc-sk">Load</div><div class="vsc-sv">10 KW</div></div>
+            <div class="vsc-stat-box"><div class="vsc-sk">Bill</div><div class="vsc-sv">₹24,000</div></div>
+          </div>
+          <div class="vsc-example-result"><span class="vsc-rl">Cards required</span><span class="vsc-rn">4 Cards</span></div>
+          <p class="vsc-example-why">10 KW needs 2 cards, but ₹24,000 needs 4 — the bill-based count wins.</p>
+        </div>
+        <div class="vsc-example-card">
+          <h4>Mr. Satyajeet</h4>
+          <div class="vsc-example-sub">High load, lower bill</div>
+          <div class="vsc-example-stats">
+            <div class="vsc-stat-box"><div class="vsc-sk">Load</div><div class="vsc-sv">35 KW</div></div>
+            <div class="vsc-stat-box"><div class="vsc-sk">Bill</div><div class="vsc-sv">₹29,000</div></div>
+          </div>
+          <div class="vsc-example-result"><span class="vsc-rl">Cards required</span><span class="vsc-rn">6 Cards</span></div>
+          <p class="vsc-example-why">35 KW needs 6 cards, while ₹29,000 only needs 5 — the KW-based count wins.</p>
+        </div>
+      </div>
+
+      <!-- Industrial -->
+      <div class="vsc-example-grid vsc-example-panel" data-vpanel="ind">
+        <div class="vsc-example-card">
+          <h4>Mr. Rajeev Sharma</h4>
+          <div class="vsc-example-sub">Low load, high bill</div>
+          <div class="vsc-example-stats">
+            <div class="vsc-stat-box"><div class="vsc-sk">Load</div><div class="vsc-sv">90 KW</div></div>
+            <div class="vsc-stat-box"><div class="vsc-sk">Bill</div><div class="vsc-sv">₹2,40,000</div></div>
+          </div>
+          <div class="vsc-example-result"><span class="vsc-rl">Cards required</span><span class="vsc-rn">40 Cards</span></div>
+          <p class="vsc-example-why">90 KW needs 15 cards, but ₹2,40,000 needs 40 — the bill-based count wins.</p>
+        </div>
+        <div class="vsc-example-card">
+          <h4>Mr. Ashish Patel</h4>
+          <div class="vsc-example-sub">High load, lower bill</div>
+          <div class="vsc-example-stats">
+            <div class="vsc-stat-box"><div class="vsc-sk">Load</div><div class="vsc-sv">180 KW</div></div>
+            <div class="vsc-stat-box"><div class="vsc-sk">Bill</div><div class="vsc-sv">₹1,20,000</div></div>
+          </div>
+          <div class="vsc-example-result"><span class="vsc-rl">Cards required</span><span class="vsc-rn">30 Cards</span></div>
+          <p class="vsc-example-why">180 KW needs 30 cards, while ₹1,20,000 only needs 20 — the KW-based count wins.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== BADGES ===================== -->
+  <section class="vsc-section" style="padding-top: 0;">
+    <div class="vsc-wrap">
+      <div class="vsc-badges">
+        <div class="vsc-badge"><div class="vsc-big">20–30%</div><div class="vsc-blbl">Saved on electricity bill</div></div>
+        <div class="vsc-badge"><div class="vsc-big">10 Yrs</div><div class="vsc-blbl">Long life</div></div>
+        <div class="vsc-badge"><div class="vsc-big">3 Yrs</div><div class="vsc-blbl">Warranty</div></div>
+        <div class="vsc-badge"><div class="vsc-big">100%</div><div class="vsc-blbl">Eco-friendly</div></div>
+        <div class="vsc-badge"><div class="vsc-big">100%</div><div class="vsc-blbl">Legal to use</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CTA BAND ===================== -->
+  <section class="vsc-section" style="padding-bottom: 80px;">
+    <div class="vsc-wrap">
+      <div class="vsc-cta-band">
+        <h3>Know your number. Order the right count the first time.</h3>
+        <p>Built on US–German nanotechnology with a Terahertz chip — ISO-certified and ready for home, commercial, or industrial connections.</p>
+        <a href="#vsc-calculator" class="vsc-btn-primary">Calculate My Cards</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== MOBILE STICKY RESULT ===================== -->
+  <div class="vsc-sticky" id="vsc-stickyResult">
+    <div>
+      <div class="vsc-stxt">Cards required</div>
+      <div class="vsc-snum"><span id="vsc-stickyNum">1</span> <span id="vsc-stickyUnit">Card</span></div>
+    </div>
+    <a href="#vsc-calculator" class="vsc-sticky-btn">Adjust ↑</a>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  const CHART = [
+    ["1–6 KW","Upto ₹6,000",1,2],
+    ["7–12 KW","₹6,001 – ₹12,000",2,3],
+    ["13–18 KW","₹12,001 – ₹18,000",3,4],
+    ["19–24 KW","₹18,001 – ₹24,000",4,5],
+    ["25–30 KW","₹24,001 – ₹30,000",5,6],
+    ["31–36 KW","₹30,001 – ₹36,000",6,7],
+    ["37–42 KW","₹36,001 – ₹42,000",7,8],
+    ["43–48 KW","₹42,001 – ₹48,000",8,9],
+    ["49–54 KW","₹48,001 – ₹54,000",9,10],
+    ["55–60 KW","₹54,001 – ₹60,000",10,11],
+  ];
+
+  /* Build chart table + mobile cards */
+  const chartBody  = document.getElementById('vsc-chartBody');
+  const chartCards = document.getElementById('vsc-chartCards');
+  CHART.forEach(function(row){
+    const tr = document.createElement('tr');
+    tr.innerHTML = '<td class="vsc-strong">'+row[0]+'</td><td>'+row[1]+'</td><td class="vsc-amber">'+row[2]+' Card'+(row[2]>1?'s':'')+'</td><td class="vsc-amber">'+row[3]+' Cards</td>';
+    chartBody.appendChild(tr);
+
+    const card = document.createElement('div');
+    card.className = 'vsc-chart-card';
+    card.innerHTML = '<div class="vsc-cc-left"><b>'+row[0]+'</b><span>'+row[1]+'</span></div><div class="vsc-cc-right"><div class="vsc-n1">'+row[2]+' Card'+(row[2]>1?'s':'')+'</div><div class="vsc-n2">3-Phase: '+row[3]+' Cards</div></div>';
+    chartCards.appendChild(card);
+  });
+
+  /* Calculator logic */
+  const kwSlider   = document.getElementById('vsc-kwSlider');
+  const kwNumber   = document.getElementById('vsc-kwNumber');
+  const kwVal      = document.getElementById('vsc-kwVal');
+  const billNumber = document.getElementById('vsc-billNumber');
+  const billVal    = document.getElementById('vsc-billVal');
+  const btnSingle  = document.getElementById('vsc-btnSingle');
+  const btnThree   = document.getElementById('vsc-btnThree');
+  const resultNum  = document.getElementById('vsc-resultNum');
+  const resultUnit = document.getElementById('vsc-resultUnit');
+  const kwCardsEl  = document.getElementById('vsc-kwCards');
+  const billCardsEl= document.getElementById('vsc-billCards');
+  const baseWinEl  = document.getElementById('vsc-baseWin');
+  const phaseRow   = document.getElementById('vsc-phaseRow');
+  const chipMeter  = document.getElementById('vsc-chipMeter');
+  const sticky     = document.getElementById('vsc-stickyResult');
+  const stickyNum  = document.getElementById('vsc-stickyNum');
+  const stickyUnit = document.getElementById('vsc-stickyUnit');
+
+  let threePhase = false;
+
+  function inr(n){ return '₹' + Number(n).toLocaleString('en-IN'); }
+
+  function sync(){
+    const kw   = Math.max(1, Number(kwNumber.value)   || 1);
+    const bill = Math.max(0, Number(billNumber.value)  || 0);
+
+    kwVal.textContent   = kw + ' KW';
+    billVal.textContent = inr(bill);
+    kwSlider.value = Math.min(kw, 200);
+    kwSlider.style.setProperty('--fill', (Math.min(kw,200)/200*100) + '%');
+
+    const kwCards   = Math.max(1, Math.ceil(kw / 6));
+    const billCards = bill > 0 ? Math.max(1, Math.ceil(bill / 6000)) : 1;
+    const base  = Math.max(kwCards, billCards);
+    const total = threePhase ? base + 1 : base;
+
+    kwCardsEl.textContent   = kwCards;
+    billCardsEl.textContent = billCards;
+    baseWinEl.textContent   = base;
+    phaseRow.style.display  = threePhase ? 'flex' : 'none';
+
+    resultNum.textContent  = total;
+    resultUnit.textContent = total > 1 ? 'Cards' : 'Card';
+    stickyNum.textContent  = total;
+    stickyUnit.textContent = total > 1 ? 'Cards' : 'Card';
+
+    /* Chip meter */
+    chipMeter.innerHTML = '';
+    const capped = Math.min(total, 30);
+    for(let i = 0; i < capped; i++){
+      const c = document.createElement('div');
+      c.className = 'vsc-chip-icon vsc-lit';
+      chipMeter.appendChild(c);
+    }
+    if(total > 30){
+      const more = document.createElement('div');
+      more.style.cssText = 'color:#F17022;font-size:12.5px;font-weight:800;align-self:center;margin-left:4px;';
+      more.textContent = '+' + (total - 30) + ' more';
+      chipMeter.appendChild(more);
+    }
+  }
+
+  kwSlider.addEventListener('input',  function(){ kwNumber.value = kwSlider.value; sync(); });
+  kwNumber.addEventListener('input',  sync);
+  billNumber.addEventListener('input',sync);
+
+  btnSingle.addEventListener('click', function(){
+    threePhase = false;
+    btnSingle.classList.add('vsc-active');
+    btnThree.classList.remove('vsc-active');
+    sync();
+  });
+  btnThree.addEventListener('click', function(){
+    threePhase = true;
+    btnThree.classList.add('vsc-active');
+    btnSingle.classList.remove('vsc-active');
+    sync();
+  });
+
+  /* Tab switching */
+  document.querySelectorAll('.vsc-tab-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      document.querySelectorAll('.vsc-tab-btn').forEach(function(b){ b.classList.remove('vsc-active'); });
+      document.querySelectorAll('.vsc-example-panel').forEach(function(p){ p.classList.remove('vsc-active'); });
+      btn.classList.add('vsc-active');
+      const panel = document.querySelector('.vsc-example-panel[data-vpanel="'+btn.dataset.vtab+'"]');
+      if(panel) panel.classList.add('vsc-active');
+    });
+  });
+
+  /* Mobile sticky bar: show once calculator scrolled past */
+  const calcSection = document.getElementById('vsc-calculator');
+  if(calcSection && typeof IntersectionObserver !== 'undefined'){
+    const io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.boundingClientRect.top < 0 && !e.isIntersecting){
+          sticky.classList.add('vsc-sticky-show');
+        } else if(e.isIntersecting){
+          sticky.classList.remove('vsc-sticky-show');
+        }
+      });
+    }, {threshold:0});
+    io.observe(calcSection);
+  }
+
+  sync();
+})();
+</script>
+
 {% schema %}
 {
   "name": "Required Cards Layout",
