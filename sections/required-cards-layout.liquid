@@ -181,21 +181,30 @@
   padding-bottom: 20px;
 }
 
-.vscc .field { margin-bottom: 22px; }
+.vscc .field { margin-bottom: 22px; width: 100%; }
 .vscc .field:last-child { margin-bottom: 0; }
 
 .vscc .field-label {
   display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: nowrap; gap: 8px;
   font-weight: 700; color: var(--ink);
-  font-size: 12px; letter-spacing: .04em; text-transform: uppercase;
+  font-size: 11.5px; letter-spacing: .04em; text-transform: uppercase;
   margin-bottom: 10px;
   font-family: 'IBM Plex Mono', monospace;
+  width: 100%;
+}
+.vscc .field-label > span:first-child {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .vscc .field-val {
   background: var(--orange-t); color: var(--orange);
-  font-size: 14px; font-weight: 700;
+  font-size: 13.5px; font-weight: 700;
   padding: 3px 10px; border-radius: 6px;
   font-family: 'IBM Plex Mono', monospace;
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .vscc input[type=range] {
@@ -203,6 +212,7 @@
   height: 8px; border-radius: 999px;
   background: linear-gradient(90deg, var(--green) 0%, var(--green) var(--fill,10%), var(--line) var(--fill,10%));
   outline: none; margin: 6px 0; touch-action: pan-y;
+  box-sizing: border-box;
 }
 .vscc input[type=range]::-webkit-slider-thumb {
   -webkit-appearance: none; width: 26px; height: 26px; border-radius: 50%;
@@ -221,11 +231,12 @@
   font-family: 'IBM Plex Mono', monospace; font-size: 16px;
   padding: 13px 15px; border-radius: 12px;
   outline: none; min-height: var(--tap);
+  box-sizing: border-box;
   transition: border-color .15s, background .15s;
 }
 .vscc .num-input:focus { border-color: var(--orange); background: #fff; }
 
-.vscc .prefix-wrap { position: relative; }
+.vscc .prefix-wrap { position: relative; width: 100%; box-sizing: border-box; }
 .vscc .prefix-wrap .pfx {
   position: absolute; left: 15px; top: 50%; transform: translateY(-50%);
   color: var(--muted-2); font-family: 'IBM Plex Mono', monospace;
@@ -233,15 +244,16 @@
 }
 .vscc .prefix-wrap input { padding-left: 32px; }
 
-.vscc .toggle-grp { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.vscc .toggle-grp { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 100%; }
 .vscc .tog-btn {
   padding: 14px 10px; border-radius: 12px;
   border: 1.5px solid var(--line);
   background: #ffffff; color: var(--muted);
-  font-weight: 700; font-size: 14px;
+  font-weight: 700; font-size: 13.5px;
   min-height: 50px;
   display: flex; align-items: center; justify-content: center; gap: 6px;
   transition: all .15s;
+  white-space: nowrap;
 }
 .vscc .tog-btn.active {
   border-color: #0a4a2c; color: #ffffff;
@@ -253,31 +265,35 @@
 .vscc .savings-box {
   background: linear-gradient(135deg, #0a4a2c, #0e6b3e);
   border-radius: 16px;
-  padding: 18px 20px;
+  padding: 16px 18px;
   color: #ffffff;
   margin: 18px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 12px;
   box-shadow: 0 4px 16px rgba(10,74,44,0.2);
 }
 .vscc .savings-label {
-  font-size: 10.5px;
+  font-size: 10px;
   font-weight: 700;
-  letter-spacing: .1em;
+  letter-spacing: .08em;
   color: #cfe4d7;
   text-transform: uppercase;
   font-family: 'IBM Plex Mono', monospace;
   margin-bottom: 4px;
+  white-space: nowrap;
 }
 .vscc .savings-amount {
   font-family: 'Space Grotesk', 'IBM Plex Mono', monospace;
   font-weight: 800;
-  font-size: clamp(20px, 5vw, 24px);
+  font-size: clamp(16px, 4.5vw, 22px);
   color: #ffffff;
+  white-space: nowrap;
 }
 .vscc .savings-icon {
-  font-size: 28px;
+  font-size: 26px;
+  flex-shrink: 0;
 }
 
 /* Action Buttons */
