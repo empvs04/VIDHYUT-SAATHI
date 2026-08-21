@@ -881,57 +881,66 @@
   }
 
   /* ---------------- WORKED EXAMPLES ---------------- */
-  .vsc-tabs { display: flex; gap: 10px; margin-bottom: 28px; flex-wrap: wrap; }
+  .vsc-tabs { display: flex; gap: 12px; margin-bottom: 32px; flex-wrap: wrap; justify-content: center; }
   .vsc-tab-btn {
-    padding: 12px 22px; border-radius: 50px; border: 2px solid var(--vsc-line);
+    padding: 12px 24px; border-radius: 50px; border: 2px solid rgba(0, 154, 68, 0.2);
     background: #FFFFFF; color: var(--vsc-muted); font-weight: 800; font-size: 14px;
-    cursor: pointer; min-height: 46px; transition: all 0.2s ease;
+    cursor: pointer; min-height: 48px; transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     display: inline-flex; align-items: center; gap: 8px;
+    box-shadow: 0 4px 14px rgba(15,23,42,0.03);
   }
-  .vsc-tab-btn:hover { border-color: var(--vsc-muted-2); color: var(--vsc-ink); }
+  .vsc-tab-btn:hover { border-color: var(--vsc-orange); color: var(--vsc-orange-deep); transform: translateY(-1px); }
   .vsc-tab-btn.vsc-active {
-    background: var(--vsc-green); border-color: var(--vsc-green); color: #FFFFFF;
-    box-shadow: 0 6px 20px rgba(0, 154, 68, 0.25);
+    background: linear-gradient(135deg, #009A44 0%, #005826 100%); border-color: #009A44; color: #FFFFFF;
+    box-shadow: 0 8px 24px rgba(0, 154, 68, 0.28); transform: translateY(-2px);
   }
 
   .vsc-example-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
   @media (min-width: 760px) { .vsc-example-grid { grid-template-columns: 1fr 1fr; gap: 24px; } }
 
   .vsc-example-card {
-    background: #FFFFFF; border: 2px solid var(--vsc-line);
-    border-radius: var(--vsc-radius-md); padding: 26px;
-    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
-    transition: transform 0.2s ease, border-color 0.2s ease;
+    background: #FFFFFF; border: 2.5px solid rgba(0, 154, 68, 0.2);
+    border-radius: 22px; padding: 28px;
+    box-shadow: 0 16px 44px -12px rgba(15, 23, 42, 0.06);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .vsc-example-card:hover {
-    transform: translateY(-3px);
-    border-color: rgba(241,112,34,0.4);
+    transform: translateY(-4px);
+    border-color: rgba(241,112,34,0.45);
+    box-shadow: 0 24px 56px -16px rgba(241, 112, 34, 0.14);
   }
   .vsc-example-card h4 {
-    margin: 0 0 4px; font-size: 18px; font-weight: 900; color: var(--vsc-ink);
+    margin: 0 0 6px; font-size: 20px; font-weight: 900; color: #0F172A;
     font-family: 'Outfit', sans-serif;
   }
   .vsc-example-sub {
-    color: var(--vsc-orange-deep); font-size: 12px; margin-bottom: 18px;
+    background: #FFF7ED; border: 1.5px solid rgba(241,112,34,0.35);
+    color: var(--vsc-orange-deep); font-size: 11.5px; margin-bottom: 20px;
     font-weight: 800; text-transform: uppercase; letter-spacing: .06em;
+    padding: 4px 14px; border-radius: 50px; width: fit-content;
   }
-  .vsc-example-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+  .vsc-example-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 18px; }
   .vsc-stat-box {
-    background: var(--vsc-panel-2); border: 1.5px solid var(--vsc-line);
-    border-radius: var(--vsc-radius-sm); padding: 14px;
+    background: #F8FAFC; border: 1.5px solid var(--vsc-line);
+    border-radius: 14px; padding: 14px 16px;
   }
   .vsc-stat-box .vsc-sk { color: var(--vsc-muted-2); font-size: 11px; text-transform: uppercase; letter-spacing: .06em; font-weight: 800; }
-  .vsc-stat-box .vsc-sv { font-weight: 900; font-size: 17px; margin-top: 4px; color: var(--vsc-ink); }
+  .vsc-stat-box .vsc-sv { font-weight: 900; font-size: 19px; margin-top: 4px; color: #0F172A; font-family: 'Outfit', sans-serif; }
 
   .vsc-example-result {
     display: flex; justify-content: space-between; align-items: center;
-    background: var(--vsc-orange-tint); border: 1.5px solid rgba(241,112,34,0.3);
-    border-radius: var(--vsc-radius-sm); padding: 14px 18px;
+    background: linear-gradient(135deg, #FFF7ED 0%, #FFEEDD 100%); border: 1.5px solid rgba(241,112,34,0.4);
+    border-radius: 14px; padding: 16px 20px;
+    box-shadow: 0 4px 14px rgba(241,112,34,0.1);
   }
-  .vsc-example-result .vsc-rl { font-size: 13px; color: var(--vsc-orange-deep); font-weight: 800; }
-  .vsc-example-result .vsc-rn { font-weight: 900; color: var(--vsc-orange-deep); font-size: 22px; }
+  .vsc-example-result .vsc-rl { font-size: 13.5px; color: var(--vsc-orange-deep); font-weight: 800; }
+  .vsc-example-result .vsc-rn { font-weight: 900; color: var(--vsc-orange-deep); font-size: 24px; font-family: 'Outfit', sans-serif; }
   
-  .vsc-example-why { font-size: 13.5px; color: var(--vsc-muted); margin-top: 14px; line-height: 1.65; }
+  .vsc-example-why {
+    font-size: 13.5px; color: var(--vsc-muted); margin-top: 16px; line-height: 1.65;
+    background: #F8FAFC; border: 1px solid var(--vsc-line); border-left: 4px solid var(--vsc-orange);
+    padding: 14px 16px; border-radius: 12px;
+  }
   @media (max-width: 639px) {
     .vsc-example-why {
       text-align: justify !important;
@@ -1275,9 +1284,12 @@
   <!-- ===================== WORKED EXAMPLES SECTION ===================== -->
   <section class="vsc-section" id="vsc-examples">
     <div class="vsc-wrap">
-      <div class="vsc-section-head">
-        <span class="vsc-section-eyebrow">Real Field Cases</span>
-        <h2>See How The Calculation Logic Works</h2>
+      <div class="vsc-section-head vsc-center">
+        <span class="vsc-section-eyebrow">
+          <span class="vsc-eyebrow-dot"></span>
+          Real Field Cases
+        </span>
+        <h2 class="vsc-main-heading">See How The <span class="vsc-light-badge-highlight">Calculation Logic Works</span></h2>
         <p class="vsc-desc">Real-world customer scenarios demonstrating how KW load vs bill amount calculations determine the recommended card count.</p>
       </div>
 
