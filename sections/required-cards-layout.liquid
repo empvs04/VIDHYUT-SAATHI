@@ -1190,6 +1190,65 @@
     font-weight: 900;
   }
 
+  /* Hero Presenter Female Advisor Side Grid */
+  .req-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+  @media (min-width: 992px) {
+    .req-hero-grid {
+      grid-template-columns: 1fr 340px;
+      gap: 36px;
+    }
+  }
+  .req-hero-presenter-side {
+    display: flex;
+    justify-content: center;
+    position: relative;
+  }
+  .req-presenter-card {
+    position: relative;
+    width: 100%;
+    max-width: 310px;
+    border-radius: 24px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #FFF7ED 0%, #FFFFFF 100%);
+    border: 2.5px solid #F17022;
+    box-shadow: 0 15px 40px rgba(241, 112, 34, 0.16);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+  }
+  .req-presenter-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 20px 50px rgba(241, 112, 34, 0.22);
+  }
+  .req-presenter-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+  }
+  .req-presenter-badge {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(17, 17, 17, 0.88);
+    backdrop-filter: blur(8px);
+    color: #FFFFFF;
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 800;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid rgba(241, 112, 34, 0.5);
+  }
+
   /* Sector Bottom Fixed Rule Banner */
   .req-sector-rule-footer {
     margin-top: 40px;
@@ -1248,56 +1307,85 @@
     
     /* Lucrative 3D Golden Rule Glass Card Mobile */
     .req-golden-banner {
-      padding: 18px 14px !important;
-      border-radius: 20px !important;
-      gap: 16px !important;
-      box-shadow: 0 12px 35px rgba(241, 112, 34, 0.14) !important;
-      margin-bottom: 28px !important;
+      padding: 20px 14px !important;
+      border-radius: 24px !important;
+      gap: 18px !important;
+      background: linear-gradient(135deg, #FFF8EF 0%, #FFFFFF 60%, #FFF3E5 100%) !important;
+      border: 2.5px solid #F17022 !important;
+      box-shadow: 0 16px 45px rgba(241, 112, 34, 0.16) !important;
+      margin-bottom: 30px !important;
     }
     .req-golden-top-row {
       flex-direction: column !important;
       align-items: flex-start !important;
-      gap: 12px !important;
+      gap: 14px !important;
     }
     .req-golden-text {
       gap: 12px !important;
+      align-items: flex-start !important;
     }
     .req-golden-icon {
-      width: 44px !important;
-      height: 44px !important;
-      font-size: 1.4rem !important;
-      border-radius: 12px !important;
+      width: 48px !important;
+      height: 48px !important;
+      font-size: 1.5rem !important;
+      border-radius: 14px !important;
+      box-shadow: 0 8px 20px rgba(241, 112, 34, 0.3) !important;
     }
     .req-golden-info h3 {
-      font-size: 1.05rem !important;
-      margin-bottom: 2px !important;
+      font-size: 1.15rem !important;
+      color: #F17022 !important;
+      font-weight: 900 !important;
+      margin-bottom: 6px !important;
     }
     .req-golden-info p {
-      font-size: 0.86rem !important;
-      line-height: 1.5 !important;
+      font-size: 0.88rem !important;
+      line-height: 1.55 !important;
+      background: #FFF7ED !important;
+      padding: 10px 14px !important;
+      border-radius: 12px !important;
+      border-left: 3.5px solid #F17022 !important;
+      color: #334155 !important;
     }
     .req-golden-pill {
       width: 100% !important;
       text-align: center !important;
       justify-content: center !important;
-      font-size: 0.82rem !important;
-      padding: 10px 14px !important;
-      border-radius: 30px !important;
+      font-size: 0.88rem !important;
+      font-weight: 900 !important;
+      padding: 12px 16px !important;
+      border-radius: 50px !important;
+      background: linear-gradient(135deg, #F17022 0%, #FB5900 100%) !important;
+      box-shadow: 0 8px 25px rgba(241, 112, 34, 0.3) !important;
     }
     .req-golden-formula-grid {
       grid-template-columns: 1fr !important;
-      gap: 8px !important;
-      padding-top: 14px !important;
+      gap: 10px !important;
+      padding-top: 16px !important;
     }
     .req-formula-card {
-      padding: 10px 12px !important;
-      border-radius: 12px !important;
+      padding: 12px 14px !important;
+      border-radius: 14px !important;
+      border-width: 1.5px !important;
+    }
+    .req-formula-card:nth-child(1) {
+      background: #E6F4EA !important;
+      border-color: rgba(0, 154, 68, 0.4) !important;
+    }
+    .req-formula-card:nth-child(2) {
+      background: #FFF7ED !important;
+      border-color: rgba(241, 112, 34, 0.4) !important;
+    }
+    .req-formula-card:nth-child(3) {
+      background: #EFF6FF !important;
+      border-color: rgba(13, 82, 191, 0.4) !important;
     }
     .req-formula-text span {
       font-size: 0.72rem !important;
+      font-weight: 800 !important;
     }
     .req-formula-text strong {
-      font-size: 0.88rem !important;
+      font-size: 0.94rem !important;
+      font-weight: 900 !important;
     }
 
     /* Floating Glass Dock for Tabs 1-8 Mobile */
@@ -1538,24 +1626,39 @@
 
     <div class="req-hero-container">
       
-      <!-- Top Breadcrumb & Badge -->
-      <div style="text-align: center;">
-        <div class="hero-breadcrumb-pill">
-          <a href="/">Home</a>
-          <span style="color: #F17022;">/</span>
-          <span style="color: #111111; font-weight: 700;">Required Cards</span>
-          <span style="color: rgba(0,0,0,0.15); margin: 0 4px;">|</span>
-          <span style="color: #F17022; font-weight: 800;"><span class="pulse-dot"></span> Card Requirements</span>
-        </div>
-      </div>
+      <!-- Hero Grid with Text & Female Presenter Advisor Card -->
+      <div class="req-hero-grid">
+        <div class="req-hero-text-side">
+          <div style="text-align: left;">
+            <div class="hero-breadcrumb-pill">
+              <a href="/">Home</a>
+              <span style="color: #F17022;">/</span>
+              <span style="color: #111111; font-weight: 700;">Required Cards</span>
+              <span style="color: rgba(0,0,0,0.15); margin: 0 4px;">|</span>
+              <span style="color: #F17022; font-weight: 800;"><span class="pulse-dot"></span> Card Requirements</span>
+            </div>
+          </div>
 
-      <div class="req-hero-header">
-        <div class="req-badge-top">
-          <span class="pulse-dot"></span>
-          <span>⚡ OFFICIAL CARD REQUIREMENT GUIDE</span>
+          <div class="req-hero-header" style="text-align: left; margin: 0 0 10px 0;">
+            <div class="req-badge-top">
+              <span class="pulse-dot"></span>
+              <span>⚡ OFFICIAL CARD REQUIREMENT GUIDE</span>
+            </div>
+            <h1>Required Vidhyut Saathi Card <span style="display: block; background: linear-gradient(135deg, #F17022 0%, #FB5900 60%, #009A44 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Select Your Card Quantity Tab</span></h1>
+            <p class="req-hero-subheading" style="margin: 0;">Determine the exact number of Vidhyut Saathi Cards required for your home, commercial shop, or industrial plant. Select any tab below to calculate your exact KW load, bill range, and meter requirement.</p>
+          </div>
         </div>
-        <h1>Required Vidhyut Saathi Card <span style="display: block; background: linear-gradient(135deg, #F17022 0%, #FB5900 60%, #009A44 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Select Your Card Quantity Tab</span></h1>
-        <p class="req-hero-subheading">Determine the exact number of Vidhyut Saathi Cards required for your home, commercial shop, or industrial plant. Select any tab below to calculate your exact KW load, bill range, and meter requirement.</p>
+
+        <div class="req-hero-presenter-side">
+          <div class="req-presenter-card">
+            {%- assign advisor_img = 'wvs-card-guide-woman.jpg' | asset_url -%}
+            <img src="{{ advisor_img }}" alt="Vidhyut Saathi Card Requirement Advisor" loading="lazy">
+            <div class="req-presenter-badge">
+              <span class="pulse-dot"></span>
+              <span>👩‍💼 Card Requirement Advisor</span>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- Ultra-Lucrative Golden Rule Glass Card -->
