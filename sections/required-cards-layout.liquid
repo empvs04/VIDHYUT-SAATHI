@@ -395,121 +395,100 @@
   font-size: 12px; color: var(--muted-2); line-height: 1.65; margin-top: auto;
   padding: 12px 14px; background: var(--green-t);
   border-radius: 10px; border: 1px solid rgba(14,107,62,.2);
+}/* ---- REQUIREMENT CHART (CLEAN TABLE FOR DESKTOP & MOBILE) ---- */
+.vscc .chart-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-top: 16px;
 }
 
-/* ---- REQUIREMENT CHART (DESKTOP & MOBILE VIEWS) ---- */
-.vscc .chart-outer {
-  border-radius: 20px; overflow: hidden;
-  border: 1.5px solid var(--line);
-  box-shadow: 0 12px 40px -12px rgba(10,74,44,.1);
+.vscc .chart-table-clean {
+  width: 100%;
+  border-collapse: collapse;
+  background: transparent;
+  font-size: 14px;
 }
 
-/* Desktop Table View (>= 700px) */
-.vsc-desktop-table { display: block; width: 100%; overflow-x: auto; }
-.vscc .chart-table {
-  width: 100%; border-collapse: collapse; background: var(--panel);
+.vscc .chart-table-clean thead tr {
+  border-bottom: 1.5px solid var(--line);
 }
-.vscc .chart-table thead tr {
-  background: linear-gradient(135deg, var(--green-d), var(--green));
-}
-.vscc .chart-table thead th {
-  padding: 16px 20px; color: rgba(255,255,255,.95);
-  font-size: 11.5px; font-weight: 700; text-transform: uppercase;
-  letter-spacing: .08em; text-align: left; white-space: nowrap;
-}
-.vscc .chart-table thead th:nth-child(3),
-.vscc .chart-table thead th:nth-child(4) { text-align: center; }
 
-.vscc .chart-table tbody tr {
-  border-bottom: 1px solid var(--line-s); transition: background .12s;
-}
-.vscc .chart-table tbody tr:last-child { border-bottom: none; }
-.vscc .chart-table tbody tr:nth-child(even) { background: var(--panel-2); }
-.vscc .chart-table tbody tr:hover { background: #f5f0e4; }
-
-.vscc .chart-table td {
-  padding: 14px 20px; color: var(--muted); font-size: 14px; white-space: nowrap; vertical-align: middle;
-}
-.vscc .chart-table td:first-child {
-  font-weight: 800; color: var(--ink); font-family: 'IBM Plex Mono', monospace;
-}
-.vscc .chart-table td.single { text-align: center; }
-.vscc .chart-table td.three  { text-align: center; }
-
-.vscc .pill-orange {
-  display: inline-block;
-  background: var(--orange-t); border: 1.5px solid rgba(240,99,27,.35);
-  color: var(--orange); font-weight: 800; font-size: 13px;
-  padding: 4px 14px; border-radius: 999px;
+.vscc .chart-table-clean thead th {
+  padding: 12px 14px 14px;
+  color: var(--muted);
   font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  text-align: left;
+  white-space: nowrap;
 }
-.vscc .pill-green {
-  display: inline-block;
-  background: var(--green-t); border: 1.5px solid rgba(14,107,62,.35);
-  color: var(--green-d); font-weight: 800; font-size: 13px;
-  padding: 4px 14px; border-radius: 999px;
+
+.vscc .chart-table-clean tbody tr {
+  border-bottom: 1px solid var(--line-s);
+  transition: background .15s;
+}
+.vscc .chart-table-clean tbody tr:last-child {
+  border-bottom: 1.5px solid var(--line);
+}
+.vscc .chart-table-clean tbody tr:hover {
+  background: rgba(240, 99, 27, 0.03);
+}
+
+.vscc .chart-table-clean td {
+  padding: 14px;
+  color: var(--muted);
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.vscc .chart-table-clean td:nth-child(1) {
+  font-family: 'Space Grotesk', 'IBM Plex Mono', monospace;
+  font-weight: 800;
+  color: var(--ink);
+  font-size: 15px;
+}
+
+.vscc .chart-table-clean td:nth-child(2) {
+  font-family: 'Inter', sans-serif;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.vscc .chart-table-clean td:nth-child(3),
+.vscc .chart-table-clean td:nth-child(4) {
   font-family: 'IBM Plex Mono', monospace;
+  font-weight: 700;
+  color: var(--orange);
+  font-size: 14.5px;
 }
 
-/* Mobile Cards View (< 700px) — EXACTLY AS IN USER PHOTO */
-.vsc-mobile-cards { display: none; }
-
-@media(max-width:699px){
-  .vsc-desktop-table { display: none !important; }
-  .vscc .chart-outer { border: none; box-shadow: none; border-radius: 0; background: transparent; }
-  
-  .vsc-mobile-cards {
-    display: flex; flex-direction: column; gap: 12px;
+/* Mobile responsive optimizations for the chart table */
+@media(max-width: 699px) {
+  .vscc .chart-table-clean {
+    font-size: 12px;
   }
-  
-  .vsc-mcard {
-    background: #ffffff;
-    border: 1px solid #e5e0cf;
-    border-radius: 16px;
-    padding: 16px 18px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+  .vscc .chart-table-clean thead th {
+    font-size: 10px;
+    padding: 10px 6px;
+    letter-spacing: .04em;
   }
-
-  .vsc-mcard-left {
-    display: flex; flex-direction: column; align-items: flex-start; gap: 6px;
+  .vscc .chart-table-clean td {
+    padding: 12px 6px;
   }
-
-  .vsc-mcard-kw {
-    font-size: 16px; font-weight: 800; color: #16281f;
-    font-family: 'Space Grotesk', 'Inter', sans-serif;
+  .vscc .chart-table-clean td:nth-child(1) {
+    font-size: 12.5px;
   }
-
-  .vsc-mcard-bill {
-    background: #f4f2ea; color: #5e7568;
-    font-size: 12px; font-weight: 600;
-    padding: 4px 10px; border-radius: 6px;
-    font-family: 'IBM Plex Mono', monospace;
+  .vscc .chart-table-clean td:nth-child(2) {
+    font-size: 11.5px;
   }
-
-  .vsc-mcard-right {
-    display: flex; flex-direction: column; align-items: flex-end; gap: 6px;
+  .vscc .chart-table-clean td:nth-child(3),
+  .vscc .chart-table-clean td:nth-child(4) {
+    font-size: 12.5px;
   }
-
-  .vsc-mcard-single {
-    background: #fdece1; color: #f0631b;
-    border: 1px solid rgba(240, 99, 27, 0.3);
-    font-size: 13px; font-weight: 800;
-    padding: 4px 14px; border-radius: 20px;
-    font-family: 'IBM Plex Mono', monospace;
-    text-align: center; display: inline-block;
-  }
-
-  .vsc-mcard-three {
-    background: #e6f2ea; color: #0e6b3e;
-    border: 1px solid rgba(14, 107, 62, 0.3);
-    font-size: 12.5px; font-weight: 800;
-    padding: 4px 12px; border-radius: 20px;
-    font-family: 'IBM Plex Mono', monospace;
-    text-align: center; display: inline-block;
-  }
+} }
 }
 
 /* rule box */
@@ -834,35 +813,29 @@
   </section>
 
   <!-- FULL REQUIREMENT CHART -->
-  <section class="sec" id="vscc-chart" style="padding-top:0;">
+  <section class="sec" id="vscc-chart" style="padding-top:10px;">
     <div class="wrap">
       <div class="sec-head">
-        <div class="sec-eyebrow">Reference Chart</div>
-        <h2>Full Requirement Chart</h2>
-        <p class="desc">The same logic as the calculator, laid out by connection size — from a single home to a full industrial load.</p>
+        <div class="sec-eyebrow" style="color:var(--orange);font-family:'IBM Plex Mono',monospace;letter-spacing:.12em;font-size:11px;">REFERENCE</div>
+        <h2 style="font-family:'Space Grotesk','Plus Jakarta Sans',sans-serif;font-size:clamp(24px, 5vw, 32px);font-weight:700;margin:4px 0 10px;">Full requirement chart</h2>
+        <p class="desc" style="color:var(--muted);font-size:14.5px;line-height:1.6;margin:0;">The same logic as the calculator above, laid out by connection size — from a single home to a full industrial load.</p>
       </div>
 
-      <div class="chart-outer">
-        <!-- Desktop Table View (>= 700px) -->
-        <div class="vsc-desktop-table">
-          <table class="chart-table">
-            <thead>
-              <tr>
-                <th>KW Connection</th>
-                <th>Monthly Bill Range</th>
-                <th style="text-align:center;">Single Phase</th>
-                <th style="text-align:center;">Three Phase</th>
-              </tr>
-            </thead>
-            <tbody id="vscc-chartBody"></tbody>
-          </table>
-        </div>
-
-        <!-- Mobile Cards View (< 700px) — MATCHES USER PHOTO EXACTLY -->
-        <div class="vsc-mobile-cards" id="vscc-mobileCards"></div>
+      <div class="chart-table-wrap">
+        <table class="chart-table-clean">
+          <thead>
+            <tr>
+              <th>KW CONNECTION</th>
+              <th>BILL AMOUNT</th>
+              <th>CARD QUANTITY</th>
+              <th>THREE PHASE</th>
+            </tr>
+          </thead>
+          <tbody id="vscc-chartBody"></tbody>
+        </table>
       </div>
 
-      <div class="rule-box">
+      <div class="rule-box" style="margin-top:28px;">
         <div class="rule-icon">⚡</div>
         <span><b>Always calculate by both</b> KW load and bill amount, and take the higher of the two. Add <b>1 extra card</b> automatically for any three-phase connection.</span>
       </div>
@@ -1013,31 +986,14 @@
   var mobileContainer = document.getElementById('vscc-mobileCards');
 
   CHART.forEach(function(row){
-    /* 1. Desktop Table Row */
     if(tbody){
       var tr = document.createElement('tr');
       tr.innerHTML =
-        '<td>⚡ ' + row[0] + '</td>' +
+        '<td>' + row[0] + '</td>' +
         '<td>' + row[1] + '</td>' +
-        '<td class="single"><span class="pill-orange">' + row[2] + ' Card' + (row[2]>1?'s':'') + '</span></td>' +
-        '<td class="three"><span class="pill-green">' + row[3] + ' Cards</span></td>';
+        '<td>' + row[2] + ' Card' + (row[2]>1?'s':'') + '</td>' +
+        '<td>' + row[3] + ' Cards</td>';
       tbody.appendChild(tr);
-    }
-
-    /* 2. Mobile Card (Matches User Photo Exactly) */
-    if(mobileContainer){
-      var mcard = document.createElement('div');
-      mcard.className = 'vsc-mcard';
-      mcard.innerHTML =
-        '<div class="vsc-mcard-left">' +
-          '<div class="vsc-mcard-kw">' + row[0] + '</div>' +
-          '<div class="vsc-mcard-bill">' + row[1] + '</div>' +
-        '</div>' +
-        '<div class="vsc-mcard-right">' +
-          '<div class="vsc-mcard-single">' + row[2] + ' Card' + (row[2]>1?'s':'') + '</div>' +
-          '<div class="vsc-mcard-three">3-Phase: ' + row[3] + ' Cards</div>' +
-        '</div>';
-      mobileContainer.appendChild(mcard);
     }
   });
 
