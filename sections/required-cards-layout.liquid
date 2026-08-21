@@ -130,6 +130,96 @@
 .vscc .hf-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--orange); flex-shrink: 0; }
 .vscc .hf-item b { color: var(--green); font-weight: 700; }
 
+/* ---- HERO DESKTOP GRID & GENTLEMAN ADVISOR IMAGE ---- */
+.vscc .hero-grid-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  align-items: center;
+}
+
+@media(min-width: 900px) {
+  .vscc .hero-grid-container {
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 44px;
+  }
+}
+
+.vscc .hero-right-col {
+  display: none !important; /* Hidden on mobile theme */
+}
+
+@media(min-width: 900px) {
+  .vscc .hero-right-col {
+    display: block !important;
+    position: relative;
+  }
+}
+
+.vscc .hero-image-frame {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 44px -12px rgba(10, 74, 44, 0.25), 0 4px 16px rgba(0,0,0,0.06);
+  border: 2px solid var(--line);
+  background: #ffffff;
+}
+
+.vscc .hero-advisor-img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+.vscc .hero-image-frame:hover .hero-advisor-img {
+  transform: scale(1.03);
+}
+
+.vscc .hero-img-badge {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1.5px solid var(--line);
+  padding: 10px 16px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+
+.vscc .badge-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #0a4a2c;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  flex-shrink: 0;
+}
+
+.vscc .badge-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--ink);
+  line-height: 1.2;
+}
+
+.vscc .badge-sub {
+  font-size: 11px;
+  color: var(--muted);
+  font-family: 'Inter', sans-serif;
+}
+
 /* ---- SECTIONS ---- */
 .vscc .sec { padding: 52px 0; }
 @media(min-width:760px){ .vscc .sec { padding: 72px 0; } }
@@ -848,18 +938,37 @@
   <section class="hero">
     <div class="texture-bg"></div>
     <div class="wrap" style="position:relative;z-index:1;">
-      <div class="eyebrow"><span class="dot"></span> INDIA'S NO. 1 ELECTRIC SAVER CARD COMPANY</div>
-      <h1>How many <em>Vidhyut Saathi</em> cards does your connection need?</h1>
-      <p class="lead">Enter your connected load and your monthly bill — the calculator checks both and always recommends the higher requirement, exactly the way our installation team does it on site.</p>
-      <div class="hero-ctas">
-        <a href="#vscc-calc" class="btn-primary">Calculate Now ↓</a>
-        <a href="#vscc-chart" class="btn-ghost">View Full Chart</a>
-      </div>
-      <div class="hero-features-strip">
-        <div class="hf-item"><span class="hf-dot"></span> <b>20–30%</b> bill savings</div>
-        <div class="hf-item"><span class="hf-dot"></span> <b>10 Yr</b> product life</div>
-        <div class="hf-item"><span class="hf-dot"></span> <b>3 Yr</b> warranty</div>
-        <div class="hf-item"><span class="hf-dot"></span> <b>ISO</b> certified</div>
+      <div class="hero-grid-container">
+        <!-- LEFT COLUMN: Content -->
+        <div class="hero-left-col">
+          <div class="eyebrow"><span class="dot"></span> INDIA'S NO. 1 ELECTRIC SAVER CARD COMPANY</div>
+          <h1>How many <em>Vidhyut Saathi</em> cards does your connection need?</h1>
+          <p class="lead">Enter your connected load and your monthly bill — the calculator checks both and always recommends the higher requirement, exactly the way our installation team does it on site.</p>
+          <div class="hero-ctas">
+            <a href="#vscc-calc" class="btn-primary">Calculate Now ↓</a>
+            <a href="#vscc-chart" class="btn-ghost">View Full Chart</a>
+          </div>
+          <div class="hero-features-strip">
+            <div class="hf-item"><span class="hf-dot"></span> <b>20–30%</b> bill savings</div>
+            <div class="hf-item"><span class="hf-dot"></span> <b>10 Yr</b> product life</div>
+            <div class="hf-item"><span class="hf-dot"></span> <b>3 Yr</b> warranty</div>
+            <div class="hf-item"><span class="hf-dot"></span> <b>ISO</b> certified</div>
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN: Gentleman Advisor with Calculator (Desktop Only) -->
+        <div class="hero-right-col">
+          <div class="hero-image-frame">
+            <img src="{{ 'hero-advisor-calculator.jpg' | asset_url }}" alt="Vidhyut Saathi Energy Advisor Showing Calculator Requirements" class="hero-advisor-img">
+            <div class="hero-img-badge">
+              <span class="badge-icon">⚡</span>
+              <div>
+                <div class="badge-title">Free Expert Calculation</div>
+                <div class="badge-sub">Instant Load & Bill Check</div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
