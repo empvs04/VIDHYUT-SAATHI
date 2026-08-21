@@ -144,36 +144,41 @@
 .vscc .sec p.desc { color: var(--muted); font-size: 15px; line-height: 1.65; margin: 0; }
 
 /* ---- CALCULATOR ---- */
-.vscc .calc-wrap {
-  background: var(--panel);
-  border: 1.5px solid var(--line);
-  border-radius: 22px;
-  overflow: hidden;
-  box-shadow: 0 2px 0 rgba(0,0,0,.02), 0 24px 56px -24px rgba(10,74,44,.18);
-  display: grid;
-  grid-template-columns: 1fr;
+.vscc .calc-outer-box {
+  position: relative;
+  background: #fbf8f0;
+  border: 1.5px solid #f0631b;
+  border-radius: 24px;
+  padding: 36px 20px 24px;
+  margin-top: 16px;
+  box-shadow: 0 4px 20px rgba(240,99,27,0.06);
 }
-@media(min-width:860px){ .vscc .calc-wrap { grid-template-columns: 1fr 1fr; } }
+@media(min-width:640px){
+  .vscc .calc-outer-box { padding: 40px 32px 32px; }
+}
+
+.vscc .live-calc-badge {
+  position: absolute;
+  top: -14px;
+  left: 24px;
+  background: #e8c766;
+  color: #16281f;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 999px;
+  border: 1.5px solid #c9982e;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'IBM Plex Mono', monospace;
+}
 
 .vscc .c-inputs {
-  padding: 28px 24px;
-  border-bottom: 1.5px solid var(--line);
-}
-@media(min-width:520px){ .vscc .c-inputs { padding: 34px 32px; } }
-@media(min-width:860px){
-  .vscc .c-inputs { border-bottom: none; border-right: 1.5px solid var(--line); padding: 40px 36px; }
-}
-
-.vscc .c-inputs-title {
-  font-size: 11px; font-weight: 700; letter-spacing: .12em;
-  text-transform: uppercase; color: var(--muted-2);
-  margin-bottom: 24px; padding-bottom: 14px;
-  border-bottom: 1px dashed var(--line);
-  display: flex; align-items: center; gap: 8px;
-}
-.vscc .c-inputs-title span {
-  background: var(--green-t); color: var(--green);
-  padding: 4px 10px; border-radius: 6px; font-size: 11px;
+  padding-bottom: 20px;
 }
 
 .vscc .field { margin-bottom: 22px; }
@@ -184,6 +189,7 @@
   font-weight: 700; color: var(--ink);
   font-size: 12px; letter-spacing: .04em; text-transform: uppercase;
   margin-bottom: 10px;
+  font-family: 'IBM Plex Mono', monospace;
 }
 .vscc .field-val {
   background: var(--orange-t); color: var(--orange);
@@ -210,10 +216,10 @@
 }
 
 .vscc .num-input {
-  width: 100%; background: var(--panel-2);
+  width: 100%; background: #ffffff;
   border: 1.5px solid var(--line); color: var(--ink);
   font-family: 'IBM Plex Mono', monospace; font-size: 16px;
-  padding: 13px 15px; border-radius: 11px;
+  padding: 13px 15px; border-radius: 12px;
   outline: none; min-height: var(--tap);
   transition: border-color .15s, background .15s;
 }
@@ -229,19 +235,96 @@
 
 .vscc .toggle-grp { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .vscc .tog-btn {
-  padding: 13px 10px; border-radius: 11px;
+  padding: 14px 10px; border-radius: 12px;
   border: 1.5px solid var(--line);
-  background: var(--panel-2); color: var(--muted);
-  font-weight: 700; font-size: 13.5px;
-  min-height: var(--tap);
+  background: #ffffff; color: var(--muted);
+  font-weight: 700; font-size: 14px;
+  min-height: 50px;
   display: flex; align-items: center; justify-content: center; gap: 6px;
   transition: all .15s;
 }
 .vscc .tog-btn.active {
-  border-color: var(--green); color: var(--green-d);
-  background: var(--green-t);
-  box-shadow: 0 0 0 3px rgba(14,107,62,.12);
+  border-color: #0a4a2c; color: #ffffff;
+  background: #0a4a2c;
+  box-shadow: 0 4px 12px rgba(10,74,44,.2);
 }
+
+/* Savings Box */
+.vscc .savings-box {
+  background: linear-gradient(135deg, #0a4a2c, #0e6b3e);
+  border-radius: 16px;
+  padding: 18px 20px;
+  color: #ffffff;
+  margin: 18px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 16px rgba(10,74,44,0.2);
+}
+.vscc .savings-label {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  color: #cfe4d7;
+  text-transform: uppercase;
+  font-family: 'IBM Plex Mono', monospace;
+  margin-bottom: 4px;
+}
+.vscc .savings-amount {
+  font-family: 'Space Grotesk', 'IBM Plex Mono', monospace;
+  font-weight: 800;
+  font-size: clamp(20px, 5vw, 24px);
+  color: #ffffff;
+}
+.vscc .savings-icon {
+  font-size: 28px;
+}
+
+/* Action Buttons */
+.vscc .calc-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+@media(max-width:480px){
+  .vscc .calc-actions { grid-template-columns: 1fr; }
+}
+
+.vscc .btn-wa {
+  background: #25D366;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 13px 16px;
+  border-radius: 12px;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(37,211,102,0.25);
+  transition: transform .15s;
+}
+.vscc .btn-wa:hover { transform: translateY(-1px); }
+
+.vscc .btn-quote {
+  background: #ffffff;
+  color: #0a4a2c;
+  border: 1.5px solid #0e6b3e;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 13px 16px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+  transition: background .15s;
+}
+.vscc .btn-quote:hover { background: #e6f2ea; }
 
 /* output side */
 .vscc .c-output {
@@ -652,28 +735,24 @@
   <section class="sec" id="vscc-calc">
     <div class="wrap">
       <div class="sec-head">
-        <div class="sec-eyebrow">Card Calculator</div>
+        <div class="sec-eyebrow">CARD CALCULATOR</div>
         <h2>Get your exact card count</h2>
-        <p class="desc">One card saves 20–30% on a small load — bigger connections and heavier bills call for more coverage. We calculate both ways and always take the higher number.</p>
+        <p class="desc">One card saves 20–30% on a small load — bigger connections and heavier bills both call for more coverage. We calculate it both ways and take whichever number is higher.</p>
       </div>
 
-      <div class="calc-wrap">
+      <div class="calc-outer-box">
+        <div class="live-calc-badge">⚡ LIVE CALCULATOR</div>
 
-        <!-- LEFT: INPUTS -->
-        <div class="c-inputs">
-          <div class="c-inputs-title">
-            Step 1: Enter Your Details
-            <span>↓</span>
-          </div>
-
+        <!-- INPUTS -->
+        <div class="c-inputs" style="padding-top:10px;">
           <!-- KW Slider -->
           <div class="field">
             <div class="field-label">
-              Connected Load (KW)
+              <span>⚙️ CONNECTED LOAD</span>
               <span class="field-val" id="vscc-kwVal">10 KW</span>
             </div>
             <input type="range" id="vscc-kwSlider" min="1" max="200" value="10" step="1">
-            <div style="margin-top:12px;">
+            <div style="margin-top:10px;">
               <input type="number" inputmode="numeric" class="num-input" id="vscc-kwNumber" value="10" min="1" max="2000" placeholder="Enter KW load">
             </div>
           </div>
@@ -681,7 +760,7 @@
           <!-- Bill Input -->
           <div class="field">
             <div class="field-label">
-              Monthly Electricity Bill
+              <span>💰 MONTHLY ELECTRICITY BILL</span>
               <span class="field-val" id="vscc-billVal">₹6,000</span>
             </div>
             <div class="prefix-wrap">
@@ -691,18 +770,18 @@
           </div>
 
           <!-- Phase Toggle -->
-          <div class="field">
-            <div class="field-label">Connection Type</div>
+          <div class="field" style="margin-bottom:24px;">
+            <div class="field-label">CONNECTION TYPE</div>
             <div class="toggle-grp">
-              <button class="tog-btn active" id="vscc-btnSingle">⚡ Single Phase</button>
-              <button class="tog-btn" id="vscc-btnThree">⚡⚡ Three Phase</button>
+              <button class="tog-btn active" id="vscc-btnSingle">Single Phase</button>
+              <button class="tog-btn" id="vscc-btnThree">Three Phase</button>
             </div>
           </div>
         </div>
 
-        <!-- RIGHT: OUTPUT -->
-        <div class="c-output">
-          <div class="res-label">Cards Required</div>
+        <!-- OUTPUT -->
+        <div class="c-output" style="padding-top:10px;">
+          <div class="res-label">CARDS REQUIRED</div>
           <div class="res-number">
             <span id="vscc-resultNum">1</span>
             <span class="unit" id="vscc-resultUnit">Card</span>
@@ -715,20 +794,38 @@
             <div class="mock-label">VIDHYUT SAATHI · TERAHERTZ CHIP</div>
           </div>
 
-          <!-- Chip Meter -->
-          <div class="chip-meter" id="vscc-chipMeter"></div>
-
           <!-- Breakdown -->
           <div class="breakdown">
             <div class="brow"><span>Based on KW load (⌈KW ÷ 6⌉)</span><b id="vscc-kwCards">1</b></div>
             <div class="brow"><span>Based on bill amount (⌈Bill ÷ ₹6,000⌉)</span><b id="vscc-billCards">1</b></div>
             <hr class="bdivider">
-            <div class="brow win"><span>Higher requirement considered</span><b id="vscc-baseWin">1</b></div>
+            <div class="brow win"><span>Higher requirement considered</span><b id="vscc-baseWin" style="color:var(--green)">1</b></div>
             <div class="brow" id="vscc-phaseRow" style="display:none;"><span>+ 1 extra for 3-phase connection</span><b style="color:var(--orange)">+1</b></div>
           </div>
 
-          <p class="calc-note">
-            📌 <strong>Rule:</strong> 1 card per 6 KW of load <em>or</em> 1 card per ₹6,000 bill — whichever is higher. Three-phase connections always get +1 card.
+          <!-- Estimated Monthly Savings Banner -->
+          <div class="savings-box">
+            <div>
+              <div class="savings-label">ESTIMATED MONTHLY SAVINGS</div>
+              <div class="savings-amount" id="vscc-savingsRange">₹1,200 – ₹1,800</div>
+            </div>
+            <div class="savings-icon">💡</div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="calc-actions">
+            <a href="https://wa.me/?text=Hi%2C%20I%20want%20to%20order%20Vidhyut%20Saathi%20Electric%20Saver%20Cards" class="btn-wa" target="_blank">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+              Order on WhatsApp
+            </a>
+            <a href="tel:+919876543210" class="btn-quote">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+              Call for Quote
+            </a>
+          </div>
+
+          <p class="calc-note" style="background:transparent;border:none;padding:0;color:var(--muted-2);font-size:12px;line-height:1.65;">
+            Rule of thumb: 1 card per 6 KW of load, or 1 card per ₹6,000 of monthly bill — whichever gives the bigger number. Three-phase connections always get one additional card. Savings and quote figures update instantly as you adjust the sliders.
           </p>
         </div>
 
@@ -989,6 +1086,14 @@
     resultUnit.textContent  = total > 1 ? 'Cards' : 'Card';
     stickyNum.textContent   = total;
     stickyUnit.textContent  = total > 1 ? 'Cards' : 'Card';
+
+    /* Estimated Savings (20%-30%) */
+    var savingsMin = Math.round((bill * 0.20) / 100) * 100;
+    var savingsMax = Math.round((bill * 0.30) / 100) * 100;
+    var savingsRangeEl = document.getElementById('vscc-savingsRange');
+    if(savingsRangeEl){
+      savingsRangeEl.textContent = inr(savingsMin) + ' – ' + inr(savingsMax);
+    }
 
     /* chip meter */
     chipMeter.innerHTML = '';
