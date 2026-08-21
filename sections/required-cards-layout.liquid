@@ -1,750 +1,950 @@
 <style>
-  /* ============ VIDHYUT SAATHI — CARD CALCULATOR PAGE ============ */
-  .vsc-calc-page {
-    --bg:#faf7ee;
-    --bg-warm:#f3efe1;
-    --panel:#ffffff;
-    --panel-2:#fbf8f0;
-    --line:#e5e0cf;
-    --line-soft:#eeead9;
-    --green:#0e6b3e;
-    --green-deep:#0a4a2c;
-    --green-tint:#e6f2ea;
-    --orange:#f0631b;
-    --orange-tint:#fdece1;
-    --gold:#c9982e;
-    --ink:#16281f;
-    --muted:#5e7568;
-    --muted-2:#8ba095;
-    --radius:14px;
-    --maxw:1140px;
-    --tap:48px;
-    background: var(--bg);
-    color: var(--ink);
-    font-family: 'Inter', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-    font-size: 16px;
-  }
-  .vsc-calc-page *, .vsc-calc-page *::before, .vsc-calc-page *::after { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-  .vsc-calc-page h1, .vsc-calc-page h2, .vsc-calc-page h3 { font-family: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif; letter-spacing: -0.01em; }
-  .vsc-calc-page .mono { font-family: 'IBM Plex Mono', monospace; }
-  .vsc-calc-page a { color: inherit; }
-  .vsc-calc-page .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 20px; }
-  @media(min-width:640px){ .vsc-calc-page .wrap { padding: 0 32px; } }
-  .vsc-calc-page img { max-width: 100%; display: block; }
-  .vsc-calc-page button { font-family: inherit; }
+/* ============================================================
+   VIDHYUT SAATHI — CARD CALCULATOR PAGE
+   Premium design • Fully mobile-first responsive
+   ============================================================ */
+.vscc {
+  --bg:       #faf7ee;
+  --bg-warm:  #f3efe1;
+  --panel:    #ffffff;
+  --panel-2:  #fbf8f0;
+  --line:     #e5e0cf;
+  --line-s:   #eeead9;
+  --green:    #0e6b3e;
+  --green-d:  #0a4a2c;
+  --green-t:  #e6f2ea;
+  --orange:   #f0631b;
+  --orange-t: #fdece1;
+  --gold:     #c9982e;
+  --ink:      #16281f;
+  --muted:    #5e7568;
+  --muted-2:  #8ba095;
+  --tap:      48px;
+  --maxw:     1140px;
+  --r:        14px;
 
-  .vsc-calc-page .texture-bg {
-    position: absolute; inset: 0; z-index: 0;
-    background-image:
-      linear-gradient(var(--line-soft) 1px, transparent 1px),
-      linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
-    background-size: 38px 38px;
-    -webkit-mask-image: radial-gradient(ellipse 75% 55% at 50% 15%, black 35%, transparent 85%);
-            mask-image: radial-gradient(ellipse 75% 55% at 50% 15%, black 35%, transparent 85%);
-  }
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Inter', 'Plus Jakarta Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  font-size: 16px;
+}
+.vscc *, .vscc *::before, .vscc *::after {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+.vscc h1, .vscc h2, .vscc h3 {
+  font-family: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
+  letter-spacing: -.02em;
+}
+.vscc a { color: inherit; text-decoration: none; }
+.vscc img { max-width: 100%; display: block; }
+.vscc button { font-family: inherit; cursor: pointer; }
 
-  /* HERO */
-  .vsc-calc-page .hero { position: relative; padding: 44px 0 40px; overflow: hidden; }
-  @media(min-width:760px){ .vsc-calc-page .hero { padding: 74px 0 56px; } }
-  .vsc-calc-page .eyebrow {
-    display: inline-flex; align-items: center; gap: 8px;
-    color: var(--green); font-family: 'IBM Plex Mono', monospace;
-    font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase;
-    border: 1px solid var(--green); padding: 7px 12px; border-radius: 999px;
-    margin-bottom: 20px; background: var(--green-tint);
-  }
-  .vsc-calc-page .eyebrow .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--orange); box-shadow: 0 0 0 3px var(--orange-tint); }
-  .vsc-calc-page .hero h1 {
-    font-size: clamp(28px, 7.2vw, 58px);
-    line-height: 1.08; font-weight: 700; margin: 0 0 16px; max-width: 820px;
-  }
-  .vsc-calc-page .hero h1 em { font-style: normal; color: var(--orange); }
-  .vsc-calc-page .hero p.lead {
-    color: var(--muted); font-size: clamp(15px, 3.6vw, 17px); line-height: 1.6; max-width: 560px; margin: 0 0 26px;
-  }
-  .vsc-calc-page .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
-  .vsc-calc-page .btn-primary {
-    background: var(--orange); color: #fff; font-weight: 700;
-    padding: 14px 24px; border-radius: 10px; text-decoration: none; font-size: 15px;
-    box-shadow: 0 8px 20px -8px rgba(240,99,27,.5);
-    border: none; cursor: pointer; min-height: var(--tap); display: inline-flex; align-items: center; justify-content: center;
-    width: 100%;
-  }
-  .vsc-calc-page .btn-ghost {
-    border: 1.5px solid var(--green); color: var(--green);
-    padding: 14px 24px; border-radius: 10px; text-decoration: none; font-size: 15px; font-weight: 700;
-    min-height: var(--tap); display: inline-flex; align-items: center; justify-content: center;
-    width: 100%; background: #fff;
-  }
-  @media(min-width:520px){ .vsc-calc-page .btn-primary, .vsc-calc-page .btn-ghost { width: auto; } }
+.vscc .wrap {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 18px;
+}
+@media(min-width:640px){ .vscc .wrap { padding: 0 32px; } }
 
-  /* SECTION */
-  .vsc-calc-page .section { padding: 48px 0; }
-  @media(min-width:760px){ .vsc-calc-page .section { padding: 68px 0; } }
-  .vsc-calc-page .section-head { max-width: 640px; margin: 0 0 28px; }
-  @media(min-width:760px){ .vsc-calc-page .section-head { margin-bottom: 38px; } }
-  .vsc-calc-page .section-eyebrow {
-    font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; letter-spacing: .12em;
-    text-transform: uppercase; color: var(--orange); margin-bottom: 8px; font-weight: 600;
-  }
-  .vsc-calc-page .section h2 { font-size: clamp(22px, 5.4vw, 32px); margin: 0 0 10px; font-weight: 700; }
-  .vsc-calc-page .section p.desc { color: var(--muted); font-size: 15px; line-height: 1.6; margin: 0; }
+/* ---- TEXTURE ---- */
+.vscc .texture-bg {
+  position: absolute; inset: 0; z-index: 0;
+  background-image:
+    linear-gradient(var(--line-s) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line-s) 1px, transparent 1px);
+  background-size: 36px 36px;
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 10%, black 30%, transparent 80%);
+          mask-image: radial-gradient(ellipse 80% 60% at 50% 10%, black 30%, transparent 80%);
+}
 
-  /* CALCULATOR */
-  .vsc-calc-page .calc {
-    background: var(--panel);
-    border: 1px solid var(--line);
-    border-radius: 20px;
-    display: grid; grid-template-columns: 1fr;
-    overflow: hidden;
-    box-shadow: 0 1px 0 rgba(0,0,0,.02), 0 20px 40px -24px rgba(10,74,44,.15);
-  }
-  @media(min-width:860px){ .vsc-calc-page .calc { grid-template-columns: 1fr 1fr; } }
+/* ---- HERO ---- */
+.vscc .hero {
+  position: relative;
+  padding: 40px 0 36px;
+  overflow: hidden;
+}
+@media(min-width:760px){ .vscc .hero { padding: 72px 0 56px; } }
 
-  .vsc-calc-page .calc-inputs { padding: 22px; }
-  @media(min-width:520px){ .vsc-calc-page .calc-inputs { padding: 30px; } }
-  @media(min-width:860px){ .vsc-calc-page .calc-inputs { padding: 36px; border-right: 1px solid var(--line); } }
+.vscc .eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  color: var(--green); font-size: 11px; letter-spacing: .12em;
+  text-transform: uppercase; font-weight: 700;
+  border: 1px solid var(--green);
+  padding: 7px 14px; border-radius: 999px;
+  margin-bottom: 18px; background: var(--green-t);
+}
+.vscc .eyebrow .dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--orange); flex-shrink: 0;
+  box-shadow: 0 0 0 3px var(--orange-t);
+}
 
-  .vsc-calc-page .field { margin-bottom: 24px; }
-  .vsc-calc-page .field label {
-    display: flex; justify-content: space-between; align-items: baseline; gap: 10px;
-    font-weight: 700; color: var(--ink); margin-bottom: 12px;
-    font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; letter-spacing: .04em; text-transform: uppercase;
-  }
-  .vsc-calc-page .field label .val {
-    font-family: 'IBM Plex Mono', monospace; color: var(--orange); font-size: 16px; font-weight: 700;
-  }
-  .vsc-calc-page input[type=range] {
-    width: 100%; -webkit-appearance: none; appearance: none;
-    height: 8px; border-radius: 999px;
-    background: linear-gradient(90deg, var(--green) 0%, var(--green) var(--fill,10%), var(--line) var(--fill,10%));
-    outline: none; margin: 6px 0; touch-action: pan-y;
-  }
-  .vsc-calc-page input[type=range]::-webkit-slider-thumb {
-    -webkit-appearance: none; width: 26px; height: 26px; border-radius: 50%;
-    background: var(--orange); border: 4px solid #fff; cursor: pointer;
-    box-shadow: 0 2px 8px rgba(0,0,0,.25);
-  }
-  .vsc-calc-page input[type=range]::-moz-range-thumb {
-    width: 26px; height: 26px; border-radius: 50%; background: var(--orange);
-    border: 4px solid #fff; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,.25);
-  }
-  .vsc-calc-page .num-input {
-    width: 100%; background: var(--panel-2); border: 1.5px solid var(--line);
-    color: var(--ink); font-family: 'IBM Plex Mono', monospace; font-size: 16px;
-    padding: 13px 14px; border-radius: 10px; outline: none; min-height: var(--tap);
-  }
-  .vsc-calc-page .num-input:focus { border-color: var(--orange); background: #fff; }
-  .vsc-calc-page .prefix-wrap { position: relative; }
-  .vsc-calc-page .prefix-wrap .prefix {
-    position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
-    color: var(--muted-2); font-family: 'IBM Plex Mono', monospace; pointer-events: none; font-size: 16px;
-  }
-  .vsc-calc-page .prefix-wrap input { padding-left: 30px; }
+.vscc .hero h1 {
+  font-size: clamp(26px, 7vw, 56px);
+  line-height: 1.1; font-weight: 700;
+  margin: 0 0 16px; max-width: 800px;
+}
+.vscc .hero h1 em { font-style: normal; color: var(--orange); }
 
-  .vsc-calc-page .toggle-group { display: flex; gap: 10px; }
-  .vsc-calc-page .toggle-btn {
-    flex: 1; padding: 12px 8px; border-radius: 10px; border: 1.5px solid var(--line);
-    background: var(--panel-2); color: var(--muted); font-weight: 700; font-size: 13.5px;
-    cursor: pointer; text-align: center; transition: .15s; min-height: var(--tap);
-    display: flex; align-items: center; justify-content: center;
-  }
-  .vsc-calc-page .toggle-btn.active {
-    border-color: var(--green); color: var(--green); background: var(--green-tint);
-  }
+.vscc .hero .lead {
+  color: var(--muted);
+  font-size: clamp(14.5px, 3.5vw, 17px);
+  line-height: 1.65; max-width: 560px;
+  margin: 0 0 28px;
+}
 
-  /* OUTPUT */
-  .vsc-calc-page .calc-output {
-    padding: 22px; display: flex; flex-direction: column;
-    background: var(--panel-2);
-  }
-  @media(min-width:520px){ .vsc-calc-page .calc-output { padding: 30px; } }
-  @media(min-width:860px){ .vsc-calc-page .calc-output { padding: 36px; background: var(--panel); } }
+.vscc .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+.vscc .btn-primary {
+  background: var(--orange); color: #fff; font-weight: 700;
+  padding: 14px 28px; border-radius: 12px;
+  font-size: 15px; border: none;
+  box-shadow: 0 8px 24px -8px rgba(240,99,27,.45);
+  min-height: var(--tap);
+  display: inline-flex; align-items: center; justify-content: center;
+  transition: transform .15s, box-shadow .15s;
+}
+.vscc .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 12px 28px -8px rgba(240,99,27,.5); }
+.vscc .btn-ghost {
+  border: 2px solid var(--green); color: var(--green);
+  padding: 14px 28px; border-radius: 12px;
+  font-size: 15px; font-weight: 700;
+  min-height: var(--tap);
+  display: inline-flex; align-items: center; justify-content: center;
+  background: #fff;
+  transition: background .15s, color .15s;
+}
+.vscc .btn-ghost:hover { background: var(--green-t); }
 
-  .vsc-calc-page .result-headline { color: var(--muted); font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; text-transform: uppercase; letter-spacing: .12em; margin-bottom: 8px; font-weight: 600; }
-  .vsc-calc-page .result-number {
-    font-family: 'Space Grotesk', sans-serif; font-weight: 700;
-    font-size: clamp(46px, 13vw, 68px); line-height: 1; color: var(--green-deep);
-    display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
-  }
-  .vsc-calc-page .result-number span.unit { font-size: 16px; color: var(--muted); font-weight: 600; font-family: 'Inter'; }
+/* ---- SECTIONS ---- */
+.vscc .sec { padding: 52px 0; }
+@media(min-width:760px){ .vscc .sec { padding: 72px 0; } }
 
-  .vsc-calc-page .card-mock {
-    margin: 20px 0; padding: 14px 16px; border-radius: 12px; position: relative; overflow: hidden;
-    background: linear-gradient(135deg, #0b2440, #173a5c 55%, #0b2440);
-    min-height: 78px; display: flex; flex-direction: column; justify-content: space-between;
-  }
-  .vsc-calc-page .card-mock .banner {
-    position: absolute; top: 8px; right: -30px; background: var(--orange); color: #fff;
-    font-size: 9px; font-weight: 700; padding: 3px 34px; transform: rotate(28deg);
-    letter-spacing: .03em;
-  }
-  .vsc-calc-page .card-mock .chip-real { width: 26px; height: 18px; border-radius: 3px; background: linear-gradient(135deg, #e8c766, var(--gold)); }
-  .vsc-calc-page .card-mock .label { color: #cfe0f0; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .06em; }
+.vscc .sec-head { max-width: 640px; margin: 0 0 32px; }
+.vscc .sec-eyebrow {
+  font-size: 11px; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--orange);
+  margin-bottom: 8px; font-weight: 700;
+}
+.vscc .sec h2 { font-size: clamp(22px, 5vw, 32px); margin: 0 0 10px; font-weight: 700; }
+.vscc .sec p.desc { color: var(--muted); font-size: 15px; line-height: 1.65; margin: 0; }
 
-  .vsc-calc-page .chip-meter { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
-  .vsc-calc-page .chip-icon {
-    width: 22px; height: 15px; border-radius: 3px;
-    background: var(--line); border: 1px solid var(--line);
-    transition: .2s;
-  }
-  .vsc-calc-page .chip-icon.lit { background: linear-gradient(135deg, #e8c766, var(--gold)); border-color: var(--gold); }
+/* ---- CALCULATOR ---- */
+.vscc .calc-wrap {
+  background: var(--panel);
+  border: 1.5px solid var(--line);
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 2px 0 rgba(0,0,0,.02), 0 24px 56px -24px rgba(10,74,44,.18);
+  display: grid;
+  grid-template-columns: 1fr;
+}
+@media(min-width:860px){ .vscc .calc-wrap { grid-template-columns: 1fr 1fr; } }
 
-  .vsc-calc-page .breakdown {
-    background: var(--panel); border: 1px solid var(--line); border-radius: 12px;
-    padding: 16px; font-size: 13.5px; color: var(--muted); line-height: 1.9;
-    margin-bottom: 16px;
-  }
-  @media(min-width:860px){ .vsc-calc-page .breakdown { background: var(--panel-2); } }
-  .vsc-calc-page .breakdown .row { display: flex; justify-content: space-between; gap: 12px; }
-  .vsc-calc-page .breakdown .row b { color: var(--ink); font-family: 'IBM Plex Mono', monospace; font-weight: 700; }
-  .vsc-calc-page .breakdown .row.win b { color: var(--green); }
-  .vsc-calc-page .breakdown hr { border: none; border-top: 1px dashed var(--line); margin: 8px 0; }
-  .vsc-calc-page .note { font-size: 12.5px; color: var(--muted-2); line-height: 1.6; margin-top: auto; }
+/* inputs side */
+.vscc .c-inputs {
+  padding: 28px 24px;
+  border-bottom: 1.5px solid var(--line);
+}
+@media(min-width:520px){ .vscc .c-inputs { padding: 34px 32px; } }
+@media(min-width:860px){
+  .vscc .c-inputs { border-bottom: none; border-right: 1.5px solid var(--line); padding: 40px 36px; }
+}
 
-  /* TABLE / CHART */
-  .vsc-calc-page .table-scroll { overflow-x: auto; display: none; }
-  @media(min-width:700px){ .vsc-calc-page .table-scroll { display: block; } }
-  .vsc-calc-page table { width: 100%; border-collapse: collapse; margin-top: 4px; font-size: 14px; }
-  .vsc-calc-page thead th {
-    text-align: left; padding: 12px 14px; color: var(--muted);
-    font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: .07em;
-    border-bottom: 2px solid var(--line);
-  }
-  .vsc-calc-page tbody td { padding: 12px 14px; border-bottom: 1px solid var(--line-soft); color: var(--muted); }
-  .vsc-calc-page tbody td.strong { color: var(--ink); font-family: 'IBM Plex Mono', monospace; font-weight: 700; }
-  .vsc-calc-page tbody td.amber { color: var(--orange); font-family: 'IBM Plex Mono', monospace; font-weight: 700; }
-  .vsc-calc-page tbody tr:hover td { background: var(--bg-warm); }
+.vscc .c-inputs-title {
+  font-size: 11px; font-weight: 700; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--muted-2);
+  margin-bottom: 24px; padding-bottom: 14px;
+  border-bottom: 1px dashed var(--line);
+  display: flex; align-items: center; gap: 8px;
+}
+.vscc .c-inputs-title span {
+  background: var(--green-t); color: var(--green);
+  padding: 4px 10px; border-radius: 6px; font-size: 11px;
+}
 
-  .vsc-calc-page .chart-cards { display: flex; flex-direction: column; gap: 10px; }
-  @media(min-width:700px){ .vsc-calc-page .chart-cards { display: none; } }
-  .vsc-calc-page .chart-card {
-    background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px;
-    display: flex; justify-content: space-between; align-items: center; gap: 12px;
-  }
-  .vsc-calc-page .chart-card .left b { display: block; font-size: 14.5px; margin-bottom: 2px; }
-  .vsc-calc-page .chart-card .left span { color: var(--muted); font-size: 12.5px; }
-  .vsc-calc-page .chart-card .right { text-align: right; flex-shrink: 0; }
-  .vsc-calc-page .chart-card .right .n { font-family: 'IBM Plex Mono', monospace; font-weight: 700; color: var(--orange); font-size: 15px; }
-  .vsc-calc-page .chart-card .right .n2 { font-family: 'IBM Plex Mono', monospace; font-weight: 700; color: var(--green); font-size: 12px; margin-top: 2px; }
+.vscc .field { margin-bottom: 22px; }
+.vscc .field:last-child { margin-bottom: 0; }
 
-  .vsc-calc-page .rule-box {
-    display: flex; gap: 12px; align-items: flex-start; background: var(--green-tint);
-    border: 1px solid var(--green); border-radius: 12px; padding: 16px 18px; margin-top: 18px;
-    font-size: 13.5px; color: var(--green-deep); line-height: 1.6;
-  }
-  .vsc-calc-page .rule-box b { color: var(--orange); }
+.vscc .field-label {
+  display: flex; justify-content: space-between; align-items: center;
+  font-weight: 700; color: var(--ink);
+  font-size: 12px; letter-spacing: .04em; text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.vscc .field-val {
+  background: var(--orange-t); color: var(--orange);
+  font-size: 14px; font-weight: 700;
+  padding: 3px 10px; border-radius: 6px;
+  font-family: 'IBM Plex Mono', monospace;
+}
 
-  /* EXAMPLES */
-  .vsc-calc-page .tabs { display: flex; gap: 8px; margin-bottom: 24px; flex-wrap: wrap; }
-  .vsc-calc-page .tab-btn {
-    padding: 11px 16px; border-radius: 999px; border: 1.5px solid var(--line);
-    background: #fff; color: var(--muted); font-weight: 700; font-size: 13px; cursor: pointer;
-    min-height: 44px;
-  }
-  .vsc-calc-page .tab-btn.active { background: var(--green); border-color: var(--green); color: #fff; }
-  .vsc-calc-page .example-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
-  @media(min-width:700px){ .vsc-calc-page .example-grid { grid-template-columns: 1fr 1fr; gap: 20px; } }
-  .vsc-calc-page .example-card {
-    background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 20px;
-  }
-  @media(min-width:520px){ .vsc-calc-page .example-card { padding: 24px; } }
-  .vsc-calc-page .example-card h4 { margin: 0 0 4px; font-size: 16px; }
-  .vsc-calc-page .example-card .sub { color: var(--muted-2); font-size: 12px; margin-bottom: 16px; font-family: 'IBM Plex Mono', monospace; }
-  .vsc-calc-page .example-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px; }
-  .vsc-calc-page .stat-box { background: var(--panel-2); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; }
-  .vsc-calc-page .stat-box .k { color: var(--muted-2); font-size: 10.5px; text-transform: uppercase; letter-spacing: .05em; font-family: 'IBM Plex Mono', monospace; }
-  .vsc-calc-page .stat-box .v { font-family: 'IBM Plex Mono', monospace; font-weight: 700; font-size: 15px; margin-top: 4px; }
-  .vsc-calc-page .example-result {
-    display: flex; justify-content: space-between; align-items: center;
-    background: var(--orange-tint); border: 1px solid var(--orange); border-radius: 10px; padding: 12px 16px;
-  }
-  .vsc-calc-page .example-result .lbl { font-size: 12px; color: var(--orange); font-weight: 600; }
-  .vsc-calc-page .example-result .num { font-family: 'IBM Plex Mono', monospace; font-weight: 700; color: var(--orange); font-size: 19px; }
-  .vsc-calc-page .example-why { font-size: 12.5px; color: var(--muted); margin-top: 12px; line-height: 1.6; }
-  .vsc-calc-page .example-panel { display: none; }
-  .vsc-calc-page .example-panel.active { display: grid; }
+.vscc input[type=range] {
+  width: 100%; -webkit-appearance: none; appearance: none;
+  height: 8px; border-radius: 999px;
+  background: linear-gradient(90deg, var(--green) 0%, var(--green) var(--fill,10%), var(--line) var(--fill,10%));
+  outline: none; margin: 6px 0; touch-action: pan-y;
+}
+.vscc input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none; width: 26px; height: 26px; border-radius: 50%;
+  background: var(--orange); border: 4px solid #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,.25); cursor: pointer;
+}
+.vscc input[type=range]::-moz-range-thumb {
+  width: 26px; height: 26px; border-radius: 50%;
+  background: var(--orange); border: 4px solid #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,.25); cursor: pointer;
+}
 
-  /* BADGES */
-  .vsc-calc-page .badges {
-    display: grid; grid-template-columns: repeat(2,1fr); gap: 10px;
-  }
-  @media(min-width:600px){ .vsc-calc-page .badges { grid-template-columns: repeat(5,1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; } }
-  .vsc-calc-page .badge {
-    background: var(--panel); padding: 20px 14px; text-align: center; border-radius: 12px; border: 1px solid var(--line);
-  }
-  @media(min-width:600px){ .vsc-calc-page .badge { border-radius: 0; border: none; padding: 26px 14px; } }
-  .vsc-calc-page .badge .big { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 20px; color: var(--orange); }
-  .vsc-calc-page .badge .lbl { font-size: 11.5px; color: var(--muted); margin-top: 6px; line-height: 1.4; }
+.vscc .num-input {
+  width: 100%; background: var(--panel-2);
+  border: 1.5px solid var(--line); color: var(--ink);
+  font-family: 'IBM Plex Mono', monospace; font-size: 16px;
+  padding: 13px 15px; border-radius: 11px;
+  outline: none; min-height: var(--tap);
+  transition: border-color .15s, background .15s;
+}
+.vscc .num-input:focus { border-color: var(--orange); background: #fff; }
 
-  /* CTA BAND */
-  .vsc-calc-page .cta-band {
-    background: linear-gradient(135deg, #0a4a2c, #0e6b3e);
-    border-radius: 20px; color: #fff;
-    padding: 36px 24px; text-align: center; margin: 0 auto;
-  }
-  @media(min-width:640px){ .vsc-calc-page .cta-band { padding: 48px 40px; } }
-  .vsc-calc-page .cta-band h3 { font-size: clamp(20px, 5vw, 28px); margin: 0 0 12px; }
-  .vsc-calc-page .cta-band p { color: #cfe4d7; margin: 0 0 24px; font-size: 14.5px; max-width: 480px; margin-left: auto; margin-right: auto; }
-  .vsc-calc-page .cta-band .btn-primary { background: #fff; color: #0a4a2c; box-shadow: none; width: auto; }
+.vscc .prefix-wrap { position: relative; }
+.vscc .prefix-wrap .pfx {
+  position: absolute; left: 15px; top: 50%; transform: translateY(-50%);
+  color: var(--muted-2); font-family: 'IBM Plex Mono', monospace;
+  pointer-events: none; font-size: 16px;
+}
+.vscc .prefix-wrap input { padding-left: 32px; }
 
-  /* STICKY RESULT BAR */
-  .vsc-calc-page .sticky-result {
-    position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
-    background: #0a4a2c; color: #fff;
-    padding: 12px 16px; padding-bottom: calc(12px + env(safe-area-inset-bottom));
-    display: flex; align-items: center; justify-content: space-between; gap: 12px;
-    box-shadow: 0 -6px 18px rgba(0,0,0,.15);
-    transform: translateY(100%); transition: transform .25s ease;
-  }
-  .vsc-calc-page .sticky-result.show { transform: translateY(0); }
-  @media(min-width:860px){ .vsc-calc-page .sticky-result { display: none !important; } }
-  .vsc-calc-page .sticky-result .txt { font-size: 12.5px; color: #cfe4d7; }
-  .vsc-calc-page .sticky-result .num { font-family: 'IBM Plex Mono', monospace; font-weight: 700; font-size: 20px; }
-  .vsc-calc-page .sticky-result a {
-    background: #f0631b; color: #fff; font-weight: 700; font-size: 13px;
-    padding: 10px 16px; border-radius: 8px; text-decoration: none; flex-shrink: 0;
-  }
+.vscc .toggle-grp { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.vscc .tog-btn {
+  padding: 13px 10px; border-radius: 11px;
+  border: 1.5px solid var(--line);
+  background: var(--panel-2); color: var(--muted);
+  font-weight: 700; font-size: 13.5px;
+  min-height: var(--tap);
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  transition: all .15s;
+}
+.vscc .tog-btn.active {
+  border-color: var(--green); color: var(--green-d);
+  background: var(--green-t);
+  box-shadow: 0 0 0 3px rgba(14,107,62,.12);
+}
 
-  .vsc-calc-page :focus-visible { outline: 2px solid #f0631b; outline-offset: 2px; }
-  .vsc-calc-page ::selection { background: #f0631b; color: #fff; }
+/* output side */
+.vscc .c-output {
+  padding: 28px 24px;
+  background: var(--panel-2);
+  display: flex; flex-direction: column; gap: 0;
+}
+@media(min-width:520px){ .vscc .c-output { padding: 34px 32px; } }
+@media(min-width:860px){ .vscc .c-output { padding: 40px 36px; background: var(--panel); } }
 
-  /* ============ MOBILE RESPONSIVE ============ */
-  @media (max-width: 767px) {
+.vscc .res-label {
+  font-size: 11px; font-weight: 700; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--muted-2); margin-bottom: 6px;
+}
+.vscc .res-number {
+  font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+  font-size: clamp(52px, 14vw, 72px); line-height: 1;
+  color: var(--green-d);
+  display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.vscc .res-number .unit { font-size: 16px; color: var(--muted); font-weight: 600; font-family: 'Inter'; }
 
-    /* HERO */
-    .vsc-calc-page .hero { padding: 32px 0 28px; }
-    .vsc-calc-page .eyebrow { font-size: 10.5px; padding: 6px 10px; margin-bottom: 16px; }
-    .vsc-calc-page .hero h1 {
-      font-size: clamp(26px, 8vw, 38px);
-      line-height: 1.12; margin-bottom: 14px;
-      text-align: left;
-    }
-    .vsc-calc-page .hero p.lead {
-      font-size: 14.5px; line-height: 1.65;
-      text-align: justify; text-justify: inter-word; hyphens: auto;
-      margin-bottom: 22px;
-    }
-    .vsc-calc-page .hero-ctas { flex-direction: column; gap: 10px; }
-    .vsc-calc-page .btn-primary,
-    .vsc-calc-page .btn-ghost {
-      width: 100%; font-size: 15px; padding: 15px 20px;
-    }
+/* product card mockup */
+.vscc .card-mock {
+  border-radius: 14px; overflow: hidden; position: relative;
+  background: linear-gradient(135deg, #0b2440 0%, #173a5c 55%, #0b2440 100%);
+  padding: 16px 18px; min-height: 82px;
+  display: flex; flex-direction: column; justify-content: space-between;
+  margin-bottom: 18px;
+}
+.vscc .card-mock .mock-ribbon {
+  position: absolute; top: 10px; right: -28px;
+  background: var(--orange); color: #fff;
+  font-size: 9px; font-weight: 700; letter-spacing: .04em;
+  padding: 3px 36px; transform: rotate(28deg);
+}
+.vscc .card-mock .mock-chip {
+  width: 28px; height: 20px; border-radius: 4px;
+  background: linear-gradient(135deg, #e8c766, var(--gold));
+}
+.vscc .card-mock .mock-label {
+  color: rgba(207,224,240,.85);
+  font-size: 10px; letter-spacing: .08em;
+  font-family: 'IBM Plex Mono', monospace;
+}
 
-    /* SECTION SPACING */
-    .vsc-calc-page .section { padding: 36px 0; }
-    .vsc-calc-page .section-head { margin-bottom: 22px; }
-    .vsc-calc-page .section h2 { font-size: clamp(20px, 6vw, 26px); }
-    .vsc-calc-page .section p.desc {
-      font-size: 14px; line-height: 1.65;
-      text-align: justify; text-justify: inter-word; hyphens: auto;
-    }
+/* chip meter */
+.vscc .chip-meter { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 18px; }
+.vscc .chip-dot {
+  width: 22px; height: 15px; border-radius: 3px;
+  background: var(--line); border: 1px solid var(--line);
+  transition: background .2s, border-color .2s;
+}
+.vscc .chip-dot.on { background: linear-gradient(135deg, #e8c766, var(--gold)); border-color: var(--gold); }
 
-    /* CALCULATOR */
-    .vsc-calc-page .calc { border-radius: 16px; }
-    .vsc-calc-page .calc-inputs { padding: 20px 18px; }
-    .vsc-calc-page .calc-output { padding: 20px 18px; }
-    .vsc-calc-page .field { margin-bottom: 20px; }
-    .vsc-calc-page .field label { font-size: 10.5px; margin-bottom: 10px; }
-    .vsc-calc-page .field label .val { font-size: 15px; }
-    .vsc-calc-page .num-input { font-size: 15px; padding: 12px 13px; border-radius: 10px; }
-    .vsc-calc-page .toggle-btn { font-size: 13px; padding: 13px 8px; min-height: 48px; }
+/* breakdown */
+.vscc .breakdown {
+  background: var(--panel); border: 1.5px solid var(--line);
+  border-radius: 13px; padding: 16px;
+  font-size: 13.5px; color: var(--muted); line-height: 1.9;
+  margin-bottom: 16px;
+}
+@media(min-width:860px){ .vscc .breakdown { background: var(--panel-2); } }
+.vscc .brow { display: flex; justify-content: space-between; gap: 10px; align-items: center; }
+.vscc .brow b { color: var(--ink); font-family: 'IBM Plex Mono', monospace; font-weight: 700; font-size: 13px; }
+.vscc .brow.win b { color: var(--green); }
+.vscc .brow hr { border: none; border-top: 1px dashed var(--line); margin: 6px 0; }
+.vscc .bdivider { border: none; border-top: 1px dashed var(--line); margin: 8px 0; }
 
-    /* RESULT */
-    .vsc-calc-page .result-headline { font-size: 10.5px; margin-bottom: 6px; }
-    .vsc-calc-page .result-number { font-size: clamp(42px, 14vw, 60px); gap: 8px; }
-    .vsc-calc-page .result-number span.unit { font-size: 15px; }
+.vscc .calc-note {
+  font-size: 12px; color: var(--muted-2); line-height: 1.65; margin-top: auto;
+  padding: 12px 14px; background: var(--green-t);
+  border-radius: 10px; border: 1px solid rgba(14,107,62,.2);
+}
 
-    /* CARD MOCK */
-    .vsc-calc-page .card-mock { margin: 16px 0; padding: 12px 14px; border-radius: 10px; min-height: 70px; }
-    .vsc-calc-page .card-mock .banner { font-size: 8px; padding: 2px 28px; right: -26px; }
+/* ---- REQUIREMENT CHART ---- */
+.vscc .chart-outer {
+  border-radius: 20px; overflow: hidden;
+  border: 1.5px solid var(--line);
+  box-shadow: 0 12px 40px -12px rgba(10,74,44,.1);
+}
 
-    /* CHIP METER */
-    .vsc-calc-page .chip-meter { gap: 5px; margin-bottom: 16px; }
-    .vsc-calc-page .chip-icon { width: 20px; height: 13px; }
+.vscc .chart-header {
+  background: linear-gradient(135deg, var(--green-d) 0%, var(--green) 100%);
+  padding: 18px 20px;
+  display: grid;
+  grid-template-columns: 1fr 1.6fr 1fr 1fr;
+  gap: 10px;
+}
+.vscc .chart-header .ch {
+  color: rgba(255,255,255,.85); font-size: 11px; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase;
+}
 
-    /* BREAKDOWN */
-    .vsc-calc-page .breakdown {
-      padding: 14px; font-size: 13px; line-height: 1.8; margin-bottom: 14px;
-    }
-    .vsc-calc-page .breakdown .row { gap: 8px; flex-wrap: wrap; }
-    .vsc-calc-page .note {
-      font-size: 12px; line-height: 1.6;
-      text-align: justify; text-justify: inter-word; hyphens: auto;
-    }
+.vscc .chart-body { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.vscc .chart-table {
+  width: 100%; min-width: 480px;
+  border-collapse: collapse;
+}
+.vscc .chart-table thead tr {
+  background: linear-gradient(135deg, var(--green-d), var(--green));
+}
+.vscc .chart-table thead th {
+  padding: 16px 20px; color: rgba(255,255,255,.9);
+  font-size: 11.5px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .08em; text-align: left;
+  white-space: nowrap;
+}
+.vscc .chart-table thead th:nth-child(3),
+.vscc .chart-table thead th:nth-child(4) { text-align: center; }
 
-    /* CHART CARDS (mobile list, table hidden) */
-    .vsc-calc-page .chart-cards { gap: 10px; }
-    .vsc-calc-page .chart-card {
-      border-radius: 14px; padding: 14px 16px;
-      display: flex; flex-direction: row; justify-content: space-between; align-items: center;
-    }
-    .vsc-calc-page .chart-card .left b { font-size: 14px; margin-bottom: 2px; }
-    .vsc-calc-page .chart-card .left span { font-size: 12px; }
-    .vsc-calc-page .chart-card .right .n { font-size: 14px; }
-    .vsc-calc-page .chart-card .right .n2 { font-size: 11.5px; }
+.vscc .chart-table tbody tr {
+  border-bottom: 1px solid var(--line-s);
+  transition: background .12s;
+}
+.vscc .chart-table tbody tr:last-child { border-bottom: none; }
+.vscc .chart-table tbody tr:nth-child(even) { background: var(--panel-2); }
+.vscc .chart-table tbody tr:hover { background: var(--bg-warm); }
+.vscc .chart-table tbody tr:hover { background: #f5f0e4; }
 
-    /* RULE BOX */
-    .vsc-calc-page .rule-box {
-      border-radius: 12px; padding: 14px 16px; gap: 10px; margin-top: 16px;
-      font-size: 13px; line-height: 1.65;
-    }
+.vscc .chart-table td {
+  padding: 14px 20px; color: var(--muted); font-size: 14px;
+  white-space: nowrap; vertical-align: middle;
+}
+.vscc .chart-table td:first-child {
+  font-weight: 800; color: var(--ink);
+  font-family: 'IBM Plex Mono', monospace;
+}
+.vscc .chart-table td.single { text-align: center; }
+.vscc .chart-table td.three  { text-align: center; }
 
-    /* TABS */
-    .vsc-calc-page .tabs { gap: 8px; margin-bottom: 18px; }
-    .vsc-calc-page .tab-btn { font-size: 12.5px; padding: 10px 14px; min-height: 42px; }
+.vscc .pill-orange {
+  display: inline-block;
+  background: var(--orange-t); border: 1.5px solid rgba(240,99,27,.35);
+  color: var(--orange); font-weight: 800; font-size: 13px;
+  padding: 4px 14px; border-radius: 999px;
+  font-family: 'IBM Plex Mono', monospace;
+}
+.vscc .pill-green {
+  display: inline-block;
+  background: var(--green-t); border: 1.5px solid rgba(14,107,62,.35);
+  color: var(--green-d); font-weight: 800; font-size: 13px;
+  padding: 4px 14px; border-radius: 999px;
+  font-family: 'IBM Plex Mono', monospace;
+}
+.vscc .kw-badge {
+  display: inline-flex; align-items: center; gap: 5px;
+}
+.vscc .kw-badge .kw-icon {
+  font-size: 13px;
+}
 
-    /* EXAMPLE CARDS */
-    .vsc-calc-page .example-card { padding: 18px 16px; border-radius: 14px; }
-    .vsc-calc-page .example-card h4 { font-size: 15.5px; }
-    .vsc-calc-page .example-card .sub { font-size: 11px; margin-bottom: 14px; }
-    .vsc-calc-page .example-stats { gap: 8px; margin-bottom: 12px; }
-    .vsc-calc-page .stat-box { padding: 10px 12px; border-radius: 9px; }
-    .vsc-calc-page .stat-box .k { font-size: 10px; }
-    .vsc-calc-page .stat-box .v { font-size: 14px; }
-    .vsc-calc-page .example-result { padding: 11px 14px; border-radius: 9px; }
-    .vsc-calc-page .example-result .lbl { font-size: 11.5px; }
-    .vsc-calc-page .example-result .num { font-size: 17px; }
-    .vsc-calc-page .example-why {
-      font-size: 12.5px; margin-top: 10px; line-height: 1.6;
-      text-align: justify; text-justify: inter-word; hyphens: auto;
-    }
+/* scroll hint on mobile */
+.vscc .scroll-hint {
+  display: none;
+  font-size: 12px; color: var(--muted-2);
+  text-align: center; padding: 8px;
+  background: var(--panel-2);
+  border-top: 1px solid var(--line-s);
+}
+@media(max-width:600px){ .vscc .scroll-hint { display: block; } }
 
-    /* BADGES */
-    .vsc-calc-page .badges { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-    .vsc-calc-page .badge { padding: 18px 12px; border-radius: 12px; }
-    .vsc-calc-page .badge .big { font-size: 18px; }
-    .vsc-calc-page .badge .lbl { font-size: 11px; }
+/* rule box */
+.vscc .rule-box {
+  display: flex; gap: 14px; align-items: flex-start;
+  background: var(--green-t); border: 1.5px solid var(--green);
+  border-radius: 14px; padding: 18px 20px; margin-top: 20px;
+  font-size: 13.5px; color: var(--green-d); line-height: 1.65;
+}
+.vscc .rule-icon {
+  width: 38px; height: 38px; border-radius: 50%; flex-shrink: 0;
+  background: linear-gradient(135deg, var(--green-d), var(--green));
+  color: #fff; display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  box-shadow: 0 4px 12px rgba(14,107,62,.25);
+}
+.vscc .rule-box b { color: var(--orange); }
 
-    /* CTA BAND */
-    .vsc-calc-page .cta-band { border-radius: 16px; padding: 28px 20px; }
-    .vsc-calc-page .cta-band h3 { font-size: clamp(18px, 5.5vw, 24px); margin-bottom: 10px; }
-    .vsc-calc-page .cta-band p {
-      font-size: 13.5px; margin-bottom: 20px;
-      text-align: justify; text-justify: inter-word; hyphens: auto;
-    }
-    .vsc-calc-page .cta-band .btn-primary { width: 100%; }
+/* ---- EXAMPLES ---- */
+.vscc .tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+.vscc .tab-btn {
+  padding: 11px 18px; border-radius: 999px;
+  border: 1.5px solid var(--line);
+  background: #fff; color: var(--muted);
+  font-weight: 700; font-size: 13px; min-height: 44px;
+  transition: all .15s;
+}
+.vscc .tab-btn:hover { border-color: var(--green-d); color: var(--green-d); }
+.vscc .tab-btn.active {
+  background: linear-gradient(135deg, var(--green-d), var(--green));
+  border-color: var(--green); color: #fff;
+  box-shadow: 0 6px 18px rgba(14,107,62,.25);
+}
+.vscc .eg-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+@media(min-width:680px){ .vscc .eg-grid { grid-template-columns: 1fr 1fr; gap: 20px; } }
+.vscc .eg-panel { display: none; }
+.vscc .eg-panel.active { display: grid; }
+.vscc .eg-card {
+  background: var(--panel); border: 1.5px solid var(--line);
+  border-radius: 18px; padding: 22px;
+  transition: border-color .2s, transform .2s, box-shadow .2s;
+}
+.vscc .eg-card:hover {
+  border-color: rgba(240,99,27,.4);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px -12px rgba(240,99,27,.12);
+}
+.vscc .eg-card h4 { margin: 0 0 4px; font-size: 16.5px; font-weight: 800; color: var(--ink); }
+.vscc .eg-sub {
+  color: var(--muted-2); font-size: 11.5px; margin-bottom: 16px;
+  font-family: 'IBM Plex Mono', monospace; letter-spacing: .04em;
+}
+.vscc .eg-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px; }
+.vscc .eg-stat {
+  background: var(--panel-2); border: 1px solid var(--line);
+  border-radius: 10px; padding: 12px 14px;
+}
+.vscc .eg-stat .k { color: var(--muted-2); font-size: 10px; text-transform: uppercase; letter-spacing: .06em; font-weight: 700; margin-bottom: 4px; }
+.vscc .eg-stat .v { font-family: 'IBM Plex Mono', monospace; font-weight: 700; font-size: 15.5px; color: var(--ink); }
+.vscc .eg-result {
+  display: flex; justify-content: space-between; align-items: center;
+  background: var(--orange-t); border: 1.5px solid rgba(240,99,27,.35);
+  border-radius: 11px; padding: 13px 16px;
+  margin-bottom: 12px;
+}
+.vscc .eg-result .rl { font-size: 12px; color: var(--orange); font-weight: 700; }
+.vscc .eg-result .rn { font-family: 'IBM Plex Mono', monospace; font-weight: 700; color: var(--orange); font-size: 20px; }
+.vscc .eg-why {
+  font-size: 12.5px; color: var(--muted); line-height: 1.6;
+  background: var(--panel-2); border-left: 3px solid var(--green);
+  padding: 10px 12px; border-radius: 8px;
+}
 
-    /* STICKY BAR */
-    .vsc-calc-page .sticky-result { padding: 12px 16px; padding-bottom: calc(12px + env(safe-area-inset-bottom)); }
-    .vsc-calc-page .sticky-result .txt { font-size: 11.5px; }
-    .vsc-calc-page .sticky-result .num { font-size: 18px; }
-    .vsc-calc-page .sticky-result a { font-size: 13px; padding: 10px 14px; }
-  }
+/* ---- BADGES ---- */
+.vscc .badges-row {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;
+}
+@media(min-width:600px){ .vscc .badges-row { grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--line); border: 1.5px solid var(--line); border-radius: 18px; overflow: hidden; } }
+.vscc .badge-item {
+  background: var(--panel); padding: 22px 14px; text-align: center;
+  border-radius: 14px; border: 1.5px solid var(--line);
+}
+@media(min-width:600px){ .vscc .badge-item { border-radius: 0; border: none; padding: 28px 14px; } }
+.vscc .badge-item .big { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 21px; color: var(--orange); }
+.vscc .badge-item .lbl { font-size: 11.5px; color: var(--muted); margin-top: 6px; line-height: 1.4; }
 
-  /* Extra small phones */
-  @media (max-width: 380px) {
-    .vsc-calc-page .hero h1 { font-size: 24px; }
-    .vsc-calc-page .result-number { font-size: 40px; }
-    .vsc-calc-page .toggle-btn { font-size: 12px; }
-    .vsc-calc-page .tab-btn { font-size: 12px; padding: 9px 12px; }
-    .vsc-calc-page .badges { grid-template-columns: repeat(2, 1fr); }
-  }
+/* ---- CTA ---- */
+.vscc .cta-band {
+  background: linear-gradient(135deg, var(--green-d), var(--green));
+  border-radius: 22px; color: #fff;
+  padding: 40px 28px; text-align: center;
+  position: relative; overflow: hidden;
+}
+.vscc .cta-band::before {
+  content: ''; position: absolute;
+  top: -80px; right: -80px; width: 260px; height: 260px;
+  background: radial-gradient(circle, rgba(255,255,255,.12), transparent 70%);
+  pointer-events: none;
+}
+@media(min-width:640px){ .vscc .cta-band { padding: 56px 48px; } }
+.vscc .cta-band h3 { font-size: clamp(20px, 5vw, 30px); margin: 0 0 14px; }
+.vscc .cta-band p { color: rgba(207,228,215,.9); margin: 0 0 28px; font-size: 15px; max-width: 460px; margin-left: auto; margin-right: auto; }
+.vscc .cta-band .btn-white {
+  background: #fff; color: var(--green-d); font-weight: 800;
+  padding: 15px 32px; border-radius: 12px; font-size: 15px;
+  display: inline-flex; align-items: center;
+  box-shadow: 0 8px 24px rgba(0,0,0,.15);
+  transition: transform .15s;
+}
+.vscc .cta-band .btn-white:hover { transform: translateY(-2px); }
+
+/* ---- STICKY BAR ---- */
+.vscc .sticky-bar {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
+  background: var(--green-d); color: #fff;
+  padding: 14px 20px;
+  padding-bottom: calc(14px + env(safe-area-inset-bottom));
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  box-shadow: 0 -6px 20px rgba(0,0,0,.2);
+  transform: translateY(110%);
+  transition: transform .28s cubic-bezier(.16,1,.3,1);
+}
+.vscc .sticky-bar.show { transform: translateY(0); }
+@media(min-width:860px){ .vscc .sticky-bar { display: none !important; } }
+.vscc .sticky-bar .stxt { font-size: 11.5px; color: rgba(207,228,215,.9); font-weight: 600; }
+.vscc .sticky-bar .snum { font-family: 'IBM Plex Mono', monospace; font-weight: 700; font-size: 22px; line-height: 1; }
+.vscc .sticky-bar .sadj {
+  background: var(--orange); color: #fff; font-weight: 700; font-size: 13.5px;
+  padding: 11px 20px; border-radius: 10px; flex-shrink: 0;
+  display: inline-flex; align-items: center;
+}
+
+/* ---- MOBILE OVERRIDES (max-width: 767px) ---- */
+@media(max-width:767px){
+  .vscc .hero { padding: 30px 0 26px; }
+  .vscc .hero h1 { font-size: clamp(24px, 8vw, 36px); }
+  .vscc .hero .lead { font-size: 14px; line-height: 1.65; text-align: justify; hyphens: auto; }
+  .vscc .hero-ctas { flex-direction: column; gap: 10px; }
+  .vscc .btn-primary, .vscc .btn-ghost { width: 100%; font-size: 15px; }
+
+  .vscc .sec { padding: 36px 0; }
+  .vscc .sec-head { margin-bottom: 20px; }
+  .vscc .sec h2 { font-size: clamp(20px, 6vw, 26px); }
+  .vscc .sec p.desc { font-size: 14px; text-align: justify; hyphens: auto; }
+
+  /* calc */
+  .vscc .calc-wrap { border-radius: 18px; }
+  .vscc .c-inputs { padding: 22px 18px; }
+  .vscc .c-output { padding: 22px 18px; }
+  .vscc .field { margin-bottom: 20px; }
+  .vscc .field-label { font-size: 10.5px; }
+  .vscc .num-input { font-size: 15px; padding: 12px 14px; }
+  .vscc .tog-btn { font-size: 13px; padding: 13px 8px; }
+
+  /* result */
+  .vscc .res-number { font-size: clamp(46px, 14vw, 64px); }
+  .vscc .card-mock { padding: 14px 16px; margin-bottom: 16px; }
+
+  /* breakdown */
+  .vscc .breakdown { padding: 13px; font-size: 13px; line-height: 1.8; }
+  .vscc .calc-note { font-size: 12px; text-align: justify; hyphens: auto; }
+
+  /* chart — horizontal scroll on mobile */
+  .vscc .chart-body { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .vscc .chart-table { min-width: 460px; }
+  .vscc .chart-table thead th { padding: 14px 16px; font-size: 10.5px; }
+  .vscc .chart-table td { padding: 12px 16px; font-size: 13px; }
+  .vscc .pill-orange, .vscc .pill-green { font-size: 12px; padding: 3px 11px; }
+
+  .vscc .rule-box { padding: 14px 16px; font-size: 13px; gap: 10px; text-align: justify; hyphens: auto; }
+  .vscc .rule-icon { width: 34px; height: 34px; font-size: 16px; }
+
+  /* examples */
+  .vscc .tabs { gap: 8px; margin-bottom: 18px; }
+  .vscc .tab-btn { font-size: 12.5px; padding: 10px 14px; min-height: 42px; }
+  .vscc .eg-card { padding: 18px 16px; border-radius: 14px; }
+  .vscc .eg-card h4 { font-size: 15px; }
+  .vscc .eg-sub { font-size: 11px; }
+  .vscc .eg-stat .v { font-size: 14px; }
+  .vscc .eg-result .rn { font-size: 18px; }
+  .vscc .eg-why { font-size: 12px; text-align: justify; hyphens: auto; }
+
+  /* badges */
+  .vscc .badges-row { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .vscc .badge-item { padding: 18px 12px; border-radius: 12px; }
+  .vscc .badge-item .big { font-size: 19px; }
+  .vscc .badge-item .lbl { font-size: 11px; }
+
+  /* cta */
+  .vscc .cta-band { border-radius: 16px; padding: 28px 18px; }
+  .vscc .cta-band h3 { font-size: clamp(18px, 6vw, 24px); }
+  .vscc .cta-band p { font-size: 13.5px; text-align: justify; hyphens: auto; }
+  .vscc .cta-band .btn-white { width: 100%; justify-content: center; padding: 15px; }
+}
+
+/* extra small */
+@media(max-width:380px){
+  .vscc .hero h1 { font-size: 23px; }
+  .vscc .res-number { font-size: 42px; }
+  .vscc .chart-table { min-width: 400px; }
+  .vscc .tab-btn { font-size: 12px; padding: 9px 12px; }
+}
+
+:focus-visible { outline: 2px solid #f0631b; outline-offset: 2px; }
 </style>
 
-<div class="vsc-calc-page">
+<div class="vscc">
 
+  <!-- HERO -->
   <section class="hero">
     <div class="texture-bg"></div>
-    <div class="wrap" style="position:relative; z-index:1;">
+    <div class="wrap" style="position:relative;z-index:1;">
       <div class="eyebrow"><span class="dot"></span> India's No. 1 Electric Saver Card Company</div>
       <h1>How many <em>Vidhyut Saathi</em> cards does your connection need?</h1>
-      <p class="lead">Enter your connected load and your monthly bill — the calculator checks both and always recommends the higher requirement, exactly the way our installation team does it on site.</p>
+      <p class="lead">Enter your connected load and monthly bill — we check both and always recommend the higher requirement, exactly the way our installation team does it on site.</p>
       <div class="hero-ctas">
-        <a href="#vsc-calculator-section" class="btn-primary">Calculate Now ↓</a>
-        <a href="#vsc-chart-section" class="btn-ghost">View Full Chart</a>
+        <a href="#vscc-calc" class="btn-primary">Calculate Now ↓</a>
+        <a href="#vscc-chart" class="btn-ghost">View Full Chart</a>
       </div>
     </div>
   </section>
 
-  <section class="section" id="vsc-calculator-section">
+  <!-- CALCULATOR -->
+  <section class="sec" id="vscc-calc">
     <div class="wrap">
-      <div class="section-head">
-        <div class="section-eyebrow">Card Calculator</div>
+      <div class="sec-head">
+        <div class="sec-eyebrow">Card Calculator</div>
         <h2>Get your exact card count</h2>
-        <p class="desc">One card saves 20–30% on a small load — bigger connections and heavier bills both call for more coverage. We calculate it both ways and take whichever number is higher.</p>
+        <p class="desc">One card saves 20–30% on a small load — bigger connections and heavier bills call for more coverage. We calculate both ways and always take the higher number.</p>
       </div>
 
-      <div class="calc">
-        <div class="calc-inputs">
+      <div class="calc-wrap">
+
+        <!-- LEFT: INPUTS -->
+        <div class="c-inputs">
+          <div class="c-inputs-title">
+            Step 1: Enter Your Details
+            <span>↓</span>
+          </div>
+
+          <!-- KW Slider -->
           <div class="field">
-            <label>Connected Load <span class="val" id="vsc2-kwVal">10 KW</span></label>
-            <input type="range" id="vsc2-kwSlider" min="1" max="200" value="10" step="1">
+            <div class="field-label">
+              Connected Load (KW)
+              <span class="field-val" id="vscc-kwVal">10 KW</span>
+            </div>
+            <input type="range" id="vscc-kwSlider" min="1" max="200" value="10" step="1">
             <div style="margin-top:12px;">
-              <input type="number" inputmode="numeric" pattern="[0-9]*" class="num-input" id="vsc2-kwNumber" value="10" min="1" max="2000">
+              <input type="number" inputmode="numeric" class="num-input" id="vscc-kwNumber" value="10" min="1" max="2000" placeholder="Enter KW load">
             </div>
           </div>
 
+          <!-- Bill Input -->
           <div class="field">
-            <label>Monthly Electricity Bill <span class="val" id="vsc2-billVal">₹6,000</span></label>
+            <div class="field-label">
+              Monthly Electricity Bill
+              <span class="field-val" id="vscc-billVal">₹6,000</span>
+            </div>
             <div class="prefix-wrap">
-              <span class="prefix">₹</span>
-              <input type="number" inputmode="numeric" pattern="[0-9]*" class="num-input" id="vsc2-billNumber" value="6000" min="0" step="500">
+              <span class="pfx">₹</span>
+              <input type="number" inputmode="numeric" class="num-input" id="vscc-billNumber" value="6000" min="0" step="500" placeholder="Enter monthly bill">
             </div>
           </div>
 
-          <div class="field" style="margin-bottom:4px;">
-            <label>Connection Type</label>
-            <div class="toggle-group">
-              <div class="toggle-btn active" id="vsc2-btnSingle">Single Phase</div>
-              <div class="toggle-btn" id="vsc2-btnThree">Three Phase</div>
+          <!-- Phase Toggle -->
+          <div class="field">
+            <div class="field-label">Connection Type</div>
+            <div class="toggle-grp">
+              <button class="tog-btn active" id="vscc-btnSingle">⚡ Single Phase</button>
+              <button class="tog-btn" id="vscc-btnThree">⚡⚡ Three Phase</button>
             </div>
           </div>
         </div>
 
-        <div class="calc-output">
-          <div class="result-headline">Cards required</div>
-          <div class="result-number"><span id="vsc2-resultNum">1</span><span class="unit" id="vsc2-resultUnit">Card</span></div>
+        <!-- RIGHT: OUTPUT -->
+        <div class="c-output">
+          <div class="res-label">Cards Required</div>
+          <div class="res-number">
+            <span id="vscc-resultNum">1</span>
+            <span class="unit" id="vscc-resultUnit">Card</span>
+          </div>
 
+          <!-- Product Card Mock -->
           <div class="card-mock">
-            <div class="banner">SAVE 20–30%</div>
-            <div class="chip-real"></div>
-            <div class="label">VIDHYUT SAATHI · TERAHERTZ CHIP</div>
+            <div class="mock-ribbon">SAVE 20–30%</div>
+            <div class="mock-chip"></div>
+            <div class="mock-label">VIDHYUT SAATHI · TERAHERTZ CHIP</div>
           </div>
 
-          <div class="chip-meter" id="vsc2-chipMeter"></div>
+          <!-- Chip Meter -->
+          <div class="chip-meter" id="vscc-chipMeter"></div>
 
+          <!-- Breakdown -->
           <div class="breakdown">
-            <div class="row"><span>Based on KW load (⌈KW ÷ 6⌉)</span><b id="vsc2-kwCards">1</b></div>
-            <div class="row"><span>Based on bill amount (⌈Bill ÷ ₹6,000⌉)</span><b id="vsc2-billCards">1</b></div>
-            <hr>
-            <div class="row win"><span>Higher requirement considered</span><b id="vsc2-baseWin">1</b></div>
-            <div class="row" id="vsc2-phaseRow" style="display:none;"><span>+ 1 extra for 3-phase connection</span><b>+1</b></div>
+            <div class="brow"><span>Based on KW load (⌈KW ÷ 6⌉)</span><b id="vscc-kwCards">1</b></div>
+            <div class="brow"><span>Based on bill amount (⌈Bill ÷ ₹6,000⌉)</span><b id="vscc-billCards">1</b></div>
+            <hr class="bdivider">
+            <div class="brow win"><span>Higher requirement considered</span><b id="vscc-baseWin">1</b></div>
+            <div class="brow" id="vscc-phaseRow" style="display:none;"><span>+ 1 extra for 3-phase connection</span><b style="color:var(--orange)">+1</b></div>
           </div>
 
-          <p class="note">Rule of thumb: 1 card per 6 KW of load, or 1 card per ₹6,000 of monthly bill — whichever gives the bigger number. Three-phase connections always get one additional card.</p>
+          <p class="calc-note">
+            📌 <strong>Rule:</strong> 1 card per 6 KW of load <em>or</em> 1 card per ₹6,000 bill — whichever is higher. Three-phase connections always get +1 card.
+          </p>
         </div>
+
       </div>
     </div>
   </section>
 
-  <section class="section" id="vsc-chart-section">
+  <!-- FULL REQUIREMENT CHART -->
+  <section class="sec" id="vscc-chart" style="padding-top:0;">
     <div class="wrap">
-      <div class="section-head">
-        <div class="section-eyebrow">Reference</div>
-        <h2>Full requirement chart</h2>
-        <p class="desc">The same logic as the calculator above, laid out by connection size — from a single home to a full industrial load.</p>
+      <div class="sec-head">
+        <div class="sec-eyebrow">Reference Chart</div>
+        <h2>Full Requirement Chart</h2>
+        <p class="desc">The same logic as the calculator, laid out by connection size — from a single home to a full industrial load.</p>
       </div>
 
-      <div class="table-scroll">
-        <table>
-          <thead>
-            <tr><th>KW Connection</th><th>Bill Amount</th><th>Card Quantity</th><th>Three Phase</th></tr>
-          </thead>
-          <tbody id="vsc2-chartBody"></tbody>
-        </table>
+      <div class="chart-outer">
+        <div class="chart-body">
+          <table class="chart-table">
+            <thead>
+              <tr>
+                <th>KW Connection</th>
+                <th>Monthly Bill Range</th>
+                <th style="text-align:center;">Single Phase</th>
+                <th style="text-align:center;">Three Phase</th>
+              </tr>
+            </thead>
+            <tbody id="vscc-chartBody"></tbody>
+          </table>
+        </div>
+        <div class="scroll-hint">← Swipe to scroll →</div>
       </div>
-      <div class="chart-cards" id="vsc2-chartCards"></div>
 
       <div class="rule-box">
-        ⚡ <span><b>Always calculate by both</b> KW load and bill amount, and consider the higher of the two. Add <b>1 extra card</b> automatically for any three-phase connection.</span>
+        <div class="rule-icon">⚡</div>
+        <span><b>Always calculate by both</b> KW load and bill amount, and take the higher of the two. Add <b>1 extra card</b> automatically for any three-phase connection.</span>
       </div>
     </div>
   </section>
 
-  <section class="section" id="vsc-examples-section">
+  <!-- WORKED EXAMPLES -->
+  <section class="sec" id="vscc-examples">
     <div class="wrap">
-      <div class="section-head">
-        <div class="section-eyebrow">Worked Examples</div>
+      <div class="sec-head">
+        <div class="sec-eyebrow">Worked Examples</div>
         <h2>See the logic in action</h2>
-        <p class="desc">Real scenarios where the KW-based count and the bill-based count disagree — and why we always go with the larger one.</p>
+        <p class="desc">Real scenarios where KW-based and bill-based counts disagree — and why we always go with the larger one.</p>
       </div>
 
       <div class="tabs">
-        <button class="tab-btn active" data-vsc2tab="res">Residential</button>
-        <button class="tab-btn" data-vsc2tab="com">Commercial</button>
-        <button class="tab-btn" data-vsc2tab="ind">Industrial</button>
+        <button class="tab-btn active" data-vscc-tab="res">🏠 Residential</button>
+        <button class="tab-btn" data-vscc-tab="com">🏢 Commercial</button>
+        <button class="tab-btn" data-vscc-tab="ind">🏭 Industrial</button>
       </div>
 
-      <div class="example-grid example-panel active" data-vsc2panel="res">
-        <div class="example-card">
+      <div class="eg-grid eg-panel active" data-vscc-panel="res">
+        <div class="eg-card">
           <h4>Mr. Rohan — Mumbai</h4>
-          <div class="sub">Low load, high bill</div>
-          <div class="example-stats">
-            <div class="stat-box"><div class="k">Load</div><div class="v">5 KW</div></div>
-            <div class="stat-box"><div class="k">Bill</div><div class="v">₹18,000</div></div>
+          <div class="eg-sub">Low load, high bill</div>
+          <div class="eg-stats">
+            <div class="eg-stat"><div class="k">Load</div><div class="v">5 KW</div></div>
+            <div class="eg-stat"><div class="k">Bill</div><div class="v">₹18,000</div></div>
           </div>
-          <div class="example-result"><span class="lbl">Cards required</span><span class="num">3 Cards</span></div>
-          <p class="example-why">5 KW only needs 1 card, but ₹18,000 needs 3 — the bill-based count wins.</p>
+          <div class="eg-result"><span class="rl">Cards Required</span><span class="rn">3 Cards</span></div>
+          <p class="eg-why">5 KW only needs 1 card, but ₹18,000 needs 3 — the bill-based count wins.</p>
         </div>
-        <div class="example-card">
+        <div class="eg-card">
           <h4>Mr. Rahul Mohan</h4>
-          <div class="sub">Higher load, lower bill</div>
-          <div class="example-stats">
-            <div class="stat-box"><div class="k">Load</div><div class="v">15 KW</div></div>
-            <div class="stat-box"><div class="k">Bill</div><div class="v">₹10,000</div></div>
+          <div class="eg-sub">Higher load, lower bill</div>
+          <div class="eg-stats">
+            <div class="eg-stat"><div class="k">Load</div><div class="v">15 KW</div></div>
+            <div class="eg-stat"><div class="k">Bill</div><div class="v">₹10,000</div></div>
           </div>
-          <div class="example-result"><span class="lbl">Cards required</span><span class="num">3 Cards</span></div>
-          <p class="example-why">15 KW needs 3 cards, while ₹10,000 only needs 2 — the KW-based count wins.</p>
+          <div class="eg-result"><span class="rl">Cards Required</span><span class="rn">3 Cards</span></div>
+          <p class="eg-why">15 KW needs 3 cards, while ₹10,000 only needs 2 — the KW-based count wins.</p>
         </div>
       </div>
 
-      <div class="example-grid example-panel" data-vsc2panel="com">
-        <div class="example-card">
+      <div class="eg-grid eg-panel" data-vscc-panel="com">
+        <div class="eg-card">
           <h4>Mr. Deepak Sawlani</h4>
-          <div class="sub">Low load, high bill</div>
-          <div class="example-stats">
-            <div class="stat-box"><div class="k">Load</div><div class="v">10 KW</div></div>
-            <div class="stat-box"><div class="k">Bill</div><div class="v">₹24,000</div></div>
+          <div class="eg-sub">Low load, high bill</div>
+          <div class="eg-stats">
+            <div class="eg-stat"><div class="k">Load</div><div class="v">10 KW</div></div>
+            <div class="eg-stat"><div class="k">Bill</div><div class="v">₹24,000</div></div>
           </div>
-          <div class="example-result"><span class="lbl">Cards required</span><span class="num">4 Cards</span></div>
-          <p class="example-why">10 KW needs 2 cards, but ₹24,000 needs 4 — the bill-based count wins.</p>
+          <div class="eg-result"><span class="rl">Cards Required</span><span class="rn">4 Cards</span></div>
+          <p class="eg-why">10 KW needs 2 cards, but ₹24,000 needs 4 — the bill-based count wins.</p>
         </div>
-        <div class="example-card">
+        <div class="eg-card">
           <h4>Mr. Satyajeet</h4>
-          <div class="sub">High load, lower bill</div>
-          <div class="example-stats">
-            <div class="stat-box"><div class="k">Load</div><div class="v">35 KW</div></div>
-            <div class="stat-box"><div class="k">Bill</div><div class="v">₹29,000</div></div>
+          <div class="eg-sub">High load, lower bill</div>
+          <div class="eg-stats">
+            <div class="eg-stat"><div class="k">Load</div><div class="v">35 KW</div></div>
+            <div class="eg-stat"><div class="k">Bill</div><div class="v">₹29,000</div></div>
           </div>
-          <div class="example-result"><span class="lbl">Cards required</span><span class="num">6 Cards</span></div>
-          <p class="example-why">35 KW needs 6 cards, while ₹29,000 only needs 5 — the KW-based count wins.</p>
+          <div class="eg-result"><span class="rl">Cards Required</span><span class="rn">6 Cards</span></div>
+          <p class="eg-why">35 KW needs 6 cards, while ₹29,000 only needs 5 — KW-based count wins.</p>
         </div>
       </div>
 
-      <div class="example-grid example-panel" data-vsc2panel="ind">
-        <div class="example-card">
+      <div class="eg-grid eg-panel" data-vscc-panel="ind">
+        <div class="eg-card">
           <h4>Mr. Rajeev Sharma</h4>
-          <div class="sub">Low load, high bill</div>
-          <div class="example-stats">
-            <div class="stat-box"><div class="k">Load</div><div class="v">90 KW</div></div>
-            <div class="stat-box"><div class="k">Bill</div><div class="v">₹2,40,000</div></div>
+          <div class="eg-sub">Low load, high bill</div>
+          <div class="eg-stats">
+            <div class="eg-stat"><div class="k">Load</div><div class="v">90 KW</div></div>
+            <div class="eg-stat"><div class="k">Bill</div><div class="v">₹2,40,000</div></div>
           </div>
-          <div class="example-result"><span class="lbl">Cards required</span><span class="num">40 Cards</span></div>
-          <p class="example-why">90 KW needs 15 cards, but ₹2,40,000 needs 40 — the bill-based count wins.</p>
+          <div class="eg-result"><span class="rl">Cards Required</span><span class="rn">40 Cards</span></div>
+          <p class="eg-why">90 KW needs 15 cards, but ₹2,40,000 needs 40 — bill-based count wins.</p>
         </div>
-        <div class="example-card">
+        <div class="eg-card">
           <h4>Mr. Ashish Patel</h4>
-          <div class="sub">High load, lower bill</div>
-          <div class="example-stats">
-            <div class="stat-box"><div class="k">Load</div><div class="v">180 KW</div></div>
-            <div class="stat-box"><div class="k">Bill</div><div class="v">₹1,20,000</div></div>
+          <div class="eg-sub">High load, lower bill</div>
+          <div class="eg-stats">
+            <div class="eg-stat"><div class="k">Load</div><div class="v">180 KW</div></div>
+            <div class="eg-stat"><div class="k">Bill</div><div class="v">₹1,20,000</div></div>
           </div>
-          <div class="example-result"><span class="lbl">Cards required</span><span class="num">30 Cards</span></div>
-          <p class="example-why">180 KW needs 30 cards, while ₹1,20,000 only needs 20 — the KW-based count wins.</p>
+          <div class="eg-result"><span class="rl">Cards Required</span><span class="rn">30 Cards</span></div>
+          <p class="eg-why">180 KW needs 30 cards, while ₹1,20,000 only needs 20 — KW-based count wins.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section">
+  <!-- BADGES -->
+  <section class="sec" style="padding-top:0;">
     <div class="wrap">
-      <div class="badges">
-        <div class="badge"><div class="big">20–30%</div><div class="lbl">Saved on electricity bill</div></div>
-        <div class="badge"><div class="big">10 Yrs</div><div class="lbl">Long life</div></div>
-        <div class="badge"><div class="big">3 Yrs</div><div class="lbl">Warranty</div></div>
-        <div class="badge"><div class="big">100%</div><div class="lbl">Eco-friendly</div></div>
-        <div class="badge"><div class="big">100%</div><div class="lbl">Legal to use</div></div>
+      <div class="badges-row">
+        <div class="badge-item"><div class="big">20–30%</div><div class="lbl">Saved on electricity bill</div></div>
+        <div class="badge-item"><div class="big">10 Yrs</div><div class="lbl">Long product life</div></div>
+        <div class="badge-item"><div class="big">3 Yrs</div><div class="lbl">Replacement warranty</div></div>
+        <div class="badge-item"><div class="big">100%</div><div class="lbl">Eco-friendly</div></div>
+        <div class="badge-item"><div class="big">100%</div><div class="lbl">Legal to use</div></div>
       </div>
     </div>
   </section>
 
-  <section class="section" style="padding-bottom:88px;">
+  <!-- CTA -->
+  <section class="sec" style="padding-bottom:80px;">
     <div class="wrap">
       <div class="cta-band">
         <h3>Know your number. Order the right count the first time.</h3>
         <p>Built on US–German nanotechnology with a Terahertz chip — ISO-certified and ready for home, commercial, or industrial connections.</p>
-        <a href="#vsc-calculator-section" class="btn-primary">Calculate My Cards</a>
+        <a href="#vscc-calc" class="btn-white">Calculate My Cards ↑</a>
       </div>
     </div>
   </section>
 
-  <div class="sticky-result" id="vsc2-stickyResult">
+  <!-- STICKY MOBILE BAR -->
+  <div class="sticky-bar" id="vscc-stickyBar">
     <div>
-      <div class="txt">Cards required</div>
-      <div class="num"><span id="vsc2-stickyNum">1</span> <span id="vsc2-stickyUnit">Card</span></div>
+      <div class="stxt">Cards Required</div>
+      <div class="snum"><span id="vscc-stickyNum">1</span> <span id="vscc-stickyUnit">Card</span></div>
     </div>
-    <a href="#vsc-calculator-section" id="vsc2-stickyLink">Adjust</a>
+    <a href="#vscc-calc" class="sadj">Adjust ↑</a>
   </div>
 
 </div>
 
 <script>
 (function(){
+  'use strict';
+
+  /* ---- CHART DATA ---- */
   const CHART = [
-    ["1-6 KW","upto ₹6,000",1,2],
-    ["7-12 KW","₹6,001 – ₹12,000",2,3],
-    ["13-18 KW","₹12,001 – ₹18,000",3,4],
-    ["19-24 KW","₹18,001 – ₹24,000",4,5],
-    ["25-30 KW","₹24,001 – ₹30,000",5,6],
-    ["31-36 KW","₹30,001 – ₹36,000",6,7],
-    ["37-42 KW","₹36,001 – ₹42,000",7,8],
-    ["43-48 KW","₹42,001 – ₹48,000",8,9],
-    ["49-54 KW","₹48,001 – ₹54,000",9,10],
-    ["55-60 KW","₹54,001 – ₹60,000",10,11],
+    ['1–6 KW',   'Upto ₹6,000',         1, 2],
+    ['7–12 KW',  '₹6,001 – ₹12,000',    2, 3],
+    ['13–18 KW', '₹12,001 – ₹18,000',   3, 4],
+    ['19–24 KW', '₹18,001 – ₹24,000',   4, 5],
+    ['25–30 KW', '₹24,001 – ₹30,000',   5, 6],
+    ['31–36 KW', '₹30,001 – ₹36,000',   6, 7],
+    ['37–42 KW', '₹36,001 – ₹42,000',   7, 8],
+    ['43–48 KW', '₹42,001 – ₹48,000',   8, 9],
+    ['49–54 KW', '₹48,001 – ₹54,000',   9, 10],
+    ['55–60 KW', '₹54,001 – ₹60,000',  10, 11],
   ];
 
-  const chartBody  = document.getElementById('vsc2-chartBody');
-  const chartCards = document.getElementById('vsc2-chartCards');
-  CHART.forEach(function(row){
-    const tr = document.createElement('tr');
-    tr.innerHTML = '<td class="strong">' + row[0] + '</td><td>' + row[1] + '</td><td class="amber">' + row[2] + ' Card' + (row[2]>1?'s':'') + '</td><td class="amber">' + row[3] + ' Cards</td>';
-    chartBody.appendChild(tr);
+  /* build table */
+  var tbody = document.getElementById('vscc-chartBody');
+  if(tbody){
+    CHART.forEach(function(row){
+      var tr = document.createElement('tr');
+      tr.innerHTML =
+        '<td>⚡ ' + row[0] + '</td>' +
+        '<td>' + row[1] + '</td>' +
+        '<td class="single"><span class="pill-orange">' + row[2] + ' Card' + (row[2]>1?'s':'') + '</span></td>' +
+        '<td class="three"><span class="pill-green">' + row[3] + ' Cards</span></td>';
+      tbody.appendChild(tr);
+    });
+  }
 
-    const card = document.createElement('div');
-    card.className = 'chart-card';
-    card.innerHTML = '<div class="left"><b>' + row[0] + '</b><span>' + row[1] + '</span></div><div class="right"><div class="n">' + row[2] + ' Card' + (row[2]>1?'s':'') + '</div><div class="n2">3-Phase: ' + row[3] + '</div></div>';
-    chartCards.appendChild(card);
-  });
+  /* ---- CALCULATOR ---- */
+  var kwSlider    = document.getElementById('vscc-kwSlider');
+  var kwNumber    = document.getElementById('vscc-kwNumber');
+  var kwVal       = document.getElementById('vscc-kwVal');
+  var billNumber  = document.getElementById('vscc-billNumber');
+  var billVal     = document.getElementById('vscc-billVal');
+  var btnSingle   = document.getElementById('vscc-btnSingle');
+  var btnThree    = document.getElementById('vscc-btnThree');
+  var resultNum   = document.getElementById('vscc-resultNum');
+  var resultUnit  = document.getElementById('vscc-resultUnit');
+  var kwCardsEl   = document.getElementById('vscc-kwCards');
+  var billCardsEl = document.getElementById('vscc-billCards');
+  var baseWinEl   = document.getElementById('vscc-baseWin');
+  var phaseRow    = document.getElementById('vscc-phaseRow');
+  var chipMeter   = document.getElementById('vscc-chipMeter');
+  var stickyBar   = document.getElementById('vscc-stickyBar');
+  var stickyNum   = document.getElementById('vscc-stickyNum');
+  var stickyUnit  = document.getElementById('vscc-stickyUnit');
 
-  const kwSlider   = document.getElementById('vsc2-kwSlider');
-  const kwNumber   = document.getElementById('vsc2-kwNumber');
-  const kwVal      = document.getElementById('vsc2-kwVal');
-  const billNumber = document.getElementById('vsc2-billNumber');
-  const billVal    = document.getElementById('vsc2-billVal');
-  const btnSingle  = document.getElementById('vsc2-btnSingle');
-  const btnThree   = document.getElementById('vsc2-btnThree');
-  const resultNum  = document.getElementById('vsc2-resultNum');
-  const resultUnit = document.getElementById('vsc2-resultUnit');
-  const kwCardsEl  = document.getElementById('vsc2-kwCards');
-  const billCardsEl= document.getElementById('vsc2-billCards');
-  const baseWinEl  = document.getElementById('vsc2-baseWin');
-  const phaseRow   = document.getElementById('vsc2-phaseRow');
-  const chipMeter  = document.getElementById('vsc2-chipMeter');
-  const stickyResult = document.getElementById('vsc2-stickyResult');
-  const stickyNum  = document.getElementById('vsc2-stickyNum');
-  const stickyUnit = document.getElementById('vsc2-stickyUnit');
-
-  let threePhase = false;
+  var threePhase = false;
 
   function inr(n){ return '₹' + Number(n).toLocaleString('en-IN'); }
 
   function sync(){
-    const kw   = Math.max(1, Number(kwNumber.value) || 1);
-    const bill = Math.max(0, Number(billNumber.value) || 0);
+    var kw   = Math.max(1, Number(kwNumber.value) || 1);
+    var bill = Math.max(0, Number(billNumber.value) || 0);
 
-    kwVal.textContent  = kw + ' KW';
+    kwVal.textContent   = kw + ' KW';
     billVal.textContent = inr(bill);
-    kwSlider.value = Math.min(kw, 200);
+    kwSlider.value      = Math.min(kw, 200);
     kwSlider.style.setProperty('--fill', (Math.min(kw,200)/200*100) + '%');
 
-    const kwCards   = Math.max(1, Math.ceil(kw / 6));
-    const billCards = bill > 0 ? Math.max(1, Math.ceil(bill / 6000)) : 1;
-    const base      = Math.max(kwCards, billCards);
-    const total     = threePhase ? base + 1 : base;
+    var kwCards   = Math.max(1, Math.ceil(kw / 6));
+    var billCards = bill > 0 ? Math.max(1, Math.ceil(bill / 6000)) : 1;
+    var base      = Math.max(kwCards, billCards);
+    var total     = threePhase ? base + 1 : base;
 
-    kwCardsEl.textContent  = kwCards;
+    kwCardsEl.textContent   = kwCards;
     billCardsEl.textContent = billCards;
-    baseWinEl.textContent  = base;
-    phaseRow.style.display = threePhase ? 'flex' : 'none';
+    baseWinEl.textContent   = base;
+    phaseRow.style.display  = threePhase ? 'flex' : 'none';
+    resultNum.textContent   = total;
+    resultUnit.textContent  = total > 1 ? 'Cards' : 'Card';
+    stickyNum.textContent   = total;
+    stickyUnit.textContent  = total > 1 ? 'Cards' : 'Card';
 
-    resultNum.textContent  = total;
-    resultUnit.textContent = total > 1 ? 'Cards' : 'Card';
-    stickyNum.textContent  = total;
-    stickyUnit.textContent = total > 1 ? 'Cards' : 'Card';
-
+    /* chip meter */
     chipMeter.innerHTML = '';
-    const capped = Math.min(total, 30);
-    for(let i=0;i<capped;i++){
-      const c = document.createElement('div');
-      c.className = 'chip-icon lit';
-      chipMeter.appendChild(c);
+    var capped = Math.min(total, 30);
+    for(var i=0; i<capped; i++){
+      var dot = document.createElement('div');
+      dot.className = 'chip-dot on';
+      chipMeter.appendChild(dot);
     }
     if(total > 30){
-      const more = document.createElement('div');
-      more.style.cssText = 'font-family:IBM Plex Mono,monospace;color:#f0631b;font-size:12.5px;font-weight:700;align-self:center;margin-left:4px;';
+      var more = document.createElement('div');
+      more.style.cssText = 'font-family:IBM Plex Mono,monospace;color:#f0631b;font-size:12px;font-weight:700;align-self:center;margin-left:4px;';
       more.textContent = '+' + (total - 30) + ' more';
       chipMeter.appendChild(more);
     }
@@ -754,29 +954,40 @@
   kwNumber.addEventListener('input', sync);
   billNumber.addEventListener('input', sync);
 
-  btnSingle.addEventListener('click', function(){ threePhase=false; btnSingle.classList.add('active'); btnThree.classList.remove('active'); sync(); });
-  btnThree.addEventListener('click', function(){ threePhase=true; btnThree.classList.add('active'); btnSingle.classList.remove('active'); sync(); });
+  btnSingle.addEventListener('click', function(){
+    threePhase = false;
+    btnSingle.classList.add('active'); btnThree.classList.remove('active');
+    sync();
+  });
+  btnThree.addEventListener('click', function(){
+    threePhase = true;
+    btnThree.classList.add('active'); btnSingle.classList.remove('active');
+    sync();
+  });
 
-  document.querySelectorAll('.vsc-calc-page .tab-btn').forEach(function(btn){
+  /* ---- TABS ---- */
+  document.querySelectorAll('.vscc .tab-btn').forEach(function(btn){
     btn.addEventListener('click', function(){
-      document.querySelectorAll('.vsc-calc-page .tab-btn').forEach(function(b){ b.classList.remove('active'); });
-      document.querySelectorAll('.vsc-calc-page .example-panel').forEach(function(p){ p.classList.remove('active'); });
+      document.querySelectorAll('.vscc .tab-btn').forEach(function(b){ b.classList.remove('active'); });
+      document.querySelectorAll('.vscc .eg-panel').forEach(function(p){ p.classList.remove('active'); });
       btn.classList.add('active');
-      document.querySelector('.vsc-calc-page .example-panel[data-vsc2panel="' + btn.dataset.vsc2tab + '"]').classList.add('active');
+      var panel = document.querySelector('.vscc .eg-panel[data-vscc-panel="' + btn.dataset.vsccTab + '"]');
+      if(panel) panel.classList.add('active');
     });
   });
 
-  const calcSection = document.getElementById('vsc-calculator-section');
-  if(calcSection && stickyResult){
-    const io = new IntersectionObserver(function(entries){
+  /* ---- STICKY BAR ---- */
+  var calcSection = document.getElementById('vscc-calc');
+  if(calcSection && stickyBar){
+    var io = new IntersectionObserver(function(entries){
       entries.forEach(function(e){
         if(e.boundingClientRect.top < 0 && !e.isIntersecting){
-          stickyResult.classList.add('show');
+          stickyBar.classList.add('show');
         } else if(e.isIntersecting){
-          stickyResult.classList.remove('show');
+          stickyBar.classList.remove('show');
         }
       });
-    }, {threshold:0});
+    }, {threshold: 0});
     io.observe(calcSection);
   }
 
