@@ -867,19 +867,27 @@
     color: #475569;
   }
   .req-guide-arrow {
-    width: 38px;
-    height: 38px;
+    width: 42px;
+    height: 42px;
     border-radius: 50%;
     background: #FFFFFF;
-    border: 2px solid #F17022;
+    border: 2.5px solid #F17022;
     color: #F17022;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-weight: 900;
     display: flex;
     align-items: center;
     justify-content: center;
+    align-self: center;
+    justify-self: center;
     margin: 0 auto;
-    box-shadow: 0 4px 15px rgba(241, 112, 34, 0.18);
+    box-shadow: 0 6px 20px rgba(241, 112, 34, 0.22);
+    flex-shrink: 0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .req-guide-arrow:hover {
+    transform: scale(1.12);
+    box-shadow: 0 8px 25px rgba(241, 112, 34, 0.35);
   }
 
   /* Sector Switcher Tabs Navigation (Light Theme 3D Dock) */
@@ -1706,8 +1714,16 @@
       box-shadow: 0 10px 25px rgba(241, 112, 34, 0.08) !important;
     }
     .req-guide-arrow {
-      transform: rotate(90deg);
-      margin: 4px 0;
+      width: 38px !important;
+      height: 38px !important;
+      font-size: 1.15rem !important;
+      transform: rotate(90deg) !important;
+      margin: 8px auto !important;
+      align-self: center !important;
+      justify-self: center !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
     }
     .req-sector-tabs-wrapper {
       gap: 8px !important;
