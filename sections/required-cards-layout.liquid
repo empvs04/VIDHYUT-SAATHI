@@ -519,7 +519,7 @@
   .req-card-thumb-wrapper {
     width: 100%;
     max-width: 320px;
-    height: 200px;
+    aspect-ratio: 1.58 / 1;
     border-radius: 18px;
     box-shadow: 0 15px 35px rgba(241, 112, 34, 0.18);
     border: 2.5px solid #F17022;
@@ -528,6 +528,7 @@
     transform-style: preserve-3d;
     animation: rotate360Card 7s linear infinite;
     transition: transform 0.4s ease, box-shadow 0.4s ease;
+    background: transparent;
   }
   .req-card-thumb-wrapper:hover {
     animation-play-state: paused;
@@ -546,12 +547,14 @@
     position: absolute;
     top: 0;
     left: 0;
+    background: transparent;
   }
   .req-card-face img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: fill;
     display: block;
+    border-radius: 15px;
   }
   .req-card-front {
     z-index: 2;
