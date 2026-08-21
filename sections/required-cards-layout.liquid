@@ -500,11 +500,28 @@
     text-align: center;
   }
 
-  /* Continuous 3D Floating Animation for Card Showcase */
-  @keyframes floatCard {
-    0% { transform: translateY(0px) rotate(0deg); box-shadow: 0 15px 35px rgba(241, 112, 34, 0.18); }
-    50% { transform: translateY(-8px) rotate(1.5deg); box-shadow: 0 25px 45px rgba(241, 112, 34, 0.28); }
-    100% { transform: translateY(0px) rotate(0deg); box-shadow: 0 15px 35px rgba(241, 112, 34, 0.18); }
+  /* Continuous 360 3D Rotation Movement Animation for Card Showcase */
+  @keyframes rotate360Card {
+    0% {
+      transform: perspective(1000px) rotateY(0deg) translateY(0px);
+      box-shadow: 0 15px 35px rgba(241, 112, 34, 0.18);
+    }
+    25% {
+      transform: perspective(1000px) rotateY(90deg) translateY(-5px);
+      box-shadow: 0 25px 45px rgba(241, 112, 34, 0.28);
+    }
+    50% {
+      transform: perspective(1000px) rotateY(180deg) translateY(0px);
+      box-shadow: 0 15px 35px rgba(241, 112, 34, 0.18);
+    }
+    75% {
+      transform: perspective(1000px) rotateY(270deg) translateY(-5px);
+      box-shadow: 0 25px 45px rgba(241, 112, 34, 0.28);
+    }
+    100% {
+      transform: perspective(1000px) rotateY(360deg) translateY(0px);
+      box-shadow: 0 15px 35px rgba(241, 112, 34, 0.18);
+    }
   }
 
   .req-card-thumb-wrapper {
@@ -515,12 +532,13 @@
     box-shadow: 0 15px 35px rgba(241, 112, 34, 0.18);
     border: 2.5px solid #F17022;
     margin-bottom: 18px;
-    animation: floatCard 4s ease-in-out infinite;
+    transform-style: preserve-3d;
+    animation: rotate360Card 7s linear infinite;
     transition: transform 0.4s ease, box-shadow 0.4s ease;
   }
   .req-card-thumb-wrapper:hover {
     animation-play-state: paused;
-    transform: scale(1.05) rotate(-1.5deg);
+    transform: perspective(1000px) scale(1.06) rotateY(0deg);
     box-shadow: 0 30px 55px rgba(241, 112, 34, 0.35);
   }
   .req-card-thumb-wrapper img {
