@@ -290,9 +290,7 @@
       text-justify: inter-word !important;
       hyphens: auto !important;
     }
-  }
-
-  /* ---------------- CALCULATOR CONTAINER ---------------- */
+  }  /* ---------------- CALCULATOR CONTAINER ---------------- */
   #vsc-calculator {
     position: relative;
     background: linear-gradient(180deg, #FFFFFF 0%, #FAF8F5 100%);
@@ -301,39 +299,51 @@
   .vsc-calc-card-container {
     position: relative; z-index: 2;
     background: #FFFFFF;
-    border: 2px solid rgba(0, 154, 68, 0.2);
+    border: 2.5px solid rgba(0, 154, 68, 0.25);
     border-radius: var(--vsc-radius-lg);
     display: grid; grid-template-columns: 1fr;
     overflow: hidden;
     box-shadow: 
-      0 32px 72px -20px rgba(0, 154, 68, 0.16),
-      0 12px 32px -12px rgba(241, 112, 34, 0.08),
-      0 2px 4px rgba(0,0,0,0.02);
+      0 36px 80px -24px rgba(0, 154, 68, 0.18),
+      0 12px 32px -12px rgba(241, 112, 34, 0.1);
     transition: all 0.3s ease;
   }
   @media (min-width: 920px) {
-    .vsc-calc-card-container { grid-template-columns: 1.15fr 1fr; }
+    .vsc-calc-card-container { grid-template-columns: 1fr 1fr; }
   }
   .vsc-calc-card-container:hover {
-    border-color: rgba(241, 112, 34, 0.35);
+    border-color: rgba(241, 112, 34, 0.4);
   }
 
   /* ---- Inputs Side ---- */
   .vsc-calc-inputs {
-    padding: clamp(24px, 4.5vw, 44px);
-    background: #FFFFFF;
+    padding: clamp(24px, 4vw, 40px);
+    background: linear-gradient(165deg, #FFFFFF 0%, #FAF8F5 100%);
+    display: flex; flex-direction: column; justify-content: space-between;
   }
   @media (min-width: 920px) {
-    .vsc-calc-inputs { border-right: 2px solid var(--vsc-line-soft); }
+    .vsc-calc-inputs { border-right: 2px dashed rgba(0, 154, 68, 0.2); }
+  }
+
+  /* ---- Outputs Side ---- */
+  .vsc-calc-output {
+    padding: clamp(24px, 4vw, 40px);
+    display: flex; flex-direction: column; justify-content: space-between;
+    background: linear-gradient(165deg, #FAF8F5 0%, #FFFFFF 100%);
   }
 
   .vsc-calc-panel-header {
     display: inline-flex; align-items: center; gap: 8px;
-    background: var(--vsc-green-tint); border: 1px solid rgba(0, 154, 68, 0.25);
-    color: var(--vsc-green-deep); font-size: 11px; font-weight: 800;
+    background: var(--vsc-green-tint); border: 1.5px solid rgba(0, 154, 68, 0.3);
+    color: var(--vsc-green-deep); font-size: 11.5px; font-weight: 800;
     letter-spacing: .1em; text-transform: uppercase;
-    padding: 6px 14px; border-radius: 50px; margin-bottom: 24px;
+    padding: 7px 16px; border-radius: 50px; margin-bottom: 24px;
     font-family: 'Plus Jakarta Sans', sans-serif;
+    width: fit-content;
+  }
+  .vsc-calc-panel-header-orange {
+    background: var(--vsc-orange-tint); border-color: rgba(241, 112, 34, 0.35);
+    color: var(--vsc-orange-deep);
   }
 
   .vsc-field { margin-bottom: 28px; }
@@ -359,15 +369,16 @@
   /* Preset Pills */
   .vsc-presets { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
   .vsc-preset-pill {
-    background: var(--vsc-panel-2); border: 1.5px solid var(--vsc-line);
+    background: #FFFFFF; border: 1.5px solid var(--vsc-line);
     color: var(--vsc-muted); font-size: 12.5px; font-weight: 800;
     padding: 6px 14px; border-radius: 10px; cursor: pointer;
     transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1); min-height: 34px; display: inline-flex; align-items: center;
+    box-shadow: 0 2px 6px rgba(15,23,42,0.03);
   }
   .vsc-preset-pill:hover {
     background: var(--vsc-orange-tint); border-color: var(--vsc-orange); color: var(--vsc-orange-deep);
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(241,112,34,0.15);
+    box-shadow: 0 4px 12px rgba(241,112,34,0.18);
   }
 
   /* Custom Range Slider */
@@ -397,7 +408,7 @@
 
   /* Number Inputs */
   .vsc-input-box {
-    width: 100%; background: var(--vsc-panel-2); border: 2px solid var(--vsc-line);
+    width: 100%; background: #FFFFFF; border: 2px solid var(--vsc-line);
     color: var(--vsc-ink); font-size: 18px; font-weight: 800;
     padding: 14px 16px; border-radius: var(--vsc-radius-sm); outline: none;
     min-height: var(--vsc-tap); font-family: 'Plus Jakarta Sans', sans-serif;
@@ -420,10 +431,11 @@
   .vsc-toggle-btn {
     flex: 1; padding: 14px 12px; border-radius: var(--vsc-radius-sm);
     border: 2px solid var(--vsc-line);
-    background: var(--vsc-panel-2); color: var(--vsc-muted);
+    background: #FFFFFF; color: var(--vsc-muted);
     font-weight: 800; font-size: 14px; cursor: pointer; text-align: center;
     transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     min-height: var(--vsc-tap); display: flex; align-items: center; justify-content: center; gap: 8px;
+    box-shadow: 0 2px 6px rgba(15,23,42,0.03);
   }
   .vsc-toggle-btn:hover { border-color: var(--vsc-muted-2); color: var(--vsc-ink); }
   .vsc-toggle-btn.vsc-active {
@@ -432,29 +444,17 @@
     box-shadow: 0 4px 16px rgba(0, 154, 68, 0.15);
   }
 
-  /* ---- Outputs Side ---- */
-  .vsc-calc-output {
-    padding: clamp(24px, 4.5vw, 44px);
-    display: flex; flex-direction: column;
-    background: radial-gradient(120% 120% at 100% 0%, #FFF7ED 0%, #FFFFFF 60%, #F8FAFC 100%);
-  }
-
-  .vsc-result-badge {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: var(--vsc-orange-tint); border: 1px solid rgba(241, 112, 34, 0.3);
-    color: var(--vsc-orange-deep); font-size: 11px; font-weight: 800;
-    text-transform: uppercase; letter-spacing: .1em; margin-bottom: 12px;
-    padding: 5px 14px; border-radius: 50px; width: fit-content;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-  }
-
+  /* Result Number Header Box */
   .vsc-result-number-box {
     display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
     margin-bottom: 20px;
+    background: #FFFFFF; border: 1.5px solid rgba(0, 154, 68, 0.2);
+    border-radius: var(--vsc-radius-sm); padding: 14px 20px;
+    box-shadow: 0 4px 14px rgba(0, 154, 68, 0.08);
   }
   .vsc-result-num {
     font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif; font-weight: 900;
-    font-size: clamp(54px, 11vw, 80px); line-height: 1;
+    font-size: clamp(52px, 10vw, 76px); line-height: 1;
     color: var(--vsc-green-deep);
     background: linear-gradient(135deg, #009A44 0%, #005826 100%);
     -webkit-background-clip: text;
@@ -464,6 +464,14 @@
     font-size: 22px; color: var(--vsc-muted); font-weight: 800;
     font-family: 'Plus Jakarta Sans', sans-serif;
   }
+
+  /* 3D Card Showroom Stage */
+  .vsc-card-3d-stage {
+    background: linear-gradient(135deg, rgba(0,154,68,0.04) 0%, rgba(241,112,34,0.04) 100%);
+    border: 1.5px dashed rgba(0, 154, 68, 0.25);
+    border-radius: 18px; padding: 18px 14px 12px; margin-bottom: 20px;
+    display: flex; flex-direction: column; align-items: center;
+  } }
 
   /* ---------------- 3D ROTATING OFFICIAL CARD ---------------- */
   .vsc-card-3d-scene {
@@ -924,41 +932,41 @@
 
         <!-- Calculated Output Side -->
         <div class="vsc-calc-output">
-          <div class="vsc-result-badge">
-            <span>✨ Recommended Requirement</span>
-          </div>
+          <div class="vsc-calc-panel-header vsc-calc-panel-header-orange">📊 Step 2: Recommended Card Coverage</div>
 
           <div class="vsc-result-number-box">
             <span class="vsc-result-num" id="vsc-resultNum">1</span>
-            <span class="vsc-result-unit" id="vsc-resultUnit">Card</span>
+            <span class="vsc-result-unit" id="vsc-resultUnit">Card Required</span>
           </div>
 
-          <!-- 3D Rotating Official Card -->
-          <div class="vsc-card-3d-scene">
-            <div class="vsc-card-3d-wrapper">
-              <!-- Front Face -->
-              <div class="vsc-card-3d-face vsc-card-3d-front">
-                <img 
-                  src="{{ 'official-vidhyut-card.jpg' | asset_url }}" 
-                  alt="Vidhyut Saathi Electric Power Saving Card" 
-                  class="vsc-card-3d-img" 
-                  width="440" 
-                  height="270"
-                  loading="lazy"
-                >
-                <div class="vsc-card-shine"></div>
-              </div>
-              <!-- Back Face (Identical card so 360 degree rotation displays exact card on both sides) -->
-              <div class="vsc-card-3d-face vsc-card-3d-back">
-                <img 
-                  src="{{ 'official-vidhyut-card.jpg' | asset_url }}" 
-                  alt="Vidhyut Saathi Electric Power Saving Card" 
-                  class="vsc-card-3d-img" 
-                  width="440" 
-                  height="270"
-                  loading="lazy"
-                >
-                <div class="vsc-card-shine"></div>
+          <!-- 3D Card Showroom Stage -->
+          <div class="vsc-card-3d-stage">
+            <div class="vsc-card-3d-scene">
+              <div class="vsc-card-3d-wrapper">
+                <!-- Front Face -->
+                <div class="vsc-card-3d-face vsc-card-3d-front">
+                  <img 
+                    src="{{ 'official-vidhyut-card.jpg' | asset_url }}" 
+                    alt="Vidhyut Saathi Electric Power Saving Card" 
+                    class="vsc-card-3d-img" 
+                    width="440" 
+                    height="270"
+                    loading="lazy"
+                  >
+                  <div class="vsc-card-shine"></div>
+                </div>
+                <!-- Back Face -->
+                <div class="vsc-card-3d-face vsc-card-3d-back">
+                  <img 
+                    src="{{ 'official-vidhyut-card.jpg' | asset_url }}" 
+                    alt="Vidhyut Saathi Electric Power Saving Card" 
+                    class="vsc-card-3d-img" 
+                    width="440" 
+                    height="270"
+                    loading="lazy"
+                  >
+                  <div class="vsc-card-shine"></div>
+                </div>
               </div>
             </div>
           </div>
