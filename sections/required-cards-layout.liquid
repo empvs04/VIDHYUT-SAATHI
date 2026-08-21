@@ -69,22 +69,23 @@
 
 .vscc .eyebrow {
   display: inline-flex; align-items: center; gap: 8px;
-  color: var(--green); font-size: 11px; letter-spacing: .12em;
-  text-transform: uppercase; font-weight: 700;
+  color: var(--green); font-size: 11px; letter-spacing: .08em;
+  font-family: 'IBM Plex Mono', monospace;
+  text-transform: uppercase; font-weight: 600;
   border: 1px solid var(--green);
-  padding: 7px 14px; border-radius: 999px;
-  margin-bottom: 18px; background: var(--green-t);
+  padding: 8px 16px; border-radius: 999px;
+  margin-bottom: 20px; background: var(--green-t);
 }
 .vscc .eyebrow .dot {
-  width: 6px; height: 6px; border-radius: 50%;
+  width: 7px; height: 7px; border-radius: 50%;
   background: var(--orange); flex-shrink: 0;
   box-shadow: 0 0 0 3px var(--orange-t);
 }
 
 .vscc .hero h1 {
-  font-size: clamp(26px, 7vw, 56px);
-  line-height: 1.1; font-weight: 700;
-  margin: 0 0 16px; max-width: 800px;
+  font-size: clamp(28px, 7vw, 56px);
+  line-height: 1.12; font-weight: 700;
+  margin: 0 0 18px; max-width: 800px;
 }
 .vscc .hero h1 em { font-style: normal; color: var(--orange); }
 
@@ -95,27 +96,39 @@
   margin: 0 0 28px;
 }
 
-.vscc .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+.vscc .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 32px; }
 .vscc .btn-primary {
   background: var(--orange); color: #fff; font-weight: 700;
-  padding: 14px 28px; border-radius: 12px;
-  font-size: 15px; border: none;
+  padding: 16px 28px; border-radius: 14px;
+  font-size: 16px; border: none;
   box-shadow: 0 8px 24px -8px rgba(240,99,27,.45);
-  min-height: var(--tap);
+  min-height: 52px;
   display: inline-flex; align-items: center; justify-content: center;
   transition: transform .15s, box-shadow .15s;
 }
 .vscc .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 12px 28px -8px rgba(240,99,27,.5); }
 .vscc .btn-ghost {
-  border: 2px solid var(--green); color: var(--green);
-  padding: 14px 28px; border-radius: 12px;
-  font-size: 15px; font-weight: 700;
-  min-height: var(--tap);
+  border: 1.5px solid var(--green); color: var(--green);
+  padding: 16px 28px; border-radius: 14px;
+  font-size: 16px; font-weight: 700;
+  min-height: 52px;
   display: inline-flex; align-items: center; justify-content: center;
   background: #fff;
   transition: background .15s, color .15s;
 }
 .vscc .btn-ghost:hover { background: var(--green-t); }
+
+.vscc .hero-features-strip {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px 20px;
+  padding-top: 24px; border-top: 1px solid var(--line);
+  font-size: 13.5px; color: var(--muted);
+}
+@media(min-width:640px){
+  .vscc .hero-features-strip { grid-template-columns: repeat(4, auto); justify-content: start; gap: 32px; }
+}
+.vscc .hf-item { display: flex; align-items: center; gap: 8px; }
+.vscc .hf-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--orange); flex-shrink: 0; }
+.vscc .hf-item b { color: var(--green); font-weight: 700; }
 
 /* ---- SECTIONS ---- */
 .vscc .sec { padding: 52px 0; }
@@ -619,12 +632,18 @@
   <section class="hero">
     <div class="texture-bg"></div>
     <div class="wrap" style="position:relative;z-index:1;">
-      <div class="eyebrow"><span class="dot"></span> India's No. 1 Electric Saver Card Company</div>
+      <div class="eyebrow"><span class="dot"></span> INDIA'S NO. 1 ELECTRIC SAVER CARD COMPANY</div>
       <h1>How many <em>Vidhyut Saathi</em> cards does your connection need?</h1>
-      <p class="lead">Enter your connected load and monthly bill — we check both and always recommend the higher requirement, exactly the way our installation team does it on site.</p>
+      <p class="lead">Enter your connected load and your monthly bill — the calculator checks both and always recommends the higher requirement, exactly the way our installation team does it on site.</p>
       <div class="hero-ctas">
         <a href="#vscc-calc" class="btn-primary">Calculate Now ↓</a>
         <a href="#vscc-chart" class="btn-ghost">View Full Chart</a>
+      </div>
+      <div class="hero-features-strip">
+        <div class="hf-item"><span class="hf-dot"></span> <b>20–30%</b> bill savings</div>
+        <div class="hf-item"><span class="hf-dot"></span> <b>10 Yr</b> product life</div>
+        <div class="hf-item"><span class="hf-dot"></span> <b>3 Yr</b> warranty</div>
+        <div class="hf-item"><span class="hf-dot"></span> <b>ISO</b> certified</div>
       </div>
     </div>
   </section>
