@@ -45,16 +45,16 @@
   }
   @media (min-width: 640px) { .vsc-wrap { padding: 0 32px; } }
 
-  /* ---------------- HERO SECTION ---------------- */
+  /* ---------------- HERO SECTION (2-COLUMN) ---------------- */
   .vsc-hero {
     position: relative;
-    padding: clamp(52px, 8vw, 96px) 0 clamp(44px, 6vw, 72px);
+    padding: clamp(48px, 6vw, 84px) 0 clamp(44px, 5vw, 68px);
     background: radial-gradient(120% 80% at 50% -10%, #FFF7ED 0%, #FFFFFF 65%, #F8FAFC 100%);
     overflow: hidden;
     border-bottom: 2px solid var(--vsc-line-soft);
   }
   
-  /* Background subtle grid pattern */
+  /* Background grid pattern */
   .vsc-hero-grid {
     position: absolute; inset: 0; z-index: 0;
     background-image: 
@@ -79,14 +79,25 @@
     pointer-events: none; filter: blur(30px);
   }
 
-  .vsc-hero-inner { position: relative; z-index: 2; text-align: center; max-width: 860px; margin: 0 auto; }
+  .vsc-hero-inner {
+    position: relative; z-index: 2;
+    display: grid; grid-template-columns: 1fr; gap: 36px; align-items: center;
+  }
+  @media (min-width: 920px) {
+    .vsc-hero-inner { grid-template-columns: 1.1fr 0.9fr; gap: 48px; }
+  }
+
+  .vsc-hero-content { text-align: left; }
+  @media (max-width: 919px) {
+    .vsc-hero-content { text-align: center; max-width: 760px; margin: 0 auto; }
+  }
 
   .vsc-eyebrow {
     display: inline-flex; align-items: center; gap: 10px;
     background: #FFFFFF; border: 1.5px solid rgba(0,154,68,0.25);
     color: var(--vsc-green-deep); font-size: 12px; font-weight: 800;
     letter-spacing: .12em; text-transform: uppercase;
-    padding: 8px 18px; border-radius: 50px; margin-bottom: 24px;
+    padding: 8px 18px; border-radius: 50px; margin-bottom: 20px;
     box-shadow: 0 4px 16px rgba(0, 154, 68, 0.08);
     font-family: 'Plus Jakarta Sans', sans-serif;
   }
@@ -104,9 +115,9 @@
 
   .vsc-hero h1 {
     font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
-    font-size: clamp(30px, 6.5vw, 56px);
+    font-size: clamp(28px, 5vw, 50px);
     font-weight: 900; line-height: 1.12;
-    color: var(--vsc-ink); margin: 0 auto 20px;
+    color: var(--vsc-ink); margin: 0 0 18px;
     letter-spacing: -0.02em;
   }
   .vsc-hero h1 span.vsc-highlight {
@@ -118,8 +129,8 @@
   }
 
   .vsc-lead {
-    color: var(--vsc-muted); font-size: clamp(15px, 2.4vw, 18px);
-    line-height: 1.65; max-width: 660px; margin: 0 auto 32px;
+    color: var(--vsc-muted); font-size: clamp(15px, 2.2vw, 17.5px);
+    line-height: 1.65; margin: 0 0 28px;
     font-weight: 500;
   }
   @media (max-width: 639px) {
@@ -130,7 +141,25 @@
     }
   }
 
-  .vsc-ctas { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .vsc-hero-highlights {
+    display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 30px;
+  }
+  @media (max-width: 919px) {
+    .vsc-hero-highlights { justify-content: center; }
+  }
+  .vsc-hero-hl-item {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: #FFFFFF; border: 1.5px solid var(--vsc-line);
+    padding: 6px 14px; border-radius: 50px;
+    font-size: 13px; font-weight: 700; color: var(--vsc-ink);
+    box-shadow: 0 2px 8px rgba(15,23,42,0.04);
+  }
+  .vsc-hero-hl-item span.icon { color: var(--vsc-green); font-weight: 900; }
+
+  .vsc-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+  @media (max-width: 919px) {
+    .vsc-ctas { justify-content: center; }
+  }
   
   .vsc-btn-primary {
     background: linear-gradient(135deg, #F17022 0%, #D95204 100%);
@@ -159,6 +188,53 @@
     background: var(--vsc-green-tint);
     transform: translateY(-3px);
     box-shadow: 0 8px 24px rgba(0,154,68,0.18);
+  }
+
+  /* Right Column Gentleman Image Presentation */
+  .vsc-hero-media {
+    position: relative;
+    display: flex; justify-content: center; align-items: center;
+  }
+
+  .vsc-hero-img-card {
+    position: relative;
+    width: 100%; max-width: 460px;
+    border-radius: 24px; overflow: hidden;
+    background: #FFFFFF; border: 3px solid #FFFFFF;
+    box-shadow: 
+      0 24px 60px -15px rgba(0, 154, 68, 0.25),
+      0 10px 30px -10px rgba(15, 23, 42, 0.1);
+    transition: transform 0.3s ease;
+  }
+  .vsc-hero-img-card:hover { transform: translateY(-4px); }
+
+  .vsc-hero-img {
+    width: 100%; height: auto; display: block; object-fit: cover;
+    aspect-ratio: 4/3;
+  }
+
+  /* Floating Badge Overlay */
+  .vsc-hero-badge-overlay {
+    position: absolute; bottom: 16px; left: 16px; right: 16px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    border: 1.5px solid rgba(0, 154, 68, 0.25);
+    border-radius: 16px; padding: 14px 18px;
+    display: flex; align-items: center; gap: 14px;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+  }
+  .vsc-hero-badge-icon {
+    width: 42px; height: 42px; border-radius: 12px;
+    background: linear-gradient(135deg, #F17022 0%, #D95204 100%);
+    color: #FFFFFF; display: flex; align-items: center; justify-content: center;
+    font-size: 20px; flex-shrink: 0; box-shadow: 0 4px 12px rgba(241,112,34,0.35);
+  }
+  .vsc-hero-badge-text h4 {
+    margin: 0; font-size: 14px; font-weight: 900; color: var(--vsc-ink);
+    line-height: 1.25; font-family: 'Outfit', sans-serif;
+  }
+  .vsc-hero-badge-text p {
+    margin: 3px 0 0; font-size: 12px; color: var(--vsc-green-deep); font-weight: 700;
   }
 
   /* ---------------- COMMON SECTION STYLES ---------------- */
@@ -655,16 +731,52 @@
     <div class="vsc-hero-orb-1"></div>
     <div class="vsc-hero-orb-2"></div>
     <div class="vsc-wrap vsc-hero-inner">
-      <div class="vsc-eyebrow">
-        <span class="vsc-eyebrow-dot"></span>
-        India's No. 1 Electric Saver Card Company
+      
+      <!-- Left Content Column -->
+      <div class="vsc-hero-content">
+        <div class="vsc-eyebrow">
+          <span class="vsc-eyebrow-dot"></span>
+          India's No. 1 Electric Saver Card Company
+        </div>
+        <h1>How many <span class="vsc-highlight">Vidhyut Saathi</span> cards does your connection need?</h1>
+        <p class="vsc-lead">Enter your connected load and your monthly bill — our smart calculator evaluates both parameters and always recommends the optimal coverage count, exactly as our technical installation team does on site.</p>
+        
+        <!-- Hero Highlights -->
+        <div class="vsc-hero-highlights">
+          <div class="vsc-hero-hl-item"><span class="icon">✓</span> Instant Live Calculation</div>
+          <div class="vsc-hero-hl-item"><span class="icon">✓</span> 20–30% Bill Savings</div>
+          <div class="vsc-hero-hl-item"><span class="icon">✓</span> 100% Legal & Certified</div>
+        </div>
+
+        <div class="vsc-ctas">
+          <a href="#vsc-calculator" class="vsc-btn-primary">Calculate Now ↓</a>
+          <a href="#vsc-chart" class="vsc-btn-ghost">View Full Chart</a>
+        </div>
       </div>
-      <h1>How many <span class="vsc-highlight">Vidhyut Saathi</span> cards does your connection need?</h1>
-      <p class="vsc-lead">Enter your connected load and your monthly bill — our smart calculator evaluates both parameters and always recommends the optimal coverage count, exactly as our technical installation team does on site.</p>
-      <div class="vsc-ctas">
-        <a href="#vsc-calculator" class="vsc-btn-primary">Calculate Now ↓</a>
-        <a href="#vsc-chart" class="vsc-btn-ghost">View Full Chart</a>
+
+      <!-- Right Column: Advisor Gentleman Presentation Card -->
+      <div class="vsc-hero-media">
+        <div class="vsc-hero-img-card">
+          <img 
+            src="{{ 'hero-advisor-calculator.jpg' | asset_url }}" 
+            alt="Vidhyut Saathi Energy Consultant presenting card requirement calculator" 
+            class="vsc-hero-img"
+            width="460"
+            height="345"
+            loading="eager"
+          >
+          
+          <!-- Floating Badge -->
+          <div class="vsc-hero-badge-overlay">
+            <div class="vsc-hero-badge-icon">⚡</div>
+            <div class="vsc-hero-badge-text">
+              <h4>Calculate Your Card For Connection</h4>
+              <p>Smart Dual-Parameter Calculator</p>
+            </div>
+          </div>
+        </div>
       </div>
+
     </div>
   </section>
 
