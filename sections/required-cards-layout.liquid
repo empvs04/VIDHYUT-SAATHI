@@ -506,12 +506,13 @@
 
 
   /* ==========================================
-     SECTION 2: PRACTICAL SELECTION EXAMPLES (LIGHT THEME)
+     SECTION 2: REDESIGNED REAL-WORLD EXAMPLES (CRYSTAL CLEAR)
      ========================================== */
   .req-sec2-section {
     padding: clamp(60px, 8vw, 100px) 20px;
-    background: #FAF9F6;
+    background: linear-gradient(180deg, #FAF9F6 0%, #FFFFFF 100%);
     position: relative;
+    border-top: 2px dashed rgba(241, 112, 34, 0.15);
   }
   .req-sec2-container {
     max-width: 1280px;
@@ -520,24 +521,25 @@
 
   .req-sec2-header {
     text-align: center;
-    max-width: 900px;
-    margin: 0 auto 45px auto;
+    max-width: 920px;
+    margin: 0 auto 35px auto;
   }
 
   .req-sec2-badge {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 8px 22px;
+    padding: 8px 24px;
     background: #FFF7ED;
     border: 1.5px solid #F17022;
     border-radius: 50px;
     color: #F17022;
     font-size: 0.88rem;
     font-weight: 800;
-    letter-spacing: 1px;
+    letter-spacing: 1.2px;
     text-transform: uppercase;
     margin-bottom: 16px;
+    box-shadow: 0 6px 20px rgba(241, 112, 34, 0.1);
   }
 
   .req-sec2-header h2 {
@@ -558,6 +560,72 @@
     color: #475569;
     line-height: 1.7;
     margin: 0;
+  }
+
+  /* 3-Step Selection Visual Guide Banner */
+  .req-sec2-guide-flow {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    background: #FFFFFF;
+    border: 2px solid rgba(241, 112, 34, 0.2);
+    border-radius: 24px;
+    padding: 22px 28px;
+    margin-bottom: 45px;
+    box-shadow: 0 15px 40px rgba(241, 112, 34, 0.07);
+    align-items: center;
+  }
+  @media (min-width: 768px) {
+    .req-sec2-guide-flow {
+      grid-template-columns: 1fr auto 1fr auto 1fr;
+    }
+  }
+
+  .req-guide-step {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 16px;
+    background: #F8FAFC;
+    border: 1.5px solid #E2E8F0;
+    border-radius: 16px;
+    transition: all 0.3s ease;
+  }
+  .req-guide-step.highlight-step {
+    background: #FFF7ED;
+    border-color: #F17022;
+    box-shadow: 0 8px 25px rgba(241, 112, 34, 0.15);
+  }
+  .req-step-num {
+    background: #F17022;
+    color: #FFFFFF;
+    font-size: 0.75rem;
+    font-weight: 900;
+    padding: 4px 10px;
+    border-radius: 50px;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+  .req-step-icon {
+    font-size: 1.8rem;
+    flex-shrink: 0;
+  }
+  .req-step-content strong {
+    display: block;
+    font-size: 0.98rem;
+    color: #111111;
+    font-weight: 800;
+  }
+  .req-step-content span {
+    display: block;
+    font-size: 0.82rem;
+    color: #64748b;
+  }
+  .req-guide-arrow {
+    font-size: 1.4rem;
+    color: #F17022;
+    font-weight: 900;
+    text-align: center;
   }
 
   /* Sector Switcher Tabs Navigation (Light Theme 3D Dock) */
@@ -689,27 +757,39 @@
 
   /* Theme Colors for Examples */
   .req-theme-green .req-example-card { border-color: rgba(0, 154, 68, 0.3); }
-  .req-theme-green .req-ex-header { background: #009A44; color: #ffffff; }
-  .req-theme-green .req-ex-consider { background: #009A44; color: #ffffff; }
+  .req-theme-green .req-ex-header { background: linear-gradient(135deg, #009A44, #007b3e); color: #ffffff; }
+  .req-theme-green .req-ex-consider { background: linear-gradient(135deg, #009A44, #007b3e); color: #ffffff; }
   .req-theme-green .req-ex-3phase-bar { background: #E6F4EA; border-color: #009A44; color: #009A44; }
   
   .req-theme-orange .req-example-card { border-color: rgba(241, 112, 34, 0.3); }
-  .req-theme-orange .req-ex-header { background: #F17022; color: #ffffff; }
-  .req-theme-orange .req-ex-consider { background: #F17022; color: #ffffff; }
+  .req-theme-orange .req-ex-header { background: linear-gradient(135deg, #F17022, #FB5900); color: #ffffff; }
+  .req-theme-orange .req-ex-consider { background: linear-gradient(135deg, #F17022, #FB5900); color: #ffffff; }
   .req-theme-orange .req-ex-3phase-bar { background: #FFF7ED; border-color: #F17022; color: #F17022; }
 
   .req-theme-blue .req-example-card { border-color: rgba(13, 82, 191, 0.3); }
-  .req-theme-blue .req-ex-header { background: #0d52bf; color: #ffffff; }
-  .req-theme-blue .req-ex-consider { background: #0d52bf; color: #ffffff; }
+  .req-theme-blue .req-ex-header { background: linear-gradient(135deg, #0d52bf, #2563eb); color: #ffffff; }
+  .req-theme-blue .req-ex-consider { background: linear-gradient(135deg, #0d52bf, #2563eb); color: #ffffff; }
   .req-theme-blue .req-ex-3phase-bar { background: #EFF6FF; border-color: #0d52bf; color: #0d52bf; }
 
   .req-ex-header {
-    padding: 14px 24px;
-    font-size: 1.1rem;
+    padding: 16px 24px;
+    font-size: 1.15rem;
     font-weight: 900;
     text-transform: uppercase;
+    letter-spacing: 0.8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .req-ex-header-tag {
+    background: rgba(255, 255, 255, 0.25);
+    padding: 4px 14px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 800;
     letter-spacing: 0.5px;
-    text-align: center;
   }
 
   .req-ex-body {
@@ -725,7 +805,7 @@
   }
   @media (min-width: 900px) {
     .req-ex-content-grid {
-      grid-template-columns: 300px 1fr 1fr;
+      grid-template-columns: 280px 1.1fr 1fr;
       gap: 24px;
     }
   }
@@ -733,7 +813,7 @@
   /* Building Photo Showcase Box */
   .req-building-img-box {
     width: 100%;
-    height: 200px;
+    height: 210px;
     border-radius: 18px;
     overflow: hidden;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
@@ -752,6 +832,18 @@
   .req-building-img-box:hover img {
     transform: scale(1.06);
   }
+  .req-img-overlay-badge {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    background: rgba(17, 17, 17, 0.85);
+    backdrop-filter: blur(8px);
+    color: #FFFFFF;
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-size: 0.78rem;
+    font-weight: 800;
+  }
 
   .req-customer-info {
     display: flex;
@@ -764,14 +856,14 @@
     gap: 12px;
   }
   .req-c-icon {
-    width: 38px;
-    height: 38px;
-    border-radius: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
     background: #F1F5F9;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.2rem;
+    font-size: 1.25rem;
     flex-shrink: 0;
   }
   .req-c-detail span {
@@ -788,19 +880,18 @@
     color: #111111;
   }
 
-  /* Card Calculation Box Inside Example */
+  /* Side-by-Side Comparison Box with VS Indicator */
   .req-calc-matrix-box {
     background: #F8FAFC;
     border: 2px solid #E2E8F0;
-    border-radius: 18px;
-    padding: 16px 20px;
+    border-radius: 20px;
+    padding: 18px;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
+    flex-direction: column;
+    gap: 14px;
+    position: relative;
   }
-  .req-calc-rows {
-    flex: 1;
+  .req-calc-lines-wrapper {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -812,35 +903,39 @@
     font-size: 0.95rem;
     font-weight: 800;
     color: #334155;
-    border-bottom: 1px dashed #cbd5e1;
-    padding-bottom: 6px;
+    background: #FFFFFF;
+    border: 1.5px solid #E2E8F0;
+    border-radius: 12px;
+    padding: 10px 14px;
     gap: 10px;
   }
-  .req-calc-line:last-child {
-    border-bottom: none;
-    padding-bottom: 0;
+  .req-calc-line.winner-line {
+    border-color: #F17022;
+    background: #FFF7ED;
   }
   .req-calc-line strong {
     color: #111111;
-    font-size: 1.02rem;
+    font-size: 1.05rem;
+    font-weight: 900;
   }
 
   .req-ex-consider {
     padding: 14px 20px;
-    border-radius: 14px;
+    border-radius: 16px;
     text-align: center;
     white-space: nowrap;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
   }
   .req-ex-consider span {
-    font-size: 0.82rem;
+    font-size: 0.8rem;
     font-weight: 800;
     display: block;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    opacity: 0.9;
   }
   .req-ex-consider strong {
-    font-size: 1.5rem;
+    font-size: 1.55rem;
     font-weight: 900;
     display: block;
     line-height: 1.1;
@@ -963,8 +1058,6 @@
       font-size: 1rem !important;
     }
     .req-calc-matrix-box {
-      flex-direction: column !important;
-      align-items: stretch !important;
       padding: 14px !important;
       border-radius: 14px !important;
     }
@@ -1462,7 +1555,7 @@
   </section>
 
   <!-- ==========================================
-       SECTION 2: PRACTICAL SELECTION EXAMPLES (LIGHT THEME)
+       SECTION 2: REDESIGNED REAL-WORLD EXAMPLES (CRYSTAL CLEAR)
        ========================================== -->
   <section class="req-sec2-section">
     <div class="req-sec2-container">
@@ -1473,7 +1566,37 @@
           <span>💡 REAL WORLD PRACTICAL SELECTION EXAMPLES</span>
         </div>
         <h2>Card Selection Examples <span>&amp; Calculation Scenarios</span></h2>
-        <p>Aapke convenience ke liye niche Residential, Commercial, aur Industrial sectors ke real customer examples photo ke saath diye gaye hain. Samjhein ki connected load, monthly bill, aur meter connection ke hisab se final cards kaise select hote hain.</p>
+        <p>Ghar, Shop, aur Factory me Card calculate karna super simple hai! Niche 3 easy steps aur real customer photos ke saath live comparison samjhein:</p>
+      </div>
+
+      <!-- 3-Step Selection Guide Banner -->
+      <div class="req-sec2-guide-flow">
+        <div class="req-guide-step">
+          <div class="req-step-num">Step 1</div>
+          <div class="req-step-icon">🔌</div>
+          <div class="req-step-content">
+            <strong>Check Connected Load (KW)</strong>
+            <span>Har 6 KW Load par = 1 Card</span>
+          </div>
+        </div>
+        <div class="req-guide-arrow">➔</div>
+        <div class="req-guide-step">
+          <div class="req-step-num">Step 2</div>
+          <div class="req-step-icon">🧾</div>
+          <div class="req-step-content">
+            <strong>Check Monthly Bill (₹)</strong>
+            <span>Har ₹6,000 Bill par = 1 Card</span>
+          </div>
+        </div>
+        <div class="req-guide-arrow">➔</div>
+        <div class="req-guide-step highlight-step">
+          <div class="req-step-num">Step 3</div>
+          <div class="req-step-icon">⚖️</div>
+          <div class="req-step-content">
+            <strong>Pick HIGHER Card Result</strong>
+            <span>Jisme zyaada cards aayein + 1 for 3-Phase</span>
+          </div>
+        </div>
       </div>
 
       <!-- Sector Switcher Tabs Navigation -->
@@ -1496,7 +1619,8 @@
           <!-- Residential Example 1 -->
           <div class="req-example-card">
             <div class="req-ex-header">
-              ⚡ EXAMPLE 1 — LOW KW LOAD, HIGH BILL
+              <span>⚡ SCENARIO 1 — LOW KW LOAD, HIGH MONTHLY BILL</span>
+              <span class="req-ex-header-tag">🏡 Residential Home</span>
             </div>
             <div class="req-ex-body">
               <div class="req-ex-content-grid">
@@ -1504,6 +1628,7 @@
                 <div class="req-building-img-box">
                   {%- assign res_house_1 = 'residential-house-1.png' | asset_url -%}
                   <img src="{{ res_house_1 }}" alt="Residential House - Mr. Rohan, Mumbai" loading="lazy">
+                  <div class="req-img-overlay-badge">📍 Mr. Rohan, Mumbai</div>
                 </div>
 
                 <div class="req-customer-info">
@@ -1511,13 +1636,13 @@
                     <div class="req-c-icon">👤</div>
                     <div class="req-c-detail">
                       <span>Customer Profile</span>
-                      <strong>Mr. Rohan, Mumbai</strong>
+                      <strong>Mr. Rohan (3 BHK Home)</strong>
                     </div>
                   </div>
                   <div class="req-c-row">
                     <div class="req-c-icon">🔌</div>
                     <div class="req-c-detail">
-                      <span>Connected Load</span>
+                      <span>Connected Meter Load</span>
                       <strong>5 KW Load</strong>
                     </div>
                   </div>
@@ -1531,32 +1656,32 @@
                 </div>
 
                 <div class="req-calc-matrix-box">
-                  <div class="req-calc-rows">
+                  <div class="req-calc-lines-wrapper">
                     <div class="req-calc-line">
-                      <span>5 KW Load Requirement</span>
+                      <span>🔌 Load (5 KW):</span>
                       <strong>1 Card</strong>
                     </div>
-                    <div class="req-calc-line">
-                      <span>₹18,000 Bill Requirement</span>
-                      <strong>3 Cards</strong>
+                    <div class="req-calc-line winner-line">
+                      <span>🧾 Bill (₹18,000):</span>
+                      <strong style="color: #009A44;">3 Cards ★</strong>
                     </div>
                   </div>
                   <div class="req-ex-consider">
-                    <span>Higher Rule Result</span>
-                    <strong>3 Cards</strong>
+                    <span>Final Selection</span>
+                    <strong>3 CARDS</strong>
                   </div>
                 </div>
 
               </div>
 
               <div class="req-ex-3phase-bar">
-                ⚡ 3-Phase Connection: 3 + 1 Extra Card = 4 Cards
+                ⚡ 3-Phase Meter Connection: 3 + 1 Extra Card = 4 Cards Required
               </div>
 
               <div class="req-ex-why-box">
-                <div class="req-why-icon">📋</div>
+                <div class="req-why-icon">✅</div>
                 <p class="req-why-text">
-                  <strong>Why?</strong> The 5 KW load requires only 1 Card, while the ₹18,000 bill requires 3 Cards. Since the bill-based requirement is higher, we consider <strong>3 Cards</strong> (and 4 Cards for 3-Phase Meter).
+                  <strong>Why 3 Cards?</strong> 5 KW load k hisab se 1 Card banta hai, lekin ₹18,000 bill k hisab se 3 Cards bante hain. Golden Rule ke mutabiq <strong>Higher Value (3 Cards)</strong> select hoga.
                 </p>
               </div>
             </div>
@@ -1565,7 +1690,8 @@
           <!-- Residential Example 2 -->
           <div class="req-example-card">
             <div class="req-ex-header">
-              ⚡ EXAMPLE 2 — HIGHER KW LOAD, LOWER BILL
+              <span>⚡ SCENARIO 2 — HIGH KW LOAD, LOWER MONTHLY BILL</span>
+              <span class="req-ex-header-tag">🏡 Residential Villa</span>
             </div>
             <div class="req-ex-body">
               <div class="req-ex-content-grid">
@@ -1573,6 +1699,7 @@
                 <div class="req-building-img-box">
                   {%- assign res_house_2 = 'residential-house-2.png' | asset_url -%}
                   <img src="{{ res_house_2 }}" alt="Residential Villa - Mr. Rahul Mohan" loading="lazy">
+                  <div class="req-img-overlay-badge">📍 Mr. Rahul Mohan</div>
                 </div>
 
                 <div class="req-customer-info">
@@ -1580,13 +1707,13 @@
                     <div class="req-c-icon">👤</div>
                     <div class="req-c-detail">
                       <span>Customer Profile</span>
-                      <strong>Mr. Rahul Mohan</strong>
+                      <strong>Mr. Rahul Mohan (Villa)</strong>
                     </div>
                   </div>
                   <div class="req-c-row">
                     <div class="req-c-icon">🔌</div>
                     <div class="req-c-detail">
-                      <span>Connected Load</span>
+                      <span>Connected Meter Load</span>
                       <strong>15 KW Load</strong>
                     </div>
                   </div>
@@ -1600,32 +1727,32 @@
                 </div>
 
                 <div class="req-calc-matrix-box">
-                  <div class="req-calc-rows">
-                    <div class="req-calc-line">
-                      <span>15 KW Load Requirement</span>
-                      <strong>3 Cards</strong>
+                  <div class="req-calc-lines-wrapper">
+                    <div class="req-calc-line winner-line">
+                      <span>🔌 Load (15 KW):</span>
+                      <strong style="color: #009A44;">3 Cards ★</strong>
                     </div>
                     <div class="req-calc-line">
-                      <span>₹10,000 Bill Requirement</span>
+                      <span>🧾 Bill (₹10,000):</span>
                       <strong>2 Cards</strong>
                     </div>
                   </div>
                   <div class="req-ex-consider">
-                    <span>Higher Rule Result</span>
-                    <strong>3 Cards</strong>
+                    <span>Final Selection</span>
+                    <strong>3 CARDS</strong>
                   </div>
                 </div>
 
               </div>
 
               <div class="req-ex-3phase-bar">
-                ⚡ 3-Phase Connection: 3 + 1 Extra Card = 4 Cards
+                ⚡ 3-Phase Meter Connection: 3 + 1 Extra Card = 4 Cards Required
               </div>
 
               <div class="req-ex-why-box">
-                <div class="req-why-icon">📋</div>
+                <div class="req-why-icon">✅</div>
                 <p class="req-why-text">
-                  <strong>Why?</strong> The 15 KW load requires 3 Cards, while the ₹10,000 bill requires 2 Cards. Since the KW-based requirement is higher, we consider <strong>3 Cards</strong> (and 4 Cards for 3-Phase Meter).
+                  <strong>Why 3 Cards?</strong> 15 KW load k hisab se 3 Cards bante hain, jabki ₹10,000 bill k hisab se 2 Cards bante hain. Golden Rule ke mutabiq <strong>Higher Value (3 Cards)</strong> select hoga.
                 </p>
               </div>
             </div>
@@ -1641,7 +1768,8 @@
           <!-- Commercial Example 1 -->
           <div class="req-example-card">
             <div class="req-ex-header">
-              ⚡ EXAMPLE 1 — LOW KW LOAD, HIGH BILL
+              <span>⚡ SCENARIO 1 — LOW KW LOAD, HIGH MONTHLY BILL</span>
+              <span class="req-ex-header-tag">🏬 Commercial Building</span>
             </div>
             <div class="req-ex-body">
               <div class="req-ex-content-grid">
@@ -1649,6 +1777,7 @@
                 <div class="req-building-img-box">
                   {%- assign com_build_1 = 'commercial-building-1.png' | asset_url -%}
                   <img src="{{ com_build_1 }}" alt="Commercial Building - Mr. Deepak Sawlani" loading="lazy">
+                  <div class="req-img-overlay-badge">📍 Mr. Deepak Sawlani</div>
                 </div>
 
                 <div class="req-customer-info">
@@ -1662,7 +1791,7 @@
                   <div class="req-c-row">
                     <div class="req-c-icon">🔌</div>
                     <div class="req-c-detail">
-                      <span>Connected Load</span>
+                      <span>Connected Meter Load</span>
                       <strong>10 KW Load</strong>
                     </div>
                   </div>
@@ -1676,32 +1805,32 @@
                 </div>
 
                 <div class="req-calc-matrix-box">
-                  <div class="req-calc-rows">
+                  <div class="req-calc-lines-wrapper">
                     <div class="req-calc-line">
-                      <span>10 KW Load Requirement</span>
+                      <span>🔌 Load (10 KW):</span>
                       <strong>2 Cards</strong>
                     </div>
-                    <div class="req-calc-line">
-                      <span>₹24,000 Bill Requirement</span>
-                      <strong>4 Cards</strong>
+                    <div class="req-calc-line winner-line">
+                      <span>🧾 Bill (₹24,000):</span>
+                      <strong style="color: #F17022;">4 Cards ★</strong>
                     </div>
                   </div>
                   <div class="req-ex-consider">
-                    <span>Higher Rule Result</span>
-                    <strong>4 Cards</strong>
+                    <span>Final Selection</span>
+                    <strong>4 CARDS</strong>
                   </div>
                 </div>
 
               </div>
 
               <div class="req-ex-3phase-bar">
-                ⚡ 3-Phase Connection: 4 + 1 Extra Card = 5 Cards
+                ⚡ 3-Phase Meter Connection: 4 + 1 Extra Card = 5 Cards Required
               </div>
 
               <div class="req-ex-why-box">
-                <div class="req-why-icon">📋</div>
+                <div class="req-why-icon">✅</div>
                 <p class="req-why-text">
-                  <strong>Why?</strong> The 10 KW load requires 2 Cards, while the ₹24,000 bill requires 4 Cards. Since the bill-based requirement is higher, we consider <strong>4 Cards</strong> (and 5 Cards for 3-Phase Meter).
+                  <strong>Why 4 Cards?</strong> 10 KW load k hisab se 2 Cards bante hain, lekin ₹24,000 bill k hisab se 4 Cards bante hain. Golden Rule ke mutabiq <strong>Higher Value (4 Cards)</strong> select hoga.
                 </p>
               </div>
             </div>
@@ -1710,7 +1839,8 @@
           <!-- Commercial Example 2 -->
           <div class="req-example-card">
             <div class="req-ex-header">
-              ⚡ EXAMPLE 2 — HIGH KW LOAD, LOWER BILL
+              <span>⚡ SCENARIO 2 — HIGH KW LOAD, LOWER MONTHLY BILL</span>
+              <span class="req-ex-header-tag">🏬 Commercial Complex</span>
             </div>
             <div class="req-ex-body">
               <div class="req-ex-content-grid">
@@ -1718,6 +1848,7 @@
                 <div class="req-building-img-box">
                   {%- assign com_build_2 = 'commercial-building-2.png' | asset_url -%}
                   <img src="{{ com_build_2 }}" alt="Commercial Complex - Mr. Satyajeet" loading="lazy">
+                  <div class="req-img-overlay-badge">📍 Mr. Satyajeet</div>
                 </div>
 
                 <div class="req-customer-info">
@@ -1731,7 +1862,7 @@
                   <div class="req-c-row">
                     <div class="req-c-icon">🔌</div>
                     <div class="req-c-detail">
-                      <span>Connected Load</span>
+                      <span>Connected Meter Load</span>
                       <strong>35 KW Load</strong>
                     </div>
                   </div>
@@ -1745,32 +1876,32 @@
                 </div>
 
                 <div class="req-calc-matrix-box">
-                  <div class="req-calc-rows">
-                    <div class="req-calc-line">
-                      <span>35 KW Load Requirement</span>
-                      <strong>6 Cards</strong>
+                  <div class="req-calc-lines-wrapper">
+                    <div class="req-calc-line winner-line">
+                      <span>🔌 Load (35 KW):</span>
+                      <strong style="color: #F17022;">6 Cards ★</strong>
                     </div>
                     <div class="req-calc-line">
-                      <span>₹29,000 Bill Requirement</span>
+                      <span>🧾 Bill (₹29,000):</span>
                       <strong>5 Cards</strong>
                     </div>
                   </div>
                   <div class="req-ex-consider">
-                    <span>Higher Rule Result</span>
-                    <strong>6 Cards</strong>
+                    <span>Final Selection</span>
+                    <strong>6 CARDS</strong>
                   </div>
                 </div>
 
               </div>
 
               <div class="req-ex-3phase-bar">
-                ⚡ 3-Phase Connection: 6 + 1 Extra Card = 7 Cards
+                ⚡ 3-Phase Meter Connection: 6 + 1 Extra Card = 7 Cards Required
               </div>
 
               <div class="req-ex-why-box">
-                <div class="req-why-icon">📋</div>
+                <div class="req-why-icon">✅</div>
                 <p class="req-why-text">
-                  <strong>Why?</strong> The 35 KW load requires 6 Cards, while the ₹29,000 bill requires 5 Cards. Since the KW-based requirement is higher, we consider <strong>6 Cards</strong> (and 7 Cards for 3-Phase Meter).
+                  <strong>Why 6 Cards?</strong> 35 KW load k hisab se 6 Cards bante hain, jabki ₹29,000 bill k hisab se 5 Cards bante hain. Golden Rule ke mutabiq <strong>Higher Value (6 Cards)</strong> select hoga.
                 </p>
               </div>
             </div>
@@ -1786,7 +1917,8 @@
           <!-- Industrial Example 1 -->
           <div class="req-example-card">
             <div class="req-ex-header">
-              ⚡ EXAMPLE 1 — LOW KW LOAD, HIGH BILL
+              <span>⚡ SCENARIO 1 — LOW KW LOAD, HIGH MONTHLY BILL</span>
+              <span class="req-ex-header-tag">🏭 Industrial Plant</span>
             </div>
             <div class="req-ex-body">
               <div class="req-ex-content-grid">
@@ -1794,6 +1926,7 @@
                 <div class="req-building-img-box">
                   {%- assign ind_fact_1 = 'industrial-factory-1.png' | asset_url -%}
                   <img src="{{ ind_fact_1 }}" alt="Industrial Factory - Mr. Rajeev Sharma" loading="lazy">
+                  <div class="req-img-overlay-badge">📍 Mr. Rajeev Sharma</div>
                 </div>
 
                 <div class="req-customer-info">
@@ -1807,8 +1940,8 @@
                   <div class="req-c-row">
                     <div class="req-c-icon">🔌</div>
                     <div class="req-c-detail">
-                      <span>Connected Load</span>
-                      <strong>90 KW Industrial Load</strong>
+                      <span>Connected Industrial Load</span>
+                      <strong>90 KW Load</strong>
                     </div>
                   </div>
                   <div class="req-c-row">
@@ -1821,32 +1954,32 @@
                 </div>
 
                 <div class="req-calc-matrix-box">
-                  <div class="req-calc-rows">
+                  <div class="req-calc-lines-wrapper">
                     <div class="req-calc-line">
-                      <span>90 KW Load Requirement</span>
+                      <span>🔌 Load (90 KW):</span>
                       <strong>15 Cards</strong>
                     </div>
-                    <div class="req-calc-line">
-                      <span>₹2,40,000 Bill Requirement</span>
-                      <strong>40 Cards</strong>
+                    <div class="req-calc-line winner-line">
+                      <span>🧾 Bill (₹2.4L):</span>
+                      <strong style="color: #0d52bf;">40 Cards ★</strong>
                     </div>
                   </div>
                   <div class="req-ex-consider">
-                    <span>Higher Rule Result</span>
-                    <strong>40 Cards</strong>
+                    <span>Final Selection</span>
+                    <strong>40 CARDS</strong>
                   </div>
                 </div>
 
               </div>
 
               <div class="req-ex-3phase-bar">
-                ⚡ 3-Phase Connection: 40 + 1 Extra Card = 41 Cards
+                ⚡ 3-Phase Industrial Connection: 40 + 1 Extra Card = 41 Cards Required
               </div>
 
               <div class="req-ex-why-box">
-                <div class="req-why-icon">📋</div>
+                <div class="req-why-icon">✅</div>
                 <p class="req-why-text">
-                  <strong>Why?</strong> The 90 KW load requires 15 Cards, while the ₹2,40,000 bill requires 40 Cards. Since the bill-based requirement is higher, we consider <strong>40 Cards</strong> (and 41 Cards for 3-Phase Meter).
+                  <strong>Why 40 Cards?</strong> 90 KW load k hisab se 15 Cards bante hain, lekin ₹2,40,000 bill k hisab se 40 Cards bante hain. Golden Rule ke mutabiq <strong>Higher Value (40 Cards)</strong> select hoga.
                 </p>
               </div>
             </div>
@@ -1855,7 +1988,8 @@
           <!-- Industrial Example 2 -->
           <div class="req-example-card">
             <div class="req-ex-header">
-              ⚡ EXAMPLE 2 — HIGH KW LOAD, LOWER BILL
+              <span>⚡ SCENARIO 2 — HIGH KW LOAD, LOWER MONTHLY BILL</span>
+              <span class="req-ex-header-tag">🏭 Manufacturing Unit</span>
             </div>
             <div class="req-ex-body">
               <div class="req-ex-content-grid">
@@ -1863,6 +1997,7 @@
                 <div class="req-building-img-box">
                   {%- assign ind_fact_2 = 'industrial-factory-2.png' | asset_url -%}
                   <img src="{{ ind_fact_2 }}" alt="Industrial Facility - Mr. Ashish Patel" loading="lazy">
+                  <div class="req-img-overlay-badge">📍 Mr. Ashish Patel</div>
                 </div>
 
                 <div class="req-customer-info">
@@ -1876,8 +2011,8 @@
                   <div class="req-c-row">
                     <div class="req-c-icon">🔌</div>
                     <div class="req-c-detail">
-                      <span>Connected Load</span>
-                      <strong>180 KW Industrial Load</strong>
+                      <span>Connected Industrial Load</span>
+                      <strong>180 KW Load</strong>
                     </div>
                   </div>
                   <div class="req-c-row">
@@ -1890,32 +2025,32 @@
                 </div>
 
                 <div class="req-calc-matrix-box">
-                  <div class="req-calc-rows">
-                    <div class="req-calc-line">
-                      <span>180 KW Load Requirement</span>
-                      <strong>30 Cards</strong>
+                  <div class="req-calc-lines-wrapper">
+                    <div class="req-calc-line winner-line">
+                      <span>🔌 Load (180 KW):</span>
+                      <strong style="color: #0d52bf;">30 Cards ★</strong>
                     </div>
                     <div class="req-calc-line">
-                      <span>₹1,20,000 Bill Requirement</span>
+                      <span>🧾 Bill (₹1.2L):</span>
                       <strong>20 Cards</strong>
                     </div>
                   </div>
                   <div class="req-ex-consider">
-                    <span>Higher Rule Result</span>
-                    <strong>30 Cards</strong>
+                    <span>Final Selection</span>
+                    <strong>30 CARDS</strong>
                   </div>
                 </div>
 
               </div>
 
               <div class="req-ex-3phase-bar">
-                ⚡ 3-Phase Connection: 30 + 1 Extra Card = 31 Cards
+                ⚡ 3-Phase Industrial Connection: 30 + 1 Extra Card = 31 Cards Required
               </div>
 
               <div class="req-ex-why-box">
-                <div class="req-why-icon">📋</div>
+                <div class="req-why-icon">✅</div>
                 <p class="req-why-text">
-                  <strong>Why?</strong> The 180 KW load requires 30 Cards, while the ₹1,20,000 bill requires 20 Cards. Since the KW-based requirement is higher, we consider <strong>30 Cards</strong> (and 31 Cards for 3-Phase Meter).
+                  <strong>Why 30 Cards?</strong> 180 KW load k hisab se 30 Cards bante hain, jabki ₹1,20,000 bill k hisab se 20 Cards bante hain. Golden Rule ke mutabiq <strong>Higher Value (30 Cards)</strong> select hoga.
                 </p>
               </div>
             </div>
