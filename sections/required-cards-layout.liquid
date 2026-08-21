@@ -433,21 +433,50 @@
     gap: 14px;
   }
   .req-spec-box {
-    background: #F8FAFC;
-    border: 1.5px solid #E2E8F0;
     border-radius: 16px;
     padding: 16px 18px;
-    transition: all 0.3s ease;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
   }
   .req-spec-box:hover {
-    background: #FFF7ED;
-    border-color: rgba(241, 112, 34, 0.4);
-    transform: translateY(-2px);
+    transform: translateY(-3px) scale(1.02);
   }
+  /* Spec Card 1 (🔌 Connected KW Load) */
+  .req-spec-box:nth-child(1) {
+    background: linear-gradient(135deg, #E6F4EA 0%, #FFFFFF 100%);
+    border: 1.5px solid rgba(0, 154, 68, 0.4);
+  }
+  .req-spec-box:nth-child(1) .req-spec-label {
+    color: #009A44;
+  }
+  /* Spec Card 2 (🧾 Monthly Electricity Bill) */
+  .req-spec-box:nth-child(2) {
+    background: linear-gradient(135deg, #FFF7ED 0%, #FFFFFF 100%);
+    border: 1.5px solid rgba(241, 112, 34, 0.4);
+  }
+  .req-spec-box:nth-child(2) .req-spec-label {
+    color: #F17022;
+  }
+  /* Spec Card 3 (⚡ Single Phase Meter) */
+  .req-spec-box:nth-child(3) {
+    background: linear-gradient(135deg, #F0FDF4 0%, #FFFFFF 100%);
+    border: 1.5px solid rgba(22, 163, 74, 0.4);
+  }
+  .req-spec-box:nth-child(3) .req-spec-label {
+    color: #16A34A;
+  }
+  /* Spec Card 4 (🔌 3-Phase Meter +1 Extra) */
+  .req-spec-box:nth-child(4) {
+    background: linear-gradient(135deg, #EFF6FF 0%, #FFFFFF 100%);
+    border: 1.5px solid rgba(37, 99, 235, 0.4);
+  }
+  .req-spec-box:nth-child(4) .req-spec-label {
+    color: #2563EB;
+  }
+
   .req-spec-label {
     font-size: 0.78rem;
-    font-weight: 800;
-    color: #64748b;
+    font-weight: 900;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     display: block;
@@ -1533,18 +1562,22 @@
       padding: 3px 10px !important;
     }
     .req-specs-grid {
-      grid-template-columns: 1fr 1fr !important; /* 2-Column Grid on Mobile for compact height */
-      gap: 8px !important;
+      grid-template-columns: 1fr 1fr !important;
+      gap: 10px !important;
     }
     .req-spec-box {
-      padding: 8px 10px !important;
-      border-radius: 10px !important;
+      padding: 10px 12px !important;
+      border-radius: 14px !important;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05) !important;
     }
     .req-spec-label {
-      font-size: 0.68rem !important;
+      font-size: 0.7rem !important;
+      margin-bottom: 4px !important;
+      letter-spacing: 0.3px !important;
     }
     .req-spec-value {
-      font-size: 0.92rem !important;
+      font-size: 0.95rem !important;
+      font-weight: 900 !important;
     }
     .req-apps-banner {
       padding: 10px 12px !important;
