@@ -171,18 +171,30 @@
     margin: 0 auto;
   }
 
-  /* Golden Rule Light Banner */
+  /* Ultra-Lucrative Golden Rule Glass Card */
   .req-golden-banner {
-    background: #FFF7ED;
+    background: linear-gradient(135deg, #FFF8EF 0%, #FFFFFF 50%, #FFF3E5 100%);
     border: 2px solid #F17022;
-    border-radius: 20px;
-    padding: 20px 26px;
-    margin-bottom: 35px;
+    border-radius: 26px;
+    padding: 28px 34px;
+    margin-bottom: 40px;
+    box-shadow: 0 20px 50px rgba(241, 112, 34, 0.16), inset 0 1px 0 #ffffff;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+  }
+  .req-golden-banner:hover {
+    box-shadow: 0 25px 60px rgba(241, 112, 34, 0.22), inset 0 1px 0 #ffffff;
+    transform: translateY(-2px);
+  }
+  .req-golden-top-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 20px;
-    box-shadow: 0 10px 30px rgba(241, 112, 34, 0.12);
     flex-wrap: wrap;
   }
   .req-golden-text {
@@ -191,18 +203,28 @@
     gap: 16px;
   }
   .req-golden-icon {
-    font-size: 2.2rem;
+    width: 54px;
+    height: 54px;
+    background: linear-gradient(135deg, #F17022 0%, #FB5900 100%);
+    color: #ffffff;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
     flex-shrink: 0;
+    box-shadow: 0 8px 25px rgba(241, 112, 34, 0.3);
   }
   .req-golden-info h3 {
     color: #F17022;
     font-weight: 900;
-    font-size: 1.15rem;
+    font-size: 1.25rem;
     margin: 0 0 4px 0;
+    letter-spacing: -0.3px;
   }
   .req-golden-info p {
     color: #334155;
-    font-size: 0.95rem;
+    font-size: 0.98rem;
     margin: 0;
     line-height: 1.55;
   }
@@ -211,19 +233,77 @@
     font-weight: 800;
   }
   .req-golden-pill {
-    padding: 10px 22px;
-    background: #F17022;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #F17022 0%, #FB5900 100%);
     color: #FFFFFF;
     font-weight: 900;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     border-radius: 50px;
     white-space: nowrap;
-    box-shadow: 0 6px 20px rgba(241, 112, 34, 0.3);
+    box-shadow: 0 10px 25px rgba(241, 112, 34, 0.35);
+    border: 2px solid #ffffff;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* Golden Rule Formula Grid (3 Mini Formula Cards) */
+  .req-golden-formula-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    border-top: 1.5px dashed rgba(241, 112, 34, 0.25);
+    padding-top: 18px;
+  }
+  @media (max-width: 768px) {
+    .req-golden-formula-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  .req-formula-card {
+    background: #FFFFFF;
+    border: 1.5px solid rgba(241, 112, 34, 0.2);
+    border-radius: 16px;
+    padding: 12px 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+  }
+  .req-formula-icon {
+    font-size: 1.4rem;
+    flex-shrink: 0;
+  }
+  .req-formula-text span {
+    display: block;
+    font-size: 0.76rem;
+    font-weight: 800;
+    color: #64748b;
+    text-transform: uppercase;
+  }
+  .req-formula-text strong {
+    display: block;
+    font-size: 0.98rem;
+    font-weight: 900;
+    color: #111111;
   }
 
   /* Interactive 3D Card Requirement Tabs Navigation */
   .req-tabs-wrapper {
     margin-bottom: 35px;
+  }
+  .req-tabs-helper-label {
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 900;
+    color: #F17022;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
   }
   .req-tabs-nav {
     display: flex;
@@ -231,10 +311,10 @@
     gap: 10px;
     flex-wrap: wrap;
     background: #FFFFFF;
-    border: 2px solid rgba(241, 112, 34, 0.18);
+    border: 2px solid rgba(241, 112, 34, 0.22);
     border-radius: 60px;
-    padding: 10px;
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.05);
+    padding: 12px;
+    box-shadow: 0 15px 45px rgba(241, 112, 34, 0.08);
   }
 
   .req-tab-btn {
@@ -1122,24 +1202,57 @@
           <span class="pulse-dot"></span>
           <span>⚡ OFFICIAL CARD REQUIREMENT GUIDE</span>
         </div>
-        <h1>Required Vidhyut Saathi Card <span>Select Your Card Quantity Tab</span></h1>
+        <h1>Required Vidhyut Saathi Card <span style="display: block; background: linear-gradient(135deg, #F17022 0%, #FB5900 60%, #009A44 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Select Your Card Quantity Tab</span></h1>
         <p class="req-hero-subheading">Aapke ghar, shop, ya factory me kitne cards lagenge? Har tab par click karke exact KW load, bill amount, 1-Phase / 3-Phase requirement, aur complete info dekhein.</p>
       </div>
 
-      <!-- Golden Rule Light Banner -->
+      <!-- Ultra-Lucrative Golden Rule Glass Card -->
       <div class="req-golden-banner">
-        <div class="req-golden-text">
-          <div class="req-golden-icon">🧮</div>
-          <div class="req-golden-info">
-            <h3>Golden Rule: Always Consider Higher Requirement</h3>
-            <p>KW Connected Load aur Monthly Electricity Bill amount (₹) <strong>donon me se jisme zyaada cards aayein</strong>, usi ko consider karein!</p>
+        <div class="req-golden-top-row">
+          <div class="req-golden-text">
+            <div class="req-golden-icon">🧮</div>
+            <div class="req-golden-info">
+              <h3>Golden Rule: Always Consider Higher Requirement</h3>
+              <p>KW Connected Load aur Monthly Electricity Bill amount (₹) <strong>donon me se jisme zyaada cards aayein</strong>, usi ko consider karein!</p>
+            </div>
+          </div>
+          <div class="req-golden-pill">
+            <span>⚡ 3-Phase Meter = Add +1 Extra Card</span>
           </div>
         </div>
-        <div class="req-golden-pill">⚡ 3-Phase Meter = Add +1 Extra Card</div>
+
+        <div class="req-golden-formula-grid">
+          <div class="req-formula-card">
+            <div class="req-formula-icon">🔌</div>
+            <div class="req-formula-text">
+              <span>Connected Load Rule</span>
+              <strong>Har 6 KW Load = 1 Card</strong>
+            </div>
+          </div>
+
+          <div class="req-formula-card">
+            <div class="req-formula-icon">🧾</div>
+            <div class="req-formula-text">
+              <span>Monthly Bill Rule</span>
+              <strong>Har ₹6,000 Bill = 1 Card</strong>
+            </div>
+          </div>
+
+          <div class="req-formula-card">
+            <div class="req-formula-icon">⚡</div>
+            <div class="req-formula-text">
+              <span>3-Phase Connection</span>
+              <strong>Add +1 Extra Card</strong>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <!-- INTERACTIVE TABS NAVIGATION BAR (Clean & Light 3D Dock) -->
+      <!-- INTERACTIVE TABS NAVIGATION BAR (Ultra-Lucrative 3D Dock) -->
       <div class="req-tabs-wrapper">
+        <div class="req-tabs-helper-label">
+          <span>👇 Click any card quantity tab below to view detailed specs &amp; load:</span>
+        </div>
         <div class="req-tabs-nav" id="reqTabsNav">
           <button class="req-tab-btn active" data-tab="tab1">
             💳 1 Card <span class="tab-count">1-6 KW</span>
