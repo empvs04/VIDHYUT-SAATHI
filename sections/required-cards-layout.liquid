@@ -499,15 +499,29 @@
     padding: 24px;
     text-align: center;
   }
+
+  /* Continuous 3D Floating Animation for Card Showcase */
+  @keyframes floatCard {
+    0% { transform: translateY(0px) rotate(0deg); box-shadow: 0 15px 35px rgba(241, 112, 34, 0.18); }
+    50% { transform: translateY(-8px) rotate(1.5deg); box-shadow: 0 25px 45px rgba(241, 112, 34, 0.28); }
+    100% { transform: translateY(0px) rotate(0deg); box-shadow: 0 15px 35px rgba(241, 112, 34, 0.18); }
+  }
+
   .req-card-thumb-wrapper {
     width: 100%;
     max-width: 320px;
     border-radius: 18px;
     overflow: hidden;
-    box-shadow: 0 15px 35px rgba(241, 112, 34, 0.15);
-    border: 2px solid #F17022;
+    box-shadow: 0 15px 35px rgba(241, 112, 34, 0.18);
+    border: 2.5px solid #F17022;
     margin-bottom: 18px;
-    transition: transform 0.4s ease;
+    animation: floatCard 4s ease-in-out infinite;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+  .req-card-thumb-wrapper:hover {
+    animation-play-state: paused;
+    transform: scale(1.05) rotate(-1.5deg);
+    box-shadow: 0 30px 55px rgba(241, 112, 34, 0.35);
   }
   .req-card-thumb-wrapper img {
     width: 100%;
@@ -586,7 +600,7 @@
 
 
   /* ==========================================
-     SECTION 2: REDESIGNED REAL-WORLD EXAMPLES (CRYSTAL CLEAR)
+     SECTION 2: REDESIGNED REAL-WORLD EXAMPLES (100% ENGLISH & MOBILE OPTIMIZED)
      ========================================== */
   .req-sec2-section {
     padding: clamp(60px, 8vw, 100px) 20px;
@@ -1080,8 +1094,74 @@
     box-shadow: 0 10px 30px rgba(241, 112, 34, 0.12);
   }
 
-  /* Mobile Responsive Fixes (Phones & Tablets) */
+  /* Mobile Responsive Optimization (Phones & Tablets) */
   @media screen and (max-width: 768px) {
+    .req-hero-section {
+      padding: 30px 14px 45px 14px !important;
+    }
+    .hero-breadcrumb-pill {
+      font-size: 0.8rem !important;
+      padding: 6px 16px !important;
+    }
+    .req-badge-top {
+      font-size: 0.76rem !important;
+      padding: 6px 16px !important;
+    }
+    .req-golden-banner {
+      padding: 20px 16px !important;
+      border-radius: 20px !important;
+    }
+    .req-golden-icon {
+      width: 44px !important;
+      height: 44px !important;
+      font-size: 1.4rem !important;
+    }
+    .req-golden-info h3 {
+      font-size: 1.05rem !important;
+    }
+    .req-golden-info p {
+      font-size: 0.88rem !important;
+    }
+    .req-golden-pill {
+      width: 100% !important;
+      justify-content: center !important;
+      padding: 10px 18px !important;
+      font-size: 0.88rem !important;
+    }
+    .req-tabs-nav {
+      gap: 8px !important;
+      flex-wrap: nowrap !important;
+      overflow-x: auto !important;
+      justify-content: flex-start !important;
+      -webkit-overflow-scrolling: touch !important;
+      padding: 8px !important;
+      border-radius: 30px !important;
+    }
+    .req-tabs-nav::-webkit-scrollbar {
+      display: none;
+    }
+    .req-tab-btn {
+      flex-shrink: 0 !important;
+      padding: 9px 16px !important;
+      font-size: 0.85rem !important;
+      white-space: nowrap !important;
+    }
+    .req-card-info-dashboard {
+      padding: 20px 16px !important;
+      border-radius: 20px !important;
+    }
+    .req-dash-title {
+      font-size: 1.3rem !important;
+    }
+    .req-specs-grid {
+      grid-template-columns: 1fr !important;
+    }
+    .req-multi-rows-grid {
+      grid-template-columns: 1fr !important;
+    }
+    .req-card-thumb-wrapper {
+      max-width: 100% !important;
+    }
     .req-sec2-section {
       padding: 40px 12px !important;
     }
@@ -1096,6 +1176,14 @@
       font-size: 0.72rem !important;
       padding: 6px 14px !important;
     }
+    .req-sec2-guide-flow {
+      padding: 16px 12px !important;
+      border-radius: 18px !important;
+    }
+    .req-guide-arrow {
+      transform: rotate(90deg);
+      margin: 4px 0;
+    }
     .req-sector-tabs-wrapper {
       gap: 8px !important;
       flex-wrap: nowrap !important;
@@ -1104,6 +1192,7 @@
       -webkit-overflow-scrolling: touch !important;
       padding: 8px !important;
       margin-bottom: 25px !important;
+      border-radius: 30px !important;
     }
     .req-sector-tabs-wrapper::-webkit-scrollbar {
       display: none;
@@ -1203,7 +1292,7 @@
           <span>⚡ OFFICIAL CARD REQUIREMENT GUIDE</span>
         </div>
         <h1>Required Vidhyut Saathi Card <span style="display: block; background: linear-gradient(135deg, #F17022 0%, #FB5900 60%, #009A44 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Select Your Card Quantity Tab</span></h1>
-        <p class="req-hero-subheading">Aapke ghar, shop, ya factory me kitne cards lagenge? Har tab par click karke exact KW load, bill amount, 1-Phase / 3-Phase requirement, aur complete info dekhein.</p>
+        <p class="req-hero-subheading">Determine the exact number of Vidhyut Saathi Cards required for your home, commercial shop, or industrial plant. Select any tab below to calculate your exact KW load, bill range, and meter requirement.</p>
       </div>
 
       <!-- Ultra-Lucrative Golden Rule Glass Card -->
@@ -1213,7 +1302,7 @@
             <div class="req-golden-icon">🧮</div>
             <div class="req-golden-info">
               <h3>Golden Rule: Always Consider Higher Requirement</h3>
-              <p>KW Connected Load aur Monthly Electricity Bill amount (₹) <strong>donon me se jisme zyaada cards aayein</strong>, usi ko consider karein!</p>
+              <p>Calculate card count based on both Connected KW Load and Monthly Bill amount (₹). <strong>Always select the higher requirement!</strong></p>
             </div>
           </div>
           <div class="req-golden-pill">
@@ -1226,7 +1315,7 @@
             <div class="req-formula-icon">🔌</div>
             <div class="req-formula-text">
               <span>Connected Load Rule</span>
-              <strong>Har 6 KW Load = 1 Card</strong>
+              <strong>1 Card per 6 KW Load</strong>
             </div>
           </div>
 
@@ -1234,7 +1323,7 @@
             <div class="req-formula-icon">🧾</div>
             <div class="req-formula-text">
               <span>Monthly Bill Rule</span>
-              <strong>Har ₹6,000 Bill = 1 Card</strong>
+              <strong>1 Card per ₹6,000 Bill</strong>
             </div>
           </div>
 
@@ -1300,7 +1389,7 @@
                 </div>
                 <div class="req-spec-box">
                   <span class="req-spec-label">🧾 Monthly Electricity Bill</span>
-                  <span class="req-spec-value">Upto ₹6,000 / month</span>
+                  <span class="req-spec-value">Up to ₹6,000 / month</span>
                 </div>
                 <div class="req-spec-box">
                   <span class="req-spec-label">⚡ Single Phase Meter</span>
@@ -1563,7 +1652,7 @@
                 <span class="req-dash-tag">37 KW to 60 KW Load</span>
               </div>
 
-              <p style="color: #475569; font-size: 0.95rem; margin: 0 0 10px 0;">Niche 37 KW se 60 KW load aur bill range ke hisab se <strong>exact cards count</strong> ka complete clear breakdown diya gaya hai:</p>
+              <p style="color: #475569; font-size: 0.95rem; margin: 0 0 10px 0;">Below is the complete step-by-step breakdown of exact card requirements for 37 KW to 60 KW connected loads:</p>
 
               <div class="req-multi-rows-grid">
                 <div class="req-multi-row-card">
@@ -1625,7 +1714,7 @@
                 <span class="req-dash-tag">60+ KW Heavy Industrial</span>
               </div>
 
-              <p style="color: #475569; font-size: 0.95rem; margin: 0 0 10px 0;">60 KW se upar heavy industrial load par <strong>har 6 KW load par 1 Card</strong> calculate hota hai:</p>
+              <p style="color: #475569; font-size: 0.95rem; margin: 0 0 10px 0;">For heavy industrial loads exceeding 60 KW, 1 Card is required for every 6 KW of connected load:</p>
 
               <div class="req-multi-rows-grid">
                 <div class="req-multi-row-card">
@@ -1668,7 +1757,7 @@
   </section>
 
   <!-- ==========================================
-       SECTION 2: REDESIGNED REAL-WORLD EXAMPLES (CRYSTAL CLEAR)
+       SECTION 2: REDESIGNED REAL-WORLD EXAMPLES (100% ENGLISH & MOBILE OPTIMIZED)
        ========================================== -->
   <section class="req-sec2-section">
     <div class="req-sec2-container">
@@ -1679,7 +1768,7 @@
           <span>💡 REAL WORLD PRACTICAL SELECTION EXAMPLES</span>
         </div>
         <h2>Card Selection Examples <span>&amp; Calculation Scenarios</span></h2>
-        <p>Ghar, Shop, aur Factory me Card calculate karna super simple hai! Niche 3 easy steps aur real customer photos ke saath live comparison samjhein:</p>
+        <p>Calculating required cards for your home, shop, or factory is super simple! Review the 3 easy steps and real customer case studies below:</p>
       </div>
 
       <!-- 3-Step Selection Guide Banner -->
@@ -1689,7 +1778,7 @@
           <div class="req-step-icon">🔌</div>
           <div class="req-step-content">
             <strong>Check Connected Load (KW)</strong>
-            <span>Har 6 KW Load par = 1 Card</span>
+            <span>1 Card per 6 KW Load</span>
           </div>
         </div>
         <div class="req-guide-arrow">➔</div>
@@ -1698,7 +1787,7 @@
           <div class="req-step-icon">🧾</div>
           <div class="req-step-content">
             <strong>Check Monthly Bill (₹)</strong>
-            <span>Har ₹6,000 Bill par = 1 Card</span>
+            <span>1 Card per ₹6,000 Bill</span>
           </div>
         </div>
         <div class="req-guide-arrow">➔</div>
@@ -1706,8 +1795,8 @@
           <div class="req-step-num">Step 3</div>
           <div class="req-step-icon">⚖️</div>
           <div class="req-step-content">
-            <strong>Pick HIGHER Card Result</strong>
-            <span>Jisme zyaada cards aayein + 1 for 3-Phase</span>
+            <strong>Select Higher Card Count</strong>
+            <span>Pick Higher Requirement +1 for 3-Phase</span>
           </div>
         </div>
       </div>
@@ -1794,7 +1883,7 @@
               <div class="req-ex-why-box">
                 <div class="req-why-icon">✅</div>
                 <p class="req-why-text">
-                  <strong>Why 3 Cards?</strong> 5 KW load k hisab se 1 Card banta hai, lekin ₹18,000 bill k hisab se 3 Cards bante hain. Golden Rule ke mutabiq <strong>Higher Value (3 Cards)</strong> select hoga.
+                  <strong>Why 3 Cards?</strong> The 5 KW connected load requires 1 Card, whereas the ₹18,000 monthly bill requires 3 Cards. Following the Golden Rule, the higher requirement <strong>(3 Cards)</strong> is selected.
                 </p>
               </div>
             </div>
@@ -1865,7 +1954,7 @@
               <div class="req-ex-why-box">
                 <div class="req-why-icon">✅</div>
                 <p class="req-why-text">
-                  <strong>Why 3 Cards?</strong> 15 KW load k hisab se 3 Cards bante hain, jabki ₹10,000 bill k hisab se 2 Cards bante hain. Golden Rule ke mutabiq <strong>Higher Value (3 Cards)</strong> select hoga.
+                  <strong>Why 3 Cards?</strong> The 15 KW connected load requires 3 Cards, whereas the ₹10,000 monthly bill requires 2 Cards. Following the Golden Rule, the higher requirement <strong>(3 Cards)</strong> is selected.
                 </p>
               </div>
             </div>
@@ -1943,7 +2032,7 @@
               <div class="req-ex-why-box">
                 <div class="req-why-icon">✅</div>
                 <p class="req-why-text">
-                  <strong>Why 4 Cards?</strong> 10 KW load k hisab se 2 Cards bante hain, lekin ₹24,000 bill k hisab se 4 Cards bante hain. Golden Rule ke mutabiq <strong>Higher Value (4 Cards)</strong> select hoga.
+                  <strong>Why 4 Cards?</strong> The 10 KW connected load requires 2 Cards, whereas the ₹24,000 monthly bill requires 4 Cards. Following the Golden Rule, the higher requirement <strong>(4 Cards)</strong> is selected.
                 </p>
               </div>
             </div>
@@ -2014,7 +2103,7 @@
               <div class="req-ex-why-box">
                 <div class="req-why-icon">✅</div>
                 <p class="req-why-text">
-                  <strong>Why 6 Cards?</strong> 35 KW load k hisab se 6 Cards bante hain, jabki ₹29,000 bill k hisab se 5 Cards bante hain. Golden Rule ke mutabiq <strong>Higher Value (6 Cards)</strong> select hoga.
+                  <strong>Why 6 Cards?</strong> The 35 KW connected load requires 6 Cards, whereas the ₹29,000 monthly bill requires 5 Cards. Following the Golden Rule, the higher requirement <strong>(6 Cards)</strong> is selected.
                 </p>
               </div>
             </div>
@@ -2092,7 +2181,7 @@
               <div class="req-ex-why-box">
                 <div class="req-why-icon">✅</div>
                 <p class="req-why-text">
-                  <strong>Why 40 Cards?</strong> 90 KW load k hisab se 15 Cards bante hain, lekin ₹2,40,000 bill k hisab se 40 Cards bante hain. Golden Rule ke mutabiq <strong>Higher Value (40 Cards)</strong> select hoga.
+                  <strong>Why 40 Cards?</strong> The 90 KW industrial load requires 15 Cards, whereas the ₹2,40,000 monthly bill requires 40 Cards. Following the Golden Rule, the higher requirement <strong>(40 Cards)</strong> is selected.
                 </p>
               </div>
             </div>
@@ -2163,7 +2252,7 @@
               <div class="req-ex-why-box">
                 <div class="req-why-icon">✅</div>
                 <p class="req-why-text">
-                  <strong>Why 30 Cards?</strong> 180 KW load k hisab se 30 Cards bante hain, jabki ₹1,20,000 bill k hisab se 20 Cards bante hain. Golden Rule ke mutabiq <strong>Higher Value (30 Cards)</strong> select hoga.
+                  <strong>Why 30 Cards?</strong> The 180 KW industrial load requires 30 Cards, whereas the ₹1,20,000 monthly bill requires 20 Cards. Following the Golden Rule, the higher requirement <strong>(30 Cards)</strong> is selected.
                 </p>
               </div>
             </div>
