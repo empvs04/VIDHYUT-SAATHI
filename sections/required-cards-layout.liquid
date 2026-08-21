@@ -787,7 +787,16 @@
 .vscc .rule-box b { color: var(--orange); }
 
 /* ---- EXAMPLES ---- */
-.vscc .tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+.vscc #vscc-examples .sec-head {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+.vscc #vscc-examples .sec-head p.desc {
+  margin-left: auto;
+  margin-right: auto;
+}
+.vscc .tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; justify-content: center; }
 .vscc .tab-btn {
   padding: 11px 18px; border-radius: 999px;
   border: 1.5px solid var(--line);
@@ -1151,13 +1160,13 @@
   <!-- WORKED EXAMPLES -->
   <section class="sec" id="vscc-examples">
     <div class="wrap">
-      <div class="sec-head">
+      <div class="sec-head" style="text-align:center;margin-left:auto;margin-right:auto;">
         <div class="sec-eyebrow">Worked Examples</div>
         <h2>See the logic in action</h2>
-        <p class="desc">Real scenarios where KW-based and bill-based counts disagree — and why we always go with the larger one.</p>
+        <p class="desc" style="margin-left:auto;margin-right:auto;">Real scenarios where KW-based and bill-based counts disagree — and why we always go with the larger one.</p>
       </div>
 
-      <div class="tabs">
+      <div class="tabs" style="justify-content:center;">
         <button class="tab-btn active" data-vscc-tab="res">🏠 Residential</button>
         <button class="tab-btn" data-vscc-tab="com">🏢 Commercial</button>
         <button class="tab-btn" data-vscc-tab="ind">🏭 Industrial</button>
