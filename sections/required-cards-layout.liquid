@@ -500,26 +500,18 @@
     text-align: center;
   }
 
-  /* Continuous 3D Holographic Swing & Float Animation (Text/Picture Never Mirrors) */
-  @keyframes card3DSwing {
+  /* Continuous 360° 3D Double-Sided Spin Animation (Upright Image & Text) */
+  @keyframes rotate360Card {
     0% {
-      transform: perspective(1000px) rotateY(0deg) rotateX(0deg) translateY(0px);
+      transform: perspective(1000px) rotateY(0deg) translateY(0px);
       box-shadow: 0 15px 35px rgba(241, 112, 34, 0.18);
-    }
-    25% {
-      transform: perspective(1000px) rotateY(22deg) rotateX(4deg) translateY(-8px);
-      box-shadow: 14px 25px 45px rgba(241, 112, 34, 0.28);
     }
     50% {
-      transform: perspective(1000px) rotateY(0deg) rotateX(0deg) translateY(0px);
-      box-shadow: 0 15px 35px rgba(241, 112, 34, 0.18);
-    }
-    75% {
-      transform: perspective(1000px) rotateY(-22deg) rotateX(-4deg) translateY(-8px);
-      box-shadow: -14px 25px 45px rgba(241, 112, 34, 0.28);
+      transform: perspective(1000px) rotateY(180deg) translateY(-8px);
+      box-shadow: 0 25px 45px rgba(241, 112, 34, 0.28);
     }
     100% {
-      transform: perspective(1000px) rotateY(0deg) rotateX(0deg) translateY(0px);
+      transform: perspective(1000px) rotateY(360deg) translateY(0px);
       box-shadow: 0 15px 35px rgba(241, 112, 34, 0.18);
     }
   }
@@ -527,24 +519,47 @@
   .req-card-thumb-wrapper {
     width: 100%;
     max-width: 320px;
+    height: 200px;
     border-radius: 18px;
-    overflow: hidden;
     box-shadow: 0 15px 35px rgba(241, 112, 34, 0.18);
     border: 2.5px solid #F17022;
     margin-bottom: 18px;
+    position: relative;
     transform-style: preserve-3d;
-    animation: card3DSwing 5s ease-in-out infinite;
+    animation: rotate360Card 7s linear infinite;
     transition: transform 0.4s ease, box-shadow 0.4s ease;
   }
   .req-card-thumb-wrapper:hover {
     animation-play-state: paused;
-    transform: perspective(1000px) scale(1.06) rotateY(0deg) rotateX(0deg);
+    transform: perspective(1000px) scale(1.06) rotateY(0deg);
     box-shadow: 0 30px 55px rgba(241, 112, 34, 0.35);
   }
-  .req-card-thumb-wrapper img {
+
+  /* Double-Sided 3D Card Faces (Front & Back Upright) */
+  .req-card-face {
     width: 100%;
-    height: auto;
+    height: 100%;
+    border-radius: 15px;
+    overflow: hidden;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .req-card-face img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     display: block;
+  }
+  .req-card-front {
+    z-index: 2;
+    transform: rotateY(0deg);
+  }
+  .req-card-back {
+    z-index: 1;
+    transform: rotateY(180deg);
   }
 
   .req-savings-tag {
@@ -845,6 +860,31 @@
   @keyframes fadeInPanel {
     from { opacity: 0; transform: translateY(8px); }
     to { opacity: 1; transform: translateY(0); }
+  }
+
+  .req-mobile-swipe-hint {
+    display: none;
+    text-align: center;
+    margin-bottom: 14px;
+  }
+  @media (max-width: 768px) {
+    .req-mobile-swipe-hint {
+      display: flex;
+      justify-content: center;
+    }
+    .req-mobile-swipe-hint span {
+      background: #FFF7ED;
+      border: 1.5px solid #F17022;
+      color: #F17022;
+      font-size: 0.78rem;
+      font-weight: 800;
+      padding: 6px 18px;
+      border-radius: 50px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 4px 15px rgba(241, 112, 34, 0.12);
+    }
   }
 
   /* Practical Example Cards Layout */
@@ -1231,8 +1271,28 @@
       font-size: 0.85rem !important;
       white-space: nowrap !important;
     }
+    /* Mobile Touch Slider / Carousel for Example Cards */
+    .req-examples-grid {
+      display: flex !important;
+      flex-direction: row !important;
+      overflow-x: auto !important;
+      scroll-snap-type: x mandatory !important;
+      -webkit-overflow-scrolling: touch !important;
+      gap: 16px !important;
+      padding: 10px 16px 20px 16px !important;
+      margin-left: -12px !important;
+      margin-right: -12px !important;
+    }
+    .req-examples-grid::-webkit-scrollbar {
+      display: none;
+    }
     .req-example-card {
-      border-radius: 18px !important;
+      flex: 0 0 88% !important;
+      max-width: 88% !important;
+      scroll-snap-align: center !important;
+      margin-bottom: 0 !important;
+      border-radius: 20px !important;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08) !important;
     }
     .req-ex-header {
       padding: 12px 16px !important;
@@ -1438,7 +1498,12 @@
             <div class="req-info-visual-right">
               <div class="req-card-thumb-wrapper">
                 {%- assign saver_card_img = 'vidhyut-power-saver-card.jpg' | asset_url -%}
-                <img src="{{ saver_card_img }}" alt="1 Vidhyut Saathi Card Showcase" loading="lazy">
+                <div class="req-card-face req-card-front">
+                  <img src="{{ saver_card_img }}" alt="1 Vidhyut Saathi Card Showcase Front" loading="lazy">
+                </div>
+                <div class="req-card-face req-card-back">
+                  <img src="{{ saver_card_img }}" alt="1 Vidhyut Saathi Card Showcase Back" loading="lazy">
+                </div>
               </div>
               <div class="req-savings-tag">💰 Monthly Bill Savings: 20% – 30%</div>
               <a href="/products/vidhyut-saathi-card" class="req-tab-order-btn">Order 1 Card Now &rarr;</a>
@@ -1483,7 +1548,12 @@
             <div class="req-info-visual-right">
               <div class="req-card-thumb-wrapper">
                 {%- assign saver_card_img = 'vidhyut-power-saver-card.jpg' | asset_url -%}
-                <img src="{{ saver_card_img }}" alt="2 Vidhyut Saathi Cards Showcase" loading="lazy">
+                <div class="req-card-face req-card-front">
+                  <img src="{{ saver_card_img }}" alt="2 Vidhyut Saathi Cards Showcase Front" loading="lazy">
+                </div>
+                <div class="req-card-face req-card-back">
+                  <img src="{{ saver_card_img }}" alt="2 Vidhyut Saathi Cards Showcase Back" loading="lazy">
+                </div>
               </div>
               <div class="req-savings-tag">💰 Monthly Bill Savings: 20% – 30%</div>
               <a href="/products/vidhyut-saathi-card" class="req-tab-order-btn">Order 2 Cards Pack &rarr;</a>
@@ -1528,7 +1598,12 @@
             <div class="req-info-visual-right">
               <div class="req-card-thumb-wrapper">
                 {%- assign saver_card_img = 'vidhyut-power-saver-card.jpg' | asset_url -%}
-                <img src="{{ saver_card_img }}" alt="3 Vidhyut Saathi Cards Showcase" loading="lazy">
+                <div class="req-card-face req-card-front">
+                  <img src="{{ saver_card_img }}" alt="3 Vidhyut Saathi Cards Showcase Front" loading="lazy">
+                </div>
+                <div class="req-card-face req-card-back">
+                  <img src="{{ saver_card_img }}" alt="3 Vidhyut Saathi Cards Showcase Back" loading="lazy">
+                </div>
               </div>
               <div class="req-savings-tag">💰 Monthly Bill Savings: 20% – 30%</div>
               <a href="/products/vidhyut-saathi-card" class="req-tab-order-btn">Order 3 Cards Pack &rarr;</a>
@@ -1573,7 +1648,12 @@
             <div class="req-info-visual-right">
               <div class="req-card-thumb-wrapper">
                 {%- assign saver_card_img = 'vidhyut-power-saver-card.jpg' | asset_url -%}
-                <img src="{{ saver_card_img }}" alt="4 Vidhyut Saathi Cards Showcase" loading="lazy">
+                <div class="req-card-face req-card-front">
+                  <img src="{{ saver_card_img }}" alt="4 Vidhyut Saathi Cards Showcase Front" loading="lazy">
+                </div>
+                <div class="req-card-face req-card-back">
+                  <img src="{{ saver_card_img }}" alt="4 Vidhyut Saathi Cards Showcase Back" loading="lazy">
+                </div>
               </div>
               <div class="req-savings-tag">💰 Monthly Bill Savings: 20% – 30%</div>
               <a href="/products/vidhyut-saathi-card" class="req-tab-order-btn">Order 4 Cards Pack &rarr;</a>
@@ -1618,7 +1698,12 @@
             <div class="req-info-visual-right">
               <div class="req-card-thumb-wrapper">
                 {%- assign saver_card_img = 'vidhyut-power-saver-card.jpg' | asset_url -%}
-                <img src="{{ saver_card_img }}" alt="5 Vidhyut Saathi Cards Showcase" loading="lazy">
+                <div class="req-card-face req-card-front">
+                  <img src="{{ saver_card_img }}" alt="5 Vidhyut Saathi Cards Showcase Front" loading="lazy">
+                </div>
+                <div class="req-card-face req-card-back">
+                  <img src="{{ saver_card_img }}" alt="5 Vidhyut Saathi Cards Showcase Back" loading="lazy">
+                </div>
               </div>
               <div class="req-savings-tag">💰 Monthly Bill Savings: 20% – 30%</div>
               <a href="/products/vidhyut-saathi-card" class="req-tab-order-btn">Order 5 Cards Pack &rarr;</a>
@@ -1663,7 +1748,12 @@
             <div class="req-info-visual-right">
               <div class="req-card-thumb-wrapper">
                 {%- assign saver_card_img = 'vidhyut-power-saver-card.jpg' | asset_url -%}
-                <img src="{{ saver_card_img }}" alt="6 Vidhyut Saathi Cards Showcase" loading="lazy">
+                <div class="req-card-face req-card-front">
+                  <img src="{{ saver_card_img }}" alt="6 Vidhyut Saathi Cards Showcase Front" loading="lazy">
+                </div>
+                <div class="req-card-face req-card-back">
+                  <img src="{{ saver_card_img }}" alt="6 Vidhyut Saathi Cards Showcase Back" loading="lazy">
+                </div>
               </div>
               <div class="req-savings-tag">💰 Monthly Bill Savings: 20% – 30%</div>
               <a href="/products/vidhyut-saathi-card" class="req-tab-order-btn">Order 6 Cards Pack &rarr;</a>
@@ -1725,7 +1815,12 @@
             <div class="req-info-visual-right">
               <div class="req-card-thumb-wrapper">
                 {%- assign saver_card_img = 'vidhyut-power-saver-card.jpg' | asset_url -%}
-                <img src="{{ saver_card_img }}" alt="7-10 Cards Pack Showcase" loading="lazy">
+                <div class="req-card-face req-card-front">
+                  <img src="{{ saver_card_img }}" alt="7-10 Cards Pack Showcase Front" loading="lazy">
+                </div>
+                <div class="req-card-face req-card-back">
+                  <img src="{{ saver_card_img }}" alt="7-10 Cards Pack Showcase Back" loading="lazy">
+                </div>
               </div>
               <div class="req-savings-tag">💰 Commercial Savings: 20% – 30%</div>
               <a href="/pages/contact" class="req-tab-order-btn">Order Commercial Pack &rarr;</a>
@@ -1771,7 +1866,12 @@
             <div class="req-info-visual-right">
               <div class="req-card-thumb-wrapper">
                 {%- assign saver_card_img = 'vidhyut-power-saver-card.jpg' | asset_url -%}
-                <img src="{{ saver_card_img }}" alt="Industrial Cards Pack Showcase" loading="lazy">
+                <div class="req-card-face req-card-front">
+                  <img src="{{ saver_card_img }}" alt="Industrial Cards Pack Showcase Front" loading="lazy">
+                </div>
+                <div class="req-card-face req-card-back">
+                  <img src="{{ saver_card_img }}" alt="Industrial Cards Pack Showcase Back" loading="lazy">
+                </div>
               </div>
               <div class="req-savings-tag">💰 Industrial Savings: 20% – 30%</div>
               <a href="/pages/contact" class="req-tab-order-btn">Consult Industrial Specialist &rarr;</a>
@@ -1844,6 +1944,9 @@
 
       <!-- SECTOR 1 PANEL: RESIDENTIAL EXAMPLES (GREEN THEME) -->
       <div class="req-sector-panel req-theme-green active" id="sector-residential">
+        <div class="req-mobile-swipe-hint">
+          <span>👉 Swipe left / right to compare scenarios</span>
+        </div>
         <div class="req-examples-grid">
           
           <!-- Residential Example 1 -->
@@ -1993,6 +2096,9 @@
 
       <!-- SECTOR 2 PANEL: COMMERCIAL EXAMPLES (ORANGE THEME) -->
       <div class="req-sector-panel req-theme-orange" id="sector-commercial">
+        <div class="req-mobile-swipe-hint">
+          <span>👉 Swipe left / right to compare scenarios</span>
+        </div>
         <div class="req-examples-grid">
           
           <!-- Commercial Example 1 -->
@@ -2142,6 +2248,9 @@
 
       <!-- SECTOR 3 PANEL: INDUSTRIAL EXAMPLES (BLUE THEME) -->
       <div class="req-sector-panel req-theme-blue" id="sector-industrial">
+        <div class="req-mobile-swipe-hint">
+          <span>👉 Swipe left / right to compare scenarios</span>
+        </div>
         <div class="req-examples-grid">
           
           <!-- Industrial Example 1 -->
