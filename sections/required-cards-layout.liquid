@@ -890,6 +890,59 @@
     }
   }
 
+  /* Scenario Slider Dots Navigation (Mobile & Desktop) */
+  .req-slider-dots-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 22px;
+  }
+  .req-slider-dot {
+    padding: 9px 20px;
+    background: #FFFFFF;
+    border: 2px solid #E2E8F0;
+    border-radius: 50px;
+    color: #475569;
+    font-size: 0.88rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: inherit;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+  }
+  .req-slider-dot:hover {
+    border-color: #F17022;
+    color: #F17022;
+  }
+  .req-slider-dot .req-dot-num {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #E2E8F0;
+    color: #1e293b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.76rem;
+    font-weight: 900;
+    transition: all 0.3s ease;
+  }
+  .req-slider-dot.active {
+    background: #FFF7ED;
+    border-color: #F17022;
+    color: #F17022;
+    box-shadow: 0 8px 25px rgba(241, 112, 34, 0.2);
+    transform: translateY(-2px);
+  }
+  .req-slider-dot.active .req-dot-num {
+    background: #F17022;
+    color: #ffffff;
+  }
+
   /* Practical Example Cards Layout */
   .req-examples-grid {
     display: flex;
@@ -2214,6 +2267,19 @@
           </div>
 
         </div>
+
+        <!-- Scenario Pagination Dots Navigation -->
+        <div class="req-slider-dots-wrapper">
+          <button class="req-slider-dot active" data-index="0" aria-label="View Scenario 1">
+            <span class="req-dot-num">1</span>
+            <span class="req-dot-label">Scenario 1</span>
+          </button>
+          <button class="req-slider-dot" data-index="1" aria-label="View Scenario 2">
+            <span class="req-dot-num">2</span>
+            <span class="req-dot-label">Scenario 2</span>
+          </button>
+        </div>
+
       </div>
 
       <!-- SECTOR 2 PANEL: COMMERCIAL EXAMPLES (ORANGE THEME) -->
@@ -2366,6 +2432,19 @@
           </div>
 
         </div>
+
+        <!-- Scenario Pagination Dots Navigation -->
+        <div class="req-slider-dots-wrapper">
+          <button class="req-slider-dot active" data-index="0" aria-label="View Scenario 1">
+            <span class="req-dot-num">1</span>
+            <span class="req-dot-label">Scenario 1</span>
+          </button>
+          <button class="req-slider-dot" data-index="1" aria-label="View Scenario 2">
+            <span class="req-dot-num">2</span>
+            <span class="req-dot-label">Scenario 2</span>
+          </button>
+        </div>
+
       </div>
 
       <!-- SECTOR 3 PANEL: INDUSTRIAL EXAMPLES (BLUE THEME) -->
@@ -2518,6 +2597,19 @@
           </div>
 
         </div>
+
+        <!-- Scenario Pagination Dots Navigation -->
+        <div class="req-slider-dots-wrapper">
+          <button class="req-slider-dot active" data-index="0" aria-label="View Scenario 1">
+            <span class="req-dot-num">1</span>
+            <span class="req-dot-label">Scenario 1</span>
+          </button>
+          <button class="req-slider-dot" data-index="1" aria-label="View Scenario 2">
+            <span class="req-dot-num">2</span>
+            <span class="req-dot-label">Scenario 2</span>
+          </button>
+        </div>
+
       </div>
 
       <!-- Sector Bottom Fixed Rule Banner -->
@@ -2565,6 +2657,43 @@ document.addEventListener('DOMContentLoaded', function() {
       if (targetSectorPanel) {
         targetSectorPanel.classList.add('active');
       }
+    });
+  });
+
+  // Scenario Slider Dots Click & Live Scroll Sync
+  const sectorPanelList = document.querySelectorAll('.req-sector-panel');
+
+  sectorPanelList.forEach(panel => {
+    const grid = panel.querySelector('.req-examples-grid');
+    const dots = panel.querySelectorAll('.req-slider-dot');
+    if (!grid || !dots.length) return;
+
+    // Click dot to scroll to scenario
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        const targetIndex = parseInt(dot.getAttribute('data-index'), 10) || 0;
+        const cardWidth = grid.clientWidth;
+        grid.scrollTo({
+          left: targetIndex * cardWidth,
+          behavior: 'smooth'
+        });
+        dots.forEach(d => d.classList.remove('active'));
+        dot.classList.add('active');
+      });
+    });
+
+    // Update dot active state on grid scroll
+    grid.addEventListener('scroll', () => {
+      const cardWidth = grid.clientWidth;
+      if (!cardWidth) return;
+      const activeIdx = Math.round(grid.scrollLeft / cardWidth);
+      dots.forEach((d, idx) => {
+        if (idx === activeIdx) {
+          d.classList.add('active');
+        } else {
+          d.classList.remove('active');
+        }
+      });
     });
   });
 
