@@ -1,104 +1,76 @@
 {%- style -%}
-  /* ==========================================================================
-     REQUIRED CARDS LAYOUT — OFFICIAL 'WHY VIDHYUT SAATHI' LIGHT BRAND THEME
-     ========================================================================== */
+  /* --- Global & Variables --- */
   :root {
-    --req-primary: {{ section.settings.primary_color | default: '#F17022' }};
-    --req-secondary: #009A44;
-    --req-bg: {{ section.settings.bg_color | default: '#FFFFFF' }};
-    --req-text-dark: #111111;
-    --req-text-light: #475569;
+    --req-primary: {{ section.settings.primary_color | default: '#ec5c0a' }};
+    --req-secondary: #007b3e;
+    --req-bg: {{ section.settings.bg_color | default: '#fff8ef' }};
+    --req-text-dark: #0f172a;
+    --req-text-light: #334155;
     --req-radius: 20px;
-    --req-shadow: 0 16px 45px rgba(241, 112, 34, 0.08);
-    --req-shadow-hover: 0 25px 55px rgba(241, 112, 34, 0.16);
-    --req-border: rgba(241, 112, 34, 0.2);
+    --req-shadow: 0 16px 45px rgba(0, 0, 0, 0.08);
+    --req-shadow-hover: 0 25px 55px rgba(236, 92, 10, 0.16);
+    --req-border: rgba(236, 92, 10, 0.2);
   }
   
   .req-wrapper {
     font-family: 'Plus Jakarta Sans', 'Outfit', 'Inter', sans-serif;
     color: var(--req-text-dark);
-    background: #FFFFFF;
-    position: relative;
+    background: radial-gradient(circle at 50% 0%, rgba(236, 92, 10, 0.06) 0%, #ffffff 45%, rgba(0, 123, 62, 0.05) 100%);
     overflow: hidden;
   }
 
-  /* ==========================================
-     SECTION 1: HERO HEADER & MASTER ESTIMATION MATRIX
-     ========================================== */
+  /* --- Section 1: Hero Header & Master Calculation Matrix --- */
   .req-hero-section {
     position: relative;
-    padding: clamp(45px, 6vw, 80px) 20px 50px 20px;
-    background: #FFFFFF;
-    color: #111111;
+    padding: clamp(50px, 7vw, 90px) 20px 60px 20px;
+    background: linear-gradient(135deg, #090e1a 0%, #151d30 50%, #0d1527 100%);
+    color: #ffffff;
     overflow: hidden;
-    border-bottom: 3px solid #F17022;
-    box-shadow: 0 10px 40px rgba(241, 112, 34, 0.08);
+    border-bottom: 3px solid rgba(255, 204, 0, 0.4);
   }
 
-  /* Vibrant Background Glow Orbs */
-  .req-hero-orb-1 {
-    position: absolute;
-    top: -140px;
-    left: -100px;
-    width: 480px;
-    height: 480px;
-    background: radial-gradient(circle, rgba(241, 112, 34, 0.12) 0%, rgba(255, 255, 255, 0) 70%);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 1;
-  }
-  .req-hero-orb-2 {
-    position: absolute;
-    bottom: -150px;
-    right: -100px;
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, rgba(0, 154, 68, 0.12) 0%, rgba(255, 255, 255, 0) 70%);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 1;
-  }
-
-  /* Moving Marquee Text */
+  /* Left to Right Moving Marquee Text */
   @keyframes scroll-left-to-right {
     0% { transform: translateX(-50%) translateY(0); }
     100% { transform: translateX(50%) translateY(0); }
   }
   .req-moving-text {
     position: absolute;
-    top: 25px;
+    top: 30px;
     left: 0;
     white-space: nowrap;
     z-index: 1;
-    opacity: 0.08;
+    opacity: 0.35;
     pointer-events: none;
     line-height: 1;
     font-size: clamp(36px, 5.5vw, 85px);
     font-weight: 900;
-    background: linear-gradient(90deg, #F17022, #009A44, #FB5900, #F17022);
+    background: linear-gradient(90deg, #ec5c0a, #ff9900, #007b3e, #ec5c0a);
     background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: scroll-left-to-right 20s linear infinite;
+    animation: scroll-left-to-right 18s linear infinite;
   }
 
   .hero-breadcrumb-pill {
     position: relative;
     z-index: 2;
-    background: #FFFFFF;
-    border: 2px solid rgba(241, 112, 34, 0.3);
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 204, 0, 0.5);
     border-radius: 50px;
     padding: 8px 24px;
-    box-shadow: 0 8px 25px rgba(241, 112, 34, 0.1);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.5);
     display: inline-flex;
     align-items: center;
     gap: 12px;
     margin-bottom: 20px;
   }
   .hero-breadcrumb-pill span, .hero-breadcrumb-pill a {
-    color: #334155;
+    color: #ffffff;
     font-size: 0.92rem;
-    font-weight: 700;
+    font-weight: 600;
     text-decoration: none;
   }
 
@@ -112,7 +84,7 @@
   .req-hero-header {
     text-align: center;
     max-width: 900px;
-    margin: 0 auto 35px auto;
+    margin: 0 auto 40px auto;
   }
 
   .req-badge-top {
@@ -120,43 +92,42 @@
     align-items: center;
     gap: 8px;
     padding: 8px 22px;
-    background: #FFFFFF;
-    border: 2px solid #F17022;
+    background: linear-gradient(90deg, rgba(236, 92, 10, 0.25), rgba(0, 123, 62, 0.25));
+    border: 1px solid rgba(255, 204, 0, 0.6);
     border-radius: 50px;
-    color: #F17022;
+    color: #ffcc00;
     font-size: 0.88rem;
     font-weight: 800;
     letter-spacing: 1px;
     text-transform: uppercase;
     margin-bottom: 16px;
-    box-shadow: 0 6px 20px rgba(241, 112, 34, 0.12);
+    box-shadow: 0 6px 20px rgba(255, 204, 0, 0.15);
   }
   .req-badge-top .pulse-dot {
     width: 8px;
     height: 8px;
-    background-color: #009A44;
+    background-color: #00ff66;
     border-radius: 50%;
-    box-shadow: 0 0 0 0 rgba(0, 154, 68, 0.7);
+    box-shadow: 0 0 0 0 rgba(0, 255, 102, 0.7);
     animation: pulse-ring 1.8s infinite;
   }
   @keyframes pulse-ring {
-    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 154, 68, 0.7); }
-    70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(0, 154, 68, 0); }
-    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 154, 68, 0); }
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 255, 102, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(0, 255, 102, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 255, 102, 0); }
   }
 
   .req-hero-header h1 {
-    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
     font-size: clamp(2.4rem, 5vw, 3.8rem);
     font-weight: 900;
     margin-bottom: 14px;
-    color: #111111;
+    color: #ffffff;
     line-height: 1.2;
     letter-spacing: -0.5px;
   }
 
   .req-hero-header h1 span {
-    background: linear-gradient(90deg, #F17022, #009A44);
+    background: linear-gradient(90deg, #ffcc00, #ec5c0a, #00ff66);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
@@ -164,23 +135,23 @@
   .req-hero-subheading {
     font-size: clamp(1.02rem, 2vw, 1.18rem);
     line-height: 1.7;
-    color: #475569;
+    color: #cbd5e1;
     max-width: 820px;
     margin: 0 auto;
   }
 
   /* --- Golden Rule Box --- */
   .req-golden-banner {
-    background: linear-gradient(135deg, #FFF8EF 0%, #FFFFFF 60%, #FFF3E5 100%);
-    border: 2.5px solid #F17022;
-    border-radius: 22px;
+    background: linear-gradient(135deg, rgba(236, 92, 10, 0.25), rgba(0, 123, 62, 0.25));
+    border: 2px solid #ffcc00;
+    border-radius: 20px;
     padding: 20px 24px;
     margin-bottom: 35px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 20px;
-    box-shadow: 0 14px 40px rgba(241, 112, 34, 0.14);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
     flex-wrap: wrap;
   }
   .req-golden-text {
@@ -193,39 +164,41 @@
     flex-shrink: 0;
   }
   .req-golden-info h3 {
-    color: #F17022;
+    color: #ffcc00;
     font-weight: 900;
     font-size: 1.15rem;
     margin: 0 0 4px 0;
   }
   .req-golden-info p {
-    color: #334155;
+    color: #ffffff;
     font-size: 0.96rem;
     margin: 0;
-    line-height: 1.55;
+    line-height: 1.5;
   }
   .req-golden-info strong {
-    color: #009A44;
+    color: #00ff66;
     font-weight: 900;
   }
   .req-golden-pill {
-    padding: 10px 20px;
-    background: linear-gradient(135deg, #F17022 0%, #FB5900 100%);
-    color: #FFFFFF;
+    padding: 8px 18px;
+    background: #ffcc00;
+    color: #000000;
     font-weight: 900;
     font-size: 0.88rem;
     border-radius: 50px;
     white-space: nowrap;
-    box-shadow: 0 6px 20px rgba(241, 112, 34, 0.3);
+    box-shadow: 0 6px 18px rgba(255, 204, 0, 0.3);
   }
 
-  /* --- Master Visual Requirement Table Stage --- */
+  /* --- Section 1: Master Visual Requirement Table --- */
   .req-table-stage {
-    background: #FFFFFF;
-    border: 2px solid rgba(241, 112, 34, 0.25);
+    background: rgba(15, 23, 42, 0.9);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 2px solid rgba(255, 204, 0, 0.4);
     border-radius: 24px;
     padding: 24px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.6);
     margin-bottom: 40px;
   }
 
@@ -233,7 +206,7 @@
     display: grid;
     grid-template-columns: 1.2fr 1.3fr 1fr 1fr;
     gap: 12px;
-    background: linear-gradient(135deg, #F17022 0%, #009A44 100%);
+    background: linear-gradient(135deg, #ec5c0a, #007b3e);
     border-radius: 16px;
     padding: 16px 20px;
     color: #ffffff;
@@ -243,7 +216,7 @@
     letter-spacing: 0.5px;
     text-align: center;
     margin-bottom: 14px;
-    box-shadow: 0 8px 25px rgba(241, 112, 34, 0.25);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
   }
 
   .req-table-rows-container {
@@ -256,26 +229,25 @@
     display: grid;
     grid-template-columns: 1.2fr 1.3fr 1fr 1fr;
     gap: 12px;
-    background: #FFFFFF;
-    border: 1.5px solid #E2E8F0;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 14px;
     padding: 14px 20px;
     align-items: center;
     text-align: center;
     transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
   }
   .req-table-row-card:hover {
-    background: #FFF7ED;
-    border-color: #F17022;
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(241, 112, 34, 0.15);
+    background: rgba(236, 92, 10, 0.18);
+    border-color: #ffcc00;
+    transform: scale(1.01);
+    box-shadow: 0 10px 25px rgba(236, 92, 10, 0.25);
   }
 
   .req-col-kw {
     font-size: 1.05rem;
     font-weight: 900;
-    color: #009A44;
+    color: #00ff66;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -284,263 +256,230 @@
   .req-col-bill {
     font-size: 0.98rem;
     font-weight: 800;
-    color: #111111;
+    color: #ffffff;
   }
   .req-col-1phase {
     font-size: 1.05rem;
     font-weight: 900;
-    color: #009A44;
-    background: #E6F4EA;
+    color: #ffcc00;
+    background: rgba(255, 204, 0, 0.12);
     padding: 6px 12px;
     border-radius: 10px;
-    border: 1.5px solid rgba(0, 154, 68, 0.3);
+    border: 1px solid rgba(255, 204, 0, 0.3);
   }
   .req-col-3phase {
     font-size: 1.05rem;
     font-weight: 900;
-    color: #F17022;
-    background: #FFF7ED;
+    color: #ff5500;
+    background: rgba(236, 92, 10, 0.2);
     padding: 6px 12px;
     border-radius: 10px;
-    border: 1.5px solid rgba(241, 112, 34, 0.4);
+    border: 1px solid rgba(236, 92, 10, 0.4);
   }
 
-  /* --- Vidhyut Saathi 3D Card Info Showcase Stage --- */
-  .req-card-info-stage {
-    background: linear-gradient(135deg, #FFF7ED 0%, #FFFFFF 60%, #EFF6FF 100%);
-    border: 2.5px solid #F17022;
-    border-radius: 24px;
-    padding: 30px;
-    box-shadow: 0 20px 50px rgba(241, 112, 34, 0.12);
-    display: grid;
-    grid-template-columns: 1fr 340px;
-    gap: 30px;
-    align-items: center;
-    margin-top: 40px;
-  }
-  @media (max-width: 992px) {
-    .req-card-info-stage { grid-template-columns: 1fr; }
+  /* --- Real Scenario Highlight Card (User's Exact Example) --- */
+  .req-example-spotlight {
+    background: linear-gradient(135deg, rgba(0, 123, 62, 0.2), rgba(236, 92, 10, 0.2));
+    border: 2px solid #00ff66;
+    border-radius: 22px;
+    padding: 26px 30px;
+    box-shadow: 0 20px 50px rgba(0, 255, 102, 0.15);
+    margin-top: 20px;
   }
 
-  .req-card-info-dashboard {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-  }
-  .req-spec-box {
-    background: #FFFFFF;
-    border: 1.5px solid #E2E8F0;
-    border-radius: 16px;
-    padding: 16px;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
-  }
-  .req-spec-box.spec-green { border-color: #009A44; background: #E6F4EA; }
-  .req-spec-box.spec-orange { border-color: #F17022; background: #FFF7ED; }
-  .req-spec-box.spec-blue { border-color: #2563EB; background: #EFF6FF; }
-  .req-spec-box span { display: block; font-size: 0.8rem; font-weight: 800; color: #475569; text-transform: uppercase; }
-  .req-spec-box strong { display: block; font-size: 1.15rem; font-weight: 900; color: #111111; margin-top: 4px; }
-
-  /* 3D Spinning Saver Card */
-  @keyframes rotate360Card {
-    0% { transform: translateY(0px) rotateY(0deg) rotateZ(0deg); }
-    50% { transform: translateY(-12px) rotateY(180deg) rotateZ(2deg); }
-    100% { transform: translateY(0px) rotateY(360deg) rotateZ(0deg); }
-  }
-  .req-card-thumb-wrapper {
-    perspective: 1000px;
-    width: 240px;
-    height: 340px;
-    margin: 0 auto;
-    position: relative;
-  }
-  .req-3d-card-inner {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transform-style: preserve-3d;
-    animation: rotate360Card 12s infinite ease-in-out;
-  }
-  .req-card-face {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    border-radius: 18px;
-    overflow: hidden;
-    box-shadow: 0 20px 45px rgba(241, 112, 34, 0.35);
-    border: 2px solid #F17022;
-  }
-  .req-card-face img { width: 100%; height: 100%; object-fit: cover; }
-  .req-card-back { transform: rotateY(180deg); }
-
-  /* ==========================================
-     SECTION 2: REAL-WORLD EXAMPLES & SCENARIOS
-     ========================================== */
-  .req-sec2-section {
-    padding: 60px 20px;
-    background: #FFFFFF;
-  }
-  .req-sec2-container { max-width: 1280px; margin: 0 auto; }
-  .req-sec2-header { text-align: center; margin-bottom: 40px; }
-  .req-sec2-badge {
-    display: inline-block; padding: 6px 18px; background: #FFF7ED; border: 1.5px solid #F17022;
-    color: #F17022; font-size: 0.85rem; font-weight: 800; border-radius: 50px; text-transform: uppercase; margin-bottom: 12px;
-  }
-  .req-sec2-header h2 { font-family: 'Outfit', sans-serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; color: #111111; margin: 0 0 10px 0; }
-  .req-sec2-header h2 span { color: #F17022; }
-
-  /* 3-Step Selection Guide Banner */
-  .req-sec2-guide-flow {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr auto 1fr;
-    gap: 16px;
-    align-items: center;
-    margin-bottom: 35px;
-  }
-  @media (max-width: 900px) {
-    .req-sec2-guide-flow { grid-template-columns: 1fr; }
-    .req-guide-arrow { transform: rotate(90deg); margin: 10px auto; }
-  }
-  .req-guide-step {
-    padding: 20px;
-    border-radius: 20px;
+  .req-spotlight-title {
     display: flex;
     align-items: center;
-    gap: 14px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-  }
-  .step-1-card { background: linear-gradient(135deg, #E6F4EA, #FFFFFF); border: 2px solid #009A44; }
-  .step-2-card { background: linear-gradient(135deg, #FFF7ED, #FFFFFF); border: 2px solid #F17022; }
-  .step-3-card { background: linear-gradient(135deg, #EFF6FF, #FFFFFF); border: 2px solid #2563EB; }
-  .req-step-num { font-size: 0.8rem; font-weight: 900; text-transform: uppercase; padding: 4px 10px; border-radius: 50px; background: #FFFFFF; }
-  .req-step-icon { font-size: 2rem; }
-  .req-step-content strong { display: block; font-size: 1.05rem; font-weight: 900; color: #111111; }
-  .req-step-content span { font-size: 0.88rem; color: #475569; }
-
-  .req-guide-arrow {
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    background: #FFFFFF;
-    border: 2.5px solid #F17022;
-    color: #F17022;
-    font-size: 1.2rem;
-    font-weight: 900;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 6px 20px rgba(241, 112, 34, 0.2);
-    align-self: center;
-    justify-self: center;
-  }
-
-  /* Sector Switcher Tabs Dock */
-  .req-sector-tabs-wrapper {
-    display: flex;
-    justify-content: center;
     gap: 12px;
-    margin-bottom: 40px;
+    margin-bottom: 18px;
+  }
+  .req-spotlight-badge {
+    background: #00ff66;
+    color: #000000;
+    font-size: 0.82rem;
+    font-weight: 900;
+    padding: 5px 14px;
+    border-radius: 50px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .req-spotlight-title h3 {
+    color: #ffffff;
+    font-size: 1.25rem;
+    font-weight: 900;
+    margin: 0;
+  }
+
+  .req-spotlight-steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  @media (max-width: 850px) {
+    .req-spotlight-steps-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .req-step-box {
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    padding: 16px 18px;
+    text-align: center;
+  }
+  .req-step-num {
+    font-size: 0.78rem;
+    font-weight: 800;
+    color: #94a3b8;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .req-step-val {
+    font-size: 1.1rem;
+    font-weight: 900;
+    color: #ffcc00;
+    margin-bottom: 4px;
+    display: block;
+  }
+  .req-step-cards {
+    font-size: 0.88rem;
+    font-weight: 800;
+    color: #ffffff;
+    background: rgba(236, 92, 10, 0.2);
+    padding: 4px 10px;
+    border-radius: 8px;
+    display: inline-block;
+  }
+
+  .req-spotlight-final-box {
+    background: linear-gradient(90deg, #ec5c0a, #007b3e);
+    border-radius: 16px;
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    color: #ffffff;
     flex-wrap: wrap;
   }
-  .req-sector-tab {
-    padding: 12px 24px;
+  .req-final-text h4 {
+    font-size: 1.15rem;
+    font-weight: 900;
+    margin: 0 0 4px 0;
+  }
+  .req-final-text p {
+    font-size: 0.92rem;
+    margin: 0;
+    color: #e2e8f0;
+  }
+  .req-final-result-badge {
+    background: #ffffff;
+    color: #0f172a;
+    padding: 10px 24px;
     border-radius: 50px;
-    border: 2px solid #E2E8F0;
-    background: #FFFFFF;
-    color: #475569;
-    font-weight: 800;
-    font-size: 0.95rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+    font-size: 1.25rem;
+    font-weight: 900;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    white-space: nowrap;
   }
-  .req-sector-tab[data-sector="residential"].active { background: #009A44; color: #FFFFFF; border-color: #009A44; box-shadow: 0 8px 25px rgba(0, 154, 68, 0.3); }
-  .req-sector-tab[data-sector="commercial"].active { background: #F17022; color: #FFFFFF; border-color: #F17022; box-shadow: 0 8px 25px rgba(241, 112, 34, 0.3); }
-  .req-sector-tab[data-sector="industrial"].active { background: #2563EB; color: #FFFFFF; border-color: #2563EB; box-shadow: 0 8px 25px rgba(37, 99, 235, 0.3); }
-
-  /* Sector Panels & Real World Example Cards */
-  .req-sector-panel { display: none; }
-  .req-sector-panel.active { display: block; }
-  
-  .req-examples-grid { display: flex; flex-direction: column; gap: 30px; }
-  .req-example-card {
-    background: #FFFFFF; border: 2px solid #E2E8F0; border-radius: 24px; overflow: hidden; box-shadow: 0 12px 35px rgba(0, 0, 0, 0.06);
+  .req-final-result-badge span {
+    color: #ec5c0a;
   }
-  .req-ex-header {
-    background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%); color: #FFFFFF; padding: 16px 24px;
-    display: flex; justify-content: space-between; align-items: center; border-bottom: 2.5px solid #F17022; font-weight: 900;
-  }
-  .req-ex-header-tag { background: rgba(255, 255, 255, 0.2); padding: 4px 12px; border-radius: 50px; font-size: 0.8rem; }
 
-  .req-ex-body { padding: 24px; }
-  .req-ex-content-grid { display: grid; grid-template-columns: 260px 1.1fr 1fr; gap: 24px; align-items: center; }
-  @media (max-width: 900px) { .req-ex-content-grid { grid-template-columns: 1fr; } }
-
-  .req-building-img-box {
-    width: 100%; height: 200px; border-radius: 18px; overflow: hidden; border: 2px solid #E2E8F0; position: relative;
-  }
-  .req-building-img-box img { width: 100%; height: 100%; object-fit: cover; }
-  .req-img-overlay-badge { position: absolute; bottom: 10px; left: 10px; background: rgba(17, 17, 17, 0.85); color: #FFFFFF; padding: 4px 12px; border-radius: 50px; font-size: 0.78rem; font-weight: 800; }
-
-  .req-customer-info { display: flex; flex-direction: column; gap: 12px; }
-  .req-c-row { display: flex; align-items: center; gap: 12px; }
-  .req-c-icon { width: 38px; height: 38px; border-radius: 12px; background: #F1F5F9; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
-  .req-c-detail span { display: block; font-size: 0.78rem; font-weight: 700; color: #64748B; text-transform: uppercase; }
-  .req-c-detail strong { display: block; font-size: 1.05rem; font-weight: 900; color: #111111; }
-
-  .req-calc-matrix-box { background: #F8FAFC; border: 2px solid #E2E8F0; border-radius: 20px; padding: 18px; display: flex; flex-direction: column; gap: 12px; }
-  .req-calc-line { display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; background: #FFFFFF; border-radius: 10px; border: 1.5px solid #E2E8F0; font-weight: 800; }
-  .req-calc-line.winner-line { border-color: #F17022; background: #FFF7ED; }
-  .req-ex-consider { background: linear-gradient(135deg, #F17022 0%, #FB5900 100%); color: #FFFFFF; padding: 10px; border-radius: 12px; text-align: center; font-weight: 900; }
-
-  .req-ex-3phase-bar { margin-top: 16px; padding: 12px 18px; background: #FFF7ED; border: 1.5px solid #F17022; border-radius: 14px; color: #F17022; font-weight: 900; text-align: center; }
-  .req-ex-why-box { margin-top: 16px; padding: 16px; background: #F8FAFC; border: 1.5px solid #E2E8F0; border-radius: 14px; display: flex; gap: 12px; align-items: center; }
-
-  /* Mobile Responsive Optimization */
+  /* Mobile Responsive Adjustments */
   @media screen and (max-width: 768px) {
-    .req-hero-subheading, .req-golden-info p, .req-sec2-header p, .req-why-text { text-align: justify !important; text-justify: inter-word !important; }
-    .req-hero-section { padding: 30px 10px 35px 10px !important; }
-    .hero-breadcrumb-pill { padding: 5px 12px !important; font-size: 0.74rem !important; margin-bottom: 12px !important; }
-    .req-badge-top { font-size: 0.7rem !important; padding: 4px 12px !important; margin-bottom: 10px !important; }
-    .req-hero-header h1 { font-size: clamp(1.6rem, 5.5vw, 2.0rem) !important; margin-bottom: 8px !important; }
-    
-    .req-golden-banner { padding: 16px 12px !important; border-radius: 18px !important; flex-direction: column !important; text-align: center !important; gap: 12px !important; }
-    .req-golden-text { flex-direction: column !important; align-items: center !important; text-align: center !important; }
-    
-    .req-table-stage { padding: 10px 8px !important; border-radius: 18px !important; }
-    .req-table-header-bar { display: none !important; }
-    .req-table-row-card { display: flex !important; flex-direction: column !important; gap: 8px !important; padding: 12px 14px !important; border-radius: 16px !important; }
-    .req-col-kw { font-size: 0.96rem !important; font-weight: 900 !important; color: #009A44 !important; justify-content: flex-start !important; }
-    .req-col-bill { font-size: 0.86rem !important; font-weight: 800 !important; color: #1E293B !important; text-align: right !important; }
-    .req-col-1phase, .req-col-3phase { padding: 8px 10px !important; border-radius: 10px !important; font-size: 0.82rem !important; text-align: center !important; width: 100% !important; }
-
-    .req-sector-tabs-wrapper {
-      background: #FFFFFF !important; border: 2.5px solid #F17022 !important; border-radius: 50px !important; padding: 6px !important; box-shadow: 0 12px 35px rgba(241, 112, 34, 0.15) !important;
+    .req-hero-section {
+      padding: 40px 12px 40px 12px !important;
     }
-    .req-sector-tab { font-size: 0.8rem !important; padding: 8px 14px !important; }
+    .req-moving-text {
+      top: 15px !important;
+      font-size: 26px !important;
+    }
+    .hero-breadcrumb-pill {
+      padding: 6px 14px !important;
+      font-size: 0.76rem !important;
+    }
+    .req-badge-top {
+      font-size: 0.72rem !important;
+      padding: 5px 12px !important;
+    }
+    .req-hero-header h1 {
+      font-size: clamp(1.7rem, 6vw, 2.2rem) !important;
+    }
+    .req-table-stage {
+      padding: 12px !important;
+      border-radius: 18px !important;
+    }
+    .req-table-header-bar {
+      display: none !important;
+    }
+    .req-table-row-card {
+      grid-template-columns: 1fr 1fr !important;
+      gap: 10px !important;
+      padding: 14px 12px !important;
+      text-align: left !important;
+      border-radius: 14px !important;
+    }
+    .req-col-kw {
+      justify-content: flex-start !important;
+      font-size: 0.98rem !important;
+    }
+    .req-col-bill {
+      font-size: 0.88rem !important;
+      text-align: right !important;
+    }
+    .req-col-1phase, .req-col-3phase {
+      font-size: 0.88rem !important;
+      text-align: center !important;
+      padding: 6px 8px !important;
+    }
+    .req-golden-banner {
+      padding: 16px !important;
+      flex-direction: column !important;
+      text-align: center !important;
+    }
+    .req-golden-text {
+      flex-direction: column !important;
+      text-align: center !important;
+    }
+    .req-example-spotlight {
+      padding: 18px 14px !important;
+      border-radius: 18px !important;
+    }
+    .req-spotlight-title {
+      flex-direction: column !important;
+      align-items: flex-start !important;
+      gap: 8px !important;
+    }
+    .req-spotlight-final-box {
+      flex-direction: column !important;
+      text-align: center !important;
+      align-items: center !important;
+    }
   }
 {%- endstyle -%}
 
 <div class="req-wrapper">
   
   <!-- ==========================================
-       SECTION 1: HERO HEADER & MASTER ESTIMATION MATRIX
+       SECTION 1: HERO HEADER & MASTER CALCULATION MATRIX
        ========================================== -->
   <section class="req-hero-section">
-    <div class="req-hero-orb-1"></div>
-    <div class="req-hero-orb-2"></div>
     <div class="req-moving-text">Required Vidhyut Saathi Card &nbsp; &nbsp; Master Estimation Matrix &nbsp; &nbsp; Save Electricity</div>
 
     <div class="req-hero-container">
       
       <!-- Top Breadcrumb & Badge -->
-      <div style="text-align: center; margin-bottom: 16px;">
+      <div class="text-center">
         <div class="hero-breadcrumb-pill">
           <a href="/">Home</a>
-          <span style="color: #F17022;">/</span>
-          <span style="color: #111111; font-weight: 700;">Required Cards</span>
-          <span style="color: rgba(0,0,0,0.2); margin: 0 4px;">|</span>
-          <span style="color: #F17022; font-weight: 800;"><span class="pulse-dot"></span> Master Guide</span>
+          <span style="color: #ffcc00;">/</span>
+          <span style="color: #ffffff; font-weight: 700;">Required Cards</span>
+          <span style="color: rgba(255,255,255,0.3); margin: 0 4px;">|</span>
+          <span style="color: #ffcc00; font-weight: 800;"><span class="pulse-dot"></span> Master Guide</span>
         </div>
       </div>
 
@@ -550,7 +489,7 @@
           <span>⚡ OFFICIAL CARD REQUIREMENT GUIDE</span>
         </div>
         <h1>Required Vidhyut Saathi Card <span>Instant Load &amp; Bill Estimation Matrix</span></h1>
-        <p class="req-hero-subheading">How many Vidhyut Saathi Cards do you need for your home, shop, or factory? Understand instantly with the master estimation chart and real-world examples below.</p>
+        <p class="req-hero-subheading">Aapke ghar, shop, ya factory me kitne Vidhyut Saathi Cards lagenge? Niche diye gaye master chart aur examples se instantly samjhein.</p>
       </div>
 
       <!-- Golden Rule Banner -->
@@ -559,7 +498,7 @@
           <div class="req-golden-icon">🧮</div>
           <div class="req-golden-info">
             <h3>Golden Rule: Always Consider Higher Requirement</h3>
-            <p>Between KW Connected Load and Monthly Electricity Bill amount (₹), <strong>always select whichever yields the higher number of cards!</strong></p>
+            <p>KW Connected Load aur Monthly Electricity Bill amount (₹) <strong>donon me se jisme zyaada cards aayein</strong>, usi ko consider karein!</p>
           </div>
         </div>
         <div class="req-golden-pill">⚡ 3-Phase Meter = Add +1 Extra Card</div>
@@ -567,6 +506,8 @@
 
       <!-- Section 1: Master Visual Requirement Table Stage -->
       <div class="req-table-stage">
+        
+        <!-- Table Column Headers -->
         <div class="req-table-header-bar">
           <div>🔌 KW Connection</div>
           <div>🧾 Monthly Bill Amount</div>
@@ -574,181 +515,131 @@
           <div>⚡ 3-Phase Connection</div>
         </div>
 
+        <!-- 10 Master Rows -->
         <div class="req-table-rows-container">
-          {%- assign rows = "1 – 6 KW|Upto ₹6,000 / mo|1 Card|2 Cards,7 – 12 KW|₹6,001 – ₹12,000|2 Cards|3 Cards,13 – 18 KW|₹12,001 – ₹18,000|3 Cards|4 Cards,19 – 24 KW|₹18,001 – ₹24,000|4 Cards|5 Cards,25 – 30 KW|₹24,001 – ₹30,000|5 Cards|6 Cards,31 – 36 KW|₹30,001 – ₹36,000|6 Cards|7 Cards,37 – 42 KW|₹36,001 – ₹42,000|7 Cards|8 Cards,43 – 48 KW|₹42,001 – ₹48,000|8 Cards|9 Cards,49 – 54 KW|₹48,001 – ₹54,000|9 Cards|10 Cards,55 – 60 KW|₹54,001 – ₹60,000|10 Cards|11 Cards" | split: "," -%}
-          {%- for row in rows -%}
-            {%- assign cols = row | split: "|" -%}
-            <div class="req-table-row-card">
-              <div class="req-col-kw">🏠 {{ cols[0] }}</div>
-              <div class="req-col-bill">{{ cols[1] }}</div>
-              <div class="req-col-1phase">1-Phase: {{ cols[2] }}</div>
-              <div class="req-col-3phase">3-Phase: {{ cols[3] }}</div>
-            </div>
-          {%- endfor -%}
+          
+          <!-- Row 1: 1-6 KW -->
+          <div class="req-table-row-card">
+            <div class="req-col-kw">🏠 1 – 6 KW</div>
+            <div class="req-col-bill">Upto ₹6,000 / month</div>
+            <div class="req-col-1phase">1 Card</div>
+            <div class="req-col-3phase">2 Cards</div>
+          </div>
+
+          <!-- Row 2: 7-12 KW -->
+          <div class="req-table-row-card">
+            <div class="req-col-kw">🏠 7 – 12 KW</div>
+            <div class="req-col-bill">₹6,001 – ₹12,000</div>
+            <div class="req-col-1phase">2 Cards</div>
+            <div class="req-col-3phase">3 Cards</div>
+          </div>
+
+          <!-- Row 3: 13-18 KW -->
+          <div class="req-table-row-card">
+            <div class="req-col-kw">🏠 13 – 18 KW</div>
+            <div class="req-col-bill">₹12,001 – ₹18,000</div>
+            <div class="req-col-1phase">3 Cards</div>
+            <div class="req-col-3phase">4 Cards</div>
+          </div>
+
+          <!-- Row 4: 19-24 KW -->
+          <div class="req-table-row-card">
+            <div class="req-col-kw">🏢 19 – 24 KW</div>
+            <div class="req-col-bill">₹18,001 – ₹24,000</div>
+            <div class="req-col-1phase">4 Cards</div>
+            <div class="req-col-3phase">5 Cards</div>
+          </div>
+
+          <!-- Row 5: 25-30 KW -->
+          <div class="req-table-row-card">
+            <div class="req-col-kw">🏢 25 – 30 KW</div>
+            <div class="req-col-bill">₹24,001 – ₹30,000</div>
+            <div class="req-col-1phase">5 Cards</div>
+            <div class="req-col-3phase">6 Cards</div>
+          </div>
+
+          <!-- Row 6: 31-36 KW -->
+          <div class="req-table-row-card">
+            <div class="req-col-kw">🏬 31 – 36 KW</div>
+            <div class="req-col-bill">₹30,001 – ₹36,000</div>
+            <div class="req-col-1phase">6 Cards</div>
+            <div class="req-col-3phase">7 Cards</div>
+          </div>
+
+          <!-- Row 7: 37-42 KW -->
+          <div class="req-table-row-card">
+            <div class="req-col-kw">🏬 37 – 42 KW</div>
+            <div class="req-col-bill">₹36,001 – ₹42,000</div>
+            <div class="req-col-1phase">7 Cards</div>
+            <div class="req-col-3phase">8 Cards</div>
+          </div>
+
+          <!-- Row 8: 43-48 KW -->
+          <div class="req-table-row-card">
+            <div class="req-col-kw">🏭 43 – 48 KW</div>
+            <div class="req-col-bill">₹42,001 – ₹48,000</div>
+            <div class="req-col-1phase">8 Cards</div>
+            <div class="req-col-3phase">9 Cards</div>
+          </div>
+
+          <!-- Row 9: 49-54 KW -->
+          <div class="req-table-row-card">
+            <div class="req-col-kw">🏭 49 – 54 KW</div>
+            <div class="req-col-bill">₹48,001 – ₹54,000</div>
+            <div class="req-col-1phase">9 Cards</div>
+            <div class="req-col-3phase">10 Cards</div>
+          </div>
+
+          <!-- Row 10: 55-60 KW -->
+          <div class="req-table-row-card">
+            <div class="req-col-kw">🏭 55 – 60 KW</div>
+            <div class="req-col-bill">₹54,001 – ₹60,000</div>
+            <div class="req-col-1phase">10 Cards</div>
+            <div class="req-col-3phase">11 Cards</div>
+          </div>
+
         </div>
       </div>
 
-      <!-- Vidhyut Saathi 3D Card Info Showcase Stage -->
-      <div class="req-card-info-stage">
-        <div>
-          <h3 style="font-size: 1.5rem; font-weight: 900; color: #F17022; margin-bottom: 14px;">⚡ Vidhyut Saathi Card Specifications</h3>
-          <div class="req-card-info-dashboard">
-            <div class="req-spec-box spec-green"><span>Connected Load</span><strong>Up to 6 KW / Card</strong></div>
-            <div class="req-spec-box spec-orange"><span>Monthly Bill Cover</span><strong>Up to ₹6,000 / Card</strong></div>
-            <div class="req-spec-box spec-green"><span>Single-Phase Meter</span><strong>Standard Count</strong></div>
-            <div class="req-spec-box spec-blue"><span>3-Phase Meter</span><strong>+1 Extra Card Needed</strong></div>
+      <!-- Real Example Spotlight (User's Scenario Example) -->
+      <div class="req-example-spotlight">
+        <div class="req-spotlight-title">
+          <span class="req-spotlight-badge">💡 Practical Example</span>
+          <h3>Ghar me 5 KW Load + ₹10,000 Bill + 3-Phase Meter me kitne cards lagenge?</h3>
+        </div>
+
+        <div class="req-spotlight-steps-grid">
+          
+          <div class="req-step-box">
+            <span class="req-step-num">Step 1: KW Load Rule</span>
+            <span class="req-step-val">5 KW Load</span>
+            <span class="req-step-cards">1 Card Required</span>
+          </div>
+
+          <div class="req-step-box">
+            <span class="req-step-num">Step 2: Bill Amount Rule</span>
+            <span class="req-step-val">₹10,000 Bill</span>
+            <span class="req-step-cards">2 Cards Required</span>
+          </div>
+
+          <div class="req-step-box">
+            <span class="req-step-num">Step 3: Higher Rule</span>
+            <span class="req-step-val">Zyaada Card Choose</span>
+            <span class="req-step-cards">Select 2 Cards</span>
+          </div>
+
+        </div>
+
+        <div class="req-spotlight-final-box">
+          <div class="req-final-text">
+            <h4>⚡ Final Calculation for 3-Phase Connection:</h4>
+            <p>Higher Requirement (2 Cards) + 3-Phase Extra Card (+1 Card) = <strong>Total 3 Cards Required</strong></p>
+          </div>
+          <div class="req-final-result-badge">
+            Total Needed: <span>3 Cards</span>
           </div>
         </div>
-        <div class="req-card-thumb-wrapper">
-          <div style="position: absolute; top: -14px; left: 50%; transform: translateX(-50%); z-index: 10; background: #111; color: #FFF; padding: 4px 12px; border-radius: 50px; font-size: 0.72rem; font-weight: 800; border: 1px solid #F17022;">⚡ 3D SAVER CARD SHOWCASE</div>
-          <div class="req-3d-card-inner">
-            {%- assign saver_card_img = 'vidhyut-saathi-card.png' | asset_url -%}
-            <div class="req-card-face"><img src="{{ saver_card_img }}" alt="Vidhyut Saathi Card Showcase" loading="lazy"></div>
-            <div class="req-card-face req-card-back"><img src="{{ saver_card_img }}" alt="Vidhyut Saathi Card Showcase Back" loading="lazy"></div>
-          </div>
-        </div>
-      </div>
 
-    </div>
-  </section>
-
-  <!-- ==========================================
-       SECTION 2: REAL-WORLD PRACTICAL SELECTION EXAMPLES
-       ========================================== -->
-  <section class="req-sec2-section">
-    <div class="req-sec2-container">
-      
-      <div class="req-sec2-header">
-        <div class="req-sec2-badge">💡 REAL WORLD PRACTICAL SELECTION EXAMPLES</div>
-        <h2>Card Selection Examples <span>&amp; Calculation Scenarios</span></h2>
-        <p>Calculating required cards for your home, shop, or factory is super simple! Review the 3 easy steps and real customer case studies below:</p>
-      </div>
-
-      <!-- 3-Step Selection Guide Banner -->
-      <div class="req-sec2-guide-flow">
-        <div class="req-guide-step step-1-card">
-          <div class="req-step-num">Step 1</div>
-          <div class="req-step-icon">🔌</div>
-          <div class="req-step-content"><strong>Check Connected Load (KW)</strong><span>1 Card per 6 KW Load</span></div>
-        </div>
-        <div class="req-guide-arrow">➔</div>
-        <div class="req-guide-step step-2-card">
-          <div class="req-step-num">Step 2</div>
-          <div class="req-step-icon">🧾</div>
-          <div class="req-step-content"><strong>Check Monthly Bill (₹)</strong><span>1 Card per ₹6,000 Bill</span></div>
-        </div>
-        <div class="req-guide-arrow">➔</div>
-        <div class="req-guide-step step-3-card">
-          <div class="req-step-num">Step 3</div>
-          <div class="req-step-icon">⚖️</div>
-          <div class="req-step-content"><strong>Select Higher Card Count</strong><span>Pick Higher Requirement +1 for 3-Phase</span></div>
-        </div>
-      </div>
-
-      <!-- Sector Switcher Tabs Dock -->
-      <div class="req-sector-tabs-wrapper">
-        <button class="req-sector-tab active" data-sector="residential">🟢 Residential Examples (Homes)</button>
-        <button class="req-sector-tab" data-sector="commercial">🟠 Commercial Examples (Shops/Offices)</button>
-        <button class="req-sector-tab" data-sector="industrial">🔵 Industrial Examples (Factories)</button>
-      </div>
-
-      <!-- SECTOR 1 PANEL: RESIDENTIAL EXAMPLES -->
-      <div class="req-sector-panel active" id="sector-residential">
-        <div class="req-examples-grid">
-          <div class="req-example-card">
-            <div class="req-ex-header">
-              <span>⚡ SCENARIO 1 — LOW KW LOAD, HIGH MONTHLY BILL</span>
-              <span class="req-ex-header-tag">🏡 Residential Home</span>
-            </div>
-            <div class="req-ex-body">
-              <div class="req-ex-content-grid">
-                <div class="req-building-img-box">
-                  {%- assign home_img_1 = 'residential-home-1.png' | asset_url -%}
-                  <img src="{{ home_img_1 }}" alt="Residential Home - Mr. Rajesh Kumar" loading="lazy">
-                  <div class="req-img-overlay-badge">📍 Mr. Rajesh Kumar</div>
-                </div>
-                <div class="req-customer-info">
-                  <div class="req-c-row"><div class="req-c-icon">👤</div><div class="req-c-detail"><span>Home Owner</span><strong>Mr. Rajesh Kumar</strong></div></div>
-                  <div class="req-c-row"><div class="req-c-icon">🔌</div><div class="req-c-detail"><span>Connected Meter Load</span><strong>5 KW Load</strong></div></div>
-                  <div class="req-c-row"><div class="req-c-icon">🧾</div><div class="req-c-detail"><span>Monthly Electricity Bill</span><strong>₹10,000 / month</strong></div></div>
-                </div>
-                <div class="req-calc-matrix-box">
-                  <div class="req-calc-line"><span>🔌 Load (5 KW):</span><strong>1 Card</strong></div>
-                  <div class="req-calc-line winner-line"><span>🧾 Bill (₹10,000):</span><strong style="color: #009A44;">2 Cards ★</strong></div>
-                  <div class="req-ex-consider"><span>Final Selection</span><strong>2 CARDS</strong></div>
-                </div>
-              </div>
-              <div class="req-ex-3phase-bar">⚡ 3-Phase Meter Connection: 2 + 1 Extra Card = 3 Cards Required</div>
-              <div class="req-ex-why-box"><div style="font-size: 1.5rem;">✅</div><p class="req-why-text"><strong>Why 2 Cards?</strong> The ₹10,000 monthly bill requires 2 Cards, whereas the 5 KW load requires only 1 Card. Following the Golden Rule, the higher requirement <strong>(2 Cards)</strong> is selected.</p></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- SECTOR 2 PANEL: COMMERCIAL EXAMPLES -->
-      <div class="req-sector-panel" id="sector-commercial">
-        <div class="req-examples-grid">
-          <div class="req-example-card">
-            <div class="req-ex-header">
-              <span>⚡ SCENARIO 1 — LOW KW LOAD, HIGH MONTHLY BILL</span>
-              <span class="req-ex-header-tag">🏬 Commercial Building</span>
-            </div>
-            <div class="req-ex-body">
-              <div class="req-ex-content-grid">
-                <div class="req-building-img-box">
-                  {%- assign com_build_1 = 'commercial-building-1.png' | asset_url -%}
-                  <img src="{{ com_build_1 }}" alt="Commercial Building - Mr. Deepak Sawlani" loading="lazy">
-                  <div class="req-img-overlay-badge">📍 Mr. Deepak Sawlani</div>
-                </div>
-                <div class="req-customer-info">
-                  <div class="req-c-row"><div class="req-c-icon">👤</div><div class="req-c-detail"><span>Commercial Owner</span><strong>Mr. Deepak Sawlani</strong></div></div>
-                  <div class="req-c-row"><div class="req-c-icon">🔌</div><div class="req-c-detail"><span>Connected Meter Load</span><strong>10 KW Load</strong></div></div>
-                  <div class="req-c-row"><div class="req-c-icon">🧾</div><div class="req-c-detail"><span>Monthly Electricity Bill</span><strong>₹24,000 / month</strong></div></div>
-                </div>
-                <div class="req-calc-matrix-box">
-                  <div class="req-calc-line"><span>🔌 Load (10 KW):</span><strong>2 Cards</strong></div>
-                  <div class="req-calc-line winner-line"><span>🧾 Bill (₹24,000):</span><strong style="color: #F17022;">4 Cards ★</strong></div>
-                  <div class="req-ex-consider"><span>Final Selection</span><strong>4 CARDS</strong></div>
-                </div>
-              </div>
-              <div class="req-ex-3phase-bar">⚡ 3-Phase Meter Connection: 4 + 1 Extra Card = 5 Cards Required</div>
-              <div class="req-ex-why-box"><div style="font-size: 1.5rem;">✅</div><p class="req-why-text"><strong>Why 4 Cards?</strong> The ₹24,000 monthly bill requires 4 Cards, whereas the 10 KW load requires only 2 Cards. Following the Golden Rule, the higher requirement <strong>(4 Cards)</strong> is selected.</p></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- SECTOR 3 PANEL: INDUSTRIAL EXAMPLES -->
-      <div class="req-sector-panel" id="sector-industrial">
-        <div class="req-examples-grid">
-          <div class="req-example-card">
-            <div class="req-ex-header">
-              <span>⚡ SCENARIO 1 — HIGH KW LOAD, LOW MONTHLY BILL</span>
-              <span class="req-ex-header-tag">🏭 Industrial Factory</span>
-            </div>
-            <div class="req-ex-body">
-              <div class="req-ex-content-grid">
-                <div class="req-building-img-box">
-                  {%- assign ind_factory_1 = 'industrial-factory-1.png' | asset_url -%}
-                  <img src="{{ ind_factory_1 }}" alt="Industrial Factory - Mr. Vikram Mehta" loading="lazy">
-                  <div class="req-img-overlay-badge">📍 Mr. Vikram Mehta</div>
-                </div>
-                <div class="req-customer-info">
-                  <div class="req-c-row"><div class="req-c-icon">👤</div><div class="req-c-detail"><span>Factory Owner</span><strong>Mr. Vikram Mehta</strong></div></div>
-                  <div class="req-c-row"><div class="req-c-icon">🔌</div><div class="req-c-detail"><span>Connected Meter Load</span><strong>30 KW Load</strong></div></div>
-                  <div class="req-c-row"><div class="req-c-icon">🧾</div><div class="req-c-detail"><span>Monthly Electricity Bill</span><strong>₹18,000 / month</strong></div></div>
-                </div>
-                <div class="req-calc-matrix-box">
-                  <div class="req-calc-line winner-line"><span>🔌 Load (30 KW):</span><strong style="color: #2563EB;">5 Cards ★</strong></div>
-                  <div class="req-calc-line"><span>🧾 Bill (₹18,000):</span><strong>3 Cards</strong></div>
-                  <div class="req-ex-consider" style="background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);"><span>Final Selection</span><strong>5 CARDS</strong></div>
-                </div>
-              </div>
-              <div class="req-ex-3phase-bar" style="background: #EFF6FF; border-color: #2563EB; color: #2563EB;">⚡ 3-Phase Meter Connection: 5 + 1 Extra Card = 6 Cards Required</div>
-              <div class="req-ex-why-box"><div style="font-size: 1.5rem;">✅</div><p class="req-why-text"><strong>Why 5 Cards?</strong> The 30 KW load requires 5 Cards, whereas the ₹18,000 bill requires only 3 Cards. Following the Golden Rule, the higher requirement <strong>(5 Cards)</strong> is selected.</p></div>
-            </div>
-          </div>
-        </div>
       </div>
 
     </div>
@@ -756,32 +647,27 @@
 
 </div>
 
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const tabs = document.querySelectorAll('.req-sector-tab');
-    const panels = document.querySelectorAll('.req-sector-panel');
-
-    tabs.forEach(tab => {
-      tab.addEventListener('click', function() {
-        tabs.forEach(t => t.classList.remove('active'));
-        panels.forEach(p => p.classList.remove('active'));
-        
-        this.classList.add('active');
-        const targetId = 'sector-' + this.getAttribute('data-sector');
-        const targetPanel = document.getElementById(targetId);
-        if (targetPanel) targetPanel.classList.add('active');
-      });
-    });
-  });
-</script>
-
 {% schema %}
 {
   "name": "Required Cards Layout",
   "settings": [
-    { "type": "color", "id": "primary_color", "label": "Primary Accent Color", "default": "#F17022" },
-    { "type": "color", "id": "bg_color", "label": "Background Color", "default": "#FFFFFF" }
+    {
+      "type": "color",
+      "id": "primary_color",
+      "label": "Primary Accent Color",
+      "default": "#ec5c0a"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#fff8ef"
+    }
   ],
-  "presets": [ { "name": "Required Cards Layout" } ]
+  "presets": [
+    {
+      "name": "Required Cards Layout"
+    }
+  ]
 }
 {% endschema %}
