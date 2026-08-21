@@ -865,28 +865,37 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  .req-mobile-swipe-hint {
+  @keyframes pulseSwipeHint {
+    0%, 100% { transform: scale(1); box-shadow: 0 4px 15px rgba(241, 112, 34, 0.12); }
+    50% { transform: scale(1.04); box-shadow: 0 8px 22px rgba(241, 112, 34, 0.3); }
+  }
+
+  .req-mobile-swipe-hint,
+  .req-mobile-tabs-swipe-hint {
     display: none;
     text-align: center;
-    margin-bottom: 14px;
+    margin-bottom: 12px;
   }
   @media (max-width: 768px) {
-    .req-mobile-swipe-hint {
+    .req-mobile-swipe-hint,
+    .req-mobile-tabs-swipe-hint {
       display: flex;
       justify-content: center;
     }
-    .req-mobile-swipe-hint span {
+    .req-mobile-swipe-hint span,
+    .req-mobile-tabs-swipe-hint span {
       background: #FFF7ED;
       border: 1.5px solid #F17022;
       color: #F17022;
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       font-weight: 800;
-      padding: 6px 18px;
+      padding: 7px 18px;
       border-radius: 50px;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      box-shadow: 0 4px 15px rgba(241, 112, 34, 0.12);
+      gap: 8px;
+      box-shadow: 0 4px 15px rgba(241, 112, 34, 0.15);
+      animation: pulseSwipeHint 2.5s infinite ease-in-out;
     }
   }
 
@@ -895,8 +904,32 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 12px;
+    gap: 10px;
     margin-top: 22px;
+  }
+  .req-slider-arrow {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #FFFFFF;
+    border: 2px solid #E2E8F0;
+    color: #F17022;
+    font-size: 1.3rem;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    font-family: inherit;
+    line-height: 1;
+    padding: 0;
+  }
+  .req-slider-arrow:hover {
+    background: #FFF7ED;
+    border-color: #F17022;
+    transform: scale(1.08);
   }
   .req-slider-dot {
     padding: 9px 20px;
@@ -1737,6 +1770,9 @@
         <div class="req-tabs-helper-label">
           <span>👇 Click any card quantity tab below to view detailed specs &amp; load:</span>
         </div>
+        <div class="req-mobile-tabs-swipe-hint">
+          <span>👉 Swipe horizontally to view all 8 Card Tabs ➔</span>
+        </div>
         <div class="req-tabs-nav" id="reqTabsNav">
           <button class="req-tab-btn active" data-tab="tab1">
             💳 1 Card <span class="tab-count">1-6 KW</span>
@@ -2402,6 +2438,7 @@
 
         <!-- Scenario Pagination Dots Navigation -->
         <div class="req-slider-dots-wrapper">
+          <button class="req-slider-arrow prev-arrow" aria-label="Previous Scenario">‹</button>
           <button class="req-slider-dot active" data-index="0" aria-label="View Scenario 1">
             <span class="req-dot-num">1</span>
             <span class="req-dot-label">Scenario 1</span>
@@ -2410,6 +2447,7 @@
             <span class="req-dot-num">2</span>
             <span class="req-dot-label">Scenario 2</span>
           </button>
+          <button class="req-slider-arrow next-arrow" aria-label="Next Scenario">›</button>
         </div>
 
       </div>
@@ -2567,6 +2605,7 @@
 
         <!-- Scenario Pagination Dots Navigation -->
         <div class="req-slider-dots-wrapper">
+          <button class="req-slider-arrow prev-arrow" aria-label="Previous Scenario">‹</button>
           <button class="req-slider-dot active" data-index="0" aria-label="View Scenario 1">
             <span class="req-dot-num">1</span>
             <span class="req-dot-label">Scenario 1</span>
@@ -2575,6 +2614,7 @@
             <span class="req-dot-num">2</span>
             <span class="req-dot-label">Scenario 2</span>
           </button>
+          <button class="req-slider-arrow next-arrow" aria-label="Next Scenario">›</button>
         </div>
 
       </div>
@@ -2732,6 +2772,7 @@
 
         <!-- Scenario Pagination Dots Navigation -->
         <div class="req-slider-dots-wrapper">
+          <button class="req-slider-arrow prev-arrow" aria-label="Previous Scenario">‹</button>
           <button class="req-slider-dot active" data-index="0" aria-label="View Scenario 1">
             <span class="req-dot-num">1</span>
             <span class="req-dot-label">Scenario 1</span>
@@ -2740,6 +2781,7 @@
             <span class="req-dot-num">2</span>
             <span class="req-dot-label">Scenario 2</span>
           </button>
+          <button class="req-slider-arrow next-arrow" aria-label="Next Scenario">›</button>
         </div>
 
       </div>
@@ -2792,32 +2834,56 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // Scenario Slider Dots Click & Live Scroll Sync
+  // Scenario Slider Dots & Arrow Navigation Click & Live Scroll Sync
   const sectorPanelList = document.querySelectorAll('.req-sector-panel');
 
   sectorPanelList.forEach(panel => {
     const grid = panel.querySelector('.req-examples-grid');
     const dots = panel.querySelectorAll('.req-slider-dot');
-    if (!grid || !dots.length) return;
+    const prevArrow = panel.querySelector('.prev-arrow');
+    const nextArrow = panel.querySelector('.next-arrow');
+    if (!grid) return;
+    const cards = grid.querySelectorAll('.req-example-card');
 
     // Click dot to scroll to scenario
-    dots.forEach(dot => {
-      dot.addEventListener('click', () => {
-        const targetIndex = parseInt(dot.getAttribute('data-index'), 10) || 0;
-        const cardWidth = grid.clientWidth;
-        grid.scrollTo({
-          left: targetIndex * cardWidth,
-          behavior: 'smooth'
+    if (dots.length) {
+      dots.forEach(dot => {
+        dot.addEventListener('click', () => {
+          const targetIndex = parseInt(dot.getAttribute('data-index'), 10) || 0;
+          const cardWidth = grid.clientWidth;
+          grid.scrollTo({
+            left: targetIndex * cardWidth,
+            behavior: 'smooth'
+          });
+          dots.forEach(d => d.classList.remove('active'));
+          dot.classList.add('active');
         });
-        dots.forEach(d => d.classList.remove('active'));
-        dot.classList.add('active');
       });
-    });
+    }
+
+    // Click arrow buttons to navigate
+    if (prevArrow && cards.length) {
+      prevArrow.addEventListener('click', () => {
+        const cardWidth = grid.clientWidth;
+        const currentIdx = Math.round(grid.scrollLeft / cardWidth);
+        const prevIdx = (currentIdx - 1 + cards.length) % cards.length;
+        grid.scrollTo({ left: prevIdx * cardWidth, behavior: 'smooth' });
+      });
+    }
+
+    if (nextArrow && cards.length) {
+      nextArrow.addEventListener('click', () => {
+        const cardWidth = grid.clientWidth;
+        const currentIdx = Math.round(grid.scrollLeft / cardWidth);
+        const nextIdx = (currentIdx + 1) % cards.length;
+        grid.scrollTo({ left: nextIdx * cardWidth, behavior: 'smooth' });
+      });
+    }
 
     // Update dot active state on grid scroll
     grid.addEventListener('scroll', () => {
       const cardWidth = grid.clientWidth;
-      if (!cardWidth) return;
+      if (!cardWidth || !dots.length) return;
       const activeIdx = Math.round(grid.scrollLeft / cardWidth);
       dots.forEach((d, idx) => {
         if (idx === activeIdx) {
