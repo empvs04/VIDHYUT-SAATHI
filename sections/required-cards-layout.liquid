@@ -1274,28 +1274,33 @@
       font-size: 0.85rem !important;
       white-space: nowrap !important;
     }
-    /* Mobile Touch Slider / Carousel for Example Cards */
+    /* Mobile Touch Slider / Carousel for Example Cards (100% Single Card Display) */
     .req-examples-grid {
       display: flex !important;
       flex-direction: row !important;
       overflow-x: auto !important;
       scroll-snap-type: x mandatory !important;
       -webkit-overflow-scrolling: touch !important;
-      gap: 16px !important;
-      padding: 10px 16px 20px 16px !important;
-      margin-left: -12px !important;
-      margin-right: -12px !important;
+      gap: 0px !important;
+      padding: 10px 0 20px 0 !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
     }
     .req-examples-grid::-webkit-scrollbar {
       display: none;
     }
     .req-example-card {
-      flex: 0 0 88% !important;
-      max-width: 88% !important;
-      scroll-snap-align: center !important;
+      flex: 0 0 100% !important;
+      max-width: 100% !important;
+      width: 100% !important;
+      scroll-snap-align: start !important;
+      scroll-snap-stop: always !important;
       margin-bottom: 0 !important;
       border-radius: 20px !important;
       box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08) !important;
+      box-sizing: border-box !important;
     }
     .req-ex-header {
       padding: 12px 16px !important;
@@ -2448,6 +2453,56 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   });
+
+  // Auto-Slide Mobile Examples Every 15 Seconds when Section 2 in View
+  let autoSlideTimer = null;
+
+  function startAutoSlide() {
+    if (autoSlideTimer) return;
+    autoSlideTimer = setInterval(() => {
+      if (window.innerWidth > 768) return; // Only run on mobile viewports
+      const activeSectorPanel = document.querySelector('.req-sector-panel.active');
+      if (!activeSectorPanel) return;
+      const grid = activeSectorPanel.querySelector('.req-examples-grid');
+      if (!grid) return;
+      
+      const cards = grid.querySelectorAll('.req-example-card');
+      if (cards.length < 2) return;
+
+      const cardWidth = grid.clientWidth;
+      const currentIndex = Math.round(grid.scrollLeft / cardWidth);
+      const nextIndex = (currentIndex + 1) % cards.length;
+
+      grid.scrollTo({
+        left: nextIndex * cardWidth,
+        behavior: 'smooth'
+      });
+    }, 15000); // 15 Seconds interval
+  }
+
+  function stopAutoSlide() {
+    if (autoSlideTimer) {
+      clearInterval(autoSlideTimer);
+      autoSlideTimer = null;
+    }
+  }
+
+  // IntersectionObserver to trigger 15-second auto slide when user enters Section 2
+  const sec2 = document.querySelector('.req-sec2-section');
+  if (sec2 && 'IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          startAutoSlide();
+        } else {
+          stopAutoSlide();
+        }
+      });
+    }, { threshold: 0.15 });
+    observer.observe(sec2);
+  } else {
+    startAutoSlide();
+  }
 });
 </script>
 
