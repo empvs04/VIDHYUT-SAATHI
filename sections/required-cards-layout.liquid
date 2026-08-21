@@ -1019,7 +1019,7 @@
       </div>
 
       <div class="calc-outer-box">
-        <!-- LEFT CONTAINER: CALCULATION INPUTS -->
+        <!-- LEFT CONTAINER: CALCULATION INPUTS & BREAKDOWN -->
         <div class="c-inputs-card">
           <div class="live-calc-badge">⚡ LIVE CALCULATOR</div>
 
@@ -1050,12 +1050,21 @@
           </div>
 
           <!-- Phase Toggle -->
-          <div class="field" style="margin-bottom:24px;">
+          <div class="field" style="margin-bottom:20px;">
             <div class="field-label">CONNECTION TYPE</div>
             <div class="toggle-grp">
               <button class="tog-btn active" id="vscc-btnSingle">Single Phase</button>
               <button class="tog-btn" id="vscc-btnThree">Three Phase</button>
             </div>
+          </div>
+
+          <!-- Breakdown Box -->
+          <div class="breakdown" style="background:#ffffff;margin-bottom:18px;">
+            <div class="brow"><span>Based on KW load (⌈KW ÷ 6⌉)</span><b id="vscc-kwCards">1</b></div>
+            <div class="brow"><span>Based on bill amount (⌈Bill ÷ ₹6,000⌉)</span><b id="vscc-billCards">1</b></div>
+            <hr class="bdivider">
+            <div class="brow win"><span>Higher requirement considered</span><b id="vscc-baseWin" style="color:var(--green)">1</b></div>
+            <div class="brow" id="vscc-phaseRow" style="display:none;"><span>+ 1 extra for 3-phase connection</span><b style="color:var(--orange)">+1</b></div>
           </div>
 
           <p class="calc-note" style="background:transparent;border:none;padding:0;color:var(--muted-2);font-size:12px;line-height:1.65;margin-top:auto;">
@@ -1084,15 +1093,6 @@
           <!-- Dynamic Mini Gold Cards Row -->
           <div class="vscc-mini-cards-row" id="vscc-miniCardsRow"></div>
 
-          <!-- Breakdown -->
-          <div class="breakdown">
-            <div class="brow"><span>Based on KW load (⌈KW ÷ 6⌉)</span><b id="vscc-kwCards">1</b></div>
-            <div class="brow"><span>Based on bill amount (⌈Bill ÷ ₹6,000⌉)</span><b id="vscc-billCards">1</b></div>
-            <hr class="bdivider">
-            <div class="brow win"><span>Higher requirement considered</span><b id="vscc-baseWin" style="color:var(--green)">1</b></div>
-            <div class="brow" id="vscc-phaseRow" style="display:none;"><span>+ 1 extra for 3-phase connection</span><b style="color:var(--orange)">+1</b></div>
-          </div>
-
           <!-- Estimated Monthly Savings Banner -->
           <div class="savings-box">
             <div>
@@ -1105,7 +1105,7 @@
           <!-- Action Buttons -->
           <div class="calc-actions">
             <a href="https://wa.me/?text=Hi%2C%20I%20want%20to%20order%20Vidhyut%20Saathi%20Electric%20Saver%20Cards" class="btn-wa" target="_blank">
-              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
               Order on WhatsApp
             </a>
             <a href="tel:+919876543210" class="btn-quote">
