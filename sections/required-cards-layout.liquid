@@ -722,38 +722,51 @@
 
     /* Mobile Matrix Cards Styling */
     .vsc-chart-cards {
-      display: flex; flex-direction: column; gap: 10px;
+      display: flex; flex-direction: column; gap: 14px;
     }
     .vsc-chart-card {
       background: #FFFFFF;
-      border: 1.5px solid rgba(0, 154, 68, 0.22);
-      border-radius: 16px; padding: 14px 16px;
-      display: flex; justify-content: space-between; align-items: center; gap: 12px;
-      box-shadow: 0 6px 18px -6px rgba(0, 154, 68, 0.1);
-      transition: border-color 0.2s ease;
+      border: 1.5px solid rgba(0, 154, 68, 0.25);
+      border-radius: 18px; padding: 16px;
+      box-shadow: 0 8px 24px -6px rgba(0, 154, 68, 0.12);
+      display: flex; flex-direction: column; gap: 12px;
     }
-    .vsc-chart-card-left b {
-      font-size: 14.5px; color: var(--vsc-ink); margin-bottom: 2px;
-      font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 900;
+    .vsc-mcard-top {
+      display: flex; justify-content: space-between; align-items: center; gap: 10px;
+      padding-bottom: 10px; border-bottom: 1px dashed rgba(0, 154, 68, 0.2);
     }
-    .vsc-chart-card-left span {
-      color: var(--vsc-muted); font-size: 12px; font-weight: 600;
-      background: var(--vsc-panel-2); padding: 2px 8px; border-radius: 6px; display: inline-block;
+    .vsc-mcard-kw {
+      font-size: 15px; font-weight: 900; color: #0F172A;
+      font-family: 'Plus Jakarta Sans', sans-serif;
     }
-    .vsc-chart-card-right {
-      text-align: right; flex-shrink: 0; display: flex; flex-direction: column; align-items: flex-end; gap: 4px;
+    .vsc-mcard-bill {
+      font-size: 12px; font-weight: 700; color: var(--vsc-muted);
+      background: var(--vsc-panel-2); padding: 3px 10px; border-radius: 6px;
     }
-    .vsc-chart-card-n1 {
-      background: var(--vsc-orange-tint); border: 1.5px solid rgba(241,112,34,0.35);
-      color: var(--vsc-orange-deep); font-weight: 900; font-size: 13px;
-      padding: 3px 12px; border-radius: 50px; display: inline-block;
-      box-shadow: 0 2px 6px rgba(241,112,34,0.1);
+    .vsc-mcard-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
     }
-    .vsc-chart-card-n2 {
-      background: var(--vsc-green-tint); border: 1.5px solid rgba(0,154,68,0.35);
-      color: var(--vsc-green-deep); font-weight: 800; font-size: 11.5px;
-      padding: 3px 10px; border-radius: 50px; display: inline-block;
-      box-shadow: 0 2px 6px rgba(0,154,68,0.1);
+    .vsc-mcard-box {
+      border-radius: 12px; padding: 10px 12px; text-align: center;
+      display: flex; flex-direction: column; gap: 4px;
+    }
+    .vsc-mcard-box-orange {
+      background: #FFF7ED; border: 1.5px solid rgba(241,112,34,0.35);
+    }
+    .vsc-mcard-box-orange .vsc-mcard-tag {
+      font-size: 10.5px; font-weight: 800; color: var(--vsc-orange-deep); text-transform: uppercase; letter-spacing: .05em;
+    }
+    .vsc-mcard-box-orange .vsc-mcard-count {
+      font-size: 15px; font-weight: 900; color: var(--vsc-orange-deep); font-family: 'Outfit', sans-serif;
+    }
+    .vsc-mcard-box-green {
+      background: #F0FDF4; border: 1.5px solid rgba(0,154,68,0.35);
+    }
+    .vsc-mcard-box-green .vsc-mcard-tag {
+      font-size: 10.5px; font-weight: 800; color: var(--vsc-green-deep); text-transform: uppercase; letter-spacing: .05em;
+    }
+    .vsc-mcard-box-green .vsc-mcard-count {
+      font-size: 15px; font-weight: 900; color: var(--vsc-green-deep); font-family: 'Outfit', sans-serif;
     }
 
     /* Mobile Rule Box Callout */
@@ -997,19 +1010,10 @@
     background: var(--vsc-orange-tint); color: var(--vsc-orange-deep);
   }
 
-  /* ---------------- MOBILE STICKY BOTTOM RESULT BAR ---------------- */
+  /* ---------------- MOBILE STICKY BOTTOM RESULT BAR (HIDDEN) ---------------- */
   .vsc-sticky-bar {
-    position: fixed; left: 0; right: 0; bottom: 0; z-index: 9999;
-    background: rgba(0, 104, 46, 0.95);
-    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-    color: #FFFFFF; padding: 14px 20px;
-    display: flex; align-items: center; justify-content: space-between; gap: 14px;
-    box-shadow: 0 -8px 24px rgba(0,0,0,0.2);
-    border-top: 1px solid rgba(255,255,255,0.15);
-    transform: translateY(100%); transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    display: none !important;
   }
-  .vsc-sticky-bar.vsc-show { transform: translateY(0); }
-  @media (min-width: 920px) { .vsc-sticky-bar { display: none !important; } }
 
   .vsc-sticky-stxt { font-size: 12px; color: rgba(255,255,255,0.8); text-transform: uppercase; font-weight: 700; }
   .vsc-sticky-snum { font-family: 'Outfit', sans-serif; font-weight: 900; font-size: 24px; line-height: 1; }
@@ -1459,9 +1463,21 @@
 
       const card = document.createElement('div');
       card.className = 'vsc-chart-card';
-      card.innerHTML = '<div class="vsc-chart-card-left"><b>' + row[0] + '</b><span>' + row[1] + '</span></div>' +
-                       '<div class="vsc-chart-card-right"><div class="vsc-chart-card-n1">' + row[2] + ' Card' + (row[2] > 1 ? 's' : '') + '</div>' +
-                       '<div class="vsc-chart-card-n2">3-Phase: ' + row[3] + ' Cards</div></div>';
+      card.innerHTML = 
+        '<div class="vsc-mcard-top">' +
+          '<div class="vsc-mcard-kw">⚡ ' + row[0] + ' Load</div>' +
+          '<div class="vsc-mcard-bill">Bill: ' + row[1] + '</div>' +
+        '</div>' +
+        '<div class="vsc-mcard-grid">' +
+          '<div class="vsc-mcard-box vsc-mcard-box-orange">' +
+            '<span class="vsc-mcard-tag">Single Phase</span>' +
+            '<span class="vsc-mcard-count">' + row[2] + ' Card' + (row[2] > 1 ? 's' : '') + '</span>' +
+          '</div>' +
+          '<div class="vsc-mcard-box vsc-mcard-box-green">' +
+            '<span class="vsc-mcard-tag">Three Phase</span>' +
+            '<span class="vsc-mcard-count">' + row[3] + ' Cards</span>' +
+          '</div>' +
+        '</div>';
       chartCards.appendChild(card);
     });
   }
