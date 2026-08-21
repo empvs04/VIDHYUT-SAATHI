@@ -241,6 +241,10 @@
     box-shadow: 0 8px 25px rgba(241, 112, 34, 0.25);
   }
 
+  .req-mobile-table-header {
+    display: none;
+  }
+
   .req-table-rows-container {
     display: flex;
     flex-direction: column;
@@ -300,7 +304,11 @@
     border: 1.5px solid rgba(241, 112, 34, 0.4);
   }
 
-  /* Mobile Responsive Adjustments */
+  .req-mobile-phase-label {
+    display: none;
+  }
+
+  /* --- Mobile Responsive Lucrative Redesign (Phones & Tablets) --- */
   @media screen and (max-width: 768px) {
     /* Mobile Justified Paragraphs */
     .req-hero-subheading,
@@ -309,58 +317,177 @@
       text-justify: inter-word !important;
     }
     .req-hero-section {
-      padding: 36px 12px 36px 12px !important;
+      padding: 30px 10px 35px 10px !important;
     }
     .req-moving-text {
-      top: 15px !important;
-      font-size: 26px !important;
+      top: 12px !important;
+      font-size: 22px !important;
+      opacity: 0.12 !important;
     }
     .hero-breadcrumb-pill {
-      padding: 6px 14px !important;
-      font-size: 0.76rem !important;
+      padding: 5px 12px !important;
+      font-size: 0.74rem !important;
+      margin-bottom: 14px !important;
     }
     .req-badge-top {
-      font-size: 0.72rem !important;
+      font-size: 0.7rem !important;
       padding: 5px 12px !important;
+      margin-bottom: 12px !important;
     }
     .req-hero-header h1 {
-      font-size: clamp(1.7rem, 6vw, 2.2rem) !important;
+      font-size: clamp(1.65rem, 5.8vw, 2.1rem) !important;
+      margin-bottom: 10px !important;
     }
-    .req-table-stage {
-      padding: 12px !important;
+
+    /* 3D Golden Rule Banner Mobile */
+    .req-golden-banner {
+      padding: 16px 14px !important;
       border-radius: 18px !important;
+      flex-direction: column !important;
+      text-align: center !important;
+      gap: 12px !important;
+      border: 2px solid #F17022 !important;
+      box-shadow: 0 10px 30px rgba(241, 112, 34, 0.12) !important;
+      margin-bottom: 24px !important;
+    }
+    .req-golden-text {
+      flex-direction: column !important;
+      align-items: center !important;
+      gap: 8px !important;
+      text-align: center !important;
+    }
+    .req-golden-icon {
+      width: 44px !important;
+      height: 44px !important;
+      font-size: 1.4rem !important;
+      background: #FFF7ED !important;
+      border: 1.5px solid #F17022 !important;
+      border-radius: 12px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+    .req-golden-info h3 {
+      font-size: 1.05rem !important;
+      color: #F17022 !important;
+      font-weight: 900 !important;
+      margin-bottom: 6px !important;
+      text-align: center !important;
+    }
+    .req-golden-info p {
+      font-size: 0.86rem !important;
+      line-height: 1.55 !important;
+      background: #FFF7ED !important;
+      padding: 10px 12px !important;
+      border-radius: 12px !important;
+      border-left: 3.5px solid #F17022 !important;
+      color: #334155 !important;
+    }
+    .req-golden-pill {
+      width: 100% !important;
+      text-align: center !important;
+      font-size: 0.85rem !important;
+      font-weight: 900 !important;
+      padding: 10px 12px !important;
+      border-radius: 50px !important;
+      box-shadow: 0 6px 18px rgba(241, 112, 34, 0.22) !important;
+    }
+
+    /* Master Table Stage Container Mobile */
+    .req-table-stage {
+      padding: 10px !important;
+      border-radius: 18px !important;
+      border: 2px solid rgba(241, 112, 34, 0.25) !important;
+      box-shadow: 0 12px 35px rgba(241, 112, 34, 0.08) !important;
     }
     .req-table-header-bar {
       display: none !important;
     }
-    .req-table-row-card {
-      grid-template-columns: 1fr 1fr !important;
-      gap: 10px !important;
-      padding: 14px 12px !important;
-      text-align: left !important;
-      border-radius: 14px !important;
+
+    /* Mobile Gradient Section Header Bar */
+    .req-mobile-table-header {
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      padding: 8px 12px !important;
+      background: linear-gradient(135deg, #F17022 0%, #009A44 100%) !important;
+      color: #FFFFFF !important;
+      font-size: 0.78rem !important;
+      font-weight: 900 !important;
+      text-transform: uppercase !important;
+      letter-spacing: 0.5px !important;
+      border-radius: 12px !important;
+      margin-bottom: 10px !important;
+      box-shadow: 0 4px 15px rgba(241, 112, 34, 0.2) !important;
     }
+
+    .req-table-rows-container {
+      gap: 8px !important;
+    }
+
+    /* 2-Level Mobile Card Row Layout */
+    .req-table-row-card {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 8px !important;
+      padding: 10px 12px !important;
+      border-radius: 14px !important;
+      background: #FFFFFF !important;
+      border: 1.5px solid #E2E8F0 !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03) !important;
+    }
+
+    /* Row Level 1: KW Load (Left) & Monthly Bill (Right) */
     .req-col-kw {
+      font-size: 0.95rem !important;
+      font-weight: 900 !important;
+      color: #009A44 !important;
       justify-content: flex-start !important;
-      font-size: 0.98rem !important;
+      gap: 6px !important;
     }
     .req-col-bill {
-      font-size: 0.88rem !important;
+      font-size: 0.86rem !important;
+      font-weight: 800 !important;
+      color: #111111 !important;
       text-align: right !important;
+      margin-left: auto !important;
     }
+
+    /* Helper wrapper for top row on mobile */
+    .req-table-row-card > :nth-child(1),
+    .req-table-row-card > :nth-child(2) {
+      display: inline-flex !important;
+      align-items: center !important;
+    }
+
+    /* Row Level 2: Side-by-Side Phase Cards Grid */
     .req-col-1phase, .req-col-3phase {
-      font-size: 0.88rem !important;
-      text-align: center !important;
-      padding: 6px 8px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 4px !important;
+      font-size: 0.82rem !important;
+      font-weight: 900 !important;
+      padding: 7px 8px !important;
+      border-radius: 10px !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
     }
-    .req-golden-banner {
-      padding: 16px !important;
-      flex-direction: column !important;
-      text-align: center !important;
+    .req-col-1phase {
+      background: #E6F4EA !important;
+      border: 1.5px solid #009A44 !important;
+      color: #009A44 !important;
     }
-    .req-golden-text {
-      flex-direction: column !important;
-      text-align: center !important;
+    .req-col-3phase {
+      background: #FFF7ED !important;
+      border: 1.5px solid #F17022 !important;
+      color: #F17022 !important;
+    }
+
+    .req-mobile-phase-label {
+      display: inline !important;
+      font-weight: 800 !important;
+      opacity: 0.9 !important;
     }
   }
 {%- endstyle -%}
@@ -378,7 +505,7 @@
     <div class="req-hero-container">
       
       <!-- Top Breadcrumb & Badge -->
-      <div style="text-align: center; margin-bottom: 20px;">
+      <div style="text-align: center; margin-bottom: 16px;">
         <div class="hero-breadcrumb-pill">
           <a href="/">Home</a>
           <span style="color: #F17022;">/</span>
@@ -412,12 +539,18 @@
       <!-- Section 1: Master Visual Requirement Table Stage -->
       <div class="req-table-stage">
         
-        <!-- Table Column Headers -->
+        <!-- Desktop Table Column Headers -->
         <div class="req-table-header-bar">
           <div>🔌 KW Connection</div>
           <div>🧾 Monthly Bill Amount</div>
           <div>💳 Single Phase Cards</div>
           <div>⚡ 3-Phase Connection</div>
+        </div>
+
+        <!-- Mobile Header Pill -->
+        <div class="req-mobile-table-header">
+          <span>🔌 Load &amp; Monthly Bill</span>
+          <span>💳 Required Cards Count</span>
         </div>
 
         <!-- 10 Master Rows -->
@@ -426,81 +559,141 @@
           <!-- Row 1: 1-6 KW -->
           <div class="req-table-row-card">
             <div class="req-col-kw">🏠 1 – 6 KW</div>
-            <div class="req-col-bill">Upto ₹6,000 / month</div>
-            <div class="req-col-1phase">1 Card</div>
-            <div class="req-col-3phase">2 Cards</div>
+            <div class="req-col-bill">Upto ₹6,000 / mo</div>
+            <div style="display: flex; gap: 8px; width: 100%;">
+              <div class="req-col-1phase">
+                <span class="req-mobile-phase-label">1-Phase:</span> 1 Card
+              </div>
+              <div class="req-col-3phase">
+                <span class="req-mobile-phase-label">3-Phase:</span> 2 Cards
+              </div>
+            </div>
           </div>
 
           <!-- Row 2: 7-12 KW -->
           <div class="req-table-row-card">
             <div class="req-col-kw">🏠 7 – 12 KW</div>
             <div class="req-col-bill">₹6,001 – ₹12,000</div>
-            <div class="req-col-1phase">2 Cards</div>
-            <div class="req-col-3phase">3 Cards</div>
+            <div style="display: flex; gap: 8px; width: 100%;">
+              <div class="req-col-1phase">
+                <span class="req-mobile-phase-label">1-Phase:</span> 2 Cards
+              </div>
+              <div class="req-col-3phase">
+                <span class="req-mobile-phase-label">3-Phase:</span> 3 Cards
+              </div>
+            </div>
           </div>
 
           <!-- Row 3: 13-18 KW -->
           <div class="req-table-row-card">
             <div class="req-col-kw">🏠 13 – 18 KW</div>
             <div class="req-col-bill">₹12,001 – ₹18,000</div>
-            <div class="req-col-1phase">3 Cards</div>
-            <div class="req-col-3phase">4 Cards</div>
+            <div style="display: flex; gap: 8px; width: 100%;">
+              <div class="req-col-1phase">
+                <span class="req-mobile-phase-label">1-Phase:</span> 3 Cards
+              </div>
+              <div class="req-col-3phase">
+                <span class="req-mobile-phase-label">3-Phase:</span> 4 Cards
+              </div>
+            </div>
           </div>
 
           <!-- Row 4: 19-24 KW -->
           <div class="req-table-row-card">
             <div class="req-col-kw">🏢 19 – 24 KW</div>
             <div class="req-col-bill">₹18,001 – ₹24,000</div>
-            <div class="req-col-1phase">4 Cards</div>
-            <div class="req-col-3phase">5 Cards</div>
+            <div style="display: flex; gap: 8px; width: 100%;">
+              <div class="req-col-1phase">
+                <span class="req-mobile-phase-label">1-Phase:</span> 4 Cards
+              </div>
+              <div class="req-col-3phase">
+                <span class="req-mobile-phase-label">3-Phase:</span> 5 Cards
+              </div>
+            </div>
           </div>
 
           <!-- Row 5: 25-30 KW -->
           <div class="req-table-row-card">
             <div class="req-col-kw">🏢 25 – 30 KW</div>
             <div class="req-col-bill">₹24,001 – ₹30,000</div>
-            <div class="req-col-1phase">5 Cards</div>
-            <div class="req-col-3phase">6 Cards</div>
+            <div style="display: flex; gap: 8px; width: 100%;">
+              <div class="req-col-1phase">
+                <span class="req-mobile-phase-label">1-Phase:</span> 5 Cards
+              </div>
+              <div class="req-col-3phase">
+                <span class="req-mobile-phase-label">3-Phase:</span> 6 Cards
+              </div>
+            </div>
           </div>
 
           <!-- Row 6: 31-36 KW -->
           <div class="req-table-row-card">
             <div class="req-col-kw">🏬 31 – 36 KW</div>
             <div class="req-col-bill">₹30,001 – ₹36,000</div>
-            <div class="req-col-1phase">6 Cards</div>
-            <div class="req-col-3phase">7 Cards</div>
+            <div style="display: flex; gap: 8px; width: 100%;">
+              <div class="req-col-1phase">
+                <span class="req-mobile-phase-label">1-Phase:</span> 6 Cards
+              </div>
+              <div class="req-col-3phase">
+                <span class="req-mobile-phase-label">3-Phase:</span> 7 Cards
+              </div>
+            </div>
           </div>
 
           <!-- Row 7: 37-42 KW -->
           <div class="req-table-row-card">
             <div class="req-col-kw">🏬 37 – 42 KW</div>
             <div class="req-col-bill">₹36,001 – ₹42,000</div>
-            <div class="req-col-1phase">7 Cards</div>
-            <div class="req-col-3phase">8 Cards</div>
+            <div style="display: flex; gap: 8px; width: 100%;">
+              <div class="req-col-1phase">
+                <span class="req-mobile-phase-label">1-Phase:</span> 7 Cards
+              </div>
+              <div class="req-col-3phase">
+                <span class="req-mobile-phase-label">3-Phase:</span> 8 Cards
+              </div>
+            </div>
           </div>
 
           <!-- Row 8: 43-48 KW -->
           <div class="req-table-row-card">
             <div class="req-col-kw">🏭 43 – 48 KW</div>
             <div class="req-col-bill">₹42,001 – ₹48,000</div>
-            <div class="req-col-1phase">8 Cards</div>
-            <div class="req-col-3phase">9 Cards</div>
+            <div style="display: flex; gap: 8px; width: 100%;">
+              <div class="req-col-1phase">
+                <span class="req-mobile-phase-label">1-Phase:</span> 8 Cards
+              </div>
+              <div class="req-col-3phase">
+                <span class="req-mobile-phase-label">3-Phase:</span> 9 Cards
+              </div>
+            </div>
           </div>
 
           <!-- Row 9: 49-54 KW -->
           <div class="req-table-row-card">
             <div class="req-col-kw">🏭 49 – 54 KW</div>
             <div class="req-col-bill">₹48,001 – ₹54,000</div>
-            <div class="req-col-1phase">9 Cards</div>
-            <div class="req-col-3phase">10 Cards</div>
+            <div style="display: flex; gap: 8px; width: 100%;">
+              <div class="req-col-1phase">
+                <span class="req-mobile-phase-label">1-Phase:</span> 9 Cards
+              </div>
+              <div class="req-col-3phase">
+                <span class="req-mobile-phase-label">3-Phase:</span> 10 Cards
+              </div>
+            </div>
           </div>
 
           <!-- Row 10: 55-60 KW -->
           <div class="req-table-row-card">
             <div class="req-col-kw">🏭 55 – 60 KW</div>
             <div class="req-col-bill">₹54,001 – ₹60,000</div>
-            <div class="req-col-1phase">10 Cards</div>
-            <div class="req-col-3phase">11 Cards</div>
+            <div style="display: flex; gap: 8px; width: 100%;">
+              <div class="req-col-1phase">
+                <span class="req-mobile-phase-label">1-Phase:</span> 10 Cards
+              </div>
+              <div class="req-col-3phase">
+                <span class="req-mobile-phase-label">3-Phase:</span> 11 Cards
+              </div>
+            </div>
           </div>
 
         </div>
