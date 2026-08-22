@@ -652,19 +652,17 @@
     font-size: 11px;
     color: var(--muted-2);
     margin: 0;
-    line-height: 1.4;
-    text-align: left !important;
-    display: -webkit-box;
+den;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
 
-  /* ---- INDUSTRIAL SIZING TABLE (EXACT MATCH TO COMMERCIAL TABLE) ---- */
+  /* ---- INDUSTRIAL SIZING TABLE (EXACT MATCH TO SCREENSHOT) ---- */
   .vsind-table-wrap {
     background: #ffffff;
-    border: 1.5px solid var(--line);
-    border-radius: 16px;
+    border: 1.5px solid #f3e6d3;
+    border-radius: 18px;
     overflow: hidden;
     box-shadow: 0 4px 16px rgba(0,0,0,0.03);
   }
@@ -681,37 +679,43 @@
   }
 
   .vsind-table th {
-    padding: 12px 14px;
+    padding: 12px 10px;
     font-family: 'IBM Plex Mono', monospace;
     font-size: 11px;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.6px;
+    letter-spacing: 0.5px;
     text-align: center;
+    color: #ffffff;
+    vertical-align: middle;
   }
-  .vsind-table th:first-child { text-align: left; }
+  .vsind-table th:first-child { text-align: left; padding-left: 14px; }
 
   .vsind-table tbody tr {
-    border-bottom: 1px solid var(--line-s);
+    border-bottom: 1px solid #f3e6d3;
   }
-  .vsind-table tbody tr:nth-child(even) { background: #f8fafc; }
+  .vsind-table tbody tr:nth-child(even) { background: #fffbf5; }
+  .vsind-table tbody tr:last-child { border-bottom: none; }
 
   .vsind-table td {
-    padding: 12px 14px;
+    padding: 12px 10px;
     text-align: center;
-    color: var(--muted);
+    color: #475569;
+    vertical-align: middle;
+    line-height: 1.4;
   }
   .vsind-table td:first-child {
     text-align: left;
+    padding-left: 14px;
     font-weight: 800;
-    color: var(--ink);
+    color: #0f172a;
     font-family: 'Space Grotesk', sans-serif;
   }
   .vsind-table td.highlight {
-    font-family: 'IBM Plex Mono', monospace;
-    font-weight: 800;
-    color: #0284c7;
-    font-size: 14.5px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    color: #475569;
+    font-size: 13.5px;
   }
 
   /* ---- WORKED EXAMPLES CASE STUDIES GRID ---- */
@@ -735,7 +739,7 @@
     box-shadow: 0 16px 36px rgba(0,0,0,0.09) !important;
   }
 
-  /* Mobile Justification & Card Overrides */
+  /* Mobile Justification & Lucrative Card Styling Overrides */
   @media (max-width: 767px) {
     .vsind p,
     .vsind .vsind-hero-lead,
@@ -897,33 +901,45 @@
       margin-bottom: 2px !important;
     }
 
-    /* SIZING TABLE MOBILE ENHANCEMENTS */
+    /* SIZING TABLE MOBILE ENHANCEMENTS (EXACT MATCH TO SCREENSHOT) */
     .vsind-table-wrap {
       border-radius: 16px !important;
-      border: 1.5px solid #0284c7 !important;
-      box-shadow: 0 8px 24px rgba(2,132,199,0.1) !important;
-      overflow-x: auto !important;
-      -webkit-overflow-scrolling: touch !important;
+      border: 1.5px solid #f3e6d3 !important;
+      overflow-x: hidden !important;
+      width: 100% !important;
+    }
+    .vsind-table {
+      table-layout: fixed !important;
+      width: 100% !important;
     }
     .vsind-table th {
-      padding: 12px 10px !important;
-      font-size: 10.5px !important;
-      white-space: nowrap !important;
+      padding: 10px 4px !important;
+      font-size: 9.5px !important;
+      letter-spacing: 0px !important;
+      line-height: 1.25 !important;
+      white-space: normal !important;
     }
+    .vsind-table th:first-child {
+      padding-left: 10px !important;
+      width: 32% !important;
+    }
+    .vsind-table th:nth-child(2) { width: 20% !important; }
+    .vsind-table th:nth-child(3) { width: 26% !important; }
     .vsind-table td {
-      padding: 12px 10px !important;
-      font-size: 12px !important;
-      white-space: nowrap !important;
+      padding: 10px 4px !important;
+      font-size: 11.5px !important;
+      line-height: 1.35 !important;
+      white-space: normal !important;
+      word-break: break-word !important;
     }
-    .vsind-badge-kw, .vsind-badge-bill {
-      padding: 4px 8px !important;
+    .vsind-table td:first-child {
+      padding-left: 10px !important;
+      font-size: 12px !important;
+      font-weight: 800 !important;
+    }
+    .vsind-table td.highlight {
       font-size: 11.5px !important;
     }
-    .vsind-table td.highlight span {
-      padding: 5px 12px !important;
-      font-size: 12px !important;
-    }
-  }
   }
 </style>
 
