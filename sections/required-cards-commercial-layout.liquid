@@ -421,6 +421,35 @@
     outline: none;
   }
 
+  .vscom-toggle-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 6px;
+  }
+  .vscom-toggle-btn {
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1.5px solid #cbd5e1;
+    background: #ffffff;
+    color: #475569;
+    font-weight: 700;
+    font-size: 13.5px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+  }
+  .vscom-toggle-btn:hover {
+    border-color: #008744;
+    color: #008744;
+  }
+  .vscom-toggle-btn.active {
+    background: #064e3b;
+    color: #ffffff;
+    border-color: #064e3b;
+    box-shadow: 0 4px 12px rgba(6, 78, 59, 0.25);
+  }
+
   .vscom-output-card {
     background: var(--panel-2);
     border: 1.5px solid var(--line);
@@ -1003,6 +1032,15 @@
             </div>
             <input type="number" class="vscom-num-input" id="vscom_bill_num" value="18000" min="1000" step="1000" oninput="vscomSync('bill')">
           </div>
+
+          <!-- PHASE SELECTOR -->
+          <div class="vscom-field">
+            <div class="vscom-field-label">🔌 PHASE TYPE</div>
+            <div class="vscom-toggle-group">
+              <button type="button" class="vscom-toggle-btn" id="vscom_btn_single" onclick="vscomSetPhase(false)">Single Phase</button>
+              <button type="button" class="vscom-toggle-btn active" id="vscom_btn_three" onclick="vscomSetPhase(true)">Three Phase</button>
+            </div>
+          </div>
         </div>
 
         <div class="vscom-output-card">
@@ -1345,6 +1383,22 @@
 </div>
 
 <script>
+  var vscomThreePhase = true;
+
+  function vscomSetPhase(isThree) {
+    vscomThreePhase = isThree;
+    var btnSingle = document.getElementById('vscom_btn_single');
+    var btnThree = document.getElementById('vscom_btn_three');
+    if (isThree) {
+      btnThree.classList.add('active');
+      btnSingle.classList.remove('active');
+    } else {
+      btnSingle.classList.add('active');
+      btnThree.classList.remove('active');
+    }
+    vscomSync();
+  }
+
   function vscomSync(source) {
     var kwSlider = document.getElementById('vscom_kw_slider');
     var kwNum = document.getElementById('vscom_kw_num');
@@ -1373,8 +1427,9 @@
     document.getElementById('vscom_kw_badge').innerText = kw + ' KW';
     document.getElementById('vscom_bill_badge').innerText = '₹' + bill.toLocaleString('en-IN');
 
-    // 1 Card per 6 KW (or 1 Card per ₹6,000 bill)
-    var total = Math.max(1, Math.ceil(kw / 6));
+    // 1 Card per 6 KW (if 3-Phase, +1 card to balance 3 phase lines)
+    var baseCards = Math.max(1, Math.ceil(kw / 6));
+    var total = vscomThreePhase ? baseCards + 1 : baseCards;
 
     document.getElementById('vscom_card_num').innerText = total;
     document.getElementById('vscom_card_unit').innerText = total > 1 ? 'Cards' : 'Card';
