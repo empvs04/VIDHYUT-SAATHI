@@ -163,7 +163,7 @@
         <a href="{{ section.settings.btn1_link }}" class="v-btn v-btn-primary">{{ section.settings.btn1_text }} <i class="fas fa-arrow-right"></i></a>
       {% endif %}
       {% if section.settings.btn2_text != blank %}
-        <a href="{{ section.settings.btn2_link }}" class="v-btn v-btn-secondary"><i class="fas fa-briefcase"></i> {{ section.settings.btn2_text }}</a>
+        <a href="{% if section.settings.btn2_link != blank %}{{ section.settings.btn2_link }}{% else %}/pages/get-franchise{% endif %}" class="v-btn v-btn-secondary"><i class="fas fa-briefcase"></i> {{ section.settings.btn2_text }}</a>
       {% endif %}
     </div>
   </div>
