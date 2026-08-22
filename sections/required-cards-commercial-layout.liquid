@@ -1,0 +1,1018 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&family=IBM+Plex+Mono:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+  /* ============================================================
+     VIDHYUT SAATHI — COMMERCIAL REQUIRED CARDS PAGE
+     Theme: Warm Cream #fff8ef | Commercial Deep Emerald #064e3b | Orange #ec5c0a
+  ============================================================ */
+  .vscom {
+    --bg:       #fff8ef;
+    --bg-warm:  #f5ebd9;
+    --panel:    #ffffff;
+    --panel-2:  #fbf6ec;
+    --line:     #e7dcce;
+    --line-s:   #f0e5d6;
+    --green:    #007b3e;
+    --green-d:  #064e3b;
+    --green-t:  #e6f4ec;
+    --orange:   #ec5c0a;
+    --orange-d: #c84900;
+    --orange-t: #ffefe5;
+    --gold:     #c9982e;
+    --ink:      #0f172a;
+    --muted:    #475569;
+    --muted-2:  #64748b;
+    --maxw:     1180px;
+
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    font-size: 16px;
+    line-height: 1.55;
+  }
+
+  .vscom *, .vscom *::before, .vscom *::after {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .vscom h1, .vscom h2, .vscom h3, .vscom h4 {
+    font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: -0.02em;
+  }
+
+  .vscom a { color: inherit; text-decoration: none; }
+  .vscom img { max-width: 100%; display: block; }
+  .vscom button { font-family: inherit; cursor: pointer; }
+
+  .vscom .wrap {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+  @media(min-width: 640px){ .vscom .wrap { padding: 0 28px; } }
+
+  /* ---- CATEGORY NAVIGATION STRIP ---- */
+  .vscom-nav-strip {
+    background: #ffffff;
+    border-bottom: 1.5px solid var(--line);
+    padding: 12px 16px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.03);
+  }
+
+  .vscom-nav-container {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .vscom-nav-title {
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--ink);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+  }
+  .vscom-nav-title i { color: var(--orange); }
+
+  .vscom-nav-links {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .vscom-nav-links::-webkit-scrollbar { display: none; }
+
+  .vscom-nav-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 18px;
+    border-radius: 50px;
+    font-size: 12.5px;
+    font-weight: 700;
+    background: #f8fafc;
+    border: 1.5px solid #e2e8f0;
+    color: var(--muted);
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+  .vscom-nav-item:hover {
+    border-color: var(--orange);
+    color: var(--orange);
+  }
+  .vscom-nav-item.active {
+    background: linear-gradient(135deg, var(--green-d) 0%, #007b3e 100%);
+    color: #ffffff;
+    border-color: var(--green-d);
+    box-shadow: 0 4px 14px rgba(6, 78, 59, 0.3);
+  }
+
+  /* ---- HERO SECTION ---- */
+  .vscom-hero {
+    position: relative;
+    padding: clamp(32px, 5vw, 65px) 0 clamp(24px, 4vw, 45px) 0;
+    background: linear-gradient(135deg, #ffffff 0%, #e6f4ec 50%, #fff8ef 100%);
+    border-bottom: 1.5px solid var(--line);
+    overflow: hidden;
+  }
+
+  .vscom-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 28px;
+    align-items: center;
+  }
+  @media(min-width: 900px){
+    .vscom-hero-grid {
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 40px;
+    }
+  }
+
+  .vscom-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #ffffff;
+    border: 1.5px solid var(--green-d);
+    color: var(--green-d);
+    font-size: 11px;
+    font-weight: 700;
+    font-family: 'IBM Plex Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding: 6px 16px;
+    border-radius: 50px;
+    margin-bottom: 16px;
+    box-shadow: 0 4px 14px rgba(6, 78, 59, 0.12);
+  }
+
+  .vscom-hero h1 {
+    font-size: clamp(25px, 5.2vw, 46px);
+    line-height: 1.15;
+    font-weight: 800;
+    color: var(--ink);
+    margin: 0 0 14px 0;
+  }
+  .vscom-hero h1 span {
+    background: linear-gradient(135deg, var(--green-d) 0%, #007b3e 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .vscom-hero-lead {
+    color: var(--muted);
+    font-size: clamp(14px, 2vw, 16px);
+    line-height: 1.6;
+    margin: 0 0 24px 0;
+    max-width: 620px;
+  }
+
+  .vscom-hero-ctas {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+  }
+
+  .vscom-btn-primary {
+    background: linear-gradient(135deg, var(--green-d) 0%, #007b3e 100%);
+    color: #ffffff;
+    font-weight: 700;
+    padding: 14px 26px;
+    border-radius: 12px;
+    font-size: 14.5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: none;
+    box-shadow: 0 6px 20px rgba(6, 78, 59, 0.32);
+    transition: all 0.2s ease;
+  }
+  .vscom-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 26px rgba(6, 78, 59, 0.4);
+  }
+
+  .vscom-btn-secondary {
+    background: #ffffff;
+    color: var(--orange-d);
+    border: 1.5px solid var(--orange);
+    font-weight: 700;
+    padding: 14px 24px;
+    border-radius: 12px;
+    font-size: 14.5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+  }
+  .vscom-btn-secondary:hover {
+    background: var(--orange-t);
+  }
+
+  /* Trust Badges Strip */
+  .vscom-trust-badges {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding-top: 20px;
+    border-top: 1.5px solid var(--line);
+  }
+  @media(min-width: 600px){
+    .vscom-trust-badges { grid-template-columns: repeat(4, 1fr); }
+  }
+
+  .vscom-trust-badge-item {
+    background: #ffffff;
+    border: 1.5px solid var(--line);
+    border-radius: 12px;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+  }
+
+  .vscom-trust-badge-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: var(--green-t);
+    color: var(--green-d);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  .vscom-trust-badge-text strong {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+  .vscom-trust-badge-text span {
+    font-size: 10.5px;
+    color: var(--muted-2);
+  }
+
+  /* Right Card Image Showcase */
+  .vscom-hero-image-box {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #064e3b 0%, #0f172a 60%, #ec5c0a 100%);
+    border: 2px solid var(--line);
+    box-shadow: 0 16px 36px rgba(0,0,0,0.14);
+    padding: 24px;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .vscom-hero-card-tag {
+    background: rgba(16, 185, 129, 0.25);
+    border: 1px solid rgba(16, 185, 129, 0.5);
+    color: #a7f3d0;
+    font-size: 10.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding: 4px 14px;
+    border-radius: 50px;
+    margin-bottom: 16px;
+  }
+
+  .vscom-mcb-hero-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(16, 185, 129, 0.22);
+    border: 1.5px solid rgba(16, 185, 129, 0.5);
+    color: #a7f3d0;
+    font-size: 12.5px;
+    font-weight: 700;
+    padding: 8px 18px;
+    border-radius: 50px;
+    text-decoration: none;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    margin-top: 10px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+  }
+  .vscom-mcb-hero-link:hover {
+    background: linear-gradient(135deg, #007b3e 0%, #064e3b 100%);
+    color: #ffffff;
+    border-color: #a7f3d0;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(6, 78, 59, 0.45);
+  }
+
+  /* ---- CALCULATOR SECTION ---- */
+  .vscom-sec { padding: 44px 0; }
+  @media(min-width: 768px){ .vscom-sec { padding: 60px 0; } }
+
+  .vscom-sec-head {
+    max-width: 680px;
+    margin: 0 auto 28px;
+    text-align: center;
+  }
+  .vscom-sec-eyebrow {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--green-d);
+    margin-bottom: 6px;
+  }
+  .vscom-sec-title {
+    font-size: clamp(22px, 4vw, 32px);
+    font-weight: 800;
+    color: var(--ink);
+    margin: 0 0 10px 0;
+  }
+  .vscom-sec-desc {
+    color: var(--muted);
+    font-size: 14.5px;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .vscom-calc-box {
+    background: #ffffff;
+    border: 1.5px solid var(--line);
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+    padding: 24px 18px;
+  }
+  @media(min-width: 860px){
+    .vscom-calc-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      padding: 36px 30px;
+    }
+  }
+
+  .vscom-field { margin-bottom: 20px; }
+  .vscom-field-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 700;
+    font-family: 'IBM Plex Mono', monospace;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .vscom-field-badge {
+    background: var(--green-t);
+    color: var(--green-d);
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 12.5px;
+    font-weight: 700;
+  }
+
+  .vscom-range-slider {
+    width: 100%;
+    height: 8px;
+    border-radius: 50px;
+    background: var(--line);
+    outline: none;
+    accent-color: var(--green-d);
+    margin: 10px 0;
+  }
+
+  .vscom-num-input {
+    width: 100%;
+    height: 46px;
+    border: 1.5px solid var(--line);
+    border-radius: 10px;
+    padding: 0 14px;
+    font-size: 15px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 700;
+    color: var(--ink);
+    background: #ffffff;
+    outline: none;
+  }
+
+  .vscom-output-card {
+    background: var(--panel-2);
+    border: 1.5px solid var(--line);
+    border-radius: 16px;
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .vscom-res-val {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(48px, 10vw, 68px);
+    font-weight: 800;
+    color: var(--green-d);
+    line-height: 1;
+    margin: 8px 0 16px 0;
+  }
+  .vscom-res-val span {
+    font-size: 16px;
+    color: var(--muted);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+
+  .vscom-savings-box {
+    background: linear-gradient(135deg, #064e3b 0%, #007b3e 100%);
+    border-radius: 14px;
+    padding: 16px;
+    color: #ffffff;
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* ══ 20 COMMERCIAL MCB GALLERY ══ */
+  .mcb-sec {
+    background: #ffffff;
+    border-top: 1.5px solid var(--line);
+    border-bottom: 1.5px solid var(--line);
+    padding: clamp(40px, 6vw, 75px) 0;
+  }
+
+  .mcb-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+  @media(min-width: 640px){ .mcb-gallery-grid { grid-template-columns: repeat(3, 1fr); gap: 18px; } }
+  @media(min-width: 1024px){ .mcb-gallery-grid { grid-template-columns: repeat(4, 1fr); gap: 20px; } }
+
+  .mcb-card {
+    background: #ffffff;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    cursor: pointer;
+  }
+  .mcb-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 32px rgba(6, 78, 59, 0.14);
+    border-color: var(--green-d);
+  }
+
+  .mcb-card-img-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: #0f172a;
+  }
+  .mcb-card-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+
+  .mcb-card-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(6, 78, 59, 0.9);
+    color: #a7f3d0;
+    font-size: 10px;
+    font-weight: 800;
+    font-family: 'IBM Plex Mono', monospace;
+    text-transform: uppercase;
+    padding: 3.5px 10px;
+    border-radius: 50px;
+    border: 1px solid rgba(16, 185, 129, 0.4);
+    z-index: 2;
+  }
+
+  .mcb-card-body { padding: 14px; display: flex; flex-direction: column; flex-grow: 1; }
+  .mcb-card-title { font-size: 13.5px; font-weight: 800; color: var(--ink); margin: 0 0 4px 0; }
+  .mcb-card-desc { font-size: 11.5px; color: var(--muted-2); margin: 0; }
+
+  /* Table */
+  .vscom-table-wrap {
+    background: #ffffff;
+    border: 1.5px solid var(--line);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .vscom-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  .vscom-table thead tr { background: var(--green-d); color: #ffffff; }
+  .vscom-table th, .vscom-table td { padding: 12px 14px; text-align: center; }
+  .vscom-table th:first-child, .vscom-table td:first-child { text-align: left; }
+  .vscom-table td.highlight { font-family: 'IBM Plex Mono', monospace; font-weight: 800; color: var(--orange); }
+
+  /* Mobile Justification */
+  @media (max-width: 767px) {
+    .vscom p, .vscom .vscom-hero-lead, .vscom .vscom-sec-desc, .vscom .mcb-card-desc {
+      text-align: justify !important;
+      text-justify: inter-word !important;
+      hyphens: auto !important;
+    }
+    .mcb-gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  }
+</style>
+
+<div class="vscom">
+
+  <!-- ══ CATEGORY NAVIGATION STRIP ══ -->
+  <div class="vscom-nav-strip">
+    <div class="vscom-nav-container">
+      <div class="vscom-nav-title">
+        <i class="fa-solid fa-layer-group"></i> Sector Requirement Pages:
+      </div>
+      <div class="vscom-nav-links">
+        <a href="/pages/commercial" class="vscom-nav-item active">
+          <i class="fa-solid fa-building"></i> Commercial
+        </a>
+        <a href="/pages/residential" class="vscom-nav-item">
+          <i class="fa-solid fa-house"></i> Residential
+        </a>
+        <a href="/pages/required-cards" class="vscom-nav-item">
+          <i class="fa-solid fa-calculator"></i> Card Calculator
+        </a>
+        <a href="/pages/b2c" class="vscom-nav-item">
+          <i class="fa-solid fa-bolt"></i> Power Saver Card
+        </a>
+        <a href="/pages/get-franchise" class="vscom-nav-item">
+          <i class="fa-solid fa-store"></i> Franchise Program
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ HERO SECTION ══ -->
+  <section class="vscom-hero">
+    <div class="wrap">
+      <div class="vscom-hero-grid">
+        <div>
+          <div class="vscom-eyebrow">
+            <i class="fa-solid fa-building-flag"></i> Commercial Energy Saver Guide
+          </div>
+          <h1>Vidhyut Saathi Card for <span>Commercial Establishments</span></h1>
+          <p class="vscom-hero-lead">
+            Lower operational overheads and stop paying heavy DISCOM reactive power surcharges. Designed for Offices, Retail Outlets, Supermarkets, Restaurants, Hotels, Hospitals, and Commercial DB Panels.
+          </p>
+
+          <div class="vscom-hero-ctas">
+            <a href="#vscom-calc" class="vscom-btn-primary">
+              <i class="fa-solid fa-calculator"></i> Calculate Commercial Cards
+            </a>
+            <a href="https://wa.me/919876543210?text=Hi%20Vidhyut%20Saathi%2C%20I%20want%20to%20order%20Commercial%20Saver%20Cards" class="vscom-btn-secondary" target="_blank">
+              <i class="fa-brands fa-whatsapp"></i> Commercial Inquiry
+            </a>
+          </div>
+
+          <div class="vscom-trust-badges">
+            <div class="vscom-trust-badge-item">
+              <div class="vscom-trust-badge-icon"><i class="fa-solid fa-bolt"></i></div>
+              <div class="vscom-trust-badge-text">
+                <strong>20–30% Savings</strong>
+                <span>On DISCOM Bills</span>
+              </div>
+            </div>
+            <div class="vscom-trust-badge-item">
+              <div class="vscom-trust-badge-icon"><i class="fa-solid fa-chart-line"></i></div>
+              <div class="vscom-trust-badge-text">
+                <strong>PF Improvement</strong>
+                <span>Up to 0.99 Lag</span>
+              </div>
+            </div>
+            <div class="vscom-trust-badge-item">
+              <div class="vscom-trust-badge-icon"><i class="fa-solid fa-shield-halved"></i></div>
+              <div class="vscom-trust-badge-text">
+                <strong>10-Yr Life</strong>
+                <span>3-Yr Warranty</span>
+              </div>
+            </div>
+            <div class="vscom-trust-badge-item">
+              <div class="vscom-trust-badge-icon"><i class="fa-solid fa-certificate"></i></div>
+              <div class="vscom-trust-badge-text">
+                <strong>ISO Certified</strong>
+                <span>100% Legal & Safe</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT HERO SHOWCASE -->
+        <div class="vscom-hero-image-box">
+          <span class="vscom-hero-card-tag"><i class="fa-solid fa-building"></i> Commercial Heavy Saver Card</span>
+
+          <div style="width:100%; display:flex; justify-content:center; margin:12px 0;">
+            {% if section.settings.card_image != blank %}
+              <img src="{{ section.settings.card_image | image_url: width: 600 }}" alt="Vidhyut Saathi Commercial Electric Saver Card" style="width: 100%; max-width: 320px; border-radius: 16px; box-shadow: 0 16px 36px rgba(0,0,0,0.4); border: 2px solid rgba(255,255,255,0.25);">
+            {% else %}
+              <img src="{{ 'official-vs-card-front.jpg' | asset_url }}" alt="Vidhyut Saathi Commercial Electric Saver Card" style="width: 100%; max-width: 320px; border-radius: 16px; box-shadow: 0 16px 36px rgba(0,0,0,0.4); border: 2px solid rgba(255,255,255,0.25);" onerror="this.onerror=null; this.src='https://cdn.shopify.com/s/files/1/0663/8783/7093/files/VS_Card_Final_Design_Golden_1.png';">
+            {% endif %}
+          </div>
+
+          <p style="font-size:12.5px; color:#cbd5e1; margin:8px 0 12px 0; line-height:1.5;">
+            Patented US-German Terahertz frequency technology stabilizes voltage fluctuations across commercial 3-phase DB panels and eliminates inductive reactive current from elevators & HVAC motors.
+          </p>
+
+          <a href="#mcb-gallery" class="vscom-mcb-hero-link">
+            <i class="fa-solid fa-camera"></i> See 20 Commercial MCB Installations <i class="fa-solid fa-arrow-down-long"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ INTERACTIVE COMMERCIAL CALCULATOR ══ -->
+  <section class="vscom-sec" id="vscom-calc">
+    <div class="wrap">
+      <div class="vscom-sec-head">
+        <div class="vscom-sec-eyebrow"><i class="fa-solid fa-sliders"></i> Commercial Calculator</div>
+        <h2 class="vscom-sec-title">Calculate Commercial Cards Needed</h2>
+        <p class="vscom-sec-desc">
+          Calculated using standard DISCOM guidelines: 1 card per 6 KW connected load, or 1 card per ₹6,000 monthly bill — whichever recommends the higher count.
+        </p>
+      </div>
+
+      <div class="vscom-calc-box">
+        <div>
+          <div class="vscom-field">
+            <div class="vscom-field-label">
+              <span>⚙️ CONNECTED COMMERCIAL LOAD</span>
+              <span class="vscom-field-badge" id="vscom_kw_badge">18 KW</span>
+            </div>
+            <input type="range" class="vscom-range-slider" id="vscom_kw_slider" min="6" max="150" value="18" step="6" oninput="vscomSync()">
+            <input type="number" class="vscom-num-input" id="vscom_kw_num" value="18" min="1" max="500" oninput="vscomSync()">
+          </div>
+
+          <div class="vscom-field">
+            <div class="vscom-field-label">
+              <span>💰 MONTHLY ELECTRICITY BILL</span>
+              <span class="vscom-field-badge" id="vscom_bill_badge">₹18,000</span>
+            </div>
+            <input type="number" class="vscom-num-input" id="vscom_bill_num" value="18000" min="1000" step="1000" oninput="vscomSync()">
+          </div>
+        </div>
+
+        <div class="vscom-output-card">
+          <div>
+            <div style="font-size:11px; font-weight:800; color:var(--muted-2); letter-spacing:1px; text-transform:uppercase;">RECOMMENDED COMMERCIAL CARDS</div>
+            <div class="vscom-res-val">
+              <span id="vscom_card_num">4</span>
+              <span id="vscom_card_unit">Cards (3-Phase)</span>
+            </div>
+          </div>
+
+          <div class="vscom-savings-box">
+            <div>
+              <div style="font-size:10px; font-weight:700; color:#a7f3d0; text-transform:uppercase;">ESTIMATED MONTHLY SAVINGS (20-30%)</div>
+              <div style="font-size:22px; font-weight:800; font-family:'Space Grotesk', sans-serif;" id="vscom_savings_range">₹3,600 – ₹5,400 / mo</div>
+            </div>
+            <i class="fa-solid fa-piggy-bank" style="font-size:24px;"></i>
+          </div>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+            <a href="https://wa.me/919876543210?text=Hi%20Vidhyut%20Saathi%2C%20I%20need%20Commercial%20Cards" class="vscom-btn-primary" style="justify-content:center; font-size:13.5px;" target="_blank">
+              <i class="fa-brands fa-whatsapp"></i> Buy on WhatsApp
+            </a>
+            <a href="tel:+919876543210" class="vscom-btn-secondary" style="justify-content:center; font-size:13.5px;">
+              <i class="fa-solid fa-phone"></i> Call Commercial Rep
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 20 COMMERCIAL MCB GALLERY ══ -->
+  <section class="mcb-sec" id="mcb-gallery">
+    <div class="wrap">
+      <div class="vscom-sec-head">
+        <div class="vscom-sec-eyebrow"><i class="fa-solid fa-building-circle-check"></i> Commercial Installations</div>
+        <h2 class="vscom-sec-title">20 Commercial MCB & DB Board Connections</h2>
+        <p class="vscom-sec-desc">Click any commercial installation photo to inspect full 3-phase DB panel wiring. Vidhyut Saathi cards connect in parallel with zero load disruption.</p>
+      </div>
+
+      <!-- Category Filter Buttons -->
+      <div class="mcb-filter-bar" style="display:flex; align-items:center; justify-content:center; gap:8px; flex-wrap:wrap; margin-bottom:30px;">
+        <button class="mcb-filter-btn active" onclick="filterMcb('all', this)"><i class="fa-solid fa-border-all"></i> All (20)</button>
+        <button class="mcb-filter-btn" onclick="filterMcb('office', this)"><i class="fa-solid fa-building"></i> Offices & IT Parks (5)</button>
+        <button class="mcb-filter-btn" onclick="filterMcb('retail', this)"><i class="fa-solid fa-store"></i> Retail & Malls (5)</button>
+        <button class="mcb-filter-btn" onclick="filterMcb('hotel', this)"><i class="fa-solid fa-hotel"></i> Hotels & Cafes (5)</button>
+        <button class="mcb-filter-btn" onclick="filterMcb('hospital', this)"><i class="fa-solid fa-hospital"></i> Hospitals & Clinics (5)</button>
+      </div>
+
+      <div class="mcb-gallery-grid">
+        {% for i in (1..20) %}
+          {% capture img_key %}comm_mcb_img_{{ i }}{% endcapture %}
+          {% assign custom_img = section.settings[img_key] %}
+
+          {% assign block = nil %}
+          {% if section.blocks.size >= i %}
+            {% assign block_idx = i | minus: 1 %}
+            {% assign block = section.blocks[block_idx] %}
+          {% endif %}
+
+          {% assign cat = 'office' %}
+          {% assign badge = '3-PHASE DB PANEL' %}
+          {% assign title = 'Commercial DB Setup #' | append: i %}
+          {% assign desc = 'Parallel connection on main 63A commercial breaker with zero downtime.' %}
+
+          {% if i > 5 and i <= 10 %}
+            {% assign cat = 'retail' %}
+            {% assign badge = 'RETAIL STORE MCB' %}
+            {% assign title = 'Supermarket DB Box #' | append: i %}
+          {% elsif i > 10 and i <= 15 %}
+            {% assign cat = 'hotel' %}
+            {% assign badge = 'HOTEL HVAC PANEL' %}
+            {% assign title = 'Hotel Chiller DB #' | append: i %}
+          {% elsif i > 15 %}
+            {% assign cat = 'hospital' %}
+            {% assign badge = 'HOSPITAL MAINS DB' %}
+            {% assign title = 'Hospital Elevator DB #' | append: i %}
+          {% endif %}
+
+          {% if block != nil %}
+            {% if block.settings.title != blank %}{% assign title = block.settings.title %}{% endif %}
+            {% if block.settings.category != blank %}{% assign cat = block.settings.category %}{% endif %}
+            {% if block.settings.badge != blank %}{% assign badge = block.settings.badge %}{% endif %}
+            {% if block.settings.caption != blank %}{% assign desc = block.settings.caption %}{% endif %}
+            {% if block.settings.image != blank %}{% assign custom_img = block.settings.image %}{% endif %}
+          {% endif %}
+
+          <div class="mcb-card" data-category="{{ cat }}" onclick="openMcbLightbox('{% if custom_img != blank %}{{ custom_img | image_url: width: 1200 }}{% endif %}', '{{ title | escape }}', '{{ desc | escape }}')">
+            <div class="mcb-card-img-wrap">
+              {% if custom_img != blank %}
+                <img src="{{ custom_img | image_url: width: 600 }}" alt="{{ title }}" loading="lazy">
+              {% else %}
+                <div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg, #064e3b 0%, #0f172a 100%);">
+                  <svg viewBox="0 0 400 300" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="400" height="300" fill="#0f172a"/>
+                    <rect x="25" y="25" width="350" height="250" rx="12" fill="#1e293b" stroke="#007b3e" stroke-width="2"/>
+                    <rect x="50" y="55" width="190" height="190" rx="8" fill="#064e3b" stroke="#a7f3d0" stroke-width="2"/>
+                    <rect x="70" y="80" width="22" height="55" rx="4" fill="#007b3e"/>
+                    <rect x="100" y="80" width="22" height="55" rx="4" fill="#007b3e"/>
+                    <rect x="130" y="80" width="22" height="55" rx="4" fill="#ec5c0a"/>
+                    <rect x="160" y="80" width="22" height="55" rx="4" fill="#007b3e"/>
+                    <circle cx="120" cy="180" r="8" fill="#25d366"/>
+                    <text x="145" y="184" fill="#a7f3d0" font-size="10" font-family="Arial" font-weight="700">ONLINE</text>
+                    <rect x="260" y="75" width="95" height="150" rx="10" fill="#007b3e" stroke="#ffd700" stroke-width="2"/>
+                    <text x="307" y="124" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="800">🏢</text>
+                    <text x="307" y="165" text-anchor="middle" fill="#ffffff" font-size="9" font-weight="800" font-family="Arial">COMMERCIAL CARD</text>
+                    <text x="307" y="180" text-anchor="middle" fill="#a7f3d0" font-size="8" font-family="Arial">SETUP #{{ i }}</text>
+                  </svg>
+                </div>
+              {% endif %}
+              <span class="mcb-card-badge">{{ badge }}</span>
+              <div class="mcb-zoom-overlay" style="position:absolute; inset:0; background:rgba(6,78,59,0.5); display:flex; align-items:center; justify-content:center; color:#ffffff; font-size:20px; opacity:0; transition:opacity 0.2s;"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+            <div class="mcb-card-body">
+              <span style="font-size:10px; font-weight:800; font-family:'IBM Plex Mono',monospace; color:var(--green-d);">COMMERCIAL SETUP #{{ i }}</span>
+              <h4 class="mcb-card-title">{{ title }}</h4>
+              <p class="mcb-card-desc">{{ desc }}</p>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <!-- LIGHTBOX MODAL FOR COMMERCIAL MCB IMAGES -->
+  <div class="mcb-lightbox-overlay" id="mcb_lightbox" onclick="closeMcbLightbox()" style="position:fixed; inset:0; background:rgba(15,23,42,0.85); backdrop-filter:blur(8px); z-index:99999; display:flex; align-items:center; justify-content:center; padding:20px; opacity:0; visibility:hidden; transition:all 0.25s ease;">
+    <div class="mcb-lightbox-box" onclick="event.stopPropagation()" style="background:#ffffff; border-radius:20px; max-width:720px; width:100%; overflow:hidden; box-shadow:0 20px 50px rgba(0,0,0,0.5); position:relative; border:1.5px solid var(--green-d);">
+      <button type="button" class="mcb-lightbox-close" onclick="closeMcbLightbox()" style="position:absolute; top:14px; right:14px; width:36px; height:36px; border-radius:50%; background:#ffffff; color:#0f172a; border:1.5px solid #e2e8f0; display:flex; align-items:center; justify-content:center; font-size:18px; cursor:pointer; z-index:10;">&times;</button>
+      <div class="mcb-lightbox-img-wrap" id="mcb_lightbox_img_container" style="width:100%; max-height:420px; background:#0f172a; display:flex; align-items:center; justify-content:center;">
+        <!-- Image loaded dynamically -->
+      </div>
+      <div class="mcb-lightbox-info" style="padding:20px;">
+        <h3 id="mcb_lightbox_title" style="margin:0 0 6px 0; font-size:18px; color:var(--ink);">Title</h3>
+        <p id="mcb_lightbox_desc" style="margin:0; font-size:13px; color:var(--muted);">Caption</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ COMMERCIAL SIZING TABLE ══ -->
+  <section class="vscom-sec">
+    <div class="wrap">
+      <div class="vscom-sec-head">
+        <div class="vscom-sec-eyebrow"><i class="fa-solid fa-table"></i> Establishment Matrix</div>
+        <h2 class="vscom-sec-title">Commercial Sizing Reference Chart</h2>
+      </div>
+
+      <div class="vscom-table-wrap">
+        <table class="vscom-table">
+          <thead>
+            <tr>
+              <th>Establishment Type</th>
+              <th>Load (KW)</th>
+              <th>Monthly Bill (₹)</th>
+              <th>Recommended Cards</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Retail Shop / Boutique</td>
+              <td>6–12 KW</td>
+              <td>₹10,000 – ₹18,000</td>
+              <td class="highlight">2 – 3 Cards</td>
+            </tr>
+            <tr>
+              <td>Restaurant / Cafe / Bakery</td>
+              <td>18–30 KW</td>
+              <td>₹20,000 – ₹45,000</td>
+              <td class="highlight">4 – 6 Cards</td>
+            </tr>
+            <tr>
+              <td>Supermarket / Departmental Store</td>
+              <td>36–60 KW</td>
+              <td>₹50,000 – ₹100,000</td>
+              <td class="highlight">7 – 11 Cards</td>
+            </tr>
+            <tr>
+              <td>Hotel / Multi-Specialty Hospital</td>
+              <td>66–120 KW</td>
+              <td>₹110,000 – ₹250,000</td>
+              <td class="highlight">12 – 21 Cards</td>
+            </tr>
+            <tr>
+              <td>IT Office / Commercial Complex</td>
+              <td>126–200+ KW</td>
+              <td>₹260,000 – ₹500,000+</td>
+              <td class="highlight">22 – 35+ Cards</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  function vscomSync() {
+    var kwSlider = document.getElementById('vscom_kw_slider');
+    var kwNum = document.getElementById('vscom_kw_num');
+    var billNum = document.getElementById('vscom_bill_num');
+    var kw = Math.max(6, parseInt(kwNum.value) || 6);
+    var bill = Math.max(1000, parseInt(billNum.value) || 1000);
+
+    kwSlider.value = Math.min(kw, 150);
+    document.getElementById('vscom_kw_badge').innerText = kw + ' KW';
+    document.getElementById('vscom_bill_badge').innerText = '₹' + bill.toLocaleString('en-IN');
+
+    var kwCards = Math.ceil(kw / 6);
+    var billCards = Math.ceil(bill / 6000);
+    var total = Math.max(kwCards, billCards) + 1; // +1 for 3-Phase commercial
+
+    document.getElementById('vscom_card_num').innerText = total;
+    document.getElementById('vscom_card_unit').innerText = total > 1 ? 'Cards (3-Phase)' : 'Card';
+
+    var sMin = Math.round((bill * 0.20) / 100) * 100;
+    var sMax = Math.round((bill * 0.30) / 100) * 100;
+    document.getElementById('vscom_savings_range').innerText = '₹' + sMin.toLocaleString('en-IN') + ' – ₹' + sMax.toLocaleString('en-IN') + ' / mo';
+  }
+
+  document.getElementById('vscom_kw_slider').addEventListener('input', function() {
+    document.getElementById('vscom_kw_num').value = this.value;
+    vscomSync();
+  });
+
+  /* COMMERCIAL MCB GALLERY FILTER & LIGHTBOX */
+  function filterMcb(category, btnElem) {
+    if (btnElem) {
+      var allBtns = document.querySelectorAll('.mcb-filter-btn');
+      allBtns.forEach(function(b) { b.classList.remove('active'); });
+      btnElem.classList.add('active');
+    }
+    var cards = document.querySelectorAll('.mcb-card');
+    cards.forEach(function(card) {
+      var cat = card.getAttribute('data-category');
+      if (category === 'all' || cat === category) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  function openMcbLightbox(imgSrc, title, caption) {
+    var container = document.getElementById('mcb_lightbox_img_container');
+    if (imgSrc) {
+      container.innerHTML = '<img src="' + imgSrc + '" style="max-width:100%; max-height:420px; object-fit:contain;">';
+    } else {
+      container.innerHTML = '<div style="padding:40px; text-align:center; color:#064e3b; font-size:18px; font-weight:800;"><i class="fa-solid fa-building" style="font-size:36px; margin-bottom:10px; display:block;"></i>' + title + '</div>';
+    }
+    document.getElementById('mcb_lightbox_title').innerText = title;
+    document.getElementById('mcb_lightbox_desc').innerText = caption;
+    document.getElementById('mcb_lightbox').classList.add('active');
+  }
+
+  function closeMcbLightbox() {
+    document.getElementById('mcb_lightbox').classList.remove('active');
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Commercial Cards Layout",
+  "settings": [
+    { "type": "image_picker", "id": "card_image", "label": "Commercial Hero Card Image" },
+    { "type": "image_picker", "id": "comm_mcb_img_1", "label": "Commercial MCB Image 1" },
+    { "type": "image_picker", "id": "comm_mcb_img_2", "label": "Commercial MCB Image 2" },
+    { "type": "image_picker", "id": "comm_mcb_img_3", "label": "Commercial MCB Image 3" },
+    { "type": "image_picker", "id": "comm_mcb_img_4", "label": "Commercial MCB Image 4" },
+    { "type": "image_picker", "id": "comm_mcb_img_5", "label": "Commercial MCB Image 5" },
+    { "type": "image_picker", "id": "comm_mcb_img_6", "label": "Commercial MCB Image 6" },
+    { "type": "image_picker", "id": "comm_mcb_img_7", "label": "Commercial MCB Image 7" },
+    { "type": "image_picker", "id": "comm_mcb_img_8", "label": "Commercial MCB Image 8" },
+    { "type": "image_picker", "id": "comm_mcb_img_9", "label": "Commercial MCB Image 9" },
+    { "type": "image_picker", "id": "comm_mcb_img_10", "label": "Commercial MCB Image 10" },
+    { "type": "image_picker", "id": "comm_mcb_img_11", "label": "Commercial MCB Image 11" },
+    { "type": "image_picker", "id": "comm_mcb_img_12", "label": "Commercial MCB Image 12" },
+    { "type": "image_picker", "id": "comm_mcb_img_13", "label": "Commercial MCB Image 13" },
+    { "type": "image_picker", "id": "comm_mcb_img_14", "label": "Commercial MCB Image 14" },
+    { "type": "image_picker", "id": "comm_mcb_img_15", "label": "Commercial MCB Image 15" },
+    { "type": "image_picker", "id": "comm_mcb_img_16", "label": "Commercial MCB Image 16" },
+    { "type": "image_picker", "id": "comm_mcb_img_17", "label": "Commercial MCB Image 17" },
+    { "type": "image_picker", "id": "comm_mcb_img_18", "label": "Commercial MCB Image 18" },
+    { "type": "image_picker", "id": "comm_mcb_img_19", "label": "Commercial MCB Image 19" },
+    { "type": "image_picker", "id": "comm_mcb_img_20", "label": "Commercial MCB Image 20" }
+  ],
+  "blocks": [
+    {
+      "type": "comm_mcb_installation",
+      "name": "Commercial MCB Photo",
+      "limit": 20,
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Installation Photo" },
+        { "type": "text", "id": "title", "label": "Installation Title", "default": "Commercial DB Panel Setup" },
+        {
+          "type": "select",
+          "id": "category",
+          "label": "Category",
+          "options": [
+            { "value": "office", "label": "Offices & IT Parks" },
+            { "value": "retail", "label": "Retail & Malls" },
+            { "value": "hotel", "label": "Hotels & Cafes" },
+            { "value": "hospital", "label": "Hospitals & Clinics" }
+          ],
+          "default": "office"
+        },
+        { "type": "text", "id": "badge", "label": "Badge Text", "default": "3-PHASE DB PANEL" },
+        { "type": "text", "id": "caption", "label": "Caption Description", "default": "Parallel connection on main commercial breaker with zero downtime." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Commercial Cards Layout",
+      "blocks": [
+        { "type": "comm_mcb_installation", "settings": { "title": "Office 3-Phase DB #1", "category": "office", "badge": "OFFICE DB PANEL" } },
+        { "type": "comm_mcb_installation", "settings": { "title": "Office 3-Phase DB #2", "category": "office", "badge": "OFFICE DB PANEL" } },
+        { "type": "comm_mcb_installation", "settings": { "title": "Office 3-Phase DB #3", "category": "office", "badge": "OFFICE DB PANEL" } },
+        { "type": "comm_mcb_installation", "settings": { "title": "Office 3-Phase DB #4", "category": "office", "badge": "OFFICE DB PANEL" } },
+        { "type": "comm_mcb_installation", "settings": { "title": "Office 3-Phase DB #5", "category": "office", "badge": "OFFICE DB PANEL" } },
+        { "type": "comm_mcb_installation", "settings": { "title": "Supermarket DB Box #6", "category": "retail", "badge": "RETAIL STORE MCB" } },
+        { "type": "comm_mcb_installation", "settings": { "title": "Supermarket DB Box #7", "category": "retail", "badge": "RETAIL STORE MCB" } },
+        { "type": "comm_mcb_installation", "settings": { "title": "Supermarket DB Box #8", "category": "retail", "badge": "RETAIL STORE MCB" } },
+        { "type": "comm_mcb_installation", "settings": { "title": "Supermarket DB Box #9", "category": "retail", "badge": "RETAIL STORE MCB" } },
+        { "type": "comm_mcb_installation", "settings": { "title": "Supermarket DB Box #10", "category": "retail", "badge": "RETAIL STORE MCB" } },
+        { "type": "comm_mcb_installation", "settings": { "title": "Hotel HVAC Panel #11", "category": "hotel", "badge": "HOTEL HVAC PANEL" } },
+        { "type": "comm_mcb_installation", "settings": { "title": "Hotel HVAC Panel #12", "category": "hotel", "badge": "HOTEL HVAC PANEL" } },
+        { "type": "comm_mcb_installation", "settings": { "title": "Hotel HVAC Panel #13", "category": "hotel", "badge": "HOTEL HVAC PANEL" } },
+        { "type": "comm_mcb_installation", "settings": { "title": "Hotel HVAC Panel #14", "category": "hotel", "badge": "HOTEL HVAC PANEL" } },
+        { "type": "comm_mcb_installation", "settings": { "title": "Hotel HVAC Panel #15", "category": "hotel", "badge": "HOTEL HVAC PANEL" } },
+        { "type": "comm_mcb_installation", "settings": { "title": "Hospital Elevator DB #16", "category": "hospital", "badge": "HOSPITAL MAINS DB" } },
+        { "type": "comm_mcb_installation", "settings": { "title": "Hospital Elevator DB #17", "category": "hospital", "badge": "HOSPITAL MAINS DB" } },
+        { "type": "comm_mcb_installation", "settings": { "title": "Hospital Elevator DB #18", "category": "hospital", "badge": "HOSPITAL MAINS DB" } },
+        { "type": "comm_mcb_installation", "settings": { "title": "Hospital Elevator DB #19", "category": "hospital", "badge": "HOSPITAL MAINS DB" } },
+        { "type": "comm_mcb_installation", "settings": { "title": "Hospital Elevator DB #20", "category": "hospital", "badge": "HOSPITAL MAINS DB" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
