@@ -1,0 +1,1482 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+  /* ============================================
+     VIDHYUT SAATHI - PREMIUM BLOG PAGE STYLES
+     Theme: #fff8ef bg | #ec5c0a orange | #007b3e green | #1a1a1a text
+  ============================================= */
+
+  .vsblog-wrap {
+    background: #fff8ef;
+    font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: #1a1a1a;
+    box-sizing: border-box;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  /* ─── HERO BANNER ─── */
+  .vsblog-hero {
+    position: relative;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d1f0a 50%, #1a1a1a 100%);
+    padding: clamp(60px, 10vw, 110px) 20px;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .vsblog-hero-orbs {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .vsblog-hero-orbs::before {
+    content: '';
+    position: absolute;
+    top: -80px;
+    left: -80px;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(236,92,10,0.25) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .vsblog-hero-orbs::after {
+    content: '';
+    position: absolute;
+    bottom: -100px;
+    right: -80px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(0,123,62,0.2) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  /* Hero floating circuit SVG lines */
+  .vsblog-hero-circuit {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.08;
+    pointer-events: none;
+  }
+
+  .vsblog-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 820px;
+    margin: 0 auto;
+  }
+
+  .vsblog-hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: rgba(236,92,10,0.15);
+    border: 1px solid rgba(236,92,10,0.35);
+    color: #f97316;
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    padding: 6px 16px;
+    border-radius: 50px;
+    margin-bottom: 18px;
+  }
+
+  .vsblog-hero h1 {
+    font-size: clamp(28px, 6vw, 52px);
+    font-weight: 900;
+    color: #ffffff;
+    line-height: 1.18;
+    margin: 0 0 16px 0;
+    letter-spacing: -0.5px;
+  }
+
+  .vsblog-hero h1 span {
+    background: linear-gradient(90deg, #ec5c0a, #ff9800);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .vsblog-hero-desc {
+    color: rgba(255,255,255,0.7);
+    font-size: clamp(14px, 2.2vw, 18px);
+    line-height: 1.55;
+    max-width: 620px;
+    margin: 0 auto 28px auto;
+  }
+
+  /* Breadcrumb */
+  .vsblog-breadcrumb {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255,255,255,0.5);
+    font-size: 13px;
+  }
+
+  .vsblog-breadcrumb a {
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .vsblog-breadcrumb a:hover { color: #ec5c0a; }
+  .vsblog-breadcrumb .sep { color: rgba(255,255,255,0.25); }
+  .vsblog-breadcrumb .cur { color: #ec5c0a; font-weight: 600; }
+
+  /* ─── HERO STATS STRIP ─── */
+  .vsblog-stats-strip {
+    background: #ffffff;
+    border-bottom: 2px solid rgba(236,92,10,0.08);
+    padding: 0 20px;
+  }
+
+  .vsblog-stats-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0;
+    padding: 0;
+  }
+
+  .vsblog-stat-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 28px;
+    border-right: 1px solid #f1f5f9;
+    font-size: 13px;
+    font-weight: 600;
+    color: #475569;
+  }
+
+  .vsblog-stat-item:last-child { border-right: none; }
+
+  .vsblog-stat-item i {
+    color: #ec5c0a;
+    font-size: 16px;
+  }
+
+  .vsblog-stat-item strong {
+    color: #1a1a1a;
+    font-size: 15px;
+    font-weight: 800;
+  }
+
+  @media (max-width: 640px) {
+    .vsblog-stat-item {
+      padding: 12px 14px;
+      font-size: 12px;
+    }
+  }
+
+  /* ─── MAIN BODY LAYOUT ─── */
+  .vsblog-body {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: clamp(30px, 5vw, 60px) 16px;
+  }
+
+  /* ─── CATEGORY FILTER BAR ─── */
+  .vsblog-filter-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 38px;
+    padding-bottom: 22px;
+    border-bottom: 2px solid #f1f5f9;
+  }
+
+  .vsblog-filter-label {
+    font-size: 13px;
+    font-weight: 700;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    white-space: nowrap;
+  }
+
+  .vsblog-cats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    flex-grow: 1;
+  }
+
+  .vsblog-cat-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 7px 16px;
+    border-radius: 50px;
+    background: #ffffff;
+    border: 1.5px solid #e2e8f0;
+    color: #334155;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.22s ease;
+    white-space: nowrap;
+  }
+
+  .vsblog-cat-btn:hover, .vsblog-cat-btn.active {
+    background: #ec5c0a;
+    border-color: #ec5c0a;
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(236,92,10,0.25);
+  }
+
+  .vsblog-search {
+    display: flex;
+    position: relative;
+    min-width: 220px;
+  }
+
+  .vsblog-search input {
+    width: 100%;
+    height: 42px;
+    padding: 0 42px 0 16px;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 50px;
+    background: #ffffff;
+    font-size: 13px;
+    font-family: inherit;
+    color: #1a1a1a;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .vsblog-search input:focus { border-color: #ec5c0a; }
+
+  .vsblog-search button {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #64748b;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 0;
+  }
+
+  /* ─── FEATURED ARTICLE (BIG CARD) ─── */
+  .vsblog-featured {
+    margin-bottom: 48px;
+  }
+
+  .vsblog-section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #ec5c0a;
+    margin-bottom: 18px;
+  }
+
+  .vsblog-section-title::after {
+    content: '';
+    flex: 1;
+    height: 1.5px;
+    background: linear-gradient(90deg, rgba(236,92,10,0.4), transparent);
+  }
+
+  .vsblog-feat-card {
+    display: grid;
+    grid-template-columns: 1fr;
+    background: #ffffff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+    border: 1px solid rgba(236,92,10,0.1);
+    text-decoration: none;
+    color: inherit;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+
+  @media (min-width: 860px) {
+    .vsblog-feat-card {
+      grid-template-columns: 1.15fr 1fr;
+    }
+  }
+
+  .vsblog-feat-card:hover {
+    box-shadow: 0 20px 55px rgba(0,0,0,0.1);
+    transform: translateY(-3px);
+  }
+
+  .vsblog-feat-img {
+    position: relative;
+    min-height: 300px;
+    overflow: hidden;
+  }
+
+  @media (min-width: 860px) {
+    .vsblog-feat-img { min-height: 420px; }
+  }
+
+  .vsblog-feat-img img {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .vsblog-feat-card:hover .vsblog-feat-img img { transform: scale(1.04); }
+
+  /* SVG placeholder for featured */
+  .vsblog-feat-svg-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d1f0a 100%);
+  }
+
+  .vsblog-feat-badge {
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    background: #ec5c0a;
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    padding: 5px 12px;
+    border-radius: 50px;
+    z-index: 2;
+    box-shadow: 0 4px 12px rgba(236,92,10,0.4);
+  }
+
+  .vsblog-feat-content {
+    padding: clamp(24px, 4vw, 48px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: #ffffff;
+  }
+
+  .vsblog-cat-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: #007b3e;
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 12px;
+    background: rgba(0,123,62,0.08);
+    padding: 4px 10px;
+    border-radius: 6px;
+    width: fit-content;
+  }
+
+  .vsblog-feat-content h2 {
+    font-size: clamp(18px, 3.2vw, 28px);
+    font-weight: 800;
+    color: #1a1a1a;
+    line-height: 1.3;
+    margin: 0 0 14px 0;
+  }
+
+  .vsblog-feat-content p {
+    color: #64748b;
+    line-height: 1.65;
+    font-size: clamp(13px, 1.6vw, 15px);
+    margin: 0 0 22px 0;
+  }
+
+  .vsblog-meta-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 22px;
+  }
+
+  .vsblog-meta-chip {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    color: #94a3b8;
+    font-weight: 500;
+  }
+
+  .vsblog-meta-chip i { color: #ec5c0a; }
+
+  .vsblog-read-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #ec5c0a, #f1721b);
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 800;
+    padding: 12px 24px;
+    border-radius: 50px;
+    text-decoration: none;
+    width: fit-content;
+    transition: all 0.28s ease;
+    box-shadow: 0 6px 18px rgba(236,92,10,0.3);
+  }
+
+  .vsblog-read-btn:hover {
+    transform: translateX(4px);
+    box-shadow: 0 10px 24px rgba(236,92,10,0.45);
+  }
+
+  /* ─── MAIN GRID + SIDEBAR ─── */
+  .vsblog-two-col {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+
+  @media (min-width: 1040px) {
+    .vsblog-two-col {
+      grid-template-columns: 1fr 340px;
+    }
+  }
+
+  /* ARTICLE GRID */
+  .vsblog-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  @media (min-width: 620px) {
+    .vsblog-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  .vsblog-card {
+    background: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    border: 1px solid #f1f5f9;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .vsblog-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.09);
+    border-color: rgba(236,92,10,0.18);
+  }
+
+  .vsblog-card-img {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+  }
+
+  .vsblog-card-img img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .vsblog-card:hover .vsblog-card-img img { transform: scale(1.06); }
+
+  /* SVG placeholder for card thumbnails */
+  .vsblog-thumb-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .vsblog-card-cat-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: rgba(26,26,26,0.75);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    color: #f97316;
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    padding: 4px 10px;
+    border-radius: 50px;
+    z-index: 2;
+    border: 1px solid rgba(236,92,10,0.3);
+  }
+
+  .vsblog-card-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .vsblog-card-title {
+    font-size: 15px;
+    font-weight: 800;
+    color: #1a1a1a;
+    line-height: 1.4;
+    margin: 0 0 10px 0;
+    text-decoration: none;
+    display: block;
+    transition: color 0.2s;
+  }
+
+  .vsblog-card-title:hover { color: #ec5c0a; }
+
+  .vsblog-card-excerpt {
+    font-size: 13px;
+    color: #64748b;
+    line-height: 1.6;
+    margin: 0 0 16px 0;
+    flex-grow: 1;
+  }
+
+  .vsblog-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 14px;
+    border-top: 1px solid #f1f5f9;
+    margin-top: auto;
+    gap: 10px;
+  }
+
+  .vsblog-card-date {
+    font-size: 11.5px;
+    color: #94a3b8;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .vsblog-card-date i { color: #ec5c0a; font-size: 11px; }
+
+  .vsblog-card-link {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: #ec5c0a;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+    transition: gap 0.2s;
+  }
+
+  .vsblog-card-link:hover { gap: 8px; }
+
+  /* No Articles State */
+  .vsblog-no-articles {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px 20px;
+    background: #ffffff;
+    border-radius: 16px;
+    border: 2px dashed #e2e8f0;
+  }
+
+  .vsblog-no-articles i {
+    font-size: 40px;
+    color: #ec5c0a;
+    opacity: 0.5;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .vsblog-no-articles h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #334155;
+    margin: 0 0 8px 0;
+  }
+
+  .vsblog-no-articles p {
+    font-size: 14px;
+    color: #94a3b8;
+    margin: 0;
+  }
+
+  /* Static blog placeholders when no Shopify articles */
+  .vsblog-static-articles { display: contents; }
+
+  /* PAGINATION */
+  .vsblog-pagination {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .vsblog-pagination a,
+  .vsblog-pagination span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 40px;
+    padding: 0 12px;
+    border-radius: 10px;
+    background: #ffffff;
+    border: 1.5px solid #e2e8f0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #334155;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .vsblog-pagination a:hover {
+    background: #ec5c0a;
+    color: #ffffff;
+    border-color: #ec5c0a;
+  }
+
+  .vsblog-pagination .current {
+    background: #ec5c0a;
+    color: #ffffff;
+    border-color: #ec5c0a;
+    box-shadow: 0 4px 12px rgba(236,92,10,0.3);
+  }
+
+  /* ─── SIDEBAR ─── */
+  .vsblog-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  .vsblog-sidebar-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 22px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.05);
+    border: 1px solid #f1f5f9;
+  }
+
+  .vsblog-sidebar-heading {
+    font-size: 14px;
+    font-weight: 800;
+    color: #1a1a1a;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin: 0 0 16px 0;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #f1f5f9;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .vsblog-sidebar-heading i { color: #ec5c0a; }
+
+  /* Sidebar Popular Post item */
+  .vsblog-sidebar-post {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 12px 0;
+    border-bottom: 1px solid #f8fafc;
+    text-decoration: none;
+    color: inherit;
+    transition: opacity 0.2s;
+  }
+
+  .vsblog-sidebar-post:last-child { border-bottom: none; padding-bottom: 0; }
+  .vsblog-sidebar-post:hover { opacity: 0.78; }
+
+  .vsblog-sidebar-post-num {
+    width: 28px;
+    height: 28px;
+    background: rgba(236,92,10,0.08);
+    color: #ec5c0a;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+
+  .vsblog-sidebar-post-info h4 {
+    font-size: 13px;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0 0 4px 0;
+    line-height: 1.4;
+  }
+
+  .vsblog-sidebar-post-info span {
+    font-size: 11px;
+    color: #94a3b8;
+  }
+
+  /* Category Tags Cloud */
+  .vsblog-tag-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .vsblog-tag-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 13px;
+    border-radius: 50px;
+    background: #f8fafc;
+    border: 1.5px solid #e2e8f0;
+    font-size: 12px;
+    font-weight: 600;
+    color: #475569;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .vsblog-tag-pill:hover {
+    background: #ec5c0a;
+    border-color: #ec5c0a;
+    color: #ffffff;
+  }
+
+  /* Sidebar CTA card */
+  .vsblog-sidebar-cta {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d1f0a 100%);
+    border-radius: 16px;
+    padding: 26px;
+    text-align: center;
+    border: none;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .vsblog-sidebar-cta::before {
+    content: '';
+    position: absolute;
+    top: -30px;
+    right: -30px;
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle, rgba(236,92,10,0.25) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .vsblog-sidebar-cta-icon {
+    width: 50px;
+    height: 50px;
+    background: rgba(236,92,10,0.15);
+    border: 1.5px solid rgba(236,92,10,0.3);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    color: #ec5c0a;
+    margin: 0 auto 14px auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .vsblog-sidebar-cta h3 {
+    font-size: 16px;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 8px 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .vsblog-sidebar-cta p {
+    font-size: 12.5px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.5;
+    margin: 0 0 18px 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .vsblog-sidebar-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    background: linear-gradient(135deg, #ec5c0a, #f1721b);
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 800;
+    padding: 11px 22px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 18px rgba(236,92,10,0.35);
+    position: relative;
+    z-index: 1;
+    width: 100%;
+  }
+
+  .vsblog-sidebar-cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(236,92,10,0.5);
+  }
+
+  /* ─── NEWSLETTER SECTION ─── */
+  .vsblog-newsletter {
+    margin-top: 60px;
+    background: linear-gradient(135deg, #fff8ef 0%, rgba(255,240,220,0.6) 100%);
+    border: 1.5px solid rgba(236,92,10,0.15);
+    border-radius: 24px;
+    padding: clamp(40px, 6vw, 70px) 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .vsblog-newsletter::before {
+    content: '';
+    position: absolute;
+    top: -60px;
+    right: -60px;
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, rgba(236,92,10,0.07), transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .vsblog-newsletter::after {
+    content: '';
+    position: absolute;
+    bottom: -60px;
+    left: -60px;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(0,123,62,0.06), transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .vsblog-newsletter-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #ec5c0a, #ff7b00);
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: #ffffff;
+    margin: 0 auto 18px auto;
+    box-shadow: 0 8px 22px rgba(236,92,10,0.3);
+    position: relative;
+    z-index: 1;
+  }
+
+  .vsblog-newsletter h2 {
+    font-size: clamp(20px, 3.5vw, 30px);
+    font-weight: 900;
+    color: #1a1a1a;
+    margin: 0 0 10px 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .vsblog-newsletter h2 span { color: #ec5c0a; }
+
+  .vsblog-newsletter p {
+    font-size: 15px;
+    color: #64748b;
+    margin: 0 auto 28px auto;
+    max-width: 500px;
+    line-height: 1.55;
+    position: relative;
+    z-index: 1;
+  }
+
+  .vsblog-nl-form {
+    display: flex;
+    max-width: 480px;
+    margin: 0 auto;
+    gap: 0;
+    background: #ffffff;
+    border-radius: 50px;
+    border: 1.5px solid rgba(236,92,10,0.25);
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    position: relative;
+    z-index: 1;
+  }
+
+  .vsblog-nl-form input {
+    flex-grow: 1;
+    height: 52px;
+    padding: 0 20px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    font-family: inherit;
+    color: #1a1a1a;
+    background: transparent;
+    min-width: 0;
+  }
+
+  .vsblog-nl-form input::placeholder { color: #94a3b8; }
+
+  .vsblog-nl-form button {
+    height: 52px;
+    padding: 0 26px;
+    background: linear-gradient(135deg, #ec5c0a, #f1721b);
+    color: #ffffff;
+    border: none;
+    font-size: 14px;
+    font-weight: 800;
+    cursor: pointer;
+    border-radius: 0 50px 50px 0;
+    white-space: nowrap;
+    transition: all 0.28s ease;
+    flex-shrink: 0;
+  }
+
+  .vsblog-nl-form button:hover {
+    background: linear-gradient(135deg, #d94e02, #ec5c0a);
+  }
+
+  @media (max-width: 480px) {
+    .vsblog-nl-form {
+      flex-direction: column;
+      border-radius: 16px;
+    }
+    .vsblog-nl-form input {
+      height: 48px;
+      border-bottom: 1px solid rgba(236,92,10,0.1);
+    }
+    .vsblog-nl-form button {
+      height: 48px;
+      border-radius: 0 0 16px 16px;
+    }
+  }
+
+  .vsblog-nl-trust {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 18px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .vsblog-nl-trust-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    color: #64748b;
+    font-weight: 500;
+  }
+
+  .vsblog-nl-trust-item i { color: #007b3e; font-size: 12px; }
+
+  /* ─── SVG PLACEHOLDER ART (for no-image state) ─── */
+  .vsblog-svg-art {
+    width: 100%;
+    height: 100%;
+  }
+</style>
+
+<div class="vsblog-wrap">
+
+  <!-- ══ HERO BANNER ══ -->
+  <section class="vsblog-hero">
+    <!-- Circuit SVG Background -->
+    <svg class="vsblog-hero-circuit" viewBox="0 0 1440 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <g stroke="#ec5c0a" stroke-width="1" fill="none">
+        <polyline points="0,200 100,200 100,120 250,120 250,180 400,180" />
+        <polyline points="400,180 400,80 550,80 550,160 700,160" />
+        <polyline points="700,160 700,240 850,240 850,180 1000,180" />
+        <polyline points="1000,180 1000,100 1150,100 1150,200 1300,200 1300,160 1440,160" />
+        <polyline points="0,300 120,300 120,350 280,350 280,290 450,290" />
+        <polyline points="950,350 1100,350 1100,280 1260,280 1260,340 1440,340" />
+        <circle cx="100" cy="200" r="4" fill="#ec5c0a" />
+        <circle cx="250" cy="120" r="4" fill="#ec5c0a" />
+        <circle cx="400" cy="180" r="4" fill="#ec5c0a" />
+        <circle cx="700" cy="160" r="4" fill="#007b3e" />
+        <circle cx="1000" cy="180" r="4" fill="#ec5c0a" />
+        <circle cx="1150" cy="100" r="4" fill="#007b3e" />
+      </g>
+      <g stroke="#007b3e" stroke-width="0.8" fill="none">
+        <polyline points="0,50 180,50 180,140 320,140 320,60 500,60 500,130 680,130 680,50 820,50" />
+      </g>
+    </svg>
+    <div class="vsblog-hero-orbs"></div>
+    <div class="vsblog-hero-content">
+      <div class="vsblog-hero-eyebrow">
+        <i class="fa-solid fa-bolt"></i> {{ section.settings.hero_eyebrow | default: "Vidhyut Saathi Knowledge Hub" }}
+      </div>
+      <h1>{{ section.settings.hero_title | default: "Insights on <span>Energy Savings</span>" }}</h1>
+      <p class="vsblog-hero-desc">{{ section.settings.hero_subtitle | default: "Expert articles, franchise success stories, and tips to lower electricity bills across India." }}</p>
+      <div class="vsblog-breadcrumb">
+        <a href="/"><i class="fa-solid fa-house"></i> Home</a>
+        <span class="sep">/</span>
+        <span class="cur">Blog & Articles</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ STATS STRIP ══ -->
+  <div class="vsblog-stats-strip">
+    <div class="vsblog-stats-inner">
+      <div class="vsblog-stat-item">
+        <i class="fa-solid fa-newspaper"></i>
+        <span><strong>50+</strong> Articles Published</span>
+      </div>
+      <div class="vsblog-stat-item">
+        <i class="fa-solid fa-users"></i>
+        <span><strong>10K+</strong> Monthly Readers</span>
+      </div>
+      <div class="vsblog-stat-item">
+        <i class="fa-solid fa-certificate"></i>
+        <span><strong>ISO 9001:2015</strong> Verified Brand</span>
+      </div>
+      <div class="vsblog-stat-item">
+        <i class="fa-solid fa-bolt"></i>
+        <span><strong>30–50%</strong> Electricity Savings</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ MAIN BODY ══ -->
+  <div class="vsblog-body">
+
+    <!-- Category Filter Bar -->
+    <div class="vsblog-filter-bar">
+      <span class="vsblog-filter-label"><i class="fa-solid fa-filter"></i> Filter:</span>
+      <div class="vsblog-cats">
+        {%- assign blog_handle = section.settings.blog_handle | default: 'news' -%}
+        {%- assign the_blog = blogs[blog_handle] -%}
+        <a href="{{ the_blog.url }}" class="vsblog-cat-btn {% if current_tags == blank %}active{% endif %}">
+          <i class="fa-solid fa-th-large"></i> All Articles
+        </a>
+        {%- for tag in the_blog.all_tags limit: 6 -%}
+          <a href="{{ the_blog.url }}/tagged/{{ tag | handle }}" class="vsblog-cat-btn {% if current_tags contains tag %}active{% endif %}">
+            {{ tag }}
+          </a>
+        {%- endfor -%}
+        <a href="{{ the_blog.url }}/tagged/energy-savings" class="vsblog-cat-btn">Energy Savings</a>
+        <a href="{{ the_blog.url }}/tagged/franchise" class="vsblog-cat-btn">Franchise</a>
+        <a href="{{ the_blog.url }}/tagged/technology" class="vsblog-cat-btn">Technology</a>
+      </div>
+      <form action="{{ routes.search_url }}" method="get" class="vsblog-search" role="search">
+        <input type="hidden" name="type" value="article">
+        <input type="search" name="q" placeholder="Search articles..." value="{{ search.terms | escape }}">
+        <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+      </form>
+    </div>
+
+    {%- paginate the_blog.articles by section.settings.articles_per_page -%}
+
+      <!-- ══ FEATURED ARTICLE (Page 1 only) ══ -->
+      {%- if paginate.current_page == 1 and current_tags == blank and the_blog.articles.size > 0 -%}
+        {%- assign featured = the_blog.articles.first -%}
+        <div class="vsblog-featured">
+          <div class="vsblog-section-title"><i class="fa-solid fa-star"></i> Featured Article</div>
+          <a href="{{ featured.url }}" class="vsblog-feat-card">
+            <div class="vsblog-feat-img">
+              {%- if featured.image -%}
+                <img src="{{ featured.image | image_url: width: 900 }}" alt="{{ featured.title }}" loading="lazy">
+              {%- else -%}
+                <div class="vsblog-feat-svg-placeholder">
+                  <svg class="vsblog-svg-art" viewBox="0 0 600 420" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="600" height="420" fill="#1a1a1a"/>
+                    <circle cx="300" cy="210" r="180" fill="none" stroke="#ec5c0a" stroke-width="0.5" opacity="0.3"/>
+                    <circle cx="300" cy="210" r="120" fill="none" stroke="#ec5c0a" stroke-width="0.5" opacity="0.2"/>
+                    <polygon points="300,100 360,210 300,260 240,210" fill="none" stroke="#ec5c0a" stroke-width="1.5" opacity="0.8"/>
+                    <line x1="0" y1="210" x2="600" y2="210" stroke="#007b3e" stroke-width="0.5" opacity="0.3"/>
+                    <line x1="300" y1="0" x2="300" y2="420" stroke="#007b3e" stroke-width="0.5" opacity="0.3"/>
+                    <text x="300" y="200" text-anchor="middle" fill="#ec5c0a" font-size="40" font-weight="bold" font-family="Arial">⚡</text>
+                    <text x="300" y="245" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="14" font-family="Arial">Vidhyut Saathi</text>
+                  </svg>
+                </div>
+              {%- endif -%}
+              <span class="vsblog-feat-badge"><i class="fa-solid fa-star"></i> Featured</span>
+            </div>
+            <div class="vsblog-feat-content">
+              {%- if featured.tags.size > 0 -%}
+                <span class="vsblog-cat-tag"><i class="fa-solid fa-tag"></i> {{ featured.tags.first }}</span>
+              {%- else -%}
+                <span class="vsblog-cat-tag"><i class="fa-solid fa-bolt"></i> Energy Insights</span>
+              {%- endif -%}
+              <h2>{{ featured.title }}</h2>
+              <p>
+                {%- if featured.excerpt.size > 0 -%}
+                  {{ featured.excerpt | strip_html | truncatewords: 35 }}
+                {%- else -%}
+                  {{ featured.content | strip_html | truncatewords: 35 }}
+                {%- endif -%}
+              </p>
+              <div class="vsblog-meta-row">
+                <span class="vsblog-meta-chip"><i class="fa-solid fa-calendar-days"></i> {{ featured.published_at | date: "%b %d, %Y" }}</span>
+                <span class="vsblog-meta-chip"><i class="fa-solid fa-user"></i> {{ featured.author }}</span>
+              </div>
+              <span class="vsblog-read-btn">Read Full Article <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+          </a>
+        </div>
+      {%- endif -%}
+
+      <!-- Static Featured (when no Shopify blog exists) -->
+      {%- if the_blog.articles.size == 0 -%}
+        <div class="vsblog-featured">
+          <div class="vsblog-section-title"><i class="fa-solid fa-star"></i> Featured Article</div>
+          <div class="vsblog-feat-card" style="text-decoration:none; color:inherit;">
+            <div class="vsblog-feat-img">
+              <div class="vsblog-feat-svg-placeholder">
+                <svg class="vsblog-svg-art" viewBox="0 0 600 420" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="600" height="420" fill="#1a1a1a"/>
+                  <circle cx="300" cy="210" r="180" fill="none" stroke="#ec5c0a" stroke-width="0.5" opacity="0.3"/>
+                  <circle cx="300" cy="210" r="100" fill="none" stroke="#007b3e" stroke-width="0.5" opacity="0.3"/>
+                  <g transform="translate(260,155)">
+                    <rect width="80" height="50" rx="4" fill="none" stroke="#ec5c0a" stroke-width="1.5"/>
+                    <line x1="40" y1="50" x2="40" y2="70" stroke="#ec5c0a" stroke-width="1.5"/>
+                    <line x1="20" y1="70" x2="60" y2="70" stroke="#ec5c0a" stroke-width="1.5"/>
+                    <polyline points="15,35 30,20 40,32 55,18 65,28" fill="none" stroke="#007b3e" stroke-width="1.5"/>
+                  </g>
+                  <text x="300" y="255" text-anchor="middle" fill="#ec5c0a" font-size="13" font-weight="bold" font-family="Arial" opacity="0.8">ENERGY SAVINGS REPORT</text>
+                </svg>
+              </div>
+              <span class="vsblog-feat-badge"><i class="fa-solid fa-star"></i> Featured</span>
+            </div>
+            <div class="vsblog-feat-content">
+              <span class="vsblog-cat-tag"><i class="fa-solid fa-bolt"></i> Energy Savings</span>
+              <h2>How Vidhyut Saathi's Terahertz Technology Reduces Electricity Bills by Up to 50%</h2>
+              <p>Discover the science behind our patented US-German terahertz wave technology that is revolutionizing electricity consumption across 15+ states in India. Learn how residential, commercial, and industrial clients are saving lakhs every year.</p>
+              <div class="vsblog-meta-row">
+                <span class="vsblog-meta-chip"><i class="fa-solid fa-calendar-days"></i> Aug 20, 2026</span>
+                <span class="vsblog-meta-chip"><i class="fa-solid fa-user"></i> Vidhyut Saathi Team</span>
+              </div>
+              <a href="/blogs/news" class="vsblog-read-btn">Read Full Article <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+      {%- endif -%}
+
+      <!-- ══ TWO-COL: GRID + SIDEBAR ══ -->
+      <div class="vsblog-two-col">
+
+        <!-- LEFT: Article Grid -->
+        <div>
+          <div class="vsblog-section-title"><i class="fa-solid fa-newspaper"></i> Latest Articles</div>
+          <div class="vsblog-grid">
+
+            {%- if the_blog.articles.size > 0 -%}
+              {%- for article in the_blog.articles -%}
+                {%- if paginate.current_page == 1 and current_tags == blank and forloop.first -%}{%- continue -%}{%- endif -%}
+                <div class="vsblog-card">
+                  <div class="vsblog-card-img">
+                    {%- if article.image -%}
+                      <img src="{{ article.image | image_url: width: 600 }}" alt="{{ article.title }}" loading="lazy">
+                    {%- else -%}
+                      {%- assign art_colors = "#ec5c0a,#007b3e,#f97316,#0284c7,#7c3aed" | split: "," -%}
+                      {%- assign c = forloop.index | modulo: 5 -%}
+                      <div class="vsblog-thumb-placeholder" style="background: linear-gradient(135deg, #1a1a1a 0%, {{ art_colors[c] | append: '33' | default: '#2d1f0a' }} 100%);">
+                        <svg viewBox="0 0 400 220" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                          <rect width="400" height="220" fill="transparent"/>
+                          {%- if forloop.index == 1 or forloop.index == 4 -%}
+                            <!-- Electricity Savings icon -->
+                            <g transform="translate(160,50)">
+                              <polygon points="40,0 55,60 35,60 50,120" fill="none" stroke="#ec5c0a" stroke-width="2"/>
+                              <circle cx="40" cy="60" r="40" fill="none" stroke="#ec5c0a" stroke-width="0.8" opacity="0.3"/>
+                            </g>
+                          {%- elsif forloop.index == 2 or forloop.index == 5 -%}
+                            <!-- Franchise/Growth icon -->
+                            <g transform="translate(140,40)">
+                              <polyline points="20,130 60,90 90,110 130,50 160,70" fill="none" stroke="#007b3e" stroke-width="2.5"/>
+                              <circle cx="20" cy="130" r="4" fill="#007b3e"/>
+                              <circle cx="160" cy="70" r="4" fill="#ec5c0a"/>
+                            </g>
+                          {%- else -%}
+                            <!-- Technology/Terahertz icon -->
+                            <g transform="translate(150,50)">
+                              <rect x="10" y="20" width="80" height="55" rx="4" fill="none" stroke="#ec5c0a" stroke-width="1.5"/>
+                              <line x1="30" y1="100" x2="70" y2="100" stroke="#ec5c0a" stroke-width="1.5"/>
+                              <circle cx="50" cy="47" r="15" fill="none" stroke="#007b3e" stroke-width="1.5"/>
+                              <line x1="50" y1="32" x2="50" y2="62" stroke="#007b3e" stroke-width="1"/>
+                              <line x1="35" y1="47" x2="65" y2="47" stroke="#007b3e" stroke-width="1"/>
+                            </g>
+                          {%- endif -%}
+                          <text x="200" y="185" text-anchor="middle" fill="rgba(255,255,255,0.2)" font-size="10" font-family="Arial">VIDHYUT SAATHI</text>
+                        </svg>
+                      </div>
+                    {%- endif -%}
+                    {%- if article.tags.size > 0 -%}
+                      <span class="vsblog-card-cat-badge">{{ article.tags.first }}</span>
+                    {%- endif -%}
+                  </div>
+                  <div class="vsblog-card-body">
+                    <a href="{{ article.url }}" class="vsblog-card-title">{{ article.title }}</a>
+                    <p class="vsblog-card-excerpt">
+                      {%- if article.excerpt.size > 0 -%}
+                        {{ article.excerpt | strip_html | truncatewords: 18 }}
+                      {%- else -%}
+                        {{ article.content | strip_html | truncatewords: 18 }}
+                      {%- endif -%}
+                    </p>
+                    <div class="vsblog-card-footer">
+                      <span class="vsblog-card-date"><i class="fa-solid fa-calendar-days"></i> {{ article.published_at | date: "%b %d, %Y" }}</span>
+                      <a href="{{ article.url }}" class="vsblog-card-link">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                  </div>
+                </div>
+              {%- endfor -%}
+
+            {%- else -%}
+              <!-- STATIC PLACEHOLDER ARTICLES (when blog has no articles yet) -->
+              {%- assign static_articles = "How Terahertz Technology Reduces India's Power Bills by 30-50%|Energy Savings|Our patented US-German Terahertz wave technology works by optimizing power factor and reducing reactive current, resulting in significant bill reductions.|Aug 15, 2026|#ec5c0a|1,Vidhyut Saathi Franchise Success Stories from Rajasthan|Franchise|Discover how our franchise partners in Rajasthan, Haryana, and UP are earning over ₹5 lakh per month by distributing our ISO certified devices.|Aug 12, 2026|#007b3e|2,ISO 9001:2015 Certification: Why It Matters for Your Energy Device|Technology|Our ISO 9001:2015 certification assures customers that every Vidhyut Saathi device meets the highest quality and safety standards.|Aug 08, 2026|#f97316|3,How to Choose the Right Franchise Model for Your District|Franchise|We offer 3 franchise models: Non-Exclusive District, Standard Exclusive District, and Premium Exclusive District. Learn which is right for you.|Aug 05, 2026|#0284c7|2,Understanding Power Factor and Reactive Power in Your Electricity Bill|Energy Savings|Most Indian households pay 15–25% extra on their bills due to poor power factor. Vidhyut Saathi's technology corrects this automatically.|Aug 01, 2026|#7c3aed|3,Commercial and Industrial Energy Management in 2026|Technology|Large commercial establishments and factories can save lakhs monthly by deploying our enterprise-grade devices across all three phases.|Jul 28, 2026|#ec5c0a|1" | split: "," -%}
+
+              {%- assign article_data = "How Terahertz Technology Reduces India's Power Bills by 30-50%|Energy Savings|Our patented US-German Terahertz wave technology works by optimizing power factor and reducing reactive current, resulting in significant bill reductions.|Aug 15, 2026,Vidhyut Saathi Franchise Success Stories from Rajasthan|Franchise|Discover how our franchise partners in Rajasthan, Haryana, and UP are earning over ₹5 lakh per month by distributing our ISO certified devices.|Aug 12, 2026,ISO 9001:2015 Certification: Why It Matters for Your Energy Device|Technology|Our ISO 9001:2015 certification assures customers that every Vidhyut Saathi device meets the highest quality and safety standards.|Aug 08, 2026,How to Choose the Right Franchise Model for Your District|Franchise|We offer 3 franchise models: Non-Exclusive District, Standard Exclusive District, and Premium Exclusive District. Learn which is right for you.|Aug 05, 2026,Understanding Power Factor and Reactive Power in Your Electricity Bill|Energy Savings|Most Indian households pay 15–25% extra on their bills due to poor power factor. Vidhyut Saathi's technology corrects this automatically.|Aug 01, 2026,Commercial Energy Management Strategies for 2026|Technology|Large commercial establishments and factories can save lakhs monthly by deploying our enterprise-grade devices across all three phases.|Jul 28, 2026" | split: "," -%}
+
+              {%- assign card_icons = "1,2,3,2,1,3" | split: "," -%}
+              {%- assign card_colors_list = "#ec5c0a,#007b3e,#f97316,#0284c7,#7c3aed,#ec5c0a" | split: "," -%}
+
+              {%- for row in article_data -%}
+                {%- assign parts = row | split: "|" -%}
+                {%- assign ci = forloop.index0 -%}
+                {%- assign icotype = card_icons[ci] -%}
+                {%- assign icocolor = card_colors_list[ci] -%}
+                <div class="vsblog-card">
+                  <div class="vsblog-card-img">
+                    <div class="vsblog-thumb-placeholder" style="background: linear-gradient(135deg, #1a1a1a 0%, {{ icocolor }}22 100%);">
+                      <svg viewBox="0 0 400 220" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="400" height="220" fill="transparent"/>
+                        {%- if icotype == "1" -%}
+                          <g transform="translate(160,40)">
+                            <polygon points="40,0 55,55 35,55 50,110" fill="none" stroke="{{ icocolor }}" stroke-width="2"/>
+                            <circle cx="40" cy="55" r="38" fill="none" stroke="{{ icocolor }}" stroke-width="0.8" opacity="0.4"/>
+                            <circle cx="40" cy="55" r="22" fill="none" stroke="{{ icocolor }}" stroke-width="0.5" opacity="0.3"/>
+                          </g>
+                        {%- elsif icotype == "2" -%}
+                          <g transform="translate(130,35)">
+                            <polyline points="10,130 50,90 90,108 130,58 165,78" fill="none" stroke="{{ icocolor }}" stroke-width="2.5"/>
+                            <circle cx="10" cy="130" r="5" fill="{{ icocolor }}"/>
+                            <circle cx="50" cy="90" r="4" fill="{{ icocolor }}" opacity="0.5"/>
+                            <circle cx="90" cy="108" r="4" fill="{{ icocolor }}" opacity="0.5"/>
+                            <circle cx="130" cy="58" r="4" fill="{{ icocolor }}" opacity="0.5"/>
+                            <circle cx="165" cy="78" r="5" fill="#ec5c0a"/>
+                          </g>
+                        {%- else -%}
+                          <g transform="translate(145,38)">
+                            <rect x="10" y="15" width="90" height="62" rx="5" fill="none" stroke="{{ icocolor }}" stroke-width="1.5"/>
+                            <line x1="55" y1="77" x2="55" y2="100" stroke="{{ icocolor }}" stroke-width="1.5"/>
+                            <line x1="30" y1="100" x2="80" y2="100" stroke="{{ icocolor }}" stroke-width="1.5"/>
+                            <circle cx="55" cy="46" r="18" fill="none" stroke="{{ icocolor }}" stroke-width="1.5"/>
+                            <line x1="55" y1="28" x2="55" y2="64" stroke="{{ icocolor }}" stroke-width="1"/>
+                            <line x1="37" y1="46" x2="73" y2="46" stroke="{{ icocolor }}" stroke-width="1"/>
+                          </g>
+                        {%- endif -%}
+                        <text x="200" y="192" text-anchor="middle" fill="rgba(255,255,255,0.15)" font-size="9" font-family="Arial">VIDHYUT SAATHI</text>
+                      </svg>
+                    </div>
+                    <span class="vsblog-card-cat-badge">{{ parts[1] }}</span>
+                  </div>
+                  <div class="vsblog-card-body">
+                    <span class="vsblog-card-title">{{ parts[0] }}</span>
+                    <p class="vsblog-card-excerpt">{{ parts[2] }}</p>
+                    <div class="vsblog-card-footer">
+                      <span class="vsblog-card-date"><i class="fa-solid fa-calendar-days"></i> {{ parts[3] }}</span>
+                      <a href="/blogs/news" class="vsblog-card-link">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                  </div>
+                </div>
+              {%- endfor -%}
+            {%- endif -%}
+
+          </div>
+
+          <!-- Pagination -->
+          {%- if paginate.pages > 1 -%}
+            <div class="vsblog-pagination">
+              {{ paginate | default_pagination }}
+            </div>
+          {%- endif -%}
+        </div>
+
+        <!-- RIGHT: Sidebar -->
+        <aside class="vsblog-sidebar">
+
+          <!-- Popular Posts -->
+          <div class="vsblog-sidebar-card">
+            <h3 class="vsblog-sidebar-heading"><i class="fa-solid fa-fire"></i> Popular Articles</h3>
+            {%- if the_blog.articles.size > 0 -%}
+              {%- for article in the_blog.articles limit: 4 -%}
+                <a href="{{ article.url }}" class="vsblog-sidebar-post">
+                  <span class="vsblog-sidebar-post-num">{{ forloop.index }}</span>
+                  <div class="vsblog-sidebar-post-info">
+                    <h4>{{ article.title | truncatewords: 10 }}</h4>
+                    <span>{{ article.published_at | date: "%b %d, %Y" }}</span>
+                  </div>
+                </a>
+              {%- endfor -%}
+            {%- else -%}
+              <a href="/blogs/news" class="vsblog-sidebar-post">
+                <span class="vsblog-sidebar-post-num">1</span>
+                <div class="vsblog-sidebar-post-info">
+                  <h4>How Terahertz Technology Reduces Electricity Bills</h4>
+                  <span>Aug 15, 2026</span>
+                </div>
+              </a>
+              <a href="/blogs/news" class="vsblog-sidebar-post">
+                <span class="vsblog-sidebar-post-num">2</span>
+                <div class="vsblog-sidebar-post-info">
+                  <h4>Franchise Success Stories from Rajasthan</h4>
+                  <span>Aug 12, 2026</span>
+                </div>
+              </a>
+              <a href="/blogs/news" class="vsblog-sidebar-post">
+                <span class="vsblog-sidebar-post-num">3</span>
+                <div class="vsblog-sidebar-post-info">
+                  <h4>ISO 9001:2015 Certification: What It Means for You</h4>
+                  <span>Aug 08, 2026</span>
+                </div>
+              </a>
+              <a href="/blogs/news" class="vsblog-sidebar-post">
+                <span class="vsblog-sidebar-post-num">4</span>
+                <div class="vsblog-sidebar-post-info">
+                  <h4>Commercial Energy Management in 2026</h4>
+                  <span>Jul 28, 2026</span>
+                </div>
+              </a>
+            {%- endif -%}
+          </div>
+
+          <!-- Tags Cloud -->
+          <div class="vsblog-sidebar-card">
+            <h3 class="vsblog-sidebar-heading"><i class="fa-solid fa-tags"></i> Explore Topics</h3>
+            <div class="vsblog-tag-cloud">
+              <a href="{{ the_blog.url }}/tagged/energy-savings" class="vsblog-tag-pill"><i class="fa-solid fa-bolt"></i> Energy Savings</a>
+              <a href="{{ the_blog.url }}/tagged/franchise" class="vsblog-tag-pill"><i class="fa-solid fa-handshake"></i> Franchise</a>
+              <a href="{{ the_blog.url }}/tagged/technology" class="vsblog-tag-pill"><i class="fa-solid fa-microchip"></i> Technology</a>
+              <a href="{{ the_blog.url }}/tagged/residential" class="vsblog-tag-pill"><i class="fa-solid fa-house"></i> Residential</a>
+              <a href="{{ the_blog.url }}/tagged/commercial" class="vsblog-tag-pill"><i class="fa-solid fa-building"></i> Commercial</a>
+              <a href="{{ the_blog.url }}/tagged/industrial" class="vsblog-tag-pill"><i class="fa-solid fa-industry"></i> Industrial</a>
+              <a href="{{ the_blog.url }}/tagged/iso-certified" class="vsblog-tag-pill"><i class="fa-solid fa-certificate"></i> ISO Certified</a>
+              <a href="{{ the_blog.url }}/tagged/success-stories" class="vsblog-tag-pill"><i class="fa-solid fa-trophy"></i> Success Stories</a>
+            </div>
+          </div>
+
+          <!-- Franchise CTA Card -->
+          <div class="vsblog-sidebar-card vsblog-sidebar-cta">
+            <div class="vsblog-sidebar-cta-icon">
+              <i class="fa-solid fa-store"></i>
+            </div>
+            <h3>Become a Franchise Partner</h3>
+            <p>Earn ₹5–6 lakh/month with our exclusive district franchise program. ISO certified, zero royalty!</p>
+            <a href="/pages/get-franchise" class="vsblog-sidebar-cta-btn">
+              <i class="fa-solid fa-paper-plane"></i> Apply Now
+            </a>
+          </div>
+
+          <!-- WhatsApp Contact -->
+          <div class="vsblog-sidebar-card" style="text-align: center; padding: 20px;">
+            <p style="font-size:13px; color:#64748b; margin:0 0 12px 0; font-weight:600;">Have a question? Talk to our expert.</p>
+            <a href="https://wa.me/919876543210?text=Hi%20Vidhyut%20Saathi!" target="_blank" style="display:inline-flex; align-items:center; gap:8px; background:#25d366; color:#fff; font-size:13px; font-weight:800; padding:11px 22px; border-radius:50px; text-decoration:none; width:100%; justify-content:center;">
+              <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
+            </a>
+          </div>
+
+        </aside>
+      </div>
+
+    {%- endpaginate -%}
+
+    <!-- ══ NEWSLETTER SECTION ══ -->
+    <div class="vsblog-newsletter">
+      <div class="vsblog-newsletter-icon">
+        <i class="fa-solid fa-envelope-open-text"></i>
+      </div>
+      <h2>Stay Updated with <span>Vidhyut Saathi</span></h2>
+      <p>Get the latest energy-saving tips, franchise opportunities, and technology insights delivered directly to your inbox. Join 10,000+ smart readers.</p>
+      {% form 'customer', class: 'vsblog-nl-form' %}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <input type="email" name="contact[email]" placeholder="Enter your email address..." required>
+        <button type="submit"><i class="fa-solid fa-paper-plane"></i> Subscribe</button>
+      {% endform %}
+      <div class="vsblog-nl-trust">
+        <span class="vsblog-nl-trust-item"><i class="fa-solid fa-check-circle"></i> No Spam, Ever</span>
+        <span class="vsblog-nl-trust-item"><i class="fa-solid fa-check-circle"></i> Unsubscribe Anytime</span>
+        <span class="vsblog-nl-trust-item"><i class="fa-solid fa-check-circle"></i> Free Energy Saving Tips</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Vidhyut Blog Page",
+  "settings": [
+    {
+      "type": "text",
+      "id": "hero_eyebrow",
+      "label": "Hero Eyebrow Badge",
+      "default": "Vidhyut Saathi Knowledge Hub"
+    },
+    {
+      "type": "text",
+      "id": "hero_title",
+      "label": "Hero Title (use <span> for highlight)",
+      "default": "Insights on Energy Savings"
+    },
+    {
+      "type": "text",
+      "id": "hero_subtitle",
+      "label": "Hero Subtitle",
+      "default": "Expert articles, franchise success stories, and tips to lower electricity bills across India."
+    },
+    {
+      "type": "text",
+      "id": "blog_handle",
+      "label": "Blog Handle (e.g. 'news')",
+      "default": "news"
+    },
+    {
+      "type": "range",
+      "id": "articles_per_page",
+      "min": 4,
+      "max": 18,
+      "step": 2,
+      "default": 6,
+      "label": "Articles Per Page"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Vidhyut Blog Page"
+    }
+  ]
+}
+{% endschema %}
