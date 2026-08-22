@@ -277,30 +277,60 @@
     max-width: 85%; 
     height: 100vh;
     background-color: {{ section.settings.bg_color }};
-    z-index: 99999;
+    z-index: 999999;
     transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 5px 0 30px rgba(0,0,0,0.15);
+    box-shadow: 5px 0 30px rgba(0,0,0,0.2);
     overflow-y: auto; 
-    padding: 25px;
+    padding: 20px 24px;
     text-align: left;
   }
   
   .vidhyut-mobile-drawer-{{ section.id }}.active { 
     left: 0;
   }
+
+  .vidhyut-drawer-overlay-{{ section.id }} {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 999998;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+  }
+  .vidhyut-drawer-overlay-{{ section.id }}.active {
+    opacity: 1;
+    visibility: visible;
+  }
   
   .vidhyut-drawer-close-{{ section.id }} { 
     display: flex; 
-    justify-content: flex-end; 
-    cursor: pointer; 
-    margin-bottom: 30px; 
-    color: {{ section.settings.text_color }};
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #f1f5f9;
+    border: 1.5px solid #cbd5e1;
+    cursor: pointer !important; 
+    margin-left: auto;
+    margin-bottom: 20px; 
+    color: #0f172a;
     transition: all 0.3s ease;
+    pointer-events: auto !important;
+    position: relative;
+    z-index: 999999;
   }
   
-  .vidhyut-drawer-close-{{ section.id }}:hover {
-    transform: rotate(90deg);
-    color: {{ section.settings.accent_color }};
+  .vidhyut-drawer-close-{{ section.id }}:hover,
+  .vidhyut-drawer-close-{{ section.id }}:active {
+    background: #0f172a;
+    color: #ffffff;
+    transform: rotate(90deg) scale(1.08);
   }
   
   .vidhyut-drawer-link-{{ section.id }} { 
@@ -492,7 +522,7 @@
         <a href="{{ routes.cart_url }}" class="vidhyut-icon-{{ section.id }}" aria-label="Cart" title="Shopping Cart">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
         </a>
-        <button type="button" class="vidhyut-icon-{{ section.id }} vidhyut-hamburger-{{ section.id }}" style="background:none;border:none;padding:0;cursor:pointer;" aria-label="Open Menu" title="Menu">
+        <button type="button" class="vidhyut-icon-{{ section.id }} vidhyut-hamburger-{{ section.id }}" onclick="openVidhyutDrawer('{{ section.id }}')" style="background:none;border:none;padding:0;cursor:pointer;" aria-label="Open Menu" title="Menu">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
         </button>
       </div>
@@ -500,9 +530,13 @@
     </div>
   </header>
 
+  <div id="vidhyutMobileOverlay{{ section.id }}" class="vidhyut-drawer-overlay-{{ section.id }}" onclick="closeVidhyutDrawer('{{ section.id }}')"></div>
+
   <div id="vidhyutMobileMenu{{ section.id }}" class="vidhyut-mobile-drawer-{{ section.id }}">
-    <div class="vidhyut-drawer-close-{{ section.id }}" title="Close Menu">
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    <div style="display:flex; justify-content:flex-end; width:100%;">
+      <button type="button" class="vidhyut-drawer-close-{{ section.id }}" onclick="closeVidhyutDrawer('{{ section.id }}')" aria-label="Close Menu" title="Close Menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="pointer-events:none;"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
     </div>
     {%- if section.settings.menu != blank -%}
       {%- for link in linklists[section.settings.menu].links -%}
@@ -529,46 +563,21 @@
   </div>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const drawer = document.getElementById('vidhyutMobileMenu{{ section.id }}');
-      const hamburger = document.querySelector('.vidhyut-hamburger-{{ section.id }}');
-      const closeBtn = document.querySelector('.vidhyut-drawer-close-{{ section.id }}');
+    function openVidhyutDrawer(sectionId) {
+      var drawer = document.getElementById('vidhyutMobileMenu' + sectionId);
+      var overlay = document.getElementById('vidhyutMobileOverlay' + sectionId);
+      if (drawer) drawer.classList.add('active');
+      if (overlay) overlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
 
-      function openMenu() { 
-        if(drawer) drawer.classList.add('active');
-        document.body.style.overflow = 'hidden';
-      }
-
-      function closeMenu() { 
-        if(drawer) drawer.classList.remove('active');
-        document.body.style.overflow = '';
-      }
-
-      if (hamburger) {
-        hamburger.addEventListener('click', function(e) {
-          e.stopPropagation();
-          openMenu();
-        });
-      }
-
-      if (closeBtn) {
-        closeBtn.addEventListener('click', function(e) {
-          e.stopPropagation();
-          closeMenu();
-        });
-      }
-
-      document.addEventListener('click', function(event) {
-        if (drawer && drawer.classList.contains('active')) {
-          const clickedInsideDrawer = drawer.contains(event.target);
-          const clickedHamburger = hamburger && hamburger.contains(event.target);
-          
-          if (!clickedInsideDrawer && !clickedHamburger) {
-            closeMenu();
-          }
-        }
-      });
-    });
+    function closeVidhyutDrawer(sectionId) {
+      var drawer = document.getElementById('vidhyutMobileMenu' + sectionId);
+      var overlay = document.getElementById('vidhyutMobileOverlay' + sectionId);
+      if (drawer) drawer.classList.remove('active');
+      if (overlay) overlay.classList.remove('active');
+      document.body.style.overflow = '';
+    }
   </script>
 </div>
 
