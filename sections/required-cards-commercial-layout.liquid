@@ -469,6 +469,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 14px;
+    align-items: stretch;
   }
   @media(min-width: 640px){ .mcb-gallery-grid { grid-template-columns: repeat(3, 1fr); gap: 18px; } }
   @media(min-width: 1024px){ .mcb-gallery-grid { grid-template-columns: repeat(4, 1fr); gap: 20px; } }
@@ -476,12 +477,14 @@
   .mcb-card {
     background: #ffffff;
     border: 1.5px solid #e2e8f0;
+    border-top: 3.5px solid #008744;
     border-radius: 16px;
     overflow: hidden;
     box-shadow: 0 4px 16px rgba(0,0,0,0.03);
     transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
+    height: 100%;
     position: relative;
     cursor: pointer;
   }
@@ -502,24 +505,54 @@
 
   .mcb-card-badge {
     position: absolute;
-    top: 10px;
-    left: 10px;
+    top: 8px;
+    left: 8px;
     background: #ffffff;
     color: #007b3e;
-    font-size: 10px;
+    font-size: 9px;
     font-weight: 800;
     font-family: 'IBM Plex Mono', monospace;
     text-transform: uppercase;
-    padding: 3.5px 10px;
+    padding: 3px 8px;
     border-radius: 50px;
     border: 1px solid #007b3e;
     box-shadow: 0 2px 6px rgba(0,0,0,0.08);
     z-index: 2;
+    white-space: nowrap;
+    max-width: calc(100% - 16px);
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
-  .mcb-card-body { padding: 14px; display: flex; flex-direction: column; flex-grow: 1; }
-  .mcb-card-title { font-size: 13.5px; font-weight: 800; color: var(--ink); margin: 0 0 4px 0; }
-  .mcb-card-desc { font-size: 11.5px; color: var(--muted-2); margin: 0; }
+  .mcb-card-body {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    text-align: left;
+  }
+  .mcb-card-title {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--ink);
+    margin: 2px 0 4px 0;
+    line-height: 1.35;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .mcb-card-desc {
+    font-size: 11px;
+    color: var(--muted-2);
+    margin: 0;
+    line-height: 1.4;
+    text-align: left !important;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
 
   /* Table */
   .vscom-table-wrap {
@@ -539,7 +572,6 @@
     .vscom p,
     .vscom .vscom-hero-lead,
     .vscom .vscom-sec-desc,
-    .vscom .mcb-card-desc,
     .vscom .vsres-case-location {
       text-align: justify !important;
       text-justify: inter-word !important;
@@ -593,6 +625,7 @@
     .mcb-gallery-grid {
       grid-template-columns: repeat(2, 1fr) !important;
       gap: 12px !important;
+      align-items: stretch !important;
     }
 
     .mcb-card {
@@ -601,27 +634,29 @@
       border-top: 3.5px solid #008744;
       box-shadow: 0 6px 18px rgba(0,0,0,0.04);
       background: #ffffff;
+      height: 100%;
     }
     .mcb-card:active {
       transform: scale(0.97);
     }
     .mcb-card-body {
-      padding: 10px 12px 12px 12px;
+      padding: 10px 10px 12px 10px;
     }
     .mcb-card-title {
-      font-size: 12.5px;
+      font-size: 12px;
       line-height: 1.3;
       margin-bottom: 4px;
       font-weight: 800;
     }
     .mcb-card-desc {
-      font-size: 10.5px;
-      line-height: 1.4;
+      font-size: 10px;
+      line-height: 1.35;
       color: var(--muted-2);
+      text-align: left !important;
     }
     .mcb-card-badge {
-      font-size: 8.5px;
-      padding: 3px 8px;
+      font-size: 8px;
+      padding: 2.5px 7px;
       top: 6px;
       left: 6px;
       background: #ffffff;
