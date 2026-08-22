@@ -456,16 +456,6 @@
                     <a href="/pages/residential" onclick="if(typeof vsGoPage === 'function'){ vsGoPage(event, 'residential'); }"><i class="fa-solid fa-house" style="color:#f0631b; margin-right:8px;"></i> Residential Use</a>
                   </div>
                 </div>
-              {%- elsif title_lower contains 'about' -%}
-                <div class="vidhyut-has-dropdown-{{ section.id }}">
-                  <a href="/pages/about-us">{{ link.title }} <i class="fas fa-chevron-down"></i></a>
-                  <div class="vidhyut-dropdown-menu-{{ section.id }}">
-                    <a href="/pages/about-us"><i class="fa-solid fa-building-user" style="color:#008744; margin-right:8px;"></i> Company Overview</a>
-                    <a href="/pages/our-team"><i class="fa-solid fa-users" style="color:#0284c7; margin-right:8px;"></i> Management & Team</a>
-                    <a href="/pages/iso-certification"><i class="fa-solid fa-award" style="color:#eab308; margin-right:8px;"></i> ISO 9001 Certificate</a>
-                    <a href="/pages/faq"><i class="fa-solid fa-circle-question" style="color:#8b5cf6; margin-right:8px;"></i> FAQ & Help Center</a>
-                  </div>
-                </div>
               {%- elsif link.links != blank -%}
                 <div class="vidhyut-has-dropdown-{{ section.id }}">
                   <a href="{% if link.url == '#' or link.url == '' or link.url == blank %}javascript:void(0);{% else %}{{ link.url }}{% endif %}">{{ link.title }} <i class="fas fa-chevron-down"></i></a>
@@ -510,11 +500,6 @@
           <a href="/pages/industrial" class="vidhyut-drawer-sublink-{{ section.id }}" onclick="if(typeof vsGoPage === 'function'){ vsGoPage(event, 'industrial'); }">&rarr; Industrial Use</a>
           <a href="/pages/commercial" class="vidhyut-drawer-sublink-{{ section.id }}" onclick="if(typeof vsGoPage === 'function'){ vsGoPage(event, 'commercial'); }">&rarr; Commercial Use</a>
           <a href="/pages/residential" class="vidhyut-drawer-sublink-{{ section.id }}" onclick="if(typeof vsGoPage === 'function'){ vsGoPage(event, 'residential'); }">&rarr; Residential Use</a>
-        {%- elsif title_lower contains 'about' -%}
-          <a href="/pages/about-us" class="vidhyut-drawer-sublink-{{ section.id }}">&rarr; Company Overview</a>
-          <a href="/pages/our-team" class="vidhyut-drawer-sublink-{{ section.id }}">&rarr; Management & Team</a>
-          <a href="/pages/iso-certification" class="vidhyut-drawer-sublink-{{ section.id }}">&rarr; ISO 9001 Certificate</a>
-          <a href="/pages/faq" class="vidhyut-drawer-sublink-{{ section.id }}">&rarr; FAQ & Help Center</a>
         {%- elsif link.links != blank -%}
           {%- for childlink in link.links -%}
             <a href="{{ childlink.url }}" class="vidhyut-drawer-sublink-{{ section.id }}">&rarr; {{ childlink.title }}</a>
