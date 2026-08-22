@@ -304,67 +304,12 @@
     margin-bottom: 16px;
   }
 
-  .vsres-hero-card-front {
-    width: 100%;
-    max-width: 310px;
-    aspect-ratio: 1.586 / 1;
-    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-    border-radius: 14px;
-    border: 1.5px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 12px 28px rgba(0,0,0,0.4);
-    position: relative;
-    padding: 16px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin-bottom: 16px;
-    transition: transform 0.3s ease;
-  }
-  .vsres-hero-card-front:hover { transform: scale(1.03) rotate(-1deg); }
-
-  .vsres-card-chip-strip {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .vsres-card-chip {
-    width: 36px;
-    height: 26px;
-    background: linear-gradient(135deg, #e8c766 0%, #c9982e 100%);
-    border-radius: 5px;
-    border: 1px solid #b8860b;
-  }
-  .vsres-card-logo-text {
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 800;
-    font-size: 13px;
-    color: #ffffff;
-    letter-spacing: 0.5px;
-  }
-  .vsres-card-number {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 14px;
-    font-weight: 700;
-    color: #ffd700;
-    letter-spacing: 1px;
-    margin: 12px 0;
-    text-align: left;
-  }
-  .vsres-card-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 10px;
-    color: #cbd5e1;
-    font-weight: 600;
-  }
-
   /* ---- RESIDENTIAL CALCULATOR SECTION ---- */
   .vsres-sec { padding: 44px 0; }
   @media(min-width: 768px){ .vsres-sec { padding: 60px 0; } }
 
   .vsres-sec-head {
-    max-width: 640px;
+    max-width: 680px;
     margin: 0 auto 28px;
     text-align: center;
   }
@@ -569,67 +514,218 @@
     text-decoration: none;
   }
 
-  /* ---- HOUSEHOLD APPLIANCE MATRIX ---- */
-  .vsres-matrix-grid {
+  /* ══ 20 MCB INSTALLATION GALLERY SECTION (LUCRATIVE) ══ */
+  .mcb-sec {
+    background: #ffffff;
+    border-top: 1.5px solid var(--line);
+    border-bottom: 1.5px solid var(--line);
+    padding: clamp(40px, 6vw, 75px) 0;
+  }
+
+  .mcb-filter-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+  }
+
+  .mcb-filter-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 18px;
+    border-radius: 50px;
+    font-size: 12.5px;
+    font-weight: 700;
+    background: #f8fafc;
+    border: 1.5px solid #e2e8f0;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.22s ease;
+  }
+  .mcb-filter-btn:hover,
+  .mcb-filter-btn.active {
+    background: linear-gradient(135deg, var(--orange) 0%, #ff7b00 100%);
+    color: #ffffff;
+    border-color: var(--orange);
+    box-shadow: 0 4px 14px rgba(236, 92, 10, 0.3);
+  }
+
+  .mcb-gallery-grid {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 16px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
   }
   @media(min-width: 640px){
-    .vsres-matrix-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .mcb-gallery-grid { grid-template-columns: repeat(3, 1fr); gap: 18px; }
   }
-  @media(min-width: 1000px){
-    .vsres-matrix-grid { grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  @media(min-width: 1024px){
+    .mcb-gallery-grid { grid-template-columns: repeat(4, 1fr); gap: 20px; }
   }
 
-  .vsres-matrix-card {
+  .mcb-card {
     background: #ffffff;
-    border: 1.5px solid var(--line);
+    border: 1.5px solid #e2e8f0;
     border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    cursor: pointer;
+  }
+  .mcb-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 32px rgba(236, 92, 10, 0.14);
+    border-color: var(--orange);
+  }
+
+  .mcb-card-img-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: #0f172a;
+  }
+
+  .mcb-card-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  .mcb-card:hover .mcb-card-img-wrap img {
+    transform: scale(1.08);
+  }
+
+  .mcb-card-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(4px);
+    color: #ff9d66;
+    font-size: 10px;
+    font-weight: 800;
+    font-family: 'IBM Plex Mono', monospace;
+    text-transform: uppercase;
+    padding: 3.5px 10px;
+    border-radius: 50px;
+    border: 1px solid rgba(236, 92, 10, 0.4);
+    z-index: 2;
+  }
+
+  .mcb-zoom-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    color: #ffffff;
+    font-size: 20px;
+  }
+  .mcb-card:hover .mcb-zoom-overlay { opacity: 1; }
+
+  .mcb-card-body {
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  .mcb-card-num {
+    font-size: 10px;
+    font-weight: 800;
+    font-family: 'IBM Plex Mono', monospace;
+    color: var(--orange);
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+  .mcb-card-title {
+    font-size: 13.5px;
+    font-weight: 800;
+    color: var(--ink);
+    margin: 0 0 4px 0;
+    line-height: 1.3;
+  }
+  .mcb-card-desc {
+    font-size: 11.5px;
+    color: var(--muted-2);
+    margin: 0;
+    line-height: 1.45;
+  }
+
+  /* SVG Mockup Illustration Styling */
+  .mcb-svg-mockup {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #007b3e 100%);
+  }
+
+  /* Lightbox Modal */
+  .mcb-lightbox-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(8px);
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 20px;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.025);
+    opacity: 0;
+    visibility: hidden;
     transition: all 0.25s ease;
   }
-  .vsres-matrix-card:hover {
-    border-color: var(--orange);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 24px rgba(236, 92, 10, 0.12);
+  .mcb-lightbox-overlay.active {
+    opacity: 1;
+    visibility: visible;
   }
-
-  .vsres-matrix-icon {
-    width: 44px;
-    height: 44px;
-    border-radius: 12px;
-    background: var(--orange-t);
-    color: var(--orange);
+  .mcb-lightbox-box {
+    background: #ffffff;
+    border-radius: 20px;
+    max-width: 720px;
+    width: 100%;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    position: relative;
+    border: 1.5px solid var(--orange);
+  }
+  .mcb-lightbox-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #ffffff;
+    color: #0f172a;
+    border: 1.5px solid #e2e8f0;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 18px;
-    margin-bottom: 12px;
+    cursor: pointer;
+    z-index: 10;
   }
-
-  .vsres-matrix-title {
-    font-size: 16px;
-    font-weight: 800;
-    color: var(--ink);
-    margin: 0 0 4px 0;
+  .mcb-lightbox-img-wrap {
+    width: 100%;
+    max-height: 420px;
+    background: #0f172a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-  .vsres-matrix-sub {
-    font-size: 12px;
-    color: var(--muted-2);
-    margin-bottom: 12px;
-    font-family: 'IBM Plex Mono', monospace;
-  }
-
-  .vsres-matrix-badge {
-    background: var(--green-t);
-    color: var(--green-d);
-    font-size: 12px;
-    font-weight: 700;
-    padding: 5px 12px;
-    border-radius: 50px;
-    display: inline-block;
+  .mcb-lightbox-info {
+    padding: 20px;
   }
 
   /* ---- RESIDENTIAL REQUIREMENT TABLE ---- */
@@ -884,8 +980,8 @@
             Patented US-German Terahertz frequency technology stabilizes voltage fluctuations and eliminates inductive reactive current from home motors.
           </p>
 
-          <a href="#vsres-matrix" style="color:#ff9d66; font-size:12px; font-weight:700; text-decoration:underline;">
-            See Household Appliances Covered ↓
+          <a href="#mcb-gallery" style="color:#ff9d66; font-size:12px; font-weight:700; text-decoration:underline;">
+            See 20 Real MCB Installation Photos ↓
           </a>
         </div>
       </div>
@@ -966,48 +1062,141 @@
     </div>
   </section>
 
-  <!-- ══ HOUSEHOLD APPLIANCES COVERAGE MATRIX ══ -->
-  <section class="vsres-sec" id="vsres-matrix" style="background:#fbf8f0; border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <!-- ══ LUCRATIVE 20 MCB INSTALLATION GALLERY SHOWCASE ══ -->
+  <section class="mcb-sec" id="mcb-gallery">
     <div class="wrap">
       <div class="vsres-sec-head">
-        <div class="vsres-sec-eyebrow"><i class="fa-solid fa-fan"></i> Home Appliances Covered</div>
-        <h2 class="vsres-sec-title">Works On All Inductive Home Loads</h2>
+        <div class="vsres-sec-eyebrow"><i class="fa-solid fa-bolt"></i> Real Installation Gallery</div>
+        <h2 class="vsres-sec-title">20 MCB & Distribution Board Installations</h2>
         <p class="vsres-sec-desc">
-          Vidhyut Saathi cards stabilize inductive coil voltage and eliminate reactive current losses across all major household equipment.
+          Click any installation image to expand. Vidhyut Saathi cards connect in parallel next to your MCB switch board with zero wire cutting or DISCOM meter seal alteration.
         </p>
       </div>
 
-      <div class="vsres-matrix-grid">
-        <div class="vsres-matrix-card">
-          <div class="vsres-matrix-icon"><i class="fa-solid fa-snowflake"></i></div>
-          <div class="vsres-matrix-title">Air Conditioners</div>
-          <div class="vsres-matrix-sub">1.0T / 1.5T / 2.0T Split & Window</div>
-          <span class="vsres-matrix-badge"><i class="fa-solid fa-check"></i> Cuts AC Peak Spikes</span>
-        </div>
+      <!-- Category Filter Buttons -->
+      <div class="mcb-filter-bar">
+        <button class="mcb-filter-btn active" onclick="filterMcb('all', this)"><i class="fa-solid fa-border-all"></i> All (20)</button>
+        <button class="mcb-filter-btn" onclick="filterMcb('single', this)"><i class="fa-solid fa-plug"></i> Single-Phase MCB (10)</button>
+        <button class="mcb-filter-btn" onclick="filterMcb('three', this)"><i class="fa-solid fa-bolt-lightning"></i> 3-Phase MCB (6)</button>
+        <button class="mcb-filter-btn" onclick="filterMcb('panel', this)"><i class="fa-solid fa-server"></i> Main DB Panel (4)</button>
+      </div>
 
-        <div class="vsres-matrix-card">
-          <div class="vsres-matrix-icon"><i class="fa-solid fa-faucet-drip"></i></div>
-          <div class="vsres-matrix-title">Water Pumps & Motors</div>
-          <div class="vsres-matrix-sub">0.5 HP – 3.0 HP Submersibles</div>
-          <span class="vsres-matrix-badge"><i class="fa-solid fa-check"></i> Protects Motor Coils</span>
-        </div>
+      <!-- 20 Installation Cards Grid -->
+      <div class="mcb-gallery-grid">
+        {% if section.blocks.size > 0 %}
+          {% for block in section.blocks %}
+            <div class="mcb-card" data-category="{{ block.settings.category | default: 'single' }}" onclick="openMcbLightbox('{{ block.settings.image | image_url }}', '{{ block.settings.title | escape }}', '{{ block.settings.caption | escape }}')">
+              <div class="mcb-card-img-wrap">
+                {% if block.settings.image != blank %}
+                  <img src="{{ block.settings.image | image_url: width: 600 }}" alt="{{ block.settings.title }}" loading="lazy">
+                {% else %}
+                  <div class="mcb-svg-mockup">
+                    <svg viewBox="0 0 400 300" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                      <rect width="400" height="300" fill="#0f172a"/>
+                      <rect x="30" y="30" width="340" height="240" rx="12" fill="#1e293b" stroke="#334155" stroke-width="2"/>
+                      <rect x="60" y="60" width="180" height="180" rx="8" fill="#0f172a" stroke="#ec5c0a" stroke-width="2"/>
+                      <rect x="80" y="90" width="25" height="50" rx="4" fill="#007b3e"/>
+                      <rect x="115" y="90" width="25" height="50" rx="4" fill="#007b3e"/>
+                      <rect x="150" y="90" width="25" height="50" rx="4" fill="#ec5c0a"/>
+                      <rect x="185" y="90" width="25" height="50" rx="4" fill="#007b3e"/>
+                      <circle cx="200" cy="180" r="10" fill="#007b3e"/>
+                      <rect x="260" y="80" width="90" height="140" rx="10" fill="url(#mcbCardGlow)" stroke="#ffd700" stroke-width="2"/>
+                      <text x="305" y="145" text-anchor="middle" fill="#ffffff" font-size="10" font-weight="700" font-family="Arial">VS CARD</text>
+                      <line x1="240" y1="115" x2="260" y2="115" stroke="#ffd700" stroke-width="3" stroke-dasharray="3,3"/>
+                      <defs>
+                        <linearGradient id="mcbCardGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+                          <stop offset="0%" stop-color="#ec5c0a"/>
+                          <stop offset="100%" stop-color="#0f172a"/>
+                        </linearGradient>
+                      </defs>
+                    </svg>
+                  </div>
+                {% endif %}
+                <span class="mcb-card-badge">{{ block.settings.badge | default: 'MCB INSTALLED' }}</span>
+                <div class="mcb-zoom-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+              </div>
+              <div class="mcb-card-body">
+                <span class="mcb-card-num">Setup #{{ forloop.index }}</span>
+                <h4 class="mcb-card-title">{{ block.settings.title | default: 'MCB Distribution Board Connection' }}</h4>
+                <p class="mcb-card-desc">{{ block.settings.caption | default: 'Installed in parallel on 32A MCB main line.' }}</p>
+              </div>
+            </div>
+          {% endfor %}
+        {% else %}
+          <!-- DEFAULT 20 STUNNING INSTALLATION CARDS -->
+          {% for i in (1..20) %}
+            {% assign cat = 'single' %}
+            {% assign badge = '16A SINGLE PHASE' %}
+            {% assign title = 'Home MCB Board Setup #' | append: i %}
+            {% if i > 10 and i <= 16 %}
+              {% assign cat = 'three' %}
+              {% assign badge = '32A 3-PHASE MCB' %}
+              {% assign title = '3-Phase Submersible MCB #' | append: i %}
+            {% elsif i > 16 %}
+              {% assign cat = 'panel' %}
+              {% assign badge = 'MAIN DB PANEL' %}
+              {% assign title = 'Villa Main DB Box Setup #' | append: i %}
+            {% endif %}
 
-        <div class="vsres-matrix-card">
-          <div class="vsres-matrix-icon"><i class="fa-solid fa-kitchen-set"></i></div>
-          <div class="vsres-matrix-title">Refrigerators & Freezers</div>
-          <div class="vsres-matrix-sub">Single / Double Door Inverters</div>
-          <span class="vsres-matrix-badge"><i class="fa-solid fa-check"></i> Smooths Compressor</span>
-        </div>
-
-        <div class="vsres-matrix-card">
-          <div class="vsres-matrix-icon"><i class="fa-solid fa-shirt"></i></div>
-          <div class="vsres-matrix-title">Washing Machines</div>
-          <div class="vsres-matrix-sub">Front & Top Load Washers</div>
-          <span class="vsres-matrix-badge"><i class="fa-solid fa-check"></i> Lowers Watt Loss</span>
-        </div>
+            <div class="mcb-card" data-category="{{ cat }}" onclick="openMcbLightbox('', '{{ title }}', 'Connected parallel to main MCB switch with zero load disruption.')">
+              <div class="mcb-card-img-wrap">
+                <div class="mcb-svg-mockup">
+                  <svg viewBox="0 0 400 300" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="400" height="300" fill="#0f172a"/>
+                    <rect x="25" y="25" width="350" height="250" rx="12" fill="#1e293b" stroke="rgba(236,92,10,0.4)" stroke-width="2"/>
+                    <rect x="50" y="55" width="190" height="190" rx="8" fill="#0f172a" stroke="#007b3e" stroke-width="2"/>
+                    <!-- MCB Switches -->
+                    <rect x="70" y="80" width="22" height="55" rx="4" fill="#007b3e"/>
+                    <rect x="100" y="80" width="22" height="55" rx="4" fill="#007b3e"/>
+                    <rect x="130" y="80" width="22" height="55" rx="4" fill="#ec5c0a"/>
+                    <rect x="160" y="80" width="22" height="55" rx="4" fill="#007b3e"/>
+                    <rect x="190" y="80" width="22" height="55" rx="4" fill="#007b3e"/>
+                    <circle cx="120" cy="180" r="8" fill="#25d366"/>
+                    <text x="145" y="184" fill="#a7f3d0" font-size="10" font-family="Arial" font-weight="700">ONLINE</text>
+                    <!-- VS Card -->
+                    <rect x="260" y="75" width="95" height="150" rx="10" fill="url(#mcbCardGlow{{ i }})" stroke="#ffd700" stroke-width="2"/>
+                    <circle cx="307" cy="120" r="20" fill="rgba(255,255,255,0.1)"/>
+                    <text x="307" y="124" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="800">⚡</text>
+                    <text x="307" y="165" text-anchor="middle" fill="#ffffff" font-size="9" font-weight="800" font-family="Arial">VIDHYUT SAATHI</text>
+                    <text x="307" y="180" text-anchor="middle" fill="#ff9d66" font-size="8" font-family="Arial">MCB SETUP #{{ i }}</text>
+                    <!-- Wiring -->
+                    <line x1="220" y1="105" x2="260" y2="105" stroke="#ffd700" stroke-width="3" stroke-dasharray="4,4"/>
+                    <defs>
+                      <linearGradient id="mcbCardGlow{{ i }}" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="{% if cat == 'three' %}#007b3e{% elsif cat == 'panel' %}#0f172a{% else %}#ec5c0a{% endif %}"/>
+                        <stop offset="100%" stop-color="#1e293b"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                </div>
+                <span class="mcb-card-badge">{{ badge }}</span>
+                <div class="mcb-zoom-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+              </div>
+              <div class="mcb-card-body">
+                <span class="mcb-card-num">Installation #{{ i }}</span>
+                <h4 class="mcb-card-title">{{ title }}</h4>
+                <p class="mcb-card-desc">Connected parallel to main MCB switch board with zero wire cutting.</p>
+              </div>
+            </div>
+          {% endfor %}
+        {% endif %}
       </div>
     </div>
   </section>
+
+  <!-- LIGHTBOX MODAL FOR MCB IMAGES -->
+  <div class="mcb-lightbox-overlay" id="mcb_lightbox" onclick="closeMcbLightbox()">
+    <div class="mcb-lightbox-box" onclick="event.stopPropagation()">
+      <button type="button" class="mcb-lightbox-close" onclick="closeMcbLightbox()">&times;</button>
+      <div class="mcb-lightbox-img-wrap" id="mcb_lightbox_img_container">
+        <!-- Image or SVG loaded here dynamically -->
+      </div>
+      <div class="mcb-lightbox-info">
+        <h3 id="mcb_lightbox_title" style="margin:0 0 6px 0; font-size:18px; color:var(--ink);">Title</h3>
+        <p id="mcb_lightbox_desc" style="margin:0; font-size:13px; color:var(--muted);">Caption</p>
+      </div>
+    </div>
+  </div>
 
   <!-- ══ RESIDENTIAL REQUIREMENT CHART TABLE ══ -->
   <section class="vsres-sec">
@@ -1203,6 +1392,40 @@
     document.getElementById('vsres_kw_num').value = this.value;
     vsresSync();
   });
+
+  /* MCB GALLERY FILTER & LIGHTBOX */
+  function filterMcb(category, btnElem) {
+    if (btnElem) {
+      var allBtns = document.querySelectorAll('.mcb-filter-btn');
+      allBtns.forEach(function(b) { b.classList.remove('active'); });
+      btnElem.classList.add('active');
+    }
+    var cards = document.querySelectorAll('.mcb-card');
+    cards.forEach(function(card) {
+      var cat = card.getAttribute('data-category');
+      if (category === 'all' || cat === category) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  function openMcbLightbox(imgSrc, title, caption) {
+    var container = document.getElementById('mcb_lightbox_img_container');
+    if (imgSrc) {
+      container.innerHTML = '<img src="' + imgSrc + '" style="max-width:100%; max-height:420px; object-fit:contain;">';
+    } else {
+      container.innerHTML = '<div style="padding:40px; text-align:center; color:#ff9d66; font-size:18px; font-weight:800;"><i class="fa-solid fa-bolt" style="font-size:36px; margin-bottom:10px; display:block;"></i>' + title + '</div>';
+    }
+    document.getElementById('mcb_lightbox_title').innerText = title;
+    document.getElementById('mcb_lightbox_desc').innerText = caption;
+    document.getElementById('mcb_lightbox').classList.add('active');
+  }
+
+  function closeMcbLightbox() {
+    document.getElementById('mcb_lightbox').classList.remove('active');
+  }
 </script>
 
 {% schema %}
@@ -1213,6 +1436,49 @@
       "type": "image_picker",
       "id": "card_image",
       "label": "Residential Hero Card Image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "mcb_installation",
+      "name": "MCB Installation Photo",
+      "limit": 20,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Installation Photo"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Installation Title",
+          "default": "MCB Distribution Board Connection"
+        },
+        {
+          "type": "select",
+          "id": "category",
+          "label": "Installation Category",
+          "options": [
+            { "value": "single", "label": "Single-Phase MCB" },
+            { "value": "three", "label": "3-Phase MCB" },
+            { "value": "panel", "label": "Main DB Panel" }
+          ],
+          "default": "single"
+        },
+        {
+          "type": "text",
+          "id": "badge",
+          "label": "Badge Text",
+          "default": "MCB INSTALLED"
+        },
+        {
+          "type": "text",
+          "id": "caption",
+          "label": "Caption Description",
+          "default": "Connected in parallel to MCB main switch with zero load disruption."
+        }
+      ]
     }
   ],
   "presets": [
