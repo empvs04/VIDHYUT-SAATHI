@@ -60,9 +60,9 @@
     background: #ffffff;
     border-bottom: 1.5px solid var(--line);
     padding: 12px 16px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    position: relative;
+    z-index: 9999;
+    pointer-events: auto !important;
     box-shadow: 0 4px 14px rgba(0,0,0,0.03);
   }
 
@@ -73,6 +73,7 @@
     align-items: center;
     justify-content: space-between;
     gap: 12px;
+    pointer-events: auto !important;
   }
 
   .vscom-nav-title {
@@ -94,6 +95,7 @@
     gap: 8px;
     overflow-x: auto;
     scrollbar-width: none;
+    pointer-events: auto !important;
   }
   .vscom-nav-links::-webkit-scrollbar { display: none; }
 
@@ -105,6 +107,16 @@
     border-radius: 50px;
     font-size: 12.5px;
     font-weight: 700;
+    background: #f8fafc;
+    border: 1.5px solid #e2e8f0;
+    color: var(--muted);
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    cursor: pointer !important;
+    pointer-events: auto !important;
+    position: relative;
+    z-index: 10;
+  }
     background: #f8fafc;
     border: 1.5px solid #e2e8f0;
     color: var(--muted);
@@ -906,22 +918,22 @@
         <i class="fa-solid fa-layer-group"></i> Sector Requirement Pages:
       </div>
       <div class="vscom-nav-links">
-        <a href="/pages/commercial" class="vscom-nav-item active">
+        <a href="/pages/commercial" class="vscom-nav-item active" onclick="window.location.href='/pages/commercial';">
           <i class="fa-solid fa-building"></i> Commercial
         </a>
-        <a href="/pages/industrial" class="vscom-nav-item">
+        <a href="/pages/industrial" class="vscom-nav-item" onclick="window.location.href='/pages/industrial';">
           <i class="fa-solid fa-industry"></i> Industrial
         </a>
-        <a href="/pages/residential" class="vscom-nav-item">
+        <a href="/pages/residential" class="vscom-nav-item" onclick="window.location.href='/pages/residential';">
           <i class="fa-solid fa-house"></i> Residential
         </a>
-        <a href="/pages/required-cards" class="vscom-nav-item">
+        <a href="/pages/required-cards" class="vscom-nav-item" onclick="window.location.href='/pages/required-cards';">
           <i class="fa-solid fa-calculator"></i> Card Calculator
         </a>
-        <a href="/pages/b2c" class="vscom-nav-item">
+        <a href="/pages/b2c" class="vscom-nav-item" onclick="window.location.href='/pages/b2c';">
           <i class="fa-solid fa-bolt"></i> Power Saver Card
         </a>
-        <a href="/pages/get-franchise" class="vscom-nav-item">
+        <a href="/pages/get-franchise" class="vscom-nav-item" onclick="window.location.href='/pages/get-franchise';">
           <i class="fa-solid fa-store"></i> Franchise Program
         </a>
       </div>
