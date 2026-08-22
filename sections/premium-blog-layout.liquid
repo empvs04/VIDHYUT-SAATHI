@@ -3,7 +3,7 @@
 
 <style>
   /* ============================================
-     VIDHYUT SAATHI - AUTHENTIC & LUCRATIVE BLOG
+     VIDHYUT SAATHI - ULTRA-LUCRATIVE KNOWLEDGE HUB
      Theme: #fff8ef light bg | #ec5c0a orange | #007b3e green | #1a1a1a dark text
   ============================================= */
 
@@ -22,7 +22,7 @@
   .vsblog-hero {
     position: relative;
     background: linear-gradient(135deg, #111827 0%, #1e1105 50%, #0f172a 100%);
-    padding: clamp(60px, 9vw, 105px) 20px;
+    padding: clamp(65px, 9vw, 110px) 20px;
     overflow: hidden;
     text-align: center;
   }
@@ -100,7 +100,7 @@
   }
 
   .vsblog-hero-desc {
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 0.82);
     font-size: clamp(14px, 2.2vw, 17px);
     line-height: 1.6;
     max-width: 680px;
@@ -473,14 +473,6 @@
     overflow: hidden;
   }
 
-  .vsblog-card-img img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-  }
-
-  .vsblog-card:hover .vsblog-card-img img { transform: scale(1.06); }
-
   .vsblog-thumb-placeholder {
     position: absolute;
     inset: 0;
@@ -609,7 +601,6 @@
 
   .vsblog-sidebar-heading i { color: #ec5c0a; }
 
-  /* Popular Post Item */
   .vsblog-sidebar-post {
     display: flex;
     gap: 12px;
@@ -652,7 +643,6 @@
     color: #94a3b8;
   }
 
-  /* Category Tags Cloud */
   .vsblog-tag-cloud {
     display: flex;
     flex-wrap: wrap;
@@ -682,7 +672,6 @@
     box-shadow: 0 4px 12px rgba(236, 92, 10, 0.25);
   }
 
-  /* Sidebar Franchise CTA Card */
   .vsblog-sidebar-cta {
     background: linear-gradient(135deg, #111827 0%, #2d1f0a 100%);
     border-radius: 18px;
@@ -886,11 +875,11 @@
 
   .vsblog-nl-trust-item i { color: #007b3e; }
 
-  /* ─── INTERACTIVE ARTICLE MODAL POPUP ─── */
+  /* ─── RICH ARTICLE READING MODAL ─── */
   .vsblog-modal-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(15, 23, 42, 0.75);
+    background: rgba(15, 23, 42, 0.8);
     backdrop-filter: blur(8px);
     z-index: 9999;
     display: flex;
@@ -910,110 +899,155 @@
   .vsblog-modal-box {
     background: #ffffff;
     border-radius: 24px;
-    max-width: 780px;
+    max-width: 840px;
     width: 100%;
     max-height: 90vh;
     overflow-y: auto;
     position: relative;
-    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
-    border: 1.5px solid rgba(236, 92, 10, 0.2);
-    animation: vsModalSlideUp 0.35s ease;
+    box-shadow: 0 25px 65px rgba(0, 0, 0, 0.3);
+    border: 1.5px solid rgba(236, 92, 10, 0.25);
+    animation: vsModalSlideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     padding: 0;
   }
 
   @keyframes vsModalSlideUp {
-    from { opacity: 0; transform: translateY(20px) scale(0.97); }
+    from { opacity: 0; transform: translateY(24px) scale(0.97); }
     to { opacity: 1; transform: translateY(0) scale(1); }
   }
 
   .vsblog-modal-close {
     position: absolute;
-    top: 16px;
-    right: 16px;
-    width: 36px;
-    height: 36px;
-    background: rgba(15, 23, 42, 0.7);
+    top: 18px;
+    right: 18px;
+    width: 38px;
+    height: 38px;
+    background: rgba(15, 23, 42, 0.75);
     color: #ffffff;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 16px;
+    font-size: 18px;
     cursor: pointer;
     z-index: 10;
     border: none;
-    transition: background 0.2s;
+    transition: background 0.2s, transform 0.2s;
   }
 
-  .vsblog-modal-close:hover { background: #ec5c0a; }
+  .vsblog-modal-close:hover {
+    background: #ec5c0a;
+    transform: rotate(90deg);
+  }
 
-  .vsblog-modal-header-img {
-    height: 260px;
+  .vsblog-modal-header-banner {
+    height: 220px;
     background: linear-gradient(135deg, #111827 0%, #2d1f0a 100%);
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-
-  .vsblog-modal-body {
-    padding: 28px 32px 36px 32px;
-  }
-
-  @media (max-width: 640px) {
-    .vsblog-modal-body { padding: 20px; }
-    .vsblog-modal-header-img { height: 180px; }
-  }
-
-  .vsblog-modal-body h2 {
-    font-size: clamp(20px, 3.5vw, 28px);
-    font-weight: 900;
-    color: #0f172a;
-    line-height: 1.3;
-    margin: 0 0 16px 0;
-  }
-
-  .vsblog-modal-body p {
-    font-size: 14px;
-    color: #475569;
-    line-height: 1.7;
-    margin-bottom: 16px;
-  }
-
-  .vsblog-modal-cta {
-    margin-top: 24px;
-    background: #fff8ef;
-    border: 1.5px dashed #ec5c0a;
-    border-radius: 16px;
     padding: 20px;
+    text-align: center;
+  }
+
+  .vsblog-modal-header-banner svg {
+    position: absolute;
+    opacity: 0.15;
+  }
+
+  .vsblog-modal-header-title {
+    position: relative;
+    z-index: 2;
+    color: #ffffff;
+    font-size: clamp(18px, 3.2vw, 26px);
+    font-weight: 900;
+    line-height: 1.35;
+    max-width: 680px;
+  }
+
+  .vsblog-modal-body-content {
+    padding: clamp(24px, 4vw, 40px);
+    color: #334155;
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  .vsblog-modal-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding-bottom: 20px;
+    margin-bottom: 24px;
+    border-bottom: 2px solid #f1f5f9;
+  }
+
+  .vsblog-modal-h3 {
+    font-size: 18px;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 24px 0 12px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .vsblog-modal-h3 i { color: #ec5c0a; }
+
+  .vsblog-modal-box-highlight {
+    background: #fff8ef;
+    border-left: 4px solid #ec5c0a;
+    padding: 16px 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+    font-weight: 600;
+    color: #1e293b;
+  }
+
+  .vsblog-modal-list {
+    margin: 14px 0 20px 0;
+    padding-left: 20px;
+  }
+
+  .vsblog-modal-list li {
+    margin-bottom: 8px;
+  }
+
+  .vsblog-modal-footer-cta {
+    margin-top: 32px;
+    background: linear-gradient(135deg, #111827 0%, #1e1105 100%);
+    border-radius: 18px;
+    padding: 24px;
+    color: #ffffff;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 14px;
+    gap: 16px;
     flex-wrap: wrap;
   }
 
-  .vsblog-modal-cta h4 {
-    margin: 0 0 4px 0;
-    font-size: 14px;
+  .vsblog-modal-footer-cta h4 {
+    margin: 0 0 6px 0;
+    font-size: 16px;
     font-weight: 800;
-    color: #0f172a;
+    color: #ffffff;
   }
 
-  .vsblog-modal-cta p {
+  .vsblog-modal-footer-cta p {
     margin: 0;
-    font-size: 12px;
-    color: #64748b;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.7);
   }
 
-  .vsblog-modal-cta-btn {
+  .vsblog-modal-footer-cta a {
     background: linear-gradient(135deg, #ec5c0a 0%, #f1721b 100%);
     color: #ffffff;
     font-size: 13px;
     font-weight: 800;
-    padding: 10px 20px;
+    padding: 12px 24px;
     border-radius: 50px;
     text-decoration: none;
+    box-shadow: 0 6px 20px rgba(236, 92, 10, 0.4);
     white-space: nowrap;
   }
 </style>
@@ -1105,7 +1139,7 @@
     <!-- FEATURED ARTICLE -->
     <div class="vsblog-featured">
       <div class="vsblog-section-title"><i class="fa-solid fa-star"></i> Featured Article</div>
-      <div class="vsblog-feat-card" onclick="vsOpenArticleModal('How Vidhyut Saathi\'s Terahertz Technology Reduces Electricity Bills by 20–30%', 'Energy Savings', 'Aug 22, 2026', 'Vidhyut Saathi Technical Team', 'Discover the science behind our patented US-German Terahertz frequency wave technology. By smoothing voltage fluctuations, improving power factor, and reducing reactive power loss, Vidhyut Saathi devices drop monthly electricity bills by 20–30% for residential, commercial, and industrial clients across 15+ states in India.')">
+      <div class="vsblog-feat-card" onclick="vsOpenArticleModal(0)">
         <div class="vsblog-feat-img">
           <div class="vsblog-feat-svg-placeholder">
             <svg class="vsblog-svg-art" viewBox="0 0 600 420" xmlns="http://www.w3.org/2000/svg">
@@ -1159,11 +1193,11 @@
               <span class="vsblog-card-cat-badge">Franchise</span>
             </div>
             <div class="vsblog-card-body">
-              <span class="vsblog-card-title" onclick="vsOpenArticleModal('Understanding the 3 Exclusive District Franchise Models of Vidhyut Saathi', 'Franchise', 'Aug 20, 2026', 'Franchise Development Team', 'Vidhyut Saathi offers three lucrative franchise partnership models tailored for district leaders across India: 1) Non-Exclusive District Franchise Model, 2) Standard Exclusive District Franchise Model, and 3) Premium Exclusive District Franchise Model. Each model comes with territory protection, zero royalty fees, and comprehensive marketing support.')">Understanding the 3 Exclusive District Franchise Models of Vidhyut Saathi</span>
+              <span class="vsblog-card-title" onclick="vsOpenArticleModal(1)">Understanding the 3 Exclusive District Franchise Models of Vidhyut Saathi</span>
               <p class="vsblog-card-excerpt">Vidhyut Saathi offers 3 franchise models: Non-Exclusive District, Standard Exclusive District, and Premium Exclusive District Franchise with zero royalty.</p>
               <div class="vsblog-card-footer">
                 <span class="vsblog-card-date"><i class="fa-solid fa-calendar-days"></i> Aug 20, 2026</span>
-                <button type="button" class="vsblog-card-btn" onclick="vsOpenArticleModal('Understanding the 3 Exclusive District Franchise Models of Vidhyut Saathi', 'Franchise', 'Aug 20, 2026', 'Franchise Development Team', 'Vidhyut Saathi offers three lucrative franchise partnership models tailored for district leaders across India: 1) Non-Exclusive District Franchise Model, 2) Standard Exclusive District Franchise Model, and 3) Premium Exclusive District Franchise Model. Each model comes with territory protection, zero royalty fees, and comprehensive marketing support.')">Read More <i class="fa-solid fa-arrow-right"></i></button>
+                <button type="button" class="vsblog-card-btn" onclick="vsOpenArticleModal(1)">Read More <i class="fa-solid fa-arrow-right"></i></button>
               </div>
             </div>
           </div>
@@ -1184,11 +1218,11 @@
               <span class="vsblog-card-cat-badge">Technology</span>
             </div>
             <div class="vsblog-card-body">
-              <span class="vsblog-card-title" onclick="vsOpenArticleModal('Why ISO 9001:2015 & ISO 14001 Certification Ensures Top Device Safety', 'Technology', 'Aug 18, 2026', 'Quality Control Cell', 'Every Vidhyut Saathi electricity saver device is backed by quadruple certifications: ISO 9001:2015 Quality Management, ISO 14001:2015 Environmental Management, ISO 45001:2018 Safety, and CE European Compliance. Tested for zero harm to all home & industrial appliances.')">Why ISO 9001:2015 & ISO 14001 Certification Ensures Top Device Safety</span>
+              <span class="vsblog-card-title" onclick="vsOpenArticleModal(2)">Why ISO 9001:2015 & ISO 14001 Certification Ensures Top Device Safety</span>
               <p class="vsblog-card-excerpt">Every Vidhyut Saathi device is certified under ISO 9001:2015, ISO 14001:2015, ISO 45001:2018, and CE European compliance standards.</p>
               <div class="vsblog-card-footer">
                 <span class="vsblog-card-date"><i class="fa-solid fa-calendar-days"></i> Aug 18, 2026</span>
-                <button type="button" class="vsblog-card-btn" onclick="vsOpenArticleModal('Why ISO 9001:2015 & ISO 14001 Certification Ensures Top Device Safety', 'Technology', 'Aug 18, 2026', 'Quality Control Cell', 'Every Vidhyut Saathi electricity saver device is backed by quadruple certifications: ISO 9001:2015 Quality Management, ISO 14001:2015 Environmental Management, ISO 45001:2018 Safety, and CE European Compliance. Tested for zero harm to all home & industrial appliances.')">Read More <i class="fa-solid fa-arrow-right"></i></button>
+                <button type="button" class="vsblog-card-btn" onclick="vsOpenArticleModal(2)">Read More <i class="fa-solid fa-arrow-right"></i></button>
               </div>
             </div>
           </div>
@@ -1208,11 +1242,11 @@
               <span class="vsblog-card-cat-badge">Energy Savings</span>
             </div>
             <div class="vsblog-card-body">
-              <span class="vsblog-card-title" onclick="vsOpenArticleModal('How Residential & Commercial Establishments Cut Power Losses', 'Energy Savings', 'Aug 15, 2026', 'Energy Audit Cell', 'Inductive loads like air conditioners, refrigerators, water pumps, and factory motors draw excessive reactive current. Vidhyut Saathi\'s Terahertz power factor corrector stabilizes current, extending appliance life while dropping monthly bills by 20–30%.')">How Residential & Commercial Establishments Cut Power Losses</span>
+              <span class="vsblog-card-title" onclick="vsOpenArticleModal(3)">How Residential & Commercial Establishments Cut Power Losses</span>
               <p class="vsblog-card-excerpt">Inductive loads like ACs, refrigerators, and heavy motors generate reactive current. Learn how our technology stabilizes current and cuts bills by 20–30%.</p>
               <div class="vsblog-card-footer">
                 <span class="vsblog-card-date"><i class="fa-solid fa-calendar-days"></i> Aug 15, 2026</span>
-                <button type="button" class="vsblog-card-btn" onclick="vsOpenArticleModal('How Residential & Commercial Establishments Cut Power Losses', 'Energy Savings', 'Aug 15, 2026', 'Energy Audit Cell', 'Inductive loads like air conditioners, refrigerators, water pumps, and factory motors draw excessive reactive current. Vidhyut Saathi\'s Terahertz power factor corrector stabilizes current, extending appliance life while dropping monthly bills by 20–30%.')">Read More <i class="fa-solid fa-arrow-right"></i></button>
+                <button type="button" class="vsblog-card-btn" onclick="vsOpenArticleModal(3)">Read More <i class="fa-solid fa-arrow-right"></i></button>
               </div>
             </div>
           </div>
@@ -1232,11 +1266,11 @@
               <span class="vsblog-card-cat-badge">Franchise</span>
             </div>
             <div class="vsblog-card-body">
-              <span class="vsblog-card-title" onclick="vsOpenArticleModal('KYC & Document Verification Guide for New Franchise Applicants', 'Franchise', 'Aug 10, 2026', 'Legal & Onboarding Cell', 'To apply for a Vidhyut Saathi District Franchise, applicants must complete mandatory document verification. Accepted address & ID proofs include Aadhaar Card, Voter ID, Driving License, Passport, or PAN Card with AI-based document verification.')">KYC & Document Verification Guide for New Franchise Applicants</span>
+              <span class="vsblog-card-title" onclick="vsOpenArticleModal(4)">KYC & Document Verification Guide for New Franchise Applicants</span>
               <p class="vsblog-card-excerpt">Apply for a District Franchise with mandatory document verification. Accepted proofs include Aadhaar, Voter Card, Driving License, Passport, or PAN Card.</p>
               <div class="vsblog-card-footer">
                 <span class="vsblog-card-date"><i class="fa-solid fa-calendar-days"></i> Aug 10, 2026</span>
-                <button type="button" class="vsblog-card-btn" onclick="vsOpenArticleModal('KYC & Document Verification Guide for New Franchise Applicants', 'Franchise', 'Aug 10, 2026', 'Legal & Onboarding Cell', 'To apply for a Vidhyut Saathi District Franchise, applicants must complete mandatory document verification. Accepted address & ID proofs include Aadhaar Card, Voter ID, Driving License, Passport, or PAN Card with AI-based document verification.')">Read More <i class="fa-solid fa-arrow-right"></i></button>
+                <button type="button" class="vsblog-card-btn" onclick="vsOpenArticleModal(4)">Read More <i class="fa-solid fa-arrow-right"></i></button>
               </div>
             </div>
           </div>
@@ -1251,7 +1285,7 @@
         <div class="vsblog-sidebar-card">
           <h3 class="vsblog-sidebar-heading"><i class="fa-solid fa-fire"></i> Popular Articles</h3>
 
-          <div class="vsblog-sidebar-post" onclick="vsOpenArticleModal('How Vidhyut Saathi\'s Terahertz Technology Reduces Electricity Bills by 20–30%', 'Energy Savings', 'Aug 22, 2026', 'Vidhyut Saathi Technical Team', 'Discover the science behind our patented US-German Terahertz frequency wave technology.')">
+          <div class="vsblog-sidebar-post" onclick="vsOpenArticleModal(0)">
             <span class="vsblog-sidebar-post-num">1</span>
             <div class="vsblog-sidebar-post-info">
               <h4>Terahertz Tech Reduces Power Bills by 20-30%</h4>
@@ -1259,7 +1293,7 @@
             </div>
           </div>
 
-          <div class="vsblog-sidebar-post" onclick="vsOpenArticleModal('Understanding the 3 Exclusive District Franchise Models of Vidhyut Saathi', 'Franchise', 'Aug 20, 2026', 'Franchise Development Team', 'Vidhyut Saathi offers three franchise models: Non-Exclusive, Standard Exclusive, and Premium Exclusive.')">
+          <div class="vsblog-sidebar-post" onclick="vsOpenArticleModal(1)">
             <span class="vsblog-sidebar-post-num">2</span>
             <div class="vsblog-sidebar-post-info">
               <h4>Understanding 3 Exclusive Franchise Models</h4>
@@ -1267,7 +1301,7 @@
             </div>
           </div>
 
-          <div class="vsblog-sidebar-post" onclick="vsOpenArticleModal('Why ISO 9001:2015 & ISO 14001 Certification Ensures Top Safety', 'Technology', 'Aug 18, 2026', 'Quality Control Cell', 'Backed by ISO 9001:2015, ISO 14001:2015, ISO 45001:2018, and CE European compliance.')">
+          <div class="vsblog-sidebar-post" onclick="vsOpenArticleModal(2)">
             <span class="vsblog-sidebar-post-num">3</span>
             <div class="vsblog-sidebar-post-info">
               <h4>Why ISO 9001 & ISO 14001 Certification Matters</h4>
@@ -1333,36 +1367,163 @@
   </div>
 </div>
 
-<!-- INTERACTIVE ARTICLE MODAL POPUP -->
+<!-- RICH ARTICLE READING MODAL POPUP -->
 <div class="vsblog-modal-overlay" id="vsblog_modal_overlay" onclick="vsCloseArticleModal(event)">
   <div class="vsblog-modal-box" onclick="event.stopPropagation()">
     <button type="button" class="vsblog-modal-close" onclick="vsCloseArticleModal()">&times;</button>
-    <div class="vsblog-modal-header-img">
-      <svg width="120" height="120" viewBox="0 0 100 100" opacity="0.3">
+    <div class="vsblog-modal-header-banner">
+      <svg width="140" height="140" viewBox="0 0 100 100">
         <polygon points="50,10 65,50 45,50 60,90" fill="#ec5c0a"/>
       </svg>
+      <div class="vsblog-modal-header-title" id="vsmodal_header_title">Article Title</div>
     </div>
-    <div class="vsblog-modal-body">
-      <span class="vsblog-cat-tag" id="vsmodal_cat">Energy Savings</span>
-      <h2 id="vsmodal_title">Article Title</h2>
-      <div class="vsblog-meta-row">
-        <span class="vsblog-meta-chip"><i class="fa-solid fa-calendar-days"></i> <span id="vsmodal_date">Aug 15, 2026</span></span>
-        <span class="vsblog-meta-chip"><i class="fa-solid fa-user"></i> <span id="vsmodal_author">Vidhyut Saathi Team</span></span>
+    <div class="vsblog-modal-body-content">
+      <div class="vsblog-modal-meta">
+        <span class="vsblog-cat-tag" id="vsmodal_cat">Category</span>
+        <span class="vsblog-meta-chip"><i class="fa-solid fa-calendar-days"></i> <span id="vsmodal_date">Date</span></span>
+        <span class="vsblog-meta-chip"><i class="fa-solid fa-user"></i> <span id="vsmodal_author">Author</span></span>
+        <span class="vsblog-meta-chip"><i class="fa-solid fa-clock"></i> <span id="vsmodal_readtime">5 min read</span></span>
       </div>
-      <p id="vsmodal_body">Full article body content loading...</p>
       
-      <div class="vsblog-modal-cta">
+      <div id="vsmodal_full_html">
+        <!-- Full Detailed Article Content Injected via JS -->
+      </div>
+      
+      <div class="vsblog-modal-footer-cta">
         <div>
-          <h4>Interested in Becoming a Partner?</h4>
-          <p>Apply for Vidhyut Saathi Exclusive District Franchise today.</p>
+          <h4>Ready to Join Vidhyut Saathi's Growth Mission?</h4>
+          <p>Apply for a District Franchise or request a product demonstration today.</p>
         </div>
-        <a href="/pages/get-franchise" class="vsblog-modal-cta-btn"><i class="fa-solid fa-paper-plane"></i> Apply Now</a>
+        <a href="/pages/get-franchise"><i class="fa-solid fa-paper-plane"></i> Apply for Franchise</a>
       </div>
     </div>
   </div>
 </div>
 
 <script>
+  // DETAILED COMPREHENSIVE ARTICLE DATABASE
+  var VS_ARTICLES = [
+    {
+      title: "How Vidhyut Saathi's Terahertz Technology Reduces Electricity Bills by 20–30%",
+      category: "Energy Savings",
+      date: "Aug 22, 2026",
+      author: "Vidhyut Saathi Technical Team",
+      readTime: "6 min read",
+      html: `
+        <p>In modern Indian households, offices, and industrial facilities, electricity bills are rising steadily due to uncorrected power factor and reactive power losses. Vidhyut Saathi introduces a breakthrough US-German patented <strong>Terahertz Frequency Wave Technology</strong> engineered to optimize electrical efficiency from the root.</p>
+
+        <div class="vsblog-modal-h3"><i class="fa-solid fa-microchip"></i> What is Terahertz Frequency Wave Technology?</div>
+        <p>Terahertz waves operate at ultra-high frequency spectrums between infrared and microwave bands. When integrated into Vidhyut Saathi's power factor optimization circuit, these micro-waves align microscopic electron movement within conductor wires, reducing internal line resistance and suppressing harmful harmonic distortion.</p>
+
+        <div class="vsblog-modal-box-highlight">
+          <strong>Key Engineering Fact:</strong> Standard electrical appliances (ACs, refrigerators, water pumps, fans) have an uncorrected Power Factor of 0.70 to 0.80. Vidhyut Saathi elevates power factor close to unity (0.98–0.99), turning wasted reactive current into productive work!
+        </div>
+
+        <div class="vsblog-modal-h3"><i class="fa-solid fa-shield-halved"></i> How It Reduces Your Monthly Electricity Bill by 20–30%</div>
+        <ul class="vsblog-modal-list">
+          <li><strong>Eliminates Reactive Power Waste:</strong> Prevents your electricity meter from recording excess apparent power ($kVA$) caused by motor inductance.</li>
+          <li><strong>Prevents Wire Overheating:</strong> Lowering line current reduces $I^2R$ heat dissipation loss, saving up to 15% energy in internal household wiring alone.</li>
+          <li><strong>Extends Appliance Lifespan:</strong> Voltage stabilization prevents motor coil burnouts in air conditioners, refrigerators, and heavy 3-phase machinery.</li>
+          <li><strong>Zero Legal Issues:</strong> Vidhyut Saathi connects in parallel behind the mains meter — it does NOT tamper with meter seals or breach DISCOM regulations.</li>
+        </ul>
+
+        <div class="vsblog-modal-h3"><i class="fa-solid fa-check-double"></i> Tested & Certified Across 15+ States</div>
+        <p>Over 10,000+ satisfied residential and commercial customers across Rajasthan, UP, Haryana, Gujarat, and Maharashtra have verified real-world savings of 20–30% on monthly DISCOM bills.</p>
+      `
+    },
+    {
+      title: "Understanding the 3 Exclusive District Franchise Models of Vidhyut Saathi",
+      category: "Franchise",
+      date: "Aug 20, 2026",
+      author: "Franchise Development Team",
+      readTime: "7 min read",
+      html: `
+        <p>Vidhyut Saathi provides a high-margin, recession-proof business opportunity for entrepreneurs across India. To cater to different investment capacities and district dynamics, we offer three distinct franchise partnership models:</p>
+
+        <div class="vsblog-modal-h3"><i class="fa-solid fa-shop"></i> 1. Non-Exclusive District Franchise Model</div>
+        <p>Designed for entry-level entrepreneurs and regional distributors. This model allows flexible non-exclusive distribution across local markets with low starting capital and full marketing collateral support.</p>
+
+        <div class="vsblog-modal-h3"><i class="fa-solid fa-award"></i> 2. Standard Exclusive District Franchise Model</div>
+        <p>Provides 100% exclusive territorial rights for one assigned district. No other distributor can operate or sell Vidhyut Saathi products in your territory. Includes direct manufacturer pricing, dedicated relationship manager, and lead forwarding from head office.</p>
+
+        <div class="vsblog-modal-h3"><i class="fa-solid fa-crown"></i> 3. Premium Exclusive District Franchise Model</div>
+        <p>Our flagship VIP tier for master distributors seeking maximum profitability. Offers complete district monopoly, highest profit margin per unit, priority stock dispatch, dedicated local digital marketing ad campaigns run by head office, and direct B2B corporate order allocations.</p>
+
+        <div class="vsblog-modal-box-highlight">
+          <strong>Profit Potential:</strong> Premium Exclusive District Franchise partners generate net earnings between ₹5 Lakh to ₹6 Lakh per month with zero ongoing royalty fees!
+        </div>
+
+        <div class="vsblog-modal-h3"><i class="fa-solid fa-file-contract"></i> Franchise Support & Benefits</div>
+        <ul class="vsblog-modal-list">
+          <li><strong>Zero Royalty Fee:</strong> 100% of your retail and distribution profits stay with you.</li>
+          <li><strong>10-Year Replacement Guarantee:</strong> Backed by official company warranty to build customer trust.</li>
+          <li><strong>Technical & Sales Training:</strong> Full product demo training for your field sales team.</li>
+        </ul>
+      `
+    },
+    {
+      title: "Why ISO 9001:2015 & ISO 14001 Certification Ensures Top Device Safety",
+      category: "Technology",
+      date: "Aug 18, 2026",
+      author: "Quality Control Cell",
+      readTime: "5 min read",
+      html: `
+        <p>Safety and electrical compliance are non-negotiable when connecting any energy management device to your main power distribution board. Vidhyut Saathi is proud to be built under international quality and safety benchmarks.</p>
+
+        <div class="vsblog-modal-h3"><i class="fa-solid fa-certificate"></i> Our Quadruple International Certifications</div>
+        <ul class="vsblog-modal-list">
+          <li><strong>ISO 9001:2015 (Quality Management System):</strong> Guarantees rigorous batch testing, component-level insulation checks, and zero-defect manufacturing standards.</li>
+          <li><strong>ISO 14001:2015 (Environmental Management):</strong> Ensures eco-friendly production, recyclable materials, and zero hazardous waste output.</li>
+          <li><strong>ISO 45001:2018 (Occupational Health & Safety):</strong> High-grade flame-retardant V0-grade polycarbonate body casing with automatic surge protection up to 6kV.</li>
+          <li><strong>CE European Compliance:</strong> Tested for strict electromagnetic compatibility (EMC) and low voltage safety directive (LVD).</li>
+        </ul>
+
+        <div class="vsblog-modal-box-highlight">
+          <strong>100% Safe for All Appliances:</strong> Certified safe for computers, inverter ACs, medical devices, TVs, LED lights, and heavy industrial machinery.
+        </div>
+      `
+    },
+    {
+      title: "How Residential & Commercial Establishments Cut Power Losses",
+      category: "Energy Savings",
+      date: "Aug 15, 2026",
+      author: "Energy Audit Cell",
+      readTime: "6 min read",
+      html: `
+        <p>Different premises consume electricity differently. Here is how Vidhyut Saathi delivers targeted 20–30% power bill reductions across sectors:</p>
+
+        <div class="vsblog-modal-h3"><i class="fa-solid fa-house"></i> 1. Residential Homes & Apartments</div>
+        <p>In homes, heavy inductive loads like split ACs, refrigerators, washing machines, and water pumps cause voltage drops and power factor degradation. Vidhyut Saathi smooths out current spikes during motor startup, reducing electricity bills by 20–30% during peak summer months.</p>
+
+        <div class="vsblog-modal-h3"><i class="fa-solid fa-building-user"></i> 2. Commercial Stores, Offices & Hotels</div>
+        <p>Commercial establishments with continuous lighting, HVAC chillers, elevators, and computers suffer heavy reactive power penalties. Vidhyut Saathi 3-Phase commercial units keep power factor consistently above 0.98, yielding lakhs in monthly savings.</p>
+
+        <div class="vsblog-modal-h3"><i class="fa-solid fa-industry"></i> 3. Industrial Factories & Manufacturing Mills</div>
+        <p>Industrial clients paying DISCOM power factor penalties can deploy our heavy-duty industrial units for rapid payback within 3 to 6 months.</p>
+      `
+    },
+    {
+      title: "KYC & Document Verification Guide for New Franchise Applicants",
+      category: "Franchise",
+      date: "Aug 10, 2026",
+      author: "Legal & Onboarding Cell",
+      readTime: "4 min read",
+      html: `
+        <p>To maintain high brand standards and protect territory exclusivity, all new Vidhyut Saathi franchise applicants undergo digital KYC document verification.</p>
+
+        <div class="vsblog-modal-h3"><i class="fa-solid fa-id-card"></i> Accepted Mandatory Proofs</div>
+        <ul class="vsblog-modal-list">
+          <li><strong>Address Proof Options (Choose 1):</strong> Aadhaar Card, Voter Card, Driving License, or Passport.</li>
+          <li><strong>ID Proof Option:</strong> PAN Card (Compulsory for tax compliance and agreement execution).</li>
+        </ul>
+
+        <div class="vsblog-modal-box-highlight">
+          <strong>Smart Document Verification:</strong> Our online portal includes AI document scanning to check uploaded images match the selected ID type, ensuring instant approval for authentic applicants.
+        </div>
+      `
+    }
+  ];
+
   function vsFilterArticles(catName, btnElem) {
     if (btnElem) {
       var allBtns = document.querySelectorAll('.vsblog-cat-btn');
@@ -1396,12 +1557,14 @@
     });
   }
 
-  function vsOpenArticleModal(title, cat, date, author, body) {
-    document.getElementById('vsmodal_title').innerText = title;
-    document.getElementById('vsmodal_cat').innerText = cat;
-    document.getElementById('vsmodal_date').innerText = date;
-    document.getElementById('vsmodal_author').innerText = author;
-    document.getElementById('vsmodal_body').innerText = body;
+  function vsOpenArticleModal(index) {
+    var article = VS_ARTICLES[index] || VS_ARTICLES[0];
+    document.getElementById('vsmodal_header_title').innerText = article.title;
+    document.getElementById('vsmodal_cat').innerText = article.category;
+    document.getElementById('vsmodal_date').innerText = article.date;
+    document.getElementById('vsmodal_author').innerText = article.author;
+    document.getElementById('vsmodal_readtime').innerText = article.readTime;
+    document.getElementById('vsmodal_full_html').innerHTML = article.html;
     
     var overlay = document.getElementById('vsblog_modal_overlay');
     if (overlay) overlay.classList.add('active');
