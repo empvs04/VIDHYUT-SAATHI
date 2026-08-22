@@ -992,8 +992,8 @@
               <span>⚙️ CONNECTED COMMERCIAL LOAD</span>
               <span class="vscom-field-badge" id="vscom_kw_badge">18 KW</span>
             </div>
-            <input type="range" class="vscom-range-slider" id="vscom_kw_slider" min="6" max="150" value="18" step="6" oninput="vscomSync()">
-            <input type="number" class="vscom-num-input" id="vscom_kw_num" value="18" min="1" max="500" oninput="vscomSync()">
+            <input type="range" class="vscom-range-slider" id="vscom_kw_slider" min="6" max="150" value="18" step="6" oninput="vscomSync('slider')">
+            <input type="number" class="vscom-num-input" id="vscom_kw_num" value="18" min="1" max="500" oninput="vscomSync('kw')">
           </div>
 
           <div class="vscom-field">
@@ -1001,7 +1001,7 @@
               <span>💰 MONTHLY ELECTRICITY BILL</span>
               <span class="vscom-field-badge" id="vscom_bill_badge">₹18,000</span>
             </div>
-            <input type="number" class="vscom-num-input" id="vscom_bill_num" value="18000" min="1000" step="1000" oninput="vscomSync()">
+            <input type="number" class="vscom-num-input" id="vscom_bill_num" value="18000" min="1000" step="1000" oninput="vscomSync('bill')">
           </div>
         </div>
 
@@ -1345,33 +1345,49 @@
 </div>
 
 <script>
-  function vscomSync() {
+  function vscomSync(source) {
     var kwSlider = document.getElementById('vscom_kw_slider');
     var kwNum = document.getElementById('vscom_kw_num');
     var billNum = document.getElementById('vscom_bill_num');
-    var kw = Math.max(6, parseInt(kwNum.value) || 6);
-    var bill = Math.max(1000, parseInt(billNum.value) || 1000);
 
-    kwSlider.value = Math.min(kw, 150);
+    var kw = parseInt(kwNum.value) || 18;
+    var bill = parseInt(billNum.value) || 18000;
+
+    if (source === 'slider') {
+      kw = parseInt(kwSlider.value) || 6;
+      kwNum.value = kw;
+      bill = kw * 1000;
+      billNum.value = bill;
+    } else if (source === 'kw') {
+      kw = Math.max(1, kw);
+      kwSlider.value = Math.min(kw, 150);
+      bill = kw * 1000;
+      billNum.value = bill;
+    } else if (source === 'bill') {
+      bill = Math.max(1000, bill);
+      kw = Math.max(1, Math.round(bill / 1000));
+      kwNum.value = kw;
+      kwSlider.value = Math.min(kw, 150);
+    }
+
     document.getElementById('vscom_kw_badge').innerText = kw + ' KW';
     document.getElementById('vscom_bill_badge').innerText = '₹' + bill.toLocaleString('en-IN');
 
-    var kwCards = Math.ceil(kw / 6);
-    var billCards = Math.ceil(bill / 6000);
-    var total = Math.max(kwCards, billCards) + 1; // +1 for 3-Phase commercial
+    // 1 Card per 6 KW (or 1 Card per ₹6,000 bill)
+    var total = Math.max(1, Math.ceil(kw / 6));
 
     document.getElementById('vscom_card_num').innerText = total;
-    document.getElementById('vscom_card_unit').innerText = total > 1 ? 'Cards (3-Phase)' : 'Card';
+    document.getElementById('vscom_card_unit').innerText = total > 1 ? 'Cards (3-Phase)' : 'Card (3-Phase)';
 
+    // 20-30% DISCOM Bill Savings
     var sMin = Math.round((bill * 0.20) / 100) * 100;
     var sMax = Math.round((bill * 0.30) / 100) * 100;
     document.getElementById('vscom_savings_range').innerText = '₹' + sMin.toLocaleString('en-IN') + ' – ₹' + sMax.toLocaleString('en-IN') + ' / mo';
   }
 
-  document.getElementById('vscom_kw_slider').addEventListener('input', function() {
-    document.getElementById('vscom_kw_num').value = this.value;
-    vscomSync();
-  });
+  document.getElementById('vscom_kw_slider').addEventListener('input', function() { vscomSync('slider'); });
+  document.getElementById('vscom_kw_num').addEventListener('input', function() { vscomSync('kw'); });
+  document.getElementById('vscom_bill_num').addEventListener('input', function() { vscomSync('bill'); });
 
   /* COMMERCIAL MCB GALLERY FILTER & LIGHTBOX */
   function filterMcb(category, btnElem) {
