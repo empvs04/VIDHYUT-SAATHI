@@ -1244,63 +1244,44 @@
 
       <!-- 20 Installation Cards Grid -->
       <div class="mcb-gallery-grid">
-        {% if section.blocks.size > 0 %}
-          {% for block in section.blocks %}
-            <div class="mcb-card" data-category="{{ block.settings.category | default: 'single' }}" onclick="openMcbLightbox('{{ block.settings.image | image_url }}', '{{ block.settings.title | escape }}', '{{ block.settings.caption | escape }}')">
-              <div class="mcb-card-img-wrap">
-                {% if block.settings.image != blank %}
-                  <img src="{{ block.settings.image | image_url: width: 600 }}" alt="{{ block.settings.title }}" loading="lazy">
-                {% else %}
-                  <div class="mcb-svg-mockup">
-                    <svg viewBox="0 0 400 300" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-                      <rect width="400" height="300" fill="#0f172a"/>
-                      <rect x="30" y="30" width="340" height="240" rx="12" fill="#1e293b" stroke="#334155" stroke-width="2"/>
-                      <rect x="60" y="60" width="180" height="180" rx="8" fill="#0f172a" stroke="#ec5c0a" stroke-width="2"/>
-                      <rect x="80" y="90" width="25" height="50" rx="4" fill="#007b3e"/>
-                      <rect x="115" y="90" width="25" height="50" rx="4" fill="#007b3e"/>
-                      <rect x="150" y="90" width="25" height="50" rx="4" fill="#ec5c0a"/>
-                      <rect x="185" y="90" width="25" height="50" rx="4" fill="#007b3e"/>
-                      <circle cx="200" cy="180" r="10" fill="#007b3e"/>
-                      <rect x="260" y="80" width="90" height="140" rx="10" fill="url(#mcbCardGlow)" stroke="#ffd700" stroke-width="2"/>
-                      <text x="305" y="145" text-anchor="middle" fill="#ffffff" font-size="10" font-weight="700" font-family="Arial">VS CARD</text>
-                      <line x1="240" y1="115" x2="260" y2="115" stroke="#ffd700" stroke-width="3" stroke-dasharray="3,3"/>
-                      <defs>
-                        <linearGradient id="mcbCardGlow" x1="0%" y1="0%" x2="100%" y2="100%">
-                          <stop offset="0%" stop-color="#ec5c0a"/>
-                          <stop offset="100%" stop-color="#0f172a"/>
-                        </linearGradient>
-                      </defs>
-                    </svg>
-                  </div>
-                {% endif %}
-                <span class="mcb-card-badge">{{ block.settings.badge | default: 'MCB INSTALLED' }}</span>
-                <div class="mcb-zoom-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-              </div>
-              <div class="mcb-card-body">
-                <span class="mcb-card-num">Setup #{{ forloop.index }}</span>
-                <h4 class="mcb-card-title">{{ block.settings.title | default: 'MCB Distribution Board Connection' }}</h4>
-                <p class="mcb-card-desc">{{ block.settings.caption | default: 'Installed in parallel on 32A MCB main line.' }}</p>
-              </div>
-            </div>
-          {% endfor %}
-        {% else %}
-          <!-- DEFAULT 20 STUNNING INSTALLATION CARDS -->
-          {% for i in (1..20) %}
-            {% assign cat = 'single' %}
-            {% assign badge = '16A SINGLE PHASE' %}
-            {% assign title = 'Home MCB Board Setup #' | append: i %}
-            {% if i > 10 and i <= 16 %}
-              {% assign cat = 'three' %}
-              {% assign badge = '32A 3-PHASE MCB' %}
-              {% assign title = '3-Phase Submersible MCB #' | append: i %}
-            {% elsif i > 16 %}
-              {% assign cat = 'panel' %}
-              {% assign badge = 'MAIN DB PANEL' %}
-              {% assign title = 'Villa Main DB Box Setup #' | append: i %}
-            {% endif %}
+        {% for i in (1..20) %}
+          {% capture img_key %}mcb_img_{{ i }}{% endcapture %}
+          {% assign custom_img = section.settings[img_key] %}
 
-            <div class="mcb-card" data-category="{{ cat }}" onclick="openMcbLightbox('', '{{ title }}', 'Connected parallel to main MCB switch with zero load disruption.')">
-              <div class="mcb-card-img-wrap">
+          {% assign block = nil %}
+          {% if section.blocks.size >= i %}
+            {% assign block_idx = i | minus: 1 %}
+            {% assign block = section.blocks[block_idx] %}
+          {% endif %}
+
+          {% assign cat = 'single' %}
+          {% assign badge = '16A SINGLE PHASE' %}
+          {% assign title = 'Home MCB Board Setup #' | append: i %}
+          {% assign desc = 'Connected parallel to main MCB switch board with zero wire cutting.' %}
+
+          {% if i > 10 and i <= 16 %}
+            {% assign cat = 'three' %}
+            {% assign badge = '32A 3-PHASE MCB' %}
+            {% assign title = '3-Phase Submersible MCB #' | append: i %}
+          {% elsif i > 16 %}
+            {% assign cat = 'panel' %}
+            {% assign badge = 'MAIN DB PANEL' %}
+            {% assign title = 'Villa Main DB Box Setup #' | append: i %}
+          {% endif %}
+
+          {% if block != nil %}
+            {% if block.settings.title != blank %}{% assign title = block.settings.title %}{% endif %}
+            {% if block.settings.category != blank %}{% assign cat = block.settings.category %}{% endif %}
+            {% if block.settings.badge != blank %}{% assign badge = block.settings.badge %}{% endif %}
+            {% if block.settings.caption != blank %}{% assign desc = block.settings.caption %}{% endif %}
+            {% if block.settings.image != blank %}{% assign custom_img = block.settings.image %}{% endif %}
+          {% endif %}
+
+          <div class="mcb-card" data-category="{{ cat }}" onclick="openMcbLightbox('{% if custom_img != blank %}{{ custom_img | image_url: width: 1200 }}{% endif %}', '{{ title | escape }}', '{{ desc | escape }}')">
+            <div class="mcb-card-img-wrap">
+              {% if custom_img != blank %}
+                <img src="{{ custom_img | image_url: width: 600 }}" alt="{{ title }}" loading="lazy">
+              {% else %}
                 <div class="mcb-svg-mockup">
                   <svg viewBox="0 0 400 300" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
                     <rect width="400" height="300" fill="#0f172a"/>
@@ -1330,17 +1311,17 @@
                     </defs>
                   </svg>
                 </div>
-                <span class="mcb-card-badge">{{ badge }}</span>
-                <div class="mcb-zoom-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-              </div>
-              <div class="mcb-card-body">
-                <span class="mcb-card-num">Installation #{{ i }}</span>
-                <h4 class="mcb-card-title">{{ title }}</h4>
-                <p class="mcb-card-desc">Connected parallel to main MCB switch board with zero wire cutting.</p>
-              </div>
+              {% endif %}
+              <span class="mcb-card-badge">{{ badge }}</span>
+              <div class="mcb-zoom-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
             </div>
-          {% endfor %}
-        {% endif %}
+            <div class="mcb-card-body">
+              <span class="mcb-card-num">Installation #{{ i }}</span>
+              <h4 class="mcb-card-title">{{ title }}</h4>
+              <p class="mcb-card-desc">{{ desc }}</p>
+            </div>
+          </div>
+        {% endfor %}
       </div>
     </div>
   </section>
@@ -1594,10 +1575,38 @@
   "name": "Residential Cards Layout",
   "settings": [
     {
+      "type": "header",
+      "content": "Residential Hero Settings"
+    },
+    {
       "type": "image_picker",
       "id": "card_image",
       "label": "Residential Hero Card Image"
-    }
+    },
+    {
+      "type": "header",
+      "content": "20 MCB Installation Images (Upload Below)"
+    },
+    { "type": "image_picker", "id": "mcb_img_1", "label": "MCB Installation Image 1" },
+    { "type": "image_picker", "id": "mcb_img_2", "label": "MCB Installation Image 2" },
+    { "type": "image_picker", "id": "mcb_img_3", "label": "MCB Installation Image 3" },
+    { "type": "image_picker", "id": "mcb_img_4", "label": "MCB Installation Image 4" },
+    { "type": "image_picker", "id": "mcb_img_5", "label": "MCB Installation Image 5" },
+    { "type": "image_picker", "id": "mcb_img_6", "label": "MCB Installation Image 6" },
+    { "type": "image_picker", "id": "mcb_img_7", "label": "MCB Installation Image 7" },
+    { "type": "image_picker", "id": "mcb_img_8", "label": "MCB Installation Image 8" },
+    { "type": "image_picker", "id": "mcb_img_9", "label": "MCB Installation Image 9" },
+    { "type": "image_picker", "id": "mcb_img_10", "label": "MCB Installation Image 10" },
+    { "type": "image_picker", "id": "mcb_img_11", "label": "MCB Installation Image 11" },
+    { "type": "image_picker", "id": "mcb_img_12", "label": "MCB Installation Image 12" },
+    { "type": "image_picker", "id": "mcb_img_13", "label": "MCB Installation Image 13" },
+    { "type": "image_picker", "id": "mcb_img_14", "label": "MCB Installation Image 14" },
+    { "type": "image_picker", "id": "mcb_img_15", "label": "MCB Installation Image 15" },
+    { "type": "image_picker", "id": "mcb_img_16", "label": "MCB Installation Image 16" },
+    { "type": "image_picker", "id": "mcb_img_17", "label": "MCB Installation Image 17" },
+    { "type": "image_picker", "id": "mcb_img_18", "label": "MCB Installation Image 18" },
+    { "type": "image_picker", "id": "mcb_img_19", "label": "MCB Installation Image 19" },
+    { "type": "image_picker", "id": "mcb_img_20", "label": "MCB Installation Image 20" }
   ],
   "blocks": [
     {
