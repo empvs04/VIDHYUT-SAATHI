@@ -8,7 +8,7 @@
   .vidhyut-header-wrapper-{{ section.id }} {
     font-family: {{ main_font.family }}, {{ main_font.fallback_families }} !important;
     position: relative;
-    z-index: 999;
+    z-index: 999999 !important;
     width: 100%;
   }
   
@@ -53,6 +53,9 @@
      MAIN HEADER STYLES
      ========================================================= */
   .vidhyut-header-section-{{ section.id }} {
+    position: relative;
+    z-index: 999999;
+    overflow: visible !important;
     background-color: {{ section.settings.bg_color }};
     padding-top: {{ section.settings.padding_top }}px;
     padding-bottom: {{ section.settings.padding_bottom }}px;
@@ -162,6 +165,7 @@
   .vidhyut-has-dropdown-{{ section.id }} { 
     position: relative; 
     cursor: pointer;
+    z-index: 999999;
   }
   
   .vidhyut-dropdown-menu-{{ section.id }} {
@@ -171,12 +175,12 @@
     left: 50%;
     transform: translateX(-50%);
     background: {{ section.settings.bg_color }};
-    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-    z-index: 100;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.18);
+    z-index: 999999 !important;
     min-width: 260px;
     padding: 12px 0;
-    border-radius: 10px;
-    border: 1px solid {{ section.settings.border_color }};
+    border-radius: 12px;
+    border: 1.5px solid {{ section.settings.border_color }};
     backdrop-filter: blur(10px);
   }
   
@@ -442,7 +446,18 @@
         <nav class="vidhyut-desktop-nav-{{ section.id }}">
           {%- if section.settings.menu != blank -%}
             {%- for link in linklists[section.settings.menu].links -%}
-              {%- if link.links != blank -%}
+              {%- assign title_lower = link.title | downcase -%}
+              {%- if title_lower contains 'required' or title_lower contains 'cards' -%}
+                <div class="vidhyut-has-dropdown-{{ section.id }}">
+                  <a href="/pages/required-cards" onclick="if(typeof vsGoPage === 'function'){ vsGoPage(event, 'required-cards'); }">{{ link.title }} <i class="fas fa-chevron-down"></i></a>
+                  <div class="vidhyut-dropdown-menu-{{ section.id }}">
+                    <a href="/pages/industrial" onclick="if(typeof vsGoPage === 'function'){ vsGoPage(event, 'industrial'); }"><i class="fa-solid fa-industry" style="color:#0284c7; margin-right:8px;"></i> Industrial Use</a>
+                    <a href="/pages/commercial" onclick="if(typeof vsGoPage === 'function'){ vsGoPage(event, 'commercial'); }"><i class="fa-solid fa-building" style="color:#008744; margin-right:8px;"></i> Commercial Use</a>
+                    <a href="/pages/residential" onclick="if(typeof vsGoPage === 'function'){ vsGoPage(event, 'residential'); }"><i class="fa-solid fa-house" style="color:#f0631b; margin-right:8px;"></i> Residential Use</a>
+                    <a href="/pages/required-cards" onclick="if(typeof vsGoPage === 'function'){ vsGoPage(event, 'required-cards'); }"><i class="fa-solid fa-calculator" style="color:#64748b; margin-right:8px;"></i> Card Calculator</a>
+                  </div>
+                </div>
+              {%- elsif link.links != blank -%}
                 <div class="vidhyut-has-dropdown-{{ section.id }}">
                   <a href="{% if link.url == '#' or link.url == '' or link.url == blank %}javascript:void(0);{% else %}{{ link.url }}{% endif %}">{{ link.title }} <i class="fas fa-chevron-down"></i></a>
                   <div class="vidhyut-dropdown-menu-{{ section.id }}">
@@ -480,8 +495,14 @@
     </div>
     {%- if section.settings.menu != blank -%}
       {%- for link in linklists[section.settings.menu].links -%}
+        {%- assign title_lower = link.title | downcase -%}
         <a href="{{ link.url }}" class="vidhyut-drawer-link-{{ section.id }}">{{ link.title }}</a>
-        {%- if link.links != blank -%}
+        {%- if title_lower contains 'required' or title_lower contains 'cards' -%}
+          <a href="/pages/industrial" class="vidhyut-drawer-sublink-{{ section.id }}" onclick="if(typeof vsGoPage === 'function'){ vsGoPage(event, 'industrial'); }">&rarr; Industrial Use</a>
+          <a href="/pages/commercial" class="vidhyut-drawer-sublink-{{ section.id }}" onclick="if(typeof vsGoPage === 'function'){ vsGoPage(event, 'commercial'); }">&rarr; Commercial Use</a>
+          <a href="/pages/residential" class="vidhyut-drawer-sublink-{{ section.id }}" onclick="if(typeof vsGoPage === 'function'){ vsGoPage(event, 'residential'); }">&rarr; Residential Use</a>
+          <a href="/pages/required-cards" class="vidhyut-drawer-sublink-{{ section.id }}" onclick="if(typeof vsGoPage === 'function'){ vsGoPage(event, 'required-cards'); }">&rarr; Card Calculator</a>
+        {%- elsif link.links != blank -%}
           {%- for childlink in link.links -%}
             <a href="{{ childlink.url }}" class="vidhyut-drawer-sublink-{{ section.id }}">&rarr; {{ childlink.title }}</a>
           {%- endfor -%}
