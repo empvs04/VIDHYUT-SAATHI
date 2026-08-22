@@ -970,10 +970,10 @@
           <!-- Row 5: Address Proof Upload (Aadhaar Card, Voter Card, Driving License, Passport) -->
           <div class="vs-form-row two-col">
             <div class="vs-form-group">
-              <label for="vs_address_proof_type">Address Proof Type</label>
+              <label for="vs_address_proof_type">Address Proof Type <span class="required">*</span></label>
               <div class="vs-input-wrapper">
                 <i class="fa-solid fa-file-contract vs-field-icon"></i>
-                <select id="vs_address_proof_type" name="contact[Address_Proof_Type]" class="vs-select" onchange="vsValidateDocument('address')">
+                <select id="vs_address_proof_type" name="contact[Address_Proof_Type]" class="vs-select" onchange="vsValidateDocument('address')" required>
                   <option value="Aadhaar Card">Aadhaar Card</option>
                   <option value="Voter Card">Voter Card</option>
                   <option value="Driving License">Driving License</option>
@@ -983,43 +983,45 @@
             </div>
 
             <div class="vs-form-group">
-              <label>Upload Address Proof</label>
+              <label>Upload Address Proof <span class="required">*</span></label>
               <label class="vs-file-upload-card" for="vs_address_file" id="vs_address_label_card">
                 <div class="vs-file-info">
                   <i class="fa-solid fa-cloud-arrow-up"></i>
                   <span class="vs-file-name" id="address_file_name">Choose File...</span>
                 </div>
                 <span class="vs-file-btn">Browse</span>
-                <input type="file" id="vs_address_file" accept="image/*,.pdf" onchange="vsValidateDocument('address')">
+                <input type="file" id="vs_address_file" accept="image/*,.pdf" onchange="vsValidateDocument('address')" required>
               </label>
               <div id="vs_address_doc_status"></div>
             </div>
           </div>
 
-          <!-- Row 6: ID Proof Upload -->
+          <!-- Row 6: ID Proof Upload (Compulsory / Mandatory) -->
           <div class="vs-form-row two-col">
             <div class="vs-form-group">
-              <label for="vs_id_proof_type">ID Proof Type</label>
+              <label for="vs_id_proof_type">ID Proof Type <span class="required">*</span></label>
               <div class="vs-input-wrapper">
                 <i class="fa-solid fa-id-card vs-field-icon"></i>
-                <select id="vs_id_proof_type" name="contact[ID_Proof_Type]" class="vs-select" onchange="vsValidateDocument('id')">
+                <select id="vs_id_proof_type" name="contact[ID_Proof_Type]" class="vs-select" onchange="vsValidateDocument('id')" required>
                   <option value="PAN Card">PAN Card</option>
                   <option value="Aadhaar Card">Aadhaar Card</option>
-                  <option value="Passport">Passport</option>
+                  <option value="Voter ID Card">Voter ID Card</option>
                   <option value="Driving License">Driving License</option>
+                  <option value="Passport">Passport</option>
+                  <option value="Govt ID / MSME Certificate">Govt ID / MSME Certificate</option>
                 </select>
               </div>
             </div>
 
             <div class="vs-form-group">
-              <label>Upload ID Proof</label>
+              <label>Upload ID Proof <span class="required">*</span></label>
               <label class="vs-file-upload-card" for="vs_id_file" id="vs_id_label_card">
                 <div class="vs-file-info">
                   <i class="fa-solid fa-cloud-arrow-up"></i>
                   <span class="vs-file-name" id="id_file_name">Choose File...</span>
                 </div>
                 <span class="vs-file-btn">Browse</span>
-                <input type="file" id="vs_id_file" accept="image/*,.pdf" onchange="vsValidateDocument('id')">
+                <input type="file" id="vs_id_file" accept="image/*,.pdf" onchange="vsValidateDocument('id')" required>
               </label>
               <div id="vs_id_doc_status"></div>
             </div>
