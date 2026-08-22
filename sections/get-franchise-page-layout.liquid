@@ -199,7 +199,7 @@
     }
   }
 
-  /* Executive Form Card - Lucrative Mobile Polish */
+  /* Executive Form Card */
   .vs-form-card {
     background: #ffffff;
     border-radius: 20px;
@@ -213,7 +213,6 @@
     overflow: hidden;
   }
 
-  /* Gradient Top Bar Accent */
   .vs-form-card::before {
     content: '';
     position: absolute;
@@ -293,7 +292,7 @@
     }
   }
 
-  /* Form Step Divider Badges for Mobile Clarity */
+  /* Form Step Divider Badges */
   .vs-form-step-badge {
     display: inline-flex;
     align-items: center;
@@ -305,8 +304,8 @@
     letter-spacing: 0.8px;
     margin: 6px 0 10px 0;
     background: rgba(236, 92, 10, 0.06);
-    padding: 3px 10px;
-    border-radius: 4px;
+    padding: 4px 10px;
+    border-radius: 6px;
     width: fit-content;
   }
 
@@ -363,14 +362,17 @@
     font-size: 14px;
     pointer-events: none;
     transition: color 0.2s ease;
+    z-index: 2;
   }
 
+  /* Mobile Responsive Inputs & Select Alignment Polish */
   .vs-input,
   .vs-select {
     width: 100%;
     height: 48px;
-    padding: 0 12px 0 38px;
-    font-size: 14px;
+    padding: 0 32px 0 38px;
+    font-size: 13px;
+    font-weight: 600;
     font-family: inherit;
     color: #0f172a;
     background: #f8fafc;
@@ -379,15 +381,34 @@
     outline: none;
     transition: all 0.25s ease;
     box-sizing: border-box;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    line-height: 46px;
+  }
+
+  @media (min-width: 640px) {
+    .vs-input,
+    .vs-select {
+      font-size: 14px;
+    }
   }
 
   .vs-select {
     appearance: none;
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ec5c0a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ec5c0a' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
     background-repeat: no-repeat;
     background-position: right 12px center;
     background-size: 16px;
     cursor: pointer;
+  }
+
+  .vs-select option {
+    background-color: #ffffff;
+    color: #0f172a;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 10px;
   }
 
   .vs-input:focus,
@@ -397,7 +418,37 @@
     box-shadow: 0 0 0 3.5px rgba(236, 92, 10, 0.14);
   }
 
-  /* File Upload Card - Mobile Touch Friendly */
+  /* Dynamic Document Verification Status Badges */
+  .vs-doc-badge {
+    margin-top: 6px;
+    font-size: 11.5px;
+    padding: 6px 10px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 700;
+    animation: vsFadeIn 0.3s ease-in-out;
+  }
+
+  @keyframes vsFadeIn {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .vs-doc-badge.vs-verified {
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    color: #15803d;
+  }
+
+  .vs-doc-badge.vs-warning {
+    background: #fffbe6;
+    border: 1px solid #ffe58f;
+    color: #d48806;
+  }
+
+  /* File Upload Card */
   .vs-file-upload-card {
     background: #fdfbf7;
     border: 1.5px dashed #cbd5e1;
@@ -438,7 +489,7 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 150px;
+    max-width: 140px;
   }
 
   @media (min-width: 480px) {
@@ -500,7 +551,7 @@
     text-decoration: underline;
   }
 
-  /* Submit Button - Mobile Touch Target */
+  /* Submit Button */
   .vs-submit-btn {
     width: 100%;
     height: 52px;
@@ -754,7 +805,7 @@
         {{ section.settings.subheading }}
       </p>
 
-      <!-- HORIZONTAL SLEEK TRUST CHIPS BAR FOR MOBILE & DESKTOP -->
+      <!-- TRUST CHIPS BAR: 2x2 GRID ON MOBILE (2 POINTS PER LINE) -->
       <div class="vs-trust-highlights">
         <div class="vs-trust-chip">
           <i class="fa-solid fa-certificate"></i> ISO 9001:2015 Certified
@@ -882,7 +933,7 @@
             </div>
           </div>
 
-          <!-- Row 4: Select Business Model -->
+          <!-- Row 4: Select Business Model (User Requested Exact 3 Options) -->
           <div class="vs-form-row">
             <div class="vs-form-group">
               <label for="vs_business_model">Select Your Business Model <span class="required">*</span></label>
@@ -903,17 +954,17 @@
             <i class="fa-solid fa-id-card"></i> 03. Verification & Documents
           </div>
 
-          <!-- Row 5: Address Proof Upload -->
+          <!-- Row 5: Address Proof Upload (Aadhaar Card, Voter Card, Driving License, Passport) -->
           <div class="vs-form-row two-col">
             <div class="vs-form-group">
               <label for="vs_address_proof_type">Address Proof Type</label>
               <div class="vs-input-wrapper">
                 <i class="fa-solid fa-file-contract vs-field-icon"></i>
-                <select id="vs_address_proof_type" name="contact[Address_Proof_Type]" class="vs-select">
+                <select id="vs_address_proof_type" name="contact[Address_Proof_Type]" class="vs-select" onchange="vsValidateDocument('address')">
                   <option value="Aadhaar Card">Aadhaar Card</option>
-                  <option value="Electricity Bill">Electricity Bill</option>
-                  <option value="Rent Agreement">Rent Agreement</option>
-                  <option value="Voter ID Card">Voter ID Card</option>
+                  <option value="Voter Card">Voter Card</option>
+                  <option value="Driving License">Driving License</option>
+                  <option value="Passport">Passport</option>
                 </select>
               </div>
             </div>
@@ -926,8 +977,9 @@
                   <span class="vs-file-name" id="address_file_name">Choose File...</span>
                 </div>
                 <span class="vs-file-btn">Browse</span>
-                <input type="file" id="vs_address_file" accept="image/*,.pdf" onchange="document.getElementById('address_file_name').innerText = this.files[0] ? this.files[0].name : 'Choose File...';">
+                <input type="file" id="vs_address_file" accept="image/*,.pdf" onchange="vsValidateDocument('address')">
               </label>
+              <div id="vs_address_doc_status"></div>
             </div>
           </div>
 
@@ -937,7 +989,7 @@
               <label for="vs_id_proof_type">ID Proof Type</label>
               <div class="vs-input-wrapper">
                 <i class="fa-solid fa-id-card vs-field-icon"></i>
-                <select id="vs_id_proof_type" name="contact[ID_Proof_Type]" class="vs-select">
+                <select id="vs_id_proof_type" name="contact[ID_Proof_Type]" class="vs-select" onchange="vsValidateDocument('id')">
                   <option value="PAN Card">PAN Card</option>
                   <option value="Aadhaar Card">Aadhaar Card</option>
                   <option value="Passport">Passport</option>
@@ -954,8 +1006,9 @@
                   <span class="vs-file-name" id="id_file_name">Choose File...</span>
                 </div>
                 <span class="vs-file-btn">Browse</span>
-                <input type="file" id="vs_id_file" accept="image/*,.pdf" onchange="document.getElementById('id_file_name').innerText = this.files[0] ? this.files[0].name : 'Choose File...';">
+                <input type="file" id="vs_id_file" accept="image/*,.pdf" onchange="vsValidateDocument('id')">
               </label>
+              <div id="vs_id_doc_status"></div>
             </div>
           </div>
 
@@ -1067,6 +1120,40 @@
 
   </div>
 </div>
+
+<script>
+  function vsValidateDocument(type) {
+    var selectElem = document.getElementById(type === 'address' ? 'vs_address_proof_type' : 'vs_id_proof_type');
+    var fileElem = document.getElementById(type === 'address' ? 'vs_address_file' : 'vs_id_file');
+    var labelNameElem = document.getElementById(type === 'address' ? 'address_file_name' : 'id_file_name');
+    var statusElem = document.getElementById(type === 'address' ? 'vs_address_doc_status' : 'vs_id_doc_status');
+    
+    if (!selectElem || !fileElem || !statusElem) return;
+    
+    var docType = selectElem.value;
+    var file = fileElem.files[0];
+    
+    if (!file) {
+      labelNameElem.innerText = 'Choose File...';
+      statusElem.innerHTML = '';
+      return;
+    }
+    
+    labelNameElem.innerText = file.name;
+    
+    var validTypes = ['image/jpeg', 'image/png', 'image/webp', 'image/jpg', 'application/pdf'];
+    var isValidType = validTypes.indexOf(file.type) !== -1 || /\.(jpg|jpeg|png|webp|pdf)$/i.test(file.name);
+    
+    var fileSizeKB = Math.round(file.size / 1024);
+    var sizeText = fileSizeKB > 1024 ? (fileSizeKB / 1024).toFixed(1) + ' MB' : fileSizeKB + ' KB';
+    
+    if (isValidType) {
+      statusElem.innerHTML = '<div class="vs-doc-badge vs-verified"><i class="fa-solid fa-circle-check"></i> <span><strong>Verified</strong>: Valid ' + docType + ' file (' + sizeText + ')</span></div>';
+    } else {
+      statusElem.innerHTML = '<div class="vs-doc-badge vs-warning"><i class="fa-solid fa-triangle-exclamation"></i> <span>Please upload a valid image or PDF matching your selected ' + docType + '</span></div>';
+    }
+  }
+</script>
 
 {% schema %}
 {
