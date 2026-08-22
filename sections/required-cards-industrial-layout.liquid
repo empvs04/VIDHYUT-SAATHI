@@ -660,98 +660,58 @@
     overflow: hidden;
   }
 
-  /* ---- INDUSTRIAL SIZING TABLE ---- */
+  /* ---- INDUSTRIAL SIZING TABLE (EXACT MATCH TO COMMERCIAL TABLE) ---- */
   .vsind-table-wrap {
     background: #ffffff;
-    border: 2px solid #0284c7;
-    border-radius: 20px;
+    border: 1.5px solid var(--line);
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 12px 36px rgba(2, 132, 199, 0.12);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.03);
   }
 
   .vsind-table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 14px;
+    font-size: 13.5px;
   }
 
   .vsind-table thead tr {
-    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+    background: #0284c7;
     color: #ffffff;
   }
 
   .vsind-table th {
-    padding: 16px 16px;
+    padding: 12px 14px;
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 11.5px;
-    font-weight: 800;
+    font-size: 11px;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.8px;
+    letter-spacing: 0.6px;
     text-align: center;
-    color: #ffffff;
-    border-right: 1px solid rgba(255,255,255,0.15);
   }
-  .vsind-table th:last-child { border-right: none; }
   .vsind-table th:first-child { text-align: left; }
 
   .vsind-table tbody tr {
-    border-bottom: 1px solid #e2e8f0;
-    transition: all 0.2s ease;
+    border-bottom: 1px solid var(--line-s);
   }
   .vsind-table tbody tr:nth-child(even) { background: #f8fafc; }
-  .vsind-table tbody tr:hover {
-    background: #f0f9ff !important;
-  }
 
   .vsind-table td {
-    padding: 16px;
+    padding: 12px 14px;
     text-align: center;
     color: var(--muted);
-    vertical-align: middle;
   }
   .vsind-table td:first-child {
     text-align: left;
     font-weight: 800;
     color: var(--ink);
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 14.5px;
   }
-
-  .vsind-badge-kw {
-    background: #e0f2fe;
-    color: #0369a1;
-    padding: 6px 12px;
-    border-radius: 8px;
-    font-weight: 700;
+  .vsind-table td.highlight {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 13px;
-    display: inline-block;
-    border: 1px solid #bae6fd;
-  }
-
-  .vsind-badge-bill {
-    background: #ffefe5;
-    color: #c84900;
-    padding: 6px 12px;
-    border-radius: 8px;
-    font-weight: 700;
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 13.5px;
-    display: inline-block;
-    border: 1px solid #ffedd5;
-  }
-
-  .vsind-table td.highlight span {
-    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
-    color: #ffffff;
-    padding: 7px 16px;
-    border-radius: 50px;
     font-weight: 800;
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 13.5px;
-    display: inline-block;
-    box-shadow: 0 4px 14px rgba(2, 132, 199, 0.25);
-    white-space: nowrap;
+    color: #0284c7;
+    font-size: 14.5px;
   }
 
   /* ---- WORKED EXAMPLES CASE STUDIES GRID ---- */
@@ -1286,42 +1246,42 @@
         <table class="vsind-table">
           <thead>
             <tr>
-              <th><i class="fa-solid fa-industry"></i> Industrial Establishment Type</th>
-              <th><i class="fa-solid fa-bolt"></i> Load (KW)</th>
-              <th><i class="fa-solid fa-indian-rupee-sign"></i> Monthly DISCOM Bill (₹)</th>
-              <th><i class="fa-solid fa-layer-group"></i> Recommended Cards</th>
+              <th>Industrial Establishment Type</th>
+              <th>Load (KW)</th>
+              <th>Monthly DISCOM Bill (₹)</th>
+              <th>Recommended Cards</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><i class="fa-solid fa-gear" style="color:#0284c7; margin-right:8px;"></i> CNC Machine Workshop / Lathe Unit</td>
-              <td><span class="vsind-badge-kw">15–30 KW</span></td>
-              <td><span class="vsind-badge-bill">₹15,000 – ₹30,000</span></td>
-              <td class="highlight"><span>3 – 6 Cards</span></td>
+              <td>CNC Machine Workshop / Lathe Unit</td>
+              <td>15–30 KW</td>
+              <td>₹15,000 – ₹30,000</td>
+              <td class="highlight">3 – 6 Cards</td>
             </tr>
             <tr>
-              <td><i class="fa-solid fa-cubes" style="color:#0284c7; margin-right:8px;"></i> Plastic Injection Molding Plant</td>
-              <td><span class="vsind-badge-kw">45–90 KW</span></td>
-              <td><span class="vsind-badge-bill">₹45,000 – ₹90,000</span></td>
-              <td class="highlight"><span>8 – 16 Cards</span></td>
+              <td>Plastic Injection Molding Plant</td>
+              <td>45–90 KW</td>
+              <td>₹45,000 – ₹90,000</td>
+              <td class="highlight">8 – 16 Cards</td>
             </tr>
             <tr>
-              <td><i class="fa-solid fa-shirt" style="color:#0284c7; margin-right:8px;"></i> Textile Weaving Mill / Rice Mill</td>
-              <td><span class="vsind-badge-kw">100–180 KW</span></td>
-              <td><span class="vsind-badge-bill">₹1,00,000 – ₹1,80,000</span></td>
-              <td class="highlight"><span>17 – 31 Cards</span></td>
+              <td>Textile Weaving Mill / Rice Mill</td>
+              <td>100–180 KW</td>
+              <td>₹1,00,000 – ₹1,80,000</td>
+              <td class="highlight">17 – 31 Cards</td>
             </tr>
             <tr>
-              <td><i class="fa-solid fa-snowflake" style="color:#0284c7; margin-right:8px;"></i> Pharma Unit / Cold Storage Facility</td>
-              <td><span class="vsind-badge-kw">200–350 KW</span></td>
-              <td><span class="vsind-badge-bill">₹2,00,000 – ₹3,50,000</span></td>
-              <td class="highlight"><span>34 – 60 Cards</span></td>
+              <td>Pharma Unit / Cold Storage Facility</td>
+              <td>200–350 KW</td>
+              <td>₹2,00,000 – ₹3,50,000</td>
+              <td class="highlight">34 – 60 Cards</td>
             </tr>
             <tr>
-              <td><i class="fa-solid fa-industry" style="color:#0284c7; margin-right:8px;"></i> Steel Rolling / Foundry / Heavy Plant</td>
-              <td><span class="vsind-badge-kw">400–600+ KW</span></td>
-              <td><span class="vsind-badge-bill">₹4,00,000 – ₹6,00,000+</span></td>
-              <td class="highlight"><span>68 – 102+ Cards</span></td>
+              <td>Steel Rolling / Foundry / Heavy Industrial Hub</td>
+              <td>400–600+ KW</td>
+              <td>₹4,00,000 – ₹6,00,000+</td>
+              <td class="highlight">68 – 102+ Cards</td>
             </tr>
           </tbody>
         </table>
