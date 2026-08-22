@@ -958,27 +958,54 @@ den;
         <i class="fa-solid fa-layer-group"></i> Sector Requirement Pages:
       </div>
       <div class="vsind-nav-links">
-        <a href="{{ section.settings.industrial_link | default: '/pages/industrial' }}" class="vsind-nav-item active">
+        <a href="/pages/industrial" class="vsind-nav-item active" onclick="vsGoPage(event, 'industrial')">
           <i class="fa-solid fa-industry"></i> Industrial
         </a>
-        <a href="{{ section.settings.commercial_link | default: '/pages/commercial' }}" class="vsind-nav-item">
+        <a href="/pages/commercial" class="vsind-nav-item" onclick="vsGoPage(event, 'commercial')">
           <i class="fa-solid fa-building"></i> Commercial
         </a>
-        <a href="{{ section.settings.residential_link | default: '/pages/residential' }}" class="vsind-nav-item">
+        <a href="/pages/residential" class="vsind-nav-item" onclick="vsGoPage(event, 'residential')">
           <i class="fa-solid fa-house"></i> Residential
         </a>
-        <a href="{{ section.settings.calculator_link | default: '/pages/required-cards' }}" class="vsind-nav-item">
+        <a href="/pages/required-cards" class="vsind-nav-item" onclick="vsGoPage(event, 'required-cards')">
           <i class="fa-solid fa-calculator"></i> Card Calculator
         </a>
-        <a href="{{ section.settings.b2c_link | default: '/pages/b2c' }}" class="vsind-nav-item">
+        <a href="/pages/b2c" class="vsind-nav-item" onclick="vsGoPage(event, 'b2c')">
           <i class="fa-solid fa-bolt"></i> Power Saver Card
         </a>
-        <a href="{{ section.settings.franchise_link | default: '/pages/get-franchise' }}" class="vsind-nav-item">
+        <a href="/pages/get-franchise" class="vsind-nav-item" onclick="vsGoPage(event, 'get-franchise')">
           <i class="fa-solid fa-store"></i> Franchise Program
         </a>
       </div>
     </div>
   </div>
+
+  <script>
+    function vsGoPage(e, handle) {
+      if (e) e.preventDefault();
+      var mainUrl = '/pages/' + handle;
+      var isEditor = (window.Shopify && window.Shopify.designMode) || location.search.indexOf('preview_theme_id') > -1 || location.search.indexOf('view=') > -1;
+      
+      if (isEditor) {
+        var path = location.pathname;
+        if (!path || path === '/' || path === '/pages') { path = '/pages/required-cards'; }
+        location.href = path + '?view=' + handle;
+        return;
+      }
+
+      fetch(mainUrl, { method: 'HEAD' }).then(function(res) {
+        if (res.ok) {
+          location.href = mainUrl;
+        } else {
+          var path = location.pathname;
+          if (!path || path === '/') { path = '/pages/required-cards'; }
+          location.href = path + '?view=' + handle;
+        }
+      }).catch(function() {
+        location.href = mainUrl;
+      });
+    }
+  </script>
 
   <!-- ══ HERO SECTION ══ -->
   <section class="vsind-hero">
