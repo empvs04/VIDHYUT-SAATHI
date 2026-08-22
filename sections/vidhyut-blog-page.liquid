@@ -1074,11 +1074,17 @@
   <div class="vsblog-body">
 
     <!-- Category Filter Bar -->
+    <!-- Smart blog detection: use native `blog` object on /blogs/* routes, else use blog_handle setting -->
+    {%- if blog != blank -%}
+      {%- assign the_blog = blog -%}
+    {%- else -%}
+      {%- assign blog_handle = section.settings.blog_handle | default: 'news' -%}
+      {%- assign the_blog = blogs[blog_handle] -%}
+    {%- endif -%}
+
     <div class="vsblog-filter-bar">
       <span class="vsblog-filter-label"><i class="fa-solid fa-filter"></i> Filter:</span>
       <div class="vsblog-cats">
-        {%- assign blog_handle = section.settings.blog_handle | default: 'news' -%}
-        {%- assign the_blog = blogs[blog_handle] -%}
         <a href="{{ the_blog.url }}" class="vsblog-cat-btn {% if current_tags == blank %}active{% endif %}">
           <i class="fa-solid fa-th-large"></i> All Articles
         </a>
