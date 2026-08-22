@@ -3,7 +3,7 @@
 
 <style>
   /* ============================================
-     VIDHYUT SAATHI - PURE LIGHT THEME BLOG PAGE
+     VIDHYUT SAATHI - MULTI-BLOG LIGHT HUB
      Theme: #fff8ef light bg | #ffffff cards | #ec5c0a orange | #007b3e green | #0f172a slate text
   ============================================= */
 
@@ -324,6 +324,17 @@
     .vsblog-feat-img { min-height: 420px; }
   }
 
+  .vsblog-feat-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .vsblog-feat-card:hover .vsblog-feat-img img {
+    transform: scale(1.04);
+  }
+
   .vsblog-feat-svg-placeholder {
     position: absolute;
     inset: 0;
@@ -473,6 +484,17 @@
     position: relative;
     height: 200px;
     overflow: hidden;
+  }
+
+  .vsblog-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .vsblog-card:hover .vsblog-card-img img {
+    transform: scale(1.06);
   }
 
   .vsblog-thumb-placeholder {
@@ -1150,20 +1172,24 @@
       <div class="vsblog-section-title"><i class="fa-solid fa-star"></i> Featured Article</div>
       <div class="vsblog-feat-card" onclick="vsOpenArticleModal(0)">
         <div class="vsblog-feat-img">
-          <div class="vsblog-feat-svg-placeholder">
-            <svg class="vsblog-svg-art" viewBox="0 0 600 420" xmlns="http://www.w3.org/2000/svg">
-              <rect width="600" height="420" fill="#fff7ed"/>
-              <circle cx="300" cy="210" r="180" fill="none" stroke="#ec5c0a" stroke-width="0.8" opacity="0.3"/>
-              <circle cx="300" cy="210" r="100" fill="none" stroke="#007b3e" stroke-width="0.8" opacity="0.3"/>
-              <g transform="translate(260,155)">
-                <rect width="80" height="50" rx="4" fill="none" stroke="#ec5c0a" stroke-width="2"/>
-                <line x1="40" y1="50" x2="40" y2="70" stroke="#ec5c0a" stroke-width="2"/>
-                <line x1="20" y1="70" x2="60" y2="70" stroke="#ec5c0a" stroke-width="2"/>
-                <polyline points="15,35 30,20 40,32 55,18 65,28" fill="none" stroke="#007b3e" stroke-width="2"/>
-              </g>
-              <text x="300" y="255" text-anchor="middle" fill="#ec5c0a" font-size="13" font-weight="bold" font-family="Arial">ENERGY SAVINGS REPORT</text>
-            </svg>
-          </div>
+          {% if section.settings.featured_image != blank %}
+            <img src="{{ section.settings.featured_image | image_url: width: 900 }}" alt="Featured Article Image" loading="lazy">
+          {% else %}
+            <div class="vsblog-feat-svg-placeholder">
+              <svg class="vsblog-svg-art" viewBox="0 0 600 420" xmlns="http://www.w3.org/2000/svg">
+                <rect width="600" height="420" fill="#fff7ed"/>
+                <circle cx="300" cy="210" r="180" fill="none" stroke="#ec5c0a" stroke-width="0.8" opacity="0.3"/>
+                <circle cx="300" cy="210" r="100" fill="none" stroke="#007b3e" stroke-width="0.8" opacity="0.3"/>
+                <g transform="translate(260,155)">
+                  <rect width="80" height="50" rx="4" fill="none" stroke="#ec5c0a" stroke-width="2"/>
+                  <line x1="40" y1="50" x2="40" y2="70" stroke="#ec5c0a" stroke-width="2"/>
+                  <line x1="20" y1="70" x2="60" y2="70" stroke="#ec5c0a" stroke-width="2"/>
+                  <polyline points="15,35 30,20 40,32 55,18 65,28" fill="none" stroke="#007b3e" stroke-width="2"/>
+                </g>
+                <text x="300" y="255" text-anchor="middle" fill="#ec5c0a" font-size="13" font-weight="bold" font-family="Arial">ENERGY SAVINGS REPORT</text>
+              </svg>
+            </div>
+          {% endif %}
           <span class="vsblog-feat-badge"><i class="fa-solid fa-star"></i> Featured</span>
         </div>
         <div class="vsblog-feat-content">
@@ -1280,6 +1306,79 @@
               <div class="vsblog-card-footer">
                 <span class="vsblog-card-date"><i class="fa-solid fa-calendar-days"></i> Aug 10, 2026</span>
                 <button type="button" class="vsblog-card-btn" onclick="vsOpenArticleModal(4)">Read More <i class="fa-solid fa-arrow-right"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="vsblog-card" data-category="Technology" data-title="Power Factor Optimization: Active vs. Reactive Power Explained">
+            <div class="vsblog-card-img">
+              <div class="vsblog-thumb-placeholder" style="background: linear-gradient(135deg, #fff7ed 0%, #ffefe0 100%);">
+                <svg viewBox="0 0 400 220" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                  <g transform="translate(150,40)">
+                    <circle cx="50" cy="50" r="40" fill="none" stroke="#ec5c0a" stroke-width="2"/>
+                    <path d="M 20 50 Q 50 10, 80 50 T 140 50" fill="none" stroke="#007b3e" stroke-width="2"/>
+                  </g>
+                  <text x="200" y="190" text-anchor="middle" fill="#ec5c0a" font-size="10" font-weight="bold" font-family="Arial">POWER FACTOR TECH</text>
+                </svg>
+              </div>
+              <span class="vsblog-card-cat-badge">Technology</span>
+            </div>
+            <div class="vsblog-card-body">
+              <span class="vsblog-card-title" onclick="vsOpenArticleModal(5)">Power Factor Optimization: Active vs. Reactive Power Explained</span>
+              <p class="vsblog-card-excerpt">Understand the physics behind kW active power and kVAR reactive power. See how Vidhyut Saathi maintains cos φ near 0.99 for maximum efficiency.</p>
+              <div class="vsblog-card-footer">
+                <span class="vsblog-card-date"><i class="fa-solid fa-calendar-days"></i> Aug 05, 2026</span>
+                <button type="button" class="vsblog-card-btn" onclick="vsOpenArticleModal(5)">Read More <i class="fa-solid fa-arrow-right"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="vsblog-card" data-category="Technology" data-title="10-Year Replacement Warranty & 24/7 Customer Support Network">
+            <div class="vsblog-card-img">
+              <div class="vsblog-thumb-placeholder" style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);">
+                <svg viewBox="0 0 400 220" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                  <g transform="translate(155,35)">
+                    <path d="M40 10 L80 30 L80 80 Q80 120 40 140 Q0 120 0 80 L0 30 Z" fill="none" stroke="#007b3e" stroke-width="2"/>
+                    <path d="M25 70 L35 85 L60 50" fill="none" stroke="#ec5c0a" stroke-width="2.5"/>
+                  </g>
+                  <text x="200" y="190" text-anchor="middle" fill="#007b3e" font-size="10" font-weight="bold" font-family="Arial">10-YEAR WARRANTY</text>
+                </svg>
+              </div>
+              <span class="vsblog-card-cat-badge">Technology</span>
+            </div>
+            <div class="vsblog-card-body">
+              <span class="vsblog-card-title" onclick="vsOpenArticleModal(6)">10-Year Replacement Warranty & 24/7 Customer Support Network</span>
+              <p class="vsblog-card-excerpt">Every device comes backed by a 10-year official warranty with instant replacement guarantee and nationwide toll-free customer support.</p>
+              <div class="vsblog-card-footer">
+                <span class="vsblog-card-date"><i class="fa-solid fa-calendar-days"></i> Jul 28, 2026</span>
+                <button type="button" class="vsblog-card-btn" onclick="vsOpenArticleModal(6)">Read More <i class="fa-solid fa-arrow-right"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 7 -->
+          <div class="vsblog-card" data-category="Franchise" data-title="Franchise Growth: Partner Success Across Rajasthan & UP">
+            <div class="vsblog-card-img">
+              <div class="vsblog-thumb-placeholder" style="background: linear-gradient(135deg, #fff7ed 0%, #ffede0 100%);">
+                <svg viewBox="0 0 400 220" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                  <g transform="translate(130,35)">
+                    <polyline points="10,130 50,90 90,108 130,58 165,78" fill="none" stroke="#007b3e" stroke-width="2.5"/>
+                    <circle cx="10" cy="130" r="5" fill="#007b3e"/>
+                    <circle cx="165" cy="78" r="5" fill="#ec5c0a"/>
+                  </g>
+                  <text x="200" y="190" text-anchor="middle" fill="#ec5c0a" font-size="10" font-weight="bold" font-family="Arial">FRANCHISE SUCCESS</text>
+                </svg>
+              </div>
+              <span class="vsblog-card-cat-badge">Franchise</span>
+            </div>
+            <div class="vsblog-card-body">
+              <span class="vsblog-card-title" onclick="vsOpenArticleModal(7)">Franchise Growth: Partner Success Across Rajasthan & UP</span>
+              <p class="vsblog-card-excerpt">Discover how regional franchise partners in Rajasthan, UP, and Haryana expanded distribution networks and achieved monthly revenue targets.</p>
+              <div class="vsblog-card-footer">
+                <span class="vsblog-card-date"><i class="fa-solid fa-calendar-days"></i> Jul 20, 2026</span>
+                <button type="button" class="vsblog-card-btn" onclick="vsOpenArticleModal(7)">Read More <i class="fa-solid fa-arrow-right"></i></button>
               </div>
             </div>
           </div>
@@ -1410,7 +1509,7 @@
 </div>
 
 <script>
-  // DETAILED COMPREHENSIVE ARTICLE DATABASE
+  // DETAILED COMPREHENSIVE MULTI-ARTICLE DATABASE (8 ARTICLES)
   var VS_ARTICLES = [
     {
       title: "How Vidhyut Saathi's Terahertz Technology Reduces Electricity Bills by 20–30%",
@@ -1461,13 +1560,6 @@
         <div class="vsblog-modal-box-highlight">
           <strong>Profit Potential:</strong> Premium Exclusive District Franchise partners generate net earnings between ₹5 Lakh to ₹6 Lakh per month with zero ongoing royalty fees!
         </div>
-
-        <div class="vsblog-modal-h3"><i class="fa-solid fa-file-contract"></i> Franchise Support & Benefits</div>
-        <ul class="vsblog-modal-list">
-          <li><strong>Zero Royalty Fee:</strong> 100% of your retail and distribution profits stay with you.</li>
-          <li><strong>10-Year Replacement Guarantee:</strong> Backed by official company warranty to build customer trust.</li>
-          <li><strong>Technical & Sales Training:</strong> Full product demo training for your field sales team.</li>
-        </ul>
       `
     },
     {
@@ -1486,10 +1578,6 @@
           <li><strong>ISO 45001:2018 (Occupational Health & Safety):</strong> High-grade flame-retardant V0-grade polycarbonate body casing with automatic surge protection up to 6kV.</li>
           <li><strong>CE European Compliance:</strong> Tested for strict electromagnetic compatibility (EMC) and low voltage safety directive (LVD).</li>
         </ul>
-
-        <div class="vsblog-modal-box-highlight">
-          <strong>100% Safe for All Appliances:</strong> Certified safe for computers, inverter ACs, medical devices, TVs, LED lights, and heavy industrial machinery.
-        </div>
       `
     },
     {
@@ -1506,9 +1594,6 @@
 
         <div class="vsblog-modal-h3"><i class="fa-solid fa-building-user"></i> 2. Commercial Stores, Offices & Hotels</div>
         <p>Commercial establishments with continuous lighting, HVAC chillers, elevators, and computers suffer heavy reactive power penalties. Vidhyut Saathi 3-Phase commercial units keep power factor consistently above 0.98, yielding lakhs in monthly savings.</p>
-
-        <div class="vsblog-modal-h3"><i class="fa-solid fa-industry"></i> 3. Industrial Factories & Manufacturing Mills</div>
-        <p>Industrial clients paying DISCOM power factor penalties can deploy our heavy-duty industrial units for rapid payback within 3 to 6 months.</p>
       `
     },
     {
@@ -1528,6 +1613,43 @@
 
         <div class="vsblog-modal-box-highlight">
           <strong>Smart Document Verification:</strong> Our online portal includes AI document scanning to check uploaded images match the selected ID type, ensuring instant approval for authentic applicants.
+        </div>
+      `
+    },
+    {
+      title: "Power Factor Optimization: Active vs. Reactive Power Explained",
+      category: "Technology",
+      date: "Aug 05, 2026",
+      author: "Industrial Engineering Cell",
+      readTime: "6 min read",
+      html: `
+        <p>Electrical power in alternating current (AC) circuits consists of two main components: <strong>Active Power (kW)</strong> which performs actual mechanical work, and <strong>Reactive Power (kVAR)</strong> required to sustain magnetic fields in motors and transformers.</p>
+        <div class="vsblog-modal-h3"><i class="fa-solid fa-calculator"></i> The Power Factor Equation</div>
+        <p>Power Factor is defined as the ratio $\\cos\\phi = \\frac{kW}{kVA}$. When power factor drops below 0.85, DISCOMs charge extra penalty surcharges. Vidhyut Saathi's Terahertz wave capacitor matrix automatically injects leading reactive power to hold power factor at 0.98–0.99.</p>
+      `
+    },
+    {
+      title: "10-Year Replacement Warranty & 24/7 Customer Support Network",
+      category: "Technology",
+      date: "Jul 28, 2026",
+      author: "Customer Assurance Division",
+      readTime: "5 min read",
+      html: `
+        <p>Every Vidhyut Saathi device is engineered with industrial-grade components to deliver over 15 years of continuous trouble-free performance.</p>
+        <div class="vsblog-modal-h3"><i class="fa-solid fa-shield-cat"></i> Direct 10-Year Replacement Policy</div>
+        <p>In the rare event of a component breakdown, customers enjoy a hassle-free 10-year instant replacement guarantee handled directly by assigned District Franchise partners.</p>
+      `
+    },
+    {
+      title: "Franchise Growth: Partner Success Across Rajasthan & UP",
+      category: "Franchise",
+      date: "Jul 20, 2026",
+      author: "Regional Operations Team",
+      readTime: "6 min read",
+      html: `
+        <p>Over the past 24 months, Vidhyut Saathi franchise partners across Rajasthan (Jaipur, Jodhpur, Kota), Uttar Pradesh (Lucknow, Kanpur, Varanasi), and Haryana have successfully onboarded over 500+ commercial clients and 8,000+ residential homes.</p>
+        <div class="vsblog-modal-box-highlight">
+          <strong>Partner Insight:</strong> Exclusive territorial protection allowed district franchise leaders to capture 45% market share in their first year with zero local competition!
         </div>
       `
     }
@@ -1616,6 +1738,11 @@
       "id": "hero_subtitle",
       "label": "Hero Subtitle",
       "default": "Expert articles, franchise success stories, and tips to lower electricity bills across India."
+    },
+    {
+      "type": "image_picker",
+      "id": "featured_image",
+      "label": "Featured Article Custom Image"
     }
   ],
   "presets": [
