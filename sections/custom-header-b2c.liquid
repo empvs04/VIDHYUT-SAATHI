@@ -444,7 +444,7 @@
             {%- for link in linklists[section.settings.menu].links -%}
               {%- if link.links != blank -%}
                 <div class="vidhyut-has-dropdown-{{ section.id }}">
-                  <a href="{{ link.url }}">{{ link.title }} <i class="fas fa-chevron-down"></i></a>
+                  <a href="{% if link.url == '#' or link.url == '' or link.url == blank %}javascript:void(0);{% else %}{{ link.url }}{% endif %}">{{ link.title }} <i class="fas fa-chevron-down"></i></a>
                   <div class="vidhyut-dropdown-menu-{{ section.id }}">
                     {%- for childlink in link.links -%}
                       <a href="{{ childlink.url }}">{{ childlink.title }}</a>
