@@ -1,0 +1,1222 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&family=IBM+Plex+Mono:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+  /* ============================================================
+     VIDHYUT SAATHI — RESIDENTIAL REQUIRED CARDS PAGE
+     Ultra-Lucrative Light & Modern Design
+     Theme: Warm Cream #fff8ef | Panel #ffffff | Accent #f0631b | Green #0a4a2c | Slate #16281f
+  ============================================================ */
+  .vsres {
+    --bg:       #fff8ef;
+    --bg-warm:  #f5ebd9;
+    --panel:    #ffffff;
+    --panel-2:  #fbf6ec;
+    --line:     #e7dcce;
+    --line-s:   #f0e5d6;
+    --green:    #007b3e;
+    --green-d:  #0a4a2c;
+    --green-t:  #e6f4ec;
+    --orange:   #ec5c0a;
+    --orange-d: #c84900;
+    --orange-t: #ffefe5;
+    --gold:     #c9982e;
+    --ink:      #0f172a;
+    --muted:    #475569;
+    --muted-2:  #64748b;
+    --maxw:     1180px;
+
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    font-size: 16px;
+    line-height: 1.55;
+  }
+
+  .vsres *, .vsres *::before, .vsres *::after {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .vsres h1, .vsres h2, .vsres h3, .vsres h4 {
+    font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: -0.02em;
+  }
+
+  .vsres a { color: inherit; text-decoration: none; }
+  .vsres img { max-width: 100%; display: block; }
+  .vsres button { font-family: inherit; cursor: pointer; }
+
+  .vsres .wrap {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+  @media(min-width: 640px){ .vsres .wrap { padding: 0 28px; } }
+
+  /* ---- CATEGORY NAVIGATION STRIP ---- */
+  .vsres-nav-strip {
+    background: #ffffff;
+    border-bottom: 1.5px solid var(--line);
+    padding: 12px 16px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.03);
+  }
+
+  .vsres-nav-container {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .vsres-nav-title {
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--ink);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+  }
+  .vsres-nav-title i { color: var(--orange); }
+
+  .vsres-nav-links {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .vsres-nav-links::-webkit-scrollbar { display: none; }
+
+  .vsres-nav-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 18px;
+    border-radius: 50px;
+    font-size: 12.5px;
+    font-weight: 700;
+    background: #f8fafc;
+    border: 1.5px solid #e2e8f0;
+    color: var(--muted);
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+  .vsres-nav-item:hover {
+    border-color: var(--orange);
+    color: var(--orange);
+  }
+  .vsres-nav-item.active {
+    background: linear-gradient(135deg, var(--orange) 0%, #ff7b00 100%);
+    color: #ffffff;
+    border-color: var(--orange);
+    box-shadow: 0 4px 14px rgba(236, 92, 10, 0.3);
+  }
+
+  /* ---- HERO SECTION ---- */
+  .vsres-hero {
+    position: relative;
+    padding: clamp(32px, 5vw, 65px) 0 clamp(24px, 4vw, 45px) 0;
+    background: linear-gradient(135deg, #ffffff 0%, #fff3e6 50%, #fff8ef 100%);
+    border-bottom: 1.5px solid var(--line);
+    overflow: hidden;
+  }
+
+  .vsres-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 28px;
+    align-items: center;
+  }
+  @media(min-width: 900px){
+    .vsres-hero-grid {
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 40px;
+    }
+  }
+
+  .vsres-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #ffffff;
+    border: 1.5px solid var(--orange);
+    color: var(--orange);
+    font-size: 11px;
+    font-weight: 700;
+    font-family: 'IBM Plex Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding: 6px 16px;
+    border-radius: 50px;
+    margin-bottom: 16px;
+    box-shadow: 0 4px 14px rgba(236, 92, 10, 0.12);
+  }
+
+  .vsres-hero h1 {
+    font-size: clamp(25px, 5.2vw, 46px);
+    line-height: 1.15;
+    font-weight: 800;
+    color: var(--ink);
+    margin: 0 0 14px 0;
+  }
+  .vsres-hero h1 span {
+    background: linear-gradient(135deg, var(--orange) 0%, #ff7b00 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .vsres-hero-lead {
+    color: var(--muted);
+    font-size: clamp(14px, 2vw, 16px);
+    line-height: 1.6;
+    margin: 0 0 24px 0;
+    max-width: 620px;
+  }
+
+  .vsres-hero-ctas {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+  }
+
+  .vsres-btn-primary {
+    background: linear-gradient(135deg, var(--orange) 0%, #ff7b00 100%);
+    color: #ffffff;
+    font-weight: 700;
+    padding: 14px 26px;
+    border-radius: 12px;
+    font-size: 14.5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: none;
+    box-shadow: 0 6px 20px rgba(236, 92, 10, 0.32);
+    transition: all 0.2s ease;
+  }
+  .vsres-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 26px rgba(236, 92, 10, 0.4);
+  }
+
+  .vsres-btn-secondary {
+    background: #ffffff;
+    color: var(--green-d);
+    border: 1.5px solid var(--green);
+    font-weight: 700;
+    padding: 14px 24px;
+    border-radius: 12px;
+    font-size: 14.5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+  }
+  .vsres-btn-secondary:hover {
+    background: var(--green-t);
+  }
+
+  /* Trust Badges Strip */
+  .vsres-trust-badges {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding-top: 20px;
+    border-top: 1.5px solid var(--line);
+  }
+  @media(min-width: 600px){
+    .vsres-trust-badges { grid-template-columns: repeat(4, 1fr); }
+  }
+
+  .vsres-trust-badge-item {
+    background: #ffffff;
+    border: 1.5px solid var(--line);
+    border-radius: 12px;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+  }
+
+  .vsres-trust-badge-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: var(--orange-t);
+    color: var(--orange);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  .vsres-trust-badge-text strong {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+  .vsres-trust-badge-text span {
+    font-size: 10.5px;
+    color: var(--muted-2);
+  }
+
+  /* Right Card Image Showcase */
+  .vsres-hero-image-box {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #ec5c0a 100%);
+    border: 2px solid var(--line);
+    box-shadow: 0 16px 36px rgba(0,0,0,0.12);
+    padding: 24px;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .vsres-hero-card-tag {
+    background: rgba(236, 92, 10, 0.25);
+    border: 1px solid rgba(236, 92, 10, 0.5);
+    color: #ff9d66;
+    font-size: 10.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding: 4px 14px;
+    border-radius: 50px;
+    margin-bottom: 16px;
+  }
+
+  .vsres-hero-card-front {
+    width: 100%;
+    max-width: 310px;
+    aspect-ratio: 1.586 / 1;
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    border-radius: 14px;
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.4);
+    position: relative;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    transition: transform 0.3s ease;
+  }
+  .vsres-hero-card-front:hover { transform: scale(1.03) rotate(-1deg); }
+
+  .vsres-card-chip-strip {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .vsres-card-chip {
+    width: 36px;
+    height: 26px;
+    background: linear-gradient(135deg, #e8c766 0%, #c9982e 100%);
+    border-radius: 5px;
+    border: 1px solid #b8860b;
+  }
+  .vsres-card-logo-text {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+  }
+  .vsres-card-number {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 14px;
+    font-weight: 700;
+    color: #ffd700;
+    letter-spacing: 1px;
+    margin: 12px 0;
+    text-align: left;
+  }
+  .vsres-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 10px;
+    color: #cbd5e1;
+    font-weight: 600;
+  }
+
+  /* ---- RESIDENTIAL CALCULATOR SECTION ---- */
+  .vsres-sec { padding: 44px 0; }
+  @media(min-width: 768px){ .vsres-sec { padding: 60px 0; } }
+
+  .vsres-sec-head {
+    max-width: 640px;
+    margin: 0 auto 28px;
+    text-align: center;
+  }
+  .vsres-sec-eyebrow {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 6px;
+  }
+  .vsres-sec-title {
+    font-size: clamp(22px, 4vw, 32px);
+    font-weight: 800;
+    color: var(--ink);
+    margin: 0 0 10px 0;
+  }
+  .vsres-sec-desc {
+    color: var(--muted);
+    font-size: 14.5px;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .vsres-calc-box {
+    background: #ffffff;
+    border: 1.5px solid var(--line);
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+    padding: 24px 18px;
+  }
+  @media(min-width: 860px){
+    .vsres-calc-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      padding: 36px 30px;
+    }
+  }
+
+  .vsres-field {
+    margin-bottom: 20px;
+  }
+  .vsres-field-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 700;
+    font-family: 'IBM Plex Mono', monospace;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .vsres-field-badge {
+    background: var(--orange-t);
+    color: var(--orange);
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 12.5px;
+    font-weight: 700;
+  }
+
+  .vsres-range-slider {
+    width: 100%;
+    height: 8px;
+    border-radius: 50px;
+    background: var(--line);
+    outline: none;
+    accent-color: var(--orange);
+    margin: 10px 0;
+  }
+
+  .vsres-num-input {
+    width: 100%;
+    height: 46px;
+    border: 1.5px solid var(--line);
+    border-radius: 10px;
+    padding: 0 14px;
+    font-size: 15px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 700;
+    color: var(--ink);
+    background: #ffffff;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .vsres-num-input:focus {
+    border-color: var(--orange);
+  }
+
+  .vsres-toggle-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .vsres-toggle-btn {
+    padding: 12px;
+    border-radius: 10px;
+    border: 1.5px solid var(--line);
+    background: #ffffff;
+    color: var(--muted);
+    font-weight: 700;
+    font-size: 13px;
+    transition: all 0.2s;
+  }
+  .vsres-toggle-btn.active {
+    background: var(--green-d);
+    color: #ffffff;
+    border-color: var(--green-d);
+  }
+
+  /* Output Card */
+  .vsres-output-card {
+    background: var(--panel-2);
+    border: 1.5px solid var(--line);
+    border-radius: 16px;
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .vsres-res-label {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--muted-2);
+  }
+  .vsres-res-val {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(48px, 10vw, 68px);
+    font-weight: 800;
+    color: var(--green-d);
+    line-height: 1;
+    margin: 8px 0 16px 0;
+  }
+  .vsres-res-val span {
+    font-size: 16px;
+    color: var(--muted);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+
+  .vsres-savings-box {
+    background: linear-gradient(135deg, #0a4a2c 0%, #007b3e 100%);
+    border-radius: 14px;
+    padding: 16px;
+    color: #ffffff;
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .vsres-savings-lbl {
+    font-size: 10px;
+    font-weight: 700;
+    font-family: 'IBM Plex Mono', monospace;
+    letter-spacing: 0.6px;
+    color: #a7f3d0;
+    text-transform: uppercase;
+  }
+  .vsres-savings-amount {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(18px, 3.5vw, 24px);
+    font-weight: 800;
+  }
+
+  .vsres-action-btns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  @media(max-width: 420px){ .vsres-action-btns { grid-template-columns: 1fr; } }
+
+  .vsres-btn-wa {
+    background: #25d366;
+    color: #ffffff;
+    font-size: 13.5px;
+    font-weight: 700;
+    padding: 12px 14px;
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(37,211,102,0.25);
+  }
+  .vsres-btn-phone {
+    background: #ffffff;
+    color: var(--green-d);
+    border: 1.5px solid var(--green);
+    font-size: 13.5px;
+    font-weight: 700;
+    padding: 12px 14px;
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    text-decoration: none;
+  }
+
+  /* ---- HOUSEHOLD APPLIANCE MATRIX ---- */
+  .vsres-matrix-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  @media(min-width: 640px){
+    .vsres-matrix-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  }
+  @media(min-width: 1000px){
+    .vsres-matrix-grid { grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  }
+
+  .vsres-matrix-card {
+    background: #ffffff;
+    border: 1.5px solid var(--line);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.025);
+    transition: all 0.25s ease;
+  }
+  .vsres-matrix-card:hover {
+    border-color: var(--orange);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(236, 92, 10, 0.12);
+  }
+
+  .vsres-matrix-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: var(--orange-t);
+    color: var(--orange);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+
+  .vsres-matrix-title {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--ink);
+    margin: 0 0 4px 0;
+  }
+  .vsres-matrix-sub {
+    font-size: 12px;
+    color: var(--muted-2);
+    margin-bottom: 12px;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  .vsres-matrix-badge {
+    background: var(--green-t);
+    color: var(--green-d);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 50px;
+    display: inline-block;
+  }
+
+  /* ---- RESIDENTIAL REQUIREMENT TABLE ---- */
+  .vsres-table-wrap {
+    background: #ffffff;
+    border: 1.5px solid var(--line);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+  }
+
+  .vsres-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+  }
+
+  .vsres-table thead tr {
+    background: var(--green-d);
+    color: #ffffff;
+  }
+
+  .vsres-table th {
+    padding: 12px 14px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    text-align: center;
+  }
+  .vsres-table th:first-child { text-align: left; }
+
+  .vsres-table tbody tr {
+    border-bottom: 1px solid var(--line-s);
+  }
+  .vsres-table tbody tr:nth-child(even) { background: #fbf8f0; }
+
+  .vsres-table td {
+    padding: 12px 14px;
+    text-align: center;
+    color: var(--muted);
+  }
+  .vsres-table td:first-child {
+    text-align: left;
+    font-weight: 800;
+    color: var(--ink);
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  .vsres-table td.highlight {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 800;
+    color: var(--orange);
+    font-size: 14.5px;
+  }
+
+  /* ---- RESIDENTIAL CUSTOMER CASE STUDIES ---- */
+  .vsres-case-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  @media(min-width: 640px){
+    .vsres-case-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  }
+
+  .vsres-case-card {
+    background: #ffffff;
+    border: 1.5px solid var(--line);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.025);
+  }
+  .vsres-case-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  .vsres-case-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--orange-t);
+    color: var(--orange);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 800;
+  }
+  .vsres-case-name {
+    font-size: 14.5px;
+    font-weight: 800;
+    color: var(--ink);
+    margin: 0;
+  }
+  .vsres-case-location {
+    font-size: 11.5px;
+    color: var(--muted-2);
+  }
+
+  .vsres-case-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    background: var(--panel-2);
+    border: 1px solid var(--line);
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    font-size: 11.5px;
+  }
+  .vsres-case-stat-val {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 700;
+    color: var(--ink);
+    font-size: 13.5px;
+  }
+
+  .vsres-case-result {
+    background: var(--orange-t);
+    border: 1px solid rgba(236, 92, 10, 0.3);
+    padding: 10px 12px;
+    border-radius: 10px;
+    color: var(--orange-d);
+    font-size: 12.5px;
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* ---- FOOTER CTA BAND ---- */
+  .vsres-cta-band {
+    background: linear-gradient(135deg, #0a4a2c 0%, #007b3e 100%);
+    border-radius: 20px;
+    color: #ffffff;
+    padding: 36px 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(10, 74, 44, 0.2);
+  }
+  @media(min-width: 640px){
+    .vsres-cta-band { padding: 48px 36px; }
+  }
+  .vsres-cta-band h3 {
+    font-size: clamp(20px, 4vw, 30px);
+    font-weight: 800;
+    margin: 0 0 10px 0;
+  }
+  .vsres-cta-band p {
+    color: #d1fae5;
+    font-size: 14.5px;
+    margin: 0 auto 24px auto;
+    max-width: 540px;
+  }
+
+</style>
+
+<div class="vsres">
+
+  <!-- ══ CATEGORY NAVIGATION STRIP ══ -->
+  <div class="vsres-nav-strip">
+    <div class="vsres-nav-container">
+      <div class="vsres-nav-title">
+        <i class="fa-solid fa-layer-group"></i> Sector Requirement Pages:
+      </div>
+      <div class="vsres-nav-links">
+        <a href="/pages/residential-required-cards" class="vsres-nav-item active">
+          <i class="fa-solid fa-house"></i> Residential
+        </a>
+        <a href="/pages/required-cards" class="vsres-nav-item">
+          <i class="fa-solid fa-calculator"></i> Card Calculator
+        </a>
+        <a href="/pages/b2c" class="vsres-nav-item">
+          <i class="fa-solid fa-bolt"></i> Power Saver Card
+        </a>
+        <a href="/pages/get-franchise" class="vsres-nav-item">
+          <i class="fa-solid fa-store"></i> Franchise Program
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ HERO SECTION ══ -->
+  <section class="vsres-hero">
+    <div class="wrap">
+      <div class="vsres-hero-grid">
+        <div>
+          <div class="vsres-eyebrow">
+            <i class="fa-solid fa-house-signal"></i> Residential Energy Saver Guide
+          </div>
+          <h1>Vidhyut Saathi Card for <span>Residential Homes</span></h1>
+          <p class="vsres-hero-lead">
+            Protect your household appliances and stop overpaying on electricity bills. Whether you live in a 1 BHK flat or a 4 BHK villa with multiple ACs and water submersible pumps, calculate your exact card requirement below.
+          </p>
+
+          <div class="vsres-hero-ctas">
+            <a href="#vsres-calc" class="vsres-btn-primary">
+              <i class="fa-solid fa-calculator"></i> Calculate My Home Cards
+            </a>
+            <a href="https://wa.me/919876543210?text=Hi%20Vidhyut%20Saathi%2C%20I%20want%20to%20order%20Residential%20Saver%20Cards" class="vsres-btn-secondary" target="_blank">
+              <i class="fa-brands fa-whatsapp"></i> Order on WhatsApp
+            </a>
+          </div>
+
+          <div class="vsres-trust-badges">
+            <div class="vsres-trust-badge-item">
+              <div class="vsres-trust-badge-icon"><i class="fa-solid fa-bolt"></i></div>
+              <div class="vsres-trust-badge-text">
+                <strong>20–30% Savings</strong>
+                <span>On DISCOM Bills</span>
+              </div>
+            </div>
+            <div class="vsres-trust-badge-item">
+              <div class="vsres-trust-badge-icon"><i class="fa-solid fa-shield-halved"></i></div>
+              <div class="vsres-trust-badge-text">
+                <strong>10-Yr Life</strong>
+                <span>3-Yr Warranty</span>
+              </div>
+            </div>
+            <div class="vsres-trust-badge-item">
+              <div class="vsres-trust-badge-icon"><i class="fa-solid fa-plug"></i></div>
+              <div class="vsres-trust-badge-text">
+                <strong>Plug & Save</strong>
+                <span>Zero Rewiring</span>
+              </div>
+            </div>
+            <div class="vsres-trust-badge-item">
+              <div class="vsres-trust-badge-icon"><i class="fa-solid fa-certificate"></i></div>
+              <div class="vsres-trust-badge-text">
+                <strong>ISO Certified</strong>
+                <span>100% Safe & Legal</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT HERO SHOWCASE -->
+        <div class="vsres-hero-image-box">
+          <span class="vsres-hero-card-tag"><i class="fa-solid fa-crown"></i> Official Residential Card</span>
+
+          <div class="vsres-hero-card-front">
+            <div class="vsres-card-chip-strip">
+              <div class="vsres-card-chip"></div>
+              <span class="vsres-card-logo-text">⚡ VIDHYUT SAATHI</span>
+            </div>
+            <div class="vsres-card-number">RESIDENTIAL SAVER CARD</div>
+            <div class="vsres-card-footer">
+              <span>TERAHERTZ CHIP INSIDE</span>
+              <span>20–30% BILL CUT</span>
+            </div>
+          </div>
+
+          <p style="font-size:12.5px; color:#cbd5e1; margin:0 0 12px 0;">
+            Patented US-German Terahertz frequency technology stabilizes voltage fluctuations and eliminates inductive reactive current from home motors.
+          </p>
+
+          <a href="#vsres-matrix" style="color:#ff9d66; font-size:12px; font-weight:700; text-decoration:underline;">
+            See Household Appliances Covered ↓
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ INTERACTIVE RESIDENTIAL CALCULATOR ══ -->
+  <section class="vsres-sec" id="vsres-calc">
+    <div class="wrap">
+      <div class="vsres-sec-head">
+        <div class="vsres-sec-eyebrow"><i class="fa-solid fa-sliders"></i> Interactive Calculator</div>
+        <h2 class="vsres-sec-title">Calculate Cards Needed for Your Home</h2>
+        <p class="vsres-sec-desc">
+          Calculated using standard DISCOM guidelines: 1 card per 6 KW load, or 1 card per ₹6,000 monthly bill — whichever recommends the higher count.
+        </p>
+      </div>
+
+      <div class="vsres-calc-box">
+        <!-- LEFT INPUTS -->
+        <div>
+          <!-- KW LOAD -->
+          <div class="vsres-field">
+            <div class="vsres-field-label">
+              <span>⚙️ HOME CONNECTED LOAD</span>
+              <span class="vsres-field-badge" id="vsres_kw_badge">6 KW</span>
+            </div>
+            <input type="range" class="vsres-range-slider" id="vsres_kw_slider" min="1" max="40" value="6" step="1" oninput="vsresSync()">
+            <input type="number" class="vsres-num-input" id="vsres_kw_num" value="6" min="1" max="100" oninput="vsresSync()">
+          </div>
+
+          <!-- MONTHLY BILL -->
+          <div class="vsres-field">
+            <div class="vsres-field-label">
+              <span>💰 MONTHLY ELECTRICITY BILL</span>
+              <span class="vsres-field-badge" id="vsres_bill_badge">₹6,000</span>
+            </div>
+            <input type="number" class="vsres-num-input" id="vsres_bill_num" value="6000" min="500" step="500" oninput="vsresSync()">
+          </div>
+
+          <!-- PHASE SELECTOR -->
+          <div class="vsres-field">
+            <div class="vsres-field-label">🔌 PHASE TYPE</div>
+            <div class="vsres-toggle-group">
+              <button class="vsres-toggle-btn active" id="vsres_btn_single" onclick="vsresSetPhase(false)">Single Phase</button>
+              <button class="vsres-toggle-btn" id="vsres_btn_three" onclick="vsresSetPhase(true)">Three Phase</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT OUTPUT -->
+        <div class="vsres-output-card">
+          <div>
+            <div class="vsres-res-label">REQUIRED RESIDENTIAL CARDS</div>
+            <div class="vsres-res-val">
+              <span id="vsres_card_num">1</span>
+              <span id="vsres_card_unit">Card</span>
+            </div>
+          </div>
+
+          <div class="vsres-savings-box">
+            <div>
+              <div class="vsres-savings-lbl">ESTIMATED MONTHLY SAVINGS (20-30%)</div>
+              <div class="vsres-savings-amount" id="vsres_savings_range">₹1,200 – ₹1,800 / mo</div>
+            </div>
+            <i class="fa-solid fa-piggy-bank" style="font-size:24px;"></i>
+          </div>
+
+          <div class="vsres-action-btns">
+            <a href="https://wa.me/919876543210?text=Hi%20Vidhyut%20Saathi%2C%20I%20need%20to%20buy%20residential%20cards" class="vsres-btn-wa" target="_blank">
+              <i class="fa-brands fa-whatsapp"></i> Buy on WhatsApp
+            </a>
+            <a href="tel:+919876543210" class="vsres-btn-phone">
+              <i class="fa-solid fa-phone"></i> Call Advisor
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ HOUSEHOLD APPLIANCES COVERAGE MATRIX ══ -->
+  <section class="vsres-sec" id="vsres-matrix" style="background:#fbf8f0; border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+    <div class="wrap">
+      <div class="vsres-sec-head">
+        <div class="vsres-sec-eyebrow"><i class="fa-solid fa-fan"></i> Home Appliances Covered</div>
+        <h2 class="vsres-sec-title">Works On All Inductive Home Loads</h2>
+        <p class="vsres-sec-desc">
+          Vidhyut Saathi cards stabilize inductive coil voltage and eliminate reactive current losses across all major household equipment.
+        </p>
+      </div>
+
+      <div class="vsres-matrix-grid">
+        <div class="vsres-matrix-card">
+          <div class="vsres-matrix-icon"><i class="fa-solid fa-snowflake"></i></div>
+          <div class="vsres-matrix-title">Air Conditioners</div>
+          <div class="vsres-matrix-sub">1.0T / 1.5T / 2.0T Split & Window</div>
+          <span class="vsres-matrix-badge"><i class="fa-solid fa-check"></i> Cuts AC Peak Spikes</span>
+        </div>
+
+        <div class="vsres-matrix-card">
+          <div class="vsres-matrix-icon"><i class="fa-solid fa-faucet-drip"></i></div>
+          <div class="vsres-matrix-title">Water Pumps & Motors</div>
+          <div class="vsres-matrix-sub">0.5 HP – 3.0 HP Submersibles</div>
+          <span class="vsres-matrix-badge"><i class="fa-solid fa-check"></i> Protects Motor Coils</span>
+        </div>
+
+        <div class="vsres-matrix-card">
+          <div class="vsres-matrix-icon"><i class="fa-solid fa-kitchen-set"></i></div>
+          <div class="vsres-matrix-title">Refrigerators & Freezers</div>
+          <div class="vsres-matrix-sub">Single / Double Door Inverters</div>
+          <span class="vsres-matrix-badge"><i class="fa-solid fa-check"></i> Smooths Compressor</span>
+        </div>
+
+        <div class="vsres-matrix-card">
+          <div class="vsres-matrix-icon"><i class="fa-solid fa-shirt"></i></div>
+          <div class="vsres-matrix-title">Washing Machines</div>
+          <div class="vsres-matrix-sub">Front & Top Load Washers</div>
+          <span class="vsres-matrix-badge"><i class="fa-solid fa-check"></i> Lowers Watt Loss</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ RESIDENTIAL REQUIREMENT CHART TABLE ══ -->
+  <section class="vsres-sec">
+    <div class="wrap">
+      <div class="vsres-sec-head">
+        <div class="vsres-sec-eyebrow"><i class="fa-solid fa-table"></i> Home Requirement Matrix</div>
+        <h2 class="vsres-sec-title">Residential Home Sizing Chart</h2>
+        <p class="vsres-sec-desc">
+          Quick reference table based on house type, connected load, and typical monthly electricity bill range.
+        </p>
+      </div>
+
+      <div class="vsres-table-wrap">
+        <table class="vsres-table">
+          <thead>
+            <tr>
+              <th>House Type</th>
+              <th>Load (KW)</th>
+              <th>Monthly Bill (₹)</th>
+              <th>Single-Phase</th>
+              <th>3-Phase</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1 BHK Flat / Studio</td>
+              <td>1–3 KW</td>
+              <td>Up to ₹4,000</td>
+              <td class="highlight">1 Card</td>
+              <td class="highlight">2 Cards</td>
+            </tr>
+            <tr>
+              <td>2 BHK Apartment (1 AC)</td>
+              <td>4–6 KW</td>
+              <td>₹4,001 – ₹7,000</td>
+              <td class="highlight">1 Card</td>
+              <td class="highlight">2 Cards</td>
+            </tr>
+            <tr>
+              <td>3 BHK Apartment (2 ACs)</td>
+              <td>7–12 KW</td>
+              <td>₹7,001 – ₹13,000</td>
+              <td class="highlight">2 Cards</td>
+              <td class="highlight">3 Cards</td>
+            </tr>
+            <tr>
+              <td>4 BHK House / Duplex (3+ ACs)</td>
+              <td>13–18 KW</td>
+              <td>₹13,001 – ₹19,000</td>
+              <td class="highlight">3 Cards</td>
+              <td class="highlight">4 Cards</td>
+            </tr>
+            <tr>
+              <td>Independent Villa / Bungalow</td>
+              <td>19–24 KW</td>
+              <td>₹19,001 – ₹26,000</td>
+              <td class="highlight">4 Cards</td>
+              <td class="highlight">5 Cards</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ REAL CUSTOMER SCENARIOS ══ -->
+  <section class="vsres-sec" style="background:#fbf8f0; border-top:1px solid var(--line);">
+    <div class="wrap">
+      <div class="vsres-sec-head">
+        <div class="vsres-sec-eyebrow"><i class="fa-solid fa-user-check"></i> Customer Case Studies</div>
+        <h2 class="vsres-sec-title">Real Residential Savings Stories</h2>
+        <p class="vsres-sec-desc">See how Indian homeowners cut their monthly electricity bills by 20–30% with Vidhyut Saathi.</p>
+      </div>
+
+      <div class="vsres-case-grid">
+        <div class="vsres-case-card">
+          <div class="vsres-case-header">
+            <div class="vsres-case-avatar">R</div>
+            <div>
+              <div class="vsres-case-name">Rohan Mehta</div>
+              <div class="vsres-case-location">2 BHK Apartment, Mumbai</div>
+            </div>
+          </div>
+          <div class="vsres-case-stats">
+            <div>Old Bill: <span class="vsres-case-stat-val">₹8,400/mo</span></div>
+            <div>New Bill: <span class="vsres-case-stat-val">₹6,100/mo</span></div>
+          </div>
+          <div class="vsres-case-result">
+            <span>2 Cards Installed</span>
+            <strong>Saved ₹2,300/mo (27%)</strong>
+          </div>
+        </div>
+
+        <div class="vsres-case-card">
+          <div class="vsres-case-header">
+            <div class="vsres-case-avatar">S</div>
+            <div>
+              <div class="vsres-case-name">Sunita Sharma</div>
+              <div class="vsres-case-location">3 BHK House, Jaipur</div>
+            </div>
+          </div>
+          <div class="vsres-case-stats">
+            <div>Old Bill: <span class="vsres-case-stat-val">₹14,500/mo</span></div>
+            <div>New Bill: <span class="vsres-case-stat-val">₹10,600/mo</span></div>
+          </div>
+          <div class="vsres-case-result">
+            <span>3 Cards Installed</span>
+            <strong>Saved ₹3,900/mo (26.8%)</strong>
+          </div>
+        </div>
+
+        <div class="vsres-case-card">
+          <div class="vsres-case-header">
+            <div class="vsres-case-avatar">V</div>
+            <div>
+              <div class="vsres-case-name">Vikram Verma</div>
+              <div class="vsres-case-location">Independent Villa, Lucknow</div>
+            </div>
+          </div>
+          <div class="vsres-case-stats">
+            <div>Old Bill: <span class="vsres-case-stat-val">₹22,000/mo</span></div>
+            <div>New Bill: <span class="vsres-case-stat-val">₹15,800/mo</span></div>
+          </div>
+          <div class="vsres-case-result">
+            <span>4 Cards (3-Phase)</span>
+            <strong>Saved ₹6,200/mo (28.1%)</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER CTA BAND ══ -->
+  <section class="vsres-sec" style="padding-bottom:70px;">
+    <div class="wrap">
+      <div class="vsres-cta-band">
+        <h3>Ready to Save 20–30% on Your Home Electricity Bill?</h3>
+        <p>Order Vidhyut Saathi Electric Saver Cards today with free delivery and a 3-year replacement warranty.</p>
+        <a href="https://wa.me/919876543210?text=Hi%20Vidhyut%20Saathi%2C%20I%20want%20to%20order%20Residential%20Saver%20Cards" class="vsres-btn-primary" style="background:#ffffff; color:var(--green-d); font-size:15px; padding:15px 30px;" target="_blank">
+          <i class="fa-brands fa-whatsapp"></i> Order Residential Cards Now
+        </a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  var vsresThreePhase = false;
+
+  function vsresSync() {
+    var kwSlider = document.getElementById('vsres_kw_slider');
+    var kwNum = document.getElementById('vsres_kw_num');
+    var billNum = document.getElementById('vsres_bill_num');
+    var kwBadge = document.getElementById('vsres_kw_badge');
+    var billBadge = document.getElementById('vsres_bill_badge');
+
+    var kw = Math.max(1, parseInt(kwNum.value) || 1);
+    var bill = Math.max(0, parseInt(billNum.value) || 0);
+
+    kwSlider.value = Math.min(kw, 40);
+    kwBadge.innerText = kw + ' KW';
+    billBadge.innerText = '₹' + bill.toLocaleString('en-IN');
+
+    var kwCards = Math.max(1, Math.ceil(kw / 6));
+    var billCards = bill > 0 ? Math.max(1, Math.ceil(bill / 6000)) : 1;
+    var base = Math.max(kwCards, billCards);
+    var total = vsresThreePhase ? base + 1 : base;
+
+    document.getElementById('vsres_card_num').innerText = total;
+    document.getElementById('vsres_card_unit').innerText = total > 1 ? 'Cards' : 'Card';
+
+    var sMin = Math.round((bill * 0.20) / 100) * 100;
+    var sMax = Math.round((bill * 0.30) / 100) * 100;
+    document.getElementById('vsres_savings_range').innerText = '₹' + sMin.toLocaleString('en-IN') + ' – ₹' + sMax.toLocaleString('en-IN') + ' / mo';
+  }
+
+  function vsresSetPhase(isThree) {
+    vsresThreePhase = isThree;
+    var btnSingle = document.getElementById('vsres_btn_single');
+    var btnThree = document.getElementById('vsres_btn_three');
+    if (isThree) {
+      btnThree.classList.add('active');
+      btnSingle.classList.remove('active');
+    } else {
+      btnSingle.classList.add('active');
+      btnThree.classList.remove('active');
+    }
+    vsresSync();
+  }
+
+  document.getElementById('vsres_kw_slider').addEventListener('input', function() {
+    document.getElementById('vsres_kw_num').value = this.value;
+    vsresSync();
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Residential Cards Layout",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Residential Cards Layout"
+    }
+  ]
+}
+{% endschema %}
