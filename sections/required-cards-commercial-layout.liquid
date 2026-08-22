@@ -605,27 +605,50 @@
       background: linear-gradient(180deg, #ffffff 0%, #f0fdf4 100%);
     }
 
-    /* SINGLE ROW TOUCH SCROLL FILTER PILLS BAR */
+    /* 3 VERTICAL ROWS FILTER BAR ON MOBILE & DESKTOP */
     .mcb-filter-bar {
       display: flex !important;
-      flex-wrap: nowrap !important;
-      overflow-x: auto !important;
-      justify-content: flex-start !important;
+      flex-direction: column !important;
+      align-items: center !important;
       gap: 8px !important;
-      padding: 4px 12px 14px 12px !important;
-      margin-left: -12px !important;
-      margin-right: -12px !important;
-      scrollbar-width: none !important;
-      -webkit-overflow-scrolling: touch !important;
+      margin-bottom: 24px !important;
+      padding: 0 !important;
+      width: 100% !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+      overflow-x: visible !important;
     }
-    .mcb-filter-bar::-webkit-scrollbar { display: none !important; }
+
+    .mcb-filter-row {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 8px !important;
+      width: 100% !important;
+    }
+
+    .mcb-filter-row.row-1 .mcb-filter-btn {
+      width: 55% !important;
+      min-width: unset !important;
+      padding: 9px 16px !important;
+      font-size: 12.5px !important;
+      justify-content: center !important;
+    }
+
+    .mcb-filter-row.row-2 .mcb-filter-btn,
+    .mcb-filter-row.row-3 .mcb-filter-btn {
+      flex: 1 !important;
+      padding: 9px 8px !important;
+      font-size: 11px !important;
+      text-align: center !important;
+      white-space: nowrap !important;
+      justify-content: center !important;
+    }
 
     .mcb-filter-btn {
       flex-shrink: 0 !important;
       white-space: nowrap !important;
-      font-size: 12px !important;
       font-weight: 700 !important;
-      padding: 8px 16px !important;
       border-radius: 50px !important;
       background: #ffffff !important;
       color: #334155 !important;
@@ -870,13 +893,19 @@
         <p class="vscom-sec-desc">Click any commercial installation photo to inspect full 3-phase DB panel wiring. Vidhyut Saathi cards connect in parallel with zero load disruption.</p>
       </div>
 
-      <!-- Category Filter Buttons -->
-      <div class="mcb-filter-bar" style="display:flex; align-items:center; justify-content:center; gap:8px; flex-wrap:wrap; margin-bottom:30px;">
-        <button class="mcb-filter-btn active" onclick="filterMcb('all', this)"><i class="fa-solid fa-border-all"></i> All (20)</button>
-        <button class="mcb-filter-btn" onclick="filterMcb('office', this)"><i class="fa-solid fa-building"></i> Offices & IT Parks (5)</button>
-        <button class="mcb-filter-btn" onclick="filterMcb('retail', this)"><i class="fa-solid fa-store"></i> Retail & Malls (5)</button>
-        <button class="mcb-filter-btn" onclick="filterMcb('hotel', this)"><i class="fa-solid fa-hotel"></i> Hotels & Cafes (5)</button>
-        <button class="mcb-filter-btn" onclick="filterMcb('hospital', this)"><i class="fa-solid fa-hospital"></i> Hospitals & Clinics (5)</button>
+      <!-- Category Filter Buttons arranged in 3 clean vertical rows -->
+      <div class="mcb-filter-bar">
+        <div class="mcb-filter-row row-1">
+          <button class="mcb-filter-btn active" onclick="filterMcb('all', this)"><i class="fa-solid fa-border-all"></i> All (20)</button>
+        </div>
+        <div class="mcb-filter-row row-2">
+          <button class="mcb-filter-btn" onclick="filterMcb('office', this)"><i class="fa-solid fa-building"></i> Offices & IT Parks (5)</button>
+          <button class="mcb-filter-btn" onclick="filterMcb('retail', this)"><i class="fa-solid fa-store"></i> Retail & Malls (5)</button>
+        </div>
+        <div class="mcb-filter-row row-3">
+          <button class="mcb-filter-btn" onclick="filterMcb('hotel', this)"><i class="fa-solid fa-hotel"></i> Hotels & Cafes (5)</button>
+          <button class="mcb-filter-btn" onclick="filterMcb('hospital', this)"><i class="fa-solid fa-hospital"></i> Hospitals & Clinics (5)</button>
+        </div>
       </div>
 
       <div class="mcb-gallery-grid">
