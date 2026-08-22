@@ -872,19 +872,15 @@
         <div class="vsres-hero-image-box">
           <span class="vsres-hero-card-tag"><i class="fa-solid fa-crown"></i> Official Residential Card</span>
 
-          <div class="vsres-hero-card-front">
-            <div class="vsres-card-chip-strip">
-              <div class="vsres-card-chip"></div>
-              <span class="vsres-card-logo-text">⚡ VIDHYUT SAATHI</span>
-            </div>
-            <div class="vsres-card-number">RESIDENTIAL SAVER CARD</div>
-            <div class="vsres-card-footer">
-              <span>TERAHERTZ CHIP INSIDE</span>
-              <span>20–30% BILL CUT</span>
-            </div>
+          <div style="width:100%; display:flex; justify-content:center; margin:12px 0;">
+            {% if section.settings.card_image != blank %}
+              <img src="{{ section.settings.card_image | image_url: width: 600 }}" alt="Vidhyut Saathi Residential Electric Saver Card" style="width: 100%; max-width: 320px; border-radius: 16px; box-shadow: 0 16px 36px rgba(0,0,0,0.4); border: 2px solid rgba(255,255,255,0.25); transition: transform 0.3s ease;">
+            {% else %}
+              <img src="{{ 'official-vs-card-front.jpg' | asset_url }}" alt="Vidhyut Saathi Residential Electric Saver Card" style="width: 100%; max-width: 320px; border-radius: 16px; box-shadow: 0 16px 36px rgba(0,0,0,0.4); border: 2px solid rgba(255,255,255,0.25); transition: transform 0.3s ease;" onerror="this.onerror=null; this.src='https://cdn.shopify.com/s/files/1/0663/8783/7093/files/VS_Card_Final_Design_Golden_1.png';">
+            {% endif %}
           </div>
 
-          <p style="font-size:12.5px; color:#cbd5e1; margin:0 0 12px 0;">
+          <p style="font-size:12.5px; color:#cbd5e1; margin:8px 0 12px 0; line-height:1.5;">
             Patented US-German Terahertz frequency technology stabilizes voltage fluctuations and eliminates inductive reactive current from home motors.
           </p>
 
@@ -1212,7 +1208,13 @@
 {% schema %}
 {
   "name": "Residential Cards Layout",
-  "settings": [],
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "card_image",
+      "label": "Residential Hero Card Image"
+    }
+  ],
   "presets": [
     {
       "name": "Residential Cards Layout"
