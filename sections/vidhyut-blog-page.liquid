@@ -1241,23 +1241,27 @@
     <!-- TWO-COL GRID + SIDEBAR -->
     <div class="vsblog-two-col">
 
-      <!-- LEFT: Article Grid (7 GRID CARDS) -->
+      <!-- LEFT: Article Grid (11 GRID CARDS) -->
       <div>
-        <div class="vsblog-section-title"><i class="fa-solid fa-newspaper"></i> Latest Articles (7)</div>
+        <div class="vsblog-section-title"><i class="fa-solid fa-newspaper"></i> Latest Articles (11)</div>
         <div class="vsblog-grid" id="vsblog_article_grid">
 
           <!-- Card 1 -->
           <div class="vsblog-card" data-category="Franchise" data-title="Understanding the 3 Exclusive District Franchise Models of Vidhyut Saathi">
             <div class="vsblog-card-img">
-              <div class="vsblog-thumb-placeholder" style="background: linear-gradient(135deg, #fff7ed 0%, #ffede0 100%);">
-                <svg viewBox="0 0 400 220" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-                  <g transform="translate(140,40)">
-                    <rect x="20" y="30" width="120" height="70" rx="8" fill="none" stroke="#ec5c0a" stroke-width="2"/>
-                    <circle cx="80" cy="65" r="16" fill="none" stroke="#007b3e" stroke-width="2"/>
-                  </g>
-                  <text x="200" y="190" text-anchor="middle" fill="#ec5c0a" font-size="10" font-weight="bold" font-family="Arial">BUSINESS MODELS</text>
-                </svg>
-              </div>
+              {% if section.settings.card_1_image != blank %}
+                <img src="{{ section.settings.card_1_image | image_url: width: 600 }}" alt="Franchise Models Image" loading="lazy">
+              {% else %}
+                <div class="vsblog-thumb-placeholder" style="background: linear-gradient(135deg, #fff7ed 0%, #ffede0 100%);">
+                  <svg viewBox="0 0 400 220" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                    <g transform="translate(140,40)">
+                      <rect x="20" y="30" width="120" height="70" rx="8" fill="none" stroke="#ec5c0a" stroke-width="2"/>
+                      <circle cx="80" cy="65" r="16" fill="none" stroke="#007b3e" stroke-width="2"/>
+                    </g>
+                    <text x="200" y="190" text-anchor="middle" fill="#ec5c0a" font-size="10" font-weight="bold" font-family="Arial">BUSINESS MODELS</text>
+                  </svg>
+                </div>
+              {% endif %}
               <span class="vsblog-card-cat-badge">Franchise</span>
             </div>
             <div class="vsblog-card-body">
@@ -1273,16 +1277,20 @@
           <!-- Card 2 -->
           <div class="vsblog-card" data-category="Technology" data-title="Why ISO 9001:2015 & ISO 14001 Certification Ensures Top Device Safety">
             <div class="vsblog-card-img">
-              <div class="vsblog-thumb-placeholder" style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);">
-                <svg viewBox="0 0 400 220" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-                  <g transform="translate(145,38)">
-                    <rect x="10" y="15" width="90" height="62" rx="5" fill="none" stroke="#007b3e" stroke-width="2"/>
-                    <line x1="55" y1="77" x2="55" y2="100" stroke="#007b3e" stroke-width="2"/>
-                    <circle cx="55" cy="46" r="18" fill="none" stroke="#ec5c0a" stroke-width="2"/>
-                  </g>
-                  <text x="200" y="190" text-anchor="middle" fill="#007b3e" font-size="10" font-weight="bold" font-family="Arial">ISO CERTIFIED</text>
-                </svg>
-              </div>
+              {% if section.settings.card_2_image != blank %}
+                <img src="{{ section.settings.card_2_image | image_url: width: 600 }}" alt="ISO Certification Image" loading="lazy">
+              {% else %}
+                <div class="vsblog-thumb-placeholder" style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);">
+                  <svg viewBox="0 0 400 220" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                    <g transform="translate(145,38)">
+                      <rect x="10" y="15" width="90" height="62" rx="5" fill="none" stroke="#007b3e" stroke-width="2"/>
+                      <line x1="55" y1="77" x2="55" y2="100" stroke="#007b3e" stroke-width="2"/>
+                      <circle cx="55" cy="46" r="18" fill="none" stroke="#ec5c0a" stroke-width="2"/>
+                    </g>
+                    <text x="200" y="190" text-anchor="middle" fill="#007b3e" font-size="10" font-weight="bold" font-family="Arial">ISO CERTIFIED</text>
+                  </svg>
+                </div>
+              {% endif %}
               <span class="vsblog-card-cat-badge">Technology</span>
             </div>
             <div class="vsblog-card-body">
@@ -1298,15 +1306,19 @@
           <!-- Card 3 -->
           <div class="vsblog-card" data-category="Energy Savings" data-title="How Residential & Commercial Establishments Cut Power Losses">
             <div class="vsblog-card-img">
-              <div class="vsblog-thumb-placeholder" style="background: linear-gradient(135deg, #fff7ed 0%, #ffede0 100%);">
-                <svg viewBox="0 0 400 220" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-                  <g transform="translate(160,40)">
-                    <polygon points="40,0 55,55 35,55 50,110" fill="none" stroke="#f97316" stroke-width="2.5"/>
-                    <circle cx="40" cy="55" r="38" fill="none" stroke="#f97316" stroke-width="1" opacity="0.6"/>
-                  </g>
-                  <text x="200" y="190" text-anchor="middle" fill="#ec5c0a" font-size="10" font-weight="bold" font-family="Arial">POWER SAVINGS</text>
-                </svg>
-              </div>
+              {% if section.settings.card_3_image != blank %}
+                <img src="{{ section.settings.card_3_image | image_url: width: 600 }}" alt="Power Losses Image" loading="lazy">
+              {% else %}
+                <div class="vsblog-thumb-placeholder" style="background: linear-gradient(135deg, #fff7ed 0%, #ffede0 100%);">
+                  <svg viewBox="0 0 400 220" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                    <g transform="translate(160,40)">
+                      <polygon points="40,0 55,55 35,55 50,110" fill="none" stroke="#f97316" stroke-width="2.5"/>
+                      <circle cx="40" cy="55" r="38" fill="none" stroke="#f97316" stroke-width="1" opacity="0.6"/>
+                    </g>
+                    <text x="200" y="190" text-anchor="middle" fill="#ec5c0a" font-size="10" font-weight="bold" font-family="Arial">POWER SAVINGS</text>
+                  </svg>
+                </div>
+              {% endif %}
               <span class="vsblog-card-cat-badge">Energy Savings</span>
             </div>
             <div class="vsblog-card-body">
@@ -1322,15 +1334,19 @@
           <!-- Card 4 -->
           <div class="vsblog-card" data-category="Franchise" data-title="KYC & Document Verification Guide for New Franchise Applicants">
             <div class="vsblog-card-img">
-              <div class="vsblog-thumb-placeholder" style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);">
-                <svg viewBox="0 0 400 220" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-                  <g transform="translate(140,40)">
-                    <rect x="20" y="30" width="120" height="70" rx="8" fill="none" stroke="#0284c7" stroke-width="2"/>
-                    <circle cx="80" cy="65" r="16" fill="none" stroke="#ec5c0a" stroke-width="2"/>
-                  </g>
-                  <text x="200" y="190" text-anchor="middle" fill="#0284c7" font-size="10" font-weight="bold" font-family="Arial">KYC VERIFICATION</text>
-                </svg>
-              </div>
+              {% if section.settings.card_4_image != blank %}
+                <img src="{{ section.settings.card_4_image | image_url: width: 600 }}" alt="KYC Verification Image" loading="lazy">
+              {% else %}
+                <div class="vsblog-thumb-placeholder" style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);">
+                  <svg viewBox="0 0 400 220" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                    <g transform="translate(140,40)">
+                      <rect x="20" y="30" width="120" height="70" rx="8" fill="none" stroke="#0284c7" stroke-width="2"/>
+                      <circle cx="80" cy="65" r="16" fill="none" stroke="#ec5c0a" stroke-width="2"/>
+                    </g>
+                    <text x="200" y="190" text-anchor="middle" fill="#0284c7" font-size="10" font-weight="bold" font-family="Arial">KYC VERIFICATION</text>
+                  </svg>
+                </div>
+              {% endif %}
               <span class="vsblog-card-cat-badge">Franchise</span>
             </div>
             <div class="vsblog-card-body">
@@ -1346,15 +1362,19 @@
           <!-- Card 5 -->
           <div class="vsblog-card" data-category="Technology" data-title="Power Factor Optimization: Active vs. Reactive Power Explained">
             <div class="vsblog-card-img">
-              <div class="vsblog-thumb-placeholder" style="background: linear-gradient(135deg, #fff7ed 0%, #ffefe0 100%);">
-                <svg viewBox="0 0 400 220" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-                  <g transform="translate(150,40)">
-                    <circle cx="50" cy="50" r="40" fill="none" stroke="#ec5c0a" stroke-width="2"/>
-                    <path d="M 20 50 Q 50 10, 80 50 T 140 50" fill="none" stroke="#007b3e" stroke-width="2"/>
-                  </g>
-                  <text x="200" y="190" text-anchor="middle" fill="#ec5c0a" font-size="10" font-weight="bold" font-family="Arial">POWER FACTOR TECH</text>
-                </svg>
-              </div>
+              {% if section.settings.card_5_image != blank %}
+                <img src="{{ section.settings.card_5_image | image_url: width: 600 }}" alt="Power Factor Tech Image" loading="lazy">
+              {% else %}
+                <div class="vsblog-thumb-placeholder" style="background: linear-gradient(135deg, #fff7ed 0%, #ffefe0 100%);">
+                  <svg viewBox="0 0 400 220" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                    <g transform="translate(150,40)">
+                      <circle cx="50" cy="50" r="40" fill="none" stroke="#ec5c0a" stroke-width="2"/>
+                      <path d="M 20 50 Q 50 10, 80 50 T 140 50" fill="none" stroke="#007b3e" stroke-width="2"/>
+                    </g>
+                    <text x="200" y="190" text-anchor="middle" fill="#ec5c0a" font-size="10" font-weight="bold" font-family="Arial">POWER FACTOR TECH</text>
+                  </svg>
+                </div>
+              {% endif %}
               <span class="vsblog-card-cat-badge">Technology</span>
             </div>
             <div class="vsblog-card-body">
@@ -1370,15 +1390,19 @@
           <!-- Card 6 -->
           <div class="vsblog-card" data-category="Technology" data-title="10-Year Replacement Warranty & 24/7 Customer Support Network">
             <div class="vsblog-card-img">
-              <div class="vsblog-thumb-placeholder" style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);">
-                <svg viewBox="0 0 400 220" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-                  <g transform="translate(155,35)">
-                    <path d="M40 10 L80 30 L80 80 Q80 120 40 140 Q0 120 0 80 L0 30 Z" fill="none" stroke="#007b3e" stroke-width="2"/>
-                    <path d="M25 70 L35 85 L60 50" fill="none" stroke="#ec5c0a" stroke-width="2.5"/>
-                  </g>
-                  <text x="200" y="190" text-anchor="middle" fill="#007b3e" font-size="10" font-weight="bold" font-family="Arial">10-YEAR WARRANTY</text>
-                </svg>
-              </div>
+              {% if section.settings.card_6_image != blank %}
+                <img src="{{ section.settings.card_6_image | image_url: width: 600 }}" alt="10 Year Warranty Image" loading="lazy">
+              {% else %}
+                <div class="vsblog-thumb-placeholder" style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);">
+                  <svg viewBox="0 0 400 220" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                    <g transform="translate(155,35)">
+                      <path d="M40 10 L80 30 L80 80 Q80 120 40 140 Q0 120 0 80 L0 30 Z" fill="none" stroke="#007b3e" stroke-width="2"/>
+                      <path d="M25 70 L35 85 L60 50" fill="none" stroke="#ec5c0a" stroke-width="2.5"/>
+                    </g>
+                    <text x="200" y="190" text-anchor="middle" fill="#007b3e" font-size="10" font-weight="bold" font-family="Arial">10-YEAR WARRANTY</text>
+                  </svg>
+                </div>
+              {% endif %}
               <span class="vsblog-card-cat-badge">Technology</span>
             </div>
             <div class="vsblog-card-body">
@@ -1394,16 +1418,20 @@
           <!-- Card 7 -->
           <div class="vsblog-card" data-category="Franchise" data-title="Franchise Growth: Partner Success Across Rajasthan & UP">
             <div class="vsblog-card-img">
-              <div class="vsblog-thumb-placeholder" style="background: linear-gradient(135deg, #fff7ed 0%, #ffede0 100%);">
-                <svg viewBox="0 0 400 220" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-                  <g transform="translate(130,35)">
-                    <polyline points="10,130 50,90 90,108 130,58 165,78" fill="none" stroke="#007b3e" stroke-width="2.5"/>
-                    <circle cx="10" cy="130" r="5" fill="#007b3e"/>
-                    <circle cx="165" cy="78" r="5" fill="#ec5c0a"/>
-                  </g>
-                  <text x="200" y="190" text-anchor="middle" fill="#ec5c0a" font-size="10" font-weight="bold" font-family="Arial">FRANCHISE SUCCESS</text>
-                </svg>
-              </div>
+              {% if section.settings.card_7_image != blank %}
+                <img src="{{ section.settings.card_7_image | image_url: width: 600 }}" alt="Franchise Success Image" loading="lazy">
+              {% else %}
+                <div class="vsblog-thumb-placeholder" style="background: linear-gradient(135deg, #fff7ed 0%, #ffede0 100%);">
+                  <svg viewBox="0 0 400 220" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                    <g transform="translate(130,35)">
+                      <polyline points="10,130 50,90 90,108 130,58 165,78" fill="none" stroke="#007b3e" stroke-width="2.5"/>
+                      <circle cx="10" cy="130" r="5" fill="#007b3e"/>
+                      <circle cx="165" cy="78" r="5" fill="#ec5c0a"/>
+                    </g>
+                    <text x="200" y="190" text-anchor="middle" fill="#ec5c0a" font-size="10" font-weight="bold" font-family="Arial">FRANCHISE SUCCESS</text>
+                  </svg>
+                </div>
+              {% endif %}
               <span class="vsblog-card-cat-badge">Franchise</span>
             </div>
             <div class="vsblog-card-body">
@@ -1412,6 +1440,120 @@
               <div class="vsblog-card-footer">
                 <span class="vsblog-card-date"><i class="fa-solid fa-calendar-days"></i> Jul 20, 2026</span>
                 <button type="button" class="vsblog-card-btn" onclick="vsOpenArticleModal(7)">Read More <i class="fa-solid fa-arrow-right"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 8 (NEW) -->
+          <div class="vsblog-card" data-category="Energy Savings" data-title="Commercial & Industrial 3-Phase Power Saver Audit Guide">
+            <div class="vsblog-card-img">
+              {% if section.settings.card_8_image != blank %}
+                <img src="{{ section.settings.card_8_image | image_url: width: 600 }}" alt="3-Phase Audit Image" loading="lazy">
+              {% else %}
+                <div class="vsblog-thumb-placeholder" style="background: linear-gradient(135deg, #fff7ed 0%, #fff0e0 100%);">
+                  <svg viewBox="0 0 400 220" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                    <g transform="translate(140,40)">
+                      <rect x="20" y="20" width="120" height="80" rx="6" fill="none" stroke="#ec5c0a" stroke-width="2"/>
+                      <line x1="50" y1="20" x2="50" y2="100" stroke="#007b3e" stroke-width="1.5"/>
+                      <line x1="80" y1="20" x2="80" y2="100" stroke="#ec5c0a" stroke-width="1.5"/>
+                      <line x1="110" y1="20" x2="110" y2="100" stroke="#007b3e" stroke-width="1.5"/>
+                    </g>
+                    <text x="200" y="190" text-anchor="middle" fill="#ec5c0a" font-size="10" font-weight="bold" font-family="Arial">3-PHASE AUDIT</text>
+                  </svg>
+                </div>
+              {% endif %}
+              <span class="vsblog-card-cat-badge">Energy Savings</span>
+            </div>
+            <div class="vsblog-card-body">
+              <span class="vsblog-card-title" onclick="vsOpenArticleModal(8)">Commercial & Industrial 3-Phase Power Saver Audit Guide</span>
+              <p class="vsblog-card-excerpt">Learn how energy auditors inspect 3-phase industrial connections, measure kVAh demand spikes, and install Vidhyut Saathi 3-Phase units to lower bills by 20–30%.</p>
+              <div class="vsblog-card-footer">
+                <span class="vsblog-card-date"><i class="fa-solid fa-calendar-days"></i> Jul 12, 2026</span>
+                <button type="button" class="vsblog-card-btn" onclick="vsOpenArticleModal(8)">Read More <i class="fa-solid fa-arrow-right"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 9 (NEW) -->
+          <div class="vsblog-card" data-category="Energy Savings" data-title="Understanding DISCOM Tariff Surcharges & Penalty Reduction">
+            <div class="vsblog-card-img">
+              {% if section.settings.card_9_image != blank %}
+                <img src="{{ section.settings.card_9_image | image_url: width: 600 }}" alt="DISCOM Tariff Image" loading="lazy">
+              {% else %}
+                <div class="vsblog-thumb-placeholder" style="background: linear-gradient(135deg, #f0fdf4 0%, #e0f2fe 100%);">
+                  <svg viewBox="0 0 400 220" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                    <g transform="translate(150,40)">
+                      <circle cx="50" cy="50" r="42" fill="none" stroke="#007b3e" stroke-width="2"/>
+                      <polyline points="30,50 45,65 70,35" fill="none" stroke="#ec5c0a" stroke-width="2.5"/>
+                    </g>
+                    <text x="200" y="190" text-anchor="middle" fill="#007b3e" font-size="10" font-weight="bold" font-family="Arial">DISCOM COMPLIANCE</text>
+                  </svg>
+                </div>
+              {% endif %}
+              <span class="vsblog-card-cat-badge">Energy Savings</span>
+            </div>
+            <div class="vsblog-card-body">
+              <span class="vsblog-card-title" onclick="vsOpenArticleModal(9)">Understanding DISCOM Tariff Surcharges & Penalty Reduction</span>
+              <p class="vsblog-card-excerpt">DISCOM state electricity boards levy heavy penalties on low power factor premises. Discover how keeping power factor near 0.99 eliminates tariff penalties entirely.</p>
+              <div class="vsblog-card-footer">
+                <span class="vsblog-card-date"><i class="fa-solid fa-calendar-days"></i> Jul 05, 2026</span>
+                <button type="button" class="vsblog-card-btn" onclick="vsOpenArticleModal(9)">Read More <i class="fa-solid fa-arrow-right"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 10 (NEW) -->
+          <div class="vsblog-card" data-category="Franchise" data-title="How Franchise District Partners Lock Exclusive Territory Rights">
+            <div class="vsblog-card-img">
+              {% if section.settings.card_10_image != blank %}
+                <img src="{{ section.settings.card_10_image | image_url: width: 600 }}" alt="Territory Rights Image" loading="lazy">
+              {% else %}
+                <div class="vsblog-thumb-placeholder" style="background: linear-gradient(135deg, #fff7ed 0%, #ffe8d6 100%);">
+                  <svg viewBox="0 0 400 220" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                    <g transform="translate(145,40)">
+                      <rect x="15" y="20" width="110" height="75" rx="10" fill="none" stroke="#ec5c0a" stroke-width="2"/>
+                      <path d="M70 40 L70 75 M55 55 L85 55" stroke="#007b3e" stroke-width="2"/>
+                    </g>
+                    <text x="200" y="190" text-anchor="middle" fill="#ec5c0a" font-size="10" font-weight="bold" font-family="Arial">TERRITORY MONOPOLY</text>
+                  </svg>
+                </div>
+              {% endif %}
+              <span class="vsblog-card-cat-badge">Franchise</span>
+            </div>
+            <div class="vsblog-card-body">
+              <span class="vsblog-card-title" onclick="vsOpenArticleModal(10)">How Franchise District Partners Lock Exclusive Territory Rights</span>
+              <p class="vsblog-card-excerpt">A complete walkthrough of the district reservation process. Lock in exclusive rights for your assigned district with guaranteed zero internal competition.</p>
+              <div class="vsblog-card-footer">
+                <span class="vsblog-card-date"><i class="fa-solid fa-calendar-days"></i> Jun 28, 2026</span>
+                <button type="button" class="vsblog-card-btn" onclick="vsOpenArticleModal(10)">Read More <i class="fa-solid fa-arrow-right"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 11 (NEW) -->
+          <div class="vsblog-card" data-category="Technology" data-title="Safety Protocols: V0-Grade Flame Retardant Casing & Surge Protection">
+            <div class="vsblog-card-img">
+              {% if section.settings.card_11_image != blank %}
+                <img src="{{ section.settings.card_11_image | image_url: width: 600 }}" alt="Safety Casing Image" loading="lazy">
+              {% else %}
+                <div class="vsblog-thumb-placeholder" style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);">
+                  <svg viewBox="0 0 400 220" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                    <g transform="translate(155,35)">
+                      <path d="M40 10 L80 30 L80 80 Q80 120 40 140 Q0 120 0 80 L0 30 Z" fill="none" stroke="#007b3e" stroke-width="2"/>
+                      <polygon points="40,40 48,65 38,65 44,90" fill="#ec5c0a"/>
+                    </g>
+                    <text x="200" y="190" text-anchor="middle" fill="#007b3e" font-size="10" font-weight="bold" font-family="Arial">SAFETY & SURGE TECH</text>
+                  </svg>
+                </div>
+              {% endif %}
+              <span class="vsblog-card-cat-badge">Technology</span>
+            </div>
+            <div class="vsblog-card-body">
+              <span class="vsblog-card-title" onclick="vsOpenArticleModal(11)">Safety Protocols: V0-Grade Flame Retardant Casing & Surge Protection</span>
+              <p class="vsblog-card-excerpt">Built with German polycarbonate V0-grade fire-retardant outer shell and integrated 6kV lightning surge protection to safeguard your home appliances 24/7.</p>
+              <div class="vsblog-card-footer">
+                <span class="vsblog-card-date"><i class="fa-solid fa-calendar-days"></i> Jun 20, 2026</span>
+                <button type="button" class="vsblog-card-btn" onclick="vsOpenArticleModal(11)">Read More <i class="fa-solid fa-arrow-right"></i></button>
               </div>
             </div>
           </div>
@@ -1447,6 +1589,14 @@
             <div class="vsblog-sidebar-post-info">
               <h4>Why ISO 9001 & ISO 14001 Certification Matters</h4>
               <span>Aug 18, 2026</span>
+            </div>
+          </div>
+
+          <div class="vsblog-sidebar-post" onclick="vsOpenArticleModal(8)">
+            <span class="vsblog-sidebar-post-num">4</span>
+            <div class="vsblog-sidebar-post-info">
+              <h4>Commercial & Industrial 3-Phase Power Saver Audit Guide</h4>
+              <span>Jul 12, 2026</span>
             </div>
           </div>
         </div>
@@ -1542,7 +1692,7 @@
 </div>
 
 <script>
-  // DETAILED COMPREHENSIVE MULTI-ARTICLE DATABASE (8 ARTICLES)
+  // DETAILED COMPREHENSIVE MULTI-ARTICLE DATABASE (12 ARTICLES)
   var VS_ARTICLES = [
     {
       title: "How Vidhyut Saathi's Terahertz Technology Reduces Electricity Bills by 20–30%",
@@ -1685,6 +1835,62 @@
           <strong>Partner Insight:</strong> Exclusive territorial protection allowed district franchise leaders to capture 45% market share in their first year with zero local competition!
         </div>
       `
+    },
+    {
+      title: "Commercial & Industrial 3-Phase Power Saver Audit Guide",
+      category: "Energy Savings",
+      date: "Jul 12, 2026",
+      author: "Energy Audit Cell",
+      readTime: "7 min read",
+      html: `
+        <p>3-Phase electrical systems in factories, cold storages, rice mills, and commercial complexes carry heavy inductive motor loads. Unbalanced phases and voltage harmonics inflate kVAh meter billing significantly.</p>
+        <div class="vsblog-modal-h3"><i class="fa-solid fa-bolt-lightning"></i> Key Audit Steps</div>
+        <ul class="vsblog-modal-list">
+          <li><strong>Phase Balance Check:</strong> Measuring current (Amperes) across L1, L2, and L3 lines to prevent neutral conductor heating.</li>
+          <li><strong>Harmonic Distortion Analysis:</strong> Installing Vidhyut Saathi 3-Phase Terahertz units to suppress THD (Total Harmonic Distortion) below 3%.</li>
+          <li><strong>Guaranteed Return on Investment:</strong> Most commercial installations recover device cost within 3 to 5 months through 20–30% DISCOM bill reductions.</li>
+        </ul>
+      `
+    },
+    {
+      title: "Understanding DISCOM Tariff Surcharges & Penalty Reduction",
+      category: "Energy Savings",
+      date: "Jul 05, 2026",
+      author: "DISCOM Compliance Bureau",
+      readTime: "6 min read",
+      html: `
+        <p>State DISCOMs across India mandate power factor compliance for commercial tariff categories. Falling below 0.85 PF incurs penalty surcharges ranging from 2% to 10% on the total monthly bill.</p>
+        <div class="vsblog-modal-box-highlight">
+          <strong>Incentive Opportunity:</strong> Maintaining power factor above 0.95 grants electricity consumers a DISCOM rebate bonus of 0.5% to 2% on monthly energy charges!
+        </div>
+      `
+    },
+    {
+      title: "How Franchise District Partners Lock Exclusive Territory Rights",
+      category: "Franchise",
+      date: "Jun 28, 2026",
+      author: "Franchise Legal Desk",
+      readTime: "5 min read",
+      html: `
+        <p>Securing exclusive district distribution rights ensures zero brand competition in your target geographic zone. Here is the step-by-step onboarding protocol:</p>
+        <ul class="vsblog-modal-list">
+          <li><strong>Step 1: District Eligibility Check:</strong> Submit your target pincode/district via our online portal.</li>
+          <li><strong>Step 2: KYC & Agreement Verification:</strong> Upload valid ID (Aadhaar/Voter/Passport/Driver License + PAN).</li>
+          <li><strong>Step 3: Territory Allotment Letter:</strong> Receive official sole-distributor certificate issued by Vidhyut Saathi Head Office.</li>
+        </ul>
+      `
+    },
+    {
+      title: "Safety Protocols: V0-Grade Flame Retardant Casing & Surge Protection",
+      category: "Technology",
+      date: "Jun 20, 2026",
+      author: "Safety Engineering Division",
+      readTime: "5 min read",
+      html: `
+        <p>Vidhyut Saathi devices are built with military-grade safety insulation. The outer housing uses UL94 V0-grade polycarbonate plastic that resists direct flame up to 850°C and extinguishes itself within 10 seconds.</p>
+        <div class="vsblog-modal-h3"><i class="fa-solid fa-shield-halved"></i> Multi-Layer Surge Defense</div>
+        <p>Internal Metal Oxide Varistors (MOVs) divert lightning voltage spikes (up to 6,000 Volts) safely to ground, keeping your expensive connected household equipment 100% protected.</p>
+      `
     }
   ];
 
@@ -1776,6 +1982,61 @@
       "type": "image_picker",
       "id": "featured_image",
       "label": "Featured Article Custom Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "card_1_image",
+      "label": "Article 1 Custom Image (Franchise Models)"
+    },
+    {
+      "type": "image_picker",
+      "id": "card_2_image",
+      "label": "Article 2 Custom Image (ISO Certification)"
+    },
+    {
+      "type": "image_picker",
+      "id": "card_3_image",
+      "label": "Article 3 Custom Image (Power Losses)"
+    },
+    {
+      "type": "image_picker",
+      "id": "card_4_image",
+      "label": "Article 4 Custom Image (KYC Verification)"
+    },
+    {
+      "type": "image_picker",
+      "id": "card_5_image",
+      "label": "Article 5 Custom Image (Power Factor Tech)"
+    },
+    {
+      "type": "image_picker",
+      "id": "card_6_image",
+      "label": "Article 6 Custom Image (10-Year Warranty)"
+    },
+    {
+      "type": "image_picker",
+      "id": "card_7_image",
+      "label": "Article 7 Custom Image (Franchise Success)"
+    },
+    {
+      "type": "image_picker",
+      "id": "card_8_image",
+      "label": "Article 8 Custom Image (3-Phase Audit)"
+    },
+    {
+      "type": "image_picker",
+      "id": "card_9_image",
+      "label": "Article 9 Custom Image (DISCOM Tariff)"
+    },
+    {
+      "type": "image_picker",
+      "id": "card_10_image",
+      "label": "Article 10 Custom Image (Territory Monopoly)"
+    },
+    {
+      "type": "image_picker",
+      "id": "card_11_image",
+      "label": "Article 11 Custom Image (Safety & Surge Tech)"
     }
   ],
   "presets": [
