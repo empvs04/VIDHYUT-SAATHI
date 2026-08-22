@@ -8,11 +8,18 @@
 
   .vs-franchise-wrapper {
     background-color: {{ section.settings.bg_color }};
-    padding: 50px 16px 90px 16px;
+    padding: 30px 12px 60px 12px;
     font-family: {% if main_font != blank %}{{ main_font.family }}, {{ main_font.fallback_families }}{% else %}'Work Sans', -apple-system, BlinkMacSystemFont, sans-serif{% endif %};
     color: {{ section.settings.text_color }};
     position: relative;
     overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  @media (min-width: 768px) {
+    .vs-franchise-wrapper {
+      padding: 50px 20px 90px 20px;
+    }
   }
 
   /* Soft Light Radial Glow Ornaments */
@@ -21,8 +28,8 @@
     position: absolute;
     top: -100px;
     left: -100px;
-    width: 450px;
-    height: 450px;
+    width: 350px;
+    height: 350px;
     background: radial-gradient(circle, rgba(236, 92, 10, 0.08) 0%, rgba(255, 255, 255, 0) 70%);
     border-radius: 50%;
     pointer-events: none;
@@ -33,8 +40,8 @@
     position: absolute;
     bottom: -100px;
     right: -100px;
-    width: 500px;
-    height: 500px;
+    width: 400px;
+    height: 400px;
     background: radial-gradient(circle, rgba(0, 123, 62, 0.07) 0%, rgba(255, 255, 255, 0) 70%);
     border-radius: 50%;
     pointer-events: none;
@@ -45,38 +52,55 @@
     margin: 0 auto;
     position: relative;
     z-index: 2;
+    box-sizing: border-box;
   }
 
-  /* Top Header Banner (Light Theme) */
+  /* Top Header Banner */
   .vs-franchise-header {
     text-align: center;
-    margin-bottom: 38px;
+    margin-bottom: 24px;
+    padding: 0 4px;
+  }
+
+  @media (min-width: 768px) {
+    .vs-franchise-header {
+      margin-bottom: 38px;
+    }
   }
 
   .vs-brand-badge {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     background: rgba(236, 92, 10, 0.08);
     border: 1px solid rgba(236, 92, 10, 0.22);
     color: #ec5c0a;
-    font-size: 13px;
+    font-size: 11px;
     font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    padding: 6px 18px;
+    letter-spacing: 0.8px;
+    padding: 5px 14px;
     border-radius: 50px;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
+  }
+
+  @media (min-width: 768px) {
+    .vs-brand-badge {
+      font-size: 13px;
+      padding: 6px 18px;
+      margin-bottom: 16px;
+    }
   }
 
   .vs-franchise-title {
-    font-size: clamp(26px, 4vw, 40px);
+    font-size: clamp(20px, 5.5vw, 38px);
     font-weight: 900;
     color: #1a1a1a;
     line-height: 1.25;
-    margin: 0 0 12px 0;
+    margin: 0 0 10px 0;
     text-transform: uppercase;
-    letter-spacing: -0.5px;
+    letter-spacing: -0.3px;
+    word-break: break-word;
   }
 
   .vs-franchise-title span {
@@ -84,11 +108,11 @@
   }
 
   .vs-franchise-subtitle {
-    font-size: clamp(14px, 2vw, 17px);
+    font-size: clamp(13px, 3.5vw, 16px);
     color: #4b5563;
     max-width: 780px;
-    margin: 0 auto 24px auto;
-    line-height: 1.6;
+    margin: 0 auto 20px auto;
+    line-height: 1.5;
     font-weight: 400;
   }
 
@@ -97,82 +121,114 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 12px;
-    margin-bottom: 35px;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+
+  @media (min-width: 768px) {
+    .vs-trust-highlights {
+      gap: 12px;
+      margin-bottom: 35px;
+    }
   }
 
   .vs-trust-chip {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     background: #ffffff;
     border: 1px solid rgba(0, 0, 0, 0.08);
-    padding: 8px 18px;
+    padding: 6px 14px;
     border-radius: 50px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-    font-size: 13px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+    font-size: 11.5px;
     font-weight: 700;
     color: #1e293b;
+    white-space: nowrap;
+  }
+
+  @media (min-width: 768px) {
+    .vs-trust-chip {
+      font-size: 13px;
+      padding: 8px 18px;
+    }
   }
 
   .vs-trust-chip i {
     color: #007b3e;
-    font-size: 15px;
+    font-size: 13px;
   }
 
   /* Main Grid: Form Left, Perks Right */
   .vs-franchise-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: 20px;
     align-items: start;
   }
 
   @media (min-width: 992px) {
     .vs-franchise-grid {
       grid-template-columns: 1.4fr 0.8fr;
+      gap: 32px;
     }
   }
 
-  /* Executive Light Form Card */
+  /* Executive Form Card - Mobile Optimized */
   .vs-form-card {
     background: #ffffff;
-    border-radius: 24px;
-    padding: 36px 32px;
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.05);
+    border-radius: 18px;
+    padding: 22px 14px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
     border: 1px solid rgba(236, 92, 10, 0.15);
     color: #1a1a1a;
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  @media (min-width: 640px) {
+    .vs-form-card {
+      border-radius: 24px;
+      padding: 36px 32px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.05);
+    }
   }
 
   .vs-form-card-header {
     text-align: center;
     border-bottom: 2px dashed #f1f5f9;
-    padding-bottom: 20px;
-    margin-bottom: 28px;
+    padding-bottom: 16px;
+    margin-bottom: 20px;
   }
 
   .vs-form-brand-logo {
-    max-height: 55px;
+    max-height: 44px;
     width: auto;
-    margin: 0 auto 10px auto;
+    margin: 0 auto 8px auto;
     display: block;
+  }
+
+  @media (min-width: 768px) {
+    .vs-form-brand-logo {
+      max-height: 55px;
+    }
   }
 
   .vs-text-logo {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    font-size: 22px;
+    gap: 6px;
+    font-size: 18px;
     font-weight: 900;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
   }
 
   .vs-text-logo .logo-vs {
     background: #ec5c0a;
     color: #ffffff;
-    padding: 2px 8px;
-    border-radius: 6px;
-    font-size: 18px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 15px;
   }
 
   .vs-text-logo .logo-name {
@@ -184,23 +240,34 @@
   }
 
   .vs-form-card-header h3 {
-    font-size: 18px;
+    font-size: 14px;
     font-weight: 800;
     color: #007b3e;
-    margin: 6px 0 0 0;
+    margin: 4px 0 0 0;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-
-  /* Form Inputs & Rows */
-  .vs-form-row {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 18px;
-    margin-bottom: 18px;
+    letter-spacing: 0.3px;
+    line-height: 1.35;
   }
 
   @media (min-width: 640px) {
+    .vs-form-card-header h3 {
+      font-size: 18px;
+    }
+  }
+
+  /* Form Inputs & Mobile Stacking */
+  .vs-form-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+
+  @media (min-width: 640px) {
+    .vs-form-row {
+      gap: 18px;
+      margin-bottom: 18px;
+    }
     .vs-form-row.two-col {
       grid-template-columns: 1fr 1fr;
     }
@@ -209,11 +276,13 @@
   .vs-form-group {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 5px;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .vs-form-group label {
-    font-size: 12.5px;
+    font-size: 12px;
     font-weight: 700;
     color: #334155;
     display: flex;
@@ -229,11 +298,12 @@
     position: relative;
     display: flex;
     align-items: center;
+    width: 100%;
   }
 
   .vs-input-wrapper i.vs-field-icon {
     position: absolute;
-    left: 14px;
+    left: 12px;
     color: #ec5c0a;
     font-size: 14px;
     pointer-events: none;
@@ -242,9 +312,9 @@
   .vs-input,
   .vs-select {
     width: 100%;
-    height: 46px;
-    padding: 0 14px 0 40px;
-    font-size: 13.5px;
+    height: 48px; /* 48px touch height prevents auto-zoom on iOS */
+    padding: 0 12px 0 38px;
+    font-size: 14px; /* 14-16px prevents iOS browser auto-zoom */
     font-family: inherit;
     color: #0f172a;
     background: #f8fafc;
@@ -252,6 +322,7 @@
     border-radius: 10px;
     outline: none;
     transition: all 0.25s ease;
+    box-sizing: border-box;
   }
 
   .vs-select {
@@ -267,21 +338,24 @@
   .vs-select:focus {
     background: #ffffff;
     border-color: #ec5c0a;
-    box-shadow: 0 0 0 4px rgba(236, 92, 10, 0.12);
+    box-shadow: 0 0 0 3px rgba(236, 92, 10, 0.12);
   }
 
-  /* File Upload Wrapper */
+  /* File Upload Wrapper - Mobile Touch Friendly */
   .vs-file-upload-card {
     background: #fdfbf7;
     border: 1.5px dashed #cbd5e1;
     border-radius: 10px;
-    padding: 10px 14px;
+    padding: 10px 12px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 10px;
+    gap: 8px;
     transition: all 0.25s ease;
     cursor: pointer;
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 48px;
   }
 
   .vs-file-upload-card:hover {
@@ -292,22 +366,30 @@
   .vs-file-info {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     overflow: hidden;
   }
 
   .vs-file-info i {
-    font-size: 16px;
+    font-size: 15px;
     color: #ec5c0a;
     flex-shrink: 0;
   }
 
   .vs-file-name {
-    font-size: 12px;
+    font-size: 11.5px;
     color: #64748b;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    max-width: 150px;
+  }
+
+  @media (min-width: 480px) {
+    .vs-file-name {
+      max-width: 220px;
+      font-size: 12px;
+    }
   }
 
   .vs-file-btn {
@@ -315,10 +397,11 @@
     color: #ffffff;
     font-size: 11px;
     font-weight: 700;
-    padding: 6px 12px;
+    padding: 6px 10px;
     border-radius: 6px;
     white-space: nowrap;
     pointer-events: none;
+    flex-shrink: 0;
   }
 
   .vs-file-upload-card input[type="file"] {
@@ -329,8 +412,8 @@
   .vs-terms-group {
     display: flex;
     align-items: flex-start;
-    gap: 10px;
-    margin: 20px 0 24px 0;
+    gap: 8px;
+    margin: 16px 0 20px 0;
   }
 
   .vs-terms-group input[type="checkbox"] {
@@ -338,14 +421,21 @@
     height: 18px;
     accent-color: #ec5c0a;
     cursor: pointer;
-    margin-top: 2px;
+    margin-top: 1px;
+    flex-shrink: 0;
   }
 
   .vs-terms-group label {
-    font-size: 12.5px;
+    font-size: 11.5px;
     color: #475569;
-    line-height: 1.5;
+    line-height: 1.45;
     cursor: pointer;
+  }
+
+  @media (min-width: 640px) {
+    .vs-terms-group label {
+      font-size: 12.5px;
+    }
   }
 
   .vs-terms-group label a {
@@ -354,30 +444,40 @@
     text-decoration: underline;
   }
 
-  /* Submit Button */
+  /* Submit Button - Touch Target */
   .vs-submit-btn {
     width: 100%;
-    height: 52px;
+    height: 50px;
     background: linear-gradient(135deg, #ec5c0a 0%, #f1721b 100%);
     color: #ffffff;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 900;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.8px;
     border: none;
     border-radius: 50px;
     cursor: pointer;
-    box-shadow: 0 10px 25px rgba(236, 92, 10, 0.3);
+    box-shadow: 0 8px 20px rgba(236, 92, 10, 0.3);
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 8px;
     transition: all 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
   }
 
-  .vs-submit-btn:hover {
+  @media (min-width: 640px) {
+    .vs-submit-btn {
+      height: 52px;
+      font-size: 16px;
+      letter-spacing: 1px;
+    }
+  }
+
+  .vs-submit-btn:hover,
+  .vs-submit-btn:active {
     transform: translateY(-2px);
-    box-shadow: 0 14px 30px rgba(236, 92, 10, 0.4);
+    box-shadow: 0 12px 25px rgba(236, 92, 10, 0.4);
     background: linear-gradient(135deg, #d94e02 0%, #ec5c0a 100%);
   }
 
@@ -386,40 +486,59 @@
     background: #f0fdf4;
     border: 1px solid #bbf7d0;
     color: #166534;
-    padding: 16px 20px;
+    padding: 14px 16px;
     border-radius: 12px;
-    margin-bottom: 24px;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .vs-success-box i {
-    font-size: 22px;
-    color: #007b3e;
-  }
-
-  /* Side Perks Card */
-  .vs-side-card {
-    background: #ffffff;
-    border-radius: 24px;
-    padding: 32px;
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.05);
-    border: 1px solid rgba(0, 123, 62, 0.15);
-    color: #1a1a1a;
-  }
-
-  .vs-side-title {
-    font-size: 18px;
-    font-weight: 800;
-    color: #1e293b;
-    margin: 0 0 20px 0;
-    padding-bottom: 12px;
-    border-bottom: 2px solid #f1f5f9;
+    margin-bottom: 20px;
+    font-size: 13px;
     display: flex;
     align-items: center;
     gap: 10px;
+  }
+
+  .vs-success-box i {
+    font-size: 20px;
+    color: #007b3e;
+    flex-shrink: 0;
+  }
+
+  /* Side Perks Card - Mobile Friendly */
+  .vs-side-card {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 22px 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 123, 62, 0.15);
+    color: #1a1a1a;
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  @media (min-width: 640px) {
+    .vs-side-card {
+      border-radius: 24px;
+      padding: 32px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.05);
+    }
+  }
+
+  .vs-side-title {
+    font-size: 16px;
+    font-weight: 800;
+    color: #1e293b;
+    margin: 0 0 16px 0;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f1f5f9;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  @media (min-width: 640px) {
+    .vs-side-title {
+      font-size: 18px;
+      margin: 0 0 20px 0;
+      padding-bottom: 12px;
+    }
   }
 
   .vs-side-title i {
@@ -429,81 +548,91 @@
   .vs-perk-item {
     display: flex;
     align-items: flex-start;
-    gap: 14px;
-    margin-bottom: 20px;
+    gap: 12px;
+    margin-bottom: 16px;
   }
 
   .vs-perk-icon {
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     background: rgba(0, 123, 62, 0.08);
     color: #007b3e;
-    border-radius: 10px;
+    border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 17px;
+    font-size: 15px;
     flex-shrink: 0;
   }
 
+  @media (min-width: 640px) {
+    .vs-perk-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      font-size: 17px;
+    }
+  }
+
   .vs-perk-content h4 {
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 700;
     color: #0f172a;
-    margin: 0 0 4px 0;
+    margin: 0 0 3px 0;
   }
 
   .vs-perk-content p {
-    font-size: 12.5px;
+    font-size: 12px;
     color: #64748b;
     margin: 0;
-    line-height: 1.45;
+    line-height: 1.4;
   }
 
   /* Earning Highlight Banner */
   .vs-earning-banner {
     background: linear-gradient(135deg, rgba(236, 92, 10, 0.08) 0%, rgba(241, 114, 27, 0.15) 100%);
     border: 1.5px dashed #ec5c0a;
-    border-radius: 16px;
-    padding: 20px;
+    border-radius: 14px;
+    padding: 16px;
     text-align: center;
-    margin-top: 24px;
+    margin-top: 20px;
   }
 
   .vs-earning-banner h4 {
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 800;
     color: #ec5c0a;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    margin: 0 0 6px 0;
+    letter-spacing: 0.8px;
+    margin: 0 0 4px 0;
   }
 
   .vs-earning-banner p.earning-val {
-    font-size: 26px;
+    font-size: clamp(20px, 5vw, 26px);
     font-weight: 900;
     color: #1a1a1a;
     margin: 0 0 4px 0;
   }
 
   .vs-earning-banner p.earning-desc {
-    font-size: 12px;
+    font-size: 11.5px;
     color: #475569;
     margin: 0;
+    line-height: 1.35;
   }
 
-  /* Support Helpline */
+  /* Mobile Support Buttons */
   .vs-support-card {
-    margin-top: 24px;
+    margin-top: 20px;
     background: #f8fafc;
-    border-radius: 14px;
-    padding: 16px;
+    border-radius: 12px;
+    padding: 14px;
     text-align: center;
     border: 1px solid #e2e8f0;
   }
 
   .vs-support-card p {
-    font-size: 13px;
+    font-size: 12.5px;
     font-weight: 700;
     color: #334155;
     margin: 0 0 10px 0;
@@ -511,19 +640,36 @@
 
   .vs-support-buttons {
     display: flex;
-    justify-content: center;
-    gap: 10px;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  @media (min-width: 480px) {
+    .vs-support-buttons {
+      flex-direction: row;
+      justify-content: center;
+      gap: 10px;
+    }
   }
 
   .vs-support-btn {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 6px;
-    padding: 8px 14px;
+    padding: 10px 14px;
     border-radius: 8px;
     font-size: 12px;
     font-weight: 700;
     text-decoration: none;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  @media (min-width: 480px) {
+    .vs-support-btn {
+      width: auto;
+    }
   }
 
   .vs-support-btn.wa {
@@ -540,7 +686,7 @@
 <div class="vs-franchise-wrapper">
   <div class="vs-franchise-container">
     
-    <!-- Top Header Banner (Light Theme) -->
+    <!-- Top Header Banner -->
     <div class="vs-franchise-header">
       <div class="vs-brand-badge">
         <i class="fa-solid fa-bolt"></i> {{ section.settings.badge_text }}
@@ -552,7 +698,7 @@
         {{ section.settings.subheading }}
       </p>
 
-      <!-- Light Trust Chips -->
+      <!-- Mobile Scrollable Trust Chips -->
       <div class="vs-trust-highlights">
         <div class="vs-trust-chip">
           <i class="fa-solid fa-certificate"></i> ISO 9001:2015 Certified
