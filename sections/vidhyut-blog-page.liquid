@@ -26,7 +26,7 @@
   .vsblog-hero {
     position: relative;
     background: linear-gradient(135deg, #ffffff 0%, #fff1e0 40%, #fff8ef 100%);
-    padding: clamp(30px, 5vw, 68px) 16px clamp(26px, 4vw, 48px) 16px;
+    padding: clamp(30px, 5vw, 65px) 16px clamp(26px, 4vw, 44px) 16px;
     overflow: hidden;
     text-align: center;
     border-bottom: 1.5px solid rgba(236, 92, 10, 0.14);
@@ -82,7 +82,7 @@
   }
 
   .vsblog-hero h1 {
-    font-size: clamp(23px, 4.5vw, 44px);
+    font-size: clamp(23px, 4.5vw, 42px);
     font-weight: 700;
     color: #0f172a;
     line-height: 1.24;
@@ -99,7 +99,7 @@
 
   .vsblog-hero-desc {
     color: #475569;
-    font-size: clamp(13px, 1.8vw, 16px);
+    font-size: clamp(13px, 1.8vw, 15.5px);
     line-height: 1.55;
     font-weight: 400;
     max-width: 640px;
@@ -154,7 +154,7 @@
   .vsblog-breadcrumb .sep { color: #cbd5e1; }
   .vsblog-breadcrumb .cur { color: #ec5c0a; font-weight: 600; }
 
-  /* ─── FLOATING STATS STRIP (EXACT EQUAL MOBILE ALIGNMENT) ─── */
+  /* ─── FLOATING STATS STRIP ─── */
   .vsblog-stats-strip {
     max-width: 1280px;
     margin: -18px auto 0 auto;
@@ -231,7 +231,7 @@
     font-weight: 500;
   }
 
-  /* ─── MAIN BODY (EXACT EQUAL MOBILE ALIGNMENT) ─── */
+  /* ─── MAIN BODY ─── */
   .vsblog-body {
     max-width: 1280px;
     margin: 0 auto;
@@ -239,7 +239,7 @@
   }
 
   @media (min-width: 768px) {
-    .vsblog-body { padding: 40px 20px clamp(40px, 5vw, 75px) 20px; }
+    .vsblog-body { padding: 36px 20px clamp(40px, 5vw, 70px) 20px; }
   }
 
   /* ─── CATEGORY FILTER BAR & SEARCH ─── */
@@ -262,8 +262,8 @@
       align-items: center;
       justify-content: space-between;
       border-radius: 60px;
-      padding: 14px 28px;
-      margin-bottom: 38px;
+      padding: 12px 24px;
+      margin-bottom: 32px;
       box-shadow: 0 6px 24px rgba(0, 0, 0, 0.04);
     }
   }
@@ -330,7 +330,7 @@
   }
 
   @media (min-width: 768px) {
-    .vsblog-search { width: auto; min-width: 250px; max-width: 300px; }
+    .vsblog-search { width: auto; min-width: 240px; max-width: 280px; }
   }
 
   .vsblog-search input {
@@ -367,9 +367,9 @@
     padding: 0;
   }
 
-  /* ─── ULTRA LUCRATIVE FEATURED ARTICLE CARD (BOTH MOBILE & DESKTOP) ─── */
+  /* ─── ULTRA LUCRATIVE FEATURED ARTICLE CARD ─── */
   .vsblog-featured { margin-bottom: 28px; width: 100%; }
-  @media (min-width: 768px) { .vsblog-featured { margin-bottom: 42px; } }
+  @media (min-width: 768px) { .vsblog-featured { margin-bottom: 36px; } }
 
   .vsblog-section-title {
     display: flex;
@@ -393,11 +393,11 @@
   .vsblog-feat-card {
     display: grid;
     grid-template-columns: 1fr;
-    background: linear-gradient(135deg, #ffffff 0%, #fffbf7 100%);
+    background: #ffffff;
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 10px 28px rgba(236, 92, 10, 0.08), 0 2px 8px rgba(0, 0, 0, 0.03);
-    border: 2px solid rgba(236, 92, 10, 0.22);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+    border: 1.5px solid rgba(236, 92, 10, 0.2);
     transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     cursor: pointer;
     position: relative;
@@ -406,19 +406,18 @@
 
   @media (min-width: 1040px) {
     .vsblog-feat-card { 
-      grid-template-columns: 1.25fr 1fr; 
-      border-radius: 26px; 
-      min-height: 410px;
-      box-shadow: 0 14px 36px rgba(236, 92, 10, 0.1), 0 4px 14px rgba(0, 0, 0, 0.03);
+      grid-template-columns: 1.2fr 1fr; 
+      border-radius: 22px; 
+      min-height: 380px;
     }
   }
 
   .vsblog-feat-card:active { transform: scale(0.99); }
 
   .vsblog-feat-card:hover {
-    box-shadow: 0 22px 48px rgba(236, 92, 10, 0.16), 0 6px 16px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 18px 42px rgba(236, 92, 10, 0.14), 0 4px 12px rgba(0, 0, 0, 0.04);
     border-color: #ec5c0a;
-    transform: translateY(-4px);
+    transform: translateY(-3px);
   }
 
   .vsblog-feat-img {
@@ -429,7 +428,7 @@
   }
 
   @media (min-width: 1040px) {
-    .vsblog-feat-img { height: 100%; min-height: 410px; }
+    .vsblog-feat-img { height: 100%; min-height: 380px; }
   }
 
   .vsblog-feat-img img {
@@ -449,7 +448,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #fff7ed 0%, #ffede0 100%);
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #ec5c0a 100%);
   }
 
   .vsblog-feat-badge {
@@ -472,7 +471,7 @@
     position: absolute;
     bottom: 12px;
     right: 12px;
-    background: rgba(15, 23, 42, 0.75);
+    background: rgba(15, 23, 42, 0.85);
     backdrop-filter: blur(6px);
     color: #ffffff;
     font-size: 10.5px;
@@ -486,7 +485,7 @@
   }
 
   .vsblog-feat-content {
-    padding: 18px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -494,7 +493,7 @@
   }
 
   @media (min-width: 1040px) {
-    .vsblog-feat-content { padding: 34px; }
+    .vsblog-feat-content { padding: 30px; }
   }
 
   .vsblog-cat-tag {
@@ -515,7 +514,7 @@
   }
 
   .vsblog-feat-content h2 {
-    font-size: clamp(16px, 2.5vw, 25px);
+    font-size: clamp(16px, 2.5vw, 24px);
     font-weight: 700;
     color: #0f172a;
     line-height: 1.32;
@@ -538,7 +537,7 @@
   }
 
   @media (min-width: 1040px) {
-    .vsblog-feat-content p { font-size: 14.5px; line-height: 1.6; -webkit-line-clamp: 4; margin-bottom: 22px; }
+    .vsblog-feat-content p { font-size: 14px; line-height: 1.6; -webkit-line-clamp: 3; margin-bottom: 20px; }
   }
 
   .vsblog-meta-row {
@@ -579,12 +578,12 @@
   }
 
   @media (min-width: 640px) {
-    .vsblog-read-btn { width: fit-content; padding: 12px 28px; font-size: 13.5px; }
+    .vsblog-read-btn { width: fit-content; padding: 11px 26px; font-size: 13px; }
   }
 
   .vsblog-read-btn:hover {
     transform: translateX(4px);
-    box-shadow: 0 6px 22px rgba(236, 92, 10, 0.45);
+    box-shadow: 0 6px 20px rgba(236, 92, 10, 0.42);
   }
 
   /* ─── TWO-COL LAYOUT (GRID + SIDEBAR) ─── */
@@ -597,10 +596,10 @@
   }
 
   @media (min-width: 1040px) {
-    .vsblog-two-col { grid-template-columns: 1fr 340px; gap: 32px; }
+    .vsblog-two-col { grid-template-columns: 1fr 330px; gap: 28px; }
   }
 
-  /* ULTRA LUCRATIVE ARTICLE GRID (DESKTOP 2-COL / MOBILE 1-COL) */
+  /* ─── SLEEK MODERN EDITORIAL ARTICLE GRID CARDS ─── */
   .vsblog-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -612,31 +611,18 @@
     .vsblog-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
   }
 
-  @media (min-width: 1040px) {
-    .vsblog-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
-  }
-
-  /* ══ DESKTOP-SPECIFIC CARD POLISH & PERFECT HORIZONTAL ALIGNMENT ══ */
   .vsblog-card {
     background: #ffffff;
-    border-radius: 18px;
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.035);
-    border: 1.5px solid rgba(236, 92, 10, 0.16);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.035);
+    border: 1px solid #e2e8f0;
     display: flex;
     flex-direction: column;
     height: 100%;
-    transition: all 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     position: relative;
     width: 100%;
-  }
-
-  @media (min-width: 1040px) {
-    .vsblog-card {
-      border-radius: 20px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
-      border: 1.5px solid rgba(236, 92, 10, 0.18);
-    }
   }
 
   .vsblog-card::before {
@@ -645,7 +631,7 @@
     top: 0;
     left: 0;
     right: 0;
-    height: 3.5px;
+    height: 3px;
     background: linear-gradient(90deg, #ec5c0a 0%, #ff7b00 50%, #007b3e 100%);
     opacity: 0.85;
     z-index: 5;
@@ -656,34 +642,26 @@
     transform: scale(0.985);
   }
 
-  /* DESKTOP HOVER GLOW & ELEVATION */
-  @media (min-width: 1040px) {
-    .vsblog-card:hover {
-      transform: translateY(-6px) scale(1.008);
-      box-shadow: 0 18px 40px rgba(236, 92, 10, 0.13), 0 4px 14px rgba(0, 0, 0, 0.04);
-      border-color: rgba(236, 92, 10, 0.38);
-      background: linear-gradient(180deg, #ffffff 0%, #fffbf7 100%);
-    }
+  .vsblog-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 32px rgba(236, 92, 10, 0.12), 0 4px 12px rgba(0, 0, 0, 0.04);
+    border-color: rgba(236, 92, 10, 0.35);
+  }
 
-    .vsblog-card:hover::before {
-      height: 4.5px;
-      opacity: 1;
-    }
+  .vsblog-card:hover::before {
+    height: 4px;
+    opacity: 1;
   }
 
   .vsblog-card-img {
     position: relative;
-    height: 165px;
+    height: 155px;
     overflow: hidden;
     flex-shrink: 0;
   }
 
-  @media (min-width: 600px) {
-    .vsblog-card-img { height: 180px; }
-  }
-
   @media (min-width: 1040px) {
-    .vsblog-card-img { height: 195px; }
+    .vsblog-card-img { height: 160px; }
   }
 
   .vsblog-card-img img {
@@ -694,7 +672,7 @@
   }
 
   .vsblog-card:hover .vsblog-card-img img {
-    transform: scale(1.08);
+    transform: scale(1.06);
   }
 
   .vsblog-thumb-placeholder {
@@ -707,53 +685,49 @@
 
   .vsblog-card-cat-badge {
     position: absolute;
-    top: 12px;
-    left: 12px;
-    background: rgba(255, 255, 255, 0.95);
+    top: 10px;
+    left: 10px;
+    background: rgba(255, 255, 255, 0.92);
     backdrop-filter: blur(6px);
     color: #ec5c0a;
-    font-size: 10px;
+    font-size: 9.5px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    padding: 4px 12px;
+    padding: 3.5px 11px;
     border-radius: 50px;
     z-index: 2;
-    border: 1px solid rgba(236, 92, 10, 0.22);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(236, 92, 10, 0.25);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   }
 
   .vsblog-card-readtime-badge {
     position: absolute;
-    bottom: 12px;
-    right: 12px;
-    background: rgba(15, 23, 42, 0.75);
+    bottom: 10px;
+    right: 10px;
+    background: rgba(15, 23, 42, 0.85);
     backdrop-filter: blur(4px);
     color: #ffffff;
-    font-size: 10px;
+    font-size: 9.5px;
     font-weight: 600;
-    padding: 3.5px 10px;
+    padding: 3px 9.5px;
     border-radius: 50px;
     z-index: 2;
   }
 
   .vsblog-card-body {
-    padding: 15px;
+    padding: 16px;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
   }
 
-  @media (min-width: 600px) {
-    .vsblog-card-body { padding: 18px; }
-  }
-
   @media (min-width: 1040px) {
-    .vsblog-card-body { padding: 22px 20px; }
+    .vsblog-card-body { padding: 18px 18px 16px 18px; }
   }
 
   .vsblog-card-title {
-    font-size: 14px;
+    font-size: 14.5px;
     font-weight: 700;
     color: #0f172a;
     line-height: 1.35;
@@ -765,26 +739,13 @@
     overflow: hidden;
     cursor: pointer;
     transition: color 0.2s;
-    min-height: 38px;
-  }
-
-  @media (min-width: 600px) {
-    .vsblog-card-title { font-size: 14.5px; margin-bottom: 8px; min-height: 40px; }
-  }
-
-  @media (min-width: 1040px) {
-    .vsblog-card-title { 
-      font-size: 15.5px; 
-      line-height: 1.38; 
-      margin-bottom: 10px; 
-      min-height: 44px; 
-    }
+    min-height: 40px;
   }
 
   .vsblog-card-title:hover { color: #ec5c0a; }
 
   .vsblog-card-excerpt {
-    font-size: 12px;
+    font-size: 12.5px;
     color: #64748b;
     line-height: 1.5;
     font-weight: 400;
@@ -794,22 +755,7 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
     flex-grow: 1;
-    min-height: 36px;
-  }
-
-  @media (min-width: 600px) {
-    .vsblog-card-excerpt { font-size: 12.5px; line-height: 1.55; -webkit-line-clamp: 3; min-height: 58px; margin-bottom: 16px; }
-  }
-
-  @media (min-width: 1040px) {
-    .vsblog-card-excerpt { 
-      font-size: 13px; 
-      line-height: 1.58; 
-      color: #475569;
-      -webkit-line-clamp: 3; 
-      min-height: 62px; 
-      margin-bottom: 18px; 
-    }
+    min-height: 38px;
   }
 
   .vsblog-card-footer {
@@ -822,27 +768,19 @@
     gap: 8px;
   }
 
-  @media (min-width: 1040px) {
-    .vsblog-card-footer { padding-top: 14px; border-top: 1.5px solid #f1f5f9; }
-  }
-
   .vsblog-card-date {
-    font-size: 10.5px;
-    color: #94a3b8;
+    font-size: 11px;
+    color: #64748b;
     display: flex;
     align-items: center;
     gap: 4px;
     font-weight: 500;
   }
 
-  @media (min-width: 1040px) {
-    .vsblog-card-date { font-size: 11.5px; color: #64748b; }
-  }
-
   .vsblog-card-date i { color: #ec5c0a; }
 
   .vsblog-card-btn {
-    font-size: 11px;
+    font-size: 11.5px;
     font-weight: 700;
     color: #ec5c0a;
     background: #fff0e5;
@@ -854,15 +792,6 @@
     align-items: center;
     gap: 5px;
     transition: all 0.22s ease;
-  }
-
-  @media (min-width: 1040px) {
-    .vsblog-card-btn {
-      font-size: 12px;
-      padding: 7px 16px;
-      background: linear-gradient(135deg, #fff0e5 0%, #ffe3d1 100%);
-      border: 1.5px solid rgba(236, 92, 10, 0.25);
-    }
   }
 
   .vsblog-card-btn:hover {
@@ -881,24 +810,20 @@
   }
 
   @media (min-width: 1040px) {
-    .vsblog-sidebar { position: sticky; top: 100px; gap: 24px; }
+    .vsblog-sidebar { position: sticky; top: 100px; gap: 20px; }
   }
 
   .vsblog-sidebar-card {
     background: #ffffff;
     border-radius: 18px;
     padding: 18px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.035);
-    border: 1.5px solid #f1f5f9;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+    border: 1px solid #e2e8f0;
     width: 100%;
   }
 
-  @media (min-width: 1040px) {
-    .vsblog-sidebar-card { padding: 22px; border-radius: 20px; box-shadow: 0 8px 24px rgba(0,0,0,0.04); }
-  }
-
   .vsblog-sidebar-heading {
-    font-size: 12px;
+    font-size: 12.5px;
     font-weight: 700;
     color: #0f172a;
     text-transform: uppercase;
@@ -909,10 +834,6 @@
     display: flex;
     align-items: center;
     gap: 6px;
-  }
-
-  @media (min-width: 1040px) {
-    .vsblog-sidebar-heading { font-size: 13px; margin-bottom: 14px; padding-bottom: 12px; }
   }
 
   .vsblog-sidebar-heading i { color: #ec5c0a; }
@@ -951,10 +872,6 @@
     color: #1e293b;
     margin: 0 0 3px 0;
     line-height: 1.35;
-  }
-
-  @media (min-width: 1040px) {
-    .vsblog-sidebar-post-info h4 { font-size: 13px; }
   }
 
   .vsblog-sidebar-post-info span {
@@ -1004,20 +921,16 @@
     box-shadow: 0 6px 20px rgba(236, 92, 10, 0.08);
   }
 
-  @media (min-width: 1040px) {
-    .vsblog-sidebar-cta { padding: 24px 20px; border-radius: 22px; }
-  }
-
   .vsblog-sidebar-cta-icon {
-    width: 46px;
-    height: 46px;
+    width: 44px;
+    height: 44px;
     background: #ffffff;
     border: 1.5px solid #ec5c0a;
     border-radius: 14px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 19px;
+    font-size: 18px;
     color: #ec5c0a;
     margin: 0 auto 12px auto;
     box-shadow: 0 4px 12px rgba(236, 92, 10, 0.15);
@@ -1055,7 +968,7 @@
     width: 100%;
   }
 
-  /* ─── NEWSLETTER SECTION (EXACT EQUAL ALIGNMENT) ─── */
+  /* ─── NEWSLETTER SECTION ─── */
   .vsblog-newsletter {
     margin-top: 30px;
     background: linear-gradient(135deg, #ffffff 0%, #fff6ec 100%);
@@ -1068,7 +981,7 @@
   }
 
   @media (min-width: 768px) {
-    .vsblog-newsletter { margin-top: 48px; padding: 44px 28px; border-radius: 24px; }
+    .vsblog-newsletter { margin-top: 44px; padding: 40px 28px; border-radius: 24px; }
   }
 
   .vsblog-newsletter-icon {
@@ -1181,7 +1094,7 @@
 
   .vsblog-nl-trust-item i { color: #007b3e; }
 
-  /* ─── PURE LIGHT ARTICLE READING MODAL (SLIDE SHEET ON MOBILE & MODAL ON DESKTOP) ─── */
+  /* ─── PURE LIGHT ARTICLE READING MODAL ─── */
   .vsblog-modal-overlay {
     position: fixed;
     inset: 0;
@@ -1477,17 +1390,24 @@
             <img src="{{ section.settings.featured_image | image_url: width: 900 }}" alt="Featured Article Image" loading="lazy">
           {% else %}
             <div class="vsblog-feat-svg-placeholder">
-              <svg class="vsblog-svg-art" viewBox="0 0 600 420" xmlns="http://www.w3.org/2000/svg">
-                <rect width="600" height="420" fill="#fff7ed"/>
-                <circle cx="300" cy="210" r="180" fill="none" stroke="#ec5c0a" stroke-width="0.8" opacity="0.3"/>
-                <circle cx="300" cy="210" r="100" fill="none" stroke="#007b3e" stroke-width="0.8" opacity="0.3"/>
-                <g transform="translate(260,155)">
-                  <rect width="80" height="50" rx="4" fill="none" stroke="#ec5c0a" stroke-width="2"/>
-                  <line x1="40" y1="50" x2="40" y2="70" stroke="#ec5c0a" stroke-width="2"/>
-                  <line x1="20" y1="70" x2="60" y2="70" stroke="#ec5c0a" stroke-width="2"/>
-                  <polyline points="15,35 30,20 40,32 55,18 65,28" fill="none" stroke="#007b3e" stroke-width="2"/>
+              <svg viewBox="0 0 600 380" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <radialGradient id="vsFeatGlow" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#ec5c0a" stop-opacity="0.35"/>
+                    <stop offset="100%" stop-color="#0f172a" stop-opacity="0"/>
+                  </radialGradient>
+                </defs>
+                <rect width="600" height="380" fill="#0f172a"/>
+                <circle cx="300" cy="190" r="160" fill="url(#vsFeatGlow)"/>
+                <path d="M0,190 Q150,110 300,190 T600,190" fill="none" stroke="rgba(236,92,10,0.4)" stroke-width="2"/>
+                <path d="M0,230 Q150,150 300,230 T600,230" fill="none" stroke="rgba(0,123,62,0.5)" stroke-width="2"/>
+                <g transform="translate(240,110)">
+                  <rect width="120" height="80" rx="16" fill="rgba(255,255,255,0.06)" stroke="rgba(236,92,10,0.5)" stroke-width="2"/>
+                  <circle cx="60" cy="40" r="24" fill="#ec5c0a" opacity="0.9"/>
+                  <path d="M54,40 L60,26 L66,40 L60,36 Z" fill="#ffffff"/>
+                  <polyline points="50,44 56,44 60,34 64,48 70,44" fill="none" stroke="#ffffff" stroke-width="2"/>
                 </g>
-                <text x="300" y="255" text-anchor="middle" fill="#ec5c0a" font-size="13" font-weight="bold" font-family="Arial">ENERGY SAVINGS REPORT</text>
+                <text x="300" y="240" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="700" letter-spacing="1" font-family="Arial">TERAHERTZ TECHNOLOGY REPORT</text>
               </svg>
             </div>
           {% endif %}
@@ -1521,13 +1441,15 @@
               {% if section.settings.card_1_image != blank %}
                 <img src="{{ section.settings.card_1_image | image_url: width: 600 }}" alt="Franchise Models Image" loading="lazy">
               {% else %}
-                <div class="vsblog-thumb-placeholder" style="background: linear-gradient(135deg, #fff7ed 0%, #ffede0 100%);">
-                  <svg viewBox="0 0 400 220" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-                    <g transform="translate(140,40)">
-                      <rect x="20" y="30" width="120" height="70" rx="8" fill="none" stroke="#ec5c0a" stroke-width="2"/>
-                      <circle cx="80" cy="65" r="16" fill="none" stroke="#007b3e" stroke-width="2"/>
+                <div class="vsblog-thumb-placeholder" style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #f59e0b 100%);">
+                  <svg viewBox="0 0 400 180" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="200" cy="80" r="42" fill="rgba(245,158,11,0.15)"/>
+                    <circle cx="200" cy="80" r="26" fill="#f59e0b" opacity="0.9"/>
+                    <g transform="translate(186, 66)" fill="none" stroke="#ffffff" stroke-width="2.5">
+                      <rect x="2" y="2" width="24" height="24" rx="4"/>
+                      <path d="M7 12 L12 17 L21 8"/>
                     </g>
-                    <text x="200" y="190" text-anchor="middle" fill="#ec5c0a" font-size="10" font-weight="bold" font-family="Arial">BUSINESS MODELS</text>
+                    <text x="200" y="145" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="700" letter-spacing="0.8" font-family="Arial">DISTRICT FRANCHISE MODELS</text>
                   </svg>
                 </div>
               {% endif %}
@@ -1539,7 +1461,7 @@
               <p class="vsblog-card-excerpt">Vidhyut Saathi offers 3 franchise models: Non-Exclusive District, Standard Exclusive District, and Premium Exclusive District Franchise with zero royalty.</p>
               <div class="vsblog-card-footer">
                 <span class="vsblog-card-date"><i class="fa-solid fa-calendar-days"></i> Aug 20, 2026</span>
-                <button type="button" class="vsblog-card-btn" onclick="vsOpenArticleModal(1)">Read More <i class="fa-solid fa-arrow-right"></i></button>
+                <button type="button" class="vsblog-card-btn" onclick="vsOpenArticleModal(1)">Read Article <i class="fa-solid fa-arrow-right"></i></button>
               </div>
             </div>
           </div>
@@ -1550,14 +1472,15 @@
               {% if section.settings.card_2_image != blank %}
                 <img src="{{ section.settings.card_2_image | image_url: width: 600 }}" alt="ISO Certification Image" loading="lazy">
               {% else %}
-                <div class="vsblog-thumb-placeholder" style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);">
-                  <svg viewBox="0 0 400 220" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-                    <g transform="translate(145,38)">
-                      <rect x="10" y="15" width="90" height="62" rx="5" fill="none" stroke="#007b3e" stroke-width="2"/>
-                      <line x1="55" y1="77" x2="55" y2="100" stroke="#007b3e" stroke-width="2"/>
-                      <circle cx="55" cy="46" r="18" fill="none" stroke="#ec5c0a" stroke-width="2"/>
+                <div class="vsblog-thumb-placeholder" style="background: linear-gradient(135deg, #064e3b 0%, #047857 60%, #007b3e 100%);">
+                  <svg viewBox="0 0 400 180" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="200" cy="80" r="42" fill="rgba(16,185,129,0.18)"/>
+                    <circle cx="200" cy="80" r="26" fill="#10b981" opacity="0.9"/>
+                    <g transform="translate(187, 65)" fill="none" stroke="#ffffff" stroke-width="2.5">
+                      <path d="M12 2 L22 7 L22 17 Q12 24 2 17 L2 7 Z"/>
+                      <path d="M7 11 L11 15 L17 8"/>
                     </g>
-                    <text x="200" y="190" text-anchor="middle" fill="#007b3e" font-size="10" font-weight="bold" font-family="Arial">ISO CERTIFIED</text>
+                    <text x="200" y="145" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="700" letter-spacing="0.8" font-family="Arial">ISO & CE COMPLIANCE</text>
                   </svg>
                 </div>
               {% endif %}
@@ -1569,7 +1492,7 @@
               <p class="vsblog-card-excerpt">Every Vidhyut Saathi device is certified under ISO 9001:2015, ISO 14001:2015, ISO 45001:2018, and CE European compliance standards.</p>
               <div class="vsblog-card-footer">
                 <span class="vsblog-card-date"><i class="fa-solid fa-calendar-days"></i> Aug 18, 2026</span>
-                <button type="button" class="vsblog-card-btn" onclick="vsOpenArticleModal(2)">Read More <i class="fa-solid fa-arrow-right"></i></button>
+                <button type="button" class="vsblog-card-btn" onclick="vsOpenArticleModal(2)">Read Article <i class="fa-solid fa-arrow-right"></i></button>
               </div>
             </div>
           </div>
@@ -1580,13 +1503,14 @@
               {% if section.settings.card_3_image != blank %}
                 <img src="{{ section.settings.card_3_image | image_url: width: 600 }}" alt="Power Losses Image" loading="lazy">
               {% else %}
-                <div class="vsblog-thumb-placeholder" style="background: linear-gradient(135deg, #fff7ed 0%, #ffede0 100%);">
-                  <svg viewBox="0 0 400 220" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-                    <g transform="translate(160,40)">
-                      <polygon points="40,0 55,55 35,55 50,110" fill="none" stroke="#f97316" stroke-width="2.5"/>
-                      <circle cx="40" cy="55" r="38" fill="none" stroke="#f97316" stroke-width="1" opacity="0.6"/>
+                <div class="vsblog-thumb-placeholder" style="background: linear-gradient(135deg, #1e1b18 0%, #7c2d12 60%, #ec5c0a 100%);">
+                  <svg viewBox="0 0 400 180" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="200" cy="80" r="42" fill="rgba(236,92,10,0.2)"/>
+                    <circle cx="200" cy="80" r="26" fill="#ec5c0a" opacity="0.9"/>
+                    <g transform="translate(187, 65)" fill="none" stroke="#ffffff" stroke-width="2.5">
+                      <polygon points="14,2 6,14 13,14 10,24 20,10 13,10"/>
                     </g>
-                    <text x="200" y="190" text-anchor="middle" fill="#ec5c0a" font-size="10" font-weight="bold" font-family="Arial">POWER SAVINGS</text>
+                    <text x="200" y="145" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="700" letter-spacing="0.8" font-family="Arial">20-30% POWER BILL REDUCTION</text>
                   </svg>
                 </div>
               {% endif %}
@@ -1598,7 +1522,7 @@
               <p class="vsblog-card-excerpt">Inductive loads like ACs, refrigerators, and heavy motors generate reactive current. Learn how our technology stabilizes current and cuts bills by 20–30%.</p>
               <div class="vsblog-card-footer">
                 <span class="vsblog-card-date"><i class="fa-solid fa-calendar-days"></i> Aug 15, 2026</span>
-                <button type="button" class="vsblog-card-btn" onclick="vsOpenArticleModal(3)">Read More <i class="fa-solid fa-arrow-right"></i></button>
+                <button type="button" class="vsblog-card-btn" onclick="vsOpenArticleModal(3)">Read Article <i class="fa-solid fa-arrow-right"></i></button>
               </div>
             </div>
           </div>
@@ -1609,13 +1533,17 @@
               {% if section.settings.card_4_image != blank %}
                 <img src="{{ section.settings.card_4_image | image_url: width: 600 }}" alt="KYC Verification Image" loading="lazy">
               {% else %}
-                <div class="vsblog-thumb-placeholder" style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);">
-                  <svg viewBox="0 0 400 220" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-                    <g transform="translate(140,40)">
-                      <rect x="20" y="30" width="120" height="70" rx="8" fill="none" stroke="#0284c7" stroke-width="2"/>
-                      <circle cx="80" cy="65" r="16" fill="none" stroke="#ec5c0a" stroke-width="2"/>
+                <div class="vsblog-thumb-placeholder" style="background: linear-gradient(135deg, #0f172a 0%, #0369a1 60%, #0284c7 100%);">
+                  <svg viewBox="0 0 400 180" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="200" cy="80" r="42" fill="rgba(2,132,199,0.2)"/>
+                    <circle cx="200" cy="80" r="26" fill="#0284c7" opacity="0.9"/>
+                    <g transform="translate(187, 65)" fill="none" stroke="#ffffff" stroke-width="2.5">
+                      <rect x="2" y="4" width="22" height="16" rx="3"/>
+                      <circle cx="9" cy="11" r="3"/>
+                      <line x1="15" y1="10" x2="20" y2="10"/>
+                      <line x1="15" y1="14" x2="19" y2="14"/>
                     </g>
-                    <text x="200" y="190" text-anchor="middle" fill="#0284c7" font-size="10" font-weight="bold" font-family="Arial">KYC VERIFICATION</text>
+                    <text x="200" y="145" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="700" letter-spacing="0.8" font-family="Arial">KYC VERIFICATION PROCESS</text>
                   </svg>
                 </div>
               {% endif %}
@@ -1627,7 +1555,7 @@
               <p class="vsblog-card-excerpt">Apply for a District Franchise with mandatory document verification. Accepted proofs include Aadhaar, Voter Card, Driving License, Passport, or PAN Card.</p>
               <div class="vsblog-card-footer">
                 <span class="vsblog-card-date"><i class="fa-solid fa-calendar-days"></i> Aug 10, 2026</span>
-                <button type="button" class="vsblog-card-btn" onclick="vsOpenArticleModal(4)">Read More <i class="fa-solid fa-arrow-right"></i></button>
+                <button type="button" class="vsblog-card-btn" onclick="vsOpenArticleModal(4)">Read Article <i class="fa-solid fa-arrow-right"></i></button>
               </div>
             </div>
           </div>
@@ -1638,13 +1566,14 @@
               {% if section.settings.card_5_image != blank %}
                 <img src="{{ section.settings.card_5_image | image_url: width: 600 }}" alt="Power Factor Tech Image" loading="lazy">
               {% else %}
-                <div class="vsblog-thumb-placeholder" style="background: linear-gradient(135deg, #fff7ed 0%, #ffefe0 100%);">
-                  <svg viewBox="0 0 400 220" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-                    <g transform="translate(150,40)">
-                      <circle cx="50" cy="50" r="40" fill="none" stroke="#ec5c0a" stroke-width="2"/>
-                      <path d="M 20 50 Q 50 10, 80 50 T 140 50" fill="none" stroke="#007b3e" stroke-width="2"/>
+                <div class="vsblog-thumb-placeholder" style="background: linear-gradient(135deg, #1e1b18 0%, #7c2d12 60%, #ec5c0a 100%);">
+                  <svg viewBox="0 0 400 180" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="200" cy="80" r="42" fill="rgba(236,92,10,0.2)"/>
+                    <circle cx="200" cy="80" r="26" fill="#ec5c0a" opacity="0.9"/>
+                    <g transform="translate(185, 66)" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round">
+                      <path d="M 0 14 Q 7 0, 14 14 T 28 14"/>
                     </g>
-                    <text x="200" y="190" text-anchor="middle" fill="#ec5c0a" font-size="10" font-weight="bold" font-family="Arial">POWER FACTOR TECH</text>
+                    <text x="200" y="145" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="700" letter-spacing="0.8" font-family="Arial">POWER FACTOR OPTIMIZATION</text>
                   </svg>
                 </div>
               {% endif %}
@@ -1656,7 +1585,7 @@
               <p class="vsblog-card-excerpt">Understand the physics behind kW active power and kVAR reactive power. See how Vidhyut Saathi maintains cos φ near 0.99 for maximum efficiency.</p>
               <div class="vsblog-card-footer">
                 <span class="vsblog-card-date"><i class="fa-solid fa-calendar-days"></i> Aug 05, 2026</span>
-                <button type="button" class="vsblog-card-btn" onclick="vsOpenArticleModal(5)">Read More <i class="fa-solid fa-arrow-right"></i></button>
+                <button type="button" class="vsblog-card-btn" onclick="vsOpenArticleModal(5)">Read Article <i class="fa-solid fa-arrow-right"></i></button>
               </div>
             </div>
           </div>
@@ -1667,13 +1596,15 @@
               {% if section.settings.card_6_image != blank %}
                 <img src="{{ section.settings.card_6_image | image_url: width: 600 }}" alt="10 Year Warranty Image" loading="lazy">
               {% else %}
-                <div class="vsblog-thumb-placeholder" style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);">
-                  <svg viewBox="0 0 400 220" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-                    <g transform="translate(155,35)">
-                      <path d="M40 10 L80 30 L80 80 Q80 120 40 140 Q0 120 0 80 L0 30 Z" fill="none" stroke="#007b3e" stroke-width="2"/>
-                      <path d="M25 70 L35 85 L60 50" fill="none" stroke="#ec5c0a" stroke-width="2.5"/>
+                <div class="vsblog-thumb-placeholder" style="background: linear-gradient(135deg, #064e3b 0%, #047857 60%, #007b3e 100%);">
+                  <svg viewBox="0 0 400 180" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="200" cy="80" r="42" fill="rgba(16,185,129,0.18)"/>
+                    <circle cx="200" cy="80" r="26" fill="#10b981" opacity="0.9"/>
+                    <g transform="translate(187, 65)" fill="none" stroke="#ffffff" stroke-width="2.5">
+                      <path d="M12 2 L22 7 L22 17 Q12 24 2 17 L2 7 Z"/>
+                      <path d="M7 11 L11 15 L17 8"/>
                     </g>
-                    <text x="200" y="190" text-anchor="middle" fill="#007b3e" font-size="10" font-weight="bold" font-family="Arial">10-YEAR WARRANTY</text>
+                    <text x="200" y="145" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="700" letter-spacing="0.8" font-family="Arial">10-YEAR WARRANTY GUARANTEE</text>
                   </svg>
                 </div>
               {% endif %}
@@ -1685,7 +1616,7 @@
               <p class="vsblog-card-excerpt">Every device comes backed by a 10-year official warranty with instant replacement guarantee and nationwide toll-free customer support.</p>
               <div class="vsblog-card-footer">
                 <span class="vsblog-card-date"><i class="fa-solid fa-calendar-days"></i> Jul 28, 2026</span>
-                <button type="button" class="vsblog-card-btn" onclick="vsOpenArticleModal(6)">Read More <i class="fa-solid fa-arrow-right"></i></button>
+                <button type="button" class="vsblog-card-btn" onclick="vsOpenArticleModal(6)">Read Article <i class="fa-solid fa-arrow-right"></i></button>
               </div>
             </div>
           </div>
@@ -1696,14 +1627,15 @@
               {% if section.settings.card_7_image != blank %}
                 <img src="{{ section.settings.card_7_image | image_url: width: 600 }}" alt="Franchise Success Image" loading="lazy">
               {% else %}
-                <div class="vsblog-thumb-placeholder" style="background: linear-gradient(135deg, #fff7ed 0%, #ffede0 100%);">
-                  <svg viewBox="0 0 400 220" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-                    <g transform="translate(130,35)">
-                      <polyline points="10,130 50,90 90,108 130,58 165,78" fill="none" stroke="#007b3e" stroke-width="2.5"/>
-                      <circle cx="10" cy="130" r="5" fill="#007b3e"/>
-                      <circle cx="165" cy="78" r="5" fill="#ec5c0a"/>
+                <div class="vsblog-thumb-placeholder" style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #ec5c0a 100%);">
+                  <svg viewBox="0 0 400 180" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="200" cy="80" r="42" fill="rgba(236,92,10,0.2)"/>
+                    <circle cx="200" cy="80" r="26" fill="#ec5c0a" opacity="0.9"/>
+                    <g transform="translate(186, 66)" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round">
+                      <polyline points="2,20 8,13 14,16 22,5"/>
+                      <polyline points="16,5 22,5 22,11"/>
                     </g>
-                    <text x="200" y="190" text-anchor="middle" fill="#ec5c0a" font-size="10" font-weight="bold" font-family="Arial">FRANCHISE SUCCESS</text>
+                    <text x="200" y="145" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="700" letter-spacing="0.8" font-family="Arial">PARTNER SUCCESS STORIES</text>
                   </svg>
                 </div>
               {% endif %}
@@ -1715,7 +1647,7 @@
               <p class="vsblog-card-excerpt">Discover how regional franchise partners in Rajasthan, UP, and Haryana expanded distribution networks and achieved monthly revenue targets.</p>
               <div class="vsblog-card-footer">
                 <span class="vsblog-card-date"><i class="fa-solid fa-calendar-days"></i> Jul 20, 2026</span>
-                <button type="button" class="vsblog-card-btn" onclick="vsOpenArticleModal(7)">Read More <i class="fa-solid fa-arrow-right"></i></button>
+                <button type="button" class="vsblog-card-btn" onclick="vsOpenArticleModal(7)">Read Article <i class="fa-solid fa-arrow-right"></i></button>
               </div>
             </div>
           </div>
@@ -1726,15 +1658,16 @@
               {% if section.settings.card_8_image != blank %}
                 <img src="{{ section.settings.card_8_image | image_url: width: 600 }}" alt="3-Phase Audit Image" loading="lazy">
               {% else %}
-                <div class="vsblog-thumb-placeholder" style="background: linear-gradient(135deg, #fff7ed 0%, #fff0e0 100%);">
-                  <svg viewBox="0 0 400 220" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-                    <g transform="translate(140,40)">
-                      <rect x="20" y="20" width="120" height="80" rx="6" fill="none" stroke="#ec5c0a" stroke-width="2"/>
-                      <line x1="50" y1="20" x2="50" y2="100" stroke="#007b3e" stroke-width="1.5"/>
-                      <line x1="80" y1="20" x2="80" y2="100" stroke="#ec5c0a" stroke-width="1.5"/>
-                      <line x1="110" y1="20" x2="110" y2="100" stroke="#007b3e" stroke-width="1.5"/>
+                <div class="vsblog-thumb-placeholder" style="background: linear-gradient(135deg, #1e1b18 0%, #7c2d12 60%, #ec5c0a 100%);">
+                  <svg viewBox="0 0 400 180" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="200" cy="80" r="42" fill="rgba(236,92,10,0.2)"/>
+                    <circle cx="200" cy="80" r="26" fill="#ec5c0a" opacity="0.9"/>
+                    <g transform="translate(186, 66)" fill="none" stroke="#ffffff" stroke-width="2.5">
+                      <rect x="3" y="4" width="18" height="16" rx="3"/>
+                      <line x1="9" y1="4" x2="9" y2="20"/>
+                      <line x1="15" y1="4" x2="15" y2="20"/>
                     </g>
-                    <text x="200" y="190" text-anchor="middle" fill="#ec5c0a" font-size="10" font-weight="bold" font-family="Arial">3-PHASE AUDIT</text>
+                    <text x="200" y="145" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="700" letter-spacing="0.8" font-family="Arial">3-PHASE AUDIT GUIDE</text>
                   </svg>
                 </div>
               {% endif %}
@@ -1746,7 +1679,7 @@
               <p class="vsblog-card-excerpt">Learn how energy auditors inspect 3-phase industrial connections, measure kVAh demand spikes, and install Vidhyut Saathi 3-Phase units to lower bills by 20–30%.</p>
               <div class="vsblog-card-footer">
                 <span class="vsblog-card-date"><i class="fa-solid fa-calendar-days"></i> Jul 12, 2026</span>
-                <button type="button" class="vsblog-card-btn" onclick="vsOpenArticleModal(8)">Read More <i class="fa-solid fa-arrow-right"></i></button>
+                <button type="button" class="vsblog-card-btn" onclick="vsOpenArticleModal(8)">Read Article <i class="fa-solid fa-arrow-right"></i></button>
               </div>
             </div>
           </div>
@@ -1757,13 +1690,15 @@
               {% if section.settings.card_9_image != blank %}
                 <img src="{{ section.settings.card_9_image | image_url: width: 600 }}" alt="DISCOM Tariff Image" loading="lazy">
               {% else %}
-                <div class="vsblog-thumb-placeholder" style="background: linear-gradient(135deg, #f0fdf4 0%, #e0f2fe 100%);">
-                  <svg viewBox="0 0 400 220" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-                    <g transform="translate(150,40)">
-                      <circle cx="50" cy="50" r="42" fill="none" stroke="#007b3e" stroke-width="2"/>
-                      <polyline points="30,50 45,65 70,35" fill="none" stroke="#ec5c0a" stroke-width="2.5"/>
+                <div class="vsblog-thumb-placeholder" style="background: linear-gradient(135deg, #064e3b 0%, #047857 60%, #007b3e 100%);">
+                  <svg viewBox="0 0 400 180" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="200" cy="80" r="42" fill="rgba(16,185,129,0.18)"/>
+                    <circle cx="200" cy="80" r="26" fill="#10b981" opacity="0.9"/>
+                    <g transform="translate(187, 65)" fill="none" stroke="#ffffff" stroke-width="2.5">
+                      <circle cx="10" cy="10" r="8"/>
+                      <path d="M6 10 L9 13 L14 7"/>
                     </g>
-                    <text x="200" y="190" text-anchor="middle" fill="#007b3e" font-size="10" font-weight="bold" font-family="Arial">DISCOM COMPLIANCE</text>
+                    <text x="200" y="145" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="700" letter-spacing="0.8" font-family="Arial">DISCOM COMPLIANCE</text>
                   </svg>
                 </div>
               {% endif %}
@@ -1775,7 +1710,7 @@
               <p class="vsblog-card-excerpt">DISCOM state electricity boards levy heavy penalties on low power factor premises. Discover how keeping power factor near 0.99 eliminates tariff penalties entirely.</p>
               <div class="vsblog-card-footer">
                 <span class="vsblog-card-date"><i class="fa-solid fa-calendar-days"></i> Jul 05, 2026</span>
-                <button type="button" class="vsblog-card-btn" onclick="vsOpenArticleModal(9)">Read More <i class="fa-solid fa-arrow-right"></i></button>
+                <button type="button" class="vsblog-card-btn" onclick="vsOpenArticleModal(9)">Read Article <i class="fa-solid fa-arrow-right"></i></button>
               </div>
             </div>
           </div>
@@ -1786,13 +1721,15 @@
               {% if section.settings.card_10_image != blank %}
                 <img src="{{ section.settings.card_10_image | image_url: width: 600 }}" alt="Territory Rights Image" loading="lazy">
               {% else %}
-                <div class="vsblog-thumb-placeholder" style="background: linear-gradient(135deg, #fff7ed 0%, #ffe8d6 100%);">
-                  <svg viewBox="0 0 400 220" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-                    <g transform="translate(145,40)">
-                      <rect x="15" y="20" width="110" height="75" rx="10" fill="none" stroke="#ec5c0a" stroke-width="2"/>
-                      <path d="M70 40 L70 75 M55 55 L85 55" stroke="#007b3e" stroke-width="2"/>
+                <div class="vsblog-thumb-placeholder" style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #f59e0b 100%);">
+                  <svg viewBox="0 0 400 180" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="200" cy="80" r="42" fill="rgba(245,158,11,0.15)"/>
+                    <circle cx="200" cy="80" r="26" fill="#f59e0b" opacity="0.9"/>
+                    <g transform="translate(187, 65)" fill="none" stroke="#ffffff" stroke-width="2.5">
+                      <rect x="4" y="8" width="16" height="12" rx="2"/>
+                      <path d="M8 8 V5 A4 4 0 0 1 16 5 V8"/>
                     </g>
-                    <text x="200" y="190" text-anchor="middle" fill="#ec5c0a" font-size="10" font-weight="bold" font-family="Arial">TERRITORY MONOPOLY</text>
+                    <text x="200" y="145" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="700" letter-spacing="0.8" font-family="Arial">EXCLUSIVE TERRITORY LOCK</text>
                   </svg>
                 </div>
               {% endif %}
@@ -1804,7 +1741,7 @@
               <p class="vsblog-card-excerpt">A complete walkthrough of the district reservation process. Lock in exclusive rights for your assigned district with guaranteed zero internal competition.</p>
               <div class="vsblog-card-footer">
                 <span class="vsblog-card-date"><i class="fa-solid fa-calendar-days"></i> Jun 28, 2026</span>
-                <button type="button" class="vsblog-card-btn" onclick="vsOpenArticleModal(10)">Read More <i class="fa-solid fa-arrow-right"></i></button>
+                <button type="button" class="vsblog-card-btn" onclick="vsOpenArticleModal(10)">Read Article <i class="fa-solid fa-arrow-right"></i></button>
               </div>
             </div>
           </div>
@@ -1815,13 +1752,15 @@
               {% if section.settings.card_11_image != blank %}
                 <img src="{{ section.settings.card_11_image | image_url: width: 600 }}" alt="Safety Casing Image" loading="lazy">
               {% else %}
-                <div class="vsblog-thumb-placeholder" style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);">
-                  <svg viewBox="0 0 400 220" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-                    <g transform="translate(155,35)">
-                      <path d="M40 10 L80 30 L80 80 Q80 120 40 140 Q0 120 0 80 L0 30 Z" fill="none" stroke="#007b3e" stroke-width="2"/>
-                      <polygon points="40,40 48,65 38,65 44,90" fill="#ec5c0a"/>
+                <div class="vsblog-thumb-placeholder" style="background: linear-gradient(135deg, #064e3b 0%, #047857 60%, #007b3e 100%);">
+                  <svg viewBox="0 0 400 180" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="200" cy="80" r="42" fill="rgba(16,185,129,0.18)"/>
+                    <circle cx="200" cy="80" r="26" fill="#10b981" opacity="0.9"/>
+                    <g transform="translate(187, 65)" fill="none" stroke="#ffffff" stroke-width="2.5">
+                      <path d="M12 2 L22 7 L22 17 Q12 24 2 17 L2 7 Z"/>
+                      <polygon points="12,7 15,13 11,13 13,18" fill="#ffffff"/>
                     </g>
-                    <text x="200" y="190" text-anchor="middle" fill="#007b3e" font-size="10" font-weight="bold" font-family="Arial">SAFETY & SURGE TECH</text>
+                    <text x="200" y="145" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="700" letter-spacing="0.8" font-family="Arial">SAFETY & FLAME SURGE PROTECTION</text>
                   </svg>
                 </div>
               {% endif %}
@@ -1833,7 +1772,7 @@
               <p class="vsblog-card-excerpt">Built with German polycarbonate V0-grade fire-retardant outer shell and integrated 6kV lightning surge protection to safeguard your home appliances 24/7.</p>
               <div class="vsblog-card-footer">
                 <span class="vsblog-card-date"><i class="fa-solid fa-calendar-days"></i> Jun 20, 2026</span>
-                <button type="button" class="vsblog-card-btn" onclick="vsOpenArticleModal(11)">Read More <i class="fa-solid fa-arrow-right"></i></button>
+                <button type="button" class="vsblog-card-btn" onclick="vsOpenArticleModal(11)">Read Article <i class="fa-solid fa-arrow-right"></i></button>
               </div>
             </div>
           </div>
@@ -1914,7 +1853,7 @@
       </aside>
     </div>
 
-    <!-- NEWSLETTER SECTION (EXACT EQUAL ALIGNMENT) -->
+    <!-- NEWSLETTER SECTION -->
     <div class="vsblog-newsletter">
       <div class="vsblog-newsletter-icon">
         <i class="fa-solid fa-envelope-open-text"></i>
