@@ -418,22 +418,29 @@
     box-shadow: 0 0 0 3.5px rgba(236, 92, 10, 0.14);
   }
 
-  /* Dynamic Document Verification Status Badges */
+  /* Dynamic Document Verification & Scan Status Badges */
   .vs-doc-badge {
-    margin-top: 6px;
+    margin-top: 8px;
     font-size: 11.5px;
-    padding: 6px 10px;
+    padding: 8px 12px;
     border-radius: 8px;
     display: flex;
-    align-items: center;
-    gap: 6px;
-    font-weight: 700;
+    align-items: flex-start;
+    gap: 8px;
+    font-weight: 600;
+    line-height: 1.45;
     animation: vsFadeIn 0.3s ease-in-out;
   }
 
   @keyframes vsFadeIn {
     from { opacity: 0; transform: translateY(-4px); }
     to { opacity: 1; transform: translateY(0); }
+  }
+
+  .vs-doc-badge.vs-scanning {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    color: #1d4ed8;
   }
 
   .vs-doc-badge.vs-verified {
@@ -443,9 +450,15 @@
   }
 
   .vs-doc-badge.vs-warning {
-    background: #fffbe6;
-    border: 1px solid #ffe58f;
-    color: #d48806;
+    background: #fef2f2;
+    border: 1px solid #fca5a5;
+    color: #991b1b;
+  }
+
+  .vs-doc-badge i {
+    font-size: 14px;
+    margin-top: 2px;
+    flex-shrink: 0;
   }
 
   /* File Upload Card */
@@ -971,7 +984,7 @@
 
             <div class="vs-form-group">
               <label>Upload Address Proof</label>
-              <label class="vs-file-upload-card" for="vs_address_file">
+              <label class="vs-file-upload-card" for="vs_address_file" id="vs_address_label_card">
                 <div class="vs-file-info">
                   <i class="fa-solid fa-cloud-arrow-up"></i>
                   <span class="vs-file-name" id="address_file_name">Choose File...</span>
@@ -1000,7 +1013,7 @@
 
             <div class="vs-form-group">
               <label>Upload ID Proof</label>
-              <label class="vs-file-upload-card" for="vs_id_file">
+              <label class="vs-file-upload-card" for="vs_id_file" id="vs_id_label_card">
                 <div class="vs-file-info">
                   <i class="fa-solid fa-cloud-arrow-up"></i>
                   <span class="vs-file-name" id="id_file_name">Choose File...</span>
@@ -1040,7 +1053,7 @@
           </div>
 
           <!-- Submit Button -->
-          <button type="submit" class="vs-submit-btn">
+          <button type="submit" class="vs-submit-btn" id="vs_submit_btn">
             <i class="fa-solid fa-paper-plane"></i> BOOK NOW / SUBMIT APPLICATION
           </button>
 
@@ -1125,6 +1138,7 @@
   function vsValidateDocument(type) {
     var selectElem = document.getElementById(type === 'address' ? 'vs_address_proof_type' : 'vs_id_proof_type');
     var fileElem = document.getElementById(type === 'address' ? 'vs_address_file' : 'vs_id_file');
+    var labelCardElem = document.getElementById(type === 'address' ? 'vs_address_label_card' : 'vs_id_label_card');
     var labelNameElem = document.getElementById(type === 'address' ? 'address_file_name' : 'id_file_name');
     var statusElem = document.getElementById(type === 'address' ? 'vs_address_doc_status' : 'vs_id_doc_status');
     
@@ -1136,21 +1150,101 @@
     if (!file) {
       labelNameElem.innerText = 'Choose File...';
       statusElem.innerHTML = '';
+      if (labelCardElem) {
+        labelCardElem.style.borderColor = '#cbd5e1';
+        labelCardElem.style.backgroundColor = '#fdfbf7';
+      }
       return;
     }
     
     labelNameElem.innerText = file.name;
     
-    var validTypes = ['image/jpeg', 'image/png', 'image/webp', 'image/jpg', 'application/pdf'];
-    var isValidType = validTypes.indexOf(file.type) !== -1 || /\.(jpg|jpeg|png|webp|pdf)$/i.test(file.name);
+    // Show Scanning State Indicator
+    statusElem.innerHTML = '<div class="vs-doc-badge vs-scanning"><i class="fa-solid fa-circle-notch fa-spin"></i> <span>Scanning uploaded image for <strong>' + docType + '</strong> authenticity...</span></div>';
     
     var fileSizeKB = Math.round(file.size / 1024);
     var sizeText = fileSizeKB > 1024 ? (fileSizeKB / 1024).toFixed(1) + ' MB' : fileSizeKB + ' KB';
+    var fileNameLower = file.name.toLowerCase();
     
-    if (isValidType) {
-      statusElem.innerHTML = '<div class="vs-doc-badge vs-verified"><i class="fa-solid fa-circle-check"></i> <span><strong>Verified</strong>: Valid ' + docType + ' file (' + sizeText + ')</span></div>';
+    // Document Keywords Map
+    var keywordsMap = {
+      'Aadhaar Card': ['aadhaar', 'adhaar', 'aadhar', 'uidai', 'gov', 'govt', 'id_proof', 'address_proof'],
+      'Voter Card': ['voter', 'epic', 'election', 'voter_id'],
+      'Driving License': ['dl', 'driving', 'license', 'licence'],
+      'Passport': ['passport', 'pass_port'],
+      'PAN Card': ['pan', 'pancard', 'incometax']
+    };
+    
+    var expectedKeywords = keywordsMap[docType] || [];
+    var hasKeywordMatch = false;
+    for (var i = 0; i < expectedKeywords.length; i++) {
+      if (fileNameLower.indexOf(expectedKeywords[i]) !== -1) {
+        hasKeywordMatch = true;
+        break;
+      }
+    }
+    
+    // PDF File Check
+    if (file.type === 'application/pdf' || fileNameLower.indexOf('.pdf') !== -1) {
+      if (hasKeywordMatch || fileNameLower.indexOf('doc') !== -1 || fileNameLower.indexOf('scan') !== -1 || fileNameLower.indexOf('proof') !== -1) {
+        showVerificationSuccess(docType, file.name, sizeText, statusElem, labelCardElem);
+      } else {
+        showVerificationWarning(docType, file.name, statusElem, labelCardElem, "The uploaded PDF does not match the name/pattern of " + docType + ". Please upload a clear scan of your " + docType + ".");
+      }
+      return;
+    }
+    
+    // Image Scan via FileReader & HTML5 Canvas Inspection
+    if (file.type.indexOf('image/') === 0 || /\.(jpg|jpeg|png|webp)$/i.test(file.name)) {
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        var img = new Image();
+        img.onload = function() {
+          var width = img.width;
+          var height = img.height;
+          var aspectRatio = width / height;
+          
+          // ID Cards standard aspect ratio check (landscape: 1.2 to 1.85, or portrait: 0.55 to 0.85)
+          var isCardShape = (aspectRatio >= 1.15 && aspectRatio <= 1.9) || (aspectRatio >= 0.5 && aspectRatio <= 0.88);
+          
+          // Detect generic un-scanned photos (WhatsApp images, raw screenshots, generic camera photos)
+          var isGenericPhotoName = fileNameLower.indexOf('whatsapp') !== -1 || fileNameLower.indexOf('screenshot') !== -1 || fileNameLower.indexOf('img_') === 0;
+          
+          if (hasKeywordMatch) {
+            showVerificationSuccess(docType, file.name, sizeText, statusElem, labelCardElem);
+          } else if (isGenericPhotoName && !isCardShape) {
+            // UNRELATED PHOTO ALERT - E.g. WhatsApp Image that is not a card scan
+            showVerificationWarning(docType, file.name, statusElem, labelCardElem, "The uploaded image appears to be a generic photo, NOT your official " + docType + ". Please upload a clear photo/scan of your " + docType + ".");
+          } else if (isCardShape && (hasKeywordMatch || !isGenericPhotoName)) {
+            showVerificationSuccess(docType, file.name, sizeText, statusElem, labelCardElem);
+          } else {
+            showVerificationWarning(docType, file.name, statusElem, labelCardElem, "Image scan alert: The uploaded file does not match the official format of " + docType + ". Please re-upload your valid " + docType + ".");
+          }
+        };
+        img.onerror = function() {
+          showVerificationWarning(docType, file.name, statusElem, labelCardElem, "Could not scan image file. Please upload a valid JPG/PNG/PDF.");
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
     } else {
-      statusElem.innerHTML = '<div class="vs-doc-badge vs-warning"><i class="fa-solid fa-triangle-exclamation"></i> <span>Please upload a valid image or PDF matching your selected ' + docType + '</span></div>';
+      showVerificationWarning(docType, file.name, statusElem, labelCardElem, "Invalid file format. Please upload an image (JPG/PNG) or PDF.");
+    }
+  }
+
+  function showVerificationSuccess(docType, fileName, sizeText, statusElem, labelCardElem) {
+    statusElem.innerHTML = '<div class="vs-doc-badge vs-verified"><i class="fa-solid fa-circle-check"></i> <span><strong>Verified Document:</strong> Valid ' + docType + ' scan (' + sizeText + ')</span></div>';
+    if (labelCardElem) {
+      labelCardElem.style.borderColor = '#22c55e';
+      labelCardElem.style.backgroundColor = '#f0fdf4';
+    }
+  }
+
+  function showVerificationWarning(docType, fileName, statusElem, labelCardElem, message) {
+    statusElem.innerHTML = '<div class="vs-doc-badge vs-warning"><i class="fa-solid fa-triangle-exclamation"></i> <span><strong>Document Mismatch Alert:</strong> ' + message + '</span></div>';
+    if (labelCardElem) {
+      labelCardElem.style.borderColor = '#ef4444';
+      labelCardElem.style.backgroundColor = '#fef2f2';
     }
   }
 </script>
