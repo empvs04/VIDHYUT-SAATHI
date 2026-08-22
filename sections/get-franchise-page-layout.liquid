@@ -1161,42 +1161,69 @@
     
     labelNameElem.innerText = file.name;
     
-    // Show Scanning State Indicator
+    // Show Scanning Indicator
     statusElem.innerHTML = '<div class="vs-doc-badge vs-scanning"><i class="fa-solid fa-circle-notch fa-spin"></i> <span>Scanning uploaded image for <strong>' + docType + '</strong> authenticity...</span></div>';
     
     var fileSizeKB = Math.round(file.size / 1024);
     var sizeText = fileSizeKB > 1024 ? (fileSizeKB / 1024).toFixed(1) + ' MB' : fileSizeKB + ' KB';
     var fileNameLower = file.name.toLowerCase();
     
-    // Document Keywords Map
-    var keywordsMap = {
-      'Aadhaar Card': ['aadhaar', 'adhaar', 'aadhar', 'uidai', 'gov', 'govt', 'id_proof', 'address_proof'],
-      'Voter Card': ['voter', 'epic', 'election', 'voter_id'],
-      'Driving License': ['dl', 'driving', 'license', 'licence'],
-      'Passport': ['passport', 'pass_port'],
-      'PAN Card': ['pan', 'pancard', 'incometax']
+    // Keywords for document types
+    var documentKeywords = {
+      'aadhaar': ['aadhaar', 'adhaar', 'aadhar', 'uidai'],
+      'voter': ['voter', 'epic', 'election', 'voter_id'],
+      'dl': ['dl', 'driving', 'license', 'licence'],
+      'passport': ['passport', 'pass_port'],
+      'pan': ['pan', 'pancard', 'incometax', 'pan_card']
     };
     
-    var expectedKeywords = keywordsMap[docType] || [];
-    var hasKeywordMatch = false;
-    for (var i = 0; i < expectedKeywords.length; i++) {
-      if (fileNameLower.indexOf(expectedKeywords[i]) !== -1) {
-        hasKeywordMatch = true;
+    // Determine expected category for selected docType
+    var selectedCategory = '';
+    if (docType.indexOf('Aadhaar') !== -1) selectedCategory = 'aadhaar';
+    else if (docType.indexOf('PAN') !== -1) selectedCategory = 'pan';
+    else if (docType.indexOf('Voter') !== -1) selectedCategory = 'voter';
+    else if (docType.indexOf('Driving') !== -1) selectedCategory = 'dl';
+    else if (docType.indexOf('Passport') !== -1) selectedCategory = 'passport';
+    
+    // Check if filename contains a DIFFERENT document category than selected!
+    var conflictingCategoryFound = null;
+    for (var cat in documentKeywords) {
+      if (cat !== selectedCategory) {
+        var catKw = documentKeywords[cat];
+        for (var k = 0; k < catKw.length; k++) {
+          if (fileNameLower.indexOf(catKw[k]) !== -1) {
+            conflictingCategoryFound = cat;
+            break;
+          }
+        }
+      }
+      if (conflictingCategoryFound) break;
+    }
+    
+    // STRICT MISMATCH ALERT: Selected PAN Card but uploaded Aadhaar Card (or vice-versa)!
+    if (conflictingCategoryFound) {
+      var detectedDocName = conflictingCategoryFound.toUpperCase();
+      if (conflictingCategoryFound === 'aadhaar') detectedDocName = 'Aadhaar Card';
+      else if (conflictingCategoryFound === 'pan') detectedDocName = 'PAN Card';
+      else if (conflictingCategoryFound === 'voter') detectedDocName = 'Voter ID Card';
+      else if (conflictingCategoryFound === 'dl') detectedDocName = 'Driving License';
+      else if (conflictingCategoryFound === 'passport') detectedDocName = 'Passport';
+      
+      showVerificationWarning(docType, file.name, statusElem, labelCardElem, "Document Mismatch Alert! You selected " + docType + ", but uploaded a file containing " + detectedDocName + " details. Please upload your official " + docType + " photo.");
+      return;
+    }
+    
+    // Check if expected keywords match
+    var expectedKw = documentKeywords[selectedCategory] || [];
+    var hasExactKeyword = false;
+    for (var i = 0; i < expectedKw.length; i++) {
+      if (fileNameLower.indexOf(expectedKw[i]) !== -1) {
+        hasExactKeyword = true;
         break;
       }
     }
     
-    // PDF File Check
-    if (file.type === 'application/pdf' || fileNameLower.indexOf('.pdf') !== -1) {
-      if (hasKeywordMatch || fileNameLower.indexOf('doc') !== -1 || fileNameLower.indexOf('scan') !== -1 || fileNameLower.indexOf('proof') !== -1) {
-        showVerificationSuccess(docType, file.name, sizeText, statusElem, labelCardElem);
-      } else {
-        showVerificationWarning(docType, file.name, statusElem, labelCardElem, "The uploaded PDF does not match the name/pattern of " + docType + ". Please upload a clear scan of your " + docType + ".");
-      }
-      return;
-    }
-    
-    // Image Scan via FileReader & HTML5 Canvas Inspection
+    // Image Scan via Canvas & FileReader
     if (file.type.indexOf('image/') === 0 || /\.(jpg|jpeg|png|webp)$/i.test(file.name)) {
       var reader = new FileReader();
       reader.onload = function(e) {
@@ -1205,22 +1232,18 @@
           var width = img.width;
           var height = img.height;
           var aspectRatio = width / height;
-          
-          // ID Cards standard aspect ratio check (landscape: 1.2 to 1.85, or portrait: 0.55 to 0.85)
           var isCardShape = (aspectRatio >= 1.15 && aspectRatio <= 1.9) || (aspectRatio >= 0.5 && aspectRatio <= 0.88);
+          var isGenericPhoto = fileNameLower.indexOf('whatsapp') !== -1 || fileNameLower.indexOf('screenshot') !== -1 || fileNameLower.indexOf('img_') === 0 || fileNameLower.indexOf('image') !== -1;
           
-          // Detect generic un-scanned photos (WhatsApp images, raw screenshots, generic camera photos)
-          var isGenericPhotoName = fileNameLower.indexOf('whatsapp') !== -1 || fileNameLower.indexOf('screenshot') !== -1 || fileNameLower.indexOf('img_') === 0;
-          
-          if (hasKeywordMatch) {
+          if (hasExactKeyword) {
             showVerificationSuccess(docType, file.name, sizeText, statusElem, labelCardElem);
-          } else if (isGenericPhotoName && !isCardShape) {
-            // UNRELATED PHOTO ALERT - E.g. WhatsApp Image that is not a card scan
-            showVerificationWarning(docType, file.name, statusElem, labelCardElem, "The uploaded image appears to be a generic photo, NOT your official " + docType + ". Please upload a clear photo/scan of your " + docType + ".");
-          } else if (isCardShape && (hasKeywordMatch || !isGenericPhotoName)) {
+          } else if (isGenericPhoto && !hasExactKeyword) {
+            // Alert for generic photos without matching document keyword
+            showVerificationWarning(docType, file.name, statusElem, labelCardElem, "Alert: Uploaded image could not be verified as " + docType + ". Please upload a clear photo or scan of your official " + docType + ".");
+          } else if (isCardShape) {
             showVerificationSuccess(docType, file.name, sizeText, statusElem, labelCardElem);
           } else {
-            showVerificationWarning(docType, file.name, statusElem, labelCardElem, "Image scan alert: The uploaded file does not match the official format of " + docType + ". Please re-upload your valid " + docType + ".");
+            showVerificationWarning(docType, file.name, statusElem, labelCardElem, "Image scan alert: The uploaded file shape does not match the official format of " + docType + ". Please re-upload your valid " + docType + ".");
           }
         };
         img.onerror = function() {
@@ -1229,6 +1252,12 @@
         img.src = e.target.result;
       };
       reader.readAsDataURL(file);
+    } else if (file.type === 'application/pdf' || fileNameLower.indexOf('.pdf') !== -1) {
+      if (hasExactKeyword || fileNameLower.indexOf('doc') !== -1 || fileNameLower.indexOf('scan') !== -1 || fileNameLower.indexOf('proof') !== -1) {
+        showVerificationSuccess(docType, file.name, sizeText, statusElem, labelCardElem);
+      } else {
+        showVerificationWarning(docType, file.name, statusElem, labelCardElem, "The uploaded PDF does not match the name/pattern of " + docType + ". Please upload a clear scan of your " + docType + ".");
+      }
     } else {
       showVerificationWarning(docType, file.name, statusElem, labelCardElem, "Invalid file format. Please upload an image (JPG/PNG) or PDF.");
     }
@@ -1243,12 +1272,27 @@
   }
 
   function showVerificationWarning(docType, fileName, statusElem, labelCardElem, message) {
-    statusElem.innerHTML = '<div class="vs-doc-badge vs-warning"><i class="fa-solid fa-triangle-exclamation"></i> <span><strong>Document Mismatch Alert:</strong> ' + message + '</span></div>';
+    statusElem.innerHTML = '<div class="vs-doc-badge vs-warning"><i class="fa-solid fa-triangle-exclamation"></i> <span>' + message + '</span></div>';
     if (labelCardElem) {
       labelCardElem.style.borderColor = '#ef4444';
       labelCardElem.style.backgroundColor = '#fef2f2';
     }
   }
+
+  // Prevent Form Submission if document verification warning exists
+  document.addEventListener('DOMContentLoaded', function() {
+    var form = document.getElementById('vsFranchiseForm');
+    if (form) {
+      form.addEventListener('submit', function(e) {
+        var warnings = document.querySelectorAll('.vs-doc-badge.vs-warning');
+        if (warnings.length > 0) {
+          e.preventDefault();
+          alert('⚠️ Document Mismatch Alert: Please upload valid document files matching your selected Address Proof and ID Proof options before submitting.');
+          warnings[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      });
+    }
+  });
 </script>
 
 {% schema %}
