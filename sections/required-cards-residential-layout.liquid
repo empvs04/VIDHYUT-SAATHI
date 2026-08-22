@@ -1092,22 +1092,22 @@
         <i class="fa-solid fa-layer-group"></i> Sector Requirement Pages:
       </div>
       <div class="vsres-nav-links">
-        <a href="/pages/residential" class="vsres-nav-item active" onclick="window.location.href='/pages/residential';">
+        <a href="{{ section.settings.residential_link | default: '/pages/residential' }}" class="vsres-nav-item active">
           <i class="fa-solid fa-house"></i> Residential
         </a>
-        <a href="/pages/industrial" class="vsres-nav-item" onclick="window.location.href='/pages/industrial';">
+        <a href="{{ section.settings.industrial_link | default: '/pages/industrial' }}" class="vsres-nav-item">
           <i class="fa-solid fa-industry"></i> Industrial
         </a>
-        <a href="/pages/commercial" class="vsres-nav-item" onclick="window.location.href='/pages/commercial';">
+        <a href="{{ section.settings.commercial_link | default: '/pages/commercial' }}" class="vsres-nav-item">
           <i class="fa-solid fa-building"></i> Commercial
         </a>
-        <a href="/pages/required-cards" class="vsres-nav-item" onclick="window.location.href='/pages/required-cards';">
+        <a href="{{ section.settings.calculator_link | default: '/pages/required-cards' }}" class="vsres-nav-item">
           <i class="fa-solid fa-calculator"></i> Card Calculator
         </a>
-        <a href="/pages/b2c" class="vsres-nav-item" onclick="window.location.href='/pages/b2c';">
+        <a href="{{ section.settings.b2c_link | default: '/pages/b2c' }}" class="vsres-nav-item">
           <i class="fa-solid fa-bolt"></i> Power Saver Card
         </a>
-        <a href="/pages/get-franchise" class="vsres-nav-item" onclick="window.location.href='/pages/get-franchise';">
+        <a href="{{ section.settings.franchise_link | default: '/pages/get-franchise' }}" class="vsres-nav-item">
           <i class="fa-solid fa-store"></i> Franchise Program
         </a>
       </div>
