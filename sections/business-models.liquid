@@ -57,7 +57,7 @@
     font-family: 'Baloo 2', sans-serif !important;
     font-size: clamp(2.5rem, 5vw, 4.2rem) !important;
     font-weight: 900 !important;
-    line-height: 1.1 !important;
+    line-height: 1.15 !important;
     letter-spacing: -1.5px !important;
     text-transform: uppercase !important;
     text-align: center !important;
@@ -65,10 +65,6 @@
     -webkit-background-clip: text !important;
     -webkit-text-fill-color: transparent !important;
     filter: drop-shadow(0 10px 20px rgba(247,148,29,.18));
-  }
-
-  .business-section-{{ section.id }} .heading h1 span {
-    display: none !important;
   }
 
   .business-section-{{ section.id }} .glow-line {
@@ -94,7 +90,7 @@
   }
 
   .business-section-{{ section.id }} .card {
-    background: #ffffff;
+    background: #ffffff !important;
     border-radius: 24px;
     padding: 32px 24px;
     position: relative;
@@ -130,92 +126,94 @@
     width: 100%;
   }
 
-  /* ── TIER STYLING ── */
+  /* ── DEFAULT LIGHT TIER STYLING ── */
   .business-section-{{ section.id }} .green { border-top: 5px solid #3EAD47 !important; }
   
   .business-section-{{ section.id }} .orange,
   .business-section-{{ section.id }} .blue { 
     border-top: 5px solid #F7941D !important; 
-    background-color: #FFFDF8; 
+    background-color: #FFFDF8 !important; 
   }
   
   .business-section-{{ section.id }} .dark,
   .business-section-{{ section.id }} .gold {
     border-top: 5px solid #E07810 !important;
-    background: #111111;
-    color: #FAFAF7;
-    box-shadow: 0 20px 40px -10px rgba(17,17,17,0.4) !important;
-  }
-
-  .business-section-{{ section.id }} .blue .badge { background: #FFF3E0; color: #E07810; }
-  .business-section-{{ section.id }} .gold .badge { background: rgba(247,148,29,0.15); color: #FDB44B; border: 1px solid rgba(247,148,29,0.3); }
-  .business-section-{{ section.id }} .gold h2 { color: #ffffff; }
-  .business-section-{{ section.id }} .gold .amount-box { background: rgba(255,255,255,0.04) !important; border: 1px solid rgba(255,255,255,0.08); box-shadow: none; }
-  .business-section-{{ section.id }} .gold .label { color: #a3a3a3; }
-  .business-section-{{ section.id }} .gold .amount { color: #FDB44B; text-shadow: 0 3px 14px rgba(253,180,75,.2); }
-  .business-section-{{ section.id }} .gold .point { color: #e5e5e5; }
-  .business-section-{{ section.id }} .gold .tick { background: rgba(253,180,75,0.2); color: #FDB44B; }
-
-  .business-section-{{ section.id }} .badge-container {
-    height: 32px;
-    display: flex;
-    align-items: center;
-    margin-bottom: 16px;
-  }
-
-  .business-section-{{ section.id }} .badge {
-    display: inline-flex;
-    align-items: center;
-    padding: 6px 14px;
-    border-radius: 999px;
-    font-family: 'Baloo 2', sans-serif;
-    font-size: 11px;
-    font-weight: 800 !important;
-    letter-spacing: 1px !important;
-    text-transform: uppercase;
-    box-shadow: 0 4px 12px rgba(0,0,0,.05);
+    background-color: #FFFFFF !important;
+    color: #222222 !important;
   }
 
   .business-section-{{ section.id }} .green .badge { background: #E8F5E9; color: #2E7D32; }
-  .business-section-{{ section.id }} .orange .badge { background: #FFF3E0; color: #E07810; }
-  .business-section-{{ section.id }} .dark .badge { background: rgba(247,148,29,0.15); color: #FDB44B; border: 1px solid rgba(247,148,29,0.3); }
+  .business-section-{{ section.id }} .orange .badge,
+  .business-section-{{ section.id }} .blue .badge { background: #FFF3E0; color: #E07810; }
+  .business-section-{{ section.id }} .dark .badge,
+  .business-section-{{ section.id }} .gold .badge { background: #FFF8EF; color: #E07810; border: 1px solid rgba(247,148,29,0.2); }
 
-  /* EQUAL HEIGHT TOP ROW FOR PERFECT ALIGNMENT */
+  .business-section-{{ section.id }} .green h2,
+  .business-section-{{ section.id }} .orange h2,
+  .business-section-{{ section.id }} .blue h2,
+  .business-section-{{ section.id }} .dark h2,
+  .business-section-{{ section.id }} .gold h2 { color: #111111 !important; }
+
+  .business-section-{{ section.id }} .green .amount { color: #3EAD47 !important; }
+  .business-section-{{ section.id }} .orange .amount,
+  .business-section-{{ section.id }} .blue .amount { color: #F7941D !important; }
+  .business-section-{{ section.id }} .dark .amount,
+  .business-section-{{ section.id }} .gold .amount { color: #E07810 !important; }
+
+  .business-section-{{ section.id }} .green .point,
+  .business-section-{{ section.id }} .orange .point,
+  .business-section-{{ section.id }} .blue .point,
+  .business-section-{{ section.id }} .dark .point,
+  .business-section-{{ section.id }} .gold .point { color: #444444 !important; }
+
+  .business-section-{{ section.id }} .green .tick { background: #E8F5E9; color: #3EAD47; }
+  .business-section-{{ section.id }} .orange .tick,
+  .business-section-{{ section.id }} .blue .tick { background: #FFF3E0; color: #F7941D; }
+  .business-section-{{ section.id }} .dark .tick,
+  .business-section-{{ section.id }} .gold .tick { background: #FFF8EF; color: #E07810; }
+
+  /* CENTERED TOP ROW */
   .business-section-{{ section.id }} .top-row {
-    display: flex;
-    align-items: center;
-    gap: 14px;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 12px;
     margin-bottom: 20px;
-    min-height: 80px; /* Forces exact same vertical start position for amount box */
+    min-height: 110px;
+    text-align: center !important;
+    width: 100% !important;
   }
 
   .business-section-{{ section.id }} .icon {
-    width: 50px;
-    height: 50px;
+    width: 52px;
+    height: 52px;
     border-radius: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 22px;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 24px;
     background: #ffffff;
     box-shadow: 0 8px 20px rgba(247,148,29,.15) !important;
     flex-shrink: 0;
+    margin: 0 auto !important;
   }
 
-  .business-section-{{ section.id }} .dark .icon { background: rgba(255,255,255,0.08); box-shadow: none !important;}
+  .business-section-{{ section.id }} .dark .icon,
+  .business-section-{{ section.id }} .gold .icon { background: #ffffff; box-shadow: 0 8px 20px rgba(247,148,29,.15) !important; }
 
   .business-section-{{ section.id }} .card h2 {
-    margin: 0;
+    margin: 0 auto;
     font-family: 'Baloo 2', sans-serif;
     font-size: 1.25rem;
     font-weight: 800;
     line-height: 1.2;
     letter-spacing: -0.3px;
     color: #111111;
+    text-align: center !important;
   }
-  .business-section-{{ section.id }} .dark h2 { color: #ffffff; }
 
-  /* EQUAL HEIGHT PRICING BOX */
+  /* CENTERED PRICING BOX */
   .business-section-{{ section.id }} .amount-box {
     margin: 0 0 20px 0;
     padding: 18px 20px;
@@ -224,9 +222,12 @@
     background: linear-gradient(180deg, #FAFAF7, #FFFFFF) !important;
     border: 1px solid rgba(247,148,29,.12);
     min-height: 96px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+    width: 100% !important;
   }
 
   .business-section-{{ section.id }} .dark .amount-box {
