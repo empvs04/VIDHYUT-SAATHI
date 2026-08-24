@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vidhyut Saathi - Franchise Partner Portal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --bg-dark: #0f172a;
+      --panel-dark: #1e293b;
+      --border-dark: #334155;
+      --orange-primary: #ec5c0a;
+      --orange-gradient: linear-gradient(135deg, #ec5c0a 0%, #ff7b2c 100%);
+      --green-accent: #10b981;
+      --blue-accent: #3b82f6;
+      --text-white: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-white);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Top Nav */
+    header {
+      background-color: rgba(30, 41, 59, 0.8);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-dark);
+      padding: 14px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .brand-area { display: flex; align-items: center; gap: 14px; }
+    .brand-logo { font-size: 20px; font-weight: 800; color: #fff; text-decoration: none; }
+    .brand-logo span { color: var(--orange-primary); }
+    .partner-badge {
+      background: rgba(236, 92, 10, 0.15);
+      border: 1px solid rgba(236, 92, 10, 0.4);
+      color: #ff8c42;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-actions { display: flex; align-items: center; gap: 16px; }
+    
+    .btn-add-customer {
+      background: var(--orange-gradient);
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 14px rgba(236, 92, 10, 0.35);
+      transition: all 0.2s ease;
+    }
+    .btn-add-customer:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(236, 92, 10, 0.5); }
+
+    .user-profile {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--border-dark);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .avatar { width: 28px; height: 28px; background: var(--orange-primary); border-radius: 50%; display: grid; place-items: center; font-size: 12px; }
+
+    /* Layout Wrapper */
+    .dashboard-container {
+      max-width: 1350px;
+      margin: 0 auto;
+      padding: 24px;
+      width: 100%;
+      flex: 1;
+    }
+
+    /* Franchise Welcome Banner */
+    .welcome-banner {
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(15, 23, 42, 0.95) 100%), radial-gradient(circle at top right, rgba(236, 92, 10, 0.15), transparent);
+      border: 1px solid var(--border-dark);
+      border-radius: 16px;
+      padding: 22px 28px;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .welcome-text h1 { font-size: 22px; font-weight: 800; margin-bottom: 6px; }
+    .welcome-text p { color: var(--text-muted); font-size: 14px; }
+
+    .franchise-meta {
+      display: flex;
+      gap: 20px;
+    }
+    .meta-pill {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 8px 14px;
+      border-radius: 10px;
+      font-size: 12px;
+    }
+    .meta-pill strong { display: block; color: #fff; font-size: 13px; }
+
+    /* KPI Grid */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 18px;
+      margin-bottom: 28px;
+    }
+
+    .kpi-card {
+      background: var(--panel-dark);
+      border: 1px solid var(--border-dark);
+      border-radius: 14px;
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s;
+    }
+    .kpi-card:hover { transform: translateY(-3px); border-color: rgba(236, 92, 10, 0.5); }
+    .kpi-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 4px; height: 100%;
+      background: var(--orange-primary);
+    }
+    .kpi-card.green::before { background: var(--green-accent); }
+    .kpi-card.blue::before { background: var(--blue-accent); }
+    .kpi-card.purple::before { background: #8b5cf6; }
+
+    .kpi-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; color: var(--text-muted); font-size: 13px; font-weight: 600; }
+    .kpi-icon { width: 36px; height: 36px; border-radius: 10px; background: rgba(255,255,255,0.06); display: grid; place-items: center; color: var(--orange-primary); }
+    .kpi-card.green .kpi-icon { color: var(--green-accent); }
+    .kpi-card.blue .kpi-icon { color: var(--blue-accent); }
+    .kpi-card.purple .kpi-icon { color: #8b5cf6; }
+
+    .kpi-value { font-size: 26px; font-weight: 800; color: #fff; margin-bottom: 4px; }
+    .kpi-subtext { font-size: 12px; color: var(--text-muted); }
+    .kpi-subtext span { color: var(--green-accent); font-weight: 700; }
+
+    /* Data Table Section */
+    .table-container {
+      background: var(--panel-dark);
+      border: 1px solid var(--border-dark);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    .table-header {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--border-dark);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .table-title { font-size: 17px; font-weight: 700; display: flex; align-items: center; gap: 10px; }
+
+    .search-box {
+      position: relative;
+      min-width: 300px;
+    }
+    .search-box input {
+      width: 100%;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid var(--border-dark);
+      border-radius: 8px;
+      padding: 10px 14px 10px 38px;
+      color: #fff;
+      font-size: 13px;
+      outline: none;
+    }
+    .search-box input:focus { border-color: var(--orange-primary); }
+    .search-box i { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 13px; }
+
+    table { width: 100%; border-collapse: collapse; text-align: left; }
+    th {
+      background: rgba(15, 23, 42, 0.6);
+      padding: 14px 20px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border-dark);
+    }
+
+    td {
+      padding: 16px 20px;
+      font-size: 14px;
+      border-bottom: 1px solid rgba(51, 65, 85, 0.5);
+      color: #cbd5e1;
+    }
+
+    tr:hover td { background: rgba(255,255,255,0.02); }
+
+    .cust-info { display: flex; flex-direction: column; }
+    .cust-name { font-weight: 700; color: #fff; font-size: 14px; }
+    .cust-phone { font-size: 12px; color: var(--text-muted); }
+
+    .card-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(59, 130, 246, 0.12);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      color: #60a5fa;
+      font-family: monospace;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+
+    .badge-status {
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      display: inline-block;
+    }
+    .status-installed { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
+    .status-pending { background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); }
+    .status-active { background: rgba(59, 130, 246, 0.15); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.3); }
+
+    .btn-action {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border-dark);
+      color: #fff;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-action:hover { background: var(--orange-primary); border-color: var(--orange-primary); }
+
+    /* Modal Styling */
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(8px);
+      display: flex;
+      justify-content: flex-end;
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .modal-overlay.active { opacity: 1; pointer-events: all; }
+
+    .modal-panel {
+      width: 100%;
+      max-width: 520px;
+      background: #1e293b;
+      height: 100%;
+      box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+      padding: 30px;
+      overflow-y: auto;
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+    }
+    .modal-overlay.active .modal-panel { transform: translateX(0); }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border-dark);
+    }
+    .modal-header h2 { font-size: 18px; font-weight: 800; }
+    .close-btn { background: none; border: none; color: var(--text-muted); font-size: 20px; cursor: pointer; }
+
+    .form-group { margin-bottom: 18px; }
+    .form-group label { display: block; font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 6px; }
+    .form-group input, .form-group select {
+      width: 100%;
+      background: #0f172a;
+      border: 1px solid var(--border-dark);
+      border-radius: 8px;
+      padding: 12px 14px;
+      color: #fff;
+      font-size: 14px;
+      outline: none;
+    }
+    .form-group input:focus, .form-group select:focus { border-color: var(--orange-primary); }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--orange-gradient);
+      color: #fff;
+      border: none;
+      padding: 14px;
+      border-radius: 10px;
+      font-weight: 800;
+      font-size: 15px;
+      cursor: pointer;
+      margin-top: 10px;
+      box-shadow: 0 4px 15px rgba(236, 92, 10, 0.4);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navbar -->
+  <header>
+    <div class="brand-area">
+      <a href="#" class="brand-logo">VIDHYUT <span>SAATHI</span></a>
+      <span class="partner-badge"><i class="fa-solid fa-shield-halved"></i> Partner Portal</span>
+    </div>
+
+    <div class="nav-actions">
+      <button class="btn-add-customer" onclick="openModal()">
+        <i class="fa-solid fa-plus"></i> Add Customer & Issue Card
+      </button>
+      <div class="user-profile">
+        <div class="avatar">JS</div>
+        <span>Jaipur Solar Solutions</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Dashboard Main Container -->
+  <div class="dashboard-container">
+    
+    <!-- Welcome Header -->
+    <div class="welcome-banner">
+      <div class="welcome-text">
+        <h1>Welcome Back, Jaipur Solar Franchise! 👋</h1>
+        <p>Manage your customers, issue new Vidhyut Cards, and track real-time solar installations.</p>
+      </div>
+      <div class="franchise-meta">
+        <div class="meta-pill">Franchise ID: <strong>#VS-RJ-104</strong></div>
+        <div class="meta-pill">Region: <strong>Jaipur Circle</strong></div>
+      </div>
+    </div>
+
+    <!-- 4 KPI Cards -->
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-header">
+          <span>TOTAL CUSTOMERS</span>
+          <div class="kpi-icon"><i class="fa-solid fa-users"></i></div>
+        </div>
+        <div class="kpi-value">48</div>
+        <div class="kpi-subtext"><span>+6 Onboarded</span> this month</div>
+      </div>
+
+      <div class="kpi-card green">
+        <div class="kpi-header">
+          <span>CARD STOCK LEFT</span>
+          <div class="kpi-icon"><i class="fa-solid fa-id-card"></i></div>
+        </div>
+        <div class="kpi-value">52 / 100</div>
+        <div class="kpi-subtext">Series: <code>VS-CARD-8901..9000</code></div>
+      </div>
+
+      <div class="kpi-card blue">
+        <div class="kpi-header">
+          <span>TOTAL SOLAR INSTALLED</span>
+          <div class="kpi-icon"><i class="fa-solid fa-solar-panel"></i></div>
+        </div>
+        <div class="kpi-value">145 kW</div>
+        <div class="kpi-subtext"><span>18 Home Systems</span> Active</div>
+      </div>
+
+      <div class="kpi-card purple">
+        <div class="kpi-header">
+          <span>COMMISSION EARNED</span>
+          <div class="kpi-icon"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+        </div>
+        <div class="kpi-value">₹1,25,000</div>
+        <div class="kpi-subtext"><span>₹25,000</span> pending payout</div>
+      </div>
+    </div>
+
+    <!-- Table Section -->
+    <div class="table-container">
+      <div class="table-header">
+        <div class="table-title">
+          <i class="fa-solid fa-list-check" style="color: var(--orange-primary);"></i>
+          Customer Directory & Issued Vidhyut Cards
+        </div>
+        <div class="search-box">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" placeholder="Search by name, phone or card serial #...">
+        </div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Customer Name</th>
+            <th>Vidhyut Card #</th>
+            <th>System Size</th>
+            <th>Monthly Bill</th>
+            <th>Advance Paid</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="cust-info">
+                <span class="cust-name">Rahul Sharma</span>
+                <span class="cust-phone">+91 98765 43210 • Jaipur</span>
+              </div>
+            </td>
+            <td><span class="card-badge"><i class="fa-solid fa-credit-card"></i> VS-CARD-8901</span></td>
+            <td>5 kW On-Grid</td>
+            <td>₹6,500 / mo</td>
+            <td>₹25,000</td>
+            <td><span class="badge-status status-installed"><i class="fa-solid fa-circle-check"></i> Installed</span></td>
+            <td><button class="btn-action">View Receipt</button></td>
+          </tr>
+
+          <tr>
+            <td>
+              <div class="cust-info">
+                <span class="cust-name">Priya Verma</span>
+                <span class="cust-phone">+91 91234 56789 • Mansarovar</span>
+              </div>
+            </td>
+            <td><span class="card-badge"><i class="fa-solid fa-credit-card"></i> VS-CARD-8902</span></td>
+            <td>3 kW Hybrid</td>
+            <td>₹4,200 / mo</td>
+            <td>₹15,000</td>
+            <td><span class="badge-status status-pending"><i class="fa-solid fa-clock"></i> Survey Pending</span></td>
+            <td><button class="btn-action">Update Status</button></td>
+          </tr>
+
+          <tr>
+            <td>
+              <div class="cust-info">
+                <span class="cust-name">Amit Patel</span>
+                <span class="cust-phone">+91 99887 76655 • Vaishali Nagar</span>
+              </div>
+            </td>
+            <td><span class="card-badge"><i class="fa-solid fa-credit-card"></i> VS-CARD-8903</span></td>
+            <td>10 kW Commercial</td>
+            <td>₹18,500 / mo</td>
+            <td>₹50,000</td>
+            <td><span class="badge-status status-active"><i class="fa-solid fa-bolt"></i> Card Issued</span></td>
+            <td><button class="btn-action">View Details</button></td>
+          </tr>
+
+          <tr>
+            <td>
+              <div class="cust-info">
+                <span class="cust-name">Sunita Devi</span>
+                <span class="cust-phone">+91 94140 11223 • Sanganer</span>
+              </div>
+            </td>
+            <td><span class="card-badge"><i class="fa-solid fa-credit-card"></i> VS-CARD-8904</span></td>
+            <td>3 kW On-Grid</td>
+            <td>₹3,800 / mo</td>
+            <td>₹10,000</td>
+            <td><span class="badge-status status-installed"><i class="fa-solid fa-circle-check"></i> Installed</span></td>
+            <td><button class="btn-action">View Receipt</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <!-- Add Customer Slide-over Modal -->
+  <div class="modal-overlay" id="addCustomerModal">
+    <div class="modal-panel">
+      <div class="modal-header">
+        <h2><i class="fa-solid fa-user-plus" style="color: var(--orange-primary);"></i> Add Customer & Issue Card</h2>
+        <button class="close-btn" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <form onsubmit="alert('Customer added successfully! Vidhyut Card assigned and SMS sent to customer.'); closeModal(); return false;">
+        <div class="form-group">
+          <label>Customer Full Name *</label>
+          <input type="text" placeholder="e.g. Ramesh Kumar" required>
+        </div>
+
+        <div class="form-group">
+          <label>Mobile Number (WhatsApp) *</label>
+          <input type="tel" placeholder="+91 98765 00000" required>
+        </div>
+
+        <div class="form-group">
+          <label>Select Vidhyut Card Serial # *</label>
+          <select required>
+            <option value="">-- Choose Card from Stock --</option>
+            <option value="8905">VS-CARD-8905 (Available)</option>
+            <option value="8906">VS-CARD-8906 (Available)</option>
+            <option value="8907">VS-CARD-8907 (Available)</option>
+            <option value="8908">VS-CARD-8908 (Available)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Solar Capacity Required (kW)</label>
+          <input type="number" placeholder="e.g. 5" min="1" max="100">
+        </div>
+
+        <div class="form-group">
+          <label>Average Monthly Electricity Bill (₹)</label>
+          <input type="number" placeholder="e.g. 5000">
+        </div>
+
+        <div class="form-group">
+          <label>Advance Amount Collected (₹)</label>
+          <input type="number" placeholder="e.g. 15000">
+        </div>
+
+        <button type="submit" class="btn-submit">
+          <i class="fa-solid fa-paper-plane"></i> Save Customer & Issue Card
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function openModal() {
+      document.getElementById('addCustomerModal').classList.add('active');
+    }
+    function closeModal() {
+      document.getElementById('addCustomerModal').classList.remove('active');
+    }
+  </script>
+</body>
+</html>

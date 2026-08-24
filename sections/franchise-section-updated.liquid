@@ -1,7 +1,7 @@
 <style>
 .vs-section-{{ section.id }} {
   background: linear-gradient(180deg, {{ section.settings.bg_color_top }} 0%, {{ section.settings.bg_color_mid }} 48%, {{ section.settings.bg_color_bottom }} 100%);
-  padding: 56px 18px 28px;
+  padding: 60px 18px 40px;
   overflow: hidden;
   position: relative;
   color: #111;
@@ -15,11 +15,11 @@
   position: absolute;
   top: -120px;
   right: -120px;
-  width: 320px;
-  height: 320px;
+  width: 380px;
+  height: 380px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,170,0,.14), transparent 70%);
-  filter: blur(10px);
+  background: radial-gradient(circle, rgba(255,170,0,.16), transparent 70%);
+  filter: blur(14px);
 }
 .vs-section-{{ section.id }} .container {
   max-width: 1180px;
@@ -31,7 +31,7 @@
 /* HEADER */
 .vs-section-{{ section.id }} .heading {
   text-align: center;
-  margin-bottom: 44px;
+  margin-bottom: 50px;
   position: relative;
 }
 .vs-section-{{ section.id }} .heading h1 {
@@ -73,7 +73,7 @@
   animation: shine 5s linear infinite;
 }
 .vs-section-{{ section.id }} .heading-glow {
-  width: 150px;
+  width: 160px;
   height: 6px;
   border-radius: 999px;
   margin: 16px auto 0;
@@ -83,10 +83,11 @@
 }
 .vs-section-{{ section.id }} .heading p {
   margin: 16px auto 0;
-  color: #666;
-  font-size: 14px;
+  color: #555;
+  font-size: 15px;
   line-height: 1.7;
-  max-width: 300px;
+  max-width: 480px;
+  font-weight: 500;
 }
 
 /* EFFECTS */
@@ -103,75 +104,120 @@
   50% { transform: scaleX(1.08); opacity: 1; }
 }
 
-/* TIMELINE */
+/* TIMELINE LUCRATIVE CARDS */
 .vs-section-{{ section.id }} .timeline {
   position: relative;
+  max-width: 1050px;
+  margin: auto;
 }
 .vs-section-{{ section.id }} .timeline-line {
   position: absolute;
   left: 30px;
-  top: 31px;
+  top: 35px;
   width: 4px;
   border-radius: 40px;
   background: linear-gradient(to bottom, #ff9d00, #ffc500, #1eb759);
+  box-shadow: 0 0 10px rgba(255, 157, 0, 0.4);
 }
 .vs-section-{{ section.id }} .item {
   display: flex;
-  gap: 18px;
+  gap: 20px;
   align-items: flex-start;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 .vs-section-{{ section.id }} .item:last-child {
   margin-bottom: 0;
 }
+.vs-section-{{ section.id }} .icon-wrap {
+  position: relative;
+  z-index: 3;
+}
 .vs-section-{{ section.id }} .icon {
-  width: 62px;
-  min-width: 62px;
-  height: 62px;
+  width: 64px;
+  min-width: 64px;
+  height: 64px;
   border-radius: 50%;
-  background: #fff;
-  border: 2px solid rgba(255,180,0,.15);
+  background: #ffffff;
+  border: 3px solid #ff9800;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 8px 24px rgba(255,170,0,.12);
+  box-shadow: 0 10px 25px rgba(255,152,0,.25);
   z-index: 2;
+  transition: all 0.3s ease;
+}
+.vs-section-{{ section.id }} .item:hover .icon {
+  transform: scale(1.1) rotate(5deg);
+  border-color: #1eb759;
+  box-shadow: 0 12px 30px rgba(30,183,89,.35);
 }
 .vs-section-{{ section.id }} .icon svg, 
 .vs-section-{{ section.id }} .icon img {
-  width: 28px;
-  height: 28px;
+  width: 30px;
+  height: 30px;
   object-fit: contain;
 }
 .vs-section-{{ section.id }} .icon svg {
   fill: #ff9800;
+  transition: fill 0.3s ease;
+}
+.vs-section-{{ section.id }} .item:hover .icon svg {
+  fill: #1eb759;
 }
 
-/* UPDATED SUB HEADER */
+/* LUCRATIVE CARD BODY */
+.vs-section-{{ section.id }} .content-card {
+  flex: 1;
+  background: #ffffff;
+  border: 1px solid rgba(255, 170, 0, 0.22);
+  border-radius: 18px;
+  padding: 24px 28px;
+  box-shadow: 0 10px 30px rgba(236, 92, 10, 0.05);
+  position: relative;
+  transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.vs-section-{{ section.id }} .content-card:hover {
+  transform: translateY(-5px);
+  border-color: #ff9d00;
+  box-shadow: 0 18px 40px rgba(255, 157, 0, 0.15);
+}
+.vs-section-{{ section.id }} .step-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #ff9200;
+  background: rgba(255, 146, 0, 0.1);
+  border: 1px solid rgba(255, 146, 0, 0.25);
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
 .vs-section-{{ section.id }} .content h2 {
   margin: 0 0 10px;
   font-size: 22px;
-  line-height: 1.18;
+  line-height: 1.2;
   font-weight: 900;
+  color: #111111;
   letter-spacing: -0.4px;
 }
 .vs-section-{{ section.id }} .content h2 span {
   display: block;
-  white-space: nowrap;
+  white-space: normal;
 }
 .vs-section-{{ section.id }} .content p {
   margin: 0;
-  color: #666;
+  color: #555555;
   font-size: 15px;
-  line-height: 1.75;
-  text-align: justify; /* Justified alignment for both mobile and PC */
+  line-height: 1.7;
 }
 
-/* NEW: GRID HEADING STYLES (NOW COLORFUL) */
+/* GRID HEADING STYLES */
 .vs-grid-title-{{ section.id }} {
   text-align: center;
-  margin-top: 60px;
-  margin-bottom: 20px;
+  margin-top: 65px;
+  margin-bottom: 25px;
 }
 .vs-grid-title-{{ section.id }} h2 {
   margin: 0;
@@ -190,7 +236,7 @@
 .vs-usage-grid-{{ section.id }} {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  gap: 24px;
   perspective: 1500px;
   margin-top: 20px; 
   max-width: 1050px;
@@ -204,6 +250,8 @@
   aspect-ratio: 4 / 3;
   box-shadow: 0 15px 35px rgba(0,0,0,0.1);
   transform-style: preserve-3d;
+  border: 1px solid rgba(255, 170, 0, 0.2);
+  transition: all 0.4s ease;
 }
 .vs-usage-card-{{ section.id }} img {
   width: 100%;
@@ -216,60 +264,55 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  padding: 30px 15px 15px;
-  background: linear-gradient(to top, rgba(15,23,42,0.9) 0%, transparent 100%);
-  color: #fff;
-  text-align: center;
+  padding: 35px 20px 20px;
+  background: linear-gradient(to top, rgba(15,23,42,0.92) 0%, rgba(15,23,42,0.4) 60%, transparent 100%);
+  color: #ffffff;
+  text-align: left;
   font-weight: 800;
-  font-size: 1.1rem;
-  letter-spacing: 1px;
+  font-size: 1.15rem;
+  letter-spacing: 0.5px;
   text-transform: uppercase;
   transform: translateZ(20px);
   transition: color 0.3s ease;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.vs-usage-card-{{ section.id }}:hover img { transform: scale(1.1); }
+.vs-usage-overlay-{{ section.id }} .badge-tag {
+  font-size: 10px;
+  background: #ff9800;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-weight: 700;
+}
+.vs-usage-card-{{ section.id }}:hover img { transform: scale(1.08); }
+.vs-usage-card-{{ section.id }}:hover { border-color: #ff9d00; box-shadow: 0 20px 45px rgba(255, 157, 0, 0.25); }
 .vs-usage-card-{{ section.id }}:hover .vs-usage-overlay-{{ section.id }} { color: {{ section.settings.overlay_hover_color }}; }
 
 /* DESKTOP */
 @media(min-width: 769px) {
-  .vs-section-{{ section.id }} { padding: 90px 26px 45px; }
+  .vs-section-{{ section.id }} { padding: 90px 26px 60px; }
   .vs-section-{{ section.id }} .heading { margin-bottom: 70px; }
   .vs-section-{{ section.id }} .heading .top { font-size: 118px; letter-spacing: -4px; }
   .vs-section-{{ section.id }} .heading .bottom { font-size: 92px; letter-spacing: -3px; }
-  .vs-section-{{ section.id }} .heading p { font-size: 22px; max-width: 760px; }
+  .vs-section-{{ section.id }} .heading p { font-size: 20px; max-width: 760px; }
   .vs-section-{{ section.id }} .heading-glow { width: 240px; height: 8px; }
-  .vs-section-{{ section.id }} .timeline { max-width: 1050px; margin: auto; }
   .vs-section-{{ section.id }} .timeline-line { left: 44px; width: 5px; top: 46px; }
-  .vs-section-{{ section.id }} .item { gap: 30px; margin-bottom: 65px; }
-  .vs-section-{{ section.id }} .icon { width: 92px; min-width: 92px; height: 92px; }
-  .vs-section-{{ section.id }} .icon svg, .vs-section-{{ section.id }} .icon img { width: 40px; height: 40px; }
-  .vs-section-{{ section.id }} .content h2 { font-size: 38px; line-height: 1.15; }
-  .vs-section-{{ section.id }} .content p { font-size: 22px; line-height: 1.9; max-width: 760px; }
+  .vs-section-{{ section.id }} .item { gap: 30px; margin-bottom: 40px; }
+  .vs-section-{{ section.id }} .icon { width: 90px; min-width: 90px; height: 90px; }
+  .vs-section-{{ section.id }} .icon svg, .vs-section-{{ section.id }} .icon img { width: 42px; height: 42px; }
+  .vs-section-{{ section.id }} .content h2 { font-size: 26px; line-height: 1.2; }
+  .vs-section-{{ section.id }} .content p { font-size: 17px; line-height: 1.8; }
   .vs-grid-title-{{ section.id }} h2 { font-size: 38px; }
 }
 
-/* smaller 2nd subheader on mobile */
 @media(max-width: 768px) {
-  .vs-section-{{ section.id }} .item:nth-child(2) .content h2 {
-    font-size: 20px !important;
-    line-height: 1.16;
-  }
-}
-
-/* premium smaller subheaders on mobile */
-@media(max-width: 768px) {
-  .vs-section-{{ section.id }} .content h2 {
-    font-size: 19px !important;
-    line-height: 1.18 !important;
-    letter-spacing: -0.3px;
-  }
-  
-  /* GRID & GRID HEADING MOBILE OVERRIDES */
   .vs-grid-title-{{ section.id }} { margin-top: 45px; margin-bottom: 15px; }
   .vs-grid-title-{{ section.id }} h2 { font-size: 24px; }
-  .vs-usage-grid-{{ section.id }} { gap: 10px; margin-top: 15px; }
-  .vs-usage-card-{{ section.id }} { border-radius: 12px; aspect-ratio: 1 / 1; }
-  .vs-usage-overlay-{{ section.id }} { padding: 20px 10px 10px; font-size: 0.85rem; }
+  .vs-usage-grid-{{ section.id }} { gap: 14px; margin-top: 15px; grid-template-columns: repeat(2, 1fr); }
+  .vs-usage-card-{{ section.id }} { border-radius: 14px; aspect-ratio: 1 / 1; }
+  .vs-usage-overlay-{{ section.id }} { padding: 16px 12px 12px; font-size: 0.85rem; flex-direction: column; align-items: flex-start; gap: 4px; }
 }
 </style>
 
@@ -296,28 +339,34 @@
 
       {%- for block in section.blocks -%}
         <div class="item" {{ block.shopify_attributes }}>
-          <div class="icon">
-            {%- if block.settings.custom_icon_svg != blank -%}
-              {{ block.settings.custom_icon_svg }}
-            {%- elsif block.settings.custom_icon_image != blank -%}
-              {{ block.settings.custom_icon_image | image_url: width: 100 | image_tag: loading: 'lazy' }}
-            {%- else -%}
-              <svg viewBox="0 0 24 24"><path d="M12 2L3 7v10l9 5 9-5V7l-9-5z"/></svg>
-            {%- endif -%}
+          <div class="icon-wrap">
+            <div class="icon">
+              {%- if block.settings.custom_icon_svg != blank -%}
+                {{ block.settings.custom_icon_svg }}
+              {%- elsif block.settings.custom_icon_image != blank -%}
+                {{ block.settings.custom_icon_image | image_url: width: 100 | image_tag: loading: 'lazy' }}
+              {%- else -%}
+                <svg viewBox="0 0 24 24"><path d="M12 2L3 7v10l9 5 9-5V7l-9-5z"/></svg>
+              {%- endif -%}
+            </div>
           </div>
-          <div class="content">
-            {%- if block.settings.title != blank -%}
-              <h2>{{ block.settings.title }}</h2>
-            {%- endif -%}
-            {%- if block.settings.text != blank -%}
-              <p>{{ block.settings.text }}</p>
-            {%- endif -%}
+
+          <div class="content-card">
+            <span class="step-badge">Feature 0{{ forloop.index }}</span>
+            <div class="content">
+              {%- if block.settings.title != blank -%}
+                <h2>{{ block.settings.title }}</h2>
+              {%- endif -%}
+              {%- if block.settings.text != blank -%}
+                <p>{{ block.settings.text }}</p>
+              {%- endif -%}
+            </div>
           </div>
         </div>
       {%- endfor -%}
     </div>
 
-    <!-- NEW: Editable Grid Title Area -->
+    <!-- Editable Grid Title Area -->
     {%- if section.settings.grid_heading != blank -%}
       <div class="vs-grid-title-{{ section.id }}">
         <h2>{{ section.settings.grid_heading }}</h2>
@@ -332,7 +381,10 @@
         {%- else -%}
           <div style="width:100%;height:100%;background:#e2e8f0;display:flex;align-items:center;justify-content:center;color:#94a3b8;">Image 1</div>
         {%- endif -%}
-        <div class="vs-usage-overlay-{{ section.id }}">{{ section.settings.lbl1 }}</div>
+        <div class="vs-usage-overlay-{{ section.id }}">
+          <span>{{ section.settings.lbl1 }}</span>
+          <span class="badge-tag">Residential</span>
+        </div>
       </div>
       
       <div class="vs-usage-card-{{ section.id }}">
@@ -341,7 +393,10 @@
         {%- else -%}
           <div style="width:100%;height:100%;background:#cbd5e1;display:flex;align-items:center;justify-content:center;color:#94a3b8;">Image 2</div>
         {%- endif -%}
-        <div class="vs-usage-overlay-{{ section.id }}">{{ section.settings.lbl2 }}</div>
+        <div class="vs-usage-overlay-{{ section.id }}">
+          <span>{{ section.settings.lbl2 }}</span>
+          <span class="badge-tag">Commercial</span>
+        </div>
       </div>
       
       <div class="vs-usage-card-{{ section.id }}">
@@ -350,7 +405,10 @@
         {%- else -%}
           <div style="width:100%;height:100%;background:#cbd5e1;display:flex;align-items:center;justify-content:center;color:#94a3b8;">Image 3</div>
         {%- endif -%}
-        <div class="vs-usage-overlay-{{ section.id }}">{{ section.settings.lbl3 }}</div>
+        <div class="vs-usage-overlay-{{ section.id }}">
+          <span>{{ section.settings.lbl3 }}</span>
+          <span class="badge-tag">Industrial</span>
+        </div>
       </div>
       
       <div class="vs-usage-card-{{ section.id }}">
@@ -359,7 +417,10 @@
         {%- else -%}
           <div style="width:100%;height:100%;background:#e2e8f0;display:flex;align-items:center;justify-content:center;color:#94a3b8;">Image 4</div>
         {%- endif -%}
-        <div class="vs-usage-overlay-{{ section.id }}">{{ section.settings.lbl4 }}</div>
+        <div class="vs-usage-overlay-{{ section.id }}">
+          <span>{{ section.settings.lbl4 }}</span>
+          <span class="badge-tag">Institutional</span>
+        </div>
       </div>
 
     </div>

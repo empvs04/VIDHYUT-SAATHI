@@ -1,0 +1,264 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+  .vs-admin-wrapper {
+    background-color: #090d16;
+    color: #f8fafc;
+    min-height: 100vh;
+    padding: 20px 12px 60px 12px;
+    font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  .vs-admin-container { max-width: 1400px; margin: 0 auto; }
+
+  /* Top Nav */
+  .vs-admin-nav {
+    background: rgba(19, 28, 46, 0.9);
+    border: 1px solid #24324d;
+    border-radius: 14px;
+    padding: 14px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  .vs-admin-title { font-size: 20px; font-weight: 800; color: #fff; display: flex; align-items: center; gap: 10px; }
+  .vs-admin-title span { color: #ec5c0a; }
+
+  .vs-badge-hq {
+    background: rgba(245, 158, 11, 0.15);
+    border: 1px solid rgba(245, 158, 11, 0.4);
+    color: #fbbf24;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 20px;
+    text-transform: uppercase;
+  }
+
+  .vs-nav-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+
+  .vs-btn-gold {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid #24324d;
+    color: #fff;
+    padding: 9px 16px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 13px;
+    cursor: pointer;
+  }
+
+  .vs-btn-orange {
+    background: linear-gradient(135deg, #ec5c0a 0%, #ff7b2c 100%);
+    color: #fff;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 13px;
+    cursor: pointer;
+  }
+
+  /* Welcome Banner */
+  .vs-hq-banner {
+    background: linear-gradient(135deg, #131c2e 0%, #090d16 100%);
+    border: 1px solid #24324d;
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 24px;
+  }
+
+  .vs-hq-banner h1 { font-size: 22px; font-weight: 800; margin: 0 0 6px 0; color: #fff; }
+  .vs-hq-banner p { color: #94a3b8; font-size: 14px; margin: 0; }
+
+  /* KPI Grid */
+  .vs-kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 18px;
+    margin-bottom: 24px;
+  }
+
+  .vs-kpi-box {
+    background: #131c2e;
+    border: 1px solid #24324d;
+    border-radius: 14px;
+    padding: 20px;
+    position: relative;
+  }
+
+  .vs-kpi-box::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 4px; height: 100%;
+    background: #f59e0b;
+  }
+
+  .vs-kpi-box.green::before { background: #10b981; }
+  .vs-kpi-box.blue::before { background: #3b82f6; }
+  .vs-kpi-box.orange::before { background: #ec5c0a; }
+
+  .vs-kpi-label { font-size: 12px; font-weight: 700; color: #94a3b8; text-transform: uppercase; margin-bottom: 6px; }
+  .vs-kpi-val { font-size: 28px; font-weight: 800; color: #fff; margin-bottom: 4px; }
+  .vs-kpi-sub { font-size: 12px; color: #94a3b8; }
+  .vs-kpi-sub span { color: #10b981; font-weight: 700; }
+
+  /* Table */
+  .vs-table-box {
+    background: #131c2e;
+    border: 1px solid #24324d;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .vs-table-head {
+    padding: 18px 24px;
+    border-bottom: 1px solid #24324d;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  .vs-table-title { font-size: 16px; font-weight: 700; color: #fff; }
+
+  .vs-admin-table { width: 100%; border-collapse: collapse; text-align: left; }
+  .vs-admin-table th {
+    background: rgba(9, 13, 22, 0.7);
+    padding: 14px 20px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #94a3b8;
+    text-transform: uppercase;
+    border-bottom: 1px solid #24324d;
+  }
+
+  .vs-admin-table td {
+    padding: 16px 20px;
+    font-size: 14px;
+    border-bottom: 1px solid rgba(36, 50, 77, 0.5);
+    color: #cbd5e1;
+  }
+
+  .vs-badge-gold {
+    background: rgba(245, 158, 11, 0.12);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    color: #fbbf24;
+    font-family: monospace;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: 6px;
+  }
+</style>
+
+<div class="vs-admin-wrapper">
+  <div class="vs-admin-container">
+    
+    <!-- Top Nav -->
+    <div class="vs-admin-nav">
+      <div class="vs-admin-title">
+        VIDHYUT <span>SAATHI</span>
+        <span class="vs-badge-hq"><i class="fa-solid fa-crown"></i> Master HQ Control</span>
+      </div>
+
+      <div class="vs-nav-btns">
+        <button class="vs-btn-gold" onclick="alert('Exporting CSV...')"><i class="fa-solid fa-file-excel"></i> Export CSV</button>
+        <button class="vs-btn-gold" onclick="alert('Allocate Cards Popup')"><i class="fa-solid fa-id-card"></i> Allocate Cards</button>
+        <button class="vs-btn-orange" onclick="alert('Register Franchise Popup')"><i class="fa-solid fa-plus"></i> Register Franchise</button>
+      </div>
+    </div>
+
+    <!-- Banner -->
+    <div class="vs-hq-banner">
+      <h1>Vidhyut Saathi All-India Master Control Panel 👑</h1>
+      <p>Manage all Franchise Partners, Card allocations, and total Installed Solar capacity across India.</p>
+    </div>
+
+    <!-- Stats -->
+    <div class="vs-kpi-grid">
+      <div class="vs-kpi-box">
+        <div class="vs-kpi-label">Active Franchises</div>
+        <div class="vs-kpi-val">24 Cities</div>
+        <div class="vs-kpi-sub"><span>+3 New Requests</span></div>
+      </div>
+      <div class="vs-kpi-box green">
+        <div class="vs-kpi-label">Total Customers</div>
+        <div class="vs-kpi-val">1,420</div>
+        <div class="vs-kpi-sub"><span>+142 this week</span></div>
+      </div>
+      <div class="vs-kpi-box blue">
+        <div class="vs-kpi-label">Total Solar Installed</div>
+        <div class="vs-kpi-val">4.8 MW</div>
+        <div class="vs-kpi-sub"><span>4,800 kW Capacity</span></div>
+      </div>
+      <div class="vs-kpi-box orange">
+        <div class="vs-kpi-label">Total Business Volume</div>
+        <div class="vs-kpi-val">₹3.84 Cr</div>
+        <div class="vs-kpi-sub"><span>₹45.2 Lakhs</span> payouts</div>
+      </div>
+    </div>
+
+    <!-- Table -->
+    <div class="vs-table-box">
+      <div class="vs-table-head">
+        <div class="vs-table-title"><i class="fa-solid fa-city" style="color:#f59e0b;"></i> Franchise Partners Directory</div>
+      </div>
+
+      <div style="overflow-x:auto;">
+        <table class="vs-admin-table">
+          <thead>
+            <tr>
+              <th>Franchise & City</th>
+              <th>Franchise ID</th>
+              <th>Cards Allotted / Issued</th>
+              <th>Customers</th>
+              <th>Solar Size</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <strong style="color:#fff;">Jaipur Solar Solutions</strong><br>
+                <small style="color:#94a3b8;">Jaipur, RJ • +91 98290 12345</small>
+              </td>
+              <td><span class="vs-badge-gold">#VS-RJ-104</span></td>
+              <td>48 / 100 Issued</td>
+              <td>48</td>
+              <td>145 kW</td>
+              <td><span style="color:#34d399; font-weight:700;">● Active</span></td>
+            </tr>
+            <tr>
+              <td>
+                <strong style="color:#fff;">Delhi Clean Energy</strong><br>
+                <small style="color:#94a3b8;">South Delhi • +91 98110 54321</small>
+              </td>
+              <td><span class="vs-badge-gold">#VS-DL-101</span></td>
+              <td>120 / 150 Issued</td>
+              <td>120</td>
+              <td>410 kW</td>
+              <td><span style="color:#34d399; font-weight:700;">● Active</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Master Admin Dashboard",
+  "settings": [],
+  "presets": [
+    { "name": "Master Admin Dashboard" }
+  ]
+}
+{% endschema %}
