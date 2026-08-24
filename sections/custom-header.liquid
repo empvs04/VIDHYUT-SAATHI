@@ -479,11 +479,11 @@
               {%- assign title_lower = link.title | downcase -%}
               {%- if title_lower contains 'required' or title_lower contains 'cards' -%}
                 <div class="vidhyut-has-dropdown-{{ section.id }}">
-                  <a href="/pages/required-cards" onclick="if(typeof vsGoPage === 'function'){ vsGoPage(event, 'required-cards'); }">{{ link.title }} <i class="fas fa-chevron-down"></i></a>
+                  <a href="/pages/required-cards" onclick="vsGoPage(event, 'required-cards');">{{ link.title }} <i class="fas fa-chevron-down"></i></a>
                   <div class="vidhyut-dropdown-menu-{{ section.id }}">
-                    <a href="/pages/industrial" onclick="if(typeof vsGoPage === 'function'){ vsGoPage(event, 'industrial'); }"><i class="fa-solid fa-industry" style="color:#0284c7; margin-right:8px;"></i> Industrial Use</a>
-                    <a href="/pages/commercial" onclick="if(typeof vsGoPage === 'function'){ vsGoPage(event, 'commercial'); }"><i class="fa-solid fa-building" style="color:#008744; margin-right:8px;"></i> Commercial Use</a>
-                    <a href="/pages/residential" onclick="if(typeof vsGoPage === 'function'){ vsGoPage(event, 'residential'); }"><i class="fa-solid fa-house" style="color:#f0631b; margin-right:8px;"></i> Residential Use</a>
+                    <a href="/pages/industrial" onclick="vsGoPage(event, 'industrial');"><i class="fa-solid fa-industry" style="color:#0284c7; margin-right:8px;"></i> Industrial Use</a>
+                    <a href="/pages/commercial" onclick="vsGoPage(event, 'commercial');"><i class="fa-solid fa-building" style="color:#008744; margin-right:8px;"></i> Commercial Use</a>
+                    <a href="/pages/residential" onclick="vsGoPage(event, 'residential');"><i class="fa-solid fa-house" style="color:#f0631b; margin-right:8px;"></i> Residential Use</a>
                   </div>
                 </div>
               {%- elsif title_lower contains 'about' -%}
@@ -495,7 +495,7 @@
                     <a href="/pages/iso-certification"><i class="fa-solid fa-award" style="color:#eab308; margin-right:8px;"></i> ISO Certification</a>
                     <a href="/pages/faq"><i class="fa-solid fa-circle-question" style="color:#8b5cf6; margin-right:8px;"></i> FAQ</a>
                     <a href="/pages/success-stories"><i class="fa-solid fa-star" style="color:#f97316; margin-right:8px;"></i> Success Story</a>
-                    <a href="/pages/vidhyut-blog"><i class="fa-solid fa-newspaper" style="color:#ec4899; margin-right:8px;"></i> Blog</a>
+                    <a href="/pages/vidhyut-blog" onclick="vsGoBlog(event);"><i class="fa-solid fa-newspaper" style="color:#ec4899; margin-right:8px;"></i> Blog</a>
                   </div>
                 </div>
               {%- elsif link.links != blank -%}
@@ -543,16 +543,16 @@
         {%- assign title_lower = link.title | downcase -%}
         <a href="{{ link.url }}" class="vidhyut-drawer-link-{{ section.id }}">{{ link.title }}</a>
         {%- if title_lower contains 'required' or title_lower contains 'cards' -%}
-          <a href="/pages/industrial" class="vidhyut-drawer-sublink-{{ section.id }}" onclick="if(typeof vsGoPage === 'function'){ vsGoPage(event, 'industrial'); }">&rarr; Industrial Use</a>
-          <a href="/pages/commercial" class="vidhyut-drawer-sublink-{{ section.id }}" onclick="if(typeof vsGoPage === 'function'){ vsGoPage(event, 'commercial'); }">&rarr; Commercial Use</a>
-          <a href="/pages/residential" class="vidhyut-drawer-sublink-{{ section.id }}" onclick="if(typeof vsGoPage === 'function'){ vsGoPage(event, 'residential'); }">&rarr; Residential Use</a>
+          <a href="/pages/industrial" class="vidhyut-drawer-sublink-{{ section.id }}" onclick="vsGoPage(event, 'industrial');">&rarr; Industrial Use</a>
+          <a href="/pages/commercial" class="vidhyut-drawer-sublink-{{ section.id }}" onclick="vsGoPage(event, 'commercial');">&rarr; Commercial Use</a>
+          <a href="/pages/residential" class="vidhyut-drawer-sublink-{{ section.id }}" onclick="vsGoPage(event, 'residential');">&rarr; Residential Use</a>
         {%- elsif title_lower contains 'about' -%}
           <a href="/pages/about-us" class="vidhyut-drawer-sublink-{{ section.id }}">&rarr; About Us</a>
           <a href="/pages/our-team" class="vidhyut-drawer-sublink-{{ section.id }}">&rarr; Our Team</a>
           <a href="/pages/iso-certification" class="vidhyut-drawer-sublink-{{ section.id }}">&rarr; ISO Certification</a>
           <a href="/pages/faq" class="vidhyut-drawer-sublink-{{ section.id }}">&rarr; FAQ</a>
           <a href="/pages/success-stories" class="vidhyut-drawer-sublink-{{ section.id }}">&rarr; Success Story</a>
-          <a href="/pages/vidhyut-blog" class="vidhyut-drawer-sublink-{{ section.id }}">&rarr; Blog</a>
+          <a href="/pages/vidhyut-blog" class="vidhyut-drawer-sublink-{{ section.id }}" onclick="vsGoBlog(event);">&rarr; Blog</a>
         {%- elsif link.links != blank -%}
           {%- for childlink in link.links -%}
             <a href="{{ childlink.url }}" class="vidhyut-drawer-sublink-{{ section.id }}">&rarr; {{ childlink.title }}</a>
@@ -577,6 +577,56 @@
       if (drawer) drawer.classList.remove('active');
       if (overlay) overlay.classList.remove('active');
       document.body.style.overflow = '';
+    }
+
+    if (typeof window.vsGoPage !== 'function') {
+      window.vsGoPage = function(e, handle) {
+        if (e && e.preventDefault) e.preventDefault();
+        var targetUrl = '/pages/' + handle;
+        var isEditor = (window.Shopify && window.Shopify.designMode) || location.search.indexOf('preview_theme_id') > -1;
+
+        if (isEditor) {
+          var base = (location.pathname && location.pathname.indexOf('/pages/') === 0) ? location.pathname : '/pages/required-cards';
+          location.href = base + '?view=' + handle;
+          return;
+        }
+
+        fetch(targetUrl, { method: 'GET' }).then(function(res) {
+          if (res.ok && res.status < 400 && res.url && res.url.indexOf('404') === -1) {
+            location.href = targetUrl;
+          } else {
+            fetch('/pages/required-cards', { method: 'GET' }).then(function(res2) {
+              if (res2.ok && res2.status < 400 && res2.url && res2.url.indexOf('404') === -1) {
+                location.href = '/pages/required-cards?view=' + handle;
+              } else {
+                location.href = '/?view=' + handle;
+              }
+            }).catch(function() {
+              location.href = '/?view=' + handle;
+            });
+          }
+        }).catch(function() {
+          location.href = targetUrl;
+        });
+      };
+    }
+
+    if (typeof window.vsGoBlog !== 'function') {
+      window.vsGoBlog = function(e) {
+        if (e && e.preventDefault) e.preventDefault();
+        var pageUrl = '/pages/vidhyut-blog';
+        var blogUrl = '/blogs/news';
+
+        fetch(pageUrl, { method: 'GET' }).then(function(res) {
+          if (res.ok && res.status < 400 && res.url && res.url.indexOf('404') === -1) {
+            location.href = pageUrl;
+          } else {
+            location.href = blogUrl;
+          }
+        }).catch(function() {
+          location.href = blogUrl;
+        });
+      };
     }
   </script>
 </div>

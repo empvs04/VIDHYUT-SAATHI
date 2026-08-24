@@ -1112,31 +1112,34 @@
   </div>
 
   <script>
-    if (typeof vsGoPage !== 'function') {
-      function vsGoPage(e, handle) {
-        if (e) e.preventDefault();
-        var mainUrl = '/pages/' + handle;
-        var isEditor = (window.Shopify && window.Shopify.designMode) || location.search.indexOf('preview_theme_id') > -1 || location.search.indexOf('view=') > -1;
-        
-        if (isEditor) {
-          var path = location.pathname;
-          if (!path || path === '/' || path === '/pages') { path = '/pages/required-cards'; }
-          location.href = path + '?view=' + handle;
-          return;
-        }
-
-        fetch(mainUrl, { method: 'HEAD' }).then(function(res) {
-          if (res.ok) {
-            location.href = mainUrl;
-          } else {
-            var path = location.pathname;
-            if (!path || path === '/') { path = '/pages/required-cards'; }
-            location.href = path + '?view=' + handle;
-          }
-        }).catch(function() {
-          location.href = mainUrl;
-        });
+    function vsGoPage(e, handle) {
+      if (e && e.preventDefault) e.preventDefault();
+      var targetUrl = '/pages/' + handle;
+      var isEditor = (window.Shopify && window.Shopify.designMode) || location.search.indexOf('preview_theme_id') > -1;
+      
+      if (isEditor) {
+        var base = (location.pathname && location.pathname.indexOf('/pages/') === 0) ? location.pathname : '/pages/required-cards';
+        location.href = base + '?view=' + handle;
+        return;
       }
+
+      fetch(targetUrl, { method: 'GET' }).then(function(res) {
+        if (res.ok && res.status < 400 && res.url && res.url.indexOf('404') === -1) {
+          location.href = targetUrl;
+        } else {
+          fetch('/pages/required-cards', { method: 'GET' }).then(function(res2) {
+            if (res2.ok && res2.status < 400 && res2.url && res2.url.indexOf('404') === -1) {
+              location.href = '/pages/required-cards?view=' + handle;
+            } else {
+              location.href = '/?view=' + handle;
+            }
+          }).catch(function() {
+            location.href = '/?view=' + handle;
+          });
+        }
+      }).catch(function() {
+        location.href = targetUrl;
+      });
     }
   </script>
 
