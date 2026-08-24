@@ -1,4 +1,17 @@
-
+<script>
+  (function() {
+    var p = (location.pathname || '').toLowerCase();
+    if (p.indexOf('/pages/industrial') !== -1) {
+      location.replace('/pages/required-cards?view=industrial');
+    } else if (p.indexOf('/pages/commercial') !== -1) {
+      location.replace('/pages/required-cards?view=commercial');
+    } else if (p.indexOf('/pages/residential') !== -1) {
+      location.replace('/pages/required-cards?view=residential');
+    } else if (p.indexOf('/pages/vidhyut-blog') !== -1) {
+      location.replace('/blogs/news');
+    }
+  })();
+</script>
 
 <div class="section-background color-{{ section.settings.color_scheme }}"></div>
 <div
