@@ -48,8 +48,8 @@
     overflow: hidden;
     box-shadow: 0 8px 24px rgba(0,0,0,0.06);
     transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
-    background: #FFFFFF;
-    border: 1.5px solid rgba(247, 148, 29, 0.15);
+    background: transparent !important;
+    border: none !important;
     display: block;
     text-decoration: none;
   }
@@ -65,6 +65,7 @@
     object-fit: cover;
     aspect-ratio: 1 / 1;
     display: block;
+    border-radius: {{ section.settings.border_radius | default: 18 }}px;
     transition: transform 0.5s ease;
   }
 
@@ -77,6 +78,7 @@
     height: 100%;
     aspect-ratio: 1 / 1;
     background: linear-gradient(135deg, #FFF3E0 0%, #FFE0B2 100%);
+    border-radius: {{ section.settings.border_radius | default: 18 }}px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -104,6 +106,8 @@
     width: 100%;
     border-radius: {{ section.settings.border_radius | default: 18 }}px;
     overflow: hidden;
+    background: transparent !important;
+    border: none !important;
   }
 
   .vs-top-banners-{{ section.id }} .banner-badge {
@@ -152,6 +156,8 @@
 
     .vs-top-banners-{{ section.id }} .banners-outer-container {
       border-radius: {{ section.settings.border_radius_mob | default: 16 }}px !important;
+      background: transparent !important;
+      border: none !important;
     }
 
     .vs-top-banners-{{ section.id }} .banners-wrapper {
@@ -166,6 +172,7 @@
       -webkit-overflow-scrolling: touch !important;
       scrollbar-width: none !important;
       border-radius: {{ section.settings.border_radius_mob | default: 16 }}px !important;
+      background: transparent !important;
     }
 
     .vs-top-banners-{{ section.id }} .banners-wrapper::-webkit-scrollbar {
@@ -179,9 +186,19 @@
       width: 100% !important;
       scroll-snap-align: center !important;
       scroll-snap-stop: always !important;
-      border-radius: 0 !important;
+      border-radius: {{ section.settings.border_radius_mob | default: 16 }}px !important;
       box-shadow: none !important;
       border: none !important;
+      background: transparent !important;
+    }
+
+    .vs-top-banners-{{ section.id }} .banner-img {
+      width: 100% !important;
+      height: 100% !important;
+      aspect-ratio: 1 / 1 !important;
+      object-fit: cover !important;
+      display: block !important;
+      border-radius: {{ section.settings.border_radius_mob | default: 16 }}px !important;
     }
 
     /* MOBILE INSIDE DOTS */
