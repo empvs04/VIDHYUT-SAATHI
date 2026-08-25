@@ -735,18 +735,25 @@
 
   /* --- Why ISO Certification Matters Split Section --- */
   .iso-why {
-    padding: clamp(60px, 8vw, 100px) 20px;
+    padding: 50px 32px;
     max-width: 1280px;
-    margin: 0 auto;
+    margin: 40px auto 60px auto;
+    background: linear-gradient(145deg, #FFFFFF 0%, #FFFDF8 100%);
+    border: 1.5px solid rgba(247, 148, 29, 0.25);
+    border-top: 4px solid #F7941D;
+    border-radius: 32px;
+    box-shadow: 0 20px 50px rgba(247, 148, 29, 0.12), 0 6px 20px rgba(0, 0, 0, 0.03);
+    position: relative;
+    overflow: hidden;
   }
   .why-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 36px;
     align-items: center;
   }
   @media (min-width: 912px) {
-    .why-grid { grid-template-columns: 1fr 1fr; gap: 60px; }
+    .why-grid { grid-template-columns: 1fr 1fr; gap: 50px; }
   }
 
   .why-text h2 {
@@ -756,6 +763,7 @@
     line-height: 1.25;
     margin-bottom: 20px;
     color: #0F172A;
+    letter-spacing: -0.3px;
   }
 
   /* Why Section Feature Box */
@@ -766,47 +774,68 @@
   }
   .why-feat-item {
     background: #FFFFFF;
-    border: 1.5px solid rgba(247, 148, 29, 0.2);
+    border: 1.5px solid rgba(247, 148, 29, 0.22);
     border-left: 4px solid #F7941D;
     border-radius: 20px;
     padding: 20px 22px;
     display: flex;
     align-items: flex-start;
     gap: 16px;
-    box-shadow: 0 10px 25px rgba(247, 148, 29, 0.08);
-    transition: all 0.3s ease;
+    box-shadow: 0 10px 25px rgba(247, 148, 29, 0.08), 0 2px 8px rgba(0,0,0,0.02);
+    transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
   }
   .why-feat-item:hover {
-    transform: translateY(-3px);
+    transform: translateY(-4px) scale(1.01);
     border-left-color: #3EAD47;
-    box-shadow: 0 16px 32px rgba(247, 148, 29, 0.16);
+    box-shadow: 0 16px 36px rgba(247, 148, 29, 0.18);
   }
   .why-feat-icon {
-    width: 44px;
-    height: 44px;
-    border-radius: 14px;
+    width: 48px;
+    height: 48px;
+    border-radius: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 18px;
+    font-size: 20px;
     flex-shrink: 0;
   }
-  .why-feat-icon.orange { background: #FFF3E0; color: #E07810; }
-  .why-feat-icon.green { background: #E8F5E9; color: #2E7D32; }
-  .why-feat-icon.blue { background: #E0F2FE; color: #0284C7; }
+  .why-feat-icon.orange {
+    background: linear-gradient(135deg, #FFF3E0, #FFE0B2);
+    color: #D96924;
+    box-shadow: 0 4px 12px rgba(247, 148, 29, 0.25);
+  }
+  .why-feat-icon.green {
+    background: linear-gradient(135deg, #E8F5E9, #C8E6C9);
+    color: #2E7D32;
+    box-shadow: 0 4px 12px rgba(62, 173, 71, 0.25);
+  }
+  .why-feat-icon.blue {
+    background: linear-gradient(135deg, #E0F2FE, #BAE6FD);
+    color: #0284C7;
+    box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+  }
 
   .why-feat-text h4 {
     font-family: 'Baloo 2', sans-serif;
-    font-size: 1.12rem;
+    font-size: 1.15rem;
     font-weight: 800;
     color: #0F172A;
     margin: 0 0 4px 0;
   }
   .why-feat-text p {
-    font-size: 0.88rem;
+    font-size: 0.9rem;
     color: #64748B;
     margin: 0;
     line-height: 1.5;
+    font-weight: 600;
+  }
+
+  @media (max-width: 768px) {
+    .iso-why {
+      padding: 30px 16px !important;
+      border-radius: 24px !important;
+      margin: 30px 14px 40px 14px !important;
+    }
   }
 
   /* --- Lucrative Light Theme CTA Section --- */
