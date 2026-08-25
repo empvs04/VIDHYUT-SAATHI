@@ -99,18 +99,91 @@
     font-weight: 800;
   }
 
+  .vs-top-banners-{{ section.id }} .banners-outer-container {
+    position: relative;
+    width: 100%;
+    border-radius: {{ section.settings.border_radius | default: 18 }}px;
+    overflow: hidden;
+  }
+
   .vs-top-banners-{{ section.id }} .banner-badge {
     display: none !important;
   }
 
+  /* INSIDE BANNER OVERLAY DOTS */
   .vs-top-banners-dots {
     display: none;
+    position: absolute;
+    bottom: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 6;
+    margin: 0;
+    padding: 6px 14px;
+    border-radius: 50px;
+    background: rgba(15, 23, 42, 0.45);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+    border: 1px solid rgba(255,255,255,0.25);
+    pointer-events: auto;
   }
+
+  .vs-top-banners-dots .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .vs-top-banners-dots .dot.active {
+    width: 22px;
+    border-radius: 10px;
+    background: #FFFFFF;
+  }
+
+  /* INSIDE BANNER OVERLAY ARROWS */
+  .vs-top-banners-arrow {
+    display: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 6;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    color: #0F172A;
+    border: 1px solid rgba(0,0,0,0.12);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 900;
+    user-select: none;
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
+
+  .vs-top-banners-arrow:active {
+    transform: translateY(-50%) scale(0.92);
+  }
+
+  .vs-top-banners-arrow.prev { left: 10px; }
+  .vs-top-banners-arrow.next { right: 10px; }
 
   /* MOBILE SLIDER LAYOUT */
   @media(max-width: 767px) {
     .vs-top-banners-{{ section.id }} {
       padding: {{ section.settings.padding_top_mob | default: 16 }}px 12px {{ section.settings.padding_bottom_mob | default: 16 }}px 12px;
+    }
+
+    .vs-top-banners-{{ section.id }} .banners-outer-container {
+      border-radius: {{ section.settings.border_radius_mob | default: 16 }}px !important;
     }
 
     .vs-top-banners-{{ section.id }} .banners-wrapper {
@@ -120,9 +193,11 @@
       scroll-snap-type: x mandatory !important;
       scroll-behavior: smooth !important;
       gap: 0px !important;
-      padding: 4px 0 12px 0 !important;
+      padding: 0 !important;
+      margin: 0 !important;
       -webkit-overflow-scrolling: touch !important;
       scrollbar-width: none !important;
+      border-radius: {{ section.settings.border_radius_mob | default: 16 }}px !important;
     }
 
     .vs-top-banners-{{ section.id }} .banners-wrapper::-webkit-scrollbar {
@@ -136,30 +211,21 @@
       width: 100% !important;
       scroll-snap-align: center !important;
       scroll-snap-stop: always !important;
-      border-radius: {{ section.settings.border_radius_mob | default: 16 }}px !important;
+      border-radius: 0 !important;
+      box-shadow: none !important;
+      border: none !important;
     }
 
-    /* MOBILE DOTS PAGINATION */
+    /* MOBILE INSIDE DOTS & ARROWS */
     .vs-top-banners-dots {
       display: flex !important;
       align-items: center;
       justify-content: center;
       gap: 6px;
-      margin-top: 8px;
     }
 
-    .vs-top-banners-dots .dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: rgba(247, 148, 29, 0.3);
-      transition: all 0.3s ease;
-    }
-
-    .vs-top-banners-dots .dot.active {
-      width: 22px;
-      border-radius: 10px;
-      background: #F7941D;
+    .vs-top-banners-arrow {
+      display: flex !important;
     }
   }
 </style>
@@ -172,37 +238,43 @@
       </div>
     {% endif %}
 
-    <div class="banners-wrapper">
-      {% for block in section.blocks %}
-        <a href="{{ block.settings.banner_link | default: '#' }}" class="banner-item" {{ block.shopify_attributes }}>
-          {% if block.settings.banner_image != blank %}
-            <img 
-              src="{{ block.settings.banner_image | image_url: width: 600, height: 600, crop: 'center' }}"
-              alt="{{ block.settings.banner_image.alt | default: 'Vidhyut Saathi 1:1 Banner' }}"
-              class="banner-img"
-              loading="lazy"
-              width="600"
-              height="600"
-            >
-          {% else %}
-            <div class="banner-placeholder">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-                <circle cx="8.5" cy="8.5" r="1.5"/>
-                <polyline points="21 15 16 10 5 21"/>
-              </svg>
-              <span>Upload 1:1 Banner {{ forloop.index }}</span>
-            </div>
-          {% endif %}
-        </a>
-      {% endfor %}
-    </div>
+    <div class="banners-outer-container">
+      <div class="banners-wrapper">
+        {% for block in section.blocks %}
+          <a href="{{ block.settings.banner_link | default: '#' }}" class="banner-item" {{ block.shopify_attributes }}>
+            {% if block.settings.banner_image != blank %}
+              <img 
+                src="{{ block.settings.banner_image | image_url: width: 600, height: 600, crop: 'center' }}"
+                alt="{{ block.settings.banner_image.alt | default: 'Vidhyut Saathi 1:1 Banner' }}"
+                class="banner-img"
+                loading="lazy"
+                width="600"
+                height="600"
+              >
+            {% else %}
+              <div class="banner-placeholder">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                  <circle cx="8.5" cy="8.5" r="1.5"/>
+                  <polyline points="21 15 16 10 5 21"/>
+                </svg>
+                <span>Upload 1:1 Banner {{ forloop.index }}</span>
+              </div>
+            {% endif %}
+          </a>
+        {% endfor %}
+      </div>
 
-    <!-- MOBILE DOTS -->
-    <div class="vs-top-banners-dots" id="vs-banners-dots-{{ section.id }}">
-      {% for block in section.blocks %}
-        <span class="dot {% if forloop.first %}active{% endif %}"></span>
-      {% endfor %}
+      <!-- INSIDE BANNER ARROWS -->
+      <div class="vs-top-banners-arrow prev" id="vs-banners-prev-{{ section.id }}">‹</div>
+      <div class="vs-top-banners-arrow next" id="vs-banners-next-{{ section.id }}">›</div>
+
+      <!-- INSIDE BANNER DOTS -->
+      <div class="vs-top-banners-dots" id="vs-banners-dots-{{ section.id }}">
+        {% for block in section.blocks %}
+          <span class="dot {% if forloop.first %}active{% endif %}"></span>
+        {% endfor %}
+      </div>
     </div>
   </div>
 </div>
@@ -213,6 +285,8 @@
       const section = document.getElementById('vs-banners-{{ section.id }}');
       const wrapper = section ? section.querySelector('.banners-wrapper') : null;
       const dotsContainer = document.getElementById('vs-banners-dots-{{ section.id }}');
+      const prevBtn = document.getElementById('vs-banners-prev-{{ section.id }}');
+      const nextBtn = document.getElementById('vs-banners-next-{{ section.id }}');
       
       if (wrapper && dotsContainer) {
         const items = Array.from(wrapper.querySelectorAll('.banner-item'));
@@ -251,6 +325,25 @@
             }
           }, 50);
         }, { passive: true });
+
+        // Arrow Controls
+        if (prevBtn) {
+          prevBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            let prevIndex = (currentIndex - 1 + items.length) % items.length;
+            scrollToBanner(prevIndex);
+            resetAuto();
+          });
+        }
+
+        if (nextBtn) {
+          nextBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            let nextIndex = (currentIndex + 1) % items.length;
+            scrollToBanner(nextIndex);
+            resetAuto();
+          });
+        }
 
         // Dot Click Navigation
         dots.forEach((dot, idx) => {
