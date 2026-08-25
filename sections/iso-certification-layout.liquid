@@ -159,68 +159,65 @@
     background: linear-gradient(135deg, #f1721b, #007b3e);
   }
 
-  /* Details Box */
+  /* Details Box — Lucrative Light Theme */
   .iso-details-box {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(236, 92, 10, 0.2);
-    border-radius: 30px;
-    padding: 40px;
-    box-shadow: 0 20px 50px rgba(236, 92, 10, 0.07);
+    background: linear-gradient(145deg, #FFFFFF 0%, #FFFDF8 100%);
+    border: 1.5px solid rgba(247, 148, 29, 0.25);
+    border-top: 4px solid #F7941D;
+    border-radius: 28px;
+    padding: 42px 36px;
+    box-shadow: 0 20px 50px rgba(247, 148, 29, 0.12), 0 6px 20px rgba(0, 0, 0, 0.03);
     display: flex;
     flex-direction: column;
     justify-content: center;
+    position: relative;
+    overflow: hidden;
   }
   .iso-badge {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    padding: 8px 18px;
-    background: linear-gradient(135deg, rgba(236, 92, 10, 0.12), rgba(0, 123, 62, 0.12));
-    border: 1px solid rgba(236, 92, 10, 0.3);
+    padding: 8px 20px;
+    background: linear-gradient(135deg, #FFF3E0 0%, #E8F5E9 100%);
+    border: 1.5px solid rgba(247, 148, 29, 0.35);
     border-radius: 50px;
-    font-size: 0.85rem;
+    font-size: 0.88rem;
     font-weight: 800;
-    color: #ec5c0a;
+    color: #E07810;
     letter-spacing: 0.5px;
-    margin-bottom: 20px;
+    margin-bottom: 22px;
     width: fit-content;
-    box-shadow: 0 4px 15px rgba(236, 92, 10, 0.1);
+    box-shadow: 0 6px 18px rgba(247, 148, 29, 0.15);
   }
   .iso-badge .pulse-dot {
-    width: 8px;
-    height: 8px;
-    background-color: #ec5c0a;
+    width: 9px;
+    height: 9px;
+    background-color: #3EAD47;
     border-radius: 50%;
-    box-shadow: 0 0 0 0 rgba(236, 92, 10, 0.7);
+    box-shadow: 0 0 0 0 rgba(62, 173, 71, 0.7);
     animation: pulse-ring 1.8s infinite;
   }
   @keyframes pulse-ring {
-    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(236, 92, 10, 0.7); }
-    70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(236, 92, 10, 0); }
-    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(236, 92, 10, 0); }
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(62, 173, 71, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(62, 173, 71, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(62, 173, 71, 0); }
   }
 
   .iso-details-box h2 {
-    font-size: clamp(26px, 3vw, 42px);
+    font-family: 'Baloo 2', sans-serif;
+    font-size: clamp(26px, 3vw, 38px);
     font-weight: 900;
-    line-height: 1.2;
+    line-height: 1.25;
     margin-bottom: 20px;
-    background: linear-gradient(90deg, #ec5c0a, #007b3e, #ec5c0a);
-    background-size: 200% auto;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: color-shift 4s linear infinite;
-  }
-  @keyframes color-shift {
-    to { background-position: 200% center; }
+    color: #0F172A;
+    letter-spacing: -0.3px;
   }
   .iso-main-text {
-    font-size: 1.05rem;
+    font-size: 1.02rem;
     line-height: 1.75;
-    color: #444;
-    margin-bottom: 35px;
+    color: #475569;
+    font-weight: 600;
+    margin-bottom: 30px;
   }
   
   .iso-data-grid {
@@ -233,32 +230,33 @@
   }
   .iso-data-item {
     background: #ffffff;
-    padding: 16px 20px;
-    border-radius: 16px;
-    border-left: 4px solid #007b3e;
-    border-right: 1px solid rgba(0, 123, 62, 0.1);
-    border-top: 1px solid rgba(0, 123, 62, 0.1);
-    border-bottom: 1px solid rgba(0, 123, 62, 0.1);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.04);
-    transition: all 0.3s ease;
+    padding: 18px 20px;
+    border-radius: 18px;
+    border-left: 4px solid #F7941D;
+    border-right: 1.5px solid rgba(247, 148, 29, 0.15);
+    border-top: 1.5px solid rgba(247, 148, 29, 0.15);
+    border-bottom: 1.5px solid rgba(247, 148, 29, 0.15);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
   }
   .iso-data-item:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 123, 62, 0.1);
-    border-left-color: #ec5c0a;
+    transform: translateY(-4px);
+    box-shadow: 0 14px 30px rgba(247, 148, 29, 0.18);
+    border-left-color: #3EAD47;
   }
   .iso-data-label {
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     text-transform: uppercase;
     font-weight: 800;
     letter-spacing: 0.5px;
-    color: #888;
-    margin-bottom: 6px;
+    color: #94A3B8;
+    margin-bottom: 4px;
   }
   .iso-data-value {
-    font-size: 1.05rem;
-    font-weight: 700;
-    color: #1a1a1a;
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #0F172A;
   }
 
   /* Mobile Responsive Optimizations */
