@@ -391,7 +391,7 @@
     grid-template-columns: 1fr;
   }
   @media(min-width: 768px) {
-    .vs-stats-grid { grid-template-columns: repeat(3, 1fr); padding: 0 72px; }
+    .vs-stats-grid { grid-template-columns: repeat(3, 1fr) !important; padding: 0 72px !important; }
   }
 
   .vs-stat-card {
@@ -440,6 +440,85 @@
   .vs-stat-card.style-green .vs-stat-divider { background: linear-gradient(90deg, var(--green), transparent); }
 
   .vs-stat-desc { font-size: 22px; font-weight: 800; color: var(--dark); line-height: 1.5; position: relative; z-index: 1; }
+
+  .vs-crisis-dots {
+    display: none !important;
+  }
+
+  /* MOBILE ALIGNMENT & 3S VIEWPORT SLIDER */
+  @media(max-width: 767px) {
+    .vs-hero {
+      padding: 40px 16px 20px !important;
+      text-align: center !important;
+    }
+    .vs-hero-divider {
+      margin: 18px auto 0 !important;
+    }
+    .vs-hero h1 {
+      font-size: 34px !important;
+      text-align: center !important;
+    }
+    .vs-stats-grid {
+      display: flex !important;
+      grid-template-columns: none !important;
+      flex-direction: row !important;
+      flex-wrap: nowrap !important;
+      overflow-x: auto !important;
+      scroll-snap-type: x mandatory !important;
+      scroll-behavior: smooth !important;
+      gap: 0px !important;
+      padding: 10px 0 10px 0 !important;
+      -webkit-overflow-scrolling: touch !important;
+      scrollbar-width: none !important;
+      width: 100% !important;
+    }
+    .vs-stats-grid::-webkit-scrollbar {
+      display: none !important;
+    }
+    .vs-stat-card {
+      flex: 0 0 100% !important;
+      max-width: 100% !important;
+      min-width: 100% !important;
+      width: 100% !important;
+      scroll-snap-align: center !important;
+      scroll-snap-stop: always !important;
+      box-sizing: border-box !important;
+      padding: 32px 20px !important;
+      min-height: 280px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: center !important;
+    }
+    .vs-stat-value {
+      font-size: 42px !important;
+    }
+    .vs-stat-desc {
+      font-size: 17px !important;
+      line-height: 1.5 !important;
+    }
+    .vs-crisis-dots {
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      gap: 8px !important;
+      margin-top: 18px !important;
+      margin-bottom: 20px !important;
+    }
+    .vs-crisis-dots .dot {
+      width: 10px !important;
+      height: 10px !important;
+      border-radius: 50% !important;
+      background: #cbd5e1 !important;
+      transition: all 0.3s ease !important;
+      cursor: pointer !important;
+    }
+    .vs-crisis-dots .dot.active {
+      width: 30px !important;
+      border-radius: 999px !important;
+      background: linear-gradient(90deg, #f7941d, #e07810) !important;
+      box-shadow: 0 3px 10px rgba(247, 148, 29, 0.35) !important;
+    }
+  }
 
   /* NEED BANNER */
   .vs-need-banner {
@@ -625,6 +704,13 @@
       {% endfor %}
     </div>
 
+    <!-- ACTIVE DOT PAGINATION (MOBILE ONLY) -->
+    <div class="vs-crisis-dots" id="vs-crisis-dots-{{ section.id }}">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+
     <div class="vs-need-banner">
       <div class="vs-need-icon">
         <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -681,3 +767,99 @@
 
   </section>
 </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (window.innerWidth <= 768) {
+      const section = document.getElementById('vs-{{ section.id }}');
+      const grid = section ? section.querySelector('.vs-stats-grid') : null;
+      const dotsContainer = document.getElementById('vs-crisis-dots-{{ section.id }}');
+      
+      if (grid && dotsContainer) {
+        const cards = Array.from(grid.querySelectorAll('.vs-stat-card'));
+        const dots = Array.from(dotsContainer.querySelectorAll('.dot'));
+        let autoTimer = null;
+        let currentIndex = 0;
+
+        function updateDots(activeIndex) {
+          dots.forEach((dot, idx) => {
+            if (idx === activeIndex) {
+              dot.classList.add('active');
+            } else {
+              dot.classList.remove('active');
+            }
+          });
+        }
+
+        function scrollToCard(index) {
+          if (!cards[index]) return;
+          const cardWidth = grid.offsetWidth;
+          grid.scrollTo({ left: index * cardWidth, behavior: 'smooth' });
+          currentIndex = index;
+          updateDots(currentIndex);
+        }
+
+        // Realtime Touch & Scroll Sync for Dots
+        let scrollTimeout;
+        grid.addEventListener('scroll', () => {
+          clearTimeout(scrollTimeout);
+          scrollTimeout = setTimeout(() => {
+            const scrollLeft = grid.scrollLeft;
+            const cardWidth = grid.offsetWidth;
+            const activeIndex = Math.min(Math.round(scrollLeft / cardWidth), cards.length - 1);
+            if (currentIndex !== activeIndex) {
+              currentIndex = activeIndex;
+              updateDots(currentIndex);
+            }
+          }, 50);
+        }, { passive: true });
+
+        // Dot Click Navigation
+        dots.forEach((dot, idx) => {
+          dot.addEventListener('click', () => {
+            scrollToCard(idx);
+            resetAuto();
+          });
+        });
+
+        // 3-Second Viewport Auto Slide
+        function startAuto() {
+          if (!autoTimer) {
+            autoTimer = setInterval(() => {
+              let nextIndex = (currentIndex + 1) % cards.length;
+              scrollToCard(nextIndex);
+            }, 3000);
+          }
+        }
+
+        function stopAuto() {
+          if (autoTimer) {
+            clearInterval(autoTimer);
+            autoTimer = null;
+          }
+        }
+
+        function resetAuto() {
+          stopAuto();
+          startAuto();
+        }
+
+        // IntersectionObserver for 3s Viewport Trigger
+        const viewportObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              startAuto();
+            } else {
+              stopAuto();
+            }
+          });
+        }, { threshold: 0.2 });
+
+        viewportObserver.observe(grid);
+
+        grid.addEventListener('touchstart', stopAuto, { passive: true });
+        grid.addEventListener('touchend', startAuto, { passive: true });
+      }
+    }
+  });
+</script>
