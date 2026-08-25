@@ -164,7 +164,7 @@
   color: #666;
   font-size: 15px;
   line-height: 1.75;
-  text-align: justify; /* Justified alignment for both mobile and PC */
+  text-align: left;
 }
 
 /* NEW: GRID HEADING STYLES (NOW COLORFUL) */
@@ -248,28 +248,86 @@
   .vs-grid-title-{{ section.id }} h2 { font-size: 38px; }
 }
 
-/* smaller 2nd subheader on mobile */
+/* PERFECT MOBILE ALIGNMENT OVERRIDES */
 @media(max-width: 768px) {
-  .vs-section-{{ section.id }} .item:nth-child(2) .content h2 {
-    font-size: 20px !important;
-    line-height: 1.16;
+  .vs-section-{{ section.id }} {
+    padding: 44px 16px 30px !important;
   }
-}
-
-/* premium smaller subheaders on mobile */
-@media(max-width: 768px) {
-  .vs-section-{{ section.id }} .content h2 {
-    font-size: 19px !important;
-    line-height: 1.18 !important;
-    letter-spacing: -0.3px;
+  .vs-section-{{ section.id }} .heading {
+    margin-bottom: 36px !important;
+    text-align: center !important;
+  }
+  .vs-section-{{ section.id }} .heading .top {
+    font-size: 11vw !important;
+    letter-spacing: -0.5px !important;
+  }
+  .vs-section-{{ section.id }} .heading .bottom {
+    font-size: 9.5vw !important;
+    letter-spacing: -0.5px !important;
+  }
+  .vs-section-{{ section.id }} .heading p {
+    font-size: 14.5px !important;
+    line-height: 1.55 !important;
+    max-width: 100% !important;
+    text-align: center !important;
+    color: #475569 !important;
+    margin-top: 14px !important;
   }
   
-  /* GRID & GRID HEADING MOBILE OVERRIDES */
-  .vs-grid-title-{{ section.id }} { margin-top: 45px; margin-bottom: 15px; }
-  .vs-grid-title-{{ section.id }} h2 { font-size: 24px; }
-  .vs-usage-grid-{{ section.id }} { gap: 10px; margin-top: 15px; }
-  .vs-usage-card-{{ section.id }} { border-radius: 12px; aspect-ratio: 1 / 1; }
-  .vs-usage-overlay-{{ section.id }} { padding: 20px 10px 10px; font-size: 0.85rem; }
+  .vs-section-{{ section.id }} .timeline {
+    position: relative !important;
+    padding-left: 0 !important;
+  }
+  .vs-section-{{ section.id }} .timeline-line {
+    left: 27px !important;
+    top: 28px !important;
+    bottom: 28px !important;
+    height: auto !important;
+    width: 3.5px !important;
+  }
+  .vs-section-{{ section.id }} .item {
+    gap: 16px !important;
+    margin-bottom: 32px !important;
+    align-items: flex-start !important;
+  }
+  .vs-section-{{ section.id }} .icon {
+    width: 58px !important;
+    min-width: 58px !important;
+    height: 58px !important;
+    box-shadow: 0 6px 18px rgba(255,170,0,.18) !important;
+  }
+  .vs-section-{{ section.id }} .icon svg, 
+  .vs-section-{{ section.id }} .icon img {
+    width: 26px !important;
+    height: 26px !important;
+  }
+  .vs-section-{{ section.id }} .content {
+    flex: 1 !important;
+  }
+  .vs-section-{{ section.id }} .content h2 {
+    font-size: 18.5px !important;
+    line-height: 1.25 !important;
+    letter-spacing: -0.2px !important;
+    color: #0f172a !important;
+    margin-bottom: 8px !important;
+    text-align: left !important;
+  }
+  .vs-section-{{ section.id }} .item:nth-child(2) .content h2 {
+    font-size: 18.5px !important;
+  }
+  .vs-section-{{ section.id }} .content p {
+    font-size: 13.5px !important;
+    line-height: 1.6 !important;
+    color: #475569 !important;
+    text-align: left !important;
+    word-spacing: normal !important;
+  }
+  
+  .vs-grid-title-{{ section.id }} { margin-top: 40px !important; margin-bottom: 16px !important; text-align: center !important; }
+  .vs-grid-title-{{ section.id }} h2 { font-size: 22px !important; }
+  .vs-usage-grid-{{ section.id }} { gap: 12px !important; margin-top: 14px !important; }
+  .vs-usage-card-{{ section.id }} { border-radius: 16px !important; aspect-ratio: 4 / 3 !important; }
+  .vs-usage-overlay-{{ section.id }} { padding: 20px 10px 10px !important; font-size: 0.85rem !important; }
 }
 </style>
 
