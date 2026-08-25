@@ -297,9 +297,12 @@
     .business-section-{{ section.id }} .card { padding: 40px 32px !important; }
   }
 
-  /* ── MOBILE ONLY: STRICT 1-CARD HORIZONTAL SWIPE CAROUSEL (CARD 1 VISIBLE INITIALLY, 2 & 3 SHOW ON SLIDE) ── */
+  /* ── MOBILE ONLY: LUCRATIVE COMPACT SWIPE CAROUSEL ── */
   @media(max-width: 767px) {
-    .business-section-{{ section.id }} { padding: 52px 14px !important; }
+    .business-section-{{ section.id }} { 
+      padding: 44px 16px !important; 
+      background: radial-gradient(circle at top right, rgba(247,148,29,0.06), transparent 45%), linear-gradient(180deg, #FAFAF7 0%, #FFFFFF 100%) !important;
+    }
     
     .business-section-{{ section.id }} .grid { 
       display: flex !important;
@@ -310,7 +313,7 @@
       scroll-snap-type: x mandatory !important;
       scroll-behavior: smooth !important;
       gap: 0px !important;
-      padding: 10px 0 20px 0 !important;
+      padding: 8px 0 16px 0 !important;
       -webkit-overflow-scrolling: touch !important;
       scrollbar-width: none !important;
       width: 100% !important;
@@ -326,77 +329,115 @@
       width: 100% !important;
       scroll-snap-align: center !important;
       scroll-snap-stop: always !important;
-      min-height: 560px !important;
+      min-height: 480px !important;
       display: flex !important;
       flex-direction: column !important;
       justify-content: space-between !important;
-      padding: 28px 20px !important;
-      border-radius: 24px !important;
+      padding: 24px 18px !important;
+      border-radius: 22px !important;
       box-sizing: border-box !important;
+      box-shadow: 0 12px 36px rgba(247,148,29,0.1), 0 4px 16px rgba(0,0,0,0.03) !important;
+    }
+
+    .business-section-{{ section.id }} .green {
+      border-top: 4px solid #3EAD47 !important;
+      border: 1.5px solid rgba(62, 173, 71, 0.22) !important;
+      background: linear-gradient(180deg, #F4FBF5 0%, #FFFFFF 100%) !important;
+    }
+    .business-section-{{ section.id }} .orange {
+      border-top: 4px solid #F7941D !important;
+      border: 1.5px solid rgba(247, 148, 29, 0.25) !important;
+      background: linear-gradient(180deg, #FFFDF8 0%, #FFFFFF 100%) !important;
+    }
+    .business-section-{{ section.id }} .dark {
+      border-top: 4px solid #E07810 !important;
+      border: 1.5px solid rgba(253, 180, 75, 0.35) !important;
+      background: linear-gradient(180deg, #181818 0%, #0F0F0F 100%) !important;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.4) !important;
     }
 
     .business-section-{{ section.id }} .top-row {
       flex-direction: column !important;
       align-items: center !important;
       text-align: center !important;
-      gap: 12px !important;
-      margin-bottom: 14px !important;
+      gap: 10px !important;
+      margin-bottom: 12px !important;
     }
     .business-section-{{ section.id }} .icon {
-      width: 48px !important;
-      height: 48px !important;
-      font-size: 22px !important;
+      width: 44px !important;
+      height: 44px !important;
+      font-size: 20px !important;
       border-radius: 14px !important;
+      box-shadow: 0 6px 18px rgba(247,148,29,.15) !important;
     }
     .business-section-{{ section.id }} .card h2 {
-      font-size: 1.25rem !important;
-      line-height: 1.1 !important;
+      font-size: 1.15rem !important;
+      line-height: 1.15 !important;
       text-align: center;
+      font-weight: 800 !important;
     }
     .business-section-{{ section.id }} .amount-box {
-      margin: 16px 0 !important;
-      padding: 16px !important;
+      margin: 12px 0 !important;
+      padding: 14px 16px !important;
       border-radius: 14px !important;
+      text-align: center !important;
     }
-    .business-section-{{ section.id }} .amount { font-size: 2rem !important; }
-    .business-section-{{ section.id }} .points { gap: 12px !important; }
+    .business-section-{{ section.id }} .green .amount-box {
+      background: linear-gradient(135deg, #E8F5E9 0%, #F1F9F2 100%) !important;
+      border: 1px solid rgba(62, 173, 71, 0.2) !important;
+    }
+    .business-section-{{ section.id }} .orange .amount-box {
+      background: linear-gradient(135deg, #FFF3E0 0%, #FFF8EE 100%) !important;
+      border: 1px solid rgba(247, 148, 29, 0.22) !important;
+    }
+    .business-section-{{ section.id }} .dark .amount-box {
+      background: linear-gradient(135deg, rgba(253,180,75,0.12) 0%, rgba(247,148,29,0.06) 100%) !important;
+      border: 1px solid rgba(253, 180, 75, 0.25) !important;
+    }
+
+    .business-section-{{ section.id }} .amount { font-size: 1.85rem !important; font-weight: 900 !important; }
+    .business-section-{{ section.id }} .points { gap: 10px !important; margin-top: 4px !important; }
     .business-section-{{ section.id }} .point {
-      font-size: 14px !important;
-      line-height: 1.4 !important;
+      font-size: 13.5px !important;
+      line-height: 1.35 !important;
       gap: 10px !important;
+      font-weight: 700 !important;
     }
     .business-section-{{ section.id }} .badge {
-      font-size: 11px !important;
-      padding: 6px 14px !important;
-      margin-bottom: 16px !important;
+      font-size: 10.5px !important;
+      padding: 5px 12px !important;
+      margin-bottom: 12px !important;
+      letter-spacing: 0.8px !important;
     }
     .business-section-{{ section.id }} .heading h1 {
-      font-size: 13vw !important;
+      font-size: 12vw !important;
       line-height: 1 !important;
       letter-spacing: -1px !important;
     }
-    .business-section-{{ section.id }} .glow-line { width: 150px !important; height: 5px !important; }
+    .business-section-{{ section.id }} .glow-line { width: 140px !important; height: 5px !important; }
     
     .business-section-{{ section.id }} .book-btn {
-      width: 96% !important;
-      max-width: 310px !important;
-      padding: 14px 44px !important;
-      font-size: 16px !important;
+      width: 100% !important;
+      max-width: 300px !important;
+      padding: 13px 40px !important;
+      font-size: 15.5px !important;
       margin-top: auto !important;
+      border-radius: 999px !important;
+      box-shadow: 0 8px 24px rgba(247,148,29,.35) !important;
     }
     .business-section-{{ section.id }} .book-btn svg {
-      width: 24px;
-      height: 24px;
+      width: 22px;
+      height: 22px;
     }
-    .business-section-{{ section.id }} .book-btn .hand-left { left: 14px; }
-    .business-section-{{ section.id }} .book-btn .hand-right { right: 14px; }
+    .business-section-{{ section.id }} .book-btn .hand-left { left: 12px; }
+    .business-section-{{ section.id }} .book-btn .hand-right { right: 12px; }
 
     .vs-bm-dots {
       display: flex !important;
       justify-content: center !important;
       align-items: center !important;
       gap: 8px !important;
-      margin-top: 24px !important;
+      margin-top: 18px !important;
     }
     .vs-bm-dots .dot {
       width: 10px !important;
@@ -407,7 +448,7 @@
       cursor: pointer !important;
     }
     .vs-bm-dots .dot.active {
-      width: 30px !important;
+      width: 28px !important;
       border-radius: 999px !important;
       background: linear-gradient(90deg, #f7941d, #e07810) !important;
       box-shadow: 0 3px 10px rgba(247, 148, 29, 0.35) !important;
