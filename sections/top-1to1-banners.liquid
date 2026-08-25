@@ -100,19 +100,7 @@
   }
 
   .vs-top-banners-{{ section.id }} .banner-badge {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background: linear-gradient(135deg, #F7941D, #E07810);
-    color: #FFFFFF;
-    font-family: 'Baloo 2', sans-serif;
-    font-size: 11px;
-    font-weight: 800;
-    padding: 4px 10px;
-    border-radius: 50px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    z-index: 2;
-    letter-spacing: 0.5px;
+    display: none !important;
   }
 
   .vs-top-banners-dots {
@@ -131,7 +119,7 @@
       overflow-x: auto !important;
       scroll-snap-type: x mandatory !important;
       scroll-behavior: smooth !important;
-      gap: 12px !important;
+      gap: 0px !important;
       padding: 4px 0 12px 0 !important;
       -webkit-overflow-scrolling: touch !important;
       scrollbar-width: none !important;
@@ -142,9 +130,10 @@
     }
 
     .vs-top-banners-{{ section.id }} .banner-item {
-      flex: 0 0 calc(80% - 12px) !important;
-      max-width: calc(80% - 12px) !important;
-      min-width: calc(80% - 12px) !important;
+      flex: 0 0 100% !important;
+      max-width: 100% !important;
+      min-width: 100% !important;
+      width: 100% !important;
       scroll-snap-align: center !important;
       scroll-snap-stop: always !important;
       border-radius: {{ section.settings.border_radius_mob | default: 16 }}px !important;
@@ -186,10 +175,6 @@
     <div class="banners-wrapper">
       {% for block in section.blocks %}
         <a href="{{ block.settings.banner_link | default: '#' }}" class="banner-item" {{ block.shopify_attributes }}>
-          {% if block.settings.badge_text != blank %}
-            <div class="banner-badge">{{ block.settings.badge_text }}</div>
-          {% endif %}
-
           {% if block.settings.banner_image != blank %}
             <img 
               src="{{ block.settings.banner_image | image_url: width: 600, height: 600, crop: 'center' }}"
@@ -247,7 +232,7 @@
 
         function scrollToBanner(index) {
           if (!items[index]) return;
-          const itemWidth = items[0].offsetWidth + 12;
+          const itemWidth = items[0].offsetWidth;
           wrapper.scrollTo({ left: index * itemWidth, behavior: 'smooth' });
           currentIndex = index;
           updateDots(currentIndex);
@@ -258,7 +243,7 @@
           clearTimeout(scrollTimeout);
           scrollTimeout = setTimeout(() => {
             const scrollLeft = wrapper.scrollLeft;
-            const itemWidth = items[0] ? items[0].offsetWidth + 12 : wrapper.offsetWidth;
+            const itemWidth = items[0] ? items[0].offsetWidth : wrapper.offsetWidth;
             const activeIndex = Math.min(Math.round(scrollLeft / itemWidth), items.length - 1);
             if (currentIndex !== activeIndex) {
               currentIndex = activeIndex;
