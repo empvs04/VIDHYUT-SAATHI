@@ -509,10 +509,19 @@
     display: none !important;
   }
 
-  @keyframes vsClockwiseSpin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+/* =========================================================
+   ALL 3 CARDS — TRUE 360° ROTATING BORDER
+   ========================================================= */
+
+@keyframes vs360Border {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
   }
+
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
 
   /* MOBILE ONLY: MASTER CONTAINER FOR HERO & STAT CARDS ONLY */
   @media(max-width: 767px) {
@@ -560,23 +569,21 @@
       display: none !important;
     }
 
-    .vs-stat-card,
-    .vs-stat-card.style-orange,
-    .vs-stat-card.style-green {
+    /* Every card gets its own rotating border */
+    .vs-stats-grid .vs-stat-card {
       position: relative !important;
+      isolation: isolate !important;
       overflow: hidden !important;
-      border-radius: 20px !important;
-      padding: 22px 18px !important;
-      text-align: center !important;
-      transition: .35s ease !important;
-      z-index: 1 !important;
+
       border: none !important;
+      border-radius: 20px !important;
+
       background: transparent !important;
-      flex: none !important;
+
       width: 100% !important;
       box-sizing: border-box !important;
-      min-height: auto !important;
-      height: auto !important;
+      padding: 22px 18px !important;
+      text-align: center !important;
       display: flex !important;
       flex-direction: column !important;
       align-items: center !important;
@@ -584,50 +591,81 @@
       box-shadow: 0 12px 32px rgba(255, 138, 0, 0.15), 0 0 20px rgba(22, 184, 78, 0.12) !important;
     }
 
-    /* 2px Moving Glowing Border Outer Layer */
-    .vs-stat-card::before,
-    .vs-stat-card.style-orange::before,
-    .vs-stat-card.style-green::before {
-      content: '' !important;
-      display: block !important;
+    /* ROTATING 360° ORANGE + GREEN BORDER */
+    .vs-stats-grid .vs-stat-card::before {
+      content: "" !important;
       position: absolute !important;
-      top: -60% !important;
-      left: -60% !important;
-      width: 220% !important;
-      height: 220% !important;
-      background: conic-gradient(from 0deg, #FF8A00 0deg, #FFC107 90deg, #16B84E 180deg, #FFC107 270deg, #FF8A00 360deg) !important;
-      animation: vsClockwiseSpin 4s linear infinite !important;
+      width: 200% !important;
+      height: 200% !important;
+      top: 50% !important;
+      left: 50% !important;
+      transform: translate(-50%, -50%) rotate(0deg);
+      background: conic-gradient(
+        #FF8A00 0deg,
+        #FFC107 60deg,
+        #16B84E 120deg,
+        #16B84E 180deg,
+        #FFC107 240deg,
+        #FF8A00 300deg,
+        #FF8A00 360deg
+      ) !important;
+      animation: vs360Border 4s linear infinite !important;
+      border-radius: 30px !important;
       z-index: -2 !important;
+      pointer-events: none !important;
     }
 
-    /* 2px Border Inner Mask */
-    .vs-stat-card::after,
-    .vs-stat-card.style-orange::after,
-    .vs-stat-card.style-green::after {
-      content: '' !important;
-      display: block !important;
+    /* INNER CARD — LEAVES 2PX BORDER VISIBLE */
+    .vs-stats-grid .vs-stat-card::after {
+      content: "" !important;
       position: absolute !important;
       top: 2px !important;
-      left: 2px !important;
       right: 2px !important;
       bottom: 2px !important;
-      background: linear-gradient(180deg, #FFFDF8 0%, #FFFFFF 100%) !important;
+      left: 2px !important;
       border-radius: 18px !important;
+      background: #FFFFFF !important;
       z-index: -1 !important;
+      pointer-events: none !important;
     }
 
-    .vs-stat-card.style-green::after {
-      background: linear-gradient(180deg, #F2FAF3 0%, #FFFFFF 100%) !important;
+    /* Green card background */
+    .vs-stats-grid .vs-stat-card.style-green::after {
+      background: linear-gradient(
+        180deg,
+        #F2FAF3 0%,
+        #FFFFFF 100%
+      ) !important;
     }
 
-    /* Stagger Animation Timings across 3 Cards (Negative delay = immediate spin on page load) */
+    /* Orange cards background */
+    .vs-stats-grid .vs-stat-card.style-orange::after {
+      background: linear-gradient(
+        180deg,
+        #FFFDF8 0%,
+        #FFFFFF 100%
+      ) !important;
+    }
+
+    /* ALL CONTENT ABOVE BORDER */
+    .vs-stats-grid .vs-stat-card > * {
+      position: relative !important;
+      z-index: 3 !important;
+    }
+
+    /* EACH CARD STARTS AT DIFFERENT ROTATION BUT ALL COMPLETE 360° */
     .vs-stats-grid .vs-stat-card:nth-child(1)::before {
+      animation: vs360Border 4s linear infinite !important;
       animation-delay: 0s !important;
     }
+
     .vs-stats-grid .vs-stat-card:nth-child(2)::before {
+      animation: vs360Border 4s linear infinite !important;
       animation-delay: -1.33s !important;
     }
+
     .vs-stats-grid .vs-stat-card:nth-child(3)::before {
+      animation: vs360Border 4s linear infinite !important;
       animation-delay: -2.66s !important;
     }
 
