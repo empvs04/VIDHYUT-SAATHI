@@ -144,38 +144,6 @@
     background: #FFFFFF;
   }
 
-  /* INSIDE BANNER OVERLAY ARROWS */
-  .vs-top-banners-arrow {
-    display: none;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 6;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.88);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-    color: #0F172A;
-    border: 1px solid rgba(0,0,0,0.12);
-    box-shadow: 0 4px 14px rgba(0,0,0,0.2);
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-size: 15px;
-    font-weight: 900;
-    user-select: none;
-    transition: transform 0.2s ease, background 0.2s ease;
-  }
-
-  .vs-top-banners-arrow:active {
-    transform: translateY(-50%) scale(0.92);
-  }
-
-  .vs-top-banners-arrow.prev { left: 10px; }
-  .vs-top-banners-arrow.next { right: 10px; }
-
   /* MOBILE SLIDER LAYOUT */
   @media(max-width: 767px) {
     .vs-top-banners-{{ section.id }} {
@@ -216,16 +184,12 @@
       border: none !important;
     }
 
-    /* MOBILE INSIDE DOTS & ARROWS */
+    /* MOBILE INSIDE DOTS */
     .vs-top-banners-dots {
       display: flex !important;
       align-items: center;
       justify-content: center;
       gap: 6px;
-    }
-
-    .vs-top-banners-arrow {
-      display: flex !important;
     }
   }
 </style>
@@ -265,10 +229,6 @@
         {% endfor %}
       </div>
 
-      <!-- INSIDE BANNER ARROWS -->
-      <div class="vs-top-banners-arrow prev" id="vs-banners-prev-{{ section.id }}">‹</div>
-      <div class="vs-top-banners-arrow next" id="vs-banners-next-{{ section.id }}">›</div>
-
       <!-- INSIDE BANNER DOTS -->
       <div class="vs-top-banners-dots" id="vs-banners-dots-{{ section.id }}">
         {% for block in section.blocks %}
@@ -285,8 +245,6 @@
       const section = document.getElementById('vs-banners-{{ section.id }}');
       const wrapper = section ? section.querySelector('.banners-wrapper') : null;
       const dotsContainer = document.getElementById('vs-banners-dots-{{ section.id }}');
-      const prevBtn = document.getElementById('vs-banners-prev-{{ section.id }}');
-      const nextBtn = document.getElementById('vs-banners-next-{{ section.id }}');
       
       if (wrapper && dotsContainer) {
         const items = Array.from(wrapper.querySelectorAll('.banner-item'));
@@ -318,6 +276,13 @@
           scrollTimeout = setTimeout(() => {
             const scrollLeft = wrapper.scrollLeft;
             const itemWidth = items[0] ? items[0].offsetWidth : wrapper.offsetWidth;
+            const activeIndex = Math.min(Math.round(scrollLeft / itemWidth), items.length - 1);
+            if (currentIndex !== activeIndex) {
+              currentIndex = activeIndex;
+              updateDots(currentIndex);
+            }
+          }, 50);
+        }, { passive: true });
             const activeIndex = Math.min(Math.round(scrollLeft / itemWidth), items.length - 1);
             if (currentIndex !== activeIndex) {
               currentIndex = activeIndex;
