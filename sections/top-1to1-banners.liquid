@@ -1,0 +1,417 @@
+{%- comment -%}
+  Vidhyut Saathi - 1:1 Square Banners Top Section
+{%- endcomment -%}
+
+<style>
+  .vs-top-banners-{{ section.id }} {
+    width: 100%;
+    background-color: {{ section.settings.bg_color | default: '#FAFAF7' }};
+    padding: {{ section.settings.padding_top_desk | default: 24 }}px 20px {{ section.settings.padding_bottom_desk | default: 24 }}px 20px;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .vs-top-banners-{{ section.id }} .container {
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+
+  {% if section.settings.section_heading != blank %}
+    .vs-top-banners-{{ section.id }} .section-header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .vs-top-banners-{{ section.id }} .section-header h2 {
+      font-family: 'Baloo 2', sans-serif;
+      font-size: 24px;
+      font-weight: 800;
+      color: #0F172A;
+      margin: 0;
+    }
+  {% endif %}
+
+  /* DESKTOP GRID LAYOUT */
+  .vs-top-banners-{{ section.id }} .banners-wrapper {
+    display: grid;
+    grid-template-columns: repeat({{ section.settings.banners_per_row_desk | default: 5 }}, 1fr);
+    gap: 16px;
+    align-items: center;
+  }
+
+  .vs-top-banners-{{ section.id }} .banner-item {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: {{ section.settings.border_radius | default: 18 }}px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
+    background: #FFFFFF;
+    border: 1.5px solid rgba(247, 148, 29, 0.15);
+    display: block;
+    text-decoration: none;
+  }
+
+  .vs-top-banners-{{ section.id }} .banner-item:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 16px 40px rgba(247, 148, 29, 0.2);
+  }
+
+  .vs-top-banners-{{ section.id }} .banner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: 1 / 1;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+
+  .vs-top-banners-{{ section.id }} .banner-item:hover .banner-img {
+    transform: scale(1.05);
+  }
+
+  .vs-top-banners-{{ section.id }} .banner-placeholder {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    background: linear-gradient(135deg, #FFF3E0 0%, #FFE0B2 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    box-sizing: border-box;
+    text-align: center;
+    color: #E07810;
+  }
+
+  .vs-top-banners-{{ section.id }} .banner-placeholder svg {
+    width: 36px;
+    height: 36px;
+    margin-bottom: 8px;
+  }
+
+  .vs-top-banners-{{ section.id }} .banner-placeholder span {
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+  }
+
+  .vs-top-banners-{{ section.id }} .banner-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: linear-gradient(135deg, #F7941D, #E07810);
+    color: #FFFFFF;
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 50px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 2;
+    letter-spacing: 0.5px;
+  }
+
+  .vs-top-banners-dots {
+    display: none;
+  }
+
+  /* MOBILE SLIDER LAYOUT */
+  @media(max-width: 767px) {
+    .vs-top-banners-{{ section.id }} {
+      padding: {{ section.settings.padding_top_mob | default: 16 }}px 12px {{ section.settings.padding_bottom_mob | default: 16 }}px 12px;
+    }
+
+    .vs-top-banners-{{ section.id }} .banners-wrapper {
+      display: flex !important;
+      flex-direction: row !important;
+      overflow-x: auto !important;
+      scroll-snap-type: x mandatory !important;
+      scroll-behavior: smooth !important;
+      gap: 12px !important;
+      padding: 4px 0 12px 0 !important;
+      -webkit-overflow-scrolling: touch !important;
+      scrollbar-width: none !important;
+    }
+
+    .vs-top-banners-{{ section.id }} .banners-wrapper::-webkit-scrollbar {
+      display: none !important;
+    }
+
+    .vs-top-banners-{{ section.id }} .banner-item {
+      flex: 0 0 calc(80% - 12px) !important;
+      max-width: calc(80% - 12px) !important;
+      min-width: calc(80% - 12px) !important;
+      scroll-snap-align: center !important;
+      scroll-snap-stop: always !important;
+      border-radius: {{ section.settings.border_radius_mob | default: 16 }}px !important;
+    }
+
+    /* MOBILE DOTS PAGINATION */
+    .vs-top-banners-dots {
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .vs-top-banners-dots .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: rgba(247, 148, 29, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .vs-top-banners-dots .dot.active {
+      width: 22px;
+      border-radius: 10px;
+      background: #F7941D;
+    }
+  }
+</style>
+
+<div class="vs-top-banners-{{ section.id }}" id="vs-banners-{{ section.id }}">
+  <div class="container">
+    {% if section.settings.section_heading != blank %}
+      <div class="section-header">
+        <h2>{{ section.settings.section_heading }}</h2>
+      </div>
+    {% endif %}
+
+    <div class="banners-wrapper">
+      {% for block in section.blocks %}
+        <a href="{{ block.settings.banner_link | default: '#' }}" class="banner-item" {{ block.shopify_attributes }}>
+          {% if block.settings.badge_text != blank %}
+            <div class="banner-badge">{{ block.settings.badge_text }}</div>
+          {% endif %}
+
+          {% if block.settings.banner_image != blank %}
+            <img 
+              src="{{ block.settings.banner_image | image_url: width: 600, height: 600, crop: 'center' }}"
+              alt="{{ block.settings.banner_image.alt | default: 'Vidhyut Saathi 1:1 Banner' }}"
+              class="banner-img"
+              loading="lazy"
+              width="600"
+              height="600"
+            >
+          {% else %}
+            <div class="banner-placeholder">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                <circle cx="8.5" cy="8.5" r="1.5"/>
+                <polyline points="21 15 16 10 5 21"/>
+              </svg>
+              <span>Upload 1:1 Banner {{ forloop.index }}</span>
+            </div>
+          {% endif %}
+        </a>
+      {% endfor %}
+    </div>
+
+    <!-- MOBILE DOTS -->
+    <div class="vs-top-banners-dots" id="vs-banners-dots-{{ section.id }}">
+      {% for block in section.blocks %}
+        <span class="dot {% if forloop.first %}active{% endif %}"></span>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (window.innerWidth <= 767) {
+      const section = document.getElementById('vs-banners-{{ section.id }}');
+      const wrapper = section ? section.querySelector('.banners-wrapper') : null;
+      const dotsContainer = document.getElementById('vs-banners-dots-{{ section.id }}');
+      
+      if (wrapper && dotsContainer) {
+        const items = Array.from(wrapper.querySelectorAll('.banner-item'));
+        const dots = Array.from(dotsContainer.querySelectorAll('.dot'));
+        let currentIndex = 0;
+
+        function updateDots(index) {
+          dots.forEach((dot, idx) => {
+            if (idx === index) {
+              dot.classList.add('active');
+            } else {
+              dot.classList.remove('active');
+            }
+          });
+        }
+
+        let scrollTimeout;
+        wrapper.addEventListener('scroll', () => {
+          clearTimeout(scrollTimeout);
+          scrollTimeout = setTimeout(() => {
+            const scrollLeft = wrapper.scrollLeft;
+            const itemWidth = items[0] ? items[0].offsetWidth + 12 : wrapper.offsetWidth;
+            const activeIndex = Math.min(Math.round(scrollLeft / itemWidth), items.length - 1);
+            if (currentIndex !== activeIndex) {
+              currentIndex = activeIndex;
+              updateDots(currentIndex);
+            }
+          }, 50);
+        }, { passive: true });
+      }
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Top 1:1 Banners",
+  "max_blocks": 10,
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_heading",
+      "label": "Section Heading (Optional)",
+      "default": ""
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#FAFAF7"
+    },
+    {
+      "type": "range",
+      "id": "banners_per_row_desk",
+      "min": 3,
+      "max": 6,
+      "step": 1,
+      "label": "Desktop Banners Per Row",
+      "default": 5
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "label": "Desktop Border Radius",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "border_radius_mob",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "label": "Mobile Border Radius",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desk",
+      "min": 0,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "label": "Desktop Padding Top",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desk",
+      "min": 0,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "label": "Desktop Padding Bottom",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mob",
+      "min": 0,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "label": "Mobile Padding Top",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mob",
+      "min": 0,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "label": "Mobile Padding Bottom",
+      "default": 16
+    }
+  ],
+  "blocks": [
+    {
+      "type": "banner_1to1",
+      "name": "1:1 Square Banner",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "banner_image",
+          "label": "1:1 Banner Image (Square)"
+        },
+        {
+          "type": "url",
+          "id": "banner_link",
+          "label": "Banner Click Link"
+        },
+        {
+          "type": "text",
+          "id": "badge_text",
+          "label": "Badge Tag (Optional)",
+          "default": "OFFER"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Top 1:1 Banners",
+      "blocks": [
+        {
+          "type": "banner_1to1",
+          "settings": {
+            "badge_text": "30% OFF"
+          }
+        },
+        {
+          "type": "banner_1to1",
+          "settings": {
+            "badge_text": "BESTSELLER"
+          }
+        },
+        {
+          "type": "banner_1to1",
+          "settings": {
+            "badge_text": "FRANCHISE"
+          }
+        },
+        {
+          "type": "banner_1to1",
+          "settings": {
+            "badge_text": "CERTIFIED"
+          }
+        },
+        {
+          "type": "banner_1to1",
+          "settings": {
+            "badge_text": "LIMITED"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
