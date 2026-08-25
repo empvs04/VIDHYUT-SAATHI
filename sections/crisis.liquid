@@ -508,20 +508,18 @@
     display: none !important;
   }
 
-  /* MOBILE ONLY: MASTER CONTAINER & VERTICAL STACK WITH THEME BORDER EFFECTS */
+  /* MOBILE ONLY: MASTER CONTAINER FOR HERO & STAT CARDS ONLY */
   @media(max-width: 767px) {
-    .vs-section-wrapper {
-      padding: 16px 12px !important;
-      background: #FAFAF7 !important;
-    }
-
-    .vs-section {
+    .vs-problem-container {
       background: linear-gradient(180deg, #FFFDF8 0%, #FAFAF7 50%, #FFFDF8 100%) !important;
       border: 2px solid rgba(247, 148, 29, 0.25) !important;
       border-radius: 26px !important;
-      padding: 24px 14px 24px !important;
+      padding: 20px 14px 20px !important;
+      margin: 16px 12px 24px !important;
       box-shadow: 0 16px 48px rgba(247, 148, 29, 0.12), inset 0 1px 0 rgba(255,255,255,0.9) !important;
       box-sizing: border-box !important;
+      position: relative !important;
+      overflow: hidden !important;
     }
 
     .vs-hero {
@@ -760,43 +758,45 @@
 <div class="vs-section-wrapper" id="vs-{{ section.id }}">
   <section class="vs-section">
 
-    <div class="vs-top-bar"></div>
+    <div class="vs-problem-container">
+      <div class="vs-top-bar"></div>
 
-    <div class="vs-hero-illustration" aria-hidden="true">
-      {% if section.settings.hero_bg_svg != blank %}
-        {{ section.settings.hero_bg_svg }}
-      {% endif %}
-    </div>
-
-    <div class="vs-hero">
-      <div class="vs-hero-label">
-        <div class="dot"></div>
-        <span>{{ section.settings.hero_label }}</span>
+      <div class="vs-hero-illustration" aria-hidden="true">
+        {% if section.settings.hero_bg_svg != blank %}
+          {{ section.settings.hero_bg_svg }}
+        {% endif %}
       </div>
-      <h1>
-        {{ section.settings.hero_heading }}
-        <span class="accent">{{ section.settings.hero_heading_highlight }}</span>
-        {{ section.settings.hero_heading_suffix }}
-      </h1>
-      <div class="vs-hero-divider"></div>
-    </div>
 
-    <div class="vs-stats-grid">
-      {% for block in section.blocks %}
-        <div class="vs-stat-card style-{{ block.settings.card_style }}" {{ block.shopify_attributes }}>
-          <div class="vs-card-glow"></div>
-          <div class="vs-stat-icon-wrap">
-            {% if block.settings.icon_svg != blank %}
-              {{ block.settings.icon_svg }}
-            {% else %}
-              <svg viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="17" cy="17" r="8" fill="currentColor"/></svg>
-            {% endif %}
-          </div>
-          <div class="vs-stat-value">{{ block.settings.stat_value }}</div>
-          <div class="vs-stat-divider"></div>
-          <div class="vs-stat-desc">{{ block.settings.stat_desc }}</div>
+      <div class="vs-hero">
+        <div class="vs-hero-label">
+          <div class="dot"></div>
+          <span>{{ section.settings.hero_label }}</span>
         </div>
-      {% endfor %}
+        <h1>
+          {{ section.settings.hero_heading }}
+          <span class="accent">{{ section.settings.hero_heading_highlight }}</span>
+          {{ section.settings.hero_heading_suffix }}
+        </h1>
+        <div class="vs-hero-divider"></div>
+      </div>
+
+      <div class="vs-stats-grid">
+        {% for block in section.blocks %}
+          <div class="vs-stat-card style-{{ block.settings.card_style }}" {{ block.shopify_attributes }}>
+            <div class="vs-card-glow"></div>
+            <div class="vs-stat-icon-wrap">
+              {% if block.settings.icon_svg != blank %}
+                {{ block.settings.icon_svg }}
+              {% else %}
+                <svg viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="17" cy="17" r="8" fill="currentColor"/></svg>
+              {% endif %}
+            </div>
+            <div class="vs-stat-value">{{ block.settings.stat_value }}</div>
+            <div class="vs-stat-divider"></div>
+            <div class="vs-stat-desc">{{ block.settings.stat_desc }}</div>
+          </div>
+        {% endfor %}
+      </div>
     </div>
 
     <!-- ACTIVE DOT PAGINATION (MOBILE ONLY) -->
