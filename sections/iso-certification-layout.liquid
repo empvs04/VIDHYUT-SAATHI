@@ -733,89 +733,163 @@
     }
   }
 
-  /* --- Why ISO Certification Matters Split Section --- */
+  /* --- Why ISO Certification Matters — Premium Section --- */
   .iso-why {
-    padding: 50px 32px;
+    padding: 60px 48px;
     max-width: 1280px;
-    margin: 40px auto 60px auto;
-    background: linear-gradient(145deg, #FFFFFF 0%, #FFFDF8 100%);
-    border: 1.5px solid rgba(247, 148, 29, 0.25);
-    border-top: 4px solid #F7941D;
-    border-radius: 32px;
-    box-shadow: 0 20px 50px rgba(247, 148, 29, 0.12), 0 6px 20px rgba(0, 0, 0, 0.03);
+    margin: 50px auto 60px auto;
+    background: linear-gradient(140deg, #FFFDF8 0%, #FFF8EE 40%, #F0FAF1 100%);
+    border: 1.5px solid rgba(247, 148, 29, 0.2);
+    border-top: 5px solid #F7941D;
+    border-radius: 36px;
+    box-shadow:
+      0 30px 70px rgba(247, 148, 29, 0.14),
+      0 10px 28px rgba(0, 0, 0, 0.04),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9);
     position: relative;
     overflow: hidden;
+  }
+  /* Decorative glowing orbs */
+  .iso-why::before {
+    content: '';
+    position: absolute;
+    top: -80px;
+    right: -80px;
+    width: 260px;
+    height: 260px;
+    background: radial-gradient(circle, rgba(247, 148, 29, 0.13) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .iso-why::after {
+    content: '';
+    position: absolute;
+    bottom: -60px;
+    left: -60px;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(62, 173, 71, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
   }
   .why-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 36px;
+    gap: 40px;
     align-items: center;
+    position: relative;
+    z-index: 1;
   }
   @media (min-width: 912px) {
-    .why-grid { grid-template-columns: 1fr 1fr; gap: 50px; }
+    .why-grid { grid-template-columns: 1.1fr 0.9fr; gap: 56px; }
   }
 
   .why-text h2 {
     font-family: 'Baloo 2', sans-serif;
-    font-size: clamp(26px, 3vw, 38px);
+    font-size: clamp(26px, 3vw, 40px);
     font-weight: 900;
-    line-height: 1.25;
-    margin-bottom: 20px;
+    line-height: 1.2;
+    margin-bottom: 16px;
     color: #0F172A;
-    letter-spacing: -0.3px;
+    letter-spacing: -0.5px;
+  }
+  /* Shimmer accent underline below heading */
+  .why-heading-accent {
+    width: 72px;
+    height: 4px;
+    border-radius: 4px;
+    background: linear-gradient(90deg, #F7941D, #3EAD47, #F7941D);
+    background-size: 200% auto;
+    animation: why-shimmer 2.5s linear infinite;
+    margin-bottom: 20px;
+  }
+  @keyframes why-shimmer {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
   }
 
-  /* Why Section Feature Cards — Ultra Lucrative */
+  /* Why Section Feature Cards */
   .why-feature-box {
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 16px;
   }
   .why-feat-item {
-    background: linear-gradient(135deg, #FFFFFF 0%, #FFFDF5 100%);
-    border: 1.5px solid rgba(247, 148, 29, 0.28);
-    border-left: 5px solid #F7941D;
-    border-radius: 22px;
-    padding: 22px 24px;
+    background: #FFFFFF;
+    border: 1.5px solid rgba(247, 148, 29, 0.2);
+    border-radius: 20px;
+    padding: 20px 22px 20px 20px;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 18px;
-    box-shadow: 0 12px 30px rgba(247, 148, 29, 0.1), 0 3px 10px rgba(0, 0, 0, 0.03);
-    transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    box-shadow:
+      0 8px 24px rgba(247, 148, 29, 0.09),
+      0 2px 8px rgba(0, 0, 0, 0.03);
+    transition: all 0.38s cubic-bezier(0.22, 1, 0.36, 1);
     position: relative;
     overflow: hidden;
   }
+  /* Animated left accent bar */
+  .why-feat-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 5px;
+    background: linear-gradient(180deg, #F7941D 0%, #FFB347 100%);
+    border-radius: 20px 0 0 20px;
+    transition: background 0.35s ease;
+  }
   .why-feat-item:hover {
-    transform: translateY(-5px) scale(1.015);
-    border-left-color: #3EAD47;
-    border-color: rgba(62, 173, 71, 0.4);
-    box-shadow: 0 20px 42px rgba(247, 148, 29, 0.2), 0 6px 16px rgba(62, 173, 71, 0.1);
+    transform: translateX(4px) translateY(-3px);
+    border-color: rgba(62, 173, 71, 0.35);
+    box-shadow:
+      0 18px 44px rgba(247, 148, 29, 0.18),
+      0 6px 18px rgba(62, 173, 71, 0.1);
+  }
+  .why-feat-item:hover::before {
+    background: linear-gradient(180deg, #3EAD47 0%, #6DD16B 100%);
+  }
+  /* Step number badge */
+  .why-step-num {
+    position: absolute;
+    top: 10px;
+    right: 14px;
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 11px;
+    font-weight: 900;
+    color: rgba(247, 148, 29, 0.35);
+    letter-spacing: 0.5px;
   }
   .why-feat-icon {
-    width: 52px;
-    height: 52px;
-    border-radius: 16px;
+    width: 56px;
+    height: 56px;
+    border-radius: 18px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 22px;
+    font-size: 24px;
     flex-shrink: 0;
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .why-feat-item:hover .why-feat-icon {
+    transform: scale(1.12) rotate(-4deg);
   }
   .why-feat-icon.orange {
-    background: linear-gradient(135deg, #FFF3E0, #FFE0B2);
-    color: #D96924;
-    box-shadow: 0 6px 18px rgba(247, 148, 29, 0.3);
+    background: linear-gradient(145deg, #FFF3E0 0%, #FFE0B2 100%);
+    color: #C96218;
+    box-shadow: 0 8px 22px rgba(247, 148, 29, 0.32);
   }
   .why-feat-icon.green {
-    background: linear-gradient(135deg, #E8F5E9, #C8E6C9);
-    color: #2E7D32;
-    box-shadow: 0 6px 18px rgba(62, 173, 71, 0.3);
+    background: linear-gradient(145deg, #E8F5E9 0%, #C8E6C9 100%);
+    color: #1B6B22;
+    box-shadow: 0 8px 22px rgba(62, 173, 71, 0.32);
   }
   .why-feat-icon.blue {
-    background: linear-gradient(135deg, #E0F2FE, #BAE6FD);
-    color: #0284C7;
-    box-shadow: 0 6px 18px rgba(2, 132, 199, 0.3);
+    background: linear-gradient(145deg, #E0F2FE 0%, #BAE6FD 100%);
+    color: #0369A1;
+    box-shadow: 0 8px 22px rgba(2, 132, 199, 0.32);
   }
 
   .why-feat-text {
@@ -825,26 +899,37 @@
   }
   .why-feat-text h4 {
     font-family: 'Baloo 2', sans-serif;
-    font-size: 1.25rem;
+    font-size: 1.18rem;
     font-weight: 900;
     color: #0F172A;
-    margin: 0 0 6px 0;
+    margin: 0 0 5px 0;
     line-height: 1.25;
   }
   .why-feat-text p {
-    font-size: 0.92rem;
-    color: #475569;
+    font-size: 0.88rem;
+    color: #64748B;
     margin: 0;
-    line-height: 1.6;
+    line-height: 1.65;
     font-weight: 600;
   }
 
   @media (max-width: 768px) {
     .iso-why {
-      padding: 30px 16px !important;
-      border-radius: 24px !important;
-      margin: 30px 14px 40px 14px !important;
+      padding: 32px 18px 36px 18px !important;
+      border-radius: 26px !important;
+      margin: 24px 12px 36px 12px !important;
     }
+    .iso-why::before, .iso-why::after { display: none; }
+    .why-feat-item {
+      padding: 18px 18px 18px 18px !important;
+    }
+    .why-feat-icon {
+      width: 50px !important;
+      height: 50px !important;
+      font-size: 20px !important;
+    }
+    .why-feat-text h4 { font-size: 1.05rem !important; }
+    .why-feat-text p { font-size: 0.85rem !important; }
   }
 
   /* --- Lucrative Light Theme CTA Section --- */
@@ -1504,11 +1589,12 @@
   <section class="iso-why">
     <div class="why-grid">
       <div class="why-text">
-        <div class="iso-badge" style="margin-bottom: 14px;">
+        <div class="iso-badge" style="margin-bottom: 16px;">
           <div class="pulse-dot"></div>
           GLOBAL QUALITY BENCHMARK
         </div>
         <h2>{{ section.settings.why_heading | default: "Why ISO 9001:2015 Certification Matters" }}</h2>
+        <div class="why-heading-accent"></div>
         <div class="iso-main-text">
           {%- if section.settings.why_text != blank -%}
             {{ section.settings.why_text }}
@@ -1520,6 +1606,7 @@
       
       <div class="why-feature-box">
         <div class="why-feat-item">
+          <span class="why-step-num">01</span>
           <div class="why-feat-icon orange"><i class="fa-solid fa-shield-halved"></i></div>
           <div class="why-feat-text">
             <h4>Standardized Quality Control</h4>
@@ -1528,6 +1615,7 @@
         </div>
         
         <div class="why-feat-item">
+          <span class="why-step-num">02</span>
           <div class="why-feat-icon green"><i class="fa-solid fa-award"></i></div>
           <div class="why-feat-text">
             <h4>International Compliance</h4>
@@ -1536,6 +1624,7 @@
         </div>
         
         <div class="why-feat-item">
+          <span class="why-step-num">03</span>
           <div class="why-feat-icon blue"><i class="fa-solid fa-user-shield"></i></div>
           <div class="why-feat-text">
             <h4>Client Assurance &amp; Support</h4>
