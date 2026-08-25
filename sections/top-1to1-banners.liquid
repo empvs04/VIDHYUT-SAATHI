@@ -114,50 +114,65 @@
     display: none !important;
   }
 
-  /* INSIDE BANNER OVERLAY DOTS */
+  /* INSIDE BANNER OVERLAY DOTS — MINIMALIST DOTS ONLY */
   .vs-top-banners-dots {
     display: none;
     position: absolute;
-    bottom: 14px;
+    bottom: 12px;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 6;
+    z-index: 10;
     margin: 0;
-    padding: 6px 14px;
-    border-radius: 50px;
-    background: rgba(15, 23, 42, 0.45);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    box-shadow: 0 4px 16px rgba(0,0,0,0.25);
-    border: 1px solid rgba(255,255,255,0.25);
+    padding: 0;
+    gap: 8px;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: none !important;
+    border: none !important;
     pointer-events: auto;
   }
 
   .vs-top-banners-dots .dot {
-    width: 7px;
-    height: 7px;
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.65);
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
     transition: all 0.3s ease;
     cursor: pointer;
   }
 
   .vs-top-banners-dots .dot.active {
-    width: 22px;
+    width: 24px;
     border-radius: 10px;
-    background: #FFFFFF;
+    background: #F7941D;
+    border-color: #FFFFFF;
+    box-shadow: 0 2px 8px rgba(247, 148, 29, 0.6);
   }
 
-  /* MOBILE SLIDER LAYOUT */
+  /* MOBILE SLIDER LAYOUT — ZERO OUTER BOX */
   @media(max-width: 767px) {
     .vs-top-banners-{{ section.id }} {
-      padding: {{ section.settings.padding_top_mob | default: 16 }}px 12px {{ section.settings.padding_bottom_mob | default: 16 }}px 12px;
+      padding: 4px 0 !important;
+      background: transparent !important;
+      box-shadow: none !important;
+      border: none !important;
+    }
+
+    .vs-top-banners-{{ section.id }} .container {
+      max-width: 100% !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      width: 100% !important;
     }
 
     .vs-top-banners-{{ section.id }} .banners-outer-container {
-      border-radius: {{ section.settings.border_radius_mob | default: 16 }}px !important;
+      border-radius: 0 !important;
       background: transparent !important;
       border: none !important;
+      box-shadow: none !important;
     }
 
     .vs-top-banners-{{ section.id }} .banners-wrapper {
@@ -171,7 +186,7 @@
       margin: 0 !important;
       -webkit-overflow-scrolling: touch !important;
       scrollbar-width: none !important;
-      border-radius: {{ section.settings.border_radius_mob | default: 16 }}px !important;
+      border-radius: 0 !important;
       background: transparent !important;
     }
 
@@ -186,7 +201,7 @@
       width: 100% !important;
       scroll-snap-align: center !important;
       scroll-snap-stop: always !important;
-      border-radius: {{ section.settings.border_radius_mob | default: 16 }}px !important;
+      border-radius: 0 !important;
       box-shadow: none !important;
       border: none !important;
       background: transparent !important;
@@ -198,15 +213,18 @@
       aspect-ratio: 1 / 1 !important;
       object-fit: cover !important;
       display: block !important;
-      border-radius: {{ section.settings.border_radius_mob | default: 16 }}px !important;
+      border-radius: 0 !important;
     }
 
-    /* MOBILE INSIDE DOTS */
+    /* MOBILE INSIDE DOTS — ONLY CLEAN FLOATING DOTS */
     .vs-top-banners-dots {
       display: flex !important;
       align-items: center;
       justify-content: center;
-      gap: 6px;
+      gap: 8px !important;
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
     }
   }
 </style>
