@@ -507,7 +507,7 @@
     display: none !important;
   }
 
-  @keyframes vsRotate360 {
+  @keyframes vsClockwiseSpin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
   }
@@ -563,7 +563,7 @@
     .vs-stat-card.style-green {
       position: relative !important;
       overflow: hidden !important;
-      border-radius: 24px !important;
+      border-radius: 20px !important;
       padding: 22px 18px !important;
       text-align: center !important;
       transition: .35s ease !important;
@@ -579,9 +579,10 @@
       flex-direction: column !important;
       align-items: center !important;
       justify-content: center !important;
-      box-shadow: 0 16px 44px rgba(247, 148, 29, 0.25), 0 0 32px rgba(62, 173, 71, 0.2) !important;
+      box-shadow: 0 12px 32px rgba(255, 138, 0, 0.15), 0 0 20px rgba(22, 184, 78, 0.12) !important;
     }
 
+    /* 2px Moving Glowing Border Outer Layer */
     .vs-stat-card::before {
       content: '' !important;
       display: block !important;
@@ -590,26 +591,38 @@
       left: -60% !important;
       width: 220% !important;
       height: 220% !important;
-      background: conic-gradient(from 0deg, #F7941D 0deg, #FF9100 60deg, #3EAD47 120deg, #00C853 180deg, #F7941D 240deg, #FFB03A 300deg, #3EAD47 360deg) !important;
-      animation: vsRotate360 3.5s linear infinite !important;
+      background: conic-gradient(from 0deg, #FF8A00 0deg, #FFC107 90deg, #16B84E 180deg, #FFC107 270deg, #FF8A00 360deg) !important;
+      animation: vsClockwiseSpin 4s linear infinite !important;
       z-index: -2 !important;
     }
 
+    /* 2px Border Inner Mask */
     .vs-stat-card::after {
       content: '' !important;
       display: block !important;
       position: absolute !important;
-      top: 4.5px !important;
-      left: 4.5px !important;
-      right: 4.5px !important;
-      bottom: 4.5px !important;
-      background: linear-gradient(180deg, #FFFFFF 0%, #FFFDF8 100%) !important;
-      border-radius: 19.5px !important;
+      top: 2px !important;
+      left: 2px !important;
+      right: 2px !important;
+      bottom: 2px !important;
+      background: linear-gradient(180deg, #FFFDF8 0%, #FFFFFF 100%) !important;
+      border-radius: 18px !important;
       z-index: -1 !important;
     }
 
     .vs-stat-card.style-green::after {
-      background: linear-gradient(180deg, #FFFFFF 0%, #F2FAF3 100%) !important;
+      background: linear-gradient(180deg, #F2FAF3 0%, #FFFFFF 100%) !important;
+    }
+
+    /* Stagger Animation Timings across 3 Cards */
+    .vs-stats-grid .vs-stat-card:nth-child(1)::before {
+      animation-delay: 0s !important;
+    }
+    .vs-stats-grid .vs-stat-card:nth-child(2)::before {
+      animation-delay: 1.33s !important;
+    }
+    .vs-stats-grid .vs-stat-card:nth-child(3)::before {
+      animation-delay: 2.66s !important;
     }
 
     .vs-stat-icon-wrap,
