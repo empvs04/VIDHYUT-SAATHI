@@ -450,37 +450,78 @@
     .iso-data-grid {
       display: grid !important;
       grid-template-columns: repeat(2, 1fr) !important;
-      gap: 10px !important;
+      gap: 12px !important;
     }
     .iso-data-item {
-      padding: 12px 10px !important;
-      border-radius: 14px !important;
-      gap: 8px !important;
+      background: linear-gradient(135deg, #FFFFFF 0%, #FFFDF5 100%) !important;
+      border: 1.5px solid rgba(247, 148, 29, 0.3) !important;
+      border-radius: 16px !important;
+      padding: 14px 12px !important;
+      gap: 10px !important;
       flex-direction: row !important;
       align-items: center !important;
+      box-shadow: 0 8px 20px rgba(247, 148, 29, 0.12), 0 2px 6px rgba(0,0,0,0.02) !important;
+      transition: transform 0.3s ease, box-shadow 0.3s ease !important;
     }
     .iso-data-item.span-full {
       grid-column: 1 / -1 !important;
+      background: linear-gradient(135deg, #FFF9F2 0%, #FFFFFF 100%) !important;
+      border-color: rgba(62, 173, 71, 0.4) !important;
+      box-shadow: 0 10px 24px rgba(62, 173, 71, 0.14) !important;
+    }
+    .iso-data-item:active {
+      transform: scale(0.98) !important;
     }
     .iso-data-icon {
-      width: 32px !important;
-      height: 32px !important;
-      font-size: 14px !important;
-      border-radius: 10px !important;
+      width: 36px !important;
+      height: 36px !important;
+      font-size: 15px !important;
+      border-radius: 12px !important;
       flex-shrink: 0 !important;
+    }
+    .iso-data-icon.orange {
+      background: linear-gradient(135deg, #FFF3E0, #FFE0B2) !important;
+      color: #D96924 !important;
+      box-shadow: 0 4px 12px rgba(247, 148, 29, 0.25) !important;
+    }
+    .iso-data-icon.green {
+      background: linear-gradient(135deg, #E8F5E9, #C8E6C9) !important;
+      color: #2E7D32 !important;
+      box-shadow: 0 4px 12px rgba(62, 173, 71, 0.25) !important;
+    }
+    .iso-data-icon.blue {
+      background: linear-gradient(135deg, #E0F2FE, #BAE6FD) !important;
+      color: #0284C7 !important;
+      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25) !important;
+    }
+    .iso-data-icon.gold {
+      background: linear-gradient(135deg, #FFF8D6, #FEF08A) !important;
+      color: #D97706 !important;
+      box-shadow: 0 4px 12px rgba(217, 119, 6, 0.25) !important;
     }
     .iso-data-label {
       font-size: 0.68rem !important;
+      font-weight: 800 !important;
       margin-bottom: 2px !important;
-      letter-spacing: 0.3px !important;
+      letter-spacing: 0.4px !important;
+      color: #94A3B8 !important;
     }
     .iso-data-value {
-      font-size: 0.88rem !important;
+      font-family: 'Baloo 2', sans-serif !important;
+      font-size: 0.95rem !important;
+      font-weight: 800 !important;
       line-height: 1.2 !important;
+      color: #0F172A !important;
     }
     .iso-active-tag {
-      font-size: 9px !important;
-      padding: 2px 6px !important;
+      background: linear-gradient(135deg, #E8F5E9, #C8E6C9) !important;
+      color: #1B5E20 !important;
+      border: 1px solid rgba(62, 173, 71, 0.4) !important;
+      font-size: 9.5px !important;
+      font-weight: 800 !important;
+      padding: 3px 8px !important;
+      border-radius: 50px !important;
+      box-shadow: 0 2px 8px rgba(62, 173, 71, 0.2) !important;
     }
     .cert-frame-stage {
       padding: 14px !important;
