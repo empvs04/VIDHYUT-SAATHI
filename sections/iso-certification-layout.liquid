@@ -448,31 +448,39 @@
       text-align: justify !important;
     }
     .iso-data-grid {
-      grid-template-columns: 1fr !important;
-      gap: 12px !important;
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 10px !important;
     }
     .iso-data-item {
-      padding: 14px 16px !important;
-      border-radius: 16px !important;
-      gap: 12px !important;
+      padding: 12px 10px !important;
+      border-radius: 14px !important;
+      gap: 8px !important;
+      flex-direction: row !important;
+      align-items: center !important;
+    }
+    .iso-data-item.span-full {
+      grid-column: 1 / -1 !important;
     }
     .iso-data-icon {
-      width: 38px !important;
-      height: 38px !important;
-      font-size: 16px !important;
-      border-radius: 12px !important;
+      width: 32px !important;
+      height: 32px !important;
+      font-size: 14px !important;
+      border-radius: 10px !important;
+      flex-shrink: 0 !important;
     }
     .iso-data-label {
-      font-size: 0.72rem !important;
+      font-size: 0.68rem !important;
       margin-bottom: 2px !important;
+      letter-spacing: 0.3px !important;
     }
     .iso-data-value {
-      font-size: 1.05rem !important;
-      line-height: 1.25 !important;
+      font-size: 0.88rem !important;
+      line-height: 1.2 !important;
     }
     .iso-active-tag {
-      font-size: 10px !important;
-      padding: 2px 7px !important;
+      font-size: 9px !important;
+      padding: 2px 6px !important;
     }
     .cert-frame-stage {
       padding: 14px !important;
