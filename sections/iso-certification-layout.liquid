@@ -566,49 +566,131 @@
       text-align: center !important;
     }
   }
-
-  /* --- Commitment Cards --- */
+  /* --- Commitment to Quality Section --- */
   .iso-commitment {
-    background: #ffffff;
-    padding: clamp(60px, 8vw, 100px) 20px;
+    background: linear-gradient(180deg, #FFFDF8 0%, #FAFAF6 50%, #F5F4EE 100%);
+    padding: 80px 20px;
+    position: relative;
+    overflow: hidden;
+    border-top: 1.5px solid rgba(247, 148, 29, 0.15);
   }
-  .comm-container {
+
+  .comm-header-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 18px;
+    background: #FFF3E0;
+    border: 1px solid rgba(247, 148, 29, 0.3);
+    border-radius: 50px;
+    font-size: 0.82rem;
+    font-weight: 800;
+    color: #E07810;
+    margin-bottom: 12px;
+  }
+
+  .comm-title-wrap {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 50px auto;
+  }
+
+  .comm-title-wrap h2 {
+    font-family: 'Baloo 2', sans-serif;
+    font-size: clamp(28px, 3.5vw, 42px);
+    font-weight: 900;
+    color: #0F172A;
+    margin: 0 0 10px 0;
+    letter-spacing: -0.3px;
+  }
+
+  .comm-title-wrap p {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #64748B;
+    margin: 0;
+  }
+
+  .comm-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
     max-width: 1280px;
     margin: 0 auto;
   }
-  .comm-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 20px;
-    margin-top: 40px;
-  }
-  @media (min-width: 600px) {
-    .comm-grid { grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (min-width: 1024px) {
-    .comm-grid { grid-template-columns: repeat(4, 1fr); }
-  }
-  
+
   .comm-card {
-    background: var(--iso-bg);
-    padding: 40px 20px;
-    border-radius: var(--iso-radius);
+    background: #FFFFFF;
+    border: 1.5px solid rgba(247, 148, 29, 0.2);
+    border-top: 4px solid #F7941D;
+    border-radius: 24px;
+    padding: 36px 24px;
     text-align: center;
-    border: 1px solid rgba(0,0,0,0.03);
-    transition: transform 0.3s ease;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.04);
+    transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    position: relative;
   }
+
   .comm-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-6px);
+    border-color: rgba(247, 148, 29, 0.45);
+    box-shadow: 0 20px 45px rgba(247, 148, 29, 0.18);
   }
-  .comm-icon {
-    font-size: 2.5rem;
-    margin-bottom: 15px;
-    color: var(--iso-primary);
+
+  .comm-icon-box {
+    width: 58px;
+    height: 58px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin: 0 auto 20px auto;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
   }
+
+  .comm-icon-box.orange { background: linear-gradient(135deg, #FFF3E0, #FFE0B2); color: #E07810; }
+  .comm-icon-box.green { background: linear-gradient(135deg, #E8F5E9, #C8E6C9); color: #2E7D32; }
+  .comm-icon-box.blue { background: linear-gradient(135deg, #E0F2FE, #BAE6FD); color: #0284C7; }
+  .comm-icon-box.gold { background: linear-gradient(135deg, #FFF8D6, #FEF08A); color: #D97706; }
+
   .comm-card h3 {
-    font-size: 1.15rem;
-    font-weight: 700;
-    color: var(--iso-text-dark);
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #0F172A;
+    margin: 0 0 8px 0;
+  }
+
+  .comm-card p {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #64748B;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  @media (max-width: 1024px) {
+    .comm-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .iso-commitment {
+      padding: 50px 16px;
+    }
+    .comm-title-wrap {
+      margin-bottom: 30px;
+    }
+    .comm-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    .comm-card {
+      padding: 28px 20px;
+    }
   }
 
   /* --- Why it Matters Split Section --- */
@@ -1179,25 +1261,45 @@
 
   <!-- Commitment Cards -->
   <section class="iso-commitment">
-    <div class="comm-container">
-      <h2 class="iso-heading" style="text-align: center;">Our Commitment to Quality</h2>
-      <div class="comm-grid">
-        <div class="comm-card">
-          <div class="comm-icon">⭐</div>
-          <h3>{{ section.settings.comm_1 }}</h3>
+    <div class="comm-title-wrap">
+      <div class="comm-header-badge">
+        <i class="fa-solid fa-award"></i> QUALITY ASSURED
+      </div>
+      <h2>Our Commitment to Quality</h2>
+      <p>Internationally benchmarked standards for safety, performance &amp; customer satisfaction</p>
+    </div>
+    
+    <div class="comm-grid">
+      <div class="comm-card">
+        <div class="comm-icon-box orange">
+          <i class="fa-solid fa-star"></i>
         </div>
-        <div class="comm-card">
-          <div class="comm-icon">🤝</div>
-          <h3>{{ section.settings.comm_2 }}</h3>
+        <h3>{{ section.settings.comm_1 | default: "Highest Quality Standards" }}</h3>
+        <p>Stringent quality assurance protocols at every stage of manufacturing &amp; supply.</p>
+      </div>
+      
+      <div class="comm-card">
+        <div class="comm-icon-box green">
+          <i class="fa-solid fa-handshake"></i>
         </div>
-        <div class="comm-card">
-          <div class="comm-icon">📈</div>
-          <h3>{{ section.settings.comm_3 }}</h3>
+        <h3>{{ section.settings.comm_2 | default: "100% Customer Trust" }}</h3>
+        <p>Transparent policies, prompt support, and certified reliability across India.</p>
+      </div>
+      
+      <div class="comm-card">
+        <div class="comm-icon-box blue">
+          <i class="fa-solid fa-chart-line"></i>
         </div>
-        <div class="comm-card">
-          <div class="comm-icon">🏆</div>
-          <h3>{{ section.settings.comm_4 }}</h3>
+        <h3>{{ section.settings.comm_3 | default: "Continuous Innovation" }}</h3>
+        <p>Advanced R&amp;D for next-gen surge protection &amp; energy savings technology.</p>
+      </div>
+      
+      <div class="comm-card">
+        <div class="comm-icon-box gold">
+          <i class="fa-solid fa-trophy"></i>
         </div>
+        <h3>{{ section.settings.comm_4 | default: "Certified Excellence" }}</h3>
+        <p>Globally accredited by IAF &amp; JAS-ANZ for international compliance.</p>
       </div>
     </div>
   </section>
