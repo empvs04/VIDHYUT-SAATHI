@@ -301,25 +301,30 @@
     .business-section-{{ section.id }} .card { padding: 40px 32px !important; }
   }
 
-  /* ── MOBILE ONLY: LUCRATIVE COMPACT SWIPE CAROUSEL ── */
+  /* ── MOBILE ONLY: MASTER CONTAINER & VERTICAL STACK WITH THEME BORDER EFFECTS ── */
   @media(max-width: 767px) {
     .business-section-{{ section.id }} { 
-      padding: 44px 16px !important; 
-      background: radial-gradient(circle at top right, rgba(247,148,29,0.06), transparent 45%), linear-gradient(180deg, #FAFAF7 0%, #FFFFFF 100%) !important;
+      padding: 24px 14px !important; 
+      background: #FAFAF7 !important;
+    }
+
+    .business-section-{{ section.id }} .container {
+      background: linear-gradient(180deg, #FFFDF8 0%, #FAFAF7 50%, #FFFDF8 100%) !important;
+      border: 2px solid rgba(247, 148, 29, 0.25) !important;
+      border-radius: 26px !important;
+      padding: 28px 14px 24px !important;
+      box-shadow: 0 16px 48px rgba(247, 148, 29, 0.12), inset 0 1px 0 rgba(255,255,255,0.9) !important;
+      box-sizing: border-box !important;
     }
     
     .business-section-{{ section.id }} .grid { 
       display: flex !important;
-      grid-template-columns: none !important;
-      flex-direction: row !important;
+      flex-direction: column !important;
       flex-wrap: nowrap !important;
-      overflow-x: auto !important;
-      scroll-snap-type: x mandatory !important;
-      scroll-behavior: smooth !important;
-      gap: 0px !important;
-      padding: 8px 0 16px 0 !important;
-      -webkit-overflow-scrolling: touch !important;
-      scrollbar-width: none !important;
+      overflow: visible !important;
+      scroll-snap-type: none !important;
+      gap: 20px !important;
+      padding: 10px 0 0 0 !important;
       width: 100% !important;
     }
     .business-section-{{ section.id }} .grid::-webkit-scrollbar { 
@@ -327,24 +332,21 @@
     }
 
     .business-section-{{ section.id }} .card {
-      flex: 0 0 100% !important;
+      flex: none !important;
       max-width: 100% !important;
       min-width: 100% !important;
       width: 100% !important;
-      scroll-snap-align: center !important;
-      scroll-snap-stop: always !important;
-      height: 480px !important;
-      min-height: 480px !important;
-      max-height: 480px !important;
+      height: auto !important;
+      min-height: auto !important;
+      max-height: none !important;
       display: flex !important;
       flex-direction: column !important;
       justify-content: space-between !important;
-      padding: 22px 18px 18px !important;
-      border-radius: 22px !important;
+      padding: 22px 18px 20px !important;
+      border-radius: 20px !important;
       box-sizing: border-box !important;
       position: relative !important;
       overflow: hidden !important;
-      box-shadow: 0 12px 36px rgba(247,148,29,0.1), 0 4px 16px rgba(0,0,0,0.03) !important;
     }
     .business-section-{{ section.id }} .card::before {
       content: '' !important;
@@ -357,21 +359,21 @@
 
     /* ── CARD 1: EMERALD GREEN THEME (Growth Entry ₹1,50,000) ── */
     .business-section-{{ section.id }} .green {
-      border: 1.5px solid rgba(62, 173, 71, 0.28) !important;
+      border: 2.5px solid #3EAD47 !important;
       background: linear-gradient(180deg, #F2FAF3 0%, #FFFFFF 100%) !important;
-      box-shadow: 0 12px 36px rgba(62, 173, 71, 0.12), 0 4px 16px rgba(0,0,0,0.02) !important;
+      box-shadow: 0 10px 30px rgba(62, 173, 71, 0.18), 0 0 16px rgba(62, 173, 71, 0.1) !important;
     }
     .business-section-{{ section.id }} .green::before {
-      background: #3EAD47 !important;
+      background: linear-gradient(90deg, #3EAD47 0%, #2E7D32 100%) !important;
     }
     .business-section-{{ section.id }} .green .badge {
       background: #E8F5E9 !important;
       color: #2E7D32 !important;
-      border: 1px solid rgba(46, 125, 50, 0.25) !important;
+      border: 1px solid rgba(46, 125, 50, 0.3) !important;
     }
     .business-section-{{ section.id }} .green .icon {
       background: linear-gradient(135deg, #E8F5E9, #C8E6C9) !important;
-      box-shadow: 0 6px 18px rgba(62, 173, 71, 0.2) !important;
+      box-shadow: 0 6px 18px rgba(62, 173, 71, 0.22) !important;
     }
     .business-section-{{ section.id }} .green .amount-box {
       background: linear-gradient(135deg, rgba(62, 173, 71, 0.12) 0%, rgba(62, 173, 71, 0.04) 100%) !important;
@@ -387,24 +389,24 @@
     /* ── CARD 2: WARM ORANGE THEME (Market Dominance ₹2,50,000) ── */
     .business-section-{{ section.id }} .blue,
     .business-section-{{ section.id }} .orange {
-      border: 1.5px solid rgba(247, 148, 29, 0.32) !important;
+      border: 2.5px solid #F7941D !important;
       background: linear-gradient(180deg, #FFFDF7 0%, #FFFFFF 100%) !important;
-      box-shadow: 0 12px 36px rgba(247, 148, 29, 0.14), 0 4px 16px rgba(0,0,0,0.02) !important;
+      box-shadow: 0 10px 30px rgba(247, 148, 29, 0.2), 0 0 16px rgba(247, 148, 29, 0.12) !important;
     }
     .business-section-{{ section.id }} .blue::before,
     .business-section-{{ section.id }} .orange::before {
-      background: #F7941D !important;
+      background: linear-gradient(90deg, #F7941D 0%, #E07810 100%) !important;
     }
     .business-section-{{ section.id }} .blue .badge,
     .business-section-{{ section.id }} .orange .badge {
       background: #FFF3E0 !important;
       color: #E07810 !important;
-      border: 1px solid rgba(224, 120, 16, 0.25) !important;
+      border: 1px solid rgba(224, 120, 16, 0.3) !important;
     }
     .business-section-{{ section.id }} .blue .icon,
     .business-section-{{ section.id }} .orange .icon {
       background: linear-gradient(135deg, #FFF3E0, #FFE0B2) !important;
-      box-shadow: 0 6px 18px rgba(247, 148, 29, 0.2) !important;
+      box-shadow: 0 6px 18px rgba(247, 148, 29, 0.22) !important;
     }
     .business-section-{{ section.id }} .blue .amount-box,
     .business-section-{{ section.id }} .orange .amount-box {
@@ -424,10 +426,10 @@
     /* ── CARD 3: DUAL BRAND THEME (Flagship Exclusive ₹6,00,000) ── */
     .business-section-{{ section.id }} .gold,
     .business-section-{{ section.id }} .dark {
-      border: 1.5px solid rgba(247, 148, 29, 0.35) !important;
+      border: 2.5px solid #E07810 !important;
       background: linear-gradient(180deg, #FFF8EF 0%, #FFFFFF 100%) !important;
       color: #0F172A !important;
-      box-shadow: 0 12px 36px rgba(247, 148, 29, 0.15), 0 4px 16px rgba(0,0,0,0.02) !important;
+      box-shadow: 0 10px 32px rgba(247, 148, 29, 0.22), 0 0 18px rgba(62, 173, 71, 0.15) !important;
     }
     .business-section-{{ section.id }} .gold::before,
     .business-section-{{ section.id }} .dark::before {
@@ -439,12 +441,12 @@
     .business-section-{{ section.id }} .dark .badge {
       background: linear-gradient(90deg, #FFF3E0, #E8F5E9) !important;
       color: #E07810 !important;
-      border: 1px solid rgba(224, 120, 16, 0.3) !important;
+      border: 1px solid rgba(224, 120, 16, 0.35) !important;
     }
     .business-section-{{ section.id }} .gold .icon,
     .business-section-{{ section.id }} .dark .icon {
       background: linear-gradient(135deg, #FFF3E0, #E8F5E9) !important;
-      box-shadow: 0 6px 18px rgba(247, 148, 29, 0.2) !important;
+      box-shadow: 0 6px 18px rgba(247, 148, 29, 0.22) !important;
     }
     .business-section-{{ section.id }} .gold .amount-box,
     .business-section-{{ section.id }} .dark .amount-box {
@@ -520,18 +522,18 @@
       letter-spacing: 0.8px !important;
     }
     .business-section-{{ section.id }} .heading h1 {
-      font-size: 12vw !important;
+      font-size: 10vw !important;
       line-height: 1 !important;
       letter-spacing: -1px !important;
     }
-    .business-section-{{ section.id }} .glow-line { width: 140px !important; height: 5px !important; }
+    .business-section-{{ section.id }} .glow-line { width: 120px !important; height: 4.5px !important; margin: 12px auto 0 !important; }
     
     .business-section-{{ section.id }} .book-btn {
       width: 100% !important;
-      max-width: 290px !important;
+      max-width: 280px !important;
       padding: 12px 36px !important;
       font-size: 15px !important;
-      margin: 16px auto 6px auto !important;
+      margin: 18px auto 6px auto !important;
       border-radius: 999px !important;
       box-shadow: 0 8px 24px rgba(247,148,29,.35) !important;
       align-self: center !important;
@@ -544,25 +546,7 @@
     .business-section-{{ section.id }} .book-btn .hand-right { right: 12px; }
 
     .vs-bm-dots {
-      display: flex !important;
-      justify-content: center !important;
-      align-items: center !important;
-      gap: 8px !important;
-      margin-top: 18px !important;
-    }
-    .vs-bm-dots .dot {
-      width: 10px !important;
-      height: 10px !important;
-      border-radius: 50% !important;
-      background: #cbd5e1 !important;
-      transition: all 0.3s ease !important;
-      cursor: pointer !important;
-    }
-    .vs-bm-dots .dot.active {
-      width: 28px !important;
-      border-radius: 999px !important;
-      background: linear-gradient(90deg, #f7941d, #e07810) !important;
-      box-shadow: 0 3px 10px rgba(247, 148, 29, 0.35) !important;
+      display: none !important;
     }
   }
 </style>
