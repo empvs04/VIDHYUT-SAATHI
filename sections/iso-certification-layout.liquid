@@ -566,13 +566,36 @@
       text-align: center !important;
     }
   }
-  /* --- Commitment to Quality Section --- */
+  /* --- Commitment to Quality — Premium Section --- */
   .iso-commitment {
-    background: linear-gradient(180deg, #FFFDF8 0%, #FAFAF6 50%, #F5F4EE 100%);
-    padding: 80px 20px;
+    background: linear-gradient(160deg, #FFFDF8 0%, #FFF5E0 35%, #F2FAF3 100%);
+    padding: 90px 24px 80px 24px;
     position: relative;
     overflow: hidden;
-    border-top: 1.5px solid rgba(247, 148, 29, 0.15);
+    border-top: 1.5px solid rgba(247, 148, 29, 0.12);
+  }
+  /* Decorative background orbs */
+  .iso-commitment::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    left: -80px;
+    width: 380px;
+    height: 380px;
+    background: radial-gradient(circle, rgba(247, 148, 29, 0.1) 0%, transparent 65%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .iso-commitment::after {
+    content: '';
+    position: absolute;
+    bottom: -80px;
+    right: -80px;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(62, 173, 71, 0.1) 0%, transparent 65%);
+    border-radius: 50%;
+    pointer-events: none;
   }
 
   .comm-header-badge {
@@ -580,28 +603,47 @@
     align-items: center;
     gap: 8px;
     padding: 6px 18px;
-    background: #FFF3E0;
-    border: 1px solid rgba(247, 148, 29, 0.3);
+    background: linear-gradient(135deg, #FFF3E0, #FFE5B4);
+    border: 1px solid rgba(247, 148, 29, 0.35);
     border-radius: 50px;
     font-size: 0.82rem;
     font-weight: 800;
-    color: #E07810;
-    margin-bottom: 12px;
+    color: #C96218;
+    margin-bottom: 14px;
+    box-shadow: 0 4px 12px rgba(247, 148, 29, 0.18);
   }
 
   .comm-title-wrap {
     text-align: center;
-    max-width: 700px;
-    margin: 0 auto 50px auto;
+    max-width: 720px;
+    margin: 0 auto 56px auto;
+    position: relative;
+    z-index: 1;
   }
 
   .comm-title-wrap h2 {
     font-family: 'Baloo 2', sans-serif;
-    font-size: clamp(28px, 3.5vw, 42px);
+    font-size: clamp(28px, 3.5vw, 44px);
     font-weight: 900;
     color: #0F172A;
-    margin: 0 0 10px 0;
-    letter-spacing: -0.3px;
+    margin: 0 0 6px 0;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+  }
+
+  /* Shimmer underline below section heading */
+  .comm-heading-accent {
+    width: 80px;
+    height: 4px;
+    border-radius: 4px;
+    background: linear-gradient(90deg, #F7941D, #3EAD47, #F7941D);
+    background-size: 200% auto;
+    animation: comm-shimmer 2.8s linear infinite;
+    margin: 10px auto 14px auto;
+  }
+  @keyframes comm-shimmer {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
   }
 
   .comm-title-wrap p {
@@ -609,78 +651,128 @@
     font-weight: 600;
     color: #64748B;
     margin: 0;
+    line-height: 1.6;
   }
 
   .comm-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 22px;
-    max-width: 1280px;
+    gap: 24px;
+    max-width: 1300px;
     margin: 0 auto;
+    position: relative;
+    z-index: 1;
   }
 
   .comm-card {
     background: #FFFFFF;
-    border: 1.5px solid rgba(247, 148, 29, 0.2);
-    border-top: 4px solid #F7941D;
-    border-radius: 24px;
-    padding: 36px 24px;
+    border: 1.5px solid rgba(247, 148, 29, 0.18);
+    border-radius: 26px;
+    padding: 40px 26px 32px 26px;
     text-align: center;
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.04);
-    transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    box-shadow:
+      0 16px 40px rgba(0, 0, 0, 0.05),
+      0 4px 12px rgba(247, 148, 29, 0.06);
+    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
     position: relative;
+    overflow: hidden;
   }
-
+  /* Per-card glowing color top strip */
+  .comm-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 5px;
+    border-radius: 26px 26px 0 0;
+    background: linear-gradient(90deg, #F7941D, #FFB347);
+    transition: height 0.3s ease;
+  }
+  .comm-card.green-top::before {
+    background: linear-gradient(90deg, #3EAD47, #6DD16B);
+  }
+  .comm-card.blue-top::before {
+    background: linear-gradient(90deg, #0284C7, #38BDF8);
+  }
+  .comm-card.gold-top::before {
+    background: linear-gradient(90deg, #D97706, #FBBF24);
+  }
   .comm-card:hover {
-    transform: translateY(-6px);
-    border-color: rgba(247, 148, 29, 0.45);
-    box-shadow: 0 20px 45px rgba(247, 148, 29, 0.18);
+    transform: translateY(-8px) scale(1.01);
+    border-color: rgba(247, 148, 29, 0.38);
+    box-shadow:
+      0 28px 56px rgba(247, 148, 29, 0.18),
+      0 8px 24px rgba(0, 0, 0, 0.06);
+  }
+  .comm-card:hover::before {
+    height: 6px;
   }
 
   .comm-icon-box {
-    width: 58px;
-    height: 58px;
-    border-radius: 18px;
+    width: 64px;
+    height: 64px;
+    border-radius: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 24px;
-    margin: 0 auto 20px auto;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+    font-size: 26px;
+    margin: 0 auto 22px auto;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .comm-card:hover .comm-icon-box {
+    transform: scale(1.15) rotate(-6deg);
   }
 
-  .comm-icon-box.orange { background: linear-gradient(135deg, #FFF3E0, #FFE0B2); color: #E07810; }
-  .comm-icon-box.green { background: linear-gradient(135deg, #E8F5E9, #C8E6C9); color: #2E7D32; }
-  .comm-icon-box.blue { background: linear-gradient(135deg, #E0F2FE, #BAE6FD); color: #0284C7; }
-  .comm-icon-box.gold { background: linear-gradient(135deg, #FFF8D6, #FEF08A); color: #D97706; }
+  .comm-icon-box.orange {
+    background: linear-gradient(145deg, #FFF3E0, #FFD59E);
+    color: #C96218;
+    box-shadow: 0 8px 24px rgba(247, 148, 29, 0.28);
+  }
+  .comm-icon-box.green {
+    background: linear-gradient(145deg, #E8F5E9, #A5D6A7);
+    color: #1B6B22;
+    box-shadow: 0 8px 24px rgba(62, 173, 71, 0.28);
+  }
+  .comm-icon-box.blue {
+    background: linear-gradient(145deg, #E0F2FE, #7DD3FC);
+    color: #0369A1;
+    box-shadow: 0 8px 24px rgba(2, 132, 199, 0.28);
+  }
+  .comm-icon-box.gold {
+    background: linear-gradient(145deg, #FFF8D6, #FDE68A);
+    color: #B45309;
+    box-shadow: 0 8px 24px rgba(217, 119, 6, 0.28);
+  }
 
   .comm-card h3 {
     font-family: 'Baloo 2', sans-serif;
-    font-size: 1.25rem;
-    font-weight: 800;
+    font-size: 1.22rem;
+    font-weight: 900;
     color: #0F172A;
-    margin: 0 0 8px 0;
+    margin: 0 0 10px 0;
+    letter-spacing: -0.2px;
+    line-height: 1.25;
   }
 
   .comm-card p {
     font-size: 0.88rem;
     font-weight: 600;
     color: #64748B;
-    line-height: 1.5;
+    line-height: 1.6;
     margin: 0;
   }
 
   @media (max-width: 1024px) {
     .comm-grid {
       grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
+      gap: 20px;
     }
   }
 
   @media (max-width: 768px) {
     .iso-commitment {
-      padding: 42px 14px !important;
+      padding: 48px 14px 40px 14px !important;
     }
+    .iso-commitment::before, .iso-commitment::after { display: none; }
     .comm-title-wrap {
       margin-bottom: 24px !important;
     }
@@ -702,8 +794,8 @@
       min-width: 100% !important;
       scroll-snap-align: center !important;
       box-sizing: border-box !important;
-      padding: 28px 20px !important;
-      border-radius: 20px !important;
+      padding: 32px 22px !important;
+      border-radius: 22px !important;
     }
     .comm-slider-dots {
       display: flex !important;
@@ -721,10 +813,10 @@
       cursor: pointer !important;
     }
     .comm-dot.active {
-      background: #0F172A !important;
-      width: 9px !important;
+      background: #F7941D !important;
+      width: 24px !important;
       height: 9px !important;
-      border-radius: 50% !important;
+      border-radius: 9px !important;
     }
   }
   @media (min-width: 769px) {
@@ -1539,6 +1631,7 @@
         <i class="fa-solid fa-award"></i> QUALITY ASSURED
       </div>
       <h2>Our Commitment to Quality</h2>
+      <div class="comm-heading-accent"></div>
       <p>Internationally benchmarked standards for safety, performance &amp; customer satisfaction</p>
     </div>
     
@@ -1551,7 +1644,7 @@
         <p>Stringent quality assurance protocols at every stage of manufacturing &amp; supply.</p>
       </div>
       
-      <div class="comm-card">
+      <div class="comm-card green-top">
         <div class="comm-icon-box green">
           <i class="fa-solid fa-handshake"></i>
         </div>
@@ -1559,7 +1652,7 @@
         <p>Transparent policies, prompt support, and certified reliability across India.</p>
       </div>
       
-      <div class="comm-card">
+      <div class="comm-card blue-top">
         <div class="comm-icon-box blue">
           <i class="fa-solid fa-chart-line"></i>
         </div>
@@ -1567,7 +1660,7 @@
         <p>Advanced R&amp;D for next-gen surge protection &amp; energy savings technology.</p>
       </div>
       
-      <div class="comm-card">
+      <div class="comm-card gold-top">
         <div class="comm-icon-box gold">
           <i class="fa-solid fa-trophy"></i>
         </div>
