@@ -733,7 +733,7 @@
     }
   }
 
-  /* --- Why it Matters Split Section --- */
+  /* --- Why ISO Certification Matters Split Section --- */
   .iso-why {
     padding: clamp(60px, 8vw, 100px) 20px;
     max-width: 1280px;
@@ -746,31 +746,67 @@
     align-items: center;
   }
   @media (min-width: 912px) {
-    .why-grid { grid-template-columns: 1fr 1fr; gap: 80px; }
-    .why-grid.reverse .why-text { order: 1; }
-    .why-grid.reverse .why-img { order: 2; }
+    .why-grid { grid-template-columns: 1fr 1fr; gap: 60px; }
   }
-  .why-img {
-    border-radius: var(--iso-radius);
-    overflow: hidden;
-    box-shadow: var(--iso-shadow);
-  }
-  .why-img img, .why-img svg {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
+
   .why-text h2 {
-    font-size: clamp(2rem, 3vw, 2.5rem);
-    font-weight: 700;
+    font-family: 'Baloo 2', sans-serif;
+    font-size: clamp(26px, 3vw, 38px);
+    font-weight: 900;
+    line-height: 1.25;
     margin-bottom: 20px;
+    color: #0F172A;
   }
-  .why-text p {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: var(--iso-text-light);
-    margin-bottom: 15px;
+
+  /* Why Section Feature Box */
+  .why-feature-box {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .why-feat-item {
+    background: #FFFFFF;
+    border: 1.5px solid rgba(247, 148, 29, 0.2);
+    border-left: 4px solid #F7941D;
+    border-radius: 20px;
+    padding: 20px 22px;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    box-shadow: 0 10px 25px rgba(247, 148, 29, 0.08);
+    transition: all 0.3s ease;
+  }
+  .why-feat-item:hover {
+    transform: translateY(-3px);
+    border-left-color: #3EAD47;
+    box-shadow: 0 16px 32px rgba(247, 148, 29, 0.16);
+  }
+  .why-feat-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .why-feat-icon.orange { background: #FFF3E0; color: #E07810; }
+  .why-feat-icon.green { background: #E8F5E9; color: #2E7D32; }
+  .why-feat-icon.blue { background: #E0F2FE; color: #0284C7; }
+
+  .why-feat-text h4 {
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 1.12rem;
+    font-weight: 800;
+    color: #0F172A;
+    margin: 0 0 4px 0;
+  }
+  .why-feat-text p {
+    font-size: 0.88rem;
+    color: #64748B;
+    margin: 0;
+    line-height: 1.5;
   }
 
   /* --- CTA Section --- */
@@ -1338,6 +1374,9 @@
         <div class="comm-icon-box gold">
           <i class="fa-solid fa-trophy"></i>
         </div>
+        <h3>{{ section.settings.comm_4 | default: "Certified Excellence" }}</h3>
+        <p>Globally accredited by IAF &amp; JAS-ANZ for international compliance.</p>
+      </div>
     </div>
 
     <!-- Mobile Slider Dots -->
@@ -1349,21 +1388,46 @@
     </div>
   </section>
 
-  <!-- Why it Matters -->
+  <!-- Why ISO Certification Matters -->
   <section class="iso-why">
     <div class="why-grid">
       <div class="why-text">
-        <h2>{{ section.settings.why_heading }}</h2>
+        <div class="iso-badge" style="margin-bottom: 14px;">
+          <div class="pulse-dot"></div>
+          GLOBAL QUALITY BENCHMARK
+        </div>
+        <h2>{{ section.settings.why_heading | default: "Why ISO 9001:2015 Certification Matters" }}</h2>
         <div class="iso-main-text">
-          {{ section.settings.why_text }}
+          {%- if section.settings.why_text != blank -%}
+            {{ section.settings.why_text }}
+          {%- else -%}
+            <p>ISO 9001:2015 is the international gold standard for Quality Management Systems. Being ISO certified means Vidhyut Saathi adheres to internationally verified quality benchmarks, standardized engineering practices, rigorous product safety checks, and continuous process optimization. For our residential, commercial, and industrial clients, this certification guarantees maximum product reliability, safety compliance, and unmatched energy-saving performance across every Vidhyut Saathi device.</p>
+          {%- endif -%}
         </div>
       </div>
-      <div class="why-img">
-        {%- if section.settings.why_image != blank -%}
-          {{ section.settings.why_image | image_url: width: 800, height: 600, crop: 'center' | image_tag: loading: 'lazy' }}
-        {%- else -%}
-          {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
-        {%- endif -%}
+      
+      <div class="why-feature-box">
+        <div class="why-feat-item">
+          <div class="why-feat-icon orange"><i class="fa-solid fa-shield-check"></i></div>
+          <div class="why-feat-text">
+            <h4>Standardized Quality Control</h4>
+            <p>Every Vidhyut Saathi card undergoes strict quality testing prior to dispatch.</p>
+          </div>
+        </div>
+        <div class="why-feat-item">
+          <div class="why-feat-icon green"><i class="fa-solid fa-award"></i></div>
+          <div class="why-feat-text">
+            <h4>International Compliance</h4>
+            <p>Certified under IAF &amp; JAS-ANZ global quality accreditation standards.</p>
+          </div>
+        </div>
+        <div class="why-feat-item">
+          <div class="why-feat-icon blue"><i class="fa-solid fa-user-shield"></i></div>
+          <div class="why-feat-text">
+            <h4>Client Assurance &amp; Support</h4>
+            <p>Dedicated customer care, warranties, and verified performance guarantees.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
