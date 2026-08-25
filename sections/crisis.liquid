@@ -507,10 +507,9 @@
     display: none !important;
   }
 
-  @keyframes vsBorderRotate {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+  @keyframes vsRotate360 {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
   }
 
   /* MOBILE ONLY: MASTER CONTAINER FOR HERO & STAT CARDS ONLY */
@@ -562,13 +561,13 @@
     .vs-stat-card {
       position: relative !important;
       overflow: hidden !important;
-      background: rgba(255, 255, 255, .88) !important;
       border-radius: 22px !important;
-      padding: 18px 14px !important;
+      padding: 20px 16px !important;
       text-align: center !important;
       transition: .35s ease !important;
       z-index: 1 !important;
       border: none !important;
+      background: transparent !important;
       flex: none !important;
       width: 100% !important;
       box-sizing: border-box !important;
@@ -578,18 +577,19 @@
       flex-direction: column !important;
       align-items: center !important;
       justify-content: center !important;
-      box-shadow: 0 12px 32px rgba(247, 148, 29, 0.16) !important;
+      box-shadow: 0 14px 36px rgba(247, 148, 29, 0.2), 0 0 24px rgba(62, 173, 71, 0.16) !important;
     }
 
     .vs-stat-card::before {
       content: '' !important;
       display: block !important;
       position: absolute !important;
-      inset: -4px !important;
-      border-radius: 26px !important;
-      background: linear-gradient(90deg, #148c3a, #22c55e, #f58220, #ffd44d, #148c3a) !important;
-      background-size: 300% 300% !important;
-      animation: vsBorderRotate 4s linear infinite !important;
+      top: -50% !important;
+      left: -50% !important;
+      width: 200% !important;
+      height: 200% !important;
+      background: conic-gradient(from 0deg, #F7941D 0deg, #FFB03A 90deg, #3EAD47 180deg, #6DD47A 270deg, #F7941D 360deg) !important;
+      animation: vsRotate360 4s linear infinite !important;
       z-index: -2 !important;
     }
 
@@ -597,10 +597,17 @@
       content: '' !important;
       display: block !important;
       position: absolute !important;
-      inset: 4px !important;
-      background: linear-gradient(135deg, rgba(255,255,255,.96), rgba(255,255,255,.90)) !important;
-      border-radius: 18px !important;
+      top: 5px !important;
+      left: 5px !important;
+      right: 5px !important;
+      bottom: 5px !important;
+      background: linear-gradient(180deg, #FFFFFF 0%, #FFFDF8 100%) !important;
+      border-radius: 17px !important;
       z-index: -1 !important;
+    }
+
+    .vs-stat-card.style-green::after {
+      background: linear-gradient(180deg, #FFFFFF 0%, #F2FAF3 100%) !important;
     }
 
     .vs-stat-icon-wrap,
