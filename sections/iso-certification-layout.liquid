@@ -993,9 +993,12 @@
           <i class="fa-solid fa-ribbon"></i> IAF &amp; JAS-ANZ ACCREDITED
         </div>
 
-        <div class="iso-cert-img-wrapper" id="iso-canvas-container-1">
-          <canvas id="iso-pdf-canvas-1" style="width: 100%; height: auto; display: block; border-radius: 16px;"></canvas>
-          <img id="iso-pdf-fallback-1" src="{{ 'iso-certificate.jpg' | asset_url }}" alt="Official ISO 9001:2015 Certificate of Registration - Vidhyut Saathi" loading="eager" width="2400" height="3394" style="width: 100%; height: auto; display: none; border-radius: 16px;">
+        <div class="iso-cert-img-wrapper">
+          {%- if section.settings.cert_image != blank -%}
+            <img src="{{ section.settings.cert_image | img_url: 'master' }}" alt="Official ISO 9001:2015 Certificate of Registration - Vidhyut Saathi" loading="eager" style="width: 100%; height: auto; display: block; border-radius: 16px; object-fit: contain;">
+          {%- else -%}
+            <img src="{{ 'iso-certificate.jpg' | asset_url }}" alt="Official ISO 9001:2015 Certificate of Registration - Vidhyut Saathi" loading="eager" width="2400" height="3394" style="width: 100%; height: auto; display: block; border-radius: 16px; object-fit: contain;">
+          {%- endif -%}
         </div>
 
         <div class="iso-cert-floating-badge bottom-left">
