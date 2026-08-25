@@ -677,19 +677,59 @@
     }
   }
 
-  @media (max-width: 640px) {
+  @media (max-width: 768px) {
     .iso-commitment {
-      padding: 50px 16px;
+      padding: 42px 14px !important;
     }
     .comm-title-wrap {
-      margin-bottom: 30px;
+      margin-bottom: 24px !important;
     }
     .comm-grid {
-      grid-template-columns: 1fr;
-      gap: 16px;
+      display: flex !important;
+      overflow-x: auto !important;
+      scroll-snap-type: x mandatory !important;
+      scroll-behavior: smooth !important;
+      -webkit-overflow-scrolling: touch !important;
+      gap: 16px !important;
+      padding-bottom: 10px !important;
+      margin: 0 !important;
+    }
+    .comm-grid::-webkit-scrollbar {
+      display: none !important;
     }
     .comm-card {
-      padding: 28px 20px;
+      flex: 0 0 100% !important;
+      min-width: 100% !important;
+      scroll-snap-align: center !important;
+      box-sizing: border-box !important;
+      padding: 28px 20px !important;
+      border-radius: 20px !important;
+    }
+    .comm-slider-dots {
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      gap: 8px !important;
+      margin-top: 18px !important;
+    }
+    .comm-dot {
+      width: 9px !important;
+      height: 9px !important;
+      border-radius: 50% !important;
+      background: rgba(15, 23, 42, 0.2) !important;
+      transition: all 0.3s ease !important;
+      cursor: pointer !important;
+    }
+    .comm-dot.active {
+      background: #0F172A !important;
+      width: 9px !important;
+      height: 9px !important;
+      border-radius: 50% !important;
+    }
+  }
+  @media (min-width: 769px) {
+    .comm-slider-dots {
+      display: none !important;
     }
   }
 
@@ -1298,9 +1338,14 @@
         <div class="comm-icon-box gold">
           <i class="fa-solid fa-trophy"></i>
         </div>
-        <h3>{{ section.settings.comm_4 | default: "Certified Excellence" }}</h3>
-        <p>Globally accredited by IAF &amp; JAS-ANZ for international compliance.</p>
-      </div>
+    </div>
+
+    <!-- Mobile Slider Dots -->
+    <div class="comm-slider-dots" id="comm-slider-dots">
+      <span class="comm-dot active" data-index="0"></span>
+      <span class="comm-dot" data-index="1"></span>
+      <span class="comm-dot" data-index="2"></span>
+      <span class="comm-dot" data-index="3"></span>
     </div>
   </section>
 
@@ -1370,6 +1415,97 @@
   }
   document.addEventListener("DOMContentLoaded", renderIsoPdfCertificate);
   if (window.Shopify && Shopify.designMode) { setTimeout(renderIsoPdfCertificate, 300); }
+
+  // Our Commitment to Quality — Mobile 3s Auto-Slide JS
+  document.addEventListener('DOMContentLoaded', function() {
+    const commGrid = document.querySelector('.comm-grid');
+    const commDots = document.querySelectorAll('#comm-slider-dots .comm-dot');
+    let commCurrentIndex = 0;
+    let commAutoSlideTimer = null;
+
+    if (commGrid && commDots.length > 0) {
+      function updateCommDots(index) {
+        commDots.forEach((dot, idx) => {
+          if (idx === index) {
+            dot.classList.add('active');
+          } else {
+            dot.classList.remove('active');
+          }
+        });
+      }
+
+      function scrollToSlide(index) {
+        const cards = commGrid.querySelectorAll('.comm-card');
+        if (cards[index]) {
+          const cardWidth = cards[index].offsetWidth + 16;
+          commGrid.scrollTo({
+            left: index * cardWidth,
+            behavior: 'smooth'
+          });
+          commCurrentIndex = index;
+          updateCommDots(index);
+        }
+      }
+
+      function startCommAutoSlide() {
+        if (!commAutoSlideTimer) {
+          commAutoSlideTimer = setInterval(function() {
+            if (window.innerWidth <= 768) {
+              const cards = commGrid.querySelectorAll('.comm-card');
+              if (cards.length > 0) {
+                commCurrentIndex = (commCurrentIndex + 1) % cards.length;
+                scrollToSlide(commCurrentIndex);
+              }
+            }
+          }, 3000);
+        }
+      }
+
+      function stopCommAutoSlide() {
+        if (commAutoSlideTimer) {
+          clearInterval(commAutoSlideTimer);
+          commAutoSlideTimer = null;
+        }
+      }
+
+      if ('IntersectionObserver' in window) {
+        const commObserver = new IntersectionObserver(function(entries) {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              startCommAutoSlide();
+            } else {
+              stopCommAutoSlide();
+            }
+          });
+        }, { threshold: 0.2 });
+
+        commObserver.observe(commGrid);
+      } else {
+        startCommAutoSlide();
+      }
+
+      commDots.forEach((dot, idx) => {
+        dot.addEventListener('click', function() {
+          scrollToSlide(idx);
+          stopCommAutoSlide();
+          startCommAutoSlide();
+        });
+      });
+
+      commGrid.addEventListener('scroll', function() {
+        if (window.innerWidth <= 768) {
+          const cardWidth = commGrid.offsetWidth;
+          if (cardWidth > 0) {
+            const newIndex = Math.round(commGrid.scrollLeft / cardWidth);
+            if (newIndex >= 0 && newIndex < commDots.length && newIndex !== commCurrentIndex) {
+              commCurrentIndex = newIndex;
+              updateCommDots(newIndex);
+            }
+          }
+        }
+      }, { passive: true });
+    }
+  });
 </script>
 
 {% schema %}
