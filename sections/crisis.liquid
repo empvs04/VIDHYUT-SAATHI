@@ -395,13 +395,23 @@
   }
 
   .vs-stat-card {
-    background: var(--card-bg); border-radius: 26px; padding: 42px 30px 38px;
-    box-shadow: var(--shadow); border: 1.5px solid rgba(247,148,29,.08);
+    background: var(--card-bg); border-radius: 26px; padding: 36px 26px 32px;
+    box-shadow: 0 12px 36px rgba(247,148,29,0.12), 0 4px 16px rgba(0,0,0,0.03);
+    border: 1.5px solid rgba(247,148,29,0.2);
     position: relative; overflow: hidden;
-    transition: transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s;
+    transition: transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s;
   }
   .vs-stat-card:hover {
     transform: translateY(-8px) scale(1.01); box-shadow: 0 24px 64px rgba(247,148,29,.22);
+  }
+
+  .vs-stat-card.style-orange {
+    background: linear-gradient(180deg, #FFFDF7 0%, #FFFFFF 100%) !important;
+    border: 1.5px solid rgba(247, 148, 29, 0.3) !important;
+  }
+  .vs-stat-card.style-green {
+    background: linear-gradient(180deg, #F2FAF3 0%, #FFFFFF 100%) !important;
+    border: 1.5px solid rgba(62, 173, 71, 0.3) !important;
   }
 
   .vs-card-glow {
@@ -419,27 +429,37 @@
   .vs-stat-card.style-green::before, .vs-stat-card.style-green::after { background: linear-gradient(90deg, var(--green), var(--green3)); }
 
   .vs-stat-icon-wrap {
-    width: 70px; height: 70px; border-radius: 18px; display: flex; align-items: center; justify-content: center;
-    margin-bottom: 26px; position: relative; z-index: 1; color: var(--orange);
+    width: 64px; height: 64px; border-radius: 18px; display: flex; align-items: center; justify-content: center;
+    margin-bottom: 22px; position: relative; z-index: 1; color: var(--orange);
   }
-  .vs-stat-card.style-orange .vs-stat-icon-wrap { background: linear-gradient(135deg, #FFF3E0, #FFE0B2); box-shadow: 0 6px 20px rgba(247,148,29,.2); color: var(--orange); }
-  .vs-stat-card.style-green .vs-stat-icon-wrap { background: linear-gradient(135deg, #E8F5E9, #C8E6C9); box-shadow: 0 6px 20px rgba(62,173,71,.2); color: var(--green); }
-  .vs-stat-icon-wrap svg { width: 34px; height: 34px; }
+  .vs-stat-card.style-orange .vs-stat-icon-wrap { background: linear-gradient(135deg, #FFF3E0, #FFE0B2); box-shadow: 0 8px 22px rgba(247,148,29,.22); color: var(--orange); }
+  .vs-stat-card.style-green .vs-stat-icon-wrap { background: linear-gradient(135deg, #E8F5E9, #C8E6C9); box-shadow: 0 8px 22px rgba(62,173,71,.22); color: var(--green); }
+  .vs-stat-icon-wrap svg { width: 32px; height: 32px; }
 
   .vs-stat-value {
-    font-family: 'Baloo 2', sans-serif; font-size: 54px; font-weight: 900; line-height: 1;
-    margin-bottom: 14px; position: relative; z-index: 1; letter-spacing: -1px;
+    font-family: 'Baloo 2', sans-serif; font-size: 44px; font-weight: 900; line-height: 1.05;
+    margin-bottom: 12px; position: relative; z-index: 1; letter-spacing: -1px;
   }
-  .vs-stat-card.style-orange .vs-stat-value { color: var(--orange); }
-  .vs-stat-card.style-green .vs-stat-value { color: var(--green); }
+  .vs-stat-card.style-orange .vs-stat-value {
+    color: var(--orange);
+    background: linear-gradient(135deg, #F7941D 0%, #E07810 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .vs-stat-card.style-green .vs-stat-value {
+    color: var(--green);
+    background: linear-gradient(135deg, #3EAD47 0%, #2E7D32 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 
   .vs-stat-divider {
-    width: 44px; height: 3px; border-radius: 2px; margin-bottom: 16px; position: relative; z-index: 1;
+    width: 44px; height: 3.5px; border-radius: 2px; margin-bottom: 14px; position: relative; z-index: 1;
   }
   .vs-stat-card.style-orange .vs-stat-divider { background: linear-gradient(90deg, var(--orange), transparent); }
   .vs-stat-card.style-green .vs-stat-divider { background: linear-gradient(90deg, var(--green), transparent); }
 
-  .vs-stat-desc { font-size: 22px; font-weight: 800; color: var(--dark); line-height: 1.5; position: relative; z-index: 1; }
+  .vs-stat-desc { font-size: 15.5px; font-weight: 800; color: #0F172A; line-height: 1.45; position: relative; z-index: 1; }
 
   .vs-crisis-dots {
     display: none !important;
@@ -483,11 +503,13 @@
       scroll-snap-align: center !important;
       scroll-snap-stop: always !important;
       box-sizing: border-box !important;
-      min-height: 310px !important;
+      min-height: 300px !important;
       display: flex !important;
       flex-direction: column !important;
       justify-content: space-between !important;
-      padding: 36px 24px !important;
+      padding: 30px 22px !important;
+      border-radius: 22px !important;
+      box-shadow: 0 12px 36px rgba(247,148,29,0.14) !important;
     }
     .vs-crisis-dots {
       display: flex !important;
