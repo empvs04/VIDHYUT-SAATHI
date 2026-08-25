@@ -1,12 +1,12 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-{%- style -%}
+<style>
   :root {
     --vs-navy: #0f172a;
-    --vs-orange: {{ section.settings.primary_color }};
+    --vs-orange: {{ section.settings.primary_color | default: '#F17E39' }};
     --vs-green: {{ section.settings.secondary_color | default: '#007B3E' }};
     --vs-border: #e2e8f0;
-    --vs-bg: {{ section.settings.bg_color }};
+    --vs-bg: {{ section.settings.bg_color | default: '#fff8ef' }};
   }
 
   .vs-features-wrapper {
@@ -15,6 +15,11 @@
     background-color: var(--vs-bg);
     overflow: hidden;
     perspective: 2000px;
+    width: 100% !important;
+    max-width: 1240px !important;
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
+    display: block !important;
   }
 
   /* --- ESPON 3D ANIMATION LOGIC --- */
@@ -45,7 +50,7 @@
     margin: 15px auto 0; border-radius: 2px;
   }
 
-  /* --- GRID & CARDS --- */
+  /* --- DESKTOP GRID --- */
   .vs-features-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr); 
@@ -97,24 +102,81 @@
     transform: translateZ(5px);
   }
 
-  /* --- MOBILE FIXES --- */
+  .vs-features-dots {
+    display: none !important;
+  }
+
+  /* --- TABLET --- */
   @media screen and (max-width: 1024px) {
     .vs-features-grid { grid-template-columns: repeat(2, 1fr); }
   }
+
+  /* --- MOBILE ONLY STYLES & SWIPE SLIDER --- */
   @media screen and (max-width: 768px) {
-    .vs-features-wrapper { padding: 50px 5%; }
-    .vs-features-header h2 { font-size: 28px; }
-    .vs-features-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
-    .vs-feature-card { padding: 25px 15px; border-radius: 16px; }
-    .vs-feature-icon { font-size: 2rem; margin-bottom: 15px; }
-    .vs-feature-card h3 { font-size: 16px; margin-bottom: 10px; }
-    .vs-feature-card p { font-size: 12px; }
+    .vs-features-wrapper { padding: 45px 16px !important; }
+    .vs-features-header h2 { font-size: 26px !important; }
+    
+    .vs-features-grid { 
+      display: flex !important;
+      grid-template-columns: none !important;
+      flex-wrap: nowrap !important;
+      overflow-x: auto !important;
+      scroll-snap-type: x mandatory !important;
+      scroll-behavior: smooth !important;
+      gap: 16px !important;
+      padding: 10px 4px 20px 4px !important;
+      -webkit-overflow-scrolling: touch !important;
+      scrollbar-width: none !important;
+    }
+    .vs-features-grid::-webkit-scrollbar { 
+      display: none !important; 
+    }
+    .vs-feature-card { 
+      flex: 0 0 88% !important;
+      max-width: 88% !important;
+      scroll-snap-align: center !important;
+      scroll-snap-stop: always !important;
+      padding: 30px 20px !important; 
+      border-radius: 20px !important; 
+    }
+    .vs-feature-icon { 
+      font-size: 2.2rem !important; 
+      margin-bottom: 16px !important; 
+    }
+    .vs-feature-card h3 { 
+      font-size: 18px !important; 
+      margin-bottom: 10px !important; 
+    }
+    .vs-feature-card p { 
+      font-size: 13.5px !important; 
+    }
+
+    .vs-features-dots {
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      gap: 8px !important;
+      margin-top: 24px !important;
+    }
+    .vs-features-dots .dot {
+      width: 10px !important;
+      height: 10px !important;
+      border-radius: 50% !important;
+      background: #cbd5e1 !important;
+      transition: all 0.3s ease !important;
+      cursor: pointer !important;
+    }
+    .vs-features-dots .dot.active {
+      width: 28px !important;
+      border-radius: 999px !important;
+      background: #f7941d !important;
+    }
   }
-{%- endstyle -%}
+</style>
 
 <div class="vs-features-wrapper">
   <div class="vs-features-header reveal-up">
-    <h2>{{ section.settings.title }}</h2>
+    <h2>{{ section.settings.title | default: 'THINGS TO KNOW ABOUT VIDHYUT SAATHI' }}</h2>
     <div class="vs-divider"></div>
   </div>
 
@@ -135,29 +197,187 @@
           {% endcase %}
         {% endif %}
 
+        {% assign card_title = block.settings.title %}
+        {% if card_title == blank %}
+          {% case forloop.index %}
+            {% when 1 %}{% assign card_title = 'US-German Nanotechnology' %}
+            {% when 2 %}{% assign card_title = 'Benefits of VS Card' %}
+            {% when 3 %}{% assign card_title = 'Check Leakage Current' %}
+            {% when 4 %}{% assign card_title = 'No. of Cards Required' %}
+            {% when 5 %}{% assign card_title = 'How to Install' %}
+            {% when 6 %}{% assign card_title = 'Earn ₹5-6 Lakhs/Month' %}
+            {% else %}{% assign card_title = 'Vidhyut Feature' %}
+          {% endcase %}
+        {% endif %}
+
+        {% assign card_text = block.settings.text %}
+        {% if card_text == blank %}
+          {% case forloop.index %}
+            {% when 1 %}{% assign card_text = 'Powered by advanced US-German nanotechnology, utilizing 20,000 negative ions to effectively stop electricity leakage.' %}
+            {% when 2 %}{% assign card_text = 'Lowers electricity bills by 20% to 30%. It is 100% eco-friendly, waterproof, completely legal, and requires zero maintenance.' %}
+            {% when 3 %}{% assign card_text = "Test your home or factory's phase and neutral lines using a digital clamp meter to identify unseen electricity wastage." %}
+            {% when 4 %}{% assign card_text = 'Requirements scale with load: 1 card for 1-6KW, 2 cards for 7-12KW, 3 for 13-18KW, 4 for 19-24KW, and 5 cards for 25-30KW.' %}
+            {% when 5 %}{% assign card_text = 'Extremely simple to install. No illegal wire cutting required—just attach it safely near your main MCB or distribution board.' %}
+            {% when 6 %}{% assign card_text = 'Join our Franchise model! Become a business partner and tap into a highly profitable, fast-growing energy-saving market.' %}
+            {% else %}{% assign card_text = 'Vidhyut Saathi energy saving technology.' %}
+          {% endcase %}
+        {% endif %}
+
         <a href="{{ block.settings.link | default: '#' }}" class="vs-feature-card reveal-up" style="transition-delay: {{ forloop.index0 | times: 0.1 }}s;">
           <div class="vs-feature-icon"><i class="{{ final_icon }}"></i></div>
-          <h3>{{ block.settings.title }}</h3>
-          <p>{{ block.settings.text }}</p>
+          <h3>{{ card_title }}</h3>
+          <p>{{ card_text }}</p>
         </a>
       {% endfor %}
+    {% else %}
+      <a href="#" class="vs-feature-card reveal-up">
+        <div class="vs-feature-icon"><i class="fas fa-microchip"></i></div>
+        <h3>US-German Nanotechnology</h3>
+        <p>Powered by advanced US-German nanotechnology, utilizing 20,000 negative ions to effectively stop electricity leakage.</p>
+      </a>
+      <a href="#" class="vs-feature-card reveal-up">
+        <div class="vs-feature-icon"><i class="fas fa-leaf"></i></div>
+        <h3>Benefits of VS Card</h3>
+        <p>Lowers electricity bills by 20% to 30%. It is 100% eco-friendly, waterproof, completely legal, and requires zero maintenance.</p>
+      </a>
+      <a href="#" class="vs-feature-card reveal-up">
+        <div class="vs-feature-icon"><i class="fas fa-bolt"></i></div>
+        <h3>Check Leakage Current</h3>
+        <p>Test your home or factory's phase and neutral lines using a digital clamp meter to identify unseen electricity wastage.</p>
+      </a>
+      <a href="#" class="vs-feature-card reveal-up">
+        <div class="vs-feature-icon"><i class="fas fa-layer-group"></i></div>
+        <h3>No. of Cards Required</h3>
+        <p>Requirements scale with load: 1 card for 1-6KW, 2 cards for 7-12KW, 3 for 13-18KW, 4 for 19-24KW, and 5 cards for 25-30KW.</p>
+      </a>
+      <a href="#" class="vs-feature-card reveal-up">
+        <div class="vs-feature-icon"><i class="fas fa-tools"></i></div>
+        <h3>How to Install</h3>
+        <p>Extremely simple to install. No illegal wire cutting required—just attach it safely near your main MCB or distribution board.</p>
+      </a>
+      <a href="#" class="vs-feature-card reveal-up">
+        <div class="vs-feature-icon"><i class="fas fa-sack-dollar"></i></div>
+        <h3>Earn ₹5-6 Lakhs/Month</h3>
+        <p>Join our Franchise model! Become a business partner and tap into a highly profitable, fast-growing energy-saving market.</p>
+      </a>
     {% endif %}
+  </div>
+
+  <!-- ACTIVE DOT PAGINATION (MOBILE ONLY) -->
+  <div class="vs-features-dots" id="vs-features-dots-{{ section.id }}">
+    <span class="dot active"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
   </div>
 </div>
 
 <script>
   document.addEventListener("DOMContentLoaded", function() {
     const revealElements = document.querySelectorAll('#vs-features-container .reveal-up, .vs-features-header.reveal-up');
-    const observer = new IntersectionObserver((entries) => {
+    const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('active');
-          observer.unobserve(entry.target);
+          revealObserver.unobserve(entry.target);
         }
       });
     }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
 
-    revealElements.forEach(el => observer.observe(el));
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    // MOBILE ONLY: 3S VIEWPORT AUTO SLIDER WITH REALTIME DOT SYNC
+    if (window.innerWidth <= 768) {
+      const grid = document.getElementById('vs-features-container');
+      const dotsContainer = document.getElementById('vs-features-dots-{{ section.id }}');
+      if (grid && dotsContainer) {
+        const cards = Array.from(grid.querySelectorAll('.vs-feature-card'));
+        const dots = Array.from(dotsContainer.querySelectorAll('.dot'));
+        let autoTimer = null;
+        let currentIndex = 0;
+
+        function updateDots(activeIndex) {
+          dots.forEach((dot, idx) => {
+            if (idx === activeIndex) {
+              dot.classList.add('active');
+            } else {
+              dot.classList.remove('active');
+            }
+          });
+        }
+
+        function scrollToCard(index) {
+          if (!cards[index]) return;
+          const cardWidth = cards[0].offsetWidth + 16;
+          grid.scrollTo({ left: index * cardWidth, behavior: 'smooth' });
+          currentIndex = index;
+          updateDots(currentIndex);
+        }
+
+        // Realtime Touch & Scroll Sync for Dots
+        let scrollTimeout;
+        grid.addEventListener('scroll', () => {
+          clearTimeout(scrollTimeout);
+          scrollTimeout = setTimeout(() => {
+            const scrollLeft = grid.scrollLeft;
+            const cardWidth = cards[0].offsetWidth + 16;
+            const activeIndex = Math.min(Math.round(scrollLeft / cardWidth), cards.length - 1);
+            if (currentIndex !== activeIndex) {
+              currentIndex = activeIndex;
+              updateDots(currentIndex);
+            }
+          }, 50);
+        }, { passive: true });
+
+        // Dot Click Navigation
+        dots.forEach((dot, idx) => {
+          dot.addEventListener('click', () => {
+            scrollToCard(idx);
+            resetAuto();
+          });
+        });
+
+        // 3-Second Viewport Auto Slide
+        function startAuto() {
+          if (!autoTimer) {
+            autoTimer = setInterval(() => {
+              let nextIndex = (currentIndex + 1) % cards.length;
+              scrollToCard(nextIndex);
+            }, 3000);
+          }
+        }
+
+        function stopAuto() {
+          if (autoTimer) {
+            clearInterval(autoTimer);
+            autoTimer = null;
+          }
+        }
+
+        function resetAuto() {
+          stopAuto();
+          startAuto();
+        }
+
+        // IntersectionObserver for Viewport Triggering
+        const viewportObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              startAuto();
+            } else {
+              stopAuto();
+            }
+          });
+        }, { threshold: 0.2 });
+
+        viewportObserver.observe(grid);
+
+        grid.addEventListener('touchstart', stopAuto, { passive: true });
+        grid.addEventListener('touchend', startAuto, { passive: true });
+      }
+    }
 
     // Desktop 3D Hover Tracking
     if (window.innerWidth > 768) {
