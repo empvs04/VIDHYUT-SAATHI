@@ -402,7 +402,8 @@
     padding: 30px 22px !important;
     box-shadow: 0 12px 35px rgba(247,148,29,0.08), 0 2px 8px rgba(0,0,0,0.02) !important;
     border: 1.5px solid rgba(247, 148, 29, 0.25) !important;
-    position: relative; overflow: hidden;
+    position: relative !important; 
+    overflow: hidden !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
@@ -410,18 +411,30 @@
     justify-content: center !important;
     transition: transform .35s ease, box-shadow .35s ease !important;
   }
+  .vs-stat-card::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: 5px !important;
+  }
+  .vs-stat-card.style-orange::before {
+    background: linear-gradient(90deg, #F7941D 0%, #FDB44B 100%) !important;
+  }
+  .vs-stat-card.style-green::before {
+    background: linear-gradient(90deg, #3EAD47 0%, #6DD47A 100%) !important;
+  }
   .vs-stat-card:hover {
     transform: translateY(-6px) !important;
     box-shadow: 0 20px 45px rgba(247,148,29,0.18) !important;
   }
 
   .vs-stat-card.style-orange {
-    border-top: 5px solid #F7941D !important;
     background: linear-gradient(180deg, #FFFDF8 0%, #FFFFFF 100%) !important;
     border: 1.5px solid rgba(247, 148, 29, 0.28) !important;
   }
   .vs-stat-card.style-green {
-    border-top: 5px solid #3EAD47 !important;
     background: linear-gradient(180deg, #F2FAF3 0%, #FFFFFF 100%) !important;
     border: 1.5px solid rgba(62, 173, 71, 0.28) !important;
   }
