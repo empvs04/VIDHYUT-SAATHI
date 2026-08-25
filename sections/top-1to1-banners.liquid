@@ -240,124 +240,109 @@
 </div>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
-    if (window.innerWidth <= 767) {
+  (function() {
+    function initTopBannerSlider() {
       const section = document.getElementById('vs-banners-{{ section.id }}');
       const wrapper = section ? section.querySelector('.banners-wrapper') : null;
       const dotsContainer = document.getElementById('vs-banners-dots-{{ section.id }}');
       
-      if (wrapper && dotsContainer) {
-        const items = Array.from(wrapper.querySelectorAll('.banner-item'));
-        const dots = Array.from(dotsContainer.querySelectorAll('.dot'));
-        let currentIndex = 0;
-        let autoTimer = null;
+      if (!wrapper || !dotsContainer) return;
 
-        function updateDots(index) {
-          dots.forEach((dot, idx) => {
-            if (idx === index) {
-              dot.classList.add('active');
-            } else {
-              dot.classList.remove('active');
-            }
-          });
+      const items = Array.from(wrapper.querySelectorAll('.banner-item'));
+      const dots = Array.from(dotsContainer.querySelectorAll('.dot'));
+      if (items.length <= 1) return;
+
+      let currentIndex = 0;
+      let autoTimer = null;
+
+      function updateDots(index) {
+        dots.forEach((dot, idx) => {
+          if (idx === index) {
+            dot.classList.add('active');
+          } else {
+            dot.classList.remove('active');
+          }
+        });
+      }
+
+      function scrollToBanner(index) {
+        if (!items[index]) return;
+        const itemWidth = items[0].offsetWidth;
+        wrapper.scrollTo({ left: index * itemWidth, behavior: 'smooth' });
+        currentIndex = index;
+        updateDots(currentIndex);
+      }
+
+      // Realtime Scroll Listener (Instant active dot sync)
+      wrapper.addEventListener('scroll', function() {
+        const itemWidth = items[0] ? items[0].offsetWidth : wrapper.offsetWidth;
+        if (itemWidth > 0) {
+          const activeIndex = Math.min(Math.max(Math.round(wrapper.scrollLeft / itemWidth), 0), items.length - 1);
+          if (currentIndex !== activeIndex) {
+            currentIndex = activeIndex;
+            updateDots(currentIndex);
+          }
         }
+      }, { passive: true });
 
-        function scrollToBanner(index) {
-          if (!items[index]) return;
-          const itemWidth = items[0].offsetWidth;
-          wrapper.scrollTo({ left: index * itemWidth, behavior: 'smooth' });
-          currentIndex = index;
-          updateDots(currentIndex);
-        }
+      // Dot Click Navigation
+      dots.forEach((dot, idx) => {
+        dot.addEventListener('click', function(e) {
+          e.preventDefault();
+          scrollToBanner(idx);
+          resetAuto();
+        });
+      });
 
-        let scrollTimeout;
-        wrapper.addEventListener('scroll', () => {
-          clearTimeout(scrollTimeout);
-          scrollTimeout = setTimeout(() => {
-            const scrollLeft = wrapper.scrollLeft;
-            const itemWidth = items[0] ? items[0].offsetWidth : wrapper.offsetWidth;
-            const activeIndex = Math.min(Math.round(scrollLeft / itemWidth), items.length - 1);
-            if (currentIndex !== activeIndex) {
-              currentIndex = activeIndex;
-              updateDots(currentIndex);
-            }
-          }, 50);
-        }, { passive: true });
-            const activeIndex = Math.min(Math.round(scrollLeft / itemWidth), items.length - 1);
-            if (currentIndex !== activeIndex) {
-              currentIndex = activeIndex;
-              updateDots(currentIndex);
-            }
-          }, 50);
-        }, { passive: true });
-
-        // Arrow Controls
-        if (prevBtn) {
-          prevBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            let prevIndex = (currentIndex - 1 + items.length) % items.length;
-            scrollToBanner(prevIndex);
-            resetAuto();
-          });
-        }
-
-        if (nextBtn) {
-          nextBtn.addEventListener('click', (e) => {
-            e.preventDefault();
+      // 3-Second Viewport Auto Slide
+      function startAuto() {
+        if (!autoTimer && items.length > 1) {
+          autoTimer = setInterval(function() {
             let nextIndex = (currentIndex + 1) % items.length;
             scrollToBanner(nextIndex);
-            resetAuto();
-          });
+          }, 3000);
         }
+      }
 
-        // Dot Click Navigation
-        dots.forEach((dot, idx) => {
-          dot.addEventListener('click', () => {
-            scrollToBanner(idx);
-            resetAuto();
-          });
-        });
-
-        // 3-Second Viewport Auto Slide
-        function startAuto() {
-          if (!autoTimer && items.length > 1) {
-            autoTimer = setInterval(() => {
-              let nextIndex = (currentIndex + 1) % items.length;
-              scrollToBanner(nextIndex);
-            }, 3000);
-          }
+      function stopAuto() {
+        if (autoTimer) {
+          clearInterval(autoTimer);
+          autoTimer = null;
         }
+      }
 
-        function stopAuto() {
-          if (autoTimer) {
-            clearInterval(autoTimer);
-            autoTimer = null;
-          }
-        }
+      function resetAuto() {
+        stopAuto();
+        startAuto();
+      }
 
-        function resetAuto() {
-          stopAuto();
-          startAuto();
-        }
-
-        // IntersectionObserver for 3s Viewport Trigger
-        const viewportObserver = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
+      // IntersectionObserver for 3s Viewport Trigger
+      if ('IntersectionObserver' in window) {
+        const viewportObserver = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
             if (entry.isIntersecting) {
               startAuto();
             } else {
               stopAuto();
             }
           });
-        }, { threshold: 0.2 });
+        }, { threshold: 0.1 });
 
         viewportObserver.observe(wrapper);
-
-        wrapper.addEventListener('touchstart', stopAuto, { passive: true });
-        wrapper.addEventListener('touchend', startAuto, { passive: true });
+      } else {
+        startAuto();
       }
+
+      wrapper.addEventListener('touchstart', stopAuto, { passive: true });
+      wrapper.addEventListener('touchend', startAuto, { passive: true });
     }
-  });
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initTopBannerSlider);
+    } else {
+      initTopBannerSlider();
+    }
+  })();
 </script>
 
 {% schema %}
