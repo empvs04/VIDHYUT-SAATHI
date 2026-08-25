@@ -508,75 +508,81 @@
     display: none !important;
   }
 
-  /* MOBILE ALIGNMENT & 3S VIEWPORT SLIDER */
+  /* MOBILE ONLY: MASTER CONTAINER & VERTICAL STACK WITH THEME BORDER EFFECTS */
   @media(max-width: 767px) {
+    .vs-section-wrapper {
+      padding: 16px 12px !important;
+      background: #FAFAF7 !important;
+    }
+
+    .vs-section {
+      background: linear-gradient(180deg, #FFFDF8 0%, #FAFAF7 50%, #FFFDF8 100%) !important;
+      border: 2px solid rgba(247, 148, 29, 0.25) !important;
+      border-radius: 26px !important;
+      padding: 24px 14px 24px !important;
+      box-shadow: 0 16px 48px rgba(247, 148, 29, 0.12), inset 0 1px 0 rgba(255,255,255,0.9) !important;
+      box-sizing: border-box !important;
+    }
+
     .vs-hero {
-      padding: 36px 16px 18px !important;
+      padding: 16px 12px 14px !important;
       text-align: center !important;
     }
     .vs-hero-divider {
-      margin: 16px auto 0 !important;
+      margin: 14px auto 0 !important;
       width: 70px !important;
     }
     .vs-hero h1 {
-      font-size: 30px !important;
+      font-size: 28px !important;
       text-align: center !important;
     }
+
     .vs-stats-grid {
       display: flex !important;
       grid-template-columns: none !important;
-      flex-direction: row !important;
+      flex-direction: column !important;
       flex-wrap: nowrap !important;
-      overflow-x: auto !important;
-      scroll-snap-type: x mandatory !important;
-      scroll-behavior: smooth !important;
-      gap: 0px !important;
-      padding: 10px 0 10px 0 !important;
-      -webkit-overflow-scrolling: touch !important;
-      scrollbar-width: none !important;
+      overflow: visible !important;
+      scroll-snap-type: none !important;
+      gap: 16px !important;
+      padding: 10px 0 0 0 !important;
       width: 100% !important;
     }
     .vs-stats-grid::-webkit-scrollbar {
       display: none !important;
     }
+
     .vs-stat-card {
-      flex: 0 0 100% !important;
+      flex: none !important;
       max-width: 100% !important;
       min-width: 100% !important;
       width: 100% !important;
-      scroll-snap-align: center !important;
-      scroll-snap-stop: always !important;
       box-sizing: border-box !important;
-      min-height: 290px !important;
+      min-height: auto !important;
+      height: auto !important;
       display: flex !important;
       flex-direction: column !important;
       align-items: center !important;
       justify-content: center !important;
-      padding: 28px 20px !important;
+      padding: 24px 18px !important;
       border-radius: 20px !important;
-      box-shadow: 0 12px 32px rgba(247,148,29,0.12) !important;
+      overflow: hidden !important;
+      position: relative !important;
     }
+
+    .vs-stat-card.style-orange {
+      border: 2.5px solid #F7941D !important;
+      background: linear-gradient(180deg, #FFFDF7 0%, #FFFFFF 100%) !important;
+      box-shadow: 0 10px 30px rgba(247, 148, 29, 0.18), 0 0 16px rgba(247, 148, 29, 0.12) !important;
+    }
+    .vs-stat-card.style-green {
+      border: 2.5px solid #3EAD47 !important;
+      background: linear-gradient(180deg, #F2FAF3 0%, #FFFFFF 100%) !important;
+      box-shadow: 0 10px 30px rgba(62, 173, 71, 0.18), 0 0 16px rgba(62, 173, 71, 0.1) !important;
+    }
+
     .vs-crisis-dots {
-      display: flex !important;
-      justify-content: center !important;
-      align-items: center !important;
-      gap: 8px !important;
-      margin-top: 18px !important;
-      margin-bottom: 20px !important;
-    }
-    .vs-crisis-dots .dot {
-      width: 10px !important;
-      height: 10px !important;
-      border-radius: 50% !important;
-      background: #cbd5e1 !important;
-      transition: all 0.3s ease !important;
-      cursor: pointer !important;
-    }
-    .vs-crisis-dots .dot.active {
-      width: 30px !important;
-      border-radius: 999px !important;
-      background: linear-gradient(90deg, #f7941d, #e07810) !important;
-      box-shadow: 0 3px 10px rgba(247, 148, 29, 0.35) !important;
+      display: none !important;
     }
   }
 
