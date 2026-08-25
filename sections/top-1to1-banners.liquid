@@ -233,6 +233,7 @@
         const items = Array.from(wrapper.querySelectorAll('.banner-item'));
         const dots = Array.from(dotsContainer.querySelectorAll('.dot'));
         let currentIndex = 0;
+        let autoTimer = null;
 
         function updateDots(index) {
           dots.forEach((dot, idx) => {
@@ -242,6 +243,14 @@
               dot.classList.remove('active');
             }
           });
+        }
+
+        function scrollToBanner(index) {
+          if (!items[index]) return;
+          const itemWidth = items[0].offsetWidth + 12;
+          wrapper.scrollTo({ left: index * itemWidth, behavior: 'smooth' });
+          currentIndex = index;
+          updateDots(currentIndex);
         }
 
         let scrollTimeout;
@@ -257,6 +266,52 @@
             }
           }, 50);
         }, { passive: true });
+
+        // Dot Click Navigation
+        dots.forEach((dot, idx) => {
+          dot.addEventListener('click', () => {
+            scrollToBanner(idx);
+            resetAuto();
+          });
+        });
+
+        // 3-Second Viewport Auto Slide
+        function startAuto() {
+          if (!autoTimer && items.length > 1) {
+            autoTimer = setInterval(() => {
+              let nextIndex = (currentIndex + 1) % items.length;
+              scrollToBanner(nextIndex);
+            }, 3000);
+          }
+        }
+
+        function stopAuto() {
+          if (autoTimer) {
+            clearInterval(autoTimer);
+            autoTimer = null;
+          }
+        }
+
+        function resetAuto() {
+          stopAuto();
+          startAuto();
+        }
+
+        // IntersectionObserver for 3s Viewport Trigger
+        const viewportObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              startAuto();
+            } else {
+              stopAuto();
+            }
+          });
+        }, { threshold: 0.2 });
+
+        viewportObserver.observe(wrapper);
+
+        wrapper.addEventListener('touchstart', stopAuto, { passive: true });
+        wrapper.addEventListener('touchend', startAuto, { passive: true });
       }
     }
   });
