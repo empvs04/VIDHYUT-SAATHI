@@ -571,27 +571,45 @@
       padding: 18px 18px !important;
       border-radius: 22px !important;
       position: relative !important;
-      border: 3.5px solid transparent !important;
-      background: linear-gradient(#FFFFFF, #FFFDF8) padding-box, linear-gradient(90deg, #3EAD47, #22c55e, #F7941D, #ffd44d, #3EAD47) border-box !important;
-      background-size: 300% 300% !important;
-      animation: vsBorderRotate 4s linear infinite !important;
+      z-index: 1 !important;
+      background: transparent !important;
+      border: none !important;
       box-shadow: 0 12px 32px rgba(247, 148, 29, 0.16), 0 0 20px rgba(62, 173, 71, 0.12) !important;
     }
 
-    .vs-stat-card.style-orange {
-      border: 3.5px solid transparent !important;
-      background: linear-gradient(#FFFFFF, #FFFDF8) padding-box, linear-gradient(90deg, #F7941D, #ffd44d, #3EAD47, #22c55e, #F7941D) border-box !important;
+    .vs-stat-card::before {
+      content: '' !important;
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      bottom: 0 !important;
+      border-radius: 22px !important;
+      background: linear-gradient(90deg, #3EAD47, #22c55e, #F7941D, #ffd44d, #3EAD47) !important;
       background-size: 300% 300% !important;
       animation: vsBorderRotate 4s linear infinite !important;
-      box-shadow: 0 12px 32px rgba(247, 148, 29, 0.16), 0 0 20px rgba(62, 173, 71, 0.12) !important;
+      z-index: -2 !important;
     }
 
-    .vs-stat-card.style-green {
-      border: 3.5px solid transparent !important;
-      background: linear-gradient(#FFFFFF, #F2FAF3) padding-box, linear-gradient(90deg, #3EAD47, #22c55e, #F7941D, #ffd44d, #3EAD47) border-box !important;
+    .vs-stat-card::after {
+      content: '' !important;
+      position: absolute !important;
+      top: 3.5px !important;
+      left: 3.5px !important;
+      right: 3.5px !important;
+      bottom: 3.5px !important;
+      background: linear-gradient(180deg, #FFFFFF 0%, #FFFDF8 100%) !important;
+      border-radius: 18.5px !important;
+      z-index: -1 !important;
+    }
+
+    .vs-stat-card.style-orange::before {
+      background: linear-gradient(90deg, #F7941D, #ffd44d, #3EAD47, #22c55e, #F7941D) !important;
       background-size: 300% 300% !important;
-      animation: vsBorderRotate 4s linear infinite !important;
-      box-shadow: 0 12px 32px rgba(62, 173, 71, 0.16), 0 0 20px rgba(247, 148, 29, 0.12) !important;
+    }
+
+    .vs-stat-card.style-green::after {
+      background: linear-gradient(180deg, #FFFFFF 0%, #F2FAF3 100%) !important;
     }
 
     .vs-stat-icon-wrap {
