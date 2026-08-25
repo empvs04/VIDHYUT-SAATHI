@@ -766,67 +766,109 @@
     letter-spacing: -0.3px;
   }
 
-  /* Why Section Feature Box */
+  /* Why Section Feature Cards — Ultra Lucrative */
   .why-feature-box {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 18px;
   }
   .why-feat-item {
-    background: #FFFFFF;
-    border: 1.5px solid rgba(247, 148, 29, 0.22);
-    border-left: 4px solid #F7941D;
-    border-radius: 20px;
-    padding: 20px 22px;
+    background: linear-gradient(135deg, #FFFFFF 0%, #FFFDF5 100%);
+    border: 1.5px solid rgba(247, 148, 29, 0.28);
+    border-left: 5px solid #F7941D;
+    border-radius: 22px;
+    padding: 22px 24px;
     display: flex;
     align-items: flex-start;
-    gap: 16px;
-    box-shadow: 0 10px 25px rgba(247, 148, 29, 0.08), 0 2px 8px rgba(0,0,0,0.02);
+    gap: 18px;
+    box-shadow: 0 12px 30px rgba(247, 148, 29, 0.1), 0 3px 10px rgba(0, 0, 0, 0.03);
     transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    position: relative;
+    overflow: hidden;
   }
   .why-feat-item:hover {
-    transform: translateY(-4px) scale(1.01);
+    transform: translateY(-5px) scale(1.015);
     border-left-color: #3EAD47;
-    box-shadow: 0 16px 36px rgba(247, 148, 29, 0.18);
+    border-color: rgba(62, 173, 71, 0.4);
+    box-shadow: 0 20px 42px rgba(247, 148, 29, 0.2), 0 6px 16px rgba(62, 173, 71, 0.1);
   }
   .why-feat-icon {
-    width: 48px;
-    height: 48px;
+    width: 52px;
+    height: 52px;
     border-radius: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 20px;
+    font-size: 22px;
     flex-shrink: 0;
   }
   .why-feat-icon.orange {
     background: linear-gradient(135deg, #FFF3E0, #FFE0B2);
     color: #D96924;
-    box-shadow: 0 4px 12px rgba(247, 148, 29, 0.25);
+    box-shadow: 0 6px 18px rgba(247, 148, 29, 0.3);
   }
   .why-feat-icon.green {
     background: linear-gradient(135deg, #E8F5E9, #C8E6C9);
     color: #2E7D32;
-    box-shadow: 0 4px 12px rgba(62, 173, 71, 0.25);
+    box-shadow: 0 6px 18px rgba(62, 173, 71, 0.3);
   }
   .why-feat-icon.blue {
     background: linear-gradient(135deg, #E0F2FE, #BAE6FD);
     color: #0284C7;
-    box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+    box-shadow: 0 6px 18px rgba(2, 132, 199, 0.3);
   }
 
+  .why-feat-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .why-feat-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 6px;
+  }
   .why-feat-text h4 {
     font-family: 'Baloo 2', sans-serif;
-    font-size: 1.15rem;
-    font-weight: 800;
+    font-size: 1.2rem;
+    font-weight: 900;
     color: #0F172A;
-    margin: 0 0 4px 0;
+    margin: 0;
+    line-height: 1.25;
+  }
+  .why-tag {
+    font-size: 10.5px;
+    font-weight: 800;
+    padding: 3px 10px;
+    border-radius: 50px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    letter-spacing: 0.3px;
+  }
+  .why-tag.orange {
+    background: #FFF3E0;
+    color: #E07810;
+    border: 1px solid rgba(247, 148, 29, 0.35);
+  }
+  .why-tag.green {
+    background: #E8F5E9;
+    color: #2E7D32;
+    border: 1px solid rgba(62, 173, 71, 0.35);
+  }
+  .why-tag.blue {
+    background: #E0F2FE;
+    color: #0284C7;
+    border: 1px solid rgba(2, 132, 199, 0.35);
   }
   .why-feat-text p {
-    font-size: 0.9rem;
-    color: #64748B;
+    font-size: 0.91rem;
+    color: #475569;
     margin: 0;
-    line-height: 1.5;
+    line-height: 1.55;
     font-weight: 600;
   }
 
@@ -1513,22 +1555,33 @@
         <div class="why-feat-item">
           <div class="why-feat-icon orange"><i class="fa-solid fa-shield-halved"></i></div>
           <div class="why-feat-text">
-            <h4>Standardized Quality Control</h4>
-            <p>Every Vidhyut Saathi card undergoes strict quality testing prior to dispatch.</p>
+            <div class="why-feat-header">
+              <h4>Standardized Quality Control</h4>
+              <span class="why-tag orange"><i class="fa-solid fa-check-double"></i> 100% Tested</span>
+            </div>
+            <p>Every Vidhyut Saathi card undergoes strict multi-stage quality testing &amp; voltage calibration prior to dispatch.</p>
           </div>
         </div>
+        
         <div class="why-feat-item">
           <div class="why-feat-icon green"><i class="fa-solid fa-award"></i></div>
           <div class="why-feat-text">
-            <h4>International Compliance</h4>
-            <p>Certified under IAF &amp; JAS-ANZ global quality accreditation standards.</p>
+            <div class="why-feat-header">
+              <h4>International Compliance</h4>
+              <span class="why-tag green"><i class="fa-solid fa-circle-check"></i> IAF Accredited</span>
+            </div>
+            <p>Certified under world-renowned IAF &amp; JAS-ANZ global quality accreditation standards.</p>
           </div>
         </div>
+        
         <div class="why-feat-item">
           <div class="why-feat-icon blue"><i class="fa-solid fa-user-shield"></i></div>
           <div class="why-feat-text">
-            <h4>Client Assurance &amp; Support</h4>
-            <p>Dedicated customer care, warranties, and verified performance guarantees.</p>
+            <div class="why-feat-header">
+              <h4>Client Assurance &amp; Support</h4>
+              <span class="why-tag blue"><i class="fa-solid fa-headset"></i> 24/7 Service</span>
+            </div>
+            <p>Dedicated customer care, long-term warranties, and verified energy-saving performance guarantees across India.</p>
           </div>
         </div>
       </div>
