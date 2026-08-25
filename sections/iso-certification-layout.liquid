@@ -212,12 +212,15 @@
     color: #0F172A;
     letter-spacing: -0.3px;
   }
-  .iso-main-text {
+  .iso-main-text,
+  .iso-main-text p {
     font-size: 1.02rem;
     line-height: 1.75;
     color: #475569;
     font-weight: 600;
     margin-bottom: 30px;
+    text-align: justify !important;
+    text-justify: inter-word !important;
   }
   
   .iso-data-grid {
@@ -228,35 +231,88 @@
   @media (min-width: 600px) {
     .iso-data-grid { grid-template-columns: 1fr 1fr; }
   }
+
   .iso-data-item {
-    background: #ffffff;
-    padding: 18px 20px;
-    border-radius: 18px;
-    border-left: 4px solid #F7941D;
-    border-right: 1.5px solid rgba(247, 148, 29, 0.15);
-    border-top: 1.5px solid rgba(247, 148, 29, 0.15);
-    border-bottom: 1.5px solid rgba(247, 148, 29, 0.15);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
-    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    background: #FFFFFF;
+    border: 1.5px solid rgba(247, 148, 29, 0.25);
+    border-radius: 20px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    box-shadow: 0 10px 25px rgba(247, 148, 29, 0.08), 0 2px 8px rgba(0,0,0,0.02);
+    transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    position: relative;
+    overflow: hidden;
   }
+
+  .iso-data-item.span-full {
+    grid-column: 1 / -1;
+    background: linear-gradient(135deg, #FFF9F2 0%, #FFFFFF 100%);
+    border-color: rgba(62, 173, 71, 0.35);
+  }
+
   .iso-data-item:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 14px 30px rgba(247, 148, 29, 0.18);
-    border-left-color: #3EAD47;
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 16px 36px rgba(247, 148, 29, 0.2);
+    border-color: #F7941D;
   }
+
+  .iso-data-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+  }
+
+  .iso-data-icon.orange { background: #FFF3E0; color: #E07810; }
+  .iso-data-icon.green { background: #E8F5E9; color: #2E7D32; }
+  .iso-data-icon.blue { background: #E0F2FE; color: #0284C7; }
+  .iso-data-icon.gold { background: #FFF8D6; color: #D97706; }
+
+  .iso-data-text-wrap {
+    display: flex;
+    flex-direction: column;
+  }
+
   .iso-data-label {
-    font-size: 0.78rem;
+    font-size: 0.76rem;
     text-transform: uppercase;
     font-weight: 800;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.6px;
     color: #94A3B8;
-    margin-bottom: 4px;
+    margin-bottom: 2px;
   }
+
   .iso-data-value {
     font-family: 'Baloo 2', sans-serif;
     font-size: 1.15rem;
     font-weight: 800;
     color: #0F172A;
+    line-height: 1.2;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .iso-active-tag {
+    background: #E8F5E9;
+    border: 1px solid rgba(62, 173, 71, 0.3);
+    color: #2E7D32;
+    font-size: 11px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    padding: 3px 9px;
+    border-radius: 50px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
   }
 
   /* Mobile Responsive Optimizations */
@@ -879,36 +935,54 @@
         <div class="iso-data-grid">
           {%- if section.settings.detail_standard != blank -%}
             <div class="iso-data-item">
-              <div class="iso-data-label">Standard</div>
-              <div class="iso-data-value">{{ section.settings.detail_standard }}</div>
+              <div class="iso-data-icon orange"><i class="fa-solid fa-ribbon"></i></div>
+              <div class="iso-data-text-wrap">
+                <div class="iso-data-label">Standard</div>
+                <div class="iso-data-value">{{ section.settings.detail_standard }}</div>
+              </div>
             </div>
           {%- endif -%}
           
           {%- if section.settings.detail_body != blank -%}
             <div class="iso-data-item">
-              <div class="iso-data-label">Accreditation Body</div>
-              <div class="iso-data-value">{{ section.settings.detail_body }}</div>
+              <div class="iso-data-icon green"><i class="fa-solid fa-building-circle-check"></i></div>
+              <div class="iso-data-text-wrap">
+                <div class="iso-data-label">Accreditation Body</div>
+                <div class="iso-data-value">{{ section.settings.detail_body }}</div>
+              </div>
             </div>
           {%- endif -%}
           
           {%- if section.settings.detail_number != blank -%}
             <div class="iso-data-item">
-              <div class="iso-data-label">Certificate No.</div>
-              <div class="iso-data-value">{{ section.settings.detail_number }}</div>
+              <div class="iso-data-icon blue"><i class="fa-solid fa-shield-halved"></i></div>
+              <div class="iso-data-text-wrap">
+                <div class="iso-data-label">Certificate No.</div>
+                <div class="iso-data-value">{{ section.settings.detail_number }}</div>
+              </div>
             </div>
           {%- endif -%}
           
           {%- if section.settings.detail_issue != blank -%}
             <div class="iso-data-item">
-              <div class="iso-data-label">Issue Date</div>
-              <div class="iso-data-value">{{ section.settings.detail_issue }}</div>
+              <div class="iso-data-icon gold"><i class="fa-solid fa-calendar-check"></i></div>
+              <div class="iso-data-text-wrap">
+                <div class="iso-data-label">Issue Date</div>
+                <div class="iso-data-value">{{ section.settings.detail_issue }}</div>
+              </div>
             </div>
           {%- endif -%}
           
           {%- if section.settings.detail_expiry != blank -%}
-            <div class="iso-data-item">
-              <div class="iso-data-label">Valid Until</div>
-              <div class="iso-data-value">{{ section.settings.detail_expiry }}</div>
+            <div class="iso-data-item span-full">
+              <div class="iso-data-icon green"><i class="fa-solid fa-clock-rotate-left"></i></div>
+              <div class="iso-data-text-wrap">
+                <div class="iso-data-label">Valid Until</div>
+                <div class="iso-data-value">
+                  {{ section.settings.detail_expiry }}
+                  <span class="iso-active-tag"><i class="fa-solid fa-circle-check"></i> Active &amp; Verified</span>
+                </div>
+              </div>
             </div>
           {%- endif -%}
         </div>
