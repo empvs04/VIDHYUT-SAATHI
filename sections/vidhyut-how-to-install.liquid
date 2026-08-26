@@ -217,19 +217,20 @@
     transform: scale(1.06) rotate(1deg);
   }
 
-  /* CARD 3: CLEAN MCB BOX GRAPHIC WITHOUT TOP TEXT CLIPPING */
-  .vsi-mcb-clean-img {
-    max-width: 100%;
-    max-height: 100%;
+  /* CARD 3: PERFECTLY ALIGNED CLEAN MCB BOX GRAPHIC */
+  .vsi-mcb-perfect-img {
+    max-width: 95%;
+    max-height: 200px;
     width: auto;
     height: auto;
     object-fit: contain;
     display: block;
-    border-radius: 12px;
+    filter: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.12));
+    border-radius: 14px;
     transition: transform 0.4s ease;
   }
-  .vsi-step-card:hover .vsi-mcb-clean-img {
-    transform: scale(1.04);
+  .vsi-step-card:hover .vsi-mcb-perfect-img {
+    transform: scale(1.06);
   }
 
   .vsi-step-desc {
@@ -498,7 +499,7 @@
         <i class="fa-solid fa-arrow-right"></i>
       </div>
 
-      <!-- STEP 03: PASTE IT ON MCB (CLEAN MCB BOX GRAPHIC NO TOP TEXT) -->
+      <!-- STEP 03: PASTE IT ON MCB (PERFECTLY ALIGNED CLEAN MCB GRAPHIC) -->
       <div class="vsi-step-card">
         <div class="vsi-step-topbar">
           <div class="vsi-step-num">03</div>
@@ -506,9 +507,9 @@
         </div>
         <div class="vsi-step-stage light-bg">
           <img 
-            src="{{ 'vs-install-mcb-clean.png' | asset_url }}" 
+            src="{{ 'vs-install-mcb-perfect.png' | asset_url }}" 
             alt="Paste Vidhyut Saathi Card on MCB Box" 
-            class="vsi-mcb-clean-img" 
+            class="vsi-mcb-perfect-img" 
             loading="eager" 
             width="800" 
             height="600"
