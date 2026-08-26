@@ -85,14 +85,14 @@
   }
 
   /* --- CUSTOM COMPOSITE MASTER CARD FRAME --- */
-  /* --- CUSTOM COMPOSITE MASTER CARD FRAME (LUCRATIVE LIGHT THEME) --- */
+  /* --- CUSTOM COMPOSITE MASTER CARD FRAME (ULTRA-CLEAN & LUCRATIVE) --- */
   .vshw-composite-master-card {
-    background: linear-gradient(145deg, #FFFFFF 0%, #FFFDF5 50%, #F5FAF5 100%);
-    border: 2.5px solid rgba(247, 148, 29, 0.35);
+    background: linear-gradient(145deg, #FFFFFF 0%, #FFFDF7 50%, #F4FAF5 100%);
+    border: 2px solid rgba(247, 148, 29, 0.3);
     border-top: 6px solid #EC5C0A;
     border-radius: 28px;
-    padding: 35px 28px;
-    box-shadow: 0 20px 50px rgba(236, 92, 10, 0.12), 0 4px 20px rgba(0, 0, 0, 0.04);
+    padding: 36px 30px;
+    box-shadow: 0 22px 55px rgba(236, 92, 10, 0.12), 0 4px 20px rgba(0, 0, 0, 0.03);
     margin-bottom: 45px;
     position: relative;
     overflow: hidden;
@@ -115,29 +115,29 @@
     align-items: center;
     gap: 12px;
   }
-  .vshw-mc-brand i { font-size: 26px; color: #EC5C0A; }
-  .vshw-mc-brand span { font-family: 'Baloo 2', sans-serif; font-size: 1.25rem; font-weight: 900; color: #0F172A; }
+  .vshw-mc-brand i { font-size: 28px; color: #EC5C0A; filter: drop-shadow(0 2px 8px rgba(236, 92, 10, 0.3)); }
+  .vshw-mc-brand span { font-family: 'Baloo 2', sans-serif; font-size: 1.3rem; font-weight: 900; color: #0F172A; }
 
   .vshw-mc-slogan-pill {
     background: linear-gradient(135deg, #FFF3E0, #FFE5B4);
-    border: 1px solid rgba(236, 92, 10, 0.35);
+    border: 1.5px solid rgba(236, 92, 10, 0.35);
     color: #D96924;
-    padding: 6px 18px;
+    padding: 6px 20px;
     border-radius: 50px;
-    font-size: 0.85rem;
-    font-weight: 800;
-    box-shadow: 0 4px 12px rgba(236, 92, 10, 0.08);
+    font-size: 0.86rem;
+    font-weight: 900;
+    box-shadow: 0 4px 14px rgba(236, 92, 10, 0.1);
   }
 
   /* 3-COLUMN LAYOUT INSIDE MASTER CARD */
   .vshw-mc-grid {
     display: grid;
     grid-template-columns: 1fr 1.15fr 1fr;
-    gap: 24px;
+    gap: 26px;
     align-items: center;
   }
 
-  /* SIDE COLUMN (BEFORE / AFTER - LIGHT THEME) */
+  /* SIDE COLUMN (BEFORE / AFTER - ULTRA CLEAN) */
   .vshw-side-box {
     background: #FFFFFF;
     border-radius: 22px;
@@ -147,19 +147,27 @@
     justify-content: space-between;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
   }
 
   .vshw-side-box.before-side {
-    border: 2px solid rgba(239, 68, 68, 0.35);
-    background: linear-gradient(160deg, #FFF5F5 0%, #FFFFFF 100%);
-    box-shadow: 0 10px 25px rgba(239, 68, 68, 0.08);
+    border: 2px solid #FCA5A5;
+    background: linear-gradient(160deg, #FFF8F8 0%, #FFFFFF 100%);
+    box-shadow: 0 12px 28px rgba(239, 68, 68, 0.09);
+  }
+  .vshw-side-box.before-side:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 36px rgba(239, 68, 68, 0.15);
   }
 
   .vshw-side-box.after-side {
-    border: 2px solid rgba(16, 185, 129, 0.35);
-    background: linear-gradient(160deg, #F0FDF4 0%, #FFFFFF 100%);
-    box-shadow: 0 10px 25px rgba(16, 185, 129, 0.08);
+    border: 2px solid #6EE7B7;
+    background: linear-gradient(160deg, #F2FDF7 0%, #FFFFFF 100%);
+    box-shadow: 0 12px 28px rgba(16, 185, 129, 0.09);
+  }
+  .vshw-side-box.after-side:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 36px rgba(16, 185, 129, 0.15);
   }
 
   .vshw-side-header {
@@ -170,7 +178,7 @@
   }
 
   .vshw-badge-pill {
-    padding: 5px 14px;
+    padding: 6px 15px;
     border-radius: 50px;
     font-size: 0.78rem;
     font-weight: 900;
@@ -200,7 +208,7 @@
 
   .vshw-side-title {
     font-size: 0.95rem;
-    font-weight: 800;
+    font-weight: 900;
     margin: 0 0 14px 0;
     display: flex;
     align-items: center;
@@ -219,15 +227,14 @@
     border-radius: 16px;
     overflow: hidden;
     margin-bottom: 16px;
-    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.4);
+    background: #080D18;
+    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.5);
   }
   .before-side .vshw-canvas-box {
-    background: #0D0505;
-    border: 1.5px solid rgba(239, 68, 68, 0.3);
+    border: 1.5px solid rgba(239, 68, 68, 0.35);
   }
   .after-side .vshw-canvas-box {
-    background: #030F0A;
-    border: 1.5px solid rgba(16, 185, 129, 0.3);
+    border: 1.5px solid rgba(16, 185, 129, 0.35);
   }
 
   .vshw-canvas-element {
@@ -240,20 +247,20 @@
     position: absolute;
     top: 8px;
     right: 10px;
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.96);
     backdrop-filter: blur(6px);
     border-radius: 30px;
-    padding: 4px 10px;
+    padding: 4px 12px;
     font-size: 0.72rem;
     font-weight: 900;
     display: flex;
     align-items: center;
     gap: 6px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
     z-index: 5;
   }
-  .vshw-canvas-readout.red { color: #dc2626; border: 1px solid rgba(239, 68, 68, 0.3); }
-  .vshw-canvas-readout.green { color: #059669; border: 1px solid rgba(16, 185, 129, 0.3); }
+  .vshw-canvas-readout.red { color: #dc2626; border: 1px solid rgba(239, 68, 68, 0.35); }
+  .vshw-canvas-readout.green { color: #059669; border: 1px solid rgba(16, 185, 129, 0.35); }
   .vshw-canvas-readout .dot { width: 7px; height: 7px; border-radius: 50%; }
   .vshw-canvas-readout.red .dot { background: #ef4444; box-shadow: 0 0 8px #ef4444; animation: vshwBlink 1s infinite alternate; }
   .vshw-canvas-readout.green .dot { background: #10b981; box-shadow: 0 0 8px #10b981; animation: vshwBlink 1.8s infinite alternate; }
@@ -262,8 +269,8 @@
   .vshw-side-summary {
     padding: 10px 14px;
     border-radius: 14px;
-    font-size: 0.8rem;
-    font-weight: 800;
+    font-size: 0.82rem;
+    font-weight: 900;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -271,12 +278,12 @@
   }
   .vshw-side-summary.red {
     background: #FEE2E2;
-    border: 1px solid #FCA5A5;
+    border: 1.5px solid #FCA5A5;
     color: #991B1B;
   }
   .vshw-side-summary.green {
     background: #D1FAE5;
-    border: 1px solid #6EE7B7;
+    border: 1.5px solid #6EE7B7;
     color: #065F46;
   }
 
@@ -289,9 +296,9 @@
 
   .vshw-gold-aura {
     position: absolute;
-    width: 220px;
-    height: 220px;
-    background: radial-gradient(circle, rgba(247, 148, 29, 0.25) 0%, rgba(255, 204, 0, 0.08) 50%, transparent 70%);
+    width: 230px;
+    height: 230px;
+    background: radial-gradient(circle, rgba(247, 148, 29, 0.28) 0%, rgba(255, 204, 0, 0.08) 50%, transparent 70%);
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -310,13 +317,14 @@
     border-radius: 20px;
     overflow: hidden;
     position: relative;
-    box-shadow: 0 16px 36px rgba(236, 92, 10, 0.18), 0 4px 15px rgba(0, 0, 0, 0.08);
-    border: 2.5px solid rgba(247, 148, 29, 0.4);
+    box-shadow: 0 18px 42px rgba(236, 92, 10, 0.22), 0 4px 15px rgba(0, 0, 0, 0.08);
+    border: 2.5px solid rgba(247, 148, 29, 0.45);
     z-index: 2;
-    transition: transform 0.4s ease;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
   }
   .vshw-card-crop-box:hover {
     transform: scale(1.04) rotate(1deg);
+    box-shadow: 0 24px 50px rgba(236, 92, 10, 0.32), 0 0 25px rgba(247, 148, 29, 0.2);
   }
 
   .vshw-card-crop-box img {
@@ -332,7 +340,7 @@
     color: #334155;
     line-height: 1.45;
     margin-top: 18px;
-    font-weight: 600;
+    font-weight: 700;
   }
   .vshw-center-desc strong { color: #D96924; font-weight: 900; }
 
@@ -347,16 +355,17 @@
     padding-top: 20px;
     border-top: 1.5px solid rgba(236, 92, 10, 0.15);
     font-size: 0.85rem;
-    font-weight: 800;
+    font-weight: 900;
     color: #334155;
   }
 
   .vshw-fp-badge {
     background: linear-gradient(135deg, #FFF3E0, #FFE5B4);
-    border: 1px solid rgba(236, 92, 10, 0.35);
-    padding: 5px 14px;
+    border: 1.5px solid rgba(236, 92, 10, 0.35);
+    padding: 5px 16px;
     border-radius: 50px;
     color: #D96924;
+    box-shadow: 0 2px 8px rgba(236, 92, 10, 0.08);
   }
 
   /* --- 5-BENEFITS GRID STYLES --- */
