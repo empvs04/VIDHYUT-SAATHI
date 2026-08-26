@@ -187,7 +187,7 @@
 
   .vsi-step-stage.light-bg {
     background: linear-gradient(135deg, #F8FAFC 0%, #FFFDF8 100%);
-    padding: 10px;
+    padding: 12px;
   }
 
   /* CARD 1: FULL STAGE FILL WITHOUT WHITE MARGINS */
@@ -202,18 +202,19 @@
     transform: scale(1.04);
   }
 
-  /* CARD 2: CLEAN 3M PEEL PHOTO WITHOUT TOP DESK GAP */
-  .vsi-peel-fit-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center center;
+  /* CARD 2: PERFECT TRANSPARENT BACKGROUND 3M PEEL GRAPHIC */
+  .vsi-peel-perfect-img {
+    max-width: 95%;
+    max-height: 200px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
     display: block;
-    border-radius: 14px;
+    filter: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.15));
     transition: transform 0.4s ease;
   }
-  .vsi-step-card:hover .vsi-peel-fit-img {
-    transform: scale(1.04);
+  .vsi-step-card:hover .vsi-peel-perfect-img {
+    transform: scale(1.06) rotate(1deg);
   }
 
   /* CARD 3: CLEAN MCB BOX GRAPHIC WITHOUT TOP TEXT CLIPPING */
@@ -471,7 +472,7 @@
         <i class="fa-solid fa-arrow-right"></i>
       </div>
 
-      <!-- STEP 02: PEEL OFF 3M ADHESIVE (CLEAN CARD PEEL NO TOP DESK) -->
+      <!-- STEP 02: PEEL OFF 3M ADHESIVE (PERFECT TRANSPARENT PNG GRAPHIC) -->
       <div class="vsi-step-card">
         <div class="vsi-step-topbar">
           <div class="vsi-step-num">02</div>
@@ -479,9 +480,9 @@
         </div>
         <div class="vsi-step-stage light-bg">
           <img 
-            src="{{ 'vs-install-peel-clean.jpg' | asset_url }}" 
+            src="{{ 'vs-install-peel-perfect.png' | asset_url }}" 
             alt="Peel off 3M adhesive layer from Vidhyut Saathi card" 
-            class="vsi-peel-fit-img" 
+            class="vsi-peel-perfect-img" 
             loading="eager" 
             width="800" 
             height="600"
