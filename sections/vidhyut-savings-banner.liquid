@@ -1,12 +1,1154 @@
 {% comment %}
-  HOW DOES THE VIDHYUT SAATHI CARD - Savings Banner Section Removed
+  Vidhyut Saathi — "How Does The Vidhyut Saathi Card Save Your Electricity Bill?" Section
   File: sections/vidhyut-savings-banner.liquid
+  Faithfully recreates the official poster banner in pure HTML/CSS/JS.
 {% endcomment %}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800;900&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+{%- style -%}
+/* ============================================
+   ROOT SECTION WRAPPER
+   ============================================ */
+.vsb-section {
+  font-family: 'Outfit', sans-serif;
+  background: #09100f;
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+}
+
+/* ============================================
+   TOP HERO BAND — header with big title
+   ============================================ */
+.vsb-hero-band {
+  position: relative;
+  background: linear-gradient(135deg, #0b1a0d 0%, #061208 40%, #0d1f10 100%);
+  padding: 42px 24px 28px;
+  text-align: center;
+  overflow: hidden;
+  border-bottom: 2px solid rgba(247, 148, 29, 0.3);
+}
+
+/* Diagonal accent lines (decorative) */
+.vsb-hero-band::before,
+.vsb-hero-band::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 5px;
+  background: linear-gradient(180deg, #f7941d 0%, transparent 100%);
+  opacity: 0.5;
+}
+.vsb-hero-band::before { left: 80px; }
+.vsb-hero-band::after  { right: 80px; }
+
+.vsb-top-meta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.vsb-top-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.45);
+  color: #34d399;
+  padding: 7px 20px;
+  border-radius: 50px;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+}
+
+.vsb-iso-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  padding: 7px 18px;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+/* === HEADLINE === */
+.vsb-tagline {
+  font-size: clamp(0.78rem, 1.5vw, 0.95rem);
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  margin: 0 0 8px 0;
+}
+
+.vsb-h1-how {
+  font-family: 'Baloo 2', sans-serif;
+  font-size: clamp(1.5rem, 3vw, 2.4rem);
+  font-weight: 900;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+}
+
+.vsb-h1-vidhyut {
+  font-family: 'Baloo 2', sans-serif;
+  font-size: clamp(3rem, 9vw, 7rem);
+  font-weight: 900;
+  background: linear-gradient(180deg, #f7941d 0%, #ec5c0a 60%, #c93e00 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+  line-height: 0.9;
+  letter-spacing: -2px;
+  display: block;
+  text-shadow: none;
+}
+
+.vsb-h1-saathi {
+  font-family: 'Baloo 2', sans-serif;
+  font-size: clamp(2.8rem, 8.5vw, 6.5rem);
+  font-weight: 900;
+  background: linear-gradient(180deg, #2ecc71 0%, #007b3e 60%, #004d27 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+  line-height: 0.9;
+  letter-spacing: -2px;
+  display: block;
+}
+
+.vsb-h1-card-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin: 4px 0 8px;
+}
+
+.vsb-h1-save {
+  font-family: 'Baloo 2', sans-serif;
+  font-size: clamp(1.4rem, 2.8vw, 2.2rem);
+  font-weight: 900;
+  color: #ffffff;
+  font-style: italic;
+  margin: 0;
+}
+
+.vsb-h1-electricity {
+  font-family: 'Baloo 2', sans-serif;
+  font-size: clamp(1.4rem, 2.8vw, 2.2rem);
+  font-weight: 900;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  padding: 2px 16px 4px;
+  border-radius: 8px;
+  margin: 0;
+}
+
+.vsb-lightning-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 2.2rem;
+  margin-left: 4px;
+}
+.vsb-lightning-row span { color: #f7941d; }
+
+.vsb-slogan-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1.5px solid rgba(247, 148, 29, 0.4);
+  border-radius: 50px;
+  padding: 9px 28px;
+  margin-top: 14px;
+  font-size: clamp(0.92rem, 1.8vw, 1.1rem);
+  font-weight: 800;
+  color: #ffffff;
+}
+.vsb-slogan-pill .india-orange { color: #f7941d; font-weight: 900; }
+.vsb-slogan-pill .india-green  { color: #2ecc71; font-weight: 900; }
+.vsb-slogan-pill .bolt-icon {
+  font-size: 1.1rem;
+  color: #f7941d;
+  animation: boltFlash 1.4s infinite alternate;
+}
+@keyframes boltFlash { 0% { opacity: 0.4; transform: scale(0.9); } 100% { opacity: 1; transform: scale(1.15); } }
+
+
+/* ============================================
+   SPLIT CONTENT AREA — 3 columns
+   ============================================ */
+.vsb-split-band {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr 1fr;
+  min-height: 480px;
+  position: relative;
+}
+
+/* LEFT — BEFORE */
+.vsb-col-before {
+  background: linear-gradient(160deg, #1a0606 0%, #2d0a0a 30%, #100404 100%);
+  position: relative;
+  overflow: hidden;
+  padding: 28px 22px 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-right: 1px solid rgba(239, 68, 68, 0.25);
+}
+
+/* Power tower SVG scenery (left bg) */
+.vsb-col-before::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 90% 50% at 50% 80%, rgba(200, 30, 10, 0.22) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 30% at 50% 100%, rgba(255, 80, 0, 0.18) 0%, transparent 80%);
+  pointer-events: none;
+}
+
+/* RIGHT — AFTER */
+.vsb-col-after {
+  background: linear-gradient(160deg, #011a0c 0%, #032d12 30%, #011009 100%);
+  position: relative;
+  overflow: hidden;
+  padding: 28px 22px 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-left: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+.vsb-col-after::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 90% 50% at 50% 80%, rgba(16, 185, 129, 0.18) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 30% at 50% 100%, rgba(0, 255, 100, 0.1) 0%, transparent 80%);
+  pointer-events: none;
+}
+
+/* CENTER — 3D Card + text */
+.vsb-col-center {
+  background: linear-gradient(180deg, #070e0a 0%, #0a1a0c 50%, #070e0a 100%);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 28px 16px 24px;
+  z-index: 3;
+}
+
+/* Ambient golden glow behind center card */
+.vsb-col-center::before {
+  content: '';
+  position: absolute;
+  width: 380px;
+  height: 380px;
+  background: radial-gradient(circle, rgba(247, 148, 29, 0.28) 0%, rgba(247, 148, 29, 0.06) 50%, transparent 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: vsb-aura 4s ease-in-out infinite;
+}
+@keyframes vsb-aura {
+  0%, 100% { transform: translate(-50%, -50%) scale(1);   opacity: 0.7; }
+  50%       { transform: translate(-50%, -50%) scale(1.18); opacity: 1; }
+}
+
+
+/* ============================================
+   BEFORE / AFTER — labels, titles, graphs
+   ============================================ */
+.vsb-side-top { position: relative; z-index: 2; }
+
+.vsb-ba-label {
+  display: inline-block;
+  padding: 5px 18px;
+  border-radius: 6px;
+  font-family: 'Baloo 2', sans-serif;
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  font-weight: 900;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  font-style: italic;
+}
+.vsb-ba-label.before-lbl { background: #cc2200; color: #ffffff; }
+.vsb-ba-label.after-lbl  { background: #007b3e; color: #ffffff; }
+
+.vsb-side-subtitle {
+  font-size: clamp(0.88rem, 1.6vw, 1.05rem);
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.88);
+  margin: 0 0 16px 0;
+  line-height: 1.4;
+}
+
+/* POWER TOWER SVG illustration boxes */
+.vsb-tower-scene {
+  width: 100%;
+  height: 90px;
+  margin-bottom: 14px;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.vsb-tower-scene svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* === WAVEFORM CANVAS === */
+.vsb-canvas-wrap {
+  position: relative;
+  width: 100%;
+  height: 120px;
+  background: #020508;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: inset 0 2px 12px rgba(0,0,0,0.7);
+  margin-bottom: 14px;
+}
+
+.vsb-canvas-wrap canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* axis labels */
+.vsb-axis-v {
+  position: absolute;
+  left: 4px;
+  top: 50%;
+  transform: translateY(-50%) rotate(-90deg);
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 1px;
+  white-space: nowrap;
+  transform-origin: center;
+}
+.vsb-axis-t {
+  position: absolute;
+  bottom: 3px;
+  right: 6px;
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 1px;
+}
+
+.vsb-live-v {
+  position: absolute;
+  top: 7px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.68rem;
+  font-weight: 900;
+  padding: 2px 8px;
+  border-radius: 20px;
+  z-index: 4;
+}
+.vsb-live-v.red   { color: #f87171; background: rgba(239,68,68,0.18); border: 1px solid rgba(239,68,68,0.4); }
+.vsb-live-v.green { color: #34d399; background: rgba(16,185,129,0.18); border: 1px solid rgba(16,185,129,0.4); }
+
+/* === CONSUMPTION PILL === */
+.vsb-consumption-pill {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-weight: 800;
+  position: relative;
+  z-index: 2;
+}
+.vsb-consumption-pill.red-pill {
+  background: rgba(180, 30, 10, 0.25);
+  border: 1.5px solid rgba(239, 68, 68, 0.5);
+  color: #fca5a5;
+}
+.vsb-consumption-pill.green-pill {
+  background: rgba(0, 100, 50, 0.25);
+  border: 1.5px solid rgba(16, 185, 129, 0.5);
+  color: #6ee7b7;
+}
+
+.vsb-pill-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+.red-pill .vsb-pill-icon  { background: rgba(239,68,68,0.25); color: #f87171; }
+.green-pill .vsb-pill-icon{ background: rgba(16,185,129,0.25); color: #34d399; }
+
+.vsb-pill-text { flex: 1; }
+.vsb-pill-text .vsb-pill-main {
+  font-size: clamp(0.85rem, 1.5vw, 1rem);
+  font-weight: 900;
+  display: block;
+  line-height: 1.2;
+}
+.vsb-pill-text .vsb-pill-sub {
+  font-size: clamp(0.75rem, 1.2vw, 0.88rem);
+  font-weight: 700;
+  opacity: 0.75;
+}
+.vsb-pill-bill-icon {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+
+/* ============================================
+   CENTER CARD
+   ============================================ */
+.vsb-center-card-wrap {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 320px;
+  margin-bottom: 14px;
+}
+
+.vsb-card-3d {
+  width: 100%;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 3px solid #c8a007;
+  box-shadow:
+    0 0 0 1px rgba(255,204,0,0.2),
+    0 20px 50px rgba(0,0,0,0.6),
+    0 0 40px rgba(200, 140, 0, 0.35),
+    inset 0 1px 0 rgba(255,220,80,0.4);
+  display: block;
+  transform: perspective(900px) rotateY(-6deg) rotateX(2deg);
+  transition: transform 0.5s ease;
+}
+.vsb-card-3d:hover {
+  transform: perspective(900px) rotateY(0deg) rotateX(0deg) scale(1.03);
+}
+.vsb-card-3d img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* Inner glow ring under card */
+.vsb-card-glow-ring {
+  position: absolute;
+  bottom: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 28px;
+  background: radial-gradient(ellipse, rgba(200,140,0,0.55) 0%, transparent 75%);
+  filter: blur(8px);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.vsb-ion-label {
+  font-size: 0.88rem;
+  font-weight: 900;
+  color: rgba(255,204,0,0.9);
+  letter-spacing: 2px;
+  margin-top: 16px;
+  text-align: center;
+}
+
+.vsb-center-nano-text {
+  font-size: clamp(0.78rem, 1.4vw, 0.9rem);
+  color: rgba(255,255,255,0.8);
+  text-align: center;
+  line-height: 1.55;
+  max-width: 280px;
+  font-weight: 500;
+  margin-top: 8px;
+  position: relative;
+  z-index: 2;
+}
+.vsb-center-nano-text strong { color: #f7941d; font-weight: 800; }
+
+
+/* ============================================
+   BENEFITS ROW
+   ============================================ */
+.vsb-benefits-band {
+  background: linear-gradient(180deg, #0c1a0e 0%, #081408 100%);
+  border-top: 1px solid rgba(247, 148, 29, 0.25);
+  padding: 30px 24px 26px;
+}
+
+.vsb-benefits-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+}
+
+.vsb-benefit-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+  padding: 18px 8px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+.vsb-benefit-item:hover {
+  background: rgba(247, 148, 29, 0.1);
+  border-color: rgba(247, 148, 29, 0.4);
+  transform: translateY(-4px);
+}
+
+.vsb-benefit-icon-wrap {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
+}
+.vsb-benefit-item:hover .vsb-benefit-icon-wrap { transform: scale(1.12); }
+
+.vsb-benefit-icon-wrap.oi { background: radial-gradient(circle, rgba(247,148,29,0.25) 0%, rgba(236,92,10,0.1) 100%); border: 1.5px solid rgba(247,148,29,0.4); color: #f7941d; }
+.vsb-benefit-icon-wrap.gi { background: radial-gradient(circle, rgba(16,185,129,0.2) 0%, rgba(0,123,62,0.1) 100%); border: 1.5px solid rgba(16,185,129,0.4); color: #10b981; }
+.vsb-benefit-icon-wrap.bi { background: radial-gradient(circle, rgba(56,189,248,0.2) 0%, rgba(14,165,233,0.1) 100%); border: 1.5px solid rgba(56,189,248,0.4); color: #38bdf8; }
+.vsb-benefit-icon-wrap.li { background: radial-gradient(circle, rgba(52,211,153,0.2) 0%, rgba(5,150,105,0.1) 100%); border: 1.5px solid rgba(52,211,153,0.4); color: #34d399; }
+.vsb-benefit-icon-wrap.wi { background: radial-gradient(circle, rgba(148,163,184,0.2) 0%, rgba(100,116,139,0.1) 100%); border: 1.5px solid rgba(148,163,184,0.4); color: #94a3b8; }
+
+.vsb-benefit-label {
+  font-size: clamp(0.72rem, 1.2vw, 0.84rem);
+  font-weight: 700;
+  color: rgba(255,255,255,0.82);
+  line-height: 1.35;
+}
+
+
+/* ============================================
+   FOOTER TECH BAR
+   ============================================ */
+.vsb-footer-bar {
+  background: #060d07;
+  border-top: 1.5px solid rgba(247, 148, 29, 0.35);
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.vsb-footer-chip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, rgba(200,140,0,0.2) 0%, rgba(180,100,0,0.15) 100%);
+  border: 1.5px solid rgba(200,140,0,0.5);
+  border-radius: 10px;
+  padding: 10px 18px;
+}
+.vsb-footer-chip-icon { font-size: 1.6rem; color: #f7941d; }
+.vsb-footer-chip-text { line-height: 1.2; }
+.vsb-footer-chip-text .vsb-chip-name { font-size: 0.9rem; font-weight: 900; color: #f7941d; letter-spacing: 1px; }
+.vsb-footer-chip-text .vsb-chip-sub  { font-size: 0.7rem; font-weight: 700; color: rgba(255,255,255,0.55); letter-spacing: 0.5px; }
+
+.vsb-footer-divider { width: 1px; height: 38px; background: rgba(255,255,255,0.12); }
+
+.vsb-footer-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border: 1.5px solid rgba(255,255,255,0.15);
+  border-radius: 10px;
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.8);
+}
+.vsb-footer-badge i { color: #10b981; font-size: 1rem; }
+
+.vsb-footer-tag {
+  padding: 10px 22px;
+  border: 1.5px solid rgba(247, 148, 29, 0.35);
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 900;
+  color: #f7941d;
+  letter-spacing: 1px;
+}
+
+.vsb-footer-serial {
+  padding: 10px 22px;
+  border: 1.5px solid rgba(255,255,255,0.15);
+  border-radius: 10px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.7);
+  letter-spacing: 1px;
+  font-variant-numeric: tabular-nums;
+}
+
+.vsb-footer-contact {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 18px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.5);
+}
+.vsb-footer-contact span { display: inline-flex; align-items: center; gap: 5px; }
+.vsb-footer-contact i { font-size: 0.78rem; }
+
+.vsb-made-in {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: rgba(255,255,255,0.6);
+}
+/* Tricolor mini flag dot */
+.vsb-flag-bar {
+  display: inline-flex;
+  flex-direction: column;
+  width: 22px;
+  height: 14px;
+  border-radius: 2px;
+  overflow: hidden;
+}
+.vsb-flag-bar span { flex: 1; display: block; }
+.vsb-flag-bar .fl-saf { background: #FF9933; }
+.vsb-flag-bar .fl-whi { background: #ffffff; }
+.vsb-flag-bar .fl-grn { background: #138808; }
+
+
+/* ============================================
+   RESPONSIVE — TABLET (≤ 1024px)
+   ============================================ */
+@media (max-width: 1024px) {
+  .vsb-benefits-inner {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ============================================
+   RESPONSIVE — MOBILE (≤ 767px)
+   ============================================ */
+@media (max-width: 767px) {
+  .vsb-hero-band {
+    padding: 32px 16px 22px;
+  }
+  .vsb-hero-band::before,
+  .vsb-hero-band::after { display: none; }
+
+  .vsb-h1-vidhyut { font-size: clamp(2.6rem, 14vw, 4.5rem); letter-spacing: -1px; }
+  .vsb-h1-saathi  { font-size: clamp(2.4rem, 13vw, 4rem);   letter-spacing: -1px; }
+  .vsb-h1-how { font-size: clamp(1.1rem, 4vw, 1.5rem); }
+  .vsb-h1-card-row { gap: 8px; }
+
+  .vsb-split-band {
+    grid-template-columns: 1fr;
+    min-height: unset;
+  }
+
+  /* Reorder: center card first on mobile */
+  .vsb-col-center { order: 1; border-bottom: 1px solid rgba(247,148,29,0.25); }
+  .vsb-col-before { order: 2; border-right: none; border-bottom: 1px solid rgba(239,68,68,0.2); }
+  .vsb-col-after  { order: 3; border-left: none; }
+
+  .vsb-col-before,
+  .vsb-col-after { padding: 22px 16px 18px; }
+
+  .vsb-card-3d {
+    transform: none;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+  .vsb-center-card-wrap { max-width: 280px; margin: 0 auto 14px; }
+
+  .vsb-tower-scene { height: 70px; }
+
+  .vsb-canvas-wrap { height: 100px; }
+
+  .vsb-benefits-inner {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .vsb-benefits-band { padding: 22px 14px 20px; }
+
+  .vsb-footer-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 16px 14px;
+  }
+
+  .vsb-footer-divider { display: none; }
+
+  .vsb-footer-contact {
+    gap: 10px;
+  }
+}
+{%- endstyle -%}
+
+
+<!-- ====================== SECTION HTML ====================== -->
+<div class="vsb-section" id="vsb-{{ section.id }}">
+
+  <!-- ① HERO TITLE BAND -->
+  <div class="vsb-hero-band">
+    <div class="vsb-top-meta">
+      <span class="vsb-top-badge">
+        <i class="fa-solid fa-bolt"></i>
+        Save 20%–30% Electricity
+      </span>
+      <span class="vsb-iso-badge">
+        <i class="fa-solid fa-shield-halved"></i>
+        ISO-Certified
+      </span>
+    </div>
+
+    <p class="vsb-tagline">HOW DOES THE</p>
+
+    <div class="vsb-h1-vidhyut">VIDHYUT</div>
+    <div class="vsb-h1-saathi">SAATHI CARD</div>
+
+    <div class="vsb-h1-card-row">
+      <span class="vsb-h1-save">Save Your</span>
+      <span class="vsb-h1-electricity">ELECTRICITY BILL</span>
+      <span class="vsb-lightning-row">
+        <span>&#9889;</span>
+      </span>
+    </div>
+
+    <div class="vsb-slogan-pill">
+      <i class="fa-solid fa-bolt bolt-icon"></i>
+      <span>लगाएगा <span class="india-orange">INDIA</span> तो बचाएगा <span class="india-green">INDIA</span></span>
+    </div>
+  </div>
+
+
+  <!-- ② SPLIT 3-COLUMN BAND -->
+  <div class="vsb-split-band">
+
+    <!-- LEFT: BEFORE -->
+    <div class="vsb-col-before">
+      <div class="vsb-side-top">
+        <span class="vsb-ba-label before-lbl">BEFORE</span>
+        <p class="vsb-side-subtitle">Unstable Voltage<br>High Spikes</p>
+
+        <!-- Power tower scene — inline SVG (lightning city BG) -->
+        <div class="vsb-tower-scene">
+          <svg viewBox="0 0 300 90" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+            <!-- Sky gradient -->
+            <defs>
+              <linearGradient id="sky-b" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#1a0202"/>
+                <stop offset="100%" stop-color="#3d0a0a"/>
+              </linearGradient>
+              <radialGradient id="glow-r" cx="50%" cy="100%" r="60%">
+                <stop offset="0%" stop-color="#ff4400" stop-opacity="0.5"/>
+                <stop offset="100%" stop-color="transparent"/>
+              </radialGradient>
+            </defs>
+            <rect width="300" height="90" fill="url(#sky-b)"/>
+            <rect width="300" height="90" fill="url(#glow-r)"/>
+            <!-- Buildings silhouette -->
+            <rect x="10"  y="55" width="20" height="35" fill="#1a0303"/>
+            <rect x="35"  y="45" width="15" height="45" fill="#1a0303"/>
+            <rect x="55"  y="60" width="25" height="30" fill="#1a0303"/>
+            <rect x="200" y="50" width="18" height="40" fill="#1a0303"/>
+            <rect x="225" y="40" width="22" height="50" fill="#1a0303"/>
+            <rect x="252" y="55" width="16" height="35" fill="#1a0303"/>
+            <rect x="272" y="48" width="20" height="42" fill="#1a0303"/>
+            <!-- Tower left -->
+            <line x1="120" y1="10" x2="100" y2="85" stroke="#550000" stroke-width="2.5"/>
+            <line x1="120" y1="10" x2="140" y2="85" stroke="#550000" stroke-width="2.5"/>
+            <line x1="110" y1="40" x2="130" y2="40" stroke="#550000" stroke-width="1.5"/>
+            <line x1="106" y1="58" x2="134" y2="58" stroke="#550000" stroke-width="1.5"/>
+            <!-- Tower right -->
+            <line x1="190" y1="10" x2="172" y2="85" stroke="#550000" stroke-width="2.5"/>
+            <line x1="190" y1="10" x2="208" y2="85" stroke="#550000" stroke-width="2.5"/>
+            <line x1="180" y1="40" x2="200" y2="40" stroke="#550000" stroke-width="1.5"/>
+            <line x1="177" y1="58" x2="203" y2="58" stroke="#550000" stroke-width="1.5"/>
+            <!-- Power wires -->
+            <path d="M120,12 Q155,28 190,12" stroke="#773333" stroke-width="1.2" fill="none"/>
+            <path d="M110,30 Q155,44 200,30" stroke="#773333" stroke-width="1" fill="none"/>
+            <!-- Lightning bolt decoration -->
+            <text x="150" y="48" font-size="22" text-anchor="middle" fill="#ff4400" opacity="0.8">⚡</text>
+          </svg>
+        </div>
+
+        <!-- Red waveform canvas -->
+        <div class="vsb-canvas-wrap">
+          <div class="vsb-live-v red" id="vsb-bv-{{ section.id }}">278V ▲</div>
+          <div class="vsb-axis-v">VOLTAGE</div>
+          <div class="vsb-axis-t">TIME →</div>
+          <canvas id="vsb-bc-{{ section.id }}"></canvas>
+        </div>
+      </div>
+
+      <!-- Higher Bill pill -->
+      <div class="vsb-consumption-pill red-pill">
+        <div class="vsb-pill-icon"><i class="fa-solid fa-bolt-lightning"></i></div>
+        <div class="vsb-pill-text">
+          <span class="vsb-pill-main" style="color:#f7941d;">Higher Consumption</span>
+          <span class="vsb-pill-sub">Higher Bill</span>
+        </div>
+        <span class="vsb-pill-bill-icon">💸</span>
+      </div>
+    </div>
+
+
+    <!-- CENTER: 3D CARD -->
+    <div class="vsb-col-center">
+      <div class="vsb-center-card-wrap">
+        <div class="vsb-card-3d">
+          {%- if section.settings.card_image != blank -%}
+            {{ section.settings.card_image | image_url: width: 700 | image_tag:
+              loading: 'lazy',
+              alt: 'Vidhyut Saathi Electric Power Saving Card'
+            }}
+          {%- else -%}
+            <img
+              src="{{ 'official-vs-card-front.jpg' | asset_url }}"
+              alt="Vidhyut Saathi Electric Power Saving Card"
+              loading="eager"
+              width="700" height="440"
+              onerror="this.onerror=null; this.src='https://cdn.shopify.com/s/files/1/0663/8783/7093/files/VS_Card_Final_Design_Golden_1.png';"
+            >
+          {%- endif -%}
+        </div>
+        <div class="vsb-card-glow-ring"></div>
+      </div>
+      <div class="vsb-ion-label">ION : 20000</div>
+      <p class="vsb-center-nano-text">
+        The Vidhyut Saathi Card uses <strong>US-German Nanotechnology</strong> to stabilize voltage and filter harmful spikes.
+      </p>
+    </div>
+
+
+    <!-- RIGHT: AFTER -->
+    <div class="vsb-col-after">
+      <div class="vsb-side-top">
+        <span class="vsb-ba-label after-lbl">AFTER</span>
+        <p class="vsb-side-subtitle">Stable Voltage<br>Filtered Spikes</p>
+
+        <!-- Power tower scene — inline SVG (green futuristic city) -->
+        <div class="vsb-tower-scene">
+          <svg viewBox="0 0 300 90" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+            <defs>
+              <linearGradient id="sky-a" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#001a09"/>
+                <stop offset="100%" stop-color="#003d15"/>
+              </linearGradient>
+              <radialGradient id="glow-g" cx="50%" cy="100%" r="60%">
+                <stop offset="0%" stop-color="#00ff66" stop-opacity="0.3"/>
+                <stop offset="100%" stop-color="transparent"/>
+              </radialGradient>
+            </defs>
+            <rect width="300" height="90" fill="url(#sky-a)"/>
+            <rect width="300" height="90" fill="url(#glow-g)"/>
+            <!-- Buildings silhouette -->
+            <rect x="10"  y="55" width="20" height="35" fill="#001a08"/>
+            <rect x="35"  y="45" width="15" height="45" fill="#001a08"/>
+            <rect x="55"  y="60" width="25" height="30" fill="#001a08"/>
+            <rect x="200" y="50" width="18" height="40" fill="#001a08"/>
+            <rect x="225" y="40" width="22" height="50" fill="#001a08"/>
+            <rect x="252" y="55" width="16" height="35" fill="#001a08"/>
+            <rect x="272" y="48" width="20" height="42" fill="#001a08"/>
+            <!-- Tower left -->
+            <line x1="120" y1="10" x2="100" y2="85" stroke="#005500" stroke-width="2.5"/>
+            <line x1="120" y1="10" x2="140" y2="85" stroke="#005500" stroke-width="2.5"/>
+            <line x1="110" y1="40" x2="130" y2="40" stroke="#005500" stroke-width="1.5"/>
+            <line x1="106" y1="58" x2="134" y2="58" stroke="#005500" stroke-width="1.5"/>
+            <!-- Tower right -->
+            <line x1="190" y1="10" x2="172" y2="85" stroke="#005500" stroke-width="2.5"/>
+            <line x1="190" y1="10" x2="208" y2="85" stroke="#005500" stroke-width="2.5"/>
+            <line x1="180" y1="40" x2="200" y2="40" stroke="#005500" stroke-width="1.5"/>
+            <line x1="177" y1="58" x2="203" y2="58" stroke="#005500" stroke-width="1.5"/>
+            <!-- Power wires -->
+            <path d="M120,12 Q155,28 190,12" stroke="#007730" stroke-width="1.2" fill="none"/>
+            <path d="M110,30 Q155,44 200,30" stroke="#007730" stroke-width="1" fill="none"/>
+            <!-- Smooth green glow line (stable) -->
+            <path d="M60,60 Q95,50 130,60 Q165,70 200,60 Q235,50 270,60" stroke="#10b981" stroke-width="2" fill="none" opacity="0.8"/>
+          </svg>
+        </div>
+
+        <!-- Green smooth waveform canvas -->
+        <div class="vsb-canvas-wrap">
+          <div class="vsb-live-v green" id="vsb-av-{{ section.id }}">220V ✓</div>
+          <div class="vsb-axis-v">VOLTAGE</div>
+          <div class="vsb-axis-t">TIME →</div>
+          <canvas id="vsb-ac-{{ section.id }}"></canvas>
+        </div>
+      </div>
+
+      <!-- Lower Bill pill -->
+      <div class="vsb-consumption-pill green-pill">
+        <div class="vsb-pill-icon"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+        <div class="vsb-pill-text">
+          <span class="vsb-pill-main" style="color:#34d399;">Lower Consumption</span>
+          <span class="vsb-pill-sub">Lower Bill</span>
+        </div>
+        <span class="vsb-pill-bill-icon">💰</span>
+      </div>
+    </div>
+
+  </div><!-- /vsb-split-band -->
+
+
+  <!-- ③ BENEFITS ROW -->
+  <div class="vsb-benefits-band">
+    <div class="vsb-benefits-inner">
+
+      <div class="vsb-benefit-item">
+        <div class="vsb-benefit-icon-wrap oi">
+          <i class="fa-solid fa-indian-rupee-sign"></i>
+        </div>
+        <span class="vsb-benefit-label">Save 20%–30%<br>on Electricity Bill</span>
+      </div>
+
+      <div class="vsb-benefit-item">
+        <div class="vsb-benefit-icon-wrap gi">
+          <i class="fa-solid fa-shield-halved"></i>
+        </div>
+        <span class="vsb-benefit-label">Protects Appliances<br>from Voltage Spikes</span>
+      </div>
+
+      <div class="vsb-benefit-item">
+        <div class="vsb-benefit-icon-wrap bi">
+          <i class="fa-solid fa-lightbulb"></i>
+        </div>
+        <span class="vsb-benefit-label">Improves Energy<br>Efficiency</span>
+      </div>
+
+      <div class="vsb-benefit-item">
+        <div class="vsb-benefit-icon-wrap li">
+          <i class="fa-solid fa-leaf"></i>
+        </div>
+        <span class="vsb-benefit-label">Eco-Friendly<br>Solution</span>
+      </div>
+
+      <div class="vsb-benefit-item">
+        <div class="vsb-benefit-icon-wrap wi">
+          <i class="fa-solid fa-screwdriver-wrench"></i>
+        </div>
+        <span class="vsb-benefit-label">Easy to Use<br>&amp; Long Lasting</span>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ④ FOOTER TECH BAR -->
+  <div class="vsb-footer-bar">
+
+    <!-- Terahertz chip badge -->
+    <div class="vsb-footer-chip">
+      <i class="fa-solid fa-microchip vsb-footer-chip-icon"></i>
+      <div class="vsb-footer-chip-text">
+        <div class="vsb-chip-name">TERAHERTZ CHIP</div>
+        <div class="vsb-chip-sub">US-GERMAN NANOTECHNOLOGY</div>
+      </div>
+    </div>
+
+    <div class="vsb-footer-divider"></div>
+
+    <div class="vsb-footer-badge">
+      <i class="fa-solid fa-shield-halved"></i>
+      <strong style="color:#ffffff;">Advanced Technology</strong>
+      <span>for a Smarter &amp; Safer India</span>
+    </div>
+
+    <div class="vsb-footer-divider"></div>
+
+    <div class="vsb-footer-tag">ION : 20000</div>
+
+    <div class="vsb-footer-serial">0020221001</div>
+
+    <div class="vsb-footer-divider"></div>
+
+    <div class="vsb-footer-contact">
+      <span><i class="fa-solid fa-globe"></i> www.vidhyutsaathi.com</span>
+      <span><i class="fa-solid fa-phone"></i> 1800 123 9707</span>
+      <span><i class="fa-solid fa-envelope"></i> info@vidhyutsaathi.com</span>
+    </div>
+
+    <div class="vsb-footer-divider"></div>
+
+    <div class="vsb-made-in">
+      <div class="vsb-flag-bar">
+        <span class="fl-saf"></span>
+        <span class="fl-whi"></span>
+        <span class="fl-grn"></span>
+      </div>
+      MADE IN INDIA
+    </div>
+
+  </div><!-- /vsb-footer-bar -->
+
+</div><!-- /vsb-section -->
+
+
+<!-- ⑤ LIVE WAVEFORM CANVAS SCRIPT -->
+<script>
+(function() {
+  function vsbInitGraphs() {
+    var sid = '{{ section.id }}';
+
+    /* ---- BEFORE canvas: erratic red spikes ---- */
+    var cB = document.getElementById('vsb-bc-' + sid);
+    var vB = document.getElementById('vsb-bv-' + sid);
+    if (cB) {
+      var ctxB = cB.getContext('2d');
+      var stepB = 0;
+      (function drawBefore() {
+        var w = cB.offsetWidth, h = cB.offsetHeight;
+        if (cB.width !== w || cB.height !== h) { cB.width = w; cB.height = h; }
+
+        ctxB.clearRect(0, 0, w, h);
+
+        /* Grid */
+        ctxB.strokeStyle = 'rgba(239,68,68,0.1)';
+        ctxB.lineWidth = 1;
+        for (var gx = 0; gx < w; gx += 28) {
+          ctxB.beginPath(); ctxB.moveTo(gx, 0); ctxB.lineTo(gx, h); ctxB.stroke();
+        }
+        for (var gy = 0; gy < h; gy += 22) {
+          ctxB.beginPath(); ctxB.moveTo(0, gy); ctxB.lineTo(w, gy); ctxB.stroke();
+        }
+
+        /* Erratic wave */
+        ctxB.beginPath();
+        ctxB.strokeStyle = '#ef4444';
+        ctxB.lineWidth = 2;
+        ctxB.shadowColor = '#ef4444';
+        ctxB.shadowBlur = 8;
+        var my = h * 0.5;
+        for (var x = 0; x < w; x++) {
+          var y = my
+            + Math.sin((x + stepB) * 0.12) * 18
+            + Math.sin((x - stepB) * 0.3)  * 12
+            + (Math.random() - 0.5) * 16;
+          if (x === 0) ctxB.moveTo(x, y); else ctxB.lineTo(x, y);
+        }
+        ctxB.stroke();
+        ctxB.shadowBlur = 0;
+
+        if (vB && Math.random() < 0.06) {
+          vB.textContent = (255 + Math.floor(Math.random() * 36)) + 'V ▲';
+        }
+        stepB += 5;
+        requestAnimationFrame(drawBefore);
+      })();
+    }
+
+    /* ---- AFTER canvas: smooth green sine ---- */
+    var cA = document.getElementById('vsb-ac-' + sid);
+    var vA = document.getElementById('vsb-av-' + sid);
+    if (cA) {
+      var ctxA = cA.getContext('2d');
+      var stepA = 0;
+      (function drawAfter() {
+        var w = cA.offsetWidth, h = cA.offsetHeight;
+        if (cA.width !== w || cA.height !== h) { cA.width = w; cA.height = h; }
+
+        ctxA.clearRect(0, 0, w, h);
+
+        /* Grid */
+        ctxA.strokeStyle = 'rgba(16,185,129,0.1)';
+        ctxA.lineWidth = 1;
+        for (var gx = 0; gx < w; gx += 28) {
+          ctxA.beginPath(); ctxA.moveTo(gx, 0); ctxA.lineTo(gx, h); ctxA.stroke();
+        }
+        for (var gy = 0; gy < h; gy += 22) {
+          ctxA.beginPath(); ctxA.moveTo(0, gy); ctxA.lineTo(w, gy); ctxA.stroke();
+        }
+
+        /* Smooth sine */
+        ctxA.beginPath();
+        ctxA.strokeStyle = '#10b981';
+        ctxA.lineWidth = 2;
+        ctxA.shadowColor = '#10b981';
+        ctxA.shadowBlur = 10;
+        var my2 = h * 0.5;
+        for (var x = 0; x < w; x++) {
+          var y = my2 + Math.sin((x + stepA) * 0.042) * 10;
+          if (x === 0) ctxA.moveTo(x, y); else ctxA.lineTo(x, y);
+        }
+        ctxA.stroke();
+        ctxA.shadowBlur = 0;
+
+        if (vA && Math.random() < 0.04) {
+          vA.textContent = (220 + Math.floor(Math.random() * 5)) + 'V ✓';
+        }
+        stepA += 2.5;
+        requestAnimationFrame(drawAfter);
+      })();
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', vsbInitGraphs);
+  } else {
+    vsbInitGraphs();
+  }
+})();
+</script>
+
 
 {% schema %}
 {
   "name": "Vidhyut Savings Banner",
-  "settings": [],
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "card_image",
+      "label": "Official Vidhyut Saathi Card Image"
+    }
+  ],
   "presets": [
     {
       "name": "Vidhyut Savings Banner"
