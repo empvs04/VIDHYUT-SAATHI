@@ -322,40 +322,47 @@
   .vshw-scope-topbar.red i { color: #ef4444; }
   .vshw-scope-topbar.green i { color: #10b981; }
 
-  /* LUCRATIVE IMPACT FEATURE ROWS (NO TEXT TRUNCATION) */
-  .vshw-impact-list {
+  /* 3 MICRO METRICS GRID INSIDE CARD */
+  .vshw-micro-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .vshw-metric-item {
+    padding: 8px 6px;
+    border-radius: 12px;
+    text-align: center;
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    margin-bottom: 22px;
+    gap: 2px;
+  }
+  .vshw-metric-item.red {
+    background: rgba(254, 242, 242, 0.8);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+  }
+  .vshw-metric-item.green {
+    background: rgba(236, 253, 245, 0.8);
+    border: 1px solid rgba(16, 185, 129, 0.2);
   }
 
-  .vshw-impact-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 14px;
-    border-radius: 14px;
-    font-size: 0.85rem;
-    gap: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+  .vshw-metric-item .m-label {
+    font-size: 0.68rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #64748B;
   }
-
-  .vshw-impact-row.red {
-    background: rgba(254, 242, 242, 0.9);
-    border: 1px solid rgba(239, 68, 68, 0.22);
-    color: #7F1D1D;
+  .vshw-metric-item.red .m-val {
+    font-size: 0.78rem;
+    font-weight: 900;
+    color: #DC2626;
   }
-  .vshw-impact-row.red i { color: #DC2626; margin-right: 4px; }
-  .vshw-impact-row.red strong { color: #DC2626; font-weight: 900; }
-
-  .vshw-impact-row.green {
-    background: rgba(236, 253, 245, 0.9);
-    border: 1px solid rgba(16, 185, 129, 0.22);
-    color: #064E3B;
+  .vshw-metric-item.green .m-val {
+    font-size: 0.78rem;
+    font-weight: 900;
+    color: #059669;
   }
-  .vshw-impact-row.green i { color: #10B981; margin-right: 4px; }
-  .vshw-impact-row.green strong { color: #059669; font-weight: 900; }
 
   .vshw-bottom-pill {
     padding: 12px 16px;
@@ -849,18 +856,27 @@
       right: 6px !important;
     }
 
-    .vshw-impact-list {
-      display: flex !important;
-      flex-direction: column !important;
-      gap: 6px !important;
-      margin-bottom: 14px !important;
+    .vshw-micro-metrics {
+      grid-template-columns: 1fr !important;
+      gap: 4px !important;
+      margin-bottom: 8px !important;
     }
 
-    .vshw-impact-row {
-      padding: 7px 10px !important;
-      border-radius: 10px !important;
-      font-size: 0.76rem !important;
-      gap: 6px !important;
+    .vshw-metric-item {
+      padding: 4px 6px !important;
+      border-radius: 8px !important;
+      display: flex !important;
+      flex-direction: row !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+    }
+
+    .vshw-metric-item .m-label {
+      font-size: 0.6rem !important;
+    }
+
+    .vshw-metric-item .m-val {
+      font-size: 0.66rem !important;
     }
 
     .vshw-bottom-pill {
@@ -1027,19 +1043,19 @@
             <canvas id="vshw-canvas-before-{{ section.id }}" class="vshw-graph-canvas"></canvas>
           </div>
 
-          <!-- LUCRATIVE IMPACT FEATURE ROWS (NO CUT-OFF TEXT) -->
-          <div class="vshw-impact-list">
-            <div class="vshw-impact-row red">
-              <span><i class="fa-solid fa-bolt-lightning"></i> Voltage Spikes:</span>
-              <strong>Dangerous & Unfiltered</strong>
+          <!-- 3 MICRO IMPACT METRICS -->
+          <div class="vshw-micro-metrics">
+            <div class="vshw-metric-item red">
+              <span class="m-label">Spikes</span>
+              <span class="m-val">Unfiltered</span>
             </div>
-            <div class="vshw-impact-row red">
-              <span><i class="fa-solid fa-fire"></i> Power Loss:</span>
-              <strong>+35% Extra Wastage</strong>
+            <div class="vshw-metric-item red">
+              <span class="m-label">Heat Loss</span>
+              <span class="m-val">+35% Extra</span>
             </div>
-            <div class="vshw-impact-row red">
-              <span><i class="fa-solid fa-triangle-exclamation"></i> Safety Risk:</span>
-              <strong>High Appliance Risk</strong>
+            <div class="vshw-metric-item red">
+              <span class="m-label">Risk</span>
+              <span class="m-val">High Damage</span>
             </div>
           </div>
         </div>
@@ -1098,19 +1114,19 @@
             <canvas id="vshw-canvas-after-{{ section.id }}" class="vshw-graph-canvas"></canvas>
           </div>
 
-          <!-- LUCRATIVE IMPACT FEATURE ROWS (NO CUT-OFF TEXT) -->
-          <div class="vshw-impact-list">
-            <div class="vshw-impact-row green">
-              <span><i class="fa-solid fa-shield-halved"></i> Voltage Spikes:</span>
-              <strong>100% Filtered & Smooth</strong>
+          <!-- 3 MICRO IMPACT METRICS -->
+          <div class="vshw-micro-metrics">
+            <div class="vshw-metric-item green">
+              <span class="m-label">Spikes</span>
+              <span class="m-val">Filtered</span>
             </div>
-            <div class="vshw-impact-row green">
-              <span><i class="fa-solid fa-leaf"></i> Power Loss:</span>
-              <strong>Zero Power Wastage</strong>
+            <div class="vshw-metric-item green">
+              <span class="m-label">Heat Loss</span>
+              <span class="m-val">Zero Loss</span>
             </div>
-            <div class="vshw-impact-row green">
-              <span><i class="fa-solid fa-circle-check"></i> Safety Risk:</span>
-              <strong>100% Protected</strong>
+            <div class="vshw-metric-item green">
+              <span class="m-label">Risk</span>
+              <span class="m-val">100% Protected</span>
             </div>
           </div>
         </div>
