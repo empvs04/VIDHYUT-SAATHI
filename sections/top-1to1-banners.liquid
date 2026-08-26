@@ -7,18 +7,16 @@
     width: 100%;
     max-width: 100%;
     background-color: {{ section.settings.bg_color | default: '#FAFAF7' }};
-    padding: 0 !important;
-    margin: 0 !important;
+    padding: 24px 20px !important;
     box-sizing: border-box;
     position: relative;
     overflow: hidden;
   }
 
   .vs-top-banners-{{ section.id }} .container {
-    max-width: 100% !important;
-    width: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
+    max-width: 1240px;
+    margin: 0 auto;
+    position: relative;
   }
 
   {% if section.settings.section_heading != blank %}
@@ -35,17 +33,17 @@
     }
   {% endif %}
 
-  /* DESKTOP FULL-WIDTH 1-BANNER SLIDER LAYOUT */
+  /* DESKTOP 1:1 SQUARE SLIDER LAYOUT — 100% COMPLETE UNCROPPED BANNER DISPLAY */
   .vs-top-banners-{{ section.id }} .banners-outer-container {
     position: relative;
     width: 100%;
-    max-width: 100%;
-    margin: 0;
-    border-radius: 0;
+    max-width: 580px; /* Perfectly centered 1:1 square banner container for desktop */
+    margin: 0 auto;
+    border-radius: {{ section.settings.border_radius | default: 20 }}px;
     overflow: hidden;
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none;
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
   }
 
   .vs-top-banners-{{ section.id }} .banners-wrapper {
@@ -59,8 +57,8 @@
     margin: 0;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
-    border-radius: 0;
-    background: transparent !important;
+    border-radius: {{ section.settings.border_radius | default: 20 }}px;
+    background: #FFFFFF !important;
     width: 100%;
   }
 
@@ -73,12 +71,13 @@
     max-width: 100%;
     min-width: 100%;
     width: 100%;
+    aspect-ratio: 1 / 1; /* 1:1 Square aspect ratio */
     scroll-snap-align: center;
     scroll-snap-stop: always;
-    border-radius: 0;
+    border-radius: {{ section.settings.border_radius | default: 20 }}px;
     box-shadow: none !important;
     border: none !important;
-    background: transparent !important;
+    background: #FFFFFF !important;
     padding: 0;
     margin: 0;
     position: relative;
@@ -88,20 +87,21 @@
 
   .vs-top-banners-{{ section.id }} .banner-img {
     width: 100%;
-    height: auto;
-    max-height: 520px;
-    object-fit: cover;
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: contain; /* 100% COMPLETE DISPLAY — NO CROPPING AT ALL */
     display: block;
-    border-radius: 0;
+    border-radius: {{ section.settings.border_radius | default: 20 }}px;
     transform: none !important;
     transition: none !important;
   }
 
   .vs-top-banners-{{ section.id }} .banner-placeholder {
     width: 100%;
-    height: 400px;
+    height: 100%;
+    aspect-ratio: 1 / 1;
     background: linear-gradient(135deg, #FFF3E0 0%, #FFE0B2 100%);
-    border-radius: 0;
+    border-radius: {{ section.settings.border_radius | default: 20 }}px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -134,7 +134,7 @@
     align-items: center;
     justify-content: center;
     position: absolute;
-    bottom: 18px;
+    bottom: 14px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 10;
@@ -150,8 +150,8 @@
   }
 
   .vs-top-banners-dots .dot {
-    width: 10px !important;
-    height: 10px !important;
+    width: 9px !important;
+    height: 9px !important;
     border-radius: 50% !important;
     background: rgba(255, 255, 255, 0.75) !important;
     border: 1px solid rgba(0, 0, 0, 0.25) !important;
@@ -161,8 +161,8 @@
   }
 
   .vs-top-banners-dots .dot.active {
-    width: 10px !important;
-    height: 10px !important;
+    width: 9px !important;
+    height: 9px !important;
     border-radius: 50% !important;
     background: #EC5C0A !important;
     border-color: #FFFFFF !important;
@@ -170,7 +170,7 @@
     box-shadow: 0 2px 8px rgba(236, 92, 10, 0.6) !important;
   }
 
-  /* DESKTOP NAVIGATION ARROWS */
+  /* DESKTOP NAVIGATION ARROWS - FLOATING ELEGANTLY BESIDE THE 1:1 BANNER */
   .vs-top-banners-{{ section.id }} .vs-banner-nav {
     position: absolute;
     top: 50%;
@@ -179,30 +179,29 @@
     width: 48px;
     height: 48px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.92);
-    backdrop-filter: blur(6px);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    color: #0F172A;
+    background: #FFFFFF;
+    border: 1.5px solid rgba(236, 92, 10, 0.3);
+    color: #EC5C0A;
     font-size: 18px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
     transition: all 0.3s ease;
-    opacity: 0.85;
+    opacity: 0.9;
   }
 
   .vs-top-banners-{{ section.id }} .vs-banner-nav:hover {
-    background: #FFFFFF;
-    color: #EC5C0A;
+    background: #EC5C0A;
+    color: #FFFFFF;
     transform: translateY(-50%) scale(1.1);
-    box-shadow: 0 6px 22px rgba(236, 92, 10, 0.35);
+    box-shadow: 0 8px 25px rgba(236, 92, 10, 0.35);
     opacity: 1;
   }
 
-  .vs-top-banners-{{ section.id }} .vs-prev-btn { left: 24px; }
-  .vs-top-banners-{{ section.id }} .vs-next-btn { right: 24px; }
+  .vs-top-banners-{{ section.id }} .vs-prev-btn { left: calc(50% - 350px); }
+  .vs-top-banners-{{ section.id }} .vs-next-btn { right: calc(50% - 350px); }
 
   /* MOBILE SLIDER LAYOUT — ZERO OUTER BOX & FULL WIDTH EDGE-TO-EDGE */
   @media(max-width: 767px) {
