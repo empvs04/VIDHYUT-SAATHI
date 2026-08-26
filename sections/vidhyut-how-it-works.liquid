@@ -73,18 +73,32 @@
     margin: 0 0 14px 0;
     letter-spacing: -0.2px;
   }
-  .vshw-main-title .hl-orange { color: #ec5c0a; font-weight: 800; }
-  .vshw-main-title .hl-green { color: #007b3e; font-weight: 800; }
-
-  .vshw-header-divider {
-    width: 100px;
-    height: 4px;
-    background: linear-gradient(90deg, #ec5c0a, #007b3e);
-    border-radius: 10px;
-    margin: 0 auto;
+  .vshw-main-title .hl-orange {
+    background: linear-gradient(135deg, #EC5C0A 0%, #F7941D 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 800;
+    display: inline-block;
+  }
+  .vshw-main-title .hl-green {
+    background: linear-gradient(135deg, #007B3E 0%, #10B981 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 800;
+    display: inline-block;
   }
 
-  /* --- CUSTOM COMPOSITE MASTER CARD FRAME --- */
+  .vshw-header-divider {
+    width: 120px;
+    height: 4px;
+    background: linear-gradient(90deg, #EC5C0A 0%, #F7941D 50%, #007B3E 100%);
+    border-radius: 10px;
+    margin: 0 auto;
+    box-shadow: 0 2px 10px rgba(236, 92, 10, 0.25);
+  }
+
   /* --- CUSTOM COMPOSITE MASTER CARD FRAME (ULTRA-CLEAN & LUCRATIVE) --- */
   .vshw-composite-master-card {
     background: linear-gradient(145deg, #FFFFFF 0%, #FFFDF7 50%, #F4FAF5 100%);
@@ -111,20 +125,25 @@
   }
 
   .vshw-mc-brand {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
+    background: linear-gradient(135deg, rgba(236, 92, 10, 0.06) 0%, rgba(247, 148, 29, 0.12) 100%);
+    border: 1.5px solid rgba(236, 92, 10, 0.22);
+    border-radius: 50px;
+    padding: 6px 18px;
+    box-shadow: 0 4px 12px rgba(236, 92, 10, 0.06);
   }
-  .vshw-mc-brand i { font-size: 24px; color: #EC5C0A; filter: drop-shadow(0 2px 6px rgba(236, 92, 10, 0.25)); }
-  .vshw-mc-brand span { font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif; font-size: 1.05rem; font-weight: 700; color: #0F172A; letter-spacing: 0.3px; }
+  .vshw-mc-brand i { font-size: 20px; color: #EC5C0A; filter: drop-shadow(0 2px 6px rgba(236, 92, 10, 0.3)); }
+  .vshw-mc-brand span { font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif; font-size: 0.96rem; font-weight: 700; color: #0F172A; letter-spacing: 0.3px; }
 
   .vshw-mc-slogan-pill {
-    background: linear-gradient(135deg, #FFF3E0, #FFE5B4);
+    background: linear-gradient(135deg, #FFF3E0 0%, #FFE5B4 100%);
     border: 1.5px solid rgba(236, 92, 10, 0.35);
     color: #D96924;
     padding: 6px 20px;
     border-radius: 50px;
-    font-size: 0.82rem;
+    font-size: 0.84rem;
     font-weight: 700;
     box-shadow: 0 4px 14px rgba(236, 92, 10, 0.08);
   }
