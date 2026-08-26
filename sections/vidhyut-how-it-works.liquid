@@ -269,6 +269,83 @@
   .vshw-graph-overlay.green .dot { background: #10b981; box-shadow: 0 0 8px #10b981; animation: vshwBlink 1.8s infinite alternate; }
   @keyframes vshwBlink { 0% { opacity: 0.3; } 100% { opacity: 1; } }
 
+  .vshw-status-sub {
+    font-size: 0.72rem;
+    font-weight: 900;
+    letter-spacing: 0.8px;
+    padding: 4px 10px;
+    border-radius: 50px;
+    text-transform: uppercase;
+  }
+  .vshw-status-sub.red {
+    background: #FEF2F2;
+    color: #DC2626;
+    border: 1px solid rgba(220, 38, 38, 0.3);
+  }
+  .vshw-status-sub.green {
+    background: #ECFDF5;
+    color: #059669;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+  }
+
+  .vshw-scope-topbar {
+    position: absolute;
+    top: 10px;
+    left: 12px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: rgba(255, 255, 255, 0.7);
+    z-index: 3;
+    pointer-events: none;
+  }
+  .vshw-scope-topbar.red i { color: #ef4444; }
+  .vshw-scope-topbar.green i { color: #10b981; }
+
+  /* 3 MICRO METRICS GRID INSIDE CARD */
+  .vshw-micro-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .vshw-metric-item {
+    padding: 8px 6px;
+    border-radius: 12px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .vshw-metric-item.red {
+    background: rgba(254, 242, 242, 0.8);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+  }
+  .vshw-metric-item.green {
+    background: rgba(236, 253, 245, 0.8);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+  }
+
+  .vshw-metric-item .m-label {
+    font-size: 0.68rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #64748B;
+  }
+  .vshw-metric-item.red .m-val {
+    font-size: 0.78rem;
+    font-weight: 900;
+    color: #DC2626;
+  }
+  .vshw-metric-item.green .m-val {
+    font-size: 0.78rem;
+    font-weight: 900;
+    color: #059669;
+  }
+
   .vshw-bottom-pill {
     padding: 12px 16px;
     border-radius: 16px;
@@ -857,24 +934,46 @@
             <span class="vshw-badge-pill before">
               <i class="fa-solid fa-triangle-exclamation"></i> BEFORE
             </span>
+            <span class="vshw-status-sub red">UNSTABLE GRID</span>
           </div>
+          
           <h3 class="vshw-box-title">
             <i class="fa-solid fa-bolt-lightning red"></i>
             Unstable Voltage & High Spikes
           </h3>
           
           <!-- LIVE CANVAS GRAPH (RED erratic) -->
-          <div class="vshw-graph-wrapper">
+          <div class="vshw-graph-wrapper red-scope">
+            <div class="vshw-scope-topbar red">
+              <span><i class="fa-solid fa-triangle-exclamation"></i> FREQ: 52.4 Hz</span>
+              <span>VOLTAGE SPIKES</span>
+            </div>
             <div class="vshw-graph-overlay red">
-              <span class="dot"></span> <span id="vshw-val-before-{{ section.id }}">274V (Spiking!)</span>
+              <span class="dot"></span> <span id="vshw-val-before-{{ section.id }}">278V (HIGH SPIKE!)</span>
             </div>
             <canvas id="vshw-canvas-before-{{ section.id }}" class="vshw-graph-canvas"></canvas>
+          </div>
+
+          <!-- 3 MICRO IMPACT METRICS -->
+          <div class="vshw-micro-metrics">
+            <div class="vshw-metric-item red">
+              <span class="m-label">Spikes</span>
+              <span class="m-val">High (Unfiltered)</span>
+            </div>
+            <div class="vshw-metric-item red">
+              <span class="m-label">Heat Loss</span>
+              <span class="m-val">+35% Extra</span>
+            </div>
+            <div class="vshw-metric-item red">
+              <span class="m-label">Safety</span>
+              <span class="m-val">High Damage Risk</span>
+            </div>
           </div>
         </div>
 
         <div class="vshw-bottom-pill red">
-          <span><i class="fa-solid fa-gauge-high"></i> Higher Consumption</span>
-          <span><strong>Higher Bill</strong></span>
+          <span><i class="fa-solid fa-gauge-high"></i> Power Wastage</span>
+          <span><strong>+30% Extra Bill</strong></span>
         </div>
       </div>
 
@@ -910,24 +1009,46 @@
             <span class="vshw-badge-pill after">
               <i class="fa-solid fa-circle-check"></i> AFTER
             </span>
+            <span class="vshw-status-sub green">100% STABILIZED</span>
           </div>
+          
           <h3 class="vshw-box-title">
             <i class="fa-solid fa-wave-square green"></i>
             Stable Voltage & Filtered Spikes
           </h3>
           
           <!-- LIVE CANVAS GRAPH (GREEN smooth) -->
-          <div class="vshw-graph-wrapper">
+          <div class="vshw-graph-wrapper green-scope">
+            <div class="vshw-scope-topbar green">
+              <span><i class="fa-solid fa-shield-halved"></i> FREQ: 50.0 Hz</span>
+              <span>FILTER ACTIVE</span>
+            </div>
             <div class="vshw-graph-overlay green">
-              <span class="dot"></span> <span id="vshw-val-after-{{ section.id }}">225V (Stable)</span>
+              <span class="dot"></span> <span id="vshw-val-after-{{ section.id }}">220V (PERFECT STABLE)</span>
             </div>
             <canvas id="vshw-canvas-after-{{ section.id }}" class="vshw-graph-canvas"></canvas>
+          </div>
+
+          <!-- 3 MICRO IMPACT METRICS -->
+          <div class="vshw-micro-metrics">
+            <div class="vshw-metric-item green">
+              <span class="m-label">Spikes</span>
+              <span class="m-val">100% Filtered</span>
+            </div>
+            <div class="vshw-metric-item green">
+              <span class="m-label">Heat Loss</span>
+              <span class="m-val">Zero (Optimal)</span>
+            </div>
+            <div class="vshw-metric-item green">
+              <span class="m-label">Safety</span>
+              <span class="m-val">Full Protection</span>
+            </div>
           </div>
         </div>
 
         <div class="vshw-bottom-pill green">
-          <span><i class="fa-solid fa-receipt"></i> Lower Consumption</span>
-          <span><strong>Lower Bill</strong></span>
+          <span><i class="fa-solid fa-receipt"></i> Zero Wastage</span>
+          <span><strong>Save 20%-30% Bill</strong></span>
         </div>
       </div>
 
