@@ -1,5 +1,5 @@
 {% comment %}
-  HOW TO INSTALL VIDHYUT SAATHI CARD - Single Master Showcase Card Layout (Horizontal Mobile Alignment)
+  HOW TO INSTALL VIDHYUT SAATHI CARD - Perfectly Proportioned Compact Mobile Layout
   File: sections/vidhyut-how-to-install.liquid
 {% endcomment %}
 
@@ -370,81 +370,85 @@
   }
 
   /* ==========================================================
-     MOBILE HORIZONTAL ALIGNMENT (Max Width 768px)
-     Renders all 3 step cards side-by-side horizontally inside Master Card
+     MOBILE COMPACT PROPORTIONAL HORIZONTAL ALIGNMENT (Max Width 768px)
+     Renders beautifully proportioned side-by-side cards without vertical stretching
      ========================================================== */
   @media screen and (max-width: 768px) {
     .vsi-wrapper {
-      padding: 30px 0 20px 0 !important;
+      padding: 24px 0 15px 0 !important;
     }
 
     .vsi-container {
-      padding: 0 10px !important;
+      padding: 0 8px !important;
     }
 
     .vsi-header {
-      margin-bottom: 20px !important;
+      margin-bottom: 16px !important;
     }
 
     .vsi-eyebrow-pill {
-      padding: 5px 16px !important;
-      font-size: 0.74rem !important;
-      margin-bottom: 8px !important;
+      padding: 4px 14px !important;
+      font-size: 0.7rem !important;
+      margin-bottom: 6px !important;
     }
 
     .vsi-main-title {
-      font-size: clamp(18px, 5.2vw, 24px) !important;
+      font-size: clamp(17px, 4.8vw, 22px) !important;
       line-height: 1.2 !important;
-      margin-bottom: 8px !important;
+      margin-bottom: 6px !important;
     }
 
     .vsi-subtitle-pills {
-      gap: 6px !important;
+      gap: 5px !important;
     }
 
     .vsi-sub-pill {
-      padding: 3px 10px !important;
-      font-size: 0.7rem !important;
+      padding: 2px 8px !important;
+      font-size: 0.65rem !important;
     }
 
     .vsi-master-showcase-card {
-      padding: 16px 10px !important;
-      border-radius: 20px !important;
-      margin-bottom: 28px !important;
+      padding: 12px 6px !important;
+      border-radius: 18px !important;
+      margin-bottom: 22px !important;
     }
 
     .vsi-mc-topbar {
-      flex-direction: column !important;
-      text-align: center !important;
-      gap: 6px !important;
-      margin-bottom: 16px !important;
-      padding-bottom: 12px !important;
+      flex-direction: row !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      gap: 4px !important;
+      margin-bottom: 12px !important;
+      padding-bottom: 8px !important;
     }
 
     .vsi-mc-brand span {
-      font-size: 1rem !important;
+      font-size: 0.82rem !important;
+    }
+    .vsi-mc-brand i {
+      font-size: 16px !important;
     }
 
     .vsi-mc-slogan-pill {
-      font-size: 0.72rem !important;
-      padding: 4px 12px !important;
+      font-size: 0.65rem !important;
+      padding: 3px 8px !important;
     }
 
-    /* ALL 3 CARDS ALIGNED HORIZONTALLY SIDE-BY-SIDE INSIDE MASTER CARD ON MOBILE */
+    /* ALL 3 CARDS COMPACT & PERFECTLY PROPORTIONED SIDE-BY-SIDE */
     .vsi-mc-grid {
       display: grid !important;
       grid-template-columns: 1fr auto 1fr auto 1fr !important;
-      gap: 6px !important;
+      gap: 4px !important;
       align-items: stretch !important;
     }
 
     .vsi-arrow-wrap {
-      width: 26px !important;
-      height: 26px !important;
-      font-size: 0.72rem !important;
+      width: 20px !important;
+      height: 20px !important;
+      font-size: 0.62rem !important;
       transform: none !important;
       margin: auto 0 !important;
-      box-shadow: 0 4px 10px rgba(236, 92, 10, 0.25) !important;
+      box-shadow: 0 2px 6px rgba(236, 92, 10, 0.25) !important;
     }
     @keyframes vsiPulse {
       0%, 100% { transform: scale(1); }
@@ -452,100 +456,113 @@
     }
 
     .vsi-inner-step-box {
-      border-radius: 14px !important;
-      border-width: 1.5px !important;
+      border-radius: 12px !important;
+      border-width: 1px !important;
+      border-top-width: 3px !important;
     }
 
+    /* INLINE COMPACT HEADER IN 1 LINE FOR MOBILE */
     .vsi-step-topbar {
-      padding: 8px 6px !important;
-      gap: 6px !important;
-      flex-direction: column !important;
-      text-align: center !important;
+      padding: 6px 4px !important;
+      gap: 4px !important;
+      flex-direction: row !important;
+      justify-content: center !important;
+      align-items: center !important;
     }
 
     .vsi-step-num {
-      width: 28px !important;
-      height: 28px !important;
-      font-size: 0.8rem !important;
-      border-radius: 8px !important;
+      width: 20px !important;
+      height: 20px !important;
+      font-size: 0.7rem !important;
+      border-radius: 6px !important;
     }
 
     .vsi-step-title {
-      font-size: 0.72rem !important;
-      line-height: 1.15 !important;
-      text-align: center !important;
+      font-size: 0.65rem !important;
+      line-height: 1.1 !important;
+      text-align: left !important;
     }
 
+    /* COMPACT STAGE HEIGHT (80px instead of 210px) TO PREVENT TALL STRETCHING */
     .vsi-step-stage {
-      height: 125px !important;
+      height: 80px !important;
+      background: #080d19 !important;
     }
 
     .vsi-step-stage.light-bg {
-      padding: 4px !important;
+      padding: 3px !important;
+    }
+
+    .vsi-card-fill-img {
+      object-fit: contain !important;
+      width: 100% !important;
+      height: 100% !important;
     }
 
     .vsi-peel-perfect-img {
-      max-height: 110px !important;
+      max-height: 74px !important;
+      max-width: 100% !important;
     }
 
     .vsi-mcb-user-img {
-      max-height: 115px !important;
+      max-height: 74px !important;
+      max-width: 100% !important;
     }
 
     .vsi-step-desc {
-      padding: 8px 5px !important;
-      font-size: 0.68rem !important;
-      line-height: 1.25 !important;
+      padding: 5px 3px !important;
+      font-size: 0.62rem !important;
+      line-height: 1.2 !important;
     }
 
     .vsi-badges-grid {
       grid-template-columns: repeat(2, 1fr) !important;
-      gap: 8px !important;
-      margin-bottom: 20px !important;
+      gap: 6px !important;
+      margin-bottom: 18px !important;
     }
 
     .vsi-badge-card {
-      padding: 10px 10px !important;
-      gap: 8px !important;
-      border-radius: 14px !important;
+      padding: 8px 8px !important;
+      gap: 6px !important;
+      border-radius: 12px !important;
     }
 
     .vsi-badge-icon {
-      width: 36px !important;
-      height: 36px !important;
-      font-size: 0.95rem !important;
-      border-radius: 10px !important;
+      width: 32px !important;
+      height: 32px !important;
+      font-size: 0.85rem !important;
+      border-radius: 8px !important;
     }
 
     .vsi-badge-text h4 {
-      font-size: 0.72rem !important;
-      line-height: 1.2 !important;
+      font-size: 0.68rem !important;
+      line-height: 1.15 !important;
     }
 
     .vsi-badge-text p {
-      font-size: 0.65rem !important;
+      font-size: 0.6rem !important;
     }
 
     .vsi-trust-bar {
-      padding: 14px 14px !important;
-      border-radius: 18px !important;
-      gap: 12px !important;
+      padding: 12px 10px !important;
+      border-radius: 16px !important;
+      gap: 10px !important;
       flex-direction: row !important;
       flex-wrap: wrap !important;
       justify-content: space-between !important;
     }
 
     .vsi-trust-item {
-      gap: 8px !important;
+      gap: 6px !important;
     }
     .vsi-trust-item i {
-      font-size: 1.3rem !important;
+      font-size: 1.1rem !important;
     }
     .vsi-trust-item div h5 {
-      font-size: 0.72rem !important;
+      font-size: 0.68rem !important;
     }
     .vsi-trust-item div p {
-      font-size: 0.65rem !important;
+      font-size: 0.6rem !important;
     }
   }
 {%- endstyle -%}
@@ -582,7 +599,7 @@
       <div class="vsi-header-divider"></div>
     </div>
 
-    <!-- SINGLE MASTER SHOWCASE CARD CONTAINER (HORIZONTAL SIDE-BY-SIDE ALIGNMENT) -->
+    <!-- SINGLE MASTER SHOWCASE CARD CONTAINER (HORIZONTAL COMPACT MOBILE ALIGNMENT) -->
     <div class="vsi-master-showcase-card">
       
       <!-- TOP BAR INSIDE MASTER CARD -->
@@ -596,14 +613,14 @@
         </div>
       </div>
 
-      <!-- 3-STEP GRID INSIDE MASTER CARD (HORIZONTALLY ALIGNED ON MOBILE & DESKTOP) -->
+      <!-- 3-STEP GRID INSIDE MASTER CARD -->
       <div class="vsi-mc-grid">
 
         <!-- STEP 01: TAKE THE CARD -->
         <div class="vsi-inner-step-box">
           <div class="vsi-step-topbar">
             <div class="vsi-step-num">01</div>
-            <h3 class="vsi-step-title">TAKE THE CARD</h3>
+            <h3 class="vsi-step-title">TAKE CARD</h3>
           </div>
           <div class="vsi-step-stage">
             <img 
@@ -617,7 +634,7 @@
             >
           </div>
           <div class="vsi-step-desc">
-            Take the Card From<br><strong>VS Brand Box</strong>
+            Take Card From<br><strong>Brand Box</strong>
           </div>
         </div>
 
@@ -630,7 +647,7 @@
         <div class="vsi-inner-step-box">
           <div class="vsi-step-topbar">
             <div class="vsi-step-num">02</div>
-            <h3 class="vsi-step-title">PEEL OFF 3M ADHESIVE</h3>
+            <h3 class="vsi-step-title">PEEL 3M TAPE</h3>
           </div>
           <div class="vsi-step-stage light-bg">
             <img 
@@ -643,7 +660,7 @@
             >
           </div>
           <div class="vsi-step-desc">
-            Remove the <strong>3M tape</strong><br>From Back Of VS Card
+            Remove <strong>3M Tape</strong><br>From Card Back
           </div>
         </div>
 
@@ -656,7 +673,7 @@
         <div class="vsi-inner-step-box">
           <div class="vsi-step-topbar">
             <div class="vsi-step-num">03</div>
-            <h3 class="vsi-step-title">PASTE IT ON MCB</h3>
+            <h3 class="vsi-step-title">PASTE ON MCB</h3>
           </div>
           <div class="vsi-step-stage light-bg">
             <img 
@@ -669,7 +686,7 @@
             >
           </div>
           <div class="vsi-step-desc">
-            Stick card onto your<br><strong>MCB / Switch Boards</strong>
+            Stick Card On<br><strong>MCB Board</strong>
           </div>
         </div>
 
