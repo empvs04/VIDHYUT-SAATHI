@@ -1,0 +1,685 @@
+{% comment %}
+  Vidhyut Saathi - How to Install Section (Light Theme)
+  File: sections/vidhyut-how-to-install.liquid
+{% endcomment %}
+
+{%- style -%}
+  .vsinst-wrapper {
+    background: linear-gradient(180deg, #ffffff 0%, #fffdf8 40%, #f6faf6 100%);
+    padding: 70px 0;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+  }
+
+  .vsinst-container {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* --- HEADER STYLES --- */
+  .vsinst-header {
+    text-align: center;
+    max-width: 850px;
+    margin: 0 auto 50px auto;
+  }
+
+  .vsinst-top-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    background: linear-gradient(135deg, #FFF3E0 0%, #FFE5B4 100%);
+    border: 1.5px solid rgba(247, 148, 29, 0.4);
+    padding: 8px 24px;
+    border-radius: 50px;
+    margin-bottom: 20px;
+    box-shadow: 0 6px 20px rgba(247, 148, 29, 0.12);
+  }
+
+  .vsinst-badge-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: #D96924;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  .vsinst-badge-divider {
+    color: rgba(217, 105, 36, 0.4);
+    font-weight: 300;
+  }
+
+  .vsinst-main-title {
+    font-family: 'Baloo 2', 'Outfit', sans-serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 900;
+    color: #0f172a;
+    line-height: 1.2;
+    margin: 0 0 14px 0;
+    letter-spacing: -0.5px;
+  }
+  .vsinst-main-title .hl-blue { color: #003399; }
+  .vsinst-main-title .hl-orange { color: #ec5c0a; }
+
+  .vsinst-subtitle {
+    font-size: 1.05rem;
+    color: #475569;
+    font-weight: 600;
+    margin: 0 auto 20px auto;
+  }
+
+  .vsinst-header-divider {
+    width: 90px;
+    height: 4px;
+    background: linear-gradient(90deg, #ec5c0a, #007b3e);
+    border-radius: 10px;
+    margin: 0 auto;
+  }
+
+  /* --- 3-STEP GRID STYLES --- */
+  .vsinst-steps-wrapper {
+    position: relative;
+    margin-bottom: 50px;
+  }
+
+  .vsinst-steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .vsinst-step-card {
+    background: #ffffff;
+    border: 2px solid rgba(247, 148, 29, 0.25);
+    border-top: 5px solid #F7941D;
+    border-radius: 26px;
+    padding: 32px 24px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.05);
+    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .vsinst-step-card:hover {
+    transform: translateY(-8px);
+    border-color: #ec5c0a;
+    box-shadow: 0 24px 50px rgba(236, 92, 10, 0.18);
+  }
+
+  /* STEP NUMBER BADGE */
+  .vsinst-step-num {
+    width: 52px;
+    height: 52px;
+    background: linear-gradient(135deg, #090e1a 0%, #1e293b 100%);
+    color: #ffffff;
+    border: 3px solid #ffcc00;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 1.35rem;
+    font-weight: 900;
+    margin-bottom: 18px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .vsinst-step-card:nth-child(2) .vsinst-step-num {
+    background: linear-gradient(135deg, #ec5c0a 0%, #ff9900 100%);
+    border-color: #ffffff;
+    box-shadow: 0 8px 20px rgba(236, 92, 10, 0.4);
+  }
+
+  .vsinst-step-card:nth-child(3) .vsinst-step-num {
+    background: linear-gradient(135deg, #007b3e 0%, #10b981 100%);
+    border-color: #ffffff;
+    box-shadow: 0 8px 20px rgba(0, 123, 62, 0.4);
+  }
+
+  .vsinst-step-title {
+    font-family: 'Baloo 2', 'Outfit', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 900;
+    color: #0f172a;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin: 0 0 18px 0;
+  }
+
+  /* STEP IMAGE CONTAINER */
+  .vsinst-img-box {
+    width: 100%;
+    height: 210px;
+    border-radius: 18px;
+    overflow: hidden;
+    background: #f8fafc;
+    border: 1.5px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    margin-bottom: 20px;
+    position: relative;
+    box-shadow: inset 0 2px 10px rgba(0,0,0,0.03);
+  }
+
+  .vsinst-img-box img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    transition: transform 0.4s ease;
+  }
+
+  .vsinst-step-card:hover .vsinst-img-box img {
+    transform: scale(1.06);
+  }
+
+  .vsinst-step-desc {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #334155;
+    line-height: 1.5;
+    margin: 0;
+  }
+  .vsinst-step-desc strong {
+    color: #ec5c0a;
+  }
+
+  /* STEP ARROW CONNECTOR (DESKTOP) */
+  .vsinst-arrow-next {
+    position: absolute;
+    top: 50%;
+    right: -20px;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #ec5c0a, #ff9900);
+    color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    z-index: 5;
+    box-shadow: 0 6px 16px rgba(236, 92, 10, 0.4);
+  }
+
+  /* --- 4 INSTALLATION GUARANTEE BADGES --- */
+  .vsinst-features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 40px;
+  }
+
+  .vsinst-feat-card {
+    background: #ffffff;
+    border: 1.5px solid rgba(247, 148, 29, 0.2);
+    border-radius: 20px;
+    padding: 18px 16px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+
+  .vsinst-feat-card:hover {
+    transform: translateY(-4px);
+    border-color: #ec5c0a;
+  }
+
+  .vsinst-feat-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .vsinst-feat-icon.blue { background: linear-gradient(135deg, #0f172a, #1e293b); color: #ffcc00; }
+  .vsinst-feat-icon.orange { background: linear-gradient(135deg, #FFF3E0, #FFE0B2); color: #D96924; }
+  .vsinst-feat-icon.red { background: linear-gradient(135deg, #FEF2F2, #FEE2E2); color: #DC2626; }
+  .vsinst-feat-icon.green { background: linear-gradient(135deg, #E8F5E9, #C8E6C9); color: #1B5E20; }
+
+  .vsinst-feat-text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .vsinst-feat-label {
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #64748B;
+    letter-spacing: 0.5px;
+  }
+
+  .vsinst-feat-title {
+    font-size: 0.92rem;
+    font-weight: 900;
+    color: #0f172a;
+    line-height: 1.25;
+  }
+
+  /* --- FOOTPRINT TRUST BAR --- */
+  .vsinst-footprint-bar {
+    background: linear-gradient(135deg, #090e1a 0%, #172033 100%);
+    border: 2px solid rgba(247, 148, 29, 0.4);
+    border-radius: 50px;
+    padding: 18px 36px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    color: #ffffff;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+    margin-bottom: 35px;
+  }
+
+  .vsinst-fp-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .vsinst-fp-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba(255, 204, 0, 0.15);
+    border: 1px solid rgba(255, 204, 0, 0.4);
+    color: #ffcc00;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+  }
+
+  .vsinst-fp-text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .vsinst-fp-head {
+    font-size: 0.8rem;
+    font-weight: 900;
+    color: #ffcc00;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .vsinst-fp-sub {
+    font-size: 0.88rem;
+    font-weight: 800;
+    color: #ffffff;
+  }
+
+  /* --- CTA ORDER WRAPPER --- */
+  .vsinst-cta-wrap {
+    text-align: center;
+  }
+
+  .vsinst-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 42px;
+    background: linear-gradient(135deg, #ec5c0a 0%, #ff9900 100%);
+    color: #ffffff !important;
+    font-size: 1.1rem;
+    font-weight: 900;
+    text-decoration: none;
+    border-radius: 50px;
+    box-shadow: 0 12px 35px rgba(236, 92, 10, 0.4);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .vsinst-cta-btn:hover {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 18px 45px rgba(236, 92, 10, 0.6);
+    background: linear-gradient(135deg, #ff9900 0%, #007b3e 100%);
+  }
+
+  /* --- MOBILE RESPONSIVE OPTIMIZATIONS (Max Width 768px) --- */
+  @media screen and (max-width: 768px) {
+    .vsinst-wrapper {
+      padding: 40px 0 !important;
+    }
+
+    .vsinst-header {
+      margin-bottom: 30px !important;
+    }
+
+    .vsinst-top-badge {
+      gap: 8px !important;
+      padding: 6px 16px !important;
+    }
+
+    .vsinst-badge-item {
+      font-size: 0.75rem !important;
+    }
+
+    .vsinst-main-title {
+      font-size: clamp(22px, 6vw, 28px) !important;
+    }
+
+    .vsinst-subtitle {
+      font-size: 0.9rem !important;
+    }
+
+    .vsinst-steps-grid {
+      grid-template-columns: 1fr !important;
+      gap: 20px !important;
+    }
+
+    .vsinst-arrow-next {
+      display: none !important;
+    }
+
+    .vsinst-step-card {
+      padding: 24px 18px !important;
+      border-radius: 22px !important;
+    }
+
+    .vsinst-img-box {
+      height: 180px !important;
+      border-radius: 14px !important;
+    }
+
+    .vsinst-step-title {
+      font-size: 1.1rem !important;
+      margin-bottom: 12px !important;
+    }
+
+    .vsinst-step-desc {
+      font-size: 0.88rem !important;
+    }
+
+    .vsinst-features-grid {
+      grid-template-columns: 1fr !important;
+      gap: 10px !important;
+    }
+
+    .vsinst-feat-card {
+      padding: 14px 16px !important;
+      border-radius: 16px !important;
+    }
+
+    .vsinst-footprint-bar {
+      flex-direction: column !alignment;
+      text-align: center !important;
+      justify-content: center !important;
+      border-radius: 24px !important;
+      padding: 20px 16px !important;
+      gap: 14px !important;
+    }
+
+    .vsinst-fp-item {
+      justify-content: center !important;
+    }
+
+    .vsinst-cta-btn {
+      width: 100% !important;
+      justify-content: center !important;
+      padding: 16px 24px !important;
+      font-size: 1rem !important;
+      box-sizing: border-box !important;
+    }
+  }
+{%- endstyle -%}
+
+<section class="vsinst-wrapper" id="vsinst-section-{{ section.id }}">
+  <div class="vsinst-container">
+    
+    <!-- HEADER -->
+    <div class="vsinst-header">
+      <div class="vsinst-top-badge">
+        <div class="vsinst-badge-item">
+          <i class="fa-solid fa-bolt"></i> 3 SIMPLE STEPS
+        </div>
+        <span class="vsinst-badge-divider">|</span>
+        <div class="vsinst-badge-item">
+          <i class="fa-solid fa-ban"></i> NO WIRING
+        </div>
+        <span class="vsinst-badge-divider">|</span>
+        <div class="vsinst-badge-item">
+          <i class="fa-solid fa-user-shield"></i> NO TECHNICIAN REQUIRED
+        </div>
+      </div>
+
+      <h2 class="vsinst-main-title">
+        HOW TO INSTALL <span class="hl-orange">VIDHYUT SAATHI CARD</span>
+      </h2>
+      <p class="vsinst-subtitle">
+        Self-Installation in 30 Seconds — Just Peel 3M Adhesive & Paste Near Your MCB Box!
+      </p>
+      <div class="vsinst-header-divider"></div>
+    </div>
+
+    <!-- 3 SIMPLE STEPS GRID -->
+    <div class="vsinst-steps-wrapper">
+      <div class="vsinst-steps-grid">
+        
+        <!-- STEP 01 -->
+        <div class="vsinst-step-card">
+          <div class="vsinst-step-num">01</div>
+          <h3 class="vsinst-step-title">TAKE THE CARD</h3>
+          
+          <div class="vsinst-img-box">
+            {%- if section.settings.step1_image != blank -%}
+              {{ section.settings.step1_image | image_url: width: 600 | image_tag: loading: 'lazy', alt: 'Take Vidhyut Saathi Card from Brand Box' }}
+            {%- else -%}
+              <img 
+                src="{{ 'official-vs-card-front.jpg' | asset_url }}" 
+                alt="Take Vidhyut Saathi Card from Brand Box" 
+                loading="eager" 
+                width="600" 
+                height="400"
+                onerror="this.onerror=null; this.src='https://cdn.shopify.com/s/files/1/0663/8783/7093/files/VS_Card_Final_Design_Golden_1.png';"
+              >
+            {%- endif -%}
+          </div>
+
+          <p class="vsinst-step-desc">
+            Take the Card From <strong>Vidhyut Saathi Brand Box</strong>
+          </p>
+
+          <div class="vsinst-arrow-next">
+            <i class="fa-solid fa-arrow-right"></i>
+          </div>
+        </div>
+
+        <!-- STEP 02 -->
+        <div class="vsinst-step-card">
+          <div class="vsinst-step-num">02</div>
+          <h3 class="vsinst-step-title">PEEL OFF 3M ADHESIVE</h3>
+          
+          <div class="vsinst-img-box">
+            {%- if section.settings.step2_image != blank -%}
+              {{ section.settings.step2_image | image_url: width: 600 | image_tag: loading: 'lazy', alt: 'Peel Off 3M Adhesive Tape from Back of VS Card' }}
+            {%- else -%}
+              <img 
+                src="{{ 'vs-3m-peel.jpg' | asset_url }}" 
+                alt="Peel Off 3M Adhesive Tape from Back of VS Card" 
+                loading="eager" 
+                width="600" 
+                height="400"
+                onerror="this.onerror=null; this.src='https://cdn.shopify.com/s/files/1/0663/8783/7093/files/VS_Card_Final_Design_Golden_1.png';"
+              >
+            {%- endif -%}
+          </div>
+
+          <p class="vsinst-step-desc">
+            Remove the <strong>3M adhesive tape</strong> From the Back Side Of VS Card
+          </p>
+
+          <div class="vsinst-arrow-next">
+            <i class="fa-solid fa-arrow-right"></i>
+          </div>
+        </div>
+
+        <!-- STEP 03 -->
+        <div class="vsinst-step-card">
+          <div class="vsinst-step-num">03</div>
+          <h3 class="vsinst-step-title">PASTE IT ON MCB</h3>
+          
+          <div class="vsinst-img-box">
+            {%- if section.settings.step3_image != blank -%}
+              {{ section.settings.step3_image | image_url: width: 600 | image_tag: loading: 'lazy', alt: 'Stick Card onto MCB or ELCB Box' }}
+            {%- else -%}
+              <img 
+                src="{{ 'vs-install-mcb-meter.jpg' | asset_url }}" 
+                alt="Stick Card onto MCB or ELCB Box" 
+                loading="eager" 
+                width="600" 
+                height="400"
+                onerror="this.onerror=null; this.src='https://cdn.shopify.com/s/files/1/0663/8783/7093/files/VS_Card_Final_Design_Golden_1.png';"
+              >
+            {%- endif -%}
+          </div>
+
+          <p class="vsinst-step-desc">
+            Stick the card onto your <strong>MCB / ELCB / Switch Boards</strong>
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 4 INSTALLATION GUARANTEE BADGES -->
+    <div class="vsinst-features-grid">
+      <div class="vsinst-feat-card">
+        <div class="vsinst-feat-icon blue">
+          <i class="fa-solid fa-stopwatch"></i>
+        </div>
+        <div class="vsinst-feat-text">
+          <span class="vsinst-feat-label">SUPER FAST</span>
+          <span class="vsinst-feat-title">INSTALLATION IN 30 SECONDS</span>
+        </div>
+      </div>
+
+      <div class="vsinst-feat-card">
+        <div class="vsinst-feat-icon orange">
+          <i class="fa-solid fa-scissors"></i>
+        </div>
+        <div class="vsinst-feat-text">
+          <span class="vsinst-feat-label">HASSLE FREE</span>
+          <span class="vsinst-feat-title">NO WIRING REQUIRED</span>
+        </div>
+      </div>
+
+      <div class="vsinst-feat-card">
+        <div class="vsinst-feat-icon red">
+          <i class="fa-solid fa-bolt-lightning"></i>
+        </div>
+        <div class="vsinst-feat-text">
+          <span class="vsinst-feat-label">CONTINUOUS POWER</span>
+          <span class="vsinst-feat-title">NO ELECTRICITY INTERRUPTION</span>
+        </div>
+      </div>
+
+      <div class="vsinst-feat-card">
+        <div class="vsinst-feat-icon green">
+          <i class="fa-solid fa-hand-pointer"></i>
+        </div>
+        <div class="vsinst-feat-text">
+          <span class="vsinst-feat-label">DO IT YOURSELF</span>
+          <span class="vsinst-feat-title">EASY SELF INSTALLATION</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTPRINT TRUST BAR -->
+    <div class="vsinst-footprint-bar">
+      <div class="vsinst-fp-item">
+        <div class="vsinst-fp-icon">
+          <i class="fa-solid fa-microchip"></i>
+        </div>
+        <div class="vsinst-fp-text">
+          <span class="vsinst-fp-head">SMART TECHNOLOGY</span>
+          <span class="vsinst-fp-sub">BETTER SAVINGS</span>
+        </div>
+      </div>
+
+      <div class="vsinst-fp-item">
+        <div class="vsinst-fp-icon">
+          <i class="fa-solid fa-leaf"></i>
+        </div>
+        <div class="vsinst-fp-text">
+          <span class="vsinst-fp-head">SAVE ELECTRICITY</span>
+          <span class="vsinst-fp-sub">SAVE MONEY</span>
+        </div>
+      </div>
+
+      <div class="vsinst-fp-item">
+        <div class="vsinst-fp-icon">
+          <i class="fa-solid fa-award"></i>
+        </div>
+        <div class="vsinst-fp-text">
+          <span class="vsinst-fp-head">ISO CERTIFIED</span>
+          <span class="vsinst-fp-sub">TRUSTED QUALITY</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ORDER CTA BUTTON -->
+    <div class="vsinst-cta-wrap">
+      <a href="/products/vidhyut-saathi-card" class="vsinst-cta-btn">
+        <span>Order Vidhyut Saathi Card Now</span>
+        <i class="fa-solid fa-arrow-right-long"></i>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "How to Install Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title",
+      "default": "HOW TO INSTALL VIDHYUT SAATHI CARD"
+    },
+    {
+      "type": "image_picker",
+      "id": "step1_image",
+      "label": "Step 1 Card Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "step2_image",
+      "label": "Step 2 Peel Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "step3_image",
+      "label": "Step 3 MCB Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Vidhyut How to Install"
+    }
+  ]
+}
+{% endschema %}
