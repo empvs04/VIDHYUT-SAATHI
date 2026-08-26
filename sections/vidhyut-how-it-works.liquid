@@ -1,561 +1,127 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+{% comment %}
+  Vidhyut Saathi - How Does Vidhyut Saathi Card Save Electricity Bill (Master Showcase Banner)
+  File: sections/vidhyut-how-it-works.liquid
+{% endcomment %}
 
 {%- style -%}
-  /* --- HOW IT WORKS SECTION STYLES --- */
   .vshw-wrapper {
+    background: linear-gradient(180deg, #ffffff 0%, #fffdf8 50%, #f6faf6 100%);
+    padding: 65px 0;
     position: relative;
-    padding: clamp(50px, 7vw, 90px) 20px;
-    background: linear-gradient(150deg, #FFFDF8 0%, #FFF5E0 35%, #F4FAF5 70%, #FFFFFF 100%);
-    font-family: 'Plus Jakarta Sans', 'Outfit', 'Poppins', sans-serif;
-    color: #0f172a;
     overflow: hidden;
-    border-top: 1.5px solid rgba(247, 148, 29, 0.15);
-    border-bottom: 1.5px solid rgba(0, 123, 62, 0.15);
-  }
-
-  /* Decorative Background Glows */
-  .vshw-wrapper::before {
-    content: '';
-    position: absolute;
-    top: -120px;
-    left: -120px;
-    width: 450px;
-    height: 450px;
-    background: radial-gradient(circle, rgba(236, 92, 10, 0.10) 0%, transparent 70%);
-    border-radius: 50%;
-    pointer-events: none;
-  }
-  .vshw-wrapper::after {
-    content: '';
-    position: absolute;
-    bottom: -120px;
-    right: -120px;
-    width: 450px;
-    height: 450px;
-    background: radial-gradient(circle, rgba(0, 123, 62, 0.10) 0%, transparent 70%);
-    border-radius: 50%;
-    pointer-events: none;
+    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
   }
 
   .vshw-container {
-    max-width: 1280px;
+    max-width: 1240px;
     margin: 0 auto;
+    padding: 0 20px;
     position: relative;
     z-index: 2;
   }
 
-  /* --- HEADER & TOP BADGES --- */
+  /* --- HEADER STYLES --- */
   .vshw-header {
     text-align: center;
-    max-width: 920px;
-    margin: 0 auto 50px auto;
+    max-width: 900px;
+    margin: 0 auto 40px auto;
   }
 
   .vshw-top-tags {
-    display: flex;
-    flex-wrap: wrap;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
     gap: 12px;
     margin-bottom: 18px;
   }
 
   .vshw-tag-slogan {
+    background: linear-gradient(135deg, #FFF3E0, #FFE0B2);
+    border: 1.5px solid rgba(236, 92, 10, 0.4);
+    color: #D96924;
+    padding: 6px 18px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 7px 22px;
-    background: linear-gradient(135deg, #FFF3E0, #FFE5B4);
-    border: 1.5px solid rgba(236, 92, 10, 0.4);
-    border-radius: 50px;
-    font-size: 0.88rem;
-    font-weight: 800;
-    color: #D96924;
-    letter-spacing: 0.5px;
-    box-shadow: 0 4px 15px rgba(236, 92, 10, 0.15);
-  }
-  .vshw-tag-slogan .pulse-bolt {
-    color: #ec5c0a;
-    font-size: 1rem;
-    animation: vshwBoltPulse 1.5s infinite alternate;
-  }
-  @keyframes vshwBoltPulse {
-    0% { transform: scale(0.9); opacity: 0.8; }
-    100% { transform: scale(1.2); opacity: 1; filter: drop-shadow(0 0 6px #ec5c0a); }
+    box-shadow: 0 4px 14px rgba(236, 92, 10, 0.12);
   }
 
   .vshw-tag-pill {
+    background: #ffffff;
+    border: 1.5px solid rgba(0, 123, 62, 0.3);
+    color: #007b3e;
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 0.82rem;
+    font-weight: 800;
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    padding: 6px 16px;
-    background: #ffffff;
-    border: 1px solid rgba(0, 123, 62, 0.3);
-    border-radius: 50px;
-    font-size: 0.8rem;
-    font-weight: 700;
-    color: #007b3e;
-    box-shadow: 0 4px 12px rgba(0, 123, 62, 0.08);
   }
 
   .vshw-main-title {
     font-family: 'Baloo 2', 'Outfit', sans-serif;
-    font-size: clamp(26px, 4vw, 46px);
+    font-size: clamp(1.8rem, 3.8vw, 2.8rem);
     font-weight: 900;
-    line-height: 1.2;
     color: #0f172a;
+    line-height: 1.25;
+    margin: 0 0 16px 0;
     letter-spacing: -0.5px;
-    margin: 0 0 14px 0;
-    text-transform: uppercase;
   }
-  .vshw-main-title .highlight-orange {
-    background: linear-gradient(135deg, #ec5c0a 0%, #ff9900 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  .vshw-main-title .highlight-green {
-    background: linear-gradient(135deg, #007b3e 0%, #3ead47 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
+  .vshw-main-title .highlight-orange { color: #ec5c0a; }
+  .vshw-main-title .highlight-green { color: #007b3e; }
 
   .vshw-header-divider {
-    width: 90px;
+    width: 100px;
     height: 4px;
-    border-radius: 4px;
-    background: linear-gradient(90deg, #ec5c0a, #007b3e, #ec5c0a);
-    background-size: 200% auto;
-    animation: vshwShimmer 2.5s linear infinite;
+    background: linear-gradient(90deg, #ec5c0a, #007b3e);
+    border-radius: 10px;
     margin: 0 auto;
   }
-  @keyframes vshwShimmer {
-    0% { background-position: 0% center; }
-    100% { background-position: 200% center; }
-  }
 
-  /* --- 3-COLUMN MAIN COMPARISON STAGE --- */
-  .vshw-stage-grid {
-    display: grid;
-    grid-template-columns: 1fr 1.15fr 1fr;
-    gap: 26px;
-    align-items: stretch;
-    margin-bottom: 50px;
-  }
-  @media (max-width: 992px) {
-    .vshw-stage-grid {
-      grid-template-columns: 1fr;
-      gap: 30px;
-    }
-  }
-
-  /* --- COMPARISON CARD BOX (BEFORE & AFTER) --- */
-  .vshw-comp-box {
+  /* --- MASTER SHOWCASE BANNER STAGE --- */
+  .vshw-master-stage {
     background: #ffffff;
-    border-radius: 28px;
-    padding: 28px 22px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.06);
-    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-  }
-  .vshw-comp-box:hover {
-    transform: translateY(-6px);
-  }
-
-  /* BEFORE CARD STYLES */
-  .vshw-comp-box.before-box {
-    border: 2px solid rgba(220, 38, 38, 0.3);
-    background: linear-gradient(160deg, #FFFFFF 0%, #FFF5F5 50%, #FEF2F2 100%);
-  }
-  .vshw-comp-box.before-box:hover {
-    box-shadow: 0 24px 50px rgba(220, 38, 38, 0.18);
-    border-color: rgba(220, 38, 38, 0.5);
-  }
-
-  /* AFTER CARD STYLES */
-  .vshw-comp-box.after-box {
-    border: 2px solid rgba(16, 185, 129, 0.3);
-    background: linear-gradient(160deg, #FFFFFF 0%, #F0FDF4 50%, #ECFDF5 100%);
-  }
-  .vshw-comp-box.after-box:hover {
-    box-shadow: 0 24px 50px rgba(16, 185, 129, 0.18);
-    border-color: rgba(16, 185, 129, 0.5);
-  }
-
-  .vshw-box-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 16px;
-  }
-
-  .vshw-badge-pill {
-    padding: 6px 18px;
-    border-radius: 50px;
-    font-size: 0.82rem;
-    font-weight: 900;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .vshw-badge-pill.before {
-    background: linear-gradient(135deg, #EF4444, #DC2626);
-    color: #ffffff;
-    box-shadow: 0 4px 14px rgba(220, 38, 38, 0.3);
-  }
-  .vshw-badge-pill.after {
-    background: linear-gradient(135deg, #10B981, #059669);
-    color: #ffffff;
-    box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
-  }
-
-  .vshw-box-title {
-    font-size: 1.05rem;
-    font-weight: 800;
-    color: #1e293b;
-    margin: 0 0 16px 0;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .vshw-box-title i.red { color: #dc2626; }
-  .vshw-box-title i.green { color: #10b981; }
-
-  /* GRAPH CONTAINER & CANVAS */
-  .vshw-graph-wrapper {
-    position: relative;
-    width: 100%;
-    height: 160px;
-    background: #090e1a;
-    border-radius: 18px;
-    overflow: hidden;
-    margin-bottom: 20px;
-    border: 1.5px solid rgba(255, 255, 255, 0.1);
-    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.5);
-  }
-
-  .vshw-graph-canvas {
-    width: 100%;
-    height: 100%;
-    display: block;
-  }
-
-  .vshw-graph-overlay {
-    position: absolute;
-    top: 10px;
-    right: 12px;
-    background: rgba(9, 14, 26, 0.95);
-    backdrop-filter: blur(8px);
-    border-radius: 50px;
-    padding: 5px 14px;
-    font-size: 0.82rem;
-    font-weight: 900;
-    letter-spacing: 0.5px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    border: 1.5px solid rgba(255, 255, 255, 0.3);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
-    z-index: 6;
-  }
-  .vshw-graph-overlay.red {
-    color: #ff6b6b;
-    text-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
-  }
-  .vshw-graph-overlay.green {
-    color: #34d399;
-    text-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
-  }
-  .vshw-graph-overlay .dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-  .vshw-graph-overlay.red .dot { background: #ef4444; box-shadow: 0 0 10px #ef4444; animation: vshwBlink 1s infinite alternate; }
-  .vshw-graph-overlay.green .dot { background: #10b981; box-shadow: 0 0 10px #10b981; animation: vshwBlink 1.8s infinite alternate; }
-  @keyframes vshwBlink { 0% { opacity: 0.3; } 100% { opacity: 1; } }
-
-  .vshw-status-sub {
-    font-size: 0.72rem;
-    font-weight: 900;
-    letter-spacing: 0.8px;
-    padding: 4px 10px;
-    border-radius: 50px;
-    text-transform: uppercase;
-  }
-  .vshw-status-sub.red {
-    background: #FEF2F2;
-    color: #DC2626;
-    border: 1px solid rgba(220, 38, 38, 0.3);
-  }
-  .vshw-status-sub.green {
-    background: #ECFDF5;
-    color: #059669;
-    border: 1px solid rgba(16, 185, 129, 0.3);
-  }
-
-  .vshw-scope-topbar {
-    position: absolute;
-    top: 10px;
-    left: 12px;
-    font-size: 0.76rem;
-    font-weight: 800;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: #ffffff;
-    background: rgba(9, 14, 26, 0.92);
-    backdrop-filter: blur(8px);
-    padding: 4px 12px;
-    border-radius: 50px;
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-    z-index: 6;
-    pointer-events: none;
-  }
-  .vshw-scope-topbar.red i { color: #ef4444; }
-  .vshw-scope-topbar.green i { color: #10b981; }
-
-  /* 3 MICRO METRICS GRID INSIDE CARD */
-  .vshw-micro-metrics {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-    margin-bottom: 20px;
-  }
-
-  .vshw-metric-item {
-    padding: 9px 6px;
-    border-radius: 12px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-    overflow: visible;
-  }
-  .vshw-metric-item.red {
-    background: rgba(254, 242, 242, 0.8);
-    border: 1px solid rgba(239, 68, 68, 0.2);
-  }
-  .vshw-metric-item.green {
-    background: rgba(236, 253, 245, 0.8);
-    border: 1px solid rgba(16, 185, 129, 0.2);
-  }
-
-  .vshw-metric-item .m-label {
-    font-size: 0.68rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    color: #64748B;
-    line-height: 1.3;
-  }
-  .vshw-metric-item.red .m-val {
-    font-size: 0.78rem;
-    font-weight: 900;
-    color: #DC2626;
-    line-height: 1.35;
-    padding-top: 2px;
-    overflow: visible;
-  }
-  .vshw-metric-item.green .m-val {
-    font-size: 0.78rem;
-    font-weight: 900;
-    color: #059669;
-    line-height: 1.35;
-    padding-top: 2px;
-    overflow: visible;
-  }
-
-  .vshw-bottom-pill {
-    padding: 12px 16px;
-    border-radius: 16px;
-    font-size: 0.88rem;
-    font-weight: 800;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-  }
-  .vshw-bottom-pill.red {
-    background: #FEF2F2;
-    border: 1px solid rgba(239, 68, 68, 0.3);
-    color: #991B1B;
-  }
-  .vshw-bottom-pill.green {
-    background: #ECFDF5;
-    border: 1px solid rgba(16, 185, 129, 0.3);
-    color: #065F46;
-  }
-
-  /* --- CENTER CARD SHOWCASE STAGE (LIGHT THEME) --- */
-  .vshw-card-stage {
-    background: linear-gradient(150deg, #FFFFFF 0%, #FFFDF5 50%, #F9FFF5 100%);
-    border: 2px solid rgba(247, 148, 29, 0.35);
+    border: 2.5px solid rgba(247, 148, 29, 0.4);
     border-top: 6px solid #F7941D;
-    border-radius: 32px;
-    padding: 32px 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+    border-radius: 28px;
+    padding: 14px;
+    box-shadow: 0 20px 60px rgba(247, 148, 29, 0.15), 0 4px 20px rgba(0, 0, 0, 0.04);
+    margin-bottom: 45px;
     position: relative;
-    box-shadow:
-      0 26px 60px rgba(247, 148, 29, 0.15),
-      0 6px 20px rgba(0, 0, 0, 0.04);
-    perspective: 1200px;
     overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
   }
 
-  .vshw-card-glow-bg {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 340px;
-    height: 340px;
-    background: radial-gradient(circle, rgba(247, 148, 29, 0.18) 0%, rgba(62, 173, 71, 0.1) 50%, transparent 70%);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 0;
+  .vshw-master-stage:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 26px 70px rgba(247, 148, 29, 0.2);
   }
 
-  .vshw-card-img-wrapper {
-    position: relative;
-    z-index: 2;
+  .vshw-master-img-wrap {
     width: 100%;
-    max-width: 420px;
     border-radius: 20px;
     overflow: hidden;
-    border: 2px solid rgba(247, 148, 29, 0.4);
-    box-shadow:
-      0 20px 45px rgba(247, 148, 29, 0.22),
-      0 8px 25px rgba(0, 0, 0, 0.08);
-    transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-    background: transparent;
-    animation: vshw3DFloat 4s ease-in-out infinite alternate;
+    background: #090e1a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  @keyframes vshw3DFloat {
-    0% {
-      transform: translateY(0px) rotateY(-3deg) rotateX(2deg);
-      box-shadow: 0 16px 36px rgba(247, 148, 29, 0.2), 0 6px 20px rgba(0,0,0,0.06);
-    }
-    100% {
-      transform: translateY(-10px) rotateY(3deg) rotateX(-2deg);
-      box-shadow: 0 28px 55px rgba(247, 148, 29, 0.32), 0 10px 30px rgba(62, 173, 71, 0.2);
-    }
-  }
-
-  .vshw-card-img-wrapper:hover {
-    transform: translateY(-12px) rotateY(-8deg) rotateX(5deg) scale(1.04) !important;
-    border-color: #F7941D;
-    box-shadow:
-      0 35px 70px rgba(247, 148, 29, 0.4),
-      0 12px 35px rgba(0, 0, 0, 0.12) !important;
-  }
-
-  .vshw-official-card-img,
-  .vshw-card-img-wrapper img {
+  .vshw-master-banner-img {
     width: 100%;
     height: auto;
     display: block;
     border-radius: 18px;
-    object-fit: cover;
-    background: transparent;
-    transform: scale(1.08);
-    transform-origin: center;
+    object-fit: contain;
   }
 
-  .vshw-card-subtext {
-    position: relative;
-    z-index: 2;
-    margin-top: 22px;
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: #334155;
-    line-height: 1.6;
-    max-width: 340px;
-  }
-  .vshw-card-subtext strong {
-    color: #ec5c0a;
-  }
-
-  /* Mockup Card Design Fallback if image not provided */
-  .vshw-mock-card {
-    padding: 24px 20px;
-    background: linear-gradient(135deg, #090e1a 0%, #151d30 50%, #0b1324 100%);
-    border-radius: 20px;
-    border: 2px solid rgba(247, 148, 29, 0.5);
-    color: #ffffff;
-    text-align: left;
-    position: relative;
-  }
-  .vshw-mock-card-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 20px;
-  }
-  .vshw-mock-logo {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-weight: 900;
-    font-size: 1.1rem;
-    color: #F7941D;
-  }
-  .vshw-mock-chip {
-    width: 42px;
-    height: 30px;
-    background: linear-gradient(135deg, #F59E0B, #D97706);
-    border-radius: 6px;
-    border: 1px solid #FCD34D;
-  }
-  .vshw-mock-title {
-    font-size: 1.1rem;
-    font-weight: 900;
-    letter-spacing: 1px;
-    color: #FFFFFF;
-    margin-bottom: 4px;
-    text-transform: uppercase;
-  }
-  .vshw-mock-sub {
-    font-size: 0.72rem;
-    color: #3EAD47;
-    font-weight: 800;
-    margin-bottom: 20px;
-  }
-  .vshw-mock-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 0.75rem;
-    color: #94A3B8;
-    font-weight: 700;
-  }
-
-  .vshw-card-subtext {
-    position: relative;
-    z-index: 2;
-    margin-top: 22px;
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: #334155;
-    line-height: 1.6;
-    max-width: 320px;
-  }
-  .vshw-card-subtext strong {
-    color: #ec5c0a;
-  }
-
-  /* --- 5-BENEFITS GRID --- */
+  /* --- 5-BENEFITS GRID STYLES --- */
   .vshw-benefits-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -565,12 +131,6 @@
   @media (max-width: 1024px) {
     .vshw-benefits-grid {
       grid-template-columns: repeat(3, 1fr);
-    }
-  }
-  @media (max-width: 640px) {
-    .vshw-benefits-grid {
-      grid-template-columns: repeat(1, 1fr);
-      gap: 14px;
     }
   }
 
@@ -629,7 +189,7 @@
     border-top: 5px solid #F7941D;
     border-radius: 26px;
     padding: 32px 40px;
-    margin-bottom: 35px;
+    margin-bottom: 10px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -671,12 +231,8 @@
     margin: 0;
     line-height: 1.3;
   }
-  .vshw-cta-text h3 .hl-orange {
-    color: #ec5c0a;
-  }
-  .vshw-cta-text h3 .hl-green {
-    color: #007b3e;
-  }
+  .vshw-cta-text h3 .hl-orange { color: #ec5c0a; }
+  .vshw-cta-text h3 .hl-green { color: #007b3e; }
 
   .vshw-cta-btn {
     display: inline-flex;
@@ -701,62 +257,14 @@
     background: linear-gradient(135deg, #ff9900 0%, #007b3e 100%);
   }
 
-  /* --- BOTTOM TECH FOOTPRINT BAR (LIGHT THEME) --- */
-  .vshw-tech-bar {
-    background: linear-gradient(135deg, #FFFFFF 0%, #FFFDF7 50%, #F8FFF6 100%);
-    border: 2px solid rgba(247, 148, 29, 0.3);
-    border-radius: 50px;
-    padding: 16px 32px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    color: #1e293b;
-    box-shadow: 0 14px 35px rgba(247, 148, 29, 0.12);
-  }
-  @media (max-width: 768px) {
-    .vshw-tech-bar {
-      border-radius: 24px;
-      flex-direction: column;
-      text-align: center;
-      justify-content: center;
-      padding: 20px 16px;
-    }
-  }
-
-  .vshw-tech-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 0.9rem;
-    font-weight: 800;
-    color: #1e293b;
-  }
-  .vshw-tech-item i {
-    color: #ec5c0a;
-    font-size: 1.2rem;
-  }
-  .vshw-tech-badge {
-    background: linear-gradient(135deg, #FFF3E0, #FFE0B2);
-    border: 1.5px solid rgba(247, 148, 29, 0.4);
-    padding: 6px 16px;
-    border-radius: 50px;
-    font-size: 0.82rem;
-    font-weight: 900;
-    color: #D96924;
-    letter-spacing: 0.5px;
-    box-shadow: 0 4px 12px rgba(247, 148, 29, 0.12);
-  }
-
   /* --- COMPREHENSIVE MOBILE RESPONSIVE OPTIMIZATIONS (Max Width 768px) --- */
   @media screen and (max-width: 768px) {
     .vshw-wrapper {
-      padding: 30px 12px !important;
+      padding: 35px 0 !important;
     }
 
     .vshw-header {
-      margin-bottom: 28px !important;
+      margin-bottom: 24px !important;
     }
 
     .vshw-top-tags {
@@ -775,137 +283,26 @@
     }
 
     .vshw-main-title {
-      font-size: clamp(20px, 5.5vw, 28px) !important;
+      font-size: clamp(20px, 5.5vw, 26px) !important;
       line-height: 1.25 !important;
       margin-bottom: 10px !important;
     }
 
-    /* SINGLE MOBILE SCREEN VIEW COMPARISON STAGE */
-    .vshw-stage-grid {
-      display: grid !important;
-      grid-template-columns: 1fr 1fr !important;
-      gap: 10px !important;
+    .vshw-master-stage {
+      padding: 8px !important;
+      border-radius: 20px !important;
       margin-bottom: 24px !important;
     }
 
-    .vshw-card-stage {
-      grid-column: 1 / -1 !important;
-      order: 1 !important;
-      padding: 18px 12px !important;
-      border-radius: 22px !important;
-      margin-bottom: 2px !important;
-    }
-
-    .vshw-card-img-wrapper {
-      max-width: 275px !important;
+    .vshw-master-banner-img {
       border-radius: 14px !important;
-    }
-
-    .vshw-card-subtext {
-      font-size: 0.8rem !important;
-      margin-top: 12px !important;
-      line-height: 1.4 !important;
-    }
-
-    .vshw-comp-box.before-box {
-      order: 2 !important;
-      grid-column: 1 !important;
-      padding: 12px 10px !important;
-      border-radius: 18px !important;
-    }
-
-    .vshw-comp-box.after-box {
-      order: 3 !important;
-      grid-column: 2 !important;
-      padding: 12px 10px !important;
-      border-radius: 18px !important;
-    }
-
-    .vshw-box-header {
-      margin-bottom: 8px !important;
-    }
-
-    .vshw-badge-pill {
-      padding: 4px 10px !important;
-      font-size: 0.68rem !important;
-      gap: 4px !important;
-    }
-
-    .vshw-status-sub {
-      display: none !important;
-    }
-
-    .vshw-box-title {
-      font-size: 0.78rem !important;
-      margin-bottom: 8px !important;
-      line-height: 1.25 !important;
-    }
-
-    .vshw-graph-wrapper {
-      height: 100px !important;
-      border-radius: 12px !important;
-      margin-bottom: 8px !important;
-    }
-
-    .vshw-scope-topbar {
-      font-size: 0.68rem !important;
-      font-weight: 800 !important;
-      padding: 3px 8px !important;
-      top: 6px !important;
-      left: 6px !important;
-      gap: 5px !important;
-    }
-
-    .vshw-graph-overlay {
-      font-size: 0.72rem !important;
-      font-weight: 900 !important;
-      padding: 3px 9px !important;
-      top: 6px !important;
-      right: 6px !important;
-    }
-
-    .vshw-micro-metrics {
-      grid-template-columns: 1fr !important;
-      gap: 4px !important;
-      margin-bottom: 8px !important;
-    }
-
-    .vshw-metric-item {
-      padding: 6px 8px !important;
-      border-radius: 10px !important;
-      display: flex !important;
-      flex-direction: row !important;
-      justify-content: space-between !important;
-      align-items: center !important;
-      overflow: visible !important;
-    }
-
-    .vshw-metric-item .m-label {
-      font-size: 0.64rem !important;
-      line-height: 1.3 !important;
-    }
-
-    .vshw-metric-item .m-val {
-      font-size: 0.72rem !important;
-      line-height: 1.35 !important;
-      padding-top: 1px !important;
-      overflow: visible !important;
-    }
-
-    .vshw-bottom-pill {
-      padding: 8px 8px !important;
-      font-size: 0.72rem !important;
-      border-radius: 12px !important;
-      flex-direction: column !important;
-      gap: 2px !important;
-      text-align: center !important;
     }
 
     .vshw-benefits-grid {
       display: flex !important;
       flex-direction: column !important;
-      gap: 12px !important;
-      margin-bottom: 30px !important;
+      gap: 10px !important;
+      margin-bottom: 28px !important;
       width: 100% !important;
       box-sizing: border-box !important;
     }
@@ -924,13 +321,6 @@
       width: 100% !important;
       box-sizing: border-box !important;
       text-align: left !important;
-    }
-
-    .vshw-benefit-card:active,
-    .vshw-benefit-card:hover {
-      border-color: #F7941D !important;
-      box-shadow: 0 12px 28px rgba(247, 148, 29, 0.15) !important;
-      transform: translateY(-2px) !important;
     }
 
     .vshw-benefit-icon {
@@ -953,7 +343,6 @@
       line-height: 1.4 !important;
       margin: 0 !important;
       text-align: left !important;
-      letter-spacing: 0.2px !important;
     }
 
     .vshw-cta-banner {
@@ -979,24 +368,6 @@
       padding: 14px 20px !important;
       font-size: 0.92rem !important;
       box-sizing: border-box !important;
-    }
-
-    .vshw-tech-bar {
-      border-radius: 20px !important;
-      padding: 16px 14px !important;
-      flex-direction: column !important;
-      text-align: center !important;
-      gap: 10px !important;
-    }
-
-    .vshw-tech-item {
-      font-size: 0.8rem !important;
-      justify-content: center !important;
-    }
-
-    .vshw-tech-badge {
-      font-size: 0.75rem !important;
-      padding: 4px 12px !important;
     }
   }
 {%- endstyle -%}
@@ -1030,126 +401,23 @@
       <div class="vshw-header-divider"></div>
     </div>
 
-    <!-- 3-COLUMN MAIN COMPARISON STAGE -->
-    <div class="vshw-stage-grid">
-      
-      <!-- LEFT: BEFORE CARD -->
-      <div class="vshw-comp-box before-box">
-        <div>
-          <div class="vshw-box-header">
-            <span class="vshw-badge-pill before">
-              <i class="fa-solid fa-triangle-exclamation"></i> BEFORE
-            </span>
-            <span class="vshw-status-sub red">FREQ: 52.4Hz — UNSTABLE</span>
-          </div>
-          
-          <h3 class="vshw-box-title">
-            <i class="fa-solid fa-bolt-lightning red"></i>
-            Unstable Voltage & High Spikes
-          </h3>
-          
-          <!-- LIVE CANVAS GRAPH (RED erratic) -->
-          <div class="vshw-graph-wrapper red-scope">
-            <div class="vshw-graph-overlay red">
-              <span class="dot"></span> <span id="vshw-val-before-{{ section.id }}">278V (HIGH SPIKE)</span>
-            </div>
-            <canvas id="vshw-canvas-before-{{ section.id }}" class="vshw-graph-canvas"></canvas>
-          </div>
-
-          <!-- 3 MICRO IMPACT METRICS -->
-          <div class="vshw-micro-metrics">
-            <div class="vshw-metric-item red">
-              <span class="m-label">Spikes</span>
-              <span class="m-val">Unfiltered</span>
-            </div>
-            <div class="vshw-metric-item red">
-              <span class="m-label">Heat Loss</span>
-              <span class="m-val">+35% Extra</span>
-            </div>
-            <div class="vshw-metric-item red">
-              <span class="m-label">Risk</span>
-              <span class="m-val">High Damage</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="vshw-bottom-pill red">
-          <span><i class="fa-solid fa-gauge-high"></i> Power Wastage</span>
-          <span><strong>+30% Extra Bill</strong></span>
-        </div>
+    <!-- OFFICIAL MASTER SHOWCASE BANNER STAGE -->
+    <div class="vshw-master-stage">
+      <div class="vshw-master-img-wrap">
+        {%- if section.settings.master_banner != blank -%}
+          {{ section.settings.master_banner | image_url: width: 1400 | image_tag: loading: 'lazy', alt: 'How Does Vidhyut Saathi Card Save Electricity Bill Comparison Poster', class: 'vshw-master-banner-img' }}
+        {%- else -%}
+          <img 
+            src="{{ 'vs-how-it-works-master-banner.jpg' | asset_url }}" 
+            alt="How Does Vidhyut Saathi Card Save Electricity Bill Master Comparison Poster" 
+            class="vshw-master-banner-img"
+            loading="eager" 
+            width="1400" 
+            height="1400"
+            onerror="this.onerror=null; this.src='https://cdn.shopify.com/s/files/1/0663/8783/7093/files/VS_Card_Final_Design_Golden_1.png';"
+          >
+        {%- endif -%}
       </div>
-
-      <!-- CENTER: 3D CARD SHOWCASE STAGE -->
-      <div class="vshw-card-stage">
-        <div class="vshw-card-glow-bg"></div>
-        
-        <div class="vshw-card-img-wrapper">
-          {%- if section.settings.card_image != blank -%}
-            {{ section.settings.card_image | image_url: width: 800 | image_tag: loading: 'lazy', alt: 'Vidhyut Saathi Electric Power Saving Card', class: 'vshw-official-card-img' }}
-          {%- else -%}
-            <img 
-              src="{{ 'official-vs-card-front.jpg' | asset_url }}" 
-              alt="Vidhyut Saathi Electric Power Saving Card" 
-              class="vshw-official-card-img" 
-              loading="eager" 
-              width="800" 
-              height="500" 
-              onerror="this.onerror=null; this.src='https://cdn.shopify.com/s/files/1/0663/8783/7093/files/VS_Card_Final_Design_Golden_1.png';"
-            >
-          {%- endif -%}
-        </div>
-
-        <p class="vshw-card-subtext">
-          The Vidhyut Saathi Card uses <strong>US-German Nanotechnology</strong> to stabilize voltage and filter harmful spikes.
-        </p>
-      </div>
-
-      <!-- RIGHT: AFTER CARD -->
-      <div class="vshw-comp-box after-box">
-        <div>
-          <div class="vshw-box-header">
-            <span class="vshw-badge-pill after">
-              <i class="fa-solid fa-circle-check"></i> AFTER
-            </span>
-            <span class="vshw-status-sub green">FREQ: 50.0Hz — STABLE</span>
-          </div>
-          
-          <h3 class="vshw-box-title">
-            <i class="fa-solid fa-wave-square green"></i>
-            Stable Voltage & Filtered Spikes
-          </h3>
-          
-          <!-- LIVE CANVAS GRAPH (GREEN smooth) -->
-          <div class="vshw-graph-wrapper green-scope">
-            <div class="vshw-graph-overlay green">
-              <span class="dot"></span> <span id="vshw-val-after-{{ section.id }}">220V (STABLE)</span>
-            </div>
-            <canvas id="vshw-canvas-after-{{ section.id }}" class="vshw-graph-canvas"></canvas>
-          </div>
-
-          <!-- 3 MICRO IMPACT METRICS -->
-          <div class="vshw-micro-metrics">
-            <div class="vshw-metric-item green">
-              <span class="m-label">Spikes</span>
-              <span class="m-val">Filtered</span>
-            </div>
-            <div class="vshw-metric-item green">
-              <span class="m-label">Heat Loss</span>
-              <span class="m-val">Zero Loss</span>
-            </div>
-            <div class="vshw-metric-item green">
-              <span class="m-label">Risk</span>
-              <span class="m-val">100% Protected</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="vshw-bottom-pill green">
-          <span><i class="fa-solid fa-receipt"></i> Zero Wastage</span>
-          <span><strong>Save 20%-30% Bill</strong></span>
-        </div>
-      </div>
-
     </div>
 
     <!-- 5-BENEFITS GRID -->
@@ -1159,35 +427,35 @@
         <div class="vshw-benefit-icon ic-orange">
           <i class="fa-solid fa-indian-rupee-sign"></i>
         </div>
-        <h4 class="vshw-benefit-title">Save 20%–30% on Electricity Bill</h4>
+        <h3 class="vshw-benefit-title">Save 20%–30% on Electricity Bill</h3>
       </div>
 
       <div class="vshw-benefit-card">
         <div class="vshw-benefit-icon ic-green">
           <i class="fa-solid fa-shield-halved"></i>
         </div>
-        <h4 class="vshw-benefit-title">Protects Appliances from Spikes</h4>
+        <h3 class="vshw-benefit-title">Protects Appliances from Spikes</h3>
       </div>
 
       <div class="vshw-benefit-card">
         <div class="vshw-benefit-icon ic-blue">
           <i class="fa-solid fa-lightbulb"></i>
         </div>
-        <h4 class="vshw-benefit-title">Improves Energy Efficiency</h4>
+        <h3 class="vshw-benefit-title">Improves Energy Efficiency</h3>
       </div>
 
       <div class="vshw-benefit-card">
         <div class="vshw-benefit-icon ic-teal">
           <i class="fa-solid fa-leaf"></i>
         </div>
-        <h4 class="vshw-benefit-title">Eco-Friendly Solution</h4>
+        <h3 class="vshw-benefit-title">Eco-Friendly Solution</h3>
       </div>
 
       <div class="vshw-benefit-card">
         <div class="vshw-benefit-icon ic-gold">
           <i class="fa-solid fa-screwdriver-wrench"></i>
         </div>
-        <h4 class="vshw-benefit-title">Easy to Use & Long Lasting</h4>
+        <h3 class="vshw-benefit-title">Easy to Use & Long Lasting</h3>
       </div>
 
     </div>
@@ -1204,175 +472,34 @@
       </a>
     </div>
 
-    <!-- BOTTOM TECH FOOTPRINT BAR -->
-    <div class="vshw-tech-bar">
-      <div class="vshw-tech-item">
-        <i class="fa-solid fa-microchip"></i>
-        <span>TERAHERTZ CHIP — US-German Nanotechnology</span>
-      </div>
-      
-      <div class="vshw-tech-item">
-        <i class="fa-solid fa-award"></i>
-        <span>Advanced Technology for a Smarter & Safer India</span>
-      </div>
-
-      <div class="vshw-tech-badge">
-        ION: 20000 | 0020221001
-      </div>
-    </div>
-
   </div>
 </section>
 
-<!-- LIVE CANVAS VOLTAGE WAVEFORM ANIMATION SCRIPT -->
-<script>
-  (function() {
-    function initVoltageGraphs() {
-      const sectionId = "{{ section.id }}";
-      const canvasBefore = document.getElementById('vshw-canvas-before-' + sectionId);
-      const canvasAfter = document.getElementById('vshw-canvas-after-' + sectionId);
-      const valBefore = document.getElementById('vshw-val-before-' + sectionId);
-      const valAfter = document.getElementById('vshw-val-after-' + sectionId);
-
-      if (!canvasBefore || !canvasAfter) return;
-
-      const ctxBefore = canvasBefore.getContext('2d');
-      const ctxAfter = canvasAfter.getContext('2d');
-
-      function resizeCanvas(canvas) {
-        canvas.width = canvas.parentElement.clientWidth;
-        canvas.height = canvas.parentElement.clientHeight;
-      }
-
-      resizeCanvas(canvasBefore);
-      resizeCanvas(canvasAfter);
-
-      window.addEventListener('resize', () => {
-        resizeCanvas(canvasBefore);
-        resizeCanvas(canvasAfter);
-      });
-
-      let stepBefore = 0;
-      let stepAfter = 0;
-
-      function drawGrid(ctx, width, height) {
-        ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
-        ctx.lineWidth = 1;
-        ctx.beginPath();
-        for (let x = 0; x < width; x += 25) {
-          ctx.moveTo(x, 0); ctx.lineTo(x, height);
-        }
-        for (let y = 0; y < height; y += 25) {
-          ctx.moveTo(0, y); ctx.lineTo(width, y);
-        }
-        ctx.stroke();
-      }
-
-      // BEFORE GRAPH (Red Spiky Volatile Fluctuation)
-      function animateBefore() {
-        const w = canvasBefore.width;
-        const h = canvasBefore.height;
-        ctxBefore.clearRect(0, 0, w, h);
-
-        drawGrid(ctxBefore, w, h);
-
-        ctxBefore.beginPath();
-        ctxBefore.strokeStyle = '#ef4444';
-        ctxBefore.lineWidth = 2.5;
-        ctxBefore.shadowColor = '#ef4444';
-        ctxBefore.shadowBlur = 10;
-
-        const midY = h / 2;
-        stepBefore += 0.08;
-
-        for (let x = 0; x < w; x++) {
-          const noise = Math.sin(x * 0.08 + stepBefore) * 25 +
-                        Math.cos(x * 0.15 - stepBefore * 1.5) * 18 +
-                        (Math.random() - 0.5) * 14;
-          const y = midY + noise;
-          if (x === 0) ctxBefore.moveTo(x, y);
-          else ctxBefore.lineTo(x, y);
-        }
-        ctxBefore.stroke();
-
-        if (Math.random() < 0.15 && valBefore) {
-          const v = Math.floor(255 + Math.random() * 32);
-          valBefore.textContent = v + 'V (Spiking!)';
-        }
-
-        requestAnimationFrame(animateBefore);
-      }
-
-      // AFTER GRAPH (Green Smooth Sine Wave)
-      function animateAfter() {
-        const w = canvasAfter.width;
-        const h = canvasAfter.height;
-        ctxAfter.clearRect(0, 0, w, h);
-
-        drawGrid(ctxAfter, w, h);
-
-        ctxAfter.beginPath();
-        ctxAfter.strokeStyle = '#10b981';
-        ctxAfter.lineWidth = 2.5;
-        ctxAfter.shadowColor = '#10b981';
-        ctxAfter.shadowBlur = 10;
-
-        const midY = h / 2;
-        stepAfter += 0.04;
-
-        for (let x = 0; x < w; x++) {
-          const noise = Math.sin(x * 0.035 + stepAfter) * 10;
-          const y = midY + noise;
-          if (x === 0) ctxAfter.moveTo(x, y);
-          else ctxAfter.lineTo(x, y);
-        }
-        ctxAfter.stroke();
-
-        if (Math.random() < 0.1 && valAfter) {
-          const v = Math.floor(222 + Math.random() * 6);
-          valAfter.textContent = v + 'V (Stable)';
-        }
-
-        requestAnimationFrame(animateAfter);
-      }
-
-      animateBefore();
-      animateAfter();
-    }
-
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initVoltageGraphs);
-    } else {
-      initVoltageGraphs();
-    }
-  })();
-</script>
-
 {% schema %}
 {
-  "name": "How Card Saves Bill",
+  "name": "Vidhyut How It Works",
   "settings": [
     {
       "type": "text",
       "id": "slogan_text",
-      "label": "Top Slogan Badge",
+      "label": "Slogan Text",
       "default": "लगाएगा INDIA तो बचाएगा INDIA"
     },
     {
       "type": "checkbox",
       "id": "show_trust_tags",
-      "label": "Show Trust Tags (ISO & Savings)",
+      "label": "Show Trust Tags",
       "default": true
     },
     {
       "type": "image_picker",
-      "id": "card_image",
-      "label": "Center 3D Card Image"
+      "id": "master_banner",
+      "label": "Official Master Comparison Poster Image"
     }
   ],
   "presets": [
     {
-      "name": "How Card Saves Bill"
+      "name": "Vidhyut How It Works"
     }
   ]
 }
