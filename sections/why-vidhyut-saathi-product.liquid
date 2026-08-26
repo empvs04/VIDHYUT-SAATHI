@@ -902,9 +902,20 @@
     display: none; /* hidden on desktop, shown on mobile via media query */
   }
 
-  /* Slider Dots Styling for Mobile */
-  .wvs-slider-dots-p2, .wvs-slider-dots-p3 {
-    display: none;
+  /* Mobile Paragraph Justification & Uniform Word Spacing (Mobile Only) */
+  @media (max-width: 768px) {
+    .wvs-sec3-wrapper p,
+    .wvs-p1-desc,
+    .wvs-p3-hero-desc,
+    .wvs-tech-subdesc,
+    .wvs-tech-step p {
+      text-align: justify !important;
+      text-justify: inter-word !important;
+      -webkit-hyphens: auto !important;
+      hyphens: auto !important;
+      word-spacing: -0.4px !important;
+      letter-spacing: -0.15px !important;
+    }
   }
 
   /* Mobile Responsive & Auto-Slider Enhancements */
