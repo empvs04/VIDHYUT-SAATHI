@@ -697,7 +697,7 @@
     display: none !important;
   }
 
-  /* --- POINT 03: WHAT MAKES THE CARD DIFFERENT? (6 TECH CARDS) --- */
+  /* --- POINT 03: WHAT MAKES THE CARD DIFFERENT? (OFFICIAL BRAND PALETTE CARDS) --- */
   .wvs-p3-section {
     text-align: center;
   }
@@ -710,8 +710,23 @@
   .wvs-p3-head h3 {
     font-size: clamp(28px, 3.8vw, 46px);
     font-weight: 900;
-    color: #0f2c4a;
+    color: #231F20;
     margin-bottom: 14px;
+  }
+
+  .wvs-p3-part-1 {
+    color: #231F20;
+    font-weight: 900;
+  }
+
+  .wvs-p3-part-2 {
+    color: #F17022;
+    font-weight: 900;
+  }
+
+  .wvs-p3-part-3 {
+    color: #009A44;
+    font-weight: 900;
   }
 
   .wvs-p3-head p {
@@ -726,21 +741,33 @@
     gap: 24px;
   }
 
+  /* 6 Tech Cards - Alternating Brand Orange & Emerald Green Theme */
   .wvs-tech-card {
     background: #ffffff;
-    border: 2px solid #f1f5f9;
+    border: 1.5px solid rgba(241, 112, 34, 0.22);
     border-radius: 24px;
     padding: 34px 24px;
     text-align: left;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.03);
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 10px 30px rgba(241, 112, 34, 0.06);
     position: relative;
   }
 
   .wvs-tech-card:hover {
     transform: translateY(-8px);
-    border-color: #007b3e;
-    box-shadow: 0 20px 48px rgba(0, 123, 62, 0.18);
+    border-color: #F17022;
+    box-shadow: 0 20px 48px rgba(241, 112, 34, 0.22);
+    background: #fff7ed;
+  }
+
+  .wvs-tech-card:nth-child(even) {
+    border-color: rgba(0, 154, 68, 0.22);
+    box-shadow: 0 10px 30px rgba(0, 154, 68, 0.06);
+  }
+
+  .wvs-tech-card:nth-child(even):hover {
+    border-color: #009A44;
+    box-shadow: 0 20px 48px rgba(0, 154, 68, 0.22);
     background: #f0fdf4;
   }
 
@@ -750,12 +777,12 @@
     grid-template-columns: 360px 1fr;
     gap: 32px;
     align-items: center;
-    background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);
+    background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 50%, #fff7ed 100%);
     border: 2.5px solid #009A44;
     border-radius: 32px;
     padding: 24px;
     margin-bottom: 35px;
-    box-shadow: 0 18px 45px rgba(0, 154, 68, 0.14);
+    box-shadow: 0 18px 45px rgba(0, 154, 68, 0.15), 0 0 25px rgba(241, 112, 34, 0.1);
     position: relative;
     overflow: hidden;
   }
@@ -789,7 +816,6 @@
     background: rgba(15, 23, 42, 0.88);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    color: #ffffff;
     font-size: 0.76rem;
     font-weight: 900;
     padding: 6px 14px;
@@ -824,7 +850,7 @@
     font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
     font-size: clamp(20px, 2.4vw, 26px);
     font-weight: 900;
-    color: #0f2c4a;
+    color: #231F20;
     margin: 0 0 10px 0;
     line-height: 1.3;
   }
@@ -863,37 +889,55 @@
   .wvs-tech-num {
     position: absolute;
     top: 18px;
-    right: 22px;
-    font-size: 0.85rem;
+    right: 20px;
+    font-size: 0.75rem;
     font-weight: 900;
-    color: #cbd5e1;
+    color: #ffffff;
+    background: #F17022;
+    padding: 3px 10px;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(241, 112, 34, 0.25);
+    letter-spacing: 0.5px;
+  }
+
+  .wvs-tech-card:nth-child(even) .wvs-tech-num {
+    background: #009A44;
+    box-shadow: 0 2px 6px rgba(0, 154, 68, 0.25);
   }
 
   .wvs-tech-icon {
     width: 56px;
     height: 56px;
     border-radius: 16px;
-    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
-    border: 1.5px solid #86efac;
+    background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+    border: 1.5px solid #fed7aa;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.5rem;
-    color: #007b3e;
+    color: #F17022;
     margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(241, 112, 34, 0.12);
+  }
+
+  .wvs-tech-card:nth-child(even) .wvs-tech-icon {
+    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+    border-color: #bbf7d0;
+    color: #009A44;
+    box-shadow: 0 4px 12px rgba(0, 154, 68, 0.12);
   }
 
   .wvs-tech-card h5 {
     font-size: 1.2rem;
     font-weight: 900;
-    color: #0f2c4a;
+    color: #231F20;
     margin-bottom: 10px;
   }
 
   .wvs-tech-card p {
     font-size: 0.95rem;
     line-height: 1.65;
-    color: #64748b;
+    color: #475569;
     margin: 0;
   }
 
