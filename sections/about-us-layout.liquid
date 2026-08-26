@@ -252,16 +252,77 @@
     display: inline;
   }
 
+  /* Mobile Specific Alignment: Line 1 = "Empowering India", Line 2 = "With Green Energy & Power Savings", Line 3 = "Across Nation" */
   @media screen and (max-width: 768px) {
     h2.sec2-heading-custom,
     .company-info-text h2.sec2-heading-custom {
-      font-size: clamp(1.24rem, 4.8vw, 1.55rem) !important;
-      font-weight: 600 !important;
-      line-height: 1.38 !important;
+      font-size: 1.35rem !important;
+      line-height: 1.35 !important;
       margin-bottom: 16px !important;
-      letter-spacing: -0.3px !important;
       text-align: center !important;
       display: block !important;
+    }
+
+    .sec2-line-orange1 {
+      display: block !important;
+      color: #ec5c0a !important;
+      font-weight: 700 !important;
+      font-size: clamp(1.3rem, 5.2vw, 1.55rem) !important;
+      text-align: center !important;
+      margin-bottom: 3px !important;
+    }
+
+    .sec2-line-green {
+      display: block !important;
+      color: #007b3e !important;
+      font-weight: 700 !important;
+      font-size: clamp(1.15rem, 4.4vw, 1.35rem) !important;
+      text-align: center !important;
+      margin-bottom: 3px !important;
+    }
+
+    .sec2-line-orange2 {
+      display: block !important;
+      color: #ec5c0a !important;
+      font-weight: 700 !important;
+      font-size: clamp(1.15rem, 4.4vw, 1.35rem) !important;
+      text-align: center !important;
+    }
+
+    /* Equal Height & Width Metric Cards on Mobile */
+    .wwa-metrics-row {
+      display: grid !important;
+      grid-template-columns: repeat(3, 1fr) !important;
+      gap: 8px !important;
+      align-items: stretch !important;
+      width: 100% !important;
+    }
+
+    .wwa-metric-box {
+      width: 100% !important;
+      height: 100% !important;
+      min-height: 82px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: center !important;
+      align-items: center !important;
+      padding: 10px 4px !important;
+      box-sizing: border-box !important;
+      text-align: center !important;
+    }
+
+    .wwa-metric-box h4 {
+      font-size: clamp(0.92rem, 3.6vw, 1.1rem) !important;
+      white-space: nowrap !important;
+      margin: 0 0 2px 0 !important;
+    }
+
+    .wwa-metric-box p {
+      font-size: clamp(0.65rem, 2.5vw, 0.72rem) !important;
+      line-height: 1.2 !important;
+      margin: 0 !important;
+      white-space: normal !important;
+      text-align: center !important;
     }
   }
 
@@ -2079,7 +2140,9 @@
       <!-- Text Side -->
       <div class="company-info-text reveal-up active">
         <h2 class="sec2-heading-custom">
-          <span style="color: #ec5c0a !important; font-weight: 700 !important;">Empowering India</span> <span style="color: #007b3e !important; font-weight: 700 !important;">With Green Energy &amp; Power Savings</span> <span style="color: #ec5c0a !important; font-weight: 700 !important;">Across Nation</span>
+          <span class="sec2-line-orange1">Empowering India</span>
+          <span class="sec2-line-green">With Green Energy &amp; Power Savings</span>
+          <span class="sec2-line-orange2">Across Nation</span>
         </h2>
         
         <p><b>Vidhyut Saathi Energy Savers Pvt. Ltd.</b> is more than a company—it is a mission to empower every Indian family to save money, every entrepreneur to build wealth, and every citizen to contribute towards a greener and stronger India. Through our revolutionary <b>Vidhyut Saathi Card</b> – India's First Energy Saver Card powered by Advanced US-German Nano Technology, we are helping homes, shops, offices, businesses, and industries save <b>20%–30%</b> on their monthly electricity bills while promoting smarter energy consumption.</p>
