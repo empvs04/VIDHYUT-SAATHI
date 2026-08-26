@@ -1,5 +1,5 @@
 {% comment %}
-  HOW TO INSTALL VIDHYUT SAATHI CARD - Brand Matching Theme Section
+  HOW TO INSTALL VIDHYUT SAATHI CARD - Perfectly Aligned & Uncropped Section
   File: sections/vidhyut-how-to-install.liquid
 {% endcomment %}
 
@@ -175,9 +175,9 @@
 
   /* STEP PHOTO DISPLAY STAGE */
   .vsi-step-stage {
-    padding: 20px;
-    background: linear-gradient(135deg, #F8FAFC 0%, #FFFDF8 100%);
-    min-height: 230px;
+    padding: 0;
+    background: #080d19;
+    height: 230px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -185,53 +185,50 @@
     overflow: hidden;
   }
 
-  /* CARD 1: STANDALONE CARD WITHOUT BLACK/DIRTY BACKGROUND */
-  .vsi-card-only-img {
-    max-width: 90%;
-    max-height: 190px;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-    display: block;
-    border-radius: 16px;
-    box-shadow: 0 14px 35px rgba(236, 92, 10, 0.25), 0 4px 12px rgba(0, 0, 0, 0.08);
-    transition: transform 0.4s ease;
-  }
-  .vsi-step-card:hover .vsi-card-only-img {
-    transform: scale(1.06) rotate(1deg);
+  .vsi-step-stage.light-bg {
+    background: linear-gradient(135deg, #F8FAFC 0%, #FFFDF8 100%);
+    padding: 12px;
   }
 
-  /* CARD 2: ZOOMED IN 3M PEEL PHOTO */
-  .vsi-peel-zoom-img {
-    max-width: 100%;
-    max-height: 220px;
+  /* CARD 1: COMPLETE FULL STAGE FILL WITHOUT WHITE BACKGROUND MARGINS */
+  .vsi-card-fill-img {
     width: 100%;
-    height: 210px;
+    height: 100%;
     object-fit: cover;
     display: block;
-    border-radius: 16px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
-    transform: scale(1.25);
     transition: transform 0.4s ease;
   }
-  .vsi-step-card:hover .vsi-peel-zoom-img {
-    transform: scale(1.35);
+  .vsi-step-card:hover .vsi-card-fill-img {
+    transform: scale(1.04);
   }
 
-  /* CARD 3: HD MCB POSTER IMAGE */
-  .vsi-mcb-hd-img {
+  /* CARD 2: UNCLIPPED 3M PEEL PHOTO SHOWING FULL TOP TEXT */
+  .vsi-peel-fit-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    border-radius: 12px;
+    transition: transform 0.4s ease;
+  }
+  .vsi-step-card:hover .vsi-peel-fit-img {
+    transform: scale(1.04);
+  }
+
+  /* CARD 3: CLEAN UNCLIPPED MCB BOX POSTER IMAGE */
+  .vsi-mcb-clean-img {
     max-width: 100%;
-    max-height: 210px;
+    max-height: 100%;
     width: auto;
     height: auto;
     object-fit: contain;
     display: block;
-    border-radius: 14px;
-    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
     transition: transform 0.4s ease;
   }
-  .vsi-step-card:hover .vsi-mcb-hd-img {
-    transform: scale(1.05);
+  .vsi-step-card:hover .vsi-mcb-clean-img {
+    transform: scale(1.04);
   }
 
   .vsi-step-desc {
@@ -391,21 +388,7 @@
     }
 
     .vsi-step-stage {
-      min-height: 190px !important;
-      padding: 14px !important;
-    }
-
-    .vsi-card-only-img {
-      max-height: 160px !important;
-    }
-
-    .vsi-peel-zoom-img {
-      height: 170px !important;
-      transform: scale(1.2) !important;
-    }
-
-    .vsi-mcb-hd-img {
-      max-height: 170px !important;
+      height: 190px !important;
     }
 
     .vsi-badges-grid {
@@ -461,7 +444,7 @@
     <!-- 3-STEP SHOWCASE GRID -->
     <div class="vsi-steps-grid">
 
-      <!-- STEP 01: TAKE THE CARD (STANDALONE CARD ONLY, NO BACKGROUND) -->
+      <!-- STEP 01: TAKE THE CARD (FULL STAGE FILL, NO WHITE MARGINS) -->
       <div class="vsi-step-card">
         <div class="vsi-step-topbar">
           <div class="vsi-step-num">01</div>
@@ -470,8 +453,8 @@
         <div class="vsi-step-stage">
           <img 
             src="{{ 'vs-install-card-hd.jpg' | asset_url }}" 
-            alt="Vidhyut Saathi Power Saving Card Standalone" 
-            class="vsi-card-only-img" 
+            alt="Vidhyut Saathi Power Saving Card" 
+            class="vsi-card-fill-img" 
             loading="eager" 
             width="800" 
             height="500"
@@ -488,17 +471,17 @@
         <i class="fa-solid fa-arrow-right"></i>
       </div>
 
-      <!-- STEP 02: PEEL OFF 3M ADHESIVE (ZOOMED IN HD) -->
+      <!-- STEP 02: PEEL OFF 3M ADHESIVE (UNCLIPPED FULL PHOTO WITH TOP TEXT) -->
       <div class="vsi-step-card">
         <div class="vsi-step-topbar">
           <div class="vsi-step-num">02</div>
           <h3 class="vsi-step-title">PEEL OFF 3M ADHESIVE</h3>
         </div>
-        <div class="vsi-step-stage">
+        <div class="vsi-step-stage light-bg">
           <img 
             src="{{ 'vs-install-peel-hd.jpg' | asset_url }}" 
             alt="Peel off 3M adhesive layer from Vidhyut Saathi card" 
-            class="vsi-peel-zoom-img" 
+            class="vsi-peel-fit-img" 
             loading="eager" 
             width="800" 
             height="600"
@@ -514,17 +497,17 @@
         <i class="fa-solid fa-arrow-right"></i>
       </div>
 
-      <!-- STEP 03: PASTE IT ON MCB (HD MCB POSTER IMAGE) -->
+      <!-- STEP 03: PASTE IT ON MCB (CLEAN UNCLIPPED MCB BOX GRAPHIC) -->
       <div class="vsi-step-card">
         <div class="vsi-step-topbar">
           <div class="vsi-step-num">03</div>
           <h3 class="vsi-step-title">PASTE IT ON MCB</h3>
         </div>
-        <div class="vsi-step-stage">
+        <div class="vsi-step-stage light-bg">
           <img 
-            src="{{ 'vs-install-mcb-box-hd.png' | asset_url }}" 
-            alt="Paste Vidhyut Saathi Card on MCB Box Official Poster" 
-            class="vsi-mcb-hd-img" 
+            src="{{ 'vs-install-mcb-clean.png' | asset_url }}" 
+            alt="Paste Vidhyut Saathi Card on MCB Box" 
+            class="vsi-mcb-clean-img" 
             loading="eager" 
             width="800" 
             height="600"
