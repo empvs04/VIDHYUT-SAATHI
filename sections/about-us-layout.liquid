@@ -228,19 +228,19 @@
     }
   }
 
-  /* Elegant Light Theme Lightweight Typography (Weight 400) */
+  /* Lucrative High-Impact Desktop Heading Typography (Weight 800) */
   .sec2-heading-custom {
-    font-size: clamp(22px, 2.3vw, 32px);
-    font-weight: 400 !important;
-    color: #1e293b;
-    line-height: 1.4;
-    margin-bottom: 20px;
-    letter-spacing: -0.3px;
+    font-size: clamp(28px, 3.2vw, 42px);
+    font-weight: 800 !important;
+    color: #0f172a;
+    line-height: 1.25;
+    margin-bottom: 22px;
+    letter-spacing: -0.5px;
   }
 
   .sec2-line1 {
     font-size: inherit;
-    font-weight: 400 !important;
+    font-weight: 800 !important;
     color: #0f172a;
     display: inline;
   }
@@ -251,33 +251,35 @@
 
   .sec2-brand-gradient {
     font-size: inherit;
-    font-weight: 400 !important;
-    color: #ec5c0a;
-    background: linear-gradient(135deg, #ec5c0a 0%, #007b3e 100%);
+    font-weight: 900 !important;
+    background: linear-gradient(135deg, #ec5c0a 0%, #ff9a00 50%, #007b3e 100%);
+    background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    display: inline;
+    display: inline-block;
+    animation: color-shift 4s linear infinite;
   }
 
   .sec2-line3 {
     font-size: inherit;
-    font-weight: 400 !important;
-    color: #1e293b;
+    font-weight: 800 !important;
+    color: #0f172a;
     display: inline;
   }
 
   .sec2-eco-highlight {
     font-size: inherit;
-    font-weight: 400 !important;
+    font-weight: 800 !important;
     color: #007b3e;
-    background: transparent;
-    padding: 0;
-    border-radius: 0;
-    box-shadow: none;
-    display: inline;
+    background: rgba(0, 123, 62, 0.08);
+    border: 1.5px solid rgba(0, 123, 62, 0.22);
+    padding: 2px 14px;
+    border-radius: 30px;
+    box-shadow: 0 4px 14px rgba(0, 123, 62, 0.1);
+    display: inline-block;
   }
 
-  /* Mobile Specific Ultra-Sleek Lightweight Typography (Weight 400) */
+  /* Mobile Specific Lightweight Typography (Weight 400) */
   @media screen and (max-width: 768px) {
     h2.sec2-heading-custom,
     .company-info-text h2.sec2-heading-custom {
@@ -298,11 +300,18 @@
     .sec2-brand-gradient {
       font-weight: 400 !important;
       font-size: inherit !important;
+      background: none !important;
+      -webkit-text-fill-color: initial !important;
+      color: #ec5c0a !important;
     }
     .sec2-eco-highlight {
       font-weight: 400 !important;
       font-size: inherit !important;
       color: #007b3e !important;
+      background: transparent !important;
+      border: none !important;
+      padding: 0 !important;
+      box-shadow: none !important;
     }
   }
 
@@ -320,10 +329,15 @@
   }
 
   .company-info-text p {
-    font-size: 1.02rem;
-    line-height: 1.75;
-    color: #444;
-    margin-bottom: 16px;
+    font-size: 0.98rem;
+    line-height: 1.7;
+    color: #334155;
+    text-align: justify;
+    text-justify: inter-word;
+    margin-bottom: 14px;
+  }
+  .company-info-text p:last-of-type {
+    margin-bottom: 0;
   }
 
   .company-bottom-banner {
