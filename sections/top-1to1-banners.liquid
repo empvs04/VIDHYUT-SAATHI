@@ -44,7 +44,7 @@
     margin: 0;
     border-radius: 0;
     overflow: hidden;
-    background: transparent !important;
+    background: #000000 !important;
     border: none !important;
     box-shadow: none;
   }
@@ -61,7 +61,7 @@
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     border-radius: 0;
-    background: transparent !important;
+    background: #000000 !important;
     width: 100%;
   }
 
@@ -70,30 +70,34 @@
   }
 
   .vs-top-banners-{{ section.id }} .banner-item {
-    flex: 0 0 100%;
-    max-width: 100%;
-    min-width: 100%;
-    width: 100%;
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+    min-width: 100% !important;
+    width: 100% !important;
+    height: 570px !important;
     scroll-snap-align: center;
     scroll-snap-stop: always;
     border-radius: 0;
     box-shadow: none !important;
     border: none !important;
-    background: transparent !important;
+    background: #000000 !important;
     padding: 0;
     margin: 0;
     position: relative;
-    display: block;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
     text-decoration: none;
+    overflow: hidden;
   }
 
   .vs-top-banners-{{ section.id }} .banner-img {
-    width: 100%;
-    height: auto;
-    max-height: 540px;
-    object-fit: cover;
-    display: block;
-    border-radius: 0;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 570px !important;
+    object-fit: contain !important; /* 100% COMPLETE INNER IMAGE VISIBLE WITHOUT CROPPING */
+    display: block !important;
+    border-radius: 0 !important;
     transform: none !important;
     transition: none !important;
   }
