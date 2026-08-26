@@ -277,29 +277,30 @@
     display: inline;
   }
 
-  /* Mobile Specific Lightweight Typography (Weight 400) */
+  /* Mobile Specific Lightweight Typography (Slightly Larger Size & Light Weight 300/400) */
   @media screen and (max-width: 768px) {
     h2.sec2-heading-custom,
     .company-info-text h2.sec2-heading-custom {
-      font-size: 1.2rem !important;
-      font-weight: 400 !important;
-      line-height: 1.5 !important;
+      font-size: clamp(1.35rem, 4.8vw, 1.55rem) !important;
+      font-weight: 350 !important;
+      line-height: 1.42 !important;
       margin-bottom: 14px !important;
       letter-spacing: -0.2px !important;
-      color: #334155 !important;
+      color: #1e293b !important;
     }
     .sec2-line1,
     .sec2-line2,
     .sec2-line3 {
-      font-weight: 400 !important;
+      font-weight: 350 !important;
       font-size: inherit !important;
-      color: #334155 !important;
+      color: #1e293b !important;
     }
     .sec2-brand-gradient {
       font-weight: 400 !important;
       font-size: inherit !important;
-      background: none !important;
-      -webkit-text-fill-color: initial !important;
+      background: linear-gradient(135deg, #ec5c0a 0%, #007b3e 100%) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
       color: #ec5c0a !important;
     }
     .sec2-eco-highlight {
