@@ -107,6 +107,14 @@
     text-align: center;
   }
 
+  .wvs-p9-top-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
   .wvs-title-product {
     color: #F17022 !important;
     font-weight: 900 !important;
@@ -115,11 +123,15 @@
   .wvs-p9-line1 {
     color: #231F20;
     font-weight: 900;
-    display: block;
   }
 
   .wvs-p9-line2 {
     color: #F17022;
+    font-weight: 900;
+  }
+
+  .wvs-p9-line3 {
+    color: #009A44;
     font-weight: 900;
     display: block;
   }
@@ -1096,6 +1108,37 @@
     }
   /* Mobile Paragraph Justification & Uniform Word Spacing (Mobile Only) */
   @media (max-width: 768px) {
+    .wvs-p9-top-row {
+      flex-direction: column !important;
+      gap: 3px !important;
+      width: 100% !important;
+    }
+    .wvs-p9-line1 {
+      font-size: clamp(1.1rem, 4.8vw, 1.45rem) !important;
+      line-height: 1.35 !important;
+      color: #231F20 !important;
+      font-weight: 900 !important;
+      text-align: center !important;
+      display: block !important;
+    }
+    .wvs-p9-line2 {
+      font-size: clamp(1.12rem, 4.9vw, 1.48rem) !important;
+      line-height: 1.35 !important;
+      color: #F17022 !important;
+      font-weight: 900 !important;
+      text-align: center !important;
+      display: block !important;
+      margin-bottom: 2px !important;
+    }
+    .wvs-p9-line3 {
+      font-size: clamp(1.15rem, 5vw, 1.5rem) !important;
+      line-height: 1.35 !important;
+      color: #009A44 !important;
+      font-weight: 900 !important;
+      text-align: center !important;
+      display: block !important;
+    }
+
     .wvs-sec5-wrapper p,
     .wvs-p11-desc,
     .wvs-sys-card p {
@@ -1967,8 +2010,11 @@
           <span>09 — THE BIGGER VISION</span>
         </div>
         <h2 class="wvs-sec5-main-title wvs-p9-title">
-          <span class="wvs-p9-line1">WE ARE NOT BUILDING A <span class="wvs-title-product">PRODUCT NETWORK.</span></span>
-          <span class="wvs-p9-line2">WE ARE BUILDING AN <span class="wvs-text-green">ENTREPRENEUR NETWORK.</span></span>
+          <span class="wvs-p9-top-row">
+            <span class="wvs-p9-line1">WE ARE NOT BUILDING</span>
+            <span class="wvs-p9-line2">A <span class="wvs-title-product">PRODUCT NETWORK.</span></span>
+          </span>
+          <span class="wvs-p9-line3">WE ARE BUILDING AN <span class="wvs-text-green">ENTREPRENEUR NETWORK.</span></span>
         </h2>
         <div class="wvs-sec5-subhead wvs-p9-subhead">
           <span class="wvs-p9-subline1">OUR GOAL IS TO BUILD A STRONG <span class="wvs-text-orange">PAN-INDIA NETWORK</span></span>
