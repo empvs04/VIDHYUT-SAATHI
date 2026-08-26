@@ -85,17 +85,18 @@
   }
 
   /* --- CUSTOM COMPOSITE MASTER CARD FRAME --- */
+  /* --- CUSTOM COMPOSITE MASTER CARD FRAME (LUCRATIVE LIGHT THEME) --- */
   .vshw-composite-master-card {
-    background: linear-gradient(145deg, #070c18 0%, #0f172a 50%, #080d19 100%);
-    border: 2.5px solid rgba(247, 148, 29, 0.4);
-    border-top: 6px solid #F7941D;
+    background: linear-gradient(145deg, #FFFFFF 0%, #FFFDF5 50%, #F5FAF5 100%);
+    border: 2.5px solid rgba(247, 148, 29, 0.35);
+    border-top: 6px solid #EC5C0A;
     border-radius: 28px;
     padding: 35px 28px;
-    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25), 0 0 35px rgba(247, 148, 29, 0.15);
+    box-shadow: 0 20px 50px rgba(236, 92, 10, 0.12), 0 4px 20px rgba(0, 0, 0, 0.04);
     margin-bottom: 45px;
     position: relative;
     overflow: hidden;
-    color: #ffffff;
+    color: #0F172A;
   }
 
   /* TOP HEADER INSIDE MASTER CARD */
@@ -106,7 +107,7 @@
     gap: 16px;
     margin-bottom: 30px;
     padding-bottom: 18px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    border-bottom: 1.5px solid rgba(236, 92, 10, 0.15);
   }
 
   .vshw-mc-brand {
@@ -114,17 +115,18 @@
     align-items: center;
     gap: 12px;
   }
-  .vshw-mc-brand i { font-size: 26px; color: #ffcc00; }
-  .vshw-mc-brand span { font-family: 'Baloo 2', sans-serif; font-size: 1.25rem; font-weight: 900; color: #ffffff; }
+  .vshw-mc-brand i { font-size: 26px; color: #EC5C0A; }
+  .vshw-mc-brand span { font-family: 'Baloo 2', sans-serif; font-size: 1.25rem; font-weight: 900; color: #0F172A; }
 
   .vshw-mc-slogan-pill {
-    background: rgba(236, 92, 10, 0.2);
-    border: 1px solid rgba(236, 92, 10, 0.5);
-    color: #ff9900;
+    background: linear-gradient(135deg, #FFF3E0, #FFE5B4);
+    border: 1px solid rgba(236, 92, 10, 0.35);
+    color: #D96924;
     padding: 6px 18px;
     border-radius: 50px;
     font-size: 0.85rem;
     font-weight: 800;
+    box-shadow: 0 4px 12px rgba(236, 92, 10, 0.08);
   }
 
   /* 3-COLUMN LAYOUT INSIDE MASTER CARD */
@@ -135,10 +137,9 @@
     align-items: center;
   }
 
-  /* SIDE COLUMN (BEFORE / AFTER) */
+  /* SIDE COLUMN (BEFORE / AFTER - LIGHT THEME) */
   .vshw-side-box {
-    background: rgba(15, 23, 42, 0.6);
-    backdrop-filter: blur(8px);
+    background: #FFFFFF;
     border-radius: 22px;
     padding: 22px 18px;
     display: flex;
@@ -146,17 +147,19 @@
     justify-content: space-between;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
   }
 
   .vshw-side-box.before-side {
-    border: 1.5px solid rgba(239, 68, 68, 0.4);
-    background: linear-gradient(160deg, rgba(239, 68, 68, 0.08) 0%, rgba(15, 23, 42, 0.8) 100%);
+    border: 2px solid rgba(239, 68, 68, 0.35);
+    background: linear-gradient(160deg, #FFF5F5 0%, #FFFFFF 100%);
+    box-shadow: 0 10px 25px rgba(239, 68, 68, 0.08);
   }
 
   .vshw-side-box.after-side {
-    border: 1.5px solid rgba(16, 185, 129, 0.4);
-    background: linear-gradient(160deg, rgba(16, 185, 129, 0.08) 0%, rgba(15, 23, 42, 0.8) 100%);
+    border: 2px solid rgba(16, 185, 129, 0.35);
+    background: linear-gradient(160deg, #F0FDF4 0%, #FFFFFF 100%);
+    box-shadow: 0 10px 25px rgba(16, 185, 129, 0.08);
   }
 
   .vshw-side-header {
@@ -180,43 +183,51 @@
   .vshw-badge-pill.before {
     background: linear-gradient(135deg, #EF4444, #DC2626);
     color: #ffffff;
-    box-shadow: 0 4px 14px rgba(239, 68, 68, 0.4);
+    box-shadow: 0 4px 14px rgba(239, 68, 68, 0.35);
   }
   .vshw-badge-pill.after {
     background: linear-gradient(135deg, #10B981, #059669);
     color: #ffffff;
-    box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4);
+    box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);
   }
 
   .vshw-side-status {
-    font-size: 0.72rem;
-    font-weight: 800;
-    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.74rem;
+    font-weight: 900;
   }
+  .before-side .vshw-side-status { color: #991B1B; }
+  .after-side .vshw-side-status { color: #065F46; }
 
   .vshw-side-title {
     font-size: 0.95rem;
     font-weight: 800;
-    color: #ffffff;
     margin: 0 0 14px 0;
     display: flex;
     align-items: center;
     gap: 8px;
   }
-  .vshw-side-title i.red { color: #f87171; }
-  .vshw-side-title i.green { color: #34d399; }
+  .before-side .vshw-side-title { color: #7F1D1D; }
+  .after-side .vshw-side-title { color: #064E3B; }
+  .vshw-side-title i.red { color: #ef4444; }
+  .vshw-side-title i.green { color: #10b981; }
 
   /* GRAPH CANVAS WRAPPER INSIDE MASTER CARD */
   .vshw-canvas-box {
     position: relative;
     width: 100%;
     height: 140px;
-    background: #060a14;
     border-radius: 16px;
     overflow: hidden;
     margin-bottom: 16px;
-    border: 1.5px solid rgba(255, 255, 255, 0.12);
-    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.6);
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.4);
+  }
+  .before-side .vshw-canvas-box {
+    background: #0D0505;
+    border: 1.5px solid rgba(239, 68, 68, 0.3);
+  }
+  .after-side .vshw-canvas-box {
+    background: #030F0A;
+    border: 1.5px solid rgba(16, 185, 129, 0.3);
   }
 
   .vshw-canvas-element {
@@ -229,7 +240,7 @@
     position: absolute;
     top: 8px;
     right: 10px;
-    background: rgba(6, 10, 20, 0.92);
+    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(6px);
     border-radius: 30px;
     padding: 4px 10px;
@@ -238,11 +249,11 @@
     display: flex;
     align-items: center;
     gap: 6px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
     z-index: 5;
   }
-  .vshw-canvas-readout.red { color: #f87171; }
-  .vshw-canvas-readout.green { color: #34d399; }
+  .vshw-canvas-readout.red { color: #dc2626; border: 1px solid rgba(239, 68, 68, 0.3); }
+  .vshw-canvas-readout.green { color: #059669; border: 1px solid rgba(16, 185, 129, 0.3); }
   .vshw-canvas-readout .dot { width: 7px; height: 7px; border-radius: 50%; }
   .vshw-canvas-readout.red .dot { background: #ef4444; box-shadow: 0 0 8px #ef4444; animation: vshwBlink 1s infinite alternate; }
   .vshw-canvas-readout.green .dot { background: #10b981; box-shadow: 0 0 8px #10b981; animation: vshwBlink 1.8s infinite alternate; }
@@ -259,14 +270,14 @@
     gap: 8px;
   }
   .vshw-side-summary.red {
-    background: rgba(239, 68, 68, 0.15);
-    border: 1px solid rgba(239, 68, 68, 0.3);
-    color: #fca5a5;
+    background: #FEE2E2;
+    border: 1px solid #FCA5A5;
+    color: #991B1B;
   }
   .vshw-side-summary.green {
-    background: rgba(16, 185, 129, 0.15);
-    border: 1px solid rgba(16, 185, 129, 0.3);
-    color: #6ee7b7;
+    background: #D1FAE5;
+    border: 1px solid #6EE7B7;
+    color: #065F46;
   }
 
   /* CENTER 3D CARD SHOWCASE */
@@ -280,7 +291,7 @@
     position: absolute;
     width: 220px;
     height: 220px;
-    background: radial-gradient(circle, rgba(247, 148, 29, 0.35) 0%, rgba(255, 204, 0, 0.1) 50%, transparent 70%);
+    background: radial-gradient(circle, rgba(247, 148, 29, 0.25) 0%, rgba(255, 204, 0, 0.08) 50%, transparent 70%);
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -299,8 +310,8 @@
     border-radius: 20px;
     overflow: hidden;
     position: relative;
-    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4), 0 0 25px rgba(247, 148, 29, 0.3);
-    border: 2px solid rgba(255, 204, 0, 0.4);
+    box-shadow: 0 16px 36px rgba(236, 92, 10, 0.18), 0 4px 15px rgba(0, 0, 0, 0.08);
+    border: 2.5px solid rgba(247, 148, 29, 0.4);
     z-index: 2;
     transition: transform 0.4s ease;
   }
@@ -318,12 +329,12 @@
 
   .vshw-center-desc {
     font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.85);
+    color: #334155;
     line-height: 1.45;
     margin-top: 18px;
     font-weight: 600;
   }
-  .vshw-center-desc strong { color: #ffcc00; }
+  .vshw-center-desc strong { color: #D96924; font-weight: 900; }
 
   /* FOOTPRINT BAR INSIDE MASTER CARD */
   .vshw-mc-footbar {
@@ -334,17 +345,18 @@
     gap: 16px;
     margin-top: 30px;
     padding-top: 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    border-top: 1.5px solid rgba(236, 92, 10, 0.15);
     font-size: 0.85rem;
     font-weight: 800;
+    color: #334155;
   }
 
   .vshw-fp-badge {
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 204, 0, 0.3);
+    background: linear-gradient(135deg, #FFF3E0, #FFE5B4);
+    border: 1px solid rgba(236, 92, 10, 0.35);
     padding: 5px 14px;
     border-radius: 50px;
-    color: #ffcc00;
+    color: #D96924;
   }
 
   /* --- 5-BENEFITS GRID STYLES --- */
@@ -854,7 +866,7 @@
       <!-- FOOTBAR INSIDE MASTER CARD -->
       <div class="vshw-mc-footbar">
         <div>
-          <span><i class="fa-solid fa-microchip" style="color: #ffcc00;"></i> TERAHERTZ CHIP</span>
+          <span><i class="fa-solid fa-microchip" style="color: #EC5C0A;"></i> TERAHERTZ CHIP</span>
           <span style="opacity: 0.7; font-size: 0.8rem; margin-left: 6px;">US-GERMAN NANOTECHNOLOGY</span>
         </div>
         <div>
