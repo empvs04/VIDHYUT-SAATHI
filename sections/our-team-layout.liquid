@@ -631,55 +631,51 @@
     }
   }
 
-  /* Untitled UI Card Component (2026 Trending Circular Hero Avatar Bento Card) */
+  /* Minimalist Clean Circular Avatar Team Member Grid (No Background Card Box) */
   .untitled-card {
-    background: linear-gradient(160deg, #ffffff 0%, #fff9f2 100%);
-    border-radius: 28px;
-    padding: 32px 20px 24px 20px;
-    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.05), 0 4px 15px rgba(236, 92, 10, 0.08);
-    border: 2px solid rgba(236, 92, 10, 0.18);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background: transparent !important;
+    border-radius: 0;
+    padding: 12px 10px;
+    box-shadow: none !important;
+    border: none !important;
+    transition: transform 0.3s ease;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     position: relative;
     overflow: hidden;
-    height: 100%;
+    height: auto;
     box-sizing: border-box;
-    justify-content: space-between;
+    justify-content: flex-start;
   }
   .untitled-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; height: 5px;
-    background: linear-gradient(90deg, #ec5c0a, #ff9a00, #007b3e, #ec5c0a);
-    background-size: 200% auto;
-    animation: color-shift 4s linear infinite;
+    display: none !important;
   }
   .untitled-card:hover {
-    transform: translateY(-12px) scale(1.02);
-    box-shadow: 0 28px 65px rgba(236, 92, 10, 0.25), 0 8px 25px rgba(0, 123, 62, 0.18);
-    border-color: #ec5c0a;
+    transform: translateY(-6px);
+    box-shadow: none !important;
+    border: none !important;
   }
 
-  /* Trending Circular Avatar Stage - Ultra HD 180px Image Size */
+  /* Clean Circular Avatar Stage - 140px Circle Image Size */
   .untitled-card-image-wrapper {
-    width: 180px;
-    height: 180px;
+    width: 140px;
+    height: 140px;
     border-radius: 50%;
-    margin: 0 auto 18px auto;
+    margin: 0 auto 12px auto;
     position: relative;
     overflow: visible !important;
-    background: linear-gradient(135deg, #fff3eb 0%, #e8f5e9 100%);
-    border: 4px solid #ec5c0a;
-    box-shadow: 0 14px 35px rgba(236, 92, 10, 0.25), 0 0 20px rgba(0, 123, 62, 0.12);
+    background: #fff3eb;
+    border: 3px solid #ec5c0a;
+    box-shadow: 0 10px 24px rgba(236, 92, 10, 0.18);
     flex-shrink: 0;
-    transition: transform 0.4s ease, border-color 0.4s ease;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   }
   .untitled-card:hover .untitled-card-image-wrapper {
-    transform: scale(1.06);
+    transform: scale(1.05);
     border-color: #ff9a00;
+    box-shadow: 0 14px 30px rgba(236, 92, 10, 0.28);
   }
   .untitled-member-img {
     width: 100%;
@@ -688,33 +684,33 @@
     object-position: center;
     border-radius: 50%;
     display: block;
-    transition: transform 0.5s ease;
+    transition: transform 0.4s ease;
   }
   .untitled-card:hover .untitled-member-img {
-    transform: scale(1.08);
+    transform: scale(1.05);
   }
 
   /* Floating Status Dot */
   .untitled-status-dot {
     position: absolute;
-    bottom: 6px;
-    right: 6px;
-    width: 20px;
-    height: 20px;
+    bottom: 4px;
+    right: 4px;
+    width: 16px;
+    height: 16px;
     background: #00c853;
-    border: 3.5px solid #ffffff;
+    border: 3px solid #ffffff;
     border-radius: 50%;
     animation: statusPulseGreen 2s infinite;
     z-index: 5;
   }
 
-  /* Member Info Footer - Name First, Designation Second */
+  /* Member Info Footer - Clean Name & Designation Below Circle Photo */
   .untitled-card-footer {
     background: transparent;
     border-radius: 0;
     padding: 0;
     text-align: center;
-    margin-top: 4px;
+    margin-top: 6px;
     border: none;
     box-shadow: none;
     display: flex;
@@ -722,43 +718,38 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    flex-grow: 1;
   }
   .member-name {
-    font-size: 1.3rem;
-    font-weight: 900;
+    font-size: 1.15rem;
+    font-weight: 800;
     color: #0f172a;
     line-height: 1.25;
-    margin: 0 0 8px 0;
-    letter-spacing: -0.3px;
+    margin: 0 0 4px 0;
+    letter-spacing: -0.2px;
     transition: color 0.3s ease;
   }
   .untitled-card:hover .member-name {
     color: #ec5c0a;
   }
   .member-role {
-    font-size: 0.84rem;
-    font-weight: 800;
+    font-size: 0.88rem;
+    font-weight: 600;
     font-family: 'Poppins', 'Inter', sans-serif;
     color: #ec5c0a;
     margin: 0;
-    line-height: 1.3;
-    background: linear-gradient(135deg, rgba(236, 92, 10, 0.08) 0%, rgba(0, 123, 62, 0.06) 100%);
-    border: 1.5px solid rgba(236, 92, 10, 0.25);
-    padding: 6px 18px;
-    border-radius: 50px;
-    display: inline-block;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    box-shadow: 0 4px 12px rgba(236, 92, 10, 0.08);
-    transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+    line-height: 1.35;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    display: block;
+    box-shadow: none !important;
   }
   .untitled-card:hover .member-role {
-    transform: scale(1.06);
-    background: linear-gradient(135deg, #ec5c0a 0%, #007b3e 100%);
-    color: #ffffff;
-    border-color: #ec5c0a;
-    box-shadow: 0 8px 24px rgba(236, 92, 10, 0.35);
+    transform: none;
+    background: transparent !important;
+    color: #007b3e !important;
+  }  box-shadow: 0 8px 24px rgba(236, 92, 10, 0.35);
   }
 {%- endstyle -%}
 
