@@ -205,6 +205,7 @@
     letter-spacing: 0.5px;
     margin-bottom: 16px;
     width: fit-content;
+    white-space: nowrap !important;
     box-shadow: 0 4px 15px rgba(236, 92, 10, 0.1);
   }
 
@@ -215,6 +216,16 @@
     border-radius: 50%;
     box-shadow: 0 0 0 0 rgba(236, 92, 10, 0.7);
     animation: pulse-ring 1.8s infinite;
+  }
+
+  @media screen and (max-width: 768px) {
+    .company-badge {
+      white-space: nowrap !important;
+      font-size: clamp(0.65rem, 2.7vw, 0.8rem) !important;
+      padding: 6px 12px !important;
+      gap: 6px !important;
+      max-width: 100% !important;
+    }
   }
 
   /* Elegant Light Theme Lightweight Typography (Weight 400) */
