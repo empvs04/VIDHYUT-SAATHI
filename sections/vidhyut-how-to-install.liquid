@@ -1,5 +1,5 @@
 {% comment %}
-  HOW TO INSTALL VIDHYUT SAATHI CARD - Ultra Lucrative Mobile & Desktop Layout
+  HOW TO INSTALL VIDHYUT SAATHI CARD - Perfectly Aligned 3-Step Layout
   File: sections/vidhyut-how-to-install.liquid
 {% endcomment %}
 
@@ -213,8 +213,8 @@
   }
 
   .vsi-step-stage {
-    padding: 0;
-    background: #080d19;
+    padding: 10px;
+    background: linear-gradient(135deg, #F8FAFC 0%, #FFFDF8 100%);
     height: 210px;
     display: flex;
     align-items: center;
@@ -223,19 +223,23 @@
     overflow: hidden;
   }
 
-  .vsi-step-stage.light-bg {
-    background: linear-gradient(135deg, #F8FAFC 0%, #FFFDF8 100%);
-    padding: 10px;
-  }
-
+  /* CARD 1: STANDALONE FRONT CARD FLOATING PERFECTLY ALIGNED */
   .vsi-card-fill-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    max-width: 95%;
+    max-height: 185px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
     display: block;
+    filter: drop-shadow(0 10px 22px rgba(236, 92, 10, 0.28));
+    border-radius: 12px;
     transition: transform 0.4s ease;
   }
+  .vsi-inner-step-box:hover .vsi-card-fill-img {
+    transform: scale(1.05);
+  }
 
+  /* CARD 2: TRANSPARENT PNG GRAPHIC */
   .vsi-peel-perfect-img {
     max-width: 95%;
     max-height: 185px;
@@ -246,7 +250,11 @@
     filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.15));
     transition: transform 0.4s ease;
   }
+  .vsi-inner-step-box:hover .vsi-peel-perfect-img {
+    transform: scale(1.06) rotate(1deg);
+  }
 
+  /* CARD 3: EXACT USER HD MCB IMAGE */
   .vsi-mcb-user-img {
     max-width: 100%;
     max-height: 100%;
@@ -256,6 +264,9 @@
     display: block;
     border-radius: 12px;
     transition: transform 0.4s ease;
+  }
+  .vsi-inner-step-box:hover .vsi-mcb-user-img {
+    transform: scale(1.05);
   }
 
   .vsi-step-desc {
@@ -371,7 +382,6 @@
 
   /* ==========================================================
      ULTRA-LUCRATIVE MOBILE HORIZONTAL ALIGNMENT (Max Width 768px)
-     Renders beautifully proportioned side-by-side cards with glowing accents
      ========================================================== */
   @media screen and (max-width: 768px) {
     .vsi-wrapper {
@@ -487,21 +497,22 @@
       font-weight: 900 !important;
     }
 
-    /* PROPORTIONAL STAGE HEIGHT */
+    /* PROPORTIONAL STAGE HEIGHT (95px) & IDENTICAL LIGHT STAGE FOR ALL 3 CARDS */
     .vsi-step-stage {
       height: 95px !important;
-      background: #080d19 !important;
-    }
-
-    .vsi-step-stage.light-bg {
       padding: 4px !important;
       background: linear-gradient(135deg, #F8FAFC 0%, #FFFDF8 100%) !important;
     }
 
+    /* CARD 1 IMAGE: MATCHES STEP 2 & STEP 3 OPTICAL CENTERING EXACTLY */
     .vsi-card-fill-img {
-      object-fit: cover !important;
-      width: 100% !important;
-      height: 100% !important;
+      max-height: 88px !important;
+      max-width: 98% !important;
+      width: auto !important;
+      height: auto !important;
+      object-fit: contain !important;
+      filter: drop-shadow(0 6px 14px rgba(236, 92, 10, 0.25)) !important;
+      border-radius: 6px !important;
     }
 
     .vsi-peel-perfect-img {
@@ -656,7 +667,7 @@
             <div class="vsi-step-num">02</div>
             <h3 class="vsi-step-title">PEEL 3M TAPE</h3>
           </div>
-          <div class="vsi-step-stage light-bg">
+          <div class="vsi-step-stage">
             <img 
               src="{{ 'vs-install-peel-perfect.png' | asset_url }}" 
               alt="Peel off 3M adhesive layer from Vidhyut Saathi card" 
@@ -682,7 +693,7 @@
             <div class="vsi-step-num">03</div>
             <h3 class="vsi-step-title">PASTE ON MCB</h3>
           </div>
-          <div class="vsi-step-stage light-bg">
+          <div class="vsi-step-stage">
             <img 
               src="{{ 'vs-install-mcb-user-exact.jpg' | asset_url }}" 
               alt="EASY TO INSTALL ON MCB BOX - Vidhyut Saathi Card" 
