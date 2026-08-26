@@ -250,7 +250,39 @@
     }
   }
 
+  .wvs-hero-title-line1,
+  .wvs-hero-title-line2 {
+    display: inline;
+  }
+
+  /* Mobile Title Line Formatting: Exactly 2 Clean Lines on Mobile */
   @media (max-width: 768px) {
+    h1.wvs-hero-title,
+    .wvs-hero-title {
+      font-size: clamp(1.28rem, 5.2vw, 1.7rem) !important;
+      line-height: 1.35 !important;
+      margin-bottom: 18px !important;
+      text-align: center !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 4px !important;
+    }
+
+    .wvs-hero-title-line1 {
+      display: block !important;
+      color: #231F20 !important;
+      font-weight: 900 !important;
+      text-align: center !important;
+    }
+
+    .wvs-hero-title-line2 {
+      display: block !important;
+      font-weight: 900 !important;
+      text-align: center !important;
+    }
+
     .wvs-hero-highlights {
       flex-direction: column !important;
       width: 100% !important;
@@ -315,9 +347,11 @@
 
     <!-- Main Title -->
     <h1 class="wvs-hero-title">
-      {{ section.settings.title_part1 | default: "BUILD YOUR BUSINESS IN INDIA’S" }}<br>
-      <span class="wvs-highlight-orange">{{ section.settings.title_part2 | default: "GROWING ENERGY-SAVING" }}</span>
-      <span class="wvs-highlight-green">{{ section.settings.title_part3 | default: "MARKET." }}</span>
+      <span class="wvs-hero-title-line1">{{ section.settings.title_part1 | default: "BUILD YOUR BUSINESS IN INDIA’S" }}</span>
+      <span class="wvs-hero-title-line2">
+        <span class="wvs-highlight-orange">{{ section.settings.title_part2 | default: "GROWING ENERGY-SAVING" }}</span>
+        <span class="wvs-highlight-green">{{ section.settings.title_part3 | default: "MARKET." }}</span>
+      </span>
     </h1>
 
     <!-- Subtitle Card -->
