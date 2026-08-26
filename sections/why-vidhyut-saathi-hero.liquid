@@ -250,27 +250,41 @@
     }
   }
 
-  @media (max-width: 480px) {
-    .wvs-hero-subtitle-card {
-      flex-direction: row;
-      justify-content: flex-start;
-      text-align: left;
-    }
+  @media (max-width: 768px) {
     .wvs-hero-highlights {
-      flex-direction: column;
-      width: 100%;
-      max-width: 320px;
-      margin: 0 auto;
-      gap: 10px;
+      flex-direction: column !important;
+      width: 100% !important;
+      max-width: 320px !important;
+      margin: 0 auto !important;
+      gap: 12px !important;
     }
     .wvs-feature-tag {
-      width: 100%;
-      justify-content: center;
+      width: 100% !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: flex-start !important;
+      padding: 10px 20px !important;
+      box-sizing: border-box !important;
+      border-radius: 50px !important;
     }
-  }
+    .wvs-tag-icon-circle {
+      width: 32px !important;
+      min-width: 32px !important;
+      height: 32px !important;
+      font-size: 0.9rem !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      flex-shrink: 0 !important;
+      margin-right: 12px !important;
+    }
+    .wvs-feature-tag span:last-child {
+      flex: 1 !important;
+      text-align: left !important;
+      font-size: 0.92rem !important;
+      font-weight: 700 !important;
+    }
 
-  /* Mobile Paragraph Justification & Uniform Word Spacing (Mobile Only) */
-  @media (max-width: 768px) {
     .wvs-hero-wrapper p {
       text-align: justify !important;
       text-justify: inter-word !important;
