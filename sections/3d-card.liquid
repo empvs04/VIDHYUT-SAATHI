@@ -183,13 +183,17 @@
     <p class="reveal-up" id="hero-p" style="transition-delay: 0.15s;">{{ section.settings.subtitle }}</p>
     <div class="v-hero-btns reveal-up" id="hero-btns" style="transition-delay: 0.3s;">
       {% if section.settings.btn1_text != blank %}
-        <a href="{{ section.settings.btn1_link }}" class="v-btn v-btn-primary">
-          {{ section.settings.btn1_text }} <i class="fas fa-arrow-right"></i>
+        <a href="{% if section.settings.btn1_link != blank %}{{ section.settings.btn1_link }}{% else %}/pages/get-franchise{% endif %}" class="v-btn v-btn-primary">
+          <i class="fas fa-handshake"></i>
+          <span>{{ section.settings.btn1_text }}</span>
+          <i class="fas fa-arrow-right"></i>
         </a>
       {% endif %}
       {% if section.settings.btn2_text != blank %}
-        <a href="{{ section.settings.btn2_link }}" class="v-btn v-btn-secondary">
-          <i class="fas fa-briefcase"></i> {{ section.settings.btn2_text }}
+        <a href="{% if section.settings.btn2_link != blank %}{{ section.settings.btn2_link }}{% else %}tel:+918199036060{% endif %}" class="v-btn v-btn-secondary">
+          <i class="fas fa-headset"></i>
+          <span>{{ section.settings.btn2_text }}</span>
+          <i class="fas fa-phone"></i>
         </a>
       {% endif %}
     </div>

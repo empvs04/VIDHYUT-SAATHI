@@ -89,12 +89,34 @@
   
   .v-hero-content p { font-size: var(--hero-subheading-size-desk); margin-bottom: 40px; font-weight: 400; opacity: 0.9; line-height: 1.6; }
   
-  .v-hero-btns { display: flex; gap: 20px; flex-wrap: wrap; }
+  .v-hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
   
   .v-btn {
-    padding: 16px 35px; font-size: 16px; font-weight: 700; text-decoration: none;
-    text-transform: uppercase; border-radius: 50px; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    display: inline-flex; align-items: center; gap: 10px; border: 2px solid transparent; position: relative; overflow: hidden;
+    display: grid;
+    grid-template-columns: 24px 1fr 24px;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+    padding: 16px 28px;
+    font-size: 15px;
+    font-weight: 800;
+    text-decoration: none;
+    text-transform: uppercase;
+    border-radius: 50px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .v-btn span {
+    text-align: center;
+  }
+  .v-btn i {
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
   .v-btn-primary { background-color: {{ primary_color }}; color: #fff; box-shadow: 0 15px 30px {{ primary_color_60 }}; }
@@ -139,8 +161,8 @@
     .v-hero-content { max-width: 100%; margin-top: 20px; padding: 0 10px; }
     .v-hero-content h1 { font-size: var(--hero-heading-size-mob); margin-bottom: 15px; }
     .v-hero-content p { font-size: var(--hero-subheading-size-mob); margin-bottom: 25px; line-height: 1.4; }
-    .v-hero-btns { justify-content: center; gap: 15px; }
-    .v-btn { padding: 14px 25px; font-size: 14px; width: 100%; justify-content: center; }
+    .v-hero-btns { flex-direction: column; width: 100%; gap: 12px; }
+    .v-btn { padding: 14px 20px; font-size: 13.5px; width: 100%; justify-content: center; }
     .v-3d-container { width: 100%; height: var(--hero-height-mob); margin-bottom: 10px; margin-top: 30px; }
     .v-blob-1, .v-blob-2, .v-blob-3 { width: 60vw; height: 60vw; }
   }
@@ -160,10 +182,18 @@
     <p class="reveal-up hero-text-{{ section.id }}" style="transition-delay: 0.15s;">{{ section.settings.subtitle }}</p>
     <div class="v-hero-btns reveal-up hero-text-{{ section.id }}" style="transition-delay: 0.3s;">
       {% if section.settings.btn1_text != blank %}
-        <a href="{{ section.settings.btn1_link }}" class="v-btn v-btn-primary">{{ section.settings.btn1_text }} <i class="fas fa-arrow-right"></i></a>
+        <a href="{% if section.settings.btn1_link != blank %}{{ section.settings.btn1_link }}{% else %}/pages/get-franchise{% endif %}" class="v-btn v-btn-primary">
+          <i class="fas fa-handshake"></i>
+          <span>{{ section.settings.btn1_text }}</span>
+          <i class="fas fa-arrow-right"></i>
+        </a>
       {% endif %}
       {% if section.settings.btn2_text != blank %}
-        <a href="{% if section.settings.btn2_link != blank %}{{ section.settings.btn2_link }}{% else %}/pages/get-franchise{% endif %}" class="v-btn v-btn-secondary"><i class="fas fa-briefcase"></i> {{ section.settings.btn2_text }}</a>
+        <a href="{% if section.settings.btn2_link != blank %}{{ section.settings.btn2_link }}{% else %}tel:+918199036060{% endif %}" class="v-btn v-btn-secondary">
+          <i class="fas fa-headset"></i>
+          <span>{{ section.settings.btn2_text }}</span>
+          <i class="fas fa-phone"></i>
+        </a>
       {% endif %}
     </div>
   </div>
