@@ -1,4 +1,4 @@
-{% schema %}
+﻿{% schema %}
 {
   "name": "Vidhyut Saathi Landing",
   "settings": [
@@ -523,33 +523,95 @@
   }
 }
 
-  /* MOBILE ONLY: MASTER CONTAINER FOR HERO & STAT CARDS ONLY */
+  /* MOBILE ONLY: ULTRA-LUCRATIVE CRISIS SECTION */
   @media(max-width: 767px) {
+
+    @keyframes crisisGlow {
+      0%, 100% { box-shadow: 0 0 18px rgba(247,148,29,0.35), 0 0 36px rgba(247,148,29,0.1); }
+      50%       { box-shadow: 0 0 30px rgba(247,148,29,0.6), 0 0 60px rgba(247,148,29,0.2); }
+    }
+    @keyframes crisisGlowGreen {
+      0%, 100% { box-shadow: 0 0 18px rgba(62,173,71,0.35), 0 0 36px rgba(62,173,71,0.1); }
+      50%       { box-shadow: 0 0 30px rgba(62,173,71,0.6), 0 0 60px rgba(62,173,71,0.2); }
+    }
+    @keyframes shimmerBadge {
+      0%   { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+    @keyframes pulseIcon {
+      0%, 100% { transform: scale(1); }
+      50%       { transform: scale(1.08); }
+    }
+
+    /* ── OUTER CONTAINER — STRIKING DARK HEADER ── */
     .vs-problem-container {
-      background: linear-gradient(180deg, #FFFDF8 0%, #FAFAF7 50%, #FFFDF8 100%) !important;
-      border: 2px solid rgba(247, 148, 29, 0.25) !important;
+      background: linear-gradient(160deg, #0A0D09 0%, #0F1A0E 50%, #0A0D09 100%) !important;
+      border: none !important;
       border-radius: 26px !important;
-      padding: 20px 14px 20px !important;
+      padding: 28px 16px 26px !important;
       margin: 16px 12px 24px !important;
-      box-shadow: 0 16px 48px rgba(247, 148, 29, 0.12), inset 0 1px 0 rgba(255,255,255,0.9) !important;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 0 1.5px rgba(247,148,29,0.3) !important;
       box-sizing: border-box !important;
       position: relative !important;
       overflow: hidden !important;
     }
-
-    .vs-hero {
-      padding: 16px 12px 14px !important;
-      text-align: center !important;
+    /* Ambient glow effects inside container */
+    .vs-problem-container::before {
+      content: '' !important;
+      position: absolute !important;
+      top: -40px !important;
+      right: -40px !important;
+      width: 200px !important;
+      height: 200px !important;
+      background: radial-gradient(circle, rgba(247,148,29,0.15) 0%, transparent 70%) !important;
+      pointer-events: none !important;
+      z-index: 0 !important;
     }
+    .vs-problem-container::after {
+      content: '' !important;
+      position: absolute !important;
+      bottom: -40px !important;
+      left: -40px !important;
+      width: 180px !important;
+      height: 180px !important;
+      background: radial-gradient(circle, rgba(62,173,71,0.12) 0%, transparent 70%) !important;
+      pointer-events: none !important;
+      z-index: 0 !important;
+    }
+
+    /* ── HERO SECTION ON DARK BACKGROUND ── */
+    .vs-hero {
+      padding: 6px 12px 16px !important;
+      text-align: center !important;
+      position: relative !important;
+      z-index: 2 !important;
+    }
+    .vs-hero-label {
+      background: rgba(247,148,29,0.15) !important;
+      border: 1px solid rgba(247,148,29,0.4) !important;
+      box-shadow: 0 0 12px rgba(247,148,29,0.25) !important;
+    }
+    .vs-hero-label span { color: #FDB44B !important; }
     .vs-hero-divider {
       margin: 14px auto 0 !important;
-      width: 70px !important;
+      width: 80px !important;
+      box-shadow: 0 0 12px rgba(247,148,29,0.5) !important;
     }
     .vs-hero h1 {
-      font-size: 28px !important;
+      font-size: 32px !important;
       text-align: center !important;
+      color: #FFFFFF !important;
+      text-shadow: 0 2px 20px rgba(247,148,29,0.3) !important;
     }
+    .vs-hero h1 .accent {
+      background: linear-gradient(135deg, #FDB44B 0%, #F7941D 50%, #FFD700 100%) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      filter: drop-shadow(0 0 8px rgba(247,148,29,0.6)) !important;
+    }
+    .vs-hero h1 .accent::after { display: none !important; }
 
+    /* ── STATS GRID ── */
     .vs-stats-grid {
       display: flex !important;
       grid-template-columns: none !important;
@@ -560,40 +622,34 @@
       gap: 16px !important;
       padding: 10px 0 0 0 !important;
       width: 100% !important;
+      position: relative !important;
+      z-index: 2 !important;
     }
-    .vs-stats-grid::-webkit-scrollbar {
-      display: none !important;
-    }
+    .vs-stats-grid::-webkit-scrollbar { display: none !important; }
 
-    .vs-stat-card .vs-card-glow {
-      display: none !important;
-    }
+    .vs-stat-card .vs-card-glow { display: none !important; }
 
-    /* Every card gets its own rotating border */
+    /* ── EACH STAT CARD: DARK GLASS + NEON ROTATING BORDER ── */
     .vs-stats-grid .vs-stat-card {
       position: relative !important;
       isolation: isolate !important;
       overflow: hidden !important;
-
       border: none !important;
-      border-radius: 20px !important;
-
+      border-radius: 22px !important;
       background: transparent !important;
-
       width: 100% !important;
       box-sizing: border-box !important;
-      padding: 22px 18px !important;
+      padding: 26px 20px !important;
       text-align: center !important;
       display: flex !important;
       flex-direction: column !important;
       align-items: center !important;
       justify-content: center !important;
-      box-shadow: 0 12px 32px rgba(255, 138, 0, 0.15), 0 0 20px rgba(22, 184, 78, 0.12) !important;
     }
 
-    /* ROTATING 360° ORANGE + GREEN BORDER */
-    .vs-stats-grid .vs-stat-card::before {
-      content: "" !important;
+    /* ROTATING 360 NEON BORDER — ORANGE */
+    .vs-stats-grid .vs-stat-card.style-orange::before {
+      content: '' !important;
       position: absolute !important;
       width: 200% !important;
       height: 200% !important;
@@ -603,118 +659,144 @@
       background: conic-gradient(
         #FF8A00 0deg,
         #FFC107 60deg,
-        #16B84E 120deg,
-        #16B84E 180deg,
-        #FFC107 240deg,
-        #FF8A00 300deg,
+        #FF4500 120deg,
+        #FFC107 180deg,
+        #FF8A00 240deg,
+        #FDB44B 300deg,
         #FF8A00 360deg
       ) !important;
-      animation: vs360Border 4s linear infinite !important;
-      border-radius: 30px !important;
+      animation: vs360Border 3.5s linear infinite !important;
+      border-radius: 32px !important;
       z-index: -2 !important;
       pointer-events: none !important;
     }
 
-    /* INNER CARD — LEAVES 2PX BORDER VISIBLE */
+    /* ROTATING 360 NEON BORDER — GREEN */
+    .vs-stats-grid .vs-stat-card.style-green::before {
+      content: '' !important;
+      position: absolute !important;
+      width: 200% !important;
+      height: 200% !important;
+      top: 50% !important;
+      left: 50% !important;
+      transform: translate(-50%, -50%) rotate(0deg);
+      background: conic-gradient(
+        #16B84E 0deg,
+        #22C55E 80deg,
+        #3EAD47 160deg,
+        #16B84E 220deg,
+        #10B981 280deg,
+        #3EAD47 340deg,
+        #16B84E 360deg
+      ) !important;
+      animation: vs360Border 4s linear infinite !important;
+      border-radius: 32px !important;
+      z-index: -2 !important;
+      pointer-events: none !important;
+    }
+
+    /* INNER DARK GLASS FILL (2px border visible) */
     .vs-stats-grid .vs-stat-card::after {
-      content: "" !important;
+      content: '' !important;
       position: absolute !important;
       top: 2px !important;
       right: 2px !important;
       bottom: 2px !important;
       left: 2px !important;
-      border-radius: 18px !important;
-      background: #FFFFFF !important;
+      border-radius: 20px !important;
       z-index: -1 !important;
       pointer-events: none !important;
     }
-
-    /* Green card background */
-    .vs-stats-grid .vs-stat-card.style-green::after {
-      background: linear-gradient(
-        180deg,
-        #F2FAF3 0%,
-        #FFFFFF 100%
-      ) !important;
-    }
-
-    /* Orange cards background */
     .vs-stats-grid .vs-stat-card.style-orange::after {
-      background: linear-gradient(
-        180deg,
-        #FFFDF8 0%,
-        #FFFFFF 100%
-      ) !important;
+      background: linear-gradient(160deg, #1A0E00 0%, #140A00 60%, #0F0800 100%) !important;
+    }
+    .vs-stats-grid .vs-stat-card.style-green::after {
+      background: linear-gradient(160deg, #071209 0%, #050E07 60%, #030A04 100%) !important;
     }
 
-    /* ALL CONTENT ABOVE BORDER */
+    /* Content z-index above border */
     .vs-stats-grid .vs-stat-card > * {
       position: relative !important;
       z-index: 3 !important;
     }
 
-    /* EACH CARD STARTS AT DIFFERENT ROTATION BUT ALL COMPLETE 360° */
-    .vs-stats-grid .vs-stat-card:nth-child(1)::before {
-      animation: vs360Border 4s linear infinite !important;
-      animation-delay: 0s !important;
-    }
+    /* Animation delays */
+    .vs-stats-grid .vs-stat-card:nth-child(1)::before { animation-delay: 0s !important; }
+    .vs-stats-grid .vs-stat-card:nth-child(2)::before { animation-delay: -1.33s !important; }
+    .vs-stats-grid .vs-stat-card:nth-child(3)::before { animation-delay: -2.66s !important; }
 
-    .vs-stats-grid .vs-stat-card:nth-child(2)::before {
-      animation: vs360Border 4s linear infinite !important;
-      animation-delay: -1.33s !important;
-    }
-
-    .vs-stats-grid .vs-stat-card:nth-child(3)::before {
-      animation: vs360Border 4s linear infinite !important;
-      animation-delay: -2.66s !important;
-    }
-
-    .vs-stat-icon-wrap,
-    .vs-stat-value,
-    .vs-stat-divider,
-    .vs-stat-desc {
-      position: relative !important;
-      z-index: 2 !important;
-    }
-
+    /* ── ICON WRAP ── */
     .vs-stat-icon-wrap {
-      width: 48px !important;
-      height: 48px !important;
-      border-radius: 14px !important;
-      margin: 0 auto 10px auto !important;
+      width: 54px !important;
+      height: 54px !important;
+      border-radius: 16px !important;
+      margin: 0 auto 12px auto !important;
+      animation: pulseIcon 3s ease-in-out infinite !important;
     }
-    .vs-stat-icon-wrap svg {
-      width: 24px !important;
-      height: 24px !important;
+    .vs-stat-card.style-orange .vs-stat-icon-wrap {
+      background: rgba(247,148,29,0.18) !important;
+      color: #FDB44B !important;
+      box-shadow: 0 0 20px rgba(247,148,29,0.4) !important;
     }
+    .vs-stat-card.style-green .vs-stat-icon-wrap {
+      background: rgba(62,173,71,0.18) !important;
+      color: #6DD47A !important;
+      box-shadow: 0 0 20px rgba(62,173,71,0.4) !important;
+    }
+    .vs-stat-icon-wrap svg { width: 26px !important; height: 26px !important; }
 
+    /* ── STAT VALUE ── */
     .vs-stat-value {
-      font-size: 32px !important;
+      font-size: 38px !important;
       font-weight: 900 !important;
-      margin-bottom: 6px !important;
-      letter-spacing: -0.5px !important;
+      margin-bottom: 8px !important;
+      letter-spacing: -1px !important;
+      line-height: 1 !important;
+    }
+    .vs-stat-card.style-orange .vs-stat-value {
+      color: #FFD700 !important;
+      background: linear-gradient(135deg, #FDB44B 0%, #F7941D 50%, #FFD700 100%) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      filter: drop-shadow(0 0 10px rgba(247,148,29,0.6)) !important;
+    }
+    .vs-stat-card.style-green .vs-stat-value {
+      color: #6DD47A !important;
+      background: linear-gradient(135deg, #6DD47A 0%, #3EAD47 50%, #22C55E 100%) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      filter: drop-shadow(0 0 10px rgba(62,173,71,0.6)) !important;
     }
 
+    /* ── DIVIDER ── */
     .vs-stat-divider {
-      width: 36px !important;
-      height: 3.5px !important;
+      width: 40px !important;
+      height: 3px !important;
       border-radius: 2px !important;
-      margin: 6px auto 10px auto !important;
+      margin: 8px auto 12px auto !important;
+    }
+    .vs-stat-card.style-orange .vs-stat-divider {
+      background: linear-gradient(90deg, #F7941D, #FFD700) !important;
+      box-shadow: 0 0 8px rgba(247,148,29,0.5) !important;
+    }
+    .vs-stat-card.style-green .vs-stat-divider {
+      background: linear-gradient(90deg, #3EAD47, #6DD47A) !important;
+      box-shadow: 0 0 8px rgba(62,173,71,0.5) !important;
     }
 
+    /* ── DESCRIPTION ── */
     .vs-stat-desc {
-      font-size: 14.5px !important;
-      font-weight: 600 !important;
-      color: #334155 !important;
-      line-height: 1.42 !important;
+      font-size: 14px !important;
+      font-weight: 700 !important;
+      line-height: 1.45 !important;
       letter-spacing: 0.1px !important;
     }
+    .vs-stat-card.style-orange .vs-stat-desc { color: rgba(255,230,180,0.9) !important; }
+    .vs-stat-card.style-green .vs-stat-desc { color: rgba(200,240,205,0.9) !important; }
 
-    .vs-crisis-dots {
-      display: none !important;
-    }
+    .vs-crisis-dots { display: none !important; }
 
-    /* NEED BANNER MOBILE LUCRATIVE REDESIGN */
+    /* ── NEED BANNER ── */
     .vs-need-banner {
       margin: 24px 12px 0 !important;
       padding: 24px 18px !important;
@@ -726,7 +808,6 @@
       box-shadow: 0 16px 40px rgba(247, 148, 29, 0.14), inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
       text-align: center !important;
     }
-
     .vs-need-icon {
       width: 56px !important;
       height: 56px !important;
@@ -736,7 +817,6 @@
       box-shadow: 0 8px 22px rgba(247, 148, 29, 0.22) !important;
       margin: 0 auto !important;
     }
-
     .vs-need-label {
       font-size: 22px !important;
       font-weight: 900 !important;
@@ -747,160 +827,12 @@
       letter-spacing: -0.2px !important;
       margin-top: 4px !important;
     }
-
     .vs-need-text {
       font-size: 15px !important;
       font-weight: 700 !important;
       line-height: 1.55 !important;
       color: #334155 !important;
     }
-      font-size: 14.5px !important;
-      font-weight: 600 !important;
-      color: #334155 !important;
-      line-height: 1.48 !important;
-      margin: 0 !important;
-    }
-  }
-
-  /* NEED BANNER */
-  .vs-need-banner {
-    margin: 32px 20px 0; background: linear-gradient(135deg, #FFFBF3, #FFF3E0, #FFFBF3);
-    border: 2px solid rgba(247,148,29,.25); border-radius: 22px; padding: 20px 24px;
-    display: flex; align-items: center; gap: 20px; flex-direction: column; text-align: center;
-    position: relative; z-index: 2; box-shadow: 0 4px 24px rgba(247,148,29,.12), inset 0 1px 0 rgba(255,255,255,.8);
-  }
-  @media(min-width: 768px) {
-    .vs-need-banner { flex-direction: row; text-align: left; padding: 30px 38px; margin: 32px 72px 0; }
-  }
-
-  .vs-need-icon {
-    width: 64px; height: 64px; flex-shrink: 0; background: white; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    box-shadow: 0 6px 20px rgba(247,148,29,.25); border: 2px solid rgba(247,148,29,.15);
-  }
-  .vs-need-divider {
-    display: none; width: 3px; height: 56px; background: linear-gradient(180deg, var(--orange), var(--green));
-    border-radius: 2px; flex-shrink: 0;
-  }
-  @media(min-width: 768px) { .vs-need-divider { display: block; } }
-
-  .vs-need-label { font-family: 'Baloo 2', sans-serif; font-size: 24px; font-weight: 900; color: var(--orange); white-space: nowrap; }
-  .vs-need-text { font-size: 17px; font-weight: 700; color: var(--text); line-height: 1.6; margin: 0;}
-
-  /* SECTION BREAK */
-  .vs-section-break {
-    margin: 56px 20px 36px; display: flex; align-items: center; gap: 15px; position: relative; z-index: 2;
-  }
-  @media(min-width: 768px) { .vs-section-break { margin: 56px 72px 36px; gap: 20px; } }
-
-  .vs-break-line { flex: 1; height: 1px; background: linear-gradient(90deg, rgba(247,148,29,.35), transparent); }
-  .vs-break-line.rev { background: linear-gradient(270deg, rgba(247,148,29,.35), transparent); }
-  .vs-break-text {
-    font-family: 'Baloo 2', sans-serif; font-size: 11px; font-weight: 800; letter-spacing: 2px;
-    text-transform: uppercase; color: var(--orange2); white-space: nowrap;
-    background: linear-gradient(135deg, rgba(247,148,29,.1), transparent);
-    padding: 6px 14px; border-radius: 50px; border: 1px solid rgba(247,148,29,.2);
-  }
-  @media(min-width: 768px) { .vs-break-text { font-size: 13px; padding: 6px 18px; letter-spacing: 3px; } }
-
-  /* SOLUTION HEADER */
-  .vs-solution-wrap { padding: 0 20px; position: relative; z-index: 2; }
-  @media(min-width: 768px) { .vs-solution-wrap { padding: 0 72px; } }
-
-  .vs-solution-header { text-align: center; margin-bottom: 44px; position: relative; }
-  .vs-solution-header::before { content: '✦'; position: absolute; left: 10%; top: 0; font-size: 22px; color: var(--orange); opacity: .25; }
-  .vs-solution-header::after { content: '✦'; position: absolute; right: 10%; top: 10px; font-size: 16px; color: var(--green); opacity: .3; }
-  
-  @media(min-width: 768px) {
-    .vs-solution-header::before { left: 80px; top: 10px; }
-    .vs-solution-header::after { right: 80px; }
-  }
-
-  .vs-solution-header h2 {
-    font-family: 'Baloo 2', sans-serif; font-size: 38px; font-weight: 900;
-    color: var(--dark); line-height: 1.15; letter-spacing: -.5px; margin: 0;
-  }
-  @media(min-width: 768px) { .vs-solution-header h2 { font-size: 50px; } }
-  .vs-solution-header h2 span { color: var(--orange); }
-  
-  .vs-solution-header p {
-    margin: 12px 0 0 0; font-size: 18px; font-weight: 700; color: var(--muted); letter-spacing: .2px;
-  }
-  @media(min-width: 768px) { .vs-solution-header p { font-size: 22px; } }
-
-  .vs-subtitle-line {
-    display: inline-block; margin-top: 16px; width: 80px; height: 4px;
-    background: linear-gradient(90deg, var(--orange), var(--green)); border-radius: 2px;
-  }
-
-  /* CTA CARD */
-  .vs-bottom-cta {
-    margin: 0 20px 0; background: linear-gradient(135deg, #FFFDF8, #FFF6E8, #FFFDF8);
-    border-radius: 28px; padding: 35px 25px; display: flex; flex-direction: column;
-    align-items: center; justify-content: space-between; gap: 30px; text-align: center;
-    border: 2px solid rgba(247,148,29,.18); box-shadow: 0 8px 40px rgba(247,148,29,.12), inset 0 1px 0 rgba(255,255,255,.9);
-    position: relative; z-index: 2; overflow: hidden;
-  }
-  @media(min-width: 768px) {
-    .vs-bottom-cta { margin: 0 72px 0; flex-direction: row; padding: 44px 52px; gap: 36px; text-align: left; }
-  }
-
-  .vs-bottom-cta::before {
-    content: ''; position: absolute; top: -60px; left: -60px; width: 240px; height: 240px;
-    background: radial-gradient(circle, rgba(247,148,29,.1), transparent 65%); pointer-events: none;
-  }
-  .vs-bottom-cta::after {
-    content: ''; position: absolute; bottom: -50px; right: -50px; width: 200px; height: 200px;
-    background: radial-gradient(circle, rgba(62,173,71,.08), transparent 65%); pointer-events: none;
-  }
-
-  .vs-cta-left { position: relative; z-index: 1; }
-  .vs-cta-left h3 {
-    font-family: 'Baloo 2', sans-serif; font-size: 26px; font-weight: 900; color: var(--dark); line-height: 1.2; margin: 0;
-  }
-  @media(min-width: 768px) { .vs-cta-left h3 { font-size: 30px; } }
-  .vs-cta-left h3 span { color: var(--orange); }
-  .vs-cta-left p { margin: 10px 0 0 0; font-size: 16px; font-weight: 700; color: var(--muted); }
-
-  .vs-cta-proof {
-    display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 14px;
-  }
-  @media(min-width: 768px) { .vs-cta-proof { justify-content: flex-start; } }
-
-  .vs-cta-avatars { display: flex; }
-  .vs-cta-avatars span {
-    width: 32px; height: 32px; border-radius: 50%; border: 2px solid white;
-    display: inline-flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 800;
-    margin-left: -8px; color: white;
-  }
-  .vs-cta-avatars span:first-child { margin-left: 0; background: #F7941D; }
-  .vs-cta-avatars span:nth-child(2) { background: #3EAD47; }
-  .vs-cta-avatars span:nth-child(3) { background: #E07810; }
-  
-  .vs-cta-proof-text { font-size: 13px; font-weight: 700; color: var(--muted); }
-  .vs-cta-proof-text strong { color: var(--orange); }
-
-  .vs-cta-right { position: relative; z-index: 1; flex-shrink: 0; text-align: center; }
-  .vs-cta-btn {
-    display: inline-flex; align-items: center; gap: 12px; background: linear-gradient(135deg, var(--orange), var(--orange2));
-    color: white; font-family: 'Baloo 2', sans-serif; font-size: 19px; font-weight: 900;
-    padding: 18px 44px; border-radius: 50px; text-decoration: none;
-    box-shadow: 0 10px 32px rgba(247,148,29,.4), 0 2px 0 rgba(0,0,0,.1) inset;
-    letter-spacing: .3px; transition: transform .25s cubic-bezier(.22,1,.36,1), box-shadow .25s; white-space: nowrap;
-  }
-  .vs-cta-btn:hover {
-    transform: translateY(-3px) scale(1.02); box-shadow: 0 18px 48px rgba(247,148,29,.55); color: white;
-  }
-  .vs-cta-btn svg { width: 22px; height: 22px; }
-  .vs-cta-note {
-    margin-top: 10px; font-size: 12px; font-weight: 700; color: var(--green2);
-    display: flex; align-items: center; justify-content: center; gap: 5px;
-  }
-  .vs-cta-note::before { content: '✓'; font-weight: 900; }
-
-  .vs-bottom-bar {
-    margin-top: 52px; width: 100%; height: 7px;
-    background: linear-gradient(90deg, var(--green2) 0%, var(--green) 20%, var(--orange3) 50%, var(--orange) 80%, var(--green2) 100%);
   }
 </style>
 
