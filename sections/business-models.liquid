@@ -1,4 +1,4 @@
-﻿<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800;900&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 
@@ -22,8 +22,7 @@
   .business-section-{{ section.id }} .container {
     max-width: 1200px !important;
     width: 100% !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
+    margin: 0 auto !important; /* Centered */
     padding-left: 20px !important;
     padding-right: 20px !important;
     position: relative !important;
@@ -68,18 +67,16 @@
     box-shadow: 0 0 20px rgba(247,148,29,.30) !important;
   }
 
-  /* ── CARDS GRID ── */
+  /* ── CARDS GRID (FIXED FOR CENTERING) ── */
   .business-section-{{ section.id }} .grid {
-    display: grid !important;
-    grid-template-columns: repeat(3, 1fr) !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
     gap: 30px !important;
     align-items: stretch !important;
-    justify-content: center !important;
-    justify-items: center !important;
+    justify-content: center !important; /* Forces items to center */
     width: 100% !important;
     max-width: 1140px !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
+    margin: 0 auto !important; /* Centers the whole container */
   }
 
   .business-section-{{ section.id }} .card {
@@ -98,8 +95,7 @@
     transition: transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s !important;
     width: 100% !important;
     max-width: 360px !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
+    margin: 0 !important; /* Removed auto margins to let flex manage spacing */
   }
 
   .business-section-{{ section.id }} .card:hover {
@@ -335,25 +331,24 @@
     50% { transform: translateY(-50%) scaleX(-1) translateX(-5px); }
   }
 
-  /* ── DESKTOP DESIGN ── */
+  /* ── DESKTOP DESIGN (FIXED GRID CENTERING) ── */
   @media(min-width: 768px) {
     .business-section-{{ section.id }} .heading h1 { font-size: 52px !important; line-height: 1.1 !important; letter-spacing: -1px !important; }
     .business-section-{{ section.id }} .grid {
-      display: grid !important;
-      grid-template-columns: repeat(3, 1fr) !important;
-      gap: 24px !important;
+      display: flex !important;
+      flex-direction: row !important;
+      flex-wrap: wrap !important;
+      justify-content: center !important;
+      gap: 30px !important;
       width: 100% !important;
       max-width: 1140px !important;
-      margin-left: auto !important;
-      margin-right: auto !important;
-      justify-content: center !important;
-      justify-items: center !important;
+      margin: 0 auto !important;
     }
     .business-section-{{ section.id }} .card {
+      flex: 1 1 320px !important;
       width: 100% !important;
       max-width: 360px !important;
-      margin-left: auto !important;
-      margin-right: auto !important;
+      margin: 0 !important;
       padding: 40px 28px !important;
     }
   }
@@ -370,6 +365,7 @@
       grid-template-columns: none !important;
       flex-direction: row !important;
       flex-wrap: nowrap !important;
+      justify-content: flex-start !important; /* Resets to left for scrollable mobile view */
       overflow-x: auto !important;
       scroll-snap-type: x mandatory !important;
       scroll-behavior: smooth !important;
@@ -605,7 +601,7 @@
       box-shadow: 0 3px 10px rgba(247, 148, 29, 0.35) !important;
     }
   }
-</style></style>
+</style>
 
 <section class="business-section-{{ section.id }}">
   <div class="container">
