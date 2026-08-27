@@ -2700,30 +2700,34 @@
       margin-top: 6px !important;
     }
 
-    /* STEPPER TABS ON MOBILE (100% EQUAL SPACING ACROSS ALL MOBILE SCREENS) */
+    /* STEPPER TABS ON MOBILE (UNBROKEN 1-LINE HORIZONTAL SCROLL STEPPER) */
     .vsw-stepper-nav-wrapper {
       margin-bottom: 25px !important;
+      max-width: 100% !important;
+      overflow: hidden !important;
       padding: 0 !important;
-      width: 100% !important;
     }
+
     .vsw-stepper-nav {
       position: relative;
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-start;
       align-items: flex-start;
-      width: 100% !important;
-      padding: 10px 0 16px 0 !important;
-      box-sizing: border-box !important;
-      overflow: visible !important;
+      gap: 0;
+      padding: 10px 10px 16px 10px;
+      max-width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
     }
+    .vsw-stepper-nav::-webkit-scrollbar { display: none; }
 
     .vsw-stepper-line-bg {
       display: block !important;
       position: absolute;
-      top: 27px !important;
-      left: 10% !important;
-      right: 10% !important;
-      width: auto !important;
+      top: 29px !important;
+      left: 53.5px !important;
+      width: 348px !important;
       height: 3.5px !important;
       background: #E2E8F0 !important;
       border-radius: 10px !important;
@@ -2745,9 +2749,9 @@
     }
 
     .vsw-step-item {
-      flex: 1 1 0% !important;
-      width: 20% !important;
-      min-width: 0 !important;
+      flex-shrink: 0;
+      width: 87px !important;
+      min-width: 87px !important;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -2757,26 +2761,25 @@
     }
 
     .vsw-step-circle {
-      width: 36px !important;
-      height: 36px !important;
-      font-size: 0.88rem !important;
+      width: 38px !important;
+      height: 38px !important;
+      font-size: 0.92rem !important;
       font-weight: 700 !important;
       border-width: 2px !important;
     }
 
     .vsw-step-label {
-      font-size: 0.65rem !important;
+      font-size: 0.74rem !important;
       font-weight: 600 !important;
       color: #64748B !important;
-      margin-top: 6px !important;
+      margin-top: 7px !important;
       text-align: center !important;
       width: 100% !important;
-      max-width: 58px !important;
-      white-space: normal !important;
-      word-break: break-word !important;
-      overflow-wrap: break-word !important;
-      hyphens: auto !important;
-      line-height: 1.15 !important;
+      max-width: 100% !important;
+      white-space: nowrap !important;
+      word-break: normal !important;
+      overflow: visible !important;
+      line-height: 1.2 !important;
     }
 
     .vsw-step-item.active .vsw-step-label {
