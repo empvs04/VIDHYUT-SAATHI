@@ -84,19 +84,36 @@
     border-radius: 24px !important;
     padding: 32px 24px !important;
     position: relative !important;
+    overflow: hidden !important;
     display: flex !important;
     flex-direction: column !important;
     justify-content: space-between !important;
     align-items: center !important;
     text-align: center !important;
     backdrop-filter: blur(10px) !important;
-    border: 1.5px solid rgba(247,148,29,.08) !important;
+    border: 1.5px solid rgba(247,148,29,.12) !important;
     box-shadow: 0 8px 40px rgba(247,148,29,.08), 0 10px 30px rgba(0,0,0,.03) !important;
     transition: transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s !important;
     width: 100% !important;
     max-width: 360px !important;
-    margin: 0 !important; /* Removed auto margins to let flex manage spacing */
+    margin: 0 !important;
   }
+
+  .business-section-{{ section.id }} .card::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: 6px !important;
+    z-index: 5 !important;
+  }
+
+  .business-section-{{ section.id }} .green::before { background: #3EAD47 !important; }
+  .business-section-{{ section.id }} .orange::before { background: linear-gradient(90deg, #F7941D, #E07810) !important; }
+  .business-section-{{ section.id }} .yellow::before,
+  .business-section-{{ section.id }} .gold::before,
+  .business-section-{{ section.id }} .dark::before { background: linear-gradient(90deg, #FFB03A, #D97706) !important; }
 
   .business-section-{{ section.id }} .card:hover {
     transform: translateY(-8px) scale(1.01) !important;
@@ -113,15 +130,14 @@
   }
 
   /* ── TIER STYLING ── */
-  .business-section-{{ section.id }} .green { border-top: 5px solid #3EAD47 !important; }
-  .business-section-{{ section.id }} .orange { border-top: 5px solid #F7941D !important; background-color: #FFFDF8 !important; }
+  .business-section-{{ section.id }} .green { border-color: rgba(62, 173, 71, 0.3) !important; }
+  .business-section-{{ section.id }} .orange { border-color: rgba(247, 148, 29, 0.35) !important; background-color: #FFFDF8 !important; }
   .business-section-{{ section.id }} .yellow,
   .business-section-{{ section.id }} .gold,
   .business-section-{{ section.id }} .dark {
-    border-top: 5px solid #FFB03A !important;
     background: linear-gradient(180deg, #FFFDF0 0%, #FFFFFF 100%) !important;
     color: #111111 !important;
-    border: 1.5px solid rgba(255,176,58,.35) !important;
+    border-color: rgba(255,176,58,.45) !important;
     box-shadow: 0 12px 40px rgba(255,176,58,.16) !important;
   }
 
@@ -331,7 +347,7 @@
     50% { transform: translateY(-50%) scaleX(-1) translateX(-5px); }
   }
 
-  /* ── DESKTOP DESIGN (FIXED GRID CENTERING) ── */
+  /* ── DESKTOP DESIGN (FIXED GRID CENTERING & EQUAL CARD HEIGHTS) ── */
   @media(min-width: 768px) {
     .business-section-{{ section.id }} .heading h1 { font-size: 72px !important; line-height: 1.05 !important; letter-spacing: -1.5px !important; }
     .business-section-{{ section.id }} .grid {
@@ -339,6 +355,7 @@
       flex-direction: row !important;
       flex-wrap: wrap !important;
       justify-content: center !important;
+      align-items: stretch !important;
       gap: 30px !important;
       width: 100% !important;
       max-width: 1140px !important;
@@ -346,10 +363,19 @@
     }
     .business-section-{{ section.id }} .card {
       flex: 1 1 320px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
+      height: 100% !important;
+      min-height: 560px !important;
       width: 100% !important;
       max-width: 360px !important;
       margin: 0 !important;
       padding: 40px 28px !important;
+    }
+    .business-section-{{ section.id }} .points {
+      flex-grow: 1 !important;
+      justify-content: flex-start !important;
     }
   }
 
