@@ -2420,21 +2420,22 @@
     background: #E2E8F0;
     border-radius: 10px;
     z-index: 1;
+    overflow: hidden;
   }
 
   .vsw-stepper-line-progress {
     position: absolute;
-    top: 25px;
-    left: 70px;
-    height: 4.5px;
-    background: linear-gradient(90deg, #F7941D 0%, #FFC107 50%, #3EAD47 100%);
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: linear-gradient(90deg, #ec5c0a 0%, #ff9a00 50%, #007b3e 100%);
     background-size: 200% 100%;
     animation: shimmerProgressBar 3s linear infinite;
     border-radius: 10px;
     z-index: 2;
     transition: width 0.45s cubic-bezier(0.4, 0, 0.2, 1);
     width: 0%;
-    box-shadow: 0 0 12px rgba(247, 148, 29, 0.5);
+    box-shadow: 0 0 12px rgba(236, 92, 10, 0.5);
   }
 
   .vsw-step-item {
@@ -2727,18 +2728,20 @@
       background: #E2E8F0 !important;
       border-radius: 10px !important;
       z-index: 1 !important;
+      overflow: hidden !important;
     }
 
     .vsw-stepper-line-progress {
       display: block !important;
       position: absolute;
-      top: 27px !important;
-      left: 10% !important;
-      height: 3.5px !important;
+      top: 0 !important;
+      left: 0 !important;
+      height: 100% !important;
       background: linear-gradient(90deg, #ec5c0a 0%, #ff9a00 50%, #007b3e 100%) !important;
       border-radius: 10px !important;
       z-index: 2 !important;
       box-shadow: 0 0 8px rgba(236, 92, 10, 0.4) !important;
+      transition: width 0.45s cubic-bezier(0.4, 0, 0.2, 1) !important;
     }
 
     .vsw-step-item {
@@ -3490,8 +3493,9 @@
       <!-- Stepper Nav Line Bar -->
       <div class="vsw-stepper-nav-wrapper reveal-up active">
         <div class="vsw-stepper-nav" id="vswStepperNav">
-          <div class="vsw-stepper-line-bg"></div>
-          <div class="vsw-stepper-line-progress" id="vswStepperProgress" style="width: 0%;"></div>
+          <div class="vsw-stepper-line-bg">
+            <div class="vsw-stepper-line-progress" id="vswStepperProgress" style="width: 0%;"></div>
+          </div>
 
           <!-- Step 1 -->
           <button type="button" class="vsw-step-item active" data-step="0">
@@ -3650,9 +3654,7 @@
         }
       });
 
-      const isMobile = window.innerWidth <= 768;
-      const maxPct = isMobile ? 80 : 100;
-      const progressPct = (index / (stepData.length - 1)) * maxPct;
+      const progressPct = (index / (stepData.length - 1)) * 100;
       if (progressBar) progressBar.style.width = progressPct + '%';
 
       if (stepCard) {
