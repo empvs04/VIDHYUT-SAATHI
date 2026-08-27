@@ -526,12 +526,12 @@
   /* MOBILE ONLY: MASTER CONTAINER FOR HERO & STAT CARDS ONLY */
   @media(max-width: 767px) {
     .vs-problem-container {
-      background: linear-gradient(180deg, #FFFDF8 0%, #FAFAF7 50%, #FFFDF8 100%) !important;
-      border: 2px solid rgba(247, 148, 29, 0.25) !important;
+      background: linear-gradient(160deg, #0A0D09 0%, #0F1A0E 50%, #0A0D09 100%) !important;
+      border: none !important;
       border-radius: 26px !important;
-      padding: 20px 14px 20px !important;
+      padding: 24px 14px 24px !important;
       margin: 16px 12px 24px !important;
-      box-shadow: 0 16px 48px rgba(247, 148, 29, 0.12), inset 0 1px 0 rgba(255,255,255,0.9) !important;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 0 1.5px rgba(247,148,29,0.35) !important;
       box-sizing: border-box !important;
       position: relative !important;
       overflow: hidden !important;
@@ -541,14 +541,28 @@
       padding: 16px 12px 14px !important;
       text-align: center !important;
     }
+    .vs-hero-label {
+      background: rgba(247,148,29,0.15) !important;
+      border: 1px solid rgba(247,148,29,0.4) !important;
+      box-shadow: 0 0 12px rgba(247,148,29,0.25) !important;
+    }
+    .vs-hero-label span { color: #FDB44B !important; }
     .vs-hero-divider {
       margin: 14px auto 0 !important;
-      width: 70px !important;
+      width: 80px !important;
+      box-shadow: 0 0 12px rgba(247,148,29,0.5) !important;
     }
     .vs-hero h1 {
       font-size: 28px !important;
       text-align: center !important;
+      color: #FFFFFF !important;
     }
+    .vs-hero h1 .accent {
+      background: linear-gradient(135deg, #FDB44B 0%, #F7941D 50%, #FFD700 100%) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+    }
+    .vs-hero h1 .accent::after { display: none !important; }
 
     .vs-stats-grid {
       display: flex !important;
@@ -591,8 +605,8 @@
       box-shadow: 0 12px 32px rgba(255, 138, 0, 0.15), 0 0 20px rgba(22, 184, 78, 0.12) !important;
     }
 
-    /* ROTATING 360° ORANGE + GREEN BORDER */
-    .vs-stats-grid .vs-stat-card::before {
+    /* ROTATING 360° ORANGE BORDER — ORANGE CARDS */
+    .vs-stats-grid .vs-stat-card.style-orange::before {
       content: "" !important;
       position: absolute !important;
       width: 200% !important;
@@ -601,13 +615,26 @@
       left: 50% !important;
       transform: translate(-50%, -50%) rotate(0deg);
       background: conic-gradient(
-        #FF8A00 0deg,
-        #FFC107 60deg,
-        #16B84E 120deg,
-        #16B84E 180deg,
-        #FFC107 240deg,
-        #FF8A00 300deg,
-        #FF8A00 360deg
+        #FF8A00 0deg, #FFC107 80deg, #FF8A00 160deg,
+        #FF4500 220deg, #FFC107 300deg, #FF8A00 360deg
+      ) !important;
+      animation: vs360Border 3.5s linear infinite !important;
+      border-radius: 30px !important;
+      z-index: -2 !important;
+      pointer-events: none !important;
+    }
+    /* ROTATING 360° GREEN BORDER — GREEN CARD */
+    .vs-stats-grid .vs-stat-card.style-green::before {
+      content: "" !important;
+      position: absolute !important;
+      width: 200% !important;
+      height: 200% !important;
+      top: 50% !important;
+      left: 50% !important;
+      transform: translate(-50%, -50%) rotate(0deg);
+      background: conic-gradient(
+        #16B84E 0deg, #22C55E 80deg, #3EAD47 160deg,
+        #16B84E 220deg, #10B981 300deg, #16B84E 360deg
       ) !important;
       animation: vs360Border 4s linear infinite !important;
       border-radius: 30px !important;
@@ -615,7 +642,7 @@
       pointer-events: none !important;
     }
 
-    /* INNER CARD — LEAVES 2PX BORDER VISIBLE */
+    /* INNER CARD — LEAVES 2PX NEON BORDER VISIBLE */
     .vs-stats-grid .vs-stat-card::after {
       content: "" !important;
       position: absolute !important;
@@ -624,27 +651,18 @@
       bottom: 2px !important;
       left: 2px !important;
       border-radius: 18px !important;
-      background: #FFFFFF !important;
       z-index: -1 !important;
       pointer-events: none !important;
     }
 
-    /* Green card background */
+    /* Green card — dark forest glass */
     .vs-stats-grid .vs-stat-card.style-green::after {
-      background: linear-gradient(
-        180deg,
-        #F2FAF3 0%,
-        #FFFFFF 100%
-      ) !important;
+      background: linear-gradient(160deg, #071209 0%, #050E07 60%, #030A04 100%) !important;
     }
 
-    /* Orange cards background */
+    /* Orange card — dark amber glass */
     .vs-stats-grid .vs-stat-card.style-orange::after {
-      background: linear-gradient(
-        180deg,
-        #FFFDF8 0%,
-        #FFFFFF 100%
-      ) !important;
+      background: linear-gradient(160deg, #1A0E00 0%, #140A00 60%, #0F0800 100%) !important;
     }
 
     /* ALL CONTENT ABOVE BORDER */
@@ -678,37 +696,68 @@
     }
 
     .vs-stat-icon-wrap {
-      width: 48px !important;
-      height: 48px !important;
-      border-radius: 14px !important;
-      margin: 0 auto 10px auto !important;
+      width: 52px !important;
+      height: 52px !important;
+      border-radius: 16px !important;
+      margin: 0 auto 12px auto !important;
+    }
+    .vs-stat-card.style-orange .vs-stat-icon-wrap {
+      background: rgba(247,148,29,0.18) !important;
+      color: #FDB44B !important;
+      box-shadow: 0 0 18px rgba(247,148,29,0.45) !important;
+    }
+    .vs-stat-card.style-green .vs-stat-icon-wrap {
+      background: rgba(62,173,71,0.18) !important;
+      color: #6DD47A !important;
+      box-shadow: 0 0 18px rgba(62,173,71,0.45) !important;
     }
     .vs-stat-icon-wrap svg {
-      width: 24px !important;
-      height: 24px !important;
+      width: 26px !important;
+      height: 26px !important;
     }
 
     .vs-stat-value {
-      font-size: 32px !important;
+      font-size: 36px !important;
       font-weight: 900 !important;
-      margin-bottom: 6px !important;
-      letter-spacing: -0.5px !important;
+      margin-bottom: 8px !important;
+      letter-spacing: -0.8px !important;
+    }
+    .vs-stat-card.style-orange .vs-stat-value {
+      background: linear-gradient(135deg, #FDB44B 0%, #F7941D 50%, #FFD700 100%) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      filter: drop-shadow(0 0 8px rgba(247,148,29,0.5)) !important;
+    }
+    .vs-stat-card.style-green .vs-stat-value {
+      background: linear-gradient(135deg, #6DD47A 0%, #3EAD47 50%, #22C55E 100%) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      filter: drop-shadow(0 0 8px rgba(62,173,71,0.5)) !important;
     }
 
     .vs-stat-divider {
-      width: 36px !important;
+      width: 40px !important;
       height: 3.5px !important;
       border-radius: 2px !important;
-      margin: 6px auto 10px auto !important;
+      margin: 6px auto 12px auto !important;
+    }
+    .vs-stat-card.style-orange .vs-stat-divider {
+      background: linear-gradient(90deg, #F7941D, #FFD700) !important;
+      box-shadow: 0 0 8px rgba(247,148,29,0.5) !important;
+    }
+    .vs-stat-card.style-green .vs-stat-divider {
+      background: linear-gradient(90deg, #3EAD47, #6DD47A) !important;
+      box-shadow: 0 0 8px rgba(62,173,71,0.5) !important;
     }
 
     .vs-stat-desc {
-      font-size: 14.5px !important;
-      font-weight: 600 !important;
-      color: #334155 !important;
-      line-height: 1.42 !important;
+      font-size: 14px !important;
+      font-weight: 700 !important;
+      line-height: 1.45 !important;
       letter-spacing: 0.1px !important;
     }
+    .vs-stat-card.style-orange .vs-stat-desc { color: rgba(255,230,180,0.92) !important; }
+    .vs-stat-card.style-green .vs-stat-desc { color: rgba(200,240,205,0.92) !important; }
 
     .vs-crisis-dots {
       display: none !important;
