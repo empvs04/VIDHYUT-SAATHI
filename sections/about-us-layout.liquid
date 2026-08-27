@@ -2669,41 +2669,143 @@
     width: 100%;
     height: 100%;
     object-fit: contain;
-    filter: drop-shadow(0 14px 28px rgba(247, 148, 29, 0.25));
-  }
-    object-fit: contain;
     filter: drop-shadow(0 12px 25px rgba(247, 148, 29, 0.22));
   }
 
-  /* MOBILE RESPONSIVE FOR STEPPER */
-  @media(max-width: 768px) {
-    .vsw-how-we-work-section { padding: 45px 14px; }
-    .vsw-hww-header { margin-bottom: 30px; }
-    .vsw-stepper-nav-wrapper { margin-bottom: 25px; }
+  /* MOBILE RESPONSIVE FOR STEPPER (NEAT, CLEAN & UNBOLDED) */
+  @media screen and (max-width: 768px) {
+    .vsw-how-we-work-section {
+      padding: 45px 14px 60px 14px !important;
+    }
+    .our-team-header {
+      margin-bottom: 28px !important;
+    }
+    .our-team-badge {
+      font-size: 0.76rem !important;
+      font-weight: 700 !important;
+      padding: 6px 16px !important;
+      margin-bottom: 12px !important;
+    }
+    .our-team-title {
+      font-size: 1.75rem !important;
+      font-weight: 700 !important;
+      line-height: 1.3 !important;
+    }
+    .our-team-subtitle {
+      font-size: 0.88rem !important;
+      font-weight: 500 !important;
+      color: #64748B !important;
+      line-height: 1.6 !important;
+      margin-top: 6px !important;
+    }
+
+    /* STEPPER TABS ON MOBILE */
+    .vsw-stepper-nav-wrapper {
+      margin-bottom: 25px !important;
+    }
     .vsw-stepper-nav {
       overflow-x: auto;
       justify-content: flex-start;
-      gap: 18px;
-      padding: 10px 5px 16px 5px;
+      gap: 14px;
+      padding: 8px 4px 14px 4px;
       max-width: 100%;
       -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
     }
-    .vsw-stepper-line-bg, .vsw-stepper-line-progress { display: none; }
-    .vsw-step-item { flex-shrink: 0; min-width: 85px; }
-    .vsw-step-circle { width: 44px; height: 44px; font-size: 0.98rem; }
-    .vsw-step-label { font-size: 0.82rem; margin-top: 8px; }
+    .vsw-stepper-nav::-webkit-scrollbar { display: none; }
+    .vsw-stepper-line-bg, .vsw-stepper-line-progress { display: none !important; }
+    .vsw-step-item {
+      flex-shrink: 0;
+      min-width: 75px;
+    }
+    .vsw-step-circle {
+      width: 42px !important;
+      height: 42px !important;
+      font-size: 0.95rem !important;
+      font-weight: 700 !important;
+      border-width: 2px !important;
+    }
+    .vsw-step-label {
+      font-size: 0.78rem !important;
+      font-weight: 600 !important;
+      color: #64748B !important;
+      margin-top: 6px !important;
+    }
+    .vsw-step-item.active .vsw-step-label {
+      font-weight: 700 !important;
+      color: #ec5c0a !important;
+    }
+
+    /* STEP CARD ON MOBILE */
     .vsw-step-card {
-      flex-direction: column-reverse;
-      padding: 32px 22px;
-      gap: 20px;
-      text-align: center;
-      min-height: auto;
-      border-radius: 24px;
+      flex-direction: column !important;
+      padding: 26px 18px !important;
+      gap: 20px !important;
+      text-align: center !important;
+      min-height: auto !important;
+      border-radius: 20px !important;
     }
-    .vsw-step-badge { margin: 0 auto 10px auto; }
-    .vsw-step-title { font-size: 1.65rem; text-align: center; margin-bottom: 10px; }
-    .vsw-step-desc { font-size: 0.98rem; text-align: center; line-height: 1.65; }
-    .vsw-step-graphic-wrap { width: 140px; height: 140px; }
+
+    .vsw-step-badge {
+      font-size: 0.7rem !important;
+      font-weight: 700 !important;
+      padding: 4px 12px !important;
+      margin: 0 auto 10px auto !important;
+    }
+
+    .vsw-step-title {
+      font-size: 1.5rem !important;
+      font-weight: 700 !important;
+      text-align: center !important;
+      margin-bottom: 8px !important;
+    }
+
+    .vsw-step-desc {
+      font-size: 0.92rem !important;
+      font-weight: 500 !important;
+      color: #475569 !important;
+      line-height: 1.6 !important;
+      text-align: center !important;
+    }
+
+    /* BULLET CHIPS ON MOBILE */
+    .vsw-step-bullets {
+      justify-content: center !important;
+      gap: 8px !important;
+      margin-top: 14px !important;
+    }
+
+    .vsw-bullet-item {
+      font-size: 0.76rem !important;
+      font-weight: 600 !important;
+      padding: 5px 12px !important;
+      border-width: 1px !important;
+    }
+
+    /* 3D PODIUM SHOWCASE ON MOBILE */
+    .vsw-step-graphic-wrap {
+      width: 160px !important;
+      height: 160px !important;
+      margin: 0 auto !important;
+    }
+
+    .vsw-stage-podium-box {
+      border-radius: 20px !important;
+      padding: 14px !important;
+      border-width: 1.5px !important;
+    }
+
+    .vsw-stage-badge-top {
+      font-size: 0.62rem !important;
+      font-weight: 700 !important;
+      padding: 3px 9px !important;
+      top: 8px !important;
+      right: 8px !important;
+    }
+
+    .vsw-water-drop {
+      opacity: 0.5 !important;
+    }
   }
 {%- endstyle -%}
 
