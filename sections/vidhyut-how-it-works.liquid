@@ -36,6 +36,13 @@
     margin-bottom: 16px;
   }
 
+  .vshw-trust-tags-group {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
   .vshw-tag-slogan {
     background: linear-gradient(135deg, #FFF3E0, #FFE0B2);
     border: 1.5px solid rgba(236, 92, 10, 0.4);
@@ -536,40 +543,69 @@
     }
 
     .vshw-section-header {
-      margin-bottom: 30px !important;
+      margin-bottom: 26px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      text-align: center !important;
     }
 
     .vshw-top-tags {
-      gap: 10px !important;
-      margin-bottom: 18px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
       justify-content: center !important;
+      gap: 10px !important;
+      margin-bottom: 16px !important;
+      width: 100% !important;
     }
 
     .vshw-tag-slogan {
-      padding: 7px 16px !important;
+      padding: 7px 18px !important;
       font-size: 0.78rem !important;
       font-weight: 900 !important;
-      margin-bottom: 4px !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 8px !important;
+      box-shadow: 0 4px 14px rgba(236, 92, 10, 0.12) !important;
+    }
+
+    .vshw-trust-tags-group {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      flex-wrap: wrap !important;
+      gap: 8px !important;
+      width: 100% !important;
     }
 
     .vshw-tag-pill {
-      padding: 6px 13px !important;
+      padding: 6px 14px !important;
       font-size: 0.74rem !important;
       font-weight: 800 !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 6px !important;
     }
 
     .vshw-main-title {
-      font-size: clamp(17px, 5vw, 22px) !important;
+      font-size: clamp(17px, 5.1vw, 22px) !important;
       font-weight: 900 !important;
       color: #0f172a !important;
-      line-height: 1.48 !important;
+      line-height: 1.45 !important;
       letter-spacing: 0.3px !important;
-      margin: 18px auto 20px auto !important;
+      margin: 14px auto 16px auto !important;
       padding: 18px 16px !important;
       background: linear-gradient(135deg, #FFFFFF 0%, #FFFBF5 50%, #F4FAF6 100%) !important;
       border: 2px solid rgba(247, 148, 29, 0.45) !important;
       border-radius: 20px !important;
-      box-shadow: 0 4px 20px rgba(236, 92, 10, 0.12), 0 2px 6px rgba(0, 0, 0, 0.02) !important;
+      box-shadow: 0 6px 24px rgba(236, 92, 10, 0.12), 0 2px 6px rgba(0, 0, 0, 0.02) !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      box-sizing: border-box !important;
+      text-align: center !important;
       display: block !important;
     }
 
@@ -837,13 +873,15 @@
           <span>{{ section.settings.slogan_text | default: 'लगाएगा INDIA तो बचाएगा INDIA' }}</span>
         </div>
         {%- if section.settings.show_trust_tags -%}
-          <div class="vshw-tag-pill">
-            <i class="fa-solid fa-circle-check"></i>
-            <span>Save 20%-30% Electricity</span>
-          </div>
-          <div class="vshw-tag-pill">
-            <i class="fa-solid fa-shield-halved"></i>
-            <span>ISO-Certified</span>
+          <div class="vshw-trust-tags-group">
+            <div class="vshw-tag-pill">
+              <i class="fa-solid fa-circle-check"></i>
+              <span>Save 20%-30% Electricity</span>
+            </div>
+            <div class="vshw-tag-pill">
+              <i class="fa-solid fa-shield-halved"></i>
+              <span>ISO-Certified</span>
+            </div>
           </div>
         {%- endif -%}
       </div>
