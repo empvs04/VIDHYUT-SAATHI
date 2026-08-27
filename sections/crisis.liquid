@@ -436,14 +436,25 @@
       border-radius: 28px !important;
       padding: 50px 40px !important;
       margin: 30px auto !important;
+      max-width: 1200px !important;
+      width: 100% !important;
       box-shadow: 0 25px 70px rgba(0,0,0,0.4), 0 0 0 1.5px rgba(247,148,29,0.35) !important;
       box-sizing: border-box !important;
       position: relative !important;
       overflow: hidden !important;
     }
+    .vs-hero {
+      text-align: center !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+      margin: 0 auto !important;
+    }
     .vs-hero h1 {
       color: #FFFFFF !important;
       font-size: 64px !important;
+      text-align: center !important;
     }
     .vs-hero h1 .accent {
       background: linear-gradient(135deg, #FDB44B 0%, #F7941D 50%, #FFD700 100%) !important;
@@ -451,16 +462,28 @@
       -webkit-text-fill-color: transparent !important;
     }
     .vs-hero h1 .accent::after { display: none !important; }
+    .vs-hero-divider {
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
     .vs-hero-label {
       background: rgba(247,148,29,0.15) !important;
       border: 1.5px solid rgba(247,148,29,0.4) !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
     }
     .vs-hero-label span { color: #FDB44B !important; }
 
     .vs-stats-grid {
       grid-template-columns: repeat(3, 1fr) !important;
-      padding: 0 40px !important;
+      padding: 0 20px !important;
       gap: 28px !important;
+      max-width: 1140px !important;
+      width: 100% !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+      justify-content: center !important;
+      justify-items: center !important;
     }
 
     .vs-stats-grid .vs-stat-card {
@@ -935,39 +958,72 @@
       font-weight: 700 !important;
       line-height: 1.55 !important;
       color: #334155 !important;
-    }
-      font-size: 14.5px !important;
-      font-weight: 600 !important;
-      color: #334155 !important;
-      line-height: 1.48 !important;
       margin: 0 !important;
     }
   }
 
-  /* NEED BANNER */
+  /* NEED BANNER DESKTOP & BASE STYLES */
   .vs-need-banner {
-    margin: 32px 20px 0; background: linear-gradient(135deg, #FFFBF3, #FFF3E0, #FFFBF3);
-    border: 2px solid rgba(247,148,29,.25); border-radius: 22px; padding: 20px 24px;
-    display: flex; align-items: center; gap: 20px; flex-direction: column; text-align: center;
-    position: relative; z-index: 2; box-shadow: 0 4px 24px rgba(247,148,29,.12), inset 0 1px 0 rgba(255,255,255,.8);
-  }
-  @media(min-width: 768px) {
-    .vs-need-banner { flex-direction: row; text-align: left; padding: 30px 38px; margin: 32px 72px 0; }
+    margin: 36px auto 0 !important;
+    max-width: 1140px !important;
+    width: calc(100% - 40px) !important;
+    background: linear-gradient(135deg, #FFFFFF 0%, #FFFDF7 50%, #F4FAF5 100%) !important;
+    border: 2px solid rgba(247,148,29,.28) !important;
+    border-left: 6px solid #F7941D !important;
+    border-radius: 24px !important;
+    padding: 28px 36px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 24px !important;
+    flex-direction: row !important;
+    text-align: left !important;
+    position: relative !important;
+    z-index: 2 !important;
+    box-shadow: 0 16px 45px rgba(247,148,29,.12), inset 0 1px 0 rgba(255,255,255,.9) !important;
+    box-sizing: border-box !important;
   }
 
   .vs-need-icon {
-    width: 64px; height: 64px; flex-shrink: 0; background: white; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    box-shadow: 0 6px 20px rgba(247,148,29,.25); border: 2px solid rgba(247,148,29,.15);
+    width: 64px !important;
+    height: 64px !important;
+    flex-shrink: 0 !important;
+    background: linear-gradient(135deg, #FFF3E0, #FFE0B2) !important;
+    border-radius: 20px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-shadow: 0 8px 24px rgba(247,148,29,.25) !important;
+    border: 1.5px solid rgba(247,148,29,.3) !important;
+    color: #F7941D !important;
   }
   .vs-need-divider {
-    display: none; width: 3px; height: 56px; background: linear-gradient(180deg, var(--orange), var(--green));
-    border-radius: 2px; flex-shrink: 0;
+    display: block !important;
+    width: 3px !important;
+    height: 52px !important;
+    background: linear-gradient(180deg, #F7941D, #3EAD47) !important;
+    border-radius: 999px !important;
+    flex-shrink: 0 !important;
+    opacity: 0.7 !important;
   }
-  @media(min-width: 768px) { .vs-need-divider { display: block; } }
 
-  .vs-need-label { font-family: 'Baloo 2', sans-serif; font-size: 24px; font-weight: 900; color: var(--orange); white-space: nowrap; }
-  .vs-need-text { font-size: 17px; font-weight: 700; color: var(--text); line-height: 1.6; margin: 0;}
+  .vs-need-label {
+    font-family: 'Baloo 2', sans-serif !important;
+    font-size: 24px !important;
+    font-weight: 900 !important;
+    color: #E07810 !important;
+    background: linear-gradient(135deg, #F7941D 0%, #E07810 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    white-space: nowrap !important;
+    margin-bottom: 2px !important;
+  }
+  .vs-need-text {
+    font-size: 16.5px !important;
+    font-weight: 700 !important;
+    color: #334155 !important;
+    line-height: 1.55 !important;
+    margin: 0 !important;
+  }
 
   /* SECTION BREAK */
   .vs-section-break {
