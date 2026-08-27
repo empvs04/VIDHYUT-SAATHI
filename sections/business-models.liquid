@@ -347,28 +347,44 @@
     50% { transform: translateY(-50%) scaleX(-1) translateX(-5px); }
   }
 
-  /* ── DESKTOP DESIGN (PERFECT EQUAL CARD HEIGHTS & BOTTOM ALIGNMENT) ── */
+  /* ── DESKTOP DESIGN (PERFECT FLEX CENTERING & EQUAL CARD HEIGHTS) ── */
   @media(min-width: 768px) {
+    .business-section-{{ section.id }} {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+    .business-section-{{ section.id }} .container {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: 100% !important;
+      max-width: 1200px !important;
+      margin: 0 auto !important;
+    }
     .business-section-{{ section.id }} .heading h1 { font-size: 72px !important; line-height: 1.05 !important; letter-spacing: -1.5px !important; }
     .business-section-{{ section.id }} .grid {
-      display: grid !important;
-      grid-template-columns: repeat(3, 1fr) !important;
-      align-items: stretch !important;
+      display: flex !important;
+      flex-direction: row !important;
+      flex-wrap: wrap !important;
       justify-content: center !important;
-      justify-items: center !important;
+      align-items: stretch !important;
       gap: 30px !important;
       width: 100% !important;
       max-width: 1140px !important;
       margin: 0 auto !important;
     }
     .business-section-{{ section.id }} .card {
+      flex: 0 1 340px !important;
       display: flex !important;
       flex-direction: column !important;
       justify-content: space-between !important;
-      height: 100% !important;
+      height: auto !important;
       width: 100% !important;
       max-width: 360px !important;
-      margin: 0 auto !important;
+      margin: 0 !important;
       padding: 40px 28px !important;
       box-sizing: border-box !important;
     }
