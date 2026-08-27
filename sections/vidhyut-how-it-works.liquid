@@ -509,27 +509,49 @@
   .vshw-cta-text h3 .hl-orange { color: #ec5c0a; }
   .vshw-cta-text h3 .hl-green { color: #007b3e; }
 
+  .vshw-cta-btn-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+    flex-shrink: 0;
+    min-width: 290px;
+  }
+
   .vshw-cta-btn {
     display: inline-flex;
     align-items: center;
-    gap: 12px;
-    padding: 16px 36px;
-    background: linear-gradient(135deg, #ec5c0a 0%, #ff9900 100%);
+    justify-content: center;
+    gap: 10px;
+    padding: 13px 28px;
     color: #ffffff !important;
-    font-size: 1.05rem;
+    font-size: 0.96rem;
     font-weight: 900;
     text-decoration: none;
     border-radius: 50px;
-    box-shadow: 0 10px 30px rgba(236, 92, 10, 0.35);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     white-space: nowrap;
-    flex-shrink: 0;
+    box-sizing: border-box;
   }
 
-  .vshw-cta-btn:hover {
-    transform: translateY(-4px) scale(1.03);
-    box-shadow: 0 16px 40px rgba(236, 92, 10, 0.5), 0 0 25px rgba(0, 123, 62, 0.25);
-    background: linear-gradient(135deg, #ff9900 0%, #007b3e 100%);
+  .vshw-btn-franchise {
+    background: linear-gradient(135deg, #ec5c0a 0%, #ff9900 100%);
+    box-shadow: 0 8px 24px rgba(236, 92, 10, 0.35);
+  }
+  .vshw-btn-franchise:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 14px 35px rgba(236, 92, 10, 0.5);
+    background: linear-gradient(135deg, #ff9900 0%, #ec5c0a 100%);
+  }
+
+  .vshw-btn-executive {
+    background: linear-gradient(135deg, #007b3e 0%, #10b981 100%);
+    box-shadow: 0 8px 24px rgba(0, 123, 62, 0.35);
+  }
+  .vshw-btn-executive:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 14px 35px rgba(0, 123, 62, 0.5);
+    background: linear-gradient(135deg, #10b981 0%, #007b3e 100%);
   }
 
   /* --- COMPREHENSIVE MOBILE RESPONSIVE OPTIMIZATIONS (Max Width 768px) --- */
@@ -859,22 +881,39 @@
       margin: 0 0 16px 0 !important;
     }
 
+    .vshw-cta-btn-group {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 10px !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+      margin-top: 14px !important;
+    }
+
     .vshw-cta-btn {
       width: 100% !important;
       display: flex !important;
       align-items: center !important;
       justify-content: center !important;
       gap: 10px !important;
-      padding: 15px 22px !important;
-      font-size: 0.95rem !important;
-      font-weight: 800 !important;
+      padding: 14px 20px !important;
+      font-size: 0.92rem !important;
+      font-weight: 900 !important;
       letter-spacing: 0.3px !important;
-      background: linear-gradient(135deg, #EC5C0A 0%, #F7941D 50%, #007B3E 100%) !important;
       color: #ffffff !important;
       border-radius: 50px !important;
-      box-shadow: 0 10px 28px rgba(236, 92, 10, 0.35) !important;
       box-sizing: border-box !important;
       text-decoration: none !important;
+    }
+
+    .vshw-btn-franchise {
+      background: linear-gradient(135deg, #EC5C0A 0%, #F7941D 100%) !important;
+      box-shadow: 0 8px 24px rgba(236, 92, 10, 0.35) !important;
+    }
+
+    .vshw-btn-executive {
+      background: linear-gradient(135deg, #007B3E 0%, #10B981 100%) !important;
+      box-shadow: 0 8px 24px rgba(0, 123, 62, 0.35) !important;
     }
   }
 {%- endstyle -%}
@@ -1074,10 +1113,18 @@
         <span class="vshw-cta-badge"><i class="fa-solid fa-fire-flame-curved"></i> Save Electricity & Protect Home</span>
         <h3>Start Saving <span class="hl-orange">20% to 30%</span> On Your <span class="hl-green">Electricity Bill</span> Today!</h3>
       </div>
-      <a href="/products/vidhyut-saathi-card" class="vshw-cta-btn">
-        <span>Order Vidhyut Saathi Card Now</span>
-        <i class="fa-solid fa-arrow-right-long"></i>
-      </a>
+      <div class="vshw-cta-btn-group">
+        <a href="https://wa.me/919050505050?text=Hi%20Vidhyut%20Saathi,%20I%20want%20to%20Be%20a%20Franchise%20Partner" class="vshw-cta-btn vshw-btn-franchise" target="_blank" rel="noopener">
+          <i class="fa-solid fa-handshake"></i>
+          <span>Be our Franchise Partner</span>
+          <i class="fa-solid fa-arrow-right-long"></i>
+        </a>
+        <a href="https://wa.me/919050505050?text=Hi%20Vidhyut%20Saathi,%20I%20want%20to%20talk%20to%20your%20executive" class="vshw-cta-btn vshw-btn-executive" target="_blank" rel="noopener">
+          <i class="fa-solid fa-headset"></i>
+          <span>Talk to our Executive</span>
+          <i class="fa-solid fa-phone-volume"></i>
+        </a>
+      </div>
     </div>
 
   </div>
