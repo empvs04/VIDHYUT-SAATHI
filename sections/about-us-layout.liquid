@@ -2185,11 +2185,30 @@
     .team-grid { grid-template-columns: repeat(2, 1fr); }
   }
   /* ==========================================================
-     SECTION 8: HOW WE WORK INTERACTIVE STEPPER SHOWCASE (ULTRA-LUCRATIVE ANIMATED)
+     SECTION 8: HOW WE WORK INTERACTIVE STEPPER SHOWCASE (LUCRATIVE ANIMATED BACKGROUND)
      ========================================================== */
-  @keyframes hwwFloatOrb {
-    0%, 100% { transform: translateY(0) scale(1); opacity: 0.12; }
-    50% { transform: translateY(-20px) scale(1.1); opacity: 0.22; }
+  @keyframes gradientBgShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  @keyframes bgGridShift {
+    0% { background-position: 0 0; }
+    100% { background-position: 60px 60px; }
+  }
+
+  @keyframes orbFloat3D {
+    0%, 100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.25; }
+    33% { transform: translateY(-30px) translateX(20px) scale(1.12); opacity: 0.4; }
+    66% { transform: translateY(20px) translateX(-25px) scale(0.92); opacity: 0.2; }
+  }
+
+  @keyframes riseParticles {
+    0% { transform: translateY(120%) scale(0.6); opacity: 0; }
+    30% { opacity: 0.6; }
+    70% { opacity: 0.6; }
+    100% { transform: translateY(-120%) scale(1.2); opacity: 0; }
   }
 
   @keyframes stepRipple {
@@ -2200,7 +2219,7 @@
 
   @keyframes floatGraphic {
     0%, 100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-10px) rotate(2deg); }
+    50% { transform: translateY(-12px) rotate(2.5deg); }
   }
 
   @keyframes shimmerProgressBar {
@@ -2209,36 +2228,70 @@
   }
 
   .vsw-how-we-work-section {
-    padding: 85px 20px;
-    background: linear-gradient(180deg, #F8FAFC 0%, #FFFFFF 50%, #FFFDF7 100%);
+    padding: 90px 20px;
+    background: linear-gradient(135deg, #FFFDF8 0%, #F5FAF6 35%, #FAFAF8 70%, #FFF5EB 100%);
+    background-size: 300% 300%;
+    animation: gradientBgShift 14s ease-in-out infinite;
     position: relative;
     overflow: hidden;
     border-top: 2px solid rgba(247, 148, 29, 0.25);
+    border-bottom: 2px solid rgba(62, 173, 71, 0.2);
   }
 
-  .vsw-how-we-work-section::before {
-    content: '';
+  /* Animated Tech Grid Overlay */
+  .vsw-bg-grid-overlay {
     position: absolute;
-    top: 10%; right: -5%;
-    width: 450px; height: 450px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(247, 148, 29, 0.18) 0%, transparent 70%);
-    filter: blur(60px);
+    inset: 0;
+    background-image: 
+      linear-gradient(to right, rgba(247, 148, 29, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(247, 148, 29, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+    animation: bgGridShift 25s linear infinite;
     pointer-events: none;
-    animation: hwwFloatOrb 10s ease-in-out infinite;
+    z-index: 1;
   }
 
-  .vsw-how-we-work-section::after {
-    content: '';
+  /* Floating Ambient Orbs */
+  .vsw-bg-orb {
     position: absolute;
+    border-radius: 50%;
+    filter: blur(50px);
+    pointer-events: none;
+    z-index: 1;
+  }
+  .vsw-bg-orb-1 {
+    top: 5%; right: -5%;
+    width: 480px; height: 480px;
+    background: radial-gradient(circle, rgba(247, 148, 29, 0.22) 0%, transparent 70%);
+    animation: orbFloat3D 11s ease-in-out infinite;
+  }
+  .vsw-bg-orb-2 {
     bottom: -10%; left: -5%;
-    width: 450px; height: 450px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(62, 173, 71, 0.15) 0%, transparent 70%);
-    filter: blur(60px);
-    pointer-events: none;
-    animation: hwwFloatOrb 12s ease-in-out infinite reverse;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(62, 173, 71, 0.2) 0%, transparent 70%);
+    animation: orbFloat3D 14s ease-in-out infinite reverse;
   }
+  .vsw-bg-orb-3 {
+    top: 45%; left: 40%;
+    width: 320px; height: 320px;
+    background: radial-gradient(circle, rgba(255, 193, 7, 0.16) 0%, transparent 70%);
+    animation: orbFloat3D 9s ease-in-out infinite 2s;
+  }
+
+  /* Rising Electric Particles */
+  .vsw-bg-particle {
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #F7941D, #FFC107);
+    box-shadow: 0 0 15px rgba(247, 148, 29, 0.6);
+    pointer-events: none;
+    z-index: 1;
+  }
+  .vsw-particle-1 { width: 10px; height: 10px; left: 12%; bottom: -20px; animation: riseParticles 7s linear infinite 0.5s; }
+  .vsw-particle-2 { width: 14px; height: 14px; left: 35%; bottom: -20px; animation: riseParticles 9s linear infinite 2s; }
+  .vsw-particle-3 { width: 8px;  height: 8px;  left: 62%; bottom: -20px; animation: riseParticles 6.5s linear infinite 1s; }
+  .vsw-particle-4 { width: 16px; height: 16px; left: 82%; bottom: -20px; animation: riseParticles 10s linear infinite 3.5s; }
+  .vsw-particle-5 { width: 12px; height: 12px; left: 93%; bottom: -20px; animation: riseParticles 8.5s linear infinite 1.8s; }
 
   .vsw-hww-container {
     max-width: 1140px;
@@ -3105,6 +3158,20 @@
 
   <!-- SECTION 8: HOW WE WORK INTERACTIVE STEPPER SHOWCASE -->
   <section class="vsw-how-we-work-section" id="vswHowWeWork">
+    
+    <!-- Animated Background Layers -->
+    <div class="vsw-bg-grid-overlay"></div>
+    <div class="vsw-bg-orb vsw-bg-orb-1"></div>
+    <div class="vsw-bg-orb vsw-bg-orb-2"></div>
+    <div class="vsw-bg-orb vsw-bg-orb-3"></div>
+    
+    <!-- Rising Electric Particles -->
+    <div class="vsw-bg-particle vsw-particle-1"></div>
+    <div class="vsw-bg-particle vsw-particle-2"></div>
+    <div class="vsw-bg-particle vsw-particle-3"></div>
+    <div class="vsw-bg-particle vsw-particle-4"></div>
+    <div class="vsw-bg-particle vsw-particle-5"></div>
+
     <div class="vsw-hww-container">
       
       <!-- Section Title -->
