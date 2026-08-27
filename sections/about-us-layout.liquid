@@ -2747,14 +2747,15 @@
     .vsw-stepper-line-bg {
       display: block !important;
       position: absolute;
-      top: 31px !important;
+      top: 30px !important;
       left: 66px !important;
       width: 416px !important;
       height: 4px !important;
       background: rgba(203, 213, 225, 0.6) !important;
-      border-radius: 10px !important;
+      border-radius: 4px !important;
       z-index: 1 !important;
       overflow: hidden !important;
+      transform: none !important;
     }
 
     .vsw-stepper-line-progress {
@@ -2764,10 +2765,11 @@
       left: 0 !important;
       height: 100% !important;
       background: linear-gradient(90deg, #ec5c0a 0%, #ff9a00 50%, #007b3e 100%) !important;
-      border-radius: 10px !important;
+      border-radius: 4px !important;
       z-index: 2 !important;
-      box-shadow: 0 0 14px rgba(236, 92, 10, 0.7), 0 0 25px rgba(255, 154, 0, 0.5) !important;
+      box-shadow: 0 0 10px rgba(236, 92, 10, 0.6) !important;
       transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
+      transform: none !important;
     }
 
     .vsw-step-item {
@@ -2780,7 +2782,7 @@
       text-align: center;
       z-index: 3 !important;
       box-sizing: border-box !important;
-      transition: transform 0.3s ease !important;
+      transform: none !important;
     }
 
     .vsw-step-circle {
@@ -2794,6 +2796,9 @@
       color: #64748B !important;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
       transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+      transform-origin: center center !important;
+      box-sizing: border-box !important;
+      margin: 0 auto !important;
     }
 
     .vsw-step-item.active .vsw-step-circle {
@@ -2801,7 +2806,7 @@
       color: #FFFFFF !important;
       border-color: #FFFFFF !important;
       box-shadow: 0 0 20px rgba(236, 92, 10, 0.65), 0 0 35px rgba(255, 154, 0, 0.45) !important;
-      transform: scale(1.18) !important;
+      transform: scale(1.15) !important;
     }
 
     .vsw-step-label {
