@@ -1,12 +1,12 @@
 {% comment %}
-  HOW TO INSTALL VIDHYUT SAATHI CARD - Full Poster Image Showcase (Desktop & Mobile)
+  HOW TO INSTALL VIDHYUT SAATHI CARD - Single Master Showcase Card Layout with Poster Image inside step area
   File: sections/vidhyut-how-to-install.liquid
 {% endcomment %}
 
 {%- style -%}
   .vsi-wrapper {
     background: linear-gradient(180deg, #ffffff 0%, #fffdf8 45%, #f6faf6 100%);
-    padding: 45px 0 35px 0;
+    padding: 55px 0 35px 0;
     position: relative;
     overflow: hidden;
     font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
@@ -20,32 +20,230 @@
     z-index: 2;
   }
 
-  /* --- FULL POSTER BANNER CONTAINER --- */
-  .vsi-poster-wrapper {
-    display: block;
+  /* --- HEADER STYLES --- */
+  .vsi-header {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto 35px auto;
+  }
+
+  .vsi-eyebrow-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #FFF3E0 0%, #FFE5B4 100%);
+    border: 1.5px solid rgba(236, 92, 10, 0.4);
+    color: #D96924;
+    padding: 7px 22px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+    box-shadow: 0 4px 14px rgba(236, 92, 10, 0.12);
+  }
+
+  .vsi-main-title {
+    font-family: 'Baloo 2', 'Outfit', sans-serif;
+    font-size: clamp(1.8rem, 3.8vw, 2.8rem);
+    font-weight: 900;
+    color: #0f172a;
+    line-height: 1.2;
+    margin: 0 0 12px 0;
+    letter-spacing: -0.5px;
+    text-transform: uppercase;
+  }
+  .vsi-main-title .highlight-orange { color: #ec5c0a; text-shadow: 0 2px 10px rgba(236, 92, 10, 0.15); }
+  .vsi-main-title .highlight-green { color: #007b3e; text-shadow: 0 2px 10px rgba(0, 123, 62, 0.15); }
+
+  .vsi-subtitle-pills {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 10px;
+  }
+
+  .vsi-sub-pill {
     background: #ffffff;
-    border: 2.5px solid rgba(247, 148, 29, 0.35);
+    border: 1.5px solid rgba(0, 123, 62, 0.3);
+    color: #007b3e;
+    padding: 6px 18px;
+    border-radius: 50px;
+    font-size: 0.82rem;
+    font-weight: 800;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  }
+  .vsi-sub-pill.orange {
+    border-color: rgba(236, 92, 10, 0.3);
+    color: #ec5c0a;
+  }
+
+  .vsi-header-divider {
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, #ec5c0a, #007b3e);
+    border-radius: 10px;
+    margin: 16px auto 0 auto;
+  }
+
+  /* --- SINGLE MASTER SHOWCASE CARD CONTAINER --- */
+  .vsi-master-showcase-card {
+    background: linear-gradient(145deg, #ffffff 0%, #fffdf8 60%, #f6faf6 100%);
+    border: 2.5px solid rgba(247, 148, 29, 0.4);
     border-top: 6px solid #F7941D;
-    border-radius: 24px;
-    padding: 16px;
-    box-shadow: 0 20px 50px rgba(247, 148, 29, 0.14), 0 4px 20px rgba(0, 0, 0, 0.05);
+    border-radius: 28px;
+    padding: 30px 24px;
+    box-shadow: 0 20px 60px rgba(247, 148, 29, 0.15), 0 4px 20px rgba(0, 0, 0, 0.04);
+    margin-bottom: 40px;
     position: relative;
     overflow: hidden;
-    transition: all 0.35s ease;
   }
 
-  .vsi-poster-wrapper:hover {
-    box-shadow: 0 28px 65px rgba(236, 92, 10, 0.2), 0 6px 25px rgba(0, 0, 0, 0.08);
-    transform: translateY(-3px);
+  /* TOP BAR INSIDE MASTER CARD */
+  .vsi-mc-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1.5px solid rgba(247, 148, 29, 0.2);
   }
 
-  .vsi-poster-img {
+  .vsi-mc-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .vsi-mc-brand i { font-size: 24px; color: #ec5c0a; }
+  .vsi-mc-brand span { font-family: 'Baloo 2', sans-serif; font-size: 1.25rem; font-weight: 900; color: #0f172a; }
+
+  .vsi-mc-slogan-pill {
+    background: linear-gradient(135deg, #FFF3E0, #FFE0B2);
+    border: 1px solid rgba(236, 92, 10, 0.4);
+    color: #D96924;
+    padding: 6px 18px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 800;
+  }
+
+  /* POSTER IMAGE AREA INSIDE MASTER CARD */
+  .vsi-poster-stage {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 10px;
+    border: 1.5px solid rgba(247, 148, 29, 0.2);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
+  }
+
+  .vsi-poster-stage-img {
     width: 100%;
     height: auto;
     display: block;
-    border-radius: 16px;
+    border-radius: 12px;
     object-fit: contain;
-    filter: drop-shadow(0 6px 20px rgba(0, 0, 0, 0.05));
+  }
+
+  /* --- 4 GUARANTEE BADGES GRID --- */
+  .vsi-badges-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+
+  .vsi-badge-card {
+    background: #FFFFFF;
+    border: 1.5px solid rgba(247, 148, 29, 0.22);
+    border-radius: 20px;
+    padding: 18px 16px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    box-shadow: 0 8px 20px rgba(247, 148, 29, 0.07);
+    transition: all 0.3s ease;
+  }
+  .vsi-badge-card:hover {
+    transform: translateY(-4px);
+    border-color: #ec5c0a;
+    box-shadow: 0 14px 30px rgba(236, 92, 10, 0.15);
+  }
+
+  .vsi-badge-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #FFF3E0, #FFE0B2);
+    color: #D96924;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(236, 92, 10, 0.12);
+  }
+
+  .vsi-badge-text h4 {
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 0;
+    line-height: 1.35;
+    text-transform: uppercase;
+  }
+  .vsi-badge-text p {
+    font-size: 0.76rem;
+    color: #64748b;
+    margin: 2px 0 0 0;
+    font-weight: 600;
+  }
+
+  /* --- BOTTOM TRUST FOOTPRINT BAR --- */
+  .vsi-trust-bar {
+    background: linear-gradient(135deg, #FFFFFF 0%, #FFF9EF 50%, #F5FAF6 100%);
+    border: 2px solid rgba(247, 148, 29, 0.4);
+    border-top: 5px solid #F7941D;
+    border-radius: 24px;
+    padding: 22px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+    box-shadow: 0 16px 40px rgba(247, 148, 29, 0.12);
+    margin-bottom: 10px;
+  }
+
+  .vsi-trust-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .vsi-trust-item i {
+    font-size: 1.8rem;
+    color: #ec5c0a;
+  }
+  .vsi-trust-item i.green {
+    color: #007b3e;
+  }
+  .vsi-trust-item div h5 {
+    font-size: 0.88rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 0;
+    text-transform: uppercase;
+  }
+  .vsi-trust-item div p {
+    font-size: 0.76rem;
+    color: #64748b;
+    margin: 2px 0 0 0;
+    font-weight: 600;
   }
 
   /* ==========================================================
@@ -53,23 +251,139 @@
      ========================================================== */
   @media screen and (max-width: 768px) {
     .vsi-wrapper {
-      padding: 18px 0 12px 0 !important;
+      padding: 26px 0 16px 0 !important;
     }
 
     .vsi-container {
-      padding: 0 6px !important;
+      padding: 0 8px !important;
     }
 
-    .vsi-poster-wrapper {
-      padding: 6px !important;
-      border-radius: 14px !important;
-      border-width: 1.8px !important;
-      border-top-width: 4px !important;
-      box-shadow: 0 10px 25px rgba(247, 148, 29, 0.12) !important;
+    .vsi-header {
+      margin-bottom: 20px !important;
     }
 
-    .vsi-poster-img {
-      border-radius: 10px !important;
+    .vsi-eyebrow-pill {
+      padding: 7px 18px !important;
+      font-size: 0.82rem !important;
+      font-weight: 900 !important;
+      letter-spacing: 0.4px !important;
+      margin-bottom: 8px !important;
+      border: 1.8px solid rgba(236, 92, 10, 0.5) !important;
+      box-shadow: 0 4px 14px rgba(236, 92, 10, 0.18) !important;
+    }
+
+    .vsi-main-title {
+      font-size: clamp(21px, 5.8vw, 27px) !important;
+      font-weight: 900 !important;
+      line-height: 1.22 !important;
+      margin-bottom: 10px !important;
+      letter-spacing: -0.3px !important;
+      text-transform: uppercase !important;
+    }
+
+    .vsi-subtitle-pills {
+      gap: 6px !important;
+    }
+
+    .vsi-sub-pill {
+      padding: 5px 14px !important;
+      font-size: 0.76rem !important;
+      font-weight: 900 !important;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05) !important;
+    }
+
+    .vsi-master-showcase-card {
+      padding: 12px 6px !important;
+      border-radius: 18px !important;
+      border-width: 2px !important;
+      border-top-width: 4.5px !important;
+      box-shadow: 0 14px 35px rgba(247, 148, 29, 0.16) !important;
+      margin-bottom: 22px !important;
+    }
+
+    .vsi-mc-topbar {
+      flex-direction: row !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      gap: 4px !important;
+      margin-bottom: 12px !important;
+      padding-bottom: 8px !important;
+    }
+
+    .vsi-mc-brand span {
+      font-size: 0.78rem !important;
+      font-weight: 900 !important;
+    }
+    .vsi-mc-brand i {
+      font-size: 15px !important;
+    }
+
+    .vsi-mc-slogan-pill {
+      font-size: 0.62rem !important;
+      padding: 3px 8px !important;
+    }
+
+    .vsi-poster-stage {
+      padding: 4px !important;
+      border-radius: 12px !important;
+    }
+
+    .vsi-poster-stage-img {
+      border-radius: 8px !important;
+    }
+
+    .vsi-badges-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 6px !important;
+      margin-bottom: 18px !important;
+    }
+
+    .vsi-badge-card {
+      padding: 8px 8px !important;
+      gap: 6px !important;
+      border-radius: 12px !important;
+      border-left: 3px solid #ec5c0a !important;
+      box-shadow: 0 6px 14px rgba(247, 148, 29, 0.08) !important;
+    }
+
+    .vsi-badge-icon {
+      width: 32px !important;
+      height: 32px !important;
+      font-size: 0.85rem !important;
+      border-radius: 8px !important;
+    }
+
+    .vsi-badge-text h4 {
+      font-size: 0.68rem !important;
+      line-height: 1.15 !important;
+      font-weight: 800 !important;
+    }
+
+    .vsi-badge-text p {
+      font-size: 0.6rem !important;
+    }
+
+    .vsi-trust-bar {
+      padding: 12px 10px !important;
+      border-radius: 16px !important;
+      gap: 10px !important;
+      flex-direction: row !important;
+      flex-wrap: wrap !important;
+      justify-content: space-around !important;
+    }
+
+    .vsi-trust-item {
+      gap: 6px !important;
+    }
+    .vsi-trust-item i {
+      font-size: 1.1rem !important;
+    }
+    .vsi-trust-item div h5 {
+      font-size: 0.68rem !important;
+      font-weight: 800 !important;
+    }
+    .vsi-trust-item div p {
+      font-size: 0.6rem !important;
     }
   }
 {%- endstyle -%}
@@ -77,17 +391,132 @@
 <section class="vsi-wrapper" id="vsi-section-{{ section.id }}">
   <div class="vsi-container">
     
-    <!-- FULL INSTALLATION POSTER IMAGE (SAME FOR DESKTOP AND MOBILE) -->
-    <div class="vsi-poster-wrapper">
-      <img 
-        src="{{ 'vs-how-to-install-poster.png' | asset_url }}" 
-        alt="HOW TO INSTALL Vidhyut Saathi Card - 3 Simple Steps" 
-        class="vsi-poster-img" 
-        loading="eager" 
-        width="1920" 
-        height="1080"
-        onerror="this.onerror=null; this.src='https://cdn.shopify.com/s/files/1/0663/8783/7093/files/file_00000000714c7206a34d95fc7b046fb2.png';"
-      >
+    <!-- HEADER -->
+    <div class="vsi-header">
+      <div class="vsi-eyebrow-pill">
+        <i class="fa-solid fa-circle-nodes"></i>
+        <span>EASY 3-STEP INSTALLATION GUIDE</span>
+      </div>
+
+      <h2 class="vsi-main-title">
+        HOW TO INSTALL <span class="highlight-orange">VIDHYUT SAATHI</span> <span class="highlight-green">CARD</span>
+      </h2>
+
+      <div class="vsi-subtitle-pills">
+        <div class="vsi-sub-pill orange">
+          <i class="fa-solid fa-bolt"></i>
+          <span>3 SIMPLE STEPS</span>
+        </div>
+        <div class="vsi-sub-pill">
+          <i class="fa-solid fa-scissors"></i>
+          <span>NO WIRING</span>
+        </div>
+        <div class="vsi-sub-pill">
+          <i class="fa-solid fa-user-slash"></i>
+          <span>NO TECHNICIAN REQUIRED</span>
+        </div>
+      </div>
+
+      <div class="vsi-header-divider"></div>
+    </div>
+
+    <!-- SINGLE MASTER SHOWCASE CARD CONTAINER -->
+    <div class="vsi-master-showcase-card">
+      
+      <!-- TOP BAR INSIDE MASTER CARD -->
+      <div class="vsi-mc-topbar">
+        <div class="vsi-mc-brand">
+          <i class="fa-solid fa-screwdriver-wrench"></i>
+          <span>VIDHYUT SAATHI INSTALLATION PROCESS</span>
+        </div>
+        <div class="vsi-mc-slogan-pill">
+          ⚡ 100% SAFE &amp; ZERO MAINTENANCE
+        </div>
+      </div>
+
+      <!-- POSTER IMAGE PASTED EXACTLY INSIDE THE STEP AREA OF MASTER CARD -->
+      <div class="vsi-poster-stage">
+        <img 
+          src="{{ 'vs-how-to-install-poster.png' | asset_url }}" 
+          alt="HOW TO INSTALL Vidhyut Saathi Card Process" 
+          class="vsi-poster-stage-img" 
+          loading="eager" 
+          width="1920" 
+          height="1080"
+          onerror="this.onerror=null; this.src='https://cdn.shopify.com/s/files/1/0663/8783/7093/files/file_00000000714c7206a34d95fc7b046fb2.png';"
+        >
+      </div>
+
+    </div>
+
+    <!-- 4 GUARANTEE BADGES GRID -->
+    <div class="vsi-badges-grid">
+      
+      <div class="vsi-badge-card">
+        <div class="vsi-badge-icon">
+          <i class="fa-solid fa-stopwatch"></i>
+        </div>
+        <div class="vsi-badge-text">
+          <h4>INSTALLATION IN 30 SECONDS</h4>
+          <p>Instant zero-hassle setup</p>
+        </div>
+      </div>
+
+      <div class="vsi-badge-card">
+        <div class="vsi-badge-icon">
+          <i class="fa-solid fa-scissors"></i>
+        </div>
+        <div class="vsi-badge-text">
+          <h4>NO WIRING REQUIRED</h4>
+          <p>100% Non-invasive design</p>
+        </div>
+      </div>
+
+      <div class="vsi-badge-card">
+        <div class="vsi-badge-icon">
+          <i class="fa-solid fa-bolt-lightning"></i>
+        </div>
+        <div class="vsi-badge-text">
+          <h4>NO ELECTRICITY INTERRUPTION</h4>
+          <p>Zero power shutdown needed</p>
+        </div>
+      </div>
+
+      <div class="vsi-badge-card">
+        <div class="vsi-badge-icon">
+          <i class="fa-solid fa-hand-pointer"></i>
+        </div>
+        <div class="vsi-badge-text">
+          <h4>EASY SELF INSTALLATION</h4>
+          <p>Do-it-yourself in 3 steps</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- BOTTOM TRUST FOOTPRINT BAR -->
+    <div class="vsi-trust-bar">
+      <div class="vsi-trust-item">
+        <i class="fa-solid fa-microchip"></i>
+        <div>
+          <h5>SMART TECHNOLOGY</h5>
+          <p>BETTER SAVINGS</p>
+        </div>
+      </div>
+      <div class="vsi-trust-item">
+        <i class="fa-solid fa-leaf green"></i>
+        <div>
+          <h5>SAVE ELECTRICITY</h5>
+          <p>SAVE MONEY</p>
+        </div>
+      </div>
+      <div class="vsi-trust-item">
+        <i class="fa-solid fa-shield-halved"></i>
+        <div>
+          <h5>ISO CERTIFIED</h5>
+          <p>TRUSTED QUALITY</p>
+        </div>
+      </div>
     </div>
 
   </div>
