@@ -290,6 +290,109 @@
 
   .premium-calculator-{{ section.id }} .heading-line { display: inline-block; white-space: nowrap; }
 
+  /* CUSTOM EDITABLE NUMBER INPUT BOXES & PHASE SELECTOR */
+  .premium-calculator-{{ section.id }} .input-dual-row {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 14px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+  }
+
+  .premium-calculator-{{ section.id }} .input-field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .premium-calculator-{{ section.id }} .custom-bill-box {
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    border: 2px solid rgba(20, 140, 58, 0.22);
+    border-radius: 16px;
+    padding: 10px 14px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
+    transition: all 0.3s ease;
+  }
+
+  .premium-calculator-{{ section.id }} .custom-bill-box:focus-within {
+    border-color: #F58220;
+    box-shadow: 0 6px 18px rgba(245, 130, 32, 0.2);
+  }
+
+  .premium-calculator-{{ section.id }} .currency-symbol {
+    font-size: 1.25rem;
+    font-weight: 900;
+    color: #148C3A;
+    margin-right: 6px;
+  }
+
+  .premium-calculator-{{ section.id }} .unit-symbol {
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: #F58220;
+    margin-left: 6px;
+    white-space: nowrap;
+  }
+
+  .premium-calculator-{{ section.id }} .custom-num-input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #1f2937;
+    font-family: inherit;
+  }
+
+  .premium-calculator-{{ section.id }} .phase-selector-container {
+    margin-top: 16px;
+    margin-bottom: 22px;
+  }
+
+  .premium-calculator-{{ section.id }} .phase-toggle-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 8px;
+  }
+
+  .premium-calculator-{{ section.id }} .phase-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 14px;
+    border-radius: 16px;
+    border: 2px solid #e5e7eb;
+    background: #ffffff;
+    color: #4b5563;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    user-select: none;
+  }
+
+  .premium-calculator-{{ section.id }} .phase-btn:hover {
+    border-color: #148C3A;
+    color: #148C3A;
+    transform: translateY(-2px);
+  }
+
+  .premium-calculator-{{ section.id }} .phase-btn.active {
+    background: linear-gradient(135deg, #148C3A, #0f6c2c);
+    border-color: #148C3A;
+    color: #ffffff;
+    box-shadow: 0 8px 20px rgba(20, 140, 58, 0.25);
+  }
+
+  .premium-calculator-{{ section.id }} .phase-btn.active i {
+    color: #ffffff;
+  }
+
   /* DYNAMIC RECOMMENDATION BAR */
   .premium-calculator-{{ section.id }} .calc-recommendation-bar {
     display: flex;
@@ -454,6 +557,16 @@
       font-size: 0.78rem !important;
       border-radius: 16px !important;
     }
+
+    .premium-calculator-{{ section.id }} .input-dual-row {
+      grid-template-columns: 1fr !important;
+      gap: 12px !important;
+    }
+
+    .premium-calculator-{{ section.id }} .phase-toggle-grid {
+      grid-template-columns: 1fr !important;
+      gap: 10px !important;
+    }
   }
 
 
@@ -573,49 +686,62 @@
 
      
 
-      <div class="calc-label">{{ section.settings.slider_label }}</div>
+      <!-- DUAL EDITABLE NUMBER INPUTS (BILL RS & LOAD KW) -->
+      <div class="input-dual-row">
+        <div class="input-field-group">
+          <div class="calc-label">💰 Monthly Electricity Bill</div>
+          <div class="custom-bill-box">
+            <span class="currency-symbol">₹</span>
+            <input type="number" id="billInput-{{ section.id }}" class="custom-num-input" value="{{ section.settings.slider_default }}" placeholder="e.g. 4522" min="500" max="300000" step="50">
+          </div>
+        </div>
 
-      <div class="calc-val-display">
-
-        <div class="calc-current">₹<span id="billDisplay-{{ section.id }}">{{ section.settings.slider_default }}</span></div>
-
-        <div style="font-size:.75rem; color:var(--muted);">per month</div>
-
+        <div class="input-field-group">
+          <div class="calc-label">⚡ Sanctioned Load</div>
+          <div class="custom-bill-box">
+            <input type="number" id="kwInput-{{ section.id }}" class="custom-num-input" value="4" placeholder="e.g. 5" min="1" max="60" step="1">
+            <span class="unit-symbol">KW</span>
+          </div>
+        </div>
       </div>
 
-     
-
+      <!-- SLIDER CONTROL -->
+      <div class="calc-label" style="margin-top: 10px;">🎚️ Drag Slider to Adjust Bill</div>
       <input type="range" class="calc-slider" id="billSlider-{{ section.id }}"
-
              min="{{ section.settings.slider_min }}"
-
              max="{{ section.settings.slider_max }}"
-
              step="{{ section.settings.slider_step }}"
-
              value="{{ section.settings.slider_default }}">
 
-             
-
-      <div style="display:flex; justify-content:space-between; font-size:.72rem; color:var(--muted); margin-top:10px; margin-bottom:22px;">
-
+      <div style="display:flex; justify-content:space-between; font-size:.72rem; color:var(--muted); margin-top:8px; margin-bottom:18px;">
         <span id="minLabel-{{ section.id }}">₹{{ section.settings.slider_min }}</span>
-
         <span id="maxLabel-{{ section.id }}">₹{{ section.settings.slider_max }}</span>
+      </div>
 
+      <!-- PHASE TYPE SELECTOR TOGGLE BUTTONS -->
+      <div class="phase-selector-container">
+        <div class="calc-label">🔌 SELECT PHASE TYPE</div>
+        <div class="phase-toggle-grid">
+          <button type="button" class="phase-btn active" id="btnSinglePhase-{{ section.id }}" data-phase="single">
+            <i class="fa-solid fa-bolt"></i> Single Phase
+          </button>
+          <button type="button" class="phase-btn" id="btnThreePhase-{{ section.id }}" data-phase="three">
+            <i class="fa-solid fa-industry"></i> Three Phase (+1 Card)
+          </button>
+        </div>
       </div>
 
       <!-- DYNAMIC SMART LOAD & CARD RECOMMENDATION BAR -->
       <div class="calc-recommendation-bar" id="recBar-{{ section.id }}">
         <div class="calc-rec-pill">
           <i class="fa-solid fa-bolt-lightning"></i>
-          <span class="rec-label">Sanctioned Load:</span>
+          <span class="rec-label">House Load:</span>
           <strong class="rec-val" id="recLoad-{{ section.id }}">1 - 6 KW</strong>
         </div>
         <div class="calc-rec-pill highlight-pill">
           <i class="fa-solid fa-layer-group"></i>
           <span class="rec-label">Cards Needed:</span>
-          <strong class="rec-val" id="recCards-{{ section.id }}">1 Card (2 for 3-Phase)</strong>
+          <strong class="rec-val" id="recCards-{{ section.id }}">1 Card (Single Phase)</strong>
         </div>
       </div>
 
@@ -713,8 +839,34 @@
       const recLoad = document.getElementById(`recLoad-${sectionId}`);
       const recCards = document.getElementById(`recCards-${sectionId}`);
 
-      function update() {
-        const bill = parseFloat(slider.value) || 0;
+      const billInput = document.getElementById(`billInput-${sectionId}`);
+      const kwInput = document.getElementById(`kwInput-${sectionId}`);
+      const btnSingle = document.getElementById(`btnSinglePhase-${sectionId}`);
+      const btnThree = document.getElementById(`btnThreePhase-${sectionId}`);
+
+      let currentPhase = 'single';
+
+      if (btnSingle && btnThree) {
+        btnSingle.addEventListener('click', function() {
+          currentPhase = 'single';
+          btnSingle.classList.add('active');
+          btnThree.classList.remove('active');
+          updateFromBill(parseFloat(slider.value) || 0);
+        });
+
+        btnThree.addEventListener('click', function() {
+          currentPhase = 'three';
+          btnThree.classList.add('active');
+          btnSingle.classList.remove('active');
+          updateFromBill(parseFloat(slider.value) || 0);
+        });
+      }
+
+      function updateFromBill(bill, skipBillInput = false, skipKwInput = false) {
+        if (!skipBillInput && billInput) {
+          billInput.value = Math.round(bill);
+        }
+
         let pct = pctBase;
         if (bill > 10000 && bill <= 50000) pct = pctMid;
         if (bill > 50000) pct = pctHigh;
@@ -724,42 +876,51 @@
         const newBill = Math.max(0, bill - monthly);
         const roiMonths = monthly > 0 ? Math.ceil(PRICE / monthly) : 0;
 
+        let baseCards = 1;
         let loadStr = '1 - 6 KW';
-        let cardsStr = '1 Card (2 for 3-Phase)';
 
         if (bill <= 6000) {
+          baseCards = 1;
           loadStr = '1 - 6 KW';
-          cardsStr = '1 Card (2 for 3-Phase)';
         } else if (bill <= 12000) {
+          baseCards = 2;
           loadStr = '7 - 12 KW';
-          cardsStr = '2 Cards (3 for 3-Phase)';
         } else if (bill <= 18000) {
+          baseCards = 3;
           loadStr = '13 - 18 KW';
-          cardsStr = '3 Cards (4 for 3-Phase)';
         } else if (bill <= 24000) {
+          baseCards = 4;
           loadStr = '19 - 24 KW';
-          cardsStr = '4 Cards (5 for 3-Phase)';
         } else if (bill <= 30000) {
+          baseCards = 5;
           loadStr = '25 - 30 KW';
-          cardsStr = '5 Cards (6 for 3-Phase)';
         } else if (bill <= 36000) {
+          baseCards = 6;
           loadStr = '31 - 36 KW';
-          cardsStr = '6 Cards (7 for 3-Phase)';
         } else if (bill <= 42000) {
+          baseCards = 7;
           loadStr = '37 - 42 KW';
-          cardsStr = '7 Cards (8 for 3-Phase)';
         } else if (bill <= 48000) {
+          baseCards = 8;
           loadStr = '43 - 48 KW';
-          cardsStr = '8 Cards (9 for 3-Phase)';
         } else if (bill <= 54000) {
+          baseCards = 9;
           loadStr = '49 - 54 KW';
-          cardsStr = '9 Cards (10 for 3-Phase)';
         } else {
+          baseCards = 10;
           loadStr = '55 - 60+ KW';
-          cardsStr = '10 Cards (11 for 3-Phase)';
         }
 
-        if (display) display.textContent = bill.toLocaleString('en-IN');
+        let totalCards = currentPhase === 'three' ? baseCards + 1 : baseCards;
+        let cardsStr = totalCards + (totalCards === 1 ? ' Card' : ' Cards');
+        cardsStr += currentPhase === 'three' ? ' (Three Phase)' : ' (Single Phase)';
+
+        if (!skipKwInput && kwInput) {
+          let calculatedKw = Math.min(60, Math.max(1, Math.ceil(bill / 1000)));
+          kwInput.value = calculatedKw;
+        }
+
+        if (display) display.textContent = Math.round(bill).toLocaleString('en-IN');
         if (mSaving) mSaving.textContent = '₹' + monthly.toLocaleString('en-IN');
         if (ySaving) ySaving.textContent = '₹' + yearly.toLocaleString('en-IN');
         if (nBill) nBill.textContent = '₹' + newBill.toLocaleString('en-IN');
@@ -768,9 +929,32 @@
         if (recCards) recCards.textContent = cardsStr;
       }
 
-      slider.addEventListener('input', update);
-      slider.addEventListener('change', update);
-      update();
+      slider.addEventListener('input', function() {
+        let val = parseFloat(this.value) || 0;
+        updateFromBill(val);
+      });
+
+      if (billInput) {
+        billInput.addEventListener('input', function() {
+          let val = parseFloat(this.value) || 0;
+          slider.value = Math.min(300000, Math.max(500, val));
+          updateFromBill(val, true, false);
+        });
+      }
+
+      if (kwInput) {
+        kwInput.addEventListener('input', function() {
+          let kw = parseFloat(this.value) || 0;
+          if (kw > 0) {
+            let estimatedBill = kw * 1000;
+            slider.value = Math.min(300000, Math.max(500, estimatedBill));
+            if (billInput) billInput.value = estimatedBill;
+            updateFromBill(estimatedBill, false, true);
+          }
+        });
+      }
+
+      updateFromBill(parseFloat(slider.value) || 4000);
     }
 
     if (document.readyState === 'loading') {
