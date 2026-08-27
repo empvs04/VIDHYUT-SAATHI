@@ -699,7 +699,7 @@
         <div class="input-field-group">
           <div class="calc-label">⚡ Sanctioned Load</div>
           <div class="custom-bill-box">
-            <input type="number" id="kwInput-{{ section.id }}" class="custom-num-input" value="4" placeholder="e.g. 5" min="1" max="60" step="1">
+            <input type="number" id="kwInput-{{ section.id }}" class="custom-num-input" value="" placeholder="e.g. 5" min="1" max="60" step="1">
             <span class="unit-symbol">KW</span>
           </div>
         </div>
@@ -892,14 +892,10 @@
           bill = parseFloat(billInput && billInput.value ? billInput.value : (slider ? slider.value : 0)) || 0;
         }
 
-        let kw = parseFloat(kwInput ? kwInput.value : 0) || 0;
+        // Read KW load directly from user input without auto-writing kwInput.value on bill/slider change
+        let kw = parseFloat(kwInput && kwInput.value ? kwInput.value : 0) || 0;
 
-        if (source === 'slider' || source === 'billInput' || source === 'init') {
-          kw = Math.max(1, Math.ceil(bill / 1000));
-          if (kwInput) kwInput.value = kw;
-        }
-
-        const cardsFromKW = getCardsByKW(kw);
+        const cardsFromKW = kw > 0 ? getCardsByKW(kw) : 0;
         const cardsFromBill = getCardsByBill(bill);
 
         // HIGHER PRIORITY SELECTION RULE
@@ -923,12 +919,16 @@
         }
 
         let higherReasonText = '';
-        if (cardsFromKW > cardsFromBill) {
-          higherReasonText = `⚡ <strong>KW Rule Applied:</strong> ${kw} KW load requires ${cardsFromKW} Cards, while ₹${Math.round(bill).toLocaleString('en-IN')} bill requires ${cardsFromBill} Cards. Higher requirement considered (${cardsFromKW} Cards${currentPhase === 'three' ? ' + 1 Extra for 3-Phase = ' + totalCards + ' Cards' : ''}).`;
-        } else if (cardsFromBill > cardsFromKW) {
-          higherReasonText = `💰 <strong>Bill Rule Applied:</strong> ₹${Math.round(bill).toLocaleString('en-IN')} bill requires ${cardsFromBill} Cards, while ${kw} KW load requires ${cardsFromKW} Cards. Higher requirement considered (${cardsFromBill} Cards${currentPhase === 'three' ? ' + 1 Extra for 3-Phase = ' + totalCards + ' Cards' : ''}).`;
+        if (kw > 0) {
+          if (cardsFromKW > cardsFromBill) {
+            higherReasonText = `⚡ <strong>KW Rule Applied:</strong> ${kw} KW load requires ${cardsFromKW} Cards, while ₹${Math.round(bill).toLocaleString('en-IN')} bill requires ${cardsFromBill} Cards. Higher requirement considered (${cardsFromKW} Cards${currentPhase === 'three' ? ' + 1 Extra for 3-Phase = ' + totalCards + ' Cards' : ''}).`;
+          } else if (cardsFromBill > cardsFromKW) {
+            higherReasonText = `💰 <strong>Bill Rule Applied:</strong> ₹${Math.round(bill).toLocaleString('en-IN')} bill requires ${cardsFromBill} Cards, while ${kw} KW load requires ${cardsFromKW} Cards. Higher requirement considered (${cardsFromBill} Cards${currentPhase === 'three' ? ' + 1 Extra for 3-Phase = ' + totalCards + ' Cards' : ''}).`;
+          } else {
+            higherReasonText = `⚡ <strong>Balanced Load:</strong> Both ${kw} KW load and ₹${Math.round(bill).toLocaleString('en-IN')} bill require ${baseRequiredCards} Cards${currentPhase === 'three' ? ' (+ 1 Extra for 3-Phase = ' + totalCards + ' Cards)' : ''}.`;
+          }
         } else {
-          higherReasonText = `⚡ <strong>Balanced Load:</strong> Both ${kw} KW load and ₹${Math.round(bill).toLocaleString('en-IN')} bill require ${baseRequiredCards} Cards${currentPhase === 'three' ? ' (+ 1 Extra for 3-Phase = ' + totalCards + ' Cards)' : ''}.`;
+          higherReasonText = `💰 <strong>Bill Rule Applied:</strong> ₹${Math.round(bill).toLocaleString('en-IN')} bill requires ${cardsFromBill} Cards${currentPhase === 'three' ? ' (+ 1 Extra for 3-Phase = ' + totalCards + ' Cards)' : ''}. (Enter your KW load above if known).`;
         }
 
         if (display) display.textContent = Math.round(bill).toLocaleString('en-IN');
@@ -936,7 +936,7 @@
         if (ySaving) ySaving.textContent = '₹' + yearly.toLocaleString('en-IN');
         if (nBill) nBill.textContent = '₹' + newBill.toLocaleString('en-IN');
         if (roi) roi.textContent = (isFinite(roiMonths) && roiMonths > 0 ? roiMonths : 0) + ' Mo';
-        if (recLoad) recLoad.textContent = kw + ' KW';
+        if (recLoad) recLoad.textContent = kw > 0 ? (kw + ' KW') : 'Enter KW';
         if (recCards) recCards.textContent = cardsStr;
         if (recReason) recReason.innerHTML = higherReasonText;
       }
