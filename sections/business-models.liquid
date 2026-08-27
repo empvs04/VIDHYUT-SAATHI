@@ -1,20 +1,21 @@
-<link rel="preconnect" href="https://fonts.googleapis.com">
+﻿<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800;900&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
   /* ── Vidhyut Saathi Base & Typography ── */
-  .business-section-{{ section.id }} * { box-sizing: border-box; }
+  .business-section-{{ section.id }} * { box-sizing: border-box !important; }
   .business-section-{{ section.id }} {
     margin: 0 auto !important;
     width: 100% !important;
-    font-family: 'Nunito', sans-serif;
-    background: #FAFAF7; /* VS Main Background */
-    overflow-x: hidden;
-    color: #222222;
-    padding: 80px 20px;
-    background: radial-gradient(circle at top right, rgba(247,148,29,0.05), transparent 40%), linear-gradient(180deg, #FAFAF7 0%, #FFFFFF 100%);
-    position: relative;
+    max-width: 100% !important;
+    font-family: 'Nunito', sans-serif !important;
+    background: #FAFAF7 !important;
+    overflow-x: hidden !important;
+    color: #222222 !important;
+    padding: 80px 20px !important;
+    background: radial-gradient(circle at top right, rgba(247,148,29,0.05), transparent 40%), linear-gradient(180deg, #FAFAF7 0%, #FFFFFF 100%) !important;
+    position: relative !important;
     box-sizing: border-box !important;
   }
   
@@ -25,19 +26,22 @@
     margin-right: auto !important;
     padding-left: 20px !important;
     padding-right: 20px !important;
-    position: relative;
-    z-index: 2;
+    position: relative !important;
+    z-index: 2 !important;
     box-sizing: border-box !important;
+    text-align: center !important;
   }
 
   /* ── HEADER ── */
   .business-section-{{ section.id }} .heading {
-    text-align: center;
+    text-align: center !important;
     margin-bottom: 52px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
   }
 
   .business-section-{{ section.id }} .heading h1 {
-    margin: 0;
+    margin: 0 auto !important;
     font-family: 'Baloo 2', sans-serif !important;
     font-size: clamp(3.5rem, 12vw, 6.5rem) !important;
     font-weight: 900 !important;
@@ -48,7 +52,7 @@
     background: linear-gradient(90deg, #E07810 0%, #F7941D 55%, #FDB44B 100%) !important;
     -webkit-background-clip: text !important;
     -webkit-text-fill-color: transparent !important;
-    filter: drop-shadow(0 10px 20px rgba(247,148,29,.18));
+    filter: drop-shadow(0 10px 20px rgba(247,148,29,.18)) !important;
   }
 
   .business-section-{{ section.id }} .heading h1 span {
@@ -66,32 +70,36 @@
 
   /* ── CARDS GRID ── */
   .business-section-{{ section.id }} .grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    align-items: stretch;
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 30px !important;
+    align-items: stretch !important;
+    justify-content: center !important;
+    justify-items: center !important;
     width: 100% !important;
     max-width: 1140px !important;
     margin-left: auto !important;
     margin-right: auto !important;
-    justify-content: center !important;
-    justify-items: center !important;
   }
 
   .business-section-{{ section.id }} .card {
-    background: #ffffff;
-    border-radius: 24px;
-    padding: 32px 24px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    background: #ffffff !important;
+    border-radius: 24px !important;
+    padding: 32px 24px !important;
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
     align-items: center !important;
     text-align: center !important;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px) !important;
     border: 1.5px solid rgba(247,148,29,.08) !important;
     box-shadow: 0 8px 40px rgba(247,148,29,.08), 0 10px 30px rgba(0,0,0,.03) !important;
     transition: transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s !important;
+    width: 100% !important;
+    max-width: 360px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
   }
 
   .business-section-{{ section.id }} .card:hover {
@@ -100,28 +108,23 @@
   }
 
   .business-section-{{ section.id }} .card:after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, rgba(255,255,255,.3), transparent 40%);
-    pointer-events: none;
-    border-radius: 24px;
+    content: "" !important;
+    position: absolute !important;
+    inset: 0 !important;
+    background: linear-gradient(180deg, rgba(255,255,255,.3), transparent 40%) !important;
+    pointer-events: none !important;
+    border-radius: 24px !important;
   }
 
-  /* ── TIER STYLING (Mapped to VS Colors) ── */
+  /* ── TIER STYLING ── */
   .business-section-{{ section.id }} .green { border-top: 5px solid #3EAD47 !important; }
-  
-  .business-section-{{ section.id }} .orange { 
-    border-top: 5px solid #F7941D !important; 
-    background-color: #FFFDF8; 
-  }
-  
+  .business-section-{{ section.id }} .orange { border-top: 5px solid #F7941D !important; background-color: #FFFDF8 !important; }
   .business-section-{{ section.id }} .yellow,
   .business-section-{{ section.id }} .gold,
   .business-section-{{ section.id }} .dark {
     border-top: 5px solid #FFB03A !important;
     background: linear-gradient(180deg, #FFFDF0 0%, #FFFFFF 100%) !important;
-    color: #111111;
+    color: #111111 !important;
     border: 1.5px solid rgba(255,176,58,.35) !important;
     box-shadow: 0 12px 40px rgba(255,176,58,.16) !important;
   }
@@ -131,23 +134,23 @@
     margin-left: auto !important;
     margin-right: auto !important;
     text-align: center !important;
-    padding: 6px 14px;
-    border-radius: 999px;
-    font-family: 'Baloo 2', sans-serif;
-    font-size: 13px;
+    padding: 6px 14px !important;
+    border-radius: 999px !important;
+    font-family: 'Baloo 2', sans-serif !important;
+    font-size: 13px !important;
     font-weight: 800 !important;
     letter-spacing: 1px !important;
-    text-transform: uppercase;
-    margin-bottom: 24px;
-    box-shadow: 0 6px 15px rgba(0,0,0,.06);
+    text-transform: uppercase !important;
+    margin-bottom: 24px !important;
+    box-shadow: 0 6px 15px rgba(0,0,0,.06) !important;
   }
 
-  .business-section-{{ section.id }} .green .badge { background: #E8F5E9; color: #2E7D32; }
+  .business-section-{{ section.id }} .green .badge { background: #E8F5E9 !important; color: #2E7D32 !important; }
   .business-section-{{ section.id }} .blue .badge,
-  .business-section-{{ section.id }} .orange .badge { background: #FFF3E0; color: #E07810; }
+  .business-section-{{ section.id }} .orange .badge { background: #FFF3E0 !important; color: #E07810 !important; }
   .business-section-{{ section.id }} .yellow .badge,
   .business-section-{{ section.id }} .gold .badge,
-  .business-section-{{ section.id }} .dark .badge { background: #FFF8D6; color: #D97706; border: 1px solid rgba(217,119,6,0.3); }
+  .business-section-{{ section.id }} .dark .badge { background: #FFF8D6 !important; color: #D97706 !important; border: 1px solid rgba(217,119,6,0.3) !important; }
 
   .business-section-{{ section.id }} .top-row {
     display: flex !important;
@@ -161,78 +164,76 @@
   }
 
   .business-section-{{ section.id }} .icon {
-    width: 52px;
-    height: 52px;
-    border-radius: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    background: #ffffff;
+    width: 52px !important;
+    height: 52px !important;
+    border-radius: 16px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 24px !important;
+    background: #ffffff !important;
     box-shadow: 0 10px 25px rgba(247,148,29,.15) !important;
     margin: 0 auto !important;
   }
 
-  .business-section-{{ section.id }} .dark .icon { background: rgba(255,255,255,0.08); box-shadow: none !important;}
+  .business-section-{{ section.id }} .dark .icon { background: rgba(255,255,255,0.08) !important; box-shadow: none !important;}
 
   .business-section-{{ section.id }} .card h2 {
     margin: 0 !important;
-    font-family: 'Baloo 2', sans-serif;
-    font-size: 1.35rem;
-    font-weight: 800;
-    line-height: 1.2;
-    letter-spacing: -0.3px;
-    color: #111111;
+    font-family: 'Baloo 2', sans-serif !important;
+    font-size: 1.35rem !important;
+    font-weight: 800 !important;
+    line-height: 1.2 !important;
+    letter-spacing: -0.3px !important;
+    color: #111111 !important;
     text-align: center !important;
   }
-  .business-section-{{ section.id }} .dark h2 { color: #ffffff; }
+  .business-section-{{ section.id }} .dark h2 { color: #ffffff !important; }
 
-  /* ── PRICING ── */
   .business-section-{{ section.id }} .amount-box {
     margin: 24px auto !important;
-    padding: 20px;
-    border-radius: 16px;
-    box-shadow: inset 0 1px 0 rgba(255,255,255,.6);
+    padding: 20px !important;
+    border-radius: 16px !important;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.6) !important;
     background: linear-gradient(180deg, #FAFAF7, #FFFFFF) !important;
-    border: 1px solid rgba(247,148,29,.1);
+    border: 1.5px solid rgba(247,148,29,.1) !important;
     text-align: center !important;
     width: 100% !important;
   }
 
   .business-section-{{ section.id }} .dark .amount-box {
     background: rgba(255,255,255,0.03) !important;
-    border: 1px solid rgba(255,255,255,0.08);
-    box-shadow: none;
+    border: 1px solid rgba(255,255,255,0.08) !important;
+    box-shadow: none !important;
   }
 
   .business-section-{{ section.id }} .label {
-    font-family: 'Nunito', sans-serif;
-    font-size: 12px;
-    font-weight: 700;
-    color: #777777;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 4px;
+    font-family: 'Nunito', sans-serif !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    color: #777777 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    margin-bottom: 4px !important;
     text-align: center !important;
   }
-  .business-section-{{ section.id }} .dark .label { color: #a3a3a3; }
+  .business-section-{{ section.id }} .dark .label { color: #a3a3a3 !important; }
 
   .business-section-{{ section.id }} .amount {
-    font-family: 'Baloo 2', sans-serif;
-    font-size: 2.2rem;
-    font-weight: 900;
-    letter-spacing: -0.5px;
-    line-height: 1;
+    font-family: 'Baloo 2', sans-serif !important;
+    font-size: 2.2rem !important;
+    font-weight: 900 !important;
+    letter-spacing: -0.5px !important;
+    line-height: 1 !important;
     text-align: center !important;
   }
 
-  .business-section-{{ section.id }} .green .amount { color: #3EAD47; text-shadow: 0 3px 14px rgba(62,173,71,.15); }
-  .business-section-{{ section.id }} .orange .amount { color: #F7941D; text-shadow: 0 3px 14px rgba(247,148,29,.15); }
+  .business-section-{{ section.id }} .green .amount { color: #3EAD47 !important; text-shadow: 0 3px 14px rgba(62,173,71,.15) !important; }
+  .business-section-{{ section.id }} .orange .amount { color: #F7941D !important; text-shadow: 0 3px 14px rgba(247,148,29,.15) !important; }
   .business-section-{{ section.id }} .yellow .amount,
   .business-section-{{ section.id }} .gold .amount,
-  .business-section-{{ section.id }} .dark .amount { color: #D97706; text-shadow: 0 3px 14px rgba(217,119,6,.2); }
+  .business-section-{{ section.id }} .dark .amount { color: #D97706 !important; text-shadow: 0 3px 14px rgba(217,119,6,.2) !important; }
 
-  /* ── VALUE PROPOSITIONS ── */
   .business-section-{{ section.id }} .points {
     display: flex !important;
     flex-direction: column !important;
@@ -249,38 +250,37 @@
     align-items: center !important;
     justify-content: center !important;
     gap: 12px !important;
-    font-size: 0.95rem;
+    font-size: 0.95rem !important;
     font-weight: 700 !important;
-    line-height: 1.4;
-    color: #444444;
+    line-height: 1.4 !important;
+    color: #444444 !important;
     text-align: center !important;
   }
-  .business-section-{{ section.id }} .dark .point { color: #e5e5e5; }
+  .business-section-{{ section.id }} .dark .point { color: #e5e5e5 !important; }
 
   .business-section-{{ section.id }} .tick {
-    font-size: 13px;
-    margin-top: 2px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    flex-shrink: 0;
+    font-size: 13px !important;
+    margin-top: 2px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 20px !important;
+    height: 20px !important;
+    border-radius: 50% !important;
+    flex-shrink: 0 !important;
   }
 
-  .business-section-{{ section.id }} .green .tick { background: #E8F5E9; color: #3EAD47; }
-  .business-section-{{ section.id }} .orange .tick { background: #FFF3E0; color: #F7941D; }
+  .business-section-{{ section.id }} .green .tick { background: #E8F5E9 !important; color: #3EAD47 !important; }
+  .business-section-{{ section.id }} .orange .tick { background: #FFF3E0 !important; color: #F7941D !important; }
   .business-section-{{ section.id }} .yellow .tick,
   .business-section-{{ section.id }} .gold .tick,
-  .business-section-{{ section.id }} .dark .tick { background: #FFF8D6; color: #D97706; }
+  .business-section-{{ section.id }} .dark .tick { background: #FFF8D6 !important; color: #D97706 !important; }
 
-  /* ── BUTTON CONTAINER STYLES ── */
   .business-section-{{ section.id }} .book-btn {
     position: relative !important;
     display: flex !important;
-    align-items: center;
-    justify-content: center;
+    align-items: center !important;
+    justify-content: center !important;
     width: 100% !important;
     max-width: 420px !important;
     margin: 22px auto 0 !important;
@@ -289,15 +289,15 @@
     font-family: 'Baloo 2', sans-serif !important;
     font-size: 18px !important;
     font-weight: 900 !important;
-    text-decoration: none;
+    text-decoration: none !important;
     background: linear-gradient(135deg, #F7941D, #E07810) !important;
     color: #fff !important;
     box-shadow: 0 10px 32px rgba(247,148,29,.4), inset 0 2px 0 rgba(255,255,255,.2) !important;
     overflow: hidden !important; 
     letter-spacing: 0.5px !important;
-    z-index: 10;
-    text-align: center;
-    transition: transform .25s cubic-bezier(.22,1,.36,1), box-shadow .25s !important;
+    z-index: 10 !important;
+    text-align: center !important;
+    align-self: center !important;
   }
 
   .business-section-{{ section.id }} .book-btn:hover {
@@ -306,20 +306,20 @@
   }
 
   .business-section-{{ section.id }} .book-btn svg {
-    position: absolute;
-    width: 32px;
-    height: 32px;
-    top: 50%;
+    position: absolute !important;
+    width: 32px !important;
+    height: 32px !important;
+    top: 50% !important;
   }
 
   .business-section-{{ section.id }} .book-btn .hand-left {
-    left: 12px;
-    animation: handMoveL 1.2s ease-in-out infinite;
+    left: 12px !important;
+    animation: handMoveL 1.2s ease-in-out infinite !important;
   }
 
   .business-section-{{ section.id }} .book-btn .hand-right {
-    right: 12px;
-    animation: handMoveR 1.2s ease-in-out infinite;
+    right: 12px !important;
+    animation: handMoveR 1.2s ease-in-out infinite !important;
   }
 
   .vs-bm-dots {
@@ -332,7 +332,7 @@
   }
   @keyframes handMoveR {
     0%, 100% { transform: translateY(-50%) scaleX(-1) translateX(0); }
-    50% { transform: translateY(-50%) scaleX(-1) translateX(5px); }
+    50% { transform: translateY(-50%) scaleX(-1) translateX(-5px); }
   }
 
   /* ── DESKTOP DESIGN ── */
@@ -358,7 +358,7 @@
     }
   }
 
-  /* ── MOBILE ONLY: LUCRATIVE COMPACT SWIPE CAROUSEL ── */
+  /* ── MOBILE ONLY ── */
   @media(max-width: 767px) {
     .business-section-{{ section.id }} { 
       padding: 44px 16px !important; 
@@ -390,9 +390,7 @@
       width: 100% !important;
       scroll-snap-align: center !important;
       scroll-snap-stop: always !important;
-      height: 480px !important;
-      min-height: 480px !important;
-      max-height: 480px !important;
+      min-height: 510px !important;
       display: flex !important;
       flex-direction: column !important;
       justify-content: space-between !important;
@@ -412,7 +410,6 @@
       height: 5px !important;
     }
 
-    /* ── CARD 1: WARM ORANGE THEME (Growth Entry ₹1,50,000) ── */
     .business-section-{{ section.id }} .orange {
       border: 1.5px solid rgba(247, 148, 29, 0.32) !important;
       background: linear-gradient(180deg, #FFFDF7 0%, #FFFFFF 100%) !important;
@@ -441,7 +438,6 @@
       box-shadow: 0 10px 28px rgba(247, 148, 29, 0.38) !important;
     }
 
-    /* ── CARD 2: SOFT LIGHT YELLOW THEME (Market Dominance ₹2,50,000) ── */
     .business-section-{{ section.id }} .blue,
     .business-section-{{ section.id }} .yellow {
       border: 1.5px solid rgba(250, 204, 21, 0.4) !important;
@@ -479,7 +475,6 @@
       box-shadow: 0 10px 28px rgba(250, 204, 21, 0.4) !important;
     }
 
-    /* ── CARD 3: EMERALD GREEN THEME (Institutional Flagship ₹6,0,000) ── */
     .business-section-{{ section.id }} .green,
     .business-section-{{ section.id }} .gold,
     .business-section-{{ section.id }} .dark {
@@ -522,31 +517,6 @@
     .business-section-{{ section.id }} .dark .book-btn {
       background: linear-gradient(135deg, #3EAD47 0%, #2E7D32 100%) !important;
       box-shadow: 0 10px 28px rgba(62, 173, 71, 0.38) !important;
-    }px solid rgba(224, 120, 16, 0.3) !important;
-    }
-    .business-section-{{ section.id }} .gold .icon,
-    .business-section-{{ section.id }} .dark .icon {
-      background: linear-gradient(135deg, #FFF3E0, #E8F5E9) !important;
-      box-shadow: 0 6px 18px rgba(247, 148, 29, 0.2) !important;
-    }
-    .business-section-{{ section.id }} .gold .amount-box,
-    .business-section-{{ section.id }} .dark .amount-box {
-      background: linear-gradient(135deg, rgba(247, 148, 29, 0.12) 0%, rgba(62, 173, 71, 0.08) 100%) !important;
-      border: 1.5px solid rgba(247, 148, 29, 0.3) !important;
-    }
-    .business-section-{{ section.id }} .gold .amount,
-    .business-section-{{ section.id }} .dark .amount { color: #E07810 !important; }
-    .business-section-{{ section.id }} .gold .point,
-    .business-section-{{ section.id }} .dark .point { color: #334155 !important; }
-    .business-section-{{ section.id }} .gold .tick,
-    .business-section-{{ section.id }} .dark .tick {
-      background: #FFF3E0 !important;
-      color: #F7941D !important;
-    }
-    .business-section-{{ section.id }} .gold .book-btn,
-    .business-section-{{ section.id }} .dark .book-btn {
-      background: linear-gradient(135deg, #F7941D 0%, #3EAD47 100%) !important;
-      box-shadow: 0 10px 28px rgba(247, 148, 29, 0.4) !important;
     }
 
     .business-section-{{ section.id }} .top-row {
@@ -566,7 +536,7 @@
     .business-section-{{ section.id }} .card h2 {
       font-size: 1.15rem !important;
       line-height: 1.15 !important;
-      text-align: center;
+      text-align: center !important;
       font-weight: 800 !important;
     }
     .business-section-{{ section.id }} .amount-box {
@@ -575,19 +545,6 @@
       border-radius: 14px !important;
       text-align: center !important;
     }
-    .business-section-{{ section.id }} .green .amount-box {
-      background: linear-gradient(135deg, #E8F5E9 0%, #F1F9F2 100%) !important;
-      border: 1px solid rgba(62, 173, 71, 0.2) !important;
-    }
-    .business-section-{{ section.id }} .orange .amount-box {
-      background: linear-gradient(135deg, #FFF3E0 0%, #FFF8EE 100%) !important;
-      border: 1px solid rgba(247, 148, 29, 0.22) !important;
-    }
-    .business-section-{{ section.id }} .dark .amount-box {
-      background: linear-gradient(135deg, rgba(253,180,75,0.12) 0%, rgba(247,148,29,0.06) 100%) !important;
-      border: 1px solid rgba(253, 180, 75, 0.25) !important;
-    }
-
     .business-section-{{ section.id }} .amount { font-size: 1.85rem !important; font-weight: 900 !important; }
     .business-section-{{ section.id }} .points { gap: 10px !important; margin-top: 4px !important; }
     .business-section-{{ section.id }} .point {
@@ -620,11 +577,11 @@
       align-self: center !important;
     }
     .business-section-{{ section.id }} .book-btn svg {
-      width: 22px;
-      height: 22px;
+      width: 22px !important;
+      height: 22px !important;
     }
-    .business-section-{{ section.id }} .book-btn .hand-left { left: 12px; }
-    .business-section-{{ section.id }} .book-btn .hand-right { right: 12px; }
+    .business-section-{{ section.id }} .book-btn .hand-left { left: 12px !important; }
+    .business-section-{{ section.id }} .book-btn .hand-right { right: 12px !important; }
 
     .vs-bm-dots {
       display: flex !important;
@@ -648,7 +605,7 @@
       box-shadow: 0 3px 10px rgba(247, 148, 29, 0.35) !important;
     }
   }
-</style>
+</style></style>
 
 <section class="business-section-{{ section.id }}">
   <div class="container">
