@@ -248,20 +248,89 @@
 
 /* DESKTOP */
 @media(min-width: 769px) {
-  .vs-section-{{ section.id }} { padding: 90px 26px 45px; }
-  .vs-section-{{ section.id }} .heading { margin-bottom: 70px; }
-  .vs-section-{{ section.id }} .heading .top { font-size: 118px; letter-spacing: -4px; }
-  .vs-section-{{ section.id }} .heading .bottom { font-size: 92px; letter-spacing: -3px; }
-  .vs-section-{{ section.id }} .heading p { font-size: 22px; max-width: 760px; }
-  .vs-section-{{ section.id }} .heading-glow { width: 240px; height: 8px; }
-  .vs-section-{{ section.id }} .timeline { max-width: 1050px; margin: auto; }
-  .vs-section-{{ section.id }} .timeline-line { left: 44px; width: 5px; top: 46px; }
-  .vs-section-{{ section.id }} .item { gap: 30px; margin-bottom: 65px; }
-  .vs-section-{{ section.id }} .icon { width: 92px; min-width: 92px; height: 92px; }
-  .vs-section-{{ section.id }} .icon svg, .vs-section-{{ section.id }} .icon img { width: 40px; height: 40px; }
-  .vs-section-{{ section.id }} .content h2 { font-size: 38px; line-height: 1.15; }
-  .vs-section-{{ section.id }} .content p { font-size: 22px; line-height: 1.9; max-width: 760px; }
-  .vs-grid-title-{{ section.id }} h2 { font-size: 38px; }
+  .vs-section-{{ section.id }} { padding: 60px 24px 40px !important; }
+  .vs-section-{{ section.id }} .heading { margin-bottom: 44px !important; }
+  .vs-section-{{ section.id }} .heading .top { font-size: 64px !important; letter-spacing: -1.5px !important; }
+  .vs-section-{{ section.id }} .heading .bottom { font-size: 52px !important; letter-spacing: -1px !important; }
+  .vs-section-{{ section.id }} .heading p { font-size: 18px !important; max-width: 760px !important; margin: 14px auto 0 !important; }
+  .vs-section-{{ section.id }} .heading-glow { width: 200px !important; height: 6px !important; }
+  
+  .vs-section-{{ section.id }} .timeline {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    align-items: stretch !important;
+    gap: 24px !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+  }
+  .vs-section-{{ section.id }} .timeline-line { display: none !important; }
+  
+  .vs-section-{{ section.id }} .item {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    background: linear-gradient(145deg, #FFFFFF 0%, #FFFDF8 60%, #F5FAF6 100%) !important;
+    border: 2px solid rgba(247, 148, 29, 0.28) !important;
+    border-top: 5px solid #F7941D !important;
+    border-radius: 24px !important;
+    padding: 32px 24px !important;
+    box-shadow: 0 12px 36px rgba(247, 148, 29, 0.1), 0 4px 16px rgba(0,0,0,0.03) !important;
+    transition: transform 0.35s ease, box-shadow 0.35s ease !important;
+    margin-bottom: 0 !important;
+    gap: 16px !important;
+    height: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .vs-section-{{ section.id }} .item:hover {
+    transform: translateY(-8px) scale(1.01) !important;
+    box-shadow: 0 20px 50px rgba(247, 148, 29, 0.2) !important;
+  }
+
+  .vs-section-{{ section.id }} .icon {
+    width: 68px !important;
+    min-width: 68px !important;
+    height: 68px !important;
+    border-radius: 20px !important;
+    background: linear-gradient(135deg, #FFF3E0, #FFE0B2) !important;
+    border: 1.5px solid rgba(247, 148, 29, 0.35) !important;
+    box-shadow: 0 8px 22px rgba(247, 148, 29, 0.2) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 auto !important;
+  }
+  .vs-section-{{ section.id }} .icon svg, 
+  .vs-section-{{ section.id }} .icon img {
+    width: 32px !important;
+    height: 32px !important;
+    object-fit: contain !important;
+  }
+
+  .vs-section-{{ section.id }} .content {
+    text-align: center !important;
+    width: 100% !important;
+  }
+  .vs-section-{{ section.id }} .content h2 {
+    font-size: 22px !important;
+    line-height: 1.25 !important;
+    font-weight: 900 !important;
+    color: #0F172A !important;
+    margin-bottom: 10px !important;
+    text-align: center !important;
+  }
+  .vs-section-{{ section.id }} .content h2 span {
+    display: inline-block !important;
+  }
+  .vs-section-{{ section.id }} .content p {
+    font-size: 15.5px !important;
+    line-height: 1.6 !important;
+    color: #475569 !important;
+    text-align: center !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+  }
+  .vs-grid-title-{{ section.id }} h2 { font-size: 34px !important; }
 }
 
 /* PERFECT COMPACT MOBILE ALIGNMENT OVERRIDES */
