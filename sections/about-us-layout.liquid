@@ -2185,121 +2185,98 @@
     .team-grid { grid-template-columns: repeat(2, 1fr); }
   }
   /* ==========================================================
-     SECTION 8: HOW WE WORK - FUTURISTIC PLASMA & LASER ENERGY ANIMATED BACKGROUND
+     SECTION 8: HOW WE WORK - OFFICIAL BRAND THEME ANIMATED BACKGROUND
      ========================================================== */
-  @keyframes spinPlasmaHalo {
-    0% { transform: translate(-50%, -50%) rotate(0deg) scale(1); }
-    50% { transform: translate(-50%, -50%) rotate(180deg) scale(1.08); }
-    100% { transform: translate(-50%, -50%) rotate(360deg) scale(1); }
+  @keyframes orbFloatBrand {
+    0%, 100% { transform: translateY(0) scale(1); opacity: 0.7; }
+    50% { transform: translateY(-25px) scale(1.1); opacity: 0.9; }
   }
 
-  @keyframes floatHoloBadge {
+  @keyframes floatBrandBadge {
     0%, 100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-16px) rotate(3deg); }
+    50% { transform: translateY(-12px) rotate(2deg); }
   }
 
-  @keyframes dashLaserFlow {
-    0% { stroke-dashoffset: 1000; }
-    100% { stroke-dashoffset: 0; }
+  @keyframes stepRippleBrand {
+    0% { box-shadow: 0 0 0 0 rgba(247, 148, 29, 0.5); }
+    70% { box-shadow: 0 0 0 14px rgba(247, 148, 29, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(247, 148, 29, 0); }
   }
 
-  @keyframes pulseGlowRing {
-    0%, 100% { opacity: 0.3; transform: scale(1); }
-    50% { opacity: 0.75; transform: scale(1.05); }
+  @keyframes floatGraphic {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-12px) rotate(2.5deg); }
+  }
+
+  @keyframes shimmerProgressBar {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
   }
 
   .vsw-how-we-work-section {
-    padding: 95px 20px;
-    background: #0B1120;
+    padding: 85px 20px;
+    background: radial-gradient(circle at top right, rgba(247,148,29,0.08), transparent 45%),
+                radial-gradient(circle at bottom left, rgba(62,173,71,0.08), transparent 45%),
+                linear-gradient(180deg, #FAFAF7 0%, #FFFFFF 50%, #FFFDF8 100%);
     position: relative;
     overflow: hidden;
-    color: #FFFFFF;
-    border-top: 2px solid rgba(247, 148, 29, 0.4);
-    border-bottom: 2px solid rgba(62, 173, 71, 0.3);
+    color: #0F172A;
+    border-top: 2px solid rgba(247, 148, 29, 0.25);
+    border-bottom: 2px solid rgba(62, 173, 71, 0.2);
   }
 
-  /* Interactive Mouse Spotlight Aura */
-  .vsw-cursor-spotlight {
-    position: absolute;
-    width: 600px;
-    height: 600px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(247, 148, 29, 0.22) 0%, rgba(62, 173, 71, 0.12) 40%, transparent 70%);
-    pointer-events: none;
-    z-index: 1;
-    transform: translate(-50%, -50%);
-    transition: opacity 0.5s ease;
-    filter: blur(40px);
-    opacity: 0.85;
-  }
-
-  /* Spinning Plasma Energy Halo Ring */
-  .vsw-plasma-halo-ring {
-    position: absolute;
-    top: 55%;
-    left: 50%;
-    width: 850px;
-    height: 850px;
-    border-radius: 50%;
-    border: 2px stroke transparent;
-    background: radial-gradient(circle, transparent 55%, rgba(247, 148, 29, 0.15) 70%, rgba(62, 173, 71, 0.2) 85%, transparent 100%);
-    z-index: 1;
-    pointer-events: none;
-    animation: spinPlasmaHalo 20s linear infinite;
-    filter: blur(10px);
-  }
-
-  /* Animated Tech Grid Overlay */
+  /* Animated Subtle Tech Grid Overlay */
   .vsw-bg-grid-overlay {
     position: absolute;
     inset: 0;
     background-image: 
-      linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-    background-size: 50px 50px;
+      linear-gradient(to right, rgba(247, 148, 29, 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(247, 148, 29, 0.04) 1px, transparent 1px);
+    background-size: 44px 44px;
     pointer-events: none;
     z-index: 1;
-    opacity: 0.6;
   }
 
-  /* Laser Beam Lines SVG */
-  .vsw-laser-beam-svg {
+  /* Floating Ambient Brand Orbs */
+  .vsw-brand-orb {
     position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
+    border-radius: 50%;
+    filter: blur(50px);
     pointer-events: none;
     z-index: 1;
-    opacity: 0.45;
   }
-  .vsw-laser-path {
-    stroke: url(#laserGradient);
-    stroke-width: 2.5;
-    stroke-dasharray: 20 10;
-    animation: dashLaserFlow 25s linear infinite;
+  .vsw-brand-orb-1 {
+    top: 5%; right: -5%;
+    width: 480px; height: 480px;
+    background: radial-gradient(circle, rgba(247, 148, 29, 0.16) 0%, transparent 70%);
+    animation: orbFloatBrand 10s ease-in-out infinite;
+  }
+  .vsw-brand-orb-2 {
+    bottom: -10%; left: -5%;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(62, 173, 71, 0.14) 0%, transparent 70%);
+    animation: orbFloatBrand 12s ease-in-out infinite reverse;
   }
 
-  /* Floating 3D Holographic Nano Badges */
+  /* Floating Brand Holographic Badges */
   .vsw-holo-badge {
     position: absolute;
     z-index: 2;
-    padding: 8px 18px;
-    background: rgba(15, 23, 42, 0.75);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border: 1.5px solid rgba(247, 148, 29, 0.4);
+    padding: 8px 20px;
+    background: #FFFFFF;
+    border: 1.5px solid rgba(247, 148, 29, 0.35);
     border-radius: 50px;
     font-size: 0.82rem;
     font-weight: 900;
-    color: #FFC107;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 15px rgba(247, 148, 29, 0.25);
+    color: #D96924;
+    box-shadow: 0 10px 30px rgba(247, 148, 29, 0.12), 0 2px 8px rgba(0, 0, 0, 0.03);
     pointer-events: none;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.4px;
   }
-  .vsw-holo-1 { top: 12%; left: 4%; animation: floatHoloBadge 7s ease-in-out infinite; }
-  .vsw-holo-2 { top: 18%; right: 4%; animation: floatHoloBadge 8s ease-in-out infinite 1.5s; border-color: rgba(62, 173, 71, 0.4); color: #4CAF50; }
-  .vsw-holo-3 { bottom: 12%; left: 5%; animation: floatHoloBadge 9s ease-in-out infinite 0.8s; border-color: rgba(62, 173, 71, 0.4); color: #4CAF50; }
-  .vsw-holo-4 { bottom: 16%; right: 5%; animation: floatHoloBadge 7.5s ease-in-out infinite 2s; }
+  .vsw-holo-1 { top: 10%; left: 4%; animation: floatBrandBadge 7s ease-in-out infinite; }
+  .vsw-holo-2 { top: 16%; right: 4%; animation: floatBrandBadge 8s ease-in-out infinite 1.5s; border-color: rgba(62, 173, 71, 0.35); color: #007B3E; }
+  .vsw-holo-3 { bottom: 10%; left: 5%; animation: floatBrandBadge 9s ease-in-out infinite 0.8s; border-color: rgba(62, 173, 71, 0.35); color: #007B3E; }
+  .vsw-holo-4 { bottom: 14%; right: 5%; animation: floatBrandBadge 7.5s ease-in-out infinite 2s; }
 
   .vsw-hww-container {
     max-width: 1140px;
@@ -3167,16 +3144,14 @@
   <!-- SECTION 8: HOW WE WORK INTERACTIVE STEPPER SHOWCASE -->
   <section class="vsw-how-we-work-section" id="vswHowWeWork">
     
-    <!-- Interactive Mouse Cursor Spotlight -->
-    <div class="vsw-cursor-spotlight" id="vswSpotlight"></div>
-
-    <!-- Spinning 3D Plasma Energy Halo Ring -->
-    <div class="vsw-plasma-halo-ring"></div>
+    <!-- Brand Ambient Floating Orbs -->
+    <div class="vsw-brand-orb vsw-brand-orb-1"></div>
+    <div class="vsw-brand-orb vsw-brand-orb-2"></div>
 
     <!-- Animated Tech Grid Overlay -->
     <div class="vsw-bg-grid-overlay"></div>
 
-    <!-- Floating 3D Holographic Nano Badges -->
+    <!-- Floating Brand Holographic Badges -->
     <div class="vsw-holo-badge vsw-holo-1">⚡ US-GERMAN NANOTECH</div>
     <div class="vsw-holo-badge vsw-holo-2">🔬 ION: 20,000 POWER</div>
     <div class="vsw-holo-badge vsw-holo-3">📜 ISO 9001:2015 CERTIFIED</div>
