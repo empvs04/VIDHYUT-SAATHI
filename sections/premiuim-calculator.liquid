@@ -686,7 +686,20 @@
 
      
 
-      <!-- DUAL EDITABLE NUMBER INPUTS (BILL RS & LOAD KW) -->
+      <!-- SLIDER CONTROL (FIRST) -->
+      <div class="calc-label" style="margin-top: 10px;">🎚️ Drag Slider to Adjust Bill</div>
+      <input type="range" class="calc-slider" id="billSlider-{{ section.id }}"
+             min="{{ section.settings.slider_min }}"
+             max="{{ section.settings.slider_max }}"
+             step="{{ section.settings.slider_step }}"
+             value="{{ section.settings.slider_default }}">
+
+      <div style="display:flex; justify-content:space-between; font-size:.72rem; color:var(--muted); margin-top:8px; margin-bottom:18px;">
+        <span id="minLabel-{{ section.id }}">₹{{ section.settings.slider_min }}</span>
+        <span id="maxLabel-{{ section.id }}">₹{{ section.settings.slider_max }}</span>
+      </div>
+
+      <!-- DUAL EDITABLE NUMBER INPUTS (BILL RS SECOND & LOAD KW THIRD) -->
       <div class="input-dual-row">
         <div class="input-field-group">
           <div class="calc-label">💰 Monthly Electricity Bill</div>
@@ -703,19 +716,6 @@
             <span class="unit-symbol">KW</span>
           </div>
         </div>
-      </div>
-
-      <!-- SLIDER CONTROL -->
-      <div class="calc-label" style="margin-top: 10px;">🎚️ Drag Slider to Adjust Bill</div>
-      <input type="range" class="calc-slider" id="billSlider-{{ section.id }}"
-             min="{{ section.settings.slider_min }}"
-             max="{{ section.settings.slider_max }}"
-             step="{{ section.settings.slider_step }}"
-             value="{{ section.settings.slider_default }}">
-
-      <div style="display:flex; justify-content:space-between; font-size:.72rem; color:var(--muted); margin-top:8px; margin-bottom:18px;">
-        <span id="minLabel-{{ section.id }}">₹{{ section.settings.slider_min }}</span>
-        <span id="maxLabel-{{ section.id }}">₹{{ section.settings.slider_max }}</span>
       </div>
 
       <!-- PHASE TYPE SELECTOR TOGGLE BUTTONS -->
