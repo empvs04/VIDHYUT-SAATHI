@@ -2704,19 +2704,43 @@
       margin-bottom: 25px !important;
     }
     .vsw-stepper-nav {
-      overflow-x: auto;
-      justify-content: flex-start;
-      gap: 14px;
-      padding: 8px 4px 14px 4px;
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 0;
+      padding: 0 5px;
       max-width: 100%;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
     }
-    .vsw-stepper-nav::-webkit-scrollbar { display: none; }
-    .vsw-stepper-line-bg, .vsw-stepper-line-progress { display: none !important; }
+    .vsw-stepper-line-bg {
+      display: block !important;
+      position: absolute;
+      top: 20px !important;
+      left: 25px !important;
+      right: 25px !important;
+      height: 3.5px !important;
+      background: #E2E8F0 !important;
+      border-radius: 10px !important;
+      z-index: 1 !important;
+    }
+    .vsw-stepper-line-progress {
+      display: block !important;
+      position: absolute;
+      top: 20px !important;
+      left: 25px !important;
+      height: 3.5px !important;
+      background: linear-gradient(90deg, #ec5c0a 0%, #ff9a00 50%, #007b3e 100%) !important;
+      border-radius: 10px !important;
+      z-index: 2 !important;
+      box-shadow: 0 0 8px rgba(236, 92, 10, 0.4) !important;
+    }
     .vsw-step-item {
-      flex-shrink: 0;
-      min-width: 75px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: auto !important;
+      z-index: 3 !important;
     }
     .vsw-step-circle {
       width: 42px !important;
