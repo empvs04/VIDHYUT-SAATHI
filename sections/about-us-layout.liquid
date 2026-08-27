@@ -3267,19 +3267,17 @@
       justify-content: center !important;
     }
 
-    /* 2x2 COMPACT CARD GRID (FITS SINGLE SCREEN) */
+    /* 2x2 COMPACT EQUAL-HEIGHT CARD GRID (FITS SINGLE SCREEN) */
     .vsw-benefits-right-grid {
+      display: grid !important;
       grid-template-columns: repeat(2, 1fr) !important;
       gap: 10px !important;
+      align-items: stretch !important;
       width: 100% !important;
     }
 
     .vsw-benefits-col-1, .vsw-benefits-col-2 {
-      transform: none !important;
-      display: flex !important;
-      flex-direction: column !important;
-      gap: 10px !important;
-      width: 100% !important;
+      display: contents !important;
     }
 
     .vsw-mesh-card {
@@ -3289,19 +3287,22 @@
       display: flex !important;
       flex-direction: column !important;
       align-items: center !important;
+      justify-content: flex-start !important;
       gap: 8px !important;
       background: #FFFFFF !important;
       border: 1.5px solid rgba(236, 92, 10, 0.2) !important;
       border-top: 3.5px solid #EC5C0A !important;
       box-shadow: 0 6px 20px rgba(236, 92, 10, 0.08) !important;
       width: 100% !important;
+      height: 100% !important;
+      min-height: 125px !important;
       box-sizing: border-box !important;
     }
 
     .vsw-mesh-icon-wrap {
-      width: 38px !important;
-      height: 38px !important;
-      min-width: 38px !important;
+      width: 36px !important;
+      height: 36px !important;
+      min-width: 36px !important;
       font-size: 1rem !important;
       margin-bottom: 0 !important;
       border-radius: 10px !important;
@@ -3312,7 +3313,10 @@
       display: flex !important;
       flex-direction: column !important;
       align-items: center !important;
+      justify-content: center !important;
       text-align: center !important;
+      flex-grow: 1 !important;
+      width: 100% !important;
     }
 
     .vsw-mesh-card-title {
@@ -3321,6 +3325,7 @@
       margin-bottom: 2px !important;
       color: #0F172A !important;
       line-height: 1.2 !important;
+      text-align: center !important;
     }
 
     .vsw-mesh-card-desc {
@@ -3328,6 +3333,8 @@
       font-weight: 500 !important;
       color: #64748B !important;
       line-height: 1.35 !important;
+      text-align: center !important;
+      margin: 0 !important;
     }
   }
 {%- endstyle -%}
