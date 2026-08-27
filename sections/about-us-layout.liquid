@@ -2568,30 +2568,54 @@
   /* STEP FEATURE BULLET CHIPS */
   .vsw-step-bullets {
     display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+    flex-direction: column;
+    gap: 12px;
     margin-top: 22px;
+    width: 100%;
   }
 
   .vsw-bullet-item {
-    display: inline-flex;
+    display: flex;
     align-items: center;
-    gap: 6px;
-    padding: 7px 16px;
-    background: #FFFFFF;
-    border: 1.5px solid rgba(236, 92, 10, 0.28);
-    border-radius: 50px;
-    font-size: 0.84rem;
-    font-weight: 800;
-    color: #1a1a1a;
-    box-shadow: 0 4px 15px rgba(236, 92, 10, 0.08), 0 2px 6px rgba(0, 0, 0, 0.03);
+    gap: 12px;
+    padding: 11px 16px;
+    background: linear-gradient(135deg, #FFFFFF 0%, #FFFDF9 100%);
+    border: 1.5px solid rgba(236, 92, 10, 0.22);
+    border-radius: 16px;
+    box-shadow: 0 6px 18px rgba(236, 92, 10, 0.07), inset 0 1px 0 #FFFFFF;
     transition: all 0.3s ease;
+    text-align: left;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .vsw-bullet-item:hover {
+    border-color: rgba(236, 92, 10, 0.45);
+    box-shadow: 0 10px 25px rgba(236, 92, 10, 0.14);
     transform: translateY(-2px);
-    border-color: #ec5c0a;
-    box-shadow: 0 6px 20px rgba(236, 92, 10, 0.18);
+  }
+
+  .vsw-bullet-icon {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #ec5c0a 0%, #ff9a00 100%);
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.88rem;
+    box-shadow: 0 4px 10px rgba(236, 92, 10, 0.35);
+    flex-shrink: 0;
+  }
+
+  .vsw-bullet-text {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #1E293B;
+    line-height: 1.35;
+    letter-spacing: 0.2px;
   }
 
   /* 3D STAGE PODIUM SHOWCASE */
@@ -2872,7 +2896,7 @@
       text-align: center !important;
     }
 
-    /* BULLET CHIPS ON MOBILE (3D METALLIC GLASS PILLS) */
+    /* BULLET CHIPS ON MOBILE (3D METALLIC GLASS PILLS WITH ICON BADGE) */
     .vsw-step-bullets {
       display: flex !important;
       flex-direction: column !important;
@@ -2884,22 +2908,39 @@
     }
 
     .vsw-bullet-item {
-      font-size: 0.8rem !important;
-      font-weight: 600 !important;
-      padding: 9px 16px !important;
-      border: 1.5px solid rgba(236, 92, 10, 0.28) !important;
-      border-radius: 50px !important;
+      display: flex !important;
+      align-items: center !important;
+      text-align: left !important;
+      gap: 12px !important;
+      padding: 11px 16px !important;
+      border-radius: 16px !important;
+      border: 1.5px solid rgba(236, 92, 10, 0.24) !important;
+      box-shadow: 0 6px 18px rgba(236, 92, 10, 0.08), inset 0 1px 0 #FFFFFF !important;
+      background: linear-gradient(135deg, #FFFFFF 0%, #FFFDF7 100%) !important;
       width: 100% !important;
-      max-width: 100% !important;
       box-sizing: border-box !important;
+    }
+
+    .vsw-bullet-icon {
+      width: 30px !important;
+      height: 30px !important;
+      min-width: 30px !important;
+      border-radius: 10px !important;
+      background: linear-gradient(135deg, #ec5c0a 0%, #ff9a00 100%) !important;
+      color: #FFFFFF !important;
+      display: flex !important;
+      align-items: center !important;
       justify-content: center !important;
-      text-align: center !important;
-      white-space: normal !important;
-      word-break: normal !important;
+      font-size: 0.82rem !important;
+      box-shadow: 0 4px 10px rgba(236, 92, 10, 0.3) !important;
+      flex-shrink: 0 !important;
+    }
+
+    .vsw-bullet-text {
+      font-size: 0.86rem !important;
+      font-weight: 700 !important;
+      color: #0F172A !important;
       line-height: 1.35 !important;
-      box-shadow: 0 4px 14px rgba(236, 92, 10, 0.09) !important;
-      background: linear-gradient(135deg, #ffffff 0%, #fffbf7 100%) !important;
-      color: #1E293B !important;
     }
 
     /* 3D PODIUM SHOWCASE ON MOBILE */
@@ -3629,9 +3670,18 @@
             <h3 class="vsw-step-title" id="vswStepTitle">Analysis</h3>
             <p class="vsw-step-desc" id="vswStepDesc">We review and document your company’s needs, electrical load, and energy-saving requirements to determine optimal card capacity.</p>
             <div class="vsw-step-bullets" id="vswStepBullets">
-              <span class="vsw-bullet-item">⚡ Electrical Load Audit</span>
-              <span class="vsw-bullet-item">📊 Energy-Saving Calculation</span>
-              <span class="vsw-bullet-item">🎯 Custom Capacity Plan</span>
+              <div class="vsw-bullet-item">
+                <span class="vsw-bullet-icon">⚡</span>
+                <span class="vsw-bullet-text">Electrical Load Audit</span>
+              </div>
+              <div class="vsw-bullet-item">
+                <span class="vsw-bullet-icon">📊</span>
+                <span class="vsw-bullet-text">Energy-Saving Calculation</span>
+              </div>
+              <div class="vsw-bullet-item">
+                <span class="vsw-bullet-icon">🎯</span>
+                <span class="vsw-bullet-text">Custom Capacity Plan</span>
+              </div>
             </div>
           </div>
           <div class="vsw-step-graphic-wrap">
@@ -3778,7 +3828,15 @@
 
         if (stepBullets && stepData[index].bullets) {
           stepBullets.innerHTML = stepData[index].bullets
-            .map(b => `<span class="vsw-bullet-item">${b}</span>`)
+            .map(b => {
+              const parts = b.trim().split(' ');
+              const icon = parts[0];
+              const text = parts.slice(1).join(' ');
+              return `<div class="vsw-bullet-item">
+                        <span class="vsw-bullet-icon">${icon}</span>
+                        <span class="vsw-bullet-text">${text}</span>
+                      </div>`;
+            })
             .join('');
         }
 
