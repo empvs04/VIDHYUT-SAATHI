@@ -40,17 +40,39 @@
     align-items: center !important;
     justify-content: center !important;
     gap: 8px !important;
-    padding: 6px 18px !important;
+    padding: 7px 20px !important;
     border-radius: 50px !important;
-    background: linear-gradient(135deg, #fff3eb 0%, #ffe8d6 100%) !important;
-    border: 1.5px solid rgba(236, 92, 10, 0.35) !important;
-    color: #ec5c0a !important;
-    font-size: 0.82rem !important;
+    background: linear-gradient(135deg, #FFF3EB 0%, #FFE8D6 100%) !important;
+    border: 1.5px solid rgba(236, 92, 10, 0.4) !important;
+    color: #EC5C0A !important;
+    font-size: 0.84rem !important;
     font-weight: 800 !important;
     letter-spacing: 1px !important;
-    margin-bottom: 14px !important;
+    margin: 0 auto 16px auto !important;
     text-transform: uppercase !important;
-    box-shadow: 0 4px 15px rgba(236, 92, 10, 0.12) !important;
+    box-shadow: 0 4px 15px rgba(236, 92, 10, 0.15) !important;
+  }
+
+  .vsw-pulse-dot {
+    width: 8px !important;
+    height: 8px !important;
+    background: #EC5C0A !important;
+    border-radius: 50% !important;
+    display: inline-block !important;
+    box-shadow: 0 0 0 rgba(236, 92, 10, 0.4) !important;
+    animation: vswPulseGlow 2s infinite !important;
+  }
+
+  @keyframes vswPulseGlow {
+    0% {
+      box-shadow: 0 0 0 0 rgba(236, 92, 10, 0.7);
+    }
+    70% {
+      box-shadow: 0 0 0 8px rgba(236, 92, 10, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(236, 92, 10, 0);
+    }
   }
 
   .vsw-wcu-sub {
@@ -350,9 +372,11 @@
 <section class="vsw-wcu-section" id="vswWcuSection">
   
   <div class="vsw-wcu-header">
-    <div class="vsw-wcu-badge">⚡ 13 PILLARS OF EXCELLENCE</div>
-    <p class="vsw-wcu-sub">Why Choose us</p>
-    <h2 class="vsw-wcu-main-title">“Our Uniqueness Helps Us Earn The <span>Trust Of The Indian Community</span>”</h2>
+    <div class="vsw-wcu-badge">
+      <span class="vsw-pulse-dot"></span>
+      <span>⚡ VIDHYUT SAATHI</span>
+    </div>
+    <h2 class="vsw-wcu-main-title">“Our uniqueness helps us earn<br> the trust of the Indian community”</h2>
   </div>
 
   <!-- 13-Letter Acronym Capsule Stepper Nav -->
