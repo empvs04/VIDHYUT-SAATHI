@@ -1,6 +1,6 @@
 {% comment %}
   =============================================================================
-  WHY CHOOSE US - V-I-D-H-Y-U-T S-A-A-T-H-I ACRONYM STEPPER (3D LUCRATIVE MOBILE-OPTIMIZED SHOWCASE)
+  WHY CHOOSE US - V-I-D-H-Y-U-T S-A-A-T-H-I ACRONYM STEPPER (VIEWPORT SCROLL TRIGGERED)
   =============================================================================
 {% endcomment %}
 
@@ -448,9 +448,9 @@
   <!-- Active Acronym 3D Luxury Stage Card -->
   <div class="vsw-wcu-content-stage">
     <div class="vsw-wcu-card" id="vswWcuCard">
-      <div class="vsw-wcu-letter-badge" id="vswWcuBadge">U</div>
-      <h3 class="vsw-wcu-active-title" id="vswWcuTitle">US GERMAN</h3>
-      <p class="vsw-wcu-active-desc" id="vswWcuDesc">We are here in the market with unique US - German Nano-technology working on vibrations to supress electricity spikes and Vidyut Saathi is launching this technology in India.</p>
+      <div class="vsw-wcu-letter-badge" id="vswWcuBadge">V</div>
+      <h3 class="vsw-wcu-active-title" id="vswWcuTitle">VIDHYUT</h3>
+      <p class="vsw-wcu-active-desc" id="vswWcuDesc">Vidhyut i.e. electricity is very crucial and is on the verge of extinction. To save vidhyut, we are here with Vidhyut Saathi energy saver card that will help you save 20% to 30% on your electricity bills.</p>
     </div>
   </div>
 
@@ -480,8 +480,9 @@
     const acronymTitle = document.getElementById('vswWcuTitle');
     const acronymDesc = document.getElementById('vswWcuDesc');
     const acronymCard = document.getElementById('vswWcuCard');
+    const wcuSection = document.getElementById('vswWcuSection');
 
-    let currentAcronymIndex = 5;
+    let currentAcronymIndex = 0;
     let acronymAutoTimer = null;
 
     function activateAcronymStep(index) {
@@ -534,20 +535,42 @@
     });
 
     function startAcronymAutoTimer() {
+      if (acronymAutoTimer) clearInterval(acronymAutoTimer);
       acronymAutoTimer = setInterval(() => {
         let nextIndex = (currentAcronymIndex + 1) % acronymData.length;
         activateAcronymStep(nextIndex);
       }, 4500);
     }
 
-    function resetAcronymAutoTimer() {
+    function stopAcronymAutoTimer() {
       if (acronymAutoTimer) clearInterval(acronymAutoTimer);
+    }
+
+    function resetAcronymAutoTimer() {
+      stopAcronymAutoTimer();
       startAcronymAutoTimer();
     }
 
-    if (acronymItems.length > 0) {
-      activateAcronymStep(5);
-      startAcronymAutoTimer();
+    /* VIEWPORT SCROLL TRIGGER: Start auto-rotation ONLY when user reaches this section */
+    if ('IntersectionObserver' in window && wcuSection) {
+      const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            activateAcronymStep(currentAcronymIndex);
+            startAcronymAutoTimer();
+          } else {
+            stopAcronymAutoTimer();
+          }
+        });
+      }, {
+        threshold: 0.15
+      });
+      observer.observe(wcuSection);
+    } else {
+      if (acronymItems.length > 0) {
+        activateAcronymStep(0);
+        startAcronymAutoTimer();
+      }
     }
   });
 </script>
