@@ -3199,28 +3199,39 @@
     color: #64748B;
   }
 
-  /* MOBILE RESPONSIVE (NEAT, UNBOLDED CLEAN MOBILE TYPOGRAPHY & FLAT STACK) */
+  /* MOBILE RESPONSIVE (NEAT, UNBOLDED CLEAN MOBILE TYPOGRAPHY & LIGHT THEME STACK) */
   @media screen and (max-width: 991px) {
     .vsw-benefits-mesh-section {
-      padding: 60px 16px 75px 16px !important;
-      background: linear-gradient(180deg, #FAFAF7 0%, #FFF9F2 50%, #FFFDF8 100%) !important;
+      padding: 55px 16px 70px 16px !important;
+      background: #FAFAF7 !important;
     }
 
     .vsw-benefits-container {
       grid-template-columns: 1fr !important;
-      gap: 40px !important;
+      gap: 36px !important;
       text-align: center !important;
     }
 
     .vsw-benefits-left {
       align-items: center !important;
+      text-align: center !important;
+    }
+
+    .vsw-benefits-badge {
+      font-size: 0.76rem !important;
+      font-weight: 700 !important;
+      padding: 6px 16px !important;
+      margin-bottom: 14px !important;
+      background: linear-gradient(135deg, #fff3eb 0%, #ffe8d6 100%) !important;
+      border: 1px solid rgba(236, 92, 10, 0.35) !important;
+      color: #ec5c0a !important;
     }
 
     .vsw-benefits-title {
-      font-size: 1.85rem !important;
+      font-size: 1.8rem !important;
       font-weight: 700 !important;
       line-height: 1.28 !important;
-      margin-bottom: 16px !important;
+      margin-bottom: 14px !important;
       color: #1A1A1A !important;
     }
 
@@ -3229,51 +3240,77 @@
       font-weight: 500 !important;
       color: #475569 !important;
       line-height: 1.65 !important;
-      margin-bottom: 25px !important;
+      margin-bottom: 24px !important;
+      text-align: center !important;
+    }
+
+    .vsw-benefits-cta-btn {
+      padding: 12px 28px !important;
+      font-size: 0.88rem !important;
+      font-weight: 700 !important;
+      width: 100% !important;
+      max-width: 270px !important;
+      justify-content: center !important;
     }
 
     .vsw-benefits-right-grid {
       grid-template-columns: 1fr !important;
-      gap: 16px !important;
+      gap: 14px !important;
+      width: 100% !important;
     }
 
     .vsw-benefits-col-1, .vsw-benefits-col-2 {
       transform: none !important;
-      gap: 16px !important;
+      gap: 14px !important;
+      width: 100% !important;
     }
 
     .vsw-mesh-card {
-      padding: 24px 20px !important;
+      padding: 20px 18px !important;
       border-radius: 18px !important;
-      text-align: center !important;
+      text-align: left !important;
       display: flex !important;
-      flex-direction: column !important;
+      flex-direction: row !important;
       align-items: center !important;
-      background: linear-gradient(145deg, #FFFFFF 0%, #FFFCF8 100%) !important;
+      gap: 16px !important;
+      background: #FFFFFF !important;
       border: 1.5px solid rgba(236, 92, 10, 0.2) !important;
-      border-top: 4px solid #EC5C0A !important;
-      box-shadow: 0 10px 30px rgba(236, 92, 10, 0.08) !important;
+      border-left: 4.5px solid #EC5C0A !important;
+      border-top: 1.5px solid rgba(236, 92, 10, 0.2) !important;
+      box-shadow: 0 8px 25px rgba(236, 92, 10, 0.08), 0 2px 8px rgba(0, 0, 0, 0.03) !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
     }
 
     .vsw-mesh-icon-wrap {
-      width: 48px !important;
-      height: 48px !important;
-      font-size: 1.2rem !important;
-      margin-bottom: 14px !important;
+      width: 44px !important;
+      height: 44px !important;
+      min-width: 44px !important;
+      font-size: 1.15rem !important;
+      margin-bottom: 0 !important;
+      border-radius: 12px !important;
+      flex-shrink: 0 !important;
+    }
+
+    .vsw-mesh-card-content {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: flex-start !important;
+      text-align: left !important;
     }
 
     .vsw-mesh-card-title {
-      font-size: 1.15rem !important;
+      font-size: 1.05rem !important;
       font-weight: 700 !important;
-      margin-bottom: 8px !important;
+      margin-bottom: 4px !important;
       color: #0F172A !important;
     }
 
     .vsw-mesh-card-desc {
-      font-size: 0.88rem !important;
+      font-size: 0.86rem !important;
       font-weight: 500 !important;
       color: #64748B !important;
-      line-height: 1.6 !important;
+      line-height: 1.5 !important;
     }
   }
 {%- endstyle -%}
@@ -4041,8 +4078,10 @@
             <div class="vsw-mesh-icon-wrap vsw-mesh-icon-orange">
               <span>⚡</span>
             </div>
-            <h3 class="vsw-mesh-card-title">20%-30% Savings</h3>
-            <p class="vsw-mesh-card-desc">Guaranteed monthly electricity bill reduction using advanced electromagnetic resonance technology.</p>
+            <div class="vsw-mesh-card-content">
+              <h3 class="vsw-mesh-card-title">20%-30% Savings</h3>
+              <p class="vsw-mesh-card-desc">Guaranteed monthly electricity bill reduction using advanced electromagnetic resonance technology.</p>
+            </div>
           </div>
 
           <!-- Card 2 -->
@@ -4050,8 +4089,10 @@
             <div class="vsw-mesh-icon-wrap vsw-mesh-icon-purple">
               <span>🛡️</span>
             </div>
-            <h3 class="vsw-mesh-card-title">Appliance Shield</h3>
-            <p class="vsw-mesh-card-desc">Filters electrical noise, suppresses voltage spikes, and extends expensive appliance lifespan.</p>
+            <div class="vsw-mesh-card-content">
+              <h3 class="vsw-mesh-card-title">Appliance Shield</h3>
+              <p class="vsw-mesh-card-desc">Filters electrical noise, suppresses voltage spikes, and extends expensive appliance lifespan.</p>
+            </div>
           </div>
         </div>
 
@@ -4062,8 +4103,10 @@
             <div class="vsw-mesh-icon-wrap vsw-mesh-icon-blue">
               <span>📜</span>
             </div>
-            <h3 class="vsw-mesh-card-title">ISO 9001:2015 Certified</h3>
-            <p class="vsw-mesh-card-desc">Govt &amp; international safety certified, zero heat output, and 100% legal power saver compliance.</p>
+            <div class="vsw-mesh-card-content">
+              <h3 class="vsw-mesh-card-title">ISO 9001:2015 Certified</h3>
+              <p class="vsw-mesh-card-desc">Govt &amp; international safety certified, zero heat output, and 100% legal power saver compliance.</p>
+            </div>
           </div>
 
           <!-- Card 4 -->
@@ -4071,8 +4114,10 @@
             <div class="vsw-mesh-icon-wrap vsw-mesh-icon-amber">
               <span>💰</span>
             </div>
-            <h3 class="vsw-mesh-card-title">Zero Maintenance</h3>
-            <p class="vsw-mesh-card-desc">Passive plug-and-play card with 5+ years operational lifespan and zero recurring costs.</p>
+            <div class="vsw-mesh-card-content">
+              <h3 class="vsw-mesh-card-title">Zero Maintenance</h3>
+              <p class="vsw-mesh-card-desc">Passive plug-and-play card with 5+ years operational lifespan and zero recurring costs.</p>
+            </div>
           </div>
         </div>
 
