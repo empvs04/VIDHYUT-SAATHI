@@ -881,21 +881,22 @@
       }
 
       function updateCalculator(source) {
-        let bill = parseFloat(billInput ? billInput.value : slider.value) || 0;
+        let bill = 0;
+        if (source === 'slider') {
+          bill = parseFloat(slider ? slider.value : 0) || 0;
+          if (billInput) billInput.value = Math.round(bill);
+        } else if (source === 'billInput') {
+          bill = parseFloat(billInput ? billInput.value : 0) || 0;
+          if (slider) slider.value = Math.min(300000, Math.max(500, bill));
+        } else {
+          bill = parseFloat(billInput && billInput.value ? billInput.value : (slider ? slider.value : 0)) || 0;
+        }
+
         let kw = parseFloat(kwInput ? kwInput.value : 0) || 0;
 
-        if (source === 'slider' && billInput) {
-          billInput.value = Math.round(bill);
-        }
-        if (source === 'billInput' && slider) {
-          slider.value = Math.min(300000, Math.max(500, bill));
-        }
-
-        if (source === 'slider' || source === 'billInput') {
-          if (kw <= 0 || source === 'slider') {
-            kw = Math.max(1, Math.ceil(bill / 1000));
-            if (kwInput) kwInput.value = kw;
-          }
+        if (source === 'slider' || source === 'billInput' || source === 'init') {
+          kw = Math.max(1, Math.ceil(bill / 1000));
+          if (kwInput) kwInput.value = kw;
         }
 
         const cardsFromKW = getCardsByKW(kw);
@@ -956,20 +957,17 @@
         });
       }
 
-      slider.addEventListener('input', function() {
-        updateCalculator('slider');
-      });
+      slider.addEventListener('input', function() { updateCalculator('slider'); });
+      slider.addEventListener('change', function() { updateCalculator('slider'); });
 
       if (billInput) {
-        billInput.addEventListener('input', function() {
-          updateCalculator('billInput');
-        });
+        billInput.addEventListener('input', function() { updateCalculator('billInput'); });
+        billInput.addEventListener('change', function() { updateCalculator('billInput'); });
       }
 
       if (kwInput) {
-        kwInput.addEventListener('input', function() {
-          updateCalculator('kwInput');
-        });
+        kwInput.addEventListener('input', function() { updateCalculator('kwInput'); });
+        kwInput.addEventListener('change', function() { updateCalculator('kwInput'); });
       }
 
       updateCalculator('init');
