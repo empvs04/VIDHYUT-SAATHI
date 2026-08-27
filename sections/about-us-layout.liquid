@@ -2203,8 +2203,12 @@
   }
 
   @keyframes shimmerProgressBar {
-    0% { background-position: 0% 50%; }
-    100% { background-position: 200% 50%; }
+    0% { background-position: 0% 0; }
+    100% { background-position: -200% 0; }
+  }
+  @-webkit-keyframes shimmerProgressBar {
+    0% { background-position: 0% 0; }
+    100% { background-position: -200% 0; }
   }
 
   /* WATER DROP FALL ANIMATION */
@@ -2787,12 +2791,15 @@
       top: 0 !important;
       left: 0 !important;
       height: 100% !important;
-      background: linear-gradient(90deg, #ec5c0a 0%, #ff9a00 50%, #007b3e 100%) !important;
+      background: linear-gradient(90deg, #ec5c0a 0%, #ff9a00 25%, #007b3e 50%, #ff9a00 75%, #ec5c0a 100%) !important;
       background-size: 200% 100% !important;
-      animation: shimmerProgressBar 2.8s linear infinite !important;
+      -webkit-background-size: 200% 100% !important;
+      animation: shimmerProgressBar 2.2s linear infinite !important;
+      -webkit-animation: shimmerProgressBar 2.2s linear infinite !important;
+      will-change: background-position;
       border-radius: 4px !important;
       z-index: 2 !important;
-      box-shadow: 0 0 12px rgba(236, 92, 10, 0.7) !important;
+      box-shadow: 0 0 14px rgba(236, 92, 10, 0.75) !important;
       transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
       transform: none !important;
     }
