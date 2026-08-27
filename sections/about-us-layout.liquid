@@ -2185,57 +2185,68 @@
     .team-grid { grid-template-columns: repeat(2, 1fr); }
   }
   /* ==========================================================
-     SECTION 8: HOW WE WORK INTERACTIVE STEPPER SHOWCASE (LUCRATIVE ANIMATED BACKGROUND)
+     SECTION 8: HOW WE WORK - FUTURISTIC PLASMA & LASER ENERGY ANIMATED BACKGROUND
      ========================================================== */
-  @keyframes gradientBgShift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+  @keyframes spinPlasmaHalo {
+    0% { transform: translate(-50%, -50%) rotate(0deg) scale(1); }
+    50% { transform: translate(-50%, -50%) rotate(180deg) scale(1.08); }
+    100% { transform: translate(-50%, -50%) rotate(360deg) scale(1); }
   }
 
-  @keyframes bgGridShift {
-    0% { background-position: 0 0; }
-    100% { background-position: 60px 60px; }
-  }
-
-  @keyframes orbFloat3D {
-    0%, 100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.25; }
-    33% { transform: translateY(-30px) translateX(20px) scale(1.12); opacity: 0.4; }
-    66% { transform: translateY(20px) translateX(-25px) scale(0.92); opacity: 0.2; }
-  }
-
-  @keyframes riseParticles {
-    0% { transform: translateY(120%) scale(0.6); opacity: 0; }
-    30% { opacity: 0.6; }
-    70% { opacity: 0.6; }
-    100% { transform: translateY(-120%) scale(1.2); opacity: 0; }
-  }
-
-  @keyframes stepRipple {
-    0% { box-shadow: 0 0 0 0 rgba(247, 148, 29, 0.6); }
-    70% { box-shadow: 0 0 0 15px rgba(247, 148, 29, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(247, 148, 29, 0); }
-  }
-
-  @keyframes floatGraphic {
+  @keyframes floatHoloBadge {
     0%, 100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-12px) rotate(2.5deg); }
+    50% { transform: translateY(-16px) rotate(3deg); }
   }
 
-  @keyframes shimmerProgressBar {
-    0% { background-position: 0% 50%; }
-    100% { background-position: 200% 50%; }
+  @keyframes dashLaserFlow {
+    0% { stroke-dashoffset: 1000; }
+    100% { stroke-dashoffset: 0; }
+  }
+
+  @keyframes pulseGlowRing {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 0.75; transform: scale(1.05); }
   }
 
   .vsw-how-we-work-section {
-    padding: 90px 20px;
-    background: linear-gradient(135deg, #FFFDF8 0%, #F5FAF6 35%, #FAFAF8 70%, #FFF5EB 100%);
-    background-size: 300% 300%;
-    animation: gradientBgShift 14s ease-in-out infinite;
+    padding: 95px 20px;
+    background: #0B1120;
     position: relative;
     overflow: hidden;
-    border-top: 2px solid rgba(247, 148, 29, 0.25);
-    border-bottom: 2px solid rgba(62, 173, 71, 0.2);
+    color: #FFFFFF;
+    border-top: 2px solid rgba(247, 148, 29, 0.4);
+    border-bottom: 2px solid rgba(62, 173, 71, 0.3);
+  }
+
+  /* Interactive Mouse Spotlight Aura */
+  .vsw-cursor-spotlight {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(247, 148, 29, 0.22) 0%, rgba(62, 173, 71, 0.12) 40%, transparent 70%);
+    pointer-events: none;
+    z-index: 1;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.5s ease;
+    filter: blur(40px);
+    opacity: 0.85;
+  }
+
+  /* Spinning Plasma Energy Halo Ring */
+  .vsw-plasma-halo-ring {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    width: 850px;
+    height: 850px;
+    border-radius: 50%;
+    border: 2px stroke transparent;
+    background: radial-gradient(circle, transparent 55%, rgba(247, 148, 29, 0.15) 70%, rgba(62, 173, 71, 0.2) 85%, transparent 100%);
+    z-index: 1;
+    pointer-events: none;
+    animation: spinPlasmaHalo 20s linear infinite;
+    filter: blur(10px);
   }
 
   /* Animated Tech Grid Overlay */
@@ -2243,55 +2254,52 @@
     position: absolute;
     inset: 0;
     background-image: 
-      linear-gradient(to right, rgba(247, 148, 29, 0.05) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(247, 148, 29, 0.05) 1px, transparent 1px);
-    background-size: 40px 40px;
-    animation: bgGridShift 25s linear infinite;
+      linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
     pointer-events: none;
     z-index: 1;
+    opacity: 0.6;
   }
 
-  /* Floating Ambient Orbs */
-  .vsw-bg-orb {
+  /* Laser Beam Lines SVG */
+  .vsw-laser-beam-svg {
     position: absolute;
-    border-radius: 50%;
-    filter: blur(50px);
+    inset: 0;
+    width: 100%;
+    height: 100%;
     pointer-events: none;
     z-index: 1;
+    opacity: 0.45;
   }
-  .vsw-bg-orb-1 {
-    top: 5%; right: -5%;
-    width: 480px; height: 480px;
-    background: radial-gradient(circle, rgba(247, 148, 29, 0.22) 0%, transparent 70%);
-    animation: orbFloat3D 11s ease-in-out infinite;
-  }
-  .vsw-bg-orb-2 {
-    bottom: -10%; left: -5%;
-    width: 500px; height: 500px;
-    background: radial-gradient(circle, rgba(62, 173, 71, 0.2) 0%, transparent 70%);
-    animation: orbFloat3D 14s ease-in-out infinite reverse;
-  }
-  .vsw-bg-orb-3 {
-    top: 45%; left: 40%;
-    width: 320px; height: 320px;
-    background: radial-gradient(circle, rgba(255, 193, 7, 0.16) 0%, transparent 70%);
-    animation: orbFloat3D 9s ease-in-out infinite 2s;
+  .vsw-laser-path {
+    stroke: url(#laserGradient);
+    stroke-width: 2.5;
+    stroke-dasharray: 20 10;
+    animation: dashLaserFlow 25s linear infinite;
   }
 
-  /* Rising Electric Particles */
-  .vsw-bg-particle {
+  /* Floating 3D Holographic Nano Badges */
+  .vsw-holo-badge {
     position: absolute;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #F7941D, #FFC107);
-    box-shadow: 0 0 15px rgba(247, 148, 29, 0.6);
+    z-index: 2;
+    padding: 8px 18px;
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1.5px solid rgba(247, 148, 29, 0.4);
+    border-radius: 50px;
+    font-size: 0.82rem;
+    font-weight: 900;
+    color: #FFC107;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 15px rgba(247, 148, 29, 0.25);
     pointer-events: none;
-    z-index: 1;
+    letter-spacing: 0.5px;
   }
-  .vsw-particle-1 { width: 10px; height: 10px; left: 12%; bottom: -20px; animation: riseParticles 7s linear infinite 0.5s; }
-  .vsw-particle-2 { width: 14px; height: 14px; left: 35%; bottom: -20px; animation: riseParticles 9s linear infinite 2s; }
-  .vsw-particle-3 { width: 8px;  height: 8px;  left: 62%; bottom: -20px; animation: riseParticles 6.5s linear infinite 1s; }
-  .vsw-particle-4 { width: 16px; height: 16px; left: 82%; bottom: -20px; animation: riseParticles 10s linear infinite 3.5s; }
-  .vsw-particle-5 { width: 12px; height: 12px; left: 93%; bottom: -20px; animation: riseParticles 8.5s linear infinite 1.8s; }
+  .vsw-holo-1 { top: 12%; left: 4%; animation: floatHoloBadge 7s ease-in-out infinite; }
+  .vsw-holo-2 { top: 18%; right: 4%; animation: floatHoloBadge 8s ease-in-out infinite 1.5s; border-color: rgba(62, 173, 71, 0.4); color: #4CAF50; }
+  .vsw-holo-3 { bottom: 12%; left: 5%; animation: floatHoloBadge 9s ease-in-out infinite 0.8s; border-color: rgba(62, 173, 71, 0.4); color: #4CAF50; }
+  .vsw-holo-4 { bottom: 16%; right: 5%; animation: floatHoloBadge 7.5s ease-in-out infinite 2s; }
 
   .vsw-hww-container {
     max-width: 1140px;
@@ -3159,18 +3167,20 @@
   <!-- SECTION 8: HOW WE WORK INTERACTIVE STEPPER SHOWCASE -->
   <section class="vsw-how-we-work-section" id="vswHowWeWork">
     
-    <!-- Animated Background Layers -->
+    <!-- Interactive Mouse Cursor Spotlight -->
+    <div class="vsw-cursor-spotlight" id="vswSpotlight"></div>
+
+    <!-- Spinning 3D Plasma Energy Halo Ring -->
+    <div class="vsw-plasma-halo-ring"></div>
+
+    <!-- Animated Tech Grid Overlay -->
     <div class="vsw-bg-grid-overlay"></div>
-    <div class="vsw-bg-orb vsw-bg-orb-1"></div>
-    <div class="vsw-bg-orb vsw-bg-orb-2"></div>
-    <div class="vsw-bg-orb vsw-bg-orb-3"></div>
-    
-    <!-- Rising Electric Particles -->
-    <div class="vsw-bg-particle vsw-particle-1"></div>
-    <div class="vsw-bg-particle vsw-particle-2"></div>
-    <div class="vsw-bg-particle vsw-particle-3"></div>
-    <div class="vsw-bg-particle vsw-particle-4"></div>
-    <div class="vsw-bg-particle vsw-particle-5"></div>
+
+    <!-- Floating 3D Holographic Nano Badges -->
+    <div class="vsw-holo-badge vsw-holo-1">⚡ US-GERMAN NANOTECH</div>
+    <div class="vsw-holo-badge vsw-holo-2">🔬 ION: 20,000 POWER</div>
+    <div class="vsw-holo-badge vsw-holo-3">📜 ISO 9001:2015 CERTIFIED</div>
+    <div class="vsw-holo-badge vsw-holo-4">💰 20%-30% GUARANTEED SAVINGS</div>
 
     <div class="vsw-hww-container">
       
@@ -3247,6 +3257,20 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
+    // =========================================================================
+    // SECTION 8: INTERACTIVE MOUSE SPOTLIGHT AURA
+    // =========================================================================
+    const sectionEl = document.getElementById('vswHowWeWork');
+    const spotlightEl = document.getElementById('vswSpotlight');
+    if (sectionEl && spotlightEl) {
+      sectionEl.addEventListener('mousemove', function(e) {
+        const rect = sectionEl.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        spotlightEl.style.left = x + 'px';
+        spotlightEl.style.top = y + 'px';
+      });
+    }
     // =========================================================================
     // SECTION 8: HOW WE WORK STEPPER TABS HANDLER
     // =========================================================================
