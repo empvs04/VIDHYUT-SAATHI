@@ -2412,12 +2412,12 @@
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    padding: 0 20px;
+    padding: 6px 20px 0 20px;
   }
 
   .vsw-stepper-line-bg {
     position: absolute;
-    top: 23px;
+    top: 32px;
     left: 70px;
     right: 70px;
     height: 4px;
@@ -2432,14 +2432,17 @@
     top: 0;
     left: 0;
     height: 100%;
-    background: linear-gradient(90deg, #ec5c0a 0%, #ff9a00 50%, #007b3e 100%);
+    background: linear-gradient(90deg, #ec5c0a 0%, #ff9a00 25%, #007b3e 50%, #ff9a00 75%, #ec5c0a 100%);
     background-size: 200% 100%;
-    animation: shimmerProgressBar 3s linear infinite;
+    -webkit-background-size: 200% 100%;
+    animation: shimmerProgressBar 2.5s linear infinite;
+    -webkit-animation: shimmerProgressBar 2.5s linear infinite;
     border-radius: 10px;
     z-index: 2;
     transition: width 0.45s cubic-bezier(0.4, 0, 0.2, 1);
     width: 0%;
-    box-shadow: 0 0 12px rgba(236, 92, 10, 0.5);
+    box-shadow: 0 0 14px rgba(236, 92, 10, 0.6);
+    will-change: background-position;
   }
 
   .vsw-step-item {
@@ -2448,8 +2451,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    align-self: flex-start;
-    vertical-align: top;
     cursor: pointer;
     background: transparent;
     border: none;
@@ -2749,12 +2750,12 @@
       margin-top: 6px !important;
     }
 
-    /* STEPPER TABS ON MOBILE */
+    /* STEPPER TABS ON MOBILE — FIXED STRAIGHT 90° LINE + LUCRATIVE DESIGN */
     .vsw-stepper-nav-wrapper {
       margin-bottom: 30px !important;
       max-width: 100% !important;
       overflow: hidden !important;
-      padding: 4px 0 !important;
+      padding: 0 !important;
     }
 
     .vsw-stepper-nav {
@@ -2763,7 +2764,7 @@
       justify-content: flex-start;
       align-items: flex-start;
       gap: 0;
-      padding: 12px 14px 20px 14px;
+      padding: 6px 14px 24px 14px;
       max-width: 100%;
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
@@ -2771,23 +2772,23 @@
     }
     .vsw-stepper-nav::-webkit-scrollbar { display: none; }
 
+    /* Line is positioned at exactly (top-padding + half-circle-height) = 6px + 21px = 27px */
     .vsw-stepper-line-bg {
       display: block !important;
-      position: absolute;
-      top: 30px !important;
-      left: 66px !important;
-      width: 416px !important;
+      position: absolute !important;
+      top: 27px !important;
+      left: 80px !important;
+      width: 460px !important;
       height: 4px !important;
-      background: rgba(203, 213, 225, 0.6) !important;
+      background: rgba(203, 213, 225, 0.65) !important;
       border-radius: 4px !important;
       z-index: 1 !important;
       overflow: hidden !important;
-      transform: none !important;
     }
 
     .vsw-stepper-line-progress {
       display: block !important;
-      position: absolute;
+      position: absolute !important;
       top: 0 !important;
       left: 0 !important;
       height: 100% !important;
@@ -2801,7 +2802,6 @@
       z-index: 2 !important;
       box-shadow: 0 0 14px rgba(236, 92, 10, 0.75) !important;
       transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
-      transform: none !important;
     }
 
     .vsw-step-item {
@@ -2814,43 +2814,45 @@
       text-align: center;
       z-index: 3 !important;
       box-sizing: border-box !important;
-      transform: none !important;
     }
 
+    /* Circle is exactly 42px, centered on top-padding=6px, so centerY = 6+21=27px ✅ */
     .vsw-step-circle {
-      width: 40px !important;
-      height: 40px !important;
+      width: 42px !important;
+      height: 42px !important;
       font-size: 0.95rem !important;
       font-weight: 800 !important;
       border-width: 2.5px !important;
       background: #FFFFFF !important;
       border-color: #CBD5E1 !important;
-      color: #64748B !important;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+      color: #94A3B8 !important;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07) !important;
       transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
       transform-origin: center center !important;
       box-sizing: border-box !important;
       margin: 0 auto !important;
+      border-radius: 50% !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
     }
 
     .vsw-step-item.active .vsw-step-circle {
       background: linear-gradient(135deg, #ec5c0a 0%, #ff9a00 100%) !important;
       color: #FFFFFF !important;
-      border-color: #FFFFFF !important;
-      box-shadow: 0 0 20px rgba(236, 92, 10, 0.65), 0 0 35px rgba(255, 154, 0, 0.45) !important;
-      transform: scale(1.15) !important;
+      border-color: rgba(255,255,255,0.5) !important;
+      box-shadow: 0 0 0 5px rgba(236, 92, 10, 0.18), 0 0 22px rgba(236, 92, 10, 0.7) !important;
+      transform: scale(1.14) !important;
     }
 
     .vsw-step-label {
-      font-size: 0.76rem !important;
+      font-size: 0.7rem !important;
       font-weight: 600 !important;
-      color: #64748B !important;
-      margin-top: 8px !important;
+      color: #94A3B8 !important;
+      margin-top: 9px !important;
       text-align: center !important;
       width: 100% !important;
-      max-width: 100% !important;
       white-space: nowrap !important;
-      word-break: normal !important;
       overflow: visible !important;
       line-height: 1.2 !important;
       transition: color 0.3s ease, font-weight 0.3s ease !important;
@@ -2859,7 +2861,6 @@
     .vsw-step-item.active .vsw-step-label {
       font-weight: 800 !important;
       color: #ec5c0a !important;
-      text-shadow: 0 0 10px rgba(236, 92, 10, 0.2) !important;
     }
 
     /* STEP CARD ON MOBILE (3D GLASSMORPHIC & LUCRATIVE SHADOW) */
