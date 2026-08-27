@@ -6,7 +6,8 @@
   /* ── Vidhyut Saathi Base & Typography ── */
   .business-section-{{ section.id }} * { box-sizing: border-box; }
   .business-section-{{ section.id }} {
-    margin: 0;
+    margin: 0 auto !important;
+    width: 100% !important;
     font-family: 'Nunito', sans-serif;
     background: #FAFAF7; /* VS Main Background */
     overflow-x: hidden;
@@ -14,13 +15,19 @@
     padding: 80px 20px;
     background: radial-gradient(circle at top right, rgba(247,148,29,0.05), transparent 40%), linear-gradient(180deg, #FAFAF7 0%, #FFFFFF 100%);
     position: relative;
+    box-sizing: border-box !important;
   }
   
   .business-section-{{ section.id }} .container {
-    max-width: 1200px;
-    margin: auto;
+    max-width: 1200px !important;
+    width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
     position: relative;
     z-index: 2;
+    box-sizing: border-box !important;
   }
 
   /* ── HEADER ── */
@@ -63,6 +70,12 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
     align-items: stretch;
+    width: 100% !important;
+    max-width: 1140px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    justify-content: center !important;
+    justify-items: center !important;
   }
 
   .business-section-{{ section.id }} .card {
@@ -325,8 +338,24 @@
   /* ── DESKTOP DESIGN ── */
   @media(min-width: 768px) {
     .business-section-{{ section.id }} .heading h1 { font-size: 52px !important; line-height: 1.1 !important; letter-spacing: -1px !important; }
-    .business-section-{{ section.id }} .grid { grid-template-columns: repeat(3, 1fr) !important; gap: 24px !important; }
-    .business-section-{{ section.id }} .card { padding: 40px 32px !important; }
+    .business-section-{{ section.id }} .grid {
+      display: grid !important;
+      grid-template-columns: repeat(3, 1fr) !important;
+      gap: 24px !important;
+      width: 100% !important;
+      max-width: 1140px !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+      justify-content: center !important;
+      justify-items: center !important;
+    }
+    .business-section-{{ section.id }} .card {
+      width: 100% !important;
+      max-width: 360px !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+      padding: 40px 28px !important;
+    }
   }
 
   /* ── MOBILE ONLY: LUCRATIVE COMPACT SWIPE CAROUSEL ── */
