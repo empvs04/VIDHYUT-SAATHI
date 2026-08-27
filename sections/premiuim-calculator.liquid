@@ -745,6 +745,11 @@
         </div>
       </div>
 
+      <!-- EXPLANATION BADGE (HIGHER RULE APPLIED) -->
+      <div class="calc-explain-badge" id="recReason-{{ section.id }}">
+        ⚡ <strong>Smart Selection:</strong> Evaluated from both KW Load and Monthly Bill — Higher Requirement Selected.
+      </div>
+
 
 
       <div class="calc-results">
@@ -838,6 +843,7 @@
 
       const recLoad = document.getElementById(`recLoad-${sectionId}`);
       const recCards = document.getElementById(`recCards-${sectionId}`);
+      const recReason = document.getElementById(`recReason-${sectionId}`);
 
       const billInput = document.getElementById(`billInput-${sectionId}`);
       const kwInput = document.getElementById(`kwInput-${sectionId}`);
@@ -846,26 +852,58 @@
 
       let currentPhase = 'single';
 
-      if (btnSingle && btnThree) {
-        btnSingle.addEventListener('click', function() {
-          currentPhase = 'single';
-          btnSingle.classList.add('active');
-          btnThree.classList.remove('active');
-          updateFromBill(parseFloat(slider.value) || 0);
-        });
-
-        btnThree.addEventListener('click', function() {
-          currentPhase = 'three';
-          btnThree.classList.add('active');
-          btnSingle.classList.remove('active');
-          updateFromBill(parseFloat(slider.value) || 0);
-        });
+      function getCardsByKW(kw) {
+        if (kw <= 6) return 1;
+        if (kw <= 12) return 2;
+        if (kw <= 18) return 3;
+        if (kw <= 24) return 4;
+        if (kw <= 30) return 5;
+        if (kw <= 36) return 6;
+        if (kw <= 42) return 7;
+        if (kw <= 48) return 8;
+        if (kw <= 54) return 9;
+        if (kw <= 60) return 10;
+        return Math.ceil(kw / 6);
       }
 
-      function updateFromBill(bill, skipBillInput = false, skipKwInput = false) {
-        if (!skipBillInput && billInput) {
+      function getCardsByBill(bill) {
+        if (bill <= 6000) return 1;
+        if (bill <= 12000) return 2;
+        if (bill <= 18000) return 3;
+        if (bill <= 24000) return 4;
+        if (bill <= 30000) return 5;
+        if (bill <= 36000) return 6;
+        if (bill <= 42000) return 7;
+        if (bill <= 48000) return 8;
+        if (bill <= 54000) return 9;
+        if (bill <= 60000) return 10;
+        return Math.ceil(bill / 6000);
+      }
+
+      function updateCalculator(source) {
+        let bill = parseFloat(billInput ? billInput.value : slider.value) || 0;
+        let kw = parseFloat(kwInput ? kwInput.value : 0) || 0;
+
+        if (source === 'slider' && billInput) {
           billInput.value = Math.round(bill);
         }
+        if (source === 'billInput' && slider) {
+          slider.value = Math.min(300000, Math.max(500, bill));
+        }
+
+        if (source === 'slider' || source === 'billInput') {
+          if (kw <= 0 || source === 'slider') {
+            kw = Math.max(1, Math.ceil(bill / 1000));
+            if (kwInput) kwInput.value = kw;
+          }
+        }
+
+        const cardsFromKW = getCardsByKW(kw);
+        const cardsFromBill = getCardsByBill(bill);
+
+        // HIGHER PRIORITY SELECTION RULE
+        const baseRequiredCards = Math.max(cardsFromKW, cardsFromBill);
+        const totalCards = currentPhase === 'three' ? baseRequiredCards + 1 : baseRequiredCards;
 
         let pct = pctBase;
         if (bill > 10000 && bill <= 50000) pct = pctMid;
@@ -876,48 +914,20 @@
         const newBill = Math.max(0, bill - monthly);
         const roiMonths = monthly > 0 ? Math.ceil(PRICE / monthly) : 0;
 
-        let baseCards = 1;
-        let loadStr = '1 - 6 KW';
-
-        if (bill <= 6000) {
-          baseCards = 1;
-          loadStr = '1 - 6 KW';
-        } else if (bill <= 12000) {
-          baseCards = 2;
-          loadStr = '7 - 12 KW';
-        } else if (bill <= 18000) {
-          baseCards = 3;
-          loadStr = '13 - 18 KW';
-        } else if (bill <= 24000) {
-          baseCards = 4;
-          loadStr = '19 - 24 KW';
-        } else if (bill <= 30000) {
-          baseCards = 5;
-          loadStr = '25 - 30 KW';
-        } else if (bill <= 36000) {
-          baseCards = 6;
-          loadStr = '31 - 36 KW';
-        } else if (bill <= 42000) {
-          baseCards = 7;
-          loadStr = '37 - 42 KW';
-        } else if (bill <= 48000) {
-          baseCards = 8;
-          loadStr = '43 - 48 KW';
-        } else if (bill <= 54000) {
-          baseCards = 9;
-          loadStr = '49 - 54 KW';
+        let cardsStr = totalCards + (totalCards === 1 ? ' Card' : ' Cards');
+        if (currentPhase === 'three') {
+          cardsStr += ` (${baseRequiredCards} + 1 Extra for 3-Phase)`;
         } else {
-          baseCards = 10;
-          loadStr = '55 - 60+ KW';
+          cardsStr += ' (Single Phase)';
         }
 
-        let totalCards = currentPhase === 'three' ? baseCards + 1 : baseCards;
-        let cardsStr = totalCards + (totalCards === 1 ? ' Card' : ' Cards');
-        cardsStr += currentPhase === 'three' ? ' (Three Phase)' : ' (Single Phase)';
-
-        if (!skipKwInput && kwInput) {
-          let calculatedKw = Math.min(60, Math.max(1, Math.ceil(bill / 1000)));
-          kwInput.value = calculatedKw;
+        let higherReasonText = '';
+        if (cardsFromKW > cardsFromBill) {
+          higherReasonText = `⚡ <strong>KW Rule Applied:</strong> ${kw} KW load requires ${cardsFromKW} Cards, while ₹${Math.round(bill).toLocaleString('en-IN')} bill requires ${cardsFromBill} Cards. Higher requirement considered (${cardsFromKW} Cards${currentPhase === 'three' ? ' + 1 Extra for 3-Phase = ' + totalCards + ' Cards' : ''}).`;
+        } else if (cardsFromBill > cardsFromKW) {
+          higherReasonText = `💰 <strong>Bill Rule Applied:</strong> ₹${Math.round(bill).toLocaleString('en-IN')} bill requires ${cardsFromBill} Cards, while ${kw} KW load requires ${cardsFromKW} Cards. Higher requirement considered (${cardsFromBill} Cards${currentPhase === 'three' ? ' + 1 Extra for 3-Phase = ' + totalCards + ' Cards' : ''}).`;
+        } else {
+          higherReasonText = `⚡ <strong>Balanced Load:</strong> Both ${kw} KW load and ₹${Math.round(bill).toLocaleString('en-IN')} bill require ${baseRequiredCards} Cards${currentPhase === 'three' ? ' (+ 1 Extra for 3-Phase = ' + totalCards + ' Cards)' : ''}.`;
         }
 
         if (display) display.textContent = Math.round(bill).toLocaleString('en-IN');
@@ -925,36 +935,44 @@
         if (ySaving) ySaving.textContent = '₹' + yearly.toLocaleString('en-IN');
         if (nBill) nBill.textContent = '₹' + newBill.toLocaleString('en-IN');
         if (roi) roi.textContent = (isFinite(roiMonths) && roiMonths > 0 ? roiMonths : 0) + ' Mo';
-        if (recLoad) recLoad.textContent = loadStr;
+        if (recLoad) recLoad.textContent = kw + ' KW';
         if (recCards) recCards.textContent = cardsStr;
+        if (recReason) recReason.innerHTML = higherReasonText;
+      }
+
+      if (btnSingle && btnThree) {
+        btnSingle.addEventListener('click', function() {
+          currentPhase = 'single';
+          btnSingle.classList.add('active');
+          btnThree.classList.remove('active');
+          updateCalculator('phase');
+        });
+
+        btnThree.addEventListener('click', function() {
+          currentPhase = 'three';
+          btnThree.classList.add('active');
+          btnSingle.classList.remove('active');
+          updateCalculator('phase');
+        });
       }
 
       slider.addEventListener('input', function() {
-        let val = parseFloat(this.value) || 0;
-        updateFromBill(val);
+        updateCalculator('slider');
       });
 
       if (billInput) {
         billInput.addEventListener('input', function() {
-          let val = parseFloat(this.value) || 0;
-          slider.value = Math.min(300000, Math.max(500, val));
-          updateFromBill(val, true, false);
+          updateCalculator('billInput');
         });
       }
 
       if (kwInput) {
         kwInput.addEventListener('input', function() {
-          let kw = parseFloat(this.value) || 0;
-          if (kw > 0) {
-            let estimatedBill = kw * 1000;
-            slider.value = Math.min(300000, Math.max(500, estimatedBill));
-            if (billInput) billInput.value = estimatedBill;
-            updateFromBill(estimatedBill, false, true);
-          }
+          updateCalculator('kwInput');
         });
       }
 
-      updateFromBill(parseFloat(slider.value) || 4000);
+      updateCalculator('init');
     }
 
     if (document.readyState === 'loading') {
