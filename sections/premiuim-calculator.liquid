@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 {%- comment -%}
 
   Vidhyut Saathi Premium Calculator - Strict Mobile-First & Desktop Optimized
@@ -288,6 +290,57 @@
 
   .premium-calculator-{{ section.id }} .heading-line { display: inline-block; white-space: nowrap; }
 
+  /* DYNAMIC RECOMMENDATION BAR */
+  .premium-calculator-{{ section.id }} .calc-recommendation-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    background: linear-gradient(135deg, rgba(20, 140, 58, 0.07) 0%, rgba(245, 130, 32, 0.08) 100%);
+    border: 1.5px solid rgba(20, 140, 58, 0.2);
+    border-radius: 20px;
+    padding: 14px 20px;
+    margin-top: 18px;
+    margin-bottom: 24px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03);
+    transition: all 0.35s ease;
+  }
+
+  .premium-calculator-{{ section.id }} .calc-rec-pill {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 0.88rem;
+    color: var(--text);
+  }
+
+  .premium-calculator-{{ section.id }} .calc-rec-pill i {
+    color: #F58220;
+    font-size: 1.15rem;
+  }
+
+  .premium-calculator-{{ section.id }} .rec-label {
+    color: var(--muted);
+    font-weight: 600;
+  }
+
+  .premium-calculator-{{ section.id }} .rec-val {
+    color: #148C3A;
+    font-weight: 900;
+    font-size: 1rem;
+    background: linear-gradient(135deg, #148C3A, #F58220);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .premium-calculator-{{ section.id }} .highlight-pill {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 8px 16px;
+    border-radius: 14px;
+    border: 1.5px solid rgba(245, 130, 32, 0.3);
+    box-shadow: 0 4px 14px rgba(245, 130, 32, 0.12);
+  }
+
 
 
   /* STRICT MOBILE TWEAKS (Matches original exactly) */
@@ -305,6 +358,19 @@
     .premium-calculator-{{ section.id }} .calc-result-card { padding: 18px 12px; }
 
     .premium-calculator-{{ section.id }} .calc-result-val { font-size: 1.5rem; }
+
+    .premium-calculator-{{ section.id }} .calc-recommendation-bar {
+      flex-direction: column !important;
+      align-items: stretch !important;
+      text-align: center !important;
+      padding: 12px 14px !important;
+      gap: 10px !important;
+    }
+
+    .premium-calculator-{{ section.id }} .calc-rec-pill {
+      justify-content: center !important;
+      font-size: 0.82rem !important;
+    }
 
   }
 
@@ -457,6 +523,20 @@
 
       </div>
 
+      <!-- DYNAMIC SMART LOAD & CARD RECOMMENDATION BAR -->
+      <div class="calc-recommendation-bar" id="recBar-{{ section.id }}">
+        <div class="calc-rec-pill">
+          <i class="fa-solid fa-bolt-lightning"></i>
+          <span class="rec-label">Sanctioned Load:</span>
+          <strong class="rec-val" id="recLoad-{{ section.id }}">1 - 6 KW</strong>
+        </div>
+        <div class="calc-rec-pill highlight-pill">
+          <i class="fa-solid fa-layer-group"></i>
+          <span class="rec-label">Cards Needed:</span>
+          <strong class="rec-val" id="recCards-{{ section.id }}">1 - 2 Cards</strong>
+        </div>
+      </div>
+
 
 
       <div class="calc-results">
@@ -548,6 +628,9 @@
       const pctMid = (parseFloat(container.dataset.pctMid) || 27) / 100.0;
       const pctHigh = (parseFloat(container.dataset.pctHigh) || 30) / 100.0;
 
+      const recLoad = document.getElementById(`recLoad-${sectionId}`);
+      const recCards = document.getElementById(`recCards-${sectionId}`);
+
       function update() {
         const bill = parseFloat(slider.value) || 0;
         let pct = pctBase;
@@ -559,11 +642,48 @@
         const newBill = Math.max(0, bill - monthly);
         const roiMonths = monthly > 0 ? Math.ceil(PRICE / monthly) : 0;
 
+        let loadStr = '1 - 6 KW';
+        let cardsStr = '1 - 2 Cards';
+
+        if (bill <= 6000) {
+          loadStr = '1 - 6 KW';
+          cardsStr = '1 - 2 Cards';
+        } else if (bill <= 12000) {
+          loadStr = '7 - 12 KW';
+          cardsStr = '2 - 3 Cards';
+        } else if (bill <= 18000) {
+          loadStr = '13 - 18 KW';
+          cardsStr = '3 - 4 Cards';
+        } else if (bill <= 24000) {
+          loadStr = '19 - 24 KW';
+          cardsStr = '4 - 5 Cards';
+        } else if (bill <= 30000) {
+          loadStr = '25 - 30 KW';
+          cardsStr = '5 - 6 Cards';
+        } else if (bill <= 36000) {
+          loadStr = '31 - 36 KW';
+          cardsStr = '6 - 7 Cards';
+        } else if (bill <= 42000) {
+          loadStr = '37 - 42 KW';
+          cardsStr = '7 - 8 Cards';
+        } else if (bill <= 48000) {
+          loadStr = '43 - 48 KW';
+          cardsStr = '8 - 9 Cards';
+        } else if (bill <= 54000) {
+          loadStr = '49 - 54 KW';
+          cardsStr = '9 - 10 Cards';
+        } else {
+          loadStr = '55 - 60+ KW';
+          cardsStr = '10 - 11 Cards';
+        }
+
         if (display) display.textContent = bill.toLocaleString('en-IN');
         if (mSaving) mSaving.textContent = '₹' + monthly.toLocaleString('en-IN');
         if (ySaving) ySaving.textContent = '₹' + yearly.toLocaleString('en-IN');
         if (nBill) nBill.textContent = '₹' + newBill.toLocaleString('en-IN');
         if (roi) roi.textContent = (isFinite(roiMonths) && roiMonths > 0 ? roiMonths : 0) + ' Mo';
+        if (recLoad) recLoad.textContent = loadStr;
+        if (recCards) recCards.textContent = cardsStr;
       }
 
       slider.addEventListener('input', update);
