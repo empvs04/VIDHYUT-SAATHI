@@ -161,62 +161,114 @@
     100% { transform: translateX(-50%); } /* Perfectly seamless because we duplicated the track */
   }
 
-  /* --- MOBILE FIXED --- */
+  /* --- MOBILE FIXED (ULTRA-LUCRATIVE & PERFECTLY ALIGNED) --- */
   @media (max-width: 768px) {
     #shopify-section-{{ section.id }} .network-section-clean { 
-      padding-top: {{ section.settings.padding_top_mobile }}px !important; 
+      padding-top: 25px !important; 
+    }
+
+    #shopify-section-{{ section.id }} .network-content-wrapper {
+      padding: 0 14px 35px 14px !important;
     }
     
+    #shopify-section-{{ section.id }} .network-subtitle {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 6px !important;
+      padding: 6px 16px !important;
+      border-radius: 50px !important;
+      background: linear-gradient(135deg, #FFF3EB 0%, #FFE8D6 100%) !important;
+      border: 1.5px solid rgba(236, 92, 10, 0.4) !important;
+      color: #EC5C0A !important;
+      font-size: 0.76rem !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.8px !important;
+      margin: 0 auto 16px auto !important;
+      box-shadow: 0 4px 15px rgba(236, 92, 10, 0.12) !important;
+    }
+
     #shopify-section-{{ section.id }} .network-title { 
-      font-size: 2rem; 
-      margin-bottom: 30px; 
-      display: flex;
-      flex-direction: column; 
-      gap: 5px; 
-      line-height: 1.2;
+      font-size: 1.6rem !important; 
+      margin-bottom: 25px !important; 
+      display: flex !important;
+      flex-direction: column !important; 
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 2px !important; 
+      line-height: 1.25 !important;
+      text-align: center !important;
     }
 
     #shopify-section-{{ section.id }} .net-text {
-      display: block;
-      font-size: 1.8rem;
+      display: block !important;
+      font-size: 1.5rem !important;
+      font-weight: 800 !important;
+      color: #007B3E !important;
     }
 
     #shopify-section-{{ section.id }} .net-number {
-      display: block;
-      font-size: 4rem; 
-      color: var(--gold-main); 
-      font-weight: 900;
-      min-height: 80px; 
+      display: block !important;
+      font-size: 3.4rem !important; 
+      background: linear-gradient(135deg, #EC5C0A 0%, #FF9A00 100%) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      font-weight: 900 !important;
+      line-height: 1.05 !important;
+      margin: 4px 0 !important;
+      min-height: auto !important;
+      filter: drop-shadow(0 4px 12px rgba(236, 92, 10, 0.25)) !important;
     }
     
     #shopify-section-{{ section.id }} .stats-grid { 
       grid-template-columns: repeat(3, 1fr) !important; 
-      gap: 10px !important; 
+      gap: 8px !important; 
+      align-items: stretch !important;
     }
     
     #shopify-section-{{ section.id }} .stat-item { 
-      padding: 15px 5px !important; 
-      display: block !important; 
+      background: linear-gradient(145deg, #FFFFFF 0%, #FFFCF8 100%) !important;
+      border: 1.5px solid rgba(236, 92, 10, 0.25) !important;
+      border-top: 4px solid #EC5C0A !important;
+      border-radius: 16px !important;
+      padding: 16px 6px 14px 6px !important; 
+      display: flex !important; 
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: flex-start !important;
       text-align: center !important; 
+      box-shadow: 0 10px 25px rgba(236, 92, 10, 0.08) !important;
+      height: 100% !important;
+      min-height: 135px !important;
     }
     
     #shopify-section-{{ section.id }} .stat-icon { 
-      font-size: 1.5rem !important; 
-      margin-bottom: 5px !important; 
+      font-size: 1.6rem !important; 
+      color: #EC5C0A !important;
+      margin-bottom: 6px !important; 
+      filter: drop-shadow(0 4px 10px rgba(236, 92, 10, 0.3)) !important;
     }
     
     #shopify-section-{{ section.id }} .stat-num { 
       font-size: 1.5rem !important; 
+      font-weight: 900 !important;
+      color: #007B3E !important;
+      margin-bottom: 4px !important;
+      line-height: 1 !important;
     }
     
     #shopify-section-{{ section.id }} .stat-label { 
-      font-size: 0.7rem !important; 
-      line-height: 1.1; 
+      font-size: 0.64rem !important; 
+      font-weight: 800 !important;
+      color: #475569 !important;
+      line-height: 1.25 !important; 
+      text-transform: uppercase !important;
+      letter-spacing: 0.2px !important;
     }
     
     #shopify-section-{{ section.id }} .marquee-item { 
-      margin-right: 40px !important; 
-      font-size: 0.8rem !important; 
+      margin-right: 35px !important; 
+      font-size: 0.78rem !important; 
     }
   }
 </style>
