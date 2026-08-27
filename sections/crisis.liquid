@@ -921,15 +921,22 @@
 
     /* NEED BANNER MOBILE LUCRATIVE REDESIGN */
     .vs-need-banner {
-      margin: 24px 12px 0 !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+      text-align: center !important;
+      margin: 24px 14px 0 !important;
+      width: calc(100% - 28px) !important;
       padding: 24px 18px !important;
       background: linear-gradient(145deg, #FFFFFF 0%, #FFFDF8 45%, #F0FAF4 100%) !important;
       border: 2px solid rgba(247, 148, 29, 0.4) !important;
       border-top: 6px solid #F7941D !important;
+      border-left: none !important;
       border-radius: 24px !important;
       gap: 14px !important;
       box-shadow: 0 16px 40px rgba(247, 148, 29, 0.14), inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
-      text-align: center !important;
+      box-sizing: border-box !important;
     }
 
     .vs-need-icon {
@@ -940,6 +947,15 @@
       border: 1.5px solid rgba(247, 148, 29, 0.35) !important;
       box-shadow: 0 8px 22px rgba(247, 148, 29, 0.22) !important;
       margin: 0 auto !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      color: #F7941D !important;
+      flex-shrink: 0 !important;
+    }
+
+    .vs-need-divider {
+      display: none !important;
     }
 
     .vs-need-label {
@@ -951,6 +967,7 @@
       -webkit-text-fill-color: transparent !important;
       letter-spacing: -0.2px !important;
       margin-top: 4px !important;
+      white-space: normal !important;
     }
 
     .vs-need-text {
@@ -959,70 +976,76 @@
       line-height: 1.55 !important;
       color: #334155 !important;
       margin: 0 !important;
+      text-align: center !important;
     }
   }
 
-  /* NEED BANNER DESKTOP & BASE STYLES */
-  .vs-need-banner {
-    margin: 36px auto 0 !important;
-    max-width: 1140px !important;
-    width: calc(100% - 40px) !important;
-    background: linear-gradient(135deg, #FFFFFF 0%, #FFFDF7 50%, #F4FAF5 100%) !important;
-    border: 2px solid rgba(247,148,29,.28) !important;
-    border-left: 6px solid #F7941D !important;
-    border-radius: 24px !important;
-    padding: 28px 36px !important;
-    display: flex !important;
-    align-items: center !important;
-    gap: 24px !important;
-    flex-direction: row !important;
-    text-align: left !important;
-    position: relative !important;
-    z-index: 2 !important;
-    box-shadow: 0 16px 45px rgba(247,148,29,.12), inset 0 1px 0 rgba(255,255,255,.9) !important;
-    box-sizing: border-box !important;
-  }
+  /* NEED BANNER DESKTOP STYLES (MIN-WIDTH: 768px) */
+  @media(min-width: 768px) {
+    .vs-need-banner {
+      margin: 36px auto 0 !important;
+      max-width: 1140px !important;
+      width: calc(100% - 40px) !important;
+      background: linear-gradient(135deg, #FFFFFF 0%, #FFFDF7 50%, #F4FAF5 100%) !important;
+      border: 2px solid rgba(247,148,29,.28) !important;
+      border-left: 6px solid #F7941D !important;
+      border-top: 2px solid rgba(247,148,29,.28) !important;
+      border-radius: 24px !important;
+      padding: 28px 36px !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 24px !important;
+      flex-direction: row !important;
+      text-align: left !important;
+      position: relative !important;
+      z-index: 2 !important;
+      box-shadow: 0 16px 45px rgba(247,148,29,.12), inset 0 1px 0 rgba(255,255,255,.9) !important;
+      box-sizing: border-box !important;
+    }
 
-  .vs-need-icon {
-    width: 64px !important;
-    height: 64px !important;
-    flex-shrink: 0 !important;
-    background: linear-gradient(135deg, #FFF3E0, #FFE0B2) !important;
-    border-radius: 20px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    box-shadow: 0 8px 24px rgba(247,148,29,.25) !important;
-    border: 1.5px solid rgba(247,148,29,.3) !important;
-    color: #F7941D !important;
-  }
-  .vs-need-divider {
-    display: block !important;
-    width: 3px !important;
-    height: 52px !important;
-    background: linear-gradient(180deg, #F7941D, #3EAD47) !important;
-    border-radius: 999px !important;
-    flex-shrink: 0 !important;
-    opacity: 0.7 !important;
-  }
+    .vs-need-icon {
+      width: 64px !important;
+      height: 64px !important;
+      flex-shrink: 0 !important;
+      background: linear-gradient(135deg, #FFF3E0, #FFE0B2) !important;
+      border-radius: 20px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      box-shadow: 0 8px 24px rgba(247,148,29,.25) !important;
+      border: 1.5px solid rgba(247,148,29,.3) !important;
+      color: #F7941D !important;
+      margin: 0 !important;
+    }
+    .vs-need-divider {
+      display: block !important;
+      width: 3px !important;
+      height: 52px !important;
+      background: linear-gradient(180deg, #F7941D, #3EAD47) !important;
+      border-radius: 999px !important;
+      flex-shrink: 0 !important;
+      opacity: 0.7 !important;
+    }
 
-  .vs-need-label {
-    font-family: 'Baloo 2', sans-serif !important;
-    font-size: 24px !important;
-    font-weight: 900 !important;
-    color: #E07810 !important;
-    background: linear-gradient(135deg, #F7941D 0%, #E07810 100%) !important;
-    -webkit-background-clip: text !important;
-    -webkit-text-fill-color: transparent !important;
-    white-space: nowrap !important;
-    margin-bottom: 2px !important;
-  }
-  .vs-need-text {
-    font-size: 16.5px !important;
-    font-weight: 700 !important;
-    color: #334155 !important;
-    line-height: 1.55 !important;
-    margin: 0 !important;
+    .vs-need-label {
+      font-family: 'Baloo 2', sans-serif !important;
+      font-size: 24px !important;
+      font-weight: 900 !important;
+      color: #E07810 !important;
+      background: linear-gradient(135deg, #F7941D 0%, #E07810 100%) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      white-space: nowrap !important;
+      margin-bottom: 2px !important;
+    }
+    .vs-need-text {
+      font-size: 16.5px !important;
+      font-weight: 700 !important;
+      color: #334155 !important;
+      line-height: 1.55 !important;
+      margin: 0 !important;
+      text-align: left !important;
+    }
   }
 
   /* SECTION BREAK */
