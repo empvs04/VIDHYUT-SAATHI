@@ -3650,11 +3650,6 @@
         }
       });
 
-      const activeBtn = stepButtons[index];
-      if (activeBtn && window.innerWidth <= 768) {
-        activeBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-      }
-
       const isMobile = window.innerWidth <= 768;
       const maxPct = isMobile ? 80 : 100;
       const progressPct = (index / (stepData.length - 1)) * maxPct;
