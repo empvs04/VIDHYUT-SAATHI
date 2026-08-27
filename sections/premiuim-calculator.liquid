@@ -371,16 +371,11 @@
 
 
 <div class="premium-calculator-{{ section.id }}"
-
      id="calc-data-{{ section.id }}"
-
      data-price="{{ section.settings.calc_price }}"
-
-     data-pct-base="{{ section.settings.pct_base | divided_by: 100.0 }}"
-
-     data-pct-mid="{{ section.settings.pct_mid | divided_by: 100.0 }}"
-
-     data-pct-high="{{ section.settings.pct_high | divided_by: 100.0 }}">
+     data-pct-base="{{ section.settings.pct_base }}"
+     data-pct-mid="{{ section.settings.pct_mid }}"
+     data-pct-high="{{ section.settings.pct_high }}">
 
  
 
@@ -527,127 +522,61 @@
 
 
 <script>
+  (function() {
+    function initCalc() {
+      const sectionId = '{{ section.id }}';
+      const container = document.getElementById(`calc-data-${sectionId}`);
+      if (!container) return;
 
-  document.addEventListener('DOMContentLoaded', function() {
+      const slider = document.getElementById(`billSlider-${sectionId}`);
+      const display = document.getElementById(`billDisplay-${sectionId}`);
+      const mSaving = document.getElementById(`monthlySaving-${sectionId}`);
+      const ySaving = document.getElementById(`yearlySaving-${sectionId}`);
+      const nBill = document.getElementById(`newBill-${sectionId}`);
+      const roi = document.getElementById(`roiMonths-${sectionId}`);
 
-    const sectionId = '{{ section.id }}';
+      const minLabel = document.getElementById(`minLabel-${sectionId}`);
+      const maxLabel = document.getElementById(`maxLabel-${sectionId}`);
 
-    const container = document.getElementById(`calc-data-${sectionId}`);
+      if (!slider) return;
 
-   
+      if (minLabel && slider.min) minLabel.textContent = '₹' + parseInt(slider.min).toLocaleString('en-IN');
+      if (maxLabel && slider.max) maxLabel.textContent = '₹' + parseInt(slider.max).toLocaleString('en-IN');
 
-    if (!container) return;
+      const PRICE = parseFloat(container.dataset.price) || 3498;
+      const pctBase = (parseFloat(container.dataset.pctBase) || 25) / 100.0;
+      const pctMid = (parseFloat(container.dataset.pctMid) || 27) / 100.0;
+      const pctHigh = (parseFloat(container.dataset.pctHigh) || 30) / 100.0;
 
-   
+      function update() {
+        const bill = parseFloat(slider.value) || 0;
+        let pct = pctBase;
+        if (bill > 10000 && bill <= 50000) pct = pctMid;
+        if (bill > 50000) pct = pctHigh;
 
-    const slider = document.getElementById(`billSlider-${sectionId}`);
+        const monthly = Math.round(bill * pct);
+        const yearly = monthly * 12;
+        const newBill = Math.max(0, bill - monthly);
+        const roiMonths = monthly > 0 ? Math.ceil(PRICE / monthly) : 0;
 
-    const display = document.getElementById(`billDisplay-${sectionId}`);
+        if (display) display.textContent = bill.toLocaleString('en-IN');
+        if (mSaving) mSaving.textContent = '₹' + monthly.toLocaleString('en-IN');
+        if (ySaving) ySaving.textContent = '₹' + yearly.toLocaleString('en-IN');
+        if (nBill) nBill.textContent = '₹' + newBill.toLocaleString('en-IN');
+        if (roi) roi.textContent = (isFinite(roiMonths) && roiMonths > 0 ? roiMonths : 0) + ' Mo';
+      }
 
-    const mSaving = document.getElementById(`monthlySaving-${sectionId}`);
-
-    const ySaving = document.getElementById(`yearlySaving-${sectionId}`);
-
-    const nBill = document.getElementById(`newBill-${sectionId}`);
-
-    const roi = document.getElementById(`roiMonths-${sectionId}`);
-
-   
-
-    const minLabel = document.getElementById(`minLabel-${sectionId}`);
-
-    const maxLabel = document.getElementById(`maxLabel-${sectionId}`);
-
-   
-
-    // Format min and max labels properly using Indian currency numbering
-
-    if (minLabel) minLabel.textContent = '₹' + parseInt(slider.min).toLocaleString('en-IN');
-
-    if (maxLabel) maxLabel.textContent = '₹' + parseInt(slider.max).toLocaleString('en-IN');
-
-   
-
-    const PRICE = parseInt(container.dataset.price) || 3498;
-
-    const pctBase = parseFloat(container.dataset.pctBase) || 0.25;
-
-    const pctMid = parseFloat(container.dataset.pctMid) || 0.27;
-
-    const pctHigh = parseFloat(container.dataset.pctHigh) || 0.30;
-
-   
-
-    function animate(el, val, prefix = '₹') {
-
-      let c = 0;
-
-      const step = Math.max(1, Math.ceil(val / 30));
-
-      const i = setInterval(() => {
-
-        c += step;
-
-        if (c >= val) {
-
-          c = val;
-
-          clearInterval(i);
-
-        }
-
-        el.textContent = prefix + c.toLocaleString('en-IN');
-
-      }, 15);
-
+      slider.addEventListener('input', update);
+      slider.addEventListener('change', update);
+      update();
     }
 
-   
-
-    function update() {
-
-      const bill = parseInt(slider.value);
-
-      let pct = pctBase;
-
-     
-
-      if (bill > 10000 && bill <= 50000) pct = pctMid;
-
-      if (bill > 50000) pct = pctHigh;
-
-     
-
-      const monthly = Math.round(bill * pct);
-
-      const yearly = monthly * 12;
-
-      const newBill = bill - monthly;
-
-      const roiMonths = Math.ceil(PRICE / monthly);
-
-     
-
-      display.textContent = bill.toLocaleString('en-IN');
-
-      animate(mSaving, monthly);
-
-      animate(ySaving, yearly);
-
-      animate(nBill, newBill);
-
-      roi.textContent = (isFinite(roiMonths) ? roiMonths : 0) + ' Mo';
-
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initCalc);
+    } else {
+      initCalc();
     }
-
-   
-
-    slider.addEventListener('input', update);
-
-    update();
-
-  });
-
+  })();
 </script>
 
 

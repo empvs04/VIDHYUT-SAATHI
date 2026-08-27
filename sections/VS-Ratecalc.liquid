@@ -348,71 +348,87 @@
 </div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const sId = '{{ section.id }}';
-    const input = document.getElementById(`vs-input-${sId}`);
-    const slider = document.getElementById(`vs-slider-${sId}`);
-    
-    const valMo = document.getElementById(`vs-val-mo-${sId}`);
-    const valQt = document.getElementById(`vs-val-qt-${sId}`);
-    const valHy = document.getElementById(`vs-val-hy-${sId}`);
-    const valYr = document.getElementById(`vs-val-yr-${sId}`);
-
-    // Set specifically to exactly 18% saving
-    const savingsRate = {{ section.settings.savings_percentage | divided_by: 100.0 }};
-
-    function formatAmt(amount) {
-      return '₹' + amount.toLocaleString('en-IN', { maximumFractionDigits: 0 });
-    }
-
-    function triggerBounce(el) {
-      el.classList.remove('vs-bounce');
-      void el.offsetWidth; // Force DOM reflow
-      el.classList.add('vs-bounce');
-    }
-
-    function calcAndUpdate() {
-      let bill = parseFloat(input.value) || 0;
+  (function() {
+    function initCompactCalc() {
+      const sId = '{{ section.id }}';
+      const input = document.getElementById(`vs-input-${sId}`);
+      const slider = document.getElementById(`vs-slider-${sId}`);
+      if (!input || !slider) return;
       
-      // Strict 18% multiplier logic (calculates the SAVED value, not the remaining bill)
-      let monthly = bill * savingsRate;
-      let quarterly = monthly * 3;
-      let halfYearly = monthly * 6;
-      let yearly = monthly * 12;
+      const valMo = document.getElementById(`vs-val-mo-${sId}`);
+      const valQt = document.getElementById(`vs-val-qt-${sId}`);
+      const valHy = document.getElementById(`vs-val-hy-${sId}`);
+      const valYr = document.getElementById(`vs-val-yr-${sId}`);
 
-      // Update Text Values
-      valMo.innerText = formatAmt(monthly);
-      valQt.innerText = formatAmt(quarterly);
-      valHy.innerText = formatAmt(halfYearly);
-      valYr.innerText = formatAmt(yearly);
+      const savingsPct = parseFloat({{ section.settings.savings_percentage | default: 18 }}) || 18;
+      const savingsRate = savingsPct / 100.0;
 
-      // Trigger Animations
-      triggerBounce(valMo);
-      triggerBounce(valQt);
-      triggerBounce(valHy);
-      triggerBounce(valYr);
+      function formatAmt(amount) {
+        return '₹' + Math.round(amount).toLocaleString('en-IN');
+      }
 
-      // Slider Fill
-      const pct = ((slider.value - slider.min) / (slider.max - slider.min)) * 100;
-      slider.style.background = `linear-gradient(to right, {{ section.settings.primary_color }} ${pct}%, #e0e0e0 ${pct}%)`;
+      function triggerBounce(el) {
+        if (!el) return;
+        el.classList.remove('vs-bounce');
+        void el.offsetWidth;
+        el.classList.add('vs-bounce');
+      }
+
+      function calcAndUpdate() {
+        let bill = parseFloat(input.value) || 0;
+        
+        let monthly = bill * savingsRate;
+        let quarterly = monthly * 3;
+        let halfYearly = monthly * 6;
+        let yearly = monthly * 12;
+
+        if (valMo) valMo.innerText = formatAmt(monthly);
+        if (valQt) valQt.innerText = formatAmt(quarterly);
+        if (valHy) valHy.innerText = formatAmt(halfYearly);
+        if (valYr) valYr.innerText = formatAmt(yearly);
+
+        if (valMo) triggerBounce(valMo);
+        if (valQt) triggerBounce(valQt);
+        if (valHy) triggerBounce(valHy);
+        if (valYr) triggerBounce(valYr);
+
+        const minVal = parseFloat(slider.min) || 500;
+        const maxVal = parseFloat(slider.max) || 50000;
+        const currentVal = parseFloat(slider.value) || minVal;
+        const pct = ((currentVal - minVal) / (maxVal - minVal)) * 100;
+        slider.style.background = `linear-gradient(to right, {{ section.settings.primary_color | default: '#f17e39' }} ${pct}%, #e0e0e0 ${pct}%)`;
+      }
+
+      slider.addEventListener('input', function() {
+        input.value = this.value;
+        calcAndUpdate();
+      });
+
+      input.addEventListener('input', function() {
+        let val = parseFloat(this.value) || 0;
+        if (val > 50000) val = 50000;
+        slider.value = val;
+        calcAndUpdate();
+      });
+
+      input.addEventListener('change', function() {
+        let val = parseFloat(this.value) || 500;
+        if (val > 50000) val = 50000;
+        if (val < 500) val = 500;
+        this.value = val;
+        slider.value = val;
+        calcAndUpdate();
+      });
+
+      calcAndUpdate();
     }
 
-    // Interactions
-    slider.addEventListener('input', function() {
-      input.value = this.value;
-      calcAndUpdate();
-    });
-
-    input.addEventListener('change', function() {
-      if(this.value > 50000) this.value = 50000;
-      if(this.value < 500) this.value = 500;
-      slider.value = this.value;
-      calcAndUpdate();
-    });
-
-    // Run on load
-    calcAndUpdate();
-  });
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initCompactCalc);
+    } else {
+      initCompactCalc();
+    }
+  })();
 </script>
 
 {% schema %}
