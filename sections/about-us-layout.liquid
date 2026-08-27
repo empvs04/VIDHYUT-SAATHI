@@ -4236,8 +4236,11 @@
         }
       }
 
-      const progressPct = (index / (stepData.length - 1)) * 100;
-      if (progressBar) progressBar.style.width = progressPct + '%';
+      let progressPct = (index / (stepData.length - 1)) * 100;
+      if (index > 0 && index < stepData.length - 1) {
+        progressPct += 4;
+      }
+      if (progressBar) progressBar.style.width = Math.min(100, progressPct) + '%';
 
       if (stepCard) {
         stepCard.style.opacity = '0.4';
