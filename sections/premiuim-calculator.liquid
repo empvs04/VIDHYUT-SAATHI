@@ -533,7 +533,7 @@
         <div class="calc-rec-pill highlight-pill">
           <i class="fa-solid fa-layer-group"></i>
           <span class="rec-label">Cards Needed:</span>
-          <strong class="rec-val" id="recCards-{{ section.id }}">1 - 2 Cards</strong>
+          <strong class="rec-val" id="recCards-{{ section.id }}">1 Card (2 for 3-Phase)</strong>
         </div>
       </div>
 
@@ -643,38 +643,38 @@
         const roiMonths = monthly > 0 ? Math.ceil(PRICE / monthly) : 0;
 
         let loadStr = '1 - 6 KW';
-        let cardsStr = '1 - 2 Cards';
+        let cardsStr = '1 Card (2 for 3-Phase)';
 
         if (bill <= 6000) {
           loadStr = '1 - 6 KW';
-          cardsStr = '1 - 2 Cards';
+          cardsStr = '1 Card (2 for 3-Phase)';
         } else if (bill <= 12000) {
           loadStr = '7 - 12 KW';
-          cardsStr = '2 - 3 Cards';
+          cardsStr = '2 Cards (3 for 3-Phase)';
         } else if (bill <= 18000) {
           loadStr = '13 - 18 KW';
-          cardsStr = '3 - 4 Cards';
+          cardsStr = '3 Cards (4 for 3-Phase)';
         } else if (bill <= 24000) {
           loadStr = '19 - 24 KW';
-          cardsStr = '4 - 5 Cards';
+          cardsStr = '4 Cards (5 for 3-Phase)';
         } else if (bill <= 30000) {
           loadStr = '25 - 30 KW';
-          cardsStr = '5 - 6 Cards';
+          cardsStr = '5 Cards (6 for 3-Phase)';
         } else if (bill <= 36000) {
           loadStr = '31 - 36 KW';
-          cardsStr = '6 - 7 Cards';
+          cardsStr = '6 Cards (7 for 3-Phase)';
         } else if (bill <= 42000) {
           loadStr = '37 - 42 KW';
-          cardsStr = '7 - 8 Cards';
+          cardsStr = '7 Cards (8 for 3-Phase)';
         } else if (bill <= 48000) {
           loadStr = '43 - 48 KW';
-          cardsStr = '8 - 9 Cards';
+          cardsStr = '8 Cards (9 for 3-Phase)';
         } else if (bill <= 54000) {
           loadStr = '49 - 54 KW';
-          cardsStr = '9 - 10 Cards';
+          cardsStr = '9 Cards (10 for 3-Phase)';
         } else {
           loadStr = '55 - 60+ KW';
-          cardsStr = '10 - 11 Cards';
+          cardsStr = '10 Cards (11 for 3-Phase)';
         }
 
         if (display) display.textContent = bill.toLocaleString('en-IN');
