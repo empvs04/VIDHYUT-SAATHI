@@ -3005,6 +3005,269 @@
       opacity: 0.5 !important;
     }
   }
+
+  /* ==========================================================
+     SECTION 9: UNIQUE POWER SAVER BENEFITS & FEATURES (DARK WAVE MESH)
+     ========================================================== */
+  .vsw-benefits-mesh-section {
+    position: relative;
+    padding: 100px 24px;
+    background: linear-gradient(135deg, #0A0F1D 0%, #111827 50%, #1E1B4B 100%);
+    color: #FFFFFF;
+    overflow: hidden;
+  }
+
+  /* Animated Wave Lines Canvas Background */
+  .vsw-wave-mesh-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.55;
+  }
+
+  .vsw-wave-line-svg {
+    position: absolute;
+    width: 200%;
+    height: 100%;
+    top: 0;
+    left: -50%;
+    animation: waveMeshFlow 16s linear infinite;
+  }
+
+  .vsw-wave-line-svg-2 {
+    animation: waveMeshFlow 24s linear infinite reverse;
+    opacity: 0.45;
+  }
+
+  @keyframes waveMeshFlow {
+    0% { transform: translateX(0) scaleY(1); }
+    50% { transform: translateX(-12%) scaleY(1.15); }
+    100% { transform: translateX(0) scaleY(1); }
+  }
+
+  .vsw-benefits-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.25fr;
+    gap: 60px;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Left Content Block */
+  .vsw-benefits-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .vsw-benefits-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 18px;
+    border-radius: 50px;
+    background: rgba(236, 92, 10, 0.15);
+    border: 1.5px solid rgba(236, 92, 10, 0.4);
+    color: #FF9A00;
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    box-shadow: 0 4px 20px rgba(236, 92, 10, 0.2);
+  }
+
+  .vsw-benefits-title {
+    font-size: 2.8rem;
+    font-weight: 900;
+    line-height: 1.18;
+    color: #FFFFFF;
+    margin-bottom: 22px;
+    letter-spacing: -0.5px;
+  }
+
+  .vsw-benefits-title span {
+    background: linear-gradient(135deg, #EC5C0A 0%, #FF9A00 50%, #3EAD47 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .vsw-benefits-desc {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #94A3B8;
+    margin-bottom: 35px;
+    max-width: 500px;
+  }
+
+  .vsw-benefits-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 34px;
+    border-radius: 50px;
+    background: linear-gradient(135deg, #EC5C0A 0%, #FF9A00 100%);
+    color: #FFFFFF;
+    font-size: 0.95rem;
+    font-weight: 800;
+    text-decoration: none;
+    box-shadow: 0 10px 30px rgba(236, 92, 10, 0.4);
+    transition: all 0.35s ease;
+  }
+
+  .vsw-benefits-cta-btn:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 15px 40px rgba(236, 92, 10, 0.6);
+    color: #FFFFFF;
+  }
+
+  /* Right Staggered Grid (Matching Screenshot Offset Cards) */
+  .vsw-benefits-right-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .vsw-benefits-col-1 {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    transform: translateY(30px);
+  }
+
+  .vsw-benefits-col-2 {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    transform: translateY(-30px);
+  }
+
+  .vsw-mesh-card {
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1.5px solid rgba(255, 255, 255, 0.6);
+    border-radius: 20px;
+    padding: 32px 24px;
+    color: #1E293B;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .vsw-mesh-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    background: #FFFFFF;
+    box-shadow: 0 30px 60px rgba(236, 92, 10, 0.22);
+    border-color: #EC5C0A;
+  }
+
+  .vsw-mesh-icon-wrap {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  }
+
+  .vsw-mesh-icon-orange { background: linear-gradient(135deg, #EC5C0A 0%, #FF9A00 100%); color: #FFFFFF; }
+  .vsw-mesh-icon-blue { background: linear-gradient(135deg, #3B82F6 0%, #1D4ED8 100%); color: #FFFFFF; }
+  .vsw-mesh-icon-purple { background: linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%); color: #FFFFFF; }
+  .vsw-mesh-icon-amber { background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); color: #FFFFFF; }
+
+  .vsw-mesh-card-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #0F172A;
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+
+  .vsw-mesh-card-desc {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: #64748B;
+  }
+
+  /* MOBILE RESPONSIVE (NEAT, UNBOLDED CLEAN MOBILE TYPOGRAPHY & FLAT STACK) */
+  @media screen and (max-width: 991px) {
+    .vsw-benefits-mesh-section {
+      padding: 60px 16px 75px 16px !important;
+    }
+
+    .vsw-benefits-container {
+      grid-template-columns: 1fr !important;
+      gap: 40px !important;
+      text-align: center !important;
+    }
+
+    .vsw-benefits-left {
+      align-items: center !important;
+    }
+
+    .vsw-benefits-title {
+      font-size: 1.85rem !important;
+      font-weight: 700 !important;
+      line-height: 1.28 !important;
+      margin-bottom: 16px !important;
+    }
+
+    .vsw-benefits-desc {
+      font-size: 0.92rem !important;
+      font-weight: 500 !important;
+      color: #CBD5E1 !important;
+      line-height: 1.65 !important;
+      margin-bottom: 25px !important;
+    }
+
+    .vsw-benefits-right-grid {
+      grid-template-columns: 1fr !important;
+      gap: 16px !important;
+    }
+
+    .vsw-benefits-col-1, .vsw-benefits-col-2 {
+      transform: none !important;
+      gap: 16px !important;
+    }
+
+    .vsw-mesh-card {
+      padding: 24px 20px !important;
+      border-radius: 18px !important;
+      text-align: center !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+    }
+
+    .vsw-mesh-icon-wrap {
+      width: 48px !important;
+      height: 48px !important;
+      font-size: 1.2rem !important;
+      margin-bottom: 14px !important;
+    }
+
+    .vsw-mesh-card-title {
+      font-size: 1.15rem !important;
+      font-weight: 700 !important;
+      margin-bottom: 8px !important;
+    }
+
+    .vsw-mesh-card-desc {
+      font-size: 0.88rem !important;
+      font-weight: 500 !important;
+      color: #64748B !important;
+      line-height: 1.6 !important;
+    }
+  }
 {%- endstyle -%}
 
 <div class="about-us-wrapper" style="position: relative;">
@@ -3714,6 +3977,97 @@
             </div>
           </div>
         </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION 9: UNIQUE POWER SAVER BENEFITS & FEATURES (DARK WAVE MESH SHOWCASE) -->
+  <section class="vsw-benefits-mesh-section" id="vswBenefitsMesh">
+    
+    <!-- Animated Wave Mesh SVG Lines Background -->
+    <div class="vsw-wave-mesh-bg">
+      <svg class="vsw-wave-line-svg" viewBox="0 0 1440 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M-100 200 C300 50, 700 450, 1100 250 C1300 150, 1500 350, 1700 200" stroke="url(#waveGrad1)" stroke-width="2.5" opacity="0.8"/>
+        <path d="M-100 240 C300 90, 700 490, 1100 290 C1300 190, 1500 390, 1700 240" stroke="url(#waveGrad2)" stroke-width="2" opacity="0.6"/>
+        <path d="M-100 280 C300 130, 700 530, 1100 330 C1300 230, 1500 430, 1700 280" stroke="url(#waveGrad1)" stroke-width="1.5" opacity="0.4"/>
+        <defs>
+          <linearGradient id="waveGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#EC5C0A" stop-opacity="0.9"/>
+            <stop offset="50%" stop-color="#FF9A00" stop-opacity="0.8"/>
+            <stop offset="100%" stop-color="#8B5CF6" stop-opacity="0.9"/>
+          </linearGradient>
+          <linearGradient id="waveGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.8"/>
+            <stop offset="50%" stop-color="#3EAD47" stop-opacity="0.7"/>
+            <stop offset="100%" stop-color="#EC5C0A" stop-opacity="0.9"/>
+          </linearGradient>
+        </defs>
+      </svg>
+      <svg class="vsw-wave-line-svg-2" viewBox="0 0 1440 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M-100 400 C400 100, 800 500, 1200 200 C1400 100, 1600 300, 1800 150" stroke="url(#waveGrad2)" stroke-width="2" opacity="0.7"/>
+        <path d="M-100 440 C400 140, 800 540, 1200 240 C1400 140, 1600 340, 1800 190" stroke="url(#waveGrad1)" stroke-width="1.5" opacity="0.5"/>
+      </svg>
+    </div>
+
+    <div class="vsw-benefits-container">
+      
+      <!-- Left Content Block -->
+      <div class="vsw-benefits-left reveal-up active">
+        <div class="vsw-benefits-badge">⚡ WHY CHOOSE VIDHYUT SAATHI</div>
+        <h2 class="vsw-benefits-title">Unique Power Saver <span>Technology Features</span></h2>
+        <p class="vsw-benefits-desc">Engineered with breakthrough US-German Nanotechnology to revolutionize electricity conservation, suppress voltage surges, and deliver up to 30% guaranteed bill savings across residential and commercial grids.</p>
+        <a href="/pages/why-vidhyut-saathi" class="vsw-benefits-cta-btn">
+          <span>EXPLORE ALL BENEFITS</span>
+          <span>➔</span>
+        </a>
+      </div>
+
+      <!-- Right Staggered 2x2 Feature Cards Grid (Matching Screenshot) -->
+      <div class="vsw-benefits-right-grid reveal-up active">
+        
+        <!-- Column 1 (Staggered Down) -->
+        <div class="vsw-benefits-col-1">
+          <!-- Card 1 -->
+          <div class="vsw-mesh-card">
+            <div class="vsw-mesh-icon-wrap vsw-mesh-icon-orange">
+              <span>⚡</span>
+            </div>
+            <h3 class="vsw-mesh-card-title">20%-30% Savings</h3>
+            <p class="vsw-mesh-card-desc">Guaranteed monthly electricity bill reduction using advanced electromagnetic resonance technology.</p>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="vsw-mesh-card">
+            <div class="vsw-mesh-icon-wrap vsw-mesh-icon-purple">
+              <span>🛡️</span>
+            </div>
+            <h3 class="vsw-mesh-card-title">Appliance Shield</h3>
+            <p class="vsw-mesh-card-desc">Filters electrical noise, suppresses voltage spikes, and extends expensive appliance lifespan.</p>
+          </div>
+        </div>
+
+        <!-- Column 2 (Staggered Up) -->
+        <div class="vsw-benefits-col-2">
+          <!-- Card 3 -->
+          <div class="vsw-mesh-card">
+            <div class="vsw-mesh-icon-wrap vsw-mesh-icon-blue">
+              <span>📜</span>
+            </div>
+            <h3 class="vsw-mesh-card-title">ISO 9001:2015 Certified</h3>
+            <p class="vsw-mesh-card-desc">Govt &amp; international safety certified, zero heat output, and 100% legal power saver compliance.</p>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="vsw-mesh-card">
+            <div class="vsw-mesh-icon-wrap vsw-mesh-icon-amber">
+              <span>💰</span>
+            </div>
+            <h3 class="vsw-mesh-card-title">Zero Maintenance</h3>
+            <p class="vsw-mesh-card-desc">Passive plug-and-play card with 5+ years operational lifespan and zero recurring costs.</p>
+          </div>
+        </div>
+
       </div>
 
     </div>
