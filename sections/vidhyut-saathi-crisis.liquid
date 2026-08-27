@@ -397,7 +397,7 @@
     display: flex; align-items: center; justify-content: center; gap: 6px;
   }
 
-  /* ─── MOBILE RESPONSIVENESS ─── */
+  /* ─── MOBILE RESPONSIVENESS (SUPER LUCRACTIVE & HIGH IMPACT) ─── */
   @media (max-width: 900px) {
     .vs-crisis__cta {
       flex-direction: column;
@@ -409,50 +409,165 @@
     }
     .vs-crisis__need {
       flex-direction: column;
-      align-items: flex-start;
+      align-items: center;
+      text-align: center;
       gap: 16px;
-      margin: 30px 5% 0;
+      margin: 30px 16px 0;
+      padding: 24px 20px;
+      border-radius: 20px;
+    }
+    .vs-crisis__need-left {
+      flex-direction: column;
+      align-items: center;
     }
     .vs-crisis__need-sep { display: none; }
   }
 
   @media (max-width: 768px) {
-    .vs-crisis__hero { padding: 40px 5% 20px; }
-    
-    /* App-like Horizontal Scroll for Mobile Cards */
+    .vs-crisis {
+      padding: 20px 0 50px 0 !important;
+      background: radial-gradient(circle at 50% 0%, rgba(247,148,29,0.12) 0%, rgba(62,173,71,0.08) 50%, #FCFDFD 100%) !important;
+    }
+
+    .vs-crisis__hero {
+      padding: 30px 16px 22px !important;
+      text-align: center !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+    }
+
+    .vs-crisis__badge {
+      background: linear-gradient(135deg, #FFF3E0, #FFE0B2) !important;
+      border: 1.5px solid rgba(247, 148, 29, 0.45) !important;
+      padding: 8px 22px !important;
+      box-shadow: 0 4px 16px rgba(247, 148, 29, 0.22) !important;
+      margin-bottom: 18px !important;
+    }
+
+    .vs-crisis__badge-text {
+      font-size: 0.82rem !important;
+      font-weight: 900 !important;
+      letter-spacing: 2px !important;
+    }
+
+    .vs-crisis__title {
+      font-size: 2.2rem !important;
+      line-height: 1.15 !important;
+      text-align: center !important;
+      margin-bottom: 14px !important;
+      font-weight: 900 !important;
+    }
+
+    .vs-crisis__title-accent {
+      background: linear-gradient(135deg, #F7941D 0%, #FF5500 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+      position: relative;
+    }
+
+    .vs-crisis__divider {
+      margin: 10px auto 0 auto !important;
+      width: 90px !important;
+      height: 5px !important;
+      border-radius: 99px !important;
+      background: linear-gradient(90deg, #F7941D, #3EAD47) !important;
+    }
+
     .vs-crisis__stats-wrapper {
-      padding: 0; /* Remove padding to let cards bleed off edge */
+      padding: 0 16px !important;
     }
+
     .vs-crisis__stats {
-      display: flex;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      padding: 10px 5% 20px;
-      gap: 16px;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none; /* Firefox */
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 20px !important;
     }
-    .vs-crisis__stats::-webkit-scrollbar {
-      display: none; /* Safari/Chrome */
-    }
+
     .vs-crisis__stat {
-      flex: 0 0 85%; /* Cards take up 85% of screen width */
-      scroll-snap-align: center;
-      padding: 24px;
+      flex: none !important;
+      width: 100% !important;
+      padding: 30px 22px !important;
+      border-radius: 26px !important;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.06), 0 0 30px rgba(247,148,29,0.08) !important;
+      text-align: center !important;
+      align-items: center !important;
+      border: 2px solid transparent !important;
+      position: relative !important;
+      overflow: hidden !important;
+      transition: all 0.3s ease !important;
     }
 
-    .vs-crisis__stat-icon { width: 44px; height: 44px; margin-bottom: 16px; }
-    .vs-crisis__stat-icon svg { width: 20px; height: 20px; }
-    
-    .vs-crisis__need-left {
-      flex-direction: row;
-      align-items: center;
-      gap: 12px;
+    .vs-crisis__stat.type-orange {
+      background: linear-gradient(145deg, #FFFFFF 0%, #FFFDF8 100%) !important;
+      border-color: rgba(247, 148, 29, 0.4) !important;
     }
-    .vs-crisis__need-icon { width: 40px; height: 40px; }
-    .vs-crisis__need-icon svg { width: 20px; height: 20px; }
 
-    .vs-crisis__btn { width: 100%; justify-content: center; }
+    .vs-crisis__stat.type-green {
+      background: linear-gradient(145deg, #FFFFFF 0%, #F4FAF6 100%) !important;
+      border-color: rgba(62, 173, 71, 0.4) !important;
+    }
+
+    .vs-crisis__stat-icon {
+      width: 64px !important;
+      height: 64px !important;
+      border-radius: 22px !important;
+      margin: 0 auto 18px auto !important;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08) !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+
+    .vs-crisis__stat.type-orange .vs-crisis__stat-icon {
+      background: linear-gradient(135deg, #FFF3E0, #FFE5B4) !important;
+      border: 1.5px solid rgba(247, 148, 29, 0.3) !important;
+    }
+
+    .vs-crisis__stat.type-green .vs-crisis__stat-icon {
+      background: linear-gradient(135deg, #EBF7EC, #C8E6C9) !important;
+      border: 1.5px solid rgba(62, 173, 71, 0.3) !important;
+    }
+
+    .vs-crisis__stat-number {
+      font-size: 2.5rem !important;
+      font-weight: 900 !important;
+      margin-bottom: 10px !important;
+      line-height: 1.1 !important;
+      background: linear-gradient(135deg, #F7941D, #E07810);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .vs-crisis__stat.type-green .vs-crisis__stat-number {
+      background: linear-gradient(135deg, #3EAD47, #2E7D32);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .vs-crisis__stat-desc {
+      font-size: 0.95rem !important;
+      font-weight: 700 !important;
+      line-height: 1.6 !important;
+      color: #333333 !important;
+    }
+
+    .vs-crisis__need-label {
+      font-size: 1.35rem !important;
+      text-align: center !important;
+    }
+
+    .vs-crisis__need-body {
+      font-size: 0.92rem !important;
+      text-align: center !important;
+    }
+
+    .vs-crisis__btn {
+      width: 100% !important;
+      justify-content: center !important;
+      padding: 16px 24px !important;
+      font-size: 1.05rem !important;
+    }
   }
 </style>
 
