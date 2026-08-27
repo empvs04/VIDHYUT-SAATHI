@@ -2418,8 +2418,8 @@
   .vsw-stepper-line-bg {
     position: absolute;
     top: 32px;
-    left: 70px;
-    right: 70px;
+    left: 46px;
+    right: 46px;
     height: 4px;
     background: #E2E8F0;
     border-radius: 10px;
@@ -2772,13 +2772,13 @@
     }
     .vsw-stepper-nav::-webkit-scrollbar { display: none; }
 
-    /* Line is positioned at exactly (top-padding + half-circle-height) = 6px + 21px = 27px */
+    /* Line is positioned exactly from 1st step center (35px) to 5th step center (425px, width: 390px) */
     .vsw-stepper-line-bg {
       display: block !important;
       position: absolute !important;
       top: 27px !important;
-      left: 80px !important;
-      width: 460px !important;
+      left: 35px !important;
+      width: 390px !important;
       height: 4px !important;
       background: rgba(203, 213, 225, 0.65) !important;
       border-radius: 4px !important;
@@ -4291,19 +4291,31 @@
       }, 180);
     }
 
-    stepButtons.forEach((btn) => {
-      btn.addEventListener('click', function() {
-        const stepIdx = parseInt(this.getAttribute('data-step')) || 0;
-        activateHwwStep(stepIdx);
-        clearInterval(hwwInterval);
+    function startHwwAutoTimer() {
+      if (hwwInterval) clearInterval(hwwInterval);
+      hwwInterval = setInterval(() => {
+        const nextStep = (currentHwwStep + 1) % stepData.length;
+        activateHwwStep(nextStep);
+      }, 4500);
+    }
+
+    function resetHwwAutoTimer() {
+      if (hwwInterval) clearInterval(hwwInterval);
+      startHwwAutoTimer();
+    }
+
+    stepButtons.forEach((btn, index) => {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        activateHwwStep(index);
+        resetHwwAutoTimer();
       });
     });
 
-    // Auto-advance tabs every 4.5 seconds
-    hwwInterval = setInterval(() => {
-      const nextStep = (currentHwwStep + 1) % stepData.length;
-      activateHwwStep(nextStep);
-    }, 4500);
+    if (stepButtons.length > 0) {
+      activateHwwStep(0);
+      startHwwAutoTimer();
+    }
     const cardStage = document.getElementById('card5dStage');
     const cardGlare = document.getElementById('card5dGlare');
 
