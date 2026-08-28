@@ -39,13 +39,13 @@
     z-index: 3 !important;
   }
 
-  /* Dedicated Top Header Banner for Moving Marquee */
+  /* Dedicated Top Header Banner for Moving Marquee (Section 1) */
   .vs-top-marquee-header-banner {
     position: relative !important;
     width: 100% !important;
     max-width: 1280px !important;
-    margin: 0 auto clamp(30px, 5vw, 50px) auto !important;
-    min-height: clamp(150px, 20vw, 240px) !important;
+    margin: 0 auto clamp(30px, 5vw, 55px) auto !important;
+    min-height: clamp(240px, 32vw, 440px) !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
@@ -68,13 +68,19 @@
     opacity: 0.40 !important;
     pointer-events: none !important;
     line-height: 1 !important;
-    font-size: clamp(45px, 8.5vw, 110px) !important;
-    font-weight: 800 !important;
+    font-size: clamp(50px, 9vw, 125px) !important;
+    font-weight: 900 !important;
     color: #F7941D !important;
-    letter-spacing: 3px !important;
+    letter-spacing: 4px !important;
     display: inline-block !important;
     will-change: transform !important;
     animation: vsMarqueeLeftToRight 16s linear infinite !important;
+  }
+
+  @media screen and (max-width: 768px) {
+    .vs-top-marquee-header-banner {
+      min-height: 240px !important;
+    }
   }
 
   /* Header Block */
