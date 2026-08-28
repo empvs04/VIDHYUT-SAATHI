@@ -56,10 +56,10 @@
     padding: 0 !important;
   }
 
-  /* Moving Background Marquee Text (Right to Left) */
-  @keyframes vsMarqueeScroll {
-    0% { transform: translateX(0%); }
-    100% { transform: translateX(-50%); }
+  /* Moving Background Marquee Text (Left to Right) */
+  @keyframes vsMarqueeLeftToRight {
+    0% { transform: translateX(-50%) translateY(-50%); }
+    100% { transform: translateX(0%) translateY(-50%); }
   }
 
   .vs-contact-hero-marquee {
@@ -70,18 +70,14 @@
     width: 200% !important;
     white-space: nowrap !important;
     z-index: 1 !important;
-    opacity: 0.85 !important;
+    opacity: 0.65 !important;
     pointer-events: none !important;
     line-height: 1 !important;
-    font-size: clamp(38px, 6.5vw, 95px) !important;
-    font-weight: 900 !important;
-    text-transform: uppercase !important;
-    letter-spacing: 4px !important;
-    background: linear-gradient(90deg, #ec5c0a, #ff9900, #007b3e, #ec5c0a) !important;
-    background-size: 200% auto !important;
-    -webkit-background-clip: text !important;
-    -webkit-text-fill-color: transparent !important;
-    animation: vsMarqueeScroll 16s linear infinite !important;
+    font-size: clamp(45px, 7vw, 110px) !important;
+    font-weight: 800 !important;
+    color: #F7941D !important;
+    letter-spacing: 2px !important;
+    animation: vsMarqueeLeftToRight 18s linear infinite !important;
   }
 
   @media screen and (max-width: 768px) {
@@ -90,8 +86,8 @@
       border-radius: 20px !important;
     }
     .vs-contact-hero-marquee {
-      font-size: clamp(28px, 8vw, 48px) !important;
-      opacity: 0.9 !important;
+      font-size: clamp(32px, 8vw, 55px) !important;
+      opacity: 0.75 !important;
     }
   }
 
@@ -2137,12 +2133,12 @@
   
   <div class="vs-contact-container">
 
-    <!-- 1ST SECTION: HERO BANNER (THEME BASE COLOR & RIGHT-TO-LEFT MARQUEE ONLY) -->
+    <!-- 1ST SECTION: HERO BANNER (EXACT MATCH WITH ISO CERTIFICATION SECTION 1 - LEFT TO RIGHT) -->
     <div class="vs-contact-hero-banner">
       
-      <!-- Right-to-Left Moving Marquee Text -->
+      <!-- Left-to-Right Moving Marquee Text -->
       <div class="vs-contact-hero-marquee">
-        CONTACT US &bull; CONTACT US &bull; CONTACT US &bull; CONTACT US &bull; CONTACT US &bull; CONTACT US &bull; CONTACT US &bull; CONTACT US
+        Contact Us &bull; Contact Us &bull; Contact Us &bull; Contact Us &bull; Contact Us &bull; Contact Us &bull; Contact Us &bull; Contact Us
       </div>
 
     </div>
