@@ -2613,9 +2613,16 @@
     transform: translateY(-1px) !important;
   }
 
-  /* MOBILE SLIDER CONTROLS (VISIBLE ON MOBILE ONLY) */
+  /* MOBILE SLIDER CONTROLS (STRICTLY HIDDEN ON DESKTOP) */
+  #vsContactSection .vs-sec7-mobile-slider-controls,
   .vs-sec7-mobile-slider-controls {
     display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    opacity: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
   /* BOTTOM PAYMENT MODES BAR */
@@ -2636,6 +2643,32 @@
     text-align: center !important;
   }
 
+  /* DESKTOP STYLING (LARGE SCREENS > 768PX) */
+  @media screen and (min-width: 769px) {
+    #vsContactSection .vs-sec7-mobile-slider-controls,
+    .vs-sec7-mobile-slider-controls {
+      display: none !important;
+      visibility: hidden !important;
+    }
+
+    #vsContactSection .vs-sec7-cards-grid,
+    .vs-sec7-cards-grid {
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 20px !important;
+      width: 100% !important;
+      overflow: visible !important;
+    }
+
+    #vsContactSection .vs-sec7-bank-card,
+    .vs-sec7-bank-card {
+      flex: 1 1 auto !important;
+      min-width: auto !important;
+      max-width: 100% !important;
+      width: 100% !important;
+    }
+  }
+
   @media screen and (max-width: 991px) {
     .vs-sec7-main-grid {
       grid-template-columns: 1fr !important;
@@ -2648,15 +2681,20 @@
     }
   }
 
+  /* MOBILE STYLING (SMALL SCREENS <= 768PX) */
   @media screen and (max-width: 768px) {
     .vs-sec7-banking-section {
       padding: 22px 14px !important;
       border-radius: 22px !important;
     }
 
-    /* SHOW SLIDER CONTROLS ON MOBILE */
+    /* SHOW SLIDER CONTROLS ON MOBILE ONLY */
+    #vsContactSection .vs-sec7-mobile-slider-controls,
     .vs-sec7-mobile-slider-controls {
       display: flex !important;
+      visibility: visible !important;
+      height: auto !important;
+      opacity: 1 !important;
       align-items: center !important;
       justify-content: space-between !important;
       width: 100% !important;
@@ -2708,6 +2746,7 @@
     }
 
     /* CARDS SLIDER ON MOBILE - SHOW ONLY ONE CARD AT A TIME */
+    #vsContactSection .vs-sec7-cards-grid,
     .vs-sec7-cards-grid {
       display: flex !important;
       overflow-x: auto !important;
@@ -2723,6 +2762,7 @@
       display: none !important;
     }
 
+    #vsContactSection .vs-sec7-bank-card,
     .vs-sec7-bank-card {
       flex: 0 0 100% !important;
       min-width: 100% !important;
