@@ -39,7 +39,7 @@
     z-index: 3 !important;
   }
 
-  /* 1ST SECTION: INDIGO-PURPLE NAVY HERO BANNER MATCHING SCREENSHOT EXACTLY */
+  /* 1ST SECTION: HERO BANNER (#141E5C) */
   .vs-top-marquee-header-banner {
     position: relative !important;
     width: 100vw !important;
@@ -48,8 +48,8 @@
     margin-left: -50vw !important;
     margin-right: -50vw !important;
     min-height: clamp(340px, 36vw, 440px) !important;
-    background-color: #0C1236 !important;
-    background-image: linear-gradient(135deg, #0B1135 0%, #131742 50%, #24164A 100%) !important;
+    background-color: #141E5C !important;
+    background-image: linear-gradient(135deg, #141E5C 0%, #17236B 50%, #1A2878 100%) !important;
     border-top: 3px solid #10B981 !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
     margin-top: 0 !important;
@@ -208,8 +208,35 @@
 
   @media screen and (max-width: 768px) {
     .vs-top-marquee-header-banner {
-      min-height: 320px !important;
-      padding: 35px 20px !important;
+      min-height: auto !important;
+      padding: 34px 18px 28px 18px !important;
+    }
+
+    .vs-tech-box-1,
+    .vs-tech-box-2 {
+      display: none !important;
+    }
+
+    .vs-hero-pill-badge {
+      padding: 6px 14px !important;
+      font-size: 0.72rem !important;
+      margin-bottom: 14px !important;
+    }
+
+    .vs-hero-title {
+      font-size: clamp(1.65rem, 6.2vw, 2.2rem) !important;
+      line-height: 1.25 !important;
+      margin-bottom: 12px !important;
+    }
+
+    .vs-hero-subhead {
+      font-size: 0.88rem !important;
+      line-height: 1.55 !important;
+      margin-bottom: 14px !important;
+    }
+
+    .vs-hero-hindi-slogan {
+      font-size: 0.98rem !important;
     }
   }
 
@@ -1438,8 +1465,49 @@
       margin: 0 !important;
     }
 
+    .vs-best-nav-wrapper {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 12px !important;
+      margin-top: 18px !important;
+    }
+
+    .vs-best-nav-btn {
+      width: 36px !important;
+      height: 36px !important;
+      border-radius: 50% !important;
+      background: #FFFFFF !important;
+      border: 1.5px solid rgba(236, 92, 10, 0.35) !important;
+      color: #EC5C0A !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      font-size: 1.1rem !important;
+      font-weight: 800 !important;
+      box-shadow: 0 4px 14px rgba(236, 92, 10, 0.15) !important;
+      cursor: pointer !important;
+      user-select: none !important;
+    }
+
     .vs-best-dots {
-      display: none !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 6px !important;
+    }
+
+    .vs-best-dot {
+      width: 8px !important;
+      height: 8px !important;
+      border-radius: 50% !important;
+      background: rgba(236, 92, 10, 0.25) !important;
+      transition: all 0.35s ease !important;
+    }
+
+    .vs-best-dot.active {
+      width: 22px !important;
+      border-radius: 10px !important;
+      background: #EC5C0A !important;
     }
 
     .vs-best-tag {
@@ -2346,14 +2414,18 @@
         </div>
       </div>
 
-      <!-- Mobile Slider Dots for Section 2 -->
-      <div class="vs-best-dots" id="vsBestDots">
-        <span class="vs-best-dot active" data-index="0"></span>
-        <span class="vs-best-dot" data-index="1"></span>
-        <span class="vs-best-dot" data-index="2"></span>
-        <span class="vs-best-dot" data-index="3"></span>
-        <span class="vs-best-dot" data-index="4"></span>
-        <span class="vs-best-dot" data-index="5"></span>
+      <!-- Mobile Slider Navigation & Dots for Section 2 -->
+      <div class="vs-best-nav-wrapper">
+        <button class="vs-best-nav-btn" id="vsBestPrevBtn" aria-label="Previous Slide">‹</button>
+        <div class="vs-best-dots" id="vsBestDots">
+          <span class="vs-best-dot active" data-index="0"></span>
+          <span class="vs-best-dot" data-index="1"></span>
+          <span class="vs-best-dot" data-index="2"></span>
+          <span class="vs-best-dot" data-index="3"></span>
+          <span class="vs-best-dot" data-index="4"></span>
+          <span class="vs-best-dot" data-index="5"></span>
+        </div>
+        <button class="vs-best-nav-btn" id="vsBestNextBtn" aria-label="Next Slide">›</button>
       </div>
     </div>
 
@@ -2937,6 +3009,107 @@
         });
       }
     });
+    // Section 2 "What Makes Us Best" Mobile Auto-Slider on View (3 Seconds)
+    (function() {
+      const bestSection = document.querySelector('.vs-best-section');
+      const bestGrid = document.querySelector('.vs-best-grid');
+      const bestDots = document.querySelectorAll('.vs-best-dot');
+      const prevBtn = document.getElementById('vsBestPrevBtn');
+      const nextBtn = document.getElementById('vsBestNextBtn');
+      if (!bestSection || !bestGrid || !bestDots.length) return;
+
+      let currentIndex = 0;
+      const totalCards = bestDots.length;
+      let autoSlideTimer = null;
+      let isObserverActive = false;
+
+      function scrollToIndex(index) {
+        if (window.innerWidth > 767) return;
+        const cards = bestGrid.querySelectorAll('.vs-best-card');
+        if (!cards[index]) return;
+
+        const card = cards[index];
+        const scrollLeft = card.offsetLeft - (bestGrid.offsetWidth - card.offsetWidth) / 2;
+        bestGrid.scrollTo({
+          left: scrollLeft,
+          behavior: 'smooth'
+        });
+
+        bestDots.forEach((dot, i) => {
+          dot.classList.toggle('active', i === index);
+        });
+      }
+
+      function nextSlide() {
+        currentIndex = (currentIndex + 1) % totalCards;
+        scrollToIndex(currentIndex);
+      }
+
+      function prevSlide() {
+        currentIndex = (currentIndex - 1 + totalCards) % totalCards;
+        scrollToIndex(currentIndex);
+      }
+
+      function startAutoSlide() {
+        stopAutoSlide();
+        if (window.innerWidth <= 767 && isObserverActive) {
+          autoSlideTimer = setInterval(nextSlide, 3000); // 3 Seconds Auto Transition
+        }
+      }
+
+      function stopAutoSlide() {
+        if (autoSlideTimer) clearInterval(autoSlideTimer);
+      }
+
+      // IntersectionObserver: Start 3-second auto-slide ONLY when user scrolls to Section 2
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              isObserverActive = true;
+              startAutoSlide();
+            } else {
+              isObserverActive = false;
+              stopAutoSlide();
+            }
+          });
+        }, { threshold: 0.15 });
+
+        observer.observe(bestSection);
+      } else {
+        isObserverActive = true;
+        startAutoSlide();
+      }
+
+      // Touch handlers
+      bestGrid.addEventListener('touchstart', stopAutoSlide, { passive: true });
+      bestGrid.addEventListener('touchend', () => {
+        setTimeout(startAutoSlide, 4000);
+      }, { passive: true });
+
+      // Arrow button click handlers
+      if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+          prevSlide();
+          startAutoSlide();
+        });
+      }
+      if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+          nextSlide();
+          startAutoSlide();
+        });
+      }
+
+      // Dot click handlers
+      bestDots.forEach((dot, idx) => {
+        dot.addEventListener('click', () => {
+          currentIndex = idx;
+          scrollToIndex(idx);
+          startAutoSlide();
+        });
+      });
+    })();
   });
 
   function vsCopyText(text, el) {
