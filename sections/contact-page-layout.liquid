@@ -34,21 +34,35 @@
     max-width: 1280px !important;
     width: 100% !important;
     margin: 0 auto !important;
-    padding-top: clamp(75px, 10vw, 135px) !important;
+    padding-top: 0 !important;
     position: relative !important;
     z-index: 3 !important;
   }
 
-  /* --- TOP HEADER BACKGROUND MOVING MARQUEE (LEFT TO RIGHT) --- */
+  /* Dedicated Top Header Banner for Moving Marquee */
+  .vs-top-marquee-header-banner {
+    position: relative !important;
+    width: 100% !important;
+    max-width: 1280px !important;
+    margin: 0 auto clamp(20px, 4vw, 35px) auto !important;
+    min-height: clamp(120px, 16vw, 200px) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+    z-index: 2 !important;
+  }
+
   @keyframes vsMarqueeLeftToRight {
-    0% { transform: translateX(-50%); }
-    100% { transform: translateX(0%); }
+    0% { transform: translateX(-50%) translateY(-50%); }
+    100% { transform: translateX(0%) translateY(-50%); }
   }
 
   .vs-top-header-marquee {
     position: absolute !important;
-    top: 25px !important;
+    top: 50% !important;
     left: 0 !important;
+    transform: translateY(-50%) !important;
     width: 200% !important;
     white-space: nowrap !important;
     z-index: 1 !important;
@@ -56,10 +70,10 @@
     pointer-events: none !important;
     line-height: 1 !important;
     font-size: clamp(45px, 8.5vw, 110px) !important;
-    font-weight: 800 !important;
+    font-weight: 900 !important;
     color: #F7941D !important;
     letter-spacing: 3px !important;
-    animation: vsMarqueeLeftToRight 20s linear infinite !important;
+    animation: vsMarqueeLeftToRight 18s linear infinite !important;
   }
 
   /* Header Block */
@@ -2102,14 +2116,16 @@
 
 <section class="vs-contact-section" id="vsContactSection">
   
-  <!-- Top Header Background Moving Marquee Text (Left to Right) -->
-  <div class="vs-top-header-marquee">
-    Contact Us &bull; Contact Us &bull; Contact Us &bull; Contact Us &bull; Contact Us &bull; Contact Us &bull; Contact Us &bull; Contact Us
-  </div>
-
   <div class="vs-contact-container">
 
-    <!-- 2-Column Split Section Grid -->
+    <!-- Dedicated Top Header Banner for Moving Contact Us Marquee -->
+    <div class="vs-top-marquee-header-banner">
+      <div class="vs-top-header-marquee">
+        Contact Us &bull; Contact Us &bull; Contact Us &bull; Contact Us &bull; Contact Us &bull; Contact Us &bull; Contact Us &bull; Contact Us
+      </div>
+    </div>
+
+    <!-- 2-Column Split Section Grid (Starts cleanly below the header marquee banner) -->
     <div class="vs-contact-grid">
       
       <!-- LEFT COLUMN CARD: Vidhyut Branded Info & Action Card -->
