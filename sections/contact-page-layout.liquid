@@ -933,6 +933,37 @@
     display: block !important;
   }
 
+  /* --- 7TH SECTION: OFFICIAL BANKING SHOWCASE BANNER --- */
+  .vs-sec7-section {
+    width: 100% !important;
+    margin-bottom: clamp(40px, 6vw, 70px) !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+
+  .vs-sec7-banner-card {
+    width: 100% !important;
+    border-radius: clamp(16px, 3vw, 28px) !important;
+    overflow: hidden !important;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08), 0 4px 20px rgba(0, 0, 0, 0.03) !important;
+    border: 1.5px solid rgba(236, 92, 10, 0.2) !important;
+    background: #FFFFFF !important;
+    transition: transform 0.35s ease, box-shadow 0.35s ease !important;
+  }
+
+  .vs-sec7-banner-card:hover {
+    transform: translateY(-4px) !important;
+    box-shadow: 0 25px 70px rgba(236, 92, 10, 0.15) !important;
+  }
+
+  .vs-sec7-banner-img {
+    width: 100% !important;
+    height: auto !important;
+    display: block !important;
+    object-fit: contain !important;
+  }
+
   /* --- BOTTOM CTA BANNER --- */
   .vs-bottom-cta {
     background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%) !important;
@@ -2738,105 +2769,10 @@
     </div> <!-- Closing vs-faq-section -->
 
 
-    <!-- 7TH SECTION: WE'LL LOVE TO HEAR FROM YOU & SMARTPHONE BANNER -->
+    <!-- 7TH SECTION: OFFICIAL VIDHYUT SAATHI BANKING & PAYMENT MODES SHOWCASE BANNER -->
     <div class="vs-sec7-section">
-      <div class="vs-sec7-grid">
-        
-        <!-- LEFT COLUMN: SMARTPHONE BANNER MOCKUP -->
-        <div class="vs-sec7-left-banner">
-          <div class="vs-phone-wrapper">
-            <div class="vs-phone-frame">
-              <div class="vs-phone-notch">
-                <span class="vs-camera-lens"></span>
-                <span class="vs-speaker-grille"></span>
-              </div>
-              <div class="vs-phone-screen">
-                <img src="{{ 'vs-section7-banner.png' | asset_url }}" alt="Vidhyut Saathi Save Energy Build A Better Tomorrow" class="vs-sec7-banner-img" loading="lazy">
-              </div>
-            </div>
-            <div class="vs-phone-glow"></div>
-          </div>
-        </div>
-
-        <!-- RIGHT COLUMN: CONTACT FORM CARD -->
-        <div class="vs-sec7-right-card">
-          <div class="vs-sec7-header">
-            <span class="vs-sec7-tag">CONTACT WITH US</span>
-            <h2 class="vs-sec7-title">We'll Love To Hear From You</h2>
-          </div>
-
-          {%- form 'contact', id: 'vsSection7ContactForm' -%}
-            {%- if form.posted_successfully? -%}
-              <div style="padding: 14px 18px; background: #ECFDF5; border: 1.5px solid #10B981; border-radius: 12px; color: #065F46; font-weight: 700; margin-bottom: 20px; font-size: 0.9rem;">
-                🎉 Thank you! Your message has been sent successfully. Our team will get back to you shortly.
-              </div>
-            {%- elsif form.errors -%}
-              <div style="padding: 14px 18px; background: #FEF2F2; border: 1.5px solid #EF4444; border-radius: 12px; color: #991B1B; font-weight: 700; margin-bottom: 20px; font-size: 0.9rem;">
-                ⚠️ Please check the form fields and try submitting again.
-              </div>
-            {%- endif -%}
-
-            <div class="vs-sec7-form-fields">
-              
-              <!-- Name* -->
-              <div class="vs-sec7-field-group">
-                <input type="text" id="sec7_name" name="contact[name]" class="vs-sec7-input" placeholder="Name*" required>
-              </div>
-
-              <!-- Email Address* -->
-              <div class="vs-sec7-field-group">
-                <input type="email" id="sec7_email" name="contact[email]" class="vs-sec7-input" placeholder="Email Address*" required>
-              </div>
-
-              <!-- Phone No. -->
-              <div class="vs-sec7-field-group">
-                <input type="tel" id="sec7_phone" name="contact[phone]" class="vs-sec7-input" placeholder="Phone No.">
-              </div>
-
-              <!-- City -->
-              <div class="vs-sec7-field-group">
-                <input type="text" id="sec7_city" name="contact[City]" class="vs-sec7-input" placeholder="City">
-              </div>
-
-              <!-- Select Reasons Dropdown -->
-              <div class="vs-sec7-field-group">
-                <select id="sec7_reason" name="contact[Inquiry Reason]" class="vs-sec7-input vs-sec7-select">
-                  <option value="" disabled selected>Select Reasons</option>
-                  <option value="General Inquiry">General Inquiry</option>
-                  <option value="Energy Audit Request">Energy Audit Request</option>
-                  <option value="Commercial / Industrial Solution">Commercial / Industrial Solution</option>
-                  <option value="Franchise & Dealership">Franchise &amp; Dealership</option>
-                  <option value="Technical & Warranty Support">Technical &amp; Warranty Support</option>
-                </select>
-              </div>
-
-              <!-- Your Message -->
-              <div class="vs-sec7-field-group">
-                <textarea id="sec7_message" name="contact[body]" class="vs-sec7-input vs-sec7-textarea" placeholder="Your Message" rows="4"></textarea>
-              </div>
-
-              <!-- Marketing & Consent Checkbox -->
-              <div class="vs-sec7-consent-group">
-                <label class="vs-sec7-checkbox-label">
-                  <input type="checkbox" name="contact[Marketing Consent]" value="Yes" required class="vs-sec7-checkbox">
-                  <span>
-                    Yes, I would like to receive marketing updates and offers from Vidhyut Saathi Energy Savers Pvt. Ltd. via Email SMS (Text Messages) *RCS (Rich Communication Services - enhanced messages with images and interactive features) * By checking this box, you agree to our <a href="/pages/privacy-policy" target="_blank">Privacy Policy</a> and <a href="/pages/terms-of-service" target="_blank">Terms of Service</a>. You can opt-out at any time by replying 'STOP' to RCS messages or through the methods outlined in our <a href="/pages/privacy-policy" target="_blank">Privacy Policy</a>.
-                  </span>
-                </label>
-              </div>
-
-              <!-- Submit Button -->
-              <div class="vs-sec7-submit-wrapper">
-                <button type="submit" class="vs-sec7-submit-btn">
-                  <span>SEND MESSAGE</span>
-                  <span>&rarr;</span>
-                </button>
-              </div>
-
-            </div>
-          {%- endform -%}
-        </div>
-
+      <div class="vs-sec7-banner-card">
+        <img src="{{ 'vidhyut-banking-banner.png' | asset_url }}" alt="Vidhyut Saathi Our Banking Details & Accepted Payment Modes Banner" class="vs-sec7-banner-img" loading="eager">
       </div>
     </div>
 
