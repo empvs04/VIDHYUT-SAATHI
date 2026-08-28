@@ -2821,23 +2821,47 @@
 
     /* MOBILE-ONLY STYLES FOR SECTION 2 CARDS & CONSULTATION FORM */
     @media screen and (max-width: 768px) {
-      /* Section 2 Cards (Bigger size on Mobile) */
+      /* Section 2 Cards (Single Card Full-Width View per Screen on Mobile) */
+      .vs-best-grid {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory !important;
+        width: 100% !important;
+        gap: 0 !important;
+        padding: 10px 0 20px 0 !important;
+        scrollbar-width: none !important;
+        -ms-overflow-style: none !important;
+      }
+      .vs-best-grid::-webkit-scrollbar {
+        display: none !important;
+      }
+
       .vs-best-card {
-        flex: 0 0 215px !important;
-        min-height: 200px !important;
-        padding: 22px 16px !important;
-        border-radius: 20px !important;
+        flex: 0 0 100% !important;
+        width: 100% !important;
+        min-width: 100% !important;
+        max-width: 100% !important;
+        scroll-snap-align: center !important;
+        scroll-snap-stop: always !important;
+        box-sizing: border-box !important;
+        padding: 28px 20px !important;
+        border-radius: 22px !important;
+        text-align: center !important;
+        margin: 0 !important;
       }
       .vs-best-icon-box {
-        font-size: 2.6rem !important;
-        margin-bottom: 10px !important;
+        font-size: 3rem !important;
+        margin: 0 auto 12px auto !important;
       }
       .vs-best-title {
-        font-size: 1.05rem !important;
+        font-size: 1.25rem !important;
         font-weight: 900 !important;
+        margin-bottom: 6px !important;
       }
       .vs-best-subtitle {
-        font-size: 0.88rem !important;
+        font-size: 0.95rem !important;
         font-weight: 600 !important;
       }
 
