@@ -2353,7 +2353,7 @@
       text-align: center !important;
     }
 
-  /* --- 7TH SECTION: OUR BANKING & 3D ARTWORK (SUPER LUCRATIVE & MOBILE PERFECT) --- */
+  /* --- 7TH SECTION: OUR BANKING & 3D ARTWORK (SUPER LUCRATIVE & PERFECTLY EQUAL ALIGNED) --- */
   #vsContactSection .vs-sec7-banking-section,
   .vs-sec7-banking-section {
     background: linear-gradient(145deg, #FFF9F3 0%, #FFFFFF 50%, #FAF5EF 100%) !important;
@@ -2467,7 +2467,7 @@
     text-transform: uppercase !important;
   }
 
-  /* RIGHT BANKING CARDS COLUMN (CENTER ALIGNED) */
+  /* RIGHT BANKING CARDS COLUMN (CENTER ALIGNED & EQUAL HEIGHTS) */
   .vs-sec7-cards-wrapper {
     display: flex !important;
     flex-direction: column !important;
@@ -2481,7 +2481,7 @@
     display: grid !important;
     grid-template-columns: repeat(2, 1fr) !important;
     gap: clamp(14px, 2vw, 20px) !important;
-    align-items: center !important;
+    align-items: stretch !important;
     justify-content: center !important;
     width: 100% !important;
   }
@@ -2555,7 +2555,7 @@
   .vs-sec7-field {
     border: 1.5px solid #0F172A !important;
     border-radius: 8px !important;
-    padding: 10px 12px !important;
+    padding: 8px 11px !important;
     font-size: clamp(0.76rem, 1.4vw, 0.84rem) !important;
     color: #0F172A !important;
     background: #FFFFFF !important;
@@ -2566,6 +2566,7 @@
     display: flex !important;
     align-items: center !important;
     justify-content: space-between !important;
+    min-height: 44px !important;
   }
 
   .vs-sec7-field.company-title {
@@ -2577,17 +2578,24 @@
     border: 2px solid #0F172A !important;
     letter-spacing: 0.3px !important;
     justify-content: center !important;
-    padding: 11px 10px !important;
+    min-height: 54px !important;
+    padding: 8px 10px !important;
+  }
+
+  .vs-sec7-field.row-branch {
+    min-height: 52px !important;
   }
 
   .vs-sec7-copy-btn {
     display: inline-flex !important;
     align-items: center !important;
+    justify-content: center !important;
     gap: 4px !important;
     background: linear-gradient(135deg, #FFF3EB 0%, #FFE5D4 100%) !important;
     border: 1px solid rgba(236, 92, 10, 0.35) !important;
     color: #EC5C0A !important;
-    padding: 4px 9px !important;
+    padding: 3px 9px !important;
+    height: 28px !important;
     border-radius: 6px !important;
     font-size: 0.72rem !important;
     font-weight: 800 !important;
@@ -2605,6 +2613,11 @@
     transform: translateY(-1px) !important;
   }
 
+  /* MOBILE SLIDER CONTROLS (VISIBLE ON MOBILE ONLY) */
+  .vs-sec7-mobile-slider-controls {
+    display: none !important;
+  }
+
   /* BOTTOM PAYMENT MODES BAR */
   .vs-sec7-payment-bar {
     margin-top: clamp(26px, 4vw, 38px) !important;
@@ -2612,7 +2625,7 @@
     border-top: 2px dashed rgba(236, 92, 10, 0.25) !important;
     display: flex !important;
     align-items: center !important;
-    justify-content: space-between !important;
+    justify-content: center !important;
     flex-wrap: wrap !important;
     gap: 16px !important;
     background: #FFFFFF !important;
@@ -2620,6 +2633,7 @@
     padding: 16px 20px !important;
     border: 1.5px solid rgba(236, 92, 10, 0.2) !important;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03) !important;
+    text-align: center !important;
   }
 
   @media screen and (max-width: 991px) {
@@ -2634,18 +2648,88 @@
     }
   }
 
-  @media screen and (max-width: 640px) {
+  @media screen and (max-width: 768px) {
     .vs-sec7-banking-section {
       padding: 22px 14px !important;
       border-radius: 22px !important;
     }
 
+    /* SHOW SLIDER CONTROLS ON MOBILE */
+    .vs-sec7-mobile-slider-controls {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      width: 100% !important;
+      margin-bottom: 14px !important;
+      background: #F8FAFC !important;
+      padding: 6px 12px !important;
+      border-radius: 30px !important;
+      border: 1.5px solid #CBD5E1 !important;
+      box-sizing: border-box !important;
+    }
+
+    .vs-sec7-nav-btn {
+      background: #EC5C0A !important;
+      color: #FFFFFF !important;
+      border: none !important;
+      width: 32px !important;
+      height: 32px !important;
+      border-radius: 50% !important;
+      font-size: 1.2rem !important;
+      font-weight: bold !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      cursor: pointer !important;
+      line-height: 1 !important;
+    }
+
+    .vs-sec7-slider-dots {
+      display: flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+    }
+
+    .vs-sec7-dot {
+      padding: 4px 10px !important;
+      font-size: 0.72rem !important;
+      font-weight: 800 !important;
+      border-radius: 20px !important;
+      background: #E2E8F0 !important;
+      color: #64748B !important;
+      cursor: pointer !important;
+      transition: all 0.25s ease !important;
+    }
+
+    .vs-sec7-dot.active {
+      background: #EC5C0A !important;
+      color: #FFFFFF !important;
+      box-shadow: 0 3px 10px rgba(236, 92, 10, 0.3) !important;
+    }
+
+    /* CARDS SLIDER ON MOBILE - SHOW ONLY ONE CARD AT A TIME */
     .vs-sec7-cards-grid {
-      grid-template-columns: 1fr !important;
-      gap: 16px !important;
+      display: flex !important;
+      overflow-x: auto !important;
+      scroll-snap-type: x mandatory !important;
+      -webkit-overflow-scrolling: touch !important;
+      gap: 0 !important;
+      scrollbar-width: none !important;
+      width: 100% !important;
+      border-radius: 20px !important;
+    }
+
+    .vs-sec7-cards-grid::-webkit-scrollbar {
+      display: none !important;
     }
 
     .vs-sec7-bank-card {
+      flex: 0 0 100% !important;
+      min-width: 100% !important;
+      max-width: 100% !important;
+      scroll-snap-align: center !important;
+      scroll-snap-stop: always !important;
+      box-sizing: border-box !important;
       padding: 18px 12px !important;
     }
 
@@ -3029,7 +3113,7 @@
 
 
 
-    <!-- 7TH SECTION: OUR BANKING & 3D ARTWORK (SUPER LUCRATIVE & MOBILE PERFECT) -->
+    <!-- 7TH SECTION: OUR BANKING & 3D ARTWORK (SUPER LUCRATIVE & PERFECTLY EQUAL ALIGNED) -->
     <div class="vs-sec7-banking-section" id="vsSec7Banking" style="background: linear-gradient(145deg, #FFF9F3 0%, #FFFFFF 50%, #FAF5EF 100%) !important; border: 2px solid rgba(236, 92, 10, 0.25) !important; border-radius: clamp(24px, 4vw, 36px) !important; padding: clamp(28px, 4vw, 45px) clamp(16px, 3.5vw, 36px) !important; margin-bottom: clamp(40px, 6vw, 65px) !important; box-shadow: 0 25px 70px rgba(236, 92, 10, 0.08) !important; clear: both !important; display: block !important;">
       
       <!-- Section Header -->
@@ -3051,9 +3135,20 @@
           </div>
         </div>
 
-        <!-- RIGHT COLUMN: 2 BANKING DETAILS CARDS (CENTERED) -->
+        <!-- RIGHT COLUMN: 2 BANKING DETAILS CARDS (CENTERED & MATCHED HEIGHTS & MOBILE SLIDER) -->
         <div class="vs-sec7-cards-wrapper" style="display: flex !important; flex-direction: column !important; justify-content: center !important; align-items: center !important; height: 100% !important; width: 100% !important;">
-          <div class="vs-sec7-cards-grid" style="display: grid !important; grid-template-columns: repeat(2, 1fr) !important; gap: clamp(14px, 2vw, 20px) !important; align-items: stretch !important; justify-content: center !important; width: 100% !important;">
+          
+          <!-- Mobile Slider Navigation Controls (Visible on mobile screens <=768px) -->
+          <div class="vs-sec7-mobile-slider-controls">
+            <button type="button" class="vs-sec7-nav-btn" onclick="vsSec7Slide(-1)" title="Previous Bank Card">‹</button>
+            <div class="vs-sec7-slider-dots">
+              <span class="vs-sec7-dot active" onclick="vsSec7GoToSlide(0)">1. IDFC FIRST</span>
+              <span class="vs-sec7-dot" onclick="vsSec7GoToSlide(1)">2. IndusInd</span>
+            </div>
+            <button type="button" class="vs-sec7-nav-btn" onclick="vsSec7Slide(1)" title="Next Bank Card">›</button>
+          </div>
+
+          <div class="vs-sec7-cards-grid" id="vsSec7CardsGrid">
             
             <!-- CARD 1: IDFC FIRST BANK -->
             <div class="vs-sec7-bank-card idfc-theme" style="background: #FFFFFF !important; border: 2px solid #0F172A !important; border-top: 5px solid #EC5C0A !important; border-radius: 20px !important; padding: 20px 16px !important; box-shadow: 0 12px 35px rgba(15, 23, 42, 0.05) !important; display: flex !important; flex-direction: column !important; justify-content: space-between !important; box-sizing: border-box !important;">
@@ -3065,29 +3160,35 @@
               </div>
 
               <div class="vs-sec7-fields-list" style="display: flex !important; flex-direction: column !important; gap: 9px !important; width: 100% !important;">
-                <div class="vs-sec7-field company-title" style="border: 2px solid #0F172A !important; border-radius: 8px !important; padding: 10px 11px !important; font-size: 0.78rem !important; font-weight: 900 !important; text-transform: uppercase !important; background: #F8FAFC !important; text-align: center !important; color: #0F172A !important; letter-spacing: 0.3px !important; justify-content: center !important;">
+                <!-- ROW 1: COMPANY TITLE (MIN HEIGHT 54PX FOR BOTH) -->
+                <div class="vs-sec7-field company-title" style="border: 2px solid #0F172A !important; border-radius: 8px !important; padding: 8px 10px !important; font-size: 0.78rem !important; font-weight: 900 !important; text-transform: uppercase !important; background: #F8FAFC !important; text-align: center !important; color: #0F172A !important; letter-spacing: 0.3px !important; display: flex !important; align-items: center !important; justify-content: center !important; min-height: 54px !important; box-sizing: border-box !important;">
                   VIDHYUT SAATHI ENERGY SAVERS PRIVATE LIMITED
                 </div>
 
-                <div class="vs-sec7-field" style="border: 1.5px solid #0F172A !important; border-radius: 8px !important; padding: 9px 11px !important; font-size: 0.78rem !important; color: #0F172A !important; background: #FFFFFF !important; line-height: 1.35 !important; font-weight: 600 !important;">
+                <!-- ROW 2: BANK NAME (MIN HEIGHT 44PX) -->
+                <div class="vs-sec7-field" style="border: 1.5px solid #0F172A !important; border-radius: 8px !important; padding: 8px 11px !important; font-size: 0.78rem !important; color: #0F172A !important; background: #FFFFFF !important; line-height: 1.35 !important; font-weight: 600 !important; display: flex !important; align-items: center !important; min-height: 44px !important; box-sizing: border-box !important;">
                   Bank Name - <strong>IDFC FIRST</strong>
                 </div>
 
-                <div class="vs-sec7-field" style="border: 1.5px solid #0F172A !important; border-radius: 8px !important; padding: 9px 11px !important; font-size: 0.78rem !important; color: #0F172A !important; background: #FFFFFF !important; line-height: 1.35 !important; font-weight: 600 !important; display: flex !important; align-items: center !important; justify-content: space-between !important;">
+                <!-- ROW 3: ACCOUNT NO (MIN HEIGHT 46PX) -->
+                <div class="vs-sec7-field" style="border: 1.5px solid #0F172A !important; border-radius: 8px !important; padding: 8px 11px !important; font-size: 0.78rem !important; color: #0F172A !important; background: #FFFFFF !important; line-height: 1.35 !important; font-weight: 600 !important; display: flex !important; align-items: center !important; justify-content: space-between !important; min-height: 46px !important; box-sizing: border-box !important;">
                   <span>Account No - <strong>10123818626</strong></span>
-                  <button type="button" class="vs-sec7-copy-btn" onclick="vsCopyText('10123818626', this)" title="Copy Account Number" style="background: linear-gradient(135deg, #FFF3EB 0%, #FFE5D4 100%) !important; border: 1px solid rgba(236, 92, 10, 0.35) !important; color: #EC5C0A !important; padding: 4px 9px !important; border-radius: 6px !important; font-size: 0.72rem !important; font-weight: 800 !important; cursor: pointer !important; margin-left: 6px !important;">📋 Copy</button>
+                  <button type="button" class="vs-sec7-copy-btn" onclick="vsCopyText('10123818626', this)" title="Copy Account Number" style="background: linear-gradient(135deg, #FFF3EB 0%, #FFE5D4 100%) !important; border: 1px solid rgba(236, 92, 10, 0.35) !important; color: #EC5C0A !important; padding: 3px 9px !important; height: 28px !important; border-radius: 6px !important; font-size: 0.72rem !important; font-weight: 800 !important; cursor: pointer !important; margin-left: 6px !important; display: inline-flex !important; align-items: center !important; gap: 4px !important; flex-shrink: 0 !important;">📋 Copy</button>
                 </div>
 
-                <div class="vs-sec7-field" style="border: 1.5px solid #0F172A !important; border-radius: 8px !important; padding: 9px 11px !important; font-size: 0.78rem !important; color: #0F172A !important; background: #FFFFFF !important; line-height: 1.35 !important; font-weight: 600 !important; display: flex !important; align-items: center !important; justify-content: space-between !important;">
+                <!-- ROW 4: IFSC CODE (MIN HEIGHT 46PX) -->
+                <div class="vs-sec7-field" style="border: 1.5px solid #0F172A !important; border-radius: 8px !important; padding: 8px 11px !important; font-size: 0.78rem !important; color: #0F172A !important; background: #FFFFFF !important; line-height: 1.35 !important; font-weight: 600 !important; display: flex !important; align-items: center !important; justify-content: space-between !important; min-height: 46px !important; box-sizing: border-box !important;">
                   <span>IFSC Code - <strong>IDFB0021581</strong></span>
-                  <button type="button" class="vs-sec7-copy-btn" onclick="vsCopyText('IDFB0021581', this)" title="Copy IFSC Code" style="background: linear-gradient(135deg, #FFF3EB 0%, #FFE5D4 100%) !important; border: 1px solid rgba(236, 92, 10, 0.35) !important; color: #EC5C0A !important; padding: 4px 9px !important; border-radius: 6px !important; font-size: 0.72rem !important; font-weight: 800 !important; cursor: pointer !important; margin-left: 6px !important;">📋 Copy</button>
+                  <button type="button" class="vs-sec7-copy-btn" onclick="vsCopyText('IDFB0021581', this)" title="Copy IFSC Code" style="background: linear-gradient(135deg, #FFF3EB 0%, #FFE5D4 100%) !important; border: 1px solid rgba(236, 92, 10, 0.35) !important; color: #EC5C0A !important; padding: 3px 9px !important; height: 28px !important; border-radius: 6px !important; font-size: 0.72rem !important; font-weight: 800 !important; cursor: pointer !important; margin-left: 6px !important; display: inline-flex !important; align-items: center !important; gap: 4px !important; flex-shrink: 0 !important;">📋 Copy</button>
                 </div>
 
-                <div class="vs-sec7-field" style="border: 1.5px solid #0F172A !important; border-radius: 8px !important; padding: 9px 11px !important; font-size: 0.78rem !important; color: #0F172A !important; background: #FFFFFF !important; line-height: 1.35 !important; font-weight: 600 !important;">
+                <!-- ROW 5: A/C TYPE (MIN HEIGHT 44PX) -->
+                <div class="vs-sec7-field" style="border: 1.5px solid #0F172A !important; border-radius: 8px !important; padding: 8px 11px !important; font-size: 0.78rem !important; color: #0F172A !important; background: #FFFFFF !important; line-height: 1.35 !important; font-weight: 600 !important; display: flex !important; align-items: center !important; min-height: 44px !important; box-sizing: border-box !important;">
                   A/C Type - <strong>Current Account</strong>
                 </div>
 
-                <div class="vs-sec7-field" style="border: 1.5px solid #0F172A !important; border-radius: 8px !important; padding: 9px 11px !important; font-size: 0.78rem !important; color: #0F172A !important; background: #FFFFFF !important; line-height: 1.35 !important; font-weight: 600 !important;">
+                <!-- ROW 6: BRANCH (MIN HEIGHT 52PX FOR BOTH) -->
+                <div class="vs-sec7-field row-branch" style="border: 1.5px solid #0F172A !important; border-radius: 8px !important; padding: 8px 11px !important; font-size: 0.78rem !important; color: #0F172A !important; background: #FFFFFF !important; line-height: 1.35 !important; font-weight: 600 !important; display: flex !important; align-items: center !important; min-height: 52px !important; box-sizing: border-box !important;">
                   Branch - <strong>Ashoka Chowk, ROHTAK BRANCH</strong>
                 </div>
               </div>
@@ -3103,29 +3204,35 @@
               </div>
 
               <div class="vs-sec7-fields-list" style="display: flex !important; flex-direction: column !important; gap: 9px !important; width: 100% !important;">
-                <div class="vs-sec7-field company-title" style="border: 2px solid #0F172A !important; border-radius: 8px !important; padding: 10px 11px !important; font-size: 0.78rem !important; font-weight: 900 !important; text-transform: uppercase !important; background: #F8FAFC !important; text-align: center !important; color: #0F172A !important; letter-spacing: 0.3px !important; justify-content: center !important;">
+                <!-- ROW 1: COMPANY TITLE (MIN HEIGHT 54PX FOR BOTH) -->
+                <div class="vs-sec7-field company-title" style="border: 2px solid #0F172A !important; border-radius: 8px !important; padding: 8px 10px !important; font-size: 0.78rem !important; font-weight: 900 !important; text-transform: uppercase !important; background: #F8FAFC !important; text-align: center !important; color: #0F172A !important; letter-spacing: 0.3px !important; display: flex !important; align-items: center !important; justify-content: center !important; min-height: 54px !important; box-sizing: border-box !important;">
                   VIDHYUT SAATHI
                 </div>
 
-                <div class="vs-sec7-field" style="border: 1.5px solid #0F172A !important; border-radius: 8px !important; padding: 9px 11px !important; font-size: 0.78rem !important; color: #0F172A !important; background: #FFFFFF !important; line-height: 1.35 !important; font-weight: 600 !important;">
+                <!-- ROW 2: BANK NAME (MIN HEIGHT 44PX) -->
+                <div class="vs-sec7-field" style="border: 1.5px solid #0F172A !important; border-radius: 8px !important; padding: 8px 11px !important; font-size: 0.78rem !important; color: #0F172A !important; background: #FFFFFF !important; line-height: 1.35 !important; font-weight: 600 !important; display: flex !important; align-items: center !important; min-height: 44px !important; box-sizing: border-box !important;">
                   Bank Name - <strong>Indusind Bank Ltd.</strong>
                 </div>
 
-                <div class="vs-sec7-field" style="border: 1.5px solid #0F172A !important; border-radius: 8px !important; padding: 9px 11px !important; font-size: 0.78rem !important; color: #0F172A !important; background: #FFFFFF !important; line-height: 1.35 !important; font-weight: 600 !important; display: flex !important; align-items: center !important; justify-content: space-between !important;">
+                <!-- ROW 3: ACCOUNT NO (MIN HEIGHT 46PX) -->
+                <div class="vs-sec7-field" style="border: 1.5px solid #0F172A !important; border-radius: 8px !important; padding: 8px 11px !important; font-size: 0.78rem !important; color: #0F172A !important; background: #FFFFFF !important; line-height: 1.35 !important; font-weight: 600 !important; display: flex !important; align-items: center !important; justify-content: space-between !important; min-height: 46px !important; box-sizing: border-box !important;">
                   <span>Account No - <strong>201026450376</strong></span>
-                  <button type="button" class="vs-sec7-copy-btn" onclick="vsCopyText('201026450376', this)" title="Copy Account Number" style="background: linear-gradient(135deg, #FFF3EB 0%, #FFE5D4 100%) !important; border: 1px solid rgba(236, 92, 10, 0.35) !important; color: #EC5C0A !important; padding: 4px 9px !important; border-radius: 6px !important; font-size: 0.72rem !important; font-weight: 800 !important; cursor: pointer !important; margin-left: 6px !important;">📋 Copy</button>
+                  <button type="button" class="vs-sec7-copy-btn" onclick="vsCopyText('201026450376', this)" title="Copy Account Number" style="background: linear-gradient(135deg, #FFF3EB 0%, #FFE5D4 100%) !important; border: 1px solid rgba(236, 92, 10, 0.35) !important; color: #EC5C0A !important; padding: 3px 9px !important; height: 28px !important; border-radius: 6px !important; font-size: 0.72rem !important; font-weight: 800 !important; cursor: pointer !important; margin-left: 6px !important; display: inline-flex !important; align-items: center !important; gap: 4px !important; flex-shrink: 0 !important;">📋 Copy</button>
                 </div>
 
-                <div class="vs-sec7-field" style="border: 1.5px solid #0F172A !important; border-radius: 8px !important; padding: 9px 11px !important; font-size: 0.78rem !important; color: #0F172A !important; background: #FFFFFF !important; line-height: 1.35 !important; font-weight: 600 !important; display: flex !important; align-items: center !important; justify-content: space-between !important;">
+                <!-- ROW 4: IFSC CODE (MIN HEIGHT 46PX) -->
+                <div class="vs-sec7-field" style="border: 1.5px solid #0F172A !important; border-radius: 8px !important; padding: 8px 11px !important; font-size: 0.78rem !important; color: #0F172A !important; background: #FFFFFF !important; line-height: 1.35 !important; font-weight: 600 !important; display: flex !important; align-items: center !important; justify-content: space-between !important; min-height: 46px !important; box-sizing: border-box !important;">
                   <span>IFSC Code - <strong>INDB0000130</strong></span>
-                  <button type="button" class="vs-sec7-copy-btn" onclick="vsCopyText('INDB0000130', this)" title="Copy IFSC Code" style="background: linear-gradient(135deg, #FFF3EB 0%, #FFE5D4 100%) !important; border: 1px solid rgba(236, 92, 10, 0.35) !important; color: #EC5C0A !important; padding: 4px 9px !important; border-radius: 6px !important; font-size: 0.72rem !important; font-weight: 800 !important; cursor: pointer !important; margin-left: 6px !important;">📋 Copy</button>
+                  <button type="button" class="vs-sec7-copy-btn" onclick="vsCopyText('INDB0000130', this)" title="Copy IFSC Code" style="background: linear-gradient(135deg, #FFF3EB 0%, #FFE5D4 100%) !important; border: 1px solid rgba(236, 92, 10, 0.35) !important; color: #EC5C0A !important; padding: 3px 9px !important; height: 28px !important; border-radius: 6px !important; font-size: 0.72rem !important; font-weight: 800 !important; cursor: pointer !important; margin-left: 6px !important; display: inline-flex !important; align-items: center !important; gap: 4px !important; flex-shrink: 0 !important;">📋 Copy</button>
                 </div>
 
-                <div class="vs-sec7-field" style="border: 1.5px solid #0F172A !important; border-radius: 8px !important; padding: 9px 11px !important; font-size: 0.78rem !important; color: #0F172A !important; background: #FFFFFF !important; line-height: 1.35 !important; font-weight: 600 !important;">
+                <!-- ROW 5: A/C TYPE (MIN HEIGHT 44PX) -->
+                <div class="vs-sec7-field" style="border: 1.5px solid #0F172A !important; border-radius: 8px !important; padding: 8px 11px !important; font-size: 0.78rem !important; color: #0F172A !important; background: #FFFFFF !important; line-height: 1.35 !important; font-weight: 600 !important; display: flex !important; align-items: center !important; min-height: 44px !important; box-sizing: border-box !important;">
                   A/C Type - <strong>Current Account</strong>
                 </div>
 
-                <div class="vs-sec7-field" style="border: 1.5px solid #0F172A !important; border-radius: 8px !important; padding: 9px 11px !important; font-size: 0.78rem !important; color: #0F172A !important; background: #FFFFFF !important; line-height: 1.35 !important; font-weight: 600 !important;">
+                <!-- ROW 6: BRANCH (MIN HEIGHT 52PX FOR BOTH) -->
+                <div class="vs-sec7-field row-branch" style="border: 1.5px solid #0F172A !important; border-radius: 8px !important; padding: 8px 11px !important; font-size: 0.78rem !important; color: #0F172A !important; background: #FFFFFF !important; line-height: 1.35 !important; font-weight: 600 !important; display: flex !important; align-items: center !important; min-height: 52px !important; box-sizing: border-box !important;">
                   Branch - <strong>Civil Lines, Rohtak</strong>
                 </div>
               </div>
@@ -3137,7 +3244,7 @@
       </div>
 
       <!-- BOTTOM ACCESSIBLE PAYMENT MODES BAR -->
-      <div class="vs-sec7-payment-bar" style="margin-top: 26px !important; padding-top: 18px !important; border-top: 2px dashed rgba(236, 92, 10, 0.25) !important; display: flex !important; align-items: center !important; justify-content: space-between !important; flex-wrap: wrap !important; gap: 16px !important; background: #FFFFFF !important; border-radius: 20px !important; padding: 16px 20px !important; border: 1.5px solid rgba(236, 92, 10, 0.2) !important; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03) !important;">
+      <div class="vs-sec7-payment-bar" style="margin-top: 26px !important; padding-top: 18px !important; border-top: 2px dashed rgba(236, 92, 10, 0.25) !important; display: flex !important; align-items: center !important; justify-content: center !important; flex-wrap: wrap !important; gap: 16px !important; background: #FFFFFF !important; border-radius: 20px !important; padding: 16px 20px !important; border: 1.5px solid rgba(236, 92, 10, 0.2) !important; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03) !important; text-align: center !important;">
         <div class="vs-modes-title" style="display: inline-flex !important; align-items: center !important; gap: 8px !important; font-size: 0.85rem !important; font-weight: 900 !important; color: #0F172A !important; letter-spacing: 1px !important; text-transform: uppercase !important;">
           <span>💳</span> ACCEPTED PAYMENT MODES:
         </div>
@@ -3326,6 +3433,52 @@
       setTimeout(function() { el.innerHTML = orig; }, 2200);
     }
   }
+
+  function vsSec7GoToSlide(index) {
+    var grid = document.getElementById('vsSec7CardsGrid');
+    if (!grid) return;
+    var cards = grid.querySelectorAll('.vs-sec7-bank-card');
+    if (cards.length > index) {
+      cards[index].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      var dots = document.querySelectorAll('.vs-sec7-dot');
+      dots.forEach(function(d, i) {
+        if (i === index) d.classList.add('active');
+        else d.classList.remove('active');
+      });
+    }
+  }
+
+  function vsSec7Slide(dir) {
+    var dots = document.querySelectorAll('.vs-sec7-dot');
+    if (!dots.length) return;
+    var activeIndex = 0;
+    dots.forEach(function(d, i) {
+      if (d.classList.contains('active')) activeIndex = i;
+    });
+    var newIndex = activeIndex + dir;
+    if (newIndex < 0) newIndex = dots.length - 1;
+    if (newIndex >= dots.length) newIndex = 0;
+    vsSec7GoToSlide(newIndex);
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var grid = document.getElementById('vsSec7CardsGrid');
+    if (grid) {
+      grid.addEventListener('scroll', function() {
+        if (window.innerWidth <= 768) {
+          var width = grid.offsetWidth;
+          if (!width) return;
+          var scrollLeft = grid.scrollLeft;
+          var activeIndex = Math.round(scrollLeft / width);
+          var dots = document.querySelectorAll('.vs-sec7-dot');
+          dots.forEach(function(d, i) {
+            if (i === activeIndex) d.classList.add('active');
+            else d.classList.remove('active');
+          });
+        }
+      });
+    }
+  });
 </script>
 
 {% schema %}
