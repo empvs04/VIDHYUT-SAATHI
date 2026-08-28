@@ -1587,6 +1587,426 @@
       font-size: 16px !important; /* Prevents auto-zoom on iOS */
     }
   }
+
+  /* --- 8TH SECTION: OUR BANKING & 3D PAYMENT ANIMATED ARTWORK --- */
+  .vs-sec8-section {
+    background: linear-gradient(135deg, #F8FAFC 0%, #FFFFFF 50%, #F1F5F9 100%) !important;
+    border: 2px solid rgba(236, 92, 10, 0.2) !important;
+    border-radius: clamp(24px, 3.5vw, 36px) !important;
+    padding: clamp(35px, 5vw, 55px) clamp(20px, 4vw, 45px) !important;
+    margin-bottom: clamp(40px, 6vw, 65px) !important;
+    box-shadow: 0 25px 65px rgba(0, 0, 0, 0.05) !important;
+    position: relative !important;
+    overflow: hidden !important;
+  }
+
+  .vs-sec8-header {
+    text-align: center !important;
+    margin-bottom: clamp(30px, 5vw, 48px) !important;
+  }
+
+  .vs-sec8-badge {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    padding: 6px 18px !important;
+    background: linear-gradient(135deg, #FFF3EB 0%, #FFE5D4 100%) !important;
+    border: 1.5px solid rgba(236, 92, 10, 0.35) !important;
+    border-radius: 30px !important;
+    color: #EC5C0A !important;
+    font-size: clamp(0.72rem, 1.5vw, 0.8rem) !important;
+    font-weight: 800 !important;
+    letter-spacing: 1.2px !important;
+    text-transform: uppercase !important;
+    margin-bottom: 12px !important;
+    box-shadow: 0 4px 15px rgba(236, 92, 10, 0.12) !important;
+  }
+
+  .vs-sec8-header h2 {
+    font-size: clamp(1.8rem, 4vw, 2.5rem) !important;
+    font-weight: 900 !important;
+    color: #0F172A !important;
+    margin: 0 0 10px 0 !important;
+  }
+
+  .vs-sec8-header h2 span {
+    background: linear-gradient(135deg, #EC5C0A 0%, #FF9A00 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .vs-sec8-header p {
+    font-size: clamp(0.88rem, 2vw, 1.02rem) !important;
+    color: #475569 !important;
+    margin: 0 auto !important;
+    max-width: 620px !important;
+  }
+
+  .vs-sec8-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1.25fr !important;
+    gap: clamp(24px, 4vw, 45px) !important;
+    align-items: center !important;
+    margin-bottom: clamp(30px, 4vw, 45px) !important;
+  }
+
+  /* LEFT ARTWORK WITH ANIMATED 3D CARD, PHONE TERMINAL, AND FLOATING COINS */
+  .vs-sec8-left-artwork {
+    position: relative !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: 440px !important;
+  }
+
+  .vs-artwork-container {
+    position: relative !important;
+    width: 100% !important;
+    max-width: 440px !important;
+    height: 420px !important;
+  }
+
+  /* 3D Phone Terminal */
+  .vs-pay-phone {
+    position: absolute !important;
+    top: 20px; right: 30px;
+    width: 190px; height: 320px;
+    background: linear-gradient(160deg, #1E293B 0%, #0F172A 100%) !important;
+    border-radius: 36px !important;
+    border: 4px solid #334155 !important;
+    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.35) !important;
+    padding: 16px 14px !important;
+    box-sizing: border-box !important;
+    z-index: 2 !important;
+    transform: rotate(8deg) !important;
+    transition: transform 0.4s ease !important;
+  }
+
+  .vs-sec8-left-artwork:hover .vs-pay-phone {
+    transform: rotate(4deg) translateY(-5px) !important;
+  }
+
+  .vs-pay-header {
+    background: #0284C7 !important;
+    border-radius: 20px !important;
+    padding: 12px 10px !important;
+    text-align: center !important;
+    color: #FFFFFF !important;
+    position: relative !important;
+    box-shadow: 0 8px 20px rgba(2, 132, 199, 0.4) !important;
+  }
+
+  .vs-pay-accepted-badge {
+    font-size: 0.72rem !important;
+    font-weight: 800 !important;
+    background: #10B981 !important;
+    color: #FFFFFF !important;
+    padding: 4px 10px !important;
+    border-radius: 20px !important;
+    display: inline-block !important;
+    margin-bottom: 6px !important;
+  }
+
+  .vs-pay-dollar-icon {
+    font-size: 2.2rem !important;
+    font-weight: 900 !important;
+    line-height: 1 !important;
+  }
+
+  .vs-receipt-paper {
+    background: #FFFFFF !important;
+    margin-top: 14px !important;
+    border-radius: 12px !important;
+    padding: 12px 10px !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
+    border-bottom: 3px dashed #CBD5E1 !important;
+    animation: vsReceiptPulse 4s ease-in-out infinite alternate !important;
+  }
+
+  @keyframes vsReceiptPulse {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(6px); }
+  }
+
+  .vs-receipt-line {
+    height: 6px !important;
+    background: #E2E8F0 !important;
+    border-radius: 44px !important;
+    margin-bottom: 6px !important;
+  }
+  .vs-receipt-line.short { width: 60% !important; }
+
+  .vs-receipt-stamp {
+    font-size: 0.62rem !important;
+    font-weight: 900 !important;
+    color: #10B981 !important;
+    border: 1.5px solid #10B981 !important;
+    border-radius: 4px !important;
+    padding: 2px 6px !important;
+    text-align: center !important;
+    margin-top: 8px !important;
+    letter-spacing: 0.5px !important;
+  }
+
+  /* 3D Official Power Saving Card Image Wrapper */
+  .vs-3d-card-wrapper {
+    position: absolute !important;
+    top: 80px; left: 10px;
+    width: 280px !important;
+    z-index: 4 !important;
+    perspective: 1000px !important;
+    transform: rotate(-10deg) perspective(1000px) rotateY(-8deg) !important;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+  }
+
+  .vs-sec8-left-artwork:hover .vs-3d-card-wrapper {
+    transform: rotate(-4deg) perspective(1000px) rotateY(0deg) scale(1.05) !important;
+  }
+
+  .vs-official-card-img {
+    width: 100% !important;
+    height: auto !important;
+    border-radius: 16px !important;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35) !important;
+    display: block !important;
+  }
+
+  /* Floating 3D Gold Coins Animation */
+  .vs-coin {
+    position: absolute !important;
+    font-size: 1.8rem !important;
+    z-index: 5 !important;
+    filter: drop-shadow(0 6px 12px rgba(234, 179, 8, 0.5)) !important;
+    animation: vsCoinFloat 3.5s ease-in-out infinite alternate !important;
+  }
+  .vs-coin-1 { top: 10px; left: 30px; animation-delay: 0s !important; font-size: 2.2rem !important; }
+  .vs-coin-2 { top: 40px; right: 20px; animation-delay: 0.7s !important; }
+  .vs-coin-3 { bottom: 100px; left: 0px; animation-delay: 1.2s !important; font-size: 2rem !important; }
+  .vs-coin-4 { bottom: 40px; right: 40px; animation-delay: 1.8s !important; }
+  .vs-coin-5 { top: 180px; right: 10px; animation-delay: 2.3s !important; }
+
+  @keyframes vsCoinFloat {
+    0% { transform: translateY(0) rotate(0deg); }
+    100% { transform: translateY(-14px) rotate(15deg); }
+  }
+
+  /* Security Shield Badge */
+  .vs-security-badge {
+    position: absolute !important;
+    bottom: 20px; left: 40px;
+    z-index: 6 !important;
+    background: #FFFFFF !important;
+    border: 1.5px solid #10B981 !important;
+    border-radius: 16px !important;
+    padding: 10px 16px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    box-shadow: 0 12px 30px rgba(16, 185, 129, 0.2) !important;
+  }
+
+  .vs-shield-icon {
+    font-size: 1.6rem !important;
+  }
+
+  .vs-security-text {
+    display: flex !important;
+    flex-direction: column !important;
+    line-height: 1.2 !important;
+  }
+
+  .vs-security-text strong {
+    font-size: 0.78rem !important;
+    color: #0F172A !important;
+  }
+
+  .vs-security-text span {
+    font-size: 0.68rem !important;
+    color: #10B981 !important;
+    font-weight: 700 !important;
+  }
+
+  /* RIGHT COLUMN: BANKING CARDS */
+  .vs-bank-cards-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 18px !important;
+  }
+
+  .vs-bank-card {
+    background: #FFFFFF !important;
+    border: 2px solid #0F172A !important;
+    border-radius: 16px !important;
+    padding: 20px 16px !important;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+  }
+
+  .vs-bank-card:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 0 18px 40px rgba(236, 92, 10, 0.15) !important;
+    border-color: #EC5C0A !important;
+  }
+
+  .vs-bank-card-header {
+    text-align: center !important;
+    margin-bottom: 16px !important;
+    padding-bottom: 12px !important;
+    border-bottom: 2px dashed #E2E8F0 !important;
+  }
+
+  .vs-bank-logo {
+    height: 38px !important;
+    width: auto !important;
+    margin: 0 auto 6px auto !important;
+    display: block !important;
+  }
+
+  .vs-bank-heading {
+    font-size: 0.95rem !important;
+    font-weight: 900 !important;
+    color: #0F172A !important;
+    letter-spacing: 1.5px !important;
+    text-transform: uppercase !important;
+    border-bottom: 2px solid #0F172A !important;
+    display: inline-block !important;
+    padding-bottom: 2px !important;
+  }
+
+  .vs-bank-fields {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+
+  .vs-field-box {
+    border: 1.5px solid #0F172A !important;
+    border-radius: 6px !important;
+    padding: 10px 12px !important;
+    font-size: 0.82rem !important;
+    color: #0F172A !important;
+    background: #FFFFFF !important;
+    line-height: 1.35 !important;
+    box-sizing: border-box !important;
+  }
+
+  .vs-field-box.company-name {
+    font-size: 0.82rem !important;
+    font-weight: 900 !important;
+    text-transform: uppercase !important;
+    background: #F8FAFC !important;
+    text-align: center !important;
+  }
+
+  .vs-field-box span {
+    color: #475569 !important;
+    font-weight: 500 !important;
+  }
+
+  .vs-copyable {
+    cursor: pointer !important;
+    color: #EC5C0A !important;
+    transition: opacity 0.2s ease !important;
+  }
+  .vs-copyable:hover {
+    text-decoration: underline !important;
+  }
+
+  /* ACCEPTED PAYMENT MODES BAR */
+  .vs-payment-modes-bar {
+    background: #FFFFFF !important;
+    border: 1.5px solid #E2E8F0 !important;
+    border-radius: 20px !important;
+    padding: 16px 20px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    flex-wrap: wrap !important;
+    gap: 16px !important;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.03) !important;
+  }
+
+  .vs-modes-title {
+    font-size: 0.82rem !important;
+    font-weight: 900 !important;
+    color: #0F172A !important;
+    letter-spacing: 1px !important;
+  }
+
+  .vs-modes-badges {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    flex-wrap: wrap !important;
+  }
+
+  .vs-pay-pill {
+    padding: 6px 14px !important;
+    border-radius: 8px !important;
+    font-size: 0.78rem !important;
+    font-weight: 800 !important;
+    border: 1px solid #E2E8F0 !important;
+    background: #F8FAFC !important;
+    color: #0F172A !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04) !important;
+  }
+  .vs-pay-pill.visa { color: #1A1F71 !important; font-style: italic !important; font-weight: 900 !important; }
+  .vs-pay-pill.mc { color: #222222 !important; }
+  .vs-pay-pill.amex { color: #006FCF !important; font-size: 0.7rem !important; }
+
+  /* MEDIA QUERIES FOR SECTION 8 */
+  @media screen and (max-width: 1024px) {
+    .vs-sec8-grid {
+      grid-template-columns: 1fr !important;
+      gap: 35px !important;
+    }
+
+    .vs-sec8-left-artwork {
+      min-height: 380px !important;
+    }
+  }
+
+  @media screen and (max-width: 650px) {
+    .vs-bank-cards-grid {
+      grid-template-columns: 1fr !important;
+    }
+
+    .vs-artwork-container {
+      max-width: 320px !important;
+      height: 340px !important;
+    }
+
+    .vs-3d-card-wrapper {
+      width: 220px !important;
+      top: 50px !important;
+    }
+
+    .vs-pay-phone {
+      width: 150px !important;
+      height: 260px !important;
+    }
+
+    .vs-security-badge {
+      padding: 8px 12px !important;
+      left: 10px !important;
+      bottom: 10px !important;
+    }
+
+    .vs-payment-modes-bar {
+      flex-direction: column !important;
+      align-items: center !important;
+      text-align: center !important;
+    }
+
+    .vs-modes-badges {
+      justify-content: center !important;
+    }
+  }
 {%- endstyle -%}
 
 <section class="vs-contact-section" id="vsContactSection">
@@ -2072,6 +2492,155 @@
       </div>
     </div>
 
+    <!-- 8TH SECTION: OUR BANKING & 3D PAYMENT COMPOSITION -->
+    <div class="vs-sec8-section">
+      
+      <!-- Top Title -->
+      <div class="vs-sec8-header">
+        <div class="vs-sec8-badge">
+          <span>🏦 OFFICIAL BANKING &amp; PAYMENT DETAILS</span>
+        </div>
+        <h2>Direct Company <span>Bank Transfer</span></h2>
+        <p>Official bank accounts of Vidhyut Saathi Energy Savers Pvt. Ltd. for safe &amp; instant direct payments.</p>
+      </div>
+
+      <div class="vs-sec8-grid">
+        
+        <!-- LEFT COLUMN: 3D ANIMATED PAYMENT & CARD ARTWORK -->
+        <div class="vs-sec8-left-artwork">
+          <div class="vs-artwork-container">
+            
+            <!-- Floating 3D Gold Coins -->
+            <div class="vs-coin vs-coin-1">🪙</div>
+            <div class="vs-coin vs-coin-2">🪙</div>
+            <div class="vs-coin vs-coin-3">🪙</div>
+            <div class="vs-coin vs-coin-4">🪙</div>
+            <div class="vs-coin vs-coin-5">🪙</div>
+
+            <!-- 3D Smartphone Payment Terminal Graphic -->
+            <div class="vs-pay-phone">
+              <div class="vs-pay-header">
+                <span class="vs-pay-accepted-badge">✓ Payment Accepted</span>
+                <div class="vs-pay-dollar-icon">₹</div>
+              </div>
+              <div class="vs-receipt-paper">
+                <div class="vs-receipt-line"></div>
+                <div class="vs-receipt-line short"></div>
+                <div class="vs-receipt-stamp">PAID • VERIFIED</div>
+              </div>
+            </div>
+
+            <!-- Official Vidhyut Saathi Power Saving Card (Exact Image with 3D Tilt) -->
+            <div class="vs-3d-card-wrapper">
+              <img src="{{ 'vs-power-saving-card-official.jpg' | asset_url }}" alt="Vidhyut Saathi Official Electric Power Saving Card" class="vs-official-card-img" loading="lazy">
+            </div>
+
+            <!-- 100% Encrypted Security Shield -->
+            <div class="vs-security-badge">
+              <span class="vs-shield-icon">🛡️</span>
+              <div class="vs-security-text">
+                <strong>100% SECURE BANKING</strong>
+                <span>SSL Encrypted &amp; Government Registered</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN: 2 OFFICIAL BANKING CARDS -->
+        <div class="vs-sec8-right-banking">
+          <div class="vs-bank-cards-grid">
+            
+            <!-- BANK CARD 1: IDFC FIRST BANK -->
+            <div class="vs-bank-card">
+              <div class="vs-bank-card-header">
+                <img src="{{ 'vidhyut-saathi-logo.png' | asset_url }}" alt="Vidhyut Saathi" class="vs-bank-logo" loading="lazy">
+                <div class="vs-bank-heading">OUR BANKING</div>
+              </div>
+
+              <div class="vs-bank-fields">
+                <div class="vs-field-box company-name">
+                  <strong>VIDHYUT SAATHI ENERGY SAVERS PRIVATE LIMITED</strong>
+                </div>
+
+                <div class="vs-field-box">
+                  <span>Bank Name</span> &ndash; <strong>IDFC FIRST</strong>
+                </div>
+
+                <div class="vs-field-box">
+                  <span>Account No</span> &ndash; <strong class="vs-copyable" onclick="vsCopyText('10123818626', this)">10123818626 <small>📋</small></strong>
+                </div>
+
+                <div class="vs-field-box">
+                  <span>IFSC Code</span> &ndash; <strong class="vs-copyable" onclick="vsCopyText('IDFB0021581', this)">IDFB0021581 <small>📋</small></strong>
+                </div>
+
+                <div class="vs-field-box">
+                  <span>A/C Type</span> &ndash; <strong>Current Account</strong>
+                </div>
+
+                <div class="vs-field-box">
+                  <span>Branch</span> &ndash; <strong>Ashoka Chowk, ROHTAK BRANCH</strong>
+                </div>
+              </div>
+            </div>
+
+            <!-- BANK CARD 2: INDUSIND BANK -->
+            <div class="vs-bank-card">
+              <div class="vs-bank-card-header">
+                <img src="{{ 'vidhyut-saathi-logo.png' | asset_url }}" alt="Vidhyut Saathi" class="vs-bank-logo" loading="lazy">
+                <div class="vs-bank-heading">OUR BANKING</div>
+              </div>
+
+              <div class="vs-bank-fields">
+                <div class="vs-field-box company-name">
+                  <strong>VIDHYUT SAATHI</strong>
+                </div>
+
+                <div class="vs-field-box">
+                  <span>Bank Name</span> &ndash; <strong>Indusind Bank Ltd.</strong>
+                </div>
+
+                <div class="vs-field-box">
+                  <span>Account No</span> &ndash; <strong class="vs-copyable" onclick="vsCopyText('201026450376', this)">201026450376 <small>📋</small></strong>
+                </div>
+
+                <div class="vs-field-box">
+                  <span>IFSC Code</span> &ndash; <strong class="vs-copyable" onclick="vsCopyText('INDB0000130', this)">INDB0000130 <small>📋</small></strong>
+                </div>
+
+                <div class="vs-field-box">
+                  <span>A/C Type</span> &ndash; <strong>Current Account</strong>
+                </div>
+
+                <div class="vs-field-box">
+                  <span>Branch</span> &ndash; <strong>Civil Lines, Rohtak</strong>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- BOTTOM ACCEPTED PAYMENT METHODS BAR -->
+      <div class="vs-payment-modes-bar">
+        <span class="vs-modes-title">ACCEPTED PAYMENT MODES:</span>
+        <div class="vs-modes-badges">
+          <div class="vs-pay-pill visa">VISA</div>
+          <div class="vs-pay-pill mc"><span>🔴🟡</span> mastercard</div>
+          <div class="vs-pay-pill netbanking">🏦 Net Banking</div>
+          <div class="vs-pay-pill gpay"><span style="color:#4285F4">G</span><span style="color:#EA4335">o</span><span style="color:#FBBC05">o</span><span style="color:#4285F4">g</span><span style="color:#34A853">l</span><span style="color:#EA4335">e</span> Pay</div>
+          <div class="vs-pay-pill phonepe">📱 PhonePe</div>
+          <div class="vs-pay-pill paytm"><span style="color:#00B9F1">Pay</span><span style="color:#002E6E">tm</span></div>
+          <div class="vs-pay-pill amex">AMERICAN EXPRESS</div>
+          <div class="vs-pay-pill amzpay">amazon pay</div>
+        </div>
+      </div>
+
+    </div>
+
     <!-- BOTTOM CTA BANNER -->
     <div class="vs-bottom-cta">
       <h3>Ready to Slash Your Power Bills by up to 30%?</h3>
@@ -2132,6 +2701,15 @@
       }
     });
   });
+
+  function vsCopyText(text, el) {
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(text);
+      var orig = el.innerHTML;
+      el.innerHTML = text + ' <small style="color:#10B981;font-weight:bold;">✅ Copied!</small>';
+      setTimeout(function() { el.innerHTML = orig; }, 2200);
+    }
+  }
 </script>
 
 {% schema %}
