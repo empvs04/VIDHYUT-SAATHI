@@ -1937,48 +1937,114 @@
 
   /* ACCEPTED PAYMENT MODES BAR */
   .vs-payment-modes-bar {
-    background: #FFFFFF !important;
-    border: 1.5px solid #E2E8F0 !important;
-    border-radius: 20px !important;
-    padding: 16px 20px !important;
+    background: linear-gradient(135deg, #FFFFFF 0%, #FFFDF9 50%, #F8FAFC 100%) !important;
+    border: 1.5px solid rgba(236, 92, 10, 0.25) !important;
+    border-radius: 24px !important;
+    padding: clamp(16px, 3vw, 22px) clamp(18px, 4vw, 32px) !important;
     display: flex !important;
     align-items: center !important;
     justify-content: space-between !important;
     flex-wrap: wrap !important;
     gap: 16px !important;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.03) !important;
+    box-shadow: 0 10px 30px rgba(236, 92, 10, 0.05) !important;
+    margin-top: 25px !important;
   }
 
   .vs-modes-title {
-    font-size: 0.82rem !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    font-size: 0.85rem !important;
     font-weight: 900 !important;
     color: #0F172A !important;
     letter-spacing: 1px !important;
+    text-transform: uppercase !important;
+  }
+
+  .vs-modes-title span {
+    color: #EC5C0A !important;
   }
 
   .vs-modes-badges {
     display: flex !important;
     align-items: center !important;
-    gap: 12px !important;
+    justify-content: center !important;
+    gap: 10px !important;
     flex-wrap: wrap !important;
   }
 
   .vs-pay-pill {
-    padding: 6px 14px !important;
-    border-radius: 8px !important;
-    font-size: 0.78rem !important;
+    padding: 8px 16px !important;
+    border-radius: 12px !important;
+    font-size: 0.82rem !important;
     font-weight: 800 !important;
-    border: 1px solid #E2E8F0 !important;
-    background: #F8FAFC !important;
+    border: 1.5px solid #E2E8F0 !important;
+    background: #FFFFFF !important;
     color: #0F172A !important;
-    display: flex !important;
+    display: inline-flex !important;
     align-items: center !important;
-    gap: 6px !important;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04) !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03) !important;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    cursor: default !important;
   }
-  .vs-pay-pill.visa { color: #1A1F71 !important; font-style: italic !important; font-weight: 900 !important; }
-  .vs-pay-pill.mc { color: #222222 !important; }
-  .vs-pay-pill.amex { color: #006FCF !important; font-size: 0.7rem !important; }
+
+  .vs-pay-pill:hover {
+    transform: translateY(-3px) scale(1.04) !important;
+    border-color: #EC5C0A !important;
+    box-shadow: 0 8px 20px rgba(236, 92, 10, 0.18) !important;
+  }
+
+  .vs-pay-pill.visa {
+    background: linear-gradient(135deg, #1A1F71 0%, #0D1240 100%) !important;
+    color: #FFFFFF !important;
+    font-style: italic !important;
+    font-weight: 900 !important;
+    letter-spacing: 1px !important;
+    border-color: #1A1F71 !important;
+  }
+
+  .vs-pay-pill.mc {
+    background: #0F172A !important;
+    color: #FFFFFF !important;
+    border-color: #334155 !important;
+  }
+
+  .vs-pay-pill.netbanking {
+    background: #F1F5F9 !important;
+    color: #0F172A !important;
+  }
+
+  .vs-pay-pill.gpay {
+    background: #FFFFFF !important;
+    border-color: #E2E8F0 !important;
+  }
+
+  .vs-pay-pill.phonepe {
+    background: #5F259F !important;
+    color: #FFFFFF !important;
+    border-color: #5F259F !important;
+  }
+
+  .vs-pay-pill.paytm {
+    background: #002E6E !important;
+    color: #FFFFFF !important;
+    border-color: #00B9F1 !important;
+  }
+
+  .vs-pay-pill.amex {
+    background: #006FCF !important;
+    color: #FFFFFF !important;
+    border-color: #006FCF !important;
+    font-size: 0.74rem !important;
+  }
+
+  .vs-pay-pill.amzpay {
+    background: #232F3E !important;
+    color: #FF9900 !important;
+    border-color: #FF9900 !important;
+  }
 
   /* MEDIA QUERIES FOR SECTION 8 */
   @media screen and (max-width: 1024px) {
@@ -2613,7 +2679,9 @@
 
       <!-- BOTTOM ACCEPTED PAYMENT METHODS BAR -->
       <div class="vs-payment-modes-bar">
-        <span class="vs-modes-title">ACCEPTED PAYMENT MODES:</span>
+        <div class="vs-modes-title">
+          <span>🔒</span> ACCEPTED PAYMENT MODES
+        </div>
         <div class="vs-modes-badges">
           <div class="vs-pay-pill visa">VISA</div>
           <div class="vs-pay-pill mc"><span>🔴🟡</span> mastercard</div>
@@ -2622,7 +2690,7 @@
           <div class="vs-pay-pill phonepe">📱 PhonePe</div>
           <div class="vs-pay-pill paytm"><span style="color:#00B9F1">Pay</span><span style="color:#002E6E">tm</span></div>
           <div class="vs-pay-pill amex">AMERICAN EXPRESS</div>
-          <div class="vs-pay-pill amzpay">amazon pay</div>
+          <div class="vs-pay-pill amzpay"><span>🛒</span> amazon pay</div>
         </div>
       </div>
 
