@@ -1650,20 +1650,41 @@
     margin-bottom: clamp(30px, 4vw, 45px) !important;
   }
 
-  /* LEFT ARTWORK WITH ANIMATED 3D CARD, PHONE TERMINAL, AND FLOATING COINS */
+  /* LEFT ARTWORK WITH ANIMATED 3D CARD, PHONE TERMINAL, AND RECEIPT */
   .vs-sec8-left-artwork {
     position: relative !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    min-height: 440px !important;
   }
 
-  .vs-artwork-container {
+  .vs-artwork-container-full {
     position: relative !important;
     width: 100% !important;
-    max-width: 440px !important;
-    height: 420px !important;
+    max-width: 500px !important;
+    perspective: 1000px !important;
+  }
+
+  .vs-full-artwork-img {
+    width: 100% !important;
+    height: auto !important;
+    display: block !important;
+    filter: drop-shadow(0 20px 45px rgba(15, 23, 42, 0.12)) !important;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    transform: perspective(1000px) rotateY(-4deg) rotateX(2deg) !important;
+  }
+
+  .vs-artwork-container-full:hover .vs-full-artwork-img {
+    transform: perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1.03) !important;
+    filter: drop-shadow(0 25px 55px rgba(236, 92, 10, 0.22)) !important;
+  }
+
+  .vs-bank-logo {
+    height: 48px !important;
+    width: auto !important;
+    margin: 0 auto 8px auto !important;
+    display: block !important;
+    object-fit: contain !important;
   }
 
   /* 3D Phone Terminal */
@@ -2508,42 +2529,8 @@
         
         <!-- LEFT COLUMN: 3D ANIMATED PAYMENT & CARD ARTWORK -->
         <div class="vs-sec8-left-artwork">
-          <div class="vs-artwork-container">
-            
-            <!-- Floating 3D Gold Coins -->
-            <div class="vs-coin vs-coin-1">🪙</div>
-            <div class="vs-coin vs-coin-2">🪙</div>
-            <div class="vs-coin vs-coin-3">🪙</div>
-            <div class="vs-coin vs-coin-4">🪙</div>
-            <div class="vs-coin vs-coin-5">🪙</div>
-
-            <!-- 3D Smartphone Payment Terminal Graphic -->
-            <div class="vs-pay-phone">
-              <div class="vs-pay-header">
-                <span class="vs-pay-accepted-badge">✓ Payment Accepted</span>
-                <div class="vs-pay-dollar-icon">₹</div>
-              </div>
-              <div class="vs-receipt-paper">
-                <div class="vs-receipt-line"></div>
-                <div class="vs-receipt-line short"></div>
-                <div class="vs-receipt-stamp">PAID • VERIFIED</div>
-              </div>
-            </div>
-
-            <!-- Official Vidhyut Saathi Power Saving Card (Exact Image with 3D Tilt) -->
-            <div class="vs-3d-card-wrapper">
-              <img src="{{ 'vs-power-saving-card-official.jpg' | asset_url }}" alt="Vidhyut Saathi Official Electric Power Saving Card" class="vs-official-card-img" loading="lazy">
-            </div>
-
-            <!-- 100% Encrypted Security Shield -->
-            <div class="vs-security-badge">
-              <span class="vs-shield-icon">🛡️</span>
-              <div class="vs-security-text">
-                <strong>100% SECURE BANKING</strong>
-                <span>SSL Encrypted &amp; Government Registered</span>
-              </div>
-            </div>
-
+          <div class="vs-artwork-container-full">
+            <img src="{{ 'vs-sec8-payment-artwork-full.png' | asset_url }}" alt="Vidhyut Saathi Official Payment &amp; Banking System" class="vs-full-artwork-img" loading="lazy">
           </div>
         </div>
 
@@ -2554,7 +2541,7 @@
             <!-- BANK CARD 1: IDFC FIRST BANK -->
             <div class="vs-bank-card">
               <div class="vs-bank-card-header">
-                <img src="{{ 'vidhyut-saathi-logo.png' | asset_url }}" alt="Vidhyut Saathi" class="vs-bank-logo" loading="lazy">
+                <img src="{{ 'vidhyut-saathi-banking-logo.jpg' | asset_url }}" alt="Vidhyut Saathi" class="vs-bank-logo" loading="lazy">
                 <div class="vs-bank-heading">OUR BANKING</div>
               </div>
 
@@ -2588,7 +2575,7 @@
             <!-- BANK CARD 2: INDUSIND BANK -->
             <div class="vs-bank-card">
               <div class="vs-bank-card-header">
-                <img src="{{ 'vidhyut-saathi-logo.png' | asset_url }}" alt="Vidhyut Saathi" class="vs-bank-logo" loading="lazy">
+                <img src="{{ 'vidhyut-saathi-banking-logo.jpg' | asset_url }}" alt="Vidhyut Saathi" class="vs-bank-logo" loading="lazy">
                 <div class="vs-bank-heading">OUR BANKING</div>
               </div>
 
