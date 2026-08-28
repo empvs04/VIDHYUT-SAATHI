@@ -1664,35 +1664,20 @@
     max-width: 520px !important;
     margin: 0 auto !important;
     perspective: 1000px !important;
+    border-radius: 24px !important;
+    overflow: hidden !important;
+    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.22) !important;
+    border: 2px solid rgba(236, 92, 10, 0.25) !important;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease, border-color 0.4s ease !important;
+  }
+
+  .vs-artwork-container-full:hover {
+    transform: translateY(-6px) scale(1.02) !important;
+    box-shadow: 0 28px 65px rgba(236, 92, 10, 0.3) !important;
+    border-color: #EC5C0A !important;
   }
 
   .vs-full-artwork-img {
-    width: 100% !important;
-    height: auto !important;
-    display: block !important;
-    filter: drop-shadow(0 20px 40px rgba(15, 23, 42, 0.1)) !important;
-  }
-
-  /* High-Res Crystal Clear Official Power Saving Card Overlay */
-  .vs-overlay-card-wrapper {
-    position: absolute !important;
-    top: 25.5% !important;
-    left: 4.8% !important;
-    width: 41.5% !important;
-    z-index: 6 !important;
-    border-radius: 10px !important;
-    overflow: hidden !important;
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.25) !important;
-    transform: rotate(-10deg) perspective(800px) rotateY(-8deg) !important;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
-  }
-
-  .vs-artwork-container-full:hover .vs-overlay-card-wrapper {
-    transform: rotate(-4deg) perspective(800px) rotateY(0deg) scale(1.08) !important;
-    box-shadow: 0 22px 50px rgba(236, 92, 10, 0.4) !important;
-  }
-
-  .vs-overlay-card-img {
     width: 100% !important;
     height: auto !important;
     display: block !important;
@@ -2613,13 +2598,10 @@
 
       <div class="vs-sec8-grid">
         
-        <!-- LEFT COLUMN: 3D ANIMATED PAYMENT & CARD ARTWORK -->
+        <!-- LEFT COLUMN: HD 3D ANIMATED PAYMENT & CARD ARTWORK -->
         <div class="vs-sec8-left-artwork">
           <div class="vs-artwork-container-full">
-            <img src="{{ 'vs-sec8-payment-artwork-full.png' | asset_url }}" alt="Vidhyut Saathi Official Payment &amp; Banking System" class="vs-full-artwork-img" loading="lazy">
-            <div class="vs-overlay-card-wrapper">
-              <img src="{{ 'vs-power-saving-card-official.jpg' | asset_url }}" alt="Vidhyut Saathi Official Electric Power Saving Card" class="vs-overlay-card-img" loading="lazy">
-            </div>
+            <img src="{{ 'vs-sec8-payment-artwork-hd.jpg' | asset_url }}" alt="Vidhyut Saathi Official 3D Payment &amp; Power Saving Card System" class="vs-full-artwork-img" loading="lazy">
           </div>
         </div>
 
