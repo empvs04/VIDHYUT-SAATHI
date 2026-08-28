@@ -2447,16 +2447,32 @@
     width: 100%;
   }
 
+  /* CARDS GRID - DEFAULT ALWAYS HORIZONTAL SIDE-BY-SIDE */
+  #vsContactSection .vs-sec7-cards-grid,
+  .vs-sec7-cards-grid {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: stretch !important;
+    justify-content: center !important;
+    gap: 16px !important;
+    width: 100% !important;
+  }
+
+  #vsContactSection .vs-sec7-bank-card,
   .vs-sec7-bank-card {
-    background: #FFFFFF;
-    border: 2px solid #0F172A;
-    border-radius: 20px;
-    box-shadow: 0 12px 35px rgba(15, 23, 42, 0.05);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: all 0.35s ease;
-    box-sizing: border-box;
+    background: #FFFFFF !important;
+    border: 2px solid #0F172A !important;
+    border-radius: 20px !important;
+    box-shadow: 0 12px 35px rgba(15, 23, 42, 0.05) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    flex: 1 1 0px !important;
+    width: 50% !important;
+    min-width: 0 !important;
+    max-width: 50% !important;
+    box-sizing: border-box !important;
+    transition: all 0.35s ease !important;
   }
 
   .vs-sec7-bank-card.idfc-theme { border-top: 5px solid #EC5C0A; }
@@ -3087,10 +3103,10 @@
 
         <!-- RIGHT COLUMN: 2 BANKING DETAILS CARDS (CENTERED & MATCHED HEIGHTS) -->
         <div class="vs-sec7-cards-wrapper" style="display: flex !important; flex-direction: column !important; justify-content: center !important; align-items: center !important; height: 100% !important; width: 100% !important;">
-          <div class="vs-sec7-cards-grid" id="vsSec7CardsGrid">
+          <div class="vs-sec7-cards-grid" id="vsSec7CardsGrid" style="display: flex !important; flex-direction: row !important; align-items: stretch !important; justify-content: center !important; gap: 16px !important; width: 100% !important;">
             
             <!-- CARD 1: IDFC FIRST BANK -->
-            <div class="vs-sec7-bank-card idfc-theme" id="vsSec7Card1" style="background: #FFFFFF !important; border: 2px solid #0F172A !important; border-top: 5px solid #EC5C0A !important; border-radius: 20px !important; padding: 20px 16px !important; box-shadow: 0 12px 35px rgba(15, 23, 42, 0.05) !important; display: flex !important; flex-direction: column !important; justify-content: space-between !important; box-sizing: border-box !important;">
+            <div class="vs-sec7-bank-card idfc-theme" id="vsSec7Card1" style="flex: 1 1 0px !important; width: 50% !important; min-width: 0 !important; max-width: 50% !important; background: #FFFFFF !important; border: 2px solid #0F172A !important; border-top: 5px solid #EC5C0A !important; border-radius: 20px !important; padding: 20px 16px !important; box-shadow: 0 12px 35px rgba(15, 23, 42, 0.05) !important; display: flex !important; flex-direction: column !important; justify-content: space-between !important; box-sizing: border-box !important;">
               <div class="vs-sec7-card-header" style="text-align: center !important; margin-bottom: 14px !important; width: 100% !important;">
                 <div style="width: 180px !important; max-width: 100% !important; height: 44px !important; margin: 0 auto 8px auto !important; display: flex !important; align-items: center !important; justify-content: center !important; overflow: hidden !important;">
                   <img src="{{ 'vidhyut-saathi-banking-logo.jpg' | asset_url }}" alt="Vidhyut Saathi Logo" class="vs-sec7-card-logo" style="max-height: 44px !important; width: auto !important; max-width: 180px !important; object-fit: contain !important; display: block !important; margin: 0 auto !important;">
@@ -3134,7 +3150,7 @@
             </div>
 
             <!-- CARD 2: INDUSIND BANK LTD. -->
-            <div class="vs-sec7-bank-card indusind-theme" id="vsSec7Card2" style="background: #FFFFFF !important; border: 2px solid #0F172A !important; border-top: 5px solid #10B981 !important; border-radius: 20px !important; padding: 20px 16px !important; box-shadow: 0 12px 35px rgba(15, 23, 42, 0.05) !important; display: flex !important; flex-direction: column !important; justify-content: space-between !important; box-sizing: border-box !important;">
+            <div class="vs-sec7-bank-card indusind-theme" id="vsSec7Card2" style="flex: 1 1 0px !important; width: 50% !important; min-width: 0 !important; max-width: 50% !important; background: #FFFFFF !important; border: 2px solid #0F172A !important; border-top: 5px solid #10B981 !important; border-radius: 20px !important; padding: 20px 16px !important; box-shadow: 0 12px 35px rgba(15, 23, 42, 0.05) !important; display: flex !important; flex-direction: column !important; justify-content: space-between !important; box-sizing: border-box !important;">
               <div class="vs-sec7-card-header" style="text-align: center !important; margin-bottom: 14px !important; width: 100% !important;">
                 <div style="width: 180px !important; max-width: 100% !important; height: 44px !important; margin: 0 auto 8px auto !important; display: flex !important; align-items: center !important; justify-content: center !important; overflow: hidden !important;">
                   <img src="{{ 'vidhyut-saathi-banking-logo.jpg' | asset_url }}" alt="Vidhyut Saathi Logo" class="vs-sec7-card-logo" style="max-height: 44px !important; width: auto !important; max-width: 180px !important; object-fit: contain !important; display: block !important; margin: 0 auto !important;">
