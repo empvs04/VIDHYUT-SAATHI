@@ -38,57 +38,27 @@
     z-index: 3 !important;
   }
 
-  /* --- 1ST SECTION: HERO BANNER (EXACT MATCH WITH ISO CERTIFICATION PAGE SECTION 1) --- */
-  .vs-contact-hero-banner {
-    position: relative !important;
-    width: 100% !important;
-    min-height: 440px !important;
-    background-color: #FFFDF8 !important;
-    background-image: linear-gradient(150deg, #FFFDF8 0%, #FFF5E0 40%, #FAFFF5 80%, #FFFFFF 100%) !important;
-    border-radius: clamp(20px, 3vw, 32px) !important;
-    margin-bottom: clamp(35px, 5vw, 55px) !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    overflow: hidden !important;
-    border-bottom: 2px solid rgba(247, 148, 29, 0.25) !important;
-    border-top: 1px solid rgba(247, 148, 29, 0.15) !important;
-    padding: 0 !important;
-  }
-
-  /* Moving Background Marquee Text (Left to Right) */
+  /* --- TOP HEADER BACKGROUND MOVING MARQUEE (LEFT TO RIGHT) --- */
   @keyframes vsMarqueeLeftToRight {
-    0% { transform: translateX(-50%) translateY(-50%); }
-    100% { transform: translateX(0%) translateY(-50%); }
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0%); }
   }
 
-  .vs-contact-hero-marquee {
+  .vs-top-header-marquee {
     position: absolute !important;
-    top: 50% !important;
+    top: 15px !important;
     left: 0 !important;
-    transform: translateY(-50%) !important;
     width: 200% !important;
     white-space: nowrap !important;
     z-index: 1 !important;
-    opacity: 0.65 !important;
+    opacity: 0.12 !important;
     pointer-events: none !important;
     line-height: 1 !important;
-    font-size: clamp(45px, 7vw, 110px) !important;
-    font-weight: 800 !important;
-    color: #F7941D !important;
-    letter-spacing: 2px !important;
-    animation: vsMarqueeLeftToRight 18s linear infinite !important;
-  }
-
-  @media screen and (max-width: 768px) {
-    .vs-contact-hero-banner {
-      min-height: 240px !important;
-      border-radius: 20px !important;
-    }
-    .vs-contact-hero-marquee {
-      font-size: clamp(32px, 8vw, 55px) !important;
-      opacity: 0.75 !important;
-    }
+    font-size: clamp(55px, 12vw, 130px) !important;
+    font-weight: 900 !important;
+    color: #EC5C0A !important;
+    letter-spacing: 3px !important;
+    animation: vsMarqueeLeftToRight 20s linear infinite !important;
   }
 
   /* Header Block */
@@ -2131,6 +2101,11 @@
 
 <section class="vs-contact-section" id="vsContactSection">
   
+  <!-- Top Header Background Moving Marquee Text (Left to Right) -->
+  <div class="vs-top-header-marquee">
+    Contact Us &bull; Contact Us &bull; Contact Us &bull; Contact Us &bull; Contact Us &bull; Contact Us &bull; Contact Us &bull; Contact Us
+  </div>
+
   <div class="vs-contact-container">
 
     <!-- 2-Column Split Section Grid -->
