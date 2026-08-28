@@ -2645,10 +2645,28 @@
 
   /* DESKTOP STYLING (LARGE SCREENS > 768PX) */
   @media screen and (min-width: 769px) {
+    #vsContactSection .vs-sec7-banking-section,
+    .vs-sec7-banking-section {
+      display: block !important;
+    }
+
+    #vsContactSection .vs-sec7-main-grid,
+    .vs-sec7-main-grid {
+      display: grid !important;
+      grid-template-columns: 0.95fr 1.05fr !important;
+      gap: 32px !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+
     #vsContactSection .vs-sec7-mobile-slider-controls,
     .vs-sec7-mobile-slider-controls {
       display: none !important;
       visibility: hidden !important;
+      height: 0 !important;
+      opacity: 0 !important;
+      margin: 0 !important;
+      padding: 0 !important;
     }
 
     #vsContactSection .vs-sec7-cards-grid,
@@ -2674,23 +2692,21 @@
     }
   }
 
-  @media screen and (max-width: 991px) {
-    .vs-sec7-main-grid {
-      grid-template-columns: 1fr !important;
-      gap: 24px !important;
-    }
-
-    .vs-sec7-artwork-box {
-      max-height: 440px !important;
-      padding: 16px !important;
-    }
-  }
-
   /* MOBILE STYLING (SMALL SCREENS <= 768PX) */
   @media screen and (max-width: 768px) {
     .vs-sec7-banking-section {
-      padding: 22px 14px !important;
-      border-radius: 22px !important;
+      padding: 20px 12px !important;
+      border-radius: 20px !important;
+    }
+
+    .vs-sec7-main-grid {
+      grid-template-columns: 1fr !important;
+      gap: 20px !important;
+    }
+
+    .vs-sec7-artwork-box {
+      max-height: 360px !important;
+      padding: 0 !important;
     }
 
     /* SHOW TAB CONTROLS ON MOBILE ONLY */
