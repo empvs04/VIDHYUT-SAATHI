@@ -2659,16 +2659,6 @@
       justify-content: center !important;
     }
 
-    #vsContactSection .vs-sec7-mobile-slider-controls,
-    .vs-sec7-mobile-slider-controls {
-      display: none !important;
-      visibility: hidden !important;
-      height: 0 !important;
-      opacity: 0 !important;
-      margin: 0 !important;
-      padding: 0 !important;
-    }
-
     #vsContactSection .vs-sec7-cards-grid,
     .vs-sec7-cards-grid {
       display: grid !important;
@@ -2678,10 +2668,6 @@
       overflow: visible !important;
     }
 
-    #vsContactSection #vsSec7Card1,
-    #vsContactSection #vsSec7Card2,
-    #vsSec7Card1,
-    #vsSec7Card2,
     #vsContactSection .vs-sec7-bank-card,
     .vs-sec7-bank-card {
       display: flex !important;
@@ -2709,65 +2695,39 @@
       padding: 0 !important;
     }
 
-    /* SHOW TAB CONTROLS ON MOBILE ONLY */
-    #vsContactSection .vs-sec7-mobile-slider-controls,
-    .vs-sec7-mobile-slider-controls {
-      display: flex !important;
-      visibility: visible !important;
-      height: auto !important;
-      opacity: 1 !important;
-      align-items: center !important;
-      justify-content: center !important;
-      gap: 10px !important;
-      width: 100% !important;
-      margin-bottom: 16px !important;
-      box-sizing: border-box !important;
-    }
-
-    .vs-sec7-tab {
-      flex: 1 !important;
-      padding: 10px 14px !important;
-      font-size: 0.82rem !important;
-      font-weight: 800 !important;
-      border-radius: 25px !important;
-      border: 1.5px solid #CBD5E1 !important;
-      background: #FFFFFF !important;
-      color: #475569 !important;
-      cursor: pointer !important;
-      text-align: center !important;
-      transition: all 0.25s ease !important;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04) !important;
-    }
-
-    .vs-sec7-tab.active {
-      background: linear-gradient(135deg, #EC5C0A 0%, #FF9A00 100%) !important;
-      color: #FFFFFF !important;
-      border-color: #EC5C0A !important;
-      box-shadow: 0 6px 18px rgba(236, 92, 10, 0.35) !important;
-    }
-
-    /* SINGLE CARD DISPLAY ON MOBILE */
     #vsContactSection .vs-sec7-cards-grid,
     .vs-sec7-cards-grid {
-      display: block !important;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 16px !important;
       width: 100% !important;
     }
 
-    #vsContactSection #vsSec7Card1,
-    #vsSec7Card1 {
+    #vsContactSection .vs-sec7-bank-card,
+    .vs-sec7-bank-card {
       display: flex !important;
       width: 100% !important;
       box-sizing: border-box !important;
       padding: 18px 14px !important;
     }
 
-    #vsContactSection #vsSec7Card2,
-    #vsSec7Card2 {
-      display: none !important;
-      width: 100% !important;
-      box-sizing: border-box !important;
-      padding: 18px 14px !important;
+    .vs-sec7-field {
+      padding: 9px 10px !important;
+      font-size: 0.78rem !important;
     }
+
+    .vs-sec7-copy-btn {
+      padding: 3px 7px !important;
+      font-size: 0.68rem !important;
+    }
+
+    .vs-sec7-payment-bar {
+      flex-direction: column !important;
+      align-items: center !important;
+      text-align: center !important;
+      padding: 14px 12px !important;
+    }
+  }
 
     .vs-sec7-cards-grid::-webkit-scrollbar {
       display: none !important;
@@ -3186,15 +3146,8 @@
           </div>
         </div>
 
-        <!-- RIGHT COLUMN: 2 BANKING DETAILS CARDS (CENTERED & MATCHED HEIGHTS & MOBILE TABBED SLIDER) -->
+        <!-- RIGHT COLUMN: 2 BANKING DETAILS CARDS (CENTERED & MATCHED HEIGHTS) -->
         <div class="vs-sec7-cards-wrapper" style="display: flex !important; flex-direction: column !important; justify-content: center !important; align-items: center !important; height: 100% !important; width: 100% !important;">
-          
-          <!-- Mobile Tab Controls (Visible ONLY on mobile screens <=768px) -->
-          <div class="vs-sec7-mobile-slider-controls">
-            <button type="button" class="vs-sec7-tab active" id="vsSec7Tab1" onclick="vsSec7SelectTab(1)">1. IDFC FIRST</button>
-            <button type="button" class="vs-sec7-tab" id="vsSec7Tab2" onclick="vsSec7SelectTab(2)">2. IndusInd</button>
-          </div>
-
           <div class="vs-sec7-cards-grid" id="vsSec7CardsGrid">
             
             <!-- CARD 1: IDFC FIRST BANK -->
@@ -3480,41 +3433,6 @@
       setTimeout(function() { el.innerHTML = orig; }, 2200);
     }
   }
-
-  function vsSec7SelectTab(tabIndex) {
-    var tab1 = document.getElementById('vsSec7Tab1');
-    var tab2 = document.getElementById('vsSec7Tab2');
-    var card1 = document.getElementById('vsSec7Card1');
-    var card2 = document.getElementById('vsSec7Card2');
-
-    if (tabIndex === 1) {
-      if (tab1) tab1.classList.add('active');
-      if (tab2) tab2.classList.remove('active');
-      if (card1) card1.style.setProperty('display', 'flex', 'important');
-      if (card2) card2.style.setProperty('display', 'none', 'important');
-    } else {
-      if (tab2) tab2.classList.add('active');
-      if (tab1) tab1.classList.remove('active');
-      if (card2) card2.style.setProperty('display', 'flex', 'important');
-      if (card1) card1.style.setProperty('display', 'none', 'important');
-    }
-  }
-
-  window.addEventListener('resize', function() {
-    var card1 = document.getElementById('vsSec7Card1');
-    var card2 = document.getElementById('vsSec7Card2');
-    if (window.innerWidth > 768) {
-      if (card1) card1.style.display = '';
-      if (card2) card2.style.display = '';
-    } else {
-      var tab1 = document.getElementById('vsSec7Tab1');
-      if (tab1 && tab1.classList.contains('active')) {
-        vsSec7SelectTab(1);
-      } else {
-        vsSec7SelectTab(2);
-      }
-    }
-  });
 </script>
 
 {% schema %}
