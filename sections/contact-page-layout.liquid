@@ -38,25 +38,26 @@
     z-index: 3 !important;
   }
 
-  /* --- 1ST SECTION: HERO BANNER WITH THEME BASE COLOR & RIGHT-TO-LEFT MARQUEE ONLY --- */
+  /* --- 1ST SECTION: HERO BANNER (EXACT MATCH WITH ISO CERTIFICATION PAGE SECTION 1) --- */
   .vs-contact-hero-banner {
     position: relative !important;
     width: 100% !important;
-    min-height: clamp(220px, 28vw, 340px) !important;
-    background: linear-gradient(135deg, #FFF7F2 0%, #FFEFE5 50%, #FFF3EB 100%) !important;
+    min-height: 440px !important;
+    background-color: #FFFDF8 !important;
+    background-image: linear-gradient(150deg, #FFFDF8 0%, #FFF5E0 40%, #FAFFF5 80%, #FFFFFF 100%) !important;
     border-radius: clamp(20px, 3vw, 32px) !important;
     margin-bottom: clamp(35px, 5vw, 55px) !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
     overflow: hidden !important;
-    box-shadow: 0 15px 40px rgba(236, 92, 10, 0.08) !important;
-    border: 2px solid rgba(236, 92, 10, 0.25) !important;
+    border-bottom: 2px solid rgba(247, 148, 29, 0.25) !important;
+    border-top: 1px solid rgba(247, 148, 29, 0.15) !important;
     padding: 0 !important;
   }
 
   /* Moving Background Marquee Text (Right to Left) */
-  @keyframes vsMarqueeRightToLeft {
+  @keyframes vsMarqueeScroll {
     0% { transform: translateX(0%); }
     100% { transform: translateX(-50%); }
   }
@@ -69,23 +70,28 @@
     width: 200% !important;
     white-space: nowrap !important;
     z-index: 1 !important;
-    opacity: 0.9 !important;
+    opacity: 0.85 !important;
     pointer-events: none !important;
-    font-size: clamp(45px, 9vw, 110px) !important;
+    line-height: 1 !important;
+    font-size: clamp(38px, 6.5vw, 95px) !important;
     font-weight: 900 !important;
     text-transform: uppercase !important;
     letter-spacing: 4px !important;
-    background: linear-gradient(90deg, #EC5C0A, #FF9900, #007B3E, #EC5C0A) !important;
+    background: linear-gradient(90deg, #ec5c0a, #ff9900, #007b3e, #ec5c0a) !important;
     background-size: 200% auto !important;
     -webkit-background-clip: text !important;
     -webkit-text-fill-color: transparent !important;
-    animation: vsMarqueeRightToLeft 18s linear infinite !important;
+    animation: vsMarqueeScroll 16s linear infinite !important;
   }
 
   @media screen and (max-width: 768px) {
     .vs-contact-hero-banner {
-      min-height: 200px !important;
+      min-height: 240px !important;
       border-radius: 20px !important;
+    }
+    .vs-contact-hero-marquee {
+      font-size: clamp(28px, 8vw, 48px) !important;
+      opacity: 0.9 !important;
     }
   }
 
