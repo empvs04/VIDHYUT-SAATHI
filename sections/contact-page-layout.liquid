@@ -1,24 +1,30 @@
 {% comment %}
   =============================================================================
-  VIDHYUT SAATHI - PREMIUM HIGH-CONVERTING CONTACT US PAGE
+  VIDHYUT SAATHI - PREMIUM HIGH-CONVERTING CONTACT US PAGE (100% MOBILE PERFECT)
   =============================================================================
 {% endcomment %}
 
 {%- style -%}
   @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap');
 
+  html, body {
+    overflow-x: hidden !important;
+  }
+
   .vs-contact-section,
   .vs-contact-section * {
     box-sizing: border-box !important;
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif !important;
+    -webkit-tap-highlight-color: transparent !important;
   }
 
   .vs-contact-section {
     display: block !important;
     width: 100% !important;
+    max-width: 100vw !important;
     clear: both !important;
     position: relative !important;
-    padding: 60px 24px 100px 24px !important;
+    padding: clamp(35px, 6vw, 65px) clamp(14px, 4vw, 24px) clamp(60px, 8vw, 100px) clamp(14px, 4vw, 24px) !important;
     background: radial-gradient(circle at 50% 0%, rgba(236, 92, 10, 0.08) 0%, #FAFAF7 40%, #FFFFFF 100%) !important;
     color: #1A1A1A !important;
     overflow: hidden !important;
@@ -26,6 +32,7 @@
 
   .vs-contact-container {
     max-width: 1280px !important;
+    width: 100% !important;
     margin: 0 auto !important;
     position: relative !important;
     z-index: 3 !important;
@@ -44,9 +51,9 @@
     width: 200%;
     white-space: nowrap;
     z-index: 1;
-    opacity: 0.04;
+    opacity: 0.03;
     pointer-events: none;
-    font-size: 110px;
+    font-size: clamp(45px, 10vw, 110px);
     font-weight: 900;
     text-transform: uppercase;
     color: #EC5C0A;
@@ -57,7 +64,7 @@
   .vs-contact-header {
     text-align: center !important;
     max-width: 840px !important;
-    margin: 0 auto 40px auto !important;
+    margin: 0 auto clamp(25px, 5vw, 40px) auto !important;
     position: relative;
     z-index: 2;
   }
@@ -66,28 +73,31 @@
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
-    gap: 10px !important;
-    padding: 8px 24px !important;
+    gap: 8px !important;
+    padding: 8px 20px !important;
     border-radius: 50px !important;
     background: linear-gradient(135deg, #FFF3EB 0%, #FFE8D6 100%) !important;
     border: 1.5px solid rgba(236, 92, 10, 0.4) !important;
     color: #EC5C0A !important;
-    font-size: 0.85rem !important;
+    font-size: clamp(0.72rem, 2vw, 0.85rem) !important;
     font-weight: 800 !important;
-    letter-spacing: 1.2px !important;
-    margin-bottom: 20px !important;
+    letter-spacing: 1px !important;
+    margin-bottom: 16px !important;
     text-transform: uppercase !important;
     box-shadow: 0 4px 20px rgba(236, 92, 10, 0.15) !important;
+    max-width: 100% !important;
   }
 
   .vs-pulse-dot {
-    width: 9px !important;
-    height: 9px !important;
+    width: 8px !important;
+    height: 8px !important;
+    min-width: 8px !important;
     background: #10B981 !important;
     border-radius: 50% !important;
     display: inline-block !important;
     box-shadow: 0 0 0 rgba(16, 185, 129, 0.4) !important;
     animation: vsPulseGreen 2s infinite !important;
+    flex-shrink: 0 !important;
   }
 
   @keyframes vsPulseGreen {
@@ -97,12 +107,12 @@
   }
 
   .vs-contact-title {
-    font-size: 3.2rem !important;
+    font-size: clamp(1.8rem, 5vw, 3.2rem) !important;
     font-weight: 900 !important;
-    line-height: 1.18 !important;
+    line-height: 1.2 !important;
     color: #0F172A !important;
-    margin: 0 0 16px 0 !important;
-    letter-spacing: -0.8px !important;
+    margin: 0 0 14px 0 !important;
+    letter-spacing: -0.5px !important;
   }
 
   .vs-contact-title span {
@@ -112,84 +122,88 @@
   }
 
   .vs-contact-subtitle {
-    font-size: 1.15rem !important;
+    font-size: clamp(0.92rem, 2.5vw, 1.15rem) !important;
     font-weight: 500 !important;
     color: #475569 !important;
     line-height: 1.65 !important;
-    margin: 0 auto 30px auto !important;
+    margin: 0 auto clamp(20px, 4vw, 30px) auto !important;
+    max-width: 720px !important;
   }
 
   /* Trust Highlights Bar */
   .vs-trust-highlights {
     display: grid !important;
     grid-template-columns: repeat(4, 1fr) !important;
-    gap: 16px !important;
+    gap: clamp(8px, 2vw, 16px) !important;
     max-width: 1040px !important;
-    margin: 0 auto 45px auto !important;
+    margin: 0 auto clamp(30px, 5vw, 45px) auto !important;
   }
 
   .vs-trust-item {
     background: #FFFFFF !important;
     border: 1px solid rgba(236, 92, 10, 0.18) !important;
     border-radius: 16px !important;
-    padding: 16px 18px !important;
+    padding: 14px 16px !important;
     display: flex !important;
     align-items: center !important;
-    gap: 14px !important;
+    gap: 12px !important;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.03) !important;
     transition: all 0.3s ease !important;
   }
 
   .vs-trust-item:hover {
-    transform: translateY(-4px) !important;
+    transform: translateY(-3px) !important;
     border-color: #EC5C0A !important;
     box-shadow: 0 12px 30px rgba(236, 92, 10, 0.12) !important;
   }
 
   .vs-trust-icon {
-    width: 42px !important;
-    height: 42px !important;
-    min-width: 42px !important;
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
     border-radius: 12px !important;
     background: linear-gradient(135deg, #FFF3EB 0%, #FFE5D4 100%) !important;
     color: #EC5C0A !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    font-size: 1.25rem !important;
+    font-size: 1.15rem !important;
+    flex-shrink: 0 !important;
   }
 
   .vs-trust-text h5 {
     margin: 0 !important;
-    font-size: 0.95rem !important;
+    font-size: clamp(0.82rem, 1.8vw, 0.95rem) !important;
     font-weight: 800 !important;
     color: #0F172A !important;
+    line-height: 1.25 !important;
   }
 
   .vs-trust-text p {
     margin: 2px 0 0 0 !important;
-    font-size: 0.78rem !important;
+    font-size: clamp(0.72rem, 1.5vw, 0.78rem) !important;
     color: #64748B !important;
     font-weight: 600 !important;
+    line-height: 1.2 !important;
   }
 
   /* 2-Column Split Section Grid */
   .vs-contact-grid {
     display: grid !important;
     grid-template-columns: 1fr 1.28fr !important;
-    gap: 36px !important;
+    gap: clamp(20px, 4vw, 36px) !important;
     align-items: stretch !important;
     width: 100% !important;
-    margin-bottom: 70px !important;
+    margin-bottom: clamp(40px, 6vw, 70px) !important;
   }
 
   /* LEFT COLUMN CARD (Branded Luxury Card) */
   .vs-info-card {
     background: linear-gradient(150deg, #FFFFFF 0%, #FFFDF8 60%, #FFF5EB 100%) !important;
     border: 2px solid rgba(236, 92, 10, 0.22) !important;
-    border-top: 6px solid #EC5C0A !important;
-    border-radius: 28px !important;
-    padding: 44px 38px !important;
+    border-top: 5px solid #EC5C0A !important;
+    border-radius: clamp(18px, 3vw, 28px) !important;
+    padding: clamp(24px, 4vw, 44px) clamp(18px, 3vw, 38px) !important;
     color: #0F172A !important;
     display: flex !important;
     flex-direction: column !important;
@@ -201,56 +215,57 @@
 
   .vs-info-tag {
     color: #EC5C0A !important;
-    font-size: 0.84rem !important;
+    font-size: 0.8rem !important;
     font-weight: 800 !important;
-    letter-spacing: 1.8px !important;
+    letter-spacing: 1.5px !important;
     text-transform: uppercase !important;
-    margin-bottom: 12px !important;
+    margin-bottom: 10px !important;
     display: block !important;
   }
 
   .vs-info-heading {
-    font-size: 2rem !important;
+    font-size: clamp(1.4rem, 3.5vw, 2rem) !important;
     font-weight: 900 !important;
     color: #0F172A !important;
-    line-height: 1.25 !important;
-    margin: 0 0 16px 0 !important;
+    line-height: 1.28 !important;
+    margin: 0 0 14px 0 !important;
   }
 
   .vs-info-desc {
-    font-size: 0.98rem !important;
+    font-size: clamp(0.88rem, 2vw, 0.98rem) !important;
     font-weight: 500 !important;
     color: #475569 !important;
-    line-height: 1.65 !important;
-    margin-bottom: 28px !important;
+    line-height: 1.6 !important;
+    margin-bottom: 24px !important;
   }
 
-  /* WhatsApp & Instant Call Banner */
+  /* WhatsApp & Instant Call Banner (Light Theme) */
   .vs-quick-action-box {
-    background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%) !important;
-    border-radius: 20px !important;
-    padding: 22px 24px !important;
-    margin-bottom: 32px !important;
-    color: #FFFFFF !important;
-    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.25) !important;
+    background: linear-gradient(135deg, #FFF8EF 0%, #FFFFFF 100%) !important;
+    border: 1.5px solid rgba(236, 92, 10, 0.28) !important;
+    border-radius: 18px !important;
+    padding: clamp(16px, 3vw, 22px) clamp(16px, 3vw, 24px) !important;
+    margin-bottom: 28px !important;
+    color: #0F172A !important;
+    box-shadow: 0 10px 30px rgba(236, 92, 10, 0.1) !important;
   }
 
   .vs-quick-action-title {
-    font-size: 0.82rem !important;
+    font-size: 0.78rem !important;
     font-weight: 800 !important;
-    letter-spacing: 1px !important;
+    letter-spacing: 0.8px !important;
     text-transform: uppercase !important;
-    color: #FF9A00 !important;
-    margin-bottom: 14px !important;
+    color: #EC5C0A !important;
+    margin-bottom: 12px !important;
     display: flex !important;
     align-items: center !important;
-    gap: 8px !important;
+    gap: 6px !important;
   }
 
   .vs-action-btns {
     display: grid !important;
     grid-template-columns: 1fr 1fr !important;
-    gap: 12px !important;
+    gap: 10px !important;
   }
 
   .vs-wa-btn {
@@ -258,15 +273,17 @@
     align-items: center !important;
     justify-content: center !important;
     gap: 8px !important;
-    padding: 13px 16px !important;
+    padding: 13px 14px !important;
+    min-height: 48px !important;
     background: #25D366 !important;
     color: #FFFFFF !important;
     font-weight: 800 !important;
-    font-size: 0.88rem !important;
+    font-size: clamp(0.82rem, 1.8vw, 0.88rem) !important;
     border-radius: 12px !important;
     text-decoration: none !important;
     box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35) !important;
     transition: all 0.3s ease !important;
+    text-align: center !important;
   }
 
   .vs-wa-btn:hover {
@@ -281,15 +298,17 @@
     align-items: center !important;
     justify-content: center !important;
     gap: 8px !important;
-    padding: 13px 16px !important;
+    padding: 13px 14px !important;
+    min-height: 48px !important;
     background: linear-gradient(135deg, #EC5C0A 0%, #FF9A00 100%) !important;
     color: #FFFFFF !important;
     font-weight: 800 !important;
-    font-size: 0.88rem !important;
+    font-size: clamp(0.82rem, 1.8vw, 0.88rem) !important;
     border-radius: 12px !important;
     text-decoration: none !important;
     box-shadow: 0 6px 20px rgba(236, 92, 10, 0.35) !important;
     transition: all 0.3s ease !important;
+    text-align: center !important;
   }
 
   .vs-call-btn:hover {
@@ -302,41 +321,41 @@
   .vs-info-list {
     display: flex !important;
     flex-direction: column !important;
-    gap: 26px !important;
-    margin-bottom: 30px !important;
+    gap: 22px !important;
+    margin-bottom: 26px !important;
   }
 
   .vs-info-item {
     display: flex !important;
     align-items: flex-start !important;
-    gap: 18px !important;
+    gap: 14px !important;
   }
 
   .vs-info-icon {
-    width: 48px !important;
-    height: 48px !important;
-    min-width: 48px !important;
-    border-radius: 16px !important;
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px !important;
+    border-radius: 14px !important;
     background: linear-gradient(135deg, #EC5C0A 0%, #FF9A00 100%) !important;
     color: #FFFFFF !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    font-size: 1.3rem !important;
+    font-size: 1.2rem !important;
     box-shadow: 0 8px 22px rgba(236, 92, 10, 0.3) !important;
     flex-shrink: 0 !important;
   }
 
   .vs-info-text h4 {
-    font-size: 1.05rem !important;
+    font-size: clamp(0.95rem, 2vw, 1.05rem) !important;
     font-weight: 800 !important;
     color: #0F172A !important;
-    margin: 0 0 6px 0 !important;
+    margin: 0 0 4px 0 !important;
   }
 
   .vs-info-text p,
   .vs-info-text a {
-    font-size: 0.92rem !important;
+    font-size: clamp(0.85rem, 1.8vw, 0.92rem) !important;
     font-weight: 600 !important;
     color: #334155 !important;
     line-height: 1.55 !important;
@@ -344,6 +363,7 @@
     text-decoration: none !important;
     display: block !important;
     transition: color 0.25s ease !important;
+    word-break: break-word !important;
   }
 
   .vs-info-text a:hover {
@@ -352,17 +372,18 @@
 
   /* Map Card Container */
   .vs-map-card {
-    border-radius: 18px !important;
+    border-radius: 16px !important;
     overflow: hidden !important;
     border: 1.5px solid rgba(236, 92, 10, 0.2) !important;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05) !important;
     position: relative !important;
     margin-top: auto !important;
+    width: 100% !important;
   }
 
   .vs-map-card iframe {
     width: 100% !important;
-    height: 180px !important;
+    height: 170px !important;
     border: none !important;
     display: block !important;
   }
@@ -372,8 +393,8 @@
     background: #0F172A !important;
     color: #FFFFFF !important;
     text-align: center !important;
-    padding: 10px 14px !important;
-    font-size: 0.82rem !important;
+    padding: 12px 14px !important;
+    font-size: clamp(0.75rem, 1.8vw, 0.82rem) !important;
     font-weight: 800 !important;
     text-decoration: none !important;
     letter-spacing: 0.5px !important;
@@ -388,34 +409,34 @@
   .vs-form-card {
     background: #FFFFFF !important;
     border: 2px solid rgba(236, 92, 10, 0.22) !important;
-    border-top: 6px solid #EC5C0A !important;
-    border-radius: 28px !important;
-    padding: 44px 42px !important;
+    border-top: 5px solid #EC5C0A !important;
+    border-radius: clamp(18px, 3vw, 28px) !important;
+    padding: clamp(24px, 4vw, 44px) clamp(18px, 3vw, 42px) !important;
     box-shadow: 0 25px 60px rgba(236, 92, 10, 0.1), 0 4px 20px rgba(0, 0, 0, 0.02) !important;
   }
 
   .vs-form-title {
-    font-size: 2rem !important;
+    font-size: clamp(1.4rem, 3.5vw, 2rem) !important;
     font-weight: 900 !important;
     color: #0F172A !important;
-    margin: 0 0 8px 0 !important;
+    margin: 0 0 6px 0 !important;
   }
 
   .vs-form-subtitle {
-    font-size: 0.98rem !important;
+    font-size: clamp(0.88rem, 2vw, 0.98rem) !important;
     font-weight: 500 !important;
     color: #64748B !important;
-    line-height: 1.6 !important;
-    margin-bottom: 24px !important;
+    line-height: 1.55 !important;
+    margin-bottom: 20px !important;
   }
 
   /* Interactive Category / Purpose Chips */
   .vs-purpose-selector {
-    margin-bottom: 26px !important;
+    margin-bottom: 22px !important;
   }
 
   .vs-purpose-label {
-    font-size: 0.84rem !important;
+    font-size: 0.8rem !important;
     font-weight: 800 !important;
     color: #334155 !important;
     margin-bottom: 10px !important;
@@ -427,20 +448,22 @@
   .vs-chips-grid {
     display: flex !important;
     flex-wrap: wrap !important;
-    gap: 10px !important;
+    gap: 8px !important;
+    max-width: 100% !important;
   }
 
   .vs-chip {
-    padding: 9px 18px !important;
+    padding: 8px 14px !important;
     border-radius: 50px !important;
     background: #F1F5F9 !important;
     border: 1.5px solid #E2E8F0 !important;
     color: #475569 !important;
-    font-size: 0.85rem !important;
+    font-size: clamp(0.78rem, 1.8vw, 0.85rem) !important;
     font-weight: 700 !important;
     cursor: pointer !important;
     transition: all 0.25s ease !important;
     user-select: none !important;
+    white-space: nowrap !important;
   }
 
   .vs-chip:hover {
@@ -459,7 +482,7 @@
   .vs-form-grid {
     display: grid !important;
     grid-template-columns: repeat(2, 1fr) !important;
-    gap: 20px !important;
+    gap: clamp(12px, 2.5vw, 20px) !important;
   }
 
   .vs-form-group.full-width {
@@ -468,24 +491,25 @@
 
   .vs-form-group label {
     display: block !important;
-    font-size: 0.84rem !important;
+    font-size: 0.8rem !important;
     font-weight: 800 !important;
     color: #334155 !important;
-    margin-bottom: 8px !important;
+    margin-bottom: 6px !important;
     text-transform: uppercase !important;
     letter-spacing: 0.5px !important;
   }
 
   .vs-input-field {
     width: 100% !important;
-    padding: 14px 18px !important;
-    font-size: 0.95rem !important;
+    padding: 14px 16px !important;
+    font-size: 16px !important; /* Prevent iOS Safari Auto-Zoom */
     color: #0F172A !important;
     background: #F8FAFC !important;
     border: 1.5px solid #CBD5E1 !important;
-    border-radius: 14px !important;
+    border-radius: 12px !important;
     outline: none !important;
     transition: all 0.3s ease !important;
+    min-height: 48px !important;
   }
 
   .vs-input-field:focus {
@@ -495,34 +519,36 @@
   }
 
   textarea.vs-input-field {
-    min-height: 120px !important;
+    min-height: 110px !important;
     resize: vertical !important;
   }
 
   .vs-submit-btn {
     width: 100% !important;
-    padding: 18px 30px !important;
+    padding: 16px 24px !important;
+    min-height: 52px !important;
     background: linear-gradient(135deg, #EC5C0A 0%, #FF9A00 100%) !important;
     color: #FFFFFF !important;
-    font-size: 1.05rem !important;
+    font-size: clamp(0.88rem, 2vw, 1.05rem) !important;
     font-weight: 800 !important;
-    letter-spacing: 1px !important;
+    letter-spacing: 0.8px !important;
     text-transform: uppercase !important;
     border: none !important;
     border-radius: 14px !important;
     cursor: pointer !important;
     box-shadow: 0 12px 30px rgba(236, 92, 10, 0.35) !important;
     transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
-    margin-top: 8px !important;
+    margin-top: 6px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    gap: 10px !important;
+    gap: 8px !important;
+    text-align: center !important;
   }
 
   .vs-submit-btn:hover {
     background: linear-gradient(135deg, #FF9A00 0%, #EC5C0A 100%) !important;
-    transform: translateY(-3px) !important;
+    transform: translateY(-2px) !important;
     box-shadow: 0 16px 38px rgba(236, 92, 10, 0.45) !important;
   }
 
@@ -530,32 +556,34 @@
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    gap: 8px !important;
-    margin-top: 14px !important;
-    font-size: 0.82rem !important;
+    gap: 6px !important;
+    margin-top: 12px !important;
+    font-size: clamp(0.75rem, 1.6vw, 0.82rem) !important;
     font-weight: 700 !important;
     color: #64748B !important;
+    flex-wrap: wrap !important;
+    text-align: center !important;
   }
 
   /* --- DEPARTMENT HUBS SECTION --- */
   .vs-dept-section {
-    margin-bottom: 70px !important;
+    margin-bottom: clamp(40px, 6vw, 70px) !important;
   }
 
   .vs-dept-title-block {
     text-align: center !important;
-    margin-bottom: 35px !important;
+    margin-bottom: clamp(24px, 4vw, 35px) !important;
   }
 
   .vs-dept-title-block h3 {
-    font-size: 2rem !important;
+    font-size: clamp(1.4rem, 3.5vw, 2rem) !important;
     font-weight: 900 !important;
     color: #0F172A !important;
-    margin: 0 0 8px 0 !important;
+    margin: 0 0 6px 0 !important;
   }
 
   .vs-dept-title-block p {
-    font-size: 1rem !important;
+    font-size: clamp(0.88rem, 2vw, 1rem) !important;
     color: #64748B !important;
     margin: 0 !important;
   }
@@ -563,62 +591,66 @@
   .vs-dept-grid {
     display: grid !important;
     grid-template-columns: repeat(3, 1fr) !important;
-    gap: 24px !important;
+    gap: clamp(14px, 3vw, 24px) !important;
   }
 
   .vs-dept-card {
     background: #FFFFFF !important;
     border: 1.5px solid rgba(236, 92, 10, 0.2) !important;
-    border-radius: 22px !important;
-    padding: 30px 26px !important;
+    border-radius: 20px !important;
+    padding: clamp(20px, 3.5vw, 30px) clamp(18px, 3vw, 26px) !important;
     box-shadow: 0 12px 35px rgba(0, 0, 0, 0.04) !important;
     transition: all 0.3s ease !important;
     position: relative !important;
     overflow: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
   }
 
   .vs-dept-card:hover {
-    transform: translateY(-6px) !important;
+    transform: translateY(-4px) !important;
     border-color: #EC5C0A !important;
     box-shadow: 0 20px 45px rgba(236, 92, 10, 0.15) !important;
   }
 
   .vs-dept-card-icon {
-    width: 52px !important;
-    height: 52px !important;
-    border-radius: 16px !important;
+    width: 48px !important;
+    height: 48px !important;
+    border-radius: 14px !important;
     background: linear-gradient(135deg, #FFF3EB 0%, #FFE8D6 100%) !important;
     color: #EC5C0A !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    font-size: 1.4rem !important;
-    margin-bottom: 20px !important;
+    font-size: 1.3rem !important;
+    margin-bottom: 16px !important;
   }
 
   .vs-dept-card h4 {
-    font-size: 1.2rem !important;
+    font-size: clamp(1.05rem, 2.2vw, 1.2rem) !important;
     font-weight: 800 !important;
     color: #0F172A !important;
-    margin: 0 0 10px 0 !important;
+    margin: 0 0 8px 0 !important;
   }
 
   .vs-dept-card p {
-    font-size: 0.9rem !important;
+    font-size: clamp(0.85rem, 1.8vw, 0.9rem) !important;
     color: #64748B !important;
     line-height: 1.55 !important;
-    margin-bottom: 20px !important;
+    margin-bottom: 18px !important;
   }
 
   .vs-dept-link {
-    display: inline-flex !items;
+    display: inline-flex !important;
     align-items: center !important;
     gap: 6px !important;
-    font-size: 0.88rem !important;
+    font-size: 0.85rem !important;
     font-weight: 800 !important;
     color: #EC5C0A !important;
     text-decoration: none !important;
     transition: gap 0.2s ease !important;
+    margin-top: auto !important;
   }
 
   .vs-dept-link:hover {
@@ -629,22 +661,22 @@
   .vs-faq-section {
     background: #FFFFFF !important;
     border: 2px solid rgba(236, 92, 10, 0.18) !important;
-    border-radius: 28px !important;
-    padding: 50px 44px !important;
+    border-radius: clamp(18px, 3vw, 28px) !important;
+    padding: clamp(24px, 4vw, 50px) clamp(16px, 3vw, 44px) !important;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.04) !important;
-    margin-bottom: 60px !important;
+    margin-bottom: clamp(40px, 6vw, 60px) !important;
   }
 
   .vs-faq-header {
     text-align: center !important;
-    margin-bottom: 40px !important;
+    margin-bottom: clamp(24px, 4vw, 40px) !important;
   }
 
   .vs-faq-header h3 {
-    font-size: 2.1rem !important;
+    font-size: clamp(1.4rem, 3.5vw, 2.1rem) !important;
     font-weight: 900 !important;
     color: #0F172A !important;
-    margin: 0 0 8px 0 !important;
+    margin: 0 0 6px 0 !important;
   }
 
   .vs-faq-list {
@@ -652,12 +684,12 @@
     margin: 0 auto !important;
     display: flex !important;
     flex-direction: column !important;
-    gap: 14px !important;
+    gap: 12px !important;
   }
 
   .vs-faq-item {
     border: 1.5px solid #E2E8F0 !important;
-    border-radius: 16px !important;
+    border-radius: 14px !important;
     overflow: hidden !important;
     transition: all 0.3s ease !important;
   }
@@ -669,28 +701,31 @@
   }
 
   .vs-faq-question {
-    padding: 20px 24px !important;
-    font-size: 1.05rem !important;
+    padding: clamp(14px, 2.5vw, 20px) clamp(16px, 3vw, 24px) !important;
+    font-size: clamp(0.9rem, 2vw, 1.05rem) !important;
     font-weight: 800 !important;
     color: #0F172A !important;
     cursor: pointer !important;
     display: flex !important;
     align-items: center !important;
     justify-content: space-between !important;
+    gap: 12px !important;
     user-select: none !important;
   }
 
   .vs-faq-toggle {
-    width: 28px !important;
-    height: 28px !important;
+    width: 26px !important;
+    height: 26px !important;
+    min-width: 26px !important;
     border-radius: 50% !important;
     background: #F1F5F9 !important;
     color: #0F172A !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    font-size: 1.2rem !important;
+    font-size: 1.1rem !important;
     transition: transform 0.3s ease, background 0.3s ease !important;
+    flex-shrink: 0 !important;
   }
 
   .vs-faq-item.active .vs-faq-toggle {
@@ -700,10 +735,10 @@
   }
 
   .vs-faq-answer {
-    padding: 0 24px 22px 24px !important;
-    font-size: 0.95rem !important;
+    padding: 0 clamp(16px, 3vw, 24px) clamp(16px, 3vw, 22px) clamp(16px, 3vw, 24px) !important;
+    font-size: clamp(0.85rem, 1.8vw, 0.95rem) !important;
     color: #475569 !important;
-    line-height: 1.65 !important;
+    line-height: 1.6 !important;
     display: none !important;
   }
 
@@ -714,8 +749,8 @@
   /* --- BOTTOM CTA BANNER --- */
   .vs-bottom-cta {
     background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%) !important;
-    border-radius: 28px !important;
-    padding: 50px 40px !important;
+    border-radius: clamp(18px, 3vw, 28px) !important;
+    padding: clamp(28px, 5vw, 50px) clamp(18px, 4vw, 40px) !important;
     text-align: center !important;
     color: #FFFFFF !important;
     position: relative !important;
@@ -723,114 +758,167 @@
     box-shadow: 0 25px 60px rgba(15, 23, 42, 0.25) !important;
   }
 
-  .vs-bottom-cta::before {
-    content: '' !important;
-    position: absolute !important;
-    top: -50%; left: -20%;
-    width: 300px; height: 300px;
-    background: radial-gradient(circle, rgba(236, 92, 10, 0.25) 0%, transparent 70%) !important;
-    border-radius: 50% !important;
-    pointer-events: none !important;
-  }
-
   .vs-bottom-cta h3 {
-    font-size: 2.3rem !important;
+    font-size: clamp(1.4rem, 4vw, 2.3rem) !important;
     font-weight: 900 !important;
-    margin: 0 0 12px 0 !important;
+    margin: 0 0 10px 0 !important;
     color: #FFFFFF !important;
+    line-height: 1.25 !important;
   }
 
   .vs-bottom-cta p {
-    font-size: 1.1rem !important;
+    font-size: clamp(0.9rem, 2.2vw, 1.1rem) !important;
     color: #94A3B8 !important;
     max-width: 650px !important;
-    margin: 0 auto 30px auto !important;
+    margin: 0 auto clamp(20px, 4vw, 30px) auto !important;
+    line-height: 1.55 !important;
   }
 
   .vs-bottom-cta-btns {
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    gap: 16px !important;
+    gap: 12px !important;
     flex-wrap: wrap !important;
   }
 
-  /* MOBILE RESPONSIVE FIXES */
+  /* STICKY MOBILE QUICK CONTACT BAR */
+  .vs-mobile-sticky-bar {
+    display: none !important;
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 9999 !important;
+    background: rgba(15, 23, 42, 0.96) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    padding: 10px 14px !important;
+    border-top: 1.5px solid rgba(236, 92, 10, 0.4) !important;
+    box-shadow: 0 -8px 25px rgba(0, 0, 0, 0.25) !important;
+  }
+
+  .vs-mobile-sticky-inner {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+    max-width: 500px !important;
+    margin: 0 auto !important;
+  }
+
+  .vs-mobile-sticky-btn {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    padding: 11px 12px !important;
+    border-radius: 10px !important;
+    font-size: 0.82rem !important;
+    font-weight: 800 !important;
+    text-decoration: none !important;
+    color: #FFFFFF !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.3px !important;
+  }
+
+  .vs-mobile-sticky-wa {
+    background: #25D366 !important;
+  }
+
+  .vs-mobile-sticky-call {
+    background: linear-gradient(135deg, #EC5C0A 0%, #FF9A00 100%) !important;
+  }
+
+  /* ===========================================================================
+     COMPREHENSIVE RESPONSIVE BREAKPOINTS (PERFECT ON ALL MOBILE DEVICES)
+     =========================================================================== */
+
   @media screen and (max-width: 991px) {
-    .vs-contact-section {
-      padding: 40px 16px 60px 16px !important;
-    }
-
-    .vs-contact-title {
-      font-size: 2rem !important;
-    }
-
-    .vs-contact-subtitle {
-      font-size: 0.95rem !important;
-    }
-
     .vs-trust-highlights {
       grid-template-columns: repeat(2, 1fr) !important;
-      gap: 10px !important;
-    }
-
-    .vs-trust-item {
-      padding: 12px 14px !important;
     }
 
     .vs-contact-grid {
       grid-template-columns: 1fr !important;
-      gap: 24px !important;
     }
 
-    .vs-info-card {
-      padding: 30px 22px !important;
-      border-radius: 20px !important;
+    .vs-dept-grid {
+      grid-template-columns: 1fr !important;
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    .vs-contact-section {
+      padding-bottom: 90px !important; /* Space for sticky bar */
     }
 
-    .vs-info-heading {
-      font-size: 1.5rem !important;
-    }
-
-    .vs-form-card {
-      padding: 30px 20px !important;
-      border-radius: 20px !important;
-    }
-
-    .vs-form-title {
-      font-size: 1.5rem !important;
+    .vs-mobile-sticky-bar {
+      display: block !important;
     }
 
     .vs-form-grid {
       grid-template-columns: 1fr !important;
-      gap: 14px !important;
     }
 
     .vs-action-btns {
       grid-template-columns: 1fr !important;
     }
 
-    .vs-dept-grid {
+    .vs-chips-grid {
+      gap: 6px !important;
+    }
+
+    .vs-chip {
+      padding: 7px 12px !important;
+      font-size: 0.78rem !important;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .vs-trust-highlights {
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 8px !important;
+    }
+
+    .vs-trust-item {
+      padding: 10px 10px !important;
+      gap: 8px !important;
+    }
+
+    .vs-trust-icon {
+      width: 32px !important;
+      height: 32px !important;
+      min-width: 32px !important;
+      font-size: 1rem !important;
+    }
+
+    .vs-info-card,
+    .vs-form-card {
+      padding: 20px 14px !important;
+    }
+
+    .vs-bottom-cta-btns {
+      flex-direction: column !important;
+      width: 100% !important;
+    }
+
+    .vs-bottom-cta-btns a {
+      width: 100% !important;
+    }
+  }
+
+  @media screen and (max-width: 360px) {
+    .vs-trust-highlights {
       grid-template-columns: 1fr !important;
-      gap: 16px !important;
     }
 
-    .vs-faq-section {
-      padding: 30px 20px !important;
-      border-radius: 20px !important;
+    .vs-contact-badge {
+      padding: 6px 14px !important;
+      font-size: 0.7rem !important;
     }
 
-    .vs-faq-header h3 {
-      font-size: 1.5rem !important;
-    }
-
-    .vs-bottom-cta {
-      padding: 35px 20px !important;
-      border-radius: 20px !important;
-    }
-
-    .vs-bottom-cta h3 {
-      font-size: 1.6rem !important;
+    .vs-input-field {
+      padding: 12px 12px !important;
     }
   }
 {%- endstyle -%}
@@ -1170,6 +1258,18 @@
       </div>
     </div>
 
+  </div>
+
+  <!-- STICKY MOBILE QUICK CONTACT BAR (Visible on Mobile Only) -->
+  <div class="vs-mobile-sticky-bar">
+    <div class="vs-mobile-sticky-inner">
+      <a href="https://wa.me/918199036060?text=Hi%20Vidhyut%20Saathi%20Team%2C%20I%20want%20to%20know%20more%20about%20your%20energy%20saving%20solutions." target="_blank" rel="noopener" class="vs-mobile-sticky-btn vs-mobile-sticky-wa">
+        <span>💬</span> WhatsApp
+      </a>
+      <a href="tel:+918199036060" class="vs-mobile-sticky-btn vs-mobile-sticky-call">
+        <span>📞</span> Call Now
+      </a>
+    </div>
   </div>
 </section>
 
