@@ -39,13 +39,21 @@
     z-index: 3 !important;
   }
 
-  /* Dedicated Top Header Banner for Moving Marquee (Section 1) */
+  /* 1ST SECTION: 100% FULL WIDTH TOP MARQUEE BANNER WITH TOP & BOTTOM LINES */
   .vs-top-marquee-header-banner {
     position: relative !important;
-    width: 100% !important;
-    max-width: 1280px !important;
-    margin: 0 auto clamp(30px, 5vw, 55px) auto !important;
-    min-height: clamp(240px, 32vw, 440px) !important;
+    width: 100vw !important;
+    left: 50% !important;
+    right: 50% !important;
+    margin-left: -50vw !important;
+    margin-right: -50vw !important;
+    min-height: clamp(200px, 26vw, 380px) !important;
+    background-color: #FFFDF8 !important;
+    background-image: linear-gradient(150deg, #FFFDF8 0%, #FFF5E0 40%, #FAFFF5 80%, #FFFFFF 100%) !important;
+    border-top: 2px solid rgba(247, 148, 29, 0.35) !important;
+    border-bottom: 2px solid rgba(247, 148, 29, 0.35) !important;
+    margin-top: -35px !important;
+    margin-bottom: clamp(35px, 5vw, 60px) !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
@@ -65,21 +73,22 @@
     width: 200% !important;
     white-space: nowrap !important;
     z-index: 1 !important;
-    opacity: 0.40 !important;
+    opacity: 0.65 !important;
     pointer-events: none !important;
     line-height: 1 !important;
-    font-size: clamp(50px, 9vw, 125px) !important;
-    font-weight: 900 !important;
+    font-size: clamp(48px, 8.5vw, 120px) !important;
+    font-weight: 800 !important;
     color: #F7941D !important;
-    letter-spacing: 4px !important;
+    letter-spacing: 3px !important;
     display: inline-block !important;
     will-change: transform !important;
-    animation: vsMarqueeLeftToRight 16s linear infinite !important;
+    animation: vsMarqueeLeftToRight 18s linear infinite !important;
   }
 
   @media screen and (max-width: 768px) {
     .vs-top-marquee-header-banner {
-      min-height: 240px !important;
+      min-height: 200px !important;
+      margin-top: -35px !important;
     }
   }
 
