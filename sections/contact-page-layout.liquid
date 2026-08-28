@@ -2354,6 +2354,7 @@
     }
 
     /* --- 7TH SECTION: OUR BANKING & 3D ARTWORK (LUCRATIVE & PERFECTLY ALIGNED) --- */
+  #vsContactSection .vs-sec7-banking-section,
   .vs-sec7-banking-section {
     background: linear-gradient(180deg, #FFFFFF 0%, #FAFBFD 100%) !important;
     border: 2px solid rgba(236, 92, 10, 0.18) !important;
@@ -2376,7 +2377,7 @@
   /* LEFT ARTWORK COLUMN */
   .vs-sec7-artwork-box {
     background: #FFFFFF !important;
-    border: 1.5px solid #E2E8F0 !important;
+    border: 1.5px solid #CBD5E1 !important;
     border-radius: 24px !important;
     padding: 16px !important;
     display: flex !important;
@@ -2427,6 +2428,7 @@
     flex-direction: column !important;
     justify-content: space-between !important;
     transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    box-sizing: border-box !important;
   }
 
   .vs-sec7-bank-card:hover {
@@ -2438,12 +2440,16 @@
   .vs-sec7-card-header {
     text-align: center !important;
     margin-bottom: 14px !important;
+    width: 100% !important;
   }
 
-  .vs-sec7-card-logo {
+  #vsContactSection img.vs-sec7-card-logo,
+  .vs-contact-section img.vs-sec7-card-logo,
+  img.vs-sec7-card-logo {
     height: 44px !important;
+    max-height: 44px !important;
     width: auto !important;
-    max-width: 100% !important;
+    max-width: 180px !important;
     margin: 0 auto 8px auto !important;
     display: block !important;
     object-fit: contain !important;
@@ -2465,6 +2471,7 @@
     display: flex !important;
     flex-direction: column !important;
     gap: 8px !important;
+    width: 100% !important;
   }
 
   .vs-sec7-field {
@@ -2478,6 +2485,9 @@
     box-sizing: border-box !important;
     word-break: break-word !important;
     font-weight: 600 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
   }
 
   .vs-sec7-field.company-title {
@@ -2488,6 +2498,7 @@
     text-align: center !important;
     border: 2px solid #0F172A !important;
     letter-spacing: 0.3px !important;
+    justify-content: center !important;
   }
 
   .vs-sec7-copy-btn {
@@ -2504,6 +2515,7 @@
     cursor: pointer !important;
     margin-left: 4px !important;
     transition: all 0.2s ease !important;
+    flex-shrink: 0 !important;
   }
 
   .vs-sec7-copy-btn:hover {
@@ -2909,94 +2921,86 @@
 
 
     <!-- 7TH SECTION: OUR BANKING & 3D ARTWORK (LUCRATIVE & PERFECTLY ALIGNED) -->
-    <div class="vs-sec7-banking-section" id="vsSec7Banking">
+    <div class="vs-sec7-banking-section" id="vsSec7Banking" style="background: linear-gradient(180deg, #FFFFFF 0%, #FAFBFD 100%) !important; border: 2px solid rgba(236, 92, 10, 0.18) !important; border-radius: 28px !important; padding: clamp(24px, 4vw, 40px) clamp(16px, 3vw, 32px) !important; margin-bottom: clamp(40px, 6vw, 65px) !important; box-shadow: 0 20px 50px rgba(15, 23, 42, 0.05) !important; clear: both !important; display: block !important;">
       
-      <div class="vs-sec7-main-grid">
+      <div class="vs-sec7-main-grid" style="display: grid !important; grid-template-columns: 0.95fr 1.05fr !important; gap: clamp(20px, 3.5vw, 36px) !important; align-items: stretch !important;">
         
         <!-- LEFT COLUMN: HD 3D PAYMENT ARTWORK GRAPHIC -->
-        <div class="vs-sec7-artwork-box">
-          <img src="{{ 'vs-sec8-payment-artwork-hd.jpg' | asset_url }}" alt="Vidhyut Saathi Payment & Electricity Saver Card Artwork" loading="lazy" class="vs-sec7-artwork-img">
+        <div class="vs-sec7-artwork-box" style="background: #FFFFFF !important; border: 1.5px solid #CBD5E1 !important; border-radius: 20px !important; padding: 14px !important; display: flex !important; align-items: center !important; justify-content: center !important; box-shadow: 0 10px 30px rgba(0,0,0,0.04) !important;">
+          <img src="{{ 'vs-sec8-payment-artwork-hd.jpg' | asset_url }}" alt="Vidhyut Saathi Payment & Electricity Saver Card Artwork" loading="lazy" class="vs-sec7-artwork-img" style="width: 100% !important; max-width: 100% !important; height: auto !important; max-height: 520px !important; object-fit: contain !important; display: block !important; border-radius: 14px !important;">
         </div>
 
         <!-- RIGHT COLUMN: 2 BANKING DETAILS CARDS -->
-        <div class="vs-sec7-cards-wrapper">
-          <div class="vs-sec7-cards-grid">
+        <div class="vs-sec7-cards-wrapper" style="display: flex !important; flex-direction: column !important; justify-content: space-between !important;">
+          <div class="vs-sec7-cards-grid" style="display: grid !important; grid-template-columns: repeat(2, 1fr) !important; gap: clamp(12px, 2vw, 18px) !important; align-items: stretch !important;">
             
             <!-- CARD 1: IDFC FIRST BANK -->
-            <div class="vs-sec7-bank-card">
-              <div class="vs-sec7-card-header">
-                <img src="{{ 'vidhyut-saathi-banking-logo.jpg' | asset_url }}" alt="Vidhyut Saathi Logo" class="vs-sec7-card-logo">
-                <h4 class="vs-sec7-card-heading">OUR BANKING</h4>
+            <div class="vs-sec7-bank-card" style="background: #FFFFFF !important; border: 2px solid #0F172A !important; border-radius: 16px !important; padding: 16px 14px !important; box-shadow: 0 8px 25px rgba(15, 23, 42, 0.04) !important; display: flex !important; flex-direction: column !important; justify-content: space-between !important; box-sizing: border-box !important;">
+              <div class="vs-sec7-card-header" style="text-align: center !important; margin-bottom: 12px !important; width: 100% !important;">
+                <img src="{{ 'vidhyut-saathi-banking-logo.jpg' | asset_url }}" alt="Vidhyut Saathi Logo" class="vs-sec7-card-logo" style="height: 42px !important; max-height: 42px !important; width: auto !important; max-width: 180px !important; margin: 0 auto 6px auto !important; display: block !important; object-fit: contain !important;">
+                <h4 class="vs-sec7-card-heading" style="font-size: 0.9rem !important; font-weight: 900 !important; color: #0F172A !important; letter-spacing: 1px !important; text-transform: uppercase !important; border-bottom: 2px dotted #0F172A !important; display: inline-block !important; padding-bottom: 4px !important; margin: 0 auto !important;">OUR BANKING</h4>
               </div>
 
-              <div class="vs-sec7-fields-list">
-                <div class="vs-sec7-field company-title">
+              <div class="vs-sec7-fields-list" style="display: flex !important; flex-direction: column !important; gap: 8px !important; width: 100% !important;">
+                <div class="vs-sec7-field company-title" style="border: 2px solid #0F172A !important; border-radius: 6px !important; padding: 8px 10px !important; font-size: 0.78rem !important; font-weight: 900 !important; text-transform: uppercase !important; background: #F8FAFC !important; text-align: center !important; color: #0F172A !important; letter-spacing: 0.3px !important;">
                   VIDHYUT SAATHI ENERGY SAVERS PRIVATE LIMITED
                 </div>
 
-                <div class="vs-sec7-field">
+                <div class="vs-sec7-field" style="border: 1.5px solid #0F172A !important; border-radius: 6px !important; padding: 8px 10px !important; font-size: 0.78rem !important; color: #0F172A !important; background: #FFFFFF !important; line-height: 1.35 !important; font-weight: 600 !important;">
                   Bank Name - <strong>IDFC FIRST</strong>
                 </div>
 
-                <div class="vs-sec7-field">
-                  Account No - <strong>10123818626</strong>
-                  <button type="button" class="vs-sec7-copy-btn" onclick="vsCopyText('10123818626', this)" title="Copy Account Number">
-                    📋 Copy
-                  </button>
+                <div class="vs-sec7-field" style="border: 1.5px solid #0F172A !important; border-radius: 6px !important; padding: 8px 10px !important; font-size: 0.78rem !important; color: #0F172A !important; background: #FFFFFF !important; line-height: 1.35 !important; font-weight: 600 !important; display: flex !important; align-items: center !important; justify-content: space-between !important;">
+                  <span>Account No - <strong>10123818626</strong></span>
+                  <button type="button" class="vs-sec7-copy-btn" onclick="vsCopyText('10123818626', this)" title="Copy Account Number">📋 Copy</button>
                 </div>
 
-                <div class="vs-sec7-field">
-                  IFSC Code - <strong>IDFB0021581</strong>
-                  <button type="button" class="vs-sec7-copy-btn" onclick="vsCopyText('IDFB0021581', this)" title="Copy IFSC Code">
-                    📋 Copy
-                  </button>
+                <div class="vs-sec7-field" style="border: 1.5px solid #0F172A !important; border-radius: 6px !important; padding: 8px 10px !important; font-size: 0.78rem !important; color: #0F172A !important; background: #FFFFFF !important; line-height: 1.35 !important; font-weight: 600 !important; display: flex !important; align-items: center !important; justify-content: space-between !important;">
+                  <span>IFSC Code - <strong>IDFB0021581</strong></span>
+                  <button type="button" class="vs-sec7-copy-btn" onclick="vsCopyText('IDFB0021581', this)" title="Copy IFSC Code">📋 Copy</button>
                 </div>
 
-                <div class="vs-sec7-field">
+                <div class="vs-sec7-field" style="border: 1.5px solid #0F172A !important; border-radius: 6px !important; padding: 8px 10px !important; font-size: 0.78rem !important; color: #0F172A !important; background: #FFFFFF !important; line-height: 1.35 !important; font-weight: 600 !important;">
                   A/C Type - <strong>Current Account</strong>
                 </div>
 
-                <div class="vs-sec7-field">
+                <div class="vs-sec7-field" style="border: 1.5px solid #0F172A !important; border-radius: 6px !important; padding: 8px 10px !important; font-size: 0.78rem !important; color: #0F172A !important; background: #FFFFFF !important; line-height: 1.35 !important; font-weight: 600 !important;">
                   Branch - <strong>Ashoka Chowk, ROHTAK BRANCH</strong>
                 </div>
               </div>
             </div>
 
             <!-- CARD 2: INDUSIND BANK LTD. -->
-            <div class="vs-sec7-bank-card">
-              <div class="vs-sec7-card-header">
-                <img src="{{ 'vidhyut-saathi-banking-logo.jpg' | asset_url }}" alt="Vidhyut Saathi Logo" class="vs-sec7-card-logo">
-                <h4 class="vs-sec7-card-heading">OUR BANKING</h4>
+            <div class="vs-sec7-bank-card" style="background: #FFFFFF !important; border: 2px solid #0F172A !important; border-radius: 16px !important; padding: 16px 14px !important; box-shadow: 0 8px 25px rgba(15, 23, 42, 0.04) !important; display: flex !important; flex-direction: column !important; justify-content: space-between !important; box-sizing: border-box !important;">
+              <div class="vs-sec7-card-header" style="text-align: center !important; margin-bottom: 12px !important; width: 100% !important;">
+                <img src="{{ 'vidhyut-saathi-banking-logo.jpg' | asset_url }}" alt="Vidhyut Saathi Logo" class="vs-sec7-card-logo" style="height: 42px !important; max-height: 42px !important; width: auto !important; max-width: 180px !important; margin: 0 auto 6px auto !important; display: block !important; object-fit: contain !important;">
+                <h4 class="vs-sec7-card-heading" style="font-size: 0.9rem !important; font-weight: 900 !important; color: #0F172A !important; letter-spacing: 1px !important; text-transform: uppercase !important; border-bottom: 2px dotted #0F172A !important; display: inline-block !important; padding-bottom: 4px !important; margin: 0 auto !important;">OUR BANKING</h4>
               </div>
 
-              <div class="vs-sec7-fields-list">
-                <div class="vs-sec7-field company-title">
+              <div class="vs-sec7-fields-list" style="display: flex !important; flex-direction: column !important; gap: 8px !important; width: 100% !important;">
+                <div class="vs-sec7-field company-title" style="border: 2px solid #0F172A !important; border-radius: 6px !important; padding: 8px 10px !important; font-size: 0.78rem !important; font-weight: 900 !important; text-transform: uppercase !important; background: #F8FAFC !important; text-align: center !important; color: #0F172A !important; letter-spacing: 0.3px !important;">
                   VIDHYUT SAATHI
                 </div>
 
-                <div class="vs-sec7-field">
+                <div class="vs-sec7-field" style="border: 1.5px solid #0F172A !important; border-radius: 6px !important; padding: 8px 10px !important; font-size: 0.78rem !important; color: #0F172A !important; background: #FFFFFF !important; line-height: 1.35 !important; font-weight: 600 !important;">
                   Bank Name - <strong>Indusind Bank Ltd.</strong>
                 </div>
 
-                <div class="vs-sec7-field">
-                  Account No - <strong>201026450376</strong>
-                  <button type="button" class="vs-sec7-copy-btn" onclick="vsCopyText('201026450376', this)" title="Copy Account Number">
-                    📋 Copy
-                  </button>
+                <div class="vs-sec7-field" style="border: 1.5px solid #0F172A !important; border-radius: 6px !important; padding: 8px 10px !important; font-size: 0.78rem !important; color: #0F172A !important; background: #FFFFFF !important; line-height: 1.35 !important; font-weight: 600 !important; display: flex !important; align-items: center !important; justify-content: space-between !important;">
+                  <span>Account No - <strong>201026450376</strong></span>
+                  <button type="button" class="vs-sec7-copy-btn" onclick="vsCopyText('201026450376', this)" title="Copy Account Number">📋 Copy</button>
                 </div>
 
-                <div class="vs-sec7-field">
-                  IFSC Code - <strong>INDB0000130</strong>
-                  <button type="button" class="vs-sec7-copy-btn" onclick="vsCopyText('INDB0000130', this)" title="Copy IFSC Code">
-                    📋 Copy
-                  </button>
+                <div class="vs-sec7-field" style="border: 1.5px solid #0F172A !important; border-radius: 6px !important; padding: 8px 10px !important; font-size: 0.78rem !important; color: #0F172A !important; background: #FFFFFF !important; line-height: 1.35 !important; font-weight: 600 !important; display: flex !important; align-items: center !important; justify-content: space-between !important;">
+                  <span>IFSC Code - <strong>INDB0000130</strong></span>
+                  <button type="button" class="vs-sec7-copy-btn" onclick="vsCopyText('INDB0000130', this)" title="Copy IFSC Code">📋 Copy</button>
                 </div>
 
-                <div class="vs-sec7-field">
+                <div class="vs-sec7-field" style="border: 1.5px solid #0F172A !important; border-radius: 6px !important; padding: 8px 10px !important; font-size: 0.78rem !important; color: #0F172A !important; background: #FFFFFF !important; line-height: 1.35 !important; font-weight: 600 !important;">
                   A/C Type - <strong>Current Account</strong>
                 </div>
 
-                <div class="vs-sec7-field">
+                <div class="vs-sec7-field" style="border: 1.5px solid #0F172A !important; border-radius: 6px !important; padding: 8px 10px !important; font-size: 0.78rem !important; color: #0F172A !important; background: #FFFFFF !important; line-height: 1.35 !important; font-weight: 600 !important;">
                   Branch - <strong>Civil Lines, Rohtak</strong>
                 </div>
               </div>
@@ -3008,11 +3012,11 @@
       </div>
 
       <!-- BOTTOM ACCESSIBLE PAYMENT MODES BAR -->
-      <div class="vs-sec7-payment-bar">
-        <div class="vs-modes-title">
+      <div class="vs-sec7-payment-bar" style="margin-top: 24px !important; padding-top: 18px !important; border-top: 1.5px dashed rgba(236, 92, 10, 0.25) !important; display: flex !important; align-items: center !important; justify-content: space-between !important; flex-wrap: wrap !important; gap: 14px !important;">
+        <div class="vs-modes-title" style="display: inline-flex !important; align-items: center !important; gap: 8px !important; font-size: 0.85rem !important; font-weight: 900 !important; color: #0F172A !important; letter-spacing: 1px !important; text-transform: uppercase !important;">
           <span>💳</span> ACCEPTED PAYMENT MODES:
         </div>
-        <div class="vs-modes-badges">
+        <div class="vs-modes-badges" style="display: flex !important; align-items: center !important; justify-content: center !important; gap: 10px !important; flex-wrap: wrap !important;">
           <span class="vs-pay-pill visa">VISA</span>
           <span class="vs-pay-pill mc">Mastercard</span>
           <span class="vs-pay-pill netbanking">NET Banking</span>
