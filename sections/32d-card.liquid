@@ -184,14 +184,16 @@
     .v-hero-content { max-width: 100%; margin-top: 20px; padding: 0 10px; }
     .v-hero-content h1 { font-size: var(--hero-heading-size-mob); margin-bottom: 15px; }
     .v-hero-content p { font-size: var(--hero-subheading-size-mob); margin-bottom: 25px; line-height: 1.4; }
-    .v-hero-btns { flex-direction: column; width: 100%; gap: 12px; }
-    .v-btn { padding: 14px 20px; font-size: 13.5px; width: 100%; justify-content: center; }
+    .v-hero-btns { flex-direction: column; width: 100%; max-width: 360px; margin: 0 auto; gap: 14px; align-items: center; justify-content: center; }
+    .v-btn { padding: 14px 20px; height: 50px; font-size: 14px; width: 100%; justify-content: center; box-sizing: border-box !important; }
     .v-3d-container { width: 100%; height: var(--hero-height-mob); margin-bottom: 10px; margin-top: 30px; }
     .v-blob-1, .v-blob-2, .v-blob-3 { width: 60vw; height: 60vw; }
   }
 {%- endstyle -%}
 
-<div id="vidhyut-wrapper-{{ section.id }}" class="vidhyut-hero-wrapper" data-section-id="{{ section.id }}">
+<div class="vidhyut-hero-wrapper" id="vidhyut-wrapper-{{ section.id }}" data-section-id="{{ section.id }}">
+  
+  <!-- Creative Background Animation Layers -->
   <div class="v-bg-animations">
     <div class="v-blob v-blob-1"></div><div class="v-blob v-blob-2"></div><div class="v-blob v-blob-3"></div>
   </div>
@@ -208,14 +210,12 @@
         <a href="{% if section.settings.btn1_link != blank %}{{ section.settings.btn1_link }}{% else %}/pages/get-franchise{% endif %}" class="v-btn v-btn-primary">
           <i class="fas fa-handshake"></i>
           <span>{{ section.settings.btn1_text }}</span>
-          <i class="fas fa-arrow-right"></i>
         </a>
       {% endif %}
       {% if section.settings.btn2_text != blank %}
         <a href="{% if section.settings.btn2_link != blank %}{{ section.settings.btn2_link }}{% else %}tel:+918199036060{% endif %}" class="v-btn v-btn-secondary">
           <i class="fas fa-headset"></i>
           <span>{{ section.settings.btn2_text }}</span>
-          <i class="fas fa-phone"></i>
         </a>
       {% endif %}
     </div>
