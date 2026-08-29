@@ -562,19 +562,21 @@
   }
 
   /* Map Card Container */
+  /* Map Card Container (Full Width across both columns on Desktop) */
   .vs-map-card {
-    border-radius: 16px !important;
+    grid-column: 1 / -1 !important;
+    border-radius: 20px !important;
     overflow: hidden !important;
-    border: 1.5px solid rgba(236, 92, 10, 0.2) !important;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05) !important;
+    border: 1.5px solid rgba(236, 92, 10, 0.22) !important;
+    box-shadow: 0 14px 40px rgba(15, 23, 42, 0.06) !important;
     position: relative !important;
-    margin-top: auto !important;
+    margin-top: 10px !important;
     width: 100% !important;
   }
 
   .vs-map-card iframe {
     width: 100% !important;
-    height: 170px !important;
+    height: 320px !important;
     border: none !important;
     display: block !important;
   }
@@ -584,11 +586,11 @@
     background: #0F172A !important;
     color: #FFFFFF !important;
     text-align: center !important;
-    padding: 12px 14px !important;
-    font-size: clamp(0.75rem, 1.8vw, 0.82rem) !important;
+    padding: 14px 18px !important;
+    font-size: clamp(0.82rem, 1.8vw, 0.9rem) !important;
     font-weight: 800 !important;
     text-decoration: none !important;
-    letter-spacing: 0.5px !important;
+    letter-spacing: 0.8px !important;
     transition: background 0.3s ease !important;
   }
 
@@ -1095,6 +1097,16 @@
 
     .vs-mobile-sticky-bar {
       display: block !important;
+    }
+
+    /* MAP CARD MOBILE STYLES */
+    .vs-map-card {
+      border-radius: 16px !important;
+      margin-top: 0 !important;
+    }
+
+    .vs-map-card iframe {
+      height: 200px !important;
     }
 
     /* SECTION 5 (DEPARTMENT HUBS) MOBILE OPTIMIZATION */
@@ -2635,19 +2647,6 @@
 
           </div>
         </div>
-
-        <!-- Embedded Map Card -->
-        <div class="vs-map-card">
-          <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3493.587823439497!2d76.6025!3d28.8955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d85a123456789%3A0x123456789abcdef!2sRohtak%2C%20Haryana!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
-            allowfullscreen="" 
-            loading="lazy" 
-            referrerpolicy="no-referrer-when-downgrade">
-          </iframe>
-          <a href="https://maps.google.com/?q=Ashoka+Complex+Delhi+Road+Rohtak+Haryana" target="_blank" rel="noopener" class="vs-map-link">
-            🗺️ OPEN IN GOOGLE MAPS &amp; GET DIRECTIONS &rarr;
-          </a>
-        </div>
       </div>
 
       <!-- RIGHT COLUMN CARD: High-Converting Smart Form Card -->
@@ -2743,6 +2742,20 @@
           </div>
         {%- endform -%}
       </div> <!-- Closing vs-form-card -->
+
+      <!-- Embedded Full Width Google Map Card (Desktop Spans Both Columns) -->
+      <div class="vs-map-card">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3493.587823439497!2d76.6025!3d28.8955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d85a123456789%3A0x123456789abcdef!2sRohtak%2C%20Haryana!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+        <a href="https://maps.google.com/?q=Ashoka+Complex+Delhi+Road+Rohtak+Haryana" target="_blank" rel="noopener" class="vs-map-link">
+          🗺️ OPEN IN GOOGLE MAPS &amp; GET DIRECTIONS &rarr;
+        </a>
+      </div>
+
     </div> <!-- Closing vs-contact-grid -->
 
     <!-- Trust Highlights Bar (Relocated below 2-column grid) -->
