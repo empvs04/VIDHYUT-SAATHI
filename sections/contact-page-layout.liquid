@@ -878,6 +878,15 @@
     box-shadow: 0 14px 32px rgba(236, 92, 10, 0.45) !important;
   }
 
+  /* Desktop Right Column Wrapper */
+  .vs-right-col-box {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    gap: 18px !important;
+    width: 100% !important;
+  }
+
   /* Desktop-Only Client Call Support Card */
   .vs-desktop-support-card {
     display: flex !important;
@@ -888,7 +897,7 @@
     border-top: 4px solid #EC5C0A !important;
     border-radius: clamp(20px, 3vw, 26px) !important;
     padding: 18px 22px !important;
-    margin-top: 18px !important;
+    margin-top: 0 !important;
     box-shadow: 0 12px 35px rgba(236, 92, 10, 0.08) !important;
   }
 
@@ -3012,8 +3021,11 @@
         </div>
       </div>
 
-      <!-- RIGHT COLUMN CARD: High-Converting Smart Form Card -->
-      <div class="vs-form-card">
+      <!-- RIGHT COLUMN WRAPPER (Fills Column 2 of 3rd Section Grid) -->
+      <div class="vs-right-col-box">
+        
+        <!-- RIGHT COLUMN CARD: High-Converting Smart Form Card -->
+        <div class="vs-form-card">
         <h2 class="vs-form-title">Request Free Consultation</h2>
         <p class="vs-form-subtitle">Fill out the details below to receive a personalized energy audit report and callback within 2 hours.</p>
 
@@ -3106,7 +3118,7 @@
         {%- endform -%}
       </div> <!-- Closing vs-form-card -->
 
-      <!-- Desktop-Only Client Call Support Card (Fills Right Column Space for Symmetrical Alignment) -->
+      <!-- Desktop-Only Client Call Support Card (Inside Right Column directly below Form Card) -->
       <div class="vs-desktop-support-card">
         <div class="vs-support-img-wrapper">
           <img src="{{ 'vidhyut-customer-call-support.jpg' | asset_url }}" alt="Vidhyut Saathi Client Support Manager" class="vs-support-img" loading="lazy">
@@ -3120,6 +3132,8 @@
           </a>
         </div>
       </div>
+
+    </div> <!-- Closing vs-right-col-box -->
 
       <!-- Embedded Full Width Google Map Card (Desktop Spans Both Columns) -->
       <div class="vs-map-card">
@@ -3853,6 +3867,14 @@
         margin-top: 10px !important;
         padding: 22px 14px !important;
         border-bottom: none !important;
+      }
+
+      .vs-right-col-box {
+        order: 1 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 0 !important;
+        width: 100% !important;
       }
 
       .vs-desktop-support-card {
