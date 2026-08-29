@@ -161,28 +161,11 @@
     display: flex !important;
     flex-direction: column !important;
     justify-content: center !important;
-  }
-
-  .vs-video-badge {
-    display: inline-flex !important;
-    align-items: center !important;
-    gap: 8px !important;
-    padding: 7px 18px !important;
-    background: #FFF3EB !important;
-    border: 1.5px solid rgba(236, 92, 10, 0.35) !important;
-    color: #EC5C0A !important;
-    font-size: 0.82rem !important;
-    font-weight: 800 !important;
-    letter-spacing: 1.2px !important;
-    text-transform: uppercase !important;
-    border-radius: 30px !important;
-    margin-bottom: 18px !important;
-    width: fit-content !important;
-    box-shadow: 0 4px 15px rgba(236, 92, 10, 0.1) !important;
+    text-align: left !important;
   }
 
   .vs-video-main-heading {
-    font-size: clamp(2rem, 3.5vw, 2.7rem) !important;
+    font-size: clamp(2.1rem, 3.6vw, 2.8rem) !important;
     font-weight: 900 !important;
     color: #0F172A !important;
     line-height: 1.2 !important;
@@ -199,13 +182,14 @@
   .vs-video-feature-box {
     display: flex !important;
     align-items: flex-start !important;
-    gap: 18px !important;
+    gap: 20px !important;
     background: #FFFFFF !important;
     border: 1.5px solid rgba(236, 92, 10, 0.22) !important;
+    border-left: 4px solid #EC5C0A !important;
     border-radius: 22px !important;
-    padding: 22px 24px !important;
-    box-shadow: 0 14px 38px rgba(15, 23, 42, 0.05), 0 2px 8px rgba(0, 0, 0, 0.02) !important;
-    margin-bottom: 28px !important;
+    padding: 24px 26px !important;
+    box-shadow: 0 16px 40px rgba(15, 23, 42, 0.05), 0 2px 8px rgba(0, 0, 0, 0.02) !important;
+    margin-bottom: 30px !important;
     position: relative !important;
   }
 
@@ -449,7 +433,6 @@
 
       <!-- RIGHT COLUMN: CONTENT & DETAILS -->
       <div class="vs-video-content-col">
-        <span class="vs-video-badge">⚡ {{ section.settings.badge_text | default: "AMONG THE BEST" }}</span>
         <h2 class="vs-video-main-heading">
           {{ section.settings.heading | default: "Choose Your <span>Favorite Energy Plan</span>" }}
         </h2>
