@@ -1,6 +1,6 @@
 {%- style -%}
   /* ===========================================================================
-     SECTION 14: VIDHYUT DESKTOP VIDEO SHOWCASE (ULTRA LUCRATIVE & PERFECTLY CENTERED CARDS)
+     SECTION 14: VIDHYUT DESKTOP VIDEO SHOWCASE (DESKTOP ONLY)
      =========================================================================== */
   .vs-desktop-video-section {
     display: block !important;
@@ -333,7 +333,7 @@
     color: #EC5C0A !important;
   }
 
-  /* VIDEO MODAL POPUP */
+  /* VIDEO MODAL POPUP (SUPPORTS BOTH YOUTUBE & MP4 / GALLERY VIDEOS) */
   .vs-video-modal-overlay {
     position: fixed !important;
     inset: 0 !important;
@@ -365,7 +365,7 @@
     border-radius: 26px !important;
     overflow: hidden !important;
     box-shadow: 0 35px 90px rgba(0, 0, 0, 0.75), 0 0 50px rgba(236, 92, 10, 0.4) !important;
-    border: 2px solid rgba(236, 92, 10, 0.5) !important;
+    border: 2.5px solid rgba(236, 92, 10, 0.5) !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
@@ -403,6 +403,13 @@
     border: none !important;
     display: block !important;
   }
+
+  .vs-video-modal-video {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    background: #000000 !important;
+  }
 {%- endstyle -%}
 
 <!-- SECTION 14: VIDHYUT DESKTOP VIDEO SHOWCASE -->
@@ -412,11 +419,19 @@
 
   <div class="vs-desktop-video-container">
 
+    <!-- Determine Video URL (Supports Gallery MP4 file, Direct MP4 URL, or YouTube URL) -->
+    {%- assign active_video_target = section.settings.video_url -%}
+    {%- if section.settings.custom_video_file != blank -%}
+      {%- assign active_video_target = section.settings.custom_video_file.sources[0].url -%}
+    {%- elsif section.settings.custom_video_url != blank -%}
+      {%- assign active_video_target = section.settings.custom_video_url -%}
+    {%- endif -%}
+
     <!-- 2-COLUMN MAIN GRID -->
     <div class="vs-desktop-video-main-grid">
       
       <!-- LEFT COLUMN: THUMBNAIL WITH PLAY BUTTON -->
-      <div class="vs-video-thumb-card" onclick="vsOpenVideoModal('{{ section.settings.video_url }}')">
+      <div class="vs-video-thumb-card" onclick="vsOpenVideoModal('{{ active_video_target | escape }}')">
         <span class="vs-thumb-corner-tag"><span>⚡</span> WATCH DEMO</span>
         
         {%- if section.settings.thumbnail_image != blank -%}
@@ -497,11 +512,12 @@
   </div>
 </section>
 
-<!-- VIDEO MODAL POPUP CONTAINER -->
+<!-- VIDEO MODAL POPUP CONTAINER (SUPPORTS BOTH YOUTUBE & MP4 / GALLERY VIDEOS) -->
 <div class="vs-video-modal-overlay" id="vsVideoModal" onclick="if(event.target === this) vsCloseVideoModal();">
   <div class="vs-video-modal-content">
     <button type="button" class="vs-video-modal-close" onclick="vsCloseVideoModal()">&times;</button>
-    <iframe id="vsVideoModalIframe" class="vs-video-modal-iframe" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    <iframe id="vsVideoModalIframe" class="vs-video-modal-iframe" allow="autoplay; encrypted-media" allowfullscreen style="display: none;"></iframe>
+    <video id="vsVideoModalVideo" class="vs-video-modal-video" controls playsinline style="display: none; width: 100%; height: 100%; object-fit: contain;"></video>
   </div>
 </div>
 
@@ -509,52 +525,77 @@
   function vsOpenVideoModal(rawUrl) {
     const modal = document.getElementById('vsVideoModal');
     const iframe = document.getElementById('vsVideoModalIframe');
+    const html5Video = document.getElementById('vsVideoModalVideo');
     
-    let videoId = '';
     let targetUrl = rawUrl || 'https://www.youtube.com/embed/eNPX8I7iRV8';
 
-    // 1. Check Shorts: youtube.com/shorts/ID
-    if (targetUrl.includes('/shorts/')) {
-      const parts = targetUrl.split('/shorts/');
-      if (parts[1]) {
-        videoId = parts[1].split('?')[0].split('&')[0];
+    // Check if URL is an MP4/WebM/MOV video file or Shopify CDN video link
+    const isDirectVideoFile = targetUrl.match(/\.(mp4|webm|mov|ogg)(\?.*)?$/i) || targetUrl.includes('cdn.shopify.com/videos') || targetUrl.includes('cdn.shopify.com/files');
+
+    if (isDirectVideoFile) {
+      iframe.style.display = 'none';
+      iframe.src = '';
+      html5Video.style.display = 'block';
+      html5Video.src = targetUrl;
+      html5Video.play();
+    } else {
+      html5Video.style.display = 'none';
+      html5Video.pause();
+      html5Video.src = '';
+      iframe.style.display = 'block';
+
+      let videoId = '';
+      // 1. Check Shorts: youtube.com/shorts/ID
+      if (targetUrl.includes('/shorts/')) {
+        const parts = targetUrl.split('/shorts/');
+        if (parts[1]) {
+          videoId = parts[1].split('?')[0].split('&')[0];
+        }
+      } 
+      // 2. Check Youtu.be short link: youtu.be/ID
+      else if (targetUrl.includes('youtu.be/')) {
+        const parts = targetUrl.split('youtu.be/');
+        if (parts[1]) {
+          videoId = parts[1].split('?')[0].split('&')[0];
+        }
+      } 
+      // 3. Check standard watch link: watch?v=ID
+      else if (targetUrl.includes('v=')) {
+        const queryPart = targetUrl.split('?')[1] || '';
+        const params = new URLSearchParams(queryPart);
+        videoId = params.get('v') || '';
+      } 
+      // 4. Check embed link: youtube.com/embed/ID
+      else if (targetUrl.includes('/embed/')) {
+        const parts = targetUrl.split('/embed/');
+        if (parts[1]) {
+          videoId = parts[1].split('?')[0].split('&')[0];
+        }
       }
-    } 
-    // 2. Check Youtu.be short link: youtu.be/ID
-    else if (targetUrl.includes('youtu.be/')) {
-      const parts = targetUrl.split('youtu.be/');
-      if (parts[1]) {
-        videoId = parts[1].split('?')[0].split('&')[0];
+
+      if (videoId) {
+        targetUrl = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&enablejsapi=1&rel=0';
+      } else if (targetUrl.includes('embed/')) {
+        targetUrl = targetUrl.includes('?') ? targetUrl + '&autoplay=1' : targetUrl + '?autoplay=1';
       }
-    } 
-    // 3. Check standard watch link: watch?v=ID
-    else if (targetUrl.includes('v=')) {
-      const queryPart = targetUrl.split('?')[1] || '';
-      const params = new URLSearchParams(queryPart);
-      videoId = params.get('v') || '';
-    } 
-    // 4. Check embed link: youtube.com/embed/ID
-    else if (targetUrl.includes('/embed/')) {
-      const parts = targetUrl.split('/embed/');
-      if (parts[1]) {
-        videoId = parts[1].split('?')[0].split('&')[0];
-      }
+
+      iframe.src = targetUrl;
     }
 
-    if (videoId) {
-      targetUrl = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&enablejsapi=1&rel=0';
-    } else if (targetUrl.includes('embed/')) {
-      targetUrl = targetUrl.includes('?') ? targetUrl + '&autoplay=1' : targetUrl + '?autoplay=1';
-    }
-
-    iframe.src = targetUrl;
     modal.classList.add('active');
   }
 
   function vsCloseVideoModal() {
     const modal = document.getElementById('vsVideoModal');
     const iframe = document.getElementById('vsVideoModalIframe');
+    const html5Video = document.getElementById('vsVideoModalVideo');
+
     iframe.src = '';
+    iframe.style.display = 'none';
+    html5Video.pause();
+    html5Video.src = '';
+    html5Video.style.display = 'none';
+    
     modal.classList.remove('active');
   }
 
@@ -587,9 +628,19 @@
       "label": "Video Thumbnail Photo"
     },
     {
+      "type": "video",
+      "id": "custom_video_file",
+      "label": "Upload Custom Video (MP4 / Phone Gallery Video)"
+    },
+    {
+      "type": "text",
+      "id": "custom_video_url",
+      "label": "Or Paste Direct MP4 / Video File Link"
+    },
+    {
       "type": "text",
       "id": "video_url",
-      "label": "YouTube / Video URL",
+      "label": "Or Paste YouTube Video Link",
       "default": "https://www.youtube.com/embed/eNPX8I7iRV8"
     },
     {
@@ -602,7 +653,7 @@
       "type": "textarea",
       "id": "feature_desc",
       "label": "Feature Box Description",
-      "default": "Vidhyut Saathi Energy Savers Private Limited is specialized in electricity load optimization & 20-30% power saving solutions for over 500+ clients across India."
+      "default": "Vidhyut Saathi Energy Savers Private Limited is specialized in electricity load optimization & 20-30% power saving solutions for over 500+ commercial & residential clients across India."
     },
     {
       "type": "text",
