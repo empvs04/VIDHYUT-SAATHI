@@ -56,7 +56,7 @@
     gap: 50px !important;
     align-items: center !important;
     margin-bottom: 0 !important;
-    padding-bottom: 90px !important;
+    padding-bottom: 50px !important;
   }
 
   /* LEFT COLUMN: VIDEO PLAYER THUMBNAIL CARD */
@@ -266,7 +266,7 @@
   .vs-video-cards-wrapper {
     width: 100% !important;
     max-width: 1260px !important;
-    margin: -75px auto 0 auto !important;
+    margin: -35px auto 0 auto !important;
     position: relative !important;
     z-index: 15 !important;
   }
@@ -356,38 +356,52 @@
 
   .vs-video-modal-content {
     position: relative !important;
-    width: 100% !important;
-    max-width: 980px !important;
+    width: 90vw !important;
+    max-width: 960px !important;
+    height: 540px !important;
+    max-height: 82vh !important;
     aspect-ratio: 16 / 9 !important;
     background: #000000 !important;
     border-radius: 26px !important;
     overflow: hidden !important;
     box-shadow: 0 35px 90px rgba(0, 0, 0, 0.75), 0 0 50px rgba(236, 92, 10, 0.4) !important;
     border: 2px solid rgba(236, 92, 10, 0.5) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
   }
 
   .vs-video-modal-close {
     position: absolute !important;
-    top: -48px !important;
-    right: 0 !important;
+    top: 15px !important;
+    right: 20px !important;
     color: #FFFFFF !important;
-    font-size: 2.4rem !important;
+    font-size: 2.5rem !important;
     cursor: pointer !important;
-    background: none !important;
-    border: none !important;
+    background: rgba(15, 23, 42, 0.7) !important;
+    border-radius: 50% !important;
+    width: 44px !important;
+    height: 44px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
     line-height: 1 !important;
     transition: transform 0.2s ease, color 0.2s ease !important;
+    z-index: 10 !important;
   }
 
   .vs-video-modal-close:hover {
-    transform: scale(1.25) !important;
+    transform: scale(1.15) !important;
     color: #FF9A00 !important;
+    background: rgba(15, 23, 42, 0.9) !important;
   }
 
   .vs-video-modal-iframe {
     width: 100% !important;
     height: 100% !important;
     border: none !important;
+    display: block !important;
   }
 {%- endstyle -%}
 
@@ -492,22 +506,48 @@
 </div>
 
 <script>
-  function vsOpenVideoModal(videoUrl) {
+  function vsOpenVideoModal(rawUrl) {
     const modal = document.getElementById('vsVideoModal');
     const iframe = document.getElementById('vsVideoModalIframe');
     
-    let embedUrl = videoUrl || 'https://www.youtube.com/embed/eNPX8I7iRV8';
-    if (embedUrl.includes('watch?v=')) {
-      embedUrl = embedUrl.replace('watch?v=', 'embed/');
-    }
-    
-    if (embedUrl.includes('?')) {
-      embedUrl += '&autoplay=1';
-    } else {
-      embedUrl += '?autoplay=1';
+    let videoId = '';
+    let targetUrl = rawUrl || 'https://www.youtube.com/embed/eNPX8I7iRV8';
+
+    // 1. Check Shorts: youtube.com/shorts/ID
+    if (targetUrl.includes('/shorts/')) {
+      const parts = targetUrl.split('/shorts/');
+      if (parts[1]) {
+        videoId = parts[1].split('?')[0].split('&')[0];
+      }
+    } 
+    // 2. Check Youtu.be short link: youtu.be/ID
+    else if (targetUrl.includes('youtu.be/')) {
+      const parts = targetUrl.split('youtu.be/');
+      if (parts[1]) {
+        videoId = parts[1].split('?')[0].split('&')[0];
+      }
+    } 
+    // 3. Check standard watch link: watch?v=ID
+    else if (targetUrl.includes('v=')) {
+      const queryPart = targetUrl.split('?')[1] || '';
+      const params = new URLSearchParams(queryPart);
+      videoId = params.get('v') || '';
+    } 
+    // 4. Check embed link: youtube.com/embed/ID
+    else if (targetUrl.includes('/embed/')) {
+      const parts = targetUrl.split('/embed/');
+      if (parts[1]) {
+        videoId = parts[1].split('?')[0].split('&')[0];
+      }
     }
 
-    iframe.src = embedUrl;
+    if (videoId) {
+      targetUrl = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&enablejsapi=1&rel=0';
+    } else if (targetUrl.includes('embed/')) {
+      targetUrl = targetUrl.includes('?') ? targetUrl + '&autoplay=1' : targetUrl + '?autoplay=1';
+    }
+
+    iframe.src = targetUrl;
     modal.classList.add('active');
   }
 
