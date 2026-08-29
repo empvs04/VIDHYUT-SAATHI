@@ -286,7 +286,7 @@
       color: #EC5C0A !important;
     }
 
-    /* Verified Customer Review Card (Matching Screenshot Design) */
+    /* Verified Customer Review Card (4 Carousel Reviews) */
     .vs-customer-review-card {
       background: #FFFDF9 !important;
       border: 1.5px dashed rgba(247, 148, 29, 0.5) !important;
@@ -294,13 +294,31 @@
       padding: 18px 20px !important;
       margin-top: 14px !important;
       box-shadow: 0 8px 24px rgba(247, 148, 29, 0.06) !important;
+      position: relative !important;
+    }
+
+    .vs-review-header {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      margin-bottom: 8px !important;
     }
 
     .vs-review-stars {
       color: #F59E0B !important;
       font-size: 1.05rem !important;
       letter-spacing: 2px !important;
-      margin-bottom: 8px !important;
+    }
+
+    .vs-review-badge {
+      font-size: 0.65rem !important;
+      font-weight: 800 !important;
+      padding: 2px 8px !important;
+      border-radius: 20px !important;
+      background: rgba(245, 158, 11, 0.12) !important;
+      color: #D97706 !important;
+      border: 1px solid rgba(245, 158, 11, 0.3) !important;
+      letter-spacing: 0.5px !important;
     }
 
     .vs-review-text {
@@ -310,6 +328,7 @@
       color: #334155 !important;
       line-height: 1.55 !important;
       margin-bottom: 10px !important;
+      min-height: 56px !important;
     }
 
     .vs-review-author {
@@ -321,6 +340,64 @@
     .vs-review-author span {
       font-weight: 600 !important;
       color: #64748B !important;
+    }
+
+    .vs-review-footer {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      margin-top: 10px !important;
+      padding-top: 8px !important;
+      border-top: 1px dashed rgba(247, 148, 29, 0.25) !important;
+    }
+
+    .vs-review-dots {
+      display: flex !important;
+      align-items: center !important;
+      gap: 6px !important;
+    }
+
+    .vs-review-dot {
+      width: 8px !important;
+      height: 8px !important;
+      border-radius: 50% !important;
+      background: rgba(247, 148, 29, 0.3) !important;
+      cursor: pointer !important;
+      transition: all 0.3s ease !important;
+    }
+
+    .vs-review-dot.active {
+      width: 20px !important;
+      border-radius: 10px !important;
+      background: #EC5C0A !important;
+    }
+
+    .vs-review-nav {
+      display: flex !important;
+      align-items: center !important;
+      gap: 6px !important;
+    }
+
+    .vs-review-arrow {
+      width: 26px !important;
+      height: 26px !important;
+      border-radius: 50% !important;
+      background: #FFFFFF !important;
+      border: 1px solid rgba(236, 92, 10, 0.35) !important;
+      color: #EC5C0A !important;
+      font-size: 0.9rem !important;
+      font-weight: 800 !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      cursor: pointer !important;
+      transition: all 0.2s ease !important;
+      line-height: 1 !important;
+    }
+
+    .vs-review-arrow:hover {
+      background: #EC5C0A !important;
+      color: #FFFFFF !important;
     }
 
     /* ------------------------------------------
@@ -760,14 +837,67 @@
               </div>
             </div>
 
-            <!-- ⭐ Verified Customer Review Card -->
-            <div class="vs-customer-review-card">
-              <div class="vs-review-stars">★★★★★</div>
-              <p class="vs-review-text">
-                "Our monthly electricity bill dropped noticeably within the first billing cycle. The team's audit and installation were quick and professional."
-              </p>
-              <div class="vs-review-author">
-                Sunil Kadian <span>— Commercial Client, Rohtak</span>
+            <!-- ⭐ Verified Customer Review Card (4 Reviews Slider) -->
+            <div class="vs-customer-review-card" id="vsReviewCard">
+              <div class="vs-review-header">
+                <div class="vs-review-stars">★★★★★</div>
+                <div class="vs-review-badge">5.0 RATED CLIENTS</div>
+              </div>
+
+              <div class="vs-review-slides">
+                <!-- Review 1: Commercial -->
+                <div class="vs-review-slide active" data-slide="0">
+                  <p class="vs-review-text">
+                    "Our monthly electricity bill dropped noticeably within the first billing cycle. The team's audit and installation were quick and professional."
+                  </p>
+                  <div class="vs-review-author">
+                    Sunil Kadian <span>— Commercial Client, Rohtak</span>
+                  </div>
+                </div>
+
+                <!-- Review 2: Industrial -->
+                <div class="vs-review-slide" data-slide="1" style="display: none;">
+                  <p class="vs-review-text">
+                    "Installed Vidhyut Saathi heavy-duty power saver panel for our manufacturing unit. Experienced a 24% reduction in peak load charges!"
+                  </p>
+                  <div class="vs-review-author">
+                    Rajesh Agarwal <span>— Industrial Partner, Panipat</span>
+                  </div>
+                </div>
+
+                <!-- Review 3: Franchise -->
+                <div class="vs-review-slide" data-slide="2" style="display: none;">
+                  <p class="vs-review-text">
+                    "Great support from the company team! The franchise model is highly profitable and customers are extremely satisfied with device performance."
+                  </p>
+                  <div class="vs-review-author">
+                    Vikas Sharma <span>— Exclusive Franchisee, Hisar</span>
+                  </div>
+                </div>
+
+                <!-- Review 4: Residential -->
+                <div class="vs-review-slide" data-slide="3" style="display: none;">
+                  <p class="vs-review-text">
+                    "Heavy summer AC electricity bills used to stress us out. After installing Vidhyut Saathi home device, our bill came down by ₹3,200 monthly."
+                  </p>
+                  <div class="vs-review-author">
+                    Pooja Verma <span>— Residential User, Gurugram</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Navigation Dots & Prev/Next Arrows -->
+              <div class="vs-review-footer">
+                <div class="vs-review-dots">
+                  <span class="vs-review-dot active" onclick="vsShowReview(0)"></span>
+                  <span class="vs-review-dot" onclick="vsShowReview(1)"></span>
+                  <span class="vs-review-dot" onclick="vsShowReview(2)"></span>
+                  <span class="vs-review-dot" onclick="vsShowReview(3)"></span>
+                </div>
+                <div class="vs-review-nav">
+                  <button type="button" class="vs-review-arrow" onclick="vsNextReview(-1)" aria-label="Previous Review">‹</button>
+                  <button type="button" class="vs-review-arrow" onclick="vsNextReview(1)" aria-label="Next Review">›</button>
+                </div>
               </div>
             </div>
 
@@ -881,7 +1011,7 @@
 
   </div>
 
-  <!-- INTERACTIVE JAVASCRIPT FOR CHIPS & FORM PREVIEW -->
+  <!-- INTERACTIVE JAVASCRIPT FOR CHIPS, REVIEWS & FORM PREVIEW -->
   <script>
     // Inquiry Chips Selection Handler
     document.addEventListener('DOMContentLoaded', function() {
@@ -898,6 +1028,33 @@
         });
       });
     });
+
+    // 4 Reviews Carousel Slider Handler
+    let vsCurrentReviewIdx = 0;
+    function vsShowReview(idx) {
+      const slides = document.querySelectorAll('#vsReviewCard .vs-review-slide');
+      const dots = document.querySelectorAll('#vsReviewCard .vs-review-dot');
+      if (!slides.length) return;
+      if (idx >= slides.length) idx = 0;
+      if (idx < 0) idx = slides.length - 1;
+      vsCurrentReviewIdx = idx;
+      slides.forEach((slide, i) => {
+        slide.style.display = (i === idx) ? 'block' : 'none';
+        slide.classList.toggle('active', i === idx);
+      });
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === idx);
+      });
+    }
+
+    function vsNextReview(dir) {
+      vsShowReview(vsCurrentReviewIdx + dir);
+    }
+
+    // Auto rotate reviews every 5 seconds
+    setInterval(function() {
+      vsNextReview(1);
+    }, 5000);
 
     // Demo Form Submission Handler
     function handleFormSubmit(e) {
