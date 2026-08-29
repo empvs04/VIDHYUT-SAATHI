@@ -314,9 +314,11 @@
   .vs-trust-highlights {
     display: grid !important;
     grid-template-columns: repeat(4, 1fr) !important;
+    grid-auto-rows: 1fr !important;
     gap: clamp(8px, 2vw, 16px) !important;
     max-width: 1040px !important;
     margin: 0 auto clamp(30px, 5vw, 45px) auto !important;
+    align-items: stretch !important;
   }
 
   .vs-trust-item {
@@ -329,6 +331,8 @@
     gap: 12px !important;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.03) !important;
     transition: all 0.3s ease !important;
+    height: 100% !important;
+    box-sizing: border-box !important;
   }
 
   .vs-trust-item:hover {
@@ -1299,13 +1303,18 @@
     .vs-trust-highlights {
       margin: 12px auto 24px auto !important;
       grid-template-columns: repeat(2, 1fr) !important;
+      grid-auto-rows: 1fr !important;
       gap: 8px !important;
+      align-items: stretch !important;
     }
 
     .vs-trust-item {
       padding: 10px 12px !important;
       border-radius: 12px !important;
       gap: 8px !important;
+      height: 100% !important;
+      min-height: 56px !important;
+      box-sizing: border-box !important;
     }
 
     .vs-trust-icon {
