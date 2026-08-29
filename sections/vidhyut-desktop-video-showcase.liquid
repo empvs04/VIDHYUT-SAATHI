@@ -157,45 +157,58 @@
     -webkit-text-fill-color: transparent !important;
   }
 
-  .vs-video-feature-row {
-    display: flex !important;
-    align-items: flex-start !important;
-    gap: 14px !important;
-    margin-bottom: 20px !important;
-    padding: 0 !important;
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
+  .vs-video-feature-section {
+    margin-bottom: 22px !important;
   }
 
-  .vs-feature-icon-svg {
-    width: 34px !important;
-    height: 34px !important;
-    min-width: 34px !important;
-    color: #334155 !important;
+  .vs-feature-title {
+    margin: 0 0 10px 0 !important;
+    font-size: 0.98rem !important;
+    font-weight: 800 !important;
+    color: #0F172A !important;
+    line-height: 1.3 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+  }
+
+  .vs-feature-points-list {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 6px !important;
+  }
+
+  .vs-feature-point-item {
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+    font-size: 0.82rem !important;
+    color: #475569 !important;
+    line-height: 1.4 !important;
+  }
+
+  .vs-point-bullet {
+    width: 17px !important;
+    height: 17px !important;
+    min-width: 17px !important;
+    border-radius: 50% !important;
+    background: #FFF3EB !important;
+    border: 1px solid #EC5C0A !important;
+    color: #EC5C0A !important;
+    font-size: 0.7rem !important;
+    font-weight: 900 !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
     margin-top: 1px !important;
   }
 
-  .vs-feature-text-block {
-    flex: 1 !important;
-  }
-
-  .vs-feature-title {
-    margin: 0 0 4px 0 !important;
-    font-size: 0.95rem !important;
-    font-weight: 800 !important;
+  .vs-point-text strong {
     color: #0F172A !important;
-    line-height: 1.3 !important;
-  }
-
-  .vs-feature-desc {
-    margin: 0 !important;
-    font-size: 0.82rem !important;
-    color: #64748B !important;
-    line-height: 1.48 !important;
+    font-weight: 700 !important;
   }
 
   .vs-video-cta-btn {
@@ -221,47 +234,47 @@
     color: #FFFFFF !important;
   }
 
-  /* 6 PROPORTIONATE OVERLAPPING CARDS (1:1 CLEAN SQUARE RATIO, HIGHER OVERLAP) */
+  /* 6 PROPORTIONATE OVERLAPPING CARDS (0.75:0.75 COMPACT SCALE, HIGHER OVERLAP) */
   .vs-floating-cards-row {
     display: grid !important;
     grid-template-columns: repeat(6, 1fr) !important;
-    gap: 14px !important;
+    gap: 12px !important;
     width: 100% !important;
-    max-width: 1120px !important;
-    margin: -110px auto 0 auto !important;
+    max-width: 980px !important;
+    margin: -130px auto 0 auto !important;
     position: relative !important;
-    z-index: 20 !important;
+    z-index: 25 !important;
   }
 
   .vs-nav-card-item {
     background: #FFFFFF !important;
-    border-radius: 14px !important;
-    box-shadow: 0 12px 35px rgba(15, 23, 42, 0.08), 0 2px 8px rgba(0, 0, 0, 0.02) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08), 0 2px 6px rgba(0, 0, 0, 0.02) !important;
     border: 1px solid rgba(241, 245, 249, 0.9) !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
     aspect-ratio: 1 / 1 !important;
-    padding: 16px 8px !important;
+    padding: 12px 6px 10px 6px !important;
     text-decoration: none !important;
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
     cursor: pointer !important;
   }
 
   .vs-nav-card-item:hover {
-    transform: translateY(-6px) !important;
+    transform: translateY(-5px) !important;
     border-color: #EC5C0A !important;
-    box-shadow: 0 18px 45px rgba(236, 92, 10, 0.18) !important;
+    box-shadow: 0 16px 40px rgba(236, 92, 10, 0.18) !important;
   }
 
   .vs-card-icon-art {
-    width: 44px !important;
-    height: 44px !important;
+    width: 36px !important;
+    height: 36px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    margin-bottom: 8px !important;
+    margin-bottom: 6px !important;
     transition: transform 0.3s ease !important;
   }
 
@@ -276,7 +289,7 @@
   }
 
   .vs-card-label {
-    font-size: 0.84rem !important;
+    font-size: 0.78rem !important;
     font-weight: 800 !important;
     text-align: center !important;
     line-height: 1.2 !important;
@@ -402,19 +415,27 @@
             {{ section.settings.heading | default: "Choose Your <span>Energy Saving Plan</span>" }}
           </h2>
 
-          <!-- FEATURE ROW -->
-          <div class="vs-video-feature-row">
-            <div class="vs-feature-icon-svg">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                <circle cx="8.5" cy="8.5" r="1.5"></circle>
-                <polyline points="21 15 16 10 5 21"></polyline>
-              </svg>
-            </div>
-            <div class="vs-feature-text-block">
-              <h4 class="vs-feature-title">{{ section.settings.feature_title | default: "Optimized For 20-30% Bill Savings" }}</h4>
-              <p class="vs-feature-desc">{{ section.settings.feature_desc | default: "Engineered with advanced US-German nano technology for homes & commercial hubs." }}</p>
-            </div>
+          <!-- FEATURE SECTION WITH POINTS -->
+          <div class="vs-video-feature-section">
+            <h4 class="vs-feature-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#EC5C0A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+              {{ section.settings.feature_title | default: "We Suggest You The Best Energy Optimization Solution" }}
+            </h4>
+
+            <ul class="vs-feature-points-list">
+              <li class="vs-feature-point-item">
+                <span class="vs-point-bullet">✓</span>
+                <span class="vs-point-text"><strong>Vidhyut Saathi Energy Savers Pvt. Ltd.</strong></span>
+              </li>
+              <li class="vs-feature-point-item">
+                <span class="vs-point-bullet">✓</span>
+                <span class="vs-point-text">Specialized in electricity load optimization & <strong>20-30% power saving solutions</strong></span>
+              </li>
+              <li class="vs-feature-point-item">
+                <span class="vs-point-bullet">✓</span>
+                <span class="vs-point-text">Trusted by over <strong>500+ commercial & residential clients</strong> across India</span>
+              </li>
+            </ul>
           </div>
 
           <!-- ACTION BUTTON -->
@@ -634,8 +655,8 @@
     {
       "type": "text",
       "id": "feature_title",
-      "label": "Feature Box Title",
-      "default": "Optimized For 20-30% Bill Savings"
+      "label": "Feature Section Title",
+      "default": "We Suggest You The Best Energy Optimization Solution"
     },
     {
       "type": "textarea",
