@@ -36,18 +36,20 @@
   /* 2-COLUMN TOP GRID */
   .vs-video-top-grid {
     display: grid !important;
-    grid-template-columns: 1.1fr 0.9fr !important;
-    gap: 40px !important;
+    grid-template-columns: 0.85fr 1.15fr !important;
+    gap: 50px !important;
     align-items: center !important;
     position: relative !important;
   }
 
-  /* LEFT COLUMN: VIDEO THUMBNAIL CARD (FLUSH TO LEFT EDGE) */
+  /* LEFT COLUMN: VIDEO THUMBNAIL CARD (FLUSH TO LEFT EDGE, COMPACT WIDTH) */
   .vs-video-thumb-card {
     position: relative !important;
-    border-radius: 0 26px 26px 0 !important;
+    border-radius: 0 24px 24px 0 !important;
     overflow: hidden !important;
-    aspect-ratio: 16 / 10 !important;
+    max-width: 520px !important;
+    width: 100% !important;
+    aspect-ratio: 16 / 10.5 !important;
     background: #0F172A !important;
     cursor: pointer !important;
     box-shadow: 0 16px 45px rgba(15, 23, 42, 0.1), 0 4px 15px rgba(236, 92, 10, 0.08) !important;
@@ -124,23 +126,25 @@
     flex-direction: column !important;
     justify-content: center !important;
     position: relative !important;
+    padding: 0 35px 0 25px !important;
+    max-width: 580px !important;
   }
 
   .vs-script-subtitle {
     font-family: 'Caveat', cursive !important;
-    font-size: 1.8rem !important;
+    font-size: 1.85rem !important;
     color: #EC5C0A !important;
-    margin-bottom: 2px !important;
-    line-height: 1.1 !important;
+    margin-bottom: 4px !important;
+    line-height: 1.15 !important;
     letter-spacing: 0.5px !important;
   }
 
   .vs-video-main-heading {
-    font-size: clamp(1.9rem, 2.6vw, 2.4rem) !important;
+    font-size: clamp(2rem, 2.7vw, 2.5rem) !important;
     font-weight: 900 !important;
     color: #0F172A !important;
     line-height: 1.22 !important;
-    margin: 0 0 16px 0 !important;
+    margin: 0 0 20px 0 !important;
     letter-spacing: -0.5px !important;
   }
 
@@ -153,20 +157,20 @@
   .vs-video-feature-row {
     display: flex !important;
     align-items: flex-start !important;
-    gap: 14px !important;
-    margin-bottom: 22px !important;
+    gap: 16px !important;
+    margin-bottom: 24px !important;
     background: #FFFFFF !important;
-    border: 1px solid rgba(236, 92, 10, 0.18) !important;
-    border-left: 3.5px solid #EC5C0A !important;
-    border-radius: 16px !important;
-    padding: 14px 18px !important;
-    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04) !important;
+    border: 1.5px solid rgba(236, 92, 10, 0.2) !important;
+    border-left: 4px solid #EC5C0A !important;
+    border-radius: 18px !important;
+    padding: 16px 20px !important;
+    box-shadow: 0 10px 28px rgba(15, 23, 42, 0.05) !important;
   }
 
   .vs-feature-icon-svg {
-    width: 36px !important;
-    height: 36px !important;
-    min-width: 36px !important;
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
     color: #EC5C0A !important;
     display: flex !important;
     align-items: center !important;
@@ -180,7 +184,7 @@
 
   .vs-feature-title {
     margin: 0 0 4px 0 !important;
-    font-size: 0.98rem !important;
+    font-size: 1.02rem !important;
     font-weight: 800 !important;
     color: #0F172A !important;
     line-height: 1.3 !important;
@@ -188,31 +192,31 @@
 
   .vs-feature-desc {
     margin: 0 !important;
-    font-size: 0.84rem !important;
+    font-size: 0.86rem !important;
     color: #475569 !important;
-    line-height: 1.45 !important;
+    line-height: 1.5 !important;
   }
 
   .vs-video-cta-btn {
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
-    gap: 8px !important;
-    padding: 13px 28px !important;
+    gap: 10px !important;
+    padding: 14px 32px !important;
     background: linear-gradient(135deg, #EC5C0A 0%, #FF9A00 100%) !important;
     color: #FFFFFF !important;
-    font-size: 0.92rem !important;
+    font-size: 0.95rem !important;
     font-weight: 800 !important;
-    border-radius: 10px !important;
+    border-radius: 12px !important;
     text-decoration: none !important;
-    box-shadow: 0 8px 25px rgba(236, 92, 10, 0.35) !important;
+    box-shadow: 0 10px 28px rgba(236, 92, 10, 0.35) !important;
     transition: all 0.3s ease !important;
     width: fit-content !important;
   }
 
   .vs-video-cta-btn:hover {
     transform: translateY(-2px) !important;
-    box-shadow: 0 12px 30px rgba(236, 92, 10, 0.5) !important;
+    box-shadow: 0 14px 34px rgba(236, 92, 10, 0.5) !important;
     color: #FFFFFF !important;
   }
 
