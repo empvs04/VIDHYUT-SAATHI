@@ -22,9 +22,9 @@
   }
 
   .vs-desktop-video-container {
-    max-width: 1260px !important;
+    max-width: 1400px !important;
     margin: 0 auto !important;
-    padding: 0 20px !important;
+    padding: 0 24px 0 0 !important;
     position: relative !important;
   }
 
@@ -36,22 +36,23 @@
   /* 2-COLUMN TOP GRID */
   .vs-video-top-grid {
     display: grid !important;
-    grid-template-columns: 1.05fr 0.95fr !important;
-    gap: 44px !important;
+    grid-template-columns: 1.1fr 0.9fr !important;
+    gap: 40px !important;
     align-items: center !important;
     position: relative !important;
   }
 
-  /* LEFT COLUMN: VIDEO THUMBNAIL CARD */
+  /* LEFT COLUMN: VIDEO THUMBNAIL CARD (FLUSH TO LEFT EDGE) */
   .vs-video-thumb-card {
     position: relative !important;
-    border-radius: 22px !important;
+    border-radius: 0 26px 26px 0 !important;
     overflow: hidden !important;
-    aspect-ratio: 16 / 10.5 !important;
+    aspect-ratio: 16 / 10 !important;
     background: #0F172A !important;
     cursor: pointer !important;
     box-shadow: 0 16px 45px rgba(15, 23, 42, 0.1), 0 4px 15px rgba(236, 92, 10, 0.08) !important;
     border: 3px solid #FFFFFF !important;
+    border-left: none !important;
   }
 
   .vs-video-thumb-img {
@@ -215,27 +216,28 @@
     color: #FFFFFF !important;
   }
 
-  /* 6 COMPACT OVERLAPPING CARDS (ALIGNED HIGHER OVER BOTH COLUMNS) */
+  /* 6 COMPACT OVERLAPPING CARDS (REDUCED WIDTH & ALIGNED HIGHER OVER BOTH COLUMNS) */
   .vs-floating-cards-row {
     display: grid !important;
     grid-template-columns: repeat(6, 1fr) !important;
-    gap: 14px !important;
+    gap: 12px !important;
     width: 100% !important;
-    margin-top: -85px !important;
+    max-width: 1060px !important;
+    margin: -85px auto 0 auto !important;
     position: relative !important;
     z-index: 15 !important;
   }
 
   .vs-nav-card-item {
     background: #FFFFFF !important;
-    border-radius: 14px !important;
+    border-radius: 12px !important;
     box-shadow: 0 14px 35px rgba(15, 23, 42, 0.08), 0 2px 8px rgba(236, 92, 10, 0.04) !important;
     border: 1px solid rgba(236, 92, 10, 0.15) !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
-    padding: 14px 6px 12px 6px !important;
+    padding: 12px 4px 10px 4px !important;
     text-decoration: none !important;
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
     cursor: pointer !important;
@@ -248,12 +250,12 @@
   }
 
   .vs-card-icon-art {
-    width: 42px !important;
-    height: 42px !important;
+    width: 38px !important;
+    height: 38px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    margin-bottom: 6px !important;
+    margin-bottom: 5px !important;
     transition: transform 0.3s ease !important;
   }
 
@@ -268,7 +270,7 @@
   }
 
   .vs-card-label {
-    font-size: 0.82rem !important;
+    font-size: 0.78rem !important;
     font-weight: 800 !important;
     text-align: center !important;
     line-height: 1.2 !important;
