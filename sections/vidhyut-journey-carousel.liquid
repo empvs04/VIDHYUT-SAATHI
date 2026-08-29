@@ -1,0 +1,281 @@
+{%- style -%}
+  @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&display=swap');
+
+  /* ===========================================================================
+     SECTION 15: VIDHYUT OUR JOURNEY CAROUSEL (DESKTOP ONLY)
+     =========================================================================== */
+  .vs-journey-section {
+    display: block !important;
+    padding: 60px 0 70px 0 !important;
+    background: #FFFFFF !important;
+    position: relative !important;
+    overflow: hidden !important;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif !important;
+  }
+
+  /* Hide on Mobile */
+  @media screen and (max-width: 768px) {
+    .vs-journey-section {
+      display: none !important;
+    }
+  }
+
+  .vs-journey-container {
+    max-width: 1440px !important;
+    margin: 0 auto !important;
+    padding: 0 20px !important;
+    text-align: center !important;
+  }
+
+  .vs-journey-header {
+    margin-bottom: 35px !important;
+  }
+
+  .vs-journey-script-subtitle {
+    font-family: 'Caveat', cursive !important;
+    font-size: 2rem !important;
+    color: #EC5C0A !important;
+    margin: 0 0 6px 0 !important;
+    line-height: 1.1 !important;
+    letter-spacing: 0.5px !important;
+  }
+
+  .vs-journey-main-heading {
+    font-size: clamp(1.6rem, 2.4vw, 2.1rem) !important;
+    font-weight: 800 !important;
+    color: #1E293B !important;
+    line-height: 1.25 !important;
+    margin: 0 !important;
+    letter-spacing: -0.4px !important;
+  }
+
+  /* CAROUSEL TRACK WRAPPER */
+  .vs-journey-carousel-wrapper {
+    position: relative !important;
+    width: 100% !important;
+    overflow: hidden !important;
+    padding: 10px 0 !important;
+  }
+
+  .vs-journey-carousel-track {
+    display: flex !important;
+    gap: 16px !important;
+    transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1) !important;
+    will-change: transform !important;
+    width: max-content !important;
+  }
+
+  /* INDIVIDUAL IMAGE ITEM */
+  .vs-journey-card-item {
+    flex: 0 0 170px !important;
+    width: 170px !important;
+    aspect-ratio: 4 / 3 !important;
+    border-radius: 10px !important;
+    overflow: hidden !important;
+    border: 3px solid #EC5C0A !important;
+    box-shadow: 0 8px 24px rgba(236, 92, 10, 0.15) !important;
+    position: relative !important;
+    background: #F8FAFC !important;
+    transition: transform 0.35s ease, box-shadow 0.35s ease !important;
+    cursor: pointer !important;
+    display: block !important;
+    text-decoration: none !important;
+  }
+
+  .vs-journey-card-item:hover {
+    transform: translateY(-5px) scale(1.03) !important;
+    box-shadow: 0 14px 32px rgba(236, 92, 10, 0.28) !important;
+  }
+
+  .vs-journey-card-img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
+    transition: transform 0.5s ease !important;
+  }
+
+  .vs-journey-card-item:hover .vs-journey-card-img {
+    transform: scale(1.06) !important;
+  }
+{%- endstyle -%}
+
+<!-- SECTION 15: VIDHYUT OUR JOURNEY CAROUSEL -->
+<section class="vs-journey-section" id="vsJourneySection" onmouseenter="vsPauseJourneySlider()" onmouseleave="vsResumeJourneySlider()">
+  <div class="vs-journey-container">
+
+    <!-- HEADER -->
+    <div class="vs-journey-header">
+      <div class="vs-journey-script-subtitle">{{ section.settings.script_subtitle | default: "Our Journey" }}</div>
+      <h2 class="vs-journey-main-heading">
+        {{ section.settings.heading | default: "“The Journey of a 1,000 miles begins with one step”" }}
+      </h2>
+    </div>
+
+    <!-- CAROUSEL -->
+    <div class="vs-journey-carousel-wrapper" id="vsJourneyWrapper">
+      <div class="vs-journey-carousel-track" id="vsJourneyTrack">
+        {%- if section.blocks.size > 0 -%}
+          {%- for block in section.blocks -%}
+            <a href="{{ block.settings.link | default: '#' }}" class="vs-journey-card-item" {{ block.shopify_attributes }}>
+              {%- if block.settings.image != blank -%}
+                <img src="{{ block.settings.image | image_url: width: 600 }}" alt="{{ block.settings.alt_text | default: 'Vidhyut Saathi Journey' }}" class="vs-journey-card-img" loading="lazy">
+              {%- else -%}
+                <img src="{{ 'Vidhyut_Saathi_Logo.jpg_1.jpg' | asset_url }}" alt="Vidhyut Saathi Journey" class="vs-journey-card-img" loading="lazy">
+              {%- endif -%}
+            </a>
+          {%- endfor -%}
+          <!-- Repeat blocks to make continuous loop -->
+          {%- for block in section.blocks -%}
+            <a href="{{ block.settings.link | default: '#' }}" class="vs-journey-card-item" aria-hidden="true">
+              {%- if block.settings.image != blank -%}
+                <img src="{{ block.settings.image | image_url: width: 600 }}" alt="{{ block.settings.alt_text | default: 'Vidhyut Saathi Journey' }}" class="vs-journey-card-img" loading="lazy">
+              {%- else -%}
+                <img src="{{ 'Vidhyut_Saathi_Logo.jpg_1.jpg' | asset_url }}" alt="Vidhyut Saathi Journey" class="vs-journey-card-img" loading="lazy">
+              {%- endif -%}
+            </a>
+          {%- endfor -%}
+        {%- else -%}
+          <!-- Default fallback photos (12 images) -->
+          {%- for i in (1..16) -%}
+            <div class="vs-journey-card-item">
+              <img src="{{ 'electronics-minimal-1.jpg' | asset_url }}" alt="Our Journey" class="vs-journey-card-img" loading="lazy">
+            </div>
+          {%- endfor -%}
+        {%- endif -%}
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  (function() {
+    let currentStep = 0;
+    let autoSlideInterval = null;
+    const slideSpeed = {{ section.settings.autoplay_speed | default: 3 }} * 1000;
+    const stepMoveCount = {{ section.settings.step_count | default: 2 }}; // 2-3 photos move per step
+
+    function getCardWidth() {
+      const card = document.querySelector('.vs-journey-card-item');
+      if (!card) return 186; // 170px + 16px gap
+      return card.offsetWidth + 16;
+    }
+
+    function moveJourneySlider() {
+      const track = document.getElementById('vsJourneyTrack');
+      if (!track) return;
+      
+      const cards = track.querySelectorAll('.vs-journey-card-item');
+      if (cards.length === 0) return;
+
+      const singleCardWidth = getCardWidth();
+      const totalWidth = (cards.length / 2) * singleCardWidth;
+
+      currentStep += stepMoveCount;
+      const currentTranslate = currentStep * singleCardWidth;
+
+      if (currentTranslate >= totalWidth) {
+        // Reset seamlessly without animation jump
+        track.style.transition = 'none';
+        currentStep = 0;
+        track.style.transform = `translateX(0px)`;
+        
+        setTimeout(() => {
+          track.style.transition = 'transform 0.8s cubic-bezier(0.25, 1, 0.5, 1)';
+          currentStep += stepMoveCount;
+          track.style.transform = `translateX(-${currentStep * singleCardWidth}px)`;
+        }, 50);
+      } else {
+        track.style.transition = 'transform 0.8s cubic-bezier(0.25, 1, 0.5, 1)';
+        track.style.transform = `translateX(-${currentTranslate}px)`;
+      }
+    }
+
+    function startJourneySlider() {
+      if (autoSlideInterval) clearInterval(autoSlideInterval);
+      autoSlideInterval = setInterval(moveJourneySlider, slideSpeed);
+    }
+
+    window.vsPauseJourneySlider = function() {
+      if (autoSlideInterval) clearInterval(autoSlideInterval);
+    };
+
+    window.vsResumeJourneySlider = function() {
+      startJourneySlider();
+    };
+
+    document.addEventListener('DOMContentLoaded', startJourneySlider);
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      startJourneySlider();
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Journey Carousel 15",
+  "settings": [
+    {
+      "type": "text",
+      "id": "script_subtitle",
+      "label": "Script Subtitle",
+      "default": "Our Journey"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Main Heading",
+      "default": "“The Journey of a 1,000 miles begins with one step”"
+    },
+    {
+      "type": "range",
+      "id": "autoplay_speed",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "unit": "s",
+      "label": "Auto-Slide Speed (Seconds)",
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "step_count",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "label": "Photos To Move Per Step",
+      "default": 2
+    }
+  ],
+  "blocks": [
+    {
+      "type": "journey_image",
+      "name": "Journey Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Upload Journey Photo"
+        },
+        {
+          "type": "text",
+          "id": "alt_text",
+          "label": "Image Alt Text",
+          "default": "Vidhyut Saathi Journey Milestone"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Image Link (Optional)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Journey Carousel 15"
+    }
+  ]
+}
+{% endschema %}
