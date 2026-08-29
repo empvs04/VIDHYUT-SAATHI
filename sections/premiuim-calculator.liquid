@@ -716,14 +716,41 @@
     .premium-calculator-{{ section.id }} .rec-val {
       font-size: 0.88rem !important;
     }
-    .premium-calculator-{{ section.id }} .trust-strip { 
+    /* TRUST STRIP CAPSULE PILLS IN LEFT COLUMN (MATCHING USER SCREENSHOT) */
+    .vs-calc-left-col-{{ section.id }} .trust-strip { 
+      display: grid !important; 
       grid-template-columns: repeat(2, 1fr) !important; 
-      gap: 10px !important; 
-      margin-top: 16px !important; 
+      gap: 12px !important; 
+      margin-top: 18px !important; 
+      width: 100% !important;
     }
-    .premium-calculator-{{ section.id }} .trust-item { 
-      padding: 10px 8px !important; 
-      font-size: 0.78rem !important; 
+    .vs-calc-left-col-{{ section.id }} .trust-item { 
+      background: linear-gradient(#FFFFFF, #FFFFFF) padding-box, linear-gradient(90deg, #F58220 0%, #FFC107 50%, #20B14B 100%) border-box !important;
+      border: 2px solid transparent !important;
+      border-radius: 999px !important;
+      padding: 10px 14px !important; 
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+      text-align: center !important;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03) !important;
+      transition: all 0.3s ease !important;
+    }
+    .vs-calc-left-col-{{ section.id }} .trust-item:hover {
+      transform: translateY(-2px) !important;
+      box-shadow: 0 8px 20px rgba(245, 130, 32, 0.15) !important;
+    }
+    .vs-calc-left-col-{{ section.id }} .trust-icon {
+      font-size: 1.15rem !important;
+      margin-bottom: 2px !important;
+      display: inline-block !important;
+    }
+    .vs-calc-left-col-{{ section.id }} .trust-item div {
+      font-size: 0.85rem !important;
+      font-weight: 700 !important;
+      color: #1E293B !important;
+      line-height: 1.2 !important;
     }
     .premium-calculator-{{ section.id }} .blur1 { width: 350px; height: 350px; top: -50px; right: -50px; }
     .premium-calculator-{{ section.id }} .blur2 { width: 300px; height: 300px; bottom: -50px; left: -50px; }
@@ -817,6 +844,16 @@
             <div class="calc-result-label">{{ section.settings.label_roi }}</div>
           </div>
         </div>
+
+        <!-- TRUST STRIP CAPSULE PILLS MOVED HERE (MATCHING USER SCREENSHOT) -->
+        <div class="trust-strip">
+          {%- for block in section.blocks -%}
+            <div class="trust-item" {{ block.shopify_attributes }}>
+              <span class="trust-icon">{{ block.settings.icon }}</span>
+              <div>{{ block.settings.text }}</div>
+            </div>
+          {%- endfor -%}
+        </div>
       </div>
 
       <!-- RIGHT COLUMN: INTERACTIVE CALCULATOR CONTROLS CARD -->
@@ -894,12 +931,6 @@
           </div>
 
           <p class="calc-disclaimer">{{ section.settings.disclaimer_text }}</p>
-
-          <div class="trust-strip">
-            {%- for block in section.blocks -%}
-              <div class="trust-item">{{ block.settings.icon }}<div>{{ block.settings.text }}</div></div>
-            {%- endfor -%}
-          </div>
 
         </div>
       </div>
