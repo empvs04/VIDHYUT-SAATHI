@@ -888,7 +888,7 @@
     height: 100% !important;
   }
 
-  /* Desktop-Only Client Call Support Card (Seamless Alignment Under Form) */
+  /* Desktop-Only Client Call Support Card (Single Composite Image Banner) */
   .vs-desktop-support-card {
     display: block !important;
     position: relative !important;
@@ -908,37 +908,13 @@
     width: 100% !important;
     height: 100% !important;
     object-fit: cover !important;
-    object-position: center 25% !important;
+    object-position: center 20% !important;
     display: block !important;
     transition: transform 0.4s ease !important;
   }
 
   .vs-desktop-support-card:hover .vs-support-bg-img {
     transform: scale(1.02) !important;
-  }
-
-  /* Overlay Official Logo directly in CENTER over background wall text */
-  .vs-logo-wall-overlay {
-    position: absolute !important;
-    top: 14% !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    background: #FFFFFF !important;
-    padding: 6px 22px !important;
-    border-radius: 14px !important;
-    border: 2px solid #EC5C0A !important;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25), 0 0 15px rgba(236, 92, 10, 0.15) !important;
-    z-index: 5 !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-  }
-
-  .vs-wall-official-logo {
-    height: 44px !important;
-    width: auto !important;
-    object-fit: contain !important;
-    display: block !important;
   }
 
   /* --- DEPARTMENT HUBS SECTION --- */
@@ -3090,15 +3066,9 @@
         {%- endform -%}
       </div> <!-- Closing vs-form-card -->
 
-      <!-- Desktop-Only Client Call Support Banner with Official Logo Wall Overlay (Fits Exact 135px Space) -->
+      <!-- Desktop-Only Client Call Support Banner (Single Composite Image File with Official Logo Embedded) -->
       <div class="vs-desktop-support-card">
-        <!-- Background AI Call Photo -->
         <img src="{{ 'vidhyut-customer-call-support.jpg' | asset_url }}" alt="Vidhyut Saathi Support Desk" class="vs-support-bg-img" loading="lazy">
-        
-        <!-- Official Logo Overlay on Wall Board -->
-        <div class="vs-logo-wall-overlay">
-          <img src="{{ 'vidhyut-saathi-official-logo.jpg' | asset_url }}" alt="Vidhyut Saathi Official Logo" class="vs-wall-official-logo" loading="lazy">
-        </div>
       </div>
 
     </div> <!-- Closing vs-right-col-box -->
