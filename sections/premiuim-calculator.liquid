@@ -648,37 +648,44 @@
       padding: 0 !important;
     }
 
-    .vs-calc-proof-grid-{{ section.id }} {
+    /* LEFT COLUMN CALCULATION RESULTS (MATCHING SCREENSHOT 2x2 GRID) */
+    .vs-calc-left-col-{{ section.id }} .calc-results {
       display: grid !important;
       grid-template-columns: repeat(2, 1fr) !important;
       gap: 14px !important;
-      margin-top: 20px !important;
+      margin-top: 24px !important;
+      width: 100% !important;
     }
-    .vs-calc-proof-card-{{ section.id }} {
-      background: linear-gradient(135deg, rgba(20,140,58,0.06), rgba(245,130,32,0.06)) !important;
-      border: 1.5px solid rgba(20,140,58,0.18) !important;
-      border-radius: 16px !important;
-      padding: 14px 16px !important;
-      display: flex !important;
-      align-items: center !important;
-      gap: 12px !important;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.03) !important;
+    .vs-calc-left-col-{{ section.id }} .calc-result-card {
+      background: #FFFFFF !important;
+      border: 1px solid rgba(20, 140, 58, 0.15) !important;
+      border-radius: 18px !important;
+      padding: 20px 14px !important;
+      text-align: center !important;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04) !important;
+      position: relative !important;
+      overflow: hidden !important;
     }
-    .vs-calc-proof-card-{{ section.id }} i {
-      font-size: 22px !important;
-      color: var(--orange) !important;
-      flex-shrink: 0 !important;
+    .vs-calc-left-col-{{ section.id }} .calc-result-card::before {
+      content: '' !important;
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      height: 4px !important;
+      background: linear-gradient(90deg, #148C3A 0%, #F58220 100%) !important;
     }
-    .vs-calc-proof-card-{{ section.id }} .proof-title {
-      font-size: 13.5px !important;
-      font-weight: 800 !important;
-      color: var(--text) !important;
-      line-height: 1.2 !important;
+    .vs-calc-left-col-{{ section.id }} .calc-result-val {
+      font-size: 1.85rem !important;
+      font-weight: 900 !important;
+      color: #148C3A !important;
+      line-height: 1.15 !important;
+      margin-bottom: 6px !important;
     }
-    .vs-calc-proof-card-{{ section.id }} .proof-sub {
-      font-size: 11.5px !important;
-      color: var(--muted) !important;
-      margin-top: 2px !important;
+    .vs-calc-left-col-{{ section.id }} .calc-result-label {
+      font-size: 0.85rem !important;
+      color: #64748B !important;
+      font-weight: 600 !important;
     }
 
     /* RIGHT COLUMN: COMPACT & ELEGANT CALCULATOR CARD */
@@ -708,21 +715,6 @@
     }
     .premium-calculator-{{ section.id }} .rec-val {
       font-size: 0.88rem !important;
-    }
-    .premium-calculator-{{ section.id }} .calc-results { 
-      grid-template-columns: repeat(2, 1fr) !important; 
-      gap: 10px !important; 
-      margin-top: 18px !important; 
-    }
-    .premium-calculator-{{ section.id }} .calc-result-card { 
-      padding: 14px 10px !important; 
-      border-radius: 14px !important;
-    }
-    .premium-calculator-{{ section.id }} .calc-result-val { 
-      font-size: 1.45rem !important; 
-    }
-    .premium-calculator-{{ section.id }} .calc-result-label { 
-      font-size: 0.76rem !important; 
     }
     .premium-calculator-{{ section.id }} .trust-strip { 
       grid-template-columns: repeat(2, 1fr) !important; 
@@ -795,7 +787,7 @@
   <div class="wrapper">
     <div class="vs-calc-desktop-grid-{{ section.id }}">
       
-      <!-- LEFT COLUMN: HEADING & LUCRATIVE PROOF BADGES -->
+      <!-- LEFT COLUMN: HEADING, SUBTITLE & 4 CALCULATION RESULT CARDS -->
       <div class="vs-calc-left-col-{{ section.id }}">
         <div class="tag-wrapper">
           <div class="section-tag"><div class="tag-dot"></div>{{ section.settings.tag_text }}</div>
@@ -806,10 +798,28 @@
         </h2>
         <p class="section-sub">{{ section.settings.subheading_text }}</p>
 
-        <!-- Proof cards removed as requested -->
+        <!-- 4 CALCULATION RESULT CARDS MOVED HERE -->
+        <div class="calc-results">
+          <div class="calc-result-card">
+            <div class="calc-result-val" id="monthlySaving-{{ section.id }}">₹0</div>
+            <div class="calc-result-label">{{ section.settings.label_monthly }}</div>
+          </div>
+          <div class="calc-result-card">
+            <div class="calc-result-val" id="yearlySaving-{{ section.id }}">₹0</div>
+            <div class="calc-result-label">{{ section.settings.label_yearly }}</div>
+          </div>
+          <div class="calc-result-card">
+            <div class="calc-result-val" id="newBill-{{ section.id }}">₹0</div>
+            <div class="calc-result-label">{{ section.settings.label_newbill }}</div>
+          </div>
+          <div class="calc-result-card">
+            <div class="calc-result-val" id="roiMonths-{{ section.id }}">0 Mo</div>
+            <div class="calc-result-label">{{ section.settings.label_roi }}</div>
+          </div>
+        </div>
       </div>
 
-      <!-- RIGHT COLUMN: INTERACTIVE CALCULATOR CARD -->
+      <!-- RIGHT COLUMN: INTERACTIVE CALCULATOR CONTROLS CARD -->
       <div class="vs-calc-right-col-{{ section.id }}">
         <div class="calc-card">
 
@@ -881,25 +891,6 @@
           <!-- EXPLANATION BADGE (HIGHER RULE APPLIED) -->
           <div class="calc-explain-badge" id="recReason-{{ section.id }}">
             ⚡ <strong>Smart Selection:</strong> Evaluated from both KW Load and Monthly Bill — Higher Requirement Selected.
-          </div>
-
-          <div class="calc-results">
-            <div class="calc-result-card">
-              <div class="calc-result-val" id="monthlySaving-{{ section.id }}">₹0</div>
-              <div class="calc-result-label">{{ section.settings.label_monthly }}</div>
-            </div>
-            <div class="calc-result-card">
-              <div class="calc-result-val" id="yearlySaving-{{ section.id }}">₹0</div>
-              <div class="calc-result-label">{{ section.settings.label_yearly }}</div>
-            </div>
-            <div class="calc-result-card">
-              <div class="calc-result-val" id="newBill-{{ section.id }}">₹0</div>
-              <div class="calc-result-label">{{ section.settings.label_newbill }}</div>
-            </div>
-            <div class="calc-result-card">
-              <div class="calc-result-val" id="roiMonths-{{ section.id }}">0 Mo</div>
-              <div class="calc-result-label">{{ section.settings.label_roi }}</div>
-            </div>
           </div>
 
           <p class="calc-disclaimer">{{ section.settings.disclaimer_text }}</p>
