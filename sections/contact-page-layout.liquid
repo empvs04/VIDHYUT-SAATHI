@@ -882,24 +882,25 @@
   .vs-right-col-box {
     display: flex !important;
     flex-direction: column !important;
-    justify-content: space-between !important;
-    gap: 18px !important;
+    justify-content: flex-start !important;
+    gap: 0 !important;
     width: 100% !important;
+    height: 100% !important;
   }
 
-  /* Desktop-Only Client Call Support Card (Single Composite Image Banner) */
+  /* Desktop-Only Client Call Support Card (Seamless Alignment Under Form) */
   .vs-desktop-support-card {
     display: block !important;
     position: relative !important;
     width: 100% !important;
-    height: 135px !important;
-    max-height: 135px !important;
-    border-radius: 20px !important;
+    flex: 1 !important;
+    min-height: 170px !important;
+    border-radius: clamp(20px, 3vw, 26px) !important;
     overflow: hidden !important;
     border: 1.5px solid rgba(236, 92, 10, 0.3) !important;
     border-top: 4px solid #EC5C0A !important;
-    box-shadow: 0 10px 28px rgba(236, 92, 10, 0.1), 0 2px 8px rgba(0, 0, 0, 0.02) !important;
-    margin-top: 0 !important;
+    box-shadow: 0 12px 35px rgba(236, 92, 10, 0.08), 0 2px 8px rgba(0, 0, 0, 0.02) !important;
+    margin-top: 18px !important;
     box-sizing: border-box !important;
   }
 
@@ -916,26 +917,25 @@
     transform: scale(1.02) !important;
   }
 
-  /* Overlay Official Logo over wall board in AI photo */
+  /* Overlay Official Logo directly in CENTER over background wall text */
   .vs-logo-wall-overlay {
     position: absolute !important;
-    top: 10px !important;
-    left: 20px !important;
-    background: rgba(255, 255, 255, 0.92) !important;
-    backdrop-filter: blur(8px) !important;
-    -webkit-backdrop-filter: blur(8px) !important;
-    padding: 6px 14px !important;
+    top: 14% !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    background: #FFFFFF !important;
+    padding: 6px 22px !important;
     border-radius: 14px !important;
-    border: 1.5px solid rgba(236, 92, 10, 0.4) !important;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15) !important;
-    z-index: 2 !important;
+    border: 2px solid #EC5C0A !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25), 0 0 15px rgba(236, 92, 10, 0.15) !important;
+    z-index: 5 !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
   }
 
   .vs-wall-official-logo {
-    height: 38px !important;
+    height: 44px !important;
     width: auto !important;
     object-fit: contain !important;
     display: block !important;
