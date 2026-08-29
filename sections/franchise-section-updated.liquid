@@ -246,7 +246,8 @@
 .vs-usage-card-{{ section.id }}:hover img { transform: scale(1.1); }
 .vs-usage-card-{{ section.id }}:hover .vs-usage-overlay-{{ section.id }} { color: {{ section.settings.overlay_hover_color }}; }
 
-/* DESKTOP */
+/* DESKTOP CONNECTED TIMELINE LAYOUT (MATCHING MOBILE TIMELINE EXACTLY) */
+/* v={{ "now" | date: "%Y%m%d%H%M%S" }} */
 @media(min-width: 769px) {
   .vs-section-{{ section.id }} { padding: 50px 24px 35px !important; }
   .vs-section-{{ section.id }} .heading { margin-bottom: 40px !important; }
@@ -260,12 +261,16 @@
     max-width: 860px !important;
     margin: 0 auto !important;
     position: relative !important;
+    padding-left: 0 !important;
   }
   .vs-section-{{ section.id }} .timeline-line {
     display: block !important;
-    left: 35px !important;
+    left: 36px !important;
     width: 4px !important;
     top: 36px !important;
+    bottom: 50px !important;
+    height: auto !important;
+    background: linear-gradient(to bottom, #ff9d00, #ffc500, #1eb759) !important;
   }
   
   .vs-section-{{ section.id }} .item {
