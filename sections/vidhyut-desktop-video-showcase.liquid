@@ -1,11 +1,11 @@
 {%- style -%}
   /* ===========================================================================
-     SECTION 14: VIDHYUT DESKTOP VIDEO SHOWCASE (DESKTOP ONLY)
+     SECTION 14: VIDHYUT DESKTOP VIDEO SHOWCASE (ULTRA LUCRATIVE & PERFECTLY CENTERED CARDS)
      =========================================================================== */
   .vs-desktop-video-section {
     display: block !important;
-    padding: 70px 0 80px 0 !important;
-    background: linear-gradient(180deg, #FFFDF8 0%, #FAF8F2 100%) !important;
+    padding: 85px 0 95px 0 !important;
+    background: linear-gradient(180deg, #FFFDF8 0%, #FAF6EE 50%, #FFFDF8 100%) !important;
     position: relative !important;
     overflow: visible !important;
     font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif !important;
@@ -16,6 +16,29 @@
     .vs-desktop-video-section {
       display: none !important;
     }
+  }
+
+  /* Ambient Glow Orbs */
+  .vs-ambient-orb-orange {
+    position: absolute !important;
+    top: 5% !important;
+    left: -5% !important;
+    width: 400px !important;
+    height: 400px !important;
+    background: radial-gradient(circle, rgba(236, 92, 10, 0.08) 0%, rgba(255, 255, 255, 0) 70%) !important;
+    pointer-events: none !important;
+    z-index: 1 !important;
+  }
+
+  .vs-ambient-orb-green {
+    position: absolute !important;
+    bottom: 5% !important;
+    right: -5% !important;
+    width: 450px !important;
+    height: 450px !important;
+    background: radial-gradient(circle, rgba(37, 211, 102, 0.07) 0%, rgba(255, 255, 255, 0) 70%) !important;
+    pointer-events: none !important;
+    z-index: 1 !important;
   }
 
   .vs-desktop-video-container {
@@ -29,20 +52,21 @@
   /* 2-COLUMN MAIN FLEX GRID */
   .vs-desktop-video-main-grid {
     display: grid !important;
-    grid-template-columns: 1fr 1fr !important;
-    gap: 48px !important;
+    grid-template-columns: 1.05fr 0.95fr !important;
+    gap: 50px !important;
     align-items: center !important;
     margin-bottom: 0 !important;
-    padding-bottom: 70px !important;
+    padding-bottom: 90px !important;
   }
 
   /* LEFT COLUMN: VIDEO PLAYER THUMBNAIL CARD */
   .vs-video-thumb-card {
     position: relative !important;
-    border-radius: 28px !important;
+    border-radius: 30px !important;
     overflow: hidden !important;
-    box-shadow: 0 25px 60px rgba(15, 23, 42, 0.12), 0 4px 20px rgba(236, 92, 10, 0.08) !important;
-    border: 3px solid #FFFFFF !important;
+    box-shadow: 0 30px 70px rgba(15, 23, 42, 0.16), 0 8px 30px rgba(236, 92, 10, 0.15) !important;
+    border: 3.5px solid #FFFFFF !important;
+    outline: 2px solid rgba(236, 92, 10, 0.3) !important;
     aspect-ratio: 16 / 10 !important;
     background: #0F172A !important;
     cursor: pointer !important;
@@ -54,60 +78,82 @@
     height: 100% !important;
     object-fit: cover !important;
     display: block !important;
-    transition: transform 0.6s ease !important;
+    transition: transform 0.65s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
   }
 
   .vs-video-thumb-card:hover .vs-video-thumb-img {
-    transform: scale(1.04) !important;
+    transform: scale(1.05) !important;
   }
 
-  /* Overlay Dark Gradient */
+  /* Overlay Dark Gradient & Watermark Badge */
   .vs-video-thumb-overlay {
     position: absolute !important;
     inset: 0 !important;
-    background: linear-gradient(180deg, rgba(15, 23, 42, 0.1) 0%, rgba(15, 23, 42, 0.45) 100%) !important;
+    background: linear-gradient(180deg, rgba(15, 23, 42, 0.15) 0%, rgba(15, 23, 42, 0.55) 100%) !important;
     display: flex !important;
+    flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
     z-index: 2 !important;
   }
 
+  .vs-thumb-corner-tag {
+    position: absolute !important;
+    top: 20px !important;
+    left: 20px !important;
+    background: rgba(15, 23, 42, 0.85) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(236, 92, 10, 0.5) !important;
+    color: #FFFFFF !important;
+    padding: 6px 14px !important;
+    border-radius: 30px !important;
+    font-size: 0.76rem !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.8px !important;
+    text-transform: uppercase !important;
+    z-index: 3 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+  }
+
   /* Pulsing Play Button */
   .vs-play-btn-circle {
-    width: 84px !important;
-    height: 84px !important;
+    width: 90px !important;
+    height: 90px !important;
     border-radius: 50% !important;
     background: linear-gradient(135deg, #EC5C0A 0%, #FF9A00 100%) !important;
     color: #FFFFFF !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    font-size: 1.8rem !important;
-    box-shadow: 0 12px 35px rgba(236, 92, 10, 0.5) !important;
+    font-size: 2rem !important;
+    box-shadow: 0 15px 40px rgba(236, 92, 10, 0.6) !important;
     transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
     position: relative !important;
-    padding-left: 5px !important;
+    padding-left: 6px !important;
   }
 
   .vs-play-btn-circle::before {
     content: '' !important;
     position: absolute !important;
-    inset: -12px !important;
+    inset: -14px !important;
     border-radius: 50% !important;
-    background: rgba(236, 92, 10, 0.35) !important;
+    background: rgba(236, 92, 10, 0.4) !important;
     animation: vsPlayPulse 2s infinite !important;
     z-index: -1 !important;
   }
 
   @keyframes vsPlayPulse {
-    0% { transform: scale(0.9); opacity: 0.8; }
-    50% { transform: scale(1.15); opacity: 0.3; }
-    100% { transform: scale(0.9); opacity: 0.8; }
+    0% { transform: scale(0.9); opacity: 0.85; }
+    50% { transform: scale(1.2); opacity: 0.25; }
+    100% { transform: scale(0.9); opacity: 0.85; }
   }
 
   .vs-video-thumb-card:hover .vs-play-btn-circle {
-    transform: scale(1.12) !important;
-    box-shadow: 0 18px 45px rgba(236, 92, 10, 0.65) !important;
+    transform: scale(1.15) !important;
+    box-shadow: 0 22px 50px rgba(236, 92, 10, 0.8) !important;
   }
 
   /* RIGHT COLUMN CONTENT */
@@ -121,26 +167,27 @@
     display: inline-flex !important;
     align-items: center !important;
     gap: 8px !important;
-    padding: 6px 16px !important;
+    padding: 7px 18px !important;
     background: #FFF3EB !important;
-    border: 1px solid rgba(236, 92, 10, 0.3) !important;
+    border: 1.5px solid rgba(236, 92, 10, 0.35) !important;
     color: #EC5C0A !important;
     font-size: 0.82rem !important;
     font-weight: 800 !important;
-    letter-spacing: 1px !important;
+    letter-spacing: 1.2px !important;
     text-transform: uppercase !important;
     border-radius: 30px !important;
-    margin-bottom: 16px !important;
+    margin-bottom: 18px !important;
     width: fit-content !important;
+    box-shadow: 0 4px 15px rgba(236, 92, 10, 0.1) !important;
   }
 
   .vs-video-main-heading {
-    font-size: clamp(1.8rem, 3.2vw, 2.5rem) !important;
+    font-size: clamp(2rem, 3.5vw, 2.7rem) !important;
     font-weight: 900 !important;
     color: #0F172A !important;
-    line-height: 1.22 !important;
-    margin: 0 0 20px 0 !important;
-    letter-spacing: -0.5px !important;
+    line-height: 1.2 !important;
+    margin: 0 0 22px 0 !important;
+    letter-spacing: -0.6px !important;
   }
 
   .vs-video-main-heading span {
@@ -152,40 +199,43 @@
   .vs-video-feature-box {
     display: flex !important;
     align-items: flex-start !important;
-    gap: 16px !important;
+    gap: 18px !important;
     background: #FFFFFF !important;
-    border: 1.5px solid #F1F5F9 !important;
-    border-radius: 20px !important;
-    padding: 20px 22px !important;
-    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04) !important;
-    margin-bottom: 24px !important;
+    border: 1.5px solid rgba(236, 92, 10, 0.22) !important;
+    border-radius: 22px !important;
+    padding: 22px 24px !important;
+    box-shadow: 0 14px 38px rgba(15, 23, 42, 0.05), 0 2px 8px rgba(0, 0, 0, 0.02) !important;
+    margin-bottom: 28px !important;
+    position: relative !important;
   }
 
   .vs-feature-icon-box {
-    width: 52px !important;
-    height: 52px !important;
-    min-width: 52px !important;
-    border-radius: 16px !important;
+    width: 56px !important;
+    height: 56px !important;
+    min-width: 56px !important;
+    border-radius: 18px !important;
     background: linear-gradient(135deg, #FFF3EB 0%, #FFE2D1 100%) !important;
+    border: 1px solid rgba(236, 92, 10, 0.3) !important;
     color: #EC5C0A !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    font-size: 1.4rem !important;
+    font-size: 1.5rem !important;
+    box-shadow: 0 6px 16px rgba(236, 92, 10, 0.15) !important;
   }
 
   .vs-feature-details h4 {
     margin: 0 0 6px 0 !important;
-    font-size: 1.05rem !important;
+    font-size: 1.1rem !important;
     font-weight: 800 !important;
     color: #0F172A !important;
   }
 
   .vs-feature-details p {
     margin: 0 !important;
-    font-size: 0.88rem !important;
-    color: #64748B !important;
-    line-height: 1.55 !important;
+    font-size: 0.9rem !important;
+    color: #475569 !important;
+    line-height: 1.58 !important;
   }
 
   .vs-video-cta-btn {
@@ -193,43 +243,49 @@
     align-items: center !important;
     justify-content: center !important;
     gap: 10px !important;
-    padding: 16px 32px !important;
+    padding: 17px 36px !important;
     background: linear-gradient(135deg, #EC5C0A 0%, #FF9A00 100%) !important;
     color: #FFFFFF !important;
-    font-size: 0.95rem !important;
+    font-size: 1rem !important;
     font-weight: 800 !important;
-    letter-spacing: 0.5px !important;
-    border-radius: 14px !important;
+    letter-spacing: 0.6px !important;
+    border-radius: 16px !important;
     text-decoration: none !important;
-    box-shadow: 0 12px 30px rgba(236, 92, 10, 0.35) !important;
-    transition: all 0.35s ease !important;
+    box-shadow: 0 14px 35px rgba(236, 92, 10, 0.38) !important;
+    transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
     width: fit-content !important;
   }
 
   .vs-video-cta-btn:hover {
     transform: translateY(-3px) !important;
-    box-shadow: 0 18px 38px rgba(236, 92, 10, 0.48) !important;
+    box-shadow: 0 20px 42px rgba(236, 92, 10, 0.5) !important;
     color: #FFFFFF !important;
   }
 
-  /* OVERLAPPING CARDS ROW (6 LUCRATIVE FLOATING CARDS) */
+  /* OVERLAPPING CARDS ROW (VERTICALLY & HORIZONTALLY CENTERED OVER BOTH COLUMNS) */
+  .vs-video-cards-wrapper {
+    width: 100% !important;
+    max-width: 1260px !important;
+    margin: -75px auto 0 auto !important;
+    position: relative !important;
+    z-index: 15 !important;
+  }
+
   .vs-video-cards-row {
     display: grid !important;
     grid-template-columns: repeat(6, 1fr) !important;
     gap: 18px !important;
     width: 100% !important;
-    position: relative !important;
-    z-index: 10 !important;
-    margin-top: -65px !important;
   }
 
   .vs-bottom-nav-card {
-    background: #FFFFFF !important;
-    border: 1.5px solid rgba(236, 92, 10, 0.22) !important;
+    background: linear-gradient(145deg, #FFFFFF 0%, #FFFDFB 100%) !important;
+    border: 1.5px solid rgba(236, 92, 10, 0.28) !important;
+    border-top: 4px solid #EC5C0A !important;
     border-radius: 22px !important;
-    padding: 24px 14px 20px 14px !important;
+    padding: 24px 14px 22px 14px !important;
     text-align: center !important;
-    box-shadow: 0 16px 45px rgba(15, 23, 42, 0.1), 0 4px 12px rgba(236, 92, 10, 0.05) !important;
+    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.1), 0 4px 15px rgba(236, 92, 10, 0.06) !important;
     transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
     text-decoration: none !important;
     display: flex !important;
@@ -239,29 +295,42 @@
   }
 
   .vs-bottom-nav-card:hover {
-    transform: translateY(-8px) !important;
+    transform: translateY(-10px) !important;
     border-color: #EC5C0A !important;
-    box-shadow: 0 22px 50px rgba(236, 92, 10, 0.22) !important;
-    background: #FFFDFB !important;
+    box-shadow: 0 25px 60px rgba(236, 92, 10, 0.25) !important;
+    background: #FFFFFF !important;
   }
 
-  .vs-card-nav-icon {
-    font-size: 2.2rem !important;
+  .vs-card-nav-icon-box {
+    width: 60px !important;
+    height: 60px !important;
+    border-radius: 18px !important;
+    background: linear-gradient(135deg, #FFF3EB 0%, #FFE2D1 100%) !important;
+    border: 1px solid rgba(236, 92, 10, 0.3) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 1.8rem !important;
     margin-bottom: 12px !important;
-    display: block !important;
-    transition: transform 0.3s ease !important;
+    box-shadow: 0 6px 16px rgba(236, 92, 10, 0.12) !important;
+    transition: transform 0.35s ease !important;
   }
 
-  .vs-bottom-nav-card:hover .vs-card-nav-icon {
-    transform: scale(1.15) !important;
+  .vs-bottom-nav-card:hover .vs-card-nav-icon-box {
+    transform: scale(1.15) rotate(4deg) !important;
   }
 
   .vs-card-nav-title {
-    font-size: 0.92rem !important;
+    font-size: 0.94rem !important;
     font-weight: 800 !important;
     color: #0F172A !important;
     margin: 0 !important;
     line-height: 1.25 !important;
+    transition: color 0.3s ease !important;
+  }
+
+  .vs-bottom-nav-card:hover .vs-card-nav-title {
+    color: #EC5C0A !important;
   }
 
   /* VIDEO MODAL POPUP */
@@ -269,8 +338,8 @@
     position: fixed !important;
     inset: 0 !important;
     background: rgba(15, 23, 42, 0.88) !important;
-    backdrop-filter: blur(10px) !important;
-    -webkit-backdrop-filter: blur(10px) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
     z-index: 99999 !important;
     display: none !important;
     align-items: center !important;
@@ -288,30 +357,30 @@
   .vs-video-modal-content {
     position: relative !important;
     width: 100% !important;
-    max-width: 960px !important;
+    max-width: 980px !important;
     aspect-ratio: 16 / 9 !important;
     background: #000000 !important;
-    border-radius: 24px !important;
+    border-radius: 26px !important;
     overflow: hidden !important;
-    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7), 0 0 40px rgba(236, 92, 10, 0.3) !important;
-    border: 2px solid rgba(236, 92, 10, 0.4) !important;
+    box-shadow: 0 35px 90px rgba(0, 0, 0, 0.75), 0 0 50px rgba(236, 92, 10, 0.4) !important;
+    border: 2px solid rgba(236, 92, 10, 0.5) !important;
   }
 
   .vs-video-modal-close {
     position: absolute !important;
-    top: -45px !important;
+    top: -48px !important;
     right: 0 !important;
     color: #FFFFFF !important;
-    font-size: 2.2rem !important;
+    font-size: 2.4rem !important;
     cursor: pointer !important;
     background: none !important;
     border: none !important;
     line-height: 1 !important;
-    transition: transform 0.2s ease !important;
+    transition: transform 0.2s ease, color 0.2s ease !important;
   }
 
   .vs-video-modal-close:hover {
-    transform: scale(1.2) !important;
+    transform: scale(1.25) !important;
     color: #FF9A00 !important;
   }
 
@@ -324,6 +393,9 @@
 
 <!-- SECTION 14: VIDHYUT DESKTOP VIDEO SHOWCASE -->
 <section class="vs-desktop-video-section" id="vsDesktopVideoSection">
+  <div class="vs-ambient-orb-orange"></div>
+  <div class="vs-ambient-orb-green"></div>
+
   <div class="vs-desktop-video-container">
 
     <!-- 2-COLUMN MAIN GRID -->
@@ -331,6 +403,8 @@
       
       <!-- LEFT COLUMN: THUMBNAIL WITH PLAY BUTTON -->
       <div class="vs-video-thumb-card" onclick="vsOpenVideoModal('{{ section.settings.video_url }}')">
+        <span class="vs-thumb-corner-tag"><span>⚡</span> WATCH DEMO</span>
+        
         {%- if section.settings.thumbnail_image != blank -%}
           <img src="{{ section.settings.thumbnail_image | image_url: width: 1000 }}" alt="{{ section.settings.heading | escape }}" class="vs-video-thumb-img" loading="lazy">
         {%- else -%}
@@ -356,7 +430,7 @@
           <div class="vs-feature-icon-box">🖼️</div>
           <div class="vs-feature-details">
             <h4>{{ section.settings.feature_title | default: "We Suggest You The Best Energy Collection" }}</h4>
-            <p>{{ section.settings.feature_desc | default: "Vidhyut Saathi Energy Savers Private Limited is specialized in electricity load optimization & 20-30% power saving solutions for over 500+ clients across India." }}</p>
+            <p>{{ section.settings.feature_desc | default: "Vidhyut Saathi Energy Savers Private Limited is specialized in electricity load optimization & 20-30% power saving solutions for over 500+ commercial & residential clients across India." }}</p>
           </div>
         </div>
 
@@ -368,40 +442,42 @@
 
     </div> <!-- Closing vs-desktop-video-main-grid -->
 
-    <!-- OVERLAPPING CARDS ROW (6 CARDS FLOATING OVER BOTH COLUMNS) -->
-    <div class="vs-video-cards-row">
-      {%- for block in section.blocks -%}
-        <a href="{{ block.settings.card_link | default: '#' }}" class="vs-bottom-nav-card" {{ block.shopify_attributes }}>
-          <span class="vs-card-nav-icon">{{ block.settings.card_icon | default: '🏔️' }}</span>
-          <h4 class="vs-card-nav-title">{{ block.settings.card_title | default: 'Category' }}</h4>
-        </a>
-      {%- else -%}
-        <!-- Default Fallback Cards if none added in Customizer -->
-        <a href="/pages/residential" class="vs-bottom-nav-card">
-          <span class="vs-card-nav-icon">🏡</span>
-          <h4 class="vs-card-nav-title">Residential</h4>
-        </a>
-        <a href="/pages/commercial" class="vs-bottom-nav-card">
-          <span class="vs-card-nav-icon">🏢</span>
-          <h4 class="vs-card-nav-title">Commercial</h4>
-        </a>
-        <a href="/pages/industrial" class="vs-bottom-nav-card">
-          <span class="vs-card-nav-icon">🏭</span>
-          <h4 class="vs-card-nav-title">Industrial</h4>
-        </a>
-        <a href="/pages/get-franchise" class="vs-bottom-nav-card">
-          <span class="vs-card-nav-icon">🤝</span>
-          <h4 class="vs-card-nav-title">Franchise</h4>
-        </a>
-        <a href="/pages/iso-certification" class="vs-bottom-nav-card">
-          <span class="vs-card-nav-icon">🛡️</span>
-          <h4 class="vs-card-nav-title">ISO Certified</h4>
-        </a>
-        <a href="/pages/contact" class="vs-bottom-nav-card">
-          <span class="vs-card-nav-icon">📞</span>
-          <h4 class="vs-card-nav-title">24/7 Support</h4>
-        </a>
-      {%- endfor -%}
+    <!-- OVERLAPPING CARDS ROW (VERTICALLY CENTERED OVER BOTH COLUMNS) -->
+    <div class="vs-video-cards-wrapper">
+      <div class="vs-video-cards-row">
+        {%- for block in section.blocks -%}
+          <a href="{{ block.settings.card_link | default: '#' }}" class="vs-bottom-nav-card" {{ block.shopify_attributes }}>
+            <div class="vs-card-nav-icon-box">{{ block.settings.card_icon | default: '🏔️' }}</div>
+            <h4 class="vs-card-nav-title">{{ block.settings.card_title | default: 'Category' }}</h4>
+          </a>
+        {%- else -%}
+          <!-- Default Fallback Cards if none added in Customizer -->
+          <a href="/pages/residential" class="vs-bottom-nav-card">
+            <div class="vs-card-nav-icon-box">🏡</div>
+            <h4 class="vs-card-nav-title">Residential</h4>
+          </a>
+          <a href="/pages/commercial" class="vs-bottom-nav-card">
+            <div class="vs-card-nav-icon-box">🏢</div>
+            <h4 class="vs-card-nav-title">Commercial</h4>
+          </a>
+          <a href="/pages/industrial" class="vs-bottom-nav-card">
+            <div class="vs-card-nav-icon-box">🏭</div>
+            <h4 class="vs-card-nav-title">Industrial</h4>
+          </a>
+          <a href="/pages/get-franchise" class="vs-bottom-nav-card">
+            <div class="vs-card-nav-icon-box">🤝</div>
+            <h4 class="vs-card-nav-title">Franchise</h4>
+          </a>
+          <a href="/pages/iso-certification" class="vs-bottom-nav-card">
+            <div class="vs-card-nav-icon-box">🛡️</div>
+            <h4 class="vs-card-nav-title">ISO Certified</h4>
+          </a>
+          <a href="/pages/contact" class="vs-bottom-nav-card">
+            <div class="vs-card-nav-icon-box">📞</div>
+            <h4 class="vs-card-nav-title">24/7 Support</h4>
+          </a>
+        {%- endfor -%}
+      </div>
     </div>
 
   </div>
