@@ -887,86 +887,33 @@
     width: 100% !important;
   }
 
-  /* Desktop-Only Client Call Support Card */
+  /* Desktop-Only Client Call Support Image Card (Pure Image Banner) */
   .vs-desktop-support-card {
-    display: flex !important;
-    align-items: center !important;
-    gap: 18px !important;
-    background: linear-gradient(135deg, #FFFFFF 0%, #FFFDF8 60%, #FFF5EB 100%) !important;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 180px !important;
+    border-radius: clamp(18px, 3vw, 24px) !important;
+    overflow: hidden !important;
     border: 1.5px solid rgba(236, 92, 10, 0.3) !important;
     border-top: 4px solid #EC5C0A !important;
-    border-radius: clamp(20px, 3vw, 26px) !important;
-    padding: 18px 22px !important;
+    box-shadow: 0 12px 35px rgba(236, 92, 10, 0.08), 0 4px 12px rgba(0, 0, 0, 0.02) !important;
     margin-top: 0 !important;
-    box-shadow: 0 12px 35px rgba(236, 92, 10, 0.08) !important;
-  }
-
-  .vs-support-img-wrapper {
-    width: 140px !important;
-    height: 120px !important;
-    min-width: 140px !important;
-    border-radius: 16px !important;
-    overflow: hidden !important;
-    border: 2px solid #FFFFFF !important;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1) !important;
-    flex-shrink: 0 !important;
+    position: relative !important;
   }
 
   .vs-support-img {
     width: 100% !important;
     height: 100% !important;
+    min-height: 180px !important;
     object-fit: cover !important;
+    object-position: center 20% !important;
     display: block !important;
+    transition: transform 0.4s ease !important;
   }
 
-  .vs-support-content h4 {
-    font-size: clamp(0.95rem, 1.8vw, 1.08rem) !important;
-    font-weight: 900 !important;
-    color: #0F172A !important;
-    margin: 4px 0 !important;
-    letter-spacing: -0.3px !important;
-  }
-
-  .vs-support-content p {
-    font-size: 0.78rem !important;
-    font-weight: 600 !important;
-    color: #475569 !important;
-    line-height: 1.45 !important;
-    margin-bottom: 10px !important;
-  }
-
-  .vs-support-badge {
-    font-size: 0.68rem !important;
-    font-weight: 800 !important;
-    color: #059669 !important;
-    background: #ECFDF5 !important;
-    padding: 3px 10px !important;
-    border-radius: 20px !important;
-    border: 1px solid #A7F3D0 !important;
-    text-transform: uppercase !important;
-    letter-spacing: 0.8px !important;
-    display: inline-block !important;
-  }
-
-  .vs-support-call-btn {
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 6px !important;
-    padding: 8px 16px !important;
-    background: linear-gradient(135deg, #EC5C0A 0%, #FF9A00 100%) !important;
-    color: #FFFFFF !important;
-    font-size: 0.78rem !important;
-    font-weight: 800 !important;
-    border-radius: 10px !important;
-    text-decoration: none !important;
-    box-shadow: 0 4px 15px rgba(236, 92, 10, 0.3) !important;
-    transition: all 0.25s ease !important;
-  }
-
-  .vs-support-call-btn:hover {
-    transform: translateY(-2px) !important;
-    box-shadow: 0 8px 20px rgba(236, 92, 10, 0.4) !important;
+  .vs-desktop-support-card:hover .vs-support-img {
+    transform: scale(1.02) !important;
   }
 
   /* --- DEPARTMENT HUBS SECTION --- */
@@ -3118,19 +3065,9 @@
         {%- endform -%}
       </div> <!-- Closing vs-form-card -->
 
-      <!-- Desktop-Only Client Call Support Card (Inside Right Column directly below Form Card) -->
+      <!-- Desktop-Only Client Call Support Banner (Pure Image Banner Aligned in Remaining Space) -->
       <div class="vs-desktop-support-card">
-        <div class="vs-support-img-wrapper">
-          <img src="{{ 'vidhyut-customer-call-support.jpg' | asset_url }}" alt="Vidhyut Saathi Client Support Manager" class="vs-support-img" loading="lazy">
-        </div>
-        <div class="vs-support-content">
-          <span class="vs-support-badge">🟢 LIVE ASSISTANCE</span>
-          <h4>Prefer to Speak Direct on Call?</h4>
-          <p>Our expert technical engineers are online to assist you with custom load calculations and instant device recommendations.</p>
-          <a href="tel:+918199036060" class="vs-support-call-btn">
-            <span>📞</span> Call +91 81990 36060 Now
-          </a>
-        </div>
+        <img src="{{ 'vidhyut-customer-call-support.jpg' | asset_url }}" alt="Vidhyut Saathi Client Support Manager" class="vs-support-img" loading="lazy">
       </div>
 
     </div> <!-- Closing vs-right-col-box -->
