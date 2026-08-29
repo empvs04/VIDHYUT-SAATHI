@@ -29,7 +29,7 @@
     }
 
     .vs-section-container {
-      max-width: 1200px;
+      max-width: 1280px;
       margin: 0 auto;
     }
 
@@ -40,59 +40,61 @@
       display: grid !important;
       grid-template-columns: repeat(4, 1fr) !important;
       grid-auto-rows: 1fr !important;
-      gap: clamp(8px, 2vw, 16px) !important;
-      max-width: 1200px !important;
+      gap: clamp(10px, 2vw, 18px) !important;
+      max-width: 1280px !important;
       margin: 0 auto 30px auto !important;
       align-items: stretch !important;
     }
 
     .vs-trust-item {
-      background: #FFFFFF !important;
-      border: 1px solid rgba(236, 92, 10, 0.18) !important;
-      border-radius: 16px !important;
-      padding: 14px 16px !important;
+      background: linear-gradient(135deg, #FFFFFF 0%, #FFFDF8 50%, #FFF5EB 100%) !important;
+      border: 1.5px solid rgba(236, 92, 10, 0.32) !important;
+      border-top: 4px solid #EC5C0A !important;
+      padding: 16px 18px !important;
+      border-radius: 20px !important;
       display: flex !important;
       align-items: center !important;
       gap: 12px !important;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.03) !important;
+      box-shadow: 0 10px 28px rgba(236, 92, 10, 0.12), 0 2px 8px rgba(0, 0, 0, 0.02) !important;
       transition: all 0.3s ease !important;
       height: 100% !important;
       box-sizing: border-box !important;
     }
 
     .vs-trust-item:hover {
-      transform: translateY(-3px) !important;
+      transform: translateY(-4px) !important;
       border-color: #EC5C0A !important;
-      box-shadow: 0 12px 30px rgba(236, 92, 10, 0.12) !important;
+      box-shadow: 0 15px 35px rgba(236, 92, 10, 0.22) !important;
     }
 
     .vs-trust-icon {
-      width: 38px !important;
-      height: 38px !important;
-      min-width: 38px !important;
+      width: 42px !important;
+      height: 42px !important;
+      min-width: 42px !important;
       border-radius: 12px !important;
-      background: linear-gradient(135deg, #FFF3EB 0%, #FFE5D4 100%) !important;
-      color: #EC5C0A !important;
+      background: linear-gradient(135deg, #EC5C0A 0%, #FF9A00 100%) !important;
+      color: #FFFFFF !important;
       display: flex !important;
       align-items: center !important;
       justify-content: center !important;
-      font-size: 1.15rem !important;
+      font-size: 1.25rem !important;
+      box-shadow: 0 6px 18px rgba(236, 92, 10, 0.32) !important;
       flex-shrink: 0 !important;
     }
 
     .vs-trust-text h5 {
       margin: 0 !important;
-      font-size: clamp(0.82rem, 1.8vw, 0.95rem) !important;
-      font-weight: 800 !important;
+      font-size: clamp(0.85rem, 1.8vw, 0.98rem) !important;
+      font-weight: 900 !important;
       color: #0F172A !important;
       line-height: 1.25 !important;
     }
 
     .vs-trust-text p {
       margin: 2px 0 0 0 !important;
-      font-size: clamp(0.72rem, 1.5vw, 0.78rem) !important;
-      color: #64748B !important;
-      font-weight: 600 !important;
+      font-size: clamp(0.72rem, 1.5vw, 0.8rem) !important;
+      color: #EC5C0A !important;
+      font-weight: 700 !important;
       line-height: 1.2 !important;
     }
 
@@ -401,7 +403,7 @@
     }
 
     /* ------------------------------------------
-       RIGHT COLUMN CARD (Spacious & Symmetrical Form Card)
+       RIGHT COLUMN CARD & DESKTOP AI CALL CARD
        ------------------------------------------ */
     .vs-form-card {
       background: #FFFFFF !important;
@@ -431,6 +433,88 @@
       color: #64748B !important;
       line-height: 1.5 !important;
       margin-bottom: 16px !important;
+    }
+
+    /* Desktop-Only Client Call Support Card */
+    .vs-desktop-support-card {
+      display: flex !important;
+      align-items: center !important;
+      gap: 18px !important;
+      background: linear-gradient(135deg, #FFFFFF 0%, #FFFDF8 60%, #FFF5EB 100%) !important;
+      border: 1.5px solid rgba(236, 92, 10, 0.3) !important;
+      border-top: 4px solid #EC5C0A !important;
+      border-radius: clamp(20px, 3vw, 26px) !important;
+      padding: 18px 22px !important;
+      margin-top: 18px !important;
+      box-shadow: 0 12px 35px rgba(236, 92, 10, 0.08) !important;
+    }
+
+    .vs-support-img-wrapper {
+      width: 140px !important;
+      height: 120px !important;
+      min-width: 140px !important;
+      border-radius: 16px !important;
+      overflow: hidden !important;
+      border: 2px solid #FFFFFF !important;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1) !important;
+      flex-shrink: 0 !important;
+    }
+
+    .vs-support-img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      display: block !important;
+    }
+
+    .vs-support-content h4 {
+      font-size: clamp(0.95rem, 1.8vw, 1.08rem) !important;
+      font-weight: 900 !important;
+      color: #0F172A !important;
+      margin: 4px 0 !important;
+      letter-spacing: -0.3px !important;
+    }
+
+    .vs-support-content p {
+      font-size: 0.78rem !important;
+      font-weight: 600 !important;
+      color: #475569 !important;
+      line-height: 1.45 !important;
+      margin-bottom: 10px !important;
+    }
+
+    .vs-support-badge {
+      font-size: 0.68rem !important;
+      font-weight: 800 !important;
+      color: #059669 !important;
+      background: #ECFDF5 !important;
+      padding: 3px 10px !important;
+      border-radius: 20px !important;
+      border: 1px solid #A7F3D0 !important;
+      text-transform: uppercase !important;
+      letter-spacing: 0.8px !important;
+      display: inline-block !important;
+    }
+
+    .vs-support-call-btn {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 6px !important;
+      padding: 8px 16px !important;
+      background: linear-gradient(135deg, #EC5C0A 0%, #FF9A00 100%) !important;
+      color: #FFFFFF !important;
+      font-size: 0.78rem !important;
+      font-weight: 800 !important;
+      border-radius: 10px !important;
+      text-decoration: none !important;
+      box-shadow: 0 4px 15px rgba(236, 92, 10, 0.3) !important;
+      transition: all 0.25s ease !important;
+    }
+
+    .vs-support-call-btn:hover {
+      transform: translateY(-2px) !important;
+      box-shadow: 0 8px 20px rgba(236, 92, 10, 0.4) !important;
     }
 
     /* Interactive Purpose Selector Chips */
@@ -621,6 +705,70 @@
       background: #EC5C0A !important;
     }
 
+    /* ------------------------------------------
+       THEME-BASED BOTTOM CTA BANNER
+       ------------------------------------------ */
+    .vs-bottom-cta {
+      background: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #0F172A 100%) !important;
+      border: 2px dashed #EC5C0A !important;
+      border-radius: clamp(20px, 3.5vw, 30px) !important;
+      padding: clamp(28px, 4.5vw, 42px) clamp(18px, 4vw, 40px) !important;
+      text-align: center !important;
+      color: #FFFFFF !important;
+      position: relative !important;
+      overflow: hidden !important;
+      box-shadow: 0 20px 50px rgba(236, 92, 10, 0.18), 0 10px 30px rgba(15, 23, 42, 0.3) !important;
+      margin-top: 20px !important;
+    }
+
+    .vs-cta-badge {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 6px !important;
+      padding: 6px 16px !important;
+      background: rgba(236, 92, 10, 0.15) !important;
+      border: 1.5px solid rgba(236, 92, 10, 0.5) !important;
+      border-radius: 30px !important;
+      color: #FF9A00 !important;
+      font-size: 0.76rem !important;
+      font-weight: 800 !important;
+      letter-spacing: 1.2px !important;
+      text-transform: uppercase !important;
+      margin-bottom: 12px !important;
+    }
+
+    .vs-bottom-cta h3 {
+      font-size: clamp(1.5rem, 4vw, 2.4rem) !important;
+      font-weight: 900 !important;
+      margin: 0 0 10px 0 !important;
+      color: #FFFFFF !important;
+      line-height: 1.25 !important;
+      letter-spacing: -0.5px !important;
+    }
+
+    .vs-bottom-cta h3 span {
+      background: linear-gradient(135deg, #EC5C0A 0%, #FF9A00 100%) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+    }
+
+    .vs-bottom-cta p {
+      font-size: clamp(0.9rem, 2.2vw, 1.1rem) !important;
+      color: #CBD5E1 !important;
+      max-width: 680px !important;
+      margin: 0 auto clamp(20px, 4vw, 30px) auto !important;
+      line-height: 1.55 !important;
+      font-weight: 500 !important;
+    }
+
+    .vs-bottom-cta-btns {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 14px !important;
+      flex-wrap: wrap !important;
+    }
+
     /* ==========================================
        RESPONSIVE BREAKPOINTS (MOBILE & TABLET)
        ========================================== */
@@ -639,8 +787,11 @@
         margin-bottom: 12px !important;
       }
 
-      .vs-form-card {
+      .vs-right-column-box {
         order: 1 !important;
+      }
+
+      .vs-form-card {
         padding: 20px 14px !important;
         border-radius: 18px !important;
       }
@@ -662,6 +813,10 @@
 
       .vs-map-card iframe {
         height: 200px !important;
+      }
+
+      .vs-desktop-support-card {
+        display: none !important;
       }
 
       /* LUCRATIVE 4 TRUST HIGHLIGHT CARDS ON MOBILE */
@@ -905,94 +1060,114 @@
         </div>
       </div>
 
-      <!-- RIGHT COLUMN CARD: High-Converting Smart Form Card -->
-      <div class="vs-form-card">
-        <h2 class="vs-form-title">Request Free Consultation</h2>
-        <p class="vs-form-subtitle">Fill out the details below to receive a personalized energy audit report and callback within 2 hours.</p>
+      <!-- RIGHT COLUMN WRAPPER -->
+      <div class="vs-right-column-box">
+        
+        <!-- RIGHT COLUMN CARD: High-Converting Smart Form Card -->
+        <div class="vs-form-card">
+          <h2 class="vs-form-title">Request Free Consultation</h2>
+          <p class="vs-form-subtitle">Fill out the details below to receive a personalized energy audit report and callback within 2 hours.</p>
 
-        <!-- Interactive Chip Purpose Selector -->
-        <div class="vs-purpose-selector">
-          <span class="vs-purpose-label">Select Inquiry Type:</span>
-          <div class="vs-chips-grid" id="vsChipsGrid">
-            <div class="vs-chip active" data-value="Franchise Inquiry">🤝 Franchise Inquiry</div>
-            <div class="vs-chip" data-value="Residential">🏠 Residential</div>
-            <div class="vs-chip" data-value="Commercial">🏢 Commercial</div>
-            <div class="vs-chip" data-value="Industrial">🏭 Industrial</div>
-          </div>
-        </div>
-
-        <form id="vsContactPageForm" onsubmit="handleFormSubmit(event)">
-          
-          <div id="vsSuccessAlert" class="vs-success-box" style="display: none;">
-            <span style="font-size: 1.4rem;">🎉</span>
-            <div>
-              <strong>Thank you! Your inquiry has been received.</strong><br>
-              Our energy expert will review your requirement and call you shortly.
+          <!-- Interactive Chip Purpose Selector -->
+          <div class="vs-purpose-selector">
+            <span class="vs-purpose-label">Select Inquiry Type:</span>
+            <div class="vs-chips-grid" id="vsChipsGrid">
+              <div class="vs-chip active" data-value="Franchise Inquiry">🤝 Franchise Inquiry</div>
+              <div class="vs-chip" data-value="Residential">🏠 Residential</div>
+              <div class="vs-chip" data-value="Commercial">🏢 Commercial</div>
+              <div class="vs-chip" data-value="Industrial">🏭 Industrial</div>
             </div>
           </div>
 
-          <div class="vs-form-grid">
+          <form id="vsContactPageForm" onsubmit="handleFormSubmit(event)">
             
-            <!-- Full Name -->
-            <div class="vs-form-group">
-              <label for="contact_name">Full Name *</label>
-              <input type="text" id="contact_name" name="contact[name]" class="vs-input-field" placeholder="e.g. Rahul Sharma" required>
-            </div>
-
-            <!-- Phone Number -->
-            <div class="vs-form-group">
-              <label for="contact_phone">Mobile Number *</label>
-              <input type="tel" id="contact_phone" name="contact[phone]" class="vs-input-field" placeholder="+91 98765 43210" required>
-            </div>
-
-            <!-- Email Address -->
-            <div class="vs-form-group">
-              <label for="contact_email">Email Address *</label>
-              <input type="email" id="contact_email" name="contact[email]" class="vs-input-field" placeholder="rahul@example.com" required>
-            </div>
-
-            <!-- Company Name -->
-            <div class="vs-form-group">
-              <label for="contact_company">Company / Firm Name</label>
-              <input type="text" id="contact_company" name="contact[company]" class="vs-input-field" placeholder="Company Name (Optional)">
-            </div>
-
-            <!-- Monthly Bill Selector -->
-            <div class="vs-form-group">
-              <label for="contact_bill">Monthly Electricity Bill</label>
-              <select id="contact_bill" name="contact[Monthly Electricity Bill]" class="vs-input-field">
-                <option value="Under ₹15,000">Under ₹15,000 / month</option>
-                <option value="₹15,000 - ₹50,000">₹15,000 - ₹50,000 / month</option>
-                <option value="₹50,000 - ₹2 Lakhs">₹50,000 - ₹2 Lakhs / month</option>
-                <option value="Above ₹2 Lakhs">Above ₹2 Lakhs / month</option>
-              </select>
-            </div>
-
-            <!-- Subject (Hidden input synced with Chips) -->
-            <div class="vs-form-group">
-              <label for="contact_subject">Inquiry Subject *</label>
-              <input type="text" id="contact_subject" name="contact[Subject]" class="vs-input-field" value="Franchise Inquiry" required readonly style="background: #F1F5F9;">
-            </div>
-
-            <!-- Message / Notes -->
-            <div class="vs-form-group full-width">
-              <label for="contact_message">Message / Details *</label>
-              <textarea id="contact_message" name="contact[body]" class="vs-input-field" placeholder="Tell us about your load requirements, building type, or any specific questions..." required></textarea>
-            </div>
-
-            <!-- Submit Button -->
-            <div class="vs-form-group full-width">
-              <button type="submit" class="vs-submit-btn">
-                <span>🚀 SEND INQUIRY &amp; BOOK CONSULTATION</span>
-              </button>
-              <div class="vs-form-guarantee">
-                <span>🔒 100% Privacy Guaranteed</span> • <span>Fast Response in 2 Hours</span>
+            <div id="vsSuccessAlert" class="vs-success-box" style="display: none;">
+              <span style="font-size: 1.4rem;">🎉</span>
+              <div>
+                <strong>Thank you! Your inquiry has been received.</strong><br>
+                Our energy expert will review your requirement and call you shortly.
               </div>
             </div>
 
+            <div class="vs-form-grid">
+              
+              <!-- Full Name -->
+              <div class="vs-form-group">
+                <label for="contact_name">Full Name *</label>
+                <input type="text" id="contact_name" name="contact[name]" class="vs-input-field" placeholder="e.g. Rahul Sharma" required>
+              </div>
+
+              <!-- Phone Number -->
+              <div class="vs-form-group">
+                <label for="contact_phone">Mobile Number *</label>
+                <input type="tel" id="contact_phone" name="contact[phone]" class="vs-input-field" placeholder="+91 98765 43210" required>
+              </div>
+
+              <!-- Email Address -->
+              <div class="vs-form-group">
+                <label for="contact_email">Email Address *</label>
+                <input type="email" id="contact_email" name="contact[email]" class="vs-input-field" placeholder="rahul@example.com" required>
+              </div>
+
+              <!-- Company Name -->
+              <div class="vs-form-group">
+                <label for="contact_company">Company / Firm Name</label>
+                <input type="text" id="contact_company" name="contact[company]" class="vs-input-field" placeholder="Company Name (Optional)">
+              </div>
+
+              <!-- Monthly Bill Selector -->
+              <div class="vs-form-group">
+                <label for="contact_bill">Monthly Electricity Bill</label>
+                <select id="contact_bill" name="contact[Monthly Electricity Bill]" class="vs-input-field">
+                  <option value="Under ₹15,000">Under ₹15,000 / month</option>
+                  <option value="₹15,000 - ₹50,000">₹15,000 - ₹50,000 / month</option>
+                  <option value="₹50,000 - ₹2 Lakhs">₹50,000 - ₹2 Lakhs / month</option>
+                  <option value="Above ₹2 Lakhs">Above ₹2 Lakhs / month</option>
+                </select>
+              </div>
+
+              <!-- Subject (Hidden input synced with Chips) -->
+              <div class="vs-form-group">
+                <label for="contact_subject">Inquiry Subject *</label>
+                <input type="text" id="contact_subject" name="contact[Subject]" class="vs-input-field" value="Franchise Inquiry" required readonly style="background: #F1F5F9;">
+              </div>
+
+              <!-- Message / Notes -->
+              <div class="vs-form-group full-width">
+                <label for="contact_message">Message / Details *</label>
+                <textarea id="contact_message" name="contact[body]" class="vs-input-field" placeholder="Tell us about your load requirements, building type, or any specific questions..." required></textarea>
+              </div>
+
+              <!-- Submit Button -->
+              <div class="vs-form-group full-width">
+                <button type="submit" class="vs-submit-btn">
+                  <span>🚀 SEND INQUIRY &amp; BOOK CONSULTATION</span>
+                </button>
+                <div class="vs-form-guarantee">
+                  <span>🔒 100% Privacy Guaranteed</span> • <span>Fast Response in 2 Hours</span>
+                </div>
+              </div>
+
+            </div>
+          </form>
+        </div> <!-- Closing vs-form-card -->
+
+        <!-- Desktop-Only Client Call Support Card (Fills Right Column Space for Symmetrical Alignment) -->
+        <div class="vs-desktop-support-card">
+          <div class="vs-support-img-wrapper">
+            <img src="assets/vidhyut-customer-call-support.jpg" alt="Vidhyut Saathi Client Support Manager" class="vs-support-img" loading="lazy">
           </div>
-        </form>
-      </div> <!-- Closing vs-form-card -->
+          <div class="vs-support-content">
+            <span class="vs-support-badge">🟢 LIVE ASSISTANCE</span>
+            <h4>Prefer to Speak Direct on Call?</h4>
+            <p>Our expert technical engineers are online to assist you with custom load calculations and instant device recommendations.</p>
+            <a href="tel:+918199036060" class="vs-support-call-btn">
+              <span>📞</span> Call +91 81990 36060 Now
+            </a>
+          </div>
+        </div>
+
+      </div> <!-- Closing vs-right-column-box -->
 
       <!-- Embedded Full Width Google Map Card (Desktop Spans Both Columns) -->
       <div class="vs-map-card">
@@ -1008,6 +1183,21 @@
       </div>
 
     </div> <!-- Closing vs-contact-grid -->
+
+    <!-- BOTTOM CTA BANNER (Lucrative Theme Theme-Based) -->
+    <div class="vs-bottom-cta">
+      <span class="vs-cta-badge">⚡ INSTANT POWER AUDIT &amp; CONSULTATION</span>
+      <h3>Ready to Slash Your Power Bills <span>by up to 30%</span>?</h3>
+      <p>Talk to our certified engineers today and get a custom energy audit planned for your facility.</p>
+      <div class="vs-bottom-cta-btns">
+        <a href="tel:+918199036060" class="vs-call-btn" style="padding: 16px 28px; font-size: 1rem;">
+          <span>📞</span> Call +91 81990 36060
+        </a>
+        <a href="https://wa.me/918199036060?text=Hi%20Vidhyut%20Saathi%20Team%2C%20I%20want%20to%20know%20more%20about%20your%20energy%20saving%20solutions." target="_blank" rel="noopener" class="vs-wa-btn" style="padding: 16px 28px; font-size: 1rem;">
+          <span>💬</span> Chat on WhatsApp
+        </a>
+      </div>
+    </div>
 
   </div>
 
