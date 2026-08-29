@@ -593,7 +593,7 @@
 
 
 
-  /* DESKTOP 2-COLUMN SPLIT LAYOUT (LEFT: HEADING & PROOF | RIGHT: CALCULATOR CARD) */
+  /* DESKTOP CENTERED HEADER WITH SHUFFLED 2-COLUMN LAYOUT */
   @media(min-width: 769px) {
     .premium-calculator-{{ section.id }} { 
       padding: 70px 24px !important; 
@@ -603,97 +603,52 @@
       max-width: 1140px !important; 
       margin: 0 auto !important;
     }
+
+    /* TOP CENTERED HEADER & SUBHEADER */
+    .vs-calc-top-header-{{ section.id }} {
+      text-align: center !important;
+      max-width: 760px !important;
+      margin: 0 auto 40px auto !important;
+    }
+    .vs-calc-top-header-{{ section.id }} .tag-wrapper {
+      display: flex !important;
+      justify-content: center !important;
+      margin-bottom: 16px !important;
+    }
+    .vs-calc-top-header-{{ section.id }} .section-tag {
+      margin: 0 auto !important;
+    }
+    .vs-calc-top-header-{{ section.id }} .section-title {
+      font-size: 48px !important;
+      line-height: 1.15 !important;
+      letter-spacing: -1px !important;
+      text-align: center !important;
+      margin-bottom: 14px !important;
+    }
+    .vs-calc-top-header-{{ section.id }} .section-sub {
+      font-size: 16.5px !important;
+      line-height: 1.65 !important;
+      color: var(--muted) !important;
+      text-align: center !important;
+      margin: 0 auto !important;
+      max-width: 720px !important;
+    }
+
+    /* 2 COLUMNS BELOW HEADER */
     .vs-calc-desktop-grid-{{ section.id }} {
       display: flex !important;
       flex-direction: row !important;
       align-items: flex-start !important;
       justify-content: center !important;
-      gap: 48px !important;
+      gap: 36px !important;
     }
     
-    /* LEFT COLUMN (HEADING & SUBTITLE): ALIGNED FLUSH TO TOP OF COLUMN */
+    /* LEFT COLUMN: COMPACT & ELEGANT CALCULATOR CONTROLS CARD */
     .vs-calc-left-col-{{ section.id }} {
-      flex: 0 0 490px !important;
-      max-width: 490px !important;
-      text-align: left !important;
-      position: relative !important;
-      top: 0 !important;
-      margin-top: 0 !important;
-      padding-top: 0 !important;
-    }
-    .vs-calc-left-col-{{ section.id }} .tag-wrapper {
-      justify-content: flex-start !important;
-      margin-top: 0 !important;
-      padding-top: 0 !important;
-    }
-    .vs-calc-left-col-{{ section.id }} .section-tag {
-      margin-top: 0 !important;
-      margin-bottom: 16px !important;
-    }
-    .vs-calc-left-col-{{ section.id }} .section-title {
-      font-size: 52px !important;
-      line-height: 1.1 !important;
-      letter-spacing: -1px !important;
-      text-align: left !important;
-      margin-bottom: 16px !important;
-      margin-top: 0 !important;
-      padding-top: 0 !important;
-    }
-    .vs-calc-left-col-{{ section.id }} .section-sub {
-      font-size: 17px !important;
-      line-height: 1.65 !important;
-      color: var(--muted) !important;
-      text-align: left !important;
-      margin: 0 !important;
-      padding: 0 !important;
-    }
-
-    /* LEFT COLUMN CALCULATION RESULTS (MATCHING SCREENSHOT 2x2 GRID) */
-    .vs-calc-left-col-{{ section.id }} .calc-results {
-      display: grid !important;
-      grid-template-columns: repeat(2, 1fr) !important;
-      gap: 14px !important;
-      margin-top: 24px !important;
-      width: 100% !important;
-    }
-    .vs-calc-left-col-{{ section.id }} .calc-result-card {
-      background: #FFFFFF !important;
-      border: 1px solid rgba(20, 140, 58, 0.15) !important;
-      border-radius: 18px !important;
-      padding: 20px 14px !important;
-      text-align: center !important;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04) !important;
-      position: relative !important;
-      overflow: hidden !important;
-    }
-    .vs-calc-left-col-{{ section.id }} .calc-result-card::before {
-      content: '' !important;
-      position: absolute !important;
-      top: 0 !important;
-      left: 0 !important;
-      right: 0 !important;
-      height: 4px !important;
-      background: linear-gradient(90deg, #148C3A 0%, #F58220 100%) !important;
-    }
-    .vs-calc-left-col-{{ section.id }} .calc-result-val {
-      font-size: 1.85rem !important;
-      font-weight: 900 !important;
-      color: #148C3A !important;
-      line-height: 1.15 !important;
-      margin-bottom: 6px !important;
-    }
-    .vs-calc-left-col-{{ section.id }} .calc-result-label {
-      font-size: 0.85rem !important;
-      color: #64748B !important;
-      font-weight: 600 !important;
-    }
-
-    /* RIGHT COLUMN: COMPACT & ELEGANT CALCULATOR CARD */
-    .vs-calc-right-col-{{ section.id }} {
-      flex: 1 !important;
+      flex: 0 0 540px !important;
       max-width: 540px !important;
     }
-    .vs-calc-right-col-{{ section.id }} .calc-card { 
+    .vs-calc-left-col-{{ section.id }} .calc-card { 
       padding: 24px 22px !important; 
       border-radius: 22px !important; 
       box-shadow: 0 15px 45px rgba(0,0,0,0.05), 0 0 25px rgba(245,130,32,0.06) !important;
@@ -716,15 +671,61 @@
     .premium-calculator-{{ section.id }} .rec-val {
       font-size: 0.88rem !important;
     }
-    /* TRUST STRIP CAPSULE PILLS IN LEFT COLUMN (MATCHING USER SCREENSHOT) */
-    .vs-calc-left-col-{{ section.id }} .trust-strip { 
+
+    /* RIGHT COLUMN: 4 CALCULATION RESULTS CARDS & 4 TRUST BADGES */
+    .vs-calc-right-col-{{ section.id }} {
+      flex: 0 0 490px !important;
+      max-width: 490px !important;
+    }
+    .vs-calc-right-col-{{ section.id }} .calc-results {
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 14px !important;
+      margin-top: 0 !important;
+      margin-bottom: 16px !important;
+      width: 100% !important;
+    }
+    .vs-calc-right-col-{{ section.id }} .calc-result-card {
+      background: #FFFFFF !important;
+      border: 1px solid rgba(20, 140, 58, 0.15) !important;
+      border-radius: 18px !important;
+      padding: 20px 14px !important;
+      text-align: center !important;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04) !important;
+      position: relative !important;
+      overflow: hidden !important;
+    }
+    .vs-calc-right-col-{{ section.id }} .calc-result-card::before {
+      content: '' !important;
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      height: 4px !important;
+      background: linear-gradient(90deg, #148C3A 0%, #F58220 100%) !important;
+    }
+    .vs-calc-right-col-{{ section.id }} .calc-result-val {
+      font-size: 1.85rem !important;
+      font-weight: 900 !important;
+      color: #148C3A !important;
+      line-height: 1.15 !important;
+      margin-bottom: 6px !important;
+    }
+    .vs-calc-right-col-{{ section.id }} .calc-result-label {
+      font-size: 0.85rem !important;
+      color: #64748B !important;
+      font-weight: 600 !important;
+    }
+
+    /* TRUST STRIP CAPSULE PILLS IN RIGHT COLUMN */
+    .vs-calc-right-col-{{ section.id }} .trust-strip { 
       display: grid !important; 
       grid-template-columns: repeat(2, 1fr) !important; 
       gap: 12px !important; 
-      margin-top: 18px !important; 
+      margin-top: 0 !important; 
       width: 100% !important;
     }
-    .vs-calc-left-col-{{ section.id }} .trust-item { 
+    .vs-calc-right-col-{{ section.id }} .trust-item { 
       background: linear-gradient(#FFFFFF, #FFFFFF) padding-box, linear-gradient(90deg, #F58220 0%, #FFC107 50%, #20B14B 100%) border-box !important;
       border: 2px solid transparent !important;
       border-radius: 999px !important;
@@ -737,16 +738,16 @@
       box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03) !important;
       transition: all 0.3s ease !important;
     }
-    .vs-calc-left-col-{{ section.id }} .trust-item:hover {
+    .vs-calc-right-col-{{ section.id }} .trust-item:hover {
       transform: translateY(-2px) !important;
       box-shadow: 0 8px 20px rgba(245, 130, 32, 0.15) !important;
     }
-    .vs-calc-left-col-{{ section.id }} .trust-icon {
+    .vs-calc-right-col-{{ section.id }} .trust-icon {
       font-size: 1.15rem !important;
       margin-bottom: 2px !important;
       display: inline-block !important;
     }
-    .vs-calc-left-col-{{ section.id }} .trust-item div {
+    .vs-calc-right-col-{{ section.id }} .trust-item div {
       font-size: 0.85rem !important;
       font-weight: 700 !important;
       color: #1E293B !important;
@@ -812,52 +813,23 @@
 
 
   <div class="wrapper">
+    <!-- TOP CENTERED SECTION HEADER & SUBHEADER -->
+    <div class="vs-calc-top-header-{{ section.id }}">
+      <div class="tag-wrapper">
+        <div class="section-tag"><div class="tag-dot"></div>{{ section.settings.tag_text }}</div>
+      </div>
+      <h2 class="section-title">
+        {{ section.settings.heading_text }} <br>
+        <span class="heading-line">{{ section.settings.heading_highlight }}</span>
+      </h2>
+      <p class="section-sub">{{ section.settings.subheading_text }}</p>
+    </div>
+
+    <!-- 2 SHUFFLED COLUMNS (LEFT: CALCULATOR CONTROLS | RIGHT: RESULTS & TRUST BADGES) -->
     <div class="vs-calc-desktop-grid-{{ section.id }}">
       
-      <!-- LEFT COLUMN: HEADING, SUBTITLE & 4 CALCULATION RESULT CARDS -->
+      <!-- LEFT COLUMN: INTERACTIVE CALCULATOR CONTROLS CARD -->
       <div class="vs-calc-left-col-{{ section.id }}">
-        <div class="tag-wrapper">
-          <div class="section-tag"><div class="tag-dot"></div>{{ section.settings.tag_text }}</div>
-        </div>
-        <h2 class="section-title">
-          {{ section.settings.heading_text }} <br>
-          <span class="heading-line">{{ section.settings.heading_highlight }}</span>
-        </h2>
-        <p class="section-sub">{{ section.settings.subheading_text }}</p>
-
-        <!-- 4 CALCULATION RESULT CARDS MOVED HERE -->
-        <div class="calc-results">
-          <div class="calc-result-card">
-            <div class="calc-result-val" id="monthlySaving-{{ section.id }}">₹0</div>
-            <div class="calc-result-label">{{ section.settings.label_monthly }}</div>
-          </div>
-          <div class="calc-result-card">
-            <div class="calc-result-val" id="yearlySaving-{{ section.id }}">₹0</div>
-            <div class="calc-result-label">{{ section.settings.label_yearly }}</div>
-          </div>
-          <div class="calc-result-card">
-            <div class="calc-result-val" id="newBill-{{ section.id }}">₹0</div>
-            <div class="calc-result-label">{{ section.settings.label_newbill }}</div>
-          </div>
-          <div class="calc-result-card">
-            <div class="calc-result-val" id="roiMonths-{{ section.id }}">0 Mo</div>
-            <div class="calc-result-label">{{ section.settings.label_roi }}</div>
-          </div>
-        </div>
-
-        <!-- TRUST STRIP CAPSULE PILLS MOVED HERE (MATCHING USER SCREENSHOT) -->
-        <div class="trust-strip">
-          {%- for block in section.blocks -%}
-            <div class="trust-item" {{ block.shopify_attributes }}>
-              <span class="trust-icon">{{ block.settings.icon }}</span>
-              <div>{{ block.settings.text }}</div>
-            </div>
-          {%- endfor -%}
-        </div>
-      </div>
-
-      <!-- RIGHT COLUMN: INTERACTIVE CALCULATOR CONTROLS CARD -->
-      <div class="vs-calc-right-col-{{ section.id }}">
         <div class="calc-card">
 
           <!-- BIG DISPLAY FOR CURRENT BILL -->
@@ -932,6 +904,39 @@
 
           <p class="calc-disclaimer">{{ section.settings.disclaimer_text }}</p>
 
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN: RESULTS CARDS & TRUST CAPSULE PILLS -->
+      <div class="vs-calc-right-col-{{ section.id }}">
+        <!-- 4 CALCULATION RESULT CARDS -->
+        <div class="calc-results">
+          <div class="calc-result-card">
+            <div class="calc-result-val" id="monthlySaving-{{ section.id }}">₹0</div>
+            <div class="calc-result-label">{{ section.settings.label_monthly }}</div>
+          </div>
+          <div class="calc-result-card">
+            <div class="calc-result-val" id="yearlySaving-{{ section.id }}">₹0</div>
+            <div class="calc-result-label">{{ section.settings.label_yearly }}</div>
+          </div>
+          <div class="calc-result-card">
+            <div class="calc-result-val" id="newBill-{{ section.id }}">₹0</div>
+            <div class="calc-result-label">{{ section.settings.label_newbill }}</div>
+          </div>
+          <div class="calc-result-card">
+            <div class="calc-result-val" id="roiMonths-{{ section.id }}">0 Mo</div>
+            <div class="calc-result-label">{{ section.settings.label_roi }}</div>
+          </div>
+        </div>
+
+        <!-- TRUST STRIP CAPSULE PILLS -->
+        <div class="trust-strip">
+          {%- for block in section.blocks -%}
+            <div class="trust-item" {{ block.shopify_attributes }}>
+              <span class="trust-icon">{{ block.settings.icon }}</span>
+              <div>{{ block.settings.text }}</div>
+            </div>
+          {%- endfor -%}
         </div>
       </div>
 
