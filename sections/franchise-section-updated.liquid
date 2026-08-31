@@ -341,54 +341,45 @@
     padding-left: 0 !important;
   }
 
-  /* RIGHT COLUMN: COMPACT LUCRATIVE CARD (40% WIDTH) */
+  /* RIGHT COLUMN: CLEAN BORDERLESS TRANSPARENT IMAGE SHOWCASE */
   .vs-right-col-{{ section.id }} {
-    flex: 0 0 40% !important;
-    max-width: 440px !important;
-    width: 40% !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: stretch !important;
-    justify-content: flex-start !important;
-    padding-top: 10px !important;
-    margin: 0 !important;
-  }
-
-  .vs-desktop-image-wrapper-{{ section.id }},
-  .vs-desktop-image-placeholder-{{ section.id }} {
-    width: 100% !important;
-    height: 100% !important;
-    min-height: 440px !important;
-    max-height: 490px !important;
-    border-radius: 22px !important;
-    overflow: hidden !important;
-    border: 2px solid rgba(236, 92, 10, 0.35) !important;
-    box-shadow: 0 20px 45px rgba(15, 23, 42, 0.16), 0 6px 20px rgba(236, 92, 10, 0.12) !important;
-    background: linear-gradient(145deg, #0F172A 0%, #1E293B 100%) !important;
-    position: relative !important;
+    flex: 0 0 42% !important;
+    max-width: 460px !important;
+    width: 42% !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
-    text-align: center !important;
-    padding: 30px 24px !important;
-    transition: all 0.35s ease !important;
+    padding: 0 !important;
+    margin: 0 !important;
   }
 
-  .vs-desktop-image-wrapper-{{ section.id }}:hover,
-  .vs-desktop-image-placeholder-{{ section.id }}:hover {
-    transform: translateY(-4px) !important;
-    box-shadow: 0 25px 55px rgba(236, 92, 10, 0.28) !important;
-    border-color: #EC5C0A !important;
+  .vs-desktop-image-wrapper-{{ section.id }} {
+    width: 100% !important;
+    height: auto !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    position: relative !important;
+    display: block !important;
   }
 
   .vs-desktop-right-img-{{ section.id }} {
     width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
+    height: auto !important;
+    object-fit: contain !important;
     display: block !important;
-    border-radius: 18px !important;
-    transition: transform 0.5s ease !important;
+    border: none !important;
+    border-radius: 16px !important;
+    box-shadow: 0 14px 40px rgba(15, 23, 42, 0.08) !important;
+    transition: transform 0.4s ease !important;
+  }
+
+  .vs-desktop-image-wrapper-{{ section.id }}:hover .vs-desktop-right-img-{{ section.id }} {
+    transform: scale(1.02) !important;
   }
 
   /* LUCRATIVE CARD INNER ELEMENTS */
