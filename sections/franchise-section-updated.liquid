@@ -447,6 +447,14 @@
 
 /* PERFECT COMPACT MOBILE ALIGNMENT OVERRIDES */
 @media(max-width: 768px) {
+  .vs-usage-content-box-{{ section.id }} {
+    display: none !important;
+  }
+  .vs-usage-img-box-{{ section.id }} {
+    width: 100% !important;
+    height: 100% !important;
+    position: relative !important;
+  }
   .vs-right-col-{{ section.id }} {
     display: none !important;
   }
@@ -612,39 +620,79 @@
     <div class="vs-usage-grid-{{ section.id }}">
       
       <div class="vs-usage-card-{{ section.id }}">
-        {%- if section.settings.img1 != blank -%}
-          {{ section.settings.img1 | image_url: width: 600 | image_tag: loading: 'lazy', alt: section.settings.lbl1 }}
-        {%- else -%}
-          <div style="width:100%;height:100%;background:#e2e8f0;display:flex;align-items:center;justify-content:center;color:#94a3b8;">Image 1</div>
-        {%- endif -%}
-        <div class="vs-usage-overlay-{{ section.id }}">{{ section.settings.lbl1 }}</div>
+        <div class="vs-usage-img-box-{{ section.id }}">
+          {%- if section.settings.img1 != blank -%}
+            {{ section.settings.img1 | image_url: width: 600 | image_tag: loading: 'lazy', alt: section.settings.lbl1 }}
+          {%- else -%}
+            <div style="width:100%;height:100%;background:#e2e8f0;display:flex;align-items:center;justify-content:center;color:#94a3b8;">Image 1</div>
+          {%- endif -%}
+          <div class="vs-usage-overlay-{{ section.id }}">{{ section.settings.lbl1 }}</div>
+        </div>
+        <div class="vs-usage-content-box-{{ section.id }}">
+          {%- if section.settings.lbl1 != blank -%}
+            <h3>{{ section.settings.lbl1 }}</h3>
+          {%- endif -%}
+          {%- if section.settings.desc1 != blank -%}
+            <p>{{ section.settings.desc1 }}</p>
+          {%- endif -%}
+        </div>
       </div>
       
       <div class="vs-usage-card-{{ section.id }}">
-        {%- if section.settings.img2 != blank -%}
-          {{ section.settings.img2 | image_url: width: 600 | image_tag: loading: 'lazy', alt: section.settings.lbl2 }}
-        {%- else -%}
-          <div style="width:100%;height:100%;background:#cbd5e1;display:flex;align-items:center;justify-content:center;color:#94a3b8;">Image 2</div>
-        {%- endif -%}
-        <div class="vs-usage-overlay-{{ section.id }}">{{ section.settings.lbl2 }}</div>
+        <div class="vs-usage-img-box-{{ section.id }}">
+          {%- if section.settings.img2 != blank -%}
+            {{ section.settings.img2 | image_url: width: 600 | image_tag: loading: 'lazy', alt: section.settings.lbl2 }}
+          {%- else -%}
+            <div style="width:100%;height:100%;background:#cbd5e1;display:flex;align-items:center;justify-content:center;color:#94a3b8;">Image 2</div>
+          {%- endif -%}
+          <div class="vs-usage-overlay-{{ section.id }}">{{ section.settings.lbl2 }}</div>
+        </div>
+        <div class="vs-usage-content-box-{{ section.id }}">
+          {%- if section.settings.lbl2 != blank -%}
+            <h3>{{ section.settings.lbl2 }}</h3>
+          {%- endif -%}
+          {%- if section.settings.desc2 != blank -%}
+            <p>{{ section.settings.desc2 }}</p>
+          {%- endif -%}
+        </div>
       </div>
       
       <div class="vs-usage-card-{{ section.id }}">
-        {%- if section.settings.img3 != blank -%}
-          {{ section.settings.img3 | image_url: width: 600 | image_tag: loading: 'lazy', alt: section.settings.lbl3 }}
-        {%- else -%}
-          <div style="width:100%;height:100%;background:#cbd5e1;display:flex;align-items:center;justify-content:center;color:#94a3b8;">Image 3</div>
-        {%- endif -%}
-        <div class="vs-usage-overlay-{{ section.id }}">{{ section.settings.lbl3 }}</div>
+        <div class="vs-usage-img-box-{{ section.id }}">
+          {%- if section.settings.img3 != blank -%}
+            {{ section.settings.img3 | image_url: width: 600 | image_tag: loading: 'lazy', alt: section.settings.lbl3 }}
+          {%- else -%}
+            <div style="width:100%;height:100%;background:#cbd5e1;display:flex;align-items:center;justify-content:center;color:#94a3b8;">Image 3</div>
+          {%- endif -%}
+          <div class="vs-usage-overlay-{{ section.id }}">{{ section.settings.lbl3 }}</div>
+        </div>
+        <div class="vs-usage-content-box-{{ section.id }}">
+          {%- if section.settings.lbl3 != blank -%}
+            <h3>{{ section.settings.lbl3 }}</h3>
+          {%- endif -%}
+          {%- if section.settings.desc3 != blank -%}
+            <p>{{ section.settings.desc3 }}</p>
+          {%- endif -%}
+        </div>
       </div>
       
       <div class="vs-usage-card-{{ section.id }}">
-        {%- if section.settings.img4 != blank -%}
-          {{ section.settings.img4 | image_url: width: 600 | image_tag: loading: 'lazy', alt: section.settings.lbl4 }}
-        {%- else -%}
-          <div style="width:100%;height:100%;background:#e2e8f0;display:flex;align-items:center;justify-content:center;color:#94a3b8;">Image 4</div>
-        {%- endif -%}
-        <div class="vs-usage-overlay-{{ section.id }}">{{ section.settings.lbl4 }}</div>
+        <div class="vs-usage-img-box-{{ section.id }}">
+          {%- if section.settings.img4 != blank -%}
+            {{ section.settings.img4 | image_url: width: 600 | image_tag: loading: 'lazy', alt: section.settings.lbl4 }}
+          {%- else -%}
+            <div style="width:100%;height:100%;background:#e2e8f0;display:flex;align-items:center;justify-content:center;color:#94a3b8;">Image 4</div>
+          {%- endif -%}
+          <div class="vs-usage-overlay-{{ section.id }}">{{ section.settings.lbl4 }}</div>
+        </div>
+        <div class="vs-usage-content-box-{{ section.id }}">
+          {%- if section.settings.lbl4 != blank -%}
+            <h3>{{ section.settings.lbl4 }}</h3>
+          {%- endif -%}
+          {%- if section.settings.desc4 != blank -%}
+            <p>{{ section.settings.desc4 }}</p>
+          {%- endif -%}
+        </div>
       </div>
 
     </div>
@@ -798,6 +846,12 @@
       "default": "Residential Use"
     },
     {
+      "type": "textarea",
+      "id": "desc1",
+      "label": "Description 1 (Desktop)",
+      "default": "Optimizes electricity flow for homes & apartments, reducing power waste from ACs, refrigerators, and heavy appliances."
+    },
+    {
       "type": "image_picker",
       "id": "img2",
       "label": "Image 2"
@@ -807,6 +861,12 @@
       "id": "lbl2",
       "label": "Label 2",
       "default": "Commercial Use"
+    },
+    {
+      "type": "textarea",
+      "id": "desc2",
+      "label": "Description 2 (Desktop)",
+      "default": "Lowers kVAh billing charges & protects sensitive equipment in offices, retail shops, showrooms & restaurants."
     },
     {
       "type": "image_picker",
@@ -820,6 +880,12 @@
       "default": "Industrial Use"
     },
     {
+      "type": "textarea",
+      "id": "desc3",
+      "label": "Description 3 (Desktop)",
+      "default": "Engineered for heavy inductive motor loads, stabilizing voltage & cutting line losses in factories & manufacturing plants."
+    },
+    {
       "type": "image_picker",
       "id": "img4",
       "label": "Image 4"
@@ -829,6 +895,12 @@
       "id": "lbl4",
       "label": "Label 4",
       "default": "Institutional Use"
+    },
+    {
+      "type": "textarea",
+      "id": "desc4",
+      "label": "Description 4 (Desktop)",
+      "default": "Provides reliable energy efficiency and surge protection for educational institutes, hospitals & public buildings."
     }
   ],
   "blocks": [
