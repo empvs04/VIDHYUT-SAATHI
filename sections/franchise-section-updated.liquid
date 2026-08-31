@@ -258,18 +258,25 @@
   .vs-desktop-flex-wrap-{{ section.id }} {
     display: flex !important;
     flex-direction: row !important;
-    align-items: flex-start !important;
+    align-items: center !important;
     justify-content: space-between !important;
-    gap: 50px !important;
+    gap: 48px !important;
     margin-bottom: 50px !important;
   }
 
-  /* LEFT COLUMN: HEADING & SUBTITLE (FLUSH TO TOP OF COLUMN) */
+  /* LEFT COLUMN: HEADING, SUBTITLE & TIMELINE (ALIGNED ON THE LEFT) */
+  .vs-left-col-{{ section.id }} {
+    flex: 0 0 52% !important;
+    max-width: 600px !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
   .vs-section-{{ section.id }} .heading { 
-    flex: 0 0 42% !important;
-    max-width: 480px !important;
+    width: 100% !important;
+    max-width: 100% !important;
     text-align: left !important; 
-    margin: 0 !important;
+    margin: 0 0 32px 0 !important;
     position: relative !important;
     top: 0 !important;
     padding-top: 0 !important;
@@ -280,7 +287,7 @@
     padding: 0 !important;
   }
   .vs-section-{{ section.id }} .heading .top { 
-    font-size: 56px !important; 
+    font-size: 54px !important; 
     letter-spacing: -1.2px !important; 
     text-align: left !important;
     display: block !important;
@@ -289,7 +296,7 @@
     padding: 0 !important;
   }
   .vs-section-{{ section.id }} .heading .bottom { 
-    font-size: 48px !important; 
+    font-size: 46px !important; 
     letter-spacing: -1px !important; 
     text-align: left !important;
     display: block !important;
@@ -299,24 +306,71 @@
   .vs-section-{{ section.id }} .heading-glow { 
     width: 160px !important; 
     height: 6px !important; 
-    margin: 20px 0 !important;
+    margin: 18px 0 !important;
   }
   .vs-section-{{ section.id }} .heading p { 
-    font-size: 18px !important; 
+    font-size: 17.5px !important; 
     color: #334155 !important;
     line-height: 1.65 !important;
     text-align: left !important; 
-    margin: 20px 0 0 0 !important;
-    max-width: 460px !important;
+    margin: 16px 0 0 0 !important;
+    max-width: 520px !important;
     font-weight: 500 !important;
   }
-  
-  /* RIGHT COLUMN: TIMELINE */
+
+  /* TIMELINE IN LEFT COLUMN */
   .vs-section-{{ section.id }} .timeline {
-    flex: 1 !important;
-    max-width: 680px !important;
+    width: 100% !important;
+    max-width: 100% !important;
     position: relative !important;
     padding-left: 0 !important;
+  }
+
+  /* RIGHT COLUMN: DESKTOP IMAGE */
+  .vs-right-col-{{ section.id }} {
+    flex: 0 0 44% !important;
+    max-width: 520px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  .vs-desktop-image-wrapper-{{ section.id }} {
+    width: 100% !important;
+    position: relative !important;
+    border-radius: 24px !important;
+    overflow: hidden !important;
+    box-shadow: 0 20px 45px rgba(236, 92, 10, 0.12), 0 4px 16px rgba(0, 0, 0, 0.04) !important;
+    border: 2px solid rgba(255, 170, 0, 0.25) !important;
+    transition: transform 0.4s ease, box-shadow 0.4s ease !important;
+    background: #ffffff !important;
+  }
+  .vs-desktop-image-wrapper-{{ section.id }}:hover {
+    transform: translateY(-4px) scale(1.01) !important;
+    box-shadow: 0 25px 50px rgba(236, 92, 10, 0.18), 0 8px 24px rgba(0, 0, 0, 0.06) !important;
+  }
+  .vs-desktop-right-img-{{ section.id }} {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 560px !important;
+    object-fit: cover !important;
+    display: block !important;
+    border-radius: 22px !important;
+  }
+  .vs-desktop-image-placeholder-{{ section.id }} {
+    width: 100% !important;
+    min-height: 420px !important;
+    border: 2px dashed rgba(236, 92, 10, 0.35) !important;
+    background: linear-gradient(135deg, #ffffff 0%, #fffdf8 50%, #fff8ef 100%) !important;
+    border-radius: 24px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: #ec5c0a !important;
+    gap: 14px !important;
+    padding: 30px !important;
+    text-align: center !important;
+    box-shadow: 0 10px 30px rgba(236, 92, 10, 0.08) !important;
   }
   .vs-section-{{ section.id }} .timeline-line {
     display: block !important;
@@ -392,6 +446,13 @@
 
 /* PERFECT COMPACT MOBILE ALIGNMENT OVERRIDES */
 @media(max-width: 768px) {
+  .vs-right-col-{{ section.id }} {
+    display: none !important;
+  }
+  .vs-left-col-{{ section.id }} {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
   .vs-section-{{ section.id }} {
     padding: 24px 16px 20px !important;
   }
@@ -480,45 +541,61 @@
   <div class="container">
     
     <div class="vs-desktop-flex-wrap-{{ section.id }}">
-      <div class="heading">
-        <h1>
-          {%- if section.settings.heading_top != blank -%}
-            <span class="top">{{ section.settings.heading_top }}</span>
+      <div class="vs-left-col-{{ section.id }}">
+        <div class="heading">
+          <h1>
+            {%- if section.settings.heading_top != blank -%}
+              <span class="top">{{ section.settings.heading_top }}</span>
+            {%- endif -%}
+            {%- if section.settings.heading_bottom != blank -%}
+              <span class="bottom">{{ section.settings.heading_bottom }}</span>
+            {%- endif -%}
+          </h1>
+          <div class="heading-glow"></div>
+          {%- if section.settings.heading_sub != blank -%}
+            <p>{{ section.settings.heading_sub }}</p>
           {%- endif -%}
-          {%- if section.settings.heading_bottom != blank -%}
-            <span class="bottom">{{ section.settings.heading_bottom }}</span>
-          {%- endif -%}
-        </h1>
-        <div class="heading-glow"></div>
-        {%- if section.settings.heading_sub != blank -%}
-          <p>{{ section.settings.heading_sub }}</p>
-        {%- endif -%}
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-line"></div>
+
+          {%- for block in section.blocks -%}
+            <div class="item" {{ block.shopify_attributes }}>
+              <div class="icon">
+                {%- if block.settings.custom_icon_svg != blank -%}
+                  {{ block.settings.custom_icon_svg }}
+                {%- elsif block.settings.custom_icon_image != blank -%}
+                  {{ block.settings.custom_icon_image | image_url: width: 100 | image_tag: loading: 'lazy' }}
+                {%- else -%}
+                  <svg viewBox="0 0 24 24"><path d="M12 2L3 7v10l9 5 9-5V7l-9-5z"/></svg>
+                {%- endif -%}
+              </div>
+              <div class="content">
+                {%- if block.settings.title != blank -%}
+                  <h2>{{ block.settings.title }}</h2>
+                {%- endif -%}
+                {%- if block.settings.text != blank -%}
+                  <p>{{ block.settings.text }}</p>
+                {%- endif -%}
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
       </div>
 
-      <div class="timeline">
-        <div class="timeline-line"></div>
-
-        {%- for block in section.blocks -%}
-          <div class="item" {{ block.shopify_attributes }}>
-            <div class="icon">
-              {%- if block.settings.custom_icon_svg != blank -%}
-                {{ block.settings.custom_icon_svg }}
-              {%- elsif block.settings.custom_icon_image != blank -%}
-                {{ block.settings.custom_icon_image | image_url: width: 100 | image_tag: loading: 'lazy' }}
-              {%- else -%}
-                <svg viewBox="0 0 24 24"><path d="M12 2L3 7v10l9 5 9-5V7l-9-5z"/></svg>
-              {%- endif -%}
-            </div>
-            <div class="content">
-              {%- if block.settings.title != blank -%}
-                <h2>{{ block.settings.title }}</h2>
-              {%- endif -%}
-              {%- if block.settings.text != blank -%}
-                <p>{{ block.settings.text }}</p>
-              {%- endif -%}
-            </div>
+      <div class="vs-right-col-{{ section.id }}">
+        {%- if section.settings.desktop_right_image != blank -%}
+          <div class="vs-desktop-image-wrapper-{{ section.id }}">
+            {{ section.settings.desktop_right_image | image_url: width: 1200 | image_tag: loading: 'lazy', alt: section.settings.heading_top, class: 'vs-desktop-right-img-' | append: section.id }}
           </div>
-        {%- endfor -%}
+        {%- else -%}
+          <div class="vs-desktop-image-placeholder-{{ section.id }}">
+            <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <strong style="font-size: 16px; font-weight: 700;">Desktop Right Image</strong>
+            <span style="font-size: 13px; color: #64748b; max-width: 280px; line-height: 1.4;">Select an image from Shopify Theme Editor settings for this section.</span>
+          </div>
+        {%- endif -%}
       </div>
     </div>
 
@@ -626,6 +703,16 @@
 {
   "name": "Premium Timeline",
   "settings": [
+    {
+      "type": "header",
+      "content": "Desktop Right Column Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "desktop_right_image",
+      "label": "Desktop Right Column Image",
+      "info": "Upload an image from Shopify to display on the right side of this section on desktop screens."
+    },
     {
       "type": "header",
       "content": "Heading Settings"
