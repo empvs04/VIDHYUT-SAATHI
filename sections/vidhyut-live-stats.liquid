@@ -203,7 +203,7 @@
       line-height: 1.2 !important;
     }
 
-    /* SEQUENTIAL LIVE PULSING STATE MAP PINS */
+    /* SEQUENTIAL LIVE PULSING STATE MAP PINS (ON/OFF BEACON EFFECT) */
     #shopify-section-{{ section.id }} .vs-map-live-pin {
       position: absolute !important;
       z-index: 5 !important;
@@ -211,56 +211,55 @@
       align-items: center !important;
       gap: 4px !important;
       pointer-events: none !important;
+      animation: pinBeacon 3s infinite ease-in-out !important;
     }
 
-    #shopify-section-{{ section.id }} .vs-map-live-pin.pin-1 { top: 24%; left: 45%; }
-    #shopify-section-{{ section.id }} .vs-map-live-pin.pin-2 { top: 54%; left: 24%; }
-    #shopify-section-{{ section.id }} .vs-map-live-pin.pin-3 { top: 74%; left: 34%; }
-    #shopify-section-{{ section.id }} .vs-map-live-pin.pin-4 { top: 32%; left: 54%; }
-    #shopify-section-{{ section.id }} .vs-map-live-pin.pin-5 { top: 48%; left: 74%; }
-    #shopify-section-{{ section.id }} .vs-map-live-pin.pin-6 { top: 42%; left: 22%; }
+    #shopify-section-{{ section.id }} .vs-map-live-pin.pin-1 { top: 32%; left: 42%; animation-delay: 0s !important; }
+    #shopify-section-{{ section.id }} .vs-map-live-pin.pin-2 { top: 52%; left: 34%; animation-delay: 0.5s !important; }
+    #shopify-section-{{ section.id }} .vs-map-live-pin.pin-3 { top: 72%; left: 38%; animation-delay: 1.0s !important; }
+    #shopify-section-{{ section.id }} .vs-map-live-pin.pin-4 { top: 38%; left: 48%; animation-delay: 1.5s !important; }
+    #shopify-section-{{ section.id }} .vs-map-live-pin.pin-5 { top: 48%; left: 66%; animation-delay: 2.0s !important; }
+    #shopify-section-{{ section.id }} .vs-map-live-pin.pin-6 { top: 44%; left: 26%; animation-delay: 2.5s !important; }
 
     #shopify-section-{{ section.id }} .ping-dot {
-      width: 8px !important;
-      height: 8px !important;
-      background: #EC5C0A !important;
+      width: 10px !important;
+      height: 10px !important;
+      background: #FF9A00 !important;
       border: 2px solid #FFFFFF !important;
       border-radius: 50% !important;
-      box-shadow: 0 0 10px #EC5C0A !important;
+      box-shadow: 0 0 14px #EC5C0A, 0 0 20px #FF9A00 !important;
     }
 
     #shopify-section-{{ section.id }} .ping-ring {
       position: absolute !important;
-      width: 22px !important;
-      height: 22px !important;
-      border: 2px solid #FF9A00 !important;
+      width: 26px !important;
+      height: 26px !important;
+      border: 2px solid #EC5C0A !important;
       border-radius: 50% !important;
-      animation: pinPulse 2.8s infinite ease-in-out !important;
+      animation: pinPulseRing 3s infinite ease-in-out !important;
     }
 
     #shopify-section-{{ section.id }} .ping-label {
       font-size: 0.58rem !important;
       font-weight: 900 !important;
       color: #FFFFFF !important;
-      background: rgba(15, 23, 42, 0.88) !important;
-      padding: 2px 5px !important;
+      background: linear-gradient(135deg, #0F172A, #1E293B) !important;
+      padding: 2px 6px !important;
       border-radius: 4px !important;
-      border: 1px solid rgba(236, 92, 10, 0.5) !important;
-      letter-spacing: 0.4px !important;
+      border: 1px solid rgba(236, 92, 10, 0.6) !important;
+      letter-spacing: 0.5px !important;
       white-space: nowrap !important;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
     }
 
-    #shopify-section-{{ section.id }} .pin-1 .ping-ring { animation-delay: 0s !important; }
-    #shopify-section-{{ section.id }} .pin-2 .ping-ring { animation-delay: 0.45s !important; }
-    #shopify-section-{{ section.id }} .pin-3 .ping-ring { animation-delay: 0.9s !important; }
-    #shopify-section-{{ section.id }} .pin-4 .ping-ring { animation-delay: 1.35s !important; }
-    #shopify-section-{{ section.id }} .pin-5 .ping-ring { animation-delay: 1.8s !important; }
-    #shopify-section-{{ section.id }} .pin-6 .ping-ring { animation-delay: 2.25s !important; }
+    @keyframes pinBeacon {
+      0%, 100% { opacity: 0.25; transform: scale(0.9); }
+      30%, 60% { opacity: 1; transform: scale(1.15); filter: drop-shadow(0 0 10px #EC5C0A); }
+    }
 
-    @keyframes pinPulse {
+    @keyframes pinPulseRing {
       0% { transform: scale(0.3); opacity: 1; }
-      100% { transform: scale(2.4); opacity: 0; }
+      100% { transform: scale(2.5); opacity: 0; }
     }
 
     #shopify-section-{{ section.id }} .vs-stats-cta-btn {
