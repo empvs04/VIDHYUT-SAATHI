@@ -79,15 +79,15 @@
       flex-direction: row !important;
       align-items: center !important;
       justify-content: space-between !important;
-      gap: 48px !important;
+      gap: 42px !important;
       width: 100% !important;
     }
 
-    /* LEFT COLUMN: TITLE & CTA */
+    /* LEFT COLUMN: TITLE + TEASER + 3 HORIZONTAL CARDS + CTA */
     #shopify-section-{{ section.id }} .vs-stats-left-col {
-      flex: 0 0 48% !important;
-      max-width: 530px !important;
-      width: 48% !important;
+      flex: 0 0 54% !important;
+      max-width: 600px !important;
+      width: 54% !important;
       text-align: left !important;
       display: flex !important;
       flex-direction: column !important;
@@ -95,10 +95,10 @@
     }
 
     #shopify-section-{{ section.id }} .network-title {
-      font-size: 2.85rem !important;
+      font-size: 2.8rem !important;
       font-weight: 900 !important;
-      margin-bottom: 16px !important;
-      line-height: 1.2 !important;
+      margin-bottom: 10px !important;
+      line-height: 1.18 !important;
       color: #0F172A !important;
       text-align: left !important;
     }
@@ -110,7 +110,7 @@
     
     #shopify-section-{{ section.id }} .net-number { 
       display: inline-block !important;
-      font-size: 3.6rem !important;
+      font-size: 3.5rem !important;
       font-weight: 900 !important;
       line-height: 1 !important;
       margin: 0 6px !important;
@@ -121,19 +121,91 @@
     }
 
     #shopify-section-{{ section.id }} .vs-stats-teaser {
-      font-size: 15px !important;
-      color: #475569 !important;
-      line-height: 1.6 !important;
-      margin: 0 0 24px 0 !important;
-      font-weight: 500 !important;
-      max-width: 95% !important;
+      font-size: 1.12rem !important;
+      color: #EC5C0A !important;
+      line-height: 1.4 !important;
+      margin: 0 0 22px 0 !important;
+      font-weight: 750 !important;
+      text-align: left !important;
+    }
+
+    /* 3 COMPACT HORIZONTAL CARDS IN LEFT COLUMN */
+    #shopify-section-{{ section.id }} .stats-grid {
+      display: grid !important;
+      grid-template-columns: repeat(3, 1fr) !important;
+      gap: 12px !important;
+      width: 100% !important;
+      margin-bottom: 26px !important;
+    }
+    
+    #shopify-section-{{ section.id }} .stat-item {
+      background: #FFFFFF !important; 
+      border: 1.5px solid rgba(236, 92, 10, 0.2) !important;
+      border-top: 4px solid #EC5C0A !important;
+      border-left: none !important;
+      padding: 16px 8px !important;
+      border-radius: 16px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+      text-align: center !important;
+      box-shadow: 0 10px 24px rgba(236, 92, 10, 0.07), 0 2px 8px rgba(0, 0, 0, 0.02) !important;
+      transition: all 0.35s ease !important;
+    }
+    
+    #shopify-section-{{ section.id }} .stat-item:hover {
+      transform: translateY(-5px) !important;
+      border-color: rgba(236, 92, 10, 0.45) !important;
+      box-shadow: 0 16px 36px rgba(236, 92, 10, 0.16) !important;
+    }
+
+    #shopify-section-{{ section.id }} .stat-icon { 
+      width: 44px !important;
+      min-width: 44px !important;
+      height: 44px !important;
+      border-radius: 14px !important;
+      background: linear-gradient(135deg, #FFF3EB 0%, #FFE0B2 100%) !important;
+      border: 1.5px solid rgba(236, 92, 10, 0.25) !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      font-size: 1.4rem !important; 
+      color: #EC5C0A !important; 
+      margin-bottom: 8px !important; 
+      box-shadow: 0 4px 12px rgba(236, 92, 10, 0.12) !important;
+    }
+
+    #shopify-section-{{ section.id }} .stat-info {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      text-align: center !important;
+    }
+    
+    #shopify-section-{{ section.id }} .stat-num { 
+      font-size: 1.95rem !important; 
+      font-weight: 900 !important; 
+      display: inline-block !important; 
+      color: #007B3E !important; 
+      line-height: 1 !important; 
+      margin-bottom: 4px !important;
+    }
+    
+    #shopify-section-{{ section.id }} .stat-label { 
+      font-size: 0.7rem !important; 
+      color: #475569 !important; 
+      font-weight: 800 !important; 
+      text-transform: uppercase !important; 
+      letter-spacing: 0.3px !important;
+      line-height: 1.25 !important;
     }
 
     #shopify-section-{{ section.id }} .vs-stats-cta-btn {
       display: inline-flex !important;
       align-items: center !important;
       gap: 10px !important;
-      padding: 14px 30px !important;
+      padding: 14px 32px !important;
       border-radius: 50px !important;
       background: linear-gradient(135deg, #EC5C0A 0%, #FF9200 100%) !important;
       color: #FFFFFF !important;
@@ -149,80 +221,50 @@
       box-shadow: 0 16px 36px rgba(236, 92, 10, 0.42) !important;
     }
 
-    /* RIGHT COLUMN: 3 STAT CARDS (STACKED COLUMN GRID) */
+    /* RIGHT COLUMN: 3D INDIA LIVE STATES MAP SHOWCASE */
     #shopify-section-{{ section.id }} .vs-stats-right-col {
-      flex: 0 0 48% !important;
-      max-width: 530px !important;
-      width: 48% !important;
+      flex: 0 0 42% !important;
+      max-width: 470px !important;
+      width: 42% !important;
     }
 
-    #shopify-section-{{ section.id }} .stats-grid {
-      display: flex !important;
-      flex-direction: column !important;
-      gap: 18px !important;
-      margin-bottom: 0 !important;
-    }
-    
-    #shopify-section-{{ section.id }} .stat-item {
-      background: #FFFFFF !important; 
-      border: 1.5px solid rgba(236, 92, 10, 0.2) !important;
-      border-left: 6px solid #EC5C0A !important;
-      border-top: none !important;
-      padding: 22px 28px !important;
-      border-radius: 20px !important;
-      display: flex !important;
-      flex-direction: row !important;
-      align-items: center !important;
-      justify-content: flex-start !important;
-      gap: 22px !important;
-      text-align: left !important;
-      box-shadow: 0 14px 35px rgba(236, 92, 10, 0.07), 0 4px 12px rgba(0, 0, 0, 0.02) !important;
-      transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
-    }
-    
-    #shopify-section-{{ section.id }} .stat-item:hover {
-      transform: translateX(8px) !important;
-      border-color: rgba(236, 92, 10, 0.5) !important;
-      box-shadow: 0 20px 45px rgba(236, 92, 10, 0.16) !important;
+    #shopify-section-{{ section.id }} .vs-map-showcase-card {
+      position: relative !important;
+      width: 100% !important;
+      background: #FFFFFF !important;
+      border-radius: 24px !important;
+      padding: 18px !important;
+      border: 2px solid rgba(236, 92, 10, 0.28) !important;
+      box-shadow: 0 20px 48px rgba(236, 92, 10, 0.14), 0 4px 15px rgba(0,0,0,0.02) !important;
+      overflow: hidden !important;
+      text-align: center !important;
+      transition: transform 0.4s ease !important;
     }
 
-    #shopify-section-{{ section.id }} .stat-icon { 
-      width: 60px !important;
-      min-width: 60px !important;
-      height: 60px !important;
-      border-radius: 18px !important;
+    #shopify-section-{{ section.id }} .vs-map-showcase-card:hover {
+      transform: translateY(-6px) scale(1.015) !important;
+    }
+
+    #shopify-section-{{ section.id }} .vs-map-badge {
+      display: inline-block !important;
+      padding: 6px 18px !important;
+      border-radius: 50px !important;
       background: linear-gradient(135deg, #FFF3EB 0%, #FFE0B2 100%) !important;
-      border: 1.5px solid rgba(236, 92, 10, 0.25) !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-      font-size: 1.75rem !important; 
-      color: #EC5C0A !important; 
-      margin-bottom: 0 !important; 
-      box-shadow: 0 6px 18px rgba(236, 92, 10, 0.15) !important;
+      color: #EC5C0A !important;
+      font-size: 0.78rem !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.8px !important;
+      margin-bottom: 14px !important;
+      border: 1.5px solid rgba(236, 92, 10, 0.3) !important;
+      box-shadow: 0 4px 12px rgba(236, 92, 10, 0.1) !important;
     }
 
-    #shopify-section-{{ section.id }} .stat-info {
-      display: flex !important;
-      flex-direction: column !important;
-      align-items: flex-start !important;
-    }
-    
-    #shopify-section-{{ section.id }} .stat-num { 
-      font-size: 2.5rem !important; 
-      font-weight: 900 !important; 
-      display: inline-block !important; 
-      color: #007B3E !important; 
-      line-height: 1 !important; 
-      margin-bottom: 4px !important;
-    }
-    
-    #shopify-section-{{ section.id }} .stat-label { 
-      font-size: 0.85rem !important; 
-      color: #475569 !important; 
-      font-weight: 800 !important; 
-      text-transform: uppercase !important; 
-      letter-spacing: 0.8px !important;
+    #shopify-section-{{ section.id }} .vs-map-img {
+      width: 100% !important;
+      height: auto !important;
+      border-radius: 16px !important;
+      display: block !important;
+      object-fit: contain !important;
     }
 
     #shopify-section-{{ section.id }} .network-marquee-strip {
@@ -418,7 +460,7 @@
 
     <div class="vs-stats-desktop-flex">
       
-      <!-- LEFT COLUMN: TITLE COUNTER + TEASER + CTA (DESKTOP) -->
+      <!-- LEFT COLUMN: TITLE COUNTER + TEASER + 3 STAT CARDS + CTA (DESKTOP) -->
       <div class="vs-stats-left-col">
         <h2 class="network-title">
           <span class="net-text">{{ section.settings.title_part_1 }}</span>
@@ -426,13 +468,9 @@
           <span class="net-text">{{ section.settings.title_part_2 }}</span>
         </h2>
 
-        <p class="vs-stats-teaser">Join India's fastest growing electricity optimization & load stabilization network with guaranteed high returns.</p>
+        <p class="vs-stats-teaser">Join India's fastest growing network</p>
         
-        <a href="/pages/get-franchise" class="vs-stats-cta-btn">Join Franchise Network →</a>
-      </div>
-
-      <!-- RIGHT COLUMN: 3 STAT CARDS (DESKTOP STACKED COLUMN) -->
-      <div class="vs-stats-right-col">
+        <!-- 3 COMPACT STAT CARDS GRID (INSIDE LEFT COLUMN) -->
         <div class="stats-grid">
           {%- for block in section.blocks -%}
             {%- if block.type == 'stat_item' -%}
@@ -445,6 +483,16 @@
               </div>
             {%- endif -%}
           {%- endfor -%}
+        </div>
+
+        <a href="/pages/get-franchise" class="vs-stats-cta-btn">Join Franchise Network →</a>
+      </div>
+
+      <!-- RIGHT COLUMN: 3D INDIA LIVE STATES NETWORK MAP IMAGE -->
+      <div class="vs-stats-right-col">
+        <div class="vs-map-showcase-card">
+          <div class="vs-map-badge">⚡ 15+ LIVE STATES NETWORK</div>
+          <img src="{{ 'india_live_states_map.jpg' | asset_url }}" alt="Vidhyut Saathi India Live Network Map" class="vs-map-img" loading="lazy">
         </div>
       </div>
 
@@ -684,25 +732,25 @@
         {
           "type": "stat_item",
           "settings": {
-            "icon_class": "fas fa-city",
+            "icon_class": "fas fa-building-user",
             "target_number": 200,
-            "label": "Cities Live"
+            "label": "DISTRICT FRANCHISE"
           }
         },
         {
           "type": "stat_item",
           "settings": {
-            "icon_class": "fas fa-map",
-            "target_number": 25,
-            "label": "States"
+            "icon_class": "fas fa-map-location-dot",
+            "target_number": 20,
+            "label": "STATES LIVE"
           }
         },
         {
           "type": "stat_item",
           "settings": {
-            "icon_class": "fas fa-globe-asia",
-            "target_number": 10,
-            "label": "Countries"
+            "icon_class": "fas fa-users",
+            "target_number": 2,
+            "label": "2M+ Happy Customers"
           }
         },
         {
