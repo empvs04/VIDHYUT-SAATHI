@@ -712,8 +712,10 @@
       z-index: 5 !important;
       display: flex !important;
       align-items: center !important;
-      gap: 2px !important;
+      gap: 3px !important;
       pointer-events: none !important;
+      animation: pinBeaconMobile 4.2s infinite cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+      transform-origin: center left !important;
     }
 
     #shopify-section-{{ section.id }} .vs-map-badge {
@@ -753,6 +755,19 @@
       width: 18px !important;
       height: 18px !important;
       border: 1.5px solid #EC5C0A !important;
+    }
+
+    @keyframes pinBeaconMobile {
+      0%, 100% { 
+        opacity: 0.15; 
+        transform: scale(0.6) translateY(2px); 
+        filter: grayscale(100%);
+      }
+      25%, 65% { 
+        opacity: 1; 
+        transform: scale(1.15) translateY(-3px); 
+        filter: drop-shadow(0 0 8px #EC5C0A) drop-shadow(0 0 14px #FF9A00);
+      }
     }
     
     #shopify-section-{{ section.id }} .marquee-item { 
