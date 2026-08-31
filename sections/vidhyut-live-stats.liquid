@@ -15,24 +15,22 @@
     font-family: 'Plus Jakarta Sans', sans-serif;
   }
 
-  /* --- LUCRATIVE LIGHT THEME DESKTOP REDESIGN (MIN-WIDTH: 769PX) --- */
+  /* --- LUCRATIVE 2-COLUMN LIGHT THEME DESKTOP REDESIGN (MIN-WIDTH: 769PX) --- */
   @media (min-width: 769px) {
     #shopify-section-{{ section.id }} .network-section-clean {
       position: relative !important;
       background: linear-gradient(180deg, #FFF9F3 0%, #FFFFFF 60%, #FFFDF8 100%) !important;
       color: #0F172A !important;      
       padding: {{ section.settings.padding_top }}px 0 0 0 !important; 
-      text-align: center !important;
+      text-align: left !important;
       overflow: hidden !important;
     }
 
-    /* Ambient Radial Glow Background Accents */
     #shopify-section-{{ section.id }} .network-section-clean::before {
       content: '' !important;
       position: absolute !important;
       top: -60px !important;
-      left: 50% !important;
-      transform: translateX(-50%) !important;
+      left: 30% !important;
       width: 700px !important;
       height: 450px !important;
       background: radial-gradient(circle, rgba(236, 92, 10, 0.12) 0%, rgba(255, 255, 255, 0) 70%) !important;
@@ -48,33 +46,50 @@
       margin: 0 auto !important;
     }
 
-    /* LUCRATIVE CAPSULE BADGE */
+    #shopify-section-{{ section.id }} .vs-stats-desktop-flex {
+      display: flex !important;
+      flex-direction: row !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      gap: 48px !important;
+      width: 100% !important;
+    }
+
+    /* LEFT COLUMN: TITLE & CTA */
+    #shopify-section-{{ section.id }} .vs-stats-left-col {
+      flex: 0 0 48% !important;
+      max-width: 530px !important;
+      width: 48% !important;
+      text-align: left !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: flex-start !important;
+    }
+
     #shopify-section-{{ section.id }} .network-subtitle {
       display: inline-flex !important;
       align-items: center !important;
-      justify-content: center !important;
       gap: 8px !important;
-      padding: 8px 24px !important;
+      padding: 8px 22px !important;
       border-radius: 50px !important;
       background: linear-gradient(135deg, #FFF3EB 0%, #FFE6D5 100%) !important;
       border: 1.5px solid rgba(236, 92, 10, 0.35) !important;
       color: #EC5C0A !important;
-      font-size: 0.85rem !important;
+      font-size: 0.82rem !important;
       font-weight: 800 !important;
       letter-spacing: 1.4px !important;
-      margin: 0 auto 24px auto !important;
+      margin: 0 0 20px 0 !important;
       box-shadow: 0 6px 18px rgba(236, 92, 10, 0.12) !important;
       text-transform: uppercase !important;
     }
 
-    /* IMPACTFUL LIGHT THEME TITLE */
     #shopify-section-{{ section.id }} .network-title {
-      font-size: 3.2rem !important;
+      font-size: 2.85rem !important;
       font-weight: 900 !important;
-      margin-bottom: 50px !important;
+      margin-bottom: 16px !important;
       line-height: 1.2 !important;
       color: #0F172A !important;
-      text-align: center !important;
+      text-align: left !important;
     }
 
     #shopify-section-{{ section.id }} .net-text { 
@@ -84,79 +99,119 @@
     
     #shopify-section-{{ section.id }} .net-number { 
       display: inline-block !important;
-      font-size: 4rem !important;
+      font-size: 3.6rem !important;
       font-weight: 900 !important;
       line-height: 1 !important;
-      margin: 0 8px !important;
+      margin: 0 6px !important;
       background: linear-gradient(135deg, #EC5C0A 0%, #FF9A00 100%) !important;
       -webkit-background-clip: text !important;
       -webkit-text-fill-color: transparent !important;
       filter: drop-shadow(0 6px 16px rgba(236, 92, 10, 0.28)) !important;
     }
 
-    /* 3D LIGHT STAT CARDS GRID */
+    #shopify-section-{{ section.id }} .vs-stats-teaser {
+      font-size: 15px !important;
+      color: #475569 !important;
+      line-height: 1.6 !important;
+      margin: 0 0 24px 0 !important;
+      font-weight: 500 !important;
+      max-width: 95% !important;
+    }
+
+    #shopify-section-{{ section.id }} .vs-stats-cta-btn {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 10px !important;
+      padding: 14px 30px !important;
+      border-radius: 50px !important;
+      background: linear-gradient(135deg, #EC5C0A 0%, #FF9200 100%) !important;
+      color: #FFFFFF !important;
+      font-weight: 800 !important;
+      font-size: 15px !important;
+      text-decoration: none !important;
+      box-shadow: 0 10px 28px rgba(236, 92, 10, 0.32) !important;
+      transition: all 0.35s ease !important;
+    }
+
+    #shopify-section-{{ section.id }} .vs-stats-cta-btn:hover {
+      transform: translateY(-3px) scale(1.03) !important;
+      box-shadow: 0 16px 36px rgba(236, 92, 10, 0.42) !important;
+    }
+
+    /* RIGHT COLUMN: 3 STAT CARDS (STACKED COLUMN GRID) */
+    #shopify-section-{{ section.id }} .vs-stats-right-col {
+      flex: 0 0 48% !important;
+      max-width: 530px !important;
+      width: 48% !important;
+    }
+
     #shopify-section-{{ section.id }} .stats-grid {
-      display: grid !important;
-      grid-template-columns: repeat(3, 1fr) !important;
-      gap: 32px !important;
-      margin-bottom: 20px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 18px !important;
+      margin-bottom: 0 !important;
     }
     
     #shopify-section-{{ section.id }} .stat-item {
       background: #FFFFFF !important; 
-      border: 1.5px solid rgba(236, 92, 10, 0.22) !important;
-      border-top: 5px solid #EC5C0A !important;
-      padding: 36px 24px !important;
-      border-radius: 24px !important;
+      border: 1.5px solid rgba(236, 92, 10, 0.2) !important;
+      border-left: 6px solid #EC5C0A !important;
+      border-top: none !important;
+      padding: 22px 28px !important;
+      border-radius: 20px !important;
       display: flex !important;
-      flex-direction: column !important;
+      flex-direction: row !important;
       align-items: center !important;
-      justify-content: center !important;
-      text-align: center !important;
-      box-shadow: 0 16px 40px rgba(236, 92, 10, 0.08), 0 4px 15px rgba(0, 0, 0, 0.02) !important;
+      justify-content: flex-start !important;
+      gap: 22px !important;
+      text-align: left !important;
+      box-shadow: 0 14px 35px rgba(236, 92, 10, 0.07), 0 4px 12px rgba(0, 0, 0, 0.02) !important;
       transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
-      position: relative !important;
-      overflow: hidden !important;
     }
     
     #shopify-section-{{ section.id }} .stat-item:hover {
-      transform: translateY(-8px) scale(1.02) !important;
+      transform: translateX(8px) !important;
       border-color: rgba(236, 92, 10, 0.5) !important;
-      box-shadow: 0 25px 50px rgba(236, 92, 10, 0.18) !important;
+      box-shadow: 0 20px 45px rgba(236, 92, 10, 0.16) !important;
     }
 
     #shopify-section-{{ section.id }} .stat-icon { 
-      width: 68px !important;
-      height: 68px !important;
-      border-radius: 20px !important;
+      width: 60px !important;
+      min-width: 60px !important;
+      height: 60px !important;
+      border-radius: 18px !important;
       background: linear-gradient(135deg, #FFF3EB 0%, #FFE0B2 100%) !important;
       border: 1.5px solid rgba(236, 92, 10, 0.25) !important;
       display: flex !important;
       align-items: center !important;
       justify-content: center !important;
-      font-size: 1.9rem !important; 
+      font-size: 1.75rem !important; 
       color: #EC5C0A !important; 
-      margin-bottom: 18px !important; 
-      box-shadow: 0 8px 20px rgba(236, 92, 10, 0.15) !important;
+      margin-bottom: 0 !important; 
+      box-shadow: 0 6px 18px rgba(236, 92, 10, 0.15) !important;
+    }
+
+    #shopify-section-{{ section.id }} .stat-info {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: flex-start !important;
     }
     
     #shopify-section-{{ section.id }} .stat-num { 
-      font-size: 3.2rem !important; 
+      font-size: 2.5rem !important; 
       font-weight: 900 !important; 
       display: inline-block !important; 
       color: #007B3E !important; 
       line-height: 1 !important; 
-      font-variant-numeric: tabular-nums !important; 
-      font-feature-settings: "tnum" !important;
-      margin-bottom: 8px !important;
+      margin-bottom: 4px !important;
     }
     
     #shopify-section-{{ section.id }} .stat-label { 
-      font-size: 0.88rem !important; 
+      font-size: 0.85rem !important; 
       color: #475569 !important; 
       font-weight: 800 !important; 
       text-transform: uppercase !important; 
-      letter-spacing: 1px !important;
+      letter-spacing: 0.8px !important;
     }
 
     #shopify-section-{{ section.id }} .network-marquee-strip {
@@ -215,6 +270,11 @@
 
   /* --- MOBILE FIXES (100% ORIGINAL CLEAN LIGHT MOBILE THEME) --- */
   @media (max-width: 768px) {
+    #shopify-section-{{ section.id }} .vs-stats-teaser,
+    #shopify-section-{{ section.id }} .vs-stats-cta-btn {
+      display: none !important;
+    }
+
     #shopify-section-{{ section.id }} .network-section-clean { 
       background: var(--bg-white, #ffffff) !important;
       color: #0f172a !important;
@@ -339,24 +399,40 @@
 
 <div class="network-section-clean" id="network-{{ section.id }}">
   <div class="network-content-wrapper">
-    <h5 class="network-subtitle">{{ section.settings.subtitle }}</h5>
-    
-    <h2 class="network-title">
-      <span class="net-text">{{ section.settings.title_part_1 }}</span>
-      <span class="net-number"><span class="counter" data-target="{{ section.settings.main_counter_target }}">0</span></span>
-      <span class="net-text">{{ section.settings.title_part_2 }}</span>
-    </h2>
-    
-    <div class="stats-grid">
-      {%- for block in section.blocks -%}
-        {%- if block.type == 'stat_item' -%}
-          <div class="stat-item" {{ block.shopify_attributes }}>
-            <div class="stat-icon"><i class="{{ block.settings.icon_class }}"></i></div>
-            <div class="stat-num counter" data-target="{{ block.settings.target_number }}">0</div>
-            <div class="stat-label">{{ block.settings.label }}</div>
-          </div>
-        {%- endif -%}
-      {%- endfor -%}
+    <div class="vs-stats-desktop-flex">
+      
+      <!-- LEFT COLUMN: BADGE + TITLE COUNTER + TEASER + CTA (DESKTOP) -->
+      <div class="vs-stats-left-col">
+        <h5 class="network-subtitle">{{ section.settings.subtitle }}</h5>
+        
+        <h2 class="network-title">
+          <span class="net-text">{{ section.settings.title_part_1 }}</span>
+          <span class="net-number"><span class="counter" data-target="{{ section.settings.main_counter_target }}">0</span></span>
+          <span class="net-text">{{ section.settings.title_part_2 }}</span>
+        </h2>
+
+        <p class="vs-stats-teaser">Join India's fastest growing electricity optimization & load stabilization network with guaranteed high returns.</p>
+        
+        <a href="/pages/get-franchise" class="vs-stats-cta-btn">Join Franchise Network →</a>
+      </div>
+
+      <!-- RIGHT COLUMN: 3 STAT CARDS (DESKTOP STACKED COLUMN) -->
+      <div class="vs-stats-right-col">
+        <div class="stats-grid">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'stat_item' -%}
+              <div class="stat-item" {{ block.shopify_attributes }}>
+                <div class="stat-icon"><i class="{{ block.settings.icon_class }}"></i></div>
+                <div class="stat-info">
+                  <div class="stat-num counter" data-target="{{ block.settings.target_number }}">0</div>
+                  <div class="stat-label">{{ block.settings.label }}</div>
+                </div>
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      </div>
+
     </div>
   </div>
 
