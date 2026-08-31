@@ -432,13 +432,14 @@
 
   @media(min-width: 768px) {
     .vs-problem-container {
-      background: linear-gradient(160deg, #0A0D09 0%, #0F1A0E 50%, #0A0D09 100%) !important;
+      background: linear-gradient(160deg, #FFFFFF 0%, #FFFDF8 50%, #FFF8EF 100%) !important;
       border-radius: 28px !important;
-      padding: 50px 40px !important;
-      margin: 30px auto !important;
+      padding: 56px 40px !important;
+      margin: 40px auto !important;
       max-width: 1200px !important;
       width: 100% !important;
-      box-shadow: 0 25px 70px rgba(0,0,0,0.4), 0 0 0 1.5px rgba(247,148,29,0.35) !important;
+      box-shadow: 0 20px 50px rgba(236, 92, 10, 0.08), 0 4px 16px rgba(0, 0, 0, 0.03) !important;
+      border: 1.5px solid rgba(236, 92, 10, 0.28) !important;
       box-sizing: border-box !important;
       position: relative !important;
       overflow: hidden !important;
@@ -449,32 +450,41 @@
       flex-direction: column !important;
       align-items: center !important;
       justify-content: center !important;
-      margin: 0 auto !important;
+      margin: 0 auto 40px auto !important;
     }
     .vs-hero h1 {
-      color: #FFFFFF !important;
-      font-size: 64px !important;
+      color: #0F172A !important;
+      font-size: 56px !important;
       text-align: center !important;
+      font-weight: 900 !important;
+      letter-spacing: -1.2px !important;
     }
     .vs-hero h1 .accent {
-      background: linear-gradient(135deg, #FDB44B 0%, #F7941D 50%, #FFD700 100%) !important;
+      background: linear-gradient(135deg, #EC5C0A 0%, #FF9A00 100%) !important;
       -webkit-background-clip: text !important;
       -webkit-text-fill-color: transparent !important;
+      filter: drop-shadow(0 4px 12px rgba(236, 92, 10, 0.2)) !important;
     }
     .vs-hero h1 .accent::after { display: none !important; }
     .vs-hero-divider {
       margin-left: auto !important;
       margin-right: auto !important;
+      width: 140px !important;
+      height: 5px !important;
     }
     .vs-hero-label {
-      background: rgba(247,148,29,0.15) !important;
-      border: 1.5px solid rgba(247,148,29,0.4) !important;
+      background: linear-gradient(135deg, #FFF3EB 0%, #FFE8D6 100%) !important;
+      border: 1.5px solid rgba(236, 92, 10, 0.4) !important;
+      padding: 6px 20px !important;
+      border-radius: 50px !important;
       margin-left: auto !important;
       margin-right: auto !important;
+      box-shadow: 0 4px 15px rgba(236, 92, 10, 0.12) !important;
     }
-    .vs-hero-label span { color: #FDB44B !important; }
+    .vs-hero-label span { color: #EC5C0A !important; font-weight: 800 !important; font-size: 13px !important; letter-spacing: 1.2px !important; }
 
     .vs-stats-grid {
+      display: grid !important;
       grid-template-columns: repeat(3, 1fr) !important;
       padding: 0 20px !important;
       gap: 28px !important;
@@ -482,119 +492,64 @@
       width: 100% !important;
       margin-left: auto !important;
       margin-right: auto !important;
-      justify-content: center !important;
-      justify-items: center !important;
+      align-items: stretch !important;
     }
 
     .vs-stats-grid .vs-stat-card {
-      position: relative !important;
-      isolation: isolate !important;
-      overflow: hidden !important;
-      border: none !important;
+      background: linear-gradient(145deg, #FFFFFF 0%, #FFFDF8 100%) !important;
+      border: 1.5px solid rgba(236, 92, 10, 0.25) !important;
+      border-top: 5px solid #EC5C0A !important;
       border-radius: 24px !important;
-      padding: 36px 26px !important;
+      padding: 32px 24px !important;
       text-align: center !important;
       display: flex !important;
       flex-direction: column !important;
       align-items: center !important;
-      justify-content: center !important;
-      transition: transform 0.35s ease, box-shadow 0.35s ease !important;
+      justify-content: space-between !important;
+      height: 100% !important;
+      min-height: 260px !important;
+      box-shadow: 0 14px 35px rgba(236, 92, 10, 0.08), 0 4px 14px rgba(0, 0, 0, 0.03) !important;
+      transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease !important;
     }
     .vs-stats-grid .vs-stat-card:hover {
-      transform: translateY(-8px) scale(1.02) !important;
+      transform: translateY(-6px) !important;
+      border-color: rgba(236, 92, 10, 0.5) !important;
+      box-shadow: 0 20px 48px rgba(236, 92, 10, 0.18) !important;
     }
 
-    /* 360 ROTATING NEON BORDER DESKTOP */
-    .vs-stats-grid .vs-stat-card.style-orange::before {
-      content: "" !important;
-      position: absolute !important;
-      width: 200% !important;
-      height: 200% !important;
-      top: 50% !important;
-      left: 50% !important;
-      transform: translate(-50%, -50%) rotate(0deg);
-      background: conic-gradient(
-        #FF8A00 0deg, #FFC107 80deg, #FF8A00 160deg,
-        #FF4500 220deg, #FFC107 300deg, #FF8A00 360deg
-      ) !important;
-      animation: vs360Border 3.5s linear infinite !important;
-      border-radius: 36px !important;
-      z-index: -2 !important;
-      pointer-events: none !important;
-    }
-    .vs-stats-grid .vs-stat-card.style-green::before {
-      content: "" !important;
-      position: absolute !important;
-      width: 200% !important;
-      height: 200% !important;
-      top: 50% !important;
-      left: 50% !important;
-      transform: translate(-50%, -50%) rotate(0deg);
-      background: conic-gradient(
-        #16B84E 0deg, #22C55E 80deg, #3EAD47 160deg,
-        #16B84E 220deg, #10B981 300deg, #16B84E 360deg
-      ) !important;
-      animation: vs360Border 4s linear infinite !important;
-      border-radius: 36px !important;
-      z-index: -2 !important;
-      pointer-events: none !important;
-    }
-
-    .vs-stats-grid .vs-stat-card::after {
-      content: "" !important;
-      position: absolute !important;
-      top: 2.5px !important;
-      right: 2.5px !important;
-      bottom: 2.5px !important;
-      left: 2.5px !important;
-      border-radius: 22px !important;
-      z-index: -1 !important;
-      pointer-events: none !important;
-    }
-    .vs-stats-grid .vs-stat-card.style-green::after {
-      background: linear-gradient(160deg, #071209 0%, #050E07 60%, #030A04 100%) !important;
-    }
-    .vs-stats-grid .vs-stat-card.style-orange::after {
-      background: linear-gradient(160deg, #1A0E00 0%, #140A00 60%, #0F0800 100%) !important;
-    }
-
-    .vs-stat-card.style-orange .vs-stat-icon-wrap {
-      background: rgba(247,148,29,0.18) !important;
-      color: #FDB44B !important;
-      box-shadow: 0 0 20px rgba(247,148,29,0.45) !important;
-    }
+    .vs-stat-card.style-orange .vs-stat-icon-wrap,
     .vs-stat-card.style-green .vs-stat-icon-wrap {
-      background: rgba(62,173,71,0.18) !important;
-      color: #6DD47A !important;
-      box-shadow: 0 0 20px rgba(62,173,71,0.45) !important;
+      width: 54px !important;
+      height: 54px !important;
+      border-radius: 16px !important;
+      background: linear-gradient(135deg, #FFF3E0, #FFE0B2) !important;
+      color: #EC5C0A !important;
+      box-shadow: 0 6px 18px rgba(236, 92, 10, 0.2) !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      margin-bottom: 14px !important;
     }
 
-    .vs-stat-card.style-orange .vs-stat-value {
-      background: linear-gradient(135deg, #FDB44B 0%, #F7941D 50%, #FFD700 100%) !important;
-      -webkit-background-clip: text !important;
-      -webkit-text-fill-color: transparent !important;
-      filter: drop-shadow(0 0 10px rgba(247,148,29,0.5)) !important;
-      font-size: 46px !important;
-    }
+    .vs-stat-card.style-orange .vs-stat-value,
     .vs-stat-card.style-green .vs-stat-value {
-      background: linear-gradient(135deg, #6DD47A 0%, #3EAD47 50%, #22C55E 100%) !important;
+      background: linear-gradient(135deg, #EC5C0A 0%, #FF9A00 100%) !important;
       -webkit-background-clip: text !important;
       -webkit-text-fill-color: transparent !important;
-      filter: drop-shadow(0 0 10px rgba(62,173,71,0.5)) !important;
-      font-size: 46px !important;
+      filter: drop-shadow(0 4px 12px rgba(236, 92, 10, 0.2)) !important;
+      font-size: 38px !important;
+      font-weight: 900 !important;
+      line-height: 1.1 !important;
+      margin-bottom: 8px !important;
     }
 
-    .vs-stat-card.style-orange .vs-stat-divider {
-      background: linear-gradient(90deg, #F7941D, #FFD700) !important;
-      box-shadow: 0 0 8px rgba(247,148,29,0.5) !important;
+    .vs-stat-card.style-orange .vs-stat-desc,
+    .vs-stat-card.style-green .vs-stat-desc {
+      color: #334155 !important;
+      font-size: 14.5px !important;
+      font-weight: 600 !important;
+      line-height: 1.45 !important;
     }
-    .vs-stat-card.style-green .vs-stat-divider {
-      background: linear-gradient(90deg, #3EAD47, #6DD47A) !important;
-      box-shadow: 0 0 8px rgba(62,173,71,0.5) !important;
-    }
-
-    .vs-stat-card.style-orange .vs-stat-desc { color: rgba(255,230,180,0.92) !important; font-size: 16px !important; }
-    .vs-stat-card.style-green .vs-stat-desc { color: rgba(200,240,205,0.92) !important; font-size: 16px !important; }
   }
 
   .vs-card-glow { display: none !important; }
