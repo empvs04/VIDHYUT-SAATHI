@@ -336,31 +336,22 @@
     justify-content: center !important;
   }
   .vs-grid-title-{{ section.id }} {
-    margin-top: 64px !important;
-    margin-bottom: 40px !important;
+    margin-top: 54px !important;
+    margin-bottom: 32px !important;
     text-align: center !important;
-    position: relative !important;
   }
   .vs-grid-title-{{ section.id }} h2 {
-    font-size: 46px !important;
-    font-weight: 900 !important;
-    letter-spacing: -0.6px !important;
+    font-size: 40px !important;
+    font-weight: 800 !important;
+    color: #0F172A !important;
+    letter-spacing: -0.5px !important;
     word-spacing: normal !important;
     text-transform: uppercase !important;
-    line-height: 1.15 !important;
+    line-height: 1.2 !important;
     margin: 0 !important;
-    background: linear-gradient(135deg, #ec5c0a 0%, #ff9200 55%, #ffbc00 100%) !important;
-    -webkit-background-clip: text !important;
-    -webkit-text-fill-color: transparent !important;
-    filter: drop-shadow(0 6px 18px rgba(236, 92, 10, 0.25)) !important;
-  }
-  .vs-grid-title-glow-{{ section.id }} {
-    width: 140px !important;
-    height: 4px !important;
-    border-radius: 999px !important;
-    margin: 14px auto 0 auto !important;
-    background: linear-gradient(90deg, #ec5c0a, #ff9200, #1eb759) !important;
-    box-shadow: 0 0 14px rgba(236, 92, 10, 0.35) !important;
+    background: none !important;
+    -webkit-text-fill-color: initial !important;
+    filter: none !important;
   }
 
   /* APPLICATIONS OVERVIEW 2-COLUMN SPLIT (DESKTOP) */
@@ -772,7 +763,6 @@
     {%- if section.settings.grid_heading != blank -%}
       <div class="vs-grid-title-{{ section.id }}">
         <h2>{{ section.settings.grid_heading }}</h2>
-        <div class="vs-grid-title-glow-{{ section.id }}"></div>
       </div>
     {%- endif -%}
 
