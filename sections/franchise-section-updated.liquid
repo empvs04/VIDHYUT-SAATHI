@@ -753,7 +753,7 @@
       <div class="vs-right-col-{{ section.id }}">
         {%- if section.settings.desktop_right_image != blank -%}
           <div class="vs-desktop-image-wrapper-{{ section.id }}">
-            {{ section.settings.desktop_right_image | image_url: width: 1200 | image_tag: loading: 'lazy', alt: section.settings.heading_top, class: 'vs-desktop-right-img-' | append: section.id }}
+            <img src="{{ section.settings.desktop_right_image | image_url: width: 1200 }}" class="vs-desktop-right-img-{{ section.id }}" alt="{{ section.settings.heading_top | escape }}" loading="lazy">
           </div>
         {%- else -%}
           <div class="vs-desktop-image-placeholder-{{ section.id }}">
