@@ -1384,14 +1384,14 @@
           {% if forloop.index == 1 %}
             {% assign bg_img_name = "crisis_card_1_custom.jpg" %}
           {% elsif forloop.index == 2 %}
-            {% assign bg_img_name = "crisis_money_waste_bg.jpg" %}
+            {% assign bg_img_name = "crisis_card_2_custom.jpg" %}
           {% elsif forloop.index == 3 %}
             {% assign bg_img_name = "crisis_voltage_spikes_bg.jpg" %}
           {% endif %}
           
-          <div class="vs-stat-card style-{{ block.settings.card_style }} card-img-bg-{{ forloop.index }} {% if forloop.index == 1 %}vs-card-custom-graphic{% endif %}" {{ block.shopify_attributes }}>
+          <div class="vs-stat-card style-{{ block.settings.card_style }} card-img-bg-{{ forloop.index }} {% if forloop.index == 1 or forloop.index == 2 %}vs-card-custom-graphic{% endif %}" {{ block.shopify_attributes }}>
             <img src="{{ bg_img_name | asset_url }}" alt="Crisis Metric 0{{ forloop.index }}" class="vs-card-bg-img" loading="eager" width="600" height="400">
-            {% if forloop.index != 1 %}
+            {% if forloop.index != 1 and forloop.index != 2 %}
               <div class="vs-card-overlay"></div>
               <div class="vs-card-header-row">
                 <div class="vs-stat-icon-wrap">
