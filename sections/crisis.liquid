@@ -547,11 +547,11 @@
       line-height: 1.5 !important;
     }
 
-    /* RIGHT COLUMN (46% WIDTH): 3 STACKED STAT CARDS */
+    /* RIGHT COLUMN (48% WIDTH): 3 LUCRATIVE MODERN METRIC CARDS */
     .vs-crisis-right-col {
-      flex: 0 0 46% !important;
+      flex: 0 0 48% !important;
       max-width: 530px !important;
-      width: 46% !important;
+      width: 48% !important;
     }
 
     .vs-stats-grid {
@@ -564,65 +564,107 @@
     }
 
     .vs-stats-grid .vs-stat-card {
-      background: #FFFFFF !important;
-      border: 1.5px solid rgba(236, 92, 10, 0.2) !important;
-      border-left: 6px solid #EC5C0A !important;
-      border-top: none !important;
+      position: relative !important;
+      background: linear-gradient(135deg, #FFFFFF 0%, #FFFDF8 100%) !important;
+      border: 1.5px solid rgba(236, 92, 10, 0.22) !important;
       border-radius: 20px !important;
       padding: 22px 26px !important;
       display: flex !important;
-      flex-direction: row !important;
-      align-items: center !important;
-      gap: 22px !important;
+      flex-direction: column !important;
+      align-items: flex-start !important;
       text-align: left !important;
-      min-height: auto !important;
-      box-shadow: 0 14px 35px rgba(236, 92, 10, 0.07), 0 4px 12px rgba(0, 0, 0, 0.02) !important;
+      box-shadow: 0 14px 35px rgba(236, 92, 10, 0.08), 0 4px 12px rgba(0, 0, 0, 0.02) !important;
       transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+      overflow: hidden !important;
     }
 
     .vs-stats-grid .vs-stat-card:hover {
-      transform: translateX(8px) !important;
+      transform: translateY(-6px) scale(1.02) !important;
       border-color: rgba(236, 92, 10, 0.5) !important;
-      box-shadow: 0 20px 45px rgba(236, 92, 10, 0.16) !important;
+      box-shadow: 0 22px 48px rgba(236, 92, 10, 0.18) !important;
+    }
+
+    .vs-card-top-accent {
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100% !important;
+      height: 4px !important;
+      background: linear-gradient(90deg, #EC5C0A 0%, #FF9A00 100%) !important;
+    }
+
+    .vs-card-header-row {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      width: 100% !important;
+      margin-bottom: 12px !important;
     }
 
     .vs-stat-icon-wrap {
-      width: 56px !important;
-      min-width: 56px !important;
-      height: 56px !important;
-      border-radius: 18px !important;
+      width: 48px !important;
+      height: 48px !important;
+      border-radius: 14px !important;
       background: linear-gradient(135deg, #FFF3EB 0%, #FFE0B2 100%) !important;
-      border: 1.5px solid rgba(236, 92, 10, 0.25) !important;
+      border: 1.5px solid rgba(236, 92, 10, 0.28) !important;
       display: flex !important;
       align-items: center !important;
       justify-content: center !important;
       margin: 0 !important;
-      font-size: 1.3rem !important;
+      font-size: 1.25rem !important;
       color: #EC5C0A !important;
-      align-items: center !important;
-      justify-content: center !important;
-      margin-bottom: 14px !important;
+      box-shadow: 0 6px 16px rgba(236, 92, 10, 0.14) !important;
     }
 
-    .vs-stat-card.style-orange .vs-stat-value,
-    .vs-stat-card.style-green .vs-stat-value {
+    .vs-card-metric-pill {
+      font-size: 0.66rem !important;
+      font-weight: 850 !important;
+      color: #EC5C0A !important;
+      background: #FFF3EB !important;
+      border: 1px solid rgba(236, 92, 10, 0.25) !important;
+      padding: 4px 10px !important;
+      border-radius: 50px !important;
+      letter-spacing: 0.8px !important;
+      text-transform: uppercase !important;
+    }
+
+    .vs-stat-value {
+      font-size: 2.2rem !important;
+      font-weight: 900 !important;
+      line-height: 1.1 !important;
       background: linear-gradient(135deg, #EC5C0A 0%, #FF9A00 100%) !important;
       -webkit-background-clip: text !important;
       -webkit-text-fill-color: transparent !important;
-      filter: drop-shadow(0 4px 12px rgba(236, 92, 10, 0.2)) !important;
-      font-size: 38px !important;
-      font-weight: 900 !important;
-      line-height: 1.1 !important;
-      margin-bottom: 8px !important;
+      filter: drop-shadow(0 2px 8px rgba(236, 92, 10, 0.2)) !important;
+      margin-bottom: 6px !important;
     }
 
-    .vs-stat-card.style-orange .vs-stat-desc,
-    .vs-stat-card.style-green .vs-stat-desc {
+    .vs-stat-desc {
+      font-size: 0.92rem !important;
+      font-weight: 700 !important;
       color: #334155 !important;
-      font-size: 14.5px !important;
-      font-weight: 600 !important;
-      line-height: 1.45 !important;
+      line-height: 1.4 !important;
+      text-align: left !important;
+      margin-bottom: 12px !important;
     }
+
+    .vs-card-progress-track {
+      width: 100% !important;
+      height: 5px !important;
+      background: #F1F5F9 !important;
+      border-radius: 10px !important;
+      overflow: hidden !important;
+    }
+
+    .vs-card-progress-fill {
+      height: 100% !important;
+      border-radius: 10px !important;
+      background: linear-gradient(90deg, #EC5C0A, #FF9A00) !important;
+    }
+
+    .vs-card-progress-fill.fill-1 { width: 75% !important; }
+    .vs-card-progress-fill.fill-2 { width: 92% !important; }
+    .vs-card-progress-fill.fill-3 { width: 84% !important; }
   }
 
   .vs-card-glow { display: none !important; }
@@ -1258,21 +1300,26 @@
           </div>
         </div>
 
-        <!-- RIGHT COLUMN: 3 STACKED STAT CARDS -->
+        <!-- RIGHT COLUMN: 3 LUCRATIVE MODERN METRIC CARDS -->
         <div class="vs-crisis-right-col">
           <div class="vs-stats-grid">
             {% for block in section.blocks %}
               <div class="vs-stat-card style-{{ block.settings.card_style }}" {{ block.shopify_attributes }}>
-                <div class="vs-stat-icon-wrap">
-                  {% if block.settings.icon_svg != blank %}
-                    {{ block.settings.icon_svg }}
-                  {% else %}
-                    <svg viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="17" cy="17" r="8" fill="currentColor"/></svg>
-                  {% endif %}
+                <div class="vs-card-top-accent"></div>
+                <div class="vs-card-header-row">
+                  <div class="vs-stat-icon-wrap">
+                    {% if block.settings.icon_svg != blank %}
+                      {{ block.settings.icon_svg }}
+                    {% else %}
+                      <svg viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="17" cy="17" r="8" fill="currentColor"/></svg>
+                    {% endif %}
+                  </div>
+                  <span class="vs-card-metric-pill">CRISIS METRIC 0{{ forloop.index }}</span>
                 </div>
-                <div class="vs-stat-info">
-                  <div class="vs-stat-value">{{ block.settings.stat_value }}</div>
-                  <div class="vs-stat-desc">{{ block.settings.stat_desc }}</div>
+                <div class="vs-stat-value">{{ block.settings.stat_value }}</div>
+                <div class="vs-stat-desc">{{ block.settings.stat_desc }}</div>
+                <div class="vs-card-progress-track">
+                  <div class="vs-card-progress-fill fill-{{ forloop.index }}"></div>
                 </div>
               </div>
             {% endfor %}
