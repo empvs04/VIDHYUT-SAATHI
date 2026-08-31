@@ -255,6 +255,53 @@
     max-width: 1240px !important;
     margin: 0 auto !important;
   }
+  /* TOP CENTERED HEADING */
+  .vs-section-{{ section.id }} .heading { 
+    width: 100% !important;
+    max-width: 800px !important;
+    text-align: center !important; 
+    margin: 0 auto 44px auto !important;
+    position: relative !important;
+    top: 0 !important;
+    padding-top: 0 !important;
+  }
+  .vs-section-{{ section.id }} .heading h1 {
+    text-align: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .vs-section-{{ section.id }} .heading .top { 
+    font-size: 54px !important; 
+    letter-spacing: -1.2px !important; 
+    text-align: center !important;
+    display: block !important;
+    line-height: 0.95 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .vs-section-{{ section.id }} .heading .bottom { 
+    font-size: 46px !important; 
+    letter-spacing: -1px !important; 
+    text-align: center !important;
+    display: block !important;
+    margin-top: 4px !important;
+    line-height: 1.02 !important;
+  }
+  .vs-section-{{ section.id }} .heading-glow { 
+    width: 160px !important; 
+    height: 6px !important; 
+    margin: 18px auto !important;
+  }
+  .vs-section-{{ section.id }} .heading p { 
+    font-size: 18px !important; 
+    color: #334155 !important;
+    line-height: 1.65 !important;
+    text-align: center !important; 
+    margin: 16px auto 0 auto !important;
+    max-width: 720px !important;
+    font-weight: 500 !important;
+  }
+
   .vs-desktop-flex-wrap-{{ section.id }} {
     display: flex !important;
     flex-direction: row !important;
@@ -264,58 +311,12 @@
     margin-bottom: 50px !important;
   }
 
-  /* LEFT COLUMN: HEADING, SUBTITLE & TIMELINE (ALIGNED ON THE LEFT) */
+  /* LEFT COLUMN: TIMELINE */
   .vs-left-col-{{ section.id }} {
     flex: 0 0 52% !important;
     max-width: 600px !important;
     display: flex !important;
     flex-direction: column !important;
-  }
-
-  .vs-section-{{ section.id }} .heading { 
-    width: 100% !important;
-    max-width: 100% !important;
-    text-align: left !important; 
-    margin: 0 0 32px 0 !important;
-    position: relative !important;
-    top: 0 !important;
-    padding-top: 0 !important;
-  }
-  .vs-section-{{ section.id }} .heading h1 {
-    text-align: left !important;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-  .vs-section-{{ section.id }} .heading .top { 
-    font-size: 54px !important; 
-    letter-spacing: -1.2px !important; 
-    text-align: left !important;
-    display: block !important;
-    line-height: 0.95 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-  .vs-section-{{ section.id }} .heading .bottom { 
-    font-size: 46px !important; 
-    letter-spacing: -1px !important; 
-    text-align: left !important;
-    display: block !important;
-    margin-top: 4px !important;
-    line-height: 1.02 !important;
-  }
-  .vs-section-{{ section.id }} .heading-glow { 
-    width: 160px !important; 
-    height: 6px !important; 
-    margin: 18px 0 !important;
-  }
-  .vs-section-{{ section.id }} .heading p { 
-    font-size: 17.5px !important; 
-    color: #334155 !important;
-    line-height: 1.65 !important;
-    text-align: left !important; 
-    margin: 16px 0 0 0 !important;
-    max-width: 520px !important;
-    font-weight: 500 !important;
   }
 
   /* TIMELINE IN LEFT COLUMN */
@@ -540,23 +541,25 @@
 <section class="vs-section-{{ section.id }}">
   <div class="container">
     
+    <!-- TOP CENTERED HEADING BLOCK -->
+    <div class="heading">
+      <h1>
+        {%- if section.settings.heading_top != blank -%}
+          <span class="top">{{ section.settings.heading_top }}</span>
+        {%- endif -%}
+        {%- if section.settings.heading_bottom != blank -%}
+          <span class="bottom">{{ section.settings.heading_bottom }}</span>
+        {%- endif -%}
+      </h1>
+      <div class="heading-glow"></div>
+      {%- if section.settings.heading_sub != blank -%}
+        <p>{{ section.settings.heading_sub }}</p>
+      {%- endif -%}
+    </div>
+
+    <!-- 2-COLUMN DESKTOP FLEX CONTENT (LEFT: TIMELINE, RIGHT: IMAGE) -->
     <div class="vs-desktop-flex-wrap-{{ section.id }}">
       <div class="vs-left-col-{{ section.id }}">
-        <div class="heading">
-          <h1>
-            {%- if section.settings.heading_top != blank -%}
-              <span class="top">{{ section.settings.heading_top }}</span>
-            {%- endif -%}
-            {%- if section.settings.heading_bottom != blank -%}
-              <span class="bottom">{{ section.settings.heading_bottom }}</span>
-            {%- endif -%}
-          </h1>
-          <div class="heading-glow"></div>
-          {%- if section.settings.heading_sub != blank -%}
-            <p>{{ section.settings.heading_sub }}</p>
-          {%- endif -%}
-        </div>
-
         <div class="timeline">
           <div class="timeline-line"></div>
 
