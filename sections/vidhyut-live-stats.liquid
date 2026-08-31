@@ -46,6 +46,34 @@
       margin: 0 auto !important;
     }
 
+    /* CENTERED SUBHEADER BADGE WRAPPER (TOP OF SECTION) */
+    #shopify-section-{{ section.id }} .vs-subtitle-center-wrap {
+      width: 100% !important;
+      text-align: center !important;
+      margin-bottom: 32px !important;
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+    }
+
+    #shopify-section-{{ section.id }} .network-subtitle {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 8px !important;
+      padding: 9px 26px !important;
+      border-radius: 50px !important;
+      background: linear-gradient(135deg, #FFF3EB 0%, #FFE6D5 100%) !important;
+      border: 1.5px solid rgba(236, 92, 10, 0.4) !important;
+      color: #EC5C0A !important;
+      font-size: 0.86rem !important;
+      font-weight: 800 !important;
+      letter-spacing: 1.5px !important;
+      margin: 0 auto !important;
+      box-shadow: 0 6px 20px rgba(236, 92, 10, 0.14) !important;
+      text-transform: uppercase !important;
+    }
+
     #shopify-section-{{ section.id }} .vs-stats-desktop-flex {
       display: flex !important;
       flex-direction: row !important;
@@ -64,23 +92,6 @@
       display: flex !important;
       flex-direction: column !important;
       align-items: flex-start !important;
-    }
-
-    #shopify-section-{{ section.id }} .network-subtitle {
-      display: inline-flex !important;
-      align-items: center !important;
-      gap: 8px !important;
-      padding: 8px 22px !important;
-      border-radius: 50px !important;
-      background: linear-gradient(135deg, #FFF3EB 0%, #FFE6D5 100%) !important;
-      border: 1.5px solid rgba(236, 92, 10, 0.35) !important;
-      color: #EC5C0A !important;
-      font-size: 0.82rem !important;
-      font-weight: 800 !important;
-      letter-spacing: 1.4px !important;
-      margin: 0 0 20px 0 !important;
-      box-shadow: 0 6px 18px rgba(236, 92, 10, 0.12) !important;
-      text-transform: uppercase !important;
     }
 
     #shopify-section-{{ section.id }} .network-title {
@@ -399,12 +410,16 @@
 
 <div class="network-section-clean" id="network-{{ section.id }}">
   <div class="network-content-wrapper">
+    
+    <!-- CENTERED SUBHEADER BADGE AT TOP -->
+    <div class="vs-subtitle-center-wrap">
+      <h5 class="network-subtitle">{{ section.settings.subtitle }}</h5>
+    </div>
+
     <div class="vs-stats-desktop-flex">
       
-      <!-- LEFT COLUMN: BADGE + TITLE COUNTER + TEASER + CTA (DESKTOP) -->
+      <!-- LEFT COLUMN: TITLE COUNTER + TEASER + CTA (DESKTOP) -->
       <div class="vs-stats-left-col">
-        <h5 class="network-subtitle">{{ section.settings.subtitle }}</h5>
-        
         <h2 class="network-title">
           <span class="net-text">{{ section.settings.title_part_1 }}</span>
           <span class="net-number"><span class="counter" data-target="{{ section.settings.main_counter_target }}">0</span></span>
