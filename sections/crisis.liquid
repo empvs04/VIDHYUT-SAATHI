@@ -430,55 +430,34 @@
     box-shadow: 0 20px 45px rgba(247,148,29,0.18) !important;
   }
 
-  /* ── BRAND NEW STATE-OF-THE-ART WOW DESKTOP LAYOUT (MIN-WIDTH: 769PX) ── */
+  /* ── SYMMETRICAL WOW DESKTOP LAYOUT (MIN-WIDTH: 769PX) ── */
   @media (min-width: 769px) {
     .vs-problem-container {
-      background: linear-gradient(135deg, #FFFFFF 0%, #FFFDFB 60%, #FFF8EF 100%) !important;
+      background: linear-gradient(145deg, #FFFFFF 0%, #FFFDFB 60%, #FFF8EF 100%) !important;
       border-radius: 28px !important;
-      padding: 44px 48px !important;
+      padding: 48px 44px !important;
       margin: 40px auto !important;
       max-width: 1160px !important;
       width: 100% !important;
       border: 1.5px solid rgba(236, 92, 10, 0.28) !important;
-      box-shadow: 0 25px 60px rgba(236, 92, 10, 0.08), 0 4px 18px rgba(0, 0, 0, 0.02) !important;
+      box-shadow: 0 25px 60px rgba(236, 92, 10, 0.08) !important;
       box-sizing: border-box !important;
       position: relative !important;
       overflow: hidden !important;
-    }
-
-    .vs-problem-container::before {
-      content: '' !important;
-      position: absolute !important;
-      top: -80px !important;
-      right: -80px !important;
-      width: 320px !important;
-      height: 320px !important;
-      background: radial-gradient(circle, rgba(236, 92, 10, 0.08) 0%, rgba(255, 255, 255, 0) 70%) !important;
-      pointer-events: none !important;
-    }
-
-    .vs-crisis-desktop-flex {
-      display: flex !important;
-      flex-direction: row !important;
-      align-items: stretch !important;
-      justify-content: space-between !important;
-      gap: 48px !important;
-      width: 100% !important;
-      position: relative !important;
-      z-index: 2 !important;
-    }
-
-    /* LEFT COLUMN (48% WIDTH) */
-    .vs-crisis-left-col {
-      flex: 0 0 48% !important;
-      max-width: 530px !important;
-      width: 48% !important;
-      text-align: left !important;
       display: flex !important;
       flex-direction: column !important;
-      justify-content: space-between !important;
-      align-items: flex-start !important;
-      height: 100% !important;
+      align-items: center !important;
+      gap: 32px !important;
+    }
+
+    /* FULL WIDTH CENTERED HEADER WRAPPER */
+    .vs-crisis-header-wrap {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+      text-align: center !important;
+      width: 100% !important;
     }
 
     .vs-hero-label {
@@ -486,7 +465,7 @@
       border: 1.5px solid rgba(236, 92, 10, 0.4) !important;
       padding: 7px 22px !important;
       border-radius: 50px !important;
-      margin: 0 0 16px 0 !important;
+      margin: 0 auto 14px auto !important;
       box-shadow: 0 4px 15px rgba(236, 92, 10, 0.12) !important;
       display: inline-flex !important;
       align-items: center !important;
@@ -496,12 +475,12 @@
 
     .vs-crisis-title {
       color: #0F172A !important;
-      font-size: 2.75rem !important;
-      text-align: left !important;
+      font-size: 3rem !important;
+      text-align: center !important;
       font-weight: 900 !important;
       letter-spacing: -0.8px !important;
       line-height: 1.15 !important;
-      margin: 0 0 14px 0 !important;
+      margin: 0 auto 12px auto !important;
     }
 
     .vs-crisis-title .accent {
@@ -512,34 +491,170 @@
     }
 
     .vs-hero-divider {
-      margin: 0 0 20px 0 !important;
-      width: 110px !important;
-      height: 4.5px !important;
+      margin: 0 auto !important;
+      width: 140px !important;
+      height: 5px !important;
       background: linear-gradient(90deg, #EC5C0A, #FF9A00) !important;
       border-radius: 10px !important;
     }
 
+    /* 3 EQUAL STAT CARDS IN A SINGLE HORIZONTAL ROW */
+    .vs-stats-grid {
+      display: grid !important;
+      grid-template-columns: repeat(3, 1fr) !important;
+      gap: 24px !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      width: 100% !important;
+      align-items: stretch !important;
+    }
+
+    .vs-stats-grid .vs-stat-card {
+      position: relative !important;
+      border-radius: 20px !important;
+      padding: 24px 22px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: flex-start !important;
+      text-align: left !important;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05) !important;
+      transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+      overflow: hidden !important;
+      height: 100% !important;
+      justify-content: space-between !important;
+    }
+
+    .vs-stats-grid .vs-stat-card:nth-child(1) {
+      background: linear-gradient(135deg, #FFFFFF 0%, #FFF9F5 100%) !important;
+      border: 1.5px solid rgba(236, 92, 10, 0.25) !important;
+      border-top: 5px solid #EC5C0A !important;
+    }
+
+    .vs-stats-grid .vs-stat-card:nth-child(2) {
+      background: linear-gradient(135deg, #FFFFFF 0%, #F0FAF4 100%) !important;
+      border: 1.5px solid rgba(62, 173, 71, 0.25) !important;
+      border-top: 5px solid #3EAD47 !important;
+    }
+
+    .vs-stats-grid .vs-stat-card:nth-child(3) {
+      background: linear-gradient(135deg, #FFFFFF 0%, #FFFDF5 100%) !important;
+      border: 1.5px solid rgba(247, 148, 29, 0.25) !important;
+      border-top: 5px solid #F7941D !important;
+    }
+
+    .vs-stats-grid .vs-stat-card:hover {
+      transform: translateY(-8px) scale(1.02) !important;
+      box-shadow: 0 22px 50px rgba(236, 92, 10, 0.18) !important;
+    }
+
+    .vs-card-top-accent { display: none !important; }
+
+    .vs-card-header-row {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      width: 100% !important;
+      margin-bottom: 12px !important;
+    }
+
+    .vs-stat-icon-wrap {
+      width: 44px !important;
+      height: 44px !important;
+      border-radius: 12px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      margin: 0 !important;
+      font-size: 1.15rem !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+    }
+
+    .vs-stat-card:nth-child(1) .vs-stat-icon-wrap { background: #FFF3EB !important; border: 1px solid rgba(236, 92, 10, 0.3) !important; color: #EC5C0A !important; }
+    .vs-stat-card:nth-child(2) .vs-stat-icon-wrap { background: #E8F5E9 !important; border: 1px solid rgba(62, 173, 71, 0.3) !important; color: #3EAD47 !important; }
+    .vs-stat-card:nth-child(3) .vs-stat-icon-wrap { background: #FFF8E1 !important; border: 1px solid rgba(247, 148, 29, 0.3) !important; color: #F7941D !important; }
+
+    .vs-stat-icon-wrap svg { width: 22px !important; height: 22px !important; }
+
+    .vs-card-metric-pill {
+      font-size: 0.64rem !important;
+      font-weight: 850 !important;
+      padding: 3px 10px !important;
+      border-radius: 50px !important;
+      letter-spacing: 0.6px !important;
+      text-transform: uppercase !important;
+    }
+
+    .vs-stat-card:nth-child(1) .vs-card-metric-pill { color: #EC5C0A !important; background: #FFF3EB !important; border: 1px solid rgba(236, 92, 10, 0.3) !important; }
+    .vs-stat-card:nth-child(2) .vs-card-metric-pill { color: #3EAD47 !important; background: #E8F5E9 !important; border: 1px solid rgba(62, 173, 71, 0.3) !important; }
+    .vs-stat-card:nth-child(3) .vs-card-metric-pill { color: #E07810 !important; background: #FFF8E1 !important; border: 1px solid rgba(247, 148, 29, 0.3) !important; }
+
+    .vs-stat-value {
+      font-size: 2.3rem !important;
+      font-weight: 900 !important;
+      line-height: 1.1 !important;
+      margin-bottom: 6px !important;
+    }
+
+    .vs-stat-card:nth-child(1) .vs-stat-value { background: linear-gradient(135deg, #EC5C0A 0%, #FF9A00 100%) !important; -webkit-background-clip: text !important; -webkit-text-fill-color: transparent !important; }
+    .vs-stat-card:nth-child(2) .vs-stat-value { background: linear-gradient(135deg, #3EAD47 0%, #007B3E 100%) !important; -webkit-background-clip: text !important; -webkit-text-fill-color: transparent !important; }
+    .vs-stat-card:nth-child(3) .vs-stat-value { background: linear-gradient(135deg, #E07810 0%, #FF9A00 100%) !important; -webkit-background-clip: text !important; -webkit-text-fill-color: transparent !important; }
+
+    .vs-stat-desc {
+      font-size: 0.92rem !important;
+      font-weight: 700 !important;
+      color: #334155 !important;
+      line-height: 1.45 !important;
+      text-align: left !important;
+      margin-bottom: 14px !important;
+    }
+
+    .vs-card-progress-track {
+      width: 100% !important;
+      height: 4.5px !important;
+      background: #E2E8F0 !important;
+      border-radius: 10px !important;
+      overflow: hidden !important;
+    }
+
+    .vs-card-progress-fill { height: 100% !important; border-radius: 10px !important; }
+    .vs-stat-card:nth-child(1) .vs-card-progress-fill { background: linear-gradient(90deg, #EC5C0A, #FF9A00) !important; }
+    .vs-stat-card:nth-child(2) .vs-card-progress-fill { background: linear-gradient(90deg, #3EAD47, #6DD47A) !important; }
+    .vs-stat-card:nth-child(3) .vs-card-progress-fill { background: linear-gradient(90deg, #E07810, #FF9A00) !important; }
+
+    .vs-card-progress-fill.fill-1 { width: 75% !important; }
+    .vs-card-progress-fill.fill-2 { width: 92% !important; }
+    .vs-card-progress-fill.fill-3 { width: 84% !important; }
+
+    /* NEED BANNER FULL-WIDTH BOTTOM ROW */
     .vs-need-banner {
       width: 100% !important;
-      margin: 0 0 20px 0 !important;
+      margin: 0 !important;
       background: linear-gradient(135deg, #F0FAF4 0%, #FFFDF8 100%) !important;
       border: 1.5px solid rgba(62, 173, 71, 0.3) !important;
-      border-left: 5px solid #3EAD47 !important;
-      border-radius: 18px !important;
-      padding: 18px 22px !important;
+      border-left: 6px solid #3EAD47 !important;
+      border-radius: 20px !important;
+      padding: 22px 28px !important;
       display: flex !important;
       flex-direction: row !important;
       align-items: center !important;
-      gap: 16px !important;
-      box-shadow: 0 12px 28px rgba(62, 173, 71, 0.08) !important;
+      justify-content: space-between !important;
+      gap: 24px !important;
+      box-shadow: 0 14px 35px rgba(62, 173, 71, 0.09) !important;
       box-sizing: border-box !important;
     }
 
+    .vs-need-left-flex {
+      display: flex !important;
+      flex-direction: row !important;
+      align-items: center !important;
+      gap: 18px !important;
+    }
+
     .vs-need-icon {
-      width: 46px !important;
-      min-width: 46px !important;
-      height: 46px !important;
-      border-radius: 14px !important;
+      width: 48px !important;
+      min-width: 48px !important;
+      height: 48px !important;
+      border-radius: 16px !important;
       background: #E8F5E9 !important;
       border: 1.5px solid rgba(62, 173, 71, 0.3) !important;
       display: flex !important;
@@ -551,14 +666,14 @@
     .vs-need-content { text-align: left !important; }
 
     .vs-need-label {
-      font-size: 1.05rem !important;
+      font-size: 1.1rem !important;
       font-weight: 900 !important;
       color: #007B3E !important;
-      margin-bottom: 3px !important;
+      margin-bottom: 4px !important;
     }
 
     .vs-need-text {
-      font-size: 0.88rem !important;
+      font-size: 0.92rem !important;
       font-weight: 600 !important;
       color: #334155 !important;
       line-height: 1.45 !important;
@@ -568,201 +683,24 @@
       display: inline-flex !important;
       align-items: center !important;
       gap: 10px !important;
-      padding: 13px 30px !important;
+      padding: 13px 32px !important;
       border-radius: 50px !important;
       background: linear-gradient(135deg, #EC5C0A 0%, #FF9200 100%) !important;
       color: #FFFFFF !important;
       font-weight: 800 !important;
-      font-size: 0.92rem !important;
+      font-size: 0.94rem !important;
       text-decoration: none !important;
-      box-shadow: 0 10px 24px rgba(236, 92, 10, 0.32) !important;
+      box-shadow: 0 10px 25px rgba(236, 92, 10, 0.32) !important;
+      white-space: nowrap !important;
+      flex-shrink: 0 !important;
       transition: all 0.35s ease !important;
     }
 
     .vs-crisis-left-cta:hover {
       transform: translateY(-3px) scale(1.02) !important;
-      box-shadow: 0 16px 36px rgba(236, 92, 10, 0.42) !important;
+      box-shadow: 0 16px 36px rgba(236, 92, 10, 0.45) !important;
       color: #FFFFFF !important;
     }
-
-    /* RIGHT COLUMN (50% WIDTH): 3 DISTINCT DISTINCTLY STYLED STAT CARDS */
-    .vs-crisis-right-col {
-      flex: 0 0 50% !important;
-      max-width: 550px !important;
-      width: 50% !important;
-      display: flex !important;
-      flex-direction: column !important;
-      justify-content: space-between !important;
-    }
-
-    .vs-stats-grid {
-      display: flex !important;
-      flex-direction: column !important;
-      gap: 16px !important;
-      padding: 0 !important;
-      margin: 0 !important;
-      width: 100% !important;
-      height: 100% !important;
-      justify-content: space-between !important;
-    }
-
-    .vs-stats-grid .vs-stat-card {
-      position: relative !important;
-      border-radius: 18px !important;
-      padding: 18px 22px !important;
-      display: flex !important;
-      flex-direction: column !important;
-      align-items: flex-start !important;
-      text-align: left !important;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05) !important;
-      transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
-      overflow: hidden !important;
-    }
-
-    /* Card 1: Orange Amber Theme */
-    .vs-stats-grid .vs-stat-card:nth-child(1) {
-      background: linear-gradient(135deg, #FFFFFF 0%, #FFF9F5 100%) !important;
-      border: 1.5px solid rgba(236, 92, 10, 0.25) !important;
-      border-left: 6px solid #EC5C0A !important;
-    }
-
-    /* Card 2: Emerald Green Theme */
-    .vs-stats-grid .vs-stat-card:nth-child(2) {
-      background: linear-gradient(135deg, #FFFFFF 0%, #F0FAF4 100%) !important;
-      border: 1.5px solid rgba(62, 173, 71, 0.25) !important;
-      border-left: 6px solid #3EAD47 !important;
-    }
-
-    /* Card 3: Amber Gold Theme */
-    .vs-stats-grid .vs-stat-card:nth-child(3) {
-      background: linear-gradient(135deg, #FFFFFF 0%, #FFFDF5 100%) !important;
-      border: 1.5px solid rgba(247, 148, 29, 0.25) !important;
-      border-left: 6px solid #F7941D !important;
-    }
-
-    .vs-stats-grid .vs-stat-card:hover {
-      transform: translateX(8px) scale(1.01) !important;
-      box-shadow: 0 18px 40px rgba(236, 92, 10, 0.16) !important;
-    }
-
-    .vs-card-top-accent { display: none !important; }
-
-    .vs-card-header-row {
-      display: flex !important;
-      align-items: center !important;
-      justify-content: space-between !important;
-      width: 100% !important;
-      margin-bottom: 8px !important;
-    }
-
-    .vs-stat-icon-wrap {
-      width: 40px !important;
-      height: 40px !important;
-      border-radius: 12px !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-      margin: 0 !important;
-      font-size: 1.1rem !important;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
-    }
-
-    .vs-stat-card:nth-child(1) .vs-stat-icon-wrap {
-      background: #FFF3EB !important;
-      border: 1px solid rgba(236, 92, 10, 0.3) !important;
-      color: #EC5C0A !important;
-    }
-
-    .vs-stat-card:nth-child(2) .vs-stat-icon-wrap {
-      background: #E8F5E9 !important;
-      border: 1px solid rgba(62, 173, 71, 0.3) !important;
-      color: #3EAD47 !important;
-    }
-
-    .vs-stat-card:nth-child(3) .vs-stat-icon-wrap {
-      background: #FFF8E1 !important;
-      border: 1px solid rgba(247, 148, 29, 0.3) !important;
-      color: #F7941D !important;
-    }
-
-    .vs-stat-icon-wrap svg {
-      width: 20px !important;
-      height: 20px !important;
-    }
-
-    .vs-card-metric-pill {
-      font-size: 0.62rem !important;
-      font-weight: 850 !important;
-      padding: 3px 10px !important;
-      border-radius: 50px !important;
-      letter-spacing: 0.6px !important;
-      text-transform: uppercase !important;
-    }
-
-    .vs-stat-card:nth-child(1) .vs-card-metric-pill {
-      color: #EC5C0A !important; background: #FFF3EB !important; border: 1px solid rgba(236, 92, 10, 0.3) !important;
-    }
-    .vs-stat-card:nth-child(2) .vs-card-metric-pill {
-      color: #3EAD47 !important; background: #E8F5E9 !important; border: 1px solid rgba(62, 173, 71, 0.3) !important;
-    }
-    .vs-stat-card:nth-child(3) .vs-card-metric-pill {
-      color: #E07810 !important; background: #FFF8E1 !important; border: 1px solid rgba(247, 148, 29, 0.3) !important;
-    }
-
-    .vs-stat-value {
-      font-size: 2rem !important;
-      font-weight: 900 !important;
-      line-height: 1.1 !important;
-      margin-bottom: 4px !important;
-    }
-
-    .vs-stat-card:nth-child(1) .vs-stat-value {
-      background: linear-gradient(135deg, #EC5C0A 0%, #FF9A00 100%) !important;
-      -webkit-background-clip: text !important;
-      -webkit-text-fill-color: transparent !important;
-    }
-
-    .vs-stat-card:nth-child(2) .vs-stat-value {
-      background: linear-gradient(135deg, #3EAD47 0%, #007B3E 100%) !important;
-      -webkit-background-clip: text !important;
-      -webkit-text-fill-color: transparent !important;
-    }
-
-    .vs-stat-card:nth-child(3) .vs-stat-value {
-      background: linear-gradient(135deg, #E07810 0%, #FF9A00 100%) !important;
-      -webkit-background-clip: text !important;
-      -webkit-text-fill-color: transparent !important;
-    }
-
-    .vs-stat-desc {
-      font-size: 0.88rem !important;
-      font-weight: 700 !important;
-      color: #334155 !important;
-      line-height: 1.4 !important;
-      text-align: left !important;
-      margin-bottom: 10px !important;
-    }
-
-    .vs-card-progress-track {
-      width: 100% !important;
-      height: 4px !important;
-      background: #E2E8F0 !important;
-      border-radius: 10px !important;
-      overflow: hidden !important;
-    }
-
-    .vs-card-progress-fill {
-      height: 100% !important;
-      border-radius: 10px !important;
-    }
-
-    .vs-stat-card:nth-child(1) .vs-card-progress-fill { background: linear-gradient(90deg, #EC5C0A, #FF9A00) !important; }
-    .vs-stat-card:nth-child(2) .vs-card-progress-fill { background: linear-gradient(90deg, #3EAD47, #6DD47A) !important; }
-    .vs-stat-card:nth-child(3) .vs-card-progress-fill { background: linear-gradient(90deg, #E07810, #FF9A00) !important; }
-
-    .vs-card-progress-fill.fill-1 { width: 75% !important; }
-    .vs-card-progress-fill.fill-2 { width: 92% !important; }
-    .vs-card-progress-fill.fill-3 { width: 84% !important; }
   }
 
   .vs-card-glow { display: none !important; }
@@ -1364,69 +1302,65 @@
     <div class="vs-problem-container">
       <div class="vs-top-bar"></div>
 
-      <!-- DESKTOP 2-COLUMN SPLIT CONTAINER -->
-      <div class="vs-crisis-desktop-flex">
-        
-        <!-- LEFT COLUMN: BADGE + TITLE + NEED BANNER -->
-        <div class="vs-crisis-left-col">
-          <div class="vs-hero-label">
-            <div class="dot"></div>
-            <span>{{ section.settings.hero_label }}</span>
-          </div>
-
-          <h2 class="vs-crisis-title">
-            {{ section.settings.hero_heading }}
-            <span class="accent">{{ section.settings.hero_heading_highlight }}</span>
-            {{ section.settings.hero_heading_suffix }}
-          </h2>
-
-          <div class="vs-hero-divider"></div>
-
-          <div class="vs-need-banner">
-            <div class="vs-need-icon">
-              <svg width="26" height="26" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="15" cy="11" r="7.5" stroke="#EC5C0A" stroke-width="2.2" fill="none"/>
-                <path d="M12 11c0-1.66 1.34-3 3-3" stroke="#EC5C0A" stroke-width="2" stroke-linecap="round"/>
-                <line x1="15" y1="19" x2="15" y2="23" stroke="#EC5C0A" stroke-width="2.2" stroke-linecap="round"/>
-                <line x1="11" y1="26" x2="19" y2="26" stroke="#EC5C0A" stroke-width="2.2" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <div class="vs-need-content">
-              <div class="vs-need-label">{{ section.settings.banner_label }}</div>
-              <div class="vs-need-text">{{ section.settings.banner_text }}</div>
-            </div>
-          </div>
-
-          <a href="/pages/get-franchise" class="vs-crisis-left-cta">Join Franchise Solution →</a>
+      <!-- FULL-WIDTH HORIZONTAL HEADER ROW (DESKTOP & MOBILE) -->
+      <div class="vs-crisis-header-wrap">
+        <div class="vs-hero-label">
+          <div class="dot"></div>
+          <span>{{ section.settings.hero_label }}</span>
         </div>
 
-        <!-- RIGHT COLUMN: 3 LUCRATIVE MODERN METRIC CARDS -->
-        <div class="vs-crisis-right-col">
-          <div class="vs-stats-grid">
-            {% for block in section.blocks %}
-              <div class="vs-stat-card style-{{ block.settings.card_style }}" {{ block.shopify_attributes }}>
-                <div class="vs-card-top-accent"></div>
-                <div class="vs-card-header-row">
-                  <div class="vs-stat-icon-wrap">
-                    {% if block.settings.icon_svg != blank %}
-                      {{ block.settings.icon_svg }}
-                    {% else %}
-                      <svg viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="17" cy="17" r="8" fill="currentColor"/></svg>
-                    {% endif %}
-                  </div>
-                  <span class="vs-card-metric-pill">CRISIS METRIC 0{{ forloop.index }}</span>
-                </div>
-                <div class="vs-stat-value">{{ block.settings.stat_value }}</div>
-                <div class="vs-stat-desc">{{ block.settings.stat_desc }}</div>
-                <div class="vs-card-progress-track">
-                  <div class="vs-card-progress-fill fill-{{ forloop.index }}"></div>
-                </div>
-              </div>
-            {% endfor %}
-          </div>
-        </div>
+        <h2 class="vs-crisis-title">
+          {{ section.settings.hero_heading }}
+          <span class="accent">{{ section.settings.hero_heading_highlight }}</span>
+          {{ section.settings.hero_heading_suffix }}
+        </h2>
 
+        <div class="vs-hero-divider"></div>
       </div>
+
+      <!-- 3 METRIC CARDS HORIZONTAL GRID (DESKTOP: 3 EQUAL COLUMNS) -->
+      <div class="vs-stats-grid">
+        {% for block in section.blocks %}
+          <div class="vs-stat-card style-{{ block.settings.card_style }}" {{ block.shopify_attributes }}>
+            <div class="vs-card-top-accent"></div>
+            <div class="vs-card-header-row">
+              <div class="vs-stat-icon-wrap">
+                {% if block.settings.icon_svg != blank %}
+                  {{ block.settings.icon_svg }}
+                {% else %}
+                  <svg viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="17" cy="17" r="8" fill="currentColor"/></svg>
+                {% endif %}
+              </div>
+              <span class="vs-card-metric-pill">CRISIS METRIC 0{{ forloop.index }}</span>
+            </div>
+            <div class="vs-stat-value">{{ block.settings.stat_value }}</div>
+            <div class="vs-stat-desc">{{ block.settings.stat_desc }}</div>
+            <div class="vs-card-progress-track">
+              <div class="vs-card-progress-fill fill-{{ forloop.index }}"></div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <!-- NEED BANNER & CTA ACTION ROW (DESKTOP: FULL-WIDTH SPLIT BAR) -->
+      <div class="vs-need-banner">
+        <div class="vs-need-left-flex">
+          <div class="vs-need-icon">
+            <svg width="28" height="28" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="15" cy="11" r="7.5" stroke="#3EAD47" stroke-width="2.2" fill="none"/>
+              <path d="M12 11c0-1.66 1.34-3 3-3" stroke="#3EAD47" stroke-width="2" stroke-linecap="round"/>
+              <line x1="15" y1="19" x2="15" y2="23" stroke="#3EAD47" stroke-width="2.2" stroke-linecap="round"/>
+              <line x1="11" y1="26" x2="19" y2="26" stroke="#3EAD47" stroke-width="2.2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="vs-need-content">
+            <div class="vs-need-label">{{ section.settings.banner_label }}</div>
+            <div class="vs-need-text">{{ section.settings.banner_text }}</div>
+          </div>
+        </div>
+        <a href="/pages/get-franchise" class="vs-crisis-left-cta">Explore Franchise Solution →</a>
+      </div>
+
     </div>
 
     <!-- ACTIVE DOT PAGINATION (MOBILE ONLY) -->
