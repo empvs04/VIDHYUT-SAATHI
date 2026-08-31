@@ -245,26 +245,61 @@
       transform: translateY(-6px) scale(1.015) !important;
     }
 
+    #shopify-section-{{ section.id }} .vs-map-header-row {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      margin-bottom: 12px !important;
+      gap: 8px !important;
+    }
+
     #shopify-section-{{ section.id }} .vs-map-badge {
       display: inline-block !important;
-      padding: 6px 18px !important;
+      padding: 6px 14px !important;
       border-radius: 50px !important;
       background: linear-gradient(135deg, #FFF3EB 0%, #FFE0B2 100%) !important;
       color: #EC5C0A !important;
-      font-size: 0.78rem !important;
+      font-size: 0.76rem !important;
       font-weight: 800 !important;
-      letter-spacing: 0.8px !important;
-      margin-bottom: 14px !important;
+      letter-spacing: 0.6px !important;
+      margin-bottom: 0 !important;
       border: 1.5px solid rgba(236, 92, 10, 0.3) !important;
       box-shadow: 0 4px 12px rgba(236, 92, 10, 0.1) !important;
     }
 
-    #shopify-section-{{ section.id }} .vs-map-img {
+    #shopify-section-{{ section.id }} .vs-zoom-hint {
+      font-size: 0.72rem !important;
+      font-weight: 800 !important;
+      color: #EC5C0A !important;
+      background: #FFF3EB !important;
+      padding: 5px 12px !important;
+      border-radius: 50px !important;
+      border: 1px solid rgba(236, 92, 10, 0.25) !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 5px !important;
+    }
+
+    #shopify-section-{{ section.id }} .vs-map-zoom-wrapper {
+      position: relative !important;
+      overflow: hidden !important;
+      border-radius: 16px !important;
+      cursor: zoom-in !important;
+      border: 1.5px solid rgba(236, 92, 10, 0.18) !important;
+      background: #FFFFFF !important;
+    }
+
+    #shopify-section-{{ section.id }} .vs-map-zoom-wrapper img {
       width: 100% !important;
       height: auto !important;
-      border-radius: 16px !important;
       display: block !important;
       object-fit: contain !important;
+      transition: transform 0.25s ease-out !important;
+      transform-origin: center center;
+    }
+
+    #shopify-section-{{ section.id }} .vs-map-zoom-wrapper:hover img {
+      transform: scale(1.75);
     }
 
     #shopify-section-{{ section.id }} .network-marquee-strip {
@@ -273,6 +308,92 @@
       padding: 16px 0 !important;
       border-top: 3px solid #EC5C0A !important; 
     }
+  }
+
+  /* --- FULLSCREEN LIGHTBOX MODAL STYLING --- */
+  .vs-map-modal {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 999999 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transition: opacity 0.3s ease !important;
+  }
+
+  .vs-map-modal.active {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+
+  .vs-map-modal-overlay {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: rgba(15, 23, 42, 0.88) !important;
+    backdrop-filter: blur(10px) !important;
+  }
+
+  .vs-map-modal-content {
+    position: relative !important;
+    z-index: 2 !important;
+    max-width: 90vw !important;
+    max-height: 90vh !important;
+    background: #FFFFFF !important;
+    border-radius: 24px !important;
+    padding: 24px !important;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5) !important;
+    border: 2.5px solid #EC5C0A !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+
+  .vs-map-modal-header {
+    font-size: 1.1rem !important;
+    font-weight: 800 !important;
+    color: #0F172A !important;
+    margin-bottom: 16px !important;
+    letter-spacing: 0.5px !important;
+  }
+
+  .vs-map-modal-img {
+    max-width: 82vw !important;
+    max-height: 75vh !important;
+    object-fit: contain !important;
+    border-radius: 16px !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
+  }
+
+  .vs-map-modal-close {
+    position: absolute !important;
+    top: 14px !important;
+    right: 18px !important;
+    background: #FFF3EB !important;
+    color: #EC5C0A !important;
+    border: 1.5px solid rgba(236, 92, 10, 0.3) !important;
+    width: 36px !important;
+    height: 36px !important;
+    border-radius: 50% !important;
+    font-size: 1.4rem !important;
+    line-height: 1 !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: all 0.2s ease !important;
+  }
+
+  .vs-map-modal-close:hover {
+    background: #EC5C0A !important;
+    color: #FFFFFF !important;
   }
   
   #shopify-section-{{ section.id }} .marquee-track {
@@ -488,14 +609,29 @@
         <a href="/pages/get-franchise" class="vs-stats-cta-btn">Join Franchise Network →</a>
       </div>
 
-      <!-- RIGHT COLUMN: 3D INDIA LIVE STATES NETWORK MAP IMAGE -->
+      <!-- RIGHT COLUMN: 3D INDIA LIVE STATES NETWORK MAP IMAGE (INTERACTIVE ZOOMABLE) -->
       <div class="vs-stats-right-col">
         <div class="vs-map-showcase-card">
-          <div class="vs-map-badge">⚡ 15+ LIVE STATES NETWORK</div>
-          <img src="{{ 'india_live_states_map.jpg' | asset_url }}" alt="Vidhyut Saathi India Live Network Map" class="vs-map-img" loading="lazy">
+          <div class="vs-map-header-row">
+            <div class="vs-map-badge">⚡ 15+ LIVE STATES NETWORK</div>
+            <span class="vs-zoom-hint"><i class="fas fa-search-plus"></i> Hover / Click to Zoom</span>
+          </div>
+          <div class="vs-map-zoom-wrapper" id="vs-map-zoom-box-{{ section.id }}" title="Click to view full screen">
+            <img src="{{ 'india_live_states_map.jpg' | asset_url }}" alt="Vidhyut Saathi India Live Network Map" id="vs-map-img-{{ section.id }}" class="vs-map-img" loading="lazy">
+          </div>
         </div>
       </div>
 
+    </div>
+  </div>
+
+  <!-- FULLSCREEN LIGHTBOX MAP MODAL -->
+  <div class="vs-map-modal" id="vs-map-modal-{{ section.id }}" aria-hidden="true">
+    <div class="vs-map-modal-overlay"></div>
+    <div class="vs-map-modal-content">
+      <button class="vs-map-modal-close" aria-label="Close modal">&times;</button>
+      <div class="vs-map-modal-header">⚡ VIDHYUT SAATHI - 15+ LIVE STATES NETWORK MAP</div>
+      <img src="{{ 'india_live_states_map.jpg' | asset_url }}" alt="Full Screen Vidhyut Saathi India Live Network Map" class="vs-map-modal-img">
     </div>
   </div>
 
@@ -558,6 +694,58 @@
     }, { threshold: 0.5 });
 
     stats.forEach(stat => observer.observe(stat));
+
+    // INTERACTIVE MAP ZOOM & LIGHTBOX MODAL LOGIC
+    const zoomBox = document.getElementById('vs-map-zoom-box-{{ section.id }}');
+    const zoomImg = document.getElementById('vs-map-img-{{ section.id }}');
+    const modal = document.getElementById('vs-map-modal-{{ section.id }}');
+    const closeBtn = modal ? modal.querySelector('.vs-map-modal-close') : null;
+    const overlay = modal ? modal.querySelector('.vs-map-modal-overlay') : null;
+
+    if (zoomBox && zoomImg) {
+      zoomBox.addEventListener('mousemove', function(e) {
+        const rect = zoomBox.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
+        zoomImg.style.transformOrigin = `${x}% ${y}%`;
+      });
+
+      zoomBox.addEventListener('mouseleave', function() {
+        zoomImg.style.transformOrigin = 'center center';
+      });
+
+      zoomBox.addEventListener('click', function() {
+        if (modal) {
+          modal.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        }
+      });
+    }
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function() {
+        if (modal) {
+          modal.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      });
+    }
+
+    if (overlay) {
+      overlay.addEventListener('click', function() {
+        if (modal) {
+          modal.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      });
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && modal && modal.classList.contains('active')) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
   });
 </script>
 
