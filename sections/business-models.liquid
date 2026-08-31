@@ -826,9 +826,14 @@
       letter-spacing: 0.8px !important;
     }
     .business-section-{{ section.id }} .heading h1 {
-      font-size: 12vw !important;
-      line-height: 1 !important;
-      letter-spacing: -1px !important;
+      font-size: clamp(1.75rem, 7.5vw, 2.6rem) !important;
+      line-height: 1.15 !important;
+      letter-spacing: -0.5px !important;
+      white-space: nowrap !important;
+      word-break: keep-all !important;
+    }
+    .business-section-{{ section.id }} .heading h1 br {
+      display: none !important;
     }
     .business-section-{{ section.id }} .glow-line { width: 140px !important; height: 5px !important; }
     
