@@ -1,15 +1,13 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800;900&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 
 {%- assign calc_font = section.settings.calc_font -%}
 
 <style>
-  /* Dynamically load selected font */
-  {{ calc_font | font_face: font_display: 'swap' }}
-
   .vs-compact-calc-section {
     background-color: {{ section.settings.bg_color }};
     padding: 50px 5%;
-    font-family: {{ calc_font.family }}, {{ calc_font.fallback_families }};
+    font-family: 'Nunito', sans-serif !important;
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -47,10 +45,11 @@
 
   .vs-calc-header h2 {
     color: {{ section.settings.text_color }};
-    font-size: clamp(24px, 3vw, 32px);
-    font-weight: 800;
-    line-height: 1.2;
-    margin: 0 0 10px 0;
+    font-family: 'Baloo 2', sans-serif !important;
+    font-size: clamp(26px, 3.5vw, 36px) !important;
+    font-weight: 900 !important;
+    line-height: 1.2 !important;
+    margin: 0 0 10px 0 !important;
   }
   
   .vs-calc-header h2 span {
@@ -196,8 +195,9 @@
   }
 
   .vs-res-val {
-    font-size: 26px;
-    font-weight: 800;
+    font-family: 'Baloo 2', sans-serif !important;
+    font-size: 28px !important;
+    font-weight: 900 !important;
     color: {{ section.settings.text_color }};
     transition: color 0.3s;
   }
