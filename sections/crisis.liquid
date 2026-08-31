@@ -530,8 +530,13 @@
     .vs-stat-card.vs-card-custom-graphic {
       padding: 0 !important;
       background: #0F172A !important;
-      border: 1.5px solid rgba(236, 92, 10, 0.4) !important;
+      border: 1.5px solid rgba(236, 92, 10, 0.3) !important;
+      aspect-ratio: 1 / 1 !important;
     }
+
+    .vs-stats-grid .vs-stat-card:nth-child(1) { border-top: 5px solid #EC5C0A !important; }
+    .vs-stats-grid .vs-stat-card:nth-child(2) { border-top: 5px solid #3EAD47 !important; }
+    .vs-stats-grid .vs-stat-card:nth-child(3) { border-top: 5px solid #FF9A00 !important; }
 
     .vs-card-bg-img {
       position: absolute !important;
@@ -542,17 +547,17 @@
       object-fit: cover !important;
       object-position: center !important;
       z-index: 1 !important;
-      transition: transform 0.6s ease, filter 0.6s ease !important;
-      filter: brightness(1.05) contrast(1.08) !important;
+      transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1), filter 0.6s ease !important;
     }
 
     .vs-card-custom-graphic .vs-card-bg-img {
       filter: none !important;
+      position: relative !important;
     }
 
     .vs-stats-grid .vs-stat-card:hover .vs-card-bg-img {
-      transform: scale(1.06) !important;
-      filter: brightness(1.1) !important;
+      transform: scale(1.05) !important;
+      filter: brightness(1.08) !important;
     }
 
     .vs-card-overlay {
@@ -1386,31 +1391,11 @@
           {% elsif forloop.index == 2 %}
             {% assign bg_img_name = "crisis_card_2_custom.jpg" %}
           {% elsif forloop.index == 3 %}
-            {% assign bg_img_name = "crisis_voltage_spikes_bg.jpg" %}
+            {% assign bg_img_name = "crisis_card_3_custom.jpg" %}
           {% endif %}
           
-          <div class="vs-stat-card style-{{ block.settings.card_style }} card-img-bg-{{ forloop.index }} {% if forloop.index == 1 or forloop.index == 2 %}vs-card-custom-graphic{% endif %}" {{ block.shopify_attributes }}>
-            <img src="{{ bg_img_name | asset_url }}" alt="Crisis Metric 0{{ forloop.index }}" class="vs-card-bg-img" loading="eager" width="600" height="400">
-            {% if forloop.index != 1 and forloop.index != 2 %}
-              <div class="vs-card-overlay"></div>
-              <div class="vs-card-header-row">
-                <div class="vs-stat-icon-wrap">
-                  {% if block.settings.icon_svg != blank %}
-                    {{ block.settings.icon_svg }}
-                  {% else %}
-                    <svg viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="17" cy="17" r="8" fill="currentColor"/></svg>
-                  {% endif %}
-                </div>
-                <span class="vs-card-metric-pill">CRISIS FACT 0{{ forloop.index }}</span>
-              </div>
-              <div class="vs-card-body-content">
-                <div class="vs-stat-value">{{ block.settings.stat_value }}</div>
-                <div class="vs-stat-desc">{{ block.settings.stat_desc }}</div>
-              </div>
-              <div class="vs-card-progress-track">
-                <div class="vs-card-progress-fill fill-{{ forloop.index }}"></div>
-              </div>
-            {% endif %}
+          <div class="vs-stat-card style-{{ block.settings.card_style }} card-img-bg-{{ forloop.index }} vs-card-custom-graphic" {{ block.shopify_attributes }}>
+            <img src="{{ bg_img_name | asset_url }}" alt="Crisis Metric 0{{ forloop.index }}" class="vs-card-bg-img" loading="eager" width="600" height="600">
           </div>
         {% endfor %}
       </div>
