@@ -30,8 +30,8 @@
 
 /* HEADER */
 .vs-section-{{ section.id }} .heading {
-  text-align: center;
-  margin-bottom: 44px;
+  text-align: left;
+  margin-bottom: 28px;
   position: relative;
 }
 .vs-section-{{ section.id }} .heading h1 {
@@ -39,12 +39,14 @@
   text-transform: uppercase;
   line-height: .96;
   position: relative;
+  text-align: left;
 }
 .vs-section-{{ section.id }} .heading .top,
 .vs-section-{{ section.id }} .heading .bottom {
   display: block;
   font-weight: 900;
   white-space: nowrap;
+  text-align: left;
   background: linear-gradient(90deg, #ff9200, #ffbc00, #d5a100);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -64,17 +66,20 @@
 
 @media (min-width: 769px) {
   .vs-section-{{ section.id }} .heading .top {
-    font-size: 52px !important;
+    font-size: 50px !important;
     letter-spacing: -1px !important;
+    text-align: left !important;
   }
   .vs-section-{{ section.id }} .heading .bottom {
     font-size: 44px !important;
     letter-spacing: -0.8px !important;
+    text-align: left !important;
   }
   .vs-section-{{ section.id }} .heading p {
-    font-size: 18px !important;
-    max-width: 750px !important;
-    margin: 16px auto 0 !important;
+    font-size: 17px !important;
+    max-width: 100% !important;
+    margin: 14px 0 0 0 !important;
+    text-align: left !important;
   }
 }
 .vs-section-{{ section.id }} .heading h1:after {
@@ -89,20 +94,21 @@
   animation: shine 5s linear infinite;
 }
 .vs-section-{{ section.id }} .heading-glow {
-  width: 150px;
+  width: 140px;
   height: 6px;
   border-radius: 999px;
-  margin: 16px auto 0;
+  margin: 16px 0 0 0;
   background: linear-gradient(90deg, #ff9d00, #ffc400, #1eb759);
   box-shadow: 0 0 18px rgba(255,170,0,.35);
   animation: pulse 2.5s ease-in-out infinite;
 }
 .vs-section-{{ section.id }} .heading p {
-  margin: 16px auto 0;
+  margin: 16px 0 0 0;
   color: #666;
   font-size: 14px;
   line-height: 1.7;
-  max-width: 300px;
+  max-width: 100%;
+  text-align: left;
 }
 
 /* EFFECTS */
@@ -257,69 +263,72 @@
     padding-left: 24px !important;
     padding-right: 24px !important;
   }
-  /* TOP CENTERED HEADING */
+  /* LEFT ALIGNED HEADING INSIDE LEFT COLUMN */
   .vs-section-{{ section.id }} .heading { 
     width: 100% !important;
-    max-width: 800px !important;
-    text-align: center !important; 
-    margin: 0 auto 44px auto !important;
+    max-width: 100% !important;
+    text-align: left !important; 
+    margin: 0 0 28px 0 !important;
     position: relative !important;
     top: 0 !important;
     padding-top: 0 !important;
   }
   .vs-section-{{ section.id }} .heading h1 {
-    text-align: center !important;
+    text-align: left !important;
     margin: 0 !important;
     padding: 0 !important;
   }
   .vs-section-{{ section.id }} .heading .top { 
-    font-size: 54px !important; 
+    font-size: 50px !important; 
     letter-spacing: -1.2px !important; 
-    text-align: center !important;
+    text-align: left !important;
     display: block !important;
     line-height: 0.95 !important;
     margin: 0 !important;
     padding: 0 !important;
   }
   .vs-section-{{ section.id }} .heading .bottom { 
-    font-size: 46px !important; 
+    font-size: 44px !important; 
     letter-spacing: -1px !important; 
-    text-align: center !important;
+    text-align: left !important;
     display: block !important;
     margin-top: 4px !important;
     line-height: 1.02 !important;
   }
   .vs-section-{{ section.id }} .heading-glow { 
-    width: 160px !important; 
+    width: 140px !important; 
     height: 6px !important; 
-    margin: 18px auto !important;
+    margin: 16px 0 !important;
   }
   .vs-section-{{ section.id }} .heading p { 
-    font-size: 18px !important; 
+    font-size: 17px !important; 
     color: #334155 !important;
     line-height: 1.65 !important;
-    text-align: center !important; 
-    margin: 16px auto 0 auto !important;
-    max-width: 720px !important;
+    text-align: left !important; 
+    margin: 14px 0 0 0 !important;
+    max-width: 100% !important;
     font-weight: 500 !important;
   }
 
+  /* EQUAL 50-50 DESKTOP FLEX SPLIT */
   .vs-desktop-flex-wrap-{{ section.id }} {
     display: flex !important;
     flex-direction: row !important;
-    align-items: center !important;
+    align-items: stretch !important;
     justify-content: space-between !important;
-    gap: 40px !important;
+    gap: 48px !important;
     margin-bottom: 50px !important;
     width: 100% !important;
   }
 
-  /* LEFT COLUMN: TIMELINE */
+  /* LEFT COLUMN: HEADER + TIMELINE (EQUAL 48% WIDTH) */
   .vs-left-col-{{ section.id }} {
-    flex: 0 0 52% !important;
-    max-width: 560px !important;
+    flex: 0 0 48% !important;
+    max-width: 530px !important;
+    width: 48% !important;
     display: flex !important;
     flex-direction: column !important;
+    justify-content: flex-start !important;
     padding: 0 !important;
     margin: 0 !important;
   }
@@ -332,15 +341,49 @@
     padding-left: 0 !important;
   }
 
-  /* RIGHT COLUMN: DESKTOP IMAGE */
+  /* RIGHT COLUMN: DESKTOP TALL ENLARGED IMAGE CARD (EQUAL 48% WIDTH) */
   .vs-right-col-{{ section.id }} {
-    flex: 0 0 44% !important;
-    max-width: 470px !important;
+    flex: 0 0 48% !important;
+    max-width: 530px !important;
+    width: 48% !important;
     display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    justify-content: flex-start !important;
     padding: 0 !important;
     margin: 0 !important;
+  }
+
+  .vs-desktop-image-wrapper-{{ section.id }},
+  .vs-desktop-image-placeholder-{{ section.id }} {
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 540px !important;
+    border-radius: 24px !important;
+    overflow: hidden !important;
+    border: 3px solid #FFFFFF !important;
+    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.14), 0 6px 20px rgba(236, 92, 10, 0.1) !important;
+    background: #0F172A !important;
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    padding: 24px !important;
+  }
+
+  .vs-desktop-right-img-{{ section.id }} {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
+    border-radius: 20px !important;
+    transition: transform 0.5s ease !important;
+  }
+
+  .vs-desktop-image-wrapper-{{ section.id }}:hover .vs-desktop-right-img-{{ section.id }} {
+    transform: scale(1.04) !important;
   }
   .vs-grid-title-{{ section.id }} {
     margin-top: 60px !important;
@@ -696,25 +739,26 @@
 <section class="vs-section-{{ section.id }}">
   <div class="container">
     
-    <!-- TOP CENTERED HEADING BLOCK -->
-    <div class="heading">
-      <h1>
-        {%- if section.settings.heading_top != blank -%}
-          <span class="top">{{ section.settings.heading_top }}</span>
-        {%- endif -%}
-        {%- if section.settings.heading_bottom != blank -%}
-          <span class="bottom">{{ section.settings.heading_bottom }}</span>
-        {%- endif -%}
-      </h1>
-      <div class="heading-glow"></div>
-      {%- if section.settings.heading_sub != blank -%}
-        <p>{{ section.settings.heading_sub }}</p>
-      {%- endif -%}
-    </div>
-
-    <!-- 2-COLUMN DESKTOP FLEX CONTENT (LEFT: TIMELINE, RIGHT: IMAGE) -->
+    <!-- 2-COLUMN DESKTOP FLEX CONTENT (LEFT: HEADER + TIMELINE, RIGHT: IMAGE) -->
     <div class="vs-desktop-flex-wrap-{{ section.id }}">
       <div class="vs-left-col-{{ section.id }}">
+        
+        <!-- HEADING BLOCK ALIGNED INSIDE LEFT COLUMN -->
+        <div class="heading">
+          <h1>
+            {%- if section.settings.heading_top != blank -%}
+              <span class="top">{{ section.settings.heading_top }}</span>
+            {%- endif -%}
+            {%- if section.settings.heading_bottom != blank -%}
+              <span class="bottom">{{ section.settings.heading_bottom }}</span>
+            {%- endif -%}
+          </h1>
+          <div class="heading-glow"></div>
+          {%- if section.settings.heading_sub != blank -%}
+            <p>{{ section.settings.heading_sub }}</p>
+          {%- endif -%}
+        </div>
+
         <div class="timeline">
           <div class="timeline-line"></div>
 
