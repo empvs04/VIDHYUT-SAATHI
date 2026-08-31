@@ -347,9 +347,10 @@
     50% { transform: translateY(-50%) scaleX(-1) translateX(-5px); }
   }
 
-  /* ── DESKTOP DESIGN (PERFECT FLEX CENTERING & EQUAL CARD HEIGHTS) ── */
+  /* ── DESKTOP DESIGN (PERFECT 3-COLUMN GRID & EQUAL CARD HEIGHTS) ── */
   @media(min-width: 768px) {
     .business-section-{{ section.id }} {
+      padding: 80px 24px !important;
       display: flex !important;
       flex-direction: column !important;
       align-items: center !important;
@@ -364,37 +365,76 @@
       max-width: 1200px !important;
       margin: 0 auto !important;
     }
-    .business-section-{{ section.id }} .heading h1 { font-size: 72px !important; line-height: 1.05 !important; letter-spacing: -1.5px !important; }
+    .business-section-{{ section.id }} .heading {
+      margin-bottom: 56px !important;
+    }
+    .business-section-{{ section.id }} .heading h1 {
+      font-size: 64px !important;
+      line-height: 1.05 !important;
+      letter-spacing: -1.5px !important;
+    }
     .business-section-{{ section.id }} .grid {
-      display: flex !important;
-      flex-direction: row !important;
-      flex-wrap: wrap !important;
-      justify-content: center !important;
+      display: grid !important;
+      grid-template-columns: repeat(3, 1fr) !important;
       align-items: stretch !important;
       gap: 30px !important;
       width: 100% !important;
-      max-width: 1140px !important;
+      max-width: 1160px !important;
       margin: 0 auto !important;
     }
     .business-section-{{ section.id }} .card {
-      flex: 0 1 340px !important;
       display: flex !important;
       flex-direction: column !important;
       justify-content: space-between !important;
-      height: auto !important;
+      height: 100% !important;
       width: 100% !important;
-      max-width: 360px !important;
+      max-width: 100% !important;
       margin: 0 !important;
-      padding: 40px 28px !important;
+      padding: 36px 26px !important;
+      border-radius: 24px !important;
       box-sizing: border-box !important;
+      transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease !important;
+    }
+    .business-section-{{ section.id }} .card:nth-child(2) {
+      transform: translateY(-4px) !important;
+      border-color: rgba(247, 148, 29, 0.45) !important;
+      box-shadow: 0 16px 48px rgba(247, 148, 29, 0.16), 0 4px 16px rgba(0, 0, 0, 0.03) !important;
+    }
+    .business-section-{{ section.id }} .card:hover {
+      transform: translateY(-8px) scale(1.02) !important;
+      box-shadow: 0 24px 56px rgba(247, 148, 29, 0.22), 0 8px 24px rgba(0, 0, 0, 0.04) !important;
+    }
+    .business-section-{{ section.id }} .amount-box {
+      margin: 20px 0 !important;
+      padding: 18px 14px !important;
+      border-radius: 18px !important;
+      background: linear-gradient(135deg, #FFFDF8 0%, #FFF5EB 100%) !important;
+      border: 1.5px solid rgba(247, 148, 29, 0.18) !important;
+    }
+    .business-section-{{ section.id }} .amount {
+      font-size: 2.3rem !important;
+      font-weight: 900 !important;
     }
     .business-section-{{ section.id }} .points {
       flex: 1 1 auto !important;
       justify-content: flex-start !important;
+      gap: 14px !important;
       margin-bottom: 24px !important;
+    }
+    .business-section-{{ section.id }} .point {
+      font-size: 0.94rem !important;
+      font-weight: 700 !important;
+      line-height: 1.4 !important;
+      text-align: left !important;
+      justify-content: flex-start !important;
+      align-items: center !important;
     }
     .business-section-{{ section.id }} .book-btn {
       margin-top: auto !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      padding: 15px 42px !important;
+      font-size: 17px !important;
     }
   }
 
