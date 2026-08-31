@@ -22,9 +22,10 @@
   }
 
   .vs-desktop-video-container {
-    max-width: 1180px !important;
-    margin: 0 auto !important;
-    padding: 0 24px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
     position: relative !important;
   }
 
@@ -33,27 +34,31 @@
     width: 100% !important;
   }
 
-  /* 2-COLUMN TOP GRID */
+  /* 2-COLUMN TOP GRID (EXTREME LEFT FLUSH IMAGE) */
   .vs-video-top-grid {
     display: grid !important;
-    grid-template-columns: 1fr 1fr !important;
-    gap: 48px !important;
+    grid-template-columns: 0.9fr 1.1fr !important;
+    gap: 50px !important;
     align-items: flex-start !important;
     position: relative !important;
     padding-bottom: 210px !important;
+    width: 100% !important;
   }
 
-  /* LEFT COLUMN: TALL ROUNDED VIDEO THUMBNAIL CARD */
+  /* LEFT COLUMN: FLUSH TO EXTREME LEFT SCREEN EDGE */
   .vs-video-thumb-card {
     position: relative !important;
-    border-radius: 22px !important;
+    border-radius: 0 26px 26px 0 !important;
     overflow: hidden !important;
     width: 100% !important;
+    max-width: 580px !important;
     height: 510px !important;
     background: #0F172A !important;
     cursor: pointer !important;
     box-shadow: 0 16px 45px rgba(15, 23, 42, 0.12), 0 4px 15px rgba(236, 92, 10, 0.08) !important;
     border: 3px solid #FFFFFF !important;
+    border-left: none !important;
+    margin-left: 0 !important;
   }
 
   .vs-video-thumb-img {
@@ -125,7 +130,8 @@
     flex-direction: column !important;
     justify-content: flex-start !important;
     position: relative !important;
-    padding-top: 10px !important;
+    padding: 15px 40px 0 0 !important;
+    max-width: 560px !important;
   }
 
   .vs-script-subtitle {
