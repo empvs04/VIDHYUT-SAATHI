@@ -430,35 +430,44 @@
     box-shadow: 0 20px 45px rgba(247,148,29,0.18) !important;
   }
 
-  @media(min-width: 768px) {
+  @media(min-width: 769px) {
     .vs-problem-container {
-      background: linear-gradient(160deg, #FFFFFF 0%, #FFFDF8 50%, #FFF8EF 100%) !important;
+      display: flex !important;
+      flex-direction: row !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      gap: 44px !important;
+      max-width: 1160px !important;
+      margin: 0 auto 40px auto !important;
+      padding: 48px 40px !important;
+      background: linear-gradient(180deg, #FFF9F3 0%, #FFFFFF 100%) !important;
       border-radius: 28px !important;
-      padding: 56px 40px !important;
-      margin: 40px auto !important;
-      max-width: 1140px !important;
-      width: 100% !important;
-      box-shadow: 0 20px 50px rgba(236, 92, 10, 0.08), 0 4px 16px rgba(0, 0, 0, 0.03) !important;
       border: 1.5px solid rgba(236, 92, 10, 0.28) !important;
-      box-sizing: border-box !important;
-      position: relative !important;
-      overflow: hidden !important;
+      box-shadow: 0 20px 50px rgba(236, 92, 10, 0.08) !important;
+      width: 100% !important;
     }
+
     .vs-hero {
-      text-align: center !important;
+      flex: 0 0 48% !important;
+      max-width: 540px !important;
+      width: 48% !important;
+      text-align: left !important;
       display: flex !important;
       flex-direction: column !important;
-      align-items: center !important;
-      justify-content: center !important;
-      margin: 0 auto 40px auto !important;
+      align-items: flex-start !important;
+      margin: 0 !important;
     }
+
     .vs-hero h1 {
       color: #0F172A !important;
-      font-size: 56px !important;
-      text-align: center !important;
+      font-size: 42px !important;
+      text-align: left !important;
       font-weight: 900 !important;
-      letter-spacing: -1.2px !important;
+      letter-spacing: -0.8px !important;
+      line-height: 1.18 !important;
+      margin-bottom: 16px !important;
     }
+
     .vs-hero h1 .accent {
       background: linear-gradient(135deg, #EC5C0A 0%, #FF9A00 100%) !important;
       -webkit-background-clip: text !important;
@@ -466,60 +475,58 @@
       filter: drop-shadow(0 4px 12px rgba(236, 92, 10, 0.2)) !important;
     }
     .vs-hero h1 .accent::after { display: none !important; }
+
     .vs-hero-divider {
-      margin-left: auto !important;
-      margin-right: auto !important;
-      width: 140px !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+      width: 100px !important;
       height: 5px !important;
+      margin-bottom: 24px !important;
     }
+
     .vs-hero-label {
       background: linear-gradient(135deg, #FFF3EB 0%, #FFE8D6 100%) !important;
       border: 1.5px solid rgba(236, 92, 10, 0.4) !important;
       padding: 6px 20px !important;
       border-radius: 50px !important;
-      margin-left: auto !important;
-      margin-right: auto !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+      margin-bottom: 16px !important;
       box-shadow: 0 4px 15px rgba(236, 92, 10, 0.12) !important;
     }
     .vs-hero-label span { color: #EC5C0A !important; font-weight: 800 !important; font-size: 13px !important; letter-spacing: 1.2px !important; }
 
     .vs-stats-grid {
-      display: grid !important;
-      grid-template-columns: repeat(3, 1fr) !important;
-      padding: 0 20px !important;
-      gap: 28px !important;
-      max-width: 1140px !important;
-      width: 100% !important;
-      margin-left: auto !important;
-      margin-right: auto !important;
-      align-items: stretch !important;
+      flex: 0 0 48% !important;
+      max-width: 520px !important;
+      width: 48% !important;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 18px !important;
+      padding: 0 !important;
+      margin: 0 !important;
     }
 
     .vs-stats-grid .vs-stat-card {
-      background: linear-gradient(145deg, #FFFFFF 0%, #FFFDF8 100%) !important;
-      border: 1.5px solid rgba(236, 92, 10, 0.25) !important;
-      border-top: 5px solid #EC5C0A !important;
-      border-radius: 24px !important;
-      padding: 32px 24px !important;
-      text-align: center !important;
+      background: #FFFFFF !important;
+      border: 1.5px solid rgba(236, 92, 10, 0.2) !important;
+      border-left: 6px solid #EC5C0A !important;
+      border-top: none !important;
+      border-radius: 20px !important;
+      padding: 20px 24px !important;
       display: flex !important;
-      flex-direction: column !important;
+      flex-direction: row !important;
       align-items: center !important;
-      justify-content: space-between !important;
-      height: 100% !important;
-      min-height: 260px !important;
-      box-shadow: 0 14px 35px rgba(236, 92, 10, 0.08), 0 4px 14px rgba(0, 0, 0, 0.03) !important;
-      transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease !important;
-    }
-    .vs-stats-grid .vs-stat-card:hover {
-      transform: translateY(-6px) !important;
-      border-color: rgba(236, 92, 10, 0.5) !important;
-      box-shadow: 0 20px 48px rgba(236, 92, 10, 0.18) !important;
+      gap: 18px !important;
+      text-align: left !important;
+      min-height: auto !important;
+      box-shadow: 0 12px 30px rgba(236, 92, 10, 0.06) !important;
+      transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
     }
 
-    .vs-stat-card.style-orange .vs-stat-icon-wrap,
-    .vs-stat-card.style-green .vs-stat-icon-wrap {
-      width: 54px !important;
+    .vs-stats-grid .vs-stat-card:hover {
+      transform: translateX(8px) !important;
+      border-color: rgba(236, 92, 10, 0.5) !important;
       height: 54px !important;
       border-radius: 16px !important;
       background: linear-gradient(135deg, #FFF3E0, #FFE0B2) !important;
