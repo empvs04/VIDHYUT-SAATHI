@@ -527,6 +527,12 @@
       border: 1.5px solid rgba(255, 255, 255, 0.25) !important;
     }
 
+    .vs-stat-card.vs-card-custom-graphic {
+      padding: 0 !important;
+      background: #0F172A !important;
+      border: 1.5px solid rgba(236, 92, 10, 0.4) !important;
+    }
+
     .vs-card-bg-img {
       position: absolute !important;
       top: 0 !important;
@@ -540,9 +546,13 @@
       filter: brightness(1.05) contrast(1.08) !important;
     }
 
+    .vs-card-custom-graphic .vs-card-bg-img {
+      filter: none !important;
+    }
+
     .vs-stats-grid .vs-stat-card:hover .vs-card-bg-img {
-      transform: scale(1.08) !important;
-      filter: brightness(1.15) contrast(1.12) !important;
+      transform: scale(1.06) !important;
+      filter: brightness(1.1) !important;
     }
 
     .vs-card-overlay {
@@ -1372,33 +1382,35 @@
         {% for block in section.blocks %}
           {% assign bg_img_name = "" %}
           {% if forloop.index == 1 %}
-            {% assign bg_img_name = "crisis_power_loss_bg.jpg" %}
+            {% assign bg_img_name = "crisis_card_1_custom.jpg" %}
           {% elsif forloop.index == 2 %}
             {% assign bg_img_name = "crisis_money_waste_bg.jpg" %}
           {% elsif forloop.index == 3 %}
             {% assign bg_img_name = "crisis_voltage_spikes_bg.jpg" %}
           {% endif %}
           
-          <div class="vs-stat-card style-{{ block.settings.card_style }} card-img-bg-{{ forloop.index }}" {{ block.shopify_attributes }}>
+          <div class="vs-stat-card style-{{ block.settings.card_style }} card-img-bg-{{ forloop.index }} {% if forloop.index == 1 %}vs-card-custom-graphic{% endif %}" {{ block.shopify_attributes }}>
             <img src="{{ bg_img_name | asset_url }}" alt="Crisis Metric 0{{ forloop.index }}" class="vs-card-bg-img" loading="eager" width="600" height="400">
-            <div class="vs-card-overlay"></div>
-            <div class="vs-card-header-row">
-              <div class="vs-stat-icon-wrap">
-                {% if block.settings.icon_svg != blank %}
-                  {{ block.settings.icon_svg }}
-                {% else %}
-                  <svg viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="17" cy="17" r="8" fill="currentColor"/></svg>
-                {% endif %}
+            {% if forloop.index != 1 %}
+              <div class="vs-card-overlay"></div>
+              <div class="vs-card-header-row">
+                <div class="vs-stat-icon-wrap">
+                  {% if block.settings.icon_svg != blank %}
+                    {{ block.settings.icon_svg }}
+                  {% else %}
+                    <svg viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="17" cy="17" r="8" fill="currentColor"/></svg>
+                  {% endif %}
+                </div>
+                <span class="vs-card-metric-pill">CRISIS FACT 0{{ forloop.index }}</span>
               </div>
-              <span class="vs-card-metric-pill">CRISIS FACT 0{{ forloop.index }}</span>
-            </div>
-            <div class="vs-card-body-content">
-              <div class="vs-stat-value">{{ block.settings.stat_value }}</div>
-              <div class="vs-stat-desc">{{ block.settings.stat_desc }}</div>
-            </div>
-            <div class="vs-card-progress-track">
-              <div class="vs-card-progress-fill fill-{{ forloop.index }}"></div>
-            </div>
+              <div class="vs-card-body-content">
+                <div class="vs-stat-value">{{ block.settings.stat_value }}</div>
+                <div class="vs-stat-desc">{{ block.settings.stat_desc }}</div>
+              </div>
+              <div class="vs-card-progress-track">
+                <div class="vs-card-progress-fill fill-{{ forloop.index }}"></div>
+              </div>
+            {% endif %}
           </div>
         {% endfor %}
       </div>
