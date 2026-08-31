@@ -203,7 +203,7 @@
       line-height: 1.2 !important;
     }
 
-    /* SEQUENTIAL LIVE PULSING STATE MAP PINS (ON/OFF BEACON EFFECT) */
+    /* SEQUENTIAL LIVE PULSING STATE MAP PINS (EXACT MAP LOCATION POP-UP EFFECT) */
     #shopify-section-{{ section.id }} .vs-map-live-pin {
       position: absolute !important;
       z-index: 5 !important;
@@ -211,15 +211,15 @@
       align-items: center !important;
       gap: 4px !important;
       pointer-events: none !important;
-      animation: pinBeacon 3s infinite ease-in-out !important;
+      animation: pinBeacon 3.2s infinite cubic-bezier(0.34, 1.56, 0.64, 1) !important;
     }
 
-    #shopify-section-{{ section.id }} .vs-map-live-pin.pin-1 { top: 32%; left: 42%; animation-delay: 0s !important; }
-    #shopify-section-{{ section.id }} .vs-map-live-pin.pin-2 { top: 52%; left: 34%; animation-delay: 0.5s !important; }
-    #shopify-section-{{ section.id }} .vs-map-live-pin.pin-3 { top: 72%; left: 38%; animation-delay: 1.0s !important; }
-    #shopify-section-{{ section.id }} .vs-map-live-pin.pin-4 { top: 38%; left: 48%; animation-delay: 1.5s !important; }
-    #shopify-section-{{ section.id }} .vs-map-live-pin.pin-5 { top: 48%; left: 66%; animation-delay: 2.0s !important; }
-    #shopify-section-{{ section.id }} .vs-map-live-pin.pin-6 { top: 44%; left: 26%; animation-delay: 2.5s !important; }
+    #shopify-section-{{ section.id }} .vs-map-live-pin.pin-1 { top: 35%; left: 42%; animation-delay: 0s !important; }
+    #shopify-section-{{ section.id }} .vs-map-live-pin.pin-2 { top: 54%; left: 33%; animation-delay: 0.5s !important; }
+    #shopify-section-{{ section.id }} .vs-map-live-pin.pin-3 { top: 72%; left: 37%; animation-delay: 1.0s !important; }
+    #shopify-section-{{ section.id }} .vs-map-live-pin.pin-4 { top: 39%; left: 50%; animation-delay: 1.5s !important; }
+    #shopify-section-{{ section.id }} .vs-map-live-pin.pin-5 { top: 48%; left: 63%; animation-delay: 2.0s !important; }
+    #shopify-section-{{ section.id }} .vs-map-live-pin.pin-6 { top: 46%; left: 27%; animation-delay: 2.5s !important; }
 
     #shopify-section-{{ section.id }} .ping-dot {
       width: 10px !important;
@@ -236,7 +236,7 @@
       height: 26px !important;
       border: 2px solid #EC5C0A !important;
       border-radius: 50% !important;
-      animation: pinPulseRing 3s infinite ease-in-out !important;
+      animation: pinPulseRing 3.2s infinite ease-in-out !important;
     }
 
     #shopify-section-{{ section.id }} .ping-label {
@@ -253,13 +253,21 @@
     }
 
     @keyframes pinBeacon {
-      0%, 100% { opacity: 0.25; transform: scale(0.9); }
-      30%, 60% { opacity: 1; transform: scale(1.15); filter: drop-shadow(0 0 10px #EC5C0A); }
+      0%, 100% { 
+        opacity: 0.15; 
+        transform: scale(0.7) translateY(4px); 
+        filter: grayscale(100%);
+      }
+      25%, 65% { 
+        opacity: 1; 
+        transform: scale(1.22) translateY(-4px); 
+        filter: drop-shadow(0 0 10px #EC5C0A) drop-shadow(0 0 18px #FF9A00);
+      }
     }
 
     @keyframes pinPulseRing {
       0% { transform: scale(0.3); opacity: 1; }
-      100% { transform: scale(2.5); opacity: 0; }
+      100% { transform: scale(2.6); opacity: 0; }
     }
 
     #shopify-section-{{ section.id }} .vs-stats-cta-btn {
