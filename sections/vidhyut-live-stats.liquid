@@ -519,24 +519,36 @@
     100% { transform: translateX(-50%); }
   }
 
-  /* --- MOBILE FIXES (100% ORIGINAL CLEAN LIGHT MOBILE THEME) --- */
+  /* --- MOBILE RESPONSIVE DESIGN (SUPER MOBILE-FRIENDLY & LUCRATIVE) --- */
   @media (max-width: 768px) {
-    #shopify-section-{{ section.id }} .vs-stats-teaser,
-    #shopify-section-{{ section.id }} .vs-stats-cta-btn {
-      display: none !important;
+    #shopify-section-{{ section.id }} .vs-stats-desktop-flex {
+      flex-direction: column !important;
+      gap: 28px !important;
+    }
+
+    #shopify-section-{{ section.id }} .vs-stats-left-col {
+      flex: none !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      text-align: center !important;
+      align-items: center !important;
+    }
+
+    #shopify-section-{{ section.id }} .vs-stats-right-col {
+      flex: none !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      margin-top: 8px !important;
     }
 
     #shopify-section-{{ section.id }} .network-section-clean { 
-      background: var(--bg-white, #ffffff) !important;
-      color: #0f172a !important;
-      padding-top: 25px !important; 
-    }
-    #shopify-section-{{ section.id }} .network-section-clean::before {
-      display: none !important;
+      background: linear-gradient(180deg, #FFF9F3 0%, #FFFFFF 100%) !important;
+      color: #0F172A !important;
+      padding: 32px 14px 40px 14px !important; 
     }
 
     #shopify-section-{{ section.id }} .network-content-wrapper {
-      padding: 0 14px 35px 14px !important;
+      padding: 0 !important;
     }
     
     #shopify-section-{{ section.id }} .network-subtitle {
@@ -549,96 +561,155 @@
       background: linear-gradient(135deg, #FFF3EB 0%, #FFE8D6 100%) !important;
       border: 1.5px solid rgba(236, 92, 10, 0.4) !important;
       color: #EC5C0A !important;
-      font-size: 0.76rem !important;
+      font-size: 0.74rem !important;
       font-weight: 800 !important;
       letter-spacing: 0.8px !important;
       margin: 0 auto 16px auto !important;
       box-shadow: 0 4px 15px rgba(236, 92, 10, 0.12) !important;
+      text-transform: uppercase !important;
     }
 
     #shopify-section-{{ section.id }} .network-title { 
-      font-size: 1.6rem !important; 
-      margin-bottom: 25px !important; 
+      font-size: 1.65rem !important; 
+      margin-bottom: 12px !important; 
       display: flex !important;
       flex-direction: column !important; 
       align-items: center !important;
       justify-content: center !important;
-      gap: 2px !important; 
+      gap: 4px !important; 
       line-height: 1.25 !important;
-      color: #0f172a !important;
+      color: #0F172A !important;
       text-align: center !important;
     }
 
     #shopify-section-{{ section.id }} .net-text {
       display: block !important;
-      font-size: 1.5rem !important;
+      font-size: 1.35rem !important;
       font-weight: 800 !important;
-      color: #007B3E !important;
+      color: #0F172A !important;
     }
 
     #shopify-section-{{ section.id }} .net-number {
-      display: block !important;
-      font-size: 3.4rem !important; 
+      display: inline-block !important;
+      font-size: 3.2rem !important; 
       background: linear-gradient(135deg, #EC5C0A 0%, #FF9A00 100%) !important;
       -webkit-background-clip: text !important;
       -webkit-text-fill-color: transparent !important;
       font-weight: 900 !important;
       line-height: 1.05 !important;
       margin: 4px 0 !important;
-      min-height: auto !important;
       filter: drop-shadow(0 4px 12px rgba(236, 92, 10, 0.25)) !important;
+    }
+
+    #shopify-section-{{ section.id }} .vs-stats-teaser {
+      display: block !important;
+      font-size: 0.98rem !important;
+      color: #EC5C0A !important;
+      font-weight: 750 !important;
+      text-align: center !important;
+      margin-bottom: 22px !important;
     }
     
     #shopify-section-{{ section.id }} .stats-grid { 
+      display: grid !important;
       grid-template-columns: repeat(3, 1fr) !important; 
       gap: 8px !important; 
-      align-items: stretch !important;
+      width: 100% !important;
+      margin-bottom: 20px !important;
     }
     
     #shopify-section-{{ section.id }} .stat-item { 
-      background: linear-gradient(145deg, #FFFFFF 0%, #FFFCF8 100%) !important;
-      border: 1.5px solid rgba(236, 92, 10, 0.25) !important;
-      border-top: 4px solid #EC5C0A !important;
+      background: #FFFFFF !important;
+      border: 1.5px solid rgba(236, 92, 10, 0.22) !important;
+      border-top: 3.5px solid #EC5C0A !important;
       border-radius: 16px !important;
-      padding: 16px 6px 14px 6px !important; 
+      padding: 12px 4px !important; 
       display: flex !important; 
       flex-direction: column !important;
       align-items: center !important;
-      justify-content: flex-start !important;
+      justify-content: center !important;
       text-align: center !important; 
-      box-shadow: 0 10px 25px rgba(236, 92, 10, 0.08) !important;
-      height: 100% !important;
-      min-height: 135px !important;
+      box-shadow: 0 8px 20px rgba(236, 92, 10, 0.08) !important;
+      aspect-ratio: 1 / 1 !important;
+      min-height: 110px !important;
     }
     
     #shopify-section-{{ section.id }} .stat-icon { 
-      width: auto !important;
-      height: auto !important;
-      background: transparent !important;
-      border: none !important;
-      box-shadow: none !important;
-      font-size: 1.6rem !important; 
+      width: 36px !important;
+      height: 36px !important;
+      border-radius: 12px !important;
+      background: linear-gradient(135deg, #FFF3EB 0%, #FFE0B2 100%) !important;
+      border: 1px solid rgba(236, 92, 10, 0.25) !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      font-size: 1.15rem !important; 
       color: #EC5C0A !important;
-      margin-bottom: 6px !important; 
-      filter: drop-shadow(0 4px 10px rgba(236, 92, 10, 0.3)) !important;
+      margin-bottom: 4px !important; 
     }
     
     #shopify-section-{{ section.id }} .stat-num { 
-      font-size: 1.5rem !important; 
+      font-size: 1.35rem !important; 
       font-weight: 900 !important;
       color: #007B3E !important;
-      margin-bottom: 4px !important;
+      margin-bottom: 2px !important;
       line-height: 1 !important;
-      filter: none !important;
     }
     
     #shopify-section-{{ section.id }} .stat-label { 
-      font-size: 0.64rem !important; 
+      font-size: 0.58rem !important; 
       font-weight: 800 !important;
       color: #475569 !important;
-      line-height: 1.25 !important; 
+      line-height: 1.2 !important; 
       text-transform: uppercase !important;
       letter-spacing: 0.2px !important;
+    }
+
+    #shopify-section-{{ section.id }} .vs-stats-cta-btn {
+      display: inline-flex !important;
+      width: 100% !important;
+      justify-content: center !important;
+      padding: 14px 24px !important;
+      border-radius: 50px !important;
+      background: linear-gradient(135deg, #EC5C0A 0%, #FF9200 100%) !important;
+      color: #FFFFFF !important;
+      font-weight: 800 !important;
+      font-size: 15px !important;
+      text-decoration: none !important;
+      box-shadow: 0 8px 24px rgba(236, 92, 10, 0.32) !important;
+      margin-top: 16px !important;
+    }
+
+    #shopify-section-{{ section.id }} .vs-map-showcase-card {
+      border-radius: 20px !important;
+      padding: 14px !important;
+      border: 1.5px solid rgba(236, 92, 10, 0.28) !important;
+      box-shadow: 0 12px 30px rgba(236, 92, 10, 0.1) !important;
+    }
+
+    #shopify-section-{{ section.id }} .vs-map-badge {
+      font-size: 0.68rem !important;
+      padding: 4px 10px !important;
+    }
+
+    #shopify-section-{{ section.id }} .vs-zoom-hint {
+      font-size: 0.64rem !important;
+      padding: 4px 8px !important;
+    }
+
+    #shopify-section-{{ section.id }} .ping-label {
+      font-size: 0.48rem !important;
+      padding: 1px 4px !important;
+    }
+
+    #shopify-section-{{ section.id }} .ping-dot {
+      width: 7px !important;
+      height: 7px !important;
+    }
+
+    #shopify-section-{{ section.id }} .ping-ring {
+      width: 18px !important;
+      height: 18px !important;
     }
     
     #shopify-section-{{ section.id }} .marquee-item { 
