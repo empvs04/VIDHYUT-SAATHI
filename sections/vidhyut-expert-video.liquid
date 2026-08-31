@@ -266,14 +266,16 @@
     aspect-ratio: 1 / 1 !important;
     padding: 14px 6px 12px 6px !important;
     text-decoration: none !important;
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    transition: background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease, transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.35s ease !important;
     cursor: pointer !important;
   }
 
   .vs-nav-card-item:hover {
-    transform: translateY(-6px) !important;
-    box-shadow: 0 20px 45px rgba(236, 92, 10, 0.22) !important;
-    border-color: #EC5C0A !important;
+    background-color: var(--card-color, #EC5C0A) !important;
+    border-color: var(--card-color, #EC5C0A) !important;
+    transform: translateY(-8px) scale(1.03) !important;
+    box-shadow: 0 20px 45px rgba(15, 23, 42, 0.22) !important;
+    color: #FFFFFF !important;
   }
 
   .vs-card-icon-art {
@@ -283,17 +285,28 @@
     align-items: center !important;
     justify-content: center !important;
     margin-bottom: 6px !important;
-    transition: transform 0.3s ease !important;
+    transition: transform 0.35s ease, color 0.35s ease !important;
+    color: inherit !important;
   }
 
   .vs-nav-card-item:hover .vs-card-icon-art {
     transform: scale(1.12) !important;
+    color: #FFFFFF !important;
   }
 
   .vs-card-icon-art svg {
     width: 100% !important;
     height: 100% !important;
     display: block !important;
+    transition: stroke 0.35s ease, fill 0.35s ease !important;
+  }
+
+  .vs-nav-card-item:hover .vs-card-icon-art svg[stroke] {
+    stroke: #FFFFFF !important;
+  }
+
+  .vs-nav-card-item:hover .vs-card-icon-art svg[fill]:not([fill="none"]) {
+    fill: #FFFFFF !important;
   }
 
   .vs-card-label {
@@ -303,6 +316,12 @@
     line-height: 1.2 !important;
     margin: 0 !important;
     letter-spacing: -0.2px !important;
+    transition: color 0.35s ease !important;
+    color: inherit !important;
+  }
+
+  .vs-nav-card-item:hover .vs-card-label {
+    color: #FFFFFF !important;
   }
 
   /* VIDEO MODAL POPUP */
@@ -457,10 +476,10 @@
 
       </div>
 
-      <!-- 6 COMPACT CARDS PUSHED DOUBLE HIGH UP (-280px OVERLAP) -->
+      <!-- 6 COMPACT CARDS PUSHED DOUBLE HIGH UP (-350px OVERLAP) -->
       <div class="vs-floating-cards-row">
         {%- for block in section.blocks -%}
-          <a href="{{ block.settings.card_link | default: '#' }}" class="vs-nav-card-item" {{ block.shopify_attributes }}>
+          <a href="{{ block.settings.card_link | default: '#' }}" class="vs-nav-card-item" style="--card-color: {{ block.settings.card_color | default: '#EC5C0A' }};" {{ block.shopify_attributes }}>
             <div class="vs-card-icon-art" style="color: {{ block.settings.card_color | default: '#EC5C0A' }};">
               {{ block.settings.card_icon_svg | default: '' }}
             </div>
@@ -470,7 +489,7 @@
           <!-- 6 Cards themed for Vidhyut Saathi -->
           
           <!-- Card 1: Residential (Brand Orange) -->
-          <a href="/pages/residential" class="vs-nav-card-item">
+          <a href="/pages/residential" class="vs-nav-card-item" style="--card-color: #EC5C0A;">
             <div class="vs-card-icon-art" style="color: #EC5C0A;">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
@@ -481,7 +500,7 @@
           </a>
 
           <!-- Card 2: Commercial (Amber) -->
-          <a href="/pages/commercial" class="vs-nav-card-item">
+          <a href="/pages/commercial" class="vs-nav-card-item" style="--card-color: #D97706;">
             <div class="vs-card-icon-art" style="color: #D97706;">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect>
@@ -495,7 +514,7 @@
           </a>
 
           <!-- Card 3: Industrial (Emerald Green) -->
-          <a href="/pages/industrial" class="vs-nav-card-item">
+          <a href="/pages/industrial" class="vs-nav-card-item" style="--card-color: #059669;">
             <div class="vs-card-icon-art" style="color: #059669;">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z"></path>
@@ -505,7 +524,7 @@
           </a>
 
           <!-- Card 4: Franchise (Deep Orange) -->
-          <a href="/pages/get-franchise" class="vs-nav-card-item">
+          <a href="/pages/get-franchise" class="vs-nav-card-item" style="--card-color: #EA580C;">
             <div class="vs-card-icon-art" style="color: #EA580C;">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="12" cy="12" r="10"></circle>
@@ -516,7 +535,7 @@
           </a>
 
           <!-- Card 5: ISO Certified (Royal Blue) -->
-          <a href="/pages/iso-certification" class="vs-nav-card-item">
+          <a href="/pages/iso-certification" class="vs-nav-card-item" style="--card-color: #2563EB;">
             <div class="vs-card-icon-art" style="color: #2563EB;">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
@@ -526,7 +545,7 @@
           </a>
 
           <!-- Card 6: 24/7 Support (Teal) -->
-          <a href="/pages/contact" class="vs-nav-card-item">
+          <a href="/pages/contact" class="vs-nav-card-item" style="--card-color: #0D9488;">
             <div class="vs-card-icon-art" style="color: #0D9488;">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
