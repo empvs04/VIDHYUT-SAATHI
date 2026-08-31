@@ -268,7 +268,7 @@
     width: 100% !important;
     max-width: 100% !important;
     text-align: left !important; 
-    margin: 0 0 28px 0 !important;
+    margin: 0 0 14px 0 !important;
     position: relative !important;
     top: 0 !important;
     padding-top: 0 !important;
@@ -279,7 +279,7 @@
     padding: 0 !important;
   }
   .vs-section-{{ section.id }} .heading .top { 
-    font-size: 50px !important; 
+    font-size: 48px !important; 
     letter-spacing: -1.2px !important; 
     text-align: left !important;
     display: block !important;
@@ -288,40 +288,47 @@
     padding: 0 !important;
   }
   .vs-section-{{ section.id }} .heading .bottom { 
-    font-size: 44px !important; 
+    font-size: 42px !important; 
     letter-spacing: -1px !important; 
     text-align: left !important;
     display: block !important;
     margin-top: 4px !important;
     line-height: 1.02 !important;
   }
-  .vs-section-{{ section.id }} .heading-glow { 
-    width: 140px !important; 
-    height: 6px !important; 
-    margin: 16px 0 !important;
+  .vs-section-{{ section.id }} .heading-glow-row {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    margin: 12px 0 6px 0 !important;
   }
-  .vs-section-{{ section.id }} .heading p { 
-    font-size: 17px !important; 
-    color: #334155 !important;
-    line-height: 1.65 !important;
-    text-align: left !important; 
-    margin: 14px 0 0 0 !important;
-    max-width: 100% !important;
-    font-weight: 500 !important;
+  .vs-section-{{ section.id }} .heading-glow { 
+    width: 65px !important; 
+    height: 4.5px !important; 
+    border-radius: 999px !important;
+    margin: 0 !important;
+    background: linear-gradient(90deg, #ff9d00, #ffc400, #1eb759) !important;
+    box-shadow: 0 0 14px rgba(255,170,0,.35) !important;
+  }
+  .vs-section-{{ section.id }} .heading-sub-tag {
+    font-size: 0.85rem !important;
+    font-weight: 700 !important;
+    color: #EC5C0A !important;
+    letter-spacing: 0.2px !important;
+    line-height: 1 !important;
   }
 
-  /* EQUAL 50-50 DESKTOP FLEX SPLIT */
+  /* TOP-ALIGNED DESKTOP FLEX SPLIT */
   .vs-desktop-flex-wrap-{{ section.id }} {
     display: flex !important;
     flex-direction: row !important;
-    align-items: stretch !important;
+    align-items: flex-start !important;
     justify-content: space-between !important;
-    gap: 48px !important;
+    gap: 46px !important;
     margin-bottom: 50px !important;
     width: 100% !important;
   }
 
-  /* LEFT COLUMN: HEADER + TIMELINE (56% WIDTH) */
+  /* LEFT COLUMN: HEADER + TIMELINE (56% WIDTH, TOP ALIGNED) */
   .vs-left-col-{{ section.id }} {
     flex: 0 0 56% !important;
     max-width: 630px !important;
@@ -329,28 +336,30 @@
     display: flex !important;
     flex-direction: column !important;
     justify-content: flex-start !important;
+    align-items: flex-start !important;
     padding: 0 !important;
     margin: 0 !important;
   }
 
-  /* TIMELINE IN LEFT COLUMN */
+  /* TIMELINE PULLED HIGH UP IN LEFT COLUMN */
   .vs-section-{{ section.id }} .timeline {
     width: 100% !important;
     max-width: 100% !important;
     position: relative !important;
     padding-left: 0 !important;
+    margin-top: 0 !important;
   }
 
-  /* RIGHT COLUMN: CLEAN BORDERLESS TRANSPARENT IMAGE SHOWCASE */
+  /* RIGHT COLUMN: TOP ALIGNED IMAGE SHOWCASE */
   .vs-right-col-{{ section.id }} {
     flex: 0 0 42% !important;
     max-width: 460px !important;
     width: 42% !important;
     display: flex !important;
     flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-    padding: 0 !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    padding-top: 4px !important;
     margin: 0 !important;
   }
 
@@ -813,10 +822,10 @@
               <span class="bottom">{{ section.settings.heading_bottom }}</span>
             {%- endif -%}
           </h1>
-          <div class="heading-glow"></div>
-          {%- if section.settings.heading_sub != blank -%}
-            <p>{{ section.settings.heading_sub }}</p>
-          {%- endif -%}
+          <div class="heading-glow-row">
+            <div class="heading-glow"></div>
+            <span class="heading-sub-tag">India’s Premium Energy-Tech Innovation</span>
+          </div>
         </div>
 
         <div class="timeline">
