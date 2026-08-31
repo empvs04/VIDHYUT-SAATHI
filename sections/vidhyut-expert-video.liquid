@@ -3,11 +3,11 @@
 
   /* ===========================================================================
      SECTION 3: VIDHYUT EXPERT VIDEO SHOWCASE (DESKTOP ONLY)
-     VIDHYUT SAATHI THEME & HIGH OVERLAPPING CARDS (-185px PUSHED UP)
+     NO FEATURE BORDER, CLEAN TICK POINTS & DOUBLE OVERLAP CARDS
      =========================================================================== */
   .vs-desktop-video-section {
     display: block !important;
-    padding: 65px 0 85px 0 !important;
+    padding: 60px 0 70px 0 !important;
     background: linear-gradient(180deg, #FFFDF9 0%, #FAF6EE 50%, #FFFDF9 100%) !important;
     position: relative !important;
     overflow: visible !important;
@@ -33,14 +33,14 @@
     width: 100% !important;
   }
 
-  /* 2-COLUMN TOP GRID (TOP ALIGNED, EXPANDED PADDING FOR HIGHER CARDS) */
+  /* 2-COLUMN TOP GRID */
   .vs-video-top-grid {
     display: grid !important;
     grid-template-columns: 1fr 1fr !important;
     gap: 48px !important;
     align-items: flex-start !important;
     position: relative !important;
-    padding-bottom: 140px !important;
+    padding-bottom: 210px !important;
   }
 
   /* LEFT COLUMN: TALL ROUNDED VIDEO THUMBNAIL CARD */
@@ -49,7 +49,7 @@
     border-radius: 22px !important;
     overflow: hidden !important;
     width: 100% !important;
-    height: 480px !important;
+    height: 510px !important;
     background: #0F172A !important;
     cursor: pointer !important;
     box-shadow: 0 16px 45px rgba(15, 23, 42, 0.12), 0 4px 15px rgba(236, 92, 10, 0.08) !important;
@@ -153,56 +153,63 @@
     -webkit-text-fill-color: transparent !important;
   }
 
-  /* FEATURE SECTION WITH BRAND THEME ACCENT */
+  /* BORDERLESS FEATURE SECTION WITH POINTS */
   .vs-video-feature-section {
-    display: flex !important;
-    align-items: flex-start !important;
-    gap: 14px !important;
-    margin-bottom: 20px !important;
-    background: #FFF8F4 !important;
-    border: 1px solid #FFE0D0 !important;
-    padding: 14px 16px !important;
-    border-radius: 14px !important;
-    max-width: 480px !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin-bottom: 22px !important;
+    max-width: 500px !important;
   }
 
-  .vs-feature-icon-box {
-    width: 42px !important;
-    height: 42px !important;
-    min-width: 42px !important;
+  .vs-feature-title-row {
     display: flex !important;
     align-items: center !important;
-    justify-content: center !important;
-    color: #EC5C0A !important;
-    background: #FFFFFF !important;
-    border-radius: 10px !important;
-    box-shadow: 0 4px 12px rgba(236, 92, 10, 0.12) !important;
-    margin-top: 2px !important;
-  }
-
-  .vs-feature-icon-box svg {
-    width: 22px !important;
-    height: 22px !important;
-    display: block !important;
-  }
-
-  .vs-feature-text-block {
-    flex: 1 !important;
+    gap: 10px !important;
+    margin-bottom: 10px !important;
   }
 
   .vs-feature-title {
-    margin: 0 0 4px 0 !important;
-    font-size: 0.95rem !important;
+    margin: 0 !important;
+    font-size: 1.02rem !important;
     font-weight: 800 !important;
     color: #0F172A !important;
     line-height: 1.3 !important;
   }
 
-  .vs-feature-desc {
+  /* BULLET POINTS LIST (NO BORDER) */
+  .vs-feature-points-list {
+    list-style: none !important;
+    padding: 0 !important;
     margin: 0 !important;
-    font-size: 0.82rem !important;
-    color: #64748B !important;
-    line-height: 1.5 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+
+  .vs-feature-point-item {
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+    font-size: 0.85rem !important;
+    color: #475569 !important;
+    line-height: 1.45 !important;
+  }
+
+  .vs-point-bullet {
+    width: 18px !important;
+    height: 18px !important;
+    min-width: 18px !important;
+    border-radius: 50% !important;
+    background: #FFF3EB !important;
+    border: 1px solid #EC5C0A !important;
+    color: #EC5C0A !important;
+    font-size: 0.7rem !important;
+    font-weight: 900 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-top: 1px !important;
   }
 
   /* BRAND ORANGE GRADIENT CTA BUTTON */
@@ -229,14 +236,14 @@
     color: #FFFFFF !important;
   }
 
-  /* 6 COMPACT CARDS PUSHED HIGH UP (-185px OVERLAP) */
+  /* 6 COMPACT CARDS PUSHED DOUBLE HIGH UP (-280px OVERLAP) */
   .vs-floating-cards-row {
     display: grid !important;
     grid-template-columns: repeat(6, 1fr) !important;
     gap: 14px !important;
     width: 100% !important;
     max-width: 1080px !important;
-    margin: -185px auto 0 auto !important;
+    margin: -280px auto 0 auto !important;
     position: relative !important;
     z-index: 25 !important;
   }
@@ -244,7 +251,7 @@
   .vs-nav-card-item {
     background: #FFFFFF !important;
     border-radius: 14px !important;
-    box-shadow: 0 12px 32px rgba(15, 23, 42, 0.09), 0 2px 8px rgba(0, 0, 0, 0.03) !important;
+    box-shadow: 0 14px 36px rgba(15, 23, 42, 0.1), 0 2px 8px rgba(0, 0, 0, 0.03) !important;
     border: 1.5px solid rgba(241, 245, 249, 0.9) !important;
     display: flex !important;
     flex-direction: column !important;
@@ -259,7 +266,7 @@
 
   .vs-nav-card-item:hover {
     transform: translateY(-6px) !important;
-    box-shadow: 0 18px 40px rgba(236, 92, 10, 0.18) !important;
+    box-shadow: 0 20px 45px rgba(236, 92, 10, 0.22) !important;
     border-color: #EC5C0A !important;
   }
 
@@ -388,7 +395,7 @@
       <!-- 2-COLUMN TOP GRID -->
       <div class="vs-video-top-grid">
         
-        <!-- LEFT COLUMN: VIDEO THUMBNAIL (ROUNDED 480px TALL CARD) -->
+        <!-- LEFT COLUMN: VIDEO THUMBNAIL (ROUNDED 510px TALL CARD) -->
         <div class="vs-video-thumb-card" onclick="vsOpenVideoModal('{{ active_video_target | escape }}')">
           {%- if section.settings.thumbnail != blank -%}
             <img src="{{ section.settings.thumbnail | image_url: width: 1000 }}" alt="{{ section.settings.headline_text | escape }}" class="vs-video-thumb-img" loading="lazy">
@@ -412,19 +419,27 @@
             Choose Your <span>Favorite Energy Plan</span>
           </h2>
 
-          <!-- FEATURE SECTION: ICON ON LEFT, TEXT ON RIGHT -->
+          <!-- BORDERLESS FEATURE SECTION WITH POINTS -->
           <div class="vs-video-feature-section">
-            <div class="vs-feature-icon-box">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#EC5C0A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="3" width="18" height="18" rx="3" ry="3"></rect>
-                <circle cx="8.5" cy="8.5" r="1.5"></circle>
-                <polyline points="21 15 16 10 5 21"></polyline>
-              </svg>
-            </div>
-            <div class="vs-feature-text-block">
+            <div class="vs-feature-title-row">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#EC5C0A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
               <h4 class="vs-feature-title">{{ section.settings.feature_title | default: "We Suggest You The Best Energy Optimization Solution" }}</h4>
-              <p class="vs-feature-desc">{{ section.settings.feature_desc | default: "Vidhyut Saathi Energy Savers Private Limited is specialized in electricity load optimization & 20-30% power saving solutions for over 500+ commercial & residential clients across India." }}</p>
             </div>
+
+            <ul class="vs-feature-points-list">
+              <li class="vs-feature-point-item">
+                <span class="vs-point-bullet">✓</span>
+                <span><strong>Vidhyut Saathi Energy Savers Pvt. Ltd.</strong></span>
+              </li>
+              <li class="vs-feature-point-item">
+                <span class="vs-point-bullet">✓</span>
+                <span>Specialized in electricity load optimization & <strong>20-30% power saving solutions</strong></span>
+              </li>
+              <li class="vs-feature-point-item">
+                <span class="vs-point-bullet">✓</span>
+                <span>Trusted by over <strong>500+ commercial & residential clients</strong> across India</span>
+              </li>
+            </ul>
           </div>
 
           <!-- BRAND ORANGE CTA BUTTON -->
@@ -436,7 +451,7 @@
 
       </div>
 
-      <!-- 6 COMPACT CARDS PUSHED HIGH UP (-185px OVERLAP) -->
+      <!-- 6 COMPACT CARDS PUSHED DOUBLE HIGH UP (-280px OVERLAP) -->
       <div class="vs-floating-cards-row">
         {%- for block in section.blocks -%}
           <a href="{{ block.settings.card_link | default: '#' }}" class="vs-nav-card-item" {{ block.shopify_attributes }}>
