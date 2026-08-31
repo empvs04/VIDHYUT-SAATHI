@@ -1,4 +1,4 @@
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
@@ -15,104 +15,162 @@
     font-family: 'Plus Jakarta Sans', sans-serif;
   }
 
-  /* --- CONTAINER --- */
+  /* --- LUCRATIVE GLASSMORPHIC SECTION WRAPPER --- */
   #shopify-section-{{ section.id }} .network-section-clean {
     position: relative;
-    background: var(--bg-white); 
-    color: var(--navy);      
+    background: linear-gradient(135deg, #0B132B 0%, #1C2541 50%, #0B132B 100%);
+    color: #FFFFFF;      
     padding: {{ section.settings.padding_top }}px 0 0 0; 
     text-align: center;
     overflow: hidden;
   }
 
+  /* Ambient Radial Glow Background Accents */
+  #shopify-section-{{ section.id }} .network-section-clean::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(236, 92, 10, 0.25) 0%, rgba(0, 0, 0, 0) 70%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
   #shopify-section-{{ section.id }} .network-content-wrapper {
+    position: relative;
+    z-index: 2;
     padding: 0 20px 60px 20px;
-    max-width: 1000px;
+    max-width: 1140px;
     margin: 0 auto;
   }
 
-  /* --- TEXT STYLES --- */
+  /* --- LUCRATIVE BADGE & TITLE --- */
   #shopify-section-{{ section.id }} .network-subtitle {
-    color: var(--gold-main); 
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 8px 22px;
+    border-radius: 50px;
+    background: rgba(236, 92, 10, 0.12);
+    border: 1.5px solid rgba(236, 92, 10, 0.45);
+    color: #FF9A00;
+    font-size: 0.82rem;
     font-weight: 800;
-    letter-spacing: 2px;
-    margin-bottom: 15px;
-    font-size: 0.9rem;
+    letter-spacing: 1.5px;
+    margin-bottom: 22px;
     text-transform: uppercase;
+    box-shadow: 0 0 20px rgba(236, 92, 10, 0.2);
   }
   
   #shopify-section-{{ section.id }} .network-title {
-    font-size: 3.5rem;
+    font-size: 3.2rem;
     font-weight: 900;
     margin-bottom: 50px;
-    line-height: 1.1;
-    color: var(--navy);
+    line-height: 1.2;
+    color: #FFFFFF;
+    text-align: center;
   }
 
-  #shopify-section-{{ section.id }} .net-text, 
+  #shopify-section-{{ section.id }} .net-text { 
+    color: #FFFFFF;
+    font-weight: 800;
+  }
+  
   #shopify-section-{{ section.id }} .net-number { 
-    display: inline; 
+    display: inline-block;
+    font-size: 4rem;
+    font-weight: 900;
+    line-height: 1;
+    margin: 0 8px;
+    background: linear-gradient(135deg, #FF9A00 0%, #EC5C0A 50%, #FF5500 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 8px 22px rgba(236, 92, 10, 0.45));
   }
 
-  /* --- STATS GRID --- */
+  /* --- 3D STATS CARDS GRID --- */
   #shopify-section-{{ section.id }} .stats-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+    gap: 32px;
     margin-bottom: 20px;
   }
   
   #shopify-section-{{ section.id }} .stat-item {
-    background: var(--grid-bg); 
-    border: 1px solid var(--grid-border);
-    padding: 30px;
-    border-radius: 20px;
-    transition: transform 0.3s;
-    transform: translateZ(0);
-    will-change: transform;
+    background: rgba(255, 255, 255, 0.05); 
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1.5px solid rgba(236, 92, 10, 0.28);
+    border-top: 5px solid #EC5C0A;
+    padding: 36px 24px;
+    border-radius: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
   }
   
   #shopify-section-{{ section.id }} .stat-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transform: translateY(-8px) scale(1.02);
+    border-color: #EC5C0A;
+    box-shadow: 0 28px 55px rgba(236, 92, 10, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
   }
 
   #shopify-section-{{ section.id }} .stat-icon { 
-    font-size: 2.5rem; 
-    color: var(--gold-main); 
-    margin-bottom: 15px; 
+    width: 64px;
+    height: 64px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, rgba(236, 92, 10, 0.25) 0%, rgba(255, 154, 0, 0.1) 100%);
+    border: 1.5px solid rgba(236, 92, 10, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem; 
+    color: #FF9A00; 
+    margin-bottom: 18px; 
+    box-shadow: 0 8px 20px rgba(236, 92, 10, 0.2);
   }
   
   #shopify-section-{{ section.id }} .stat-num { 
     font-size: 3rem; 
-    font-weight: 800; 
+    font-weight: 900; 
     display: inline-block; 
-    color: var(--navy); 
+    color: #10B981; 
     line-height: 1; 
     font-variant-numeric: tabular-nums; 
     font-feature-settings: "tnum";
-    transform: translateZ(0); 
-    will-change: contents; 
+    margin-bottom: 8px;
+    filter: drop-shadow(0 4px 15px rgba(16, 185, 129, 0.3));
   }
   
   #shopify-section-{{ section.id }} .stat-label { 
-    font-size: 0.9rem; 
-    color: var(--text-muted); 
-    font-weight: 700; 
+    font-size: 0.88rem; 
+    color: #CBD5E1; 
+    font-weight: 800; 
     text-transform: uppercase; 
-    margin-top: 5px; 
+    letter-spacing: 1px;
   }
 
-  /* --- MARQUEE STRIP (SEAMLESS FLEXBOX) --- */
+  /* --- MARQUEE STRIP (DARK GRADIENT ACCENT) --- */
   #shopify-section-{{ section.id }} .network-marquee-strip {
-    background: var(--marquee-bg); 
-    color: var(--marquee-text);
-    padding: 15px 0;
+    background: #070D1E; 
+    color: #FFFFFF;
+    padding: 16px 0;
     overflow: hidden;
     position: relative;
-    border-top: 4px solid var(--gold-main); 
+    border-top: 2px solid rgba(236, 92, 10, 0.4); 
     display: flex;
     white-space: nowrap;
+    z-index: 2;
   }
   
   #shopify-section-{{ section.id }} .marquee-track {
@@ -131,148 +189,45 @@
   #shopify-section-{{ section.id }} .marquee-item {
     display: flex;
     align-items: center;
-    font-weight: 700;
-    font-size: 0.9rem;
+    font-weight: 800;
+    font-size: 0.88rem;
     margin-right: 60px; 
     text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--marquee-text);
+    letter-spacing: 1.2px;
+    color: #E2E8F0;
   }
 
   #shopify-section-{{ section.id }} .live-dot {
     display: inline-block;
-    width: 8px; 
-    height: 8px;
-    background: var(--marquee-dot); 
+    width: 9px; 
+    height: 9px;
+    background: #10B981; 
     border-radius: 50%;
-    margin-right: 8px;
-    box-shadow: 0 0 8px var(--marquee-dot);
+    margin-right: 10px;
+    box-shadow: 0 0 10px #10B981;
     animation: blink-{{ section.id }} 1.5s infinite;
   }
 
   @keyframes blink-{{ section.id }} { 
-    0% { opacity: 1; } 
-    50% { opacity: 0.4; } 
-    100% { opacity: 1; } 
+    0% { opacity: 1; transform: scale(1); } 
+    50% { opacity: 0.4; transform: scale(0.8); } 
+    100% { opacity: 1; transform: scale(1); } 
   }
   
   @keyframes scrollNetwork-{{ section.id }} {
     0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); } /* Perfectly seamless because we duplicated the track */
+    100% { transform: translateX(-50%); }
   }
 
-  /* --- DESKTOP LUCRATIVE ALIGNMENT & STYLING --- */
-  @media (min-width: 769px) {
-    #shopify-section-{{ section.id }} .network-section-clean {
-      padding: 60px 0 0 0 !important;
-    }
-
-    #shopify-section-{{ section.id }} .network-content-wrapper {
-      padding: 0 24px 60px 24px !important;
-      max-width: 1140px !important;
-      margin: 0 auto !important;
-    }
-
-    #shopify-section-{{ section.id }} .network-subtitle {
-      display: inline-flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-      gap: 8px !important;
-      padding: 6px 20px !important;
-      border-radius: 50px !important;
-      background: linear-gradient(135deg, #FFF3EB 0%, #FFE8D6 100%) !important;
-      border: 1.5px solid rgba(236, 92, 10, 0.4) !important;
-      color: #EC5C0A !important;
-      font-size: 0.85rem !important;
-      font-weight: 800 !important;
-      letter-spacing: 1.2px !important;
-      margin: 0 auto 20px auto !important;
-      box-shadow: 0 4px 15px rgba(236, 92, 10, 0.12) !important;
-      text-transform: uppercase !important;
-    }
-
-    #shopify-section-{{ section.id }} .network-title {
-      font-size: 3rem !important;
-      font-weight: 900 !important;
-      margin-bottom: 45px !important;
-      line-height: 1.2 !important;
-      color: #0F172A !important;
-      text-align: center !important;
-    }
-
-    #shopify-section-{{ section.id }} .net-text {
-      color: #0F172A !important;
-      font-weight: 800 !important;
-    }
-
-    #shopify-section-{{ section.id }} .net-number {
-      font-size: 3.6rem !important;
-      background: linear-gradient(135deg, #EC5C0A 0%, #FF9A00 100%) !important;
-      -webkit-background-clip: text !important;
-      -webkit-text-fill-color: transparent !important;
-      font-weight: 900 !important;
-      filter: drop-shadow(0 6px 16px rgba(236, 92, 10, 0.22)) !important;
-      margin: 0 8px !important;
-    }
-
-    #shopify-section-{{ section.id }} .stats-grid {
-      display: grid !important;
-      grid-template-columns: repeat(3, 1fr) !important;
-      gap: 32px !important;
-      margin-bottom: 20px !important;
-      align-items: stretch !important;
-    }
-
-    #shopify-section-{{ section.id }} .stat-item {
-      background: linear-gradient(145deg, #FFFFFF 0%, #FFFDF8 100%) !important;
-      border: 1.5px solid rgba(236, 92, 10, 0.22) !important;
-      border-top: 5px solid #EC5C0A !important;
-      border-radius: 20px !important;
-      padding: 32px 24px !important;
-      display: flex !important;
-      flex-direction: column !important;
-      align-items: center !important;
-      justify-content: center !important;
-      text-align: center !important;
-      box-shadow: 0 14px 35px rgba(236, 92, 10, 0.08), 0 4px 12px rgba(0, 0, 0, 0.02) !important;
-      transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease !important;
-    }
-
-    #shopify-section-{{ section.id }} .stat-item:hover {
-      transform: translateY(-6px) !important;
-      border-color: rgba(236, 92, 10, 0.5) !important;
-      box-shadow: 0 20px 42px rgba(236, 92, 10, 0.18) !important;
-    }
-
-    #shopify-section-{{ section.id }} .stat-icon {
-      font-size: 2.6rem !important;
-      color: #EC5C0A !important;
-      margin-bottom: 12px !important;
-      filter: drop-shadow(0 4px 12px rgba(236, 92, 10, 0.3)) !important;
-    }
-
-    #shopify-section-{{ section.id }} .stat-num {
-      font-size: 2.8rem !important;
-      font-weight: 900 !important;
-      color: #007B3E !important;
-      margin-bottom: 6px !important;
-      line-height: 1 !important;
-    }
-
-    #shopify-section-{{ section.id }} .stat-label {
-      font-size: 0.85rem !important;
-      font-weight: 800 !important;
-      color: #475569 !important;
-      line-height: 1.3 !important;
-      text-transform: uppercase !important;
-      letter-spacing: 0.8px !important;
-    }
-  }
-
-  /* --- MOBILE FIXED (ULTRA-LUCRATIVE & PERFECTLY ALIGNED) --- */
+  /* --- MOBILE FIXES (100% ORIGINAL CLEAN LIGHT MOBILE THEME) --- */
   @media (max-width: 768px) {
     #shopify-section-{{ section.id }} .network-section-clean { 
+      background: var(--bg-white, #ffffff) !important;
+      color: #0f172a !important;
       padding-top: 25px !important; 
+    }
+    #shopify-section-{{ section.id }} .network-section-clean::before {
+      display: none !important;
     }
 
     #shopify-section-{{ section.id }} .network-content-wrapper {
@@ -305,6 +260,7 @@
       justify-content: center !important;
       gap: 2px !important; 
       line-height: 1.25 !important;
+      color: #0f172a !important;
       text-align: center !important;
     }
 
@@ -351,6 +307,11 @@
     }
     
     #shopify-section-{{ section.id }} .stat-icon { 
+      width: auto !important;
+      height: auto !important;
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
       font-size: 1.6rem !important; 
       color: #EC5C0A !important;
       margin-bottom: 6px !important; 
@@ -363,6 +324,7 @@
       color: #007B3E !important;
       margin-bottom: 4px !important;
       line-height: 1 !important;
+      filter: none !important;
     }
     
     #shopify-section-{{ section.id }} .stat-label { 
