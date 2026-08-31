@@ -240,12 +240,51 @@
       transition: all 0.3s ease !important;
       cursor: pointer !important;
     }
-    .vs-features-dots .dot.active {
-      width: 28px !important;
-      border-radius: 999px !important;
-      background: linear-gradient(90deg, #f7941d, #3ead47) !important;
-      box-shadow: 0 3px 10px rgba(247, 148, 29, 0.35) !important;
-    }
+  .vs-features-carousel-box {
+    position: relative !important;
+    width: 100% !important;
+    max-width: 1240px !important;
+    margin: 0 auto !important;
+    padding: 0 55px !important;
+    box-sizing: border-box !important;
+  }
+
+  .vs-features-arrow {
+    position: absolute !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    width: 46px !important;
+    height: 46px !important;
+    border-radius: 50% !important;
+    background: #FFFFFF !important;
+    color: #EC5C0A !important;
+    border: 2px solid rgba(236, 92, 10, 0.25) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    z-index: 25 !important;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.14) !important;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    font-size: 1.1rem !important;
+  }
+
+  .vs-features-arrow:hover {
+    background: linear-gradient(135deg, #EC5C0A 0%, #FF9A00 100%) !important;
+    color: #FFFFFF !important;
+    border-color: #EC5C0A !important;
+    transform: translateY(-50%) scale(1.12) !important;
+    box-shadow: 0 12px 30px rgba(236, 92, 10, 0.38) !important;
+  }
+
+  .vs-features-prev { left: 4px !important; }
+  .vs-features-next { right: 4px !important; }
+
+  @media screen and (max-width: 768px) {
+    .vs-features-carousel-box { padding: 0 10px !important; }
+    .vs-features-arrow { width: 38px !important; height: 38px !important; font-size: 0.95rem !important; }
+    .vs-features-prev { left: 0px !important; }
+    .vs-features-next { right: 0px !important; }
   }
 </style>
 
@@ -255,7 +294,10 @@
     <div class="vs-divider"></div>
   </div>
 
-  <div class="vs-features-grid" id="vs-features-container">
+  <div class="vs-features-carousel-box">
+    <button class="vs-features-arrow vs-features-prev" onclick="document.getElementById('vs-features-container').scrollBy({left: -320, behavior: 'smooth'})" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+    
+    <div class="vs-features-grid" id="vs-features-container">
     {% if section.blocks.size > 0 %}
       {% for block in section.blocks %}
         
@@ -335,7 +377,8 @@
         <h3>Earn ₹5-6 Lakhs/Month</h3>
         <p>Join our Franchise model! Become a business partner and tap into a highly profitable, fast-growing energy-saving market.</p>
       </a>
-    {% endif %}
+  </div>
+    <button class="vs-features-arrow vs-features-next" onclick="document.getElementById('vs-features-container').scrollBy({left: 320, behavior: 'smooth'})" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
   </div>
 
   <!-- ACTIVE DOT PAGINATION (MOBILE ONLY) -->
