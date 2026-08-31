@@ -319,17 +319,17 @@
   .vs-desktop-flex-wrap-{{ section.id }} {
     display: flex !important;
     flex-direction: row !important;
-    align-items: center !important;
+    align-items: flex-start !important;
     justify-content: space-between !important;
     gap: 40px !important;
     margin-bottom: 50px !important;
     width: 100% !important;
   }
 
-  /* LEFT COLUMN: TIMELINE */
+  /* LEFT COLUMN: HEADER + TIMELINE */
   .vs-left-col-{{ section.id }} {
-    flex: 0 0 52% !important;
-    max-width: 560px !important;
+    flex: 0 0 56% !important;
+    max-width: 630px !important;
     display: flex !important;
     flex-direction: column !important;
     padding: 0 !important;
@@ -346,12 +346,12 @@
 
   /* RIGHT COLUMN: DESKTOP IMAGE */
   .vs-right-col-{{ section.id }} {
-    flex: 0 0 44% !important;
-    max-width: 470px !important;
+    flex: 0 0 40% !important;
+    max-width: 450px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    padding: 0 !important;
+    padding-top: 15px !important;
     margin: 0 !important;
   }
   .vs-grid-title-{{ section.id }} {
@@ -707,26 +707,27 @@
 
 <section class="vs-section-{{ section.id }}">
   <div class="container">
-    
-    <!-- TOP CENTERED HEADING BLOCK -->
-    <div class="heading">
-      <h1>
-        {%- if section.settings.heading_top != blank -%}
-          <span class="top">{{ section.settings.heading_top }}</span>
-        {%- endif -%}
-        {%- if section.settings.heading_bottom != blank -%}
-          <span class="bottom">{{ section.settings.heading_bottom }}</span>
-        {%- endif -%}
-      </h1>
-      <div class="heading-glow"></div>
-      {%- if section.settings.heading_sub != blank -%}
-        <p>{{ section.settings.heading_sub }}</p>
-      {%- endif -%}
-    </div>
 
-    <!-- 2-COLUMN DESKTOP FLEX CONTENT (LEFT: TIMELINE, RIGHT: IMAGE) -->
+    <!-- 2-COLUMN DESKTOP FLEX CONTENT (LEFT: HEADER + TIMELINE, RIGHT: IMAGE) -->
     <div class="vs-desktop-flex-wrap-{{ section.id }}">
       <div class="vs-left-col-{{ section.id }}">
+        
+        <!-- HEADING BLOCK ALIGNED INSIDE LEFT COLUMN -->
+        <div class="heading">
+          <h1>
+            {%- if section.settings.heading_top != blank -%}
+              <span class="top">{{ section.settings.heading_top }}</span>
+            {%- endif -%}
+            {%- if section.settings.heading_bottom != blank -%}
+              <span class="bottom">{{ section.settings.heading_bottom }}</span>
+            {%- endif -%}
+          </h1>
+          <div class="heading-glow"></div>
+          {%- if section.settings.heading_sub != blank -%}
+            <p>{{ section.settings.heading_sub }}</p>
+          {%- endif -%}
+        </div>
+
         <div class="timeline">
           <div class="timeline-line"></div>
 
