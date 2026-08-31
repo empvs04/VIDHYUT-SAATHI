@@ -3,11 +3,11 @@
 
   /* ===========================================================================
      SECTION 3: VIDHYUT EXPERT VIDEO SHOWCASE (DESKTOP ONLY)
-     MINIMIZED FONTS, BULLET POINTS, FLUSH LEFT VIDEO & ELEGANT OVERLAP CARDS
+     EXACT REPLICA DESIGN: 100% MATCHING REFERENCE SCREENSHOT LAYOUT
      =========================================================================== */
   .vs-desktop-video-section {
     display: block !important;
-    padding: 50px 0 80px 0 !important;
+    padding: 60px 0 80px 0 !important;
     background: #FFFFFF !important;
     position: relative !important;
     overflow: visible !important;
@@ -22,7 +22,7 @@
   }
 
   .vs-desktop-video-container {
-    max-width: 1140px !important;
+    max-width: 1180px !important;
     margin: 0 auto !important;
     padding: 0 24px !important;
     position: relative !important;
@@ -33,29 +33,27 @@
     width: 100% !important;
   }
 
-  /* 2-COLUMN TOP GRID (FLUSH LEFT IMAGE) */
+  /* 2-COLUMN TOP GRID (ALIGNED TOP, EXPANDED HEIGHT) */
   .vs-video-top-grid {
     display: grid !important;
-    grid-template-columns: 0.95fr 1.05fr !important;
-    gap: 36px !important;
-    align-items: center !important;
+    grid-template-columns: 1.05fr 0.95fr !important;
+    gap: 48px !important;
+    align-items: flex-start !important;
     position: relative !important;
-    padding-bottom: 40px !important;
+    padding-bottom: 95px !important;
   }
 
-  /* LEFT COLUMN: VIDEO THUMBNAIL CARD (ALIGN 100% FLUSH TO LEFT) */
+  /* LEFT COLUMN: TALL ROUNDED VIDEO CARD (EXACT MATCH TO REFERENCE IMAGE) */
   .vs-video-thumb-card {
     position: relative !important;
-    border-radius: 16px !important;
+    border-radius: 20px !important;
     overflow: hidden !important;
     width: 100% !important;
-    aspect-ratio: 16 / 10.2 !important;
+    height: 450px !important;
     background: #0F172A !important;
     cursor: pointer !important;
-    box-shadow: 0 14px 40px rgba(15, 23, 42, 0.12), 0 4px 15px rgba(236, 92, 10, 0.08) !important;
-    border: 2px solid #FFFFFF !important;
-    margin-left: 0 !important;
-    padding-left: 0 !important;
+    box-shadow: 0 12px 35px rgba(15, 23, 42, 0.08) !important;
+    border: 1px solid rgba(0, 0, 0, 0.04) !important;
   }
 
   .vs-video-thumb-img {
@@ -67,13 +65,13 @@
   }
 
   .vs-video-thumb-card:hover .vs-video-thumb-img {
-    transform: scale(1.04) !important;
+    transform: scale(1.03) !important;
   }
 
   .vs-video-thumb-overlay {
     position: absolute !important;
     inset: 0 !important;
-    background: linear-gradient(180deg, rgba(15, 23, 42, 0.08) 0%, rgba(15, 23, 42, 0.3) 100%) !important;
+    background: linear-gradient(180deg, rgba(15, 23, 42, 0.02) 0%, rgba(15, 23, 42, 0.18) 100%) !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
@@ -81,22 +79,22 @@
   }
 
   .vs-video-thumb-card:hover .vs-video-thumb-overlay {
-    background: rgba(15, 23, 42, 0.18) !important;
+    background: rgba(15, 23, 42, 0.12) !important;
   }
 
-  /* BRAND ORANGE PULSING CIRCULAR PLAY BUTTON */
+  /* VIBRANT BLUE CIRCULAR PLAY BUTTON (EXACT MATCH TO BLUE PLAY ICON IN REFERENCE) */
   .vs-play-btn-circle {
-    width: 58px !important;
-    height: 58px !important;
+    width: 64px !important;
+    height: 64px !important;
     border-radius: 50% !important;
-    background: linear-gradient(135deg, #EC5C0A 0%, #FF9A00 100%) !important;
+    background: #0088FF !important;
     color: #FFFFFF !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    box-shadow: 0 8px 25px rgba(236, 92, 10, 0.5) !important;
+    box-shadow: 0 8px 25px rgba(0, 136, 255, 0.45) !important;
     transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
-    padding-left: 3px !important;
+    padding-left: 4px !important;
     position: relative !important;
   }
 
@@ -105,84 +103,77 @@
     position: absolute !important;
     inset: -7px !important;
     border-radius: 50% !important;
-    background: rgba(236, 92, 10, 0.35) !important;
+    background: rgba(0, 136, 255, 0.3) !important;
     animation: vsPulsePlay 2s infinite !important;
     z-index: -1 !important;
   }
 
   @keyframes vsPulsePlay {
     0% { transform: scale(0.95); opacity: 0.8; }
-    50% { transform: scale(1.25); opacity: 0.15; }
+    50% { transform: scale(1.22); opacity: 0.15; }
     100% { transform: scale(0.95); opacity: 0.8; }
   }
 
   .vs-video-thumb-card:hover .vs-play-btn-circle {
     transform: scale(1.12) !important;
-    box-shadow: 0 12px 35px rgba(236, 92, 10, 0.7) !important;
+    box-shadow: 0 12px 35px rgba(0, 136, 255, 0.65) !important;
   }
 
-  /* RIGHT COLUMN: COMPACT & MINIMIZED CONTENT */
+  /* RIGHT COLUMN: EXACT CONTENT ALIGNMENT & FONTS */
   .vs-video-content-col {
     display: flex !important;
     flex-direction: column !important;
-    justify-content: center !important;
+    justify-content: flex-start !important;
     position: relative !important;
-    padding: 0 !important;
+    padding-top: 15px !important;
   }
 
   .vs-script-subtitle {
     font-family: 'Caveat', cursive !important;
-    font-size: 1.45rem !important;
-    color: #EC5C0A !important;
+    font-size: 1.65rem !important;
+    color: #0088FF !important;
     margin-bottom: 2px !important;
-    line-height: 1.1 !important;
+    line-height: 1.15 !important;
     letter-spacing: 0.5px !important;
     font-weight: 700 !important;
   }
 
   .vs-video-main-heading {
-    font-size: 1.85rem !important;
+    font-size: 2.1rem !important;
     font-weight: 800 !important;
-    color: #0F172A !important;
-    line-height: 1.2 !important;
-    margin: 0 0 12px 0 !important;
+    color: #1E293B !important;
+    line-height: 1.25 !important;
+    margin: 0 0 20px 0 !important;
     letter-spacing: -0.4px !important;
   }
 
   .vs-video-main-heading span {
-    background: linear-gradient(135deg, #EC5C0A 0%, #FF9A00 100%) !important;
-    -webkit-background-clip: text !important;
-    -webkit-text-fill-color: transparent !important;
+    color: #1E293B !important;
   }
 
-  /* SLEEK FEATURE SECTION WITH BULLET POINTS */
+  /* FEATURE SECTION: ICON ON LEFT, TEXT ON RIGHT (EXACT MATCH TO REFERENCE) */
   .vs-video-feature-section {
     display: flex !important;
     align-items: flex-start !important;
-    gap: 12px !important;
-    margin-bottom: 14px !important;
-    background: #FFF8F4 !important;
-    border: 1px solid #FFE0D0 !important;
-    padding: 12px 14px !important;
-    border-radius: 12px !important;
+    gap: 16px !important;
+    margin-bottom: 24px !important;
+    max-width: 480px !important;
   }
 
   .vs-feature-icon-box {
-    width: 36px !important;
-    height: 36px !important;
-    min-width: 36px !important;
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    color: #EC5C0A !important;
-    background: #FFFFFF !important;
-    border-radius: 8px !important;
-    box-shadow: 0 3px 10px rgba(236, 92, 10, 0.12) !important;
+    color: #475569 !important;
+    margin-top: 2px !important;
   }
 
   .vs-feature-icon-box svg {
-    width: 20px !important;
-    height: 20px !important;
+    width: 100% !important;
+    height: 100% !important;
     display: block !important;
   }
 
@@ -192,117 +183,90 @@
 
   .vs-feature-title {
     margin: 0 0 6px 0 !important;
-    font-size: 0.88rem !important;
-    font-weight: 800 !important;
-    color: #0F172A !important;
-    line-height: 1.25 !important;
+    font-size: 0.95rem !important;
+    font-weight: 700 !important;
+    color: #1E293B !important;
+    line-height: 1.35 !important;
   }
 
-  /* BULLET POINTS LIST FOR CONCISE CONTENT */
-  .vs-feature-points-list {
-    list-style: none !important;
-    padding: 0 !important;
+  .vs-feature-desc {
     margin: 0 !important;
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 4px !important;
+    font-size: 0.82rem !important;
+    color: #64748B !important;
+    line-height: 1.55 !important;
   }
 
-  .vs-feature-point-item {
-    display: flex !important;
-    align-items: center !important;
-    gap: 6px !important;
-    font-size: 0.78rem !important;
-    color: #475569 !important;
-    line-height: 1.3 !important;
-  }
-
-  .vs-point-bullet {
-    width: 15px !important;
-    height: 15px !important;
-    min-width: 15px !important;
-    border-radius: 50% !important;
-    background: #FFF3EB !important;
-    border: 1px solid #EC5C0A !important;
-    color: #EC5C0A !important;
-    font-size: 0.65rem !important;
-    font-weight: 900 !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-  }
-
-  /* COMPACT ACTION BUTTON */
+  /* ACTION BUTTON (EXACT BRIGHT BLUE RECTANGULAR BUTTON WITH ARROW) */
   .vs-video-cta-btn {
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
-    gap: 6px !important;
-    padding: 9px 20px !important;
-    background: linear-gradient(135deg, #EC5C0A 0%, #FF9A00 100%) !important;
+    gap: 8px !important;
+    padding: 11px 24px !important;
+    background: #0088FF !important;
     color: #FFFFFF !important;
-    font-size: 0.8rem !important;
+    font-size: 0.85rem !important;
     font-weight: 700 !important;
-    border-radius: 7px !important;
+    border-radius: 4px !important;
     text-decoration: none !important;
-    box-shadow: 0 5px 16px rgba(236, 92, 10, 0.35) !important;
+    box-shadow: 0 4px 15px rgba(0, 136, 255, 0.3) !important;
     transition: all 0.3s ease !important;
     width: fit-content !important;
-    margin-bottom: 10px !important;
   }
 
   .vs-video-cta-btn:hover {
     transform: translateY(-2px) !important;
-    box-shadow: 0 8px 22px rgba(236, 92, 10, 0.5) !important;
+    background: #0077E6 !important;
+    box-shadow: 0 8px 22px rgba(0, 136, 255, 0.45) !important;
     color: #FFFFFF !important;
   }
 
-  /* 6 PROPORTIONATE CARDS (BALANCED OVERLAP -45px SO NO CONTENT IS COVERED) */
+  /* 6 PROPORTIONATE OVERLAPPING CARDS (OVERLAPS BOTTOM ~140px OF IMAGE & SITS BELOW BUTTON) */
   .vs-floating-cards-row {
     display: grid !important;
     grid-template-columns: repeat(6, 1fr) !important;
     gap: 14px !important;
     width: 100% !important;
-    max-width: 1080px !important;
-    margin: -45px auto 0 auto !important;
+    max-width: 1100px !important;
+    margin: -140px auto 0 auto !important;
     position: relative !important;
     z-index: 25 !important;
   }
 
   .vs-nav-card-item {
     background: #FFFFFF !important;
-    border-radius: 12px !important;
-    box-shadow: 0 10px 28px rgba(15, 23, 42, 0.08), 0 2px 6px rgba(0, 0, 0, 0.02) !important;
-    border: 1.5px solid rgba(241, 245, 249, 0.9) !important;
+    border-radius: 14px !important;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08), 0 2px 6px rgba(0, 0, 0, 0.02) !important;
+    border: 1px solid rgba(226, 232, 240, 0.8) !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
     aspect-ratio: 1 / 1 !important;
-    padding: 12px 6px 10px 6px !important;
+    padding: 16px 8px 14px 8px !important;
     text-decoration: none !important;
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
     cursor: pointer !important;
   }
 
   .vs-nav-card-item:hover {
-    transform: translateY(-5px) !important;
-    box-shadow: 0 16px 35px rgba(236, 92, 10, 0.18) !important;
-    border-color: #EC5C0A !important;
+    transform: translateY(-6px) !important;
+    box-shadow: 0 18px 36px rgba(15, 23, 42, 0.14) !important;
+    border-color: #CBD5E1 !important;
   }
 
   .vs-card-icon-art {
-    width: 40px !important;
-    height: 40px !important;
+    width: 44px !important;
+    height: 44px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    margin-bottom: 6px !important;
+    margin-bottom: 8px !important;
     transition: transform 0.3s ease !important;
   }
 
   .vs-nav-card-item:hover .vs-card-icon-art {
-    transform: scale(1.1) !important;
+    transform: scale(1.12) !important;
   }
 
   .vs-card-icon-art svg {
@@ -312,7 +276,7 @@
   }
 
   .vs-card-label {
-    font-size: 0.78rem !important;
+    font-size: 0.8rem !important;
     font-weight: 800 !important;
     text-align: center !important;
     line-height: 1.2 !important;
@@ -351,8 +315,8 @@
     background: #000000 !important;
     border-radius: 20px !important;
     overflow: hidden !important;
-    box-shadow: 0 35px 90px rgba(0, 0, 0, 0.75), 0 0 40px rgba(236, 92, 10, 0.3) !important;
-    border: 2px solid rgba(236, 92, 10, 0.4) !important;
+    box-shadow: 0 35px 90px rgba(0, 0, 0, 0.75), 0 0 40px rgba(0, 136, 255, 0.3) !important;
+    border: 2px solid rgba(0, 136, 255, 0.4) !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
@@ -380,7 +344,7 @@
 
   .vs-video-modal-close:hover {
     transform: scale(1.15) !important;
-    color: #FF9A00 !important;
+    color: #0088FF !important;
     background: rgba(15, 23, 42, 0.9) !important;
   }
 
@@ -416,7 +380,7 @@
       <!-- 2-COLUMN TOP GRID -->
       <div class="vs-video-top-grid">
         
-        <!-- LEFT COLUMN: VIDEO THUMBNAIL (100% FLUSH TO LEFT) -->
+        <!-- LEFT COLUMN: VIDEO THUMBNAIL (ROUNDED, TALL AS IN REFERENCE) -->
         <div class="vs-video-thumb-card" onclick="vsOpenVideoModal('{{ active_video_target | escape }}')">
           {%- if section.settings.thumbnail != blank -%}
             <img src="{{ section.settings.thumbnail | image_url: width: 1000 }}" alt="{{ section.settings.headline_text | escape }}" class="vs-video-thumb-img" loading="lazy">
@@ -428,22 +392,22 @@
           
           <div class="vs-video-thumb-overlay">
             <div class="vs-play-btn-circle">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
             </div>
           </div>
         </div>
 
-        <!-- RIGHT COLUMN: MINIMIZED SLEEK CONTENT -->
+        <!-- RIGHT COLUMN: EXACT REPLICA CONTENT -->
         <div class="vs-video-content-col">
-          <div class="vs-script-subtitle">{{ section.settings.script_subtitle | default: "Smart Energy Tech" }}</div>
+          <div class="vs-script-subtitle">{{ section.settings.script_subtitle | default: "Among The All" }}</div>
           <h2 class="vs-video-main-heading">
-            Choose Your <span>Favorite Energy Plan</span>
+            {{ section.settings.headline_text | default: "Choose Your Favorite Energy Plan" }}
           </h2>
 
-          <!-- SLEEK FEATURE BOX WITH BULLET POINTS -->
+          <!-- FEATURE SECTION: ICON ON LEFT, TEXT ON RIGHT -->
           <div class="vs-video-feature-section">
             <div class="vs-feature-icon-box">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#EC5C0A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#475569" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="3" y="3" width="18" height="18" rx="3" ry="3"></rect>
                 <circle cx="8.5" cy="8.5" r="1.5"></circle>
                 <polyline points="21 15 16 10 5 21"></polyline>
@@ -451,105 +415,101 @@
             </div>
             <div class="vs-feature-text-block">
               <h4 class="vs-feature-title">{{ section.settings.feature_title | default: "We Suggest You The Best Energy Optimization Solution" }}</h4>
-              
-              <ul class="vs-feature-points-list">
-                <li class="vs-feature-point-item">
-                  <span class="vs-point-bullet">✓</span>
-                  <span>Specialized in electricity load optimization</span>
-                </li>
-                <li class="vs-feature-point-item">
-                  <span class="vs-point-bullet">✓</span>
-                  <span>20–30% power savings for 500+ residential & commercial clients</span>
-                </li>
-              </ul>
+              <p class="vs-feature-desc">{{ section.settings.feature_desc | default: "Vidhyut Saathi Energy Savers Private Limited is specialized in electricity load optimization & 20-30% power saving solutions for over 500+ commercial & residential clients across India." }}</p>
             </div>
           </div>
 
-          <!-- COMPACT ACTION BUTTON -->
+          <!-- ACTION BUTTON (BRIGHT BLUE RECTANGULAR BUTTON WITH ARROW) -->
           <a href="{{ section.settings.button_link | default: '/pages/get-franchise' }}" class="vs-video-cta-btn">
             <span>{{ section.settings.button_text | default: "Book Free Consultation" }}</span>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
           </a>
         </div>
 
       </div>
 
-      <!-- 6 COMPACT CARDS (BALANCED OVERLAP WITHOUT COVERING CONTENT) -->
+      <!-- 6 COMPACT CARDS (OVERLAPS BOTTOM ~140px OF IMAGE & SITS BELOW BUTTON) -->
       <div class="vs-floating-cards-row">
         {%- for block in section.blocks -%}
           <a href="{{ block.settings.card_link | default: '#' }}" class="vs-nav-card-item" {{ block.shopify_attributes }}>
-            <div class="vs-card-icon-art" style="color: {{ block.settings.card_color | default: '#EC5C0A' }};">
+            <div class="vs-card-icon-art" style="color: {{ block.settings.card_color | default: '#0096FF' }};">
               {{ block.settings.card_icon_svg | default: '' }}
             </div>
-            <h4 class="vs-card-label" style="color: {{ block.settings.card_color | default: '#EC5C0A' }};">{{ block.settings.card_title | default: 'Plan' }}</h4>
+            <h4 class="vs-card-label" style="color: {{ block.settings.card_color | default: '#0096FF' }};">{{ block.settings.card_title | default: 'Plan' }}</h4>
           </a>
         {%- else -%}
-          <!-- 6 Cards themed for Vidhyut Saathi -->
+          <!-- Default 6 Cards matching the reference screenshot design -->
           
-          <!-- Card 1: Residential (Brand Orange) -->
+          <!-- Card 1: Mountain / Residential (Sky Blue) -->
           <a href="/pages/residential" class="vs-nav-card-item">
-            <div class="vs-card-icon-art" style="color: #EC5C0A;">
+            <div class="vs-card-icon-art" style="color: #0096FF;">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                <path d="M8 3l4 8 5-5 5 10H2L8 3z"></path>
+                <path d="M4 14l2-3 2 3"></path>
               </svg>
             </div>
-            <h4 class="vs-card-label" style="color: #EC5C0A;">Residential</h4>
+            <h4 class="vs-card-label" style="color: #0096FF;">Residential</h4>
           </a>
 
-          <!-- Card 2: Commercial (Amber) -->
+          <!-- Card 2: Pilgrims / Commercial (Pink/Rose) -->
           <a href="/pages/commercial" class="vs-nav-card-item">
-            <div class="vs-card-icon-art" style="color: #D97706;">
+            <div class="vs-card-icon-art" style="color: #FF3366;">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect>
-                <line x1="9" y1="6" x2="9.01" y2="6"></line>
-                <line x1="15" y1="6" x2="15.01" y2="6"></line>
-                <line x1="9" y1="10" x2="9.01" y2="10"></line>
-                <line x1="15" y1="10" x2="15.01" y2="10"></line>
+                <circle cx="12" cy="5" r="2"></circle>
+                <path d="M10 22v-6l-2-2v-4l4-2 4 2v4l-2 2v6"></path>
+                <path d="M18 10l2 2"></path>
               </svg>
             </div>
-            <h4 class="vs-card-label" style="color: #D97706;">Commercial</h4>
+            <h4 class="vs-card-label" style="color: #FF3366;">Commercial</h4>
           </a>
 
-          <!-- Card 3: Industrial (Emerald Green) -->
+          <!-- Card 3: Beach / Industrial (Aqua/Turquoise) -->
           <a href="/pages/industrial" class="vs-nav-card-item">
-            <div class="vs-card-icon-art" style="color: #059669;">
+            <div class="vs-card-icon-art" style="color: #00C9A7;">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z"></path>
+                <circle cx="6" cy="6" r="2"></circle>
+                <path d="M18 4a4 4 0 0 0-4 4v12"></path>
+                <path d="M14 8c2-2 4-2 6-1"></path>
+                <path d="M14 11c3-1 5 0 7 2"></path>
+                <path d="M2 18c4-1 8 1 12 0 4-1 6 0 8 0"></path>
+                <path d="M2 21c4-1 8 1 12 0 4-1 6 0 8 0"></path>
               </svg>
             </div>
-            <h4 class="vs-card-label" style="color: #059669;">Industrial</h4>
+            <h4 class="vs-card-label" style="color: #00C9A7;">Industrial</h4>
           </a>
 
-          <!-- Card 4: Franchise (Deep Orange) -->
+          <!-- Card 4: National Park / Franchise (Amber/Orange Tree) -->
           <a href="/pages/get-franchise" class="vs-nav-card-item">
-            <div class="vs-card-icon-art" style="color: #EA580C;">
+            <div class="vs-card-icon-art" style="color: #FF8C42;">
+              <svg viewBox="0 0 24 24" fill="#FF8C42" stroke="none">
+                <path d="M12 2L4 12h3v4H5l-3 4h8v2h4v-2h8l-3-4h-2v-4h3L12 2z"></path>
+              </svg>
+            </div>
+            <h4 class="vs-card-label" style="color: #FF8C42;">Franchise</h4>
+          </a>
+
+          <!-- Card 5: Campfire / ISO Certified (Indigo/Blue) -->
+          <a href="/pages/iso-certification" class="vs-nav-card-item">
+            <div class="vs-card-icon-art" style="color: #5C6BC0;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2c2 3 4 5 4 8 0 3-2 5-4 5s-4-2-4-5c0-3 2-5 4-8z"></path>
+                <path d="M4 18l16 4"></path>
+                <path d="M4 22l16-4"></path>
+              </svg>
+            </div>
+            <h4 class="vs-card-label" style="color: #5C6BC0;">ISO Certified</h4>
+          </a>
+
+          <!-- Card 6: Globe / 24/7 Support (Sky Blue) -->
+          <a href="/pages/contact" class="vs-nav-card-item">
+            <div class="vs-card-icon-art" style="color: #29B6F6;">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="12" cy="12" r="10"></circle>
-                <polyline points="12 6 12 12 16 14"></polyline>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
               </svg>
             </div>
-            <h4 class="vs-card-label" style="color: #EA580C;">Franchise</h4>
-          </a>
-
-          <!-- Card 5: ISO Certified (Royal Blue) -->
-          <a href="/pages/iso-certification" class="vs-nav-card-item">
-            <div class="vs-card-icon-art" style="color: #2563EB;">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-              </svg>
-            </div>
-            <h4 class="vs-card-label" style="color: #2563EB;">ISO Certified</h4>
-          </a>
-
-          <!-- Card 6: 24/7 Support (Teal) -->
-          <a href="/pages/contact" class="vs-nav-card-item">
-            <div class="vs-card-icon-art" style="color: #0D9488;">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-              </svg>
-            </div>
-            <h4 class="vs-card-label" style="color: #0D9488;">24/7 Support</h4>
+            <h4 class="vs-card-label" style="color: #29B6F6;">24/7 Support</h4>
           </a>
         {%- endfor -%}
       </div>
@@ -647,7 +607,7 @@
       "type": "text",
       "id": "script_subtitle",
       "label": "Script Subtitle",
-      "default": "Smart Energy Tech"
+      "default": "Among The All"
     },
     {
       "type": "text",
@@ -686,7 +646,7 @@
       "type": "textarea",
       "id": "feature_desc",
       "label": "Feature Box Description",
-      "default": "Specialized in load optimization & 20-30% power savings for 500+ residential & commercial clients across India."
+      "default": "Vidhyut Saathi Energy Savers Private Limited is specialized in electricity load optimization & 20-30% power saving solutions for over 500+ commercial & residential clients across India."
     },
     {
       "type": "text",
@@ -715,7 +675,7 @@
           "type": "color",
           "id": "card_color",
           "label": "Card Color",
-          "default": "#EC5C0A"
+          "default": "#0096FF"
         },
         {
           "type": "html",
