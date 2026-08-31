@@ -13,6 +13,9 @@
     --marquee-text: {{ section.settings.marquee_text_color }};
     --marquee-dot: {{ section.settings.marquee_dot_color }};
     font-family: 'Plus Jakarta Sans', sans-serif;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
   }
 
   /* --- LUCRATIVE 2-COLUMN LIGHT THEME DESKTOP REDESIGN (MIN-WIDTH: 769PX) --- */
@@ -23,7 +26,8 @@
       color: #0F172A !important;      
       padding: {{ section.settings.padding_top }}px 0 0 0 !important; 
       text-align: left !important;
-      overflow: hidden !important;
+      overflow-x: hidden !important;
+      width: 100% !important;
     }
 
     #shopify-section-{{ section.id }} .network-section-clean::before {
@@ -387,13 +391,106 @@
     }
   }
 
+  /* ── GLOBAL 3D INDIA MAP LIVE SEQUENTIAL POP-UP PINS (DESKTOP & MOBILE) ── */
+  #shopify-section-{{ section.id }} .vs-map-zoom-wrapper {
+    position: relative !important;
+    overflow: hidden !important;
+    border-radius: 16px !important;
+    background: #FFFFFF !important;
+    width: 100% !important;
+  }
+
+  #shopify-section-{{ section.id }} .vs-map-zoom-wrapper img {
+    width: 100% !important;
+    height: auto !important;
+    display: block !important;
+    object-fit: contain !important;
+  }
+
+  #shopify-section-{{ section.id }} .vs-map-live-pin {
+    position: absolute !important;
+    z-index: 5 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 3px !important;
+    pointer-events: none !important;
+    animation: pinBeacon 4.2s infinite cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+    transform-origin: center left !important;
+  }
+
+  #shopify-section-{{ section.id }} .vs-map-live-pin.pin-1  { top: 28%; left: 42%; animation-delay: 0s !important; }
+  #shopify-section-{{ section.id }} .vs-map-live-pin.pin-2  { top: 26%; left: 36%; animation-delay: 0.3s !important; }
+  #shopify-section-{{ section.id }} .vs-map-live-pin.pin-3  { top: 40%; left: 32%; animation-delay: 0.6s !important; }
+  #shopify-section-{{ section.id }} .vs-map-live-pin.pin-4  { top: 38%; left: 52%; animation-delay: 0.9s !important; }
+  #shopify-section-{{ section.id }} .vs-map-live-pin.pin-5  { top: 42%; left: 64%; animation-delay: 1.2s !important; }
+  #shopify-section-{{ section.id }} .vs-map-live-pin.pin-6  { top: 48%; left: 24%; animation-delay: 1.5s !important; }
+  #shopify-section-{{ section.id }} .vs-map-live-pin.pin-7  { top: 56%; left: 34%; animation-delay: 1.8s !important; }
+  #shopify-section-{{ section.id }} .vs-map-live-pin.pin-8  { top: 62%; left: 44%; animation-delay: 2.1s !important; }
+  #shopify-section-{{ section.id }} .vs-map-live-pin.pin-9  { top: 72%; left: 38%; animation-delay: 2.4s !important; }
+  #shopify-section-{{ section.id }} .vs-map-live-pin.pin-10 { top: 78%; left: 46%; animation-delay: 2.7s !important; }
+  #shopify-section-{{ section.id }} .vs-map-live-pin.pin-11 { top: 82%; left: 36%; animation-delay: 3.0s !important; }
+  #shopify-section-{{ section.id }} .vs-map-live-pin.pin-12 { top: 50%; left: 70%; animation-delay: 3.3s !important; }
+  #shopify-section-{{ section.id }} .vs-map-live-pin.pin-13 { top: 40%; left: 82%; animation-delay: 3.6s !important; }
+  #shopify-section-{{ section.id }} .vs-map-live-pin.pin-14 { top: 58%; left: 58%; animation-delay: 3.9s !important; }
+
+  #shopify-section-{{ section.id }} .ping-dot {
+    width: 9px !important;
+    height: 9px !important;
+    background: #FF9A00 !important;
+    border: 1.5px solid #FFFFFF !important;
+    border-radius: 50% !important;
+    box-shadow: 0 0 12px #EC5C0A, 0 0 18px #FF9A00 !important;
+  }
+
+  #shopify-section-{{ section.id }} .ping-ring {
+    position: absolute !important;
+    width: 24px !important;
+    height: 24px !important;
+    border: 2px solid #EC5C0A !important;
+    border-radius: 50% !important;
+    animation: pinPulseRing 4.2s infinite ease-in-out !important;
+  }
+
+  #shopify-section-{{ section.id }} .ping-label {
+    display: inline-block !important;
+    font-size: 0.52rem !important;
+    font-weight: 900 !important;
+    color: #FFFFFF !important;
+    background: linear-gradient(135deg, #0F172A, #1E293B) !important;
+    padding: 2px 5px !important;
+    border-radius: 4px !important;
+    border: 1px solid rgba(236, 92, 10, 0.6) !important;
+    letter-spacing: 0.4px !important;
+    white-space: nowrap !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+  }
+
+  @keyframes pinBeacon {
+    0%, 100% { 
+      opacity: 0.15; 
+      transform: scale(0.6) translateY(2px); 
+      filter: grayscale(100%);
+    }
+    25%, 65% { 
+      opacity: 1; 
+      transform: scale(1.18) translateY(-3px); 
+      filter: drop-shadow(0 0 10px #EC5C0A) drop-shadow(0 0 18px #FF9A00);
+    }
+  }
+
+  @keyframes pinPulseRing {
+    0% { transform: scale(0.3); opacity: 1; }
+    100% { transform: scale(2.6); opacity: 0; }
+  }
+
   /* --- FULLSCREEN LIGHTBOX MODAL STYLING --- */
   .vs-map-modal {
     position: fixed !important;
     top: 0 !important;
     left: 0 !important;
-    width: 100vw !important;
-    height: 100vh !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 100% !important;
     z-index: 999999 !important;
     display: flex !important;
     align-items: center !important;
@@ -712,10 +809,8 @@
       z-index: 5 !important;
       display: flex !important;
       align-items: center !important;
-      gap: 3px !important;
+      gap: 2px !important;
       pointer-events: none !important;
-      animation: pinBeaconMobile 4.2s infinite cubic-bezier(0.34, 1.56, 0.64, 1) !important;
-      transform-origin: center left !important;
     }
 
     #shopify-section-{{ section.id }} .vs-map-badge {
@@ -755,19 +850,6 @@
       width: 18px !important;
       height: 18px !important;
       border: 1.5px solid #EC5C0A !important;
-    }
-
-    @keyframes pinBeaconMobile {
-      0%, 100% { 
-        opacity: 0.15; 
-        transform: scale(0.6) translateY(2px); 
-        filter: grayscale(100%);
-      }
-      25%, 65% { 
-        opacity: 1; 
-        transform: scale(1.15) translateY(-3px); 
-        filter: drop-shadow(0 0 8px #EC5C0A) drop-shadow(0 0 14px #FF9A00);
-      }
     }
     
     #shopify-section-{{ section.id }} .marquee-item { 
