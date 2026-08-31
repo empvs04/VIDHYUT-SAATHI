@@ -321,11 +321,11 @@
     width: 100% !important;
   }
 
-  /* LEFT COLUMN: HEADER + TIMELINE (EQUAL 48% WIDTH) */
+  /* LEFT COLUMN: HEADER + TIMELINE (56% WIDTH) */
   .vs-left-col-{{ section.id }} {
-    flex: 0 0 48% !important;
-    max-width: 530px !important;
-    width: 48% !important;
+    flex: 0 0 56% !important;
+    max-width: 630px !important;
+    width: 56% !important;
     display: flex !important;
     flex-direction: column !important;
     justify-content: flex-start !important;
@@ -341,16 +341,16 @@
     padding-left: 0 !important;
   }
 
-  /* RIGHT COLUMN: DESKTOP TALL ENLARGED IMAGE CARD (EQUAL 48% WIDTH) */
+  /* RIGHT COLUMN: COMPACT LUCRATIVE CARD (40% WIDTH) */
   .vs-right-col-{{ section.id }} {
-    flex: 0 0 48% !important;
-    max-width: 530px !important;
-    width: 48% !important;
+    flex: 0 0 40% !important;
+    max-width: 440px !important;
+    width: 40% !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: stretch !important;
     justify-content: flex-start !important;
-    padding: 0 !important;
+    padding-top: 10px !important;
     margin: 0 !important;
   }
 
@@ -358,19 +358,28 @@
   .vs-desktop-image-placeholder-{{ section.id }} {
     width: 100% !important;
     height: 100% !important;
-    min-height: 540px !important;
-    border-radius: 24px !important;
+    min-height: 440px !important;
+    max-height: 490px !important;
+    border-radius: 22px !important;
     overflow: hidden !important;
-    border: 3px solid #FFFFFF !important;
-    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.14), 0 6px 20px rgba(236, 92, 10, 0.1) !important;
-    background: #0F172A !important;
+    border: 2px solid rgba(236, 92, 10, 0.35) !important;
+    box-shadow: 0 20px 45px rgba(15, 23, 42, 0.16), 0 6px 20px rgba(236, 92, 10, 0.12) !important;
+    background: linear-gradient(145deg, #0F172A 0%, #1E293B 100%) !important;
     position: relative !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
     text-align: center !important;
-    padding: 24px !important;
+    padding: 30px 24px !important;
+    transition: all 0.35s ease !important;
+  }
+
+  .vs-desktop-image-wrapper-{{ section.id }}:hover,
+  .vs-desktop-image-placeholder-{{ section.id }}:hover {
+    transform: translateY(-4px) !important;
+    box-shadow: 0 25px 55px rgba(236, 92, 10, 0.28) !important;
+    border-color: #EC5C0A !important;
   }
 
   .vs-desktop-right-img-{{ section.id }} {
@@ -378,12 +387,72 @@
     height: 100% !important;
     object-fit: cover !important;
     display: block !important;
-    border-radius: 20px !important;
+    border-radius: 18px !important;
     transition: transform 0.5s ease !important;
   }
 
-  .vs-desktop-image-wrapper-{{ section.id }}:hover .vs-desktop-right-img-{{ section.id }} {
-    transform: scale(1.04) !important;
+  /* LUCRATIVE CARD INNER ELEMENTS */
+  .vs-lucrative-badge {
+    display: inline-flex !important;
+    align-items: center !important;
+    padding: 6px 14px !important;
+    background: rgba(236, 92, 10, 0.15) !important;
+    border: 1px solid rgba(236, 92, 10, 0.4) !important;
+    color: #FF9A00 !important;
+    font-size: 0.72rem !important;
+    font-weight: 800 !important;
+    border-radius: 99px !important;
+    letter-spacing: 0.8px !important;
+    margin-bottom: 16px !important;
+  }
+
+  .vs-lucrative-icon-circle {
+    width: 60px !important;
+    height: 60px !important;
+    border-radius: 50% !important;
+    background: #FFFFFF !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-bottom: 18px !important;
+    box-shadow: 0 10px 25px rgba(236, 92, 10, 0.3) !important;
+  }
+
+  .vs-lucrative-title {
+    font-size: 1.25rem !important;
+    font-weight: 800 !important;
+    color: #FFFFFF !important;
+    line-height: 1.3 !important;
+    margin-bottom: 10px !important;
+  }
+
+  .vs-lucrative-desc {
+    font-size: 0.85rem !important;
+    color: #94A3B8 !important;
+    line-height: 1.55 !important;
+    max-width: 320px !important;
+    margin: 0 0 20px 0 !important;
+  }
+
+  .vs-lucrative-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 11px 22px !important;
+    background: linear-gradient(135deg, #EC5C0A 0%, #FF9A00 100%) !important;
+    color: #FFFFFF !important;
+    font-weight: 700 !important;
+    font-size: 0.84rem !important;
+    border-radius: 8px !important;
+    text-decoration: none !important;
+    box-shadow: 0 6px 18px rgba(236, 92, 10, 0.4) !important;
+    transition: all 0.3s ease !important;
+  }
+
+  .vs-lucrative-btn:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 10px 25px rgba(236, 92, 10, 0.6) !important;
+    color: #FFFFFF !important;
   }
   .vs-grid-title-{{ section.id }} {
     margin-top: 60px !important;
@@ -793,9 +862,15 @@
           </div>
         {%- else -%}
           <div class="vs-desktop-image-placeholder-{{ section.id }}">
-            <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            <strong style="font-size: 16px; font-weight: 700;">Desktop Right Image</strong>
-            <span style="font-size: 13px; color: #64748b; max-width: 280px; line-height: 1.4;">Select an image from Shopify Theme Editor settings for this section.</span>
+            <div class="vs-lucrative-badge">⚡ HIGH PROFIT OPPORTUNITY</div>
+            <div class="vs-lucrative-icon-circle">
+              <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="#EC5C0A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+              </svg>
+            </div>
+            <h3 class="vs-lucrative-title">Power-Packed Business Opportunity!</h3>
+            <p class="vs-lucrative-desc">Join India's trusted electricity load optimization network & build a high-returns business model.</p>
+            <a href="/pages/get-franchise" class="vs-lucrative-btn">Explore Franchise Model →</a>
           </div>
         {%- endif -%}
       </div>
