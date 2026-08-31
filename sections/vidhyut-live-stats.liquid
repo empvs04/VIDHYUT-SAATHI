@@ -129,35 +129,37 @@
       text-align: left !important;
     }
 
-    /* 3 COMPACT HORIZONTAL CARDS IN LEFT COLUMN */
+    /* 3 COMPACT SQUARE CARDS (1:1 ASPECT RATIO) IN LEFT COLUMN */
     #shopify-section-{{ section.id }} .stats-grid {
       display: grid !important;
       grid-template-columns: repeat(3, 1fr) !important;
-      gap: 12px !important;
+      gap: 14px !important;
       width: 100% !important;
       margin-bottom: 26px !important;
     }
     
     #shopify-section-{{ section.id }} .stat-item {
       background: #FFFFFF !important; 
-      border: 1.5px solid rgba(236, 92, 10, 0.2) !important;
+      border: 1.5px solid rgba(236, 92, 10, 0.22) !important;
       border-top: 4px solid #EC5C0A !important;
       border-left: none !important;
-      padding: 16px 8px !important;
-      border-radius: 16px !important;
+      aspect-ratio: 1 / 1 !important;
+      min-height: 140px !important;
+      padding: 14px 6px !important;
+      border-radius: 20px !important;
       display: flex !important;
       flex-direction: column !important;
       align-items: center !important;
       justify-content: center !important;
       text-align: center !important;
-      box-shadow: 0 10px 24px rgba(236, 92, 10, 0.07), 0 2px 8px rgba(0, 0, 0, 0.02) !important;
-      transition: all 0.35s ease !important;
+      box-shadow: 0 12px 28px rgba(236, 92, 10, 0.08), 0 3px 10px rgba(0, 0, 0, 0.02) !important;
+      transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
     }
     
     #shopify-section-{{ section.id }} .stat-item:hover {
-      transform: translateY(-5px) !important;
-      border-color: rgba(236, 92, 10, 0.45) !important;
-      box-shadow: 0 16px 36px rgba(236, 92, 10, 0.16) !important;
+      transform: translateY(-6px) scale(1.03) !important;
+      border-color: rgba(236, 92, 10, 0.5) !important;
+      box-shadow: 0 18px 40px rgba(236, 92, 10, 0.18) !important;
     }
 
     #shopify-section-{{ section.id }} .stat-icon { 
@@ -170,9 +172,9 @@
       display: flex !important;
       align-items: center !important;
       justify-content: center !important;
-      font-size: 1.4rem !important; 
+      font-size: 1.35rem !important; 
       color: #EC5C0A !important; 
-      margin-bottom: 8px !important; 
+      margin-bottom: 6px !important; 
       box-shadow: 0 4px 12px rgba(236, 92, 10, 0.12) !important;
     }
 
@@ -184,21 +186,81 @@
     }
     
     #shopify-section-{{ section.id }} .stat-num { 
-      font-size: 1.95rem !important; 
+      font-size: 1.85rem !important; 
       font-weight: 900 !important; 
       display: inline-block !important; 
       color: #007B3E !important; 
       line-height: 1 !important; 
-      margin-bottom: 4px !important;
+      margin-bottom: 3px !important;
     }
     
     #shopify-section-{{ section.id }} .stat-label { 
-      font-size: 0.7rem !important; 
+      font-size: 0.68rem !important; 
       color: #475569 !important; 
       font-weight: 800 !important; 
       text-transform: uppercase !important; 
       letter-spacing: 0.3px !important;
-      line-height: 1.25 !important;
+      line-height: 1.2 !important;
+    }
+
+    /* SEQUENTIAL LIVE PULSING STATE MAP PINS */
+    #shopify-section-{{ section.id }} .vs-map-live-pin {
+      position: absolute !important;
+      z-index: 5 !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 4px !important;
+      pointer-events: none !important;
+    }
+
+    #shopify-section-{{ section.id }} .vs-map-live-pin.pin-1 { top: 24%; left: 45%; }
+    #shopify-section-{{ section.id }} .vs-map-live-pin.pin-2 { top: 54%; left: 24%; }
+    #shopify-section-{{ section.id }} .vs-map-live-pin.pin-3 { top: 74%; left: 34%; }
+    #shopify-section-{{ section.id }} .vs-map-live-pin.pin-4 { top: 32%; left: 54%; }
+    #shopify-section-{{ section.id }} .vs-map-live-pin.pin-5 { top: 48%; left: 74%; }
+    #shopify-section-{{ section.id }} .vs-map-live-pin.pin-6 { top: 42%; left: 22%; }
+
+    #shopify-section-{{ section.id }} .ping-dot {
+      width: 8px !important;
+      height: 8px !important;
+      background: #EC5C0A !important;
+      border: 2px solid #FFFFFF !important;
+      border-radius: 50% !important;
+      box-shadow: 0 0 10px #EC5C0A !important;
+    }
+
+    #shopify-section-{{ section.id }} .ping-ring {
+      position: absolute !important;
+      width: 22px !important;
+      height: 22px !important;
+      border: 2px solid #FF9A00 !important;
+      border-radius: 50% !important;
+      animation: pinPulse 2.8s infinite ease-in-out !important;
+    }
+
+    #shopify-section-{{ section.id }} .ping-label {
+      font-size: 0.58rem !important;
+      font-weight: 900 !important;
+      color: #FFFFFF !important;
+      background: rgba(15, 23, 42, 0.88) !important;
+      padding: 2px 5px !important;
+      border-radius: 4px !important;
+      border: 1px solid rgba(236, 92, 10, 0.5) !important;
+      letter-spacing: 0.4px !important;
+      white-space: nowrap !important;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+    }
+
+    #shopify-section-{{ section.id }} .pin-1 .ping-ring { animation-delay: 0s !important; }
+    #shopify-section-{{ section.id }} .pin-2 .ping-ring { animation-delay: 0.45s !important; }
+    #shopify-section-{{ section.id }} .pin-3 .ping-ring { animation-delay: 0.9s !important; }
+    #shopify-section-{{ section.id }} .pin-4 .ping-ring { animation-delay: 1.35s !important; }
+    #shopify-section-{{ section.id }} .pin-5 .ping-ring { animation-delay: 1.8s !important; }
+    #shopify-section-{{ section.id }} .pin-6 .ping-ring { animation-delay: 2.25s !important; }
+
+    @keyframes pinPulse {
+      0% { transform: scale(0.3); opacity: 1; }
+      100% { transform: scale(2.4); opacity: 0; }
     }
 
     #shopify-section-{{ section.id }} .vs-stats-cta-btn {
@@ -618,6 +680,14 @@
           </div>
           <div class="vs-map-zoom-wrapper" id="vs-map-zoom-box-{{ section.id }}" title="Click to view full screen">
             <img src="{{ 'india_live_states_map.jpg' | asset_url }}" alt="Vidhyut Saathi India Live Network Map" id="vs-map-img-{{ section.id }}" class="vs-map-img" loading="lazy">
+            
+            <!-- LIVE SEQUENTIAL HIGH-LIGHT PINS -->
+            <div class="vs-map-live-pin pin-1" title="New Delhi Live"><span class="ping-ring"></span><span class="ping-dot"></span><span class="ping-label">DELHI</span></div>
+            <div class="vs-map-live-pin pin-2" title="Mumbai Live"><span class="ping-ring"></span><span class="ping-dot"></span><span class="ping-label">MUMBAI</span></div>
+            <div class="vs-map-live-pin pin-3" title="Bangalore Live"><span class="ping-ring"></span><span class="ping-dot"></span><span class="ping-label">BANGALORE</span></div>
+            <div class="vs-map-live-pin pin-4" title="Lucknow Live"><span class="ping-ring"></span><span class="ping-dot"></span><span class="ping-label">LUCKNOW</span></div>
+            <div class="vs-map-live-pin pin-5" title="Kolkata Live"><span class="ping-ring"></span><span class="ping-dot"></span><span class="ping-label">KOLKATA</span></div>
+            <div class="vs-map-live-pin pin-6" title="Gujarat Live"><span class="ping-ring"></span><span class="ping-dot"></span><span class="ping-label">GUJARAT</span></div>
           </div>
         </div>
       </div>
