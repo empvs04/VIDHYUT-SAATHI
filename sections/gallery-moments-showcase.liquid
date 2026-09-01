@@ -2,44 +2,20 @@
 
 {%- style -%}
   /* ===========================================================================
-     SECTION 2: VIDHYUT MOMENTS & MILESTONES INTERACTIVE SHOWCASE
-     Vidhyut Saathi Signature Light Theme + Filterable Cards + 3D Tilt Hover
+     SECTION 2: LUCRATIVE GALLERY PHOTO SHOWCASE WITH ANGLED RIBBON FILTERS
+      Vidhyut Saathi Signature Light Theme + 3-Column Responsive Photo Grid
      =========================================================================== */
   #galleryMomentsShowcase-{{ section.id }} {
     position: relative;
     width: 100%;
     background: radial-gradient(circle at 50% 10%, #ffffff 0%, #fff8ef 50%, #fef3e2 100%);
-    padding: clamp(50px, 8vh, 90px) clamp(16px, 4vw, 50px);
+    padding: clamp(40px, 6vh, 80px) clamp(16px, 4vw, 50px);
     font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
     color: #0f172a;
     box-sizing: border-box;
     overflow: hidden;
   }
 
-  /* Subtle Ambient Background Decorative Glows */
-  .gms-bg-glow-orange {
-    position: absolute;
-    top: 20%;
-    left: -5%;
-    width: 40vw;
-    height: 40vw;
-    background: radial-gradient(circle, rgba(236, 92, 10, 0.08) 0%, transparent 70%);
-    pointer-events: none;
-    z-index: 1;
-  }
-
-  .gms-bg-glow-green {
-    position: absolute;
-    bottom: 10%;
-    right: -5%;
-    width: 40vw;
-    height: 40vw;
-    background: radial-gradient(circle, rgba(0, 123, 62, 0.08) 0%, transparent 70%);
-    pointer-events: none;
-    z-index: 1;
-  }
-
-  /* Main Section Container */
   .gms-container {
     position: relative;
     z-index: 5;
@@ -47,565 +23,334 @@
     margin: 0 auto;
   }
 
-  /* Header Container */
-  .gms-header-wrap {
-    text-align: center;
-    max-width: 820px;
-    margin: 0 auto clamp(30px, 5vh, 50px);
-  }
-
-  .gms-badge-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: #ffffff;
-    border: 1.5px solid rgba(236, 92, 10, 0.25);
-    color: #ec5c0a;
-    padding: 6px 18px;
-    border-radius: 30px;
-    font-size: clamp(0.75rem, 1.8vw, 0.85rem);
-    font-weight: 800;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    box-shadow: 0 8px 20px rgba(236, 92, 10, 0.08);
-    margin-bottom: 16px;
-  }
-
-  .gms-title {
-    font-family: 'Baloo 2', 'Outfit', sans-serif;
-    font-size: clamp(28px, 4.5vw, 54px);
-    font-weight: 900;
-    color: #0f172a;
-    line-height: 1.18;
-    margin: 0 0 16px 0;
-    letter-spacing: -0.02em;
-  }
-
-  .gms-gradient-text {
-    background: linear-gradient(90deg, #ec5c0a 0%, #ff9a00 50%, #007b3e 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-weight: 900;
-  }
-
-  .gms-subtitle {
-    font-size: clamp(0.88rem, 1.8vw, 1.05rem);
-    color: #475569;
-    line-height: 1.6;
-    margin: 0 auto;
-    font-weight: 500;
-  }
-
-  /* Filter Category Navigation Tabs */
-  .gms-filters-nav {
+  /* --- ANGLED GOLDEN-ORANGE RIBBON FILTER TABS (MATCHING REFERENCE SS) --- */
+  .gms-ribbon-filters {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: clamp(30px, 5vh, 45px);
+    gap: 16px;
+    margin-bottom: clamp(35px, 5vh, 50px);
   }
 
-  .gms-filter-btn {
-    background: #ffffff;
-    color: #475569;
-    border: 1.5px solid rgba(203, 213, 225, 0.8);
-    padding: 10px 22px;
-    border-radius: 30px;
-    font-size: clamp(0.78rem, 1.8vw, 0.88rem);
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-  }
-
-  .gms-filter-btn:hover {
-    color: #ec5c0a;
-    border-color: #ec5c0a;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(236, 92, 10, 0.12);
-  }
-
-  .gms-filter-btn.active {
-    background: linear-gradient(135deg, #ec5c0a 0%, #ff9a00 100%);
-    color: #ffffff;
-    border-color: #ec5c0a;
-    box-shadow: 0 10px 25px rgba(236, 92, 10, 0.35);
-  }
-
-  /* Interactive Gallery Grid */
-  .gms-gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-    gap: clamp(20px, 3vw, 32px);
-    margin-bottom: clamp(40px, 6vh, 60px);
-  }
-
-  /* Single Gallery Card */
-  .gms-card {
-    background: #ffffff;
-    border-radius: 24px;
-    overflow: hidden;
-    box-shadow: 0 12px 35px rgba(15, 23, 42, 0.07);
-    border: 1.5px solid rgba(236, 92, 10, 0.12);
-    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+  .gms-ribbon-btn {
     position: relative;
-    display: flex;
-    flex-direction: column;
-    opacity: 1;
-    transform: scale(1);
+    background: #333333;
+    color: #ffffff;
+    padding: 12px 36px;
+    font-size: clamp(0.85rem, 1.6vw, 0.95rem);
+    font-weight: 800;
+    text-transform: capitalize;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    clip-path: polygon(14px 0, 100% 0, calc(100% - 14px) 100%, 0 100%);
   }
 
-  .gms-card.gms-hidden {
+  /* Left & Right Golden-Orange Accent Wing Overlays */
+  .gms-ribbon-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 14px;
+    height: 100%;
+    background: linear-gradient(135deg, #ec5c0a 0%, #ff9a00 100%);
+    clip-path: polygon(0 0, 100% 0, 0 100%);
+  }
+
+  .gms-ribbon-btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 14px;
+    height: 100%;
+    background: linear-gradient(135deg, #ff9a00 0%, #ec5c0a 100%);
+    clip-path: polygon(100% 0, 100% 100%, 0 100%);
+  }
+
+  .gms-ribbon-btn:hover {
+    transform: translateY(-4px) scale(1.04);
+    box-shadow: 0 14px 30px rgba(236, 92, 10, 0.35);
+  }
+
+  .gms-ribbon-btn.active {
+    background: linear-gradient(135deg, #222222 0%, #111111 100%);
+    color: #ffffff;
+    box-shadow: 0 12px 30px rgba(236, 92, 10, 0.45);
+  }
+
+  .gms-ribbon-btn.active::before,
+  .gms-ribbon-btn.active::after {
+    background: linear-gradient(135deg, #ec5c0a 0%, #ff9a00 100%);
+  }
+
+  /* --- 3-COLUMN GALLERY PHOTO GRID (MATCHING REFERENCE SS) --- */
+  .gms-photo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .gms-photo-card {
+    position: relative;
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.08);
+    border: 1px solid rgba(203, 213, 225, 0.6);
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+    height: 270px;
+    cursor: pointer;
+  }
+
+  .gms-photo-card.gms-hidden {
     display: none !important;
   }
 
-  .gms-card:hover {
-    transform: translateY(-8px) scale(1.02);
+  .gms-photo-card:hover {
+    transform: translateY(-6px);
     border-color: #ec5c0a;
-    box-shadow: 0 20px 45px rgba(236, 92, 10, 0.18), 0 4px 15px rgba(15, 23, 42, 0.08);
+    box-shadow: 0 18px 40px rgba(236, 92, 10, 0.2), 0 4px 15px rgba(15, 23, 42, 0.08);
   }
 
-  /* Media Wrap (Photo / Video Thumbnail) */
-  .gms-card-media {
-    position: relative;
-    width: 100%;
-    height: 240px;
-    overflow: hidden;
-    background: #0f172a;
-  }
-
-  .gms-card-img {
+  .gms-photo-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.6s ease;
   }
 
-  .gms-card:hover .gms-card-img {
-    transform: scale(1.08);
+  .gms-photo-card:hover .gms-photo-img {
+    transform: scale(1.06);
   }
 
-  /* Glassmorphic Overlay Badges */
-  .gms-card-tag {
+  /* Subtle Photo Overlay Badge on Hover */
+  .gms-photo-overlay {
     position: absolute;
-    top: 14px;
-    left: 14px;
-    background: rgba(255, 255, 255, 0.92);
-    color: #0f172a;
-    border: 1px solid rgba(236, 92, 10, 0.3);
-    padding: 5px 12px;
-    border-radius: 20px;
-    font-size: 0.72rem;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(15, 23, 42, 0) 40%, rgba(15, 23, 42, 0.75) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 20px;
+    color: #ffffff;
+  }
+
+  .gms-photo-card:hover .gms-photo-overlay {
+    opacity: 1;
+  }
+
+  .gms-photo-title {
+    font-family: 'Baloo 2', 'Outfit', sans-serif;
+    font-size: 1.1rem;
     font-weight: 800;
-    backdrop-filter: blur(8px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    z-index: 3;
-    display: flex;
-    align-items: center;
-    gap: 4px;
+    margin: 0 0 4px 0;
+    color: #ffffff;
   }
 
-  .gms-location-tag {
-    position: absolute;
-    bottom: 14px;
-    left: 14px;
-    background: rgba(15, 23, 42, 0.82);
-    color: #ffffff;
-    padding: 4px 12px;
-    border-radius: 16px;
-    font-size: 0.7rem;
+  .gms-photo-category {
+    font-size: 0.76rem;
     font-weight: 700;
-    backdrop-filter: blur(6px);
-    z-index: 3;
-    display: flex;
-    align-items: center;
-    gap: 4px;
+    color: #ff9a00;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
   }
 
-  /* Play Button Icon for Video Cards */
-  .gms-play-btn {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 52px;
-    height: 52px;
-    background: linear-gradient(135deg, #ec5c0a 0%, #ff9a00 100%);
-    color: #ffffff;
-    border-radius: 50%;
+  /* Lightbox Modal Popup */
+  .gms-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.88);
+    backdrop-filter: blur(8px);
+    z-index: 9999;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.2rem;
-    box-shadow: 0 8px 25px rgba(236, 92, 10, 0.5);
-    z-index: 4;
-    transition: transform 0.3s ease, background 0.3s ease;
-  }
-
-  .gms-card:hover .gms-play-btn {
-    transform: translate(-50%, -50%) scale(1.15);
-    background: linear-gradient(135deg, #007b3e 0%, #16a34a 100%);
-    box-shadow: 0 10px 30px rgba(0, 123, 62, 0.5);
-  }
-
-  /* Card Body Content */
-  .gms-card-body {
     padding: 20px;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-  }
-
-  .gms-card-heading {
-    font-family: 'Baloo 2', 'Outfit', sans-serif;
-    font-size: 1.15rem;
-    font-weight: 800;
-    color: #0f172a;
-    line-height: 1.3;
-    margin: 0 0 8px 0;
-  }
-
-  .gms-card-desc {
-    font-size: 0.85rem;
-    color: #475569;
-    line-height: 1.55;
-    margin: 0 0 16px 0;
-    flex-grow: 1;
-  }
-
-  /* Footer Action Row in Card */
-  .gms-card-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-top: 14px;
-    border-top: 1px solid #f1f5f9;
-  }
-
-  .gms-like-btn {
-    background: #fff8ef;
-    color: #ec5c0a;
-    border: 1px solid rgba(236, 92, 10, 0.2);
-    padding: 5px 12px;
-    border-radius: 20px;
-    font-size: 0.76rem;
-    font-weight: 800;
-    cursor: pointer;
-    transition: all 0.25s ease;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-  }
-
-  .gms-like-btn:hover {
-    background: #ec5c0a;
-    color: #ffffff;
-    transform: scale(1.05);
-  }
-
-  .gms-view-details {
-    color: #007b3e;
-    font-size: 0.78rem;
-    font-weight: 800;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    transition: gap 0.25s ease;
-  }
-
-  .gms-card:hover .gms-view-details {
-    gap: 8px;
-    color: #ec5c0a;
-  }
-
-  /* Lucrative Bottom Milestone Ribbon */
-  .gms-milestone-ribbon {
-    background: #ffffff;
-    border-radius: 28px;
-    border: 1.5px solid rgba(236, 92, 10, 0.2);
-    padding: clamp(24px, 4vh, 35px) clamp(20px, 4vw, 45px);
-    box-shadow: 0 16px 45px rgba(15, 23, 42, 0.06);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-
-  .gms-ribbon-stats {
-    display: flex;
-    align-items: center;
-    gap: clamp(20px, 4vw, 45px);
-    flex-wrap: wrap;
-  }
-
-  .gms-stat-box {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .gms-stat-num {
-    font-family: 'Baloo 2', 'Outfit', sans-serif;
-    font-size: clamp(22px, 3.2vw, 36px);
-    font-weight: 900;
-    color: #ec5c0a;
-    line-height: 1;
-    margin-bottom: 4px;
-  }
-
-  .gms-stat-lbl {
-    font-size: 0.8rem;
-    font-weight: 700;
-    color: #475569;
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
-  }
-
-  .gms-ribbon-cta {
-    background: linear-gradient(135deg, #ec5c0a 0%, #ff9a00 100%);
-    color: #ffffff !important;
-    text-decoration: none;
-    padding: 14px 32px;
-    border-radius: 30px;
-    font-size: 0.95rem;
-    font-weight: 800;
-    box-shadow: 0 10px 25px rgba(236, 92, 10, 0.35);
+    opacity: 0;
+    visibility: hidden;
     transition: all 0.3s ease;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
   }
 
-  .gms-ribbon-cta:hover {
-    transform: translateY(-3px) scale(1.03);
-    box-shadow: 0 14px 35px rgba(236, 92, 10, 0.45);
+  .gms-modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .gms-modal-content {
+    position: relative;
+    max-width: 900px;
+    max-height: 85vh;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.5);
+    background: #000000;
+  }
+
+  .gms-modal-img {
+    width: 100%;
+    height: 100%;
+    max-height: 80vh;
+    object-fit: contain;
+    display: block;
+  }
+
+  .gms-modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #0f172a;
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    font-weight: 900;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
   }
 
   /* Responsive Adjustments */
-  @media (max-width: 768px) {
-    #galleryMomentsShowcase-{{ section.id }} {
-      padding: 40px 14px;
+  @media (max-width: 992px) {
+    .gms-photo-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
     }
+  }
 
-    .gms-gallery-grid {
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  @media (max-width: 576px) {
+    .gms-photo-grid {
+      grid-template-columns: 1fr;
       gap: 16px;
     }
 
-    .gms-card-media {
-      height: 200px;
+    .gms-ribbon-filters {
+      gap: 10px;
     }
 
-    .gms-milestone-ribbon {
-      flex-direction: column;
-      text-align: center;
-      justify-content: center;
+    .gms-ribbon-btn {
+      padding: 10px 24px;
+      font-size: 0.82rem;
     }
 
-    .gms-ribbon-stats {
-      justify-content: center;
-      gap: 20px;
-    }
-
-    .gms-ribbon-cta {
-      width: 100%;
-      justify-content: center;
+    .gms-photo-card {
+      height: 230px;
     }
   }
 {%- endstyle -%}
 
 <div id="galleryMomentsShowcase-{{ section.id }}">
-  <div class="gms-bg-glow-orange" aria-hidden="true"></div>
-  <div class="gms-bg-glow-green" aria-hidden="true"></div>
-
   <div class="gms-container">
-    <!-- Header Area -->
-    <div class="gms-header-wrap">
-      <div class="gms-badge-pill">
-        <span>🌟 50,000+ MEMORIES & MILESTONES CAPTURED</span>
-      </div>
-      <h2 class="gms-title">
-        Inspiring Stories Of <span class="gms-gradient-text">Energy Transformation</span>
-      </h2>
-      <p class="gms-subtitle">
-        Explore verified customer happy moments, real-world installation achievements, team milestones, and award recognitions delivered by Vidhyut Saathi across India.
-      </p>
+    
+    <!-- Angled Golden-Orange Ribbon Filter Tabs (Matching Reference Screenshot) -->
+    <div class="gms-ribbon-filters" id="gmsRibbonFilters-{{ section.id }}">
+      <button class="gms-ribbon-btn active" data-filter="all">All</button>
+      <button class="gms-ribbon-btn" data-filter="corporate">Corporate Office</button>
+      <button class="gms-ribbon-btn" data-filter="awards">Awards</button>
+      <button class="gms-ribbon-btn" data-filter="celebrating">Celebrating</button>
+      <button class="gms-ribbon-btn" data-filter="operational">Operational Office</button>
     </div>
 
-    <!-- Filter Category Navigation Tabs -->
-    <div class="gms-filters-nav" id="gmsFiltersNav-{{ section.id }}">
-      <button class="gms-filter-btn active" data-filter="all">
-        <span>✨ All Moments</span>
-      </button>
-      <button class="gms-filter-btn" data-filter="savings">
-        <span>⚡ Savings Impact</span>
-      </button>
-      <button class="gms-filter-btn" data-filter="awards">
-        <span>🏆 Awards & Milestones</span>
-      </button>
-      <button class="gms-filter-btn" data-filter="customers">
-        <span>📸 Customer Smiles</span>
-      </button>
-      <button class="gms-filter-btn" data-filter="installations">
-        <span>🛠️ Field Installations</span>
-      </button>
-    </div>
+    <!-- 3-Column Photo Grid (Matching Reference Screenshot Layout) -->
+    <div class="gms-photo-grid" id="gmsPhotoGrid-{{ section.id }}">
 
-    <!-- Interactive Gallery Grid -->
-    <div class="gms-gallery-grid" id="gmsGrid-{{ section.id }}">
-
-      <!-- Moment Card 1: Customer Savings Story -->
-      <div class="gms-card" data-category="savings">
-        <div class="gms-card-media">
-          <img src="https://cdn.shopify.com/s/files/1/0669/5472/3579/files/electric_power_saving_banner_1920x570_full.png" alt="Commercial Power Savings" class="gms-card-img" loading="lazy">
-          <div class="gms-card-tag">⚡ 32% Saved</div>
-          <div class="gms-location-tag">📍 Delhi NCR</div>
-        </div>
-        <div class="gms-card-body">
-          <h3 class="gms-card-heading">32% Electricity Bill Reduction for Factory Unit</h3>
-          <p class="gms-card-desc">Heavy commercial unit achieved ₹48,000 monthly power bill savings using Vidhyut Saathi Power Factor Control.</p>
-          <div class="gms-card-footer">
-            <button class="gms-like-btn">❤️ 1.4k Likes</button>
-            <span class="gms-view-details">Verified Story ➔</span>
-          </div>
+      <!-- Photo 1: Corporate Office Desk Workspace -->
+      <div class="gms-photo-card" data-category="corporate" data-full-img="https://cdn.shopify.com/s/files/1/0669/5472/3579/files/file_00000000b32c7207b9e2640d59e2bd71_49a89455-591f-4f4c-b2e1-4c79f0584538.png">
+        <img src="https://cdn.shopify.com/s/files/1/0669/5472/3579/files/file_00000000b32c7207b9e2640d59e2bd71_49a89455-591f-4f4c-b2e1-4c79f0584538.png" alt="Corporate Office Workstation" class="gms-photo-img" loading="lazy">
+        <div class="gms-photo-overlay">
+          <h3 class="gms-photo-title">Corporate Workstation Setup</h3>
+          <span class="gms-photo-category">Corporate Office</span>
         </div>
       </div>
 
-      <!-- Moment Card 2: Award Milestone -->
-      <div class="gms-card" data-category="awards">
-        <div class="gms-card-media">
-          <img src="https://cdn.shopify.com/s/files/1/0669/5472/3579/files/WhatsApp_Image_2026-05-16_at_17.52.29.jpg" alt="National Innovation Award" class="gms-card-img" loading="lazy">
-          <div class="gms-card-tag">🏆 Award Winner</div>
-          <div class="gms-location-tag">📍 Mumbai, India</div>
-        </div>
-        <div class="gms-card-body">
-          <h3 class="gms-card-heading">National Energy Innovation Excellence Award</h3>
-          <p class="gms-card-desc">Vidhyut Saathi recognized for revolutionary power optimization tech reducing India's carbon footprint.</p>
-          <div class="gms-card-footer">
-            <button class="gms-like-btn">❤️ 2.8k Likes</button>
-            <span class="gms-view-details">View Milestone ➔</span>
-          </div>
+      <!-- Photo 2: Celebrating Team Together -->
+      <div class="gms-photo-card" data-category="celebrating" data-full-img="https://cdn.shopify.com/s/files/1/0669/5472/3579/files/WhatsApp_Image_2026-06-07_at_11.56.15_AM_3146eedb-40b7-42c6-81ea-89fc1f808a42.jpg">
+        <img src="https://cdn.shopify.com/s/files/1/0669/5472/3579/files/WhatsApp_Image_2026-06-07_at_11.56.15_AM_3146eedb-40b7-42c6-81ea-89fc1f808a42.jpg" alt="Team Celebration Moment" class="gms-photo-img" loading="lazy">
+        <div class="gms-photo-overlay">
+          <h3 class="gms-photo-title">Annual Team Celebration</h3>
+          <span class="gms-photo-category">Celebrating</span>
         </div>
       </div>
 
-      <!-- Moment Card 3: Customer Smiles Video -->
-      <div class="gms-card" data-category="customers">
-        <div class="gms-card-media">
-          <img src="https://cdn.shopify.com/s/files/1/0669/5472/3579/files/file_00000000b32c7207b9e2640d59e2bd71_49a89455-591f-4f4c-b2e1-4c79f0584538.png" alt="Happy Customer Review" class="gms-card-img" loading="lazy">
-          <div class="gms-play-btn">▶</div>
-          <div class="gms-card-tag">🎥 Customer Review</div>
-          <div class="gms-location-tag">📍 Jaipur, Rajasthan</div>
-        </div>
-        <div class="gms-card-body">
-          <h3 class="gms-card-heading">“Our Home Bill Dropped From ₹4,500 to ₹3,100!”</h3>
-          <p class="gms-card-desc">Watch Sharma Family share their real experience after installing Vidhyut Saathi Residential Device.</p>
-          <div class="gms-card-footer">
-            <button class="gms-like-btn">❤️ 3.1k Likes</button>
-            <span class="gms-view-details">Watch Video ➔</span>
-          </div>
+      <!-- Photo 3: Operational Office Team -->
+      <div class="gms-photo-card" data-category="operational" data-full-img="https://cdn.shopify.com/s/files/1/0669/5472/3579/files/electric_power_saving_banner_1920x570_full.png">
+        <img src="https://cdn.shopify.com/s/files/1/0669/5472/3579/files/electric_power_saving_banner_1920x570_full.png" alt="Operational Customer Desk" class="gms-photo-img" loading="lazy">
+        <div class="gms-photo-overlay">
+          <h3 class="gms-photo-title">Operational Service Desk</h3>
+          <span class="gms-photo-category">Operational Office</span>
         </div>
       </div>
 
-      <!-- Moment Card 4: Field Installation -->
-      <div class="gms-card" data-category="installations">
-        <div class="gms-card-media">
-          <img src="https://cdn.shopify.com/s/files/1/0669/5472/3579/files/WhatsApp_Image_2026-06-07_at_11.56.15_AM_3146eedb-40b7-42c6-81ea-89fc1f808a42.jpg" alt="Commercial Field Installation" class="gms-card-img" loading="lazy">
-          <div class="gms-card-tag">🛠️ 100% Certified</div>
-          <div class="gms-location-tag">📍 Bangalore, KA</div>
-        </div>
-        <div class="gms-card-body">
-          <h3 class="gms-card-heading">10,000th Commercial Panel Installation Milestone</h3>
-          <p class="gms-card-desc">Expert engineers successfully deployed heavy-duty surge protection and power saver panel at tech hub.</p>
-          <div class="gms-card-footer">
-            <button class="gms-like-btn">❤️ 1.9k Likes</button>
-            <span class="gms-view-details">Installation Log ➔</span>
-          </div>
+      <!-- Photo 4: Corporate Office Meeting -->
+      <div class="gms-photo-card" data-category="corporate" data-full-img="https://cdn.shopify.com/s/files/1/0669/5472/3579/files/WhatsApp_Image_2026-08-20_at_1.48.53_PM.jpg">
+        <img src="https://cdn.shopify.com/s/files/1/0669/5472/3579/files/WhatsApp_Image_2026-08-20_at_1.48.53_PM.jpg" alt="Corporate Strategy Meeting" class="gms-photo-img" loading="lazy">
+        <div class="gms-photo-overlay">
+          <h3 class="gms-photo-title">Executive Strategy Conference</h3>
+          <span class="gms-photo-category">Corporate Office</span>
         </div>
       </div>
 
-      <!-- Moment Card 5: Residential Savings -->
-      <div class="gms-card" data-category="savings">
-        <div class="gms-card-media">
-          <img src="https://cdn.shopify.com/s/files/1/0669/5472/3579/files/WhatsApp_Image_2026-08-20_at_1.48.53_PM.jpg" alt="Residential Saver Device" class="gms-card-img" loading="lazy">
-          <div class="gms-card-tag">⚡ 28% Saved</div>
-          <div class="gms-location-tag">📍 Ahmedabad, Gujarat</div>
-        </div>
-        <div class="gms-card-body">
-          <h3 class="gms-card-heading">Smart Energy Saver Installed in 500+ Apartments</h3>
-          <p class="gms-card-desc">Residential society reduced total monthly grid load by 28% with Vidhyut Saathi smart home devices.</p>
-          <div class="gms-card-footer">
-            <button class="gms-like-btn">❤️ 2.2k Likes</button>
-            <span class="gms-view-details">Read Case Study ➔</span>
-          </div>
+      <!-- Photo 5: Awards Ceremony Presentation -->
+      <div class="gms-photo-card" data-category="awards" data-full-img="https://cdn.shopify.com/s/files/1/0669/5472/3579/files/WhatsApp_Image_2026-05-16_at_17.52.29.jpg">
+        <img src="https://cdn.shopify.com/s/files/1/0669/5472/3579/files/WhatsApp_Image_2026-05-16_at_17.52.29.jpg" alt="Long Service Award Presentation" class="gms-photo-img" loading="lazy">
+        <div class="gms-photo-overlay">
+          <h3 class="gms-photo-title">Long Service Excellence Award</h3>
+          <span class="gms-photo-category">Awards</span>
         </div>
       </div>
 
-      <!-- Moment Card 6: Customer Story -->
-      <div class="gms-card" data-category="customers">
-        <div class="gms-card-media">
-          <img src="https://cdn.shopify.com/s/files/1/0669/5472/3579/files/electric_power_saving_banner_1920x570_full.png" alt="Franchise Growth Celebration" class="gms-card-img" loading="lazy">
-          <div class="gms-card-tag">📸 Customer Smile</div>
-          <div class="gms-location-tag">📍 Pune, Maharashtra</div>
-        </div>
-        <div class="gms-card-body">
-          <h3 class="gms-card-heading">“Smooth Appliance Protection & Zero Power Surge!”</h3>
-          <p class="gms-card-desc">Verified customer feedback highlighting complete protection for AC, refrigerator, and heavy home gadgets.</p>
-          <div class="gms-card-footer">
-            <button class="gms-like-btn">❤️ 1.7k Likes</button>
-            <span class="gms-view-details">Verified Review ➔</span>
-          </div>
+      <!-- Photo 6: Celebrating Operational Team -->
+      <div class="gms-photo-card" data-category="celebrating" data-full-img="https://cdn.shopify.com/s/files/1/0669/5472/3579/files/file_00000000b32c7207b9e2640d59e2bd71_49a89455-591f-4f4c-b2e1-4c79f0584538.png">
+        <img src="https://cdn.shopify.com/s/files/1/0669/5472/3579/files/file_00000000b32c7207b9e2640d59e2bd71_49a89455-591f-4f4c-b2e1-4c79f0584538.png" alt="Vidhyut Saathi Family Gathering" class="gms-photo-img" loading="lazy">
+        <div class="gms-photo-overlay">
+          <h3 class="gms-photo-title">Vidhyut Saathi Family Meet</h3>
+          <span class="gms-photo-category">Celebrating</span>
         </div>
       </div>
 
-    </div>
-
-    <!-- Lucrative Bottom Milestone Ribbon -->
-    <div class="gms-milestone-ribbon">
-      <div class="gms-ribbon-stats">
-        <div class="gms-stat-box">
-          <span class="gms-stat-num">1,00,000+</span>
-          <span class="gms-stat-lbl">Happy Homes & Units</span>
-        </div>
-        <div class="gms-stat-box">
-          <span class="gms-stat-num">28+</span>
-          <span class="gms-stat-lbl">States Covered</span>
-        </div>
-        <div class="gms-stat-box">
-          <span class="gms-stat-num">4.9 ★</span>
-          <span class="gms-stat-lbl">Customer Rating</span>
-        </div>
-      </div>
-
-      <a href="/pages/contact" class="gms-ribbon-cta">
-        <span>🚀 Share Your Vidhyut Story</span>
-      </a>
     </div>
 
   </div>
 </div>
 
+<!-- Lightbox Modal Popup -->
+<div class="gms-modal-overlay" id="gmsModalOverlay-{{ section.id }}">
+  <div class="gms-modal-content">
+    <button class="gms-modal-close" id="gmsModalClose-{{ section.id }}">&times;</button>
+    <img src="" alt="Full Preview" class="gms-modal-img" id="gmsModalImg-{{ section.id }}">
+  </div>
+</div>
+
 <script>
   (function() {
-    function initMomentsShowcase_{{ section.id | replace: '-', '_' }}() {
-      const filterBtns = document.querySelectorAll('#gmsFiltersNav-{{ section.id }} .gms-filter-btn');
-      const cards = document.querySelectorAll('#gmsGrid-{{ section.id }} .gms-card');
+    function initGalleryShowcase_{{ section.id | replace: '-', '_' }}() {
+      const filterBtns = document.querySelectorAll('#gmsRibbonFilters-{{ section.id }} .gms-ribbon-btn');
+      const cards = document.querySelectorAll('#gmsPhotoGrid-{{ section.id }} .gms-photo-card');
+      const modal = document.getElementById('gmsModalOverlay-{{ section.id }}');
+      const modalImg = document.getElementById('gmsModalImg-{{ section.id }}');
+      const modalClose = document.getElementById('gmsModalClose-{{ section.id }}');
 
       if (!filterBtns.length || !cards.length) return;
 
+      // Filter Button Switch Logic
       filterBtns.forEach(btn => {
         btn.addEventListener('click', function() {
           const filterValue = this.getAttribute('data-filter');
 
-          // Toggle Active Button
           filterBtns.forEach(b => b.classList.remove('active'));
           this.classList.add('active');
 
-          // Filter Cards
           cards.forEach(card => {
             const cardCategory = card.getAttribute('data-category');
             if (filterValue === 'all' || cardCategory === filterValue) {
@@ -616,23 +361,48 @@
           });
         });
       });
+
+      // Lightbox Image Popup Modal
+      cards.forEach(card => {
+        card.addEventListener('click', function() {
+          const fullImgSrc = this.getAttribute('data-full-img') || this.querySelector('img').src;
+          if (modal && modalImg) {
+            modalImg.src = fullImgSrc;
+            modal.classList.add('active');
+          }
+        });
+      });
+
+      if (modalClose) {
+        modalClose.addEventListener('click', function() {
+          if (modal) modal.classList.remove('active');
+        });
+      }
+
+      if (modal) {
+        modal.addEventListener('click', function(e) {
+          if (e.target === modal) {
+            modal.classList.remove('active');
+          }
+        });
+      }
     }
 
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initMomentsShowcase_{{ section.id | replace: '-', '_' }});
+      document.addEventListener('DOMContentLoaded', initGalleryShowcase_{{ section.id | replace: '-', '_' }});
     } else {
-      initMomentsShowcase_{{ section.id | replace: '-', '_' }}();
+      initGalleryShowcase_{{ section.id | replace: '-', '_' }}();
     }
   })();
 </script>
 
 {% schema %}
 {
-  "name": "Gallery Moments Showcase",
+  "name": "Gallery Photo Showcase",
   "settings": [],
   "presets": [
     {
-      "name": "Gallery Moments Showcase"
+      "name": "Gallery Photo Showcase"
     }
   ]
 }
