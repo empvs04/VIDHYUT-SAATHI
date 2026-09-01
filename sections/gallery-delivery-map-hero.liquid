@@ -14,11 +14,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start; /* Align content to the top */
     font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
     color: #ffffff;
     box-sizing: border-box;
-    padding: 60px 20px 80px;
+    padding: clamp(45px, 6.5vh, 75px) 20px 80px;
   }
 
   /* Dark Navigation Map Vector Background */
@@ -31,6 +31,18 @@
     z-index: 1;
     overflow: hidden;
     perspective: 1000px;
+  }
+
+  /* Upper Vignette Gradient for Crystal Clear Text Visibility */
+  .dm-upper-vignette {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60%;
+    background: linear-gradient(180deg, rgba(6, 13, 31, 0.92) 0%, rgba(6, 13, 31, 0.7) 60%, rgba(6, 13, 31, 0) 100%);
+    pointer-events: none;
+    z-index: 3;
   }
 
   /* Vector City Streets Grid Overlay */
@@ -94,42 +106,25 @@
     to { stroke-dashoffset: 0; }
   }
 
-  /* Foreground Content Hero */
+  /* Foreground Content Hero - Crisp & Top Aligned */
   .dm-content-hero {
     position: relative;
     z-index: 10;
     text-align: center;
-    max-width: 860px;
+    max-width: 900px;
     margin: 0 auto;
     pointer-events: auto;
   }
 
-  .dm-badge-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: linear-gradient(90deg, #ec5c0a 0%, #ff9a00 50%, #007b3e 100%);
-    color: #ffffff;
-    font-size: 0.82rem;
-    font-weight: 800;
-    letter-spacing: 1.4px;
-    text-transform: uppercase;
-    padding: 6px 20px;
-    border-radius: 50px;
-    box-shadow: 0 4px 20px rgba(236, 92, 10, 0.4);
-    margin-bottom: 18px;
-    backdrop-filter: blur(12px);
-  }
-
   .dm-title {
     font-family: 'Baloo 2', 'Outfit', sans-serif;
-    font-size: clamp(34px, 5.2vw, 64px);
+    font-size: clamp(34px, 5.2vw, 62px);
     font-weight: 900;
     color: #ffffff;
-    line-height: 1.12;
-    margin: 0 0 16px 0;
+    line-height: 1.14;
+    margin: 0 0 14px 0;
     letter-spacing: -0.02em;
-    text-shadow: 0 4px 24px rgba(0, 0, 0, 0.8);
+    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.9), 0 2px 8px rgba(0, 0, 0, 0.8);
   }
 
   .dm-title-gradient {
@@ -139,13 +134,13 @@
   }
 
   .dm-subtitle {
-    font-size: clamp(15px, 2vw, 19px);
-    color: #cbd5e1;
+    font-size: clamp(15px, 2vw, 18px);
+    color: #e2e8f0;
     line-height: 1.6;
-    margin: 0 auto 28px;
-    max-width: 680px;
+    margin: 0 auto 24px;
+    max-width: 720px;
     font-weight: 500;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+    text-shadow: 0 3px 12px rgba(0, 0, 0, 0.9);
   }
 
   /* Live Delivery Status Bar */
@@ -316,6 +311,7 @@
   <!-- Dark GPS Navigation Map Background Layer -->
   <div class="dm-map-container" id="dmMapContainer-{{ section.id }}">
     <div class="dm-street-network" aria-hidden="true"></div>
+    <div class="dm-upper-vignette" aria-hidden="true"></div>
 
     <!-- Map Route SVG -->
     <svg class="dm-svg-map-layer" id="dmMapSvg-{{ section.id }}" viewBox="0 0 1400 800" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
@@ -340,15 +336,15 @@
       <path d="M 200 -50 Q 350 400 500 850" stroke="rgba(30, 58, 138, 0.3)" stroke-width="8" fill="none"/>
       <path d="M 900 -50 Q 800 350 1100 850" stroke="rgba(30, 58, 138, 0.3)" stroke-width="8" fill="none"/>
 
-      <!-- Main Animated Courier Highway Route Path (Points: 1 -> 2 -> 3 -> 4 -> 5) -->
-      <path id="dmDeliveryPath-{{ section.id }}" class="dm-route-glow" d="M 80 620 C 220 620, 240 440, 360 420 C 500 400, 520 640, 720 620 C 900 600, 880 340, 1040 320 C 1180 300, 1260 480, 1340 460" />
-      <path class="dm-route-base" d="M 80 620 C 220 620, 240 440, 360 420 C 500 400, 520 640, 720 620 C 900 600, 880 340, 1040 320 C 1180 300, 1260 480, 1340 460" />
-      <path class="dm-route-active" d="M 80 620 C 220 620, 240 440, 360 420 C 500 400, 520 640, 720 620 C 900 600, 880 340, 1040 320 C 1180 300, 1260 480, 1340 460" />
+      <!-- Main Animated Courier Highway Route Path along the bottom (Y: ~640-720) -->
+      <path id="dmDeliveryPath-{{ section.id }}" class="dm-route-glow" d="M -40 680 C 140 640, 240 730, 400 680 C 560 630, 680 740, 840 680 C 1000 620, 1140 730, 1280 670 C 1360 640, 1420 680, 1480 660" />
+      <path class="dm-route-base" d="M -40 680 C 140 640, 240 730, 400 680 C 560 630, 680 740, 840 680 C 1000 620, 1140 730, 1280 670 C 1360 640, 1420 680, 1480 660" />
+      <path class="dm-route-active" d="M -40 680 C 140 640, 240 730, 400 680 C 560 630, 680 740, 840 680 C 1000 620, 1140 730, 1280 670 C 1360 640, 1420 680, 1480 660" />
     </svg>
 
-    <!-- Destination Hub Pins with Parcel Boxes -->
+    <!-- Destination Hub Pins with Parcel Boxes along bottom end of section -->
     <!-- Destination 1: Origin -->
-    <div class="dm-hub-pin" style="left: 6%; top: 78%;" data-hub="1">
+    <div class="dm-hub-pin" style="left: 6%; top: 85%;" data-hub="1">
       <div class="dm-pin-badge">📦 Hub A: Dispatch</div>
       <div class="dm-pin-icon-wrap">
         <svg class="dm-pin-svg" viewBox="0 0 32 38" fill="none">
@@ -361,7 +357,7 @@
     </div>
 
     <!-- Destination 2: North Logistics Hub -->
-    <div class="dm-hub-pin" style="left: 26%; top: 52%;" data-hub="2">
+    <div class="dm-hub-pin" style="left: 28%; top: 84%;" data-hub="2">
       <div class="dm-pin-badge">📍 Hub B: Express</div>
       <div class="dm-pin-icon-wrap">
         <svg class="dm-pin-svg" viewBox="0 0 32 38" fill="none">
@@ -374,7 +370,7 @@
     </div>
 
     <!-- Destination 3: Central Delivery Center -->
-    <div class="dm-hub-pin" style="left: 51%; top: 78%;" data-hub="3">
+    <div class="dm-hub-pin" style="left: 55%; top: 86%;" data-hub="3">
       <div class="dm-pin-badge">⚡ Hub C: Fulfillment</div>
       <div class="dm-pin-icon-wrap">
         <svg class="dm-pin-svg" viewBox="0 0 32 38" fill="none">
@@ -387,7 +383,7 @@
     </div>
 
     <!-- Destination 4: West Distribution -->
-    <div class="dm-hub-pin" style="left: 74%; top: 40%;" data-hub="4">
+    <div class="dm-hub-pin" style="left: 77%; top: 83%;" data-hub="4">
       <div class="dm-pin-badge">🏢 Hub D: Regional</div>
       <div class="dm-pin-icon-wrap">
         <svg class="dm-pin-svg" viewBox="0 0 32 38" fill="none">
@@ -400,7 +396,7 @@
     </div>
 
     <!-- Destination 5: Final Delivery Destination -->
-    <div class="dm-hub-pin" style="left: 95%; top: 58%;" data-hub="5">
+    <div class="dm-hub-pin" style="left: 95%; top: 85%;" data-hub="5">
       <div class="dm-pin-badge">🎯 Hub E: Delivery Point</div>
       <div class="dm-pin-icon-wrap">
         <svg class="dm-pin-svg" viewBox="0 0 32 38" fill="none">
@@ -461,10 +457,6 @@
 
   <!-- Center Lucrative Foreground Header -->
   <div class="dm-content-hero">
-    {%- if section.settings.badge_text != blank -%}
-      <div class="dm-badge-pill">{{ section.settings.badge_text }}</div>
-    {%- endif -%}
-
     <h1 class="dm-title">
       {{ section.settings.title | default: 'Capturing Moments Of <span class="dm-title-gradient">Trust & Innovation</span> Across India' }}
     </h1>
@@ -505,13 +497,13 @@
       let pauseTimer = null;
       let lastHubIndex = -1;
 
-      // Destination waypoints along path (percentage checkpoints)
+      // Destination waypoints along path (percentage checkpoints for bottom highway)
       const hubs = [
-        { pct: 0.02, name: "📦 Hub A: Packed & Left" },
-        { pct: 0.22, name: "📍 Hub B: Transited" },
-        { pct: 0.50, name: "⚡ Hub C: Sorted & Dispatched" },
-        { pct: 0.76, name: "🏢 Hub D: Out for Delivery" },
-        { pct: 0.98, name: "🎯 Hub E: Delivered Successfully!" }
+        { pct: 0.05, name: "📦 Hub A: Packed & Dispatched" },
+        { pct: 0.28, name: "📍 Hub B: Transited Express" },
+        { pct: 0.54, name: "⚡ Hub C: Sorted at Central Hub" },
+        { pct: 0.77, name: "🏢 Hub D: Out for Regional Delivery" },
+        { pct: 0.95, name: "🎯 Hub E: Delivered Successfully!" }
       ];
 
       function animate() {
