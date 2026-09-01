@@ -241,26 +241,29 @@
   }
 
   /* Base & Desktop Brand Color Styling */
-  .sec2-line-orange1,
-  .sec2-line-orange2 {
+  .brand-orange {
     color: #ec5c0a !important;
     font-weight: 700 !important;
     display: inline;
   }
 
-  .sec2-line-green1,
-  .sec2-line-green2 {
+  .brand-green {
     color: #007b3e !important;
     font-weight: 700 !important;
     display: inline;
   }
 
-  /* Mobile Specific Alignment: Balanced 4-Line Stack on Mobile */
+  .sec2-line-1,
+  .sec2-line-2 {
+    display: inline;
+  }
+
+  /* Mobile Specific Alignment: Lucrative 2-Line Layout on Mobile */
   @media screen and (max-width: 768px) {
     h2.sec2-heading-custom,
     .company-info-text h2.sec2-heading-custom {
-      font-size: 1.3rem !important;
-      line-height: 1.3 !important;
+      font-size: clamp(1rem, 4.1vw, 1.3rem) !important;
+      line-height: 1.35 !important;
       margin-bottom: 16px !important;
       text-align: center !important;
       display: flex !important;
@@ -270,35 +273,23 @@
       width: 100% !important;
     }
 
-    .sec2-line-orange1 {
+    .sec2-line-1 {
       display: block !important;
-      color: #ec5c0a !important;
-      font-weight: 800 !important;
-      font-size: clamp(1.2rem, 5vw, 1.45rem) !important;
       text-align: center !important;
       white-space: nowrap !important;
-      margin-bottom: 3px !important;
+      font-size: clamp(0.98rem, 4vw, 1.3rem) !important;
+      font-weight: 800 !important;
+      margin-bottom: 4px !important;
     }
 
-    .sec2-line-green1,
-    .sec2-line-green2 {
+    .sec2-line-2 {
       display: block !important;
-      color: #007b3e !important;
-      font-weight: 800 !important;
-      font-size: clamp(1.1rem, 4.4vw, 1.3rem) !important;
       text-align: center !important;
       white-space: nowrap !important;
-      margin-bottom: 3px !important;
-    }
-
-    .sec2-line-orange2 {
-      display: block !important;
-      color: #ec5c0a !important;
+      font-size: clamp(0.98rem, 4vw, 1.3rem) !important;
       font-weight: 800 !important;
-      font-size: clamp(1.15rem, 4.6vw, 1.35rem) !important;
-      text-align: center !important;
-      white-space: nowrap !important;
     }
+  }
 
     /* Equal Height & Width Metric Cards on Mobile */
     .wwa-metrics-row {
@@ -3352,10 +3343,8 @@
       <!-- Text Side -->
       <div class="company-info-text reveal-up active">
         <h2 class="sec2-heading-custom">
-          <span class="sec2-line-orange1">Empowering India</span>
-          <span class="sec2-line-green1">With Green Energy &amp;</span>
-          <span class="sec2-line-green2">Power Savings</span>
-          <span class="sec2-line-orange2">Across Nation</span>
+          <span class="sec2-line-1"><span class="brand-orange">Empowering India</span> <span class="brand-green">With Green Energy</span></span>
+          <span class="sec2-line-2"><span class="brand-green">&amp; Power Savings</span> <span class="brand-orange">Across Nation</span></span>
         </h2>
         
         <p><b>Vidhyut Saathi Energy Savers Pvt. Ltd.</b> is more than a company—it is a mission to empower every Indian family to save money, every entrepreneur to build wealth, and every citizen to contribute towards a greener and stronger India. Through our revolutionary <b>Vidhyut Saathi Card</b> – India's First Energy Saver Card powered by Advanced US-German Nano Technology, we are helping homes, shops, offices, businesses, and industries save <b>20%–30%</b> on their monthly electricity bills while promoting smarter energy consumption.</p>
