@@ -25,7 +25,7 @@
     overflow: hidden;
   }
 
-  /* Grid Linings Pattern (Top & Bottom) */
+  /* Broken / Dashed Grid Linings Pattern (Bich-Bich Me Gap / Line Missing) */
   .hm-gallery-linings-pattern-top,
   .hm-gallery-linings-pattern-bottom {
     position: absolute;
@@ -35,25 +35,25 @@
     max-width: 100%;
     height: 340px;
     background-image: 
-      linear-gradient(to right, rgba(225, 205, 185, 0.55) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(225, 205, 185, 0.55) 1px, transparent 1px);
-    background-size: 70px 70px;
+      repeating-linear-gradient(to right, rgba(220, 195, 170, 0.65) 0px, rgba(220, 195, 170, 0.65) 20px, transparent 20px, transparent 35px, rgba(220, 195, 170, 0.65) 35px, rgba(220, 195, 170, 0.65) 65px),
+      repeating-linear-gradient(to bottom, rgba(220, 195, 170, 0.65) 0px, rgba(220, 195, 170, 0.65) 20px, transparent 20px, transparent 35px, rgba(220, 195, 170, 0.65) 35px, rgba(220, 195, 170, 0.65) 65px);
+    background-size: 65px 65px;
     pointer-events: none;
   }
 
   .hm-gallery-linings-pattern-top {
     top: 0;
     background-position: center top;
-    mask-image: radial-gradient(circle at 50% 35%, rgba(0,0,0,0.9) 25%, rgba(0,0,0,0) 80%);
-    -webkit-mask-image: radial-gradient(circle at 50% 35%, rgba(0,0,0,0.9) 25%, rgba(0,0,0,0) 80%);
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 35%, rgba(0,0,0,0.95) 20%, rgba(0,0,0,0) 80%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 35%, rgba(0,0,0,0.95) 20%, rgba(0,0,0,0) 80%);
     animation: liningsFloatTop 10s ease-in-out infinite alternate;
   }
 
   .hm-gallery-linings-pattern-bottom {
     bottom: 0;
     background-position: center bottom;
-    mask-image: radial-gradient(circle at 50% 65%, rgba(0,0,0,0.9) 25%, rgba(0,0,0,0) 80%);
-    -webkit-mask-image: radial-gradient(circle at 50% 65%, rgba(0,0,0,0.9) 25%, rgba(0,0,0,0) 80%);
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 65%, rgba(0,0,0,0.95) 20%, rgba(0,0,0,0) 80%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 65%, rgba(0,0,0,0.95) 20%, rgba(0,0,0,0) 80%);
     animation: liningsFloatBottom 10s ease-in-out infinite alternate;
   }
 
