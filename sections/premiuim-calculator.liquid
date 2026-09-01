@@ -261,103 +261,104 @@
     100% { filter: drop-shadow(0 0 10px rgba(255, 193, 7, 1)) drop-shadow(0 0 18px rgba(245, 130, 32, 0.8)) opacity(1); transform: scale(1.15); }
   }
 
-  /* ON-SCREEN FLOATING MODAL HINT */
-  .premium-calculator-{{ section.id }} .calc-hint-modal {
-    position: fixed;
-    inset: 0;
-    background: rgba(15, 23, 42, 0.65);
-    backdrop-filter: blur(6px);
-    z-index: 99999;
+  /* IN-PLACE POPOVER HINT RIGHT AT BUTTON */
+  .premium-calculator-{{ section.id }} .rec-header-row {
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 20px;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    justify-content: space-between;
+    margin-top: 18px;
+    margin-bottom: 8px;
+    position: relative;
   }
 
-  .premium-calculator-{{ section.id }} .calc-hint-modal.active {
-    opacity: 1;
-    visibility: visible;
-  }
-
-  .premium-calculator-{{ section.id }} .calc-hint-card {
+  .premium-calculator-{{ section.id }} .calc-inplace-hint {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    left: 0;
+    z-index: 100;
     background: #ffffff;
     border: 2px solid #F58220;
-    border-radius: 24px;
-    max-width: 520px;
-    width: 100%;
-    padding: 26px 22px 22px 22px;
-    box-shadow: 0 25px 60px rgba(0,0,0,0.25), 0 0 30px rgba(245, 130, 32, 0.2);
-    position: relative;
-    transform: scale(0.9);
-    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    border-radius: 16px;
+    padding: 14px 16px;
+    box-shadow: 0 12px 35px rgba(245, 130, 32, 0.22), 0 4px 12px rgba(0,0,0,0.06);
+    animation: hintSlideDown-{{ section.id }} 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 
-  .premium-calculator-{{ section.id }} .calc-hint-modal.active .calc-hint-card {
-    transform: scale(1);
+  .premium-calculator-{{ section.id }} .calc-inplace-hint.active {
+    display: block;
   }
 
-  .premium-calculator-{{ section.id }} .calc-hint-close {
-    position: absolute;
-    top: 14px;
-    right: 14px;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background: #f1f5f9;
-    color: #0f172a;
-    border: none;
-    font-size: 1.2rem;
+  @keyframes hintSlideDown-{{ section.id }} {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .premium-calculator-{{ section.id }} .calc-inplace-hint-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.85rem;
     font-weight: 800;
+    color: #ec5c0a;
+    border-bottom: 1.5px solid rgba(245, 130, 32, 0.18);
+    padding-bottom: 6px;
+    margin-bottom: 8px;
+  }
+
+  .premium-calculator-{{ section.id }} .calc-inplace-hint-close {
+    background: #f1f5f9;
+    border: none;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    font-size: 1rem;
+    font-weight: 900;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background 0.2s ease;
+    color: #64748b;
+    transition: all 0.2s ease;
   }
 
-  .premium-calculator-{{ section.id }} .calc-hint-close:hover {
-    background: #e2e8f0;
-    color: #ec5c0a;
+  .premium-calculator-{{ section.id }} .calc-inplace-hint-close:hover {
+    background: #ec5c0a;
+    color: #ffffff;
   }
 
-  .premium-calculator-{{ section.id }} .calc-hint-title {
-    font-family: var(--heading-font);
-    font-size: 1.35rem;
-    font-weight: 900;
-    color: #0f172a;
-    margin-bottom: 12px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .premium-calculator-{{ section.id }} .calc-hint-text {
-    font-size: 0.92rem;
-    line-height: 1.6;
+  .premium-calculator-{{ section.id }} .calc-inplace-hint-body {
+    font-size: 0.84rem;
+    line-height: 1.55;
     color: #334155;
   }
 
-  /* BASE 2-COLUMN GRID (Original Mobile) */
-  .premium-calculator-{{ section.id }} .calc-results { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 28px; }
+  /* SLEEK COMPACT RESULTS CARDS WITH RUPEES EXACTLY IN CENTER */
+  .premium-calculator-{{ section.id }} .calc-results {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+    margin-top: 0 !important;
+    margin-bottom: 14px !important;
+    width: 100% !important;
+  }
 
   .premium-calculator-{{ section.id }} .calc-result-card {
     background: #ffffff !important;
     border: 1.5px solid rgba(20, 140, 58, 0.16) !important;
-    border-radius: 20px !important;
-    padding: 24px 14px 18px 14px !important;
-    min-height: 125px !important;
+    border-radius: 16px !important;
+    padding: 14px 10px 12px 10px !important;
+    min-height: 90px !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
-    justify-content: space-between !important;
+    justify-content: center !important;
     text-align: center !important;
-    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05), 0 2px 8px rgba(245, 130, 32, 0.04) !important;
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.04) !important;
     position: relative !important;
     overflow: hidden !important;
-    transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+    transition: all 0.3s ease !important;
   }
 
   .premium-calculator-{{ section.id }} .calc-result-card::before {
@@ -366,37 +367,39 @@
     top: 0 !important;
     left: 0 !important;
     right: 0 !important;
-    height: 4px !important;
+    height: 3.5px !important;
     background: linear-gradient(90deg, #148C3A 0%, #F58220 100%) !important;
   }
 
   .premium-calculator-{{ section.id }} .calc-result-card:hover {
-    transform: translateY(-5px) scale(1.02) !important;
+    transform: translateY(-3px) !important;
     border-color: #F58220 !important;
-    box-shadow: 0 16px 35px rgba(245, 130, 32, 0.15) !important;
+    box-shadow: 0 10px 25px rgba(245, 130, 32, 0.15) !important;
   }
 
   .premium-calculator-{{ section.id }} .calc-result-val {
     font-family: var(--heading-font) !important;
-    font-size: clamp(1.6rem, 2.5vw, 2.1rem) !important;
+    font-size: clamp(1.4rem, 2.2vw, 1.85rem) !important;
     font-weight: 900 !important;
     background: linear-gradient(135deg, #148C3A 0%, #F58220 100%) !important;
     -webkit-background-clip: text !important;
     -webkit-text-fill-color: transparent !important;
-    line-height: 1.15 !important;
-    margin: auto 0 !important;
+    line-height: 1.1 !important;
+    margin: 0 0 4px 0 !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
+    text-align: center !important;
   }
 
   .premium-calculator-{{ section.id }} .calc-result-label {
-    font-size: 0.82rem !important;
+    font-size: 0.78rem !important;
     color: #64748B !important;
     font-weight: 700 !important;
-    margin-top: auto !important;
-    padding-top: 4px !important;
-    letter-spacing: 0.02em !important;
+    margin: 0 !important;
+    line-height: 1.2 !important;
+    text-align: center !important;
+    letter-spacing: 0.01em !important;
   }
 
   .premium-calculator-{{ section.id }} .calc-disclaimer {
@@ -837,7 +840,7 @@
       font-size: 0.88rem !important;
     }
 
-    /* RIGHT COLUMN: 4 CALCULATION RESULTS CARDS, EXPLANATION, DISCLAIMER & 4 TRUST BADGES */
+    /* RIGHT COLUMN: 4 CALCULATION RESULTS CARDS (COMPACT & PERFECTLY CENTERED) */
     .vs-calc-right-col-{{ section.id }} {
       width: 100% !important;
       max-width: 100% !important;
@@ -845,20 +848,26 @@
     .vs-calc-right-col-{{ section.id }} .calc-results {
       display: grid !important;
       grid-template-columns: repeat(2, 1fr) !important;
-      gap: 14px !important;
+      gap: 12px !important;
       margin-top: 0 !important;
-      margin-bottom: 16px !important;
+      margin-bottom: 14px !important;
       width: 100% !important;
     }
     .vs-calc-right-col-{{ section.id }} .calc-result-card {
       background: #FFFFFF !important;
-      border: 1px solid rgba(20, 140, 58, 0.15) !important;
-      border-radius: 18px !important;
-      padding: 20px 14px !important;
+      border: 1.5px solid rgba(20, 140, 58, 0.16) !important;
+      border-radius: 16px !important;
+      padding: 14px 10px 12px 10px !important;
+      min-height: 90px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
       text-align: center !important;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04) !important;
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.04) !important;
       position: relative !important;
       overflow: hidden !important;
+      transition: all 0.3s ease !important;
     }
     .vs-calc-right-col-{{ section.id }} .calc-result-card::before {
       content: '' !important;
@@ -866,26 +875,37 @@
       top: 0 !important;
       left: 0 !important;
       right: 0 !important;
-      height: 4px !important;
+      height: 3.5px !important;
       background: linear-gradient(90deg, #148C3A 0%, #F58220 100%) !important;
     }
+    .vs-calc-right-col-{{ section.id }} .calc-result-card:hover {
+      transform: translateY(-3px) !important;
+      border-color: #F58220 !important;
+      box-shadow: 0 10px 25px rgba(245, 130, 32, 0.15) !important;
+    }
     .vs-calc-right-col-{{ section.id }} .calc-result-val {
-      font-size: 1.85rem !important;
+      font-size: clamp(1.4rem, 2.2vw, 1.85rem) !important;
       font-weight: 900 !important;
-      color: #148C3A !important;
-      line-height: 1.15 !important;
-      margin-bottom: 6px !important;
+      background: linear-gradient(135deg, #148C3A 0%, #F58220 100%) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      line-height: 1.1 !important;
+      margin: 0 0 4px 0 !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      text-align: center !important;
     }
     .vs-calc-right-col-{{ section.id }} .calc-result-label {
-      font-size: 0.85rem !important;
+      font-size: 0.78rem !important;
       color: #64748B !important;
-      font-weight: 600 !important;
+      font-weight: 700 !important;
+      margin: 0 !important;
+      line-height: 1.2 !important;
+      text-align: center !important;
+      letter-spacing: 0.01em !important;
     }
 
-    .vs-calc-right-col-{{ section.id }} .calc-explain-badge {
-      margin-top: 14px !important;
-      margin-bottom: 12px !important;
-    }
     .vs-calc-right-col-{{ section.id }} .calc-disclaimer {
       margin-top: 0 !important;
       margin-bottom: 16px !important;
@@ -1060,13 +1080,24 @@
             </div>
           </div>
 
-          <!-- SMART RECOMMENDATION HEADER WITH TOP-RIGHT HOW IT WORKS BUTTON -->
+          <!-- SMART RECOMMENDATION HEADER WITH IN-PLACE HOW IT WORKS BUTTON & POPOVER -->
           <div class="rec-header-row">
             <div class="calc-label" style="margin-bottom:0;">⚡ SMART RECOMMENDATION</div>
             <button type="button" class="calc-hint-trigger-btn" id="calcHintBtn-{{ section.id }}" title="Click to view rule explanation">
               <span class="bulb-icon-animated">💡</span>
               <span>How It Works</span>
             </button>
+
+            <!-- IN-PLACE POPUP HINT BUBBLE RIGHT THERE -->
+            <div class="calc-inplace-hint" id="calcInplaceHint-{{ section.id }}">
+              <div class="calc-inplace-hint-header">
+                <span>💡 <strong>How It Works</strong></span>
+                <button type="button" class="calc-inplace-hint-close" id="calcInplaceHintClose-{{ section.id }}">&times;</button>
+              </div>
+              <div class="calc-inplace-hint-body" id="recReason-{{ section.id }}">
+                💡 <strong>How It Works:</strong> ₹4,000 bill requires 1 Card (Single Phase). (Enter your KW load above if known).
+              </div>
+            </div>
           </div>
 
           <!-- DYNAMIC SMART LOAD & CARD RECOMMENDATION BAR -->
@@ -1126,20 +1157,6 @@
 
 </div>
 
-<!-- ON-SCREEN FLOATING MODAL HINT POPUP -->
-<div class="calc-hint-modal" id="calcHintModal-{{ section.id }}">
-  <div class="calc-hint-card">
-    <button type="button" class="calc-hint-close" id="calcHintClose-{{ section.id }}">&times;</button>
-    <div class="calc-hint-title">
-      <span class="bulb-icon-animated">💡</span>
-      <span>How Recommendation Works</span>
-    </div>
-    <div class="calc-hint-text" id="recReason-{{ section.id }}">
-      💡 <strong>How It Works:</strong> ₹4,000 bill requires 1 Card (Single Phase). (Enter your KW load above if known).
-    </div>
-  </div>
-</div>
-
 <script>
   (function() {
     function initCalc() {
@@ -1171,8 +1188,8 @@
       const recCards = document.getElementById(`recCards-${sectionId}`);
       const recReason = document.getElementById(`recReason-${sectionId}`);
       const hintBtn = document.getElementById(`calcHintBtn-${sectionId}`);
-      const hintModal = document.getElementById(`calcHintModal-${sectionId}`);
-      const hintClose = document.getElementById(`calcHintClose-${sectionId}`);
+      const hintPopup = document.getElementById(`calcInplaceHint-${sectionId}`);
+      const hintClose = document.getElementById(`calcInplaceHintClose-${sectionId}`);
 
       const billInput = document.getElementById(`billInput-${sectionId}`);
       const kwInput = document.getElementById(`kwInput-${sectionId}`);
@@ -1298,28 +1315,32 @@
         });
       }
 
-      // Open Modal on Hint Button Click
-      if (hintBtn && hintModal) {
+      // Toggle In-Place Popup on Hint Button Click
+      if (hintBtn && hintPopup) {
         hintBtn.addEventListener('click', function(e) {
           e.preventDefault();
-          hintModal.classList.add('active');
+          e.stopPropagation();
+          hintPopup.classList.toggle('active');
         });
       }
 
-      // Close Modal on Close Button Click or Backdrop Click
-      if (hintClose && hintModal) {
-        hintClose.addEventListener('click', function() {
-          hintModal.classList.remove('active');
+      // Close In-Place Popup on Close Button Click
+      if (hintClose && hintPopup) {
+        hintClose.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          hintPopup.classList.remove('active');
         });
       }
 
-      if (hintModal) {
-        hintModal.addEventListener('click', function(e) {
-          if (e.target === hintModal) {
-            hintModal.classList.remove('active');
+      // Close In-Place Popup on Outside Click
+      document.addEventListener('click', function(e) {
+        if (hintPopup && hintPopup.classList.contains('active')) {
+          if (!hintPopup.contains(e.target) && e.target !== hintBtn && !hintBtn.contains(e.target)) {
+            hintPopup.classList.remove('active');
           }
-        });
-      }
+        }
+      });
 
       slider.addEventListener('input', function() { updateCalculator('slider'); });
       slider.addEventListener('change', function() { updateCalculator('slider'); });
