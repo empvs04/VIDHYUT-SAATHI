@@ -1,0 +1,285 @@
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800;900&family=Caveat:wght@600;700&family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+{%- style -%}
+  /* ===========================================================================
+     SECTION 1: GALLERY HERO SHOWCASE WITH PARALLAX TREE SCROLL ANIMATION
+     Vidhyut Saathi Theme Color System (#ec5c0a, #007b3e, #0f172a, #fff8ef)
+     =========================================================================== */
+  #galleryHeroSection-{{ section.id }} {
+    position: relative;
+    width: 100%;
+    min-height: clamp(480px, 68vh, 680px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: #0b1120;
+    box-sizing: border-box;
+    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+  }
+
+  /* Background Image Banner with Dark Gradient Overlay */
+  .gallery-hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120%;
+    object-fit: cover;
+    object-position: center 30%;
+    z-index: 1;
+    will-change: transform;
+    transition: transform 0.1s linear;
+    filter: brightness(0.72) contrast(1.08);
+  }
+
+  .gallery-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      180deg, 
+      rgba(15, 23, 42, 0.65) 0%, 
+      rgba(15, 23, 42, 0.45) 45%, 
+      rgba(11, 17, 32, 0.85) 100%
+    );
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  /* Center Content Container */
+  .gallery-hero-content {
+    position: relative;
+    z-index: 4;
+    text-align: center;
+    padding: 0 20px;
+    margin-bottom: 70px;
+    max-width: 900px;
+  }
+
+  /* Lucrative Top Badge Pill */
+  .gallery-hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(90deg, #ec5c0a 0%, #ff9a00 50%, #007b3e 100%);
+    color: #ffffff;
+    font-size: 0.84rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 6px 20px;
+    border-radius: 50px;
+    box-shadow: 0 6px 20px rgba(236, 92, 10, 0.35);
+    margin-bottom: 16px;
+    backdrop-filter: blur(10px);
+  }
+
+  /* Main Title with Modern Typography */
+  .gallery-hero-title {
+    font-family: 'Baloo 2', 'Outfit', sans-serif;
+    font-size: clamp(38px, 6vw, 76px);
+    font-weight: 900;
+    color: #ffffff;
+    line-height: 1.08;
+    margin: 0 0 14px 0;
+    letter-spacing: -0.02em;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  }
+
+  .gallery-hero-title-highlight {
+    background: linear-gradient(90deg, #ff9a00 0%, #ec5c0a 50%, #4ade80 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Breadcrumb Navigation */
+  .gallery-hero-breadcrumb {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: clamp(14px, 2vw, 17px);
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    padding: 8px 24px;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+  }
+
+  .gallery-hero-breadcrumb a {
+    color: #ffaa44;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .gallery-hero-breadcrumb a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+  }
+
+  .gallery-hero-breadcrumb span.sep {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 14px;
+  }
+
+  /* Bottom Parallax Forest Tree Mask Layer */
+  .gallery-tree-parallax-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: clamp(100px, 16vh, 180px);
+    z-index: 5;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .gallery-tree-svg-layer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    fill: #ffffff;
+    will-change: transform;
+    transition: transform 0.05s linear;
+  }
+
+  /* Responsive Styling */
+  @media (max-width: 768px) {
+    #galleryHeroSection-{{ section.id }} {
+      min-height: 420px;
+    }
+    .gallery-hero-content {
+      margin-bottom: 50px;
+    }
+    .gallery-tree-parallax-container {
+      height: 90px;
+    }
+  }
+{%- endstyle -%}
+
+<section class="gallery-hero-section" id="galleryHeroSection-{{ section.id }}">
+  <!-- Background Banner Image -->
+  {%- if section.settings.bg_image != blank -%}
+    <img src="{{ section.settings.bg_image | image_url: width: 2200 }}" alt="{{ section.settings.title | escape }}" class="gallery-hero-bg" id="galleryHeroBg-{{ section.id }}" loading="eager">
+  {%- else -%}
+    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=2200&auto=format&fit=crop&q=80" alt="Vidhyut Saathi Team & Gallery Hero" class="gallery-hero-bg" id="galleryHeroBg-{{ section.id }}" loading="eager">
+  {%- endif -%}
+
+  <!-- Dark Theme Gradient Overlay -->
+  <div class="gallery-hero-overlay" aria-hidden="true"></div>
+
+  <!-- Center Content -->
+  <div class="gallery-hero-content">
+    {%- if section.settings.badge_text != blank -%}
+      <div class="gallery-hero-badge">{{ section.settings.badge_text }}</div>
+    {%- endif -%}
+
+    <h1 class="gallery-hero-title">
+      {{ section.settings.title | default: 'Our <span class="gallery-hero-title-highlight">Gallery</span>' }}
+    </h1>
+
+    <div class="gallery-hero-breadcrumb">
+      <a href="{{ routes.root_url }}">Home</a>
+      <span class="sep">›</span>
+      <span>Gallery</span>
+    </div>
+  </div>
+
+  <!-- Parallax Tree Layer (Moves UP smoothly when scrolling down) -->
+  <div class="gallery-tree-parallax-container" aria-hidden="true">
+    <svg class="gallery-tree-svg-layer" id="galleryTreeSvg-{{ section.id }}" viewBox="0 0 1440 220" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 220 L0 160 L18 130 L36 160 L54 110 L72 160 L90 140 L108 175 L126 120 L144 175 L162 105 L180 175 L198 135 L216 175 L234 115 L252 175 L270 145 L288 180 L306 125 L324 180 L342 95 L360 180 L378 130 L396 185 L414 110 L432 185 L450 140 L468 185 L486 100 L504 185 L522 135 L540 190 L558 115 L576 190 L594 145 L612 190 L630 105 L648 190 L666 130 L684 195 L702 90 L720 195 L738 125 L756 195 L774 105 L792 195 L810 140 L828 195 L846 115 L864 195 L882 130 L900 195 L918 95 L936 195 L954 135 L972 195 L990 110 L1008 195 L1026 145 L1044 195 L1062 100 L1080 195 L1098 130 L1116 195 L1134 115 L1152 195 L1170 140 L1188 195 L1206 90 L1224 195 L1242 135 L1260 195 L1278 105 L1296 195 L1314 145 L1332 195 L1350 110 L1368 195 L1386 130 L1404 195 L1422 140 L1440 170 L1440 220 Z" />
+    </svg>
+  </div>
+</section>
+
+<script>
+  (function() {
+    function initGalleryTreeParallax_{{ section.id | replace: '-', '_' }}() {
+      const section = document.getElementById('galleryHeroSection-{{ section.id }}');
+      const treeSvg = document.getElementById('galleryTreeSvg-{{ section.id }}');
+      const bgImg = document.getElementById('galleryHeroBg-{{ section.id }}');
+      if (!section || !treeSvg) return;
+
+      let ticking = false;
+
+      function updateParallax() {
+        const rect = section.getBoundingClientRect();
+        const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+
+        // Calculate scroll offset when section is in viewport
+        if (rect.bottom >= 0 && rect.top <= windowHeight) {
+          const scrollPos = window.scrollY || window.pageYOffset;
+          // Smooth Upward Push for Trees: Trees rise up into section as user scrolls down
+          const treeOffsetY = scrollPos * -0.35; 
+          const bgOffsetY = scrollPos * 0.18;
+
+          treeSvg.style.transform = `translate3d(0, ${treeOffsetY}px, 0)`;
+          if (bgImg) {
+            bgImg.style.transform = `translate3d(0, ${bgOffsetY}px, 0)`;
+          }
+        }
+        ticking = false;
+      }
+
+      window.addEventListener('scroll', function() {
+        if (!ticking) {
+          window.requestAnimationFrame(updateParallax);
+          ticking = true;
+        }
+      }, { passive: true });
+
+      // Initial Call
+      updateParallax();
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initGalleryTreeParallax_{{ section.id | replace: '-', '_' }});
+    } else {
+      initGalleryTreeParallax_{{ section.id | replace: '-', '_' }}();
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Gallery Hero Showcase",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Top Badge Text",
+      "default": "⚡ MEMORABLE MOMENTS & EVENTS"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Main Title (HTML Allowed)",
+      "default": "Vidhyut Saathi <span class=\"gallery-hero-title-highlight\">Gallery</span>"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Hero Background Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Gallery Hero Showcase",
+      "settings": {
+        "badge_text": "⚡ MEMORABLE MOMENTS & EVENTS",
+        "title": "Vidhyut Saathi <span class=\"gallery-hero-title-highlight\">Gallery</span>"
+      }
+    }
+  ]
+}
+{% endschema %}
