@@ -2,7 +2,7 @@
   @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap');
 
   /* ==========================================================================
-     SECTION 2: 4-CARD HERO COMPOSITION GALLERY (EXACT MATCH TO USER SCREENSHOT)
+     SECTION 2: 4-CARD HERO COMPOSITION + 30 SQUARE CARDS GRID (PREMIUM LIGHT)
      ========================================================================== */
   .vsg-mosaic-section {
     position: relative;
@@ -11,7 +11,7 @@
       radial-gradient(circle at 10% 20%, rgba(236, 92, 10, 0.05) 0%, transparent 40%),
       radial-gradient(circle at 90% 80%, rgba(0, 123, 62, 0.05) 0%, transparent 40%);
     color: #1e293b;
-    padding: 30px 20px 45px 20px;
+    padding: 60px 24px 85px 24px;
     font-family: 'Outfit', sans-serif;
     overflow: hidden;
   }
@@ -89,7 +89,7 @@
     justify-content: center;
     flex-wrap: wrap;
     gap: 10px;
-    margin-bottom: 28px;
+    margin-bottom: 30px;
     padding: 2px;
   }
 
@@ -126,7 +126,7 @@
   }
 
   /* ==========================================================================
-     3-COLUMN FULL-WIDTH HERO GRID (TALL SIDE CARDS + BIG CENTER SQUARES)
+     PART 1: 3-COLUMN FULL-WIDTH HERO GRID (TALL SIDE CARDS + 2 CENTER SQUARES)
      ========================================================================== */
   .vsg-4card-grid {
     display: grid;
@@ -134,7 +134,7 @@
     gap: 20px;
     width: 100%;
     max-width: 1400px;
-    margin: 0 auto;
+    margin: 0 auto 20px auto;
     align-items: stretch;
     box-sizing: border-box;
   }
@@ -205,6 +205,43 @@
   }
 
   .vsg-col-center .vsg-card-img {
+    width: 100% !important;
+    height: 100% !important;
+    aspect-ratio: 1 / 1 !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    display: block !important;
+  }
+
+  /* ==========================================================================
+     PART 2: 30 SQUARE CARDS GRID (3 EQUAL COLUMNS x 10 ROWS)
+     ========================================================================== */
+  .vsg-30cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+
+  .vsg-square-card {
+    width: 100% !important;
+    aspect-ratio: 1 / 1 !important; /* STRICT 1:1 SQUARE FORMAT */
+    height: auto !important;
+    min-height: 0 !important;
+  }
+
+  .vsg-square-card .vsg-card-img-wrap {
+    width: 100% !important;
+    height: 100% !important;
+    aspect-ratio: 1 / 1 !important;
+    position: relative !important;
+    overflow: hidden !important;
+  }
+
+  .vsg-square-card .vsg-card-img {
     width: 100% !important;
     height: 100% !important;
     aspect-ratio: 1 / 1 !important;
@@ -378,6 +415,10 @@
       grid-template-columns: 1fr;
       gap: 16px;
     }
+    .vsg-30cards-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
     .vsg-col-left,
     .vsg-col-right {
       height: 380px;
@@ -417,6 +458,10 @@
     .vsg-col-center .vsg-card-item {
       aspect-ratio: 1 / 1 !important;
     }
+    .vsg-30cards-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
     .vsg-card-item {
       border-radius: 16px;
     }
@@ -450,8 +495,8 @@
       </div>
     </div>
 
-    <!-- 3-COLUMN FLUSH-HEIGHT 4-CARD HERO GRID (SCREENSHOT PATTERN) -->
-    <div class="vsg-4card-grid" id="vsgGrid-{{ section.id }}">
+    <!-- PART 1: 3-COLUMN FLUSH-HEIGHT 4-CARD HERO GRID -->
+    <div class="vsg-4card-grid" id="vsgHeroGrid-{{ section.id }}">
       
       <!-- 1. LEFT COLUMN: BIG TALL PORTRAIT CARD -->
       <div class="vsg-col-left">
@@ -467,7 +512,7 @@
         </div>
       </div>
 
-      <!-- 2. CENTER COLUMN: 2 SQUARES / HORIZONTAL CARDS (TOP & BOTTOM EQUAL FLUSH) -->
+      <!-- 2. CENTER COLUMN: 2 SQUARES (TOP & BOTTOM EQUAL FLUSH) -->
       <div class="vsg-col-center">
         <!-- Center Top Card -->
         <div class="vsg-card-item card-center-item" data-category="{{ section.settings.card2_category | default: 'celebrating' }}">
@@ -510,6 +555,26 @@
 
     </div>
 
+    <!-- PART 2: 30 SQUARE CARDS (3 COLUMNS x 10 ROWS) GRID -->
+    <div class="vsg-30cards-grid" id="vsg30Grid-{{ section.id }}">
+      {%- if section.blocks.size > 0 -%}
+        {%- for block in section.blocks -%}
+          <div class="vsg-card-item vsg-square-card" data-category="{{ block.settings.category | default: 'all' }}" {{ block.shopify_attributes }}>
+            <div class="vsg-card-img-wrap">
+              {%- if block.settings.image != blank -%}
+                <img src="{{ block.settings.image | image_url: width: 1000 }}" alt="{{ block.settings.title | default: 'Vidhyut Saathi Moments' | escape }}" class="vsg-card-img" loading="lazy">
+              {%- elsif block.settings.fallback_asset != blank -%}
+                <img src="{{ block.settings.fallback_asset | asset_url }}" alt="{{ block.settings.title | default: 'Vidhyut Saathi Moments' | escape }}" class="vsg-card-img" loading="lazy">
+              {%- else -%}
+                <img src="{{ 'vidhyut-saathi-team-bg.jpg' | asset_url }}" alt="Vidhyut Saathi Moments" class="vsg-card-img" loading="lazy">
+              {%- endif -%}
+              <div class="vsg-expand-btn"><i class="fa-solid fa-expand"></i></div>
+            </div>
+          </div>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+
   </div>
 </section>
 
@@ -525,13 +590,13 @@
 
 <script>
   (function() {
-    function init4CardGallery() {
+    function initGalleryShowcase() {
       const sectionId = '{{ section.id }}';
-      const grid = document.getElementById(`vsgGrid-${sectionId}`);
-      if (!grid) return;
+      const sectionWrapper = document.getElementById(`vsg-mosaic-${sectionId}`);
+      if (!sectionWrapper) return;
 
-      const filterBtns = document.querySelectorAll(`#vsg-mosaic-${sectionId} .vsg-filter-btn`);
-      const cards = grid.querySelectorAll('.vsg-card-item');
+      const filterBtns = sectionWrapper.querySelectorAll('.vsg-filter-btn');
+      const cards = sectionWrapper.querySelectorAll('.vsg-card-item');
       
       const lightbox = document.getElementById(`vsgLightbox-${sectionId}`);
       const lbImg = document.getElementById(`vsgLightboxImg-${sectionId}`);
@@ -546,13 +611,13 @@
 
           cards.forEach(card => {
             const cat = card.getAttribute('data-category') || 'all';
-            if (filter === 'all' || cat === filter) {
+            if (filter === 'all' || cat === filter || cat === 'all') {
               card.style.opacity = '1';
               card.style.filter = 'none';
               card.style.pointerEvents = 'auto';
             } else {
-              card.style.opacity = '0.2';
-              card.style.filter = 'grayscale(80%)';
+              card.style.opacity = '0.18';
+              card.style.filter = 'grayscale(85%)';
               card.style.pointerEvents = 'none';
             }
           });
@@ -593,16 +658,16 @@
     }
 
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', init4CardGallery);
+      document.addEventListener('DOMContentLoaded', initGalleryShowcase);
     } else {
-      init4CardGallery();
+      initGalleryShowcase();
     }
   })();
 </script>
 
 {% schema %}
 {
-  "name": "4-Card Hero Gallery",
+  "name": "Mosaic & Square Gallery",
   "settings": [
     {
       "type": "text",
@@ -630,7 +695,7 @@
     },
     {
       "type": "header",
-      "content": "1. Left Big Card (Tall Portrait)"
+      "content": "Hero Card 1: Left Big Card"
     },
     {
       "type": "image_picker",
@@ -651,7 +716,7 @@
     },
     {
       "type": "header",
-      "content": "2. Center Top Card"
+      "content": "Hero Card 2: Center Top Square"
     },
     {
       "type": "image_picker",
@@ -672,7 +737,7 @@
     },
     {
       "type": "header",
-      "content": "3. Center Bottom Card"
+      "content": "Hero Card 3: Center Bottom Square"
     },
     {
       "type": "image_picker",
@@ -693,7 +758,7 @@
     },
     {
       "type": "header",
-      "content": "4. Right Big Card (Tall Portrait)"
+      "content": "Hero Card 4: Right Big Card"
     },
     {
       "type": "image_picker",
@@ -713,9 +778,47 @@
       "default": "operational"
     }
   ],
+  "blocks": [
+    {
+      "type": "gallery_item",
+      "name": "Square Photo Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Upload Custom Image"
+        },
+        {
+          "type": "text",
+          "id": "fallback_asset",
+          "label": "Or Theme Asset Filename (optional)",
+          "info": "e.g. vidhyut-saathi-team-bg.jpg"
+        },
+        {
+          "type": "select",
+          "id": "category",
+          "label": "Category Filter Tab",
+          "options": [
+            { "value": "all", "label": "All" },
+            { "value": "corporate", "label": "Corporate Office" },
+            { "value": "awards", "label": "Awards" },
+            { "value": "celebrating", "label": "Celebrating" },
+            { "value": "operational", "label": "Operational Office" }
+          ],
+          "default": "all"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Card Alt / Title",
+          "default": "Vidhyut Saathi Moments"
+        }
+      ]
+    }
+  ],
   "presets": [
     {
-      "name": "4-Card Hero Gallery",
+      "name": "Mosaic & Square Gallery",
       "category": "Gallery"
     }
   ]
