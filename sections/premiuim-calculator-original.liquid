@@ -559,13 +559,18 @@
     }
     .vs-calc-right-col-{{ section.id }} .calc-result-card {
       background: #FFFFFF !important;
-      border: 1px solid rgba(20, 140, 58, 0.15) !important;
-      border-radius: 18px !important;
-      padding: 20px 14px !important;
+      border: 1.5px solid rgba(20, 140, 58, 0.16) !important;
+      border-radius: 20px !important;
+      padding: 22px 14px 18px 14px !important;
       text-align: center !important;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04) !important;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.03) !important;
       position: relative !important;
       overflow: hidden !important;
+      transition: all 0.3s ease !important;
+    }
+    .vs-calc-right-col-{{ section.id }} .calc-result-card:hover {
+      transform: translateY(-3px) !important;
+      box-shadow: 0 10px 25px rgba(20, 140, 58, 0.08) !important;
     }
     .vs-calc-right-col-{{ section.id }} .calc-result-card::before {
       content: '' !important;
@@ -578,18 +583,23 @@
     }
     .vs-calc-right-col-{{ section.id }} .calc-result-val {
       font-family: var(--heading-font) !important;
-      font-size: 1.85rem !important;
-      font-weight: 900 !important;
+      font-size: 2.1rem !important;
+      font-weight: 800 !important;
       background: linear-gradient(135deg, #148C3A 0%, #F58220 100%) !important;
       -webkit-background-clip: text !important;
       -webkit-text-fill-color: transparent !important;
-      line-height: 1.15 !important;
+      line-height: 1.1 !important;
       margin-bottom: 6px !important;
+      display: block !important;
     }
     .vs-calc-right-col-{{ section.id }} .calc-result-label {
-      font-size: 0.85rem !important;
-      color: #64748B !important;
-      font-weight: 600 !important;
+      font-family: var(--body-font) !important;
+      font-size: 0.88rem !important;
+      color: #556987 !important;
+      font-weight: 700 !important;
+      line-height: 1.2 !important;
+      margin-top: 0 !important;
+      margin-bottom: 0 !important;
     }
 
     .vs-calc-right-col-{{ section.id }} .calc-explain-badge {
@@ -691,7 +701,7 @@
           <!-- BIG DISPLAY FOR CURRENT BILL -->
           <div class="calc-display-group">
             <div class="calc-label">{{ section.settings.slider_label }}</div>
-            <div class="calc-current" id="billDisplay-{{ section.id }}">₹{{ section.settings.slider_default }}</div>
+            <div class="calc-current" id="billDisplay-{{ section.id }}">{{ section.settings.slider_default }}</div>
           </div>
 
           <!-- SLIDER CONTROL (FIRST) -->
@@ -918,7 +928,7 @@
           higherReasonText = `💰 <strong>Bill Rule Applied:</strong> ₹${Math.round(bill).toLocaleString('en-IN')} bill requires ${cardsFromBill} Cards${currentPhase === 'three' ? ' (+ 1 Extra for 3-Phase = ' + totalCards + ' Cards)' : ''}. (Enter your KW load above if known).`;
         }
 
-        if (display) display.textContent = '₹' + Math.round(bill).toLocaleString('en-IN');
+        if (display) display.textContent = Math.round(bill).toLocaleString('en-IN');
         if (mSaving) mSaving.textContent = '₹' + monthly.toLocaleString('en-IN');
         if (ySaving) ySaving.textContent = '₹' + yearly.toLocaleString('en-IN');
         if (nBill) nBill.textContent = '₹' + newBill.toLocaleString('en-IN');
