@@ -273,13 +273,27 @@
     transition: transform 0.3s ease;
   }
 
-  /* Edge Badge Offsets so Location 1 & Location 5 are never clipped */
+  /* Edge Badge & Pin Offsets so Location 1 & Location 5 never clip or overflow screen edges */
+  .dm-hub-pin[data-hub="1"] {
+    transform: translate(-10%, -100%);
+  }
+  .dm-hub-pin[data-hub="1"]:hover,
+  .dm-hub-pin[data-hub="1"].active-hub {
+    transform: translate(-10%, -115%) scale(1.18);
+  }
   .dm-hub-pin[data-hub="1"] .dm-pin-badge {
-    transform: translateX(25%);
+    transform: translateX(40%);
   }
 
+  .dm-hub-pin[data-hub="5"] {
+    transform: translate(-90%, -100%);
+  }
+  .dm-hub-pin[data-hub="5"]:hover,
+  .dm-hub-pin[data-hub="5"].active-hub {
+    transform: translate(-90%, -115%) scale(1.18);
+  }
   .dm-hub-pin[data-hub="5"] .dm-pin-badge {
-    transform: translateX(-25%);
+    transform: translateX(-40%);
   }
 
   .dm-pin-icon-wrap {
@@ -408,9 +422,9 @@
       <path d="M 900 -50 Q 800 350 1100 850" stroke="rgba(203, 213, 225, 0.6)" stroke-width="8" fill="none"/>
 
       <!-- Main Animated Courier Highway Route Path spanning 100% complete edge-to-edge off-screen -->
-      <path id="dmDeliveryPath-{{ section.id }}" class="dm-route-glow" d="M -80 650 C 140 600, 300 690, 480 635 C 660 590, 780 700, 960 635 C 1140 585, 1280 690, 1480 630" />
-      <path class="dm-route-base" d="M -80 650 C 140 600, 300 690, 480 635 C 660 590, 780 700, 960 635 C 1140 585, 1280 690, 1480 630" />
-      <path class="dm-route-active" d="M -80 650 C 140 600, 300 690, 480 635 C 660 590, 780 700, 960 635 C 1140 585, 1280 690, 1480 630" />
+      <path id="dmDeliveryPath-{{ section.id }}" class="dm-route-glow" d="M -80 675 C 140 625, 300 715, 480 660 C 660 615, 780 725, 960 660 C 1140 610, 1280 715, 1480 655" />
+      <path class="dm-route-base" d="M -80 675 C 140 625, 300 715, 480 660 C 660 615, 780 725, 960 660 C 1140 610, 1280 715, 1480 655" />
+      <path class="dm-route-active" d="M -80 675 C 140 625, 300 715, 480 660 C 660 615, 780 725, 960 660 C 1140 610, 1280 715, 1480 655" />
     </svg>
 
     <!-- Destination Hub Pins with Parcel Boxes shifted further down -->
@@ -570,11 +584,11 @@
 
       // Destination waypoints along path (percentage checkpoints for full width edge-to-edge highway)
       const hubs = [
-        { pct: 0.07, name: "📦 VS Office Dispatch" },
+        { pct: 0.08, name: "📦 VS Office Dispatch" },
         { pct: 0.28, name: "📍 Hub B: Transited Express" },
         { pct: 0.50, name: "⚡ Hub C: Sorted at Central Hub" },
-        { pct: 0.72, name: "🏢 Hub D: Out for Regional Delivery" },
-        { pct: 0.93, name: "🎯 Happiness Delivered" }
+        { pct: 0.70, name: "🏢 Hub D: Out for Regional Delivery" },
+        { pct: 0.89, name: "🎯 Happiness Delivered" }
       ];
 
       // Dynamically position each Hub Pin marker EXACTLY on the SVG path point!
