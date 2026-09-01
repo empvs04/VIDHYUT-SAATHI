@@ -18,8 +18,8 @@
   #deliveryMapHero-{{ section.id }} {
     position: relative;
     width: 100%;
-    height: clamp(500px, 72vh, 620px);
-    min-height: clamp(500px, 72vh, 620px);
+    height: clamp(540px, 78vh, 660px);
+    min-height: clamp(540px, 78vh, 660px);
     background: radial-gradient(circle at 50% 20%, #ffffff 0%, #fff8ef 50%, #fef3e2 100%);
     border-radius: 0;
     box-shadow: none;
@@ -31,7 +31,7 @@
     font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
     color: #0f172a;
     box-sizing: border-box;
-    padding: clamp(25px, 4vh, 45px) clamp(20px, 4vw, 50px) 40px;
+    padding: clamp(30px, 5vh, 50px) clamp(20px, 4vw, 50px) 45px;
   }
 
   /* Light Navigation Map Vector Background */
@@ -61,71 +61,68 @@
   .dm-ambient-glow-green {
     position: absolute;
     bottom: -5%;
-    right: 10%;
-    width: 45vw;
-    height: 350px;
-    background: radial-gradient(circle, rgba(0, 123, 62, 0.12) 0%, rgba(0, 123, 62, 0) 70%);
+    right: 5%;
+    width: 50vw;
+    height: 380px;
+    background: radial-gradient(circle, rgba(0, 123, 62, 0.14) 0%, rgba(0, 123, 62, 0) 70%);
     pointer-events: none;
     z-index: 1;
   }
 
-  /* Upper Light Vignette for Ultra Crisp Readability */
+  .dm-street-network {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      radial-gradient(rgba(236, 92, 10, 0.08) 1.5px, transparent 1.5px),
+      radial-gradient(rgba(0, 123, 62, 0.06) 1.5px, transparent 1.5px);
+    background-size: 36px 36px;
+    background-position: 0 0, 18px 18px;
+    opacity: 0.65;
+    pointer-events: none;
+  }
+
   .dm-upper-vignette {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 55%;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 248, 239, 0.75) 60%, rgba(255, 248, 239, 0) 100%);
+    height: 60%;
+    background: linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.6) 60%, rgba(255,255,255,0) 100%);
     pointer-events: none;
-    z-index: 3;
+    z-index: 2;
   }
 
-  /* Vector City Streets Grid Overlay with Clean Light Theme */
-  .dm-street-network {
-    position: absolute;
-    top: -15%;
-    left: -10%;
-    width: 120%;
-    height: 130%;
-    background-image: 
-      radial-gradient(circle at 50% 30%, rgba(236, 92, 10, 0.08) 0%, rgba(0, 123, 62, 0.04) 50%, transparent 80%),
-      linear-gradient(rgba(236, 92, 10, 0.06) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
-    background-size: 100% 100%, 48px 48px, 48px 48px;
-    transform: rotateX(25deg);
-    transform-origin: center bottom;
-    opacity: 0.95;
-    pointer-events: none;
-  }
-
-  /* Realistic Dark Street SVG Lines */
+  /* SVG Highway Map Canvas */
   .dm-svg-map-layer {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 2;
+    z-index: 3;
     pointer-events: none;
   }
 
-  /* Glowing Vidhyut Highway Route */
+  /* Animated Courier Highway Path Lines */
   .dm-route-glow {
     stroke: rgba(236, 92, 10, 0.25);
-    stroke-width: 16;
+    stroke-width: 22;
     stroke-linecap: round;
     stroke-linejoin: round;
     fill: none;
-    filter: drop-shadow(0 4px 10px rgba(236, 92, 10, 0.2));
+    filter: blur(4px);
   }
 
   .dm-route-base {
-    stroke: #ec5c0a;
-    stroke-width: 7;
+    stroke: #0f172a;
+    stroke-width: 12;
     stroke-linecap: round;
     stroke-linejoin: round;
     fill: none;
+    opacity: 0.85;
   }
 
   .dm-route-active {
@@ -180,40 +177,34 @@
     font-weight: 500;
   }
 
-  /* Live Delivery Status Bar - Clean White Theme Cards */
+  /* Real-Time Live Metrics Tags Row */
   .dm-stats-pills-row {
     display: flex;
-    flex-wrap: wrap;
+    align-items: center;
     justify-content: center;
-    gap: 14px;
-    margin-top: 10px;
+    gap: 12px;
+    margin-bottom: 25px;
   }
 
   .dm-stat-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
     background: #ffffff;
-    border: 1.5px solid rgba(236, 92, 10, 0.25);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    padding: 9px 24px;
-    border-radius: 30px;
-    font-size: 0.9rem;
-    font-weight: 700;
     color: #0f172a;
-    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.06), 0 2px 6px rgba(236, 92, 10, 0.06);
-    transition: all 0.3s ease;
-  }
-
-  .dm-stat-tag strong {
-    color: #ec5c0a;
+    border: 1.5px solid rgba(236, 92, 10, 0.25);
+    padding: 8px 18px;
+    border-radius: 30px;
+    font-size: 0.84rem;
+    font-weight: 700;
+    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.06);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.25s ease, border-color 0.25s ease;
   }
 
   .dm-stat-tag:hover {
-    border-color: #ec5c0a;
-    box-shadow: 0 10px 30px rgba(236, 92, 10, 0.2);
     transform: translateY(-2px);
+    border-color: #ec5c0a;
   }
 
   .dm-pulse-dot {
@@ -298,20 +289,19 @@
   .dm-parcel-box {
     position: absolute;
     bottom: 2px;
-    right: -16px;
-    width: 24px;
-    height: 24px;
+    right: -8px;
     background: #d97706;
-    border: 2px solid #fbbf24;
+    color: #ffffff;
+    font-size: 0.7rem;
+    font-weight: 900;
+    width: 18px;
+    height: 18px;
     border-radius: 4px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 11px;
-    font-weight: 900;
-    color: #78350f;
-    animation: boxBounce 3s ease-in-out infinite;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+    border: 1.5px solid #fef08a;
   }
 
   @keyframes boxBounce {
@@ -359,8 +349,8 @@
   @media (max-width: 768px) {
     #deliveryMapHero-{{ section.id }} {
       height: auto;
-      min-height: clamp(420px, 105vw, 480px);
-      padding: clamp(22px, 5vw, 30px) clamp(12px, 3.5vw, 18px) clamp(40px, 9vw, 55px);
+      min-height: clamp(480px, 115vw, 540px);
+      padding: clamp(25px, 5vw, 35px) clamp(12px, 3.5vw, 18px) clamp(45px, 9vw, 60px);
     }
 
     .dm-title {
