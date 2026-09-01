@@ -1,0 +1,1270 @@
+﻿<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800;900&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+{%- comment -%}
+
+  Vidhyut Saathi Premium Calculator - Strict Mobile-First & Desktop Optimized
+
+{%- endcomment -%}
+
+{%- style -%}
+
+  .premium-calculator-{{ section.id }} {
+
+    --green: {{ section.settings.color_green }};
+
+    --green2: {{ section.settings.color_green2 }};
+
+    --orange: {{ section.settings.color_orange }};
+
+    --text: {{ section.settings.color_text }};
+
+    --muted: {{ section.settings.color_muted }};
+
+    --gradient: linear-gradient(135deg, var(--green), var(--orange));
+
+    --heading-font: 'Baloo 2', sans-serif !important;
+
+    --body-font: 'Nunito', sans-serif !important;
+
+    font-family: var(--body-font);
+
+    background:
+
+      radial-gradient(circle at top right, rgba(20,140,58,.08), transparent 30%),
+
+      radial-gradient(circle at bottom left, rgba(245,130,32,.08), transparent 30%), #fff;
+
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 40px 20px; /* Original mobile padding */
+
+    position: relative;
+
+    overflow: hidden;
+
+    animation: bgFloat-{{ section.id }} 10s ease-in-out infinite alternate;
+
+  }
+
+
+
+  .premium-calculator-{{ section.id }} * {
+
+    margin: 0;
+
+    padding: 0;
+
+    box-sizing: border-box;
+
+  }
+
+
+
+  .premium-calculator-{{ section.id }} .bg-grid {
+
+    position: absolute;
+
+    inset: 0;
+
+    background-image: linear-gradient(rgba(20,140,58,.03) 1px, transparent 1px), linear-gradient(90deg, rgba(20,140,58,.03) 1px, transparent 1px);
+
+    background-size: 40px 40px;
+
+    pointer-events: none;
+
+  }
+
+
+
+  .premium-calculator-{{ section.id }} .blur {
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    filter: blur(90px);
+
+    animation: floatBlur-{{ section.id }} 8s ease-in-out infinite alternate;
+
+  }
+
+  .premium-calculator-{{ section.id }} .blur1 { width: 300px; height: 300px; background: rgba(20,140,58,.08); top: -100px; right: -100px; }
+
+  .premium-calculator-{{ section.id }} .blur2 { width: 260px; height: 260px; background: rgba(245,130,32,.08); bottom: -100px; left: -100px; }
+
+ 
+
+  /* BASE WRAPPER (Mobile / Tablet) */
+
+  .premium-calculator-{{ section.id }} .wrapper { width: 100%; max-width: 520px; position: relative; z-index: 10; margin: 0 auto; }
+
+ 
+
+  .premium-calculator-{{ section.id }} .calc-card {
+
+    animation: floatCard-{{ section.id }} 4s ease-in-out infinite alternate;
+
+    background: linear-gradient(135deg, rgba(255,255,255,.95), rgba(255,255,255,.82));
+
+    border: 1px solid rgba(20,140,58,.12);
+
+    border-radius: 30px;
+
+    padding: 34px 26px; /* Original mobile padding */
+
+    backdrop-filter: blur(18px);
+
+    box-shadow: 0 20px 60px rgba(0,0,0,.05), 0 0 35px rgba(245,130,32,.06);
+
+    animation: cardEnter-{{ section.id }} .8s ease;
+
+  }
+
+
+
+  .premium-calculator-{{ section.id }} .tag-wrapper { text-align: center; }
+
+  .premium-calculator-{{ section.id }} .section-tag {
+
+    display: inline-flex; align-items: center; gap: 10px; padding: 10px 18px; border-radius: 999px;
+
+    background: rgba(20,140,58,.06); border: 1px solid rgba(20,140,58,.10);
+
+    color: var(--green); font-size: .72rem; font-weight: 700; letter-spacing: .12em;
+
+    text-transform: uppercase; margin-bottom: 22px;
+
+  }
+
+  .premium-calculator-{{ section.id }} .tag-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--orange); animation: pulse-{{ section.id }} 1.4s infinite; }
+
+ 
+
+  .premium-calculator-{{ section.id }} .section-title {
+
+    font-family: var(--heading-font); font-size: 3rem; line-height: 1.1; font-weight: 900; margin-bottom: 18px; color: var(--text); text-align: center;
+
+  }
+
+  .premium-calculator-{{ section.id }} .section-title span { background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+  .premium-calculator-{{ section.id }} .section-sub { text-align: center; color: var(--muted); font-size: 1rem; line-height: 1.8; margin: 0 auto 34px; }
+
+ 
+
+  .premium-calculator-{{ section.id }} .calc-label { font-size: .8rem; color: var(--muted); margin-bottom: 10px; }
+
+  .premium-calculator-{{ section.id }} .calc-val-display { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+
+  .premium-calculator-{{ section.id }} .calc-current {
+
+    font-family: var(--heading-font); font-size: 3rem; font-weight: 900; background: linear-gradient(135deg, var(--green), var(--green2));
+
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 0 0 20px rgba(20,140,58,.15);
+
+  }
+
+ 
+
+  .premium-calculator-{{ section.id }} .calc-slider {
+
+    -webkit-appearance: none; width: 100%; height: 8px; border-radius: 999px;
+
+    background: linear-gradient(90deg, var(--orange), #ffc642, var(--green2));
+
+    background-size: 200% 200%; animation: sliderMove-{{ section.id }} 4s linear infinite; cursor: pointer;
+
+  }
+
+  .premium-calculator-{{ section.id }} .calc-slider::-webkit-slider-thumb {
+
+    -webkit-appearance: none; width: 28px; height: 28px; background: #fff; border-radius: 50%;
+
+    border: 4px solid var(--green); box-shadow: 0 0 0 8px rgba(20,140,58,.12), 0 5px 15px rgba(0,0,0,.08);
+
+  }
+
+ 
+
+  /* BASE 2-COLUMN GRID (Original Mobile) */
+
+  .premium-calculator-{{ section.id }} .calc-results { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 28px; }
+
+  .premium-calculator-{{ section.id }} .calc-result-card {
+
+    background: rgba(255,255,255,.92); border: 1px solid rgba(20,140,58,.10); border-radius: 18px;
+
+    padding: 22px 16px; text-align: center; transition: .35s ease; position: relative; box-shadow: 0 10px 25px rgba(0,0,0,.03);
+
+  }
+
+  .premium-calculator-{{ section.id }} .calc-result-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--gradient); border-radius: 18px 18px 0 0; }
+
+  .premium-calculator-{{ section.id }} .calc-result-card:hover { transform: translateY(-6px) scale(1.02); box-shadow: 0 18px 35px rgba(20,140,58,.08); }
+
+ 
+
+  .premium-calculator-{{ section.id }} .calc-result-val {
+
+    font-family: var(--heading-font); font-size: 2rem; font-weight: 900; background: var(--gradient);
+
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: softGlow-{{ section.id }} 2s infinite;
+
+  }
+
+  .premium-calculator-{{ section.id }} .calc-result-label { font-size: .78rem; color: var(--muted); margin-top: 6px; }
+
+ 
+
+  .premium-calculator-{{ section.id }} .calc-disclaimer {
+
+    margin-top: 24px; background: rgba(20,140,58,.04); border: 1px solid rgba(20,140,58,.08); border-radius: 14px;
+
+    padding: 14px 16px; text-align: center; color: var(--muted); font-size: .75rem; line-height: 1.7;
+
+  }
+
+ 
+
+  /* BASE 2-COLUMN TRUST STRIP (Original Mobile) */
+
+  .premium-calculator-{{ section.id }} .trust-strip { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 22px; }
+
+  .premium-calculator-{{ section.id }} .trust-item {
+
+    position: relative; overflow: hidden; background: rgba(255,255,255,.88);
+
+    border-radius: 22px; padding: 18px 12px; text-align: center; transition: .35s ease; z-index: 1;
+
+  }
+
+  .premium-calculator-{{ section.id }} .trust-item::before {
+
+    content: ''; position: absolute; inset: -4px; border-radius: 26px;
+
+    background: linear-gradient(90deg, var(--green), #22c55e, var(--orange), #ffd44d, var(--green));
+
+    background-size: 300% 300%; animation: premiumOutline-{{ section.id }} 4s linear infinite; z-index: -2;
+
+  }
+
+  .premium-calculator-{{ section.id }} .trust-item::after {
+
+    content: ''; position: absolute; inset: 4px;
+
+    background: linear-gradient(135deg, rgba(255,255,255,.96), rgba(255,255,255,.90)); border-radius: 18px; z-index: -1;
+
+  }
+
+  .premium-calculator-{{ section.id }} .trust-item:hover {
+
+    transform: translateY(-8px) scale(1.03); box-shadow: 0 15px 40px rgba(20,140,58,.15), 0 0 30px rgba(245,130,32,.12);
+
+  }
+
+ 
+
+  .premium-calculator-{{ section.id }} .electric-particle {
+
+    position: absolute; width: 10px; height: 10px; border-radius: 50%;
+
+    background: rgba(245,130,32,.25); animation: particleMove-{{ section.id }} 10s linear infinite; filter: blur(1px);
+
+  }
+
+  .premium-calculator-{{ section.id }} .heading-line { display: inline-block; white-space: nowrap; }
+
+  /* CUSTOM EDITABLE NUMBER INPUT BOXES & PHASE SELECTOR */
+  .premium-calculator-{{ section.id }} .input-dual-row {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 14px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+  }
+
+  .premium-calculator-{{ section.id }} .input-field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .premium-calculator-{{ section.id }} .custom-bill-box {
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    border: 2px solid rgba(20, 140, 58, 0.22);
+    border-radius: 16px;
+    padding: 10px 14px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
+    transition: all 0.3s ease;
+  }
+
+  .premium-calculator-{{ section.id }} .custom-bill-box:focus-within {
+    border-color: #F58220;
+    box-shadow: 0 6px 18px rgba(245, 130, 32, 0.2);
+  }
+
+  .premium-calculator-{{ section.id }} .currency-symbol {
+    font-size: 1.25rem;
+    font-weight: 900;
+    color: #148C3A;
+    margin-right: 6px;
+  }
+
+  .premium-calculator-{{ section.id }} .unit-symbol {
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: #F58220;
+    margin-left: 6px;
+    white-space: nowrap;
+  }
+
+  .premium-calculator-{{ section.id }} .custom-num-input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #1f2937;
+    font-family: inherit;
+  }
+
+  .premium-calculator-{{ section.id }} .phase-selector-container {
+    margin-top: 16px;
+    margin-bottom: 22px;
+  }
+
+  .premium-calculator-{{ section.id }} .phase-toggle-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 8px;
+  }
+
+  .premium-calculator-{{ section.id }} .phase-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 14px;
+    border-radius: 16px;
+    border: 2px solid #e5e7eb;
+    background: #ffffff;
+    color: #4b5563;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    user-select: none;
+  }
+
+  .premium-calculator-{{ section.id }} .phase-btn:hover {
+    border-color: #148C3A;
+    color: #148C3A;
+    transform: translateY(-2px);
+  }
+
+  .premium-calculator-{{ section.id }} .phase-btn.active {
+    background: linear-gradient(135deg, #148C3A, #0f6c2c);
+    border-color: #148C3A;
+    color: #ffffff;
+    box-shadow: 0 8px 20px rgba(20, 140, 58, 0.25);
+  }
+
+  .premium-calculator-{{ section.id }} .phase-btn.active i {
+    color: #ffffff;
+  }
+
+  /* DYNAMIC RECOMMENDATION BAR */
+  .premium-calculator-{{ section.id }} .calc-recommendation-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    background: linear-gradient(135deg, rgba(20, 140, 58, 0.07) 0%, rgba(245, 130, 32, 0.08) 100%);
+    border: 1.5px solid rgba(20, 140, 58, 0.2);
+    border-radius: 20px;
+    padding: 14px 20px;
+    margin-top: 18px;
+    margin-bottom: 24px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03);
+    transition: all 0.35s ease;
+  }
+
+  .premium-calculator-{{ section.id }} .calc-rec-pill {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 0.88rem;
+    color: var(--text);
+  }
+
+  .premium-calculator-{{ section.id }} .calc-rec-pill i {
+    color: #F58220;
+    font-size: 1.15rem;
+  }
+
+  .premium-calculator-{{ section.id }} .rec-label {
+    color: var(--muted);
+    font-weight: 600;
+  }
+
+  .premium-calculator-{{ section.id }} .rec-val {
+    color: #148C3A;
+    font-weight: 900;
+    font-size: 1rem;
+    background: linear-gradient(135deg, #148C3A, #F58220);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .premium-calculator-{{ section.id }} .highlight-pill {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 8px 16px;
+    border-radius: 14px;
+    border: 1.5px solid rgba(245, 130, 32, 0.3);
+    box-shadow: 0 4px 14px rgba(245, 130, 32, 0.12);
+  }
+
+
+
+  /* HIGHLY LUCRACTIVE MOBILE & TABLET OPTIMIZATION */
+  @media(max-width: 768px) {
+    .premium-calculator-{{ section.id }} {
+      padding: 30px 12px !important;
+      min-height: auto !important;
+    }
+
+    .premium-calculator-{{ section.id }} .wrapper {
+      max-width: 100% !important;
+      padding: 0 !important;
+    }
+
+    .premium-calculator-{{ section.id }} .calc-card {
+      padding: 24px 16px !important;
+      border-radius: 24px !important;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06), 0 0 20px rgba(245,130,32,0.05) !important;
+    }
+
+    .premium-calculator-{{ section.id }} .section-tag {
+      font-size: 0.68rem !important;
+      padding: 8px 14px !important;
+      margin-bottom: 16px !important;
+    }
+
+    .premium-calculator-{{ section.id }} .section-title {
+      font-size: 1.85rem !important;
+      line-height: 1.15 !important;
+      margin-bottom: 12px !important;
+    }
+
+    .premium-calculator-{{ section.id }} .section-sub {
+      font-size: 0.88rem !important;
+      line-height: 1.6 !important;
+      margin-bottom: 24px !important;
+    }
+
+    .premium-calculator-{{ section.id }} .calc-current {
+      font-size: 2.2rem !important;
+    }
+
+    .premium-calculator-{{ section.id }} .calc-slider {
+      height: 10px !important;
+    }
+
+    .premium-calculator-{{ section.id }} .calc-slider::-webkit-slider-thumb {
+      width: 32px !important;
+      height: 32px !important;
+    }
+
+    .premium-calculator-{{ section.id }} .calc-recommendation-bar {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: stretch !important;
+      gap: 10px !important;
+      padding: 12px 10px !important;
+      margin-top: 16px !important;
+      margin-bottom: 20px !important;
+      border-radius: 16px !important;
+      background: linear-gradient(135deg, rgba(20, 140, 58, 0.08) 0%, rgba(245, 130, 32, 0.09) 100%) !important;
+      box-sizing: border-box !important;
+      width: 100% !important;
+    }
+
+    .premium-calculator-{{ section.id }} .calc-rec-pill {
+      display: flex !important;
+      flex-direction: row !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      padding: 10px 12px !important;
+      border-radius: 12px !important;
+      background: rgba(255, 255, 255, 0.95) !important;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03) !important;
+      box-sizing: border-box !important;
+      width: 100% !important;
+      white-space: nowrap !important;
+      overflow: hidden !important;
+    }
+
+    .premium-calculator-{{ section.id }} .calc-rec-pill i {
+      font-size: 0.92rem !important;
+      margin-right: 6px !important;
+      flex-shrink: 0 !important;
+    }
+
+    .premium-calculator-{{ section.id }} .rec-label {
+      font-size: 0.76rem !important;
+      font-weight: 700 !important;
+      color: #475569 !important;
+      white-space: nowrap !important;
+      flex-shrink: 0 !important;
+      margin-right: 4px !important;
+    }
+
+    .premium-calculator-{{ section.id }} .rec-val {
+      font-size: 0.78rem !important;
+      font-weight: 800 !important;
+      white-space: nowrap !important;
+      margin-left: auto !important;
+      text-align: right !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+    }
+
+    .premium-calculator-{{ section.id }} .calc-results {
+      grid-template-columns: 1fr 1fr !important;
+      gap: 10px !important;
+      margin-top: 20px !important;
+    }
+
+    .premium-calculator-{{ section.id }} .calc-result-card {
+      padding: 16px 8px !important;
+      border-radius: 16px !important;
+    }
+
+    .premium-calculator-{{ section.id }} .calc-result-val {
+      font-size: 1.35rem !important;
+    }
+
+    .premium-calculator-{{ section.id }} .calc-result-label {
+      font-size: 0.72rem !important;
+    }
+
+    .premium-calculator-{{ section.id }} .trust-strip {
+      grid-template-columns: 1fr 1fr !important;
+      gap: 10px !important;
+      margin-top: 18px !important;
+    }
+
+    .premium-calculator-{{ section.id }} .trust-item {
+      padding: 14px 8px !important;
+      font-size: 0.78rem !important;
+      border-radius: 16px !important;
+    }
+
+    .premium-calculator-{{ section.id }} .input-dual-row {
+      grid-template-columns: 1fr !important;
+      gap: 12px !important;
+    }
+
+    .premium-calculator-{{ section.id }} .phase-toggle-grid {
+      grid-template-columns: 1fr !important;
+      gap: 10px !important;
+    }
+  }
+
+
+
+  /* DESKTOP CENTERED HEADER WITH SHUFFLED 2-COLUMN LAYOUT */
+  @media(min-width: 769px) {
+    .premium-calculator-{{ section.id }} { 
+      padding: 70px 24px !important; 
+      min-height: auto !important;
+    }
+    .premium-calculator-{{ section.id }} .wrapper { 
+      max-width: 1140px !important; 
+      margin: 0 auto !important;
+    }
+
+    /* TOP CENTERED HEADER & SUBHEADER */
+    .vs-calc-top-header-{{ section.id }} {
+      text-align: center !important;
+      max-width: 760px !important;
+      margin: 0 auto 40px auto !important;
+    }
+    .vs-calc-top-header-{{ section.id }} .tag-wrapper {
+      display: flex !important;
+      justify-content: center !important;
+      margin-bottom: 16px !important;
+    }
+    .vs-calc-top-header-{{ section.id }} .section-tag {
+      margin: 0 auto !important;
+    }
+    .vs-calc-top-header-{{ section.id }} .section-title {
+      font-size: 48px !important;
+      line-height: 1.15 !important;
+      letter-spacing: -1px !important;
+      text-align: center !important;
+      margin-bottom: 14px !important;
+    }
+    .vs-calc-top-header-{{ section.id }} .section-sub {
+      font-size: 16.5px !important;
+      line-height: 1.65 !important;
+      color: var(--muted) !important;
+      text-align: center !important;
+      margin: 0 auto !important;
+      max-width: 720px !important;
+    }
+
+    /* 2 EQUAL COLUMNS BELOW HEADER (1fr 1fr WITH 42px GAP) */
+    .vs-calc-desktop-grid-{{ section.id }} {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr !important;
+      align-items: start !important;
+      gap: 42px !important;
+      width: 100% !important;
+    }
+    
+    /* LEFT COLUMN: COMPACT & ELEGANT CALCULATOR CONTROLS CARD */
+    .vs-calc-left-col-{{ section.id }} {
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+    .vs-calc-left-col-{{ section.id }} .calc-card { 
+      padding: 24px 22px !important; 
+      border-radius: 22px !important; 
+      box-shadow: 0 15px 45px rgba(0,0,0,0.05), 0 0 25px rgba(245,130,32,0.06) !important;
+      width: 100% !important;
+    }
+    .premium-calculator-{{ section.id }} .calc-current { 
+      font-size: 2.2rem !important; 
+    }
+    .premium-calculator-{{ section.id }} .calc-label {
+      font-size: 0.82rem !important;
+      font-weight: 700 !important;
+    }
+    .premium-calculator-{{ section.id }} .calc-recommendation-bar {
+      padding: 10px 12px !important;
+      margin-top: 14px !important;
+      margin-bottom: 0 !important;
+    }
+    .premium-calculator-{{ section.id }} .calc-rec-pill {
+      font-size: 0.8rem !important;
+    }
+    .premium-calculator-{{ section.id }} .rec-val {
+      font-size: 0.88rem !important;
+    }
+
+    /* RIGHT COLUMN: 4 CALCULATION RESULTS CARDS, EXPLANATION, DISCLAIMER & 4 TRUST BADGES */
+    .vs-calc-right-col-{{ section.id }} {
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+    .vs-calc-right-col-{{ section.id }} .calc-results {
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 14px !important;
+      margin-top: 0 !important;
+      margin-bottom: 16px !important;
+      width: 100% !important;
+    }
+    .vs-calc-right-col-{{ section.id }} .calc-result-card {
+      background: #FFFFFF !important;
+      border: 1px solid rgba(20, 140, 58, 0.15) !important;
+      border-radius: 18px !important;
+      padding: 20px 14px !important;
+      text-align: center !important;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04) !important;
+      position: relative !important;
+      overflow: hidden !important;
+    }
+    .vs-calc-right-col-{{ section.id }} .calc-result-card::before {
+      content: '' !important;
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      height: 4px !important;
+      background: linear-gradient(90deg, #148C3A 0%, #F58220 100%) !important;
+    }
+    .vs-calc-right-col-{{ section.id }} .calc-result-val {
+      font-size: 1.85rem !important;
+      font-weight: 900 !important;
+      color: #148C3A !important;
+      line-height: 1.15 !important;
+      margin-bottom: 6px !important;
+    }
+    .vs-calc-right-col-{{ section.id }} .calc-result-label {
+      font-size: 0.85rem !important;
+      color: #64748B !important;
+      font-weight: 600 !important;
+    }
+
+    .vs-calc-right-col-{{ section.id }} .calc-explain-badge {
+      margin-top: 14px !important;
+      margin-bottom: 12px !important;
+    }
+    .vs-calc-right-col-{{ section.id }} .calc-disclaimer {
+      margin-top: 0 !important;
+      margin-bottom: 16px !important;
+    }
+
+    /* TRUST STRIP CAPSULE PILLS IN RIGHT COLUMN */
+    .vs-calc-right-col-{{ section.id }} .trust-strip { 
+      display: grid !important; 
+      grid-template-columns: repeat(2, 1fr) !important; 
+      gap: 12px !important; 
+      margin-top: 0 !important; 
+      width: 100% !important;
+    }
+    .vs-calc-right-col-{{ section.id }} .trust-item { 
+      background: linear-gradient(#FFFFFF, #FFFFFF) padding-box, linear-gradient(90deg, #F58220 0%, #FFC107 50%, #20B14B 100%) border-box !important;
+      border: 2px solid transparent !important;
+      border-radius: 999px !important;
+      padding: 10px 14px !important; 
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+      text-align: center !important;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03) !important;
+      transition: all 0.3s ease !important;
+    }
+    .vs-calc-right-col-{{ section.id }} .trust-item:hover {
+      transform: translateY(-2px) !important;
+      box-shadow: 0 8px 20px rgba(245, 130, 32, 0.15) !important;
+    }
+    .vs-calc-right-col-{{ section.id }} .trust-icon {
+      font-size: 1.15rem !important;
+      margin-bottom: 2px !important;
+      display: inline-block !important;
+    }
+    .vs-calc-right-col-{{ section.id }} .trust-item div {
+      font-size: 0.85rem !important;
+      font-weight: 700 !important;
+      color: #1E293B !important;
+      line-height: 1.2 !important;
+    }
+    .premium-calculator-{{ section.id }} .blur1 { width: 350px; height: 350px; top: -50px; right: -50px; }
+    .premium-calculator-{{ section.id }} .blur2 { width: 300px; height: 300px; bottom: -50px; left: -50px; }
+  }
+
+
+
+  /* Animations */
+
+  @keyframes pulse-{{ section.id }} { 50% { transform: scale(1.4); } }
+
+  @keyframes sliderMove-{{ section.id }} { 0% { background-position: left center; } 100% { background-position: right center; } }
+
+  @keyframes floatBlur-{{ section.id }} { 100% { transform: translateY(20px) translateX(10px); } }
+
+  @keyframes bgFloat-{{ section.id }} { 100% { background-position: right bottom; } }
+
+  @keyframes softGlow-{{ section.id }} { 50% { filter: drop-shadow(0 0 8px rgba(245,130,32,.25)); } }
+
+  @keyframes cardEnter-{{ section.id }} { from { opacity: 0; transform: translateY(25px); } to { opacity: 1; transform: translateY(0); } }
+
+  @keyframes floatCard-{{ section.id }} { 0% { transform: translateY(0); } 100% { transform: translateY(-8px); } }
+
+  @keyframes particleMove-{{ section.id }} { 0% { transform: translateY(100vh) translateX(0); } 100% { transform: translateY(-100vh) translateX(80px); } }
+
+  @keyframes premiumOutline-{{ section.id }} { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+
+
+
+{%- endstyle -%}
+
+
+
+<div class="premium-calculator-{{ section.id }}"
+     id="calc-data-{{ section.id }}"
+     data-price="{{ section.settings.calc_price }}"
+     data-pct-base="{{ section.settings.pct_base }}"
+     data-pct-mid="{{ section.settings.pct_mid }}"
+     data-pct-high="{{ section.settings.pct_high }}">
+
+ 
+
+  <div class="electric-particle" style="left:15%; animation-duration:7s;"></div>
+
+  <div class="electric-particle" style="left:40%; animation-duration:11s;"></div>
+
+  <div class="electric-particle" style="left:75%; animation-duration:9s;"></div>
+
+  <div class="electric-particle" style="left:90%; animation-duration:13s;"></div>
+
+
+
+  <div class="bg-grid"></div>
+
+  <div class="blur blur1"></div>
+
+  <div class="blur blur2"></div>
+
+
+
+  <div class="wrapper">
+    <!-- TOP CENTERED SECTION HEADER & SUBHEADER -->
+    <div class="vs-calc-top-header-{{ section.id }}">
+      <div class="tag-wrapper">
+        <div class="section-tag"><div class="tag-dot"></div>{{ section.settings.tag_text }}</div>
+      </div>
+      <h2 class="section-title">
+        {{ section.settings.heading_text }} <br>
+        <span class="heading-line">{{ section.settings.heading_highlight }}</span>
+      </h2>
+      <p class="section-sub">{{ section.settings.subheading_text }}</p>
+    </div>
+
+    <!-- 2 SHUFFLED COLUMNS (LEFT: CALCULATOR CONTROLS | RIGHT: RESULTS & TRUST BADGES) -->
+    <div class="vs-calc-desktop-grid-{{ section.id }}">
+      
+      <!-- LEFT COLUMN: INTERACTIVE CALCULATOR CONTROLS CARD -->
+      <div class="vs-calc-left-col-{{ section.id }}">
+        <div class="calc-card">
+
+          <!-- BIG DISPLAY FOR CURRENT BILL -->
+          <div class="calc-display-group">
+            <div class="calc-label">{{ section.settings.slider_label }}</div>
+            <div class="calc-current" id="billDisplay-{{ section.id }}">Γé╣{{ section.settings.slider_default }}</div>
+          </div>
+
+          <!-- SLIDER CONTROL (FIRST) -->
+          <div class="calc-label" style="margin-top: 10px;">≡ƒÄÜ∩╕Å Drag Slider to Adjust Bill</div>
+          <input type="range" class="calc-slider" id="billSlider-{{ section.id }}"
+                 min="{{ section.settings.slider_min }}"
+                 max="{{ section.settings.slider_max }}"
+                 step="{{ section.settings.slider_step }}"
+                 value="{{ section.settings.slider_default }}">
+
+          <div style="display:flex; justify-content:space-between; font-size:.72rem; color:var(--muted); margin-top:8px; margin-bottom:18px;">
+            <span id="minLabel-{{ section.id }}">Γé╣{{ section.settings.slider_min }}</span>
+            <span id="maxLabel-{{ section.id }}">Γé╣{{ section.settings.slider_max }}</span>
+          </div>
+
+          <!-- DUAL EDITABLE NUMBER INPUTS (BILL RS SECOND & LOAD KW THIRD) -->
+          <div class="input-dual-row">
+            <div class="input-field-group">
+              <div class="calc-label">≡ƒÆ░ Monthly Electricity Bill</div>
+              <div class="custom-bill-box">
+                <span class="currency-symbol">Γé╣</span>
+                <input type="number" id="billInput-{{ section.id }}" class="custom-num-input" value="{{ section.settings.slider_default }}" min="500" max="300000" step="50">
+              </div>
+            </div>
+
+            <div class="input-field-group">
+              <div class="calc-label">ΓÜí Sanctioned Load</div>
+              <div class="custom-bill-box">
+                <input type="number" id="kwInput-{{ section.id }}" class="custom-num-input" value="" min="1" max="60" step="1">
+                <span class="unit-symbol">KW</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- PHASE TYPE SELECTOR TOGGLE BUTTONS -->
+          <div class="phase-selector-container">
+            <div class="calc-label">≡ƒöî SELECT PHASE TYPE</div>
+            <div class="phase-toggle-grid">
+              <button type="button" class="phase-btn active" id="btnSinglePhase-{{ section.id }}" data-phase="single">
+                <i class="fa-solid fa-bolt"></i> Single Phase
+              </button>
+              <button type="button" class="phase-btn" id="btnThreePhase-{{ section.id }}" data-phase="three">
+                <i class="fa-solid fa-industry"></i> Three Phase (+1 Card)
+              </button>
+            </div>
+          </div>
+
+          <!-- DYNAMIC SMART LOAD & CARD RECOMMENDATION BAR -->
+          <div class="calc-recommendation-bar" id="recBar-{{ section.id }}">
+            <div class="calc-rec-pill">
+              <i class="fa-solid fa-bolt-lightning"></i>
+              <span class="rec-label">House Load:</span>
+              <strong class="rec-val" id="recLoad-{{ section.id }}">1 - 6 KW</strong>
+            </div>
+            <div class="calc-rec-pill highlight-pill">
+              <i class="fa-solid fa-layer-group"></i>
+              <span class="rec-label">Cards Needed:</span>
+              <strong class="rec-val" id="recCards-{{ section.id }}">1 Card (Single Phase)</strong>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN: RESULTS CARDS, EXPLANATION, DISCLAIMER & TRUST CAPSULE PILLS -->
+      <div class="vs-calc-right-col-{{ section.id }}">
+        <!-- 4 CALCULATION RESULT CARDS -->
+        <div class="calc-results">
+          <div class="calc-result-card">
+            <div class="calc-result-val" id="monthlySaving-{{ section.id }}">Γé╣0</div>
+            <div class="calc-result-label">{{ section.settings.label_monthly }}</div>
+          </div>
+          <div class="calc-result-card">
+            <div class="calc-result-val" id="yearlySaving-{{ section.id }}">Γé╣0</div>
+            <div class="calc-result-label">{{ section.settings.label_yearly }}</div>
+          </div>
+          <div class="calc-result-card">
+            <div class="calc-result-val" id="newBill-{{ section.id }}">Γé╣0</div>
+            <div class="calc-result-label">{{ section.settings.label_newbill }}</div>
+          </div>
+          <div class="calc-result-card">
+            <div class="calc-result-val" id="roiMonths-{{ section.id }}">0 Mo</div>
+            <div class="calc-result-label">{{ section.settings.label_roi }}</div>
+          </div>
+        </div>
+
+        <!-- EXPLANATION BADGE & DISCLAIMER (MOVED HERE BELOW RESULTS CARDS) -->
+        <div class="calc-explain-badge" id="recReason-{{ section.id }}">
+          ΓÜí <strong>Smart Selection:</strong> Evaluated from both KW Load and Monthly Bill ΓÇö Higher Requirement Selected.
+        </div>
+
+        <p class="calc-disclaimer">{{ section.settings.disclaimer_text }}</p>
+
+        <!-- TRUST STRIP CAPSULE PILLS -->
+        <div class="trust-strip">
+          {%- for block in section.blocks -%}
+            <div class="trust-item" {{ block.shopify_attributes }}>
+              <span class="trust-icon">{{ block.settings.icon }}</span>
+              <div>{{ block.settings.text }}</div>
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+
+
+<script>
+  (function() {
+    function initCalc() {
+      const sectionId = '{{ section.id }}';
+      const container = document.getElementById(`calc-data-${sectionId}`);
+      if (!container) return;
+
+      const slider = document.getElementById(`billSlider-${sectionId}`);
+      const display = document.getElementById(`billDisplay-${sectionId}`);
+      const mSaving = document.getElementById(`monthlySaving-${sectionId}`);
+      const ySaving = document.getElementById(`yearlySaving-${sectionId}`);
+      const nBill = document.getElementById(`newBill-${sectionId}`);
+      const roi = document.getElementById(`roiMonths-${sectionId}`);
+
+      const minLabel = document.getElementById(`minLabel-${sectionId}`);
+      const maxLabel = document.getElementById(`maxLabel-${sectionId}`);
+
+      if (!slider) return;
+
+      if (minLabel && slider.min) minLabel.textContent = 'Γé╣' + parseInt(slider.min).toLocaleString('en-IN');
+      if (maxLabel && slider.max) maxLabel.textContent = 'Γé╣' + parseInt(slider.max).toLocaleString('en-IN');
+
+      const PRICE = parseFloat(container.dataset.price) || 3498;
+      const pctBase = (parseFloat(container.dataset.pctBase) || 25) / 100.0;
+      const pctMid = (parseFloat(container.dataset.pctMid) || 27) / 100.0;
+      const pctHigh = (parseFloat(container.dataset.pctHigh) || 30) / 100.0;
+
+      const recLoad = document.getElementById(`recLoad-${sectionId}`);
+      const recCards = document.getElementById(`recCards-${sectionId}`);
+      const recReason = document.getElementById(`recReason-${sectionId}`);
+
+      const billInput = document.getElementById(`billInput-${sectionId}`);
+      const kwInput = document.getElementById(`kwInput-${sectionId}`);
+      const btnSingle = document.getElementById(`btnSinglePhase-${sectionId}`);
+      const btnThree = document.getElementById(`btnThreePhase-${sectionId}`);
+
+      let currentPhase = 'single';
+
+      function getCardsByKW(kw) {
+        if (kw <= 6) return 1;
+        if (kw <= 12) return 2;
+        if (kw <= 18) return 3;
+        if (kw <= 24) return 4;
+        if (kw <= 30) return 5;
+        if (kw <= 36) return 6;
+        if (kw <= 42) return 7;
+        if (kw <= 48) return 8;
+        if (kw <= 54) return 9;
+        if (kw <= 60) return 10;
+        return Math.ceil(kw / 6);
+      }
+
+      function getCardsByBill(bill) {
+        if (bill <= 6000) return 1;
+        if (bill <= 12000) return 2;
+        if (bill <= 18000) return 3;
+        if (bill <= 24000) return 4;
+        if (bill <= 30000) return 5;
+        if (bill <= 36000) return 6;
+        if (bill <= 42000) return 7;
+        if (bill <= 48000) return 8;
+        if (bill <= 54000) return 9;
+        if (bill <= 60000) return 10;
+        return Math.ceil(bill / 6000);
+      }
+
+      function updateCalculator(source) {
+        let bill = 0;
+        if (source === 'slider') {
+          bill = parseFloat(slider ? slider.value : 0) || 0;
+          if (billInput) billInput.value = Math.round(bill);
+        } else if (source === 'billInput') {
+          bill = parseFloat(billInput ? billInput.value : 0) || 0;
+          if (slider) slider.value = Math.min(300000, Math.max(500, bill));
+        } else {
+          bill = parseFloat(billInput && billInput.value ? billInput.value : (slider ? slider.value : 0)) || 0;
+        }
+
+        // Read KW load directly from user input without auto-writing kwInput.value on bill/slider change
+        let kw = parseFloat(kwInput && kwInput.value ? kwInput.value : 0) || 0;
+
+        const cardsFromKW = kw > 0 ? getCardsByKW(kw) : 0;
+        const cardsFromBill = getCardsByBill(bill);
+
+        // HIGHER PRIORITY SELECTION RULE
+        const baseRequiredCards = Math.max(cardsFromKW, cardsFromBill);
+        const totalCards = currentPhase === 'three' ? baseRequiredCards + 1 : baseRequiredCards;
+
+        let pct = pctBase;
+        if (bill > 10000 && bill <= 50000) pct = pctMid;
+        if (bill > 50000) pct = pctHigh;
+
+        const monthly = Math.round(bill * pct);
+        const yearly = monthly * 12;
+        const newBill = Math.max(0, bill - monthly);
+        const roiMonths = monthly > 0 ? Math.ceil(PRICE / monthly) : 0;
+
+        let cardsStr = totalCards + (totalCards === 1 ? ' Card' : ' Cards');
+        if (currentPhase === 'three') {
+          cardsStr += ` (${baseRequiredCards} + 1 Extra for 3-Phase)`;
+        } else {
+          cardsStr += ' (Single Phase)';
+        }
+
+        let higherReasonText = '';
+        if (kw > 0) {
+          if (cardsFromKW > cardsFromBill) {
+            higherReasonText = `ΓÜí <strong>KW Rule Applied:</strong> ${kw} KW load requires ${cardsFromKW} Cards, while Γé╣${Math.round(bill).toLocaleString('en-IN')} bill requires ${cardsFromBill} Cards. Higher requirement considered (${cardsFromKW} Cards${currentPhase === 'three' ? ' + 1 Extra for 3-Phase = ' + totalCards + ' Cards' : ''}).`;
+          } else if (cardsFromBill > cardsFromKW) {
+            higherReasonText = `≡ƒÆ░ <strong>Bill Rule Applied:</strong> Γé╣${Math.round(bill).toLocaleString('en-IN')} bill requires ${cardsFromBill} Cards, while ${kw} KW load requires ${cardsFromKW} Cards. Higher requirement considered (${cardsFromBill} Cards${currentPhase === 'three' ? ' + 1 Extra for 3-Phase = ' + totalCards + ' Cards' : ''}).`;
+          } else {
+            higherReasonText = `ΓÜí <strong>Balanced Load:</strong> Both ${kw} KW load and Γé╣${Math.round(bill).toLocaleString('en-IN')} bill require ${baseRequiredCards} Cards${currentPhase === 'three' ? ' (+ 1 Extra for 3-Phase = ' + totalCards + ' Cards)' : ''}.`;
+          }
+        } else {
+          higherReasonText = `≡ƒÆ░ <strong>Bill Rule Applied:</strong> Γé╣${Math.round(bill).toLocaleString('en-IN')} bill requires ${cardsFromBill} Cards${currentPhase === 'three' ? ' (+ 1 Extra for 3-Phase = ' + totalCards + ' Cards)' : ''}. (Enter your KW load above if known).`;
+        }
+
+        if (display) display.textContent = Math.round(bill).toLocaleString('en-IN');
+        if (mSaving) mSaving.textContent = 'Γé╣' + monthly.toLocaleString('en-IN');
+        if (ySaving) ySaving.textContent = 'Γé╣' + yearly.toLocaleString('en-IN');
+        if (nBill) nBill.textContent = 'Γé╣' + newBill.toLocaleString('en-IN');
+        if (roi) roi.textContent = (isFinite(roiMonths) && roiMonths > 0 ? roiMonths : 0) + ' Mo';
+        if (recLoad) recLoad.textContent = kw > 0 ? (kw + ' KW') : 'Enter KW';
+        if (recCards) recCards.textContent = cardsStr;
+        if (recReason) recReason.innerHTML = higherReasonText;
+      }
+
+      if (btnSingle && btnThree) {
+        btnSingle.addEventListener('click', function() {
+          currentPhase = 'single';
+          btnSingle.classList.add('active');
+          btnThree.classList.remove('active');
+          updateCalculator('phase');
+        });
+
+        btnThree.addEventListener('click', function() {
+          currentPhase = 'three';
+          btnThree.classList.add('active');
+          btnSingle.classList.remove('active');
+          updateCalculator('phase');
+        });
+      }
+
+      slider.addEventListener('input', function() { updateCalculator('slider'); });
+      slider.addEventListener('change', function() { updateCalculator('slider'); });
+
+      if (billInput) {
+        billInput.addEventListener('input', function() { updateCalculator('billInput'); });
+        billInput.addEventListener('change', function() { updateCalculator('billInput'); });
+      }
+
+      if (kwInput) {
+        kwInput.addEventListener('input', function() { updateCalculator('kwInput'); });
+        kwInput.addEventListener('change', function() { updateCalculator('kwInput'); });
+      }
+
+      updateCalculator('init');
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initCalc);
+    } else {
+      initCalc();
+    }
+  })();
+</script>
+
+
+
+{% schema %}
+
+{
+
+  "name": "Savings Calculator",
+
+  "settings": [
+
+    {
+
+      "type": "header",
+
+      "content": "Fonts & Colors"
+
+    },
+
+    {
+
+      "type": "font_picker",
+
+      "id": "heading_font",
+
+      "label": "Heading Font",
+
+      "default": "work_sans_n9"
+
+    },
+
+    {
+
+      "type": "font_picker",
+
+      "id": "body_font",
+
+      "label": "Body Font",
+
+      "default": "work_sans_n4"
+
+    },
+
+    { "type": "color", "id": "color_green", "label": "Primary Green", "default": "#148C3A" },
+
+    { "type": "color", "id": "color_green2", "label": "Secondary Green", "default": "#20b14b" },
+
+    { "type": "color", "id": "color_orange", "label": "Orange", "default": "#F58220" },
+
+    { "type": "color", "id": "color_text", "label": "Text Color", "default": "#1f2937" },
+
+    { "type": "color", "id": "color_muted", "label": "Muted Text", "default": "#6b7280" },
+
+    {
+
+      "type": "header",
+
+      "content": "Math & Logic"
+
+    },
+
+    { "type": "number", "id": "calc_price", "label": "Product Price (For ROI)", "default": 3498 },
+
+    { "type": "number", "id": "pct_base", "label": "Base Saving % (<=10K)", "default": 25 },
+
+    { "type": "number", "id": "pct_mid", "label": "Mid Saving % (10K-50K)", "default": 27 },
+
+    { "type": "number", "id": "pct_high", "label": "High Saving % (>50K)", "default": 30 },
+
+    { "type": "number", "id": "slider_min", "label": "Slider Minimum", "default": 500 },
+
+    { "type": "number", "id": "slider_max", "label": "Slider Maximum", "default": 300000 },
+
+    { "type": "number", "id": "slider_step", "label": "Slider Step", "default": 500 },
+
+    { "type": "number", "id": "slider_default", "label": "Slider Default", "default": 4000 },
+
+    {
+
+      "type": "header",
+
+      "content": "Text Content"
+
+    },
+
+    { "type": "text", "id": "tag_text", "label": "Tag Text", "default": "Smart Savings Calculator" },
+
+    { "type": "text", "id": "heading_text", "label": "Heading Line 1", "default": "Calculate Your" },
+
+    { "type": "text", "id": "heading_highlight", "label": "Heading Highlight", "default": "Electricity Savings" },
+
+    { "type": "textarea", "id": "subheading_text", "label": "Subheading", "default": "Move the slider to estimate how much you can save every month with Vidhyut Saathi Smart Energy Saving Technology." },
+
+    { "type": "text", "id": "slider_label", "label": "Slider Label", "default": "≡ƒôä Your Current Monthly Bill" },
+
+    { "type": "text", "id": "label_monthly", "label": "Monthly Saving Label", "default": "Monthly Saving" },
+
+    { "type": "text", "id": "label_yearly", "label": "Yearly Saving Label", "default": "Yearly Saving" },
+
+    { "type": "text", "id": "label_newbill", "label": "New Bill Label", "default": "New Bill" },
+
+    { "type": "text", "id": "label_roi", "label": "ROI Label", "default": "ROI" },
+
+    { "type": "textarea", "id": "disclaimer_text", "label": "Disclaimer", "default": "Savings of 25ΓÇô30% are estimated. Actual savings may vary based on usage patterns." }
+
+  ],
+
+  "blocks": [
+
+    {
+
+      "type": "trust_item",
+
+      "name": "Trust Feature",
+
+      "limit": 4,
+
+      "settings": [
+
+        { "type": "text", "id": "icon", "label": "Emoji/Icon", "default": "ΓÜí" },
+
+        { "type": "text", "id": "text", "label": "Text", "default": "Save Upto 30%" }
+
+      ]
+
+    }
+
+  ],
+
+  "presets": [
+
+    {
+
+      "name": "Premium Calculator",
+
+      "blocks": [
+
+        { "type": "trust_item", "settings": { "icon": "ΓÜí", "text": "Save Upto 30%" } },
+
+        { "type": "trust_item", "settings": { "icon": "≡ƒî┐", "text": "Eco Friendly" } },
+
+        { "type": "trust_item", "settings": { "icon": "ΓÜÖ∩╕Å", "text": "Smart Technology" } },
+
+        { "type": "trust_item", "settings": { "icon": "≡ƒÅå", "text": "Trusted Choice" } }
+
+      ]
+
+    }
+
+  ]
+
+}
+
+{% endschema %}
