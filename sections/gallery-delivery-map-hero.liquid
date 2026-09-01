@@ -18,8 +18,8 @@
   #deliveryMapHero-{{ section.id }} {
     position: relative;
     width: 100%;
-    height: clamp(540px, 78vh, 660px);
-    min-height: clamp(540px, 78vh, 660px);
+    height: clamp(520px, 76vh, 640px);
+    min-height: clamp(520px, 76vh, 640px);
     background: radial-gradient(circle at 50% 20%, #ffffff 0%, #fff8ef 50%, #fef3e2 100%);
     border-radius: 0;
     box-shadow: none;
@@ -31,7 +31,32 @@
     font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
     color: #0f172a;
     box-sizing: border-box;
-    padding: clamp(30px, 5vh, 50px) clamp(20px, 4vw, 50px) 45px;
+    padding: clamp(25px, 4vh, 45px) clamp(20px, 4vw, 50px) 35px;
+  }
+
+  /* Desktop Single Viewport Fit (100% Single Screen Fit without Scrolling) */
+  @media screen and (min-width: 769px) {
+    #deliveryMapHero-{{ section.id }} {
+      height: calc(100vh - 165px) !important;
+      min-height: 500px !important;
+      max-height: 600px !important;
+      padding: clamp(20px, 3vh, 32px) 40px 25px !important;
+    }
+
+    .dm-title {
+      font-size: clamp(26px, 3.6vw, 44px) !important;
+      margin-bottom: 8px !important;
+    }
+
+    .dm-subtitle {
+      font-size: clamp(13.5px, 1.3vw, 15px) !important;
+      margin-bottom: 14px !important;
+      line-height: 1.45 !important;
+    }
+
+    .dm-stats-pills-row {
+      margin-bottom: 14px !important;
+    }
   }
 
   /* Light Navigation Map Vector Background */
@@ -476,10 +501,10 @@
       <path d="M 200 -50 Q 350 400 500 850" stroke="rgba(203, 213, 225, 0.6)" stroke-width="8" fill="none"/>
       <path d="M 900 -50 Q 800 350 1100 850" stroke="rgba(203, 213, 225, 0.6)" stroke-width="8" fill="none"/>
 
-      <!-- Main Animated Courier Highway Route Path spanning 100% complete edge-to-edge off-screen along bottom -->
-      <path id="dmDeliveryPath-{{ section.id }}" class="dm-route-glow" d="M -80 735 C 140 685, 300 765, 480 720 C 660 675, 780 775, 960 720 C 1140 670, 1280 765, 1480 715" />
-      <path class="dm-route-base" d="M -80 735 C 140 685, 300 765, 480 720 C 660 675, 780 775, 960 720 C 1140 670, 1280 765, 1480 715" />
-      <path class="dm-route-active" d="M -80 735 C 140 685, 300 765, 480 720 C 660 675, 780 775, 960 720 C 1140 670, 1280 765, 1480 715" />
+      <!-- Main Animated Courier Highway Route Path spanning 100% complete edge-to-edge off-screen -->
+      <path id="dmDeliveryPath-{{ section.id }}" class="dm-route-glow" d="M -80 660 C 140 610, 300 695, 480 645 C 660 600, 780 705, 960 645 C 1140 595, 1280 695, 1480 645" />
+      <path class="dm-route-base" d="M -80 660 C 140 610, 300 695, 480 645 C 660 600, 780 705, 960 645 C 1140 595, 1280 695, 1480 645" />
+      <path class="dm-route-active" d="M -80 660 C 140 610, 300 695, 480 645 C 660 600, 780 705, 960 645 C 1140 595, 1280 695, 1480 645" />
     </svg>
 
     <!-- Destination Hub Pins with Parcel Boxes shifted further down -->
