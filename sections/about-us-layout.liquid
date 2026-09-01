@@ -241,59 +241,63 @@
   }
 
   /* Base & Desktop Brand Color Styling */
-  .sec2-line-orange1 {
-    color: #ec5c0a !important;
-    font-weight: 600 !important;
-    display: inline;
-  }
-
-  .sec2-line-green {
-    color: #007b3e !important;
-    font-weight: 600 !important;
-    display: inline;
-  }
-
+  .sec2-line-orange1,
   .sec2-line-orange2 {
     color: #ec5c0a !important;
-    font-weight: 600 !important;
+    font-weight: 700 !important;
     display: inline;
   }
 
-  /* Mobile Specific Alignment: Line 1 = "Empowering India", Line 2 = "With Green Energy & Power Savings", Line 3 = "Across Nation" */
+  .sec2-line-green1,
+  .sec2-line-green2 {
+    color: #007b3e !important;
+    font-weight: 700 !important;
+    display: inline;
+  }
+
+  /* Mobile Specific Alignment: Balanced 4-Line Stack on Mobile */
   @media screen and (max-width: 768px) {
     h2.sec2-heading-custom,
     .company-info-text h2.sec2-heading-custom {
-      font-size: 1.35rem !important;
-      line-height: 1.35 !important;
+      font-size: 1.3rem !important;
+      line-height: 1.3 !important;
       margin-bottom: 16px !important;
       text-align: center !important;
-      display: block !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: 100% !important;
     }
 
     .sec2-line-orange1 {
       display: block !important;
       color: #ec5c0a !important;
-      font-weight: 700 !important;
-      font-size: clamp(1.3rem, 5.2vw, 1.55rem) !important;
+      font-weight: 800 !important;
+      font-size: clamp(1.2rem, 5vw, 1.45rem) !important;
       text-align: center !important;
+      white-space: nowrap !important;
       margin-bottom: 3px !important;
     }
 
-    .sec2-line-green {
+    .sec2-line-green1,
+    .sec2-line-green2 {
       display: block !important;
       color: #007b3e !important;
-      font-weight: 700 !important;
-      font-size: clamp(1.15rem, 4.4vw, 1.35rem) !important;
+      font-weight: 800 !important;
+      font-size: clamp(1.1rem, 4.4vw, 1.3rem) !important;
       text-align: center !important;
+      white-space: nowrap !important;
       margin-bottom: 3px !important;
     }
 
     .sec2-line-orange2 {
       display: block !important;
       color: #ec5c0a !important;
-      font-weight: 700 !important;
-      font-size: clamp(1.15rem, 4.4vw, 1.35rem) !important;
+      font-weight: 800 !important;
+      font-size: clamp(1.15rem, 4.6vw, 1.35rem) !important;
       text-align: center !important;
+      white-space: nowrap !important;
     }
 
     /* Equal Height & Width Metric Cards on Mobile */
@@ -3349,7 +3353,8 @@
       <div class="company-info-text reveal-up active">
         <h2 class="sec2-heading-custom">
           <span class="sec2-line-orange1">Empowering India</span>
-          <span class="sec2-line-green">With Green Energy &amp; Power Savings</span>
+          <span class="sec2-line-green1">With Green Energy &amp;</span>
+          <span class="sec2-line-green2">Power Savings</span>
           <span class="sec2-line-orange2">Across Nation</span>
         </h2>
         
