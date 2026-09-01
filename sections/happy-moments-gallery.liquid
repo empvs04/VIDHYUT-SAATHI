@@ -25,31 +25,49 @@
     overflow: hidden;
   }
 
-  /* Grid Linings Pattern Behind Header & Cards */
-  .hm-gallery-linings-pattern {
+  /* Grid Linings Pattern (Top & Bottom) */
+  .hm-gallery-linings-pattern-top,
+  .hm-gallery-linings-pattern-bottom {
     position: absolute;
-    top: 0;
     left: 50%;
     transform: translateX(-50%);
     width: 1300px;
     max-width: 100%;
-    height: 320px;
+    height: 340px;
     background-image: 
       linear-gradient(to right, rgba(225, 205, 185, 0.55) 1px, transparent 1px),
       linear-gradient(to bottom, rgba(225, 205, 185, 0.55) 1px, transparent 1px);
     background-size: 70px 70px;
+    pointer-events: none;
+  }
+
+  .hm-gallery-linings-pattern-top {
+    top: 0;
     background-position: center top;
     mask-image: radial-gradient(circle at 50% 35%, rgba(0,0,0,0.9) 25%, rgba(0,0,0,0) 80%);
     -webkit-mask-image: radial-gradient(circle at 50% 35%, rgba(0,0,0,0.9) 25%, rgba(0,0,0,0) 80%);
-    animation: liningsFloat 10s ease-in-out infinite alternate;
+    animation: liningsFloatTop 10s ease-in-out infinite alternate;
   }
 
-  @keyframes liningsFloat {
+  .hm-gallery-linings-pattern-bottom {
+    bottom: 0;
+    background-position: center bottom;
+    mask-image: radial-gradient(circle at 50% 65%, rgba(0,0,0,0.9) 25%, rgba(0,0,0,0) 80%);
+    -webkit-mask-image: radial-gradient(circle at 50% 65%, rgba(0,0,0,0.9) 25%, rgba(0,0,0,0) 80%);
+    animation: liningsFloatBottom 10s ease-in-out infinite alternate;
+  }
+
+  @keyframes liningsFloatTop {
     0% { transform: translateX(-50%) translateY(0px); }
     100% { transform: translateX(-50%) translateY(-10px); }
   }
 
-  /* Plus (+) Marks at Grid Intersections */
+  @keyframes liningsFloatBottom {
+    0% { transform: translateX(-50%) translateY(0px); }
+    100% { transform: translateX(-50%) translateY(10px); }
+  }
+
+  /* Plus (+) Marks at Grid Intersections (Top & Bottom) */
   .hm-plus-mark {
     position: absolute;
     color: rgba(220, 195, 170, 0.8);
@@ -61,12 +79,21 @@
     animation: plusPulse 4s ease-in-out infinite alternate;
   }
 
+  /* Top Plus Marks */
   .hm-plus-mark-1 { top: 30px; left: 25%; animation-delay: 0s; }
   .hm-plus-mark-2 { top: 30px; right: 25%; animation-delay: 1s; }
   .hm-plus-mark-3 { top: 100px; left: 38%; animation-delay: 1.5s; }
   .hm-plus-mark-4 { top: 100px; right: 38%; animation-delay: 2.5s; }
   .hm-plus-mark-5 { top: 170px; left: 18%; animation-delay: 0.5s; }
   .hm-plus-mark-6 { top: 170px; right: 18%; animation-delay: 2s; }
+
+  /* Bottom Plus Marks */
+  .hm-plus-mark-b1 { bottom: 30px; left: 22%; animation-delay: 0.8s; }
+  .hm-plus-mark-b2 { bottom: 30px; right: 22%; animation-delay: 1.8s; }
+  .hm-plus-mark-b3 { bottom: 95px; left: 36%; animation-delay: 2.3s; }
+  .hm-plus-mark-b4 { bottom: 95px; right: 36%; animation-delay: 0.3s; }
+  .hm-plus-mark-b5 { bottom: 155px; left: 16%; animation-delay: 1.2s; }
+  .hm-plus-mark-b6 { bottom: 155px; right: 16%; animation-delay: 2.7s; }
 
   @keyframes plusPulse {
     0% { opacity: 0.35; transform: scale(0.85); }
@@ -271,16 +298,26 @@
 {%- endstyle -%}
 
 <section class="hm-gallery-section" id="hmGallerySection-{{ section.id }}">
-  <!-- Background Linings & Plus (+) Marks Animation -->
+  <!-- Background Linings & Plus (+) Marks Animation (Top & Bottom) -->
   {%- if section.settings.show_grid -%}
     <div class="hm-gallery-linings-wrapper" aria-hidden="true">
-      <div class="hm-gallery-linings-pattern"></div>
+      <!-- Top Linings & Plus Marks -->
+      <div class="hm-gallery-linings-pattern-top"></div>
       <div class="hm-plus-mark hm-plus-mark-1">+</div>
       <div class="hm-plus-mark hm-plus-mark-2">+</div>
       <div class="hm-plus-mark hm-plus-mark-3">+</div>
       <div class="hm-plus-mark hm-plus-mark-4">+</div>
       <div class="hm-plus-mark hm-plus-mark-5">+</div>
       <div class="hm-plus-mark hm-plus-mark-6">+</div>
+
+      <!-- Bottom Linings & Plus Marks -->
+      <div class="hm-gallery-linings-pattern-bottom"></div>
+      <div class="hm-plus-mark hm-plus-mark-b1">+</div>
+      <div class="hm-plus-mark hm-plus-mark-b2">+</div>
+      <div class="hm-plus-mark hm-plus-mark-b3">+</div>
+      <div class="hm-plus-mark hm-plus-mark-b4">+</div>
+      <div class="hm-plus-mark hm-plus-mark-b5">+</div>
+      <div class="hm-plus-mark hm-plus-mark-b6">+</div>
     </div>
   {%- endif -%}
 
