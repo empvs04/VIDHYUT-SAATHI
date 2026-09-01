@@ -2,7 +2,7 @@
   @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap');
 
   /* ==========================================================================
-     SECTION 2: PINTEREST-STYLE MOSAIC BENTO GALLERY SHOWCASE (PREMIUM LIGHT THEME)
+     SECTION 2: 4-CARD HERO COMPOSITION GALLERY (EXACT MATCH TO USER SCREENSHOT)
      ========================================================================== */
   .vsg-mosaic-section {
     position: relative;
@@ -11,7 +11,7 @@
       radial-gradient(circle at 10% 20%, rgba(236, 92, 10, 0.05) 0%, transparent 40%),
       radial-gradient(circle at 90% 80%, rgba(0, 123, 62, 0.05) 0%, transparent 40%);
     color: #1e293b;
-    padding: 70px 24px 90px 24px;
+    padding: 60px 24px 85px 24px;
     font-family: 'Outfit', sans-serif;
     overflow: hidden;
   }
@@ -38,7 +38,7 @@
   /* SECTION HEADER & BADGE */
   .vsg-mosaic-header {
     text-align: center;
-    margin-bottom: 38px;
+    margin-bottom: 34px;
   }
 
   .vsg-mosaic-pill {
@@ -78,18 +78,18 @@
     font-size: clamp(0.95rem, 1.3vw, 1.1rem);
     color: #64748b;
     max-width: 700px;
-    margin: 0 auto 32px auto;
+    margin: 0 auto 30px auto;
     line-height: 1.65;
   }
 
-  /* PINTEREST-STYLE HORIZONTAL CATEGORY FILTER TABS (LIGHT THEME) */
+  /* 5 CATEGORY FILTER TABS */
   .vsg-filter-nav {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
     gap: 10px;
-    margin-bottom: 38px;
+    margin-bottom: 34px;
     padding: 6px;
   }
 
@@ -126,60 +126,68 @@
   }
 
   /* ==========================================================================
-     ASYMMETRICAL BENTO MOSAIC GRID (Pinterest Multi-Size Pattern)
+     3-COLUMN FLUSH-HEIGHT 4-CARD HERO GRID (SCREENSHOT COMPOSITION)
      ========================================================================== */
-  .vsg-mosaic-grid {
+  .vsg-4card-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: 230px;
-    grid-auto-flow: dense;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 18px;
     width: 100%;
+    align-items: stretch;
+    height: 590px; /* Fixed equal height for all 3 columns on desktop */
   }
 
-  /* INDIVIDUAL MOSAIC ITEM (LIGHT THEME) */
-  .vsg-mosaic-card {
+  /* Left & Right Columns (Full Height Single Big Cards) */
+  .vsg-col-left,
+  .vsg-col-right {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Center Column (2 Stacked Equal Height Cards with Gap) */
+  .vsg-col-center {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  /* INDIVIDUAL CLEAN PURE PHOTO CARD */
+  .vsg-card-item {
     position: relative;
-    border-radius: 22px;
+    border-radius: 20px;
     overflow: hidden;
     background: #ffffff;
     border: 1.5px solid rgba(236, 92, 10, 0.15);
     cursor: pointer;
     transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     box-shadow: 0 10px 28px rgba(15, 23, 42, 0.06);
+    flex: 1;
+    width: 100%;
+    height: 100%;
   }
 
-  /* SIZE SPANS (PINTEREST LAYOUT) */
-  .vsg-mosaic-card.size-standard {
-    grid-column: span 1;
-    grid-row: span 1;
+  .vsg-card-item.card-center-item {
+    height: calc(50% - 9px);
   }
-  .vsg-mosaic-card.size-tall-portrait {
-    grid-column: span 1;
-    grid-row: span 2;
-  }
-  .vsg-mosaic-card.size-wide-landscape {
-    grid-column: span 2;
-    grid-row: span 1;
-  }
-  .vsg-mosaic-card.size-large-hero {
-    grid-column: span 2;
-    grid-row: span 2;
-  }
-  .vsg-mosaic-card.size-ultra-tall {
-    grid-column: span 1;
-    grid-row: span 3;
+
+  .vsg-card-item:hover {
+    transform: translateY(-5px) scale(1.008);
+    border-color: #ec5c0a;
+    box-shadow: 0 20px 45px rgba(236, 92, 10, 0.22), 0 0 20px rgba(236, 92, 10, 0.1);
+    z-index: 5;
   }
 
   /* Card Image */
-  .vsg-mosaic-img-wrap {
+  .vsg-card-img-wrap {
     width: 100%;
     height: 100%;
     position: relative;
     overflow: hidden;
   }
 
-  .vsg-mosaic-img {
+  .vsg-card-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -187,26 +195,19 @@
     transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 
-  .vsg-mosaic-card:hover {
-    transform: translateY(-6px) scale(1.01);
-    border-color: #ec5c0a;
-    box-shadow: 0 20px 45px rgba(236, 92, 10, 0.22), 0 0 20px rgba(236, 92, 10, 0.1);
-    z-index: 5;
+  .vsg-card-item:hover .vsg-card-img {
+    transform: scale(1.06);
   }
 
-  .vsg-mosaic-card:hover .vsg-mosaic-img {
-    transform: scale(1.08);
-  }
-
-  /* Micro Expand Icon Button */
-  .vsg-expand-badge {
+  /* Micro Expand Icon Button on Hover */
+  .vsg-expand-btn {
     position: absolute;
     top: 14px;
     right: 14px;
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.92);
     backdrop-filter: blur(8px);
     border: 1px solid rgba(236, 92, 10, 0.3);
     color: #ec5c0a;
@@ -218,9 +219,10 @@
     transform: scale(0.8);
     transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 4;
   }
 
-  .vsg-mosaic-card:hover .vsg-expand-badge {
+  .vsg-card-item:hover .vsg-expand-btn {
     opacity: 1;
     transform: scale(1);
   }
@@ -273,7 +275,7 @@
 
   .vsg-lightbox-img-box {
     width: 100%;
-    max-height: 68vh;
+    max-height: 75vh;
     background: #0f172a;
     display: flex;
     align-items: center;
@@ -283,31 +285,9 @@
 
   .vsg-lightbox-img {
     max-width: 100%;
-    max-height: 68vh;
+    max-height: 75vh;
     object-fit: contain;
     display: block;
-  }
-
-  .vsg-lightbox-footer {
-    padding: 18px 24px;
-    background: #ffffff;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-top: 1px solid #f1f5f9;
-  }
-
-  .vsg-lightbox-info h3 {
-    font-family: 'Baloo 2', sans-serif;
-    font-size: 1.3rem;
-    font-weight: 800;
-    color: #0f172a;
-    margin: 0 0 4px 0;
-  }
-  .vsg-lightbox-info p {
-    font-size: 0.88rem;
-    color: #64748b;
-    margin: 0;
   }
 
   .vsg-lightbox-close {
@@ -338,55 +318,51 @@
   }
 
   /* RESPONSIVE MEDIA QUERIES */
-  @media screen and (max-width: 1024px) {
-    .vsg-mosaic-grid {
-      grid-template-columns: repeat(3, 1fr);
-      grid-auto-rows: 200px;
-      gap: 14px;
+  @media screen and (max-width: 900px) {
+    .vsg-4card-grid {
+      grid-template-columns: 1fr;
+      height: auto;
+      gap: 16px;
     }
-    .vsg-mosaic-card.size-ultra-tall {
-      grid-column: span 1;
-      grid-row: span 2;
+    .vsg-col-left,
+    .vsg-col-right {
+      height: 380px;
+    }
+    .vsg-col-center {
+      height: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .vsg-card-item.card-center-item {
+      height: 220px;
     }
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 600px) {
     .vsg-mosaic-section {
-      padding: 50px 14px 70px 14px;
+      padding: 45px 14px 65px 14px;
     }
     .vsg-filter-nav {
       gap: 8px;
-      margin-bottom: 24px;
+      margin-bottom: 22px;
     }
     .vsg-filter-btn {
       font-size: 0.76rem;
       padding: 7px 15px;
     }
-    .vsg-mosaic-grid {
-      grid-template-columns: repeat(2, 1fr);
-      grid-auto-rows: 170px;
-      gap: 10px;
+    .vsg-col-left,
+    .vsg-col-right {
+      height: 320px;
     }
-    .vsg-mosaic-card {
-      border-radius: 14px;
+    .vsg-col-center {
+      grid-template-columns: 1fr;
     }
-    .vsg-card-title {
-      font-size: 0.95rem;
+    .vsg-card-item.card-center-item {
+      height: 200px;
     }
-    .vsg-card-desc {
-      font-size: 0.72rem;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-    .vsg-mosaic-overlay {
-      padding: 12px;
-    }
-    .vsg-mosaic-card.size-ultra-tall,
-    .vsg-mosaic-card.size-large-hero {
-      grid-column: span 2;
-      grid-row: span 2;
+    .vsg-card-item {
+      border-radius: 16px;
     }
   }
 {%- endstyle -%}
@@ -408,7 +384,7 @@
         {{ section.settings.subtitle | default: 'Explore our corporate headquarters, certified installations, prestigious awards, celebrating teams, and nationwide district hub dispatches.' }}
       </p>
 
-      <!-- PINTEREST-STYLE HORIZONTAL CATEGORY FILTER TABS -->
+      <!-- 5 CATEGORY FILTER TABS -->
       <div class="vsg-filter-nav">
         <button type="button" class="vsg-filter-btn active" data-filter="all">All</button>
         <button type="button" class="vsg-filter-btn" data-filter="corporate">Corporate Office</button>
@@ -418,42 +394,64 @@
       </div>
     </div>
 
-    <!-- ASYMMETRIC BENTO MOSAIC GRID -->
-    <div class="vsg-mosaic-grid" id="vsgGrid-{{ section.id }}">
-      {%- if section.blocks.size > 0 -%}
-        {%- for block in section.blocks -%}
-          {%- assign item_size = block.settings.card_size | default: 'size-standard' -%}
-          {%- assign item_cat = block.settings.category | default: 'all' -%}
-          
-          <div class="vsg-mosaic-card {{ item_size }}" 
-               data-category="{{ item_cat }}"
-               data-title="{{ block.settings.title | escape }}"
-               data-desc="{{ block.settings.description | escape }}"
-               data-tag="{{ block.settings.tag_text | escape }}"
-               {{ block.shopify_attributes }}>
-            <div class="vsg-mosaic-img-wrap">
-              {%- if block.settings.image != blank -%}
-                <img src="{{ block.settings.image | image_url: width: 1200 }}" 
-                     alt="{{ block.settings.title | default: 'Vidhyut Saathi Moments' | escape }}" 
-                     class="vsg-mosaic-img" 
-                     loading="lazy">
-              {%- elsif block.settings.fallback_asset != blank -%}
-                <img src="{{ block.settings.fallback_asset | asset_url }}" 
-                     alt="{{ block.settings.title | default: 'Vidhyut Saathi Moments' | escape }}" 
-                     class="vsg-mosaic-img" 
-                     loading="lazy">
-              {%- else -%}
-                <img src="{{ 'vidhyut-saathi-team-bg.jpg' | asset_url }}" 
-                     alt="{{ block.settings.title | default: 'Vidhyut Saathi Moments' | escape }}" 
-                     class="vsg-mosaic-img" 
-                     loading="lazy">
-              {%- endif -%}
-
-              <div class="vsg-expand-badge"><i class="fa-solid fa-expand"></i></div>
-            </div>
+    <!-- 3-COLUMN FLUSH-HEIGHT 4-CARD HERO GRID (SCREENSHOT PATTERN) -->
+    <div class="vsg-4card-grid" id="vsgGrid-{{ section.id }}">
+      
+      <!-- 1. LEFT COLUMN: BIG TALL PORTRAIT CARD -->
+      <div class="vsg-col-left">
+        <div class="vsg-card-item" data-category="{{ section.settings.card1_category | default: 'corporate' }}">
+          <div class="vsg-card-img-wrap">
+            {%- if section.settings.card1_image != blank -%}
+              <img src="{{ section.settings.card1_image | image_url: width: 1200 }}" alt="Vidhyut Saathi Moments" class="vsg-card-img" loading="lazy">
+            {%- else -%}
+              <img src="{{ 'vidhyut-saathi-team-bg.jpg' | asset_url }}" alt="Corporate Headquarters" class="vsg-card-img" loading="lazy">
+            {%- endif -%}
+            <div class="vsg-expand-btn"><i class="fa-solid fa-expand"></i></div>
           </div>
-        {%- endfor -%}
-      {%- endif -%}
+        </div>
+      </div>
+
+      <!-- 2. CENTER COLUMN: 2 SQUARES / HORIZONTAL CARDS (TOP & BOTTOM EQUAL FLUSH) -->
+      <div class="vsg-col-center">
+        <!-- Center Top Card -->
+        <div class="vsg-card-item card-center-item" data-category="{{ section.settings.card2_category | default: 'celebrating' }}">
+          <div class="vsg-card-img-wrap">
+            {%- if section.settings.card2_image != blank -%}
+              <img src="{{ section.settings.card2_image | image_url: width: 1000 }}" alt="Vidhyut Saathi Moments" class="vsg-card-img" loading="lazy">
+            {%- else -%}
+              <img src="{{ 'indian_entrepreneur.jpg' | asset_url }}" alt="Celebrating Moments" class="vsg-card-img" loading="lazy">
+            {%- endif -%}
+            <div class="vsg-expand-btn"><i class="fa-solid fa-expand"></i></div>
+          </div>
+        </div>
+
+        <!-- Center Bottom Card -->
+        <div class="vsg-card-item card-center-item" data-category="{{ section.settings.card3_category | default: 'awards' }}">
+          <div class="vsg-card-img-wrap">
+            {%- if section.settings.card3_image != blank -%}
+              <img src="{{ section.settings.card3_image | image_url: width: 1000 }}" alt="Vidhyut Saathi Moments" class="vsg-card-img" loading="lazy">
+            {%- else -%}
+              <img src="{{ 'wvs-happy-man.jpg' | asset_url }}" alt="Awards & Honors" class="vsg-card-img" loading="lazy">
+            {%- endif -%}
+            <div class="vsg-expand-btn"><i class="fa-solid fa-expand"></i></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. RIGHT COLUMN: BIG TALL PORTRAIT CARD -->
+      <div class="vsg-col-right">
+        <div class="vsg-card-item" data-category="{{ section.settings.card4_category | default: 'operational' }}">
+          <div class="vsg-card-img-wrap">
+            {%- if section.settings.card4_image != blank -%}
+              <img src="{{ section.settings.card4_image | image_url: width: 1200 }}" alt="Vidhyut Saathi Moments" class="vsg-card-img" loading="lazy">
+            {%- else -%}
+              <img src="{{ 'wvs-indian-businessman.jpg' | asset_url }}" alt="Operational Office" class="vsg-card-img" loading="lazy">
+            {%- endif -%}
+            <div class="vsg-expand-btn"><i class="fa-solid fa-expand"></i></div>
+          </div>
+        </div>
+      </div>
+
     </div>
 
   </div>
@@ -466,31 +464,21 @@
     <div class="vsg-lightbox-img-box">
       <img src="" alt="" class="vsg-lightbox-img" id="vsgLightboxImg-{{ section.id }}">
     </div>
-    <div class="vsg-lightbox-footer">
-      <div class="vsg-lightbox-info">
-        <h3 id="vsgLightboxTitle-{{ section.id }}">Title</h3>
-        <p id="vsgLightboxDesc-{{ section.id }}">Description</p>
-      </div>
-      <div id="vsgLightboxTag-{{ section.id }}" class="vsg-card-tag" style="margin-bottom:0;">Tag</div>
-    </div>
   </div>
 </div>
 
 <script>
   (function() {
-    function initMosaicGallery() {
+    function init4CardGallery() {
       const sectionId = '{{ section.id }}';
       const grid = document.getElementById(`vsgGrid-${sectionId}`);
       if (!grid) return;
 
       const filterBtns = document.querySelectorAll(`#vsg-mosaic-${sectionId} .vsg-filter-btn`);
-      const cards = grid.querySelectorAll('.vsg-mosaic-card');
+      const cards = grid.querySelectorAll('.vsg-card-item');
       
       const lightbox = document.getElementById(`vsgLightbox-${sectionId}`);
       const lbImg = document.getElementById(`vsgLightboxImg-${sectionId}`);
-      const lbTitle = document.getElementById(`vsgLightboxTitle-${sectionId}`);
-      const lbDesc = document.getElementById(`vsgLightboxDesc-${sectionId}`);
-      const lbTag = document.getElementById(`vsgLightboxTag-${sectionId}`);
       const lbClose = document.getElementById(`vsgLightboxClose-${sectionId}`);
 
       // Category Filtering Logic
@@ -503,10 +491,13 @@
           cards.forEach(card => {
             const cat = card.getAttribute('data-category') || 'all';
             if (filter === 'all' || cat === filter) {
-              card.style.display = 'block';
-              card.style.animation = 'fadeInCard 0.4s ease forwards';
+              card.style.opacity = '1';
+              card.style.filter = 'none';
+              card.style.pointerEvents = 'auto';
             } else {
-              card.style.display = 'none';
+              card.style.opacity = '0.2';
+              card.style.filter = 'grayscale(80%)';
+              card.style.pointerEvents = 'none';
             }
           });
         });
@@ -515,14 +506,11 @@
       // Lightbox Click Handler
       cards.forEach(card => {
         card.addEventListener('click', function() {
-          const img = this.querySelector('.vsg-mosaic-img');
+          const img = this.querySelector('.vsg-card-img');
           if (!img) return;
 
           lbImg.src = img.src;
           lbImg.alt = img.alt || '';
-          lbTitle.textContent = this.getAttribute('data-title') || img.alt || '';
-          lbDesc.textContent = this.getAttribute('data-desc') || '';
-          lbTag.textContent = this.getAttribute('data-tag') || 'Vidhyut Saathi';
           
           lightbox.classList.add('active');
           document.body.style.overflow = 'hidden';
@@ -549,16 +537,16 @@
     }
 
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initMosaicGallery);
+      document.addEventListener('DOMContentLoaded', init4CardGallery);
     } else {
-      initMosaicGallery();
+      init4CardGallery();
     }
   })();
 </script>
 
 {% schema %}
 {
-  "name": "Mosaic Moments Gallery",
+  "name": "4-Card Hero Gallery",
   "settings": [
     {
       "type": "text",
@@ -583,74 +571,95 @@
       "id": "subtitle",
       "label": "Subtitle",
       "default": "Explore our corporate headquarters, certified installations, prestigious awards, celebrating teams, and nationwide district hub dispatches."
-    }
-  ],
-  "blocks": [
+    },
     {
-      "type": "gallery_item",
-      "name": "Mosaic Photo Card",
-      "settings": [
-        {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Upload Custom Image"
-        },
-        {
-          "type": "text",
-          "id": "fallback_asset",
-          "label": "Or Theme Asset Filename (optional)",
-          "info": "e.g. vidhyut-saathi-team-bg.jpg"
-        },
-        {
-          "type": "select",
-          "id": "card_size",
-          "label": "Card Size & Span (Pinterest Mosaic)",
-          "options": [
-            { "value": "size-standard", "label": "Standard (1x1)" },
-            { "value": "size-tall-portrait", "label": "Tall Portrait (1x2)" },
-            { "value": "size-wide-landscape", "label": "Wide Landscape (2x1)" },
-            { "value": "size-large-hero", "label": "Large Hero Box (2x2)" },
-            { "value": "size-ultra-tall", "label": "Ultra Tall Vertical (1x3)" }
-          ],
-          "default": "size-standard"
-        },
-        {
-          "type": "select",
-          "id": "category",
-          "label": "Category Filter Tab",
-          "options": [
-            { "value": "all", "label": "All" },
-            { "value": "corporate", "label": "Corporate Office" },
-            { "value": "awards", "label": "Awards" },
-            { "value": "celebrating", "label": "Celebrating" },
-            { "value": "operational", "label": "Operational Office" }
-          ],
-          "default": "all"
-        },
-        {
-          "type": "text",
-          "id": "tag_text",
-          "label": "Card Tag/Badge",
-          "default": "Installation"
-        },
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Card Title",
-          "default": "Corporate Milestone"
-        },
-        {
-          "type": "text",
-          "id": "description",
-          "label": "Card Description",
-          "default": "Verified energy saving installation across pan-India."
-        }
-      ]
+      "type": "header",
+      "content": "1. Left Big Card (Tall Portrait)"
+    },
+    {
+      "type": "image_picker",
+      "id": "card1_image",
+      "label": "Card 1 Image"
+    },
+    {
+      "type": "select",
+      "id": "card1_category",
+      "label": "Card 1 Category",
+      "options": [
+        { "value": "corporate", "label": "Corporate Office" },
+        { "value": "awards", "label": "Awards" },
+        { "value": "celebrating", "label": "Celebrating" },
+        { "value": "operational", "label": "Operational Office" }
+      ],
+      "default": "corporate"
+    },
+    {
+      "type": "header",
+      "content": "2. Center Top Card"
+    },
+    {
+      "type": "image_picker",
+      "id": "card2_image",
+      "label": "Card 2 Image"
+    },
+    {
+      "type": "select",
+      "id": "card2_category",
+      "label": "Card 2 Category",
+      "options": [
+        { "value": "corporate", "label": "Corporate Office" },
+        { "value": "awards", "label": "Awards" },
+        { "value": "celebrating", "label": "Celebrating" },
+        { "value": "operational", "label": "Operational Office" }
+      ],
+      "default": "celebrating"
+    },
+    {
+      "type": "header",
+      "content": "3. Center Bottom Card"
+    },
+    {
+      "type": "image_picker",
+      "id": "card3_image",
+      "label": "Card 3 Image"
+    },
+    {
+      "type": "select",
+      "id": "card3_category",
+      "label": "Card 3 Category",
+      "options": [
+        { "value": "corporate", "label": "Corporate Office" },
+        { "value": "awards", "label": "Awards" },
+        { "value": "celebrating", "label": "Celebrating" },
+        { "value": "operational", "label": "Operational Office" }
+      ],
+      "default": "awards"
+    },
+    {
+      "type": "header",
+      "content": "4. Right Big Card (Tall Portrait)"
+    },
+    {
+      "type": "image_picker",
+      "id": "card4_image",
+      "label": "Card 4 Image"
+    },
+    {
+      "type": "select",
+      "id": "card4_category",
+      "label": "Card 4 Category",
+      "options": [
+        { "value": "corporate", "label": "Corporate Office" },
+        { "value": "awards", "label": "Awards" },
+        { "value": "celebrating", "label": "Celebrating" },
+        { "value": "operational", "label": "Operational Office" }
+      ],
+      "default": "operational"
     }
   ],
   "presets": [
     {
-      "name": "Mosaic Moments Gallery",
+      "name": "4-Card Hero Gallery",
       "category": "Gallery"
     }
   ]
