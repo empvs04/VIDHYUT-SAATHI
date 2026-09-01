@@ -1,0 +1,845 @@
+{%- style -%}
+  @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap');
+
+  /* ==========================================================================
+     SECTION 2: PINTEREST-STYLE MOSAIC BENTO GALLERY SHOWCASE
+     ========================================================================== */
+  .vsg-mosaic-section {
+    position: relative;
+    background: #090e17;
+    color: #ffffff;
+    padding: 70px 24px 90px 24px;
+    font-family: 'Outfit', sans-serif;
+    overflow: hidden;
+  }
+
+  /* Ambient Glow Blurs */
+  .vsg-mosaic-section .glow-blur-1 {
+    position: absolute;
+    top: 5%;
+    left: -100px;
+    width: 450px;
+    height: 450px;
+    background: radial-gradient(circle, rgba(236, 92, 10, 0.12) 0%, transparent 70%);
+    filter: blur(80px);
+    pointer-events: none;
+    z-index: 1;
+  }
+  .vsg-mosaic-section .glow-blur-2 {
+    position: absolute;
+    bottom: 5%;
+    right: -100px;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(0, 123, 62, 0.12) 0%, transparent 70%);
+    filter: blur(80px);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .vsg-mosaic-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* SECTION HEADER & BADGE */
+  .vsg-mosaic-header {
+    text-align: center;
+    margin-bottom: 36px;
+  }
+
+  .vsg-mosaic-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 18px;
+    background: rgba(236, 92, 10, 0.12);
+    border: 1px solid rgba(236, 92, 10, 0.35);
+    border-radius: 999px;
+    color: #ff9a00;
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .vsg-mosaic-title {
+    font-family: 'Baloo 2', 'Outfit', sans-serif;
+    font-size: clamp(2rem, 3.8vw, 3.2rem);
+    font-weight: 900;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+    margin-bottom: 12px;
+  }
+
+  .vsg-mosaic-title .gradient-text {
+    background: linear-gradient(135deg, #ec5c0a 0%, #ff9a00 50%, #00d068 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .vsg-mosaic-sub {
+    font-size: clamp(0.95rem, 1.3vw, 1.1rem);
+    color: #94a3b8;
+    max-width: 680px;
+    margin: 0 auto 30px auto;
+    line-height: 1.6;
+  }
+
+  /* PINTEREST-STYLE HORIZONTAL CATEGORY FILTER TABS */
+  .vsg-filter-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 36px;
+    padding: 6px;
+  }
+
+  .vsg-filter-btn {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #cbd5e1;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 10px 22px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .vsg-filter-btn:hover {
+    background: rgba(236, 92, 10, 0.15);
+    border-color: rgba(236, 92, 10, 0.5);
+    color: #ffffff;
+    transform: translateY(-2px);
+  }
+
+  .vsg-filter-btn.active {
+    background: linear-gradient(135deg, #ec5c0a 0%, #ff9a00 100%);
+    border-color: transparent;
+    color: #ffffff;
+    box-shadow: 0 8px 24px rgba(236, 92, 10, 0.35);
+    transform: translateY(-2px);
+  }
+
+  /* ==========================================================================
+     ASYMMETRICAL BENTO MOSAIC GRID (Pinterest Multi-Size Pattern)
+     ========================================================================== */
+  .vsg-mosaic-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 220px;
+    grid-auto-flow: dense;
+    gap: 16px;
+    width: 100%;
+  }
+
+  /* INDIVIDUAL MOSAIC ITEM */
+  .vsg-mosaic-card {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #131b2a;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  }
+
+  /* SIZE SPANS (PINTEREST LAYOUT) */
+  .vsg-mosaic-card.size-standard {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+  .vsg-mosaic-card.size-tall-portrait {
+    grid-column: span 1;
+    grid-row: span 2;
+  }
+  .vsg-mosaic-card.size-wide-landscape {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+  .vsg-mosaic-card.size-large-hero {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+  .vsg-mosaic-card.size-ultra-tall {
+    grid-column: span 1;
+    grid-row: span 3;
+  }
+
+  /* Card Image */
+  .vsg-mosaic-img-wrap {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .vsg-mosaic-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .vsg-mosaic-card:hover {
+    transform: translateY(-6px) scale(1.01);
+    border-color: rgba(236, 92, 10, 0.6);
+    box-shadow: 0 20px 45px rgba(236, 92, 10, 0.25), 0 0 20px rgba(236, 92, 10, 0.15);
+    z-index: 5;
+  }
+
+  .vsg-mosaic-card:hover .vsg-mosaic-img {
+    transform: scale(1.08);
+  }
+
+  /* Gradient Overlay & Captions */
+  .vsg-mosaic-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(9, 14, 23, 0.95) 0%, rgba(9, 14, 23, 0.4) 45%, transparent 100%);
+    opacity: 0.85;
+    transition: opacity 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  .vsg-mosaic-card:hover .vsg-mosaic-overlay {
+    opacity: 1;
+    background: linear-gradient(to top, rgba(9, 14, 23, 0.98) 0%, rgba(9, 14, 23, 0.5) 55%, rgba(236, 92, 10, 0.15) 100%);
+  }
+
+  .vsg-card-tag {
+    display: inline-block;
+    align-self: flex-start;
+    padding: 4px 12px;
+    background: rgba(236, 92, 10, 0.25);
+    border: 1px solid rgba(236, 92, 10, 0.5);
+    backdrop-filter: blur(8px);
+    border-radius: 999px;
+    color: #ffb049;
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+    transform: translateY(4px);
+    transition: transform 0.3s ease;
+  }
+
+  .vsg-card-title {
+    font-family: 'Baloo 2', 'Outfit', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.2;
+    margin: 0 0 4px 0;
+    transition: color 0.3s ease;
+  }
+
+  .vsg-mosaic-card:hover .vsg-card-title {
+    color: #ff9a00;
+  }
+
+  .vsg-card-desc {
+    font-size: 0.82rem;
+    color: #cbd5e1;
+    line-height: 1.4;
+    margin: 0;
+    opacity: 0.9;
+  }
+
+  /* Micro Expand Icon Button */
+  .vsg-expand-badge {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .vsg-mosaic-card:hover .vsg-expand-badge {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  /* ==========================================================================
+     FULLSCREEN LIGHTBOX MODAL VIEWER
+     ========================================================================== */
+  .vsg-lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(5, 8, 15, 0.92);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    z-index: 999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .vsg-lightbox.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .vsg-lightbox-content {
+    position: relative;
+    max-width: 1080px;
+    width: 100%;
+    max-height: 90vh;
+    background: #0f172a;
+    border: 1.5px solid rgba(236, 92, 10, 0.4);
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.8), 0 0 40px rgba(236, 92, 10, 0.25);
+    display: flex;
+    flex-direction: column;
+    transform: scale(0.92);
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .vsg-lightbox.active .vsg-lightbox-content {
+    transform: scale(1);
+  }
+
+  .vsg-lightbox-img-box {
+    width: 100%;
+    max-height: 68vh;
+    background: #070b12;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .vsg-lightbox-img {
+    max-width: 100%;
+    max-height: 68vh;
+    object-fit: contain;
+    display: block;
+  }
+
+  .vsg-lightbox-footer {
+    padding: 18px 24px;
+    background: #0f172a;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .vsg-lightbox-info h3 {
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 4px 0;
+  }
+  .vsg-lightbox-info p {
+    font-size: 0.88rem;
+    color: #94a3b8;
+    margin: 0;
+  }
+
+  .vsg-lightbox-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+    font-size: 1.3rem;
+    font-weight: 800;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: all 0.2s ease;
+  }
+
+  .vsg-lightbox-close:hover {
+    background: #ec5c0a;
+    color: #ffffff;
+    transform: rotate(90deg);
+  }
+
+  /* RESPONSIVE MEDIA QUERIES */
+  @media screen and (max-width: 1024px) {
+    .vsg-mosaic-grid {
+      grid-template-columns: repeat(3, 1fr);
+      grid-auto-rows: 200px;
+      gap: 14px;
+    }
+    .vsg-mosaic-card.size-ultra-tall {
+      grid-column: span 1;
+      grid-row: span 2;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .vsg-mosaic-section {
+      padding: 50px 14px 70px 14px;
+    }
+    .vsg-filter-nav {
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .vsg-filter-btn {
+      font-size: 0.76rem;
+      padding: 7px 15px;
+    }
+    .vsg-mosaic-grid {
+      grid-template-columns: repeat(2, 1fr);
+      grid-auto-rows: 170px;
+      gap: 10px;
+    }
+    .vsg-mosaic-card {
+      border-radius: 14px;
+    }
+    .vsg-card-title {
+      font-size: 0.95rem;
+    }
+    .vsg-card-desc {
+      font-size: 0.72rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .vsg-mosaic-overlay {
+      padding: 12px;
+    }
+    .vsg-mosaic-card.size-ultra-tall,
+    .vsg-mosaic-card.size-large-hero {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+  }
+{%- endstyle -%}
+
+<section class="vsg-mosaic-section" id="vsg-mosaic-{{ section.id }}">
+  <div class="glow-blur-1"></div>
+  <div class="glow-blur-2"></div>
+
+  <div class="vsg-mosaic-container">
+    
+    <!-- HEADER & TITLE -->
+    <div class="vsg-mosaic-header">
+      <div class="vsg-mosaic-pill">
+        <span>📸</span>
+        <span>{{ section.settings.badge_text | default: 'GLIMPSES OF EXCELLENCE & TRUST' }}</span>
+      </div>
+      <h2 class="vsg-mosaic-title">
+        {{ section.settings.title_line1 | default: 'Our Real-Time Moments & ' }}
+        <span class="gradient-text">{{ section.settings.title_line2 | default: 'Milestones Across India' }}</span>
+      </h2>
+      <p class="vsg-mosaic-sub">
+        {{ section.settings.subtitle | default: 'Explore our corporate headquarters, certified installations, prestigious awards, celebrating teams, and nationwide district hub dispatches.' }}
+      </p>
+
+      <!-- PINTEREST-STYLE HORIZONTAL CATEGORY FILTER TABS -->
+      <div class="vsg-filter-nav">
+        <button type="button" class="vsg-filter-btn active" data-filter="all">ALL</button>
+        <button type="button" class="vsg-filter-btn" data-filter="corporate">CORPORATE OFFICE</button>
+        <button type="button" class="vsg-filter-btn" data-filter="installations">INSTALLATIONS</button>
+        <button type="button" class="vsg-filter-btn" data-filter="events">EVENTS & AWARDS</button>
+        <button type="button" class="vsg-filter-btn" data-filter="celebrating">CELEBRATING</button>
+        <button type="button" class="vsg-filter-btn" data-filter="districts">OPERATIONAL HUBS</button>
+      </div>
+    </div>
+
+    <!-- ASYMMETRIC BENTO MOSAIC GRID -->
+    <div class="vsg-mosaic-grid" id="vsgGrid-{{ section.id }}">
+      {%- if section.blocks.size > 0 -%}
+        {%- for block in section.blocks -%}
+          {%- assign item_size = block.settings.card_size | default: 'size-standard' -%}
+          {%- assign item_cat = block.settings.category | default: 'all' -%}
+          
+          <div class="vsg-mosaic-card {{ item_size }}" 
+               data-category="{{ item_cat }}"
+               data-title="{{ block.settings.title | escape }}"
+               data-desc="{{ block.settings.description | escape }}"
+               data-tag="{{ block.settings.tag_text | escape }}"
+               {{ block.shopify_attributes }}>
+            <div class="vsg-mosaic-img-wrap">
+              {%- if block.settings.image != blank -%}
+                <img src="{{ block.settings.image | image_url: width: 1200 }}" 
+                     alt="{{ block.settings.title | default: 'Vidhyut Saathi Moments' | escape }}" 
+                     class="vsg-mosaic-img" 
+                     loading="lazy">
+              {%- elsif block.settings.fallback_asset != blank -%}
+                <img src="{{ block.settings.fallback_asset | asset_url }}" 
+                     alt="{{ block.settings.title | default: 'Vidhyut Saathi Moments' | escape }}" 
+                     class="vsg-mosaic-img" 
+                     loading="lazy">
+              {%- else -%}
+                <img src="{{ 'vidhyut-saathi-team-bg.jpg' | asset_url }}" 
+                     alt="{{ block.settings.title | default: 'Vidhyut Saathi Moments' | escape }}" 
+                     class="vsg-mosaic-img" 
+                     loading="lazy">
+              {%- endif -%}
+
+              <div class="vsg-expand-badge"><i class="fa-solid fa-expand"></i></div>
+
+              <div class="vsg-mosaic-overlay">
+                {%- if block.settings.tag_text != blank -%}
+                  <span class="vsg-card-tag">{{ block.settings.tag_text }}</span>
+                {%- endif -%}
+                <h3 class="vsg-card-title">{{ block.settings.title }}</h3>
+                {%- if block.settings.description != blank -%}
+                  <p class="vsg-card-desc">{{ block.settings.description }}</p>
+                {%- endif -%}
+              </div>
+            </div>
+          </div>
+        {%- endfor -%}
+      {%- else -%}
+        <!-- DEFAULT PRESET MOSAIC CARDS (Matching Pinterest Screenshot Asymmetric Pattern) -->
+        
+        <!-- 1. Large Tall Landscape Card (Row span 2) -->
+        <div class="vsg-mosaic-card size-tall-portrait" data-category="corporate" data-title="Corporate Headquarters" data-desc="Vidhyut Saathi official HQ executive wing & leadership center." data-tag="Corporate Office">
+          <div class="vsg-mosaic-img-wrap">
+            <img src="{{ 'vidhyut-saathi-team-bg.jpg' | asset_url }}" class="vsg-mosaic-img" alt="Corporate Headquarters" loading="lazy">
+            <div class="vsg-expand-badge"><i class="fa-solid fa-expand"></i></div>
+            <div class="vsg-mosaic-overlay">
+              <span class="vsg-card-tag">Corporate Office</span>
+              <h3 class="vsg-card-title">Corporate Headquarters</h3>
+              <p class="vsg-card-desc">State-of-the-art corporate nerve center steering nationwide energy revolution.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Standard Portrait Card -->
+        <div class="vsg-mosaic-card size-standard" data-category="events" data-title="National Innovation Award" data-desc="Recognized with prestigious green tech excellence award." data-tag="Awards & Honors">
+          <div class="vsg-mosaic-img-wrap">
+            <img src="{{ 'iso-certificate.png' | asset_url }}" class="vsg-mosaic-img" alt="National Innovation Award" loading="lazy">
+            <div class="vsg-expand-badge"><i class="fa-solid fa-expand"></i></div>
+            <div class="vsg-mosaic-overlay">
+              <span class="vsg-card-tag">Awards & Honors</span>
+              <h3 class="vsg-card-title">National Excellence Award</h3>
+              <p class="vsg-card-desc">Govt. compliant ISO 9001:2015 accredited green tech.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Wide Landscape Card (Col span 2) -->
+        <div class="vsg-mosaic-card size-wide-landscape" data-category="installations" data-title="Industrial Heavy Plant Setup" data-desc="3-Phase high-voltage surge stabilization unit installed." data-tag="Industrial Power">
+          <div class="vsg-mosaic-img-wrap">
+            <img src="{{ 'case-industrial.jpg' | asset_url }}" class="vsg-mosaic-img" alt="Industrial Heavy Plant Setup" loading="lazy">
+            <div class="vsg-expand-badge"><i class="fa-solid fa-expand"></i></div>
+            <div class="vsg-mosaic-overlay">
+              <span class="vsg-card-tag">Industrial Power</span>
+              <h3 class="vsg-card-title">Heavy Industrial Setup</h3>
+              <p class="vsg-card-desc">3-Phase multi-card system cutting industrial power loss by 28%.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Ultra Tall Full Height Card (Row span 3 - like right waterfall in screenshot!) -->
+        <div class="vsg-mosaic-card size-ultra-tall" data-category="celebrating" data-title="Pan-India Milestone Gala" data-desc="Celebrating 1,00,000+ successful installations across 28 states." data-tag="Celebrations">
+          <div class="vsg-mosaic-img-wrap">
+            <img src="{{ 'indian_entrepreneur.jpg' | asset_url }}" class="vsg-mosaic-img" alt="Pan-India Milestone Gala" loading="lazy">
+            <div class="vsg-expand-badge"><i class="fa-solid fa-expand"></i></div>
+            <div class="vsg-mosaic-overlay">
+              <span class="vsg-card-tag">Celebrations</span>
+              <h3 class="vsg-card-title">1 Lakh+ Installations</h3>
+              <p class="vsg-card-desc">Empowering millions of Indian households and commercial setups.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Commercial Tower Setup (Standard) -->
+        <div class="vsg-mosaic-card size-standard" data-category="installations" data-title="Commercial Tech Hub" data-desc="Commercial complex power optimization." data-tag="Commercial">
+          <div class="vsg-mosaic-img-wrap">
+            <img src="{{ 'case-commercial.jpg' | asset_url }}" class="vsg-mosaic-img" alt="Commercial Tech Hub" loading="lazy">
+            <div class="vsg-expand-badge"><i class="fa-solid fa-expand"></i></div>
+            <div class="vsg-mosaic-overlay">
+              <span class="vsg-card-tag">Commercial</span>
+              <h3 class="vsg-card-title">Commercial Tech Hub</h3>
+              <p class="vsg-card-desc">Zero maintenance smart power saving installation.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. District Hub Dispatch (Standard) -->
+        <div class="vsg-mosaic-card size-standard" data-category="districts" data-title="Regional Hub Dispatches" data-desc="Real-time express logistics dispatched across India." data-tag="Operational Hub">
+          <div class="vsg-mosaic-img-wrap">
+            <img src="{{ 'india_live_states_map.jpg' | asset_url }}" class="vsg-mosaic-img" alt="Regional Hub Dispatches" loading="lazy">
+            <div class="vsg-expand-badge"><i class="fa-solid fa-expand"></i></div>
+            <div class="vsg-mosaic-overlay">
+              <span class="vsg-card-tag">Operational Hub</span>
+              <h3 class="vsg-card-title">District Hub Dispatches</h3>
+              <p class="vsg-card-desc">Fast-track regional deliveries connecting 28 states.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. Wide Landscape Bottom Banner Card (Col span 2) -->
+        <div class="vsg-mosaic-card size-wide-landscape" data-category="celebrating" data-title="Annual Entrepreneur Summit" data-desc="Honoring top district franchise partners and distributors." data-tag="Annual Meet">
+          <div class="vsg-mosaic-img-wrap">
+            <img src="{{ 'wvs-indian-businessman.jpg' | asset_url }}" class="vsg-mosaic-img" alt="Annual Entrepreneur Summit" loading="lazy">
+            <div class="vsg-expand-badge"><i class="fa-solid fa-expand"></i></div>
+            <div class="vsg-mosaic-overlay">
+              <span class="vsg-card-tag">Annual Meet</span>
+              <h3 class="vsg-card-title">Annual Partner Summit</h3>
+              <p class="vsg-card-desc">Celebrating district franchise leaders building sustainable energy wealth.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8. Residential Solar & Grid Sync (Standard) -->
+        <div class="vsg-mosaic-card size-standard" data-category="installations" data-title="Smart Residential Smart Meter" data-desc="Home MCB box instant 2-minute peel & stick setup." data-tag="Residential">
+          <div class="vsg-mosaic-img-wrap">
+            <img src="{{ 'case-residential.jpg' | asset_url }}" class="vsg-mosaic-img" alt="Smart Residential Smart Meter" loading="lazy">
+            <div class="vsg-expand-badge"><i class="fa-solid fa-expand"></i></div>
+            <div class="vsg-mosaic-overlay">
+              <span class="vsg-card-tag">Residential</span>
+              <h3 class="vsg-card-title">Smart Home Setup</h3>
+              <p class="vsg-card-desc">20%-30% monthly electricity bill savings.</p>
+            </div>
+          </div>
+        </div>
+
+      {%- endif -%}
+    </div>
+
+  </div>
+</section>
+
+<!-- FULLSCREEN LIGHTBOX MODAL DIALOG -->
+<div class="vsg-lightbox" id="vsgLightbox-{{ section.id }}">
+  <div class="vsg-lightbox-content">
+    <button type="button" class="vsg-lightbox-close" id="vsgLightboxClose-{{ section.id }}">&times;</button>
+    <div class="vsg-lightbox-img-box">
+      <img src="" alt="" class="vsg-lightbox-img" id="vsgLightboxImg-{{ section.id }}">
+    </div>
+    <div class="vsg-lightbox-footer">
+      <div class="vsg-lightbox-info">
+        <h3 id="vsgLightboxTitle-{{ section.id }}">Title</h3>
+        <p id="vsgLightboxDesc-{{ section.id }}">Description</p>
+      </div>
+      <div id="vsgLightboxTag-{{ section.id }}" class="vsg-card-tag" style="margin-bottom:0;">Tag</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    function initMosaicGallery() {
+      const sectionId = '{{ section.id }}';
+      const grid = document.getElementById(`vsgGrid-${sectionId}`);
+      if (!grid) return;
+
+      const filterBtns = document.querySelectorAll(`#vsg-mosaic-${sectionId} .vsg-filter-btn`);
+      const cards = grid.querySelectorAll('.vsg-mosaic-card');
+      
+      const lightbox = document.getElementById(`vsgLightbox-${sectionId}`);
+      const lbImg = document.getElementById(`vsgLightboxImg-${sectionId}`);
+      const lbTitle = document.getElementById(`vsgLightboxTitle-${sectionId}`);
+      const lbDesc = document.getElementById(`vsgLightboxDesc-${sectionId}`);
+      const lbTag = document.getElementById(`vsgLightboxTag-${sectionId}`);
+      const lbClose = document.getElementById(`vsgLightboxClose-${sectionId}`);
+
+      // Category Filtering Logic
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          this.classList.add('active');
+          const filter = this.getAttribute('data-filter');
+
+          cards.forEach(card => {
+            const cat = card.getAttribute('data-category') || 'all';
+            if (filter === 'all' || cat === filter) {
+              card.style.display = 'block';
+              card.style.animation = 'fadeInCard 0.4s ease forwards';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+
+      // Lightbox Click Handler
+      cards.forEach(card => {
+        card.addEventListener('click', function() {
+          const img = this.querySelector('.vsg-mosaic-img');
+          if (!img) return;
+
+          lbImg.src = img.src;
+          lbImg.alt = img.alt || '';
+          lbTitle.textContent = this.getAttribute('data-title') || img.alt || '';
+          lbDesc.textContent = this.getAttribute('data-desc') || '';
+          lbTag.textContent = this.getAttribute('data-tag') || 'Vidhyut Saathi';
+          
+          lightbox.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        });
+      });
+
+      function closeLightbox() {
+        if (lightbox) {
+          lightbox.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      }
+
+      if (lbClose) lbClose.addEventListener('click', closeLightbox);
+      if (lightbox) {
+        lightbox.addEventListener('click', function(e) {
+          if (e.target === lightbox) closeLightbox();
+        });
+      }
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeLightbox();
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initMosaicGallery);
+    } else {
+      initMosaicGallery();
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Mosaic Moments Gallery",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text",
+      "default": "GLIMPSES OF EXCELLENCE & TRUST"
+    },
+    {
+      "type": "text",
+      "id": "title_line1",
+      "label": "Title Line 1",
+      "default": "Our Real-Time Moments & "
+    },
+    {
+      "type": "text",
+      "id": "title_line2",
+      "label": "Title Highlight Line 2",
+      "default": "Milestones Across India"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Explore our corporate headquarters, certified installations, prestigious awards, celebrating teams, and nationwide district hub dispatches."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "gallery_item",
+      "name": "Mosaic Photo Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Upload Custom Image"
+        },
+        {
+          "type": "text",
+          "id": "fallback_asset",
+          "label": "Or Theme Asset Filename (optional)",
+          "info": "e.g. vidhyut-saathi-team-bg.jpg"
+        },
+        {
+          "type": "select",
+          "id": "card_size",
+          "label": "Card Size & Span (Pinterest Mosaic)",
+          "options": [
+            { "value": "size-standard", "label": "Standard (1x1)" },
+            { "value": "size-tall-portrait", "label": "Tall Portrait (1x2)" },
+            { "value": "size-wide-landscape", "label": "Wide Landscape (2x1)" },
+            { "value": "size-large-hero", "label": "Large Hero Box (2x2)" },
+            { "value": "size-ultra-tall", "label": "Ultra Tall Vertical (1x3)" }
+          ],
+          "default": "size-standard"
+        },
+        {
+          "type": "select",
+          "id": "category",
+          "label": "Category Filter Tab",
+          "options": [
+            { "value": "all", "label": "All Categories" },
+            { "value": "corporate", "label": "Corporate Office" },
+            { "value": "installations", "label": "Installations" },
+            { "value": "events", "label": "Events & Awards" },
+            { "value": "celebrating", "label": "Celebrating Moments" },
+            { "value": "districts", "label": "Operational Hubs" }
+          ],
+          "default": "all"
+        },
+        {
+          "type": "text",
+          "id": "tag_text",
+          "label": "Card Tag/Badge",
+          "default": "Installation"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Card Title",
+          "default": "Corporate Milestone"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Card Description",
+          "default": "Verified energy saving installation across pan-India."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Mosaic Moments Gallery",
+      "category": "Gallery"
+    }
+  ]
+}
+{% endschema %}
