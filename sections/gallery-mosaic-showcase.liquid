@@ -126,17 +126,17 @@
   }
 
   /* ==========================================================================
-     3-COLUMN FLUSH-HEIGHT 4-CARD HERO GRID (SINGLE SCREEN COMPACT FIT)
+     3-COLUMN FLUSH-HEIGHT 4-CARD HERO GRID (OPTIMAL PROPORTIONATE VIEW)
      ========================================================================== */
   .vsg-4card-grid {
     display: flex;
     justify-content: center;
     align-items: stretch;
-    gap: 14px;
+    gap: 16px;
     width: 100%;
-    max-width: 980px;
+    max-width: 1180px;
     margin: 0 auto;
-    height: min(410px, 50vh); /* STRICT SINGLE SCREEN VIEWPORT FIT */
+    height: min(505px, 62vh); /* INCREASED LENGTH FOR BOLD VISUAL IMPACT */
   }
 
   /* Left & Right Columns (100% Identical Width & Full Height Matching Center) */
@@ -145,7 +145,7 @@
     display: flex;
     flex-direction: column;
     flex: 1 1 0;
-    max-width: 380px;
+    max-width: 440px;
     height: 100%;
   }
 
@@ -161,14 +161,14 @@
   .vsg-col-center {
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 16px;
     height: 100%;
     flex: 0 0 auto;
     justify-content: space-between;
   }
 
   .vsg-col-center .vsg-card-item {
-    height: calc((100% - 14px) / 2) !important;
+    height: calc((100% - 16px) / 2) !important;
     aspect-ratio: 1 / 1 !important; /* 100% STRICT PERFECT SQUARE */
     width: auto !important;
     flex: none;
