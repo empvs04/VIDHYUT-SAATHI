@@ -235,7 +235,12 @@
         {%- if section.blocks.size > 0 -%}
           <!-- SET 1 (Original Blocks) -->
           {%- for block in section.blocks -%}
-            <a href="{{ block.settings.link | default: '#' }}" class="hm-gallery-card" {{ block.shopify_attributes }}>
+            {%- assign card_href = block.settings.link -%}
+            {%- if card_href != blank -%}
+              <a href="{{ card_href }}" class="hm-gallery-card" {{ block.shopify_attributes }}>
+            {%- else -%}
+              <div class="hm-gallery-card" role="button" tabindex="0" {{ block.shopify_attributes }}>
+            {%- endif -%}
               {%- if block.settings.image != blank -%}
                 <img src="{{ block.settings.image | image_url: width: 700 }}" alt="{{ block.settings.alt_text | default: section.settings.heading | escape }}" class="hm-gallery-img" loading="lazy">
               {%- else -%}
@@ -253,12 +258,21 @@
                     <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=700&auto=format&fit=crop&q=80" alt="Happy Customer Girl" class="hm-gallery-img" loading="lazy">
                 {%- endcase -%}
               {%- endif -%}
-            </a>
+            {%- if card_href != blank -%}
+              </a>
+            {%- else -%}
+              </div>
+            {%- endif -%}
           {%- endfor -%}
 
           <!-- SET 2 (Clones for infinite seamless loop) -->
           {%- for block in section.blocks -%}
-            <a href="{{ block.settings.link | default: '#' }}" class="hm-gallery-card" aria-hidden="true" tabindex="-1">
+            {%- assign card_href = block.settings.link -%}
+            {%- if card_href != blank -%}
+              <a href="{{ card_href }}" class="hm-gallery-card" aria-hidden="true" tabindex="-1">
+            {%- else -%}
+              <div class="hm-gallery-card" aria-hidden="true" tabindex="-1">
+            {%- endif -%}
               {%- if block.settings.image != blank -%}
                 <img src="{{ block.settings.image | image_url: width: 700 }}" alt="{{ block.settings.alt_text | default: section.settings.heading | escape }}" class="hm-gallery-img" loading="lazy">
               {%- else -%}
@@ -276,12 +290,21 @@
                     <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=700&auto=format&fit=crop&q=80" alt="Happy Customer Girl" class="hm-gallery-img" loading="lazy">
                 {%- endcase -%}
               {%- endif -%}
-            </a>
+            {%- if card_href != blank -%}
+              </a>
+            {%- else -%}
+              </div>
+            {%- endif -%}
           {%- endfor -%}
 
           <!-- SET 3 (Buffer for wide screens) -->
           {%- for block in section.blocks -%}
-            <a href="{{ block.settings.link | default: '#' }}" class="hm-gallery-card" aria-hidden="true" tabindex="-1">
+            {%- assign card_href = block.settings.link -%}
+            {%- if card_href != blank -%}
+              <a href="{{ card_href }}" class="hm-gallery-card" aria-hidden="true" tabindex="-1">
+            {%- else -%}
+              <div class="hm-gallery-card" aria-hidden="true" tabindex="-1">
+            {%- endif -%}
               {%- if block.settings.image != blank -%}
                 <img src="{{ block.settings.image | image_url: width: 700 }}" alt="{{ block.settings.alt_text | default: section.settings.heading | escape }}" class="hm-gallery-img" loading="lazy">
               {%- else -%}
@@ -299,7 +322,11 @@
                     <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=700&auto=format&fit=crop&q=80" alt="Happy Customer Girl" class="hm-gallery-img" loading="lazy">
                 {%- endcase -%}
               {%- endif -%}
-            </a>
+            {%- if card_href != blank -%}
+              </a>
+            {%- else -%}
+              </div>
+            {%- endif -%}
           {%- endfor -%}
 
         {%- else -%}
@@ -420,10 +447,11 @@
         }
       });
 
-      // Prevent accidental link clicks when dragging
+      // Prevent accidental link clicks when dragging & prevent '#' anchor top jump
       viewport.querySelectorAll('.hm-gallery-card').forEach(function(card) {
         card.addEventListener('click', function(e) {
-          if (dragDistance > 10) {
+          const href = card.getAttribute('href');
+          if (dragDistance > 10 || !href || href === '#' || href === 'javascript:void(0);' || href === 'javascript:void(0)') {
             e.preventDefault();
           }
         });
