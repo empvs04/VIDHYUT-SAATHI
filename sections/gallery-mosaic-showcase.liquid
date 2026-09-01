@@ -130,29 +130,50 @@
      ========================================================================== */
   .vsg-4card-grid {
     display: grid;
-    grid-template-columns: 1fr min(350px, 30vw) 1fr;
+    grid-template-columns: minmax(0, 1fr) min(350px, 30vw) minmax(0, 1fr);
     gap: 20px;
     width: 100%;
     max-width: 1400px;
     margin: 0 auto;
     align-items: stretch;
+    box-sizing: border-box;
   }
 
-  /* Left & Right Columns (Tall Expansive Portrait Cards) */
+  /* Left & Right Columns (Strict 100% Identical Width & Full Height) */
   .vsg-col-left,
   .vsg-col-right {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
     height: 100%;
+    box-sizing: border-box;
   }
 
   .vsg-col-left .vsg-card-item,
   .vsg-col-right .vsg-card-item {
-    height: 100%;
-    width: 100%;
+    height: 100% !important;
+    width: 100% !important;
+    min-width: 0 !important;
     flex: 1 1 auto;
     min-height: 0;
+  }
+
+  .vsg-col-left .vsg-card-img-wrap,
+  .vsg-col-right .vsg-card-img-wrap {
+    width: 100% !important;
+    height: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .vsg-col-left .vsg-card-img,
+  .vsg-col-right .vsg-card-img {
+    width: 100% !important;
+    height: 100% !important;
+    min-width: 0 !important;
+    object-fit: cover !important;
+    object-position: center !important;
   }
 
   /* Center Column (2 Large Stacked Pure 1:1 Squares) */
