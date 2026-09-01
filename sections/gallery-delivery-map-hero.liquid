@@ -5,11 +5,23 @@
      SECTION 1: THEME-BASED LUCRATIVE DELIVERY TRACKER HERO
      Vidhyut Saathi Orange & Green GPS Highway + Animated EV Courier Van
      =========================================================================== */
+  /* Page Container Wrapper - Equal Left/Right Margins Matching Website Width */
+  .dm-section-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 1400px;
+    margin: 30px auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+
   #deliveryMapHero-{{ section.id }} {
     position: relative;
     width: 100%;
-    min-height: clamp(560px, 82vh, 760px);
+    min-height: clamp(540px, 78vh, 720px);
     background: radial-gradient(circle at 50% 20%, #ffffff 0%, #fff8ef 50%, #fef3e2 100%);
+    border-radius: 32px;
+    box-shadow: 0 20px 60px rgba(15, 23, 42, 0.07), 0 0 0 1.5px rgba(236, 92, 10, 0.15);
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -18,7 +30,7 @@
     font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
     color: #0f172a;
     box-sizing: border-box;
-    padding: clamp(40px, 6vh, 65px) 20px 75px;
+    padding: clamp(40px, 6vh, 60px) clamp(20px, 4vw, 50px) 75px;
   }
 
   /* Light Navigation Map Vector Background */
@@ -343,7 +355,8 @@
   }
 {%- endstyle -%}
 
-<section class="dm-map-hero-section" id="deliveryMapHero-{{ section.id }}">
+<div class="dm-section-wrapper">
+  <section class="dm-map-hero-section" id="deliveryMapHero-{{ section.id }}">
   <!-- Dark GPS Navigation Map Background Layer with Vidhyut Ambient Glows -->
   <div class="dm-map-container" id="dmMapContainer-{{ section.id }}">
     <div class="dm-ambient-glow-orange" aria-hidden="true"></div>
@@ -517,7 +530,8 @@
       </div>
     </div>
   </div>
-</section>
+  </section>
+</div>
 
 <script>
   (function() {
