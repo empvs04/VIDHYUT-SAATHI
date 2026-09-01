@@ -470,7 +470,6 @@
 
     <!-- Dynamic Courier Car / Delivery Truck Moving on Route -->
     <div class="dm-courier-truck" id="dmTruck-{{ section.id }}">
-      <div class="dm-truck-status-bubble" id="dmTruckStatus-{{ section.id }}">⚡ In Transit</div>
       <div class="dm-truck-body">
         <!-- SVG Truck Illustration with Packages -->
         <svg viewBox="0 0 96 58" width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -621,19 +620,10 @@
                 pinElements[idx].classList.add('active-hub');
               }
 
-              if (statusBubble) {
-                statusBubble.textContent = hub.name;
-                statusBubble.style.backgroundColor = (idx === hubs.length - 1) ? '#16a34a' : '#ec5c0a';
-              }
-
               // Pause 1.2s at destination then proceed to next destination
               clearTimeout(pauseTimer);
               pauseTimer = setTimeout(() => {
                 isPaused = false;
-                if (statusBubble) {
-                  statusBubble.textContent = '⚡ Moving to Next Hub...';
-                  statusBubble.style.backgroundColor = '#2563eb';
-                }
               }, 1200);
             }
           });
