@@ -735,7 +735,35 @@ den;
     font-size: 13.5px;
   }
 
-  /* ---- WORKED EXAMPLES CASE STUDIES GRID ---- */
+  /* Worked Examples Summary Badge - Responsive for Mobile */
+  .vsind-case-result-badge {
+    background: linear-gradient(135deg, #0f172a 0%, #0284c7 100%);
+    padding: 10px 14px;
+    border-radius: 14px;
+    color: #ffffff;
+    font-size: 12.5px;
+    font-weight: 700;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px 12px;
+    box-shadow: 0 4px 14px rgba(2, 132, 199, 0.2);
+    min-height: 46px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .vsind-case-result-badge span {
+    white-space: nowrap;
+  }
+  .vsind-case-result-badge strong {
+    font-family: 'Baloo 2', 'Space Grotesk', sans-serif;
+    font-size: 13px;
+    color: #ffffff;
+    white-space: nowrap;
+  }
+
+  /* WORKED EXAMPLES MOBILE ALIGNMENT OVERRIDES */
   .vsind-case-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -754,6 +782,54 @@ den;
   .vsind-case-card:hover {
     transform: translateY(-6px) !important;
     box-shadow: 0 16px 36px rgba(0,0,0,0.09) !important;
+  }
+
+  @media (max-width: 767px) {
+    .vsind-case-grid {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 16px !important;
+    }
+    .vsind-case-card {
+      padding: 16px 14px !important;
+      border-radius: 16px !important;
+      background: #ffffff !important;
+      border: 1.5px solid #cbd5e1 !important;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.05) !important;
+    }
+    .vsind-case-card h4 {
+      font-size: 13.5px !important;
+      min-height: unset !important;
+      height: auto !important;
+      margin-bottom: 2px !important;
+    }
+    .vsind-case-result-badge {
+      padding: 9px 12px !important;
+      font-size: 11px !important;
+      gap: 4px 8px !important;
+      min-height: 42px !important;
+      border-radius: 12px !important;
+    }
+    .vsind-case-result-badge span {
+      font-size: 11.2px !important;
+    }
+    .vsind-case-result-badge strong {
+      font-size: 11.8px !important;
+    }
+  }
+
+  @media (max-width: 380px) {
+    .vsind-case-result-badge {
+      padding: 8px 10px !important;
+      font-size: 10.5px !important;
+      gap: 4px 6px !important;
+    }
+    .vsind-case-result-badge span {
+      font-size: 10.5px !important;
+    }
+    .vsind-case-result-badge strong {
+      font-size: 11px !important;
+    }
   }
 
   /* Mobile Justification & Lucrative Card Styling Overrides */
@@ -1369,9 +1445,9 @@ den;
             </div>
           </div>
 
-          <div style="background:linear-gradient(135deg, #0f172a 0%, #0284c7 100%); padding:10px 14px; border-radius:14px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(2,132,199,0.2); min-height:46px;">
-            <span style="white-space:nowrap;">⚡ 16 Industrial Cards</span>
-            <strong style="font-family:'Space Grotesk',sans-serif; font-size:13px; color:#ffffff; white-space:nowrap;">Saved ₹40,600/mo (29.0%) 🎉</strong>
+          <div class="vsind-case-result-badge">
+            <span>⚡ 16 Industrial Cards</span>
+            <strong>Saved ₹40,600/mo (29.0%) 🎉</strong>
           </div>
         </div>
 
@@ -1403,9 +1479,9 @@ den;
             </div>
           </div>
 
-          <div style="background:linear-gradient(135deg, #0f172a 0%, #0284c7 100%); padding:10px 14px; border-radius:14px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(2,132,199,0.2); min-height:46px;">
-            <span style="white-space:nowrap;">⚡ 31 Industrial Cards</span>
-            <strong style="font-family:'Space Grotesk',sans-serif; font-size:13px; color:#ffffff; white-space:nowrap;">Saved ₹78,400/mo (28.0%) 🎉</strong>
+          <div class="vsind-case-result-badge">
+            <span>⚡ 31 Industrial Cards</span>
+            <strong>Saved ₹78,400/mo (28.0%) 🎉</strong>
           </div>
         </div>
 
@@ -1437,9 +1513,9 @@ den;
             </div>
           </div>
 
-          <div style="background:linear-gradient(135deg, #0f172a 0%, #0284c7 100%); padding:10px 14px; border-radius:14px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(2,132,199,0.2); min-height:46px;">
-            <span style="white-space:nowrap;">⚡ 60 Industrial Cards</span>
-            <strong style="font-family:'Space Grotesk',sans-serif; font-size:13px; color:#ffffff; white-space:nowrap;">Saved ₹1,54,000/mo (28.0%) 🎉</strong>
+          <div class="vsind-case-result-badge">
+            <span>⚡ 60 Industrial Cards</span>
+            <strong>Saved ₹1,54,000/mo (28.0%) 🎉</strong>
           </div>
         </div>
       </div>
