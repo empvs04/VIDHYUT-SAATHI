@@ -218,30 +218,36 @@
     box-shadow: 0 0 0 8px rgba(245, 130, 32, 0.28), 0 6px 16px rgba(0,0,0,0.18);
   }
 
-  /* LIGHTBULB GLOW ANIMATION & HOW IT WORKS HINT BUTTON */
-  .premium-calculator-{{ section.id }} .calc-hint-btn {
+  /* TOP-RIGHT HOW IT WORKS TRIGGER BUTTON */
+  .premium-calculator-{{ section.id }} .rec-header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 18px;
+    margin-bottom: 8px;
+  }
+
+  .premium-calculator-{{ section.id }} .calc-hint-trigger-btn {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    background: #ffffff;
-    border: 1.5px solid rgba(245, 130, 32, 0.4);
-    color: #d97706;
-    padding: 4px 10px;
-    border-radius: 14px;
-    font-size: 0.75rem;
+    background: linear-gradient(135deg, #fff8ef 0%, #ffffff 100%);
+    border: 1.5px solid rgba(245, 130, 32, 0.45);
+    color: #ec5c0a;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.78rem;
     font-weight: 800;
     cursor: pointer;
+    box-shadow: 0 4px 12px rgba(245, 130, 32, 0.15);
     transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(245, 130, 32, 0.15);
-    margin-left: auto;
   }
 
-  .premium-calculator-{{ section.id }} .calc-hint-btn:hover {
-    background: #fff8ef;
-    border-color: #ec5c0a;
-    color: #ec5c0a;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(245, 130, 32, 0.25);
+  .premium-calculator-{{ section.id }} .calc-hint-trigger-btn:hover {
+    background: #ec5c0a;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(236, 92, 10, 0.35);
   }
 
   .premium-calculator-{{ section.id }} .bulb-icon-animated {
@@ -255,6 +261,85 @@
     100% { filter: drop-shadow(0 0 10px rgba(255, 193, 7, 1)) drop-shadow(0 0 18px rgba(245, 130, 32, 0.8)) opacity(1); transform: scale(1.15); }
   }
 
+  /* ON-SCREEN FLOATING MODAL HINT */
+  .premium-calculator-{{ section.id }} .calc-hint-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(6px);
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .premium-calculator-{{ section.id }} .calc-hint-modal.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .premium-calculator-{{ section.id }} .calc-hint-card {
+    background: #ffffff;
+    border: 2px solid #F58220;
+    border-radius: 24px;
+    max-width: 520px;
+    width: 100%;
+    padding: 26px 22px 22px 22px;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.25), 0 0 30px rgba(245, 130, 32, 0.2);
+    position: relative;
+    transform: scale(0.9);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .premium-calculator-{{ section.id }} .calc-hint-modal.active .calc-hint-card {
+    transform: scale(1);
+  }
+
+  .premium-calculator-{{ section.id }} .calc-hint-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #f1f5f9;
+    color: #0f172a;
+    border: none;
+    font-size: 1.2rem;
+    font-weight: 800;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+  }
+
+  .premium-calculator-{{ section.id }} .calc-hint-close:hover {
+    background: #e2e8f0;
+    color: #ec5c0a;
+  }
+
+  .premium-calculator-{{ section.id }} .calc-hint-title {
+    font-family: var(--heading-font);
+    font-size: 1.35rem;
+    font-weight: 900;
+    color: #0f172a;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .premium-calculator-{{ section.id }} .calc-hint-text {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: #334155;
+  }
+
   /* BASE 2-COLUMN GRID (Original Mobile) */
   .premium-calculator-{{ section.id }} .calc-results { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 28px; }
 
@@ -262,11 +347,12 @@
     background: #ffffff !important;
     border: 1.5px solid rgba(20, 140, 58, 0.16) !important;
     border-radius: 20px !important;
-    padding: 22px 14px 18px 14px !important;
+    padding: 24px 14px 18px 14px !important;
+    min-height: 125px !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
-    justify-content: center !important;
+    justify-content: space-between !important;
     text-align: center !important;
     box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05), 0 2px 8px rgba(245, 130, 32, 0.04) !important;
     position: relative !important;
@@ -292,20 +378,25 @@
 
   .premium-calculator-{{ section.id }} .calc-result-val {
     font-family: var(--heading-font) !important;
-    font-size: 2rem !important;
+    font-size: clamp(1.6rem, 2.5vw, 2.1rem) !important;
     font-weight: 900 !important;
     background: linear-gradient(135deg, #148C3A 0%, #F58220 100%) !important;
     -webkit-background-clip: text !important;
     -webkit-text-fill-color: transparent !important;
     line-height: 1.15 !important;
-    margin: 4px 0 8px 0 !important;
+    margin: auto 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
   }
 
   .premium-calculator-{{ section.id }} .calc-result-label {
     font-size: 0.82rem !important;
     color: #64748B !important;
     font-weight: 700 !important;
-    margin-top: 0 !important;
+    margin-top: auto !important;
+    padding-top: 4px !important;
+    letter-spacing: 0.02em !important;
   }
 
   .premium-calculator-{{ section.id }} .calc-disclaimer {
@@ -969,16 +1060,21 @@
             </div>
           </div>
 
-          <!-- DYNAMIC SMART LOAD & CARD RECOMMENDATION BAR WITH HINT LIGHTBULB -->
+          <!-- SMART RECOMMENDATION HEADER WITH TOP-RIGHT HOW IT WORKS BUTTON -->
+          <div class="rec-header-row">
+            <div class="calc-label" style="margin-bottom:0;">⚡ SMART RECOMMENDATION</div>
+            <button type="button" class="calc-hint-trigger-btn" id="calcHintBtn-{{ section.id }}" title="Click to view rule explanation">
+              <span class="bulb-icon-animated">💡</span>
+              <span>How It Works</span>
+            </button>
+          </div>
+
+          <!-- DYNAMIC SMART LOAD & CARD RECOMMENDATION BAR -->
           <div class="calc-recommendation-bar" id="recBar-{{ section.id }}">
             <div class="calc-rec-pill">
               <i class="fa-solid fa-bolt-lightning"></i>
               <span class="rec-label">House Load:</span>
               <strong class="rec-val" id="recLoad-{{ section.id }}">Enter KW</strong>
-              <div class="calc-hint-btn" id="calcHintBtn-{{ section.id }}" title="Click to view rule explanation">
-                <span class="bulb-icon-animated">💡</span>
-                <span>How It Works</span>
-              </div>
             </div>
             <div class="calc-rec-pill highlight-pill">
               <i class="fa-solid fa-layer-group"></i>
@@ -990,7 +1086,7 @@
         </div>
       </div>
 
-      <!-- RIGHT COLUMN: RESULTS CARDS, EXPLANATION, DISCLAIMER & TRUST CAPSULE PILLS -->
+      <!-- RIGHT COLUMN: RESULTS CARDS, DISCLAIMER & TRUST CAPSULE PILLS -->
       <div class="vs-calc-right-col-{{ section.id }}">
         <!-- 4 LUCRATIVE CALCULATION RESULT CARDS (CENTERED RUPEES WITH LABELS AT BOTTOM) -->
         <div class="calc-results">
@@ -1012,11 +1108,6 @@
           </div>
         </div>
 
-        <!-- EXPLANATION BADGE & DISCLAIMER WITH "HOW IT WORKS" HINT -->
-        <div class="calc-explain-badge" id="recReason-{{ section.id }}">
-          💡 <strong>How It Works:</strong> ₹4,000 bill requires 1 Card (Single Phase). (Enter your KW load above if known).
-        </div>
-
         <p class="calc-disclaimer">{{ section.settings.disclaimer_text }}</p>
 
         <!-- TRUST STRIP CAPSULE PILLS -->
@@ -1033,6 +1124,20 @@
     </div>
   </div>
 
+</div>
+
+<!-- ON-SCREEN FLOATING MODAL HINT POPUP -->
+<div class="calc-hint-modal" id="calcHintModal-{{ section.id }}">
+  <div class="calc-hint-card">
+    <button type="button" class="calc-hint-close" id="calcHintClose-{{ section.id }}">&times;</button>
+    <div class="calc-hint-title">
+      <span class="bulb-icon-animated">💡</span>
+      <span>How Recommendation Works</span>
+    </div>
+    <div class="calc-hint-text" id="recReason-{{ section.id }}">
+      💡 <strong>How It Works:</strong> ₹4,000 bill requires 1 Card (Single Phase). (Enter your KW load above if known).
+    </div>
+  </div>
 </div>
 
 <script>
@@ -1066,6 +1171,8 @@
       const recCards = document.getElementById(`recCards-${sectionId}`);
       const recReason = document.getElementById(`recReason-${sectionId}`);
       const hintBtn = document.getElementById(`calcHintBtn-${sectionId}`);
+      const hintModal = document.getElementById(`calcHintModal-${sectionId}`);
+      const hintClose = document.getElementById(`calcHintClose-${sectionId}`);
 
       const billInput = document.getElementById(`billInput-${sectionId}`);
       const kwInput = document.getElementById(`kwInput-${sectionId}`);
@@ -1191,16 +1298,26 @@
         });
       }
 
-      if (hintBtn && recReason) {
-        hintBtn.addEventListener('click', function() {
-          recReason.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          recReason.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
-          recReason.style.transform = 'scale(1.04)';
-          recReason.style.boxShadow = '0 0 20px rgba(245, 130, 32, 0.4)';
-          setTimeout(() => {
-            recReason.style.transform = 'scale(1)';
-            recReason.style.boxShadow = 'none';
-          }, 1200);
+      // Open Modal on Hint Button Click
+      if (hintBtn && hintModal) {
+        hintBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          hintModal.classList.add('active');
+        });
+      }
+
+      // Close Modal on Close Button Click or Backdrop Click
+      if (hintClose && hintModal) {
+        hintClose.addEventListener('click', function() {
+          hintModal.classList.remove('active');
+        });
+      }
+
+      if (hintModal) {
+        hintModal.addEventListener('click', function(e) {
+          if (e.target === hintModal) {
+            hintModal.classList.remove('active');
+          }
         });
       }
 
