@@ -1,0 +1,389 @@
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800;900&family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+{%- style -%}
+  /* ===========================================================================
+     SECTION 2: 360-DEGREE ORBITING CIRCULAR GALLERY
+     Continuous Slow 360° Rotation + Upright Image Counter-Rotation + Shopify Customizer Blocks
+     =========================================================================== */
+  #gallery360Section-{{ section.id }} {
+    position: relative;
+    width: 100%;
+    min-height: clamp(620px, 85vh, 880px);
+    padding: 80px 20px;
+    background: {{ section.settings.bg_color | default: '#fcfbfa' }};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    box-sizing: border-box;
+    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+  }
+
+  /* Center Content Card */
+  .gallery-360-center-content {
+    position: relative;
+    z-index: 10;
+    max-width: 580px;
+    text-align: center;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-radius: 28px;
+    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(236, 92, 10, 0.12);
+  }
+
+  .gallery-360-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(90deg, #ec5c0a 0%, #ff9a00 50%, #007b3e 100%);
+    color: #ffffff;
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    padding: 5px 18px;
+    border-radius: 50px;
+    box-shadow: 0 4px 15px rgba(236, 92, 10, 0.25);
+    margin-bottom: 14px;
+  }
+
+  .gallery-360-heading {
+    font-family: 'Baloo 2', 'Plus Jakarta Sans', sans-serif;
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.15;
+    margin: 0 0 14px 0;
+    letter-spacing: -0.02em;
+  }
+
+  .gallery-360-heading span {
+    background: linear-gradient(90deg, #ec5c0a 0%, #ff9a00 50%, #007b3e 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .gallery-360-description {
+    font-size: clamp(14px, 1.8vw, 17px);
+    color: #475569;
+    line-height: 1.6;
+    margin: 0 0 22px 0;
+    font-weight: 500;
+  }
+
+  .gallery-360-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #0f172a;
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 700;
+    padding: 13px 32px;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.25);
+    transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+
+  .gallery-360-cta:hover {
+    background: #ec5c0a;
+    color: #ffffff;
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 15px 35px rgba(236, 92, 10, 0.35);
+  }
+
+  /* 360-Degree Orbit Ring Container */
+  .gallery-360-orbit-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: clamp(480px, 68vw, 920px);
+    height: clamp(480px, 68vw, 920px);
+    margin-top: calc(clamp(480px, 68vw, 920px) / -2);
+    margin-left: calc(clamp(480px, 68vw, 920px) / -2);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 5;
+    animation: orbitRotate360 {{ section.settings.rotation_speed | default: 45 }}s linear infinite;
+  }
+
+  #gallery360Section-{{ section.id }}:hover .gallery-360-orbit-ring {
+    animation-play-state: paused;
+  }
+
+  @keyframes orbitRotate360 {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  /* Individual Orbit Photo Items */
+  .gallery-360-photo-item {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: clamp(75px, 11vw, 130px);
+    height: clamp(75px, 11vw, 130px);
+    margin-top: calc(clamp(75px, 11vw, 130px) / -2);
+    margin-left: calc(clamp(75px, 11vw, 130px) / -2);
+    pointer-events: auto;
+  }
+
+  .gallery-360-photo-card {
+    width: 100%;
+    height: 100%;
+    border-radius: clamp(14px, 2.2vw, 22px);
+    overflow: hidden;
+    background: #ffffff;
+    border: 3px solid #ffffff;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12), 0 4px 10px rgba(236, 92, 10, 0.1);
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
+    display: block;
+    text-decoration: none;
+    /* Counter rotation keeps image upright while ring turns 360° */
+    animation: counterRotate360 {{ section.settings.rotation_speed | default: 45 }}s linear infinite;
+  }
+
+  #gallery360Section-{{ section.id }}:hover .gallery-360-photo-card {
+    animation-play-state: paused;
+  }
+
+  @keyframes counterRotate360 {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(-360deg); }
+  }
+
+  .gallery-360-photo-card:hover {
+    transform: rotate(-360deg) scale(1.25) !important;
+    z-index: 50;
+    box-shadow: 0 20px 45px rgba(236, 92, 10, 0.35);
+    border-color: #ec5c0a;
+  }
+
+  .gallery-360-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+
+  /* Responsive Positioning Adjustment */
+  @media (max-width: 768px) {
+    #gallery360Section-{{ section.id }} {
+      min-height: 520px;
+      padding: 50px 15px;
+    }
+    .gallery-360-center-content {
+      padding: 20px 16px;
+      max-width: 320px;
+    }
+  }
+{%- endstyle -%}
+
+<section class="gallery-360-section" id="gallery360Section-{{ section.id }}">
+  <!-- Center Content Card -->
+  <div class="gallery-360-center-content">
+    {%- if section.settings.badge_text != blank -%}
+      <div class="gallery-360-badge">{{ section.settings.badge_text }}</div>
+    {%- endif -%}
+
+    <h2 class="gallery-360-heading">
+      {{ section.settings.heading | default: 'A Gallery That <span>Redefines Creativity</span>' }}
+    </h2>
+
+    <p class="gallery-360-description">
+      {{ section.settings.description | default: 'Explore a collection where art, design, and electrical technology merge to shape what’s next. This gallery isn’t just about visuals.' }}
+    </p>
+
+    {%- if section.settings.button_text != blank -%}
+      <a href="{{ section.settings.button_url | default: '#' }}" class="gallery-360-cta">
+        {{ section.settings.button_text }}
+      </a>
+    {%- endif -%}
+  </div>
+
+  <!-- 360-Degree Orbit Ring with Photos -->
+  <div class="gallery-360-orbit-ring" id="gallery360Ring-{{ section.id }}">
+    {%- if section.blocks.size > 0 -%}
+      {%- assign total_blocks = section.blocks.size -%}
+      {%- for block in section.blocks -%}
+        {%- assign angle_deg = 360.0 | divided_by: total_blocks | times: forloop.index0 -%}
+        <div class="gallery-360-photo-item" style="transform: rotate({{ angle_deg }}deg) translate(clamp(210px, 31vw, 410px));">
+          {%- assign item_url = block.settings.link -%}
+          {%- if item_url != blank -%}
+            <a href="{{ item_url }}" class="gallery-360-photo-card" {{ block.shopify_attributes }}>
+          {%- else -%}
+            <div class="gallery-360-photo-card" role="button" tabindex="0" {{ block.shopify_attributes }}>
+          {%- endif -%}
+            {%- if block.settings.image != blank -%}
+              <img src="{{ block.settings.image | image_url: width: 400 }}" alt="{{ block.settings.title | default: section.settings.heading | escape }}" class="gallery-360-img" loading="lazy">
+            {%- else -%}
+              {%- assign placeholder_idx = forloop.index0 | modulo: 8 | plus: 1 -%}
+              {%- case placeholder_idx -%}
+                {%- when 1 -%}
+                  <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400&auto=format&fit=crop&q=80" alt="Gallery Photo 1" class="gallery-360-img" loading="lazy">
+                {%- when 2 -%}
+                  <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=400&auto=format&fit=crop&q=80" alt="Gallery Photo 2" class="gallery-360-img" loading="lazy">
+                {%- when 3 -%}
+                  <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400&auto=format&fit=crop&q=80" alt="Gallery Photo 3" class="gallery-360-img" loading="lazy">
+                {%- when 4 -%}
+                  <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=400&auto=format&fit=crop&q=80" alt="Gallery Photo 4" class="gallery-360-img" loading="lazy">
+                {%- when 5 -%}
+                  <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=80" alt="Gallery Photo 5" class="gallery-360-img" loading="lazy">
+                {%- when 6 -%}
+                  <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&auto=format&fit=crop&q=80" alt="Gallery Photo 6" class="gallery-360-img" loading="lazy">
+                {%- when 7 -%}
+                  <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=400&auto=format&fit=crop&q=80" alt="Gallery Photo 7" class="gallery-360-img" loading="lazy">
+                {%- else -%}
+                  <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=400&auto=format&fit=crop&q=80" alt="Gallery Photo 8" class="gallery-360-img" loading="lazy">
+              {%- endcase -%}
+            {%- endif -%}
+          {%- if item_url != blank -%}
+            </a>
+          {%- else -%}
+            </div>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    {%- else -%}
+      <!-- Default 10 Fallback Orbiting Photos -->
+      {%- assign sample_photos = "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400&auto=format&fit=crop&q=80|https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=400&auto=format&fit=crop&q=80|https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400&auto=format&fit=crop&q=80|https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=400&auto=format&fit=crop&q=80|https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=80|https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&auto=format&fit=crop&q=80|https://images.unsplash.com/photo-1519681393784-d120267933ba?w=400&auto=format&fit=crop&q=80|https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=400&auto=format&fit=crop&q=80|https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=400&auto=format&fit=crop&q=80|https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&auto=format&fit=crop&q=80" | split: "|" -%}
+      {%- for photo_url in sample_photos -%}
+        {%- assign angle_deg = 360.0 | divided_by: 10 | times: forloop.index0 -%}
+        <div class="gallery-360-photo-item" style="transform: rotate({{ angle_deg }}deg) translate(clamp(210px, 31vw, 410px));">
+          <div class="gallery-360-photo-card" role="button" tabindex="0">
+            <img src="{{ photo_url }}" alt="Gallery Orbit Photo {{ forloop.index }}" class="gallery-360-img" loading="lazy">
+          </div>
+        </div>
+      {%- endfor -%}
+    {%- endif -%}
+  </div>
+</section>
+
+<script>
+  (function() {
+    function initGallery360Cards_{{ section.id | replace: '-', '_' }}() {
+      const section = document.getElementById('gallery360Section-{{ section.id }}');
+      if (!section) return;
+
+      section.querySelectorAll('.gallery-360-photo-card').forEach(function(card) {
+        card.addEventListener('click', function(e) {
+          const href = card.getAttribute('href');
+          if (!href || href === '#' || href.indexOf('javascript:') === 0) {
+            e.preventDefault();
+          }
+        });
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initGallery360Cards_{{ section.id | replace: '-', '_' }});
+    } else {
+      initGallery360Cards_{{ section.id | replace: '-', '_' }}();
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "360 Orbit Gallery",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#fcfbfa"
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Top Badge Text",
+      "default": "⚡ CREATIVE VISION & JOURNEY"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading (HTML Allowed)",
+      "default": "A Gallery That <span>Redefines Creativity</span>"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description Paragraph",
+      "default": "Explore a collection where art, design, and electrical technology merge to shape what’s next. This gallery isn’t just about visuals."
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "CTA Button Text",
+      "default": "Start For Free"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "CTA Button URL"
+    },
+    {
+      "type": "range",
+      "id": "rotation_speed",
+      "min": 15,
+      "max": 120,
+      "step": 5,
+      "unit": "s",
+      "label": "360 Full Orbit Rotation Speed",
+      "default": 45
+    }
+  ],
+  "blocks": [
+    {
+      "type": "gallery_photo",
+      "name": "Orbit Photo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Upload Photo"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Photo Alt / Title",
+          "default": "Gallery Showcase Photo"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Photo Link (Optional)"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 30,
+  "presets": [
+    {
+      "name": "360 Orbit Gallery",
+      "settings": {
+        "badge_text": "⚡ CREATIVE VISION & JOURNEY",
+        "heading": "A Gallery That <span>Redefines Creativity</span>",
+        "button_text": "Start For Free"
+      },
+      "blocks": [
+        { "type": "gallery_photo" },
+        { "type": "gallery_photo" },
+        { "type": "gallery_photo" },
+        { "type": "gallery_photo" },
+        { "type": "gallery_photo" },
+        { "type": "gallery_photo" },
+        { "type": "gallery_photo" },
+        { "type": "gallery_photo" },
+        { "type": "gallery_photo" },
+        { "type": "gallery_photo" }
+      ]
+    }
+  ]
+}
+{% endschema %}
