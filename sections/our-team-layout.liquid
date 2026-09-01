@@ -159,27 +159,76 @@
 
   @media screen and (max-width: 768px) {
     .team-page-hero {
-      min-height: 240px !important;
-      padding: 12px 10px !important;
+      min-height: 280px !important;
+      padding: 48px 16px 40px 16px !important;
       background-size: cover !important;
-      background-position: center 15% !important;
+      background-position: center 25% !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+      text-align: center !important;
     }
+
     .team-marquee-track {
-      top: 38px !important;
-      transform: none !important;
+      position: absolute !important;
+      top: 50% !important;
+      left: 0 !important;
+      width: 200% !important;
+      transform: translateY(-50%) !important;
+      opacity: 0.12 !important;
+      pointer-events: none !important;
     }
+
     .team-marquee-content {
-      font-size: 30px !important;
-      opacity: 0.70 !important;
+      font-size: clamp(34px, 8vw, 50px) !important;
+      line-height: 1 !important;
+      opacity: 1 !important;
     }
+
+    .team-hero-inner {
+      width: 100% !important;
+      max-width: 100% !important;
+      margin: 0 auto !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+
     .team-hero-inner h1.title {
-      font-size: clamp(26px, 6.5vw, 38px) !important;
-      font-weight: 900 !important;
-      -webkit-text-stroke: 0.5px #0b1120 !important;
-      margin-bottom: 16px !important;
+      font-family: 'Baloo 2', 'Outfit', 'Space Grotesk', sans-serif !important;
+      font-size: clamp(24px, 6.5vw, 36px) !important;
+      font-weight: 800 !important;
+      line-height: 1.25 !important;
+      color: #ffffff !important;
+      -webkit-text-stroke: none !important;
+      text-shadow: 0 4px 18px rgba(0,0,0,0.85), 0 2px 6px rgba(236, 92, 10, 0.4) !important;
+      margin: 0 auto 14px auto !important;
+      text-align: center !important;
+      width: 100% !important;
+      letter-spacing: -0.01em !important;
     }
+
+    .team-hero-inner .breadcumb--con {
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      width: 100% !important;
+    }
+
     .team-hero-inner .breadcrumb {
-      padding: 8px 20px !important;
+      padding: 7px 20px !important;
+      font-size: 0.88rem !important;
+      border-radius: 50px !important;
+      background: rgba(15, 23, 42, 0.85) !important;
+      border: 1px solid rgba(255, 204, 0, 0.6) !important;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.4) !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 8px !important;
+      margin: 0 auto !important;
     }
   }
   /* --- Section 2: Lucrative Styling Enhancements --- */
@@ -501,30 +550,76 @@
   }
   @media (max-width: 768px) {
     .team-cards-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px 16px;
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 24px 14px !important;
+      align-items: stretch !important;
+      width: 100% !important;
+    }
+    .untitled-card {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: flex-start !important;
+      text-align: center !important;
+      width: 100% !important;
+      padding: 6px 2px !important;
+      box-sizing: border-box !important;
     }
     .untitled-card-image-wrapper {
-      width: 150px !important;
-      height: 150px !important;
+      width: 100% !important;
+      max-width: 140px !important;
+      aspect-ratio: 1 / 1 !important;
+      height: auto !important;
+      border-radius: 50% !important;
+      margin: 0 auto 12px auto !important;
+      flex-shrink: 0 !important;
+      position: relative !important;
+    }
+    .untitled-member-img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      object-position: center !important;
+      border-radius: 50% !important;
+      display: block !important;
+    }
+    .untitled-card-footer {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: flex-start !important;
+      width: 100% !important;
+      margin-top: auto !important;
     }
     .member-name {
-      font-size: 1.12rem !important;
+      font-size: clamp(0.95rem, 3.8vw, 1.1rem) !important;
+      font-weight: 800 !important;
+      text-align: center !important;
+      margin-bottom: 4px !important;
+      line-height: 1.25 !important;
+      word-break: break-word !important;
     }
     .member-role {
-      font-size: 0.78rem !important;
-      padding: 3px 12px !important;
+      font-size: clamp(0.72rem, 3vw, 0.8rem) !important;
+      padding: 4px 12px !important;
+      text-align: center !important;
+      white-space: nowrap !important;
+      margin-top: 2px !important;
     }
   }
 
   @media (max-width: 520px) {
     .team-cards-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px 12px;
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 20px 10px !important;
     }
     .untitled-card-image-wrapper {
-      width: 135px !important;
-      height: 135px !important;
+      width: 100% !important;
+      max-width: 125px !important;
+      aspect-ratio: 1 / 1 !important;
+      height: auto !important;
     }
   }
 
@@ -643,7 +738,6 @@
     border-color: #EC5C0A !important;
     transform: translateY(-2px);
     box-shadow: 0 6px 16px rgba(236, 92, 10, 0.3) !important;
-  }  box-shadow: 0 8px 24px rgba(236, 92, 10, 0.35);
   }
 {%- endstyle -%}
 
