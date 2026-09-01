@@ -1,0 +1,614 @@
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800;900&family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+{%- style -%}
+  /* ===========================================================================
+     SECTION 1: LIVE DELIVERY COURIER TRUCK & GPS MAP TRACKER HERO
+     Dark Blue City Navigation Map + Animated Delivery Truck + Multi-Destination Route
+     =========================================================================== */
+  #deliveryMapHero-{{ section.id }} {
+    position: relative;
+    width: 100%;
+    min-height: clamp(560px, 82vh, 760px);
+    background: #060d1f;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+    color: #ffffff;
+    box-sizing: border-box;
+    padding: 60px 20px 80px;
+  }
+
+  /* Dark Navigation Map Vector Background */
+  .dm-map-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow: hidden;
+    perspective: 1000px;
+  }
+
+  /* Vector City Streets Grid Overlay */
+  .dm-street-network {
+    position: absolute;
+    top: -15%;
+    left: -10%;
+    width: 120%;
+    height: 130%;
+    background-image: 
+      radial-gradient(circle at 50% 40%, rgba(30, 58, 138, 0.4) 0%, rgba(6, 13, 31, 0.95) 75%),
+      linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 100% 100%, 48px 48px, 48px 48px;
+    transform: rotateX(25deg);
+    transform-origin: center bottom;
+    opacity: 0.85;
+    pointer-events: none;
+  }
+
+  /* Realistic Dark Street SVG Lines */
+  .dm-svg-map-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  /* Glowing GPS Route Highway */
+  .dm-route-glow {
+    stroke: rgba(56, 189, 248, 0.25);
+    stroke-width: 14;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+  }
+
+  .dm-route-base {
+    stroke: #1d4ed8;
+    stroke-width: 6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+  }
+
+  .dm-route-active {
+    stroke: #38bdf8;
+    stroke-width: 4;
+    stroke-dasharray: 12 8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+    animation: dmRouteFlow 1.5s linear infinite;
+  }
+
+  @keyframes dmRouteFlow {
+    from { stroke-dashoffset: 40; }
+    to { stroke-dashoffset: 0; }
+  }
+
+  /* Foreground Content Hero */
+  .dm-content-hero {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    max-width: 860px;
+    margin: 0 auto;
+    pointer-events: auto;
+  }
+
+  .dm-badge-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(90deg, #ec5c0a 0%, #ff9a00 50%, #007b3e 100%);
+    color: #ffffff;
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    padding: 6px 20px;
+    border-radius: 50px;
+    box-shadow: 0 4px 20px rgba(236, 92, 10, 0.4);
+    margin-bottom: 18px;
+    backdrop-filter: blur(12px);
+  }
+
+  .dm-title {
+    font-family: 'Baloo 2', 'Outfit', sans-serif;
+    font-size: clamp(34px, 5.2vw, 64px);
+    font-weight: 900;
+    color: #ffffff;
+    line-height: 1.12;
+    margin: 0 0 16px 0;
+    letter-spacing: -0.02em;
+    text-shadow: 0 4px 24px rgba(0, 0, 0, 0.8);
+  }
+
+  .dm-title-gradient {
+    background: linear-gradient(90deg, #38bdf8 0%, #60a5fa 50%, #f97316 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .dm-subtitle {
+    font-size: clamp(15px, 2vw, 19px);
+    color: #cbd5e1;
+    line-height: 1.6;
+    margin: 0 auto 28px;
+    max-width: 680px;
+    font-weight: 500;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+  }
+
+  /* Live Delivery Status Bar */
+  .dm-stats-pills-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 10px;
+  }
+
+  .dm-stat-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(15, 23, 42, 0.75);
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    backdrop-filter: blur(16px);
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #f1f5f9;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+  }
+
+  .dm-pulse-dot {
+    width: 9px;
+    height: 9px;
+    background-color: #22c55e;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #22c55e;
+    animation: livePulse 1.8s infinite;
+  }
+
+  @keyframes livePulse {
+    0% { transform: scale(0.9); opacity: 0.7; }
+    50% { transform: scale(1.3); opacity: 1; box-shadow: 0 0 14px #22c55e; }
+    100% { transform: scale(0.9); opacity: 0.7; }
+  }
+
+  /* Destination Hub Pin Markers */
+  .dm-hub-pin {
+    position: absolute;
+    transform: translate(-50%, -100%);
+    z-index: 6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+
+  .dm-hub-pin:hover {
+    transform: translate(-50%, -115%) scale(1.15);
+  }
+
+  .dm-pin-badge {
+    background: #0f172a;
+    color: #38bdf8;
+    border: 1.5px solid #38bdf8;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.72rem;
+    font-weight: 800;
+    white-space: nowrap;
+    box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 4px;
+  }
+
+  .dm-pin-icon-wrap {
+    position: relative;
+    width: 32px;
+    height: 38px;
+  }
+
+  .dm-pin-svg {
+    width: 32px;
+    height: 38px;
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.6));
+  }
+
+  /* Parcel Box Stack at Destinations */
+  .dm-parcel-box {
+    position: absolute;
+    bottom: 2px;
+    right: -16px;
+    width: 24px;
+    height: 24px;
+    background: #d97706;
+    border: 2px solid #fbbf24;
+    border-radius: 4px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 900;
+    color: #78350f;
+    animation: boxBounce 3s ease-in-out infinite;
+  }
+
+  @keyframes boxBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+  }
+
+  /* Delivery Truck Moving Along Route */
+  .dm-courier-truck {
+    position: absolute;
+    width: 84px;
+    height: 52px;
+    z-index: 8;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    filter: drop-shadow(0 8px 20px rgba(0,0,0,0.7));
+    will-change: transform, left, top;
+    transition: transform 0.25s ease-out;
+  }
+
+  .dm-truck-body {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Truck Delivery Status Label */
+  .dm-truck-status-bubble {
+    position: absolute;
+    top: -24px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #2563eb;
+    color: #ffffff;
+    font-size: 0.65rem;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 12px;
+    white-space: nowrap;
+    box-shadow: 0 2px 10px rgba(37, 99, 235, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+  }
+
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    #deliveryMapHero-{{ section.id }} {
+      min-height: 520px;
+      padding: 40px 16px 60px;
+    }
+    .dm-courier-truck {
+      width: 66px;
+      height: 40px;
+    }
+    .dm-stats-pills-row {
+      gap: 8px;
+    }
+    .dm-stat-tag {
+      font-size: 0.76rem;
+      padding: 6px 14px;
+    }
+  }
+{%- endstyle -%}
+
+<section class="dm-map-hero-section" id="deliveryMapHero-{{ section.id }}">
+  <!-- Dark GPS Navigation Map Background Layer -->
+  <div class="dm-map-container" id="dmMapContainer-{{ section.id }}">
+    <div class="dm-street-network" aria-hidden="true"></div>
+
+    <!-- Map Route SVG -->
+    <svg class="dm-svg-map-layer" id="dmMapSvg-{{ section.id }}" viewBox="0 0 1400 800" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="routeGlowGrad-{{ section.id }}" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.6"/>
+          <stop offset="50%" stop-color="#2563eb" stop-opacity="0.8"/>
+          <stop offset="100%" stop-color="#f97316" stop-opacity="0.9"/>
+        </linearGradient>
+
+        <!-- City Street Secondary Routes in Background -->
+        <pattern id="streetPattern-{{ section.id }}" width="300" height="300" patternUnits="userSpaceOnUse">
+          <path d="M0 150 H300 M150 0 V300 M50 50 L250 250 M250 50 L50 250" stroke="rgba(255,255,255,0.06)" stroke-width="1.5" fill="none"/>
+        </pattern>
+      </defs>
+
+      <!-- Street Texture -->
+      <rect width="100%" height="100%" fill="url(#streetPattern-{{ section.id }})" opacity="0.7"/>
+
+      <!-- Secondary Dark Road Network -->
+      <path d="M -50 450 Q 300 380 650 520 T 1450 460" stroke="rgba(30, 58, 138, 0.4)" stroke-width="10" fill="none"/>
+      <path d="M 200 -50 Q 350 400 500 850" stroke="rgba(30, 58, 138, 0.3)" stroke-width="8" fill="none"/>
+      <path d="M 900 -50 Q 800 350 1100 850" stroke="rgba(30, 58, 138, 0.3)" stroke-width="8" fill="none"/>
+
+      <!-- Main Animated Courier Highway Route Path (Points: 1 -> 2 -> 3 -> 4 -> 5) -->
+      <path id="dmDeliveryPath-{{ section.id }}" class="dm-route-glow" d="M 80 620 C 220 620, 240 440, 360 420 C 500 400, 520 640, 720 620 C 900 600, 880 340, 1040 320 C 1180 300, 1260 480, 1340 460" />
+      <path class="dm-route-base" d="M 80 620 C 220 620, 240 440, 360 420 C 500 400, 520 640, 720 620 C 900 600, 880 340, 1040 320 C 1180 300, 1260 480, 1340 460" />
+      <path class="dm-route-active" d="M 80 620 C 220 620, 240 440, 360 420 C 500 400, 520 640, 720 620 C 900 600, 880 340, 1040 320 C 1180 300, 1260 480, 1340 460" />
+    </svg>
+
+    <!-- Destination Hub Pins with Parcel Boxes -->
+    <!-- Destination 1: Origin -->
+    <div class="dm-hub-pin" style="left: 6%; top: 78%;" data-hub="1">
+      <div class="dm-pin-badge">📦 Hub A: Dispatch</div>
+      <div class="dm-pin-icon-wrap">
+        <svg class="dm-pin-svg" viewBox="0 0 32 38" fill="none">
+          <path d="M16 0C7.16 0 0 7.16 0 16C0 26 16 38 16 38C16 38 32 26 32 16C32 7.16 24.84 0 16 0Z" fill="#2563eb"/>
+          <circle cx="16" cy="15" r="7" fill="#ffffff"/>
+          <circle cx="16" cy="15" r="4" fill="#2563eb"/>
+        </svg>
+        <div class="dm-parcel-box">📦</div>
+      </div>
+    </div>
+
+    <!-- Destination 2: North Logistics Hub -->
+    <div class="dm-hub-pin" style="left: 26%; top: 52%;" data-hub="2">
+      <div class="dm-pin-badge">📍 Hub B: Express</div>
+      <div class="dm-pin-icon-wrap">
+        <svg class="dm-pin-svg" viewBox="0 0 32 38" fill="none">
+          <path d="M16 0C7.16 0 0 7.16 0 16C0 26 16 38 16 38C16 38 32 26 32 16C32 7.16 24.84 0 16 0Z" fill="#0284c7"/>
+          <circle cx="16" cy="15" r="7" fill="#ffffff"/>
+          <circle cx="16" cy="15" r="4" fill="#0284c7"/>
+        </svg>
+        <div class="dm-parcel-box" style="background:#ea580c; border-color:#fdba74;">📦</div>
+      </div>
+    </div>
+
+    <!-- Destination 3: Central Delivery Center -->
+    <div class="dm-hub-pin" style="left: 51%; top: 78%;" data-hub="3">
+      <div class="dm-pin-badge">⚡ Hub C: Fulfillment</div>
+      <div class="dm-pin-icon-wrap">
+        <svg class="dm-pin-svg" viewBox="0 0 32 38" fill="none">
+          <path d="M16 0C7.16 0 0 7.16 0 16C0 26 16 38 16 38C16 38 32 26 32 16C32 7.16 24.84 0 16 0Z" fill="#16a34a"/>
+          <circle cx="16" cy="15" r="7" fill="#ffffff"/>
+          <circle cx="16" cy="15" r="4" fill="#16a34a"/>
+        </svg>
+        <div class="dm-parcel-box" style="background:#ca8a04; border-color:#fde047;">📦</div>
+      </div>
+    </div>
+
+    <!-- Destination 4: West Distribution -->
+    <div class="dm-hub-pin" style="left: 74%; top: 40%;" data-hub="4">
+      <div class="dm-pin-badge">🏢 Hub D: Regional</div>
+      <div class="dm-pin-icon-wrap">
+        <svg class="dm-pin-svg" viewBox="0 0 32 38" fill="none">
+          <path d="M16 0C7.16 0 0 7.16 0 16C0 26 16 38 16 38C16 38 32 26 32 16C32 7.16 24.84 0 16 0Z" fill="#9333ea"/>
+          <circle cx="16" cy="15" r="7" fill="#ffffff"/>
+          <circle cx="16" cy="15" r="4" fill="#9333ea"/>
+        </svg>
+        <div class="dm-parcel-box">📦</div>
+      </div>
+    </div>
+
+    <!-- Destination 5: Final Delivery Destination -->
+    <div class="dm-hub-pin" style="left: 95%; top: 58%;" data-hub="5">
+      <div class="dm-pin-badge">🎯 Hub E: Delivery Point</div>
+      <div class="dm-pin-icon-wrap">
+        <svg class="dm-pin-svg" viewBox="0 0 32 38" fill="none">
+          <path d="M16 0C7.16 0 0 7.16 0 16C0 26 16 38 16 38C16 38 32 26 32 16C32 7.16 24.84 0 16 0Z" fill="#ec5c0a"/>
+          <circle cx="16" cy="15" r="7" fill="#ffffff"/>
+          <circle cx="16" cy="15" r="4" fill="#ec5c0a"/>
+        </svg>
+        <div class="dm-parcel-box" style="background:#059669; border-color:#6ee7b7;">✅</div>
+      </div>
+    </div>
+
+    <!-- Dynamic Courier Car / Delivery Truck Moving on Route -->
+    <div class="dm-courier-truck" id="dmTruck-{{ section.id }}">
+      <div class="dm-truck-status-bubble" id="dmTruckStatus-{{ section.id }}">⚡ In Transit</div>
+      <div class="dm-truck-body">
+        <!-- SVG Truck Illustration with Packages -->
+        <svg viewBox="0 0 96 58" width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Truck Shadow -->
+          <ellipse cx="48" cy="52" rx="42" ry="6" fill="rgba(0,0,0,0.5)"/>
+          
+          <!-- Cargo Container -->
+          <rect x="2" y="10" width="56" height="34" rx="4" fill="#e2e8f0" stroke="#0f172a" stroke-width="2"/>
+          <path d="M10 10 V44 M24 10 V44 M38 10 V44 M52 10 V44" stroke="#cbd5e1" stroke-width="1.5"/>
+          
+          <!-- Vidhyut Saathi Logo / Branding on Cargo -->
+          <rect x="8" y="18" width="44" height="18" rx="3" fill="#ec5c0a"/>
+          <text x="30" y="30" fill="#ffffff" font-size="8" font-weight="900" font-family="sans-serif" text-anchor="middle">VIDHYUT</text>
+          
+          <!-- Cabin -->
+          <path d="M58 20 H76 L88 32 V44 H58 V20 Z" fill="#3b82f6" stroke="#0f172a" stroke-width="2"/>
+          <!-- Windshield -->
+          <path d="M62 23 H74 L82 32 H62 V23 Z" fill="#93c5fd"/>
+          <!-- Headlight Glow -->
+          <polygon points="88,38 115,32 115,48 88,42" fill="url(#headlightBeam-{{ section.id }})" opacity="0.6"/>
+          <circle cx="86" cy="40" r="2.5" fill="#fef08a"/>
+          
+          <!-- Wheels -->
+          <circle cx="20" cy="45" r="7" fill="#0f172a"/>
+          <circle cx="20" cy="45" r="3.5" fill="#94a3b8"/>
+          <circle cx="74" cy="45" r="7" fill="#0f172a"/>
+          <circle cx="74" cy="45" r="3.5" fill="#94a3b8"/>
+
+          <!-- Parcel Stack on Top of Cargo -->
+          <rect x="12" y="3" width="12" height="7" rx="1" fill="#d97706" stroke="#fbbf24" stroke-width="1"/>
+          <rect x="26" y="1" width="14" height="9" rx="1" fill="#b45309" stroke="#fde68a" stroke-width="1"/>
+          <rect x="42" y="4" width="10" height="6" rx="1" fill="#ca8a04" stroke="#fef08a" stroke-width="1"/>
+
+          <defs>
+            <linearGradient id="headlightBeam-{{ section.id }}" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#fef08a" stop-opacity="0.8"/>
+              <stop offset="100%" stop-color="#fef08a" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- Center Lucrative Foreground Header -->
+  <div class="dm-content-hero">
+    {%- if section.settings.badge_text != blank -%}
+      <div class="dm-badge-pill">{{ section.settings.badge_text }}</div>
+    {%- endif -%}
+
+    <h1 class="dm-title">
+      {{ section.settings.title | default: 'Live Real-Time <span class="dm-title-gradient">Delivery Network</span>' }}
+    </h1>
+
+    <p class="dm-subtitle">
+      {{ section.settings.subtitle | default: 'Track our live pan-India courier vehicles dispatching electrical solutions to every doorstep and regional warehouse in real time.' }}
+    </p>
+
+    <!-- Real-Time Metrics Tags -->
+    <div class="dm-stats-pills-row">
+      <div class="dm-stat-tag">
+        <span class="dm-pulse-dot"></span>
+        <span>Fleet Active: <strong>2,480+ Vans</strong></span>
+      </div>
+      <div class="dm-stat-tag">
+        <span>⚡ Avg Dispatch: <strong>18 Mins</strong></span>
+      </div>
+      <div class="dm-stat-tag">
+        <span>📍 Pin Codes: <strong>19,500+ Covered</strong></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  (function() {
+    function initDeliveryTracker_{{ section.id | replace: '-', '_' }}() {
+      const path = document.getElementById('dmDeliveryPath-{{ section.id }}');
+      const truck = document.getElementById('dmTruck-{{ section.id }}');
+      const statusBubble = document.getElementById('dmTruckStatus-{{ section.id }}');
+      const container = document.getElementById('dmMapContainer-{{ section.id }}');
+      if (!path || !truck || !container) return;
+
+      const pathLength = path.getTotalLength();
+      let progress = 0;
+      const speed = 0.0018; // Speed of courier truck
+      let isPaused = false;
+      let pauseTimer = null;
+      let lastHubIndex = -1;
+
+      // Destination waypoints along path (percentage checkpoints)
+      const hubs = [
+        { pct: 0.02, name: "📦 Hub A: Packed & Left" },
+        { pct: 0.22, name: "📍 Hub B: Transited" },
+        { pct: 0.50, name: "⚡ Hub C: Sorted & Dispatched" },
+        { pct: 0.76, name: "🏢 Hub D: Out for Delivery" },
+        { pct: 0.98, name: "🎯 Hub E: Delivered Successfully!" }
+      ];
+
+      function animate() {
+        if (!isPaused) {
+          progress += speed;
+          if (progress > 1) {
+            progress = 0;
+            lastHubIndex = -1;
+          }
+
+          const currentDist = progress * pathLength;
+          const currentPoint = path.getPointAtLength(currentDist);
+          
+          // Get next point slightly ahead to calculate truck rotation heading
+          const nextDist = Math.min(currentDist + 8, pathLength);
+          const nextPoint = path.getPointAtLength(nextDist);
+          const angleRad = Math.atan2(nextPoint.y - currentPoint.y, nextPoint.x - currentPoint.x);
+          const angleDeg = (angleRad * 180) / Math.PI;
+
+          // Convert SVG point to percentage of container
+          const svgViewBoxWidth = 1400;
+          const svgViewBoxHeight = 800;
+          const posX = (currentPoint.x / svgViewBoxWidth) * 100;
+          const posY = (currentPoint.y / svgViewBoxHeight) * 100;
+
+          truck.style.left = posX + '%';
+          truck.style.top = posY + '%';
+          truck.style.transform = `translate(-50%, -50%) rotate(${angleDeg}deg)`;
+
+          // Check if truck reached a hub waypoint
+          hubs.forEach((hub, idx) => {
+            if (Math.abs(progress - hub.pct) < 0.008 && lastHubIndex !== idx) {
+              lastHubIndex = idx;
+              isPaused = true;
+              if (statusBubble) {
+                statusBubble.textContent = hub.name;
+                statusBubble.style.backgroundColor = (idx === hubs.length - 1) ? '#16a34a' : '#ec5c0a';
+              }
+
+              // Pause 1.2s at destination then proceed to next destination
+              clearTimeout(pauseTimer);
+              pauseTimer = setTimeout(() => {
+                isPaused = false;
+                if (statusBubble) {
+                  statusBubble.textContent = '⚡ Moving to Next Hub...';
+                  statusBubble.style.backgroundColor = '#2563eb';
+                }
+              }, 1200);
+            }
+          });
+        }
+
+        requestAnimationFrame(animate);
+      }
+
+      requestAnimationFrame(animate);
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initDeliveryTracker_{{ section.id | replace: '-', '_' }});
+    } else {
+      initDeliveryTracker_{{ section.id | replace: '-', '_' }}();
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Delivery Map Hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Top Badge Text",
+      "default": "⚡ REAL-TIME DISPATCH & COURIER TRACKER"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Main Title (HTML Allowed)",
+      "default": "Live Real-Time <span class=\"dm-title-gradient\">Delivery Network</span>"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle Description",
+      "default": "Track our live courier vehicles dispatching electrical solutions to every destination hub across India in real time."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Delivery Map Hero",
+      "settings": {
+        "badge_text": "⚡ REAL-TIME DISPATCH & COURIER TRACKER",
+        "title": "Live Real-Time <span class=\"dm-title-gradient\">Delivery Network</span>"
+      }
+    }
+  ]
+}
+{% endschema %}
