@@ -269,6 +269,16 @@
     align-items: center;
     gap: 5px;
     margin-bottom: 4px;
+    transition: transform 0.3s ease;
+  }
+
+  /* Edge Badge Offsets so Location 1 & Location 5 are never clipped */
+  .dm-hub-pin[data-hub="1"] .dm-pin-badge {
+    transform: translateX(25%);
+  }
+
+  .dm-hub-pin[data-hub="5"] .dm-pin-badge {
+    transform: translateX(-25%);
   }
 
   .dm-pin-icon-wrap {
@@ -396,10 +406,10 @@
       <path d="M 200 -50 Q 350 400 500 850" stroke="rgba(203, 213, 225, 0.6)" stroke-width="8" fill="none"/>
       <path d="M 900 -50 Q 800 350 1100 850" stroke="rgba(203, 213, 225, 0.6)" stroke-width="8" fill="none"/>
 
-      <!-- Main Animated Courier Highway Route Path further down along the bottom (Y: ~700-760) -->
-      <path id="dmDeliveryPath-{{ section.id }}" class="dm-route-glow" d="M -40 730 C 140 700, 240 760, 400 720 C 560 690, 680 770, 840 720 C 1000 680, 1140 760, 1280 720 C 1360 690, 1420 730, 1480 710" />
-      <path class="dm-route-base" d="M -40 730 C 140 700, 240 760, 400 720 C 560 690, 680 770, 840 720 C 1000 680, 1140 760, 1280 720 C 1360 690, 1420 730, 1480 710" />
-      <path class="dm-route-active" d="M -40 730 C 140 700, 240 760, 400 720 C 560 690, 680 770, 840 720 C 1000 680, 1140 760, 1280 720 C 1360 690, 1420 730, 1480 710" />
+      <!-- Main Animated Courier Highway Route Path further down along the bottom (Y: ~685-755) -->
+      <path id="dmDeliveryPath-{{ section.id }}" class="dm-route-glow" d="M 60 720 C 180 685, 280 755, 420 715 C 580 685, 680 765, 840 715 C 1000 675, 1120 755, 1240 715 C 1290 690, 1320 710, 1340 705" />
+      <path class="dm-route-base" d="M 60 720 C 180 685, 280 755, 420 715 C 580 685, 680 765, 840 715 C 1000 675, 1120 755, 1240 715 C 1290 690, 1320 710, 1340 705" />
+      <path class="dm-route-active" d="M 60 720 C 180 685, 280 755, 420 715 C 580 685, 680 765, 840 715 C 1000 675, 1120 755, 1240 715 C 1290 690, 1320 710, 1340 705" />
     </svg>
 
     <!-- Destination Hub Pins with Parcel Boxes shifted further down -->
