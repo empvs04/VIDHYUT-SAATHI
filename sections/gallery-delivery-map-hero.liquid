@@ -273,27 +273,13 @@
     transition: transform 0.3s ease;
   }
 
-  /* Edge Badge & Pin Offsets so Location 1 & Location 5 never clip or overflow screen edges */
-  .dm-hub-pin[data-hub="1"] {
-    transform: translate(-10%, -100%);
-  }
-  .dm-hub-pin[data-hub="1"]:hover,
-  .dm-hub-pin[data-hub="1"].active-hub {
-    transform: translate(-10%, -115%) scale(1.18);
-  }
+  /* Edge Badge Offsets so Location 1 & Location 5 text badges never overflow screen edges */
   .dm-hub-pin[data-hub="1"] .dm-pin-badge {
-    transform: translateX(40%);
+    transform: translateX(45%);
   }
 
-  .dm-hub-pin[data-hub="5"] {
-    transform: translate(-90%, -100%);
-  }
-  .dm-hub-pin[data-hub="5"]:hover,
-  .dm-hub-pin[data-hub="5"].active-hub {
-    transform: translate(-90%, -115%) scale(1.18);
-  }
   .dm-hub-pin[data-hub="5"] .dm-pin-badge {
-    transform: translateX(-40%);
+    transform: translateX(-45%);
   }
 
   .dm-pin-icon-wrap {
@@ -588,7 +574,7 @@
         { pct: 0.28, name: "📍 Hub B: Transited Express" },
         { pct: 0.50, name: "⚡ Hub C: Sorted at Central Hub" },
         { pct: 0.70, name: "🏢 Hub D: Out for Regional Delivery" },
-        { pct: 0.89, name: "🎯 Happiness Delivered" }
+        { pct: 0.92, name: "🎯 Happiness Delivered" }
       ];
 
       // Dynamically position each Hub Pin marker EXACTLY on the SVG path point!
