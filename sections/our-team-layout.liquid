@@ -157,7 +157,16 @@
     padding-right: 12px;
   }
 
+  /* Section 1 & Team Cards Grid Mobile Responsiveness & Alignment Overrides */
   @media screen and (max-width: 768px) {
+    .our-team-wrapper,
+    .team-sec3-section,
+    .team-sec3-container {
+      overflow-x: hidden !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
+
     .team-page-hero {
       min-height: 280px !important;
       padding: 48px 16px 40px 16px !important;
@@ -229,6 +238,129 @@
       justify-content: center !important;
       gap: 8px !important;
       margin: 0 auto !important;
+    }
+
+    /* Metric Pills & Section 2 Overrides for Mobile */
+    .team-sec2-bottom-banner {
+      padding: 16px 10px !important;
+      border-radius: 18px !important;
+      margin-top: 24px !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
+
+    .team-stat-pills-banner,
+    .team-stat-pills {
+      display: grid !important;
+      grid-template-columns: repeat(3, 1fr) !important;
+      gap: 6px !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+      margin: 14px 0 !important;
+    }
+
+    .team-stat-pill {
+      padding: 10px 3px !important;
+      border-radius: 12px !important;
+      min-width: 0 !important;
+      box-sizing: border-box !important;
+      width: 100% !important;
+    }
+
+    .stat-num {
+      font-size: clamp(15px, 4.2vw, 20px) !important;
+      line-height: 1.15 !important;
+    }
+
+    .stat-label {
+      font-size: clamp(8.5px, 2.4vw, 10.5px) !important;
+      line-height: 1.2 !important;
+      word-break: break-word !important;
+    }
+
+    /* Cards Grid Mobile Layout */
+    .team-cards-grid {
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 20px 10px !important;
+      align-items: stretch !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+      overflow: hidden !important;
+    }
+    .untitled-card {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: flex-start !important;
+      text-align: center !important;
+      width: 100% !important;
+      min-width: 0 !important;
+      padding: 4px 2px !important;
+      box-sizing: border-box !important;
+      overflow: hidden !important;
+    }
+    .untitled-card-image-wrapper {
+      width: clamp(90px, 26vw, 120px) !important;
+      height: clamp(90px, 26vw, 120px) !important;
+      aspect-ratio: 1 / 1 !important;
+      border-radius: 50% !important;
+      margin: 0 auto 10px auto !important;
+      flex-shrink: 0 !important;
+      position: relative !important;
+      box-sizing: border-box !important;
+    }
+    .untitled-member-img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      object-position: center !important;
+      border-radius: 50% !important;
+      display: block !important;
+    }
+    .untitled-card-footer {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: flex-start !important;
+      width: 100% !important;
+      min-width: 0 !important;
+      margin-top: auto !important;
+      box-sizing: border-box !important;
+    }
+    .member-name {
+      font-size: clamp(0.88rem, 3.5vw, 1.05rem) !important;
+      font-weight: 800 !important;
+      text-align: center !important;
+      margin-bottom: 4px !important;
+      line-height: 1.25 !important;
+      word-break: break-word !important;
+      white-space: normal !important;
+      width: 100% !important;
+    }
+    .member-role {
+      font-size: clamp(0.68rem, 2.7vw, 0.76rem) !important;
+      padding: 3px 8px !important;
+      text-align: center !important;
+      white-space: normal !important;
+      word-break: break-word !important;
+      margin-top: 2px !important;
+      display: inline-block !important;
+      max-width: 100% !important;
+      box-sizing: border-box !important;
+      line-height: 1.25 !important;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .team-cards-grid {
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 16px 8px !important;
+    }
+    .untitled-card-image-wrapper {
+      width: clamp(85px, 24vw, 110px) !important;
+      height: clamp(85px, 24vw, 110px) !important;
     }
   }
   /* --- Section 2: Lucrative Styling Enhancements --- */
