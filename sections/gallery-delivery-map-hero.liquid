@@ -355,22 +355,93 @@
     border: 1px solid rgba(255, 255, 255, 0.4);
   }
 
-  /* Responsive Adjustments */
+  /* Comprehensive Mobile Responsive Adjustments */
   @media (max-width: 768px) {
     #deliveryMapHero-{{ section.id }} {
-      min-height: 520px;
-      padding: 40px 16px 60px;
+      height: clamp(480px, 78vh, 580px);
+      min-height: 480px;
+      padding: 22px 12px 35px;
     }
-    .dm-courier-truck {
-      width: 66px;
-      height: 40px;
+
+    .dm-title {
+      font-size: clamp(22px, 6.2vw, 32px);
+      line-height: 1.2;
+      margin-bottom: 8px;
     }
+
+    .dm-subtitle {
+      font-size: 0.84rem;
+      line-height: 1.45;
+      margin-bottom: 14px;
+      padding: 0 8px;
+    }
+
     .dm-stats-pills-row {
-      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 6px;
     }
+
     .dm-stat-tag {
-      font-size: 0.76rem;
-      padding: 6px 14px;
+      font-size: 0.72rem;
+      padding: 5px 10px;
+      border-radius: 14px;
+    }
+
+    .dm-courier-truck {
+      width: 58px;
+      height: 36px;
+    }
+
+    .dm-pin-badge {
+      font-size: 0.62rem;
+      padding: 3px 8px;
+      border-radius: 12px;
+    }
+
+    .dm-pin-icon-wrap {
+      width: 26px;
+      height: 32px;
+    }
+
+    .dm-pin-svg {
+      width: 26px;
+      height: 32px;
+    }
+
+    .dm-parcel-box {
+      font-size: 0.6rem;
+      width: 14px;
+      height: 14px;
+      right: -5px;
+      bottom: 0;
+    }
+  }
+
+  @media (max-width: 480px) {
+    #deliveryMapHero-{{ section.id }} {
+      height: 460px;
+      min-height: 460px;
+      padding: 18px 10px 25px;
+    }
+
+    .dm-title {
+      font-size: 1.35rem;
+    }
+
+    .dm-subtitle {
+      font-size: 0.78rem;
+      margin-bottom: 10px;
+    }
+
+    .dm-stat-tag {
+      font-size: 0.68rem;
+      padding: 4px 8px;
+    }
+
+    .dm-pin-badge {
+      font-size: 0.58rem;
+      padding: 2px 6px;
     }
   }
 {%- endstyle -%}
