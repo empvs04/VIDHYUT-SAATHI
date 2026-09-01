@@ -1,0 +1,732 @@
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:wght@600;700;800;900&display=swap" rel="stylesheet">
+
+{%- style -%}
+  /* ===========================================================================
+     SECTION 17: HAPPY GALLERY SEC 17 (SHORTER CARDS + CRISP WHITE + CLEAR GRID ANIMATION)
+     Auto-slides right-to-left every 3s + Drag & Touch Support + Shorter Compact Cards
+     =========================================================================== */
+  #hmGallerySection17-{{ section.id }} {
+    position: relative;
+    padding: {{ section.settings.padding_top | default: 60 }}px 0 {{ section.settings.padding_bottom | default: 65 }}px 0;
+    background: #ffffff !important; /* Crisp White Background - Page Theme Removed for Grid Clarity */
+    overflow: hidden;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+
+  /* Clear High-Contrast Decorative Grid Animation Pattern Across Full Section */
+  .hm-sec17-bg-grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      linear-gradient(to right, rgba(236, 92, 10, 0.16) 1.5px, transparent 1.5px),
+      linear-gradient(to bottom, rgba(236, 92, 10, 0.16) 1.5px, transparent 1.5px);
+    background-size: 50px 50px;
+    background-position: center top;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.85;
+    mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 30%, rgba(0,0,0,0.6) 100%);
+    -webkit-mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 30%, rgba(0,0,0,0.6) 100%);
+    animation: sec17GridPan 25s linear infinite;
+  }
+
+  @keyframes sec17GridPan {
+    0% { background-position: 0 0; }
+    100% { background-position: 50px 50px; }
+  }
+
+  .hm-sec17-container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  /* Header Section */
+  .hm-sec17-header {
+    text-align: center;
+    margin-bottom: {{ section.settings.header_margin_bottom | default: 32 }}px;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Top Badge Pill */
+  .hm-sec17-top-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(90deg, #ec5c0a 0%, #ff9a00 50%, #007b3e 100%);
+    color: #ffffff;
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border-radius: 50px;
+    box-shadow: 0 4px 15px rgba(236, 92, 10, 0.25);
+    margin-bottom: 12px;
+  }
+
+  .hm-sec17-script-subtitle {
+    font-family: 'Caveat', cursive;
+    font-size: clamp(24px, 3.4vw, 34px);
+    font-weight: 700;
+    color: {{ section.settings.subtitle_color | default: '#ec5c0a' }};
+    line-height: 1.1;
+    margin: 0 0 6px 0;
+    letter-spacing: 0.5px;
+    display: inline-block;
+  }
+
+  .hm-sec17-main-heading {
+    font-family: 'Baloo 2', 'Plus Jakarta Sans', sans-serif;
+    font-size: clamp(26px, 4.2vw, 44px);
+    font-weight: 800;
+    color: {{ section.settings.heading_color | default: '#0f172a' }};
+    line-height: 1.2;
+    margin: 0;
+    letter-spacing: -0.02em;
+  }
+
+  /* Carousel Scroller Container */
+  .hm-sec17-carousel-viewport {
+    position: relative;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 30px 0 40px 0;
+    cursor: grab;
+    user-select: none;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .hm-sec17-carousel-viewport::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+
+  .hm-sec17-carousel-viewport.hm-is-grabbing {
+    cursor: grabbing;
+  }
+
+  .hm-sec17-track {
+    display: flex;
+    gap: {{ section.settings.card_gap | default: 20 }}px;
+    width: max-content;
+    padding: 0 20px;
+    will-change: transform, scroll-position;
+    align-items: center;
+  }
+
+  /* Shorter Card Lengths than Section 16 */
+  .hm-sec17-card {
+    flex: 0 0 {{ section.settings.card_width_desktop | default: 240 }}px;
+    width: {{ section.settings.card_width_desktop | default: 240 }}px;
+    height: {{ section.settings.card_height_desktop | default: 270 }}px; /* Shorter Length */
+    border-radius: {{ section.settings.card_radius | default: 18 }}px;
+    overflow: hidden;
+    position: relative;
+    background: #ffffff;
+    border: 2px solid rgba(236, 92, 10, 0.2);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+    transition: transform 0.45s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.45s ease, border-color 0.45s ease;
+    display: block;
+    text-decoration: none;
+    box-sizing: border-box;
+  }
+
+  /* Alternating Wave Offset */
+  .hm-sec17-card:nth-child(odd) {
+    transform: translateY({{ section.settings.stagger_offset | default: 20 }}px);
+  }
+
+  .hm-sec17-card:nth-child(even) {
+    transform: translateY(-{{ section.settings.stagger_offset | default: 20 }}px);
+  }
+
+  .hm-sec17-card:nth-child(odd):hover {
+    transform: translateY({{ section.settings.stagger_offset | default: 20 | minus: 6 }}px) scale(1.03);
+    border-color: #ec5c0a;
+    box-shadow: 0 20px 42px rgba(236, 92, 10, 0.25);
+  }
+
+  .hm-sec17-card:nth-child(even):hover {
+    transform: translateY(-{{ section.settings.stagger_offset | default: 20 | plus: 6 }}px) scale(1.03);
+    border-color: #ec5c0a;
+    box-shadow: 0 20px 42px rgba(236, 92, 10, 0.25);
+  }
+
+  .hm-sec17-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    pointer-events: none;
+    transition: transform 0.6s ease;
+  }
+
+  .hm-sec17-card:hover .hm-sec17-img {
+    transform: scale(1.07);
+  }
+
+  /* Responsive Styling */
+  @media screen and (max-width: 768px) {
+    #hmGallerySection17-{{ section.id }} {
+      padding: {{ section.settings.padding_top_mobile | default: 40 }}px 0 {{ section.settings.padding_bottom_mobile | default: 45 }}px 0;
+    }
+
+    .hm-sec17-carousel-viewport {
+      padding: 20px 0 26px 0;
+    }
+
+    .hm-sec17-header {
+      margin-bottom: 20px;
+    }
+
+    .hm-sec17-track {
+      gap: {{ section.settings.card_gap_mobile | default: 12 }}px;
+      padding: 0 12px;
+    }
+
+    .hm-sec17-card {
+      flex: 0 0 {{ section.settings.card_width_mobile | default: 165 }}px;
+      width: {{ section.settings.card_width_mobile | default: 165 }}px;
+      height: {{ section.settings.card_height_mobile | default: 195 }}px; /* Shorter Length Mobile */
+      border-radius: {{ section.settings.card_radius_mobile | default: 14 }}px;
+    }
+
+    .hm-sec17-card:nth-child(odd) {
+      transform: translateY({{ section.settings.stagger_offset_mobile | default: 12 }}px);
+    }
+
+    .hm-sec17-card:nth-child(even) {
+      transform: translateY(-{{ section.settings.stagger_offset_mobile | default: 12 }}px);
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .hm-sec17-card {
+      flex: 0 0 150px;
+      width: 150px;
+      height: 185px;
+    }
+  }
+{%- endstyle -%}
+
+<section class="hm-sec17-section" id="hmGallerySection17-{{ section.id }}">
+  <!-- Prominent Animated Grid Background -->
+  {%- if section.settings.show_grid -%}
+    <div class="hm-sec17-bg-grid" aria-hidden="true"></div>
+  {%- endif -%}
+
+  <div class="hm-sec17-container">
+    <!-- Header -->
+    <div class="hm-sec17-header">
+      {%- if section.settings.badge_text != blank -%}
+        <div class="hm-sec17-top-badge">{{ section.settings.badge_text }}</div>
+      {%- endif -%}
+      {%- if section.settings.subtitle != blank -%}
+        <div class="hm-sec17-script-subtitle">{{ section.settings.subtitle }}</div>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2 class="hm-sec17-main-heading">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+    </div>
+
+    <!-- Carousel Viewport -->
+    <div class="hm-sec17-carousel-viewport" id="hmGalleryViewport17-{{ section.id }}">
+      <div class="hm-sec17-track" id="hmGalleryTrack17-{{ section.id }}">
+        
+        {%- if section.blocks.size > 0 -%}
+          <!-- SET 1 (Original Blocks) -->
+          {%- for block in section.blocks -%}
+            {%- assign card_href = block.settings.link -%}
+            {%- if card_href != blank -%}
+              <a href="{{ card_href }}" class="hm-sec17-card" {{ block.shopify_attributes }}>
+            {%- else -%}
+              <div class="hm-sec17-card" role="button" tabindex="0" {{ block.shopify_attributes }}>
+            {%- endif -%}
+              {%- if block.settings.image != blank -%}
+                <img src="{{ block.settings.image | image_url: width: 700 }}" alt="{{ block.settings.alt_text | default: section.settings.heading | escape }}" class="hm-sec17-img" loading="lazy">
+              {%- else -%}
+                {%- assign placeholder_idx = forloop.index0 | modulo: 5 | plus: 1 -%}
+                {%- case placeholder_idx -%}
+                  {%- when 1 -%}
+                    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=700&auto=format&fit=crop&q=80" alt="Happy Journey Mountain Landscape" class="hm-sec17-img" loading="lazy">
+                  {%- when 2 -%}
+                    <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=700&auto=format&fit=crop&q=80" alt="Happy Moments Roadtrip" class="hm-sec17-img" loading="lazy">
+                  {%- when 3 -%}
+                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=700&auto=format&fit=crop&q=80" alt="Happy Team Portrait" class="hm-sec17-img" loading="lazy">
+                  {%- when 4 -%}
+                    <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=700&auto=format&fit=crop&q=80" alt="Beautiful Lake Scenery" class="hm-sec17-img" loading="lazy">
+                  {%- else -%}
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=700&auto=format&fit=crop&q=80" alt="Happy Customer Girl" class="hm-sec17-img" loading="lazy">
+                {%- endcase -%}
+              {%- endif -%}
+            {%- if card_href != blank -%}
+              </a>
+            {%- else -%}
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+
+          <!-- SET 2 (Clones for infinite seamless loop) -->
+          {%- for block in section.blocks -%}
+            {%- assign card_href = block.settings.link -%}
+            {%- if card_href != blank -%}
+              <a href="{{ card_href }}" class="hm-sec17-card" aria-hidden="true" tabindex="-1">
+            {%- else -%}
+              <div class="hm-sec17-card" aria-hidden="true" tabindex="-1">
+            {%- endif -%}
+              {%- if block.settings.image != blank -%}
+                <img src="{{ block.settings.image | image_url: width: 700 }}" alt="{{ block.settings.alt_text | default: section.settings.heading | escape }}" class="hm-sec17-img" loading="lazy">
+              {%- else -%}
+                {%- assign placeholder_idx = forloop.index0 | modulo: 5 | plus: 1 -%}
+                {%- case placeholder_idx -%}
+                  {%- when 1 -%}
+                    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=700&auto=format&fit=crop&q=80" alt="Happy Journey Mountain Landscape" class="hm-sec17-img" loading="lazy">
+                  {%- when 2 -%}
+                    <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=700&auto=format&fit=crop&q=80" alt="Happy Moments Roadtrip" class="hm-sec17-img" loading="lazy">
+                  {%- when 3 -%}
+                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=700&auto=format&fit=crop&q=80" alt="Happy Team Portrait" class="hm-sec17-img" loading="lazy">
+                  {%- when 4 -%}
+                    <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=700&auto=format&fit=crop&q=80" alt="Beautiful Lake Scenery" class="hm-sec17-img" loading="lazy">
+                  {%- else -%}
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=700&auto=format&fit=crop&q=80" alt="Happy Customer Girl" class="hm-sec17-img" loading="lazy">
+                {%- endcase -%}
+              {%- endif -%}
+            {%- if card_href != blank -%}
+              </a>
+            {%- else -%}
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+
+          <!-- SET 3 (Buffer for wide screens) -->
+          {%- for block in section.blocks -%}
+            {%- assign card_href = block.settings.link -%}
+            {%- if card_href != blank -%}
+              <a href="{{ card_href }}" class="hm-sec17-card" aria-hidden="true" tabindex="-1">
+            {%- else -%}
+              <div class="hm-sec17-card" aria-hidden="true" tabindex="-1">
+            {%- endif -%}
+              {%- if block.settings.image != blank -%}
+                <img src="{{ block.settings.image | image_url: width: 700 }}" alt="{{ block.settings.alt_text | default: section.settings.heading | escape }}" class="hm-sec17-img" loading="lazy">
+              {%- else -%}
+                {%- assign placeholder_idx = forloop.index0 | modulo: 5 | plus: 1 -%}
+                {%- case placeholder_idx -%}
+                  {%- when 1 -%}
+                    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=700&auto=format&fit=crop&q=80" alt="Happy Journey Mountain Landscape" class="hm-sec17-img" loading="lazy">
+                  {%- when 2 -%}
+                    <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=700&auto=format&fit=crop&q=80" alt="Happy Moments Roadtrip" class="hm-sec17-img" loading="lazy">
+                  {%- when 3 -%}
+                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=700&auto=format&fit=crop&q=80" alt="Happy Team Portrait" class="hm-sec17-img" loading="lazy">
+                  {%- when 4 -%}
+                    <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=700&auto=format&fit=crop&q=80" alt="Beautiful Lake Scenery" class="hm-sec17-img" loading="lazy">
+                  {%- else -%}
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=700&auto=format&fit=crop&q=80" alt="Happy Customer Girl" class="hm-sec17-img" loading="lazy">
+                {%- endcase -%}
+              {%- endif -%}
+            {%- if card_href != blank -%}
+              </a>
+            {%- else -%}
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+
+        {%- else -%}
+          <!-- Default Fallback Cards -->
+          {%- assign sample_imgs = "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=700&auto=format&fit=crop&q=80|https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=700&auto=format&fit=crop&q=80|https://images.unsplash.com/photo-1517841905240-472988babdf9?w=700&auto=format&fit=crop&q=80|https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=700&auto=format&fit=crop&q=80|https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=700&auto=format&fit=crop&q=80|https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=700&auto=format&fit=crop&q=80" | split: "|" -%}
+          {%- for rep in (1..3) -%}
+            {%- for img_url in sample_imgs -%}
+              <div class="hm-sec17-card">
+                <img src="{{ img_url }}" alt="Happy Journey Moments" class="hm-sec17-img" loading="lazy">
+              </div>
+            {%- endfor -%}
+          {%- endfor -%}
+        {%- endif -%}
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  (function() {
+    function initGallerySlider17_{{ section.id | replace: '-', '_' }}() {
+      const viewport = document.getElementById('hmGalleryViewport17-{{ section.id }}');
+      const track = document.getElementById('hmGalleryTrack17-{{ section.id }}');
+      if (!viewport || !track) return;
+
+      const stepInterval = {{ section.settings.interval_seconds | default: 3 }} * 1000;
+      let intervalTimer = null;
+      let isPaused = false;
+      let isDragging = false;
+      let startX = 0;
+      let scrollStart = 0;
+      let dragDistance = 0;
+
+      function getStepDistance() {
+        const firstCard = track.querySelector('.hm-sec17-card');
+        if (!firstCard) return 260;
+        const cardWidth = firstCard.offsetWidth;
+        const trackStyle = window.getComputedStyle(track);
+        const gap = parseFloat(trackStyle.gap) || 20;
+        return cardWidth + gap;
+      }
+
+      function autoStepMove() {
+        if (isPaused || isDragging) return;
+        
+        const step = getStepDistance();
+        const maxLoopWidth = track.scrollWidth / 3;
+
+        viewport.scrollBy({
+          left: step,
+          behavior: 'smooth'
+        });
+
+        setTimeout(() => {
+          if (viewport.scrollLeft >= maxLoopWidth * 2) {
+            viewport.scrollLeft -= maxLoopWidth;
+          }
+        }, 500);
+      }
+
+      function startAutoTimer() {
+        clearInterval(intervalTimer);
+        intervalTimer = setInterval(autoStepMove, stepInterval);
+      }
+
+      startAutoTimer();
+
+      viewport.addEventListener('mouseenter', function() { isPaused = true; });
+      viewport.addEventListener('mouseleave', function() { isPaused = false; });
+
+      viewport.addEventListener('mousedown', function(e) {
+        isDragging = true;
+        isPaused = true;
+        dragDistance = 0;
+        viewport.classList.add('hm-is-grabbing');
+        startX = e.pageX - viewport.offsetLeft;
+        scrollStart = viewport.scrollLeft;
+      });
+
+      window.addEventListener('mouseup', function() {
+        if (isDragging) {
+          isDragging = false;
+          viewport.classList.remove('hm-is-grabbing');
+          setTimeout(() => { isPaused = false; }, 1500);
+        }
+      });
+
+      viewport.addEventListener('mousemove', function(e) {
+        if (!isDragging) return;
+        e.preventDefault();
+        const x = e.pageX - viewport.offsetLeft;
+        const walk = (x - startX) * 1.3;
+        dragDistance = Math.abs(walk);
+        viewport.scrollLeft = scrollStart - walk;
+
+        const maxLoopWidth = track.scrollWidth / 3;
+        if (viewport.scrollLeft >= maxLoopWidth * 2) {
+          viewport.scrollLeft -= maxLoopWidth;
+          startX = e.pageX - viewport.offsetLeft;
+          scrollStart = viewport.scrollLeft;
+        } else if (viewport.scrollLeft <= 0) {
+          viewport.scrollLeft += maxLoopWidth;
+          startX = e.pageX - viewport.offsetLeft;
+          scrollStart = viewport.scrollLeft;
+        }
+      });
+
+      viewport.querySelectorAll('.hm-sec17-card').forEach(function(card) {
+        card.addEventListener('click', function(e) {
+          const href = card.getAttribute('href');
+          if (dragDistance > 10 || !href || href === '#' || href === 'javascript:void(0);' || href === 'javascript:void(0)') {
+            e.preventDefault();
+          }
+        });
+      });
+
+      viewport.addEventListener('touchstart', function() { isPaused = true; }, { passive: true });
+      viewport.addEventListener('touchend', function() {
+        setTimeout(() => {
+          const maxLoopWidth = track.scrollWidth / 3;
+          if (viewport.scrollLeft >= maxLoopWidth * 2) {
+            viewport.scrollLeft -= maxLoopWidth;
+          } else if (viewport.scrollLeft <= 0) {
+            viewport.scrollLeft += maxLoopWidth;
+          }
+          isPaused = false;
+        }, 1200);
+      }, { passive: true });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initGallerySlider17_{{ section.id | replace: '-', '_' }});
+    } else {
+      initGallerySlider17_{{ section.id | replace: '-', '_' }}();
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Happy Gallery 17",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Top Badge Text (Optional)",
+      "default": "⚡ FEATURED MOMENTS"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Script Subtitle",
+      "default": "Happy Moments Gallery"
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Subtitle Color",
+      "default": "#ec5c0a"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Main Heading",
+      "default": "Some Of Our Happy Journey"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#0f172a"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_grid",
+      "label": "Show Clear Background Animated Grid",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "interval_seconds",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "unit": "s",
+      "label": "Auto-Slide Interval",
+      "default": 3
+    },
+    {
+      "type": "header",
+      "content": "Shorter Card Dimensions (Desktop)"
+    },
+    {
+      "type": "range",
+      "id": "card_width_desktop",
+      "min": 160,
+      "max": 360,
+      "step": 10,
+      "unit": "px",
+      "label": "Card Width (Desktop)",
+      "default": 240
+    },
+    {
+      "type": "range",
+      "id": "card_height_desktop",
+      "min": 180,
+      "max": 450,
+      "step": 10,
+      "unit": "px",
+      "label": "Card Height / Length (Desktop)",
+      "default": 270
+    },
+    {
+      "type": "range",
+      "id": "card_radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Card Corner Radius",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "card_gap",
+      "min": 8,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Gap Between Cards",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "stagger_offset",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Card Up/Down Offset (Desktop)",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Shorter Card Dimensions (Mobile)"
+    },
+    {
+      "type": "range",
+      "id": "card_width_mobile",
+      "min": 120,
+      "max": 240,
+      "step": 5,
+      "unit": "px",
+      "label": "Card Width (Mobile)",
+      "default": 165
+    },
+    {
+      "type": "range",
+      "id": "card_height_mobile",
+      "min": 140,
+      "max": 300,
+      "step": 5,
+      "unit": "px",
+      "label": "Card Height / Length (Mobile)",
+      "default": 195
+    },
+    {
+      "type": "range",
+      "id": "card_radius_mobile",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "label": "Card Corner Radius (Mobile)",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "card_gap_mobile",
+      "min": 4,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "Gap Between Cards (Mobile)",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "stagger_offset_mobile",
+      "min": 0,
+      "max": 35,
+      "step": 1,
+      "unit": "px",
+      "label": "Card Up/Down Offset (Mobile)",
+      "default": 12
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 20,
+      "max": 120,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Top (Desktop)",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 20,
+      "max": 120,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Bottom (Desktop)",
+      "default": 65
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 15,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Top (Mobile)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 15,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Bottom (Mobile)",
+      "default": 45
+    }
+  ],
+  "blocks": [
+    {
+      "type": "gallery_image",
+      "name": "Gallery Photo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Upload Photo"
+        },
+        {
+          "type": "text",
+          "id": "alt_text",
+          "label": "Image Alt Text",
+          "default": "Featured Moments Photo"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Image Link (Optional)"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 50,
+  "presets": [
+    {
+      "name": "Happy Gallery 17",
+      "settings": {
+        "badge_text": "⚡ FEATURED MOMENTS",
+        "subtitle": "Happy Moments Gallery",
+        "heading": "Some Of Our Happy Journey"
+      },
+      "blocks": [
+        { "type": "gallery_image" },
+        { "type": "gallery_image" },
+        { "type": "gallery_image" },
+        { "type": "gallery_image" },
+        { "type": "gallery_image" },
+        { "type": "gallery_image" }
+      ]
+    }
+  ]
+}
+{% endschema %}
