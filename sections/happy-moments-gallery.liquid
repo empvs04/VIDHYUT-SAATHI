@@ -2,33 +2,75 @@
 
 {%- style -%}
   /* ===========================================================================
-     SECTION 16: HAPPY MOMENTS GALLERY / OUR HAPPY JOURNEY (VIDHYUT THEME BASE COLORING)
-     Auto-slides right-to-left every 3s + Drag & Touch Support + Vidhyut Theme Colors
+     SECTION 16: HAPPY MOMENTS GALLERY / OUR HAPPY JOURNEY
+     Pure Crisp White Background + Animated Linings & Plus (+) Marks
      =========================================================================== */
   #hmGallerySection-{{ section.id }} {
     position: relative;
-    padding: {{ section.settings.padding_top | default: 65 }}px 0 {{ section.settings.padding_bottom | default: 75 }}px 0;
-    background: {{ section.settings.bg_color | default: 'linear-gradient(180deg, #ffffff 0%, #fff8ef 100%)' }};
+    padding: {{ section.settings.padding_top | default: 60 }}px 0 {{ section.settings.padding_bottom | default: 70 }}px 0;
+    background: #ffffff !important; /* Pure White Background - Page Theme Removed */
     overflow: hidden;
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   }
 
-  /* Subtle Decorative Grid Pattern Behind Header */
-  .hm-gallery-bg-grid {
+  /* Linings & Plus (+) Marks Animation Wrapper */
+  .hm-gallery-linings-wrapper {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 220px;
-    background-image: 
-      linear-gradient(to right, rgba(236, 92, 10, 0.08) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(236, 92, 10, 0.08) 1px, transparent 1px);
-    background-size: 54px 54px;
-    background-position: center top;
-    mask-image: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, transparent 100%);
+    height: 100%;
     pointer-events: none;
     z-index: 1;
+    overflow: hidden;
+  }
+
+  /* Grid Linings Pattern Behind Header & Cards */
+  .hm-gallery-linings-pattern {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1300px;
+    max-width: 100%;
+    height: 320px;
+    background-image: 
+      linear-gradient(to right, rgba(225, 205, 185, 0.55) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(225, 205, 185, 0.55) 1px, transparent 1px);
+    background-size: 70px 70px;
+    background-position: center top;
+    mask-image: radial-gradient(circle at 50% 35%, rgba(0,0,0,0.9) 25%, rgba(0,0,0,0) 80%);
+    -webkit-mask-image: radial-gradient(circle at 50% 35%, rgba(0,0,0,0.9) 25%, rgba(0,0,0,0) 80%);
+    animation: liningsFloat 10s ease-in-out infinite alternate;
+  }
+
+  @keyframes liningsFloat {
+    0% { transform: translateX(-50%) translateY(0px); }
+    100% { transform: translateX(-50%) translateY(-10px); }
+  }
+
+  /* Plus (+) Marks at Grid Intersections */
+  .hm-plus-mark {
+    position: absolute;
+    color: rgba(220, 195, 170, 0.8);
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 1;
+    user-select: none;
+    animation: plusPulse 4s ease-in-out infinite alternate;
+  }
+
+  .hm-plus-mark-1 { top: 30px; left: 25%; animation-delay: 0s; }
+  .hm-plus-mark-2 { top: 30px; right: 25%; animation-delay: 1s; }
+  .hm-plus-mark-3 { top: 100px; left: 38%; animation-delay: 1.5s; }
+  .hm-plus-mark-4 { top: 100px; right: 38%; animation-delay: 2.5s; }
+  .hm-plus-mark-5 { top: 170px; left: 18%; animation-delay: 0.5s; }
+  .hm-plus-mark-6 { top: 170px; right: 18%; animation-delay: 2s; }
+
+  @keyframes plusPulse {
+    0% { opacity: 0.35; transform: scale(0.85); }
+    100% { opacity: 0.95; transform: scale(1.2); }
   }
 
   .hm-gallery-container {
@@ -51,28 +93,11 @@
     align-items: center;
   }
 
-  /* Vidhyut Saathi Top Badge Pill */
-  .hm-gallery-top-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: linear-gradient(90deg, #ec5c0a 0%, #ff9a00 50%, #007b3e 100%);
-    color: #ffffff;
-    font-size: 0.82rem;
-    font-weight: 800;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 6px 18px;
-    border-radius: 50px;
-    box-shadow: 0 4px 15px rgba(236, 92, 10, 0.25);
-    margin-bottom: 12px;
-  }
-
   .hm-gallery-script-subtitle {
-    font-family: 'Caveat', cursive;
+    font-family: 'Dancing Script', 'Caveat', cursive;
     font-size: clamp(24px, 3.4vw, 34px);
     font-weight: 700;
-    color: {{ section.settings.subtitle_color | default: '#ec5c0a' }};
+    color: {{ section.settings.subtitle_color | default: '#2b70e4' }};
     line-height: 1.1;
     margin: 0 0 6px 0;
     letter-spacing: 0.5px;
@@ -80,10 +105,10 @@
   }
 
   .hm-gallery-main-heading {
-    font-family: 'Baloo 2', 'Plus Jakarta Sans', sans-serif;
-    font-size: clamp(26px, 4.2vw, 44px);
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: clamp(26px, 4.2vw, 42px);
     font-weight: 800;
-    color: {{ section.settings.heading_color | default: '#0f172a' }};
+    color: {{ section.settings.heading_color | default: '#222222' }};
     line-height: 1.2;
     margin: 0;
     letter-spacing: -0.02em;
@@ -246,17 +271,22 @@
 {%- endstyle -%}
 
 <section class="hm-gallery-section" id="hmGallerySection-{{ section.id }}">
-  <!-- Background Grid Pattern -->
+  <!-- Background Linings & Plus (+) Marks Animation -->
   {%- if section.settings.show_grid -%}
-    <div class="hm-gallery-bg-grid" aria-hidden="true"></div>
+    <div class="hm-gallery-linings-wrapper" aria-hidden="true">
+      <div class="hm-gallery-linings-pattern"></div>
+      <div class="hm-plus-mark hm-plus-mark-1">+</div>
+      <div class="hm-plus-mark hm-plus-mark-2">+</div>
+      <div class="hm-plus-mark hm-plus-mark-3">+</div>
+      <div class="hm-plus-mark hm-plus-mark-4">+</div>
+      <div class="hm-plus-mark hm-plus-mark-5">+</div>
+      <div class="hm-plus-mark hm-plus-mark-6">+</div>
+    </div>
   {%- endif -%}
 
   <div class="hm-gallery-container">
     <!-- Header -->
     <div class="hm-gallery-header">
-      {%- if section.settings.badge_text != blank -%}
-        <div class="hm-gallery-top-badge">{{ section.settings.badge_text }}</div>
-      {%- endif -%}
       {%- if section.settings.subtitle != blank -%}
         <div class="hm-gallery-script-subtitle">{{ section.settings.subtitle }}</div>
       {%- endif -%}
