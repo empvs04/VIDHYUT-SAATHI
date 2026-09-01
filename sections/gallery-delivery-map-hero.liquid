@@ -5,23 +5,24 @@
      SECTION 1: THEME-BASED LUCRATIVE DELIVERY TRACKER HERO
      Vidhyut Saathi Orange & Green GPS Highway + Animated EV Courier Van
      =========================================================================== */
-  /* Page Container Wrapper - Equal Left/Right Margins Matching Website Width */
+  /* Full Width Page Container - 100% Viewport Fit */
   .dm-section-wrapper {
     position: relative;
     width: 100%;
-    max-width: 1200px;
-    margin: 0 auto 30px;
-    padding: 0 20px;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
   }
 
   #deliveryMapHero-{{ section.id }} {
     position: relative;
     width: 100%;
-    min-height: clamp(540px, 78vh, 720px);
+    height: clamp(560px, 85vh, 740px);
+    min-height: clamp(560px, 85vh, 740px);
     background: radial-gradient(circle at 50% 20%, #ffffff 0%, #fff8ef 50%, #fef3e2 100%);
-    border-radius: 0 0 32px 32px;
-    box-shadow: 0 20px 60px rgba(15, 23, 42, 0.07), 0 0 0 1.5px rgba(236, 92, 10, 0.15);
+    border-radius: 0;
+    box-shadow: none;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -30,7 +31,7 @@
     font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
     color: #0f172a;
     box-sizing: border-box;
-    padding: clamp(40px, 6vh, 60px) clamp(20px, 4vw, 50px) 75px;
+    padding: clamp(35px, 5vh, 55px) clamp(20px, 4vw, 50px) 70px;
   }
 
   /* Light Navigation Map Vector Background */
@@ -406,10 +407,10 @@
       <path d="M 200 -50 Q 350 400 500 850" stroke="rgba(203, 213, 225, 0.6)" stroke-width="8" fill="none"/>
       <path d="M 900 -50 Q 800 350 1100 850" stroke="rgba(203, 213, 225, 0.6)" stroke-width="8" fill="none"/>
 
-      <!-- Main Animated Courier Highway Route Path further down along the bottom (Y: ~685-755) -->
-      <path id="dmDeliveryPath-{{ section.id }}" class="dm-route-glow" d="M 60 720 C 180 685, 280 755, 420 715 C 580 685, 680 765, 840 715 C 1000 675, 1120 755, 1240 715 C 1290 690, 1320 710, 1340 705" />
-      <path class="dm-route-base" d="M 60 720 C 180 685, 280 755, 420 715 C 580 685, 680 765, 840 715 C 1000 675, 1120 755, 1240 715 C 1290 690, 1320 710, 1340 705" />
-      <path class="dm-route-active" d="M 60 720 C 180 685, 280 755, 420 715 C 580 685, 680 765, 840 715 C 1000 675, 1120 755, 1240 715 C 1290 690, 1320 710, 1340 705" />
+      <!-- Main Animated Courier Highway Route Path spanning full width along the bottom -->
+      <path id="dmDeliveryPath-{{ section.id }}" class="dm-route-glow" d="M 40 715 C 180 670, 320 750, 500 705 C 680 665, 800 755, 960 705 C 1120 665, 1260 750, 1360 700" />
+      <path class="dm-route-base" d="M 40 715 C 180 670, 320 750, 500 705 C 680 665, 800 755, 960 705 C 1120 665, 1260 750, 1360 700" />
+      <path class="dm-route-active" d="M 40 715 C 180 670, 320 750, 500 705 C 680 665, 800 755, 960 705 C 1120 665, 1260 750, 1360 700" />
     </svg>
 
     <!-- Destination Hub Pins with Parcel Boxes shifted further down -->
@@ -567,13 +568,13 @@
       let pauseTimer = null;
       let lastHubIndex = -1;
 
-      // Destination waypoints along path (percentage checkpoints for bottom highway)
+      // Destination waypoints along path (percentage checkpoints for full width highway)
       const hubs = [
-        { pct: 0.05, name: "📦 VS Office Dispatch" },
-        { pct: 0.28, name: "📍 Hub B: Transited Express" },
-        { pct: 0.54, name: "⚡ Hub C: Sorted at Central Hub" },
-        { pct: 0.77, name: "🏢 Hub D: Out for Regional Delivery" },
-        { pct: 0.95, name: "🎯 Happiness Delivered" }
+        { pct: 0.04, name: "📦 VS Office Dispatch" },
+        { pct: 0.27, name: "📍 Hub B: Transited Express" },
+        { pct: 0.50, name: "⚡ Hub C: Sorted at Central Hub" },
+        { pct: 0.73, name: "🏢 Hub D: Out for Regional Delivery" },
+        { pct: 0.96, name: "🎯 Happiness Delivered" }
       ];
 
       // Dynamically position each Hub Pin marker EXACTLY on the SVG path point!
