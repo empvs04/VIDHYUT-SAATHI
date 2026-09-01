@@ -242,8 +242,17 @@
     transition: transform 0.3s ease;
   }
 
-  .dm-hub-pin:hover {
-    transform: translate(-50%, -115%) scale(1.15);
+  .dm-hub-pin:hover,
+  .dm-hub-pin.active-hub {
+    transform: translate(-50%, -115%) scale(1.18);
+    z-index: 20;
+  }
+
+  .dm-hub-pin.active-hub .dm-pin-badge {
+    background: #ec5c0a;
+    color: #ffffff;
+    border-color: #ffffff;
+    box-shadow: 0 8px 25px rgba(236, 92, 10, 0.45);
   }
 
   .dm-pin-badge {
@@ -558,6 +567,18 @@
         { pct: 0.95, name: "🎯 Happiness Delivered" }
       ];
 
+      // Dynamically position each Hub Pin marker EXACTLY on the SVG path point!
+      const pinElements = document.querySelectorAll('#deliveryMapHero-{{ section.id }} .dm-hub-pin');
+      hubs.forEach((hub, idx) => {
+        const pt = path.getPointAtLength(hub.pct * pathLength);
+        const posX = (pt.x / 1400) * 100;
+        const posY = (pt.y / 800) * 100;
+        if (pinElements[idx]) {
+          pinElements[idx].style.left = posX + '%';
+          pinElements[idx].style.top = posY + '%';
+        }
+      });
+
       function animate() {
         if (!isPaused) {
           progress += speed;
@@ -576,10 +597,8 @@
           const angleDeg = (angleRad * 180) / Math.PI;
 
           // Convert SVG point to percentage of container
-          const svgViewBoxWidth = 1400;
-          const svgViewBoxHeight = 800;
-          const posX = (currentPoint.x / svgViewBoxWidth) * 100;
-          const posY = (currentPoint.y / svgViewBoxHeight) * 100;
+          const posX = (currentPoint.x / 1400) * 100;
+          const posY = (currentPoint.y / 800) * 100;
 
           truck.style.left = posX + '%';
           truck.style.top = posY + '%';
@@ -590,6 +609,18 @@
             if (Math.abs(progress - hub.pct) < 0.008 && lastHubIndex !== idx) {
               lastHubIndex = idx;
               isPaused = true;
+
+              // Align truck EXACTLY to the hub point while paused
+              const exactPt = path.getPointAtLength(hub.pct * pathLength);
+              truck.style.left = ((exactPt.x / 1400) * 100) + '%';
+              truck.style.top = ((exactPt.y / 800) * 100) + '%';
+
+              // Highlight active hub pin
+              pinElements.forEach(pin => pin.classList.remove('active-hub'));
+              if (pinElements[idx]) {
+                pinElements[idx].classList.add('active-hub');
+              }
+
               if (statusBubble) {
                 statusBubble.textContent = hub.name;
                 statusBubble.style.backgroundColor = (idx === hubs.length - 1) ? '#16a34a' : '#ec5c0a';
