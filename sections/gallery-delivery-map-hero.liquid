@@ -18,8 +18,8 @@
   #deliveryMapHero-{{ section.id }} {
     position: relative;
     width: 100%;
-    height: clamp(560px, 85vh, 740px);
-    min-height: clamp(560px, 85vh, 740px);
+    height: clamp(500px, 72vh, 620px);
+    min-height: clamp(500px, 72vh, 620px);
     background: radial-gradient(circle at 50% 20%, #ffffff 0%, #fff8ef 50%, #fef3e2 100%);
     border-radius: 0;
     box-shadow: none;
@@ -31,7 +31,7 @@
     font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
     color: #0f172a;
     box-sizing: border-box;
-    padding: clamp(35px, 5vh, 55px) clamp(20px, 4vw, 50px) 70px;
+    padding: clamp(25px, 4vh, 45px) clamp(20px, 4vw, 50px) 40px;
   }
 
   /* Light Navigation Map Vector Background */
@@ -155,11 +155,11 @@
 
   .dm-title {
     font-family: 'Baloo 2', 'Outfit', sans-serif;
-    font-size: clamp(34px, 5.2vw, 62px);
+    font-size: clamp(28px, 4.2vw, 52px);
     font-weight: 900;
     color: #0f172a;
-    line-height: 1.16;
-    margin: 0 0 14px 0;
+    line-height: 1.15;
+    margin: 0 0 10px 0;
     letter-spacing: -0.02em;
   }
 
@@ -172,11 +172,11 @@
   }
 
   .dm-subtitle {
-    font-size: clamp(15px, 2vw, 18px);
+    font-size: clamp(14px, 1.6vw, 16px);
     color: #475569;
-    line-height: 1.6;
-    margin: 0 auto 24px;
-    max-width: 720px;
+    line-height: 1.5;
+    margin: 0 auto 18px;
+    max-width: 680px;
     font-weight: 500;
   }
 
@@ -407,10 +407,10 @@
       <path d="M 200 -50 Q 350 400 500 850" stroke="rgba(203, 213, 225, 0.6)" stroke-width="8" fill="none"/>
       <path d="M 900 -50 Q 800 350 1100 850" stroke="rgba(203, 213, 225, 0.6)" stroke-width="8" fill="none"/>
 
-      <!-- Main Animated Courier Highway Route Path spanning full width along the bottom -->
-      <path id="dmDeliveryPath-{{ section.id }}" class="dm-route-glow" d="M 40 715 C 180 670, 320 750, 500 705 C 680 665, 800 755, 960 705 C 1120 665, 1260 750, 1360 700" />
-      <path class="dm-route-base" d="M 40 715 C 180 670, 320 750, 500 705 C 680 665, 800 755, 960 705 C 1120 665, 1260 750, 1360 700" />
-      <path class="dm-route-active" d="M 40 715 C 180 670, 320 750, 500 705 C 680 665, 800 755, 960 705 C 1120 665, 1260 750, 1360 700" />
+      <!-- Main Animated Courier Highway Route Path spanning 100% complete edge-to-edge off-screen -->
+      <path id="dmDeliveryPath-{{ section.id }}" class="dm-route-glow" d="M -80 570 C 140 520, 300 610, 480 555 C 660 510, 780 620, 960 555 C 1140 505, 1280 610, 1480 550" />
+      <path class="dm-route-base" d="M -80 570 C 140 520, 300 610, 480 555 C 660 510, 780 620, 960 555 C 1140 505, 1280 610, 1480 550" />
+      <path class="dm-route-active" d="M -80 570 C 140 520, 300 610, 480 555 C 660 510, 780 620, 960 555 C 1140 505, 1280 610, 1480 550" />
     </svg>
 
     <!-- Destination Hub Pins with Parcel Boxes shifted further down -->
@@ -568,13 +568,13 @@
       let pauseTimer = null;
       let lastHubIndex = -1;
 
-      // Destination waypoints along path (percentage checkpoints for full width highway)
+      // Destination waypoints along path (percentage checkpoints for full width edge-to-edge highway)
       const hubs = [
-        { pct: 0.04, name: "📦 VS Office Dispatch" },
-        { pct: 0.27, name: "📍 Hub B: Transited Express" },
+        { pct: 0.07, name: "📦 VS Office Dispatch" },
+        { pct: 0.28, name: "📍 Hub B: Transited Express" },
         { pct: 0.50, name: "⚡ Hub C: Sorted at Central Hub" },
-        { pct: 0.73, name: "🏢 Hub D: Out for Regional Delivery" },
-        { pct: 0.96, name: "🎯 Happiness Delivered" }
+        { pct: 0.72, name: "🏢 Hub D: Out for Regional Delivery" },
+        { pct: 0.93, name: "🎯 Happiness Delivered" }
       ];
 
       // Dynamically position each Hub Pin marker EXACTLY on the SVG path point!
