@@ -355,48 +355,48 @@
     border: 1px solid rgba(255, 255, 255, 0.4);
   }
 
-  /* Comprehensive Mobile Responsive Adjustments - Generous Breathing Space */
+  /* 100% Unified Mobile Fluid Responsiveness - Consistent Across Every Mobile Device (320px - 768px) */
   @media (max-width: 768px) {
     #deliveryMapHero-{{ section.id }} {
       height: auto;
-      min-height: 540px;
-      padding: 35px 16px 55px;
+      min-height: clamp(480px, 125vw, 560px);
+      padding: clamp(25px, 6vw, 35px) clamp(12px, 3.5vw, 20px) clamp(45px, 10vw, 60px);
     }
 
     .dm-title {
-      font-size: clamp(24px, 6.5vw, 34px);
-      line-height: 1.25;
-      margin-bottom: 14px;
+      font-size: clamp(22px, 6.2vw, 32px);
+      line-height: 1.22;
+      margin-bottom: clamp(10px, 3vw, 14px);
     }
 
     .dm-subtitle {
-      font-size: 0.88rem;
-      line-height: 1.55;
-      margin-bottom: 20px;
-      padding: 0 10px;
+      font-size: clamp(0.78rem, 3.4vw, 0.88rem);
+      line-height: 1.5;
+      margin-bottom: clamp(14px, 4.5vw, 22px);
+      padding: 0 clamp(4px, 2vw, 12px);
     }
 
     .dm-stats-pills-row {
       flex-wrap: wrap;
       justify-content: center;
-      gap: 8px;
-      margin-bottom: 20px;
+      gap: clamp(6px, 2vw, 10px);
+      margin-bottom: clamp(16px, 4vw, 24px);
     }
 
     .dm-stat-tag {
-      font-size: 0.76rem;
-      padding: 6px 12px;
+      font-size: clamp(0.68rem, 2.8vw, 0.76rem);
+      padding: clamp(4px, 1.2vw, 6px) clamp(8px, 2.5vw, 14px);
       border-radius: 16px;
     }
 
     .dm-courier-truck {
-      width: 60px;
-      height: 38px;
+      width: clamp(50px, 14vw, 62px);
+      height: clamp(32px, 9vw, 38px);
     }
 
     .dm-pin-badge {
-      font-size: 0.65rem;
-      padding: 4px 10px;
+      font-size: clamp(0.58rem, 2.6vw, 0.65rem);
+      padding: clamp(3px, 1vw, 5px) clamp(6px, 2vw, 10px);
       border-radius: 14px;
       transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
@@ -425,49 +425,21 @@
     }
 
     .dm-pin-icon-wrap {
-      width: 28px;
-      height: 34px;
+      width: clamp(24px, 6.5vw, 28px);
+      height: clamp(30px, 8vw, 34px);
     }
 
     .dm-pin-svg {
-      width: 28px;
-      height: 34px;
+      width: clamp(24px, 6.5vw, 28px);
+      height: clamp(30px, 8vw, 34px);
     }
 
     .dm-parcel-box {
-      font-size: 0.62rem;
-      width: 15px;
-      height: 15px;
-      right: -5px;
+      font-size: clamp(0.55rem, 2vw, 0.62rem);
+      width: clamp(13px, 3.5vw, 15px);
+      height: clamp(13px, 3.5vw, 15px);
+      right: -4px;
       bottom: 0;
-    }
-  }
-
-  @media (max-width: 480px) {
-    #deliveryMapHero-{{ section.id }} {
-      height: auto;
-      min-height: 510px;
-      padding: 30px 12px 50px;
-    }
-
-    .dm-title {
-      font-size: 1.5rem;
-      margin-bottom: 12px;
-    }
-
-    .dm-subtitle {
-      font-size: 0.82rem;
-      margin-bottom: 18px;
-    }
-
-    .dm-stat-tag {
-      font-size: 0.72rem;
-      padding: 5px 10px;
-    }
-
-    .dm-pin-badge {
-      font-size: 0.6rem;
-      padding: 3px 8px;
     }
   }
 {%- endstyle -%}
