@@ -121,29 +121,32 @@
     font-size: clamp(34px, 5.2vw, 62px);
     font-weight: 900;
     color: #ffffff;
-    line-height: 1.14;
+    line-height: 1.16;
     margin: 0 0 14px 0;
     letter-spacing: -0.02em;
-    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.9), 0 2px 8px rgba(0, 0, 0, 0.8);
+    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.95);
   }
 
+  /* Bright Vidhyut Saathi Signature Theme Gradient (#ff9a00 -> #ec5c0a -> #22c55e) */
   .dm-title-gradient {
-    background: linear-gradient(90deg, #38bdf8 0%, #60a5fa 50%, #f97316 100%);
+    background: linear-gradient(90deg, #ff9a00 0%, #ec5c0a 50%, #22c55e 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    font-weight: 900;
+    filter: drop-shadow(0 2px 14px rgba(236, 92, 10, 0.45));
   }
 
   .dm-subtitle {
     font-size: clamp(15px, 2vw, 18px);
-    color: #e2e8f0;
+    color: #f8fafc;
     line-height: 1.6;
     margin: 0 auto 24px;
     max-width: 720px;
     font-weight: 500;
-    text-shadow: 0 3px 12px rgba(0, 0, 0, 0.9);
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9);
   }
 
-  /* Live Delivery Status Bar */
+  /* Live Delivery Status Bar - Vidhyut Theme Borders & Glow */
   .dm-stats-pills-row {
     display: flex;
     flex-wrap: wrap;
@@ -156,15 +159,23 @@
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    background: rgba(15, 23, 42, 0.75);
-    border: 1px solid rgba(56, 189, 248, 0.35);
-    backdrop-filter: blur(16px);
-    padding: 8px 20px;
+    background: rgba(15, 23, 42, 0.88);
+    border: 1.5px solid rgba(236, 92, 10, 0.45);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 8px 22px;
     border-radius: 30px;
-    font-size: 0.88rem;
+    font-size: 0.9rem;
     font-weight: 700;
-    color: #f1f5f9;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+    color: #ffffff;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.45), 0 0 15px rgba(236, 92, 10, 0.15);
+    transition: all 0.3s ease;
+  }
+
+  .dm-stat-tag:hover {
+    border-color: #ec5c0a;
+    box-shadow: 0 8px 30px rgba(236, 92, 10, 0.35);
+    transform: translateY(-2px);
   }
 
   .dm-pulse-dot {
@@ -172,7 +183,7 @@
     height: 9px;
     background-color: #22c55e;
     border-radius: 50%;
-    box-shadow: 0 0 10px #22c55e;
+    box-shadow: 0 0 12px #22c55e;
     animation: livePulse 1.8s infinite;
   }
 
