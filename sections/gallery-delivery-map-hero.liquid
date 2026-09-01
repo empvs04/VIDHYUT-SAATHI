@@ -374,16 +374,16 @@
       <path d="M 200 -50 Q 350 400 500 850" stroke="rgba(203, 213, 225, 0.6)" stroke-width="8" fill="none"/>
       <path d="M 900 -50 Q 800 350 1100 850" stroke="rgba(203, 213, 225, 0.6)" stroke-width="8" fill="none"/>
 
-      <!-- Main Animated Courier Highway Route Path along the bottom (Y: ~640-720) -->
-      <path id="dmDeliveryPath-{{ section.id }}" class="dm-route-glow" d="M -40 680 C 140 640, 240 730, 400 680 C 560 630, 680 740, 840 680 C 1000 620, 1140 730, 1280 670 C 1360 640, 1420 680, 1480 660" />
-      <path class="dm-route-base" d="M -40 680 C 140 640, 240 730, 400 680 C 560 630, 680 740, 840 680 C 1000 620, 1140 730, 1280 670 C 1360 640, 1420 680, 1480 660" />
-      <path class="dm-route-active" d="M -40 680 C 140 640, 240 730, 400 680 C 560 630, 680 740, 840 680 C 1000 620, 1140 730, 1280 670 C 1360 640, 1420 680, 1480 660" />
+      <!-- Main Animated Courier Highway Route Path further down along the bottom (Y: ~700-760) -->
+      <path id="dmDeliveryPath-{{ section.id }}" class="dm-route-glow" d="M -40 730 C 140 700, 240 760, 400 720 C 560 690, 680 770, 840 720 C 1000 680, 1140 760, 1280 720 C 1360 690, 1420 730, 1480 710" />
+      <path class="dm-route-base" d="M -40 730 C 140 700, 240 760, 400 720 C 560 690, 680 770, 840 720 C 1000 680, 1140 760, 1280 720 C 1360 690, 1420 730, 1480 710" />
+      <path class="dm-route-active" d="M -40 730 C 140 700, 240 760, 400 720 C 560 690, 680 770, 840 720 C 1000 680, 1140 760, 1280 720 C 1360 690, 1420 730, 1480 710" />
     </svg>
 
-    <!-- Destination Hub Pins with Parcel Boxes along bottom end of section -->
-    <!-- Destination 1: Origin -->
-    <div class="dm-hub-pin" style="left: 6%; top: 85%;" data-hub="1">
-      <div class="dm-pin-badge">📦 Hub A: Dispatch</div>
+    <!-- Destination Hub Pins with Parcel Boxes shifted further down -->
+    <!-- Destination 1: Origin (VS Office Dispatch) -->
+    <div class="dm-hub-pin" style="left: 6%; top: 91%;" data-hub="1">
+      <div class="dm-pin-badge">📦 VS Office Dispatch</div>
       <div class="dm-pin-icon-wrap">
         <svg class="dm-pin-svg" viewBox="0 0 32 38" fill="none">
           <path d="M16 0C7.16 0 0 7.16 0 16C0 26 16 38 16 38C16 38 32 26 32 16C32 7.16 24.84 0 16 0Z" fill="#2563eb"/>
@@ -395,7 +395,7 @@
     </div>
 
     <!-- Destination 2: North Logistics Hub -->
-    <div class="dm-hub-pin" style="left: 28%; top: 84%;" data-hub="2">
+    <div class="dm-hub-pin" style="left: 28%; top: 90%;" data-hub="2">
       <div class="dm-pin-badge">📍 Hub B: Express</div>
       <div class="dm-pin-icon-wrap">
         <svg class="dm-pin-svg" viewBox="0 0 32 38" fill="none">
@@ -408,7 +408,7 @@
     </div>
 
     <!-- Destination 3: Central Delivery Center -->
-    <div class="dm-hub-pin" style="left: 55%; top: 86%;" data-hub="3">
+    <div class="dm-hub-pin" style="left: 55%; top: 92%;" data-hub="3">
       <div class="dm-pin-badge">⚡ Hub C: Fulfillment</div>
       <div class="dm-pin-icon-wrap">
         <svg class="dm-pin-svg" viewBox="0 0 32 38" fill="none">
@@ -421,7 +421,7 @@
     </div>
 
     <!-- Destination 4: West Distribution -->
-    <div class="dm-hub-pin" style="left: 77%; top: 83%;" data-hub="4">
+    <div class="dm-hub-pin" style="left: 77%; top: 89%;" data-hub="4">
       <div class="dm-pin-badge">🏢 Hub D: Regional</div>
       <div class="dm-pin-icon-wrap">
         <svg class="dm-pin-svg" viewBox="0 0 32 38" fill="none">
@@ -433,9 +433,9 @@
       </div>
     </div>
 
-    <!-- Destination 5: Final Delivery Destination -->
-    <div class="dm-hub-pin" style="left: 95%; top: 85%;" data-hub="5">
-      <div class="dm-pin-badge">🎯 Hub E: Delivery Point</div>
+    <!-- Destination 5: Final Delivery Destination (Happiness Delivered) -->
+    <div class="dm-hub-pin" style="left: 95%; top: 91%;" data-hub="5">
+      <div class="dm-pin-badge">🎯 Happiness Delivered</div>
       <div class="dm-pin-icon-wrap">
         <svg class="dm-pin-svg" viewBox="0 0 32 38" fill="none">
           <path d="M16 0C7.16 0 0 7.16 0 16C0 26 16 38 16 38C16 38 32 26 32 16C32 7.16 24.84 0 16 0Z" fill="#ec5c0a"/>
@@ -537,11 +537,11 @@
 
       // Destination waypoints along path (percentage checkpoints for bottom highway)
       const hubs = [
-        { pct: 0.05, name: "📦 Hub A: Packed & Dispatched" },
+        { pct: 0.05, name: "📦 VS Office Dispatch" },
         { pct: 0.28, name: "📍 Hub B: Transited Express" },
         { pct: 0.54, name: "⚡ Hub C: Sorted at Central Hub" },
         { pct: 0.77, name: "🏢 Hub D: Out for Regional Delivery" },
-        { pct: 0.95, name: "🎯 Hub E: Delivered Successfully!" }
+        { pct: 0.95, name: "🎯 Happiness Delivered" }
       ];
 
       function animate() {
