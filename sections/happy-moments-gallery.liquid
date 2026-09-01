@@ -1,0 +1,648 @@
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Dancing+Script:wght@600;700&family=Plus+Jakarta+Sans:wght@600;700;800;900&display=swap" rel="stylesheet">
+
+{%- style -%}
+  /* ===========================================================================
+     SECTION 16: HAPPY MOMENTS GALLERY / OUR HAPPY JOURNEY
+     Auto-slides right-to-left every 3s + Drag & Touch Support + Shopify Image Uploads
+     =========================================================================== */
+  #hmGallerySection-{{ section.id }} {
+    position: relative;
+    padding: {{ section.settings.padding_top | default: 60 }}px 0 {{ section.settings.padding_bottom | default: 70 }}px 0;
+    background-color: {{ section.settings.bg_color | default: '#ffffff' }};
+    overflow: hidden;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+
+  /* Subtle Decorative Grid Pattern Behind Header */
+  .hm-gallery-bg-grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 180px;
+    background-image: 
+      linear-gradient(to right, rgba(230, 215, 195, 0.45) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(230, 215, 195, 0.45) 1px, transparent 1px);
+    background-size: 54px 54px;
+    background-position: center top;
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .hm-gallery-container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  /* Header Section */
+  .hm-gallery-header {
+    text-align: center;
+    margin-bottom: {{ section.settings.header_margin_bottom | default: 36 }}px;
+    padding: 0 20px;
+  }
+
+  .hm-gallery-script-subtitle {
+    font-family: 'Dancing Script', 'Caveat', cursive;
+    font-size: clamp(22px, 3.2vw, 32px);
+    font-weight: 700;
+    color: {{ section.settings.subtitle_color | default: '#2b70e4' }};
+    line-height: 1.2;
+    margin: 0 0 4px 0;
+    letter-spacing: 0.5px;
+    display: inline-block;
+  }
+
+  .hm-gallery-main-heading {
+    font-size: clamp(26px, 4.2vw, 42px);
+    font-weight: 800;
+    color: {{ section.settings.heading_color | default: '#1e293b' }};
+    line-height: 1.2;
+    margin: 0;
+    letter-spacing: -0.02em;
+  }
+
+  /* Carousel Scroller Container */
+  .hm-gallery-carousel-viewport {
+    position: relative;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 10px 0 20px 0;
+    cursor: grab;
+    user-select: none;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .hm-gallery-carousel-viewport::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge */
+    width: 0;
+    height: 0;
+  }
+
+  .hm-gallery-carousel-viewport.hm-is-grabbing {
+    cursor: grabbing;
+  }
+
+  .hm-gallery-track {
+    display: flex;
+    gap: {{ section.settings.card_gap | default: 20 }}px;
+    width: max-content;
+    padding: 0 20px;
+    will-change: transform, scroll-position;
+    align-items: center;
+  }
+
+  /* Individual Image Cards */
+  .hm-gallery-card {
+    flex: 0 0 {{ section.settings.card_width_desktop | default: 260 }}px;
+    width: {{ section.settings.card_width_desktop | default: 260 }}px;
+    height: {{ section.settings.card_height_desktop | default: 340 }}px;
+    border-radius: {{ section.settings.card_radius | default: 20 }}px;
+    overflow: hidden;
+    position: relative;
+    background: #f1f5f9;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
+    display: block;
+    text-decoration: none;
+  }
+
+  .hm-gallery-card:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.16);
+  }
+
+  .hm-gallery-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    pointer-events: none;
+    transition: transform 0.6s ease;
+  }
+
+  .hm-gallery-card:hover .hm-gallery-img {
+    transform: scale(1.06);
+  }
+
+  /* Responsive Styling */
+  @media screen and (max-width: 768px) {
+    #hmGallerySection-{{ section.id }} {
+      padding: {{ section.settings.padding_top_mobile | default: 45 }}px 0 {{ section.settings.padding_bottom_mobile | default: 50 }}px 0;
+    }
+
+    .hm-gallery-header {
+      margin-bottom: 24px;
+    }
+
+    .hm-gallery-script-subtitle {
+      font-size: 22px;
+    }
+
+    .hm-gallery-main-heading {
+      font-size: 26px;
+    }
+
+    .hm-gallery-track {
+      gap: {{ section.settings.card_gap_mobile | default: 14 }}px;
+      padding: 0 14px;
+    }
+
+    .hm-gallery-card {
+      flex: 0 0 {{ section.settings.card_width_mobile | default: 190 }}px;
+      width: {{ section.settings.card_width_mobile | default: 190 }}px;
+      height: {{ section.settings.card_height_mobile | default: 250 }}px;
+      border-radius: {{ section.settings.card_radius_mobile | default: 16 }}px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .hm-gallery-card {
+      flex: 0 0 170px;
+      width: 170px;
+      height: 230px;
+    }
+  }
+{%- endstyle -%}
+
+<section class="hm-gallery-section" id="hmGallerySection-{{ section.id }}">
+  <!-- Background Grid Pattern -->
+  {%- if section.settings.show_grid -%}
+    <div class="hm-gallery-bg-grid" aria-hidden="true"></div>
+  {%- endif -%}
+
+  <div class="hm-gallery-container">
+    <!-- Header -->
+    <div class="hm-gallery-header">
+      {%- if section.settings.subtitle != blank -%}
+        <div class="hm-gallery-script-subtitle">{{ section.settings.subtitle }}</div>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2 class="hm-gallery-main-heading">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+    </div>
+
+    <!-- Carousel Viewport -->
+    <div class="hm-gallery-carousel-viewport" id="hmGalleryViewport-{{ section.id }}">
+      <div class="hm-gallery-track" id="hmGalleryTrack-{{ section.id }}">
+        
+        {%- if section.blocks.size > 0 -%}
+          <!-- SET 1 (Original Blocks) -->
+          {%- for block in section.blocks -%}
+            <a href="{{ block.settings.link | default: '#' }}" class="hm-gallery-card" {{ block.shopify_attributes }}>
+              {%- if block.settings.image != blank -%}
+                <img src="{{ block.settings.image | image_url: width: 700 }}" alt="{{ block.settings.alt_text | default: section.settings.heading | escape }}" class="hm-gallery-img" loading="lazy">
+              {%- else -%}
+                {%- assign placeholder_idx = forloop.index0 | modulo: 5 | plus: 1 -%}
+                {%- case placeholder_idx -%}
+                  {%- when 1 -%}
+                    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=700&auto=format&fit=crop&q=80" alt="Happy Journey Mountain Landscape" class="hm-gallery-img" loading="lazy">
+                  {%- when 2 -%}
+                    <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=700&auto=format&fit=crop&q=80" alt="Happy Moments Roadtrip" class="hm-gallery-img" loading="lazy">
+                  {%- when 3 -%}
+                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=700&auto=format&fit=crop&q=80" alt="Happy Team Portrait" class="hm-gallery-img" loading="lazy">
+                  {%- when 4 -%}
+                    <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=700&auto=format&fit=crop&q=80" alt="Beautiful Lake Scenery" class="hm-gallery-img" loading="lazy">
+                  {%- else -%}
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=700&auto=format&fit=crop&q=80" alt="Happy Customer Girl" class="hm-gallery-img" loading="lazy">
+                {%- endcase -%}
+              {%- endif -%}
+            </a>
+          {%- endfor -%}
+
+          <!-- SET 2 (Clones for infinite seamless loop) -->
+          {%- for block in section.blocks -%}
+            <a href="{{ block.settings.link | default: '#' }}" class="hm-gallery-card" aria-hidden="true" tabindex="-1">
+              {%- if block.settings.image != blank -%}
+                <img src="{{ block.settings.image | image_url: width: 700 }}" alt="{{ block.settings.alt_text | default: section.settings.heading | escape }}" class="hm-gallery-img" loading="lazy">
+              {%- else -%}
+                {%- assign placeholder_idx = forloop.index0 | modulo: 5 | plus: 1 -%}
+                {%- case placeholder_idx -%}
+                  {%- when 1 -%}
+                    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=700&auto=format&fit=crop&q=80" alt="Happy Journey Mountain Landscape" class="hm-gallery-img" loading="lazy">
+                  {%- when 2 -%}
+                    <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=700&auto=format&fit=crop&q=80" alt="Happy Moments Roadtrip" class="hm-gallery-img" loading="lazy">
+                  {%- when 3 -%}
+                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=700&auto=format&fit=crop&q=80" alt="Happy Team Portrait" class="hm-gallery-img" loading="lazy">
+                  {%- when 4 -%}
+                    <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=700&auto=format&fit=crop&q=80" alt="Beautiful Lake Scenery" class="hm-gallery-img" loading="lazy">
+                  {%- else -%}
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=700&auto=format&fit=crop&q=80" alt="Happy Customer Girl" class="hm-gallery-img" loading="lazy">
+                {%- endcase -%}
+              {%- endif -%}
+            </a>
+          {%- endfor -%}
+
+          <!-- SET 3 (Buffer for wide screens) -->
+          {%- for block in section.blocks -%}
+            <a href="{{ block.settings.link | default: '#' }}" class="hm-gallery-card" aria-hidden="true" tabindex="-1">
+              {%- if block.settings.image != blank -%}
+                <img src="{{ block.settings.image | image_url: width: 700 }}" alt="{{ block.settings.alt_text | default: section.settings.heading | escape }}" class="hm-gallery-img" loading="lazy">
+              {%- else -%}
+                {%- assign placeholder_idx = forloop.index0 | modulo: 5 | plus: 1 -%}
+                {%- case placeholder_idx -%}
+                  {%- when 1 -%}
+                    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=700&auto=format&fit=crop&q=80" alt="Happy Journey Mountain Landscape" class="hm-gallery-img" loading="lazy">
+                  {%- when 2 -%}
+                    <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=700&auto=format&fit=crop&q=80" alt="Happy Moments Roadtrip" class="hm-gallery-img" loading="lazy">
+                  {%- when 3 -%}
+                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=700&auto=format&fit=crop&q=80" alt="Happy Team Portrait" class="hm-gallery-img" loading="lazy">
+                  {%- when 4 -%}
+                    <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=700&auto=format&fit=crop&q=80" alt="Beautiful Lake Scenery" class="hm-gallery-img" loading="lazy">
+                  {%- else -%}
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=700&auto=format&fit=crop&q=80" alt="Happy Customer Girl" class="hm-gallery-img" loading="lazy">
+                {%- endcase -%}
+              {%- endif -%}
+            </a>
+          {%- endfor -%}
+
+        {%- else -%}
+          <!-- Default 6 Fallback Cards if no block added yet -->
+          {%- assign sample_imgs = "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=700&auto=format&fit=crop&q=80|https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=700&auto=format&fit=crop&q=80|https://images.unsplash.com/photo-1517841905240-472988babdf9?w=700&auto=format&fit=crop&q=80|https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=700&auto=format&fit=crop&q=80|https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=700&auto=format&fit=crop&q=80|https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=700&auto=format&fit=crop&q=80" | split: "|" -%}
+          {%- for rep in (1..3) -%}
+            {%- for img_url in sample_imgs -%}
+              <div class="hm-gallery-card">
+                <img src="{{ img_url }}" alt="Happy Journey Moments" class="hm-gallery-img" loading="lazy">
+              </div>
+            {%- endfor -%}
+          {%- endfor -%}
+        {%- endif -%}
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  (function() {
+    function initGallerySlider_{{ section.id | replace: '-', '_' }}() {
+      const viewport = document.getElementById('hmGalleryViewport-{{ section.id }}');
+      const track = document.getElementById('hmGalleryTrack-{{ section.id }}');
+      if (!viewport || !track) return;
+
+      const stepInterval = {{ section.settings.interval_seconds | default: 3 }} * 1000;
+      let intervalTimer = null;
+      let isPaused = false;
+      let isDragging = false;
+      let startX = 0;
+      let scrollStart = 0;
+      let dragDistance = 0;
+
+      // Function to calculate exact step width (1 card width + gap)
+      function getStepDistance() {
+        const firstCard = track.querySelector('.hm-gallery-card');
+        if (!firstCard) return 280;
+        const cardWidth = firstCard.offsetWidth;
+        const trackStyle = window.getComputedStyle(track);
+        const gap = parseFloat(trackStyle.gap) || 20;
+        return cardWidth + gap;
+      }
+
+      // Step transition right-to-left every 3 seconds
+      function autoStepMove() {
+        if (isPaused || isDragging) return;
+        
+        const step = getStepDistance();
+        const maxLoopWidth = track.scrollWidth / 3;
+
+        // Smoothly scroll forward by 1 card step
+        viewport.scrollBy({
+          left: step,
+          behavior: 'smooth'
+        });
+
+        // Loop check after smooth scroll animation
+        setTimeout(() => {
+          if (viewport.scrollLeft >= maxLoopWidth * 2) {
+            viewport.scrollLeft -= maxLoopWidth;
+          }
+        }, 500);
+      }
+
+      // Start interval timer
+      function startAutoTimer() {
+        clearInterval(intervalTimer);
+        intervalTimer = setInterval(autoStepMove, stepInterval);
+      }
+
+      startAutoTimer();
+
+      // Pause on mouse enter, resume on leave
+      viewport.addEventListener('mouseenter', function() {
+        isPaused = true;
+      });
+
+      viewport.addEventListener('mouseleave', function() {
+        isPaused = false;
+      });
+
+      // Drag to scroll for Desktop Mouse
+      viewport.addEventListener('mousedown', function(e) {
+        isDragging = true;
+        isPaused = true;
+        dragDistance = 0;
+        viewport.classList.add('hm-is-grabbing');
+        startX = e.pageX - viewport.offsetLeft;
+        scrollStart = viewport.scrollLeft;
+      });
+
+      window.addEventListener('mouseup', function() {
+        if (isDragging) {
+          isDragging = false;
+          viewport.classList.remove('hm-is-grabbing');
+          setTimeout(() => { isPaused = false; }, 1500);
+        }
+      });
+
+      viewport.addEventListener('mousemove', function(e) {
+        if (!isDragging) return;
+        e.preventDefault();
+        const x = e.pageX - viewport.offsetLeft;
+        const walk = (x - startX) * 1.3;
+        dragDistance = Math.abs(walk);
+        viewport.scrollLeft = scrollStart - walk;
+
+        const maxLoopWidth = track.scrollWidth / 3;
+        if (viewport.scrollLeft >= maxLoopWidth * 2) {
+          viewport.scrollLeft -= maxLoopWidth;
+          startX = e.pageX - viewport.offsetLeft;
+          scrollStart = viewport.scrollLeft;
+        } else if (viewport.scrollLeft <= 0) {
+          viewport.scrollLeft += maxLoopWidth;
+          startX = e.pageX - viewport.offsetLeft;
+          scrollStart = viewport.scrollLeft;
+        }
+      });
+
+      // Prevent accidental link clicks when dragging
+      viewport.querySelectorAll('.hm-gallery-card').forEach(function(card) {
+        card.addEventListener('click', function(e) {
+          if (dragDistance > 10) {
+            e.preventDefault();
+          }
+        });
+      });
+
+      // Touch events for mobile
+      viewport.addEventListener('touchstart', function() {
+        isPaused = true;
+      }, { passive: true });
+
+      viewport.addEventListener('touchend', function() {
+        setTimeout(() => {
+          const maxLoopWidth = track.scrollWidth / 3;
+          if (viewport.scrollLeft >= maxLoopWidth * 2) {
+            viewport.scrollLeft -= maxLoopWidth;
+          } else if (viewport.scrollLeft <= 0) {
+            viewport.scrollLeft += maxLoopWidth;
+          }
+          isPaused = false;
+        }, 1200);
+      }, { passive: true });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initGallerySlider_{{ section.id | replace: '-', '_' }});
+    } else {
+      initGallerySlider_{{ section.id | replace: '-', '_' }}();
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Happy Moments Gallery 16",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Script Subtitle",
+      "default": "Happy Moments Gallery"
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Subtitle Color",
+      "default": "#2b70e4"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Main Heading",
+      "default": "Some Of Our Happy Journey"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#1e293b"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_grid",
+      "label": "Show Background Decorative Grid",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Section Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "interval_seconds",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "unit": "s",
+      "label": "Auto-Slide Interval",
+      "default": 3
+    },
+    {
+      "type": "header",
+      "content": "Card Dimensions (Desktop)"
+    },
+    {
+      "type": "range",
+      "id": "card_width_desktop",
+      "min": 180,
+      "max": 400,
+      "step": 10,
+      "unit": "px",
+      "label": "Card Width (Desktop)",
+      "default": 260
+    },
+    {
+      "type": "range",
+      "id": "card_height_desktop",
+      "min": 240,
+      "max": 500,
+      "step": 10,
+      "unit": "px",
+      "label": "Card Height (Desktop)",
+      "default": 340
+    },
+    {
+      "type": "range",
+      "id": "card_radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Card Rounded Corner Radius",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "card_gap",
+      "min": 8,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Gap Between Cards",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Card Dimensions (Mobile)"
+    },
+    {
+      "type": "range",
+      "id": "card_width_mobile",
+      "min": 140,
+      "max": 280,
+      "step": 10,
+      "unit": "px",
+      "label": "Card Width (Mobile)",
+      "default": 190
+    },
+    {
+      "type": "range",
+      "id": "card_height_mobile",
+      "min": 180,
+      "max": 360,
+      "step": 10,
+      "unit": "px",
+      "label": "Card Height (Mobile)",
+      "default": 250
+    },
+    {
+      "type": "range",
+      "id": "card_radius_mobile",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "label": "Card Rounded Corner Radius (Mobile)",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "card_gap_mobile",
+      "min": 6,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "label": "Gap Between Cards (Mobile)",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 20,
+      "max": 120,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Top (Desktop)",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 20,
+      "max": 120,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Bottom (Desktop)",
+      "default": 70
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 15,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Top (Mobile)",
+      "default": 45
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 15,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Bottom (Mobile)",
+      "default": 50
+    }
+  ],
+  "blocks": [
+    {
+      "type": "gallery_image",
+      "name": "Gallery Photo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Upload Photo"
+        },
+        {
+          "type": "text",
+          "id": "alt_text",
+          "label": "Image Alt Text",
+          "default": "Happy Moments Photo"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Image Link (Optional)"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 50,
+  "presets": [
+    {
+      "name": "Happy Moments Gallery 16",
+      "settings": {
+        "subtitle": "Happy Moments Gallery",
+        "heading": "Some Of Our Happy Journey"
+      },
+      "blocks": [
+        { "type": "gallery_image" },
+        { "type": "gallery_image" },
+        { "type": "gallery_image" },
+        { "type": "gallery_image" },
+        { "type": "gallery_image" },
+        { "type": "gallery_image" }
+      ]
+    }
+  ]
+}
+{% endschema %}
