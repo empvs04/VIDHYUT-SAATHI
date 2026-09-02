@@ -304,8 +304,8 @@
 
   /* ==========================================================================
      PART 5: CARDS 14, 15, 16 (LEFT 2 HORIZONTAL RECTANGLES + RIGHT 1 TRUE SQUARE)
-     - Left Column (50% Width): 2 Horizontal Rectangles with 16px gap
-     - Right Column (50% Width): 1 True 1:1 Square
+     - Left Column (50% Width): 2 Equal Horizontal Rectangle rows with 16px gap
+     - Right Column (50% Width): 1 Large True 1:1 Square
      - Exact match of total height & equal width on both sides
      ========================================================================== */
   .vsg-rect-square-split-block {
@@ -319,21 +319,21 @@
     box-sizing: border-box;
   }
 
-  /* Left Column: 2 Horizontal Landscape Rectangles */
+  /* Left Column: 2 Equal Height Rows with 16px Gap */
   .vsg-rss-col-left {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
     gap: 16px;
     width: 100%;
+    height: 100%;
     box-sizing: border-box;
-    justify-content: space-between;
   }
 
   .vsg-rss-col-left .vsg-card-item {
     width: 100% !important;
-    height: calc(50% - 8px) !important;
+    height: 100% !important;
     min-height: 0 !important;
-    flex: 1 1 auto !important;
+    display: block !important;
     border-radius: 0 !important;
   }
 
@@ -350,11 +350,11 @@
     border-radius: 0 !important;
   }
 
-  /* Right Column: 1 Large 1:1 True Square */
+  /* Right Column: 1 Large True 1:1 Square */
   .vsg-rss-col-right {
     display: flex;
     flex-direction: column;
-    width: 100% !important;
+    width: 100%;
     box-sizing: border-box;
   }
 
@@ -363,6 +363,7 @@
     aspect-ratio: 1 / 1 !important;
     height: auto !important;
     min-height: 0 !important;
+    display: block !important;
     border-radius: 0 !important;
   }
 
@@ -972,7 +973,7 @@
             {%- if section.settings.card14_image != blank -%}
               <img src="{{ section.settings.card14_image | image_url: width: 1200 }}" alt="Vidhyut Saathi Moments" class="vsg-card-img" loading="lazy">
             {%- else -%}
-              <img src="{{ 'vidhyut-banking-banner.jpg' | asset_url }}" alt="Corporate Banking" class="vsg-card-img" loading="lazy">
+              <img src="{{ 'vidhyut-banking-banner.png' | asset_url }}" alt="Corporate Banking" class="vsg-card-img" loading="lazy">
             {%- endif -%}
             <div class="vsg-expand-btn"><i class="fa-solid fa-expand"></i></div>
           </div>
@@ -998,7 +999,7 @@
             {%- if section.settings.card16_image != blank -%}
               <img src="{{ section.settings.card16_image | image_url: width: 1200 }}" alt="Vidhyut Saathi Moments" class="vsg-card-img" loading="lazy">
             {%- else -%}
-              <img src="{{ 'india_live_states_map.jpg' | asset_url }}" alt="All India Map" class="vsg-card-img" loading="lazy">
+              <img src="{{ 'wvs-pan-india-map.jpg' | asset_url }}" alt="All India Map" class="vsg-card-img" loading="lazy">
             {%- endif -%}
             <div class="vsg-expand-btn"><i class="fa-solid fa-expand"></i></div>
           </div>
