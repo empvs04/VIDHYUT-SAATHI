@@ -1553,7 +1553,7 @@
   </section>
 
   <!-- ══ FOOTER CTA BAND ══ -->
-  <section class="vscom-sec" style="padding-bottom:70px;">
+  <section class="vscom-sec" style="padding-bottom:30px;">
     <div class="wrap">
       <div class="vscom-cta-band" style="background:linear-gradient(135deg, #008744 0%, #00b050 100%); border-radius:20px; color:#ffffff; padding:36px 20px; text-align:center; box-shadow:0 10px 30px rgba(0, 176, 80, 0.25);">
         <h3 style="font-size:clamp(20px, 4vw, 30px); font-weight:800; margin:0 0 10px 0;">Ready to Cut 20–30% off Your Commercial Electricity Bill?</h3>
@@ -1561,6 +1561,86 @@
         <a href="https://wa.me/919876543210?text=Hi%20Vidhyut%20Saathi%2C%20I%20want%20to%20order%20Commercial%20Saver%20Cards" class="vscom-btn-primary" style="background:#ffffff; color:#007b3e; font-size:15px; padding:15px 30px; border-radius:12px; font-weight:800;" target="_blank">
           <i class="fa-brands fa-whatsapp"></i> Order Commercial Cards Now
         </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ SECTION 8: COMMERCIAL HERO SHOWCASE ══ -->
+  <section class="vscom-hero" style="border-top:1.5px solid var(--line); padding: clamp(40px, 5vw, 60px) 0;">
+    <div class="wrap">
+      <div class="vscom-hero-grid">
+        <div>
+          <div class="vscom-eyebrow">
+            <i class="fa-solid fa-building-flag"></i> Commercial Energy Saver Guide
+          </div>
+          <h2>Vidhyut Saathi Card for <span>Commercial Establishments</span></h2>
+          <p class="vscom-hero-lead">
+            Lower operational overheads and stop paying heavy DISCOM reactive power surcharges. Designed for Offices, Retail Outlets, Supermarkets, Restaurants, Hotels, Hospitals, and Commercial DB Panels.
+          </p>
+
+          <div class="vscom-hero-ctas">
+            <a href="#vscom-calc" class="vscom-btn-primary">
+              <i class="fa-solid fa-calculator"></i> Calculate Commercial Cards
+            </a>
+            <a href="https://wa.me/919876543210?text=Hi%20Vidhyut%20Saathi%2C%20I%20want%20to%20order%20Commercial%20Saver%20Cards" class="vscom-btn-secondary" target="_blank">
+              <i class="fa-brands fa-whatsapp"></i> Commercial Inquiry
+            </a>
+          </div>
+
+          <div class="vscom-trust-badges">
+            <div class="vscom-trust-badge-item">
+              <div class="vscom-trust-badge-icon"><i class="fa-solid fa-bolt"></i></div>
+              <div class="vscom-trust-badge-text">
+                <strong>20–30% Savings</strong>
+                <span>On DISCOM Bills</span>
+              </div>
+            </div>
+            <div class="vscom-trust-badge-item">
+              <div class="vscom-trust-badge-icon"><i class="fa-solid fa-chart-line"></i></div>
+              <div class="vscom-trust-badge-text">
+                <strong>PF Improvement</strong>
+                <span>Up to 0.99 Lag</span>
+              </div>
+            </div>
+            <div class="vscom-trust-badge-item">
+              <div class="vscom-trust-badge-icon"><i class="fa-solid fa-shield-halved"></i></div>
+              <div class="vscom-trust-badge-text">
+                <strong>10-Yr Life</strong>
+                <span>3-Yr Warranty</span>
+              </div>
+            </div>
+            <div class="vscom-trust-badge-item">
+              <div class="vscom-trust-badge-icon"><i class="fa-solid fa-certificate"></i></div>
+              <div class="vscom-trust-badge-text">
+                <strong>ISO Certified</strong>
+                <span>100% Legal & Safe</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT HERO SHOWCASE -->
+        <div class="vscom-hero-image-box">
+          <span class="vscom-hero-card-tag"><i class="fa-solid fa-building"></i> Commercial Heavy Saver Card</span>
+
+          <div style="width:100%; display:flex; justify-content:center; margin:12px 0;">
+            {% if section.settings.sec8_card_image != blank %}
+              <img src="{{ section.settings.sec8_card_image | image_url: width: 600 }}" alt="Vidhyut Saathi Commercial Electric Saver Card" style="width: 100%; max-width: 320px; border-radius: 16px; box-shadow: 0 16px 36px rgba(0,0,0,0.4); border: 2px solid rgba(255,255,255,0.25);">
+            {% elsif section.settings.card_image != blank %}
+              <img src="{{ section.settings.card_image | image_url: width: 600 }}" alt="Vidhyut Saathi Commercial Electric Saver Card" style="width: 100%; max-width: 320px; border-radius: 16px; box-shadow: 0 16px 36px rgba(0,0,0,0.4); border: 2px solid rgba(255,255,255,0.25);">
+            {% else %}
+              <img src="{{ 'official-vs-card-front.jpg' | asset_url }}" alt="Vidhyut Saathi Commercial Electric Saver Card" style="width: 100%; max-width: 320px; border-radius: 16px; box-shadow: 0 16px 36px rgba(0,0,0,0.4); border: 2px solid rgba(255,255,255,0.25);" onerror="this.onerror=null; this.src='https://cdn.shopify.com/s/files/1/0663/8783/7093/files/VS_Card_Final_Design_Golden_1.png';">
+            {% endif %}
+          </div>
+
+          <p style="font-size:12.5px; color:var(--muted); margin:8px 0 12px 0; line-height:1.5;">
+            Patented US-German Terahertz frequency technology stabilizes voltage fluctuations across commercial 3-phase DB panels and eliminates inductive reactive current from elevators & HVAC motors.
+          </p>
+
+          <a href="#mcb-gallery" class="vscom-mcb-hero-link">
+            <i class="fa-solid fa-camera"></i> See 20 Commercial MCB Installations <i class="fa-solid fa-arrow-down-long"></i>
+          </a>
+        </div>
       </div>
     </div>
   </section>
