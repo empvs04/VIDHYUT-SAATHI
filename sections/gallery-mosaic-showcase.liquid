@@ -2,7 +2,7 @@
   @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap');
 
   /* ==========================================================================
-     MOSAIC & SQUARE GALLERY (WITH 50%-50% SPLIT SHOWCASE AFTER 7 CARDS)
+     SECTION 2: 90-DEGREE SHARP EDGES 4-CARD HERO + 30 SQUARE CARDS GRID
      ========================================================================== */
   .vsg-mosaic-section {
     position: relative;
@@ -218,7 +218,7 @@
   }
 
   /* ==========================================================================
-     PART 2: SQUARE CARDS GRIDS (3 EQUAL COLUMNS)
+     PART 2: 30 SQUARE CARDS GRID (3 EQUAL COLUMNS x 10 ROWS)
      ========================================================================== */
   .vsg-30cards-grid {
     display: grid;
@@ -228,14 +228,6 @@
     max-width: 1400px;
     margin: 0 auto;
     box-sizing: border-box;
-  }
-
-  .vsg-grid-first3 {
-    margin-bottom: 20px;
-  }
-
-  .vsg-grid-remaining {
-    margin-top: 20px;
   }
 
   .vsg-square-card {
@@ -262,85 +254,6 @@
     object-fit: cover !important;
     object-position: center !important;
     display: block !important;
-    border-radius: 0 !important;
-  }
-
-  /* ==========================================================================
-     PART 3: SPECIAL 50%-50% 3-IMAGE FEATURE SHOWCASE (AFTER 7 CARDS TOTAL)
-     - Left Column (50%): 2 Vertical 1:1 Squares with 16px Gap
-     - Right Column (50%): 1 Tall Image Matching Left Total Height
-     - Both Left & Right have 100% Equal Width (50% / 50%)
-     ========================================================================== */
-  .vsg-split-3image-block {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 16px;
-    width: 100%;
-    max-width: 1400px;
-    margin: 20px auto;
-    align-items: start;
-    box-sizing: border-box;
-  }
-
-  /* Left Column: 2 Vertical 1:1 Squares */
-  .vsg-split-col-left {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    width: 100%;
-    box-sizing: border-box;
-  }
-
-  .vsg-split-col-left .vsg-card-item {
-    width: 100% !important;
-    aspect-ratio: 1 / 1 !important; /* STRICT 1:1 SQUARE */
-    height: auto !important;
-    min-height: 0 !important;
-    border-radius: 0 !important;
-  }
-
-  .vsg-split-col-left .vsg-card-img-wrap {
-    width: 100% !important;
-    height: 100% !important;
-    aspect-ratio: 1 / 1 !important;
-    border-radius: 0 !important;
-  }
-
-  .vsg-split-col-left .vsg-card-img {
-    width: 100% !important;
-    height: 100% !important;
-    aspect-ratio: 1 / 1 !important;
-    object-fit: cover !important;
-    border-radius: 0 !important;
-  }
-
-  /* Right Column: 1 Tall Image Equal in Width & Exact Synchronized Height */
-  .vsg-split-col-right {
-    display: flex;
-    flex-direction: column;
-    width: 100% !important;
-    min-width: 0 !important;
-    box-sizing: border-box;
-  }
-
-  .vsg-split-col-right .vsg-card-item {
-    width: 100% !important;
-    height: 100% !important;
-    min-height: 0 !important;
-    flex: 1 1 auto !important;
-    border-radius: 0 !important;
-  }
-
-  .vsg-split-col-right .vsg-card-img-wrap {
-    width: 100% !important;
-    height: 100% !important;
-    border-radius: 0 !important;
-  }
-
-  .vsg-split-col-right .vsg-card-img {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
     border-radius: 0 !important;
   }
 
@@ -537,7 +450,11 @@
   }
 
   /* ==========================================================================
-     MOBILE RESPONSIVENESS
+     MOBILE RESPONSIVENESS:
+     1. Big Photo 1 (Full Width)
+     2. Two Square Photos Horizontally Side-by-Side (Center 2 Cards)
+     3. Big Photo 2 (Full Width)
+     4. 30-Card Grid in 2-Column Square Grid
      ========================================================================== */
   @media screen and (max-width: 900px) {
     .vsg-mosaic-section {
@@ -553,6 +470,7 @@
       width: 100% !important;
     }
 
+    /* 1. Big Photo 1 (Left Card) */
     .vsg-col-left {
       width: 100% !important;
       height: auto !important;
@@ -563,6 +481,7 @@
       min-height: 0 !important;
     }
 
+    /* 2. Two Square Photos Horizontally Side-by-Side (Center Cards) */
     .vsg-col-center {
       display: grid !important;
       grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
@@ -571,11 +490,12 @@
     }
     .vsg-col-center .vsg-card-item {
       width: 100% !important;
-      aspect-ratio: 1 / 1 !important;
+      aspect-ratio: 1 / 1 !important; /* STRICT 1:1 SQUARE */
       height: auto !important;
       min-height: 0 !important;
     }
 
+    /* 3. Big Photo 2 (Right Card) */
     .vsg-col-right {
       width: 100% !important;
       height: auto !important;
@@ -586,47 +506,11 @@
       min-height: 0 !important;
     }
 
-    /* Square Grids Mobile: 2-Column Square Grid */
+    /* 4. 30-Cards Grid: Seamless 2-Column Square Grid */
     .vsg-30cards-grid {
       display: grid !important;
       grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
       gap: 10px !important;
-    }
-    .vsg-grid-first3 {
-      margin-bottom: 10px !important;
-    }
-    .vsg-grid-remaining {
-      margin-top: 10px !important;
-    }
-
-    /* Special 3-Image Split Showcase on Mobile */
-    .vsg-split-3image-block {
-      display: flex !important;
-      flex-direction: column !important;
-      gap: 10px !important;
-      margin: 10px auto !important;
-    }
-
-    .vsg-split-col-left {
-      display: grid !important;
-      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-      gap: 10px !important;
-      width: 100% !important;
-    }
-    .vsg-split-col-left .vsg-card-item {
-      aspect-ratio: 1 / 1 !important;
-      height: auto !important;
-      width: 100% !important;
-    }
-
-    .vsg-split-col-right {
-      width: 100% !important;
-      height: auto !important;
-    }
-    .vsg-split-col-right .vsg-card-item {
-      width: 100% !important;
-      height: clamp(230px, 64vw, 340px) !important;
-      min-height: 0 !important;
     }
   }
 
@@ -675,7 +559,7 @@
       border-radius: 999px;
     }
 
-    /* 4-Card Hero Mobile Spacing */
+    /* 4-Card Hero Mobile Spacing on small screens */
     .vsg-4card-grid {
       gap: 8px !important;
       margin-bottom: 8px !important;
@@ -688,29 +572,11 @@
       gap: 8px !important;
     }
 
-    /* Square Grids Mobile Spacing */
+    /* 30-Cards Grid Mobile 2-Column Layout */
     .vsg-30cards-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
       gap: 8px !important;
     }
-    .vsg-grid-first3 {
-      margin-bottom: 8px !important;
-    }
-    .vsg-grid-remaining {
-      margin-top: 8px !important;
-    }
-
-    /* Split 3-Image Block Mobile Spacing */
-    .vsg-split-3image-block {
-      gap: 8px !important;
-      margin: 8px auto !important;
-    }
-    .vsg-split-col-left {
-      gap: 8px !important;
-    }
-    .vsg-split-col-right .vsg-card-item {
-      height: clamp(210px, 60vw, 300px) !important;
-    }
-
     .vsg-card-item {
       border-radius: 0 !important;
     }
@@ -782,7 +648,7 @@
       </div>
     </div>
 
-    <!-- PART 1: 3-COLUMN 4-CARD HERO GRID (CARDS 1-4) -->
+    <!-- PART 1: 3-COLUMN 4-CARD HERO GRID -->
     <div class="vsg-4card-grid" id="vsgHeroGrid-{{ section.id }}">
       
       <!-- 1. LEFT TALL CARD -->
@@ -802,7 +668,7 @@
       <!-- 2. CENTER COLUMN: 2 PURE 1:1 TRUE SQUARES WITH 16PX GAP -->
       <div class="vsg-col-center">
         <!-- Center Top Square Card -->
-        <div class="vsg-card-item card-center-item" data-category="{{ section.settings.card2_category | default: 'celebrating' }}">
+        <div class="vsg-card-item" data-category="{{ section.settings.card2_category | default: 'celebrating' }}">
           <div class="vsg-card-img-wrap">
             {%- if section.settings.card2_image != blank -%}
               <img src="{{ section.settings.card2_image | image_url: width: 1000 }}" alt="Vidhyut Saathi Moments" class="vsg-card-img" loading="lazy">
@@ -814,7 +680,7 @@
         </div>
 
         <!-- Center Bottom Square Card -->
-        <div class="vsg-card-item card-center-item" data-category="{{ section.settings.card3_category | default: 'awards' }}">
+        <div class="vsg-card-item" data-category="{{ section.settings.card3_category | default: 'awards' }}">
           <div class="vsg-card-img-wrap">
             {%- if section.settings.card3_image != blank -%}
               <img src="{{ section.settings.card3_image | image_url: width: 1000 }}" alt="Vidhyut Saathi Moments" class="vsg-card-img" loading="lazy">
@@ -842,86 +708,10 @@
 
     </div>
 
-    <!-- PART 2A: FIRST 3 SQUARE CARDS (BLOCKS 1, 2, 3) -> TOTAL 7 CARDS FROM TOP (4+3) -->
-    <div class="vsg-30cards-grid vsg-grid-first3" id="vsg30GridA-{{ section.id }}">
+    <!-- PART 2: 30 SQUARE CARDS (3 COLUMNS x 10 ROWS) GRID -->
+    <div class="vsg-30cards-grid" id="vsg30Grid-{{ section.id }}">
       {%- if section.blocks.size > 0 -%}
-        {%- for block in section.blocks limit: 3 -%}
-          <div class="vsg-card-item vsg-square-card" data-category="{{ block.settings.category | default: 'all' }}" {{ block.shopify_attributes }}>
-            <div class="vsg-card-img-wrap">
-              {%- if block.settings.image != blank -%}
-                <img src="{{ block.settings.image | image_url: width: 1000 }}" alt="{{ block.settings.title | default: 'Vidhyut Saathi Moments' | escape }}" class="vsg-card-img" loading="lazy">
-              {%- elsif block.settings.fallback_asset != blank -%}
-                <img src="{{ block.settings.fallback_asset | asset_url }}" alt="{{ block.settings.title | default: 'Vidhyut Saathi Moments' | escape }}" class="vsg-card-img" loading="lazy">
-              {%- else -%}
-                <img src="{{ 'vidhyut-saathi-team-bg.jpg' | asset_url }}" alt="Vidhyut Saathi Moments" class="vsg-card-img" loading="lazy">
-              {%- endif -%}
-              <div class="vsg-expand-btn"><i class="fa-solid fa-expand"></i></div>
-            </div>
-          </div>
-        {%- endfor -%}
-      {%- endif -%}
-    </div>
-
-    <!-- PART 2B: SPECIAL 50%-50% 3-IMAGE FEATURE SHOWCASE (BLOCKS 4, 5, 6 RIGHT AFTER 7 CARDS) -->
-    {%- if section.blocks.size >= 6 -%}
-      {%- assign block4 = section.blocks[3] -%}
-      {%- assign block5 = section.blocks[4] -%}
-      {%- assign block6 = section.blocks[5] -%}
-      
-      <div class="vsg-split-3image-block" id="vsgSplitBlock-{{ section.id }}">
-        <!-- Left Column (50% Width): 2 Vertical 1:1 Squares (Blocks 4 & 5) -->
-        <div class="vsg-split-col-left">
-          <!-- Top Square Card (Block 4) -->
-          <div class="vsg-card-item" data-category="{{ block4.settings.category | default: 'all' }}" {{ block4.shopify_attributes }}>
-            <div class="vsg-card-img-wrap">
-              {%- if block4.settings.image != blank -%}
-                <img src="{{ block4.settings.image | image_url: width: 1000 }}" alt="{{ block4.settings.title | default: 'Vidhyut Saathi Moments' | escape }}" class="vsg-card-img" loading="lazy">
-              {%- elsif block4.settings.fallback_asset != blank -%}
-                <img src="{{ block4.settings.fallback_asset | asset_url }}" alt="{{ block4.settings.title | default: 'Vidhyut Saathi Moments' | escape }}" class="vsg-card-img" loading="lazy">
-              {%- else -%}
-                <img src="{{ 'iso-certificate.png' | asset_url }}" alt="Vidhyut Saathi Moments" class="vsg-card-img" loading="lazy">
-              {%- endif -%}
-              <div class="vsg-expand-btn"><i class="fa-solid fa-expand"></i></div>
-            </div>
-          </div>
-
-          <!-- Bottom Square Card (Block 5) -->
-          <div class="vsg-card-item" data-category="{{ block5.settings.category | default: 'all' }}" {{ block5.shopify_attributes }}>
-            <div class="vsg-card-img-wrap">
-              {%- if block5.settings.image != blank -%}
-                <img src="{{ block5.settings.image | image_url: width: 1000 }}" alt="{{ block5.settings.title | default: 'Vidhyut Saathi Moments' | escape }}" class="vsg-card-img" loading="lazy">
-              {%- elsif block5.settings.fallback_asset != blank -%}
-                <img src="{{ block5.settings.fallback_asset | asset_url }}" alt="{{ block5.settings.title | default: 'Vidhyut Saathi Moments' | escape }}" class="vsg-card-img" loading="lazy">
-              {%- else -%}
-                <img src="{{ 'commercial-building-1.png' | asset_url }}" alt="Vidhyut Saathi Moments" class="vsg-card-img" loading="lazy">
-              {%- endif -%}
-              <div class="vsg-expand-btn"><i class="fa-solid fa-expand"></i></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Right Column (50% Width): 1 Tall Card (Block 6 - Exact Height of Left Column) -->
-        <div class="vsg-split-col-right">
-          <div class="vsg-card-item" data-category="{{ block6.settings.category | default: 'all' }}" {{ block6.shopify_attributes }}>
-            <div class="vsg-card-img-wrap">
-              {%- if block6.settings.image != blank -%}
-                <img src="{{ block6.settings.image | image_url: width: 1200 }}" alt="{{ block6.settings.title | default: 'Vidhyut Saathi Moments' | escape }}" class="vsg-card-img" loading="lazy">
-              {%- elsif block6.settings.fallback_asset != blank -%}
-                <img src="{{ block6.settings.fallback_asset | asset_url }}" alt="{{ block6.settings.title | default: 'Vidhyut Saathi Moments' | escape }}" class="vsg-card-img" loading="lazy">
-              {%- else -%}
-                <img src="{{ 'industrial-factory-1.png' | asset_url }}" alt="Vidhyut Saathi Moments" class="vsg-card-img" loading="lazy">
-              {%- endif -%}
-              <div class="vsg-expand-btn"><i class="fa-solid fa-expand"></i></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    {%- endif -%}
-
-    <!-- PART 2C: REMAINING SQUARE CARDS (BLOCKS 7 TO 30) -->
-    <div class="vsg-30cards-grid vsg-grid-remaining" id="vsg30GridB-{{ section.id }}">
-      {%- if section.blocks.size > 6 -%}
-        {%- for block in section.blocks offset: 6 -%}
+        {%- for block in section.blocks -%}
           <div class="vsg-card-item vsg-square-card" data-category="{{ block.settings.category | default: 'all' }}" {{ block.shopify_attributes }}>
             <div class="vsg-card-img-wrap">
               {%- if block.settings.image != blank -%}
@@ -965,42 +755,24 @@
       const lbImg = document.getElementById(`vsgLightboxImg-${sectionId}`);
       const lbClose = document.getElementById(`vsgLightboxClose-${sectionId}`);
 
-      // 1. Dynamic Height Sync for Top 4-Card Hero
+      // Dynamic Height Sync for Left/Right to Center Column Total Height
       function syncHeroHeights() {
         const heroGrid = document.getElementById(`vsgHeroGrid-${sectionId}`);
-        if (heroGrid) {
-          const leftCol = heroGrid.querySelector('.vsg-col-left');
-          const rightCol = heroGrid.querySelector('.vsg-col-right');
-          const centerCol = heroGrid.querySelector('.vsg-col-center');
-          if (leftCol && rightCol && centerCol) {
-            if (window.innerWidth > 900) {
-              const centerHeight = centerCol.offsetHeight;
-              if (centerHeight > 0) {
-                leftCol.style.height = centerHeight + 'px';
-                rightCol.style.height = centerHeight + 'px';
-              }
-            } else {
-              leftCol.style.height = '';
-              rightCol.style.height = '';
-            }
-          }
-        }
+        if (!heroGrid) return;
+        const leftCol = heroGrid.querySelector('.vsg-col-left');
+        const rightCol = heroGrid.querySelector('.vsg-col-right');
+        const centerCol = heroGrid.querySelector('.vsg-col-center');
+        if (!leftCol || !rightCol || !centerCol) return;
 
-        // 2. Dynamic Height Sync for Special 50%-50% Split 3-Image Showcase
-        const splitBlock = document.getElementById(`vsgSplitBlock-${sectionId}`);
-        if (splitBlock) {
-          const splitLeft = splitBlock.querySelector('.vsg-split-col-left');
-          const splitRight = splitBlock.querySelector('.vsg-split-col-right');
-          if (splitLeft && splitRight) {
-            if (window.innerWidth > 900) {
-              const leftHeight = splitLeft.offsetHeight;
-              if (leftHeight > 0) {
-                splitRight.style.height = leftHeight + 'px';
-              }
-            } else {
-              splitRight.style.height = '';
-            }
+        if (window.innerWidth > 900) {
+          const centerHeight = centerCol.offsetHeight;
+          if (centerHeight > 0) {
+            leftCol.style.height = centerHeight + 'px';
+            rightCol.style.height = centerHeight + 'px';
           }
+        } else {
+          leftCol.style.height = '';
+          rightCol.style.height = '';
         }
       }
 
