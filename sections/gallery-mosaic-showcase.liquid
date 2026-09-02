@@ -450,55 +450,69 @@
   }
 
   /* ==========================================================================
-     MOBILE RESPONSIVENESS
+     MOBILE RESPONSIVENESS (100% FLUID, TOUCH-OPTIMIZED 2-COLUMN GRID)
      ========================================================================== */
   @media screen and (max-width: 900px) {
     .vsg-mosaic-section {
-      padding: 50px 18px 70px 18px;
+      padding: 45px 16px 65px 16px;
     }
+    
+    /* 4-Card Hero Mobile: Seamless 2-Column Square Grid */
     .vsg-4card-grid {
-      grid-template-columns: 1fr;
-      gap: 12px;
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      gap: 10px !important;
+      margin-bottom: 10px !important;
     }
     .vsg-col-left,
     .vsg-col-right {
-      height: 320px !important;
+      width: 100% !important;
+      height: auto !important;
+    }
+    .vsg-col-left .vsg-card-item,
+    .vsg-col-right .vsg-card-item {
+      aspect-ratio: 1 / 1 !important;
+      height: auto !important;
+      width: 100% !important;
     }
     .vsg-col-center {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      height: auto;
+      grid-column: 1 / span 2;
+      display: grid !important;
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      gap: 10px !important;
+      width: 100% !important;
     }
     .vsg-col-center .vsg-card-item {
       aspect-ratio: 1 / 1 !important;
       height: auto !important;
+      width: 100% !important;
     }
+
+    /* 30-Cards Grid: Seamless 2-Column Square Grid */
     .vsg-30cards-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      gap: 10px !important;
     }
   }
 
   @media screen and (max-width: 600px) {
     .vsg-mosaic-section {
-      padding: clamp(35px, 7vw, 45px) clamp(10px, 3vw, 14px) 55px clamp(10px, 3vw, 14px);
+      padding: clamp(30px, 6vw, 42px) clamp(8px, 2.5vw, 12px) 50px clamp(8px, 2.5vw, 12px);
     }
     .vsg-mosaic-pill {
-      font-size: 0.72rem;
-      padding: 5px 14px;
-      margin-bottom: 10px;
-    }
-    .vsg-mosaic-title {
-      font-size: clamp(1.6rem, 6.2vw, 2.1rem);
-      line-height: 1.2;
+      font-size: 0.7rem;
+      padding: 4px 12px;
       margin-bottom: 8px;
     }
+    .vsg-mosaic-title {
+      font-size: clamp(1.5rem, 5.8vw, 1.95rem);
+      line-height: 1.2;
+      margin-bottom: 6px;
+    }
     .vsg-mosaic-sub {
-      font-size: 0.86rem;
-      line-height: 1.5;
-      margin-bottom: 18px;
-      padding: 0 4px;
+      font-size: 0.84rem;
+      line-height: 1.45;
+      margin-bottom: 16px;
+      padding: 0 2px;
     }
 
     /* Swipe-friendly Horizontal Filter Bar on Mobile */
@@ -508,18 +522,18 @@
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
       justify-content: flex-start;
-      gap: 8px;
-      padding: 4px 2px 10px 2px;
-      margin-bottom: 18px;
+      gap: 6px;
+      padding: 2px 2px 8px 2px;
+      margin-bottom: 14px;
       scrollbar-width: none;
     }
     .vsg-filter-nav::-webkit-scrollbar {
       display: none;
     }
     .vsg-filter-btn {
-      font-size: 0.74rem;
+      font-size: 0.72rem;
       font-weight: 700;
-      padding: 6px 14px;
+      padding: 5px 12px;
       white-space: nowrap;
       flex-shrink: 0;
       border-radius: 999px;
@@ -527,21 +541,17 @@
 
     /* 4-Card Hero Mobile Optimization */
     .vsg-4card-grid {
-      gap: 10px;
-      margin-bottom: 12px;
-    }
-    .vsg-col-left,
-    .vsg-col-right {
-      height: clamp(210px, 58vw, 280px) !important;
+      gap: 8px !important;
+      margin-bottom: 8px !important;
     }
     .vsg-col-center {
-      gap: 10px;
+      gap: 8px !important;
     }
 
-    /* 30-Cards Grid Mobile 2-Column Perfect Layout */
+    /* 30-Cards Grid Mobile 2-Column Layout */
     .vsg-30cards-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      gap: 8px !important;
     }
     .vsg-card-item {
       border-radius: 0 !important;
@@ -554,7 +564,7 @@
       width: 26px;
       height: 26px;
       font-size: 0.7rem;
-      opacity: 0.9;
+      opacity: 0.88;
       transform: scale(0.9);
       background: rgba(255, 255, 255, 0.92);
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
@@ -562,11 +572,12 @@
 
     /* Lightbox Mobile Dialog Fit */
     .vsg-lightbox {
-      padding: 12px;
+      padding: 10px;
     }
     .vsg-lightbox-content {
       border-radius: 0 !important;
       max-height: 85vh;
+      width: 100%;
     }
     .vsg-lightbox-img-box {
       max-height: 70vh;
@@ -577,11 +588,11 @@
       border-radius: 0 !important;
     }
     .vsg-lightbox-close {
-      top: 10px;
-      right: 10px;
-      width: 34px;
-      height: 34px;
-      font-size: 1.1rem;
+      top: 8px;
+      right: 8px;
+      width: 32px;
+      height: 32px;
+      font-size: 1rem;
     }
   }
 {%- endstyle -%}
