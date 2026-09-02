@@ -304,15 +304,16 @@
   }
 
   /* ==========================================================================
-     CREATIVE 2D BOUNCING PHYSICS ARENA (BORDERLESS & TOUCHING CARDS DIRECTLY)
+     CREATIVE 2D BOUNCING PHYSICS ARENA (TOTAL 10 BALLS IN VIDHYUT LOGO COLORS)
      - 100% Seamless & Transparent: Balls touch top & bottom card edges directly
-     - Uniform 3D Smiley Spheres with consistent Vidhyut Saathi brand data
+     - Vidhyut Saathi Brand Logo Palette: Flame Orange, Energy Green & Sunburst Gold
+     - Data: Vidhyut Saathi, 100% Result, 5 Star Rating & Key Website Benefits
      ========================================================================== */
   .vsg-physics-arena {
     position: relative;
     width: 100%;
     max-width: 1400px;
-    height: 175px;
+    height: 210px;
     margin: 0 auto !important;
     padding: 0 !important;
     background: transparent !important;
@@ -326,8 +327,8 @@
   /* 3D Glassmorphic Physics Ball */
   .vsg-physics-ball {
     position: absolute;
-    width: 78px;
-    height: 78px;
+    width: 84px;
+    height: 84px;
     border-radius: 50%;
     cursor: grab;
     display: flex;
@@ -340,8 +341,6 @@
     touch-action: none;
     will-change: transform, left, top;
     z-index: 5;
-    background: radial-gradient(circle at 32% 28%, #ffffff 0%, #ffde59 30%, #ff9100 75%, #d45100 100%);
-    box-shadow: 0 10px 24px rgba(236, 92, 10, 0.42), inset -4px -6px 10px rgba(180, 60, 0, 0.6), inset 4px 6px 10px #ffffff;
     transition: box-shadow 0.25s ease;
   }
 
@@ -350,9 +349,25 @@
     transform: scale(1.15) !important;
   }
 
+  /* Vidhyut Saathi Logo Colors */
+  .vsg-ball-vs-orange {
+    background: radial-gradient(circle at 32% 28%, #ffffff 0%, #ff9a00 35%, #ec5c0a 75%, #b83800 100%);
+    box-shadow: 0 10px 24px rgba(236, 92, 10, 0.45), inset -4px -6px 10px rgba(184, 56, 0, 0.6), inset 4px 6px 10px #ffffff;
+  }
+
+  .vsg-ball-vs-green {
+    background: radial-gradient(circle at 32% 28%, #ffffff 0%, #4ade80 32%, #007b3e 75%, #054f26 100%);
+    box-shadow: 0 10px 24px rgba(0, 123, 62, 0.45), inset -4px -6px 10px rgba(5, 79, 38, 0.6), inset 4px 6px 10px #ffffff;
+  }
+
+  .vsg-ball-vs-gold {
+    background: radial-gradient(circle at 32% 28%, #ffffff 0%, #fde047 32%, #f59e0b 75%, #d97706 100%);
+    box-shadow: 0 10px 24px rgba(245, 158, 11, 0.45), inset -4px -6px 10px rgba(180, 83, 9, 0.6), inset 4px 6px 10px #ffffff;
+  }
+
   /* Emoji and Text Strictly INSIDE the Ball */
   .vsg-ball-emoji {
-    font-size: 1.7rem;
+    font-size: 1.55rem;
     line-height: 1;
     margin-bottom: 2px;
     filter: drop-shadow(0 2px 4px rgba(0,0,0,0.35));
@@ -360,15 +375,16 @@
   }
 
   .vsg-ball-text {
-    font-size: 0.64rem;
+    font-size: 0.58rem;
     font-weight: 900;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
     color: #ffffff;
-    text-shadow: 0 1px 4px rgba(0,0,0,0.7), 0 0 6px rgba(0,0,0,0.4);
-    line-height: 1;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.8), 0 0 6px rgba(0,0,0,0.5);
+    line-height: 1.05;
     pointer-events: none;
     white-space: nowrap;
+    text-align: center;
   }
 
   /* ==========================================================================
@@ -965,42 +981,66 @@
       </div>
     </div>
 
-    <!-- CREATIVE 2D BOUNCING PHYSICS ARENA (TOUCHES CARDS DIRECTLY, SEAMLESS & BORDERLESS) -->
+    <!-- CREATIVE 2D BOUNCING PHYSICS ARENA (TOTAL 10 BALLS IN VIDHYUT LOGO COLORS & KEY BENEFITS) -->
     <div class="vsg-physics-arena" id="vsgPhysicsArena-{{ section.id }}">
-      <!-- Ball 1: Warm Happy Smile -->
-      <div class="vsg-physics-ball" style="left: 5%; top: 25%;" data-vx="2.2" data-vy="-2.4" data-rot="1.5">
+      <!-- Ball 1: Vidhyut Saathi Brand -->
+      <div class="vsg-physics-ball vsg-ball-vs-orange" style="left: 3%; top: 20%;" data-vx="2.2" data-vy="-2.3" data-rot="1.5">
+        <span class="vsg-ball-emoji">⚡</span>
+        <span class="vsg-ball-text">VIDHYUT SAATHI</span>
+      </div>
+
+      <!-- Ball 2: 100% Result -->
+      <div class="vsg-physics-ball vsg-ball-vs-green" style="left: 13%; top: 55%;" data-vx="-2.1" data-vy="2.4" data-rot="-1.8">
+        <span class="vsg-ball-emoji">💯</span>
+        <span class="vsg-ball-text">100% RESULT</span>
+      </div>
+
+      <!-- Ball 3: 5 Star Rating -->
+      <div class="vsg-physics-ball vsg-ball-vs-gold" style="left: 23%; top: 25%;" data-vx="1.9" data-vy="2.2" data-rot="2.0">
+        <span class="vsg-ball-emoji">⭐</span>
+        <span class="vsg-ball-text">5 STAR RATING</span>
+      </div>
+
+      <!-- Ball 4: Save Electricity -->
+      <div class="vsg-physics-ball vsg-ball-vs-orange" style="left: 34%; top: 60%;" data-vx="-2.3" data-vy="-2.1" data-rot="-1.6">
+        <span class="vsg-ball-emoji">💰</span>
+        <span class="vsg-ball-text">SAVE POWER</span>
+      </div>
+
+      <!-- Ball 5: Voltage Shield Protection -->
+      <div class="vsg-physics-ball vsg-ball-vs-green" style="left: 45%; top: 18%;" data-vx="2.4" data-vy="-1.9" data-rot="1.7">
+        <span class="vsg-ball-emoji">🛡️</span>
+        <span class="vsg-ball-text">VOLT SHIELD</span>
+      </div>
+
+      <!-- Ball 6: ISO Certified -->
+      <div class="vsg-physics-ball vsg-ball-vs-gold" style="left: 56%; top: 50%;" data-vx="-2.0" data-vy="2.5" data-rot="-2.1">
+        <span class="vsg-ball-emoji">🏆</span>
+        <span class="vsg-ball-text">ISO CERTIFIED</span>
+      </div>
+
+      <!-- Ball 7: Fast Delivery & Dispatch -->
+      <div class="vsg-physics-ball vsg-ball-vs-orange" style="left: 67%; top: 22%;" data-vx="2.1" data-vy="2.1" data-rot="1.8">
+        <span class="vsg-ball-emoji">🚚</span>
+        <span class="vsg-ball-text">FAST DISPATCH</span>
+      </div>
+
+      <!-- Ball 8: Pan India Presence -->
+      <div class="vsg-physics-ball vsg-ball-vs-green" style="left: 77%; top: 58%;" data-vx="-2.4" data-vy="-2.3" data-rot="-1.5">
+        <span class="vsg-ball-emoji">🇮🇳</span>
+        <span class="vsg-ball-text">PAN INDIA</span>
+      </div>
+
+      <!-- Ball 9: 3 Year Warranty -->
+      <div class="vsg-physics-ball vsg-ball-vs-gold" style="left: 87%; top: 20%;" data-vx="2.0" data-vy="-2.4" data-rot="1.9">
+        <span class="vsg-ball-emoji">🔒</span>
+        <span class="vsg-ball-text">3-YR WARRANTY</span>
+      </div>
+
+      <!-- Ball 10: 100% Happy Customers -->
+      <div class="vsg-physics-ball vsg-ball-vs-orange" style="left: 92%; top: 52%;" data-vx="-1.9" data-vy="2.2" data-rot="-1.7">
         <span class="vsg-ball-emoji">😊</span>
-        <span class="vsg-ball-text">VIDHYUT</span>
-      </div>
-
-      <!-- Ball 2: Excited Radiant Smile -->
-      <div class="vsg-physics-ball" style="left: 22%; top: 50%;" data-vx="-2.3" data-vy="2.2" data-rot="-1.8">
-        <span class="vsg-ball-emoji">😃</span>
-        <span class="vsg-ball-text">VIDHYUT</span>
-      </div>
-
-      <!-- Ball 3: Star-Struck Wonder Smile -->
-      <div class="vsg-physics-ball" style="left: 40%; top: 20%;" data-vx="1.9" data-vy="2.5" data-rot="2.0">
-        <span class="vsg-ball-emoji">🤩</span>
-        <span class="vsg-ball-text">VIDHYUT</span>
-      </div>
-
-      <!-- Ball 4: Celebrating Joy Smile -->
-      <div class="vsg-physics-ball" style="left: 58%; top: 55%;" data-vx="-2.0" data-vy="-2.3" data-rot="-1.5">
-        <span class="vsg-ball-emoji">🥳</span>
-        <span class="vsg-ball-text">VIDHYUT</span>
-      </div>
-
-      <!-- Ball 5: Beaming Cheerful Smile -->
-      <div class="vsg-physics-ball" style="left: 75%; top: 25%;" data-vx="2.4" data-vy="-1.9" data-rot="1.7">
-        <span class="vsg-ball-emoji">😁</span>
-        <span class="vsg-ball-text">VIDHYUT</span>
-      </div>
-
-      <!-- Ball 6: Cool Smart Confident Smile -->
-      <div class="vsg-physics-ball" style="left: 90%; top: 48%;" data-vx="-2.1" data-vy="2.4" data-rot="-2.0">
-        <span class="vsg-ball-emoji">😎</span>
-        <span class="vsg-ball-text">VIDHYUT</span>
+        <span class="vsg-ball-text">HAPPY USERS</span>
       </div>
     </div>
 
