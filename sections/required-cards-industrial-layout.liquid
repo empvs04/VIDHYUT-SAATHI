@@ -1045,7 +1045,335 @@ den;
       font-size: 11.5px !important;
       font-weight: 800 !important;
       white-space: nowrap !important;
-    }ant;
+    }
+  }
+
+  /* ══ SECTION 8: INDUSTRIAL BOTTOM SHOWCASE HERO (BALOO 2 + NUNITO) ══ */
+  .vsind-sec8-custom {
+    padding: clamp(48px, 6vw, 80px) 0;
+    background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 50%, #fff8ef 100%);
+    border-top: 1.5px solid rgba(2, 132, 199, 0.2);
+    position: relative;
+    overflow: hidden;
+  }
+  .vsind-sec8-custom::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 420px;
+    height: 420px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(2, 132, 199, 0.08) 0%, rgba(255,255,255,0) 70%);
+    pointer-events: none;
+  }
+  .vsind-sec8-custom::after {
+    content: '';
+    position: absolute;
+    bottom: -80px;
+    left: -80px;
+    width: 380px;
+    height: 380px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(236, 92, 10, 0.06) 0%, rgba(255,255,255,0) 70%);
+    pointer-events: none;
+  }
+
+  .vsind-sec8-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+  @media (min-width: 900px) {
+    .vsind-sec8-grid {
+      grid-template-columns: 1.12fr 0.88fr;
+      gap: 40px;
+    }
+  }
+
+  .vsind-sec8-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px;
+    background: linear-gradient(135deg, #ffffff 0%, #e0f2fe 100%);
+    border: 1.5px solid rgba(2, 132, 199, 0.45);
+    border-radius: 999px;
+    color: #0284c7;
+    font-size: 11.5px;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    font-family: 'Baloo 2', sans-serif;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 14px rgba(2, 132, 199, 0.1);
+  }
+
+  .vsind-sec8-title {
+    font-family: 'Baloo 2', sans-serif !important;
+    font-size: clamp(28px, 4vw, 42px);
+    line-height: 1.15;
+    font-weight: 900;
+    color: #0f172a;
+    margin: 0 0 10px 0;
+    letter-spacing: -0.01em;
+  }
+  .vsind-sec8-title span {
+    background: linear-gradient(135deg, #0284c7 0%, #ec5c0a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .vsind-sec8-lead {
+    font-family: 'Nunito', sans-serif;
+    font-size: clamp(14px, 1.45vw, 15.5px);
+    color: #334155;
+    line-height: 1.6;
+    margin: 0 0 20px 0;
+    max-width: 620px;
+  }
+
+  /* 4 ULTRA-LUCRATIVE 3D CARDS (2x2 GRID) */
+  .vsind-sec8-pills-2x2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .vsind-sec8-pill {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+    border-radius: 16px;
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow: hidden;
+  }
+  .vsind-sec8-pill::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3.5px;
+    background: #cbd5e1;
+    transition: all 0.3s ease;
+  }
+  .vsind-sec8-pill.c1-card::before { background: linear-gradient(90deg, #0284c7, #38bdf8); }
+  .vsind-sec8-pill.c2-card::before { background: linear-gradient(90deg, #ec5c0a, #f97316); }
+  .vsind-sec8-pill.c3-card::before { background: linear-gradient(90deg, #0f172a, #0369a1); }
+  .vsind-sec8-pill.c4-card::before { background: linear-gradient(90deg, #008744, #10b981); }
+
+  .vsind-sec8-pill:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px rgba(2, 132, 199, 0.12), 0 2px 6px rgba(0, 0, 0, 0.04);
+    border-color: rgba(2, 132, 199, 0.3);
+  }
+
+  .vsind-sec8-pill-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  }
+  .vsind-sec8-pill-icon.c1 {
+    background: linear-gradient(135deg, #0284c7 0%, #38bdf8 100%);
+    color: #ffffff;
+  }
+  .vsind-sec8-pill-icon.c2 {
+    background: linear-gradient(135deg, #ec5c0a 0%, #fb923c 100%);
+    color: #ffffff;
+  }
+  .vsind-sec8-pill-icon.c3 {
+    background: linear-gradient(135deg, #0f172a 0%, #0369a1 100%);
+    color: #ffffff;
+  }
+  .vsind-sec8-pill-icon.c4 {
+    background: linear-gradient(135deg, #008744 0%, #10b981 100%);
+    color: #ffffff;
+  }
+
+  .vsind-sec8-pill-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+  }
+  .vsind-sec8-pill-text strong {
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 14.5px;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .vsind-sec8-pill-text span {
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: #64748b;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* RIGHT FRAME: 1:1 SQUARE SHOWCASE WITH MOMENT CAPTION */
+  .vsind-sec8-card-frame {
+    width: 100%;
+    max-width: 480px;
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 14px;
+    border: 1.5px solid rgba(2, 132, 199, 0.25);
+    box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08), 0 4px 12px rgba(2, 132, 199, 0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: all 0.3s ease;
+  }
+  .vsind-sec8-card-frame:hover {
+    box-shadow: 0 20px 48px rgba(2, 132, 199, 0.16);
+    border-color: rgba(2, 132, 199, 0.45);
+  }
+
+  .vsind-sec8-img-box {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 18px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  }
+  .vsind-sec8-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+  .vsind-sec8-card-frame:hover .vsind-sec8-img-box img {
+    transform: scale(1.02);
+  }
+
+  .vsind-sec8-moment-caption {
+    background: linear-gradient(135deg, #f8fafc 0%, #f0f9ff 100%);
+    border: 1px solid rgba(2, 132, 199, 0.2);
+    border-radius: 14px;
+    padding: 10px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .vsind-moment-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    color: #0284c7;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+  }
+  .vsind-moment-quote {
+    font-family: 'Nunito', sans-serif;
+    font-size: 12.5px;
+    font-style: italic;
+    color: #334155;
+    line-height: 1.45;
+    margin: 0;
+  }
+  .vsind-moment-quote strong {
+    color: #0284c7;
+    font-style: normal;
+    font-weight: 800;
+  }
+
+  /* MOBILE SPECIFIC OPTIMIZATIONS (STRICTLY 2 BOXES IN 1 LINE) */
+  @media (max-width: 767px) {
+    .vsind-sec8-custom {
+      padding: 36px 0 44px 0 !important;
+    }
+    .vsind-sec8-grid {
+      gap: 24px !important;
+    }
+    .vsind-sec8-title {
+      font-size: 24px !important;
+      line-height: 1.2 !important;
+    }
+    .vsind-sec8-lead {
+      font-size: 14.5px !important;
+      line-height: 1.55 !important;
+      margin-bottom: 18px !important;
+    }
+    .vsind-sec8-pills-2x2 {
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 8px !important;
+      margin-bottom: 20px !important;
+    }
+    .vsind-sec8-pill {
+      flex-direction: column !important;
+      align-items: center !important;
+      text-align: center !important;
+      padding: 12px 6px 10px 6px !important;
+      gap: 6px !important;
+      border-radius: 12px !important;
+      min-height: 108px !important;
+      justify-content: center !important;
+    }
+    .vsind-sec8-pill-icon {
+      width: 32px !important;
+      height: 32px !important;
+      font-size: 14px !important;
+      border-radius: 8px !important;
+      margin-bottom: 2px !important;
+    }
+    .vsind-sec8-pill-text {
+      width: 100% !important;
+    }
+    .vsind-sec8-pill-text strong {
+      font-size: 11.5px !important;
+      line-height: 1.2 !important;
+      white-space: normal !important;
+      display: -webkit-box !important;
+      -webkit-line-clamp: 2 !important;
+      -webkit-box-orient: vertical !important;
+    }
+    .vsind-sec8-pill-text span {
+      font-size: 9.5px !important;
+      line-height: 1.2 !important;
+      -webkit-line-clamp: 2 !important;
+    }
+    .vsind-sec8-card-frame {
+      max-width: 100% !important;
+      padding: 10px !important;
+      border-radius: 18px !important;
+    }
+    .vsind-sec8-moment-caption {
+      padding: 8px 10px !important;
+    }
+    .vsind-moment-quote {
+      font-size: 11.5px !important;
     }
   }
 </style>
@@ -1536,7 +1864,7 @@ den;
     </div>
   </section>
 
-  <!-- ══ FOOTER CTA BAND ══ -->
+  <!-- ══ SECTION 7: FOOTER CTA BAND ══ -->
   <section class="vsind-sec" style="padding-bottom:70px;">
     <div class="wrap">
       <div class="vsind-cta-band" style="background:linear-gradient(135deg, #0f172a 0%, #0284c7 100%); border-radius:20px; color:#ffffff; padding:36px 20px; text-align:center; box-shadow:0 10px 30px rgba(2, 132, 199, 0.25);">
@@ -1545,6 +1873,106 @@ den;
         <a href="https://wa.me/919876543210?text=Hi%20Vidhyut%20Saathi%2C%20I%20want%20to%20order%20Industrial%20Saver%20Cards" class="vsind-btn-primary" style="background:#ffffff; color:#0284c7; font-size:15px; padding:15px 30px; border-radius:12px; font-weight:800;" target="_blank">
           <i class="fa-brands fa-whatsapp"></i> Order Industrial Cards Now
         </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ SECTION 8: COMPANION HERO SHOWCASE (BALOO 2 + NUNITO) ══ -->
+  <section class="vsind-sec8-custom" id="vsind-sec8">
+    <div class="wrap">
+      <div class="vsind-sec8-grid">
+        <!-- LEFT COLUMN: HEADER, BENEFIT PILLS & DUAL CTAS -->
+        <div>
+          <div class="vsind-sec8-badge">
+            <i class="fa-solid fa-industry"></i> Industrial Energy Optimization
+          </div>
+
+          <h2 class="vsind-sec8-title">
+            Vidhyut Saathi Card for <span>Industrial Factories & Plants</span>
+          </h2>
+
+          <p class="vsind-sec8-lead">
+            Eliminate heavy kVAh DISCOM penalty surcharges, boost Power Factor (PF) to 0.99 lag, and protect heavy induction motors, CNC machines, injection molding units, cold storages, and LT/HT transformers. Whether operating a 50 KW workshop or a 500+ KW continuous production line, calculate your card requirement below.
+          </p>
+
+          <!-- 4 ULTRA-LUCRATIVE 3D GLASS CARDS (2x2 GRID) -->
+          <div class="vsind-sec8-pills-2x2">
+            <div class="vsind-sec8-pill c1-card">
+              <div class="vsind-sec8-pill-icon c1">
+                <i class="fa-solid fa-bolt-lightning"></i>
+              </div>
+              <div class="vsind-sec8-pill-text">
+                <strong>20%–30% kVAh Cuts</strong>
+                <span>Zero Inductive Reactive Losses on LT/HT Panels</span>
+              </div>
+            </div>
+
+            <div class="vsind-sec8-pill c2-card">
+              <div class="vsind-sec8-pill-icon c2">
+                <i class="fa-solid fa-chart-line"></i>
+              </div>
+              <div class="vsind-sec8-pill-text">
+                <strong>0.99 PF Correction</strong>
+                <span>Eliminates Low Power Factor Surcharges & Penalties</span>
+              </div>
+            </div>
+
+            <div class="vsind-sec8-pill c3-card">
+              <div class="vsind-sec8-pill-icon c3">
+                <i class="fa-solid fa-gears"></i>
+              </div>
+              <div class="vsind-sec8-pill-text">
+                <strong>CNC & Heavy Motors</strong>
+                <span>Engineered for Continuous 24/7 Factory Production</span>
+              </div>
+            </div>
+
+            <div class="vsind-sec8-pill c4-card">
+              <div class="vsind-sec8-pill-icon c4">
+                <i class="fa-solid fa-award"></i>
+              </div>
+              <div class="vsind-sec8-pill-text">
+                <strong>10-Yr Lifespan</strong>
+                <span>3-Year Replacement Guarantee & Zero Maintenance</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- DUAL CTAS -->
+          <div class="vsind-hero-ctas">
+            <a href="#vsind-calc" class="vsind-btn-primary" style="background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); box-shadow: 0 8px 24px rgba(2, 132, 199, 0.32);">
+              <i class="fa-solid fa-calculator"></i> Calculate Industrial Cards
+            </a>
+            <a href="https://wa.me/919876543210?text=Hi%20Vidhyut%20Saathi%2C%20I%20want%20to%20order%20Industrial%20Saver%20Cards" class="vsind-btn-secondary" target="_blank">
+              <i class="fa-brands fa-whatsapp" style="color: #25d366; font-size: 17px;"></i> Industrial Advisory Inquiry
+            </a>
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN: 1:1 SQUARE CLEAN SHOWCASE WITH MOMENT CAPTION -->
+        <div style="display: flex; justify-content: center; align-items: center;">
+          <div class="vsind-sec8-card-frame">
+            <div class="vsind-sec8-img-box">
+              {% if section.settings.sec8_card_image != blank %}
+                <img src="{{ section.settings.sec8_card_image | image_url: width: 1000 }}" alt="Industrial Factory Power Saving Showcase with Vidhyut Saathi" loading="lazy">
+              {% elsif section.settings.card_image != blank %}
+                <img src="{{ section.settings.card_image | image_url: width: 1000 }}" alt="Industrial Factory Power Saving Showcase with Vidhyut Saathi" loading="lazy">
+              {% else %}
+                <img src="{{ 'official-vs-card-front.jpg' | asset_url }}" alt="Industrial Factory Power Saving Showcase with Vidhyut Saathi" loading="lazy" onerror="this.onerror=null; this.src='https://cdn.shopify.com/s/files/1/0663/8783/7093/files/VS_Card_Final_Design_Golden_1.png';">
+              {% endif %}
+            </div>
+
+            <div class="vsind-sec8-moment-caption">
+              <div class="vsind-moment-tag">
+                <i class="fa-solid fa-camera-retro" style="color: #0284c7;"></i>
+                <span>Captured Industrial Moment of Joy</span>
+              </div>
+              <p class="vsind-moment-quote">
+                "The pride of running heavy manufacturing machinery 24/7 with <strong>20%–30% genuine savings</strong> on DISCOM kVAh bills with Vidhyut Saathi Card."
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -1653,6 +2081,7 @@ den;
   "name": "Industrial Cards Layout",
   "settings": [
     { "type": "image_picker", "id": "card_image", "label": "Industrial Hero Card Image" },
+    { "type": "image_picker", "id": "sec8_card_image", "label": "Section 8 Showcase Image" },
     { "type": "image_picker", "id": "ind_mcb_img_1", "label": "Industrial LT Image 1" },
     { "type": "image_picker", "id": "ind_mcb_img_2", "label": "Industrial LT Image 2" },
     { "type": "image_picker", "id": "ind_mcb_img_3", "label": "Industrial LT Image 3" },
