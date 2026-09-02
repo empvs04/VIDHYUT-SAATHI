@@ -457,34 +457,25 @@
       padding: 45px 16px 65px 16px;
     }
     
-    /* 4-Card Hero Mobile: Seamless 2-Column Square Grid */
+    /* 4-Card Hero Mobile: Seamless 2x2 Equal Square Grid with Zero Gaps */
     .vsg-4card-grid {
+      display: grid !important;
       grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
       gap: 10px !important;
       margin-bottom: 10px !important;
     }
+
     .vsg-col-left,
+    .vsg-col-center,
     .vsg-col-right {
-      width: 100% !important;
-      height: auto !important;
+      display: contents !important;
     }
-    .vsg-col-left .vsg-card-item,
-    .vsg-col-right .vsg-card-item {
+
+    .vsg-4card-grid .vsg-card-item {
+      width: 100% !important;
       aspect-ratio: 1 / 1 !important;
       height: auto !important;
-      width: 100% !important;
-    }
-    .vsg-col-center {
-      grid-column: 1 / span 2;
-      display: grid !important;
-      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-      gap: 10px !important;
-      width: 100% !important;
-    }
-    .vsg-col-center .vsg-card-item {
-      aspect-ratio: 1 / 1 !important;
-      height: auto !important;
-      width: 100% !important;
+      min-height: 0 !important;
     }
 
     /* 30-Cards Grid: Seamless 2-Column Square Grid */
