@@ -7,6 +7,8 @@
      - Row 1: 3 True Square Cards (Cards 5-7)
      - Row 2: 3 Horizontal Rectangle Cards (Cards 8-10)
      - Row 3: 3 Horizontal Rectangle Cards (Cards 11-13)
+     - Creative 3D Smiley Emoji Energy Balls Interactive Stage
+     - Row 4: 3 Horizontal Rectangle Cards (Cards 14-16)
      ========================================================================== */
   .vsg-mosaic-section {
     position: relative;
@@ -154,7 +156,7 @@
 
   .vsg-col-center .vsg-card-item {
     width: 100% !important;
-    aspect-ratio: 1 / 1 !important; /* STRICT 1:1 TRUE SQUARE */
+    aspect-ratio: 1 / 1 !important;
     height: auto !important;
     max-height: none !important;
     min-height: 0 !important;
@@ -262,7 +264,7 @@
   }
 
   /* ==========================================================================
-     PART 3: ROWS 2 & 3 - HORIZONTAL RECTANGLE CARDS (CARDS 8-10 & CARDS 11-13)
+     PART 3: ROWS 2, 3, 4 - HORIZONTAL RECTANGLE CARDS (16:10 ASPECT RATIO)
      ========================================================================== */
   .vsg-rect-3cards-grid {
     display: grid;
@@ -276,7 +278,7 @@
 
   .vsg-rect-card {
     width: 100% !important;
-    aspect-ratio: 16 / 10 !important; /* HORIZONTAL RECTANGLE SHAPE */
+    aspect-ratio: 16 / 10 !important;
     height: auto !important;
     min-height: 0 !important;
     border-radius: 0 !important;
@@ -299,6 +301,153 @@
     object-position: center !important;
     display: block !important;
     border-radius: 0 !important;
+  }
+
+  /* ==========================================================================
+     CREATIVE 3D SMILEY / ENERGY EMOJI BALLS INTERACTIVE STAGE
+     - In between Cards 11, 12, 13 and Cards 14, 15, 16
+     - Fluid vertical bouncing, rotation & playful interactive reactions
+     ========================================================================== */
+  .vsg-emoji-stage-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 1400px;
+    margin: 28px auto;
+    padding: 18px 24px;
+    background: linear-gradient(135deg, rgba(236, 92, 10, 0.05) 0%, rgba(255, 154, 0, 0.08) 50%, rgba(0, 123, 62, 0.05) 100%);
+    border: 1.5px dashed rgba(236, 92, 10, 0.35);
+    border-radius: 24px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 30px rgba(236, 92, 10, 0.06);
+  }
+
+  .vsg-emoji-stage-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.88rem;
+    font-weight: 800;
+    color: #ec5c0a;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .vsg-emoji-balls-track {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    gap: 16px;
+    flex-wrap: wrap;
+    position: relative;
+    padding: 10px 0;
+  }
+
+  .vsg-emoji-ball-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  /* 3D Glassmorphic Glowing Sphere Emoji Ball */
+  .vsg-3d-ball {
+    width: 66px;
+    height: 66px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.1rem;
+    position: relative;
+    animation: emojiBouncePlay 3.4s ease-in-out infinite alternate;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  /* Distinct Color Flavors for Diversity */
+  .vsg-ball-spark {
+    background: radial-gradient(circle at 32% 28%, #ffffff 0%, #ffe600 40%, #ff6b00 85%, #c23800 100%);
+    box-shadow: 0 10px 24px rgba(255, 107, 0, 0.4), inset -4px -6px 12px rgba(194, 56, 0, 0.6), inset 4px 6px 10px #ffffff;
+    animation-delay: 0s;
+  }
+
+  .vsg-ball-green {
+    background: radial-gradient(circle at 32% 28%, #ffffff 0%, #86efac 35%, #16a34a 80%, #14532d 100%);
+    box-shadow: 0 10px 24px rgba(22, 163, 74, 0.35), inset -4px -6px 12px rgba(20, 83, 45, 0.6), inset 4px 6px 10px #ffffff;
+    animation-delay: 0.55s;
+  }
+
+  .vsg-ball-gold {
+    background: radial-gradient(circle at 32% 28%, #ffffff 0%, #fde047 35%, #eab308 80%, #a16207 100%);
+    box-shadow: 0 10px 24px rgba(234, 179, 8, 0.4), inset -4px -6px 12px rgba(161, 98, 7, 0.6), inset 4px 6px 10px #ffffff;
+    animation-delay: 1.1s;
+  }
+
+  .vsg-ball-blue {
+    background: radial-gradient(circle at 32% 28%, #ffffff 0%, #93c5fd 35%, #2563eb 80%, #1e3a8a 100%);
+    box-shadow: 0 10px 24px rgba(37, 99, 235, 0.35), inset -4px -6px 12px rgba(30, 58, 138, 0.6), inset 4px 6px 10px #ffffff;
+    animation-delay: 1.65s;
+  }
+
+  .vsg-ball-orange {
+    background: radial-gradient(circle at 32% 28%, #ffffff 0%, #fed7aa 35%, #ea580c 80%, #9a3412 100%);
+    box-shadow: 0 10px 24px rgba(234, 88, 12, 0.35), inset -4px -6px 12px rgba(154, 52, 18, 0.6), inset 4px 6px 10px #ffffff;
+    animation-delay: 2.2s;
+  }
+
+  .vsg-ball-purple {
+    background: radial-gradient(circle at 32% 28%, #ffffff 0%, #e9d5ff 35%, #9333ea 80%, #581c87 100%);
+    box-shadow: 0 10px 24px rgba(147, 51, 234, 0.35), inset -4px -6px 12px rgba(88, 28, 135, 0.6), inset 4px 6px 10px #ffffff;
+    animation-delay: 2.75s;
+  }
+
+  /* Ball Caption Label */
+  .vsg-ball-label {
+    margin-top: 10px;
+    font-size: 0.76rem;
+    font-weight: 800;
+    color: #334155;
+    background: #ffffff;
+    padding: 4px 12px;
+    border-radius: 14px;
+    border: 1px solid rgba(236, 92, 10, 0.22);
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.06);
+    white-space: nowrap;
+    transition: all 0.25s ease;
+  }
+
+  /* Hover & Tap Magic Reactions */
+  .vsg-emoji-ball-item:hover .vsg-3d-ball {
+    transform: scale(1.25) rotate(22deg) translateY(-10px);
+    box-shadow: 0 16px 36px rgba(236, 92, 10, 0.55), 0 0 22px #ff9a00;
+  }
+
+  .vsg-emoji-ball-item:hover .vsg-ball-label {
+    background: #ec5c0a;
+    color: #ffffff;
+    border-color: #ec5c0a;
+    transform: translateY(-2px);
+  }
+
+  /* Up-Down Physics Bouncing and Soft Rotation */
+  @keyframes emojiBouncePlay {
+    0% {
+      transform: translateY(-16px) rotate(-12deg);
+    }
+    50% {
+      transform: translateY(14px) rotate(10deg);
+    }
+    100% {
+      transform: translateY(-16px) rotate(-12deg);
+    }
   }
 
   /* ==========================================================================
@@ -561,6 +710,23 @@
     .vsg-rect-card {
       aspect-ratio: 16 / 10 !important;
     }
+
+    .vsg-emoji-stage-wrapper {
+      padding: 14px 16px;
+      margin: 20px auto;
+    }
+    .vsg-3d-ball {
+      width: 52px;
+      height: 52px;
+      font-size: 1.65rem;
+    }
+    .vsg-ball-label {
+      font-size: 0.68rem;
+      padding: 3px 8px;
+    }
+    .vsg-emoji-balls-track {
+      gap: 12px;
+    }
   }
 
   @media screen and (max-width: 600px) {
@@ -635,6 +801,26 @@
     }
     .vsg-rect-card {
       aspect-ratio: 16 / 9 !important;
+    }
+
+    .vsg-emoji-stage-wrapper {
+      padding: 12px 10px;
+      margin: 16px auto;
+      border-radius: 18px;
+    }
+    .vsg-3d-ball {
+      width: 44px;
+      height: 44px;
+      font-size: 1.45rem;
+    }
+    .vsg-ball-label {
+      font-size: 0.62rem;
+      padding: 2px 6px;
+      margin-top: 6px;
+    }
+    .vsg-emoji-balls-track {
+      gap: 8px;
+      justify-content: center;
     }
 
     .vsg-card-item {
@@ -860,6 +1046,92 @@
             <img src="{{ section.settings.card13_image | image_url: width: 1200 }}" alt="Vidhyut Saathi Moments" class="vsg-card-img" loading="lazy">
           {%- else -%}
             <img src="{{ 'wvs-pan-india-map.jpg' | asset_url }}" alt="All India Network" class="vsg-card-img" loading="lazy">
+          {%- endif -%}
+          <div class="vsg-expand-btn"><i class="fa-solid fa-expand"></i></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CREATIVE 3D SMILEY / ENERGY EMOJI BALLS INTERACTIVE STAGE -->
+    <div class="vsg-emoji-stage-wrapper">
+      <div class="vsg-emoji-stage-header">
+        <span>✨</span>
+        <span>VIDHYUT SAATHI SMILE & ENERGY PULSE</span>
+        <span>⚡</span>
+      </div>
+
+      <div class="vsg-emoji-balls-track">
+        <!-- Ball 1: Happy Energy Spark -->
+        <div class="vsg-emoji-ball-item" title="Happy Energy Spark">
+          <div class="vsg-3d-ball vsg-ball-spark">⚡</div>
+          <span class="vsg-ball-label">Super Spark</span>
+        </div>
+
+        <!-- Ball 2: 100% Trust -->
+        <div class="vsg-emoji-ball-item" title="100% Customer Trust">
+          <div class="vsg-3d-ball vsg-ball-green">😊</div>
+          <span class="vsg-ball-label">Happy Family</span>
+        </div>
+
+        <!-- Ball 3: 5-Star Joy -->
+        <div class="vsg-emoji-ball-item" title="5-Star Joyful Experience">
+          <div class="vsg-3d-ball vsg-ball-gold">🌟</div>
+          <span class="vsg-ball-label">5-Star Trust</span>
+        </div>
+
+        <!-- Ball 4: High Energy Battery -->
+        <div class="vsg-emoji-ball-item" title="Clean Voltage Saved">
+          <div class="vsg-3d-ball vsg-ball-blue">🔋</div>
+          <span class="vsg-ball-label">Power Saver</span>
+        </div>
+
+        <!-- Ball 5: Celebration & Milestone -->
+        <div class="vsg-emoji-ball-item" title="Nationwide Celebrations">
+          <div class="vsg-3d-ball vsg-ball-orange">🥳</div>
+          <span class="vsg-ball-label">Milestones</span>
+        </div>
+
+        <!-- Ball 6: Smart Innovation -->
+        <div class="vsg-emoji-ball-item" title="Smart Next-Gen Innovation">
+          <div class="vsg-3d-ball vsg-ball-purple">💡</div>
+          <span class="vsg-ball-label">Smart Future</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PART 5: ROW 4 - 3 HORIZONTAL RECTANGLE SHAPED CARDS (CARDS 14, 15, 16) -->
+    <div class="vsg-rect-3cards-grid" id="vsgRectGrid3-{{ section.id }}">
+      <!-- Card 14 -->
+      <div class="vsg-card-item vsg-rect-card" data-category="{{ section.settings.card14_category | default: 'corporate' }}">
+        <div class="vsg-card-img-wrap">
+          {%- if section.settings.card14_image != blank -%}
+            <img src="{{ section.settings.card14_image | image_url: width: 1200 }}" alt="Vidhyut Saathi Moments" class="vsg-card-img" loading="lazy">
+          {%- else -%}
+            <img src="{{ 'case-commercial.jpg' | asset_url }}" alt="Corporate Innovation Hub" class="vsg-card-img" loading="lazy">
+          {%- endif -%}
+          <div class="vsg-expand-btn"><i class="fa-solid fa-expand"></i></div>
+        </div>
+      </div>
+
+      <!-- Card 15 -->
+      <div class="vsg-card-item vsg-rect-card" data-category="{{ section.settings.card15_category | default: 'celebrating' }}">
+        <div class="vsg-card-img-wrap">
+          {%- if section.settings.card15_image != blank -%}
+            <img src="{{ section.settings.card15_image | image_url: width: 1200 }}" alt="Vidhyut Saathi Moments" class="vsg-card-img" loading="lazy">
+          {%- else -%}
+            <img src="{{ 'case-residential.jpg' | asset_url }}" alt="Smart Living Excellence" class="vsg-card-img" loading="lazy">
+          {%- endif -%}
+          <div class="vsg-expand-btn"><i class="fa-solid fa-expand"></i></div>
+        </div>
+      </div>
+
+      <!-- Card 16 -->
+      <div class="vsg-card-item vsg-rect-card" data-category="{{ section.settings.card16_category | default: 'awards' }}">
+        <div class="vsg-card-img-wrap">
+          {%- if section.settings.card16_image != blank -%}
+            <img src="{{ section.settings.card16_image | image_url: width: 1200 }}" alt="Vidhyut Saathi Moments" class="vsg-card-img" loading="lazy">
+          {%- else -%}
+            <img src="{{ 'case-industrial.jpg' | asset_url }}" alt="Heavy Voltage Stabilization" class="vsg-card-img" loading="lazy">
           {%- endif -%}
           <div class="vsg-expand-btn"><i class="fa-solid fa-expand"></i></div>
         </div>
@@ -1222,6 +1494,69 @@
         { "value": "operational", "label": "Operational Office" }
       ],
       "default": "operational"
+    },
+    {
+      "type": "header",
+      "content": "Card 14: Horizontal Rectangle"
+    },
+    {
+      "type": "image_picker",
+      "id": "card14_image",
+      "label": "Card 14 (Rectangle Image)"
+    },
+    {
+      "type": "select",
+      "id": "card14_category",
+      "label": "Card 14 Category",
+      "options": [
+        { "value": "corporate", "label": "Corporate Office" },
+        { "value": "awards", "label": "Awards" },
+        { "value": "celebrating", "label": "Celebrating" },
+        { "value": "operational", "label": "Operational Office" }
+      ],
+      "default": "corporate"
+    },
+    {
+      "type": "header",
+      "content": "Card 15: Horizontal Rectangle"
+    },
+    {
+      "type": "image_picker",
+      "id": "card15_image",
+      "label": "Card 15 (Rectangle Image)"
+    },
+    {
+      "type": "select",
+      "id": "card15_category",
+      "label": "Card 15 Category",
+      "options": [
+        { "value": "corporate", "label": "Corporate Office" },
+        { "value": "awards", "label": "Awards" },
+        { "value": "celebrating", "label": "Celebrating" },
+        { "value": "operational", "label": "Operational Office" }
+      ],
+      "default": "celebrating"
+    },
+    {
+      "type": "header",
+      "content": "Card 16: Horizontal Rectangle"
+    },
+    {
+      "type": "image_picker",
+      "id": "card16_image",
+      "label": "Card 16 (Rectangle Image)"
+    },
+    {
+      "type": "select",
+      "id": "card16_category",
+      "label": "Card 16 Category",
+      "options": [
+        { "value": "corporate", "label": "Corporate Office" },
+        { "value": "awards", "label": "Awards" },
+        { "value": "celebrating", "label": "Celebrating" },
+        { "value": "operational", "label": "Operational Office" }
+      ],
+      "default": "awards"
     }
   ],
   "blocks": [
