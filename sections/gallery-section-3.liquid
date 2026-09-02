@@ -968,37 +968,37 @@
     <!-- CREATIVE 2D BOUNCING PHYSICS ARENA (TOUCHES CARDS DIRECTLY, SEAMLESS & BORDERLESS) -->
     <div class="vsg-physics-arena" id="vsgPhysicsArena-{{ section.id }}">
       <!-- Ball 1: Warm Happy Smile -->
-      <div class="vsg-physics-ball" data-vx="2.2" data-vy="-2.4" data-rot="1.5">
+      <div class="vsg-physics-ball" style="left: 5%; top: 25%;" data-vx="2.2" data-vy="-2.4" data-rot="1.5">
         <span class="vsg-ball-emoji">😊</span>
         <span class="vsg-ball-text">VIDHYUT</span>
       </div>
 
       <!-- Ball 2: Excited Radiant Smile -->
-      <div class="vsg-physics-ball" data-vx="-2.3" data-vy="2.2" data-rot="-1.8">
+      <div class="vsg-physics-ball" style="left: 22%; top: 50%;" data-vx="-2.3" data-vy="2.2" data-rot="-1.8">
         <span class="vsg-ball-emoji">😃</span>
         <span class="vsg-ball-text">VIDHYUT</span>
       </div>
 
       <!-- Ball 3: Star-Struck Wonder Smile -->
-      <div class="vsg-physics-ball" data-vx="1.9" data-vy="2.5" data-rot="2.0">
+      <div class="vsg-physics-ball" style="left: 40%; top: 20%;" data-vx="1.9" data-vy="2.5" data-rot="2.0">
         <span class="vsg-ball-emoji">🤩</span>
         <span class="vsg-ball-text">VIDHYUT</span>
       </div>
 
       <!-- Ball 4: Celebrating Joy Smile -->
-      <div class="vsg-physics-ball" data-vx="-2.0" data-vy="-2.3" data-rot="-1.5">
+      <div class="vsg-physics-ball" style="left: 58%; top: 55%;" data-vx="-2.0" data-vy="-2.3" data-rot="-1.5">
         <span class="vsg-ball-emoji">🥳</span>
         <span class="vsg-ball-text">VIDHYUT</span>
       </div>
 
       <!-- Ball 5: Beaming Cheerful Smile -->
-      <div class="vsg-physics-ball" data-vx="2.4" data-vy="-1.9" data-rot="1.7">
+      <div class="vsg-physics-ball" style="left: 75%; top: 25%;" data-vx="2.4" data-vy="-1.9" data-rot="1.7">
         <span class="vsg-ball-emoji">😁</span>
         <span class="vsg-ball-text">VIDHYUT</span>
       </div>
 
       <!-- Ball 6: Cool Smart Confident Smile -->
-      <div class="vsg-physics-ball" data-vx="-2.1" data-vy="2.4" data-rot="-2.0">
+      <div class="vsg-physics-ball" style="left: 90%; top: 48%;" data-vx="-2.1" data-vy="2.4" data-rot="-2.0">
         <span class="vsg-ball-emoji">😎</span>
         <span class="vsg-ball-text">VIDHYUT</span>
       </div>
@@ -1131,6 +1131,12 @@
             };
           });
         }
+
+        initBalls();
+        window.addEventListener('resize', initBalls);
+        window.addEventListener('load', initBalls);
+        setTimeout(initBalls, 100);
+        setTimeout(initBalls, 500);
 
         // Global Mouse Hover Interaction Tracking across Arena
         let mouseX = -9999, mouseY = -9999;
