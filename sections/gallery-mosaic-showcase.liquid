@@ -2,7 +2,7 @@
   @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap');
 
   /* ==========================================================================
-     SECTION 2: CLEAN LUXURY 4-CARD HERO COMPOSITION + 30 SQUARE CARDS GRID
+     SECTION 2: 90-DEGREE SHARP EDGES 4-CARD HERO + 30 SQUARE CARDS GRID
      ========================================================================== */
   .vsg-mosaic-section {
     position: relative;
@@ -126,20 +126,26 @@
   }
 
   /* ==========================================================================
-     PART 1: 3-COLUMN FULL-WIDTH HERO GRID (TALL SIDE CARDS + 2 CENTER SQUARES)
+     PART 1: 3-COLUMN HERO GRID (FLUSH MATCHING HEIGHTS & TRUE SQUARES)
      ========================================================================== */
   .vsg-4card-grid {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) min(360px, 30vw) minmax(0, 1fr);
-    gap: 18px;
+    grid-template-columns: minmax(0, 1fr) min(350px, 28vw) minmax(0, 1fr);
+    gap: 16px;
     width: 100%;
     max-width: 1400px;
-    margin: 0 auto 22px auto;
+    margin: 0 auto 20px auto;
     align-items: stretch;
     box-sizing: border-box;
   }
 
-  /* Left & Right Columns (Strict 100% Identical Width & Full Height) */
+  @media screen and (min-width: 1200px) {
+    .vsg-4card-grid {
+      grid-template-columns: 1fr 350px 1fr;
+    }
+  }
+
+  /* Left & Right Columns (Stretch 100% to match total height of 2 center squares + gap) */
   .vsg-col-left,
   .vsg-col-right {
     display: flex;
@@ -147,7 +153,8 @@
     width: 100% !important;
     min-width: 0 !important;
     max-width: 100% !important;
-    height: 100%;
+    height: 100% !important;
+    min-height: 0 !important;
     box-sizing: border-box;
   }
 
@@ -156,8 +163,9 @@
     height: 100% !important;
     width: 100% !important;
     min-width: 0 !important;
-    flex: 1 1 auto;
-    min-height: 0;
+    flex: 1 1 100% !important;
+    min-height: 0 !important;
+    border-radius: 0 !important;
   }
 
   .vsg-col-left .vsg-card-img-wrap,
@@ -165,6 +173,7 @@
     width: 100% !important;
     height: 100% !important;
     min-width: 0 !important;
+    border-radius: 0 !important;
   }
 
   .vsg-col-left .vsg-card-img,
@@ -174,13 +183,14 @@
     min-width: 0 !important;
     object-fit: cover !important;
     object-position: center !important;
+    border-radius: 0 !important;
   }
 
-  /* Center Column (2 Large Stacked Pure 1:1 Squares) */
+  /* Center Column (2 Pure 1:1 Perfect Squares with Gap) */
   .vsg-col-center {
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 16px;
     width: 100%;
     height: 100%;
     justify-content: space-between;
@@ -194,6 +204,7 @@
     min-height: 0 !important;
     flex: 0 0 auto !important;
     display: block !important;
+    border-radius: 0 !important;
   }
 
   .vsg-col-center .vsg-card-img-wrap {
@@ -202,6 +213,7 @@
     aspect-ratio: 1 / 1 !important;
     position: relative !important;
     overflow: hidden !important;
+    border-radius: 0 !important;
   }
 
   .vsg-col-center .vsg-card-img {
@@ -211,6 +223,7 @@
     object-fit: cover !important;
     object-position: center !important;
     display: block !important;
+    border-radius: 0 !important;
   }
 
   /* ==========================================================================
@@ -219,7 +232,7 @@
   .vsg-30cards-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 18px;
+    gap: 16px;
     width: 100%;
     max-width: 1400px;
     margin: 0 auto;
@@ -231,6 +244,7 @@
     aspect-ratio: 1 / 1 !important;
     height: auto !important;
     min-height: 0 !important;
+    border-radius: 0 !important;
   }
 
   .vsg-square-card .vsg-card-img-wrap {
@@ -239,6 +253,7 @@
     aspect-ratio: 1 / 1 !important;
     position: relative !important;
     overflow: hidden !important;
+    border-radius: 0 !important;
   }
 
   .vsg-square-card .vsg-card-img {
@@ -248,17 +263,18 @@
     object-fit: cover !important;
     object-position: center !important;
     display: block !important;
+    border-radius: 0 !important;
   }
 
   /* ==========================================================================
-     CRISP, CLEAN & LUCRACTIVE BORDER FRAMING (MATCHING REFERENCE EXACTLY)
+     PURE 90-DEGREE SHARP CORNERS & CRISP CLEAN BORDERS
      ========================================================================== */
   .vsg-card-item {
     position: relative;
-    border-radius: 14px;
+    border-radius: 0 !important;
     overflow: hidden;
     background: #ffffff;
-    border: 2px solid rgba(236, 92, 10, 0.2);
+    border: 2px solid rgba(236, 92, 10, 0.22);
     cursor: pointer;
     transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.3s ease, box-shadow 0.4s ease;
     box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05);
@@ -266,9 +282,9 @@
   }
 
   .vsg-card-item:hover {
-    transform: translateY(-6px);
+    transform: translateY(-5px);
     border-color: #ec5c0a;
-    box-shadow: 0 16px 36px rgba(236, 92, 10, 0.2), 0 0 15px rgba(236, 92, 10, 0.12);
+    box-shadow: 0 14px 32px rgba(236, 92, 10, 0.22), 0 0 15px rgba(236, 92, 10, 0.12);
     z-index: 5;
   }
 
@@ -279,6 +295,7 @@
     position: relative;
     overflow: hidden;
     background: #ffffff;
+    border-radius: 0 !important;
   }
 
   .vsg-card-img {
@@ -287,6 +304,7 @@
     object-fit: cover;
     object-position: center;
     display: block;
+    border-radius: 0 !important;
     transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 
@@ -297,10 +315,10 @@
   /* Sleek Expand Button on Hover */
   .vsg-expand-btn {
     position: absolute;
-    top: 12px;
-    right: 12px;
-    width: 34px;
-    height: 34px;
+    top: 10px;
+    right: 10px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.94);
     backdrop-filter: blur(8px);
@@ -362,7 +380,7 @@
     max-height: 90vh;
     background: #ffffff;
     border: 2px solid rgba(236, 92, 10, 0.35);
-    border-radius: 20px;
+    border-radius: 0 !important;
     overflow: hidden;
     box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5), 0 0 40px rgba(236, 92, 10, 0.2);
     display: flex;
@@ -383,6 +401,7 @@
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    border-radius: 0 !important;
   }
 
   .vsg-lightbox-img {
@@ -390,14 +409,15 @@
     max-height: 75vh;
     object-fit: contain;
     display: block;
+    border-radius: 0 !important;
   }
 
   .vsg-lightbox-close {
     position: absolute;
     top: 16px;
     right: 16px;
-    width: 40px;
-    height: 40px;
+    width: 38px;
+    height: 38px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.95);
     border: 1.5px solid rgba(236, 92, 10, 0.3);
@@ -428,7 +448,7 @@
     }
     .vsg-4card-grid {
       grid-template-columns: 1fr;
-      gap: 14px;
+      gap: 12px;
     }
     .vsg-30cards-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -436,12 +456,12 @@
     }
     .vsg-col-left,
     .vsg-col-right {
-      height: 360px;
+      height: 360px !important;
     }
     .vsg-col-center {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 14px;
+      gap: 12px;
       height: auto;
     }
     .vsg-col-center .vsg-card-item {
@@ -498,11 +518,11 @@
     /* 4-Card Hero Mobile Optimization */
     .vsg-4card-grid {
       gap: 10px;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
     .vsg-col-left,
     .vsg-col-right {
-      height: clamp(210px, 58vw, 280px) !important;
+      height: clamp(220px, 60vw, 290px) !important;
     }
     .vsg-col-center {
       gap: 10px;
@@ -514,16 +534,16 @@
       gap: 10px;
     }
     .vsg-card-item {
-      border-radius: 12px;
+      border-radius: 0 !important;
     }
 
     /* Mobile Touch-Friendly Expand Icon */
     .vsg-expand-btn {
-      top: 8px;
-      right: 8px;
-      width: 28px;
-      height: 28px;
-      font-size: 0.72rem;
+      top: 6px;
+      right: 6px;
+      width: 26px;
+      height: 26px;
+      font-size: 0.7rem;
       opacity: 0.9;
       transform: scale(0.9);
       background: rgba(255, 255, 255, 0.92);
@@ -535,14 +555,16 @@
       padding: 12px;
     }
     .vsg-lightbox-content {
-      border-radius: 16px;
+      border-radius: 0 !important;
       max-height: 85vh;
     }
     .vsg-lightbox-img-box {
       max-height: 70vh;
+      border-radius: 0 !important;
     }
     .vsg-lightbox-img {
       max-height: 70vh;
+      border-radius: 0 !important;
     }
     .vsg-lightbox-close {
       top: 10px;
