@@ -645,7 +645,7 @@
           <!-- BIG DISPLAY FOR CURRENT BILL -->
           <div class="calc-display-group">
             <div class="calc-label">{{ section.settings.slider_label }}</div>
-            <div class="calc-current" id="billDisplay-{{ section.id }}">₹{{ section.settings.slider_default }}</div>
+            <div class="calc-current" id="billDisplay-{{ section.id }}">{{ section.settings.slider_default }}</div>
           </div>
 
           <!-- SLIDER CONTROL (FIRST) -->
@@ -872,7 +872,7 @@
           higherReasonText = `💰 <strong>Bill Rule Applied:</strong> ₹${Math.round(bill).toLocaleString('en-IN')} bill requires ${cardsFromBill} Cards${currentPhase === 'three' ? ' (+ 1 Extra for 3-Phase = ' + totalCards + ' Cards)' : ''}. (Enter your KW load above if known).`;
         }
 
-        if (display) display.textContent = '₹' + Math.round(bill).toLocaleString('en-IN');
+        if (display) display.textContent = Math.round(bill).toLocaleString('en-IN');
         if (mSaving) mSaving.textContent = '₹' + monthly.toLocaleString('en-IN');
         if (ySaving) ySaving.textContent = '₹' + yearly.toLocaleString('en-IN');
         if (nBill) nBill.textContent = '₹' + newBill.toLocaleString('en-IN');
