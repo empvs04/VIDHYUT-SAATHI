@@ -2,7 +2,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800;900&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 
 {%- comment -%}
-  Vidhyut Saathi Premium Calculator - Strict Mobile-First & Desktop Optimized (Yesterday 6:30 PM)
+  Vidhyut Saathi Premium Calculator - Strict Mobile-First & Desktop Optimized (Exact 31 August 1 PM Layout)
 {%- endcomment -%}
 
 {%- style -%}
@@ -23,7 +23,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 40px 20px; /* Original mobile padding */
+    padding: 40px 20px;
     position: relative;
     overflow: hidden;
     animation: bgFloat-{{ section.id }} 10s ease-in-out infinite alternate;
@@ -61,7 +61,7 @@
     background: linear-gradient(135deg, rgba(255,255,255,.95), rgba(255,255,255,.82));
     border: 1px solid rgba(20,140,58,.12);
     border-radius: 30px;
-    padding: 34px 26px; /* Original mobile padding */
+    padding: 34px 26px;
     backdrop-filter: blur(18px);
     box-shadow: 0 20px 60px rgba(0,0,0,.05), 0 0 35px rgba(245,130,32,.06);
     animation: cardEnter-{{ section.id }} .8s ease;
@@ -114,6 +114,18 @@
   }
   .premium-calculator-original-{{ section.id }} .calc-result-label { font-size: .78rem; color: var(--muted); margin-top: 6px; }
 
+  .premium-calculator-original-{{ section.id }} .calc-explain-badge {
+    background: linear-gradient(135deg, rgba(20, 140, 58, 0.08) 0%, rgba(245, 130, 32, 0.08) 100%);
+    border: 1px solid rgba(20, 140, 58, 0.2);
+    border-radius: 14px;
+    padding: 12px 16px;
+    font-size: 0.82rem;
+    color: #1f2937;
+    line-height: 1.5;
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
+
   .premium-calculator-original-{{ section.id }} .calc-disclaimer {
     margin-top: 24px; background: rgba(20,140,58,.04); border: 1px solid rgba(20,140,58,.08); border-radius: 14px;
     padding: 14px 16px; text-align: center; color: var(--muted); font-size: .75rem; line-height: 1.7;
@@ -139,7 +151,7 @@
   }
 
   .premium-calculator-original-{{ section.id }} .electric-particle {
-    position: absolute width: 10px; height: 10px; border-radius: 50%;
+    position: absolute; width: 10px; height: 10px; border-radius: 50%;
     background: rgba(245,130,32,.25); animation: particleMove-{{ section.id }} 10s linear infinite; filter: blur(1px);
   }
   .premium-calculator-original-{{ section.id }} .heading-line { display: inline-block; white-space: nowrap; }
@@ -408,12 +420,12 @@
   /* DESKTOP CENTERED HEADER WITH SHUFFLED 2-COLUMN LAYOUT */
   @media(min-width: 769px) {
     .premium-calculator-original-{{ section.id }} { 
-       padding: 70px 24px !important; 
-       min-height: auto !important;
+      padding: 70px 24px !important; 
+      min-height: auto !important;
     }
     .premium-calculator-original-{{ section.id }} .wrapper { 
-       max-width: 1140px !important; 
-       margin: 0 auto !important; 
+      max-width: 1140px !important; 
+      margin: 0 auto !important; 
     }
 
     /* TOP CENTERED HEADER & SUBHEADER */
@@ -461,14 +473,14 @@
       max-width: 100% !important;
     }
     .vs-calc-left-col-{{ section.id }} .calc-card { 
-       padding: 24px 22px !important; 
-       border-radius: 22px !important; 
-       box-shadow: 0 15px 45px rgba(0,0,0,0.05), 0 0 25px rgba(245,130,32,0.06) !important;
+      padding: 24px 22px !important; 
+      border-radius: 22px !important; 
+      box-shadow: 0 15px 45px rgba(0,0,0,0.05), 0 0 25px rgba(245,130,32,0.06) !important;
       width: 100% !important;
     }
     .premium-calculator-original-{{ section.id }} .calc-current { 
-       font-size: 2.2rem !important; 
-     }
+      font-size: 2.2rem !important; 
+    }
     .premium-calculator-original-{{ section.id }} .calc-label {
       font-size: 0.82rem !important;
       font-weight: 700 !important;
@@ -534,7 +546,6 @@
       margin-top: 14px !important;
       margin-bottom: 12px !important;
     }
-
     .vs-calc-right-col-{{ section.id }} .calc-disclaimer {
       margin-top: 0 !important;
       margin-bottom: 16px !important;
@@ -542,14 +553,14 @@
 
     /* TRUST STRIP CAPSULE PILLS IN RIGHT COLUMN */
     .vs-calc-right-col-{{ section.id }} .trust-strip { 
-       display: grid !important; 
-       grid-template-columns: repeat(2, 1fr) !important; 
-       gap: 12px !important; 
-       margin-top: 0 !important; 
-       width: 100% !important; 
+      display: grid !important; 
+      grid-template-columns: repeat(2, 1fr) !important; 
+      gap: 12px !important; 
+      margin-top: 0 !important; 
+      width: 100% !important; 
     }
     .vs-calc-right-col-{{ section.id }} .trust-item { 
-       background: linear-gradient(#FFFFFF, #FFFFFF) padding-box, linear-gradient(90deg, #F58220 0%, #FFC107 50%, #20B14B 100%) border-box !important;
+      background: linear-gradient(#FFFFFF, #FFFFFF) padding-box, linear-gradient(90deg, #F58220 0%, #FFC107 50%, #20B14B 100%) border-box !important;
       border: 2px solid transparent !important;
       border-radius: 999px !important;
       padding: 10px 14px !important; 
@@ -631,7 +642,7 @@
           <!-- BIG DISPLAY FOR CURRENT BILL -->
           <div class="calc-display-group">
             <div class="calc-label">{{ section.settings.slider_label }}</div>
-            <div class="calc-current" id="billDisplay-{{ section.id }}">{{ section.settings.slider_default }}</div>
+            <div class="calc-current" id="billDisplay-{{ section.id }}">₹{{ section.settings.slider_default }}</div>
           </div>
 
           <!-- SLIDER CONTROL (FIRST) -->
@@ -858,7 +869,7 @@
           higherReasonText = `💰 <strong>Bill Rule Applied:</strong> ₹${Math.round(bill).toLocaleString('en-IN')} bill requires ${cardsFromBill} Cards${currentPhase === 'three' ? ' (+ 1 Extra for 3-Phase = ' + totalCards + ' Cards)' : ''}. (Enter your KW load above if known).`;
         }
 
-        if (display) display.textContent = Math.round(bill).toLocaleString('en-IN');
+        if (display) display.textContent = '₹' + Math.round(bill).toLocaleString('en-IN');
         if (mSaving) mSaving.textContent = '₹' + monthly.toLocaleString('en-IN');
         if (ySaving) ySaving.textContent = '₹' + yearly.toLocaleString('en-IN');
         if (nBill) nBill.textContent = '₹' + newBill.toLocaleString('en-IN');
