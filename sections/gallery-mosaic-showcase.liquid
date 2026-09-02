@@ -126,11 +126,12 @@
   }
 
   /* ==========================================================================
-     PART 1: 3-COLUMN HERO GRID (FLUSH MATCHING HEIGHTS & TRUE SQUARES)
+     PART 1: 4-CARD HERO GRID (MATHEMATICALLY PERFECT 2-ROW CSS GRID)
      ========================================================================== */
   .vsg-4card-grid {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) min(350px, 28vw) minmax(0, 1fr);
+    grid-template-columns: 1fr 340px 1fr;
+    grid-template-rows: auto auto;
     gap: 16px;
     width: 100%;
     max-width: 1400px;
@@ -145,85 +146,40 @@
     }
   }
 
-  /* Left & Right Columns (Stretch 100% to match total height of 2 center squares + gap) */
-  .vsg-col-left,
-  .vsg-col-right {
-    display: flex;
-    flex-direction: column;
+  /* Left Tall Card (Spans Exactly Row 1 + Gap + Row 2) */
+  .vsg-hero-left {
+    grid-column: 1;
+    grid-row: 1 / span 2;
     width: 100% !important;
-    min-width: 0 !important;
-    max-width: 100% !important;
     height: 100% !important;
     min-height: 0 !important;
-    box-sizing: border-box;
   }
 
-  .vsg-col-left .vsg-card-item,
-  .vsg-col-right .vsg-card-item {
-    height: 100% !important;
-    width: 100% !important;
-    min-width: 0 !important;
-    flex: 1 1 100% !important;
-    min-height: 0 !important;
-    border-radius: 0 !important;
-  }
-
-  .vsg-col-left .vsg-card-img-wrap,
-  .vsg-col-right .vsg-card-img-wrap {
-    width: 100% !important;
-    height: 100% !important;
-    min-width: 0 !important;
-    border-radius: 0 !important;
-  }
-
-  .vsg-col-left .vsg-card-img,
-  .vsg-col-right .vsg-card-img {
-    width: 100% !important;
-    height: 100% !important;
-    min-width: 0 !important;
-    object-fit: cover !important;
-    object-position: center !important;
-    border-radius: 0 !important;
-  }
-
-  /* Center Column (2 Pure 1:1 Perfect Squares with Gap) */
-  .vsg-col-center {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    width: 100%;
-    height: 100%;
-    justify-content: space-between;
-  }
-
-  .vsg-col-center .vsg-card-item {
+  /* Center Top Card (Row 1: Pure 1:1 Square) */
+  .vsg-hero-center-top {
+    grid-column: 2;
+    grid-row: 1;
     width: 100% !important;
     aspect-ratio: 1 / 1 !important;
     height: auto !important;
-    max-height: none !important;
+  }
+
+  /* Center Bottom Card (Row 2: Pure 1:1 Square) */
+  .vsg-hero-center-bottom {
+    grid-column: 2;
+    grid-row: 2;
+    width: 100% !important;
+    aspect-ratio: 1 / 1 !important;
+    height: auto !important;
+  }
+
+  /* Right Tall Card (Spans Exactly Row 1 + Gap + Row 2) */
+  .vsg-hero-right {
+    grid-column: 3;
+    grid-row: 1 / span 2;
+    width: 100% !important;
+    height: 100% !important;
     min-height: 0 !important;
-    flex: 0 0 auto !important;
-    display: block !important;
-    border-radius: 0 !important;
-  }
-
-  .vsg-col-center .vsg-card-img-wrap {
-    width: 100% !important;
-    height: 100% !important;
-    aspect-ratio: 1 / 1 !important;
-    position: relative !important;
-    overflow: hidden !important;
-    border-radius: 0 !important;
-  }
-
-  .vsg-col-center .vsg-card-img {
-    width: 100% !important;
-    height: 100% !important;
-    aspect-ratio: 1 / 1 !important;
-    object-fit: cover !important;
-    object-position: center !important;
-    display: block !important;
-    border-radius: 0 !important;
   }
 
   /* ==========================================================================
@@ -447,26 +403,33 @@
       padding: 50px 18px 70px 18px;
     }
     .vsg-4card-grid {
-      grid-template-columns: 1fr;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto auto;
       gap: 12px;
+    }
+    .vsg-hero-left {
+      grid-column: 1 / span 2;
+      grid-row: auto;
+      height: 320px !important;
+    }
+    .vsg-hero-center-top {
+      grid-column: 1;
+      grid-row: auto;
+      aspect-ratio: 1 / 1 !important;
+    }
+    .vsg-hero-center-bottom {
+      grid-column: 2;
+      grid-row: auto;
+      aspect-ratio: 1 / 1 !important;
+    }
+    .vsg-hero-right {
+      grid-column: 1 / span 2;
+      grid-row: auto;
+      height: 320px !important;
     }
     .vsg-30cards-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 12px;
-    }
-    .vsg-col-left,
-    .vsg-col-right {
-      height: 360px !important;
-    }
-    .vsg-col-center {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      height: auto;
-    }
-    .vsg-col-center .vsg-card-item {
-      aspect-ratio: 1 / 1 !important;
-      height: auto !important;
     }
   }
 
@@ -520,12 +483,9 @@
       gap: 10px;
       margin-bottom: 12px;
     }
-    .vsg-col-left,
-    .vsg-col-right {
-      height: clamp(220px, 60vw, 290px) !important;
-    }
-    .vsg-col-center {
-      gap: 10px;
+    .vsg-hero-left,
+    .vsg-hero-right {
+      height: clamp(210px, 58vw, 280px) !important;
     }
 
     /* 30-Cards Grid Mobile 2-Column Perfect Layout */
@@ -603,61 +563,54 @@
       </div>
     </div>
 
-    <!-- PART 1: 3-COLUMN FLUSH-HEIGHT 4-CARD HERO GRID -->
+    <!-- PART 1: 4-CARD HERO COMPOSITION (PERFECT 2-ROW GRID) -->
     <div class="vsg-4card-grid" id="vsgHeroGrid-{{ section.id }}">
       
-      <!-- 1. LEFT COLUMN: BIG TALL PORTRAIT CARD -->
-      <div class="vsg-col-left">
-        <div class="vsg-card-item" data-category="{{ section.settings.card1_category | default: 'corporate' }}">
-          <div class="vsg-card-img-wrap">
-            {%- if section.settings.card1_image != blank -%}
-              <img src="{{ section.settings.card1_image | image_url: width: 1200 }}" alt="Vidhyut Saathi Moments" class="vsg-card-img" loading="lazy">
-            {%- else -%}
-              <img src="{{ 'vidhyut-saathi-team-bg.jpg' | asset_url }}" alt="Corporate Headquarters" class="vsg-card-img" loading="lazy">
-            {%- endif -%}
-            <div class="vsg-expand-btn"><i class="fa-solid fa-expand"></i></div>
-          </div>
+      <!-- 1. LEFT TALL CARD (Spans Row 1 + Gap + Row 2) -->
+      <div class="vsg-card-item vsg-hero-left" data-category="{{ section.settings.card1_category | default: 'corporate' }}">
+        <div class="vsg-card-img-wrap">
+          {%- if section.settings.card1_image != blank -%}
+            <img src="{{ section.settings.card1_image | image_url: width: 1200 }}" alt="Vidhyut Saathi Moments" class="vsg-card-img" loading="lazy">
+          {%- else -%}
+            <img src="{{ 'vidhyut-saathi-team-bg.jpg' | asset_url }}" alt="Corporate Headquarters" class="vsg-card-img" loading="lazy">
+          {%- endif -%}
+          <div class="vsg-expand-btn"><i class="fa-solid fa-expand"></i></div>
         </div>
       </div>
 
-      <!-- 2. CENTER COLUMN: 2 SQUARES (TOP & BOTTOM EQUAL FLUSH) -->
-      <div class="vsg-col-center">
-        <!-- Center Top Card -->
-        <div class="vsg-card-item card-center-item" data-category="{{ section.settings.card2_category | default: 'celebrating' }}">
-          <div class="vsg-card-img-wrap">
-            {%- if section.settings.card2_image != blank -%}
-              <img src="{{ section.settings.card2_image | image_url: width: 1000 }}" alt="Vidhyut Saathi Moments" class="vsg-card-img" loading="lazy">
-            {%- else -%}
-              <img src="{{ 'indian_entrepreneur.jpg' | asset_url }}" alt="Celebrating Moments" class="vsg-card-img" loading="lazy">
-            {%- endif -%}
-            <div class="vsg-expand-btn"><i class="fa-solid fa-expand"></i></div>
-          </div>
-        </div>
-
-        <!-- Center Bottom Card -->
-        <div class="vsg-card-item card-center-item" data-category="{{ section.settings.card3_category | default: 'awards' }}">
-          <div class="vsg-card-img-wrap">
-            {%- if section.settings.card3_image != blank -%}
-              <img src="{{ section.settings.card3_image | image_url: width: 1000 }}" alt="Vidhyut Saathi Moments" class="vsg-card-img" loading="lazy">
-            {%- else -%}
-              <img src="{{ 'wvs-happy-man.jpg' | asset_url }}" alt="Awards & Honors" class="vsg-card-img" loading="lazy">
-            {%- endif -%}
-            <div class="vsg-expand-btn"><i class="fa-solid fa-expand"></i></div>
-          </div>
+      <!-- 2. CENTER TOP SQUARE CARD (Row 1: 1:1 Square) -->
+      <div class="vsg-card-item vsg-hero-center-top" data-category="{{ section.settings.card2_category | default: 'celebrating' }}">
+        <div class="vsg-card-img-wrap">
+          {%- if section.settings.card2_image != blank -%}
+            <img src="{{ section.settings.card2_image | image_url: width: 1000 }}" alt="Vidhyut Saathi Moments" class="vsg-card-img" loading="lazy">
+          {%- else -%}
+            <img src="{{ 'indian_entrepreneur.jpg' | asset_url }}" alt="Celebrating Moments" class="vsg-card-img" loading="lazy">
+          {%- endif -%}
+          <div class="vsg-expand-btn"><i class="fa-solid fa-expand"></i></div>
         </div>
       </div>
 
-      <!-- 3. RIGHT COLUMN: BIG TALL PORTRAIT CARD -->
-      <div class="vsg-col-right">
-        <div class="vsg-card-item" data-category="{{ section.settings.card4_category | default: 'operational' }}">
-          <div class="vsg-card-img-wrap">
-            {%- if section.settings.card4_image != blank -%}
-              <img src="{{ section.settings.card4_image | image_url: width: 1200 }}" alt="Vidhyut Saathi Moments" class="vsg-card-img" loading="lazy">
-            {%- else -%}
-              <img src="{{ 'wvs-indian-businessman.jpg' | asset_url }}" alt="Operational Office" class="vsg-card-img" loading="lazy">
-            {%- endif -%}
-            <div class="vsg-expand-btn"><i class="fa-solid fa-expand"></i></div>
-          </div>
+      <!-- 3. CENTER BOTTOM SQUARE CARD (Row 2: 1:1 Square) -->
+      <div class="vsg-card-item vsg-hero-center-bottom" data-category="{{ section.settings.card3_category | default: 'awards' }}">
+        <div class="vsg-card-img-wrap">
+          {%- if section.settings.card3_image != blank -%}
+            <img src="{{ section.settings.card3_image | image_url: width: 1000 }}" alt="Vidhyut Saathi Moments" class="vsg-card-img" loading="lazy">
+          {%- else -%}
+            <img src="{{ 'wvs-happy-man.jpg' | asset_url }}" alt="Awards & Honors" class="vsg-card-img" loading="lazy">
+          {%- endif -%}
+          <div class="vsg-expand-btn"><i class="fa-solid fa-expand"></i></div>
+        </div>
+      </div>
+
+      <!-- 4. RIGHT TALL CARD (Spans Row 1 + Gap + Row 2) -->
+      <div class="vsg-card-item vsg-hero-right" data-category="{{ section.settings.card4_category | default: 'operational' }}">
+        <div class="vsg-card-img-wrap">
+          {%- if section.settings.card4_image != blank -%}
+            <img src="{{ section.settings.card4_image | image_url: width: 1200 }}" alt="Vidhyut Saathi Moments" class="vsg-card-img" loading="lazy">
+          {%- else -%}
+            <img src="{{ 'wvs-indian-businessman.jpg' | asset_url }}" alt="Operational Office" class="vsg-card-img" loading="lazy">
+          {%- endif -%}
+          <div class="vsg-expand-btn"><i class="fa-solid fa-expand"></i></div>
         </div>
       </div>
 
