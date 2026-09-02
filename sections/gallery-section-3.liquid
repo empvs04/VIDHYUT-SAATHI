@@ -304,45 +304,30 @@
   }
 
   /* ==========================================================================
-     CREATIVE 2D BOUNCING PHYSICS ARENA WITH TEXT INSIDE 3D SMILEY BALLS
-     - Moves across any 2D direction (Left, Right, Diagonally, Up, Down)
-     - Rebounds when touching Top Cards (11-13) and Bottom Cards (14-16)
+     CREATIVE 2D BOUNCING PHYSICS ARENA (BORDERLESS & TOUCHING CARDS DIRECTLY)
+     - 100% Seamless & Transparent: Balls touch top & bottom card edges directly
+     - Uniform 3D Smiley Spheres with consistent Vidhyut Saathi brand data
      ========================================================================== */
   .vsg-physics-arena {
     position: relative;
     width: 100%;
     max-width: 1400px;
-    height: 180px;
-    margin: 10px auto;
-    background: linear-gradient(135deg, rgba(236, 92, 10, 0.04) 0%, rgba(255, 154, 0, 0.06) 50%, rgba(0, 123, 62, 0.04) 100%);
-    border-top: 2px dashed rgba(236, 92, 10, 0.3);
-    border-bottom: 2px dashed rgba(0, 123, 62, 0.3);
+    height: 175px;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border: none !important;
     box-sizing: border-box;
     overflow: hidden;
     user-select: none;
     touch-action: none;
   }
 
-  .vsg-physics-arena-title {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: clamp(0.75rem, 1.8vw, 0.95rem);
-    font-weight: 900;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: rgba(236, 92, 10, 0.28);
-    pointer-events: none;
-    white-space: nowrap;
-    z-index: 1;
-  }
-
   /* 3D Glassmorphic Physics Ball */
   .vsg-physics-ball {
     position: absolute;
-    width: 80px;
-    height: 80px;
+    width: 78px;
+    height: 78px;
     border-radius: 50%;
     cursor: grab;
     display: flex;
@@ -350,11 +335,13 @@
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
-    padding: 6px;
+    padding: 4px;
     user-select: none;
     touch-action: none;
     will-change: transform, left, top;
     z-index: 5;
+    background: radial-gradient(circle at 32% 28%, #ffffff 0%, #ffde59 30%, #ff9100 75%, #d45100 100%);
+    box-shadow: 0 10px 24px rgba(236, 92, 10, 0.42), inset -4px -6px 10px rgba(180, 60, 0, 0.6), inset 4px 6px 10px #ffffff;
     transition: box-shadow 0.25s ease;
   }
 
@@ -365,54 +352,23 @@
 
   /* Emoji and Text Strictly INSIDE the Ball */
   .vsg-ball-emoji {
-    font-size: 1.65rem;
-    line-height: 1.05;
+    font-size: 1.7rem;
+    line-height: 1;
     margin-bottom: 2px;
     filter: drop-shadow(0 2px 4px rgba(0,0,0,0.35));
     pointer-events: none;
   }
 
   .vsg-ball-text {
-    font-size: 0.68rem;
+    font-size: 0.64rem;
     font-weight: 900;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
     color: #ffffff;
     text-shadow: 0 1px 4px rgba(0,0,0,0.7), 0 0 6px rgba(0,0,0,0.4);
     line-height: 1;
     pointer-events: none;
     white-space: nowrap;
-  }
-
-  /* Color Schemes for 3D Balls */
-  .vsg-pball-spark {
-    background: radial-gradient(circle at 32% 28%, #ffffff 0%, #ffe600 40%, #ff6b00 85%, #c23800 100%);
-    box-shadow: 0 8px 20px rgba(255, 107, 0, 0.45), inset -4px -6px 10px rgba(194, 56, 0, 0.6), inset 4px 6px 10px #ffffff;
-  }
-
-  .vsg-pball-green {
-    background: radial-gradient(circle at 32% 28%, #ffffff 0%, #86efac 35%, #16a34a 80%, #14532d 100%);
-    box-shadow: 0 8px 20px rgba(22, 163, 74, 0.4), inset -4px -6px 10px rgba(20, 83, 45, 0.6), inset 4px 6px 10px #ffffff;
-  }
-
-  .vsg-pball-gold {
-    background: radial-gradient(circle at 32% 28%, #ffffff 0%, #fde047 35%, #eab308 80%, #a16207 100%);
-    box-shadow: 0 8px 20px rgba(234, 179, 8, 0.45), inset -4px -6px 10px rgba(161, 98, 7, 0.6), inset 4px 6px 10px #ffffff;
-  }
-
-  .vsg-pball-blue {
-    background: radial-gradient(circle at 32% 28%, #ffffff 0%, #93c5fd 35%, #2563eb 80%, #1e3a8a 100%);
-    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4), inset -4px -6px 10px rgba(30, 58, 138, 0.6), inset 4px 6px 10px #ffffff;
-  }
-
-  .vsg-pball-orange {
-    background: radial-gradient(circle at 32% 28%, #ffffff 0%, #fed7aa 35%, #ea580c 80%, #9a3412 100%);
-    box-shadow: 0 8px 20px rgba(234, 88, 12, 0.4), inset -4px -6px 10px rgba(154, 52, 18, 0.6), inset 4px 6px 10px #ffffff;
-  }
-
-  .vsg-pball-purple {
-    background: radial-gradient(circle at 32% 28%, #ffffff 0%, #e9d5ff 35%, #9333ea 80%, #581c87 100%);
-    box-shadow: 0 8px 20px rgba(147, 51, 234, 0.4), inset -4px -6px 10px rgba(88, 28, 135, 0.6), inset 4px 6px 10px #ffffff;
   }
 
   /* ==========================================================================
@@ -1009,44 +965,42 @@
       </div>
     </div>
 
-    <!-- CREATIVE 2D BOUNCING PHYSICS ARENA (MOVES IN ALL DIRECTIONS & TOUCHES TOP/BOTTOM CARDS) -->
+    <!-- CREATIVE 2D BOUNCING PHYSICS ARENA (TOUCHES CARDS DIRECTLY, SEAMLESS & BORDERLESS) -->
     <div class="vsg-physics-arena" id="vsgPhysicsArena-{{ section.id }}">
-      <div class="vsg-physics-arena-title">✨ Vidhyut Saathi Live Happiness & Energy Pulse ✨</div>
-
-      <!-- Ball 1: Spark -->
-      <div class="vsg-physics-ball vsg-pball-spark" data-vx="2.1" data-vy="-2.4" data-rot="1.5">
-        <span class="vsg-ball-emoji">⚡</span>
-        <span class="vsg-ball-text">Power</span>
-      </div>
-
-      <!-- Ball 2: Trust -->
-      <div class="vsg-physics-ball vsg-pball-green" data-vx="-2.3" data-vy="2.1" data-rot="-1.8">
+      <!-- Ball 1 -->
+      <div class="vsg-physics-ball" data-vx="2.2" data-vy="-2.4" data-rot="1.5">
         <span class="vsg-ball-emoji">😊</span>
-        <span class="vsg-ball-text">Trust</span>
+        <span class="vsg-ball-text">VIDHYUT</span>
       </div>
 
-      <!-- Ball 3: Star -->
-      <div class="vsg-physics-ball vsg-pball-gold" data-vx="1.8" data-vy="2.5" data-rot="2.2">
-        <span class="vsg-ball-emoji">🌟</span>
-        <span class="vsg-ball-text">5-Star</span>
+      <!-- Ball 2 -->
+      <div class="vsg-physics-ball" data-vx="-2.3" data-vy="2.2" data-rot="-1.8">
+        <span class="vsg-ball-emoji">😊</span>
+        <span class="vsg-ball-text">VIDHYUT</span>
       </div>
 
-      <!-- Ball 4: Saver -->
-      <div class="vsg-physics-ball vsg-pball-blue" data-vx="-1.9" data-vy="-2.2" data-rot="-1.4">
-        <span class="vsg-ball-emoji">🔋</span>
-        <span class="vsg-ball-text">Saver</span>
+      <!-- Ball 3 -->
+      <div class="vsg-physics-ball" data-vx="1.9" data-vy="2.5" data-rot="2.0">
+        <span class="vsg-ball-emoji">😊</span>
+        <span class="vsg-ball-text">VIDHYUT</span>
       </div>
 
-      <!-- Ball 5: Joy -->
-      <div class="vsg-physics-ball vsg-pball-orange" data-vx="2.4" data-vy="-1.9" data-rot="1.6">
-        <span class="vsg-ball-emoji">🥳</span>
-        <span class="vsg-ball-text">Joy</span>
+      <!-- Ball 4 -->
+      <div class="vsg-physics-ball" data-vx="-2.0" data-vy="-2.3" data-rot="-1.5">
+        <span class="vsg-ball-emoji">😊</span>
+        <span class="vsg-ball-text">VIDHYUT</span>
       </div>
 
-      <!-- Ball 6: Smart -->
-      <div class="vsg-physics-ball vsg-pball-purple" data-vx="-2.0" data-vy="2.3" data-rot="-2.0">
-        <span class="vsg-ball-emoji">💡</span>
-        <span class="vsg-ball-text">Smart</span>
+      <!-- Ball 5 -->
+      <div class="vsg-physics-ball" data-vx="2.4" data-vy="-1.9" data-rot="1.7">
+        <span class="vsg-ball-emoji">😊</span>
+        <span class="vsg-ball-text">VIDHYUT</span>
+      </div>
+
+      <!-- Ball 6 -->
+      <div class="vsg-physics-ball" data-vx="-2.1" data-vy="2.4" data-rot="-2.0">
+        <span class="vsg-ball-emoji">😊</span>
+        <span class="vsg-ball-text">VIDHYUT</span>
       </div>
     </div>
 
@@ -1224,8 +1178,67 @@
               ball.x = arenaWidth - ball.width;
               ball.vx = -Math.abs(ball.vx); // Rebound left
             }
+          });
 
-            // Apply positions
+          // Ball-to-Ball Elastic Physics Collision (Balls touch and bounce off each other!)
+          for (let i = 0; i < balls.length; i++) {
+            for (let j = i + 1; j < balls.length; j++) {
+              const b1 = balls[i];
+              const b2 = balls[j];
+              if (!b1 || !b2) continue;
+
+              const c1x = b1.x + b1.width / 2;
+              const c1y = b1.y + b1.height / 2;
+              const c2x = b2.x + b2.width / 2;
+              const c2y = b2.y + b2.height / 2;
+
+              const dx = c2x - c1x;
+              const dy = c2y - c1y;
+              const dist = Math.sqrt(dx * dx + dy * dy);
+              const minDist = (b1.width / 2) + (b2.width / 2);
+
+              if (dist < minDist && dist > 0) {
+                // Collision Normal
+                const nx = dx / dist;
+                const ny = dy / dist;
+
+                // Relative Velocity
+                const kx = b1.vx - b2.vx;
+                const ky = b1.vy - b2.vy;
+                const p = (nx * kx + ny * ky);
+
+                if (p < 0) {
+                  // Elastic momentum transfer
+                  b1.vx -= p * nx;
+                  b1.vy -= p * ny;
+                  b2.vx += p * nx;
+                  b2.vy += p * ny;
+
+                  // Add rotational spin reaction
+                  b1.rotSpeed = (Math.random() - 0.5) * 4.5;
+                  b2.rotSpeed = (Math.random() - 0.5) * 4.5;
+
+                  // Pulse collision glow
+                  b1.el.style.boxShadow = '0 0 20px rgba(255, 154, 0, 0.9), inset 0 0 12px #ffffff';
+                  b2.el.style.boxShadow = '0 0 20px rgba(255, 154, 0, 0.9), inset 0 0 12px #ffffff';
+                  setTimeout(() => {
+                    b1.el.style.boxShadow = '';
+                    b2.el.style.boxShadow = '';
+                  }, 180);
+                }
+
+                // Push apart to prevent overlap sticking
+                const overlap = (minDist - dist) / 2;
+                b1.x -= nx * overlap;
+                b1.y -= ny * overlap;
+                b2.x += nx * overlap;
+                b2.y += ny * overlap;
+              }
+            }
+          }
+
+          // Apply positions to DOM
+          balls.forEach(ball => {
             ball.el.style.left = ball.x + 'px';
             ball.el.style.top = ball.y + 'px';
             ball.el.style.transform = `rotate(${ball.angle}deg)`;
