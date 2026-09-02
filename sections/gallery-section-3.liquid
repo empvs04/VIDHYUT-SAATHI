@@ -967,39 +967,39 @@
 
     <!-- CREATIVE 2D BOUNCING PHYSICS ARENA (TOUCHES CARDS DIRECTLY, SEAMLESS & BORDERLESS) -->
     <div class="vsg-physics-arena" id="vsgPhysicsArena-{{ section.id }}">
-      <!-- Ball 1 -->
+      <!-- Ball 1: Warm Happy Smile -->
       <div class="vsg-physics-ball" data-vx="2.2" data-vy="-2.4" data-rot="1.5">
         <span class="vsg-ball-emoji">😊</span>
         <span class="vsg-ball-text">VIDHYUT</span>
       </div>
 
-      <!-- Ball 2 -->
+      <!-- Ball 2: Excited Radiant Smile -->
       <div class="vsg-physics-ball" data-vx="-2.3" data-vy="2.2" data-rot="-1.8">
-        <span class="vsg-ball-emoji">😊</span>
+        <span class="vsg-ball-emoji">😃</span>
         <span class="vsg-ball-text">VIDHYUT</span>
       </div>
 
-      <!-- Ball 3 -->
+      <!-- Ball 3: Star-Struck Wonder Smile -->
       <div class="vsg-physics-ball" data-vx="1.9" data-vy="2.5" data-rot="2.0">
-        <span class="vsg-ball-emoji">😊</span>
+        <span class="vsg-ball-emoji">🤩</span>
         <span class="vsg-ball-text">VIDHYUT</span>
       </div>
 
-      <!-- Ball 4 -->
+      <!-- Ball 4: Celebrating Joy Smile -->
       <div class="vsg-physics-ball" data-vx="-2.0" data-vy="-2.3" data-rot="-1.5">
-        <span class="vsg-ball-emoji">😊</span>
+        <span class="vsg-ball-emoji">🥳</span>
         <span class="vsg-ball-text">VIDHYUT</span>
       </div>
 
-      <!-- Ball 5 -->
+      <!-- Ball 5: Beaming Cheerful Smile -->
       <div class="vsg-physics-ball" data-vx="2.4" data-vy="-1.9" data-rot="1.7">
-        <span class="vsg-ball-emoji">😊</span>
+        <span class="vsg-ball-emoji">😁</span>
         <span class="vsg-ball-text">VIDHYUT</span>
       </div>
 
-      <!-- Ball 6 -->
+      <!-- Ball 6: Cool Smart Confident Smile -->
       <div class="vsg-physics-ball" data-vx="-2.1" data-vy="2.4" data-rot="-2.0">
-        <span class="vsg-ball-emoji">😊</span>
+        <span class="vsg-ball-emoji">😎</span>
         <span class="vsg-ball-text">VIDHYUT</span>
       </div>
     </div>
@@ -1132,8 +1132,35 @@
           });
         }
 
-        initBalls();
-        window.addEventListener('resize', initBalls);
+        // Global Mouse Hover Interaction Tracking across Arena
+        let mouseX = -9999, mouseY = -9999;
+        let lastMouseX = -9999, lastMouseY = -9999;
+        let mouseVx = 0, mouseVy = 0;
+        let isMouseOverArena = false;
+
+        arena.addEventListener('mousemove', function(e) {
+          const rect = arena.getBoundingClientRect();
+          mouseX = e.clientX - rect.left;
+          mouseY = e.clientY - rect.top;
+          isMouseOverArena = true;
+
+          if (lastMouseX !== -9999) {
+            mouseVx = (mouseX - lastMouseX) * 0.35;
+            mouseVy = (mouseY - lastMouseY) * 0.35;
+          }
+          lastMouseX = mouseX;
+          lastMouseY = mouseY;
+        });
+
+        arena.addEventListener('mouseleave', function() {
+          isMouseOverArena = false;
+          mouseX = -9999;
+          mouseY = -9999;
+          lastMouseX = -9999;
+          lastMouseY = -9999;
+          mouseVx = 0;
+          mouseVy = 0;
+        });
 
         // Physics Animation Loop
         let animationId;
@@ -1141,12 +1168,43 @@
           const arenaWidth = arena.clientWidth || 1200;
           const arenaHeight = arena.clientHeight || 180;
 
+          // Interactive Mouse Hover Impulse (Push / Move balls with cursor!)
+          if (isMouseOverArena) {
+            balls.forEach(ball => {
+              if (ball.isDragging) return;
+              const bcX = ball.x + ball.width / 2;
+              const bcY = ball.y + ball.height / 2;
+              const mdx = bcX - mouseX;
+              const mdy = bcY - mouseY;
+              const mDist = Math.sqrt(mdx * mdx + mdy * mdy);
+              const influenceRadius = 115;
+
+              if (mDist < influenceRadius && mDist > 0) {
+                const force = (1 - mDist / influenceRadius) * 3.2;
+                const nx = mdx / mDist;
+                const ny = mdy / mDist;
+
+                ball.vx += nx * force + mouseVx * 0.25;
+                ball.vy += ny * force + mouseVy * 0.25;
+                ball.rotSpeed += (nx - ny) * force * 1.8;
+
+                const speed = Math.sqrt(ball.vx * ball.vx + ball.vy * ball.vy);
+                if (speed > 6.8) {
+                  ball.vx = (ball.vx / speed) * 6.8;
+                  ball.vy = (ball.vy / speed) * 6.8;
+                }
+              }
+            });
+            mouseVx *= 0.85;
+            mouseVy *= 0.85;
+          }
+
           balls.forEach(ball => {
             if (ball.isDragging) return;
 
             // Move in 2D space
-            ball.x += ball.x_speed_mult ? ball.vx * ball.x_speed_mult : ball.vx;
-            ball.y += ball.y_speed_mult ? ball.vy * ball.y_speed_mult : ball.vy;
+            ball.x += ball.vx;
+            ball.y += ball.vy;
             ball.angle += ball.rotSpeed;
 
             // Collision with TOP CARDS boundary (touches bottom edge of cards 11, 12, 13)
