@@ -2,7 +2,12 @@
   @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap');
 
   /* ==========================================================================
-     GALLERY SECTION 3: 4 HERO CARDS + 3 SQUARES + 3 HORIZONTAL RECTANGLES + 3 SQUARES
+     GALLERY SECTION 3: 
+     - Top 4 Hero Cards (Cards 1-4)
+     - 3 Square Cards (Cards 5-7)
+     - 3 Horizontal Rectangle Cards (Cards 8-10)
+     - 3 Square Cards (Cards 11-13)
+     - Cards 14, 15, 16: Left 2 Horizontal Rectangles + Right 1 True Square
      ========================================================================== */
   .vsg-mosaic-section {
     position: relative;
@@ -298,6 +303,85 @@
   }
 
   /* ==========================================================================
+     PART 5: CARDS 14, 15, 16 (LEFT 2 HORIZONTAL RECTANGLES + RIGHT 1 TRUE SQUARE)
+     - Left Column (50% Width): 2 Horizontal Rectangles with 16px gap
+     - Right Column (50% Width): 1 True 1:1 Square
+     - Exact match of total height & equal width on both sides
+     ========================================================================== */
+  .vsg-rect-square-split-block {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    width: 100%;
+    max-width: 1400px;
+    margin: 20px auto;
+    align-items: stretch;
+    box-sizing: border-box;
+  }
+
+  /* Left Column: 2 Horizontal Landscape Rectangles */
+  .vsg-rss-col-left {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    justify-content: space-between;
+  }
+
+  .vsg-rss-col-left .vsg-card-item {
+    width: 100% !important;
+    height: calc(50% - 8px) !important;
+    min-height: 0 !important;
+    flex: 1 1 auto !important;
+    border-radius: 0 !important;
+  }
+
+  .vsg-rss-col-left .vsg-card-img-wrap {
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 0 !important;
+  }
+
+  .vsg-rss-col-left .vsg-card-img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    border-radius: 0 !important;
+  }
+
+  /* Right Column: 1 Large 1:1 True Square */
+  .vsg-rss-col-right {
+    display: flex;
+    flex-direction: column;
+    width: 100% !important;
+    box-sizing: border-box;
+  }
+
+  .vsg-rss-col-right .vsg-card-item {
+    width: 100% !important;
+    aspect-ratio: 1 / 1 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    border-radius: 0 !important;
+  }
+
+  .vsg-rss-col-right .vsg-card-img-wrap {
+    width: 100% !important;
+    height: 100% !important;
+    aspect-ratio: 1 / 1 !important;
+    border-radius: 0 !important;
+  }
+
+  .vsg-rss-col-right .vsg-card-img {
+    width: 100% !important;
+    height: 100% !important;
+    aspect-ratio: 1 / 1 !important;
+    object-fit: cover !important;
+    border-radius: 0 !important;
+  }
+
+  /* ==========================================================================
      PURE 90-DEGREE SHARP CORNERS & HOVER ZOOM + LIGHT-DARK TINT
      ========================================================================== */
   .vsg-card-item {
@@ -557,6 +641,25 @@
     .vsg-rect-card {
       aspect-ratio: 16 / 10 !important;
     }
+
+    /* Part 5 Split Block Mobile */
+    .vsg-rect-square-split-block {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 10px !important;
+      margin: 10px auto !important;
+    }
+    .vsg-rss-col-left {
+      gap: 10px !important;
+    }
+    .vsg-rss-col-left .vsg-card-item {
+      height: clamp(160px, 38vw, 220px) !important;
+      aspect-ratio: 16 / 9 !important;
+    }
+    .vsg-rss-col-right .vsg-card-item {
+      aspect-ratio: 1 / 1 !important;
+      width: 100% !important;
+    }
   }
 
   @media screen and (max-width: 600px) {
@@ -623,7 +726,7 @@
       margin-bottom: 8px !important;
     }
 
-    /* Rectangle Cards on Mobile (Single Column / 16:9 Landscape) */
+    /* Rectangle Cards on Mobile */
     .vsg-rect-3cards-grid {
       grid-template-columns: 1fr !important;
       gap: 8px !important;
@@ -631,6 +734,22 @@
     }
     .vsg-rect-card {
       aspect-ratio: 16 / 9 !important;
+    }
+
+    /* Part 5 Split Block Mobile Spacing */
+    .vsg-rect-square-split-block {
+      gap: 8px !important;
+      margin: 8px auto !important;
+    }
+    .vsg-rss-col-left {
+      gap: 8px !important;
+    }
+    .vsg-rss-col-left .vsg-card-item {
+      height: clamp(140px, 42vw, 190px) !important;
+      aspect-ratio: 16 / 9 !important;
+    }
+    .vsg-rss-col-right .vsg-card-item {
+      aspect-ratio: 1 / 1 !important;
     }
 
     .vsg-card-item {
@@ -843,6 +962,50 @@
       {%- endif -%}
     </div>
 
+    <!-- PART 5: CARDS 14, 15, 16 (LEFT 2 HORIZONTAL RECTANGLES + RIGHT 1 TRUE SQUARE) -->
+    <div class="vsg-rect-square-split-block" id="vsgRssBlock-{{ section.id }}">
+      <!-- Left Column (50% Width): 2 Horizontal Rectangles Stacked Vertically with 16px Gap -->
+      <div class="vsg-rss-col-left">
+        <!-- Top Horizontal Rectangle (Card 14) -->
+        <div class="vsg-card-item" data-category="{{ section.settings.card14_category | default: 'corporate' }}">
+          <div class="vsg-card-img-wrap">
+            {%- if section.settings.card14_image != blank -%}
+              <img src="{{ section.settings.card14_image | image_url: width: 1200 }}" alt="Vidhyut Saathi Moments" class="vsg-card-img" loading="lazy">
+            {%- else -%}
+              <img src="{{ 'vidhyut-banking-banner.jpg' | asset_url }}" alt="Corporate Banking" class="vsg-card-img" loading="lazy">
+            {%- endif -%}
+            <div class="vsg-expand-btn"><i class="fa-solid fa-expand"></i></div>
+          </div>
+        </div>
+
+        <!-- Bottom Horizontal Rectangle (Card 15) -->
+        <div class="vsg-card-item" data-category="{{ section.settings.card15_category | default: 'celebrating' }}">
+          <div class="vsg-card-img-wrap">
+            {%- if section.settings.card15_image != blank -%}
+              <img src="{{ section.settings.card15_image | image_url: width: 1200 }}" alt="Vidhyut Saathi Moments" class="vsg-card-img" loading="lazy">
+            {%- else -%}
+              <img src="{{ 'wvs-card-guide-woman.jpg' | asset_url }}" alt="Team Celebration" class="vsg-card-img" loading="lazy">
+            {%- endif -%}
+            <div class="vsg-expand-btn"><i class="fa-solid fa-expand"></i></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column (50% Width): 1 Large True 1:1 Square (Card 16) -->
+      <div class="vsg-rss-col-right">
+        <div class="vsg-card-item" data-category="{{ section.settings.card16_category | default: 'operational' }}">
+          <div class="vsg-card-img-wrap">
+            {%- if section.settings.card16_image != blank -%}
+              <img src="{{ section.settings.card16_image | image_url: width: 1200 }}" alt="Vidhyut Saathi Moments" class="vsg-card-img" loading="lazy">
+            {%- else -%}
+              <img src="{{ 'india_live_states_map.jpg' | asset_url }}" alt="All India Map" class="vsg-card-img" loading="lazy">
+            {%- endif -%}
+            <div class="vsg-expand-btn"><i class="fa-solid fa-expand"></i></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -870,7 +1033,7 @@
       const lbImg = document.getElementById(`vsgLightboxImg-${sectionId}`);
       const lbClose = document.getElementById(`vsgLightboxClose-${sectionId}`);
 
-      // Dynamic Height Sync for Top 4-Card Hero
+      // 1. Dynamic Height Sync for Top 4-Card Hero
       function syncHeroHeights() {
         const heroGrid = document.getElementById(`vsgHeroGrid-${sectionId}`);
         if (heroGrid) {
@@ -887,6 +1050,23 @@
             } else {
               leftCol.style.height = '';
               rightCol.style.height = '';
+            }
+          }
+        }
+
+        // 2. Dynamic Height Sync for Cards 14, 15, 16 Block (Left Column matches Right Square height)
+        const rssBlock = document.getElementById(`vsgRssBlock-${sectionId}`);
+        if (rssBlock) {
+          const rssLeft = rssBlock.querySelector('.vsg-rss-col-left');
+          const rssRight = rssBlock.querySelector('.vsg-rss-col-right');
+          if (rssLeft && rssRight) {
+            if (window.innerWidth > 900) {
+              const rightHeight = rssRight.offsetHeight;
+              if (rightHeight > 0) {
+                rssLeft.style.height = rightHeight + 'px';
+              }
+            } else {
+              rssLeft.style.height = '';
             }
           }
         }
@@ -1076,7 +1256,7 @@
     },
     {
       "type": "header",
-      "content": "Rectangle Cards: Card 8 (Horizontal)"
+      "content": "Cards 8, 9, 10: Card 8 (Horizontal Rectangle)"
     },
     {
       "type": "image_picker",
@@ -1097,7 +1277,7 @@
     },
     {
       "type": "header",
-      "content": "Rectangle Cards: Card 9 (Horizontal)"
+      "content": "Cards 8, 9, 10: Card 9 (Horizontal Rectangle)"
     },
     {
       "type": "image_picker",
@@ -1118,7 +1298,7 @@
     },
     {
       "type": "header",
-      "content": "Rectangle Cards: Card 10 (Horizontal)"
+      "content": "Cards 8, 9, 10: Card 10 (Horizontal Rectangle)"
     },
     {
       "type": "image_picker",
@@ -1136,6 +1316,69 @@
         { "value": "operational", "label": "Operational Office" }
       ],
       "default": "awards"
+    },
+    {
+      "type": "header",
+      "content": "Cards 14, 15, 16: Left Top Horizontal Rectangle (Card 14)"
+    },
+    {
+      "type": "image_picker",
+      "id": "card14_image",
+      "label": "Card 14 (Left Top Rectangle)"
+    },
+    {
+      "type": "select",
+      "id": "card14_category",
+      "label": "Card 14 Category",
+      "options": [
+        { "value": "corporate", "label": "Corporate Office" },
+        { "value": "awards", "label": "Awards" },
+        { "value": "celebrating", "label": "Celebrating" },
+        { "value": "operational", "label": "Operational Office" }
+      ],
+      "default": "corporate"
+    },
+    {
+      "type": "header",
+      "content": "Cards 14, 15, 16: Left Bottom Horizontal Rectangle (Card 15)"
+    },
+    {
+      "type": "image_picker",
+      "id": "card15_image",
+      "label": "Card 15 (Left Bottom Rectangle)"
+    },
+    {
+      "type": "select",
+      "id": "card15_category",
+      "label": "Card 15 Category",
+      "options": [
+        { "value": "corporate", "label": "Corporate Office" },
+        { "value": "awards", "label": "Awards" },
+        { "value": "celebrating", "label": "Celebrating" },
+        { "value": "operational", "label": "Operational Office" }
+      ],
+      "default": "celebrating"
+    },
+    {
+      "type": "header",
+      "content": "Cards 14, 15, 16: Right Single Square (Card 16)"
+    },
+    {
+      "type": "image_picker",
+      "id": "card16_image",
+      "label": "Card 16 (Right Single Square)"
+    },
+    {
+      "type": "select",
+      "id": "card16_category",
+      "label": "Card 16 Category",
+      "options": [
+        { "value": "corporate", "label": "Corporate Office" },
+        { "value": "awards", "label": "Awards" },
+        { "value": "celebrating", "label": "Celebrating" },
+        { "value": "operational", "label": "Operational Office" }
+      ],
+      "default": "operational"
     }
   ],
   "blocks": [
