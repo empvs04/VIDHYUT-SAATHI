@@ -10,9 +10,11 @@
     position: relative;
     width: 100%;
     max-width: 100%;
-    margin: 0;
-    padding: 0;
+    margin: 0 !important;
+    padding: 0 !important;
     box-sizing: border-box;
+    overflow: hidden !important;
+    border: none !important;
   }
 
   #deliveryMapHero-{{ section.id }} {
@@ -21,9 +23,11 @@
     height: clamp(520px, 76vh, 640px);
     min-height: clamp(520px, 76vh, 640px);
     background: radial-gradient(circle at 50% 20%, #ffffff 0%, #fff8ef 50%, #fef3e2 100%);
-    border-radius: 0;
-    box-shadow: none;
-    overflow: hidden;
+    border-radius: 0 !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    overflow: hidden !important;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -32,6 +36,7 @@
     color: #0f172a;
     box-sizing: border-box;
     padding: clamp(25px, 4vh, 45px) clamp(20px, 4vw, 50px) 35px;
+    margin: 0 !important;
   }
 
   /* Desktop Single Viewport Fit (100% Single Screen Fit without Scrolling) */
@@ -60,7 +65,7 @@
 
     /* Shift road, car and hub pins slightly up on Desktop view */
     .dm-map-container {
-      transform: translateY(-38px);
+      transform: translateY(-20px);
     }
   }
 
@@ -72,17 +77,17 @@
     width: 100%;
     height: 100%;
     z-index: 1;
-    overflow: hidden;
+    overflow: hidden !important;
     perspective: 1000px;
   }
 
   /* Vidhyut Ambient Glows in Background */
   .dm-ambient-glow-orange {
     position: absolute;
-    bottom: -5%;
+    bottom: 0;
     left: 5%;
     width: 50vw;
-    height: 380px;
+    height: 320px;
     background: radial-gradient(circle, rgba(236, 92, 10, 0.14) 0%, rgba(236, 92, 10, 0) 70%);
     pointer-events: none;
     z-index: 1;
@@ -90,10 +95,10 @@
 
   .dm-ambient-glow-green {
     position: absolute;
-    bottom: -5%;
+    bottom: 0;
     right: 5%;
     width: 50vw;
-    height: 380px;
+    height: 320px;
     background: radial-gradient(circle, rgba(0, 123, 62, 0.14) 0%, rgba(0, 123, 62, 0) 70%);
     pointer-events: none;
     z-index: 1;
@@ -503,18 +508,18 @@
 
       <!-- Secondary Clean Light Road Network -->
       <path d="M -50 450 Q 300 380 650 520 T 1450 460" stroke="rgba(236, 92, 10, 0.12)" stroke-width="10" fill="none"/>
-      <path d="M 200 -50 Q 350 400 500 850" stroke="rgba(203, 213, 225, 0.6)" stroke-width="8" fill="none"/>
-      <path d="M 900 -50 Q 800 350 1100 850" stroke="rgba(203, 213, 225, 0.6)" stroke-width="8" fill="none"/>
+      <path d="M 200 -50 Q 350 400 500 750" stroke="rgba(203, 213, 225, 0.6)" stroke-width="8" fill="none"/>
+      <path d="M 900 -50 Q 800 350 1100 750" stroke="rgba(203, 213, 225, 0.6)" stroke-width="8" fill="none"/>
 
-      <!-- Main Animated Courier Highway Route Path spanning 100% complete edge-to-edge off-screen along bottom -->
-      <path id="dmDeliveryPath-{{ section.id }}" class="dm-route-glow" d="M -80 755 C 140 710, 300 780, 480 740 C 660 700, 780 785, 960 740 C 1140 700, 1280 780, 1480 740" />
-      <path class="dm-route-base" d="M -80 755 C 140 710, 300 780, 480 740 C 660 700, 780 785, 960 740 C 1140 700, 1280 780, 1480 740" />
-      <path class="dm-route-active" d="M -80 755 C 140 710, 300 780, 480 740 C 660 700, 780 785, 960 740 C 1140 700, 1280 780, 1480 740" />
+      <!-- Main Animated Courier Highway Route Path (Lifted comfortably inside canvas so it never cuts off or overflows) -->
+      <path id="dmDeliveryPath-{{ section.id }}" class="dm-route-glow" d="M -80 690 C 140 640, 300 710, 480 670 C 660 630, 780 710, 960 670 C 1140 630, 1280 710, 1480 670" />
+      <path class="dm-route-base" d="M -80 690 C 140 640, 300 710, 480 670 C 660 630, 780 710, 960 670 C 1140 630, 1280 710, 1480 670" />
+      <path class="dm-route-active" d="M -80 690 C 140 640, 300 710, 480 670 C 660 630, 780 710, 960 670 C 1140 630, 1280 710, 1480 670" />
     </svg>
 
-    <!-- Destination Hub Pins with Parcel Boxes shifted further down -->
+    <!-- Destination Hub Pins (Dynamically positioned on path by JS) -->
     <!-- Destination 1: Origin (VS Office Dispatch) -->
-    <div class="dm-hub-pin" style="left: 6%; top: 91%;" data-hub="1">
+    <div class="dm-hub-pin" style="left: 6%; top: 82%;" data-hub="1">
       <div class="dm-pin-badge">📦 VS Office Dispatch</div>
       <div class="dm-pin-icon-wrap">
         <svg class="dm-pin-svg" viewBox="0 0 32 38" fill="none">
@@ -527,7 +532,7 @@
     </div>
 
     <!-- Destination 2: North Logistics Hub -->
-    <div class="dm-hub-pin" style="left: 28%; top: 90%;" data-hub="2">
+    <div class="dm-hub-pin" style="left: 28%; top: 82%;" data-hub="2">
       <div class="dm-pin-badge">📍 Hub B: Express</div>
       <div class="dm-pin-icon-wrap">
         <svg class="dm-pin-svg" viewBox="0 0 32 38" fill="none">
@@ -540,7 +545,7 @@
     </div>
 
     <!-- Destination 3: Central Delivery Center -->
-    <div class="dm-hub-pin" style="left: 55%; top: 92%;" data-hub="3">
+    <div class="dm-hub-pin" style="left: 55%; top: 82%;" data-hub="3">
       <div class="dm-pin-badge">⚡ Hub C: Fulfillment</div>
       <div class="dm-pin-icon-wrap">
         <svg class="dm-pin-svg" viewBox="0 0 32 38" fill="none">
@@ -553,7 +558,7 @@
     </div>
 
     <!-- Destination 4: West Distribution -->
-    <div class="dm-hub-pin" style="left: 77%; top: 89%;" data-hub="4">
+    <div class="dm-hub-pin" style="left: 77%; top: 82%;" data-hub="4">
       <div class="dm-pin-badge">🏢 Hub D: Regional</div>
       <div class="dm-pin-icon-wrap">
         <svg class="dm-pin-svg" viewBox="0 0 32 38" fill="none">
@@ -566,7 +571,7 @@
     </div>
 
     <!-- Destination 5: Final Delivery Destination (Happiness Delivered) -->
-    <div class="dm-hub-pin" style="left: 95%; top: 91%;" data-hub="5">
+    <div class="dm-hub-pin" style="left: 95%; top: 82%;" data-hub="5">
       <div class="dm-pin-badge">🎯 Happiness Delivered 🥳</div>
       <div class="dm-pin-icon-wrap">
         <svg class="dm-pin-svg" viewBox="0 0 32 38" fill="none">
@@ -656,7 +661,6 @@
     function initDeliveryTracker_{{ section.id | replace: '-', '_' }}() {
       const path = document.getElementById('dmDeliveryPath-{{ section.id }}');
       const truck = document.getElementById('dmTruck-{{ section.id }}');
-      const statusBubble = document.getElementById('dmTruckStatus-{{ section.id }}');
       const container = document.getElementById('dmMapContainer-{{ section.id }}');
       if (!path || !truck || !container) return;
 
@@ -779,10 +783,7 @@
   "presets": [
     {
       "name": "Delivery Map Hero",
-      "settings": {
-        "badge_text": "⚡ VIDHYUT SAATHI MOMENTS & MILESTONES GALLERY",
-        "title": "Capturing Moments Of <span class=\"dm-title-gradient\">Trust & Innovation</span> Across India"
-      }
+      "category": "Gallery"
     }
   ]
 }
