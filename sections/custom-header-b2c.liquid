@@ -540,11 +540,34 @@
               {%- assign title_lower = link.title | downcase -%}
               {%- if title_lower contains 'required' or title_lower contains 'cards' -%}
                 <div class="vidhyut-has-dropdown-{{ section.id }}">
-                  <a href="/pages/required-cards">{{ link.title }} <i class="fas fa-chevron-down"></i></a>
+                  <a href="{% if link.url == '#' or link.url == '' or link.url == blank %}/pages/required-cards{% else %}{{ link.url }}{% endif %}">{{ link.title }} <i class="fas fa-chevron-down"></i></a>
                   <div class="vidhyut-dropdown-menu-{{ section.id }}">
-                    <a href="/pages/required-cards?view=residential"><i class="fa-solid fa-house" style="color:#f0631b; margin-right:8px;"></i> Residential Use</a>
-                    <a href="/pages/required-cards?view=commercial"><i class="fa-solid fa-building" style="color:#008744; margin-right:8px;"></i> Commercial Use</a>
-                    <a href="/pages/required-cards?view=industrial"><i class="fa-solid fa-industry" style="color:#0284c7; margin-right:8px;"></i> Industrial Use</a>
+                    {%- if link.links != blank -%}
+                      {%- for childlink in link.links -%}
+                        {%- assign child_lower = childlink.title | downcase -%}
+                        {%- assign icon_class = "fa-solid fa-layer-group" -%}
+                        {%- assign icon_color = "#f0631b" -%}
+                        {%- if child_lower contains 'residential' -%}
+                          {%- assign icon_class = "fa-solid fa-house" -%}
+                          {%- assign icon_color = "#f0631b" -%}
+                        {%- elsif child_lower contains 'commercial' -%}
+                          {%- assign icon_class = "fa-solid fa-building" -%}
+                          {%- assign icon_color = "#008744" -%}
+                        {%- elsif child_lower contains 'industrial' -%}
+                          {%- assign icon_class = "fa-solid fa-industry" -%}
+                          {%- assign icon_color = "#0284c7" -%}
+                        {%- elsif child_lower contains 'institutional' -%}
+                          {%- assign icon_class = "fa-solid fa-building-columns" -%}
+                          {%- assign icon_color = "#8b5cf6" -%}
+                        {%- endif -%}
+                        <a href="{{ childlink.url }}"><i class="{{ icon_class }}" style="color:{{ icon_color }}; margin-right:8px;"></i> {{ childlink.title }}</a>
+                      {%- endfor -%}
+                    {%- else -%}
+                      <a href="/pages/required-cards?view=residential"><i class="fa-solid fa-house" style="color:#f0631b; margin-right:8px;"></i> Residential Use</a>
+                      <a href="/pages/required-cards?view=commercial"><i class="fa-solid fa-building" style="color:#008744; margin-right:8px;"></i> Commercial Use</a>
+                      <a href="/pages/required-cards?view=industrial"><i class="fa-solid fa-industry" style="color:#0284c7; margin-right:8px;"></i> Industrial Use</a>
+                      <a href="/pages/required-cards?view=institutional"><i class="fa-solid fa-building-columns" style="color:#8b5cf6; margin-right:8px;"></i> Institutional Use</a>
+                    {%- endif -%}
                   </div>
                 </div>
               {%- elsif title_lower contains 'about' -%}
@@ -604,9 +627,16 @@
         {%- assign title_lower = link.title | downcase -%}
         <a href="{{ link.url }}" class="vidhyut-drawer-link-{{ section.id }}">{{ link.title }}</a>
         {%- if title_lower contains 'required' or title_lower contains 'cards' -%}
-          <a href="/pages/required-cards?view=residential" class="vidhyut-drawer-sublink-{{ section.id }}">&rarr; Residential Use</a>
-          <a href="/pages/required-cards?view=commercial" class="vidhyut-drawer-sublink-{{ section.id }}">&rarr; Commercial Use</a>
-          <a href="/pages/required-cards?view=industrial" class="vidhyut-drawer-sublink-{{ section.id }}">&rarr; Industrial Use</a>
+          {%- if link.links != blank -%}
+            {%- for childlink in link.links -%}
+              <a href="{{ childlink.url }}" class="vidhyut-drawer-sublink-{{ section.id }}">&rarr; {{ childlink.title }}</a>
+            {%- endfor -%}
+          {%- else -%}
+            <a href="/pages/required-cards?view=residential" class="vidhyut-drawer-sublink-{{ section.id }}">&rarr; Residential Use</a>
+            <a href="/pages/required-cards?view=commercial" class="vidhyut-drawer-sublink-{{ section.id }}">&rarr; Commercial Use</a>
+            <a href="/pages/required-cards?view=industrial" class="vidhyut-drawer-sublink-{{ section.id }}">&rarr; Industrial Use</a>
+            <a href="/pages/required-cards?view=institutional" class="vidhyut-drawer-sublink-{{ section.id }}">&rarr; Institutional Use</a>
+          {%- endif -%}
         {%- elsif title_lower contains 'about' -%}
           <a href="/pages/about-us" class="vidhyut-drawer-sublink-{{ section.id }}">&rarr; About Us</a>
           <a href="/pages/our-team" class="vidhyut-drawer-sublink-{{ section.id }}">&rarr; Our Team</a>
