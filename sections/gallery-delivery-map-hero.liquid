@@ -124,6 +124,18 @@
     z-index: 2;
   }
 
+  /* Seamless Bottom Vignette - Fades background grid into #fffdfa without any visible lining or seam */
+  .dm-lower-vignette {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    background: linear-gradient(180deg, rgba(255,253,250,0) 0%, rgba(255,253,250,0.65) 55%, #fffdfa 100%);
+    pointer-events: none;
+    z-index: 2;
+  }
+
   /* SVG Highway Map Canvas */
   .dm-svg-map-layer {
     position: absolute;
@@ -481,6 +493,7 @@
     <div class="dm-ambient-glow-green" aria-hidden="true"></div>
     <div class="dm-street-network" aria-hidden="true"></div>
     <div class="dm-upper-vignette" aria-hidden="true"></div>
+    <div class="dm-lower-vignette" aria-hidden="true"></div>
 
     <!-- Map Route SVG -->
     <svg class="dm-svg-map-layer" id="dmMapSvg-{{ section.id }}" viewBox="0 0 1400 800" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
