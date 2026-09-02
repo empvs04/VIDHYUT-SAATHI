@@ -1,0 +1,1796 @@
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800;900&family=Nunito:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&family=IBM+Plex+Mono:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+  .vsinst {
+    --bg: #faf7ee;
+    --bg-warm: #f5f3ff;
+    --panel: #ffffff;
+    --line: #e2e8f0;
+    --indigo: #4f46e5;
+    --indigo-d: #3730a3;
+    --indigo-t: #e0e7ff;
+    --purple: #7c3aed;
+    --purple-t: #f3e8ff;
+    --orange: #ec5c0a;
+    --orange-t: #fff0e5;
+    --green: #008744;
+    --green-t: #e6f4ec;
+    --gold: #d97706;
+    --ink: #0f172a;
+    --muted: #475569;
+    --muted-2: #64748b;
+    --maxw: 1140px;
+
+    background: #ffffff;
+    color: var(--ink);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    font-size: 15px;
+  }
+  .vsinst *, .vsinst *::before, .vsinst *::after {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .vsinst h1, .vsinst h2, .vsinst h3, .vsinst h4 {
+    font-family: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
+    letter-spacing: -0.02em;
+  }
+  .vsinst a { color: inherit; text-decoration: none; }
+  .vsinst img { max-width: 100%; display: block; }
+  .vsinst button { font-family: inherit; cursor: pointer; }
+
+  .vsinst .wrap {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 0 18px;
+  }
+  @media (min-width: 640px) {
+    .vsinst .wrap { padding: 0 32px; }
+  }
+
+  /* ══ TOP CATEGORY NAVIGATION STRIP ══ */
+  .vsinst-nav-strip {
+    background: #ffffff;
+    border-bottom: 1.5px solid var(--line);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.03);
+  }
+  .vsinst-nav-container {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 10px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .vsinst-nav-container::-webkit-scrollbar { display: none; }
+  .vsinst-nav-title {
+    font-size: 11.5px;
+    font-weight: 800;
+    color: var(--muted-2);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+  }
+  .vsinst-nav-links {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .vsinst-nav-item {
+    font-size: 12.5px;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 50px;
+    border: 1.5px solid #e2e8f0;
+    background: #f8fafc;
+    color: #475569;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+  }
+  .vsinst-nav-item:hover {
+    border-color: var(--indigo);
+    color: var(--indigo);
+    background: var(--indigo-t);
+  }
+  .vsinst-nav-item.active {
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+    color: #ffffff;
+    border-color: #4f46e5;
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
+  }
+
+  /* ══ SECTION 2: HERO SECTION ══ */
+  .vsinst-hero {
+    position: relative;
+    padding: clamp(32px, 5vw, 65px) 0 clamp(24px, 4vw, 45px) 0;
+    background: linear-gradient(135deg, #ffffff 0%, #f5f3ff 50%, #fff8ef 100%);
+    border-bottom: 1.5px solid var(--line);
+    overflow: hidden;
+  }
+  .vsinst-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 28px;
+    align-items: center;
+  }
+  @media (min-width: 900px) {
+    .vsinst-hero-grid {
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 40px;
+    }
+  }
+
+  .vsinst-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--indigo-t);
+    border: 1.5px solid #4f46e5;
+    color: #4f46e5;
+    font-size: 11px;
+    font-weight: 800;
+    font-family: 'IBM Plex Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding: 6px 16px;
+    border-radius: 50px;
+    margin-bottom: 16px;
+    box-shadow: 0 4px 14px rgba(79, 70, 229, 0.1);
+  }
+
+  .vsinst-hero h1 {
+    font-size: clamp(25px, 5.2vw, 46px);
+    line-height: 1.15;
+    font-weight: 800;
+    color: var(--ink);
+    margin: 0 0 14px 0;
+  }
+  .vsinst-hero h1 span {
+    background: linear-gradient(135deg, #4f46e5 0%, #ec5c0a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .vsinst-hero-lead {
+    color: var(--muted);
+    font-size: clamp(14px, 2vw, 16px);
+    line-height: 1.6;
+    margin: 0 0 24px 0;
+    max-width: 620px;
+  }
+
+  .vsinst-hero-ctas {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+  }
+
+  .vsinst-btn-primary {
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+    color: #ffffff;
+    font-weight: 800;
+    padding: 14px 26px;
+    border-radius: 12px;
+    font-size: 14.5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: none;
+    box-shadow: 0 6px 20px rgba(79, 70, 229, 0.3);
+    transition: all 0.2s ease;
+  }
+  .vsinst-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 26px rgba(79, 70, 229, 0.4);
+    color: #ffffff;
+  }
+
+  .vsinst-btn-secondary {
+    background: #ffffff;
+    color: var(--ink);
+    font-weight: 800;
+    padding: 14px 24px;
+    border-radius: 12px;
+    font-size: 14.5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1.5px solid #cbd5e1;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+    transition: all 0.2s ease;
+  }
+  .vsinst-btn-secondary:hover {
+    border-color: #4f46e5;
+    color: #4f46e5;
+    background: #f5f3ff;
+  }
+
+  .vsinst-trust-badges {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 10px;
+  }
+  @media (min-width: 500px) {
+    .vsinst-trust-badges {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .vsinst-trust-badge-item {
+    background: #ffffff;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 10px 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .vsinst-trust-badge-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: var(--indigo-t);
+    color: var(--indigo);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+  .vsinst-trust-badge-text strong {
+    font-size: 12.5px;
+    font-weight: 800;
+    display: block;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+  .vsinst-trust-badge-text span {
+    font-size: 10.5px;
+    color: var(--muted-2);
+    font-weight: 600;
+  }
+
+  /* Right Hero Showcase Frame */
+  .vsinst-hero-image-box {
+    background: #ffffff;
+    border-radius: 20px;
+    border: 1.5px solid #e2e8f0;
+    box-shadow: 0 16px 36px rgba(79, 70, 229, 0.08);
+    padding: 20px;
+    text-align: center;
+    position: relative;
+  }
+  .vsinst-hero-card-tag {
+    position: absolute;
+    top: 12px;
+    left: 14px;
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+    color: #ffffff;
+    font-size: 10.5px;
+    font-weight: 800;
+    padding: 4px 12px;
+    border-radius: 50px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  .vsinst-mcb-hero-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    margin-top: 10px;
+    padding: 11px 16px;
+    background: var(--indigo-t);
+    color: var(--indigo);
+    border: 1.5px solid #4f46e5;
+    border-radius: 10px;
+    font-weight: 800;
+    font-size: 12.5px;
+    transition: all 0.2s ease;
+  }
+  .vsinst-mcb-hero-link:hover {
+    background: #4f46e5;
+    color: #ffffff;
+  }
+
+  /* ══ SECTION 3: CALCULATOR ══ */
+  .vsinst-sec {
+    padding: clamp(40px, 6vw, 70px) 0;
+    border-bottom: 1.5px solid var(--line);
+  }
+  .vsinst-sec-head {
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto 36px auto;
+  }
+  .vsinst-sec-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--indigo-t);
+    color: var(--indigo);
+    font-size: 11px;
+    font-weight: 800;
+    font-family: 'IBM Plex Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding: 5px 14px;
+    border-radius: 50px;
+    margin-bottom: 10px;
+  }
+  .vsinst-sec-title {
+    font-size: clamp(24px, 4vw, 36px);
+    font-weight: 800;
+    color: var(--ink);
+    margin: 0 0 10px 0;
+  }
+  .vsinst-sec-desc {
+    font-size: clamp(13.5px, 1.8vw, 15px);
+    color: var(--muted);
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  .vsinst-calc-box {
+    background: #ffffff;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 20px;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.06);
+    padding: clamp(20px, 4vw, 36px);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  @media (min-width: 860px) {
+    .vsinst-calc-box {
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 36px;
+    }
+  }
+
+  .vsinst-field {
+    margin-bottom: 22px;
+  }
+  .vsinst-field-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13.5px;
+    font-weight: 800;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .vsinst-field-badge {
+    background: var(--indigo-t);
+    color: var(--indigo);
+    font-size: 12px;
+    font-weight: 800;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  .vsinst-range-slider {
+    width: 100%;
+    height: 8px;
+    border-radius: 5px;
+    background: #e2e8f0;
+    outline: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+  }
+  .vsinst-range-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #4f46e5;
+    border: 3px solid #ffffff;
+    box-shadow: 0 2px 8px rgba(79, 70, 229, 0.5);
+    cursor: pointer;
+    transition: transform 0.1s ease;
+  }
+  .vsinst-range-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.15);
+  }
+
+  .vsinst-num-input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-top: 8px;
+    outline: none;
+    transition: border-color 0.2s ease;
+  }
+  .vsinst-num-input:focus {
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+  }
+
+  .vsinst-toggle-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 8px;
+  }
+  .vsinst-toggle-btn {
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1.5px solid #cbd5e1;
+    background: #f8fafc;
+    color: #475569;
+    font-size: 13.5px;
+    font-weight: 700;
+    transition: all 0.2s ease;
+  }
+  .vsinst-toggle-btn.active {
+    background: var(--indigo-t);
+    border-color: #4f46e5;
+    color: #4f46e5;
+    font-weight: 800;
+  }
+
+  .vsinst-output-card {
+    background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #4338ca 100%);
+    border-radius: 18px;
+    padding: clamp(20px, 3vw, 28px);
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+    box-shadow: 0 12px 30px rgba(49, 46, 129, 0.35);
+  }
+  .vsinst-res-val {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin: 8px 0;
+  }
+  .vsinst-res-val span:first-child {
+    font-size: clamp(38px, 6vw, 56px);
+    font-weight: 900;
+    font-family: 'Space Grotesk', sans-serif;
+    color: #ffd700;
+    line-height: 1;
+  }
+  .vsinst-res-val span:last-child {
+    font-size: 18px;
+    font-weight: 800;
+    color: #e0e7ff;
+  }
+
+  .vsinst-savings-box {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  /* ══ SECTION 4: 20 MCB GALLERY ══ */
+  .inst-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+  @media (min-width: 680px) {
+    .inst-gallery-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+  }
+  @media (min-width: 980px) {
+    .inst-gallery-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+  }
+
+  .inst-filter-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 28px;
+    width: 100%;
+  }
+  .inst-filter-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  .inst-filter-btn {
+    padding: 8px 16px;
+    border-radius: 50px;
+    border: 1.5px solid #cbd5e1;
+    background: #ffffff;
+    color: #475569;
+    font-size: 12.5px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+  }
+  .inst-filter-btn:hover {
+    border-color: #4f46e5;
+    color: #4f46e5;
+    background: #f5f3ff;
+  }
+  .inst-filter-btn.active {
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+    color: #ffffff;
+    border-color: #4f46e5;
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
+  }
+
+  .inst-card {
+    background: #ffffff;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+    transition: all 0.25s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+  }
+  .inst-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(79, 70, 229, 0.12);
+    border-color: rgba(79, 70, 229, 0.4);
+  }
+  .inst-card-img-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background: #1e1b4b;
+    overflow: hidden;
+  }
+  .inst-card-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  .inst-card:hover .inst-card-img-wrap img {
+    transform: scale(1.05);
+  }
+  .inst-card-badge {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background: rgba(30, 27, 75, 0.85);
+    backdrop-filter: blur(4px);
+    color: #e0e7ff;
+    border: 1px solid rgba(255,255,255,0.2);
+    font-size: 9.5px;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .inst-card-body {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+  }
+  .inst-card-title {
+    font-size: 13.5px;
+    font-weight: 800;
+    color: var(--ink);
+    margin: 0;
+    line-height: 1.3;
+  }
+  .inst-card-desc {
+    font-size: 11.5px;
+    color: var(--muted-2);
+    line-height: 1.4;
+    margin: 0;
+  }
+
+  /* ══ SECTION 5: SIZING MATRIX TABLE ══ */
+  .vsinst-table-wrap {
+    overflow-x: auto;
+    background: #ffffff;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 18px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+  }
+  .vsinst-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 13.5px;
+  }
+  .vsinst-table th {
+    background: #1e1b4b;
+    color: #ffffff;
+    padding: 14px 16px;
+    font-weight: 800;
+    font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: 0.3px;
+  }
+  .vsinst-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid #e2e8f0;
+    color: #334155;
+    font-weight: 600;
+  }
+  .vsinst-table tr:last-child td { border-bottom: none; }
+  .vsinst-table tr:hover td { background: #f5f3ff; }
+  .vsinst-table td.highlight {
+    color: #4f46e5;
+    font-weight: 800;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  /* ══ SECTION 6: CASE STUDIES ══ */
+  .vsinst-case-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  @media (min-width: 768px) {
+    .vsinst-case-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .vsinst-case-card {
+    background: #ffffff;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 18px;
+    padding: 20px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    transition: all 0.3s ease;
+  }
+  .vsinst-case-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 32px rgba(79, 70, 229, 0.12);
+  }
+  .vsinst-case-result-badge {
+    margin-top: 14px;
+    padding: 10px 14px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+  }
+  .vsinst-case-result-badge strong {
+    color: #ffd700;
+    font-weight: 800;
+  }
+
+  /* ══ SECTION 8: COMPANION SHOWCASE (BALOO 2 + NUNITO) ══ */
+  .vsinst-sec8-custom {
+    padding: clamp(48px, 6vw, 80px) 0;
+    background: linear-gradient(135deg, #ffffff 0%, #f5f3ff 50%, #fff8ef 100%);
+    border-top: 1.5px solid rgba(79, 70, 229, 0.2);
+    position: relative;
+    overflow: hidden;
+  }
+  .vsinst-sec8-custom::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 420px;
+    height: 420px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(79, 70, 229, 0.08) 0%, rgba(255,255,255,0) 70%);
+    pointer-events: none;
+  }
+
+  .vsinst-sec8-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+  @media (min-width: 900px) {
+    .vsinst-sec8-grid {
+      grid-template-columns: 1.12fr 0.88fr;
+      gap: 40px;
+    }
+  }
+
+  .vsinst-sec8-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px;
+    background: linear-gradient(135deg, #ffffff 0%, #ede9fe 100%);
+    border: 1.5px solid rgba(79, 70, 229, 0.45);
+    border-radius: 999px;
+    color: #4f46e5;
+    font-size: 11.5px;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    font-family: 'Baloo 2', sans-serif;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 14px rgba(79, 70, 229, 0.1);
+  }
+
+  .vsinst-sec8-title {
+    font-family: 'Baloo 2', sans-serif !important;
+    font-size: clamp(28px, 4vw, 42px);
+    line-height: 1.15;
+    font-weight: 900;
+    color: #0f172a;
+    margin: 0 0 10px 0;
+    letter-spacing: -0.01em;
+  }
+  .vsinst-sec8-title span {
+    background: linear-gradient(135deg, #4f46e5 0%, #ec5c0a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .vsinst-sec8-lead {
+    font-family: 'Nunito', sans-serif;
+    font-size: clamp(14px, 1.45vw, 15.5px);
+    color: #334155;
+    line-height: 1.6;
+    margin: 0 0 20px 0;
+    max-width: 620px;
+  }
+
+  /* 4 ULTRA-LUCRATIVE 3D CARDS (2x2 GRID) */
+  .vsinst-sec8-pills-2x2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .vsinst-sec8-pill {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+    border-radius: 16px;
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow: hidden;
+  }
+  .vsinst-sec8-pill::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3.5px;
+    background: #cbd5e1;
+    transition: all 0.3s ease;
+  }
+  .vsinst-sec8-pill.c1-card::before { background: linear-gradient(90deg, #4f46e5, #818cf8); }
+  .vsinst-sec8-pill.c2-card::before { background: linear-gradient(90deg, #ec5c0a, #f97316); }
+  .vsinst-sec8-pill.c3-card::before { background: linear-gradient(90deg, #7c3aed, #a855f7); }
+  .vsinst-sec8-pill.c4-card::before { background: linear-gradient(90deg, #008744, #10b981); }
+
+  .vsinst-sec8-pill:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px rgba(79, 70, 229, 0.12), 0 2px 6px rgba(0, 0, 0, 0.04);
+    border-color: rgba(79, 70, 229, 0.3);
+  }
+
+  .vsinst-sec8-pill-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  }
+  .vsinst-sec8-pill-icon.c1 {
+    background: linear-gradient(135deg, #4f46e5 0%, #818cf8 100%);
+    color: #ffffff;
+  }
+  .vsinst-sec8-pill-icon.c2 {
+    background: linear-gradient(135deg, #ec5c0a 0%, #fb923c 100%);
+    color: #ffffff;
+  }
+  .vsinst-sec8-pill-icon.c3 {
+    background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+    color: #ffffff;
+  }
+  .vsinst-sec8-pill-icon.c4 {
+    background: linear-gradient(135deg, #008744 0%, #10b981 100%);
+    color: #ffffff;
+  }
+
+  .vsinst-sec8-pill-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+  }
+  .vsinst-sec8-pill-text strong {
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 14.5px;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .vsinst-sec8-pill-text span {
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: #64748b;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* RIGHT FRAME: 1:1 SQUARE SHOWCASE */
+  .vsinst-sec8-card-frame {
+    width: 100%;
+    max-width: 480px;
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 14px;
+    border: 1.5px solid rgba(79, 70, 229, 0.25);
+    box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08), 0 4px 12px rgba(79, 70, 229, 0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: all 0.3s ease;
+  }
+  .vsinst-sec8-card-frame:hover {
+    box-shadow: 0 20px 48px rgba(79, 70, 229, 0.16);
+    border-color: rgba(79, 70, 229, 0.45);
+  }
+
+  .vsinst-sec8-img-box {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 18px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  }
+  .vsinst-sec8-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+  .vsinst-sec8-card-frame:hover .vsinst-sec8-img-box img {
+    transform: scale(1.02);
+  }
+
+  .vsinst-sec8-moment-caption {
+    background: linear-gradient(135deg, #f8fafc 0%, #f5f3ff 100%);
+    border: 1px solid rgba(79, 70, 229, 0.2);
+    border-radius: 14px;
+    padding: 10px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .vsinst-moment-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    color: #4f46e5;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+  }
+  .vsinst-moment-quote {
+    font-family: 'Nunito', sans-serif;
+    font-size: 12.5px;
+    font-style: italic;
+    color: #334155;
+    line-height: 1.45;
+    margin: 0;
+  }
+  .vsinst-moment-quote strong {
+    color: #4f46e5;
+    font-style: normal;
+    font-weight: 800;
+  }
+
+  /* MOBILE SPECIFIC (STRICTLY 2 BOXES IN 1 LINE) */
+  @media (max-width: 767px) {
+    .vsinst-sec8-custom {
+      padding: 36px 0 44px 0 !important;
+    }
+    .vsinst-sec8-grid {
+      gap: 24px !important;
+    }
+    .vsinst-sec8-title {
+      font-size: 24px !important;
+      line-height: 1.2 !important;
+    }
+    .vsinst-sec8-lead {
+      font-size: 14.5px !important;
+      line-height: 1.55 !important;
+      margin-bottom: 18px !important;
+    }
+    .vsinst-sec8-pills-2x2 {
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 8px !important;
+      margin-bottom: 20px !important;
+    }
+    .vsinst-sec8-pill {
+      flex-direction: column !important;
+      align-items: center !important;
+      text-align: center !important;
+      padding: 12px 6px 10px 6px !important;
+      gap: 6px !important;
+      border-radius: 12px !important;
+      min-height: 108px !important;
+      justify-content: center !important;
+    }
+    .vsinst-sec8-pill-icon {
+      width: 32px !important;
+      height: 32px !important;
+      font-size: 14px !important;
+      border-radius: 8px !important;
+      margin-bottom: 2px !important;
+    }
+    .vsinst-sec8-pill-text {
+      width: 100% !important;
+    }
+    .vsinst-sec8-pill-text strong {
+      font-size: 11.5px !important;
+      line-height: 1.2 !important;
+      white-space: normal !important;
+      display: -webkit-box !important;
+      -webkit-line-clamp: 2 !important;
+      -webkit-box-orient: vertical !important;
+    }
+    .vsinst-sec8-pill-text span {
+      font-size: 9.5px !important;
+      line-height: 1.2 !important;
+      -webkit-line-clamp: 2 !important;
+    }
+    .vsinst-sec8-card-frame {
+      max-width: 100% !important;
+      padding: 10px !important;
+      border-radius: 18px !important;
+    }
+    .vsinst-sec8-moment-caption {
+      padding: 8px 10px !important;
+    }
+    .vsinst-moment-quote {
+      font-size: 11.5px !important;
+    }
+  }
+</style>
+
+<div class="vsinst">
+
+  <!-- ══ SECTION 1: CATEGORY NAVIGATION STRIP ══ -->
+  <div class="vsinst-nav-strip">
+    <div class="vsinst-nav-container">
+      <div class="vsinst-nav-title">
+        <i class="fa-solid fa-layer-group"></i> Sector Requirement Pages:
+      </div>
+      <div class="vsinst-nav-links">
+        <a href="/pages/required-cards?view=residential" class="vsinst-nav-item">
+          <i class="fa-solid fa-house"></i> Residential
+        </a>
+        <a href="/pages/required-cards?view=commercial" class="vsinst-nav-item">
+          <i class="fa-solid fa-building"></i> Commercial
+        </a>
+        <a href="/pages/required-cards?view=industrial" class="vsinst-nav-item">
+          <i class="fa-solid fa-industry"></i> Industrial
+        </a>
+        <a href="/pages/required-cards?view=institutional" class="vsinst-nav-item active">
+          <i class="fa-solid fa-graduation-cap"></i> Institutional
+        </a>
+        <a href="/pages/b2c" class="vsinst-nav-item" onclick="vsGoPage(event, 'b2c')">
+          <i class="fa-solid fa-bolt"></i> Power Saver Card
+        </a>
+        <a href="/pages/get-franchise" class="vsinst-nav-item" onclick="vsGoPage(event, 'get-franchise')">
+          <i class="fa-solid fa-store"></i> Franchise Program
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function vsGoPage(e, handle) {
+      if (e && (e.ctrlKey || e.metaKey || e.shiftKey)) return;
+      var isEditor = (window.Shopify && window.Shopify.designMode) || location.search.indexOf('preview_theme_id') > -1;
+      if (isEditor) {
+        if (e && e.preventDefault) e.preventDefault();
+        var base = (location.pathname && location.pathname.indexOf('/pages/') === 0) ? location.pathname : '/pages/required-cards';
+        location.href = base + '?view=' + handle;
+      }
+    }
+  </script>
+
+  <!-- ══ SECTION 2: HERO SECTION ══ -->
+  <section class="vsinst-hero">
+    <div class="wrap">
+      <div class="vsinst-hero-grid">
+        <!-- LEFT COLUMN -->
+        <div>
+          <div class="vsinst-eyebrow">
+            <i class="fa-solid fa-hospital"></i> Institutional Energy Solution
+          </div>
+          <h1>Vidhyut Saathi Card for <span>Institutional Campuses & Hospitals</span></h1>
+          <p class="vsinst-hero-lead">
+            Eliminate high institutional DISCOM tariffs, prevent voltage spikes on sensitive medical diagnostic scanners & research labs, and optimize 24/7 centralized HVAC systems for universities, schools, hospitals, and government complexes.
+          </p>
+
+          <div class="vsinst-hero-ctas">
+            <a href="#vsinst-calc" class="vsinst-btn-primary">
+              <i class="fa-solid fa-calculator"></i> Calculate Institutional Cards
+            </a>
+            <a href="https://wa.me/919876543210?text=Hi%20Vidhyut%20Saathi%2C%20I%20want%20to%20inquire%20for%20Institutional%20Saver%20Cards" class="vsinst-btn-secondary" target="_blank">
+              <i class="fa-brands fa-whatsapp"></i> Institutional Advisory Inquiry
+            </a>
+          </div>
+
+          <div class="vsinst-trust-badges">
+            <div class="vsinst-trust-badge-item">
+              <div class="vsinst-trust-badge-icon"><i class="fa-solid fa-bolt"></i></div>
+              <div class="vsinst-trust-badge-text">
+                <strong>20–30% Savings</strong>
+                <span>On Institutional Bills</span>
+              </div>
+            </div>
+            <div class="vsinst-trust-badge-item">
+              <div class="vsinst-trust-badge-icon"><i class="fa-solid fa-stethoscope"></i></div>
+              <div class="vsinst-trust-badge-text">
+                <strong>Lab & Med Safe</strong>
+                <span>Zero Harmonic Noise</span>
+              </div>
+            </div>
+            <div class="vsinst-trust-badge-item">
+              <div class="vsinst-trust-badge-icon"><i class="fa-solid fa-shield-halved"></i></div>
+              <div class="vsinst-trust-badge-text">
+                <strong>10-Yr Life</strong>
+                <span>3-Yr Heavy Warranty</span>
+              </div>
+            </div>
+            <div class="vsinst-trust-badge-item">
+              <div class="vsinst-trust-badge-icon"><i class="fa-solid fa-certificate"></i></div>
+              <div class="vsinst-trust-badge-text">
+                <strong>ISO 9001:2015</strong>
+                <span>100% Legal & Compliant</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT HERO SHOWCASE -->
+        <div class="vsinst-hero-image-box">
+          <span class="vsinst-hero-card-tag"><i class="fa-solid fa-building-columns"></i> Institutional Substation Card</span>
+
+          <div style="width:100%; display:flex; justify-content:center; margin:12px 0;">
+            {% if section.settings.card_image != blank %}
+              <img src="{{ section.settings.card_image | image_url: width: 600 }}" alt="Vidhyut Saathi Institutional Saver Card" style="width: 100%; max-width: 320px; border-radius: 16px; box-shadow: 0 16px 36px rgba(79,70,229,0.3); border: 2px solid rgba(255,255,255,0.25);">
+            {% else %}
+              <img src="{{ 'official-vs-card-front.jpg' | asset_url }}" alt="Vidhyut Saathi Institutional Saver Card" style="width: 100%; max-width: 320px; border-radius: 16px; box-shadow: 0 16px 36px rgba(79,70,229,0.3); border: 2px solid rgba(255,255,255,0.25);" onerror="this.onerror=null; this.src='https://cdn.shopify.com/s/files/1/0663/8783/7093/files/VS_Card_Final_Design_Golden_1.png';">
+            {% endif %}
+          </div>
+
+          <p style="font-size:12.5px; color:var(--muted); margin:8px 0 12px 0; line-height:1.5;">
+            Patented US-German Terahertz frequency nano-chips stabilize voltage fluctuations, reduce heat dissipation on campus transformers, and protect sensitive biomedical apparatus from electrical surges.
+          </p>
+
+          <a href="#inst-gallery" class="vsinst-mcb-hero-link">
+            <i class="fa-solid fa-camera"></i> See 20 Institutional Substation Setups <i class="fa-solid fa-arrow-down-long"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ SECTION 3: INTERACTIVE INSTITUTIONAL CALCULATOR ══ -->
+  <section class="vsinst-sec" id="vsinst-calc">
+    <div class="wrap">
+      <div class="vsinst-sec-head">
+        <div class="vsinst-sec-eyebrow"><i class="fa-solid fa-sliders"></i> Institutional Calculator</div>
+        <h2 class="vsinst-sec-title">Calculate Institutional Cards Needed</h2>
+        <p class="vsinst-sec-desc">
+          Calculated using DISCOM institutional tariff standards: 1 card per 5 KW connected load, balanced across 3-phase campus substations, hospital ICU wings, and academic blocks.
+        </p>
+      </div>
+
+      <div class="vsinst-calc-box">
+        <div>
+          <div class="vsinst-field">
+            <div class="vsinst-field-label">
+              <span>🏛️ CONNECTED INSTITUTIONAL LOAD</span>
+              <span class="vsinst-field-badge" id="vsinst_kw_badge">50 KW</span>
+            </div>
+            <input type="range" class="vsinst-range-slider" id="vsinst_kw_slider" min="10" max="400" value="50" step="10" oninput="vsinstSync('slider')">
+            <input type="number" class="vsinst-num-input" id="vsinst_kw_num" value="50" min="1" max="1500" oninput="vsinstSync('kw')">
+          </div>
+
+          <div class="vsinst-field">
+            <div class="vsinst-field-label">
+              <span>💰 MONTHLY ELECTRICITY BILL</span>
+              <span class="vsinst-field-badge" id="vsinst_bill_badge">₹50,000</span>
+            </div>
+            <input type="number" class="vsinst-num-input" id="vsinst_bill_num" value="50000" min="5000" step="5000" oninput="vsinstSync('bill')">
+          </div>
+
+          <!-- PHASE SELECTOR -->
+          <div class="vsinst-field">
+            <div class="vsinst-field-label">🔌 PANEL / SUBSTATION TYPE</div>
+            <div class="vsinst-toggle-group">
+              <button type="button" class="vsinst-toggle-btn" id="vsinst_btn_single" onclick="vsinstSetPhase(false)">Single Phase</button>
+              <button type="button" class="vsinst-toggle-btn active" id="vsinst_btn_three" onclick="vsinstSetPhase(true)">Three Phase (Substation / LT Panel)</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="vsinst-output-card">
+          <div>
+            <div style="font-size:11px; font-weight:800; color:#c7d2fe; letter-spacing:1px; text-transform:uppercase;">RECOMMENDED INSTITUTIONAL CARDS</div>
+            <div class="vsinst-res-val">
+              <span id="vsinst_card_num">11</span>
+              <span id="vsinst_card_unit">Cards</span>
+            </div>
+          </div>
+
+          <div class="vsinst-savings-box">
+            <div>
+              <div style="font-size:10px; font-weight:700; color:#e0e7ff; text-transform:uppercase;">ESTIMATED MONTHLY SAVINGS (20-30%)</div>
+              <div style="font-size:22px; font-weight:800; font-family:'Space Grotesk', sans-serif;" id="vsinst_savings_range">₹10,000 – ₹15,000 / mo</div>
+            </div>
+            <i class="fa-solid fa-piggy-bank" style="font-size:24px; color:#ffd700;"></i>
+          </div>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+            <a href="https://wa.me/919876543210?text=Hi%20Vidhyut%20Saathi%2C%20I%20need%20Institutional%20Saver%20Cards" class="vsinst-btn-primary" style="justify-content:center; font-size:13.5px;" target="_blank">
+              <i class="fa-brands fa-whatsapp"></i> Buy on WhatsApp
+            </a>
+            <a href="tel:+919876543210" class="vsinst-btn-secondary" style="justify-content:center; font-size:13.5px;">
+              <i class="fa-solid fa-phone"></i> Call Representative
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ SECTION 4: 20 INSTITUTIONAL MCB & SUBSTATION GALLERY ══ -->
+  <section class="inst-sec" id="inst-gallery" style="padding: clamp(40px, 6vw, 70px) 0; border-bottom: 1.5px solid var(--line);">
+    <div class="wrap">
+      <div class="vsinst-sec-head">
+        <div class="vsinst-sec-eyebrow"><i class="fa-solid fa-building-columns"></i> Institutional Gallery</div>
+        <h2 class="vsinst-sec-title">20 Institutional Substation Connections</h2>
+        <p class="vsinst-sec-desc">Click any campus installation photo to inspect full 3-phase LT panel wiring. 100% legal, non-invasive parallel installation with zero downtime.</p>
+      </div>
+
+      <!-- Category Filter Buttons arranged in clean rows -->
+      <div class="inst-filter-bar">
+        <div class="inst-filter-row row-1">
+          <button class="inst-filter-btn active" onclick="filterInst('all', this)"><i class="fa-solid fa-border-all"></i> All (20)</button>
+        </div>
+        <div class="inst-filter-row row-2">
+          <button class="inst-filter-btn" onclick="filterInst('hospital', this)"><i class="fa-solid fa-hospital"></i> Hospitals & Clinics (5)</button>
+          <button class="inst-filter-btn" onclick="filterInst('university', this)"><i class="fa-solid fa-graduation-cap"></i> Colleges & Universities (5)</button>
+        </div>
+        <div class="inst-filter-row row-3">
+          <button class="inst-filter-btn" onclick="filterInst('school', this)"><i class="fa-solid fa-school"></i> Schools & Academies (5)</button>
+          <button class="inst-filter-btn" onclick="filterInst('govt', this)"><i class="fa-solid fa-building-flag"></i> Govt & Research Labs (5)</button>
+        </div>
+      </div>
+
+      <div class="inst-gallery-grid">
+        {% for i in (1..20) %}
+          {% capture img_key %}inst_mcb_img_{{ i }}{% endcapture %}
+          {% assign custom_img = section.settings[img_key] %}
+
+          {% assign block = nil %}
+          {% if section.blocks.size >= i %}
+            {% assign block_idx = i | minus: 1 %}
+            {% assign block = section.blocks[block_idx] %}
+          {% endif %}
+
+          {% assign cat = 'hospital' %}
+          {% assign badge = 'HOSPITAL ICU PANEL' %}
+          {% assign title = 'Hospital Substation Setup #' | append: i %}
+          {% assign desc = 'Parallel connection on main 100A hospital diagnostic distribution panel.' %}
+
+          {% if i > 5 and i <= 10 %}
+            {% assign cat = 'university' %}
+            {% assign badge = 'CAMPUS LAB MAINS' %}
+            {% assign title = 'University Academic DB #' | append: i %}
+          {% elsif i > 10 and i <= 15 %}
+            {% assign cat = 'school' %}
+            {% assign badge = 'SCHOOL HVAC PANEL' %}
+            {% assign title = 'School Central DB #' | append: i %}
+          {% elsif i > 15 %}
+            {% assign cat = 'govt' %}
+            {% assign badge = 'GOVT RESEARCH MAINS' %}
+            {% assign title = 'Govt Complex Substation #' | append: i %}
+          {% endif %}
+
+          {% if block != nil %}
+            {% if block.settings.title != blank %}{% assign title = block.settings.title %}{% endif %}
+            {% if block.settings.category != blank %}{% assign cat = block.settings.category %}{% endif %}
+            {% if block.settings.badge != blank %}{% assign badge = block.settings.badge %}{% endif %}
+            {% if block.settings.caption != blank %}{% assign desc = block.settings.caption %}{% endif %}
+            {% if block.settings.image != blank %}{% assign custom_img = block.settings.image %}{% endif %}
+          {% endif %}
+
+          <div class="inst-card" data-category="{{ cat }}" onclick="openInstLightbox('{% if custom_img != blank %}{{ custom_img | image_url: width: 1200 }}{% endif %}', '{{ title | escape }}', '{{ desc | escape }}')">
+            <div class="inst-card-img-wrap">
+              {% if custom_img != blank %}
+                <img src="{{ custom_img | image_url: width: 600 }}" alt="{{ title }}" loading="lazy">
+              {% else %}
+                <div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);">
+                  <svg viewBox="0 0 400 300" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="400" height="300" fill="#1e1b4b"/>
+                    <rect x="25" y="25" width="350" height="250" rx="12" fill="#312e81" stroke="#4f46e5" stroke-width="2"/>
+                    <rect x="50" y="55" width="190" height="190" rx="8" fill="#1e1b4b" stroke="#4f46e5" stroke-width="2"/>
+                    <!-- Modular Breakers -->
+                    <rect x="70" y="80" width="22" height="65" rx="4" fill="#4f46e5"/>
+                    <rect x="100" y="80" width="22" height="65" rx="4" fill="#4f46e5"/>
+                    <rect x="130" y="80" width="22" height="65" rx="4" fill="#4f46e5"/>
+                    <rect x="160" y="80" width="22" height="65" rx="4" fill="#ec5c0a"/>
+                    <rect x="190" y="80" width="22" height="65" rx="4" fill="#008744"/>
+                    <circle cx="120" cy="185" r="8" fill="#a5b4fc"/>
+                    <text x="145" y="189" fill="#e0e7ff" font-size="10" font-family="Arial" font-weight="700">SUBSTATION ON</text>
+                    <!-- Gold Card -->
+                    <rect x="260" y="75" width="95" height="150" rx="10" fill="url(#instMcbGlow{{ i }})" stroke="#ffd700" stroke-width="2"/>
+                    <circle cx="307" cy="120" r="20" fill="rgba(255,255,255,0.1)"/>
+                    <text x="307" y="124" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="800">🏛️</text>
+                    <text x="307" y="165" text-anchor="middle" fill="#ffffff" font-size="9" font-weight="800" font-family="Arial">VIDHYUT SAATHI</text>
+                    <text x="307" y="180" text-anchor="middle" fill="#e0e7ff" font-size="8" font-family="Arial">INSTITUTE #{{ i }}</text>
+                    <line x1="220" y1="105" x2="260" y2="105" stroke="#ffd700" stroke-width="3" stroke-dasharray="4,4"/>
+                    <defs>
+                      <linearGradient id="instMcbGlow{{ i }}" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#4f46e5"/>
+                        <stop offset="100%" stop-color="#1e1b4b"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                </div>
+              {% endif %}
+              <span class="inst-card-badge">{{ badge }}</span>
+            </div>
+            <div class="inst-card-body">
+              <span style="font-size:10px; font-weight:800; font-family:'IBM Plex Mono',monospace; color:#4f46e5;">INSTITUTIONAL SETUP #{{ i }}</span>
+              <h4 class="inst-card-title">{{ title }}</h4>
+              <p class="inst-card-desc">{{ desc }}</p>
+              <div style="margin-top:auto; padding-top:10px; display:flex; align-items:center; justify-content:space-between; font-size:11px; font-weight:800; color:#4f46e5; border-top:1px dashed #cbd5e1;">
+                <span><i class="fa-solid fa-eye"></i> Inspect Wiring</span>
+                <i class="fa-solid fa-arrow-right-long" style="transition:transform 0.2s;"></i>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <!-- LIGHTBOX MODAL FOR INSTITUTIONAL IMAGES -->
+  <div class="inst-lightbox-overlay" id="inst_lightbox" onclick="closeInstLightbox()" style="position:fixed; inset:0; background:rgba(15,23,42,0.85); backdrop-filter:blur(8px); z-index:99999; display:flex; align-items:center; justify-content:center; padding:20px; opacity:0; visibility:hidden; transition:all 0.25s ease;">
+    <div class="inst-lightbox-box" onclick="event.stopPropagation()" style="background:#ffffff; border-radius:20px; max-width:720px; width:100%; overflow:hidden; box-shadow:0 20px 50px rgba(0,0,0,0.5); position:relative; border:1.5px solid #4f46e5;">
+      <button type="button" class="inst-lightbox-close" onclick="closeInstLightbox()" style="position:absolute; top:14px; right:14px; width:36px; height:36px; border-radius:50%; background:#ffffff; color:#0f172a; border:1.5px solid #e2e8f0; display:flex; align-items:center; justify-content:center; font-size:18px; cursor:pointer; z-index:10;">&times;</button>
+      <div class="inst-lightbox-img-wrap" id="inst_lightbox_img_container" style="width:100%; max-height:420px; background:#1e1b4b; display:flex; align-items:center; justify-content:center;">
+        <!-- Image loaded dynamically -->
+      </div>
+      <div class="inst-lightbox-info" style="padding:20px;">
+        <h3 id="inst_lightbox_title" style="margin:0 0 6px 0; font-size:18px; color:var(--ink);">Title</h3>
+        <p id="inst_lightbox_desc" style="margin:0; font-size:13px; color:var(--muted);">Caption</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ SECTION 5: INSTITUTIONAL SIZING TABLE ══ -->
+  <section class="vsinst-sec">
+    <div class="wrap">
+      <div class="vsinst-sec-head">
+        <div class="vsinst-sec-eyebrow"><i class="fa-solid fa-table"></i> Establishment Matrix</div>
+        <h2 class="vsinst-sec-title">Institutional Sizing Reference Chart</h2>
+        <p class="vsinst-sec-desc">Standard DISCOM energy audit matrix for Indian hospitals, universities, colleges, and government campuses.</p>
+      </div>
+
+      <div class="vsinst-table-wrap">
+        <table class="vsinst-table">
+          <thead>
+            <tr>
+              <th>Institutional Campus Type</th>
+              <th>Load (KW)</th>
+              <th>Monthly DISCOM Bill (₹)</th>
+              <th>Recommended Cards</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>CBSE / International School Campus</td>
+              <td>35–75 KW</td>
+              <td>₹35,000 – ₹75,000</td>
+              <td class="highlight">8 – 16 Cards</td>
+            </tr>
+            <tr>
+              <td>Govt Administrative Complex / Court</td>
+              <td>75–150 KW</td>
+              <td>₹80,000 – ₹1,60,000</td>
+              <td class="highlight">16 – 31 Cards</td>
+            </tr>
+            <tr>
+              <td>Multi-Specialty Hospital / Trauma Center</td>
+              <td>120–250 KW</td>
+              <td>₹1,30,000 – ₹2,80,000</td>
+              <td class="highlight">25 – 51 Cards</td>
+            </tr>
+            <tr>
+              <td>University Campus & Engineering Labs</td>
+              <td>180–350 KW</td>
+              <td>₹2,00,000 – ₹4,00,000</td>
+              <td class="highlight">37 – 71 Cards</td>
+            </tr>
+            <tr>
+              <td>Medical Research Hub & Diagnostic Lab</td>
+              <td>350–500+ KW</td>
+              <td>₹4,00,000 – ₹6,00,000+</td>
+              <td class="highlight">71 – 101+ Cards</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ SECTION 6: REAL INSTITUTIONAL CASE STUDIES ══ -->
+  <section class="vsinst-sec" style="background:linear-gradient(180deg, #f5f3ff 0%, #ffffff 100%); border-top:1.5px solid var(--line);">
+    <div class="wrap">
+      <div class="vsinst-sec-head">
+        <div class="vsinst-sec-eyebrow"><i class="fa-solid fa-square-check"></i> Verified Results</div>
+        <h2 class="vsinst-sec-title">Real Institutional Worked Examples</h2>
+        <p class="vsinst-sec-desc">See how Indian healthcare centers, universities, and administrative campuses reduced their monthly DISCOM bills by 20–30%.</p>
+      </div>
+
+      <div class="vsinst-case-grid">
+        <!-- EXAMPLE 1: MULTI-SPECIALTY HOSPITAL -->
+        <div class="vsinst-case-card" style="border-top:4px solid #4f46e5;">
+          <div>
+            <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:10px; margin-bottom:14px; min-height:64px;">
+              <div style="display:flex; align-items:flex-start; gap:12px; flex:1; min-width:0;">
+                <div style="width:44px; height:44px; border-radius:12px; background:linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color:#ffffff; display:flex; align-items:center; justify-content:center; font-size:18px; box-shadow:0 4px 12px rgba(79,70,229,0.25); flex-shrink:0;">
+                  <i class="fa-solid fa-hospital"></i>
+                </div>
+                <div style="flex:1; min-width:0;">
+                  <h4 style="font-size:14px; font-weight:800; color:var(--ink); margin:0 0 4px 0; line-height:1.3; min-height:36px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">Metro Multi-Specialty Hospital</h4>
+                  <div style="font-size:11.5px; color:var(--muted-2); font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"><i class="fa-solid fa-location-dot" style="color:var(--orange);"></i> 160 KW Load, Delhi NCR</div>
+                </div>
+              </div>
+              <span style="background:#e0e7ff; color:#3730a3; font-size:9.5px; font-weight:800; font-family:'IBM Plex Mono',monospace; padding:4px 9px; border-radius:50px; border:1px solid #4f46e5; white-space:nowrap; flex-shrink:0;"><i class="fa-solid fa-circle-check"></i> VERIFIED</span>
+            </div>
+
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:16px;">
+              <div style="background:rgba(239, 68, 68, 0.06); border:1px solid rgba(239, 68, 68, 0.2); padding:10px 12px; border-radius:12px; min-height:58px; display:flex; flex-direction:column; justify-content:center;">
+                <span style="font-size:9.5px; font-weight:800; font-family:'IBM Plex Mono',monospace; color:#dc2626; text-transform:uppercase; display:block; margin-bottom:2px;">BEFORE DISCOM BILL</span>
+                <div style="font-size:14.5px; font-weight:800; color:#dc2626; text-decoration:line-through; font-family:'Space Grotesk',sans-serif; white-space:nowrap;">₹2,40,000 / mo</div>
+              </div>
+              <div style="background:rgba(16, 185, 129, 0.1); border:1px solid rgba(16, 185, 129, 0.3); padding:10px 12px; border-radius:12px; min-height:58px; display:flex; flex-direction:column; justify-content:center;">
+                <span style="font-size:9.5px; font-weight:800; font-family:'IBM Plex Mono',monospace; color:#047857; text-transform:uppercase; display:block; margin-bottom:2px;">AFTER VS CARDS BILL</span>
+                <div style="font-size:14.5px; font-weight:800; color:#047857; font-family:'Space Grotesk',sans-serif; white-space:nowrap;">₹1,71,600 / mo</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="vsinst-case-result-badge">
+            <span>⚡ 33 Institutional Cards</span>
+            <strong>Saved ₹68,400/mo (28.5%) 🎉</strong>
+          </div>
+        </div>
+
+        <!-- EXAMPLE 2: UNIVERSITY CAMPUS -->
+        <div class="vsinst-case-card" style="border-top:4px solid #7c3aed;">
+          <div>
+            <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:10px; margin-bottom:14px; min-height:64px;">
+              <div style="display:flex; align-items:flex-start; gap:12px; flex:1; min-width:0;">
+                <div style="width:44px; height:44px; border-radius:12px; background:linear-gradient(135deg, #7c3aed 0%, #a855f7 100%); color:#ffffff; display:flex; align-items:center; justify-content:center; font-size:18px; box-shadow:0 4px 12px rgba(124,58,237,0.25); flex-shrink:0;">
+                  <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <div style="flex:1; min-width:0;">
+                  <h4 style="font-size:14px; font-weight:800; color:var(--ink); margin:0 0 4px 0; line-height:1.3; min-height:36px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">Apex University Campus & Labs</h4>
+                  <div style="font-size:11.5px; color:var(--muted-2); font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"><i class="fa-solid fa-location-dot" style="color:var(--orange);"></i> 280 KW Load, Pune</div>
+                </div>
+              </div>
+              <span style="background:#f3e8ff; color:#6b21a8; font-size:9.5px; font-weight:800; font-family:'IBM Plex Mono',monospace; padding:4px 9px; border-radius:50px; border:1px solid #7c3aed; white-space:nowrap; flex-shrink:0;"><i class="fa-solid fa-circle-check"></i> VERIFIED</span>
+            </div>
+
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:16px;">
+              <div style="background:rgba(239, 68, 68, 0.06); border:1px solid rgba(239, 68, 68, 0.2); padding:10px 12px; border-radius:12px; min-height:58px; display:flex; flex-direction:column; justify-content:center;">
+                <span style="font-size:9.5px; font-weight:800; font-family:'IBM Plex Mono',monospace; color:#dc2626; text-transform:uppercase; display:block; margin-bottom:2px;">BEFORE DISCOM BILL</span>
+                <div style="font-size:14.5px; font-weight:800; color:#dc2626; text-decoration:line-through; font-family:'Space Grotesk',sans-serif; white-space:nowrap;">₹4,20,000 / mo</div>
+              </div>
+              <div style="background:rgba(16, 185, 129, 0.1); border:1px solid rgba(16, 185, 129, 0.3); padding:10px 12px; border-radius:12px; min-height:58px; display:flex; flex-direction:column; justify-content:center;">
+                <span style="font-size:9.5px; font-weight:800; font-family:'IBM Plex Mono',monospace; color:#047857; text-transform:uppercase; display:block; margin-bottom:2px;">AFTER VS CARDS BILL</span>
+                <div style="font-size:14.5px; font-weight:800; color:#047857; font-family:'Space Grotesk',sans-serif; white-space:nowrap;">₹3,02,400 / mo</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="vsinst-case-result-badge">
+            <span>⚡ 57 Institutional Cards</span>
+            <strong>Saved ₹1,17,600/mo (28.0%) 🎉</strong>
+          </div>
+        </div>
+
+        <!-- EXAMPLE 3: GOVT COMPLEX -->
+        <div class="vsinst-case-card" style="border-top:4px solid #008744;">
+          <div>
+            <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:10px; margin-bottom:14px; min-height:64px;">
+              <div style="display:flex; align-items:flex-start; gap:12px; flex:1; min-width:0;">
+                <div style="width:44px; height:44px; border-radius:12px; background:linear-gradient(135deg, #008744 0%, #00b050 100%); color:#ffffff; display:flex; align-items:center; justify-content:center; font-size:18px; box-shadow:0 4px 12px rgba(0,176,80,0.25); flex-shrink:0;">
+                  <i class="fa-solid fa-building-flag"></i>
+                </div>
+                <div style="flex:1; min-width:0;">
+                  <h4 style="font-size:14px; font-weight:800; color:var(--ink); margin:0 0 4px 0; line-height:1.3; min-height:36px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">State Administrative Complex</h4>
+                  <div style="font-size:11.5px; color:var(--muted-2); font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"><i class="fa-solid fa-location-dot" style="color:var(--orange);"></i> 95 KW Load, Jaipur</div>
+                </div>
+              </div>
+              <span style="background:#e6f4ec; color:#007b3e; font-size:9.5px; font-weight:800; font-family:'IBM Plex Mono',monospace; padding:4px 9px; border-radius:50px; border:1px solid #007b3e; white-space:nowrap; flex-shrink:0;"><i class="fa-solid fa-circle-check"></i> VERIFIED</span>
+            </div>
+
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:16px;">
+              <div style="background:rgba(239, 68, 68, 0.06); border:1px solid rgba(239, 68, 68, 0.2); padding:10px 12px; border-radius:12px; min-height:58px; display:flex; flex-direction:column; justify-content:center;">
+                <span style="font-size:9.5px; font-weight:800; font-family:'IBM Plex Mono',monospace; color:#dc2626; text-transform:uppercase; display:block; margin-bottom:2px;">BEFORE DISCOM BILL</span>
+                <div style="font-size:14.5px; font-weight:800; color:#dc2626; text-decoration:line-through; font-family:'Space Grotesk',sans-serif; white-space:nowrap;">₹1,45,000 / mo</div>
+              </div>
+              <div style="background:rgba(16, 185, 129, 0.1); border:1px solid rgba(16, 185, 129, 0.3); padding:10px 12px; border-radius:12px; min-height:58px; display:flex; flex-direction:column; justify-content:center;">
+                <span style="font-size:9.5px; font-weight:800; font-family:'IBM Plex Mono',monospace; color:#047857; text-transform:uppercase; display:block; margin-bottom:2px;">AFTER VS CARDS BILL</span>
+                <div style="font-size:14.5px; font-weight:800; color:#047857; font-family:'Space Grotesk',sans-serif; white-space:nowrap;">₹1,03,800 / mo</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="vsinst-case-result-badge">
+            <span>⚡ 20 Institutional Cards</span>
+            <strong>Saved ₹41,200/mo (28.4%) 🎉</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ SECTION 7: FOOTER CTA BAND ══ -->
+  <section class="vsinst-sec" style="padding-bottom:70px;">
+    <div class="wrap">
+      <div class="vsinst-cta-band" style="background:linear-gradient(135deg, #1e1b4b 0%, #4f46e5 100%); border-radius:20px; color:#ffffff; padding:36px 20px; text-align:center; box-shadow:0 10px 30px rgba(79, 70, 229, 0.25);">
+        <h3 style="font-size:clamp(20px, 4vw, 30px); font-weight:800; margin:0 0 10px 0;">Ready to Cut 20–30% off Your Institutional Electricity Bill?</h3>
+        <p style="color:#e0e7ff; font-size:14.5px; margin:0 auto 24px auto; max-width:540px;">Get a customized institutional energy audit & quote for your hospital, university, school, or government complex with free engineering advisory.</p>
+        <a href="https://wa.me/919876543210?text=Hi%20Vidhyut%20Saathi%2C%20I%20want%20to%20order%20Institutional%20Saver%20Cards" class="vsinst-btn-primary" style="background:#ffffff; color:#4f46e5; font-size:15px; padding:15px 30px; border-radius:12px; font-weight:800;" target="_blank">
+          <i class="fa-brands fa-whatsapp"></i> Order Institutional Cards Now
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ SECTION 8: COMPANION HERO SHOWCASE (BALOO 2 + NUNITO) ══ -->
+  <section class="vsinst-sec8-custom" id="vsinst-sec8">
+    <div class="wrap">
+      <div class="vsinst-sec8-grid">
+        <!-- LEFT COLUMN: HEADER, BENEFIT PILLS & DUAL CTAS -->
+        <div>
+          <div class="vsinst-sec8-badge">
+            <i class="fa-solid fa-building-columns"></i> Institutional Energy Solution
+          </div>
+
+          <h2 class="vsinst-sec8-title">
+            Vidhyut Saathi Card for <span>Institutional Campuses & Hospitals</span>
+          </h2>
+
+          <p class="vsinst-sec8-lead">
+            Eliminate high institutional DISCOM tariffs, prevent voltage spikes on sensitive medical diagnostic scanners & research labs, and optimize 24/7 centralized HVAC systems for universities, schools, hospitals, and government complexes.
+          </p>
+
+          <!-- 4 ULTRA-LUCRATIVE 3D GLASS CARDS (2x2 GRID) -->
+          <div class="vsinst-sec8-pills-2x2">
+            <div class="vsinst-sec8-pill c1-card">
+              <div class="vsinst-sec8-pill-icon c1">
+                <i class="fa-solid fa-bolt-lightning"></i>
+              </div>
+              <div class="vsinst-sec8-pill-text">
+                <strong>20%–30% Bill Cuts</strong>
+                <span>On Institutional Non-Domestic Tariff Tariffs</span>
+              </div>
+            </div>
+
+            <div class="vsinst-sec8-pill c2-card">
+              <div class="vsinst-sec8-pill-icon c2">
+                <i class="fa-solid fa-shield-heart"></i>
+              </div>
+              <div class="vsinst-sec8-pill-text">
+                <strong>0.99 PF & Surge Safe</strong>
+                <span>Protects ICU Apparatus & Diagnostic Scanners</span>
+              </div>
+            </div>
+
+            <div class="vsinst-sec8-pill c3-card">
+              <div class="vsinst-sec8-pill-icon c3">
+                <i class="fa-solid fa-graduation-cap"></i>
+              </div>
+              <div class="vsinst-sec8-pill-text">
+                <strong>Colleges & Hospitals</strong>
+                <span>Engineered for Continuous 24/7 Campus Loads</span>
+              </div>
+            </div>
+
+            <div class="vsinst-sec8-pill c4-card">
+              <div class="vsinst-sec8-pill-icon c4">
+                <i class="fa-solid fa-award"></i>
+              </div>
+              <div class="vsinst-sec8-pill-text">
+                <strong>10-Yr Lifespan</strong>
+                <span>3-Year Replacement Guarantee & Zero Maintenance</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- DUAL CTAS -->
+          <div class="vsinst-hero-ctas">
+            <a href="#vsinst-calc" class="vsinst-btn-primary" style="background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); box-shadow: 0 8px 24px rgba(79, 70, 229, 0.32);">
+              <i class="fa-solid fa-calculator"></i> Calculate Institutional Cards
+            </a>
+            <a href="https://wa.me/919876543210?text=Hi%20Vidhyut%20Saathi%2C%20I%20want%20to%20order%20Institutional%20Saver%20Cards" class="vsinst-btn-secondary" target="_blank">
+              <i class="fa-brands fa-whatsapp" style="color: #25d366; font-size: 17px;"></i> Institutional Inquiry
+            </a>
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN: 1:1 SQUARE CLEAN SHOWCASE WITH MOMENT CAPTION -->
+        <div style="display: flex; justify-content: center; align-items: center;">
+          <div class="vsinst-sec8-card-frame">
+            <div class="vsinst-sec8-img-box">
+              {% if section.settings.sec8_card_image != blank %}
+                <img src="{{ section.settings.sec8_card_image | image_url: width: 1000 }}" alt="Institutional Hospital & Campus Power Saving Showcase with Vidhyut Saathi" loading="lazy">
+              {% elsif section.settings.card_image != blank %}
+                <img src="{{ section.settings.card_image | image_url: width: 1000 }}" alt="Institutional Hospital & Campus Power Saving Showcase with Vidhyut Saathi" loading="lazy">
+              {% else %}
+                <img src="{{ 'institutional-mcb-multi-card-showcase.jpg' | asset_url }}" alt="Institutional Hospital & Campus Power Saving Showcase with Vidhyut Saathi" loading="lazy" onerror="this.onerror=null; this.src='https://cdn.shopify.com/s/files/1/0663/8783/7093/files/VS_Card_Final_Design_Golden_1.png';">
+              {% endif %}
+            </div>
+
+            <div class="vsinst-sec8-moment-caption">
+              <div class="vsinst-moment-tag">
+                <i class="fa-solid fa-camera-retro" style="color: #4f46e5;"></i>
+                <span>Captured Institutional Moment of Joy</span>
+              </div>
+              <p class="vsinst-moment-quote">
+                "The pride of running 24/7 healthcare & educational facilities with <strong>20%–30% genuine savings</strong> on DISCOM institutional bills with Vidhyut Saathi Card."
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  var vsinstThreePhase = true;
+
+  function vsinstSetPhase(isThree) {
+    vsinstThreePhase = isThree;
+    var btnSingle = document.getElementById('vsinst_btn_single');
+    var btnThree = document.getElementById('vsinst_btn_three');
+    if (isThree) {
+      btnThree.classList.add('active');
+      btnSingle.classList.remove('active');
+    } else {
+      btnSingle.classList.add('active');
+      btnThree.classList.remove('active');
+    }
+    vsinstSync();
+  }
+
+  function vsinstSync(source) {
+    var kwSlider = document.getElementById('vsinst_kw_slider');
+    var kwNum = document.getElementById('vsinst_kw_num');
+    var billNum = document.getElementById('vsinst_bill_num');
+
+    var kw = parseInt(kwNum.value) || 50;
+    var bill = parseInt(billNum.value) || 50000;
+
+    if (source === 'slider') {
+      kw = parseInt(kwSlider.value) || 10;
+      kwNum.value = kw;
+      bill = kw * 1000;
+      billNum.value = bill;
+    } else if (source === 'kw') {
+      kw = Math.max(1, kw);
+      kwSlider.value = Math.min(kw, 400);
+      bill = kw * 1000;
+      billNum.value = bill;
+    } else if (source === 'bill') {
+      bill = Math.max(1000, bill);
+      kw = Math.max(1, Math.round(bill / 1000));
+      kwNum.value = kw;
+      kwSlider.value = Math.min(kw, 400);
+    }
+
+    document.getElementById('vsinst_kw_badge').innerText = kw + ' KW';
+    document.getElementById('vsinst_bill_badge').innerText = '₹' + bill.toLocaleString('en-IN');
+
+    // Institutional calculation: 1 card per 5 KW (+1 for 3-Phase substation balancing)
+    var baseCards = Math.max(1, Math.ceil(kw / 5));
+    if (vsinstThreePhase) {
+      baseCards = baseCards + 1;
+    }
+    document.getElementById('vsinst_card_num').innerText = baseCards;
+
+    // Monthly Savings (20% - 30%)
+    var minSave = Math.round(bill * 0.20);
+    var maxSave = Math.round(bill * 0.30);
+    document.getElementById('vsinst_savings_range').innerText = '₹' + minSave.toLocaleString('en-IN') + ' – ₹' + maxSave.toLocaleString('en-IN') + ' / mo';
+  }
+
+  function filterInst(cat, btn) {
+    var buttons = document.querySelectorAll('.inst-filter-btn');
+    buttons.forEach(function(b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+
+    var cards = document.querySelectorAll('.inst-card');
+    cards.forEach(function(card) {
+      if (cat === 'all' || card.getAttribute('data-category') === cat) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  function openInstLightbox(imgUrl, title, caption) {
+    var container = document.getElementById('inst_lightbox_img_container');
+    if (imgUrl && imgUrl.trim() !== '') {
+      container.innerHTML = '<img src="' + imgUrl + '" alt="' + title + '" style="max-height:420px; width:100%; object-fit:contain;">';
+    } else {
+      container.innerHTML = '<div style="padding:60px 20px; text-align:center; color:#e0e7ff;"><i class="fa-solid fa-bolt" style="font-size:48px; color:#ffd700; margin-bottom:14px; display:block;"></i><strong>' + title + '</strong><p style="margin:8px 0 0 0; font-size:13px; color:#c7d2fe;">3-Phase Institutional Substation Connection Active</p></div>';
+    }
+    document.getElementById('inst_lightbox_title').innerText = title;
+    document.getElementById('inst_lightbox_desc').innerText = caption;
+    document.getElementById('inst_lightbox').classList.add('active');
+  }
+
+  function closeInstLightbox() {
+    document.getElementById('inst_lightbox').classList.remove('active');
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Institutional Cards Layout",
+  "settings": [
+    { "type": "image_picker", "id": "card_image", "label": "Institutional Hero Card Image" },
+    { "type": "image_picker", "id": "sec8_card_image", "label": "Section 8 Showcase Image" },
+    { "type": "image_picker", "id": "inst_mcb_img_1", "label": "Institutional Substation Image 1" },
+    { "type": "image_picker", "id": "inst_mcb_img_2", "label": "Institutional Substation Image 2" },
+    { "type": "image_picker", "id": "inst_mcb_img_3", "label": "Institutional Substation Image 3" },
+    { "type": "image_picker", "id": "inst_mcb_img_4", "label": "Institutional Substation Image 4" },
+    { "type": "image_picker", "id": "inst_mcb_img_5", "label": "Institutional Substation Image 5" },
+    { "type": "image_picker", "id": "inst_mcb_img_6", "label": "Institutional Substation Image 6" },
+    { "type": "image_picker", "id": "inst_mcb_img_7", "label": "Institutional Substation Image 7" },
+    { "type": "image_picker", "id": "inst_mcb_img_8", "label": "Institutional Substation Image 8" },
+    { "type": "image_picker", "id": "inst_mcb_img_9", "label": "Institutional Substation Image 9" },
+    { "type": "image_picker", "id": "inst_mcb_img_10", "label": "Institutional Substation Image 10" },
+    { "type": "image_picker", "id": "inst_mcb_img_11", "label": "Institutional Substation Image 11" },
+    { "type": "image_picker", "id": "inst_mcb_img_12", "label": "Institutional Substation Image 12" },
+    { "type": "image_picker", "id": "inst_mcb_img_13", "label": "Institutional Substation Image 13" },
+    { "type": "image_picker", "id": "inst_mcb_img_14", "label": "Institutional Substation Image 14" },
+    { "type": "image_picker", "id": "inst_mcb_img_15", "label": "Institutional Substation Image 15" },
+    { "type": "image_picker", "id": "inst_mcb_img_16", "label": "Institutional Substation Image 16" },
+    { "type": "image_picker", "id": "inst_mcb_img_17", "label": "Institutional Substation Image 17" },
+    { "type": "image_picker", "id": "inst_mcb_img_18", "label": "Institutional Substation Image 18" },
+    { "type": "image_picker", "id": "inst_mcb_img_19", "label": "Institutional Substation Image 19" },
+    { "type": "image_picker", "id": "inst_mcb_img_20", "label": "Institutional Substation Image 20" }
+  ],
+  "blocks": [
+    {
+      "type": "inst_mcb_installation",
+      "name": "Substation Photo",
+      "limit": 20,
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Installation Photo" },
+        { "type": "text", "id": "title", "label": "Installation Title", "default": "Institutional Substation Setup" },
+        {
+          "type": "select",
+          "id": "category",
+          "label": "Category",
+          "options": [
+            { "value": "hospital", "label": "Hospitals & Healthcare" },
+            { "value": "university", "label": "Colleges & Universities" },
+            { "value": "school", "label": "Schools & Academies" },
+            { "value": "govt", "label": "Govt & Research Labs" }
+          ],
+          "default": "hospital"
+        },
+        { "type": "text", "id": "badge", "label": "Badge Text", "default": "HOSPITAL ICU PANEL" },
+        { "type": "text", "id": "caption", "label": "Caption Description", "default": "Parallel connection on main 100A institutional distribution panel with zero downtime." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Institutional Cards Layout",
+      "blocks": [
+        { "type": "inst_mcb_installation", "settings": { "title": "Apollo ICU Wing DB #1", "category": "hospital", "badge": "HOSPITAL ICU PANEL" } },
+        { "type": "inst_mcb_installation", "settings": { "title": "Hospital Diagnostics DB #2", "category": "hospital", "badge": "HOSPITAL ICU PANEL" } },
+        { "type": "inst_mcb_installation", "settings": { "title": "Operation Theater Substation #3", "category": "hospital", "badge": "HOSPITAL ICU PANEL" } },
+        { "type": "inst_mcb_installation", "settings": { "title": "Emergency Wing Panel #4", "category": "hospital", "badge": "HOSPITAL ICU PANEL" } },
+        { "type": "inst_mcb_installation", "settings": { "title": "Hospital Central HVAC DB #5", "category": "hospital", "badge": "HOSPITAL ICU PANEL" } },
+        { "type": "inst_mcb_installation", "settings": { "title": "University Science Lab DB #6", "category": "university", "badge": "CAMPUS LAB MAINS" } },
+        { "type": "inst_mcb_installation", "settings": { "title": "Computer Engineering Block #7", "category": "university", "badge": "CAMPUS LAB MAINS" } },
+        { "type": "inst_mcb_installation", "settings": { "title": "Central Library DB #8", "category": "university", "badge": "CAMPUS LAB MAINS" } },
+        { "type": "inst_mcb_installation", "settings": { "title": "Campus Auditorium Panel #9", "category": "university", "badge": "CAMPUS LAB MAINS" } },
+        { "type": "inst_mcb_installation", "settings": { "title": "Student Hostel Substation #10", "category": "university", "badge": "CAMPUS LAB MAINS" } },
+        { "type": "inst_mcb_installation", "settings": { "title": "CBSE School Main DB #11", "category": "school", "badge": "SCHOOL HVAC PANEL" } },
+        { "type": "inst_mcb_installation", "settings": { "title": "School Science Wing #12", "category": "school", "badge": "SCHOOL HVAC PANEL" } },
+        { "type": "inst_mcb_installation", "settings": { "title": "Indoor Sports Complex DB #13", "category": "school", "badge": "SCHOOL HVAC PANEL" } },
+        { "type": "inst_mcb_installation", "settings": { "title": "Primary Wing Substation #14", "category": "school", "badge": "SCHOOL HVAC PANEL" } },
+        { "type": "inst_mcb_installation", "settings": { "title": "Admin & Accounts Block #15", "category": "school", "badge": "SCHOOL HVAC PANEL" } },
+        { "type": "inst_mcb_installation", "settings": { "title": "Govt Administrative Complex #16", "category": "govt", "badge": "GOVT RESEARCH MAINS" } },
+        { "type": "inst_mcb_installation", "settings": { "title": "High Court Annexe Substation #17", "category": "govt", "badge": "GOVT RESEARCH MAINS" } },
+        { "type": "inst_mcb_installation", "settings": { "title": "National Research Institute #18", "category": "govt", "badge": "GOVT RESEARCH MAINS" } },
+        { "type": "inst_mcb_installation", "settings": { "title": "Biotech Testing Center #19", "category": "govt", "badge": "GOVT RESEARCH MAINS" } },
+        { "type": "inst_mcb_installation", "settings": { "title": "District Treasury DB #20", "category": "govt", "badge": "GOVT RESEARCH MAINS" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
