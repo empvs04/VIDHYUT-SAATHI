@@ -1287,6 +1287,45 @@
       </div>
     </div>
 
+    <!-- PART 11: ROW 10 - 3 HORIZONTAL RECTANGLE SHAPED CARDS (CARDS 32, 33, 34) -->
+    <div class="vsg-rect-3cards-grid" id="vsgRectGrid9-{{ section.id }}">
+      <!-- Card 32 -->
+      <div class="vsg-card-item vsg-rect-card" data-category="{{ section.settings.card32_category | default: 'corporate' }}">
+        <div class="vsg-card-img-wrap">
+          {%- if section.settings.card32_image != blank -%}
+            <img src="{{ section.settings.card32_image | image_url: width: 1200 }}" alt="Vidhyut Saathi Moments" class="vsg-card-img" loading="lazy">
+          {%- else -%}
+            <img src="{{ 'commercial-building-1.png' | asset_url }}" alt="Vidhyut Infrastructure" class="vsg-card-img" loading="lazy">
+          {%- endif -%}
+          <div class="vsg-expand-btn"><i class="fa-solid fa-expand"></i></div>
+        </div>
+      </div>
+
+      <!-- Card 33 -->
+      <div class="vsg-card-item vsg-rect-card" data-category="{{ section.settings.card33_category | default: 'celebrating' }}">
+        <div class="vsg-card-img-wrap">
+          {%- if section.settings.card33_image != blank -%}
+            <img src="{{ section.settings.card33_image | image_url: width: 1200 }}" alt="Vidhyut Saathi Moments" class="vsg-card-img" loading="lazy">
+          {%- else -%}
+            <img src="{{ 'residential-house-1.png' | asset_url }}" alt="Happy Homes" class="vsg-card-img" loading="lazy">
+          {%- endif -%}
+          <div class="vsg-expand-btn"><i class="fa-solid fa-expand"></i></div>
+        </div>
+      </div>
+
+      <!-- Card 34 -->
+      <div class="vsg-card-item vsg-rect-card" data-category="{{ section.settings.card34_category | default: 'awards' }}">
+        <div class="vsg-card-img-wrap">
+          {%- if section.settings.card34_image != blank -%}
+            <img src="{{ section.settings.card34_image | image_url: width: 1200 }}" alt="Vidhyut Saathi Moments" class="vsg-card-img" loading="lazy">
+          {%- else -%}
+            <img src="{{ 'industrial-factory-1.png' | asset_url }}" alt="Industrial Honors" class="vsg-card-img" loading="lazy">
+          {%- endif -%}
+          <div class="vsg-expand-btn"><i class="fa-solid fa-expand"></i></div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -2288,6 +2327,69 @@
         { "value": "operational", "label": "Operational Office" }
       ],
       "default": "celebrating"
+    },
+    {
+      "type": "header",
+      "content": "Card 32: Rectangle"
+    },
+    {
+      "type": "image_picker",
+      "id": "card32_image",
+      "label": "Card 32 (Rectangle Image)"
+    },
+    {
+      "type": "select",
+      "id": "card32_category",
+      "label": "Card 32 Category",
+      "options": [
+        { "value": "corporate", "label": "Corporate Office" },
+        { "value": "awards", "label": "Awards" },
+        { "value": "celebrating", "label": "Celebrating" },
+        { "value": "operational", "label": "Operational Office" }
+      ],
+      "default": "corporate"
+    },
+    {
+      "type": "header",
+      "content": "Card 33: Rectangle"
+    },
+    {
+      "type": "image_picker",
+      "id": "card33_image",
+      "label": "Card 33 (Rectangle Image)"
+    },
+    {
+      "type": "select",
+      "id": "card33_category",
+      "label": "Card 33 Category",
+      "options": [
+        { "value": "corporate", "label": "Corporate Office" },
+        { "value": "awards", "label": "Awards" },
+        { "value": "celebrating", "label": "Celebrating" },
+        { "value": "operational", "label": "Operational Office" }
+      ],
+      "default": "celebrating"
+    },
+    {
+      "type": "header",
+      "content": "Card 34: Rectangle"
+    },
+    {
+      "type": "image_picker",
+      "id": "card34_image",
+      "label": "Card 34 (Rectangle Image)"
+    },
+    {
+      "type": "select",
+      "id": "card34_category",
+      "label": "Card 34 Category",
+      "options": [
+        { "value": "corporate", "label": "Corporate Office" },
+        { "value": "awards", "label": "Awards" },
+        { "value": "celebrating", "label": "Celebrating" },
+        { "value": "operational", "label": "Operational Office" }
+      ],
+      "default": "awards"
     }
   ],
   "blocks": [
