@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800;900&family=Nunito:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&family=IBM+Plex+Mono:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&family=Baloo+2:wght@400;600;700;800;900&family=Nunito:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&family=IBM+Plex+Mono:wght@600;700&display=swap" rel="stylesheet">
 
 <style>
   /* ============================================================
@@ -935,12 +935,12 @@
     max-width: 540px;
   }
 
-  /* ---- SECTION 8 ULTRA-LUCRATIVE STYLING ---- */
+  /* ---- SECTION 8 SINGLE-VIEWPORT COMPACT STYLING ---- */
   .vsres-sec8-custom {
     position: relative;
-    padding: clamp(50px, 7vw, 85px) 0;
-    background: radial-gradient(circle at 10% 20%, rgba(236, 92, 10, 0.07) 0%, transparent 45%),
-                radial-gradient(circle at 90% 80%, rgba(0, 123, 62, 0.07) 0%, transparent 45%),
+    padding: clamp(28px, 3.8vw, 45px) 0;
+    background: radial-gradient(circle at 10% 20%, rgba(236, 92, 10, 0.05) 0%, transparent 45%),
+                radial-gradient(circle at 90% 80%, rgba(0, 123, 62, 0.05) 0%, transparent 45%),
                 linear-gradient(180deg, #ffffff 0%, #fffbf6 50%, #fff8ef 100%);
     border-top: 1.5px solid #e7dcce;
     border-bottom: 1.5px solid #e7dcce;
@@ -950,156 +950,134 @@
   .vsres-sec8-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 36px;
+    gap: 24px;
     align-items: center;
   }
   @media (min-width: 900px) {
     .vsres-sec8-grid {
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 48px;
+      grid-template-columns: 1.12fr 0.88fr;
+      gap: 36px;
     }
   }
 
   .vsres-sec8-badge {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    padding: 7px 18px;
-    background: linear-gradient(135deg, #fff3e6 0%, #ffebd9 100%);
-    border: 1.5px solid rgba(236, 92, 10, 0.4);
+    gap: 7px;
+    padding: 5px 14px;
+    background: #ffffff;
+    border: 1.5px solid rgba(236, 92, 10, 0.35);
     border-radius: 999px;
     color: #ec5c0a;
-    font-size: 11.5px;
+    font-size: 10.5px;
     font-weight: 800;
-    letter-spacing: 1px;
+    letter-spacing: 0.8px;
     text-transform: uppercase;
-    margin-bottom: 18px;
-    box-shadow: 0 4px 14px rgba(236, 92, 10, 0.1);
-  }
-  .vsres-sec8-badge-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: #ec5c0a;
+    font-family: 'Outfit', sans-serif;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 10px rgba(236, 92, 10, 0.06);
   }
 
   .vsres-sec8-title {
-    font-size: clamp(28px, 4.2vw, 44px);
-    line-height: 1.18;
-    font-weight: 900;
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(24px, 3.2vw, 34px);
+    line-height: 1.2;
+    font-weight: 800;
     color: #0f172a;
-    margin: 0 0 16px 0;
+    margin: 0 0 10px 0;
     letter-spacing: -0.02em;
   }
-  .vsres-sec8-title .vsres-gradient-orange {
-    background: linear-gradient(135deg, #ec5c0a 0%, #ff8800 50%, #d95300 100%);
+  .vsres-sec8-title span {
+    background: linear-gradient(135deg, #ec5c0a 0%, #ff8800 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    display: inline-block;
   }
 
   .vsres-sec8-lead {
-    font-size: clamp(14.5px, 1.8vw, 16.5px);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: clamp(13px, 1.35vw, 14.5px);
     color: #475569;
-    line-height: 1.65;
-    margin: 0 0 24px 0;
+    line-height: 1.55;
+    margin: 0 0 16px 0;
   }
 
-  /* 3 Feature Highlights Cards */
-  .vsres-sec8-features {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-bottom: 28px;
+  /* 4 Compact Grid Pills (2x2) */
+  .vsres-sec8-pills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    margin-bottom: 18px;
   }
 
-  .vsres-sec8-feat-item {
+  .vsres-sec8-pill {
     display: flex;
-    align-items: flex-start;
-    gap: 14px;
-    padding: 14px 18px;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
     background: #ffffff;
-    border: 1.5px solid #e7dcce;
-    border-radius: 16px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
-    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    border: 1.2px solid #e7dcce;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+    transition: transform 0.2s ease, border-color 0.2s ease;
   }
-  .vsres-sec8-feat-item:hover {
-    transform: translateX(4px);
+  .vsres-sec8-pill:hover {
+    transform: translateY(-2px);
     border-color: #ec5c0a;
-    box-shadow: 0 6px 20px rgba(236, 92, 10, 0.08);
   }
 
-  .vsres-sec8-feat-icon {
-    width: 38px;
-    height: 38px;
-    border-radius: 12px;
+  .vsres-sec8-pill-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 7px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 16px;
+    font-size: 12px;
     flex-shrink: 0;
+    background: #fff3e6;
+    color: #ec5c0a;
   }
-  .vsres-sec8-feat-icon.orange { background: #fff3e6; color: #ec5c0a; border: 1px solid rgba(236,92,10,0.3); }
-  .vsres-sec8-feat-icon.green { background: #e6f4ec; color: #007b3e; border: 1px solid rgba(0,123,62,0.3); }
-  .vsres-sec8-feat-icon.blue { background: #eff6ff; color: #2563eb; border: 1px solid rgba(37,99,235,0.3); }
 
-  .vsres-sec8-feat-text strong {
+  .vsres-sec8-pill-text strong {
     display: block;
-    font-size: 14px;
-    font-weight: 800;
+    font-family: 'Outfit', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
     color: #0f172a;
-    margin-bottom: 2px;
+    line-height: 1.2;
   }
-  .vsres-sec8-feat-text span {
-    font-size: 12.5px;
+  .vsres-sec8-pill-text span {
+    font-size: 10.5px;
     color: #64748b;
-    line-height: 1.45;
+    line-height: 1.25;
   }
 
-  /* Right Column 1:1 Showcase Frame */
+  /* Right Column 1:1 Showcase Frame (Single-Screen Proportional Fit) */
   .vsres-sec8-card-frame {
     background: #ffffff;
-    border: 2px solid rgba(236, 92, 10, 0.3);
-    border-radius: 26px;
-    padding: 12px;
-    box-shadow: 0 20px 50px rgba(236, 92, 10, 0.15), 0 4px 18px rgba(0, 0, 0, 0.04);
+    border: 2px solid rgba(236, 92, 10, 0.25);
+    border-radius: 18px;
+    padding: 8px;
+    box-shadow: 0 14px 38px rgba(236, 92, 10, 0.11), 0 4px 14px rgba(0, 0, 0, 0.03);
     position: relative;
-    max-width: 480px;
+    max-width: 370px;
     margin: 0 auto;
     width: 100%;
   }
 
   .vsres-sec8-img-box {
     position: relative;
-    border-radius: 20px;
+    border-radius: 14px;
     overflow: hidden;
     aspect-ratio: 1 / 1;
     width: 100%;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
   }
   .vsres-sec8-img-box img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
-  }
-
-  .vsres-sec8-card-caption {
-    padding: 14px 10px 6px 10px;
-    text-align: center;
-  }
-  .vsres-sec8-card-caption h4 {
-    font-size: 14.5px;
-    font-weight: 800;
-    color: #0f172a;
-    margin: 0 0 4px 0;
-  }
-  .vsres-sec8-card-caption p {
-    font-size: 12px;
-    color: #64748b;
-    margin: 0;
-    line-height: 1.45;
   }
 
   /* ---- MOBILE STYLING & PARAGRAPH ALIGNMENT OVERRIDES (ULTRA-LUCRATIVE) ---- */
@@ -1718,73 +1696,80 @@
     </div>
   </section>
 
-  <!-- ══ SECTION 8: RESIDENTIAL HERO SHOWCASE (ULTRA-LUCRATIVE REDESIGN) ══ -->
+  <!-- ══ SECTION 8: RESIDENTIAL HERO SHOWCASE (COMPACT & LUCRATIVE) ══ -->
   <section class="vsres-sec8-custom">
     <div class="wrap">
       <div class="vsres-sec8-grid">
-        <!-- LEFT COLUMN: RICH TYPOGRAPHY & BENEFIT CARDS -->
+        <!-- LEFT COLUMN: COMPACT & POWERFUL -->
         <div>
           <div class="vsres-sec8-badge">
-            <span class="vsres-sec8-sparkle">✨</span>
-            <span>ZERO BILL WORRIES</span>
-            <span class="vsres-sec8-dot"></span>
-            <span>100% LEGAL & SAFE</span>
+            <i class="fa-solid fa-bolt" style="color:#ec5c0a;"></i> Smart Residential Energy Shield
           </div>
 
           <h2 class="vsres-sec8-title">
-            Bring Pure Happiness & <span class="vsres-gradient-orange">20–30% Monthly Savings</span> to Your Home & Family
+            Protect Home Appliances & <span>Stop Overpaying Bills</span>
           </h2>
 
           <p class="vsres-sec8-lead">
-            Join over <strong>50,000+ Indian households</strong> enjoying massive monthly electricity savings. Simply paste the Vidhyut Saathi Power Saving Card onto your home MCB distribution box for round-the-clock voltage stabilization and permanent energy efficiency.
+            Protect your household appliances and stop overpaying on electricity bills. Whether you live in a <strong>1 BHK flat</strong> or a <strong>4 BHK villa</strong> with multiple ACs and water submersible pumps, Vidhyut Saathi cards stabilize incoming voltage and cut power wastage instantly.
           </p>
 
-          <!-- 3 LUCRATIVE BENEFIT HIGHLIGHTS -->
-          <div class="vsres-sec8-features">
-            <div class="vsres-sec8-feat-item">
-              <div class="vsres-sec8-feat-icon orange">
-                <i class="fa-solid fa-bolt-lightning"></i>
+          <!-- 4 COMPACT BENEFIT PILLS (2x2) -->
+          <div class="vsres-sec8-pills-grid">
+            <div class="vsres-sec8-pill">
+              <div class="vsres-sec8-pill-icon">
+                <i class="fa-solid fa-shield-halved"></i>
               </div>
-              <div class="vsres-sec8-feat-text">
-                <strong>Smart Voltage Stabilization & Surge Shield</strong>
-                <span>Protects expensive ACs, Smart TVs, Inverter Fridges & Submersible motors from damaging spikes.</span>
-              </div>
-            </div>
-
-            <div class="vsres-sec8-feat-item">
-              <div class="vsres-sec8-feat-icon green">
-                <i class="fa-solid fa-piggy-bank"></i>
-              </div>
-              <div class="vsres-sec8-feat-text">
-                <strong>Guaranteed 20% to 30% Bill Cuts</strong>
-                <span>Reduces reactive energy losses and lowers units consumed, saving ₹1,200 to ₹4,500+ every billing cycle.</span>
+              <div class="vsres-sec8-pill-text">
+                <strong>Appliance Shield</strong>
+                <span>AC, TV, Fridge & Motors</span>
               </div>
             </div>
 
-            <div class="vsres-sec8-feat-item">
-              <div class="vsres-sec8-feat-icon blue">
-                <i class="fa-solid fa-shield-check"></i>
+            <div class="vsres-sec8-pill">
+              <div class="vsres-sec8-pill-icon">
+                <i class="fa-solid fa-percent"></i>
               </div>
-              <div class="vsres-sec8-feat-text">
-                <strong>100% Plug & Save • 10-Yr Lifespan</strong>
-                <span>No wire-cutting or meter tampering required. Backed by an official 3-Year replacement warranty.</span>
+              <div class="vsres-sec8-pill-text">
+                <strong>20%–30% Savings</strong>
+                <span>Direct on Monthly Units</span>
+              </div>
+            </div>
+
+            <div class="vsres-sec8-pill">
+              <div class="vsres-sec8-pill-icon">
+                <i class="fa-solid fa-house-chimney"></i>
+              </div>
+              <div class="vsres-sec8-pill-text">
+                <strong>1 BHK to 4 BHK Villa</strong>
+                <span>Custom Card Sizing</span>
+              </div>
+            </div>
+
+            <div class="vsres-sec8-pill">
+              <div class="vsres-sec8-pill-icon">
+                <i class="fa-solid fa-award"></i>
+              </div>
+              <div class="vsres-sec8-pill-text">
+                <strong>10-Yr Lifespan</strong>
+                <span>3-Yr Replacement Warranty</span>
               </div>
             </div>
           </div>
 
-          <!-- DUAL INTERACTIVE CTAS -->
+          <!-- DUAL CTAS -->
           <div class="vsres-hero-ctas">
-            <a href="#vsres-calc" class="vsres-btn-primary" style="box-shadow: 0 10px 28px rgba(236, 92, 10, 0.35);">
-              <i class="fa-solid fa-calculator"></i> Calculate My Home Savings
+            <a href="#vsres-calc" class="vsres-btn-primary" style="box-shadow: 0 8px 24px rgba(236, 92, 10, 0.32);">
+              <i class="fa-solid fa-calculator"></i> Calculate My Home Cards
             </a>
             <a href="https://wa.me/919876543210?text=Hi%20Vidhyut%20Saathi%2C%20I%20want%20to%20order%20Residential%20Saver%20Cards" class="vsres-btn-secondary" target="_blank">
-              <i class="fa-brands fa-whatsapp" style="color: #25d366; font-size: 18px;"></i> Order on WhatsApp
+              <i class="fa-brands fa-whatsapp" style="color: #25d366; font-size: 17px;"></i> Order on WhatsApp
             </a>
           </div>
         </div>
 
-        <!-- RIGHT COLUMN: 1:1 SQUARE FRAME WITH HAPPY FAMILY & MCB INSTALLED CARD -->
-        <div>
+        <!-- RIGHT COLUMN: 1:1 SQUARE CLEAN SHOWCASE -->
+        <div style="display: flex; justify-content: center; align-items: center;">
           <div class="vsres-sec8-card-frame">
             <div class="vsres-sec8-img-box">
               {% if section.settings.sec8_image != blank %}
@@ -1792,11 +1777,6 @@
               {% else %}
                 <img src="{{ 'residential-happy-family-mcb-saver.jpg' | asset_url }}" alt="Happy Indian Family Celebrating Electricity Savings with Vidhyut Saathi" loading="lazy" onerror="this.onerror=null; this.src='https://cdn.shopify.com/s/files/1/0663/8783/7093/files/VS_Card_Final_Design_Golden_1.png';">
               {% endif %}
-            </div>
-
-            <div class="vsres-sec8-card-caption">
-              <h4>✨ Verified Home Results Across India</h4>
-              <p>Card pasted directly on your MCB box stabilizes voltage spikes & cuts line losses automatically.</p>
             </div>
           </div>
         </div>
