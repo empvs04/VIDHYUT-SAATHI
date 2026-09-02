@@ -1605,25 +1605,25 @@
           </div>
         </div>
 
-        <!-- RIGHT HERO SHOWCASE -->
-        <div class="vsres-hero-image-box">
-          <span class="vsres-hero-card-tag"><i class="fa-solid fa-crown"></i> Official Residential Card</span>
-
-          <div style="width:100%; display:flex; justify-content:center; margin:12px 0;">
-            {% if section.settings.card_image != blank %}
-              <img src="{{ section.settings.card_image | image_url: width: 600 }}" alt="Vidhyut Saathi Residential Electric Saver Card" style="width: 100%; max-width: 320px; border-radius: 16px; box-shadow: 0 16px 36px rgba(0,0,0,0.4); border: 2px solid rgba(255,255,255,0.25); transition: transform 0.3s ease;">
+        <!-- RIGHT HERO SHOWCASE - 1:1 HAPPY FAMILY WITH MCB SAVER CARD -->
+        <div class="vsres-hero-image-box" style="padding: 14px; background: #ffffff; border: 1.5px solid var(--line); border-radius: 22px; box-shadow: 0 16px 40px rgba(236, 92, 10, 0.12); display: flex; flex-direction: column; justify-content: space-between;">
+          <div style="position: relative; border-radius: 18px; overflow: hidden; aspect-ratio: 1 / 1; width: 100%; box-shadow: 0 8px 24px rgba(0,0,0,0.08);">
+            <span class="vsres-hero-card-tag" style="top: 12px; left: 12px; z-index: 5; background: rgba(15, 23, 42, 0.90); backdrop-filter: blur(8px); border: 1px solid rgba(236, 92, 10, 0.4);"><i class="fa-solid fa-face-smile" style="color: #ff9a00;"></i> Happy Homeowners • Zero Bill Stress</span>
+            {% if section.settings.sec8_image != blank %}
+              <img src="{{ section.settings.sec8_image | image_url: width: 1000 }}" alt="Happy Indian Family with Vidhyut Saathi Savings" style="width: 100%; height: 100%; object-fit: cover; border-radius: 18px; display: block;">
             {% else %}
-              <img src="{{ 'official-vs-card-front.jpg' | asset_url }}" alt="Vidhyut Saathi Residential Electric Saver Card" style="width: 100%; max-width: 320px; border-radius: 16px; box-shadow: 0 16px 36px rgba(0,0,0,0.4); border: 2px solid rgba(255,255,255,0.25); transition: transform 0.3s ease;" onerror="this.onerror=null; this.src='https://cdn.shopify.com/s/files/1/0663/8783/7093/files/VS_Card_Final_Design_Golden_1.png';">
+              <img src="{{ 'residential-happy-family-mcb-saver.jpg' | asset_url }}" alt="Happy Indian Family with Vidhyut Saathi Savings" style="width: 100%; height: 100%; object-fit: cover; border-radius: 18px; display: block;" onerror="this.onerror=null; this.src='https://cdn.shopify.com/s/files/1/0663/8783/7093/files/VS_Card_Final_Design_Golden_1.png';">
             {% endif %}
           </div>
 
-          <p style="font-size:12.5px; color:#cbd5e1; margin:8px 0 12px 0; line-height:1.5;">
-            Patented US-German Terahertz frequency technology stabilizes voltage fluctuations and eliminates inductive reactive current from home motors.
-          </p>
-
-          <a href="#mcb-gallery" class="vsres-mcb-hero-link">
-            <i class="fa-solid fa-camera"></i> See 20 Real MCB Installation Photos <i class="fa-solid fa-arrow-down-long"></i>
-          </a>
+          <div style="padding: 14px 8px 4px 8px; text-align: center;">
+            <p style="font-size: 14px; color: #0f172a; margin: 0 0 6px 0; font-weight: 800;">
+              ✨ Real Results: Over <span style="color: #ec5c0a;">50,000+ Indian Families</span> Saving Daily
+            </p>
+            <p style="font-size: 12px; color: #64748b; margin: 0; line-height: 1.45;">
+              Card pasted directly on your MCB box stabilizes voltage spikes & cuts line losses instantly.
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -1726,11 +1726,16 @@
     {
       "type": "image_picker",
       "id": "card_image",
-      "label": "Residential Hero Card Image"
+      "label": "Top Hero Card Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "sec8_image",
+      "label": "Section 8 Happy Family Showcase Image (1:1)"
     },
     {
       "type": "header",
-      "content": "20 MCB Installation Images (Upload Below)"
+      "content": "20 MCB Installation Images"
     },
     { "type": "image_picker", "id": "mcb_img_1", "label": "MCB Installation Image 1" },
     { "type": "image_picker", "id": "mcb_img_2", "label": "MCB Installation Image 2" },
