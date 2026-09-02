@@ -888,6 +888,26 @@
       </div>
     </div>
 
+    <!-- PART 2C: NEXT 3 SQUARE CARDS (IMAGES 11, 12, 13 HORIZONTALLY IN 3 COLUMNS) -->
+    <div class="vsg-30cards-grid vsg-grid-row2" id="vsg30GridB-{{ section.id }}">
+      {%- if section.blocks.size > 3 -%}
+        {%- for block in section.blocks offset: 3 limit: 3 -%}
+          <div class="vsg-card-item vsg-square-card" data-category="{{ block.settings.category | default: 'all' }}" {{ block.shopify_attributes }}>
+            <div class="vsg-card-img-wrap">
+              {%- if block.settings.image != blank -%}
+                <img src="{{ block.settings.image | image_url: width: 1000 }}" alt="{{ block.settings.title | default: 'Vidhyut Saathi Moments' | escape }}" class="vsg-card-img" loading="lazy">
+              {%- elsif block.settings.fallback_asset != blank -%}
+                <img src="{{ block.settings.fallback_asset | asset_url }}" alt="{{ block.settings.title | default: 'Vidhyut Saathi Moments' | escape }}" class="vsg-card-img" loading="lazy">
+              {%- else -%}
+                <img src="{{ 'vidhyut-saathi-team-bg.jpg' | asset_url }}" alt="Vidhyut Saathi Moments" class="vsg-card-img" loading="lazy">
+              {%- endif -%}
+              <div class="vsg-expand-btn"><i class="fa-solid fa-expand"></i></div>
+            </div>
+          </div>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+
   </div>
 </section>
 
