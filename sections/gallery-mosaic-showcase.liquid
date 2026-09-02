@@ -450,36 +450,65 @@
   }
 
   /* ==========================================================================
-     MOBILE RESPONSIVENESS (100% FLUID, TOUCH-OPTIMIZED 2-COLUMN GRID)
+     MOBILE RESPONSIVENESS:
+     1. Big Photo 1 (Full Width)
+     2. Two Square Photos Horizontally Side-by-Side (Center 2 Cards)
+     3. Big Photo 2 (Full Width)
+     4. 30-Card Grid in 2-Column Square Grid
      ========================================================================== */
   @media screen and (max-width: 900px) {
     .vsg-mosaic-section {
       padding: 45px 16px 65px 16px;
     }
     
-    /* 4-Card Hero Mobile: Seamless 2x2 Equal Square Grid with Zero Gaps */
+    /* 4-Card Hero Mobile: Stacked Layout (Big -> 2 Squares -> Big) */
     .vsg-4card-grid {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 10px !important;
+      margin-bottom: 10px !important;
+      width: 100% !important;
+    }
+
+    /* 1. Big Photo 1 (Left Card) */
+    .vsg-col-left {
+      width: 100% !important;
+      height: auto !important;
+    }
+    .vsg-col-left .vsg-card-item {
+      width: 100% !important;
+      height: clamp(230px, 64vw, 340px) !important;
+      min-height: 0 !important;
+    }
+
+    /* 2. Two Square Photos Horizontally Side-by-Side (Center Cards) */
+    .vsg-col-center {
       display: grid !important;
       grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
       gap: 10px !important;
-      margin-bottom: 10px !important;
-    }
-
-    .vsg-col-left,
-    .vsg-col-center,
-    .vsg-col-right {
-      display: contents !important;
-    }
-
-    .vsg-4card-grid .vsg-card-item {
       width: 100% !important;
-      aspect-ratio: 1 / 1 !important;
+    }
+    .vsg-col-center .vsg-card-item {
+      width: 100% !important;
+      aspect-ratio: 1 / 1 !important; /* STRICT 1:1 SQUARE */
       height: auto !important;
       min-height: 0 !important;
     }
 
-    /* 30-Cards Grid: Seamless 2-Column Square Grid */
+    /* 3. Big Photo 2 (Right Card) */
+    .vsg-col-right {
+      width: 100% !important;
+      height: auto !important;
+    }
+    .vsg-col-right .vsg-card-item {
+      width: 100% !important;
+      height: clamp(230px, 64vw, 340px) !important;
+      min-height: 0 !important;
+    }
+
+    /* 4. 30-Cards Grid: Seamless 2-Column Square Grid */
     .vsg-30cards-grid {
+      display: grid !important;
       grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
       gap: 10px !important;
     }
@@ -530,10 +559,14 @@
       border-radius: 999px;
     }
 
-    /* 4-Card Hero Mobile Optimization */
+    /* 4-Card Hero Mobile Spacing on small screens */
     .vsg-4card-grid {
       gap: 8px !important;
       margin-bottom: 8px !important;
+    }
+    .vsg-col-left .vsg-card-item,
+    .vsg-col-right .vsg-card-item {
+      height: clamp(210px, 60vw, 300px) !important;
     }
     .vsg-col-center {
       gap: 8px !important;
