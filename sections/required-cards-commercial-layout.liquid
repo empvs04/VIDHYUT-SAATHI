@@ -1065,7 +1065,288 @@
       font-size: 10.5px !important;
     }
     .vscom-case-result-badge strong {
-      font-size: 11px !important;
+  /* ---- SECTION 8 BALOO 2 & NUNITO ULTRA-LUCRATIVE STYLING (COMMERCIAL) ---- */
+  .vscom-sec8-custom {
+    position: relative;
+    padding: clamp(34px, 4.5vw, 54px) 0;
+    background: radial-gradient(circle at 10% 20%, rgba(0, 123, 62, 0.08) 0%, transparent 45%),
+                radial-gradient(circle at 90% 80%, rgba(236, 92, 10, 0.08) 0%, transparent 45%),
+                linear-gradient(180deg, #ffffff 0%, #f7fdfa 45%, #eff9f3 100%);
+    border-top: 2px solid #d7ece0;
+    border-bottom: 2px solid #d7ece0;
+    overflow: hidden;
+    font-family: 'Nunito', sans-serif;
+  }
+
+  .vscom-sec8-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 28px;
+    align-items: center;
+  }
+  @media (min-width: 900px) {
+    .vscom-sec8-grid {
+      grid-template-columns: 1.12fr 0.88fr;
+      gap: 40px;
+    }
+  }
+
+  .vscom-sec8-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px;
+    background: linear-gradient(135deg, #ffffff 0%, #eaf8f0 100%);
+    border: 1.5px solid rgba(0, 123, 62, 0.45);
+    border-radius: 999px;
+    color: #007b3e;
+    font-size: 11.5px;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    font-family: 'Baloo 2', sans-serif;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 14px rgba(0, 123, 62, 0.1);
+  }
+
+  .vscom-sec8-title {
+    font-family: 'Baloo 2', sans-serif !important;
+    font-size: clamp(28px, 4vw, 42px);
+    line-height: 1.15;
+    font-weight: 900;
+    color: #0f172a;
+    margin: 0 0 10px 0;
+    letter-spacing: -0.01em;
+  }
+  .vscom-sec8-title span {
+    background: linear-gradient(135deg, #007b3e 0%, #10b981 50%, #ec5c0a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 2px 8px rgba(0, 123, 62, 0.15));
+  }
+
+  .vscom-sec8-lead {
+    font-family: 'Nunito', sans-serif;
+    font-size: clamp(14px, 1.45vw, 15.5px);
+    color: #334155;
+    line-height: 1.6;
+    margin: 0 0 20px 0;
+  }
+
+  /* 4 Luxury Glass Cards (2x2) */
+  .vscom-sec8-pills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 22px;
+  }
+
+  .vscom-sec8-pill {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px 14px;
+    background: #ffffff;
+    border: 1.5px solid #d7ece0;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .vscom-sec8-pill::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+  }
+  .vscom-sec8-pill.c1-card::before { background: linear-gradient(90deg, #007b3e, #10b981); }
+  .vscom-sec8-pill.c2-card::before { background: linear-gradient(90deg, #0284c7, #38bdf8); }
+  .vscom-sec8-pill.c3-card::before { background: linear-gradient(90deg, #ec5c0a, #ff9a00); }
+  .vscom-sec8-pill.c4-card::before { background: linear-gradient(90deg, #d97706, #fbbf24); }
+
+  .vscom-sec8-pill:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px rgba(0, 123, 62, 0.12);
+    border-color: #007b3e;
+  }
+
+  .vscom-sec8-pill-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    flex-shrink: 0;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.04);
+  }
+  .vscom-sec8-pill-icon.c1 { background: #e6f4ec; color: #007b3e; border: 1px solid rgba(0,123,62,0.3); }
+  .vscom-sec8-pill-icon.c2 { background: #eff6ff; color: #0284c7; border: 1px solid rgba(2,132,199,0.3); }
+  .vscom-sec8-pill-icon.c3 { background: #ffefe5; color: #ec5c0a; border: 1px solid rgba(236,92,10,0.3); }
+  .vscom-sec8-pill-icon.c4 { background: #fef3c7; color: #b45309; border: 1px solid rgba(180,83,9,0.3); }
+
+  .vscom-sec8-pill-text strong {
+    display: block;
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.2;
+    margin-bottom: 2px;
+  }
+  .vscom-sec8-pill-text span {
+    font-family: 'Nunito', sans-serif;
+    font-size: 11.5px;
+    color: #64748b;
+    line-height: 1.35;
+    display: block;
+  }
+
+  /* Right Column Luxury 3D Showcase Frame */
+  .vscom-sec8-card-frame {
+    background: #ffffff;
+    border: 2px solid rgba(0, 123, 62, 0.35);
+    border-radius: 24px;
+    padding: 10px;
+    box-shadow: 0 20px 50px rgba(0, 123, 62, 0.14), 0 4px 18px rgba(0, 0, 0, 0.04);
+    position: relative;
+    max-width: 400px;
+    margin: 0 auto;
+    width: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .vscom-sec8-card-frame:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 26px 60px rgba(0, 123, 62, 0.2);
+  }
+
+  .vscom-sec8-img-box {
+    position: relative;
+    border-radius: 18px;
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  }
+  .vscom-sec8-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .vscom-sec8-moment-caption {
+    padding: 12px 10px 4px 10px;
+    text-align: center;
+  }
+  .vscom-moment-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    color: #0f172a;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+  .vscom-moment-quote {
+    font-family: 'Nunito', sans-serif;
+    font-size: 12px;
+    color: #475569;
+    line-height: 1.45;
+    margin: 0;
+  }
+  .vscom-moment-quote strong {
+    color: #007b3e;
+  }
+
+  /* Section 8 Mobile Polish - Strictly 2 Boxes in 1 Row (Commercial) */
+  @media (max-width: 767px) {
+    .vscom-sec8-custom {
+      padding: 28px 0 36px 0;
+    }
+    .vscom-sec8-grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    .vscom-sec8-badge {
+      font-size: 10.5px;
+      padding: 4px 12px;
+      margin-bottom: 8px;
+    }
+    .vscom-sec8-title {
+      font-size: clamp(22px, 6.5vw, 28px) !important;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+    .vscom-sec8-lead {
+      font-size: 14.5px !important;
+      line-height: 1.55 !important;
+      margin-bottom: 16px;
+    }
+    .vscom-sec8-pills-grid {
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 10px !important;
+      margin-bottom: 20px;
+    }
+    .vscom-sec8-pill {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: flex-start !important;
+      justify-content: flex-start !important;
+      padding: 12px 10px !important;
+      border-radius: 14px !important;
+      gap: 8px !important;
+      min-height: 115px;
+      box-sizing: border-box;
+      background: #ffffff;
+    }
+    .vscom-sec8-pill-icon {
+      width: 32px !important;
+      height: 32px !important;
+      font-size: 13.5px !important;
+      border-radius: 9px !important;
+      margin-bottom: 2px;
+    }
+    .vscom-sec8-pill-text {
+      width: 100%;
+    }
+    .vscom-sec8-pill-text strong {
+      font-size: 12.5px !important;
+      line-height: 1.25 !important;
+      margin-bottom: 3px !important;
+      font-family: 'Baloo 2', sans-serif;
+    }
+    .vscom-sec8-pill-text span {
+      font-size: 10px !important;
+      line-height: 1.3 !important;
+      font-family: 'Nunito', sans-serif;
+    }
+    .vscom-sec8-card-frame {
+      max-width: 330px;
+      border-radius: 20px;
+      padding: 8px;
+      box-shadow: 0 12px 32px rgba(0, 123, 62, 0.12);
+    }
+    .vscom-sec8-img-box {
+      border-radius: 14px;
+    }
+    .vscom-sec8-moment-caption {
+      padding: 8px 4px 2px 4px;
+    }
+    .vscom-moment-tag {
+      font-size: 11px;
+    }
+    .vscom-moment-quote {
+      font-size: 11px;
+      line-height: 1.35;
     }
   }
 </style>
@@ -1565,81 +1846,101 @@
     </div>
   </section>
 
-  <!-- ══ SECTION 8: COMMERCIAL HERO SHOWCASE ══ -->
-  <section class="vscom-hero" style="border-top:1.5px solid var(--line); padding: clamp(40px, 5vw, 60px) 0;">
+  <!-- ══ SECTION 8: COMMERCIAL HERO SHOWCASE (ULTRA-LUCRATIVE) ══ -->
+  <section class="vscom-sec8-custom">
     <div class="wrap">
-      <div class="vscom-hero-grid">
+      <div class="vscom-sec8-grid">
+        <!-- LEFT COLUMN: ULTRA-LUCRATIVE COMMERCIAL DESIGN -->
         <div>
-          <div class="vscom-eyebrow">
-            <i class="fa-solid fa-building-flag"></i> Commercial Energy Saver Guide
+          <div class="vscom-sec8-badge">
+            <i class="fa-solid fa-bolt" style="color:#007b3e;"></i> Smart Commercial Energy Shield
           </div>
-          <h2>Vidhyut Saathi Card for <span>Commercial Establishments</span></h2>
-          <p class="vscom-hero-lead">
-            Lower operational overheads and stop paying heavy DISCOM reactive power surcharges. Designed for Offices, Retail Outlets, Supermarkets, Restaurants, Hotels, Hospitals, and Commercial DB Panels.
+
+          <h2 class="vscom-sec8-title">
+            Vidhyut Saathi Card for <span>Commercial Establishments</span>
+          </h2>
+
+          <p class="vscom-sec8-lead">
+            Lower operational overheads and stop paying heavy DISCOM reactive power surcharges. Designed for Offices, Retail Outlets, Supermarkets, Restaurants, Hotels, Hospitals, and Commercial DB Panels, calculate your exact card requirement below.
           </p>
 
+          <!-- 4 ULTRA-LUCRATIVE BENEFIT CARDS (2x2) -->
+          <div class="vscom-sec8-pills-grid">
+            <div class="vscom-sec8-pill c1-card">
+              <div class="vscom-sec8-pill-icon c1">
+                <i class="fa-solid fa-percent"></i>
+              </div>
+              <div class="vscom-sec8-pill-text">
+                <strong>20% to 30% Bill Cuts</strong>
+                <span>Direct on Monthly DISCOM Commercial Bills</span>
+              </div>
+            </div>
+
+            <div class="vscom-sec8-pill c2-card">
+              <div class="vscom-sec8-pill-icon c2">
+                <i class="fa-solid fa-chart-line"></i>
+              </div>
+              <div class="vscom-sec8-pill-text">
+                <strong>PF Improvement to 0.99</strong>
+                <span>Eliminates Surcharges & Lowers KVAh Billing</span>
+              </div>
+            </div>
+
+            <div class="vscom-sec8-pill c3-card">
+              <div class="vscom-sec8-pill-icon c3">
+                <i class="fa-solid fa-building"></i>
+              </div>
+              <div class="vscom-sec8-pill-text">
+                <strong>Offices, Malls & Hotels</strong>
+                <span>Engineered for Chillers, Elevators & Motors</span>
+              </div>
+            </div>
+
+            <div class="vscom-sec8-pill c4-card">
+              <div class="vscom-sec8-pill-icon c4">
+                <i class="fa-solid fa-award"></i>
+              </div>
+              <div class="vscom-sec8-pill-text">
+                <strong>10-Yr Lifespan</strong>
+                <span>3-Year Replacement Guarantee & Zero Rewiring</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- DUAL CTAS -->
           <div class="vscom-hero-ctas">
-            <a href="#vscom-calc" class="vscom-btn-primary">
+            <a href="#vscom-calc" class="vscom-btn-primary" style="background: linear-gradient(135deg, #008744 0%, #00b050 100%); box-shadow: 0 8px 24px rgba(0, 135, 68, 0.32);">
               <i class="fa-solid fa-calculator"></i> Calculate Commercial Cards
             </a>
             <a href="https://wa.me/919876543210?text=Hi%20Vidhyut%20Saathi%2C%20I%20want%20to%20order%20Commercial%20Saver%20Cards" class="vscom-btn-secondary" target="_blank">
-              <i class="fa-brands fa-whatsapp"></i> Commercial Inquiry
+              <i class="fa-brands fa-whatsapp" style="color: #25d366; font-size: 17px;"></i> Commercial Inquiry
             </a>
-          </div>
-
-          <div class="vscom-trust-badges">
-            <div class="vscom-trust-badge-item">
-              <div class="vscom-trust-badge-icon"><i class="fa-solid fa-bolt"></i></div>
-              <div class="vscom-trust-badge-text">
-                <strong>20–30% Savings</strong>
-                <span>On DISCOM Bills</span>
-              </div>
-            </div>
-            <div class="vscom-trust-badge-item">
-              <div class="vscom-trust-badge-icon"><i class="fa-solid fa-chart-line"></i></div>
-              <div class="vscom-trust-badge-text">
-                <strong>PF Improvement</strong>
-                <span>Up to 0.99 Lag</span>
-              </div>
-            </div>
-            <div class="vscom-trust-badge-item">
-              <div class="vscom-trust-badge-icon"><i class="fa-solid fa-shield-halved"></i></div>
-              <div class="vscom-trust-badge-text">
-                <strong>10-Yr Life</strong>
-                <span>3-Yr Warranty</span>
-              </div>
-            </div>
-            <div class="vscom-trust-badge-item">
-              <div class="vscom-trust-badge-icon"><i class="fa-solid fa-certificate"></i></div>
-              <div class="vscom-trust-badge-text">
-                <strong>ISO Certified</strong>
-                <span>100% Legal & Safe</span>
-              </div>
-            </div>
           </div>
         </div>
 
-        <!-- RIGHT HERO SHOWCASE -->
-        <div class="vscom-hero-image-box">
-          <span class="vscom-hero-card-tag"><i class="fa-solid fa-building"></i> Commercial Heavy Saver Card</span>
+        <!-- RIGHT COLUMN: 1:1 SQUARE CLEAN SHOWCASE WITH MOMENT CAPTION -->
+        <div style="display: flex; justify-content: center; align-items: center;">
+          <div class="vscom-sec8-card-frame">
+            <div class="vscom-sec8-img-box">
+              {% if section.settings.sec8_card_image != blank %}
+                <img src="{{ section.settings.sec8_card_image | image_url: width: 1000 }}" alt="Commercial Establishment Power Saving Showcase with Vidhyut Saathi" loading="lazy">
+              {% elsif section.settings.card_image != blank %}
+                <img src="{{ section.settings.card_image | image_url: width: 1000 }}" alt="Commercial Establishment Power Saving Showcase with Vidhyut Saathi" loading="lazy">
+              {% else %}
+                <img src="{{ 'official-vs-card-front.jpg' | asset_url }}" alt="Commercial Establishment Power Saving Showcase with Vidhyut Saathi" loading="lazy" onerror="this.onerror=null; this.src='https://cdn.shopify.com/s/files/1/0663/8783/7093/files/VS_Card_Final_Design_Golden_1.png';">
+              {% endif %}
+            </div>
 
-          <div style="width:100%; display:flex; justify-content:center; margin:12px 0;">
-            {% if section.settings.sec8_card_image != blank %}
-              <img src="{{ section.settings.sec8_card_image | image_url: width: 600 }}" alt="Vidhyut Saathi Commercial Electric Saver Card" style="width: 100%; max-width: 320px; border-radius: 16px; box-shadow: 0 16px 36px rgba(0,0,0,0.4); border: 2px solid rgba(255,255,255,0.25);">
-            {% elsif section.settings.card_image != blank %}
-              <img src="{{ section.settings.card_image | image_url: width: 600 }}" alt="Vidhyut Saathi Commercial Electric Saver Card" style="width: 100%; max-width: 320px; border-radius: 16px; box-shadow: 0 16px 36px rgba(0,0,0,0.4); border: 2px solid rgba(255,255,255,0.25);">
-            {% else %}
-              <img src="{{ 'official-vs-card-front.jpg' | asset_url }}" alt="Vidhyut Saathi Commercial Electric Saver Card" style="width: 100%; max-width: 320px; border-radius: 16px; box-shadow: 0 16px 36px rgba(0,0,0,0.4); border: 2px solid rgba(255,255,255,0.25);" onerror="this.onerror=null; this.src='https://cdn.shopify.com/s/files/1/0663/8783/7093/files/VS_Card_Final_Design_Golden_1.png';">
-            {% endif %}
+            <div class="vscom-sec8-moment-caption">
+              <div class="vscom-moment-tag">
+                <i class="fa-solid fa-building-circle-check" style="color: #007b3e;"></i>
+                <span>Verified Commercial Impact</span>
+              </div>
+              <p class="vscom-moment-quote">
+                "Substantial operational cost reduction and optimized power factor across 3-phase commercial DB panels with Vidhyut Saathi Card."
+              </p>
+            </div>
           </div>
-
-          <p style="font-size:12.5px; color:var(--muted); margin:8px 0 12px 0; line-height:1.5;">
-            Patented US-German Terahertz frequency technology stabilizes voltage fluctuations across commercial 3-phase DB panels and eliminates inductive reactive current from elevators & HVAC motors.
-          </p>
-
-          <a href="#mcb-gallery" class="vscom-mcb-hero-link">
-            <i class="fa-solid fa-camera"></i> See 20 Commercial MCB Installations <i class="fa-solid fa-arrow-down-long"></i>
-          </a>
         </div>
       </div>
     </div>
