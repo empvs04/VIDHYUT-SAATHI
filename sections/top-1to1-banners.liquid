@@ -44,7 +44,7 @@
     margin: 0;
     border-radius: 0;
     overflow: hidden;
-    background: #000000 !important;
+    background: transparent !important;
     border: none !important;
     box-shadow: none;
   }
@@ -61,7 +61,7 @@
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     border-radius: 0;
-    background: #000000 !important;
+    background: transparent !important;
     width: 100%;
   }
 
@@ -74,13 +74,14 @@
     max-width: 100% !important;
     min-width: 100% !important;
     width: 100% !important;
-    height: 570px !important;
+    height: auto !important;
+    min-height: auto !important;
     scroll-snap-align: center;
     scroll-snap-stop: always;
     border-radius: 0;
     box-shadow: none !important;
     border: none !important;
-    background: #000000 !important;
+    background: transparent !important;
     padding: 0;
     margin: 0;
     position: relative;
@@ -91,13 +92,24 @@
     overflow: hidden;
   }
 
+  .vs-top-banners-{{ section.id }} .banner-picture {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
   .vs-top-banners-{{ section.id }} .banner-img {
     width: 100% !important;
     max-width: 100% !important;
-    height: 570px !important;
-    object-fit: contain !important; /* 100% COMPLETE INNER IMAGE VISIBLE WITHOUT CROPPING */
+    height: auto !important;
+    max-height: 85vh;
+    object-fit: cover !important; /* FULL COMPLETE BANNER DISPLAY WITHOUT BLACK LETTERBOXING */
+    object-position: center !important;
     display: block !important;
     border-radius: 0 !important;
+    background: transparent !important;
     transform: none !important;
     transition: none !important;
   }
@@ -216,7 +228,7 @@
       margin: 0 !important;
       width: 100% !important;
       max-width: 100% !important;
-      background: #000000 !important;
+      background: transparent !important;
       box-shadow: none !important;
       border: none !important;
     }
@@ -226,19 +238,20 @@
       padding: 0 !important;
       margin: 0 !important;
       width: 100% !important;
-      background: #000000 !important;
+      background: transparent !important;
     }
 
     .vs-top-banners-{{ section.id }} .banners-outer-container {
       border-radius: 0 !important;
-      background: #000000 !important;
+      background: transparent !important;
       border: none !important;
       box-shadow: none !important;
       width: 100% !important;
       margin: 0 !important;
       padding: 0 !important;
       max-width: 100% !important;
-      aspect-ratio: 1 / 1 !important;
+      height: auto !important;
+      aspect-ratio: auto !important;
       position: relative !important;
       overflow: hidden !important;
     }
@@ -255,10 +268,10 @@
       -webkit-overflow-scrolling: touch !important;
       scrollbar-width: none !important;
       border-radius: 0 !important;
-      background: #000000 !important;
+      background: transparent !important;
       width: 100% !important;
-      height: 100% !important;
-      aspect-ratio: 1 / 1 !important;
+      height: auto !important;
+      aspect-ratio: auto !important;
     }
 
     .vs-top-banners-{{ section.id }} .banners-wrapper::-webkit-scrollbar {
@@ -270,14 +283,14 @@
       max-width: 100% !important;
       min-width: 100% !important;
       width: 100% !important;
-      height: 100% !important;
-      aspect-ratio: 1 / 1 !important;
+      height: auto !important;
+      aspect-ratio: auto !important;
       scroll-snap-align: center !important;
       scroll-snap-stop: always !important;
       border-radius: 0 !important;
       box-shadow: none !important;
       border: none !important;
-      background: #000000 !important;
+      background: transparent !important;
       padding: 0 !important;
       margin: 0 !important;
       display: flex !important;
@@ -289,13 +302,14 @@
 
     .vs-top-banners-{{ section.id }} .banner-img {
       width: 100% !important;
-      height: 100% !important;
-      max-height: 100% !important;
-      aspect-ratio: 1 / 1 !important;
-      object-fit: contain !important;
+      height: auto !important;
+      max-height: none !important;
+      aspect-ratio: auto !important;
+      object-fit: cover !important;
+      object-position: center !important;
       display: block !important;
       border-radius: 0 !important;
-      background: #000000 !important;
+      background: transparent !important;
     }
 
     /* HIDE NAVIGATION ARROWS ON MOBILE */
@@ -333,15 +347,21 @@
       <div class="banners-wrapper">
         {% for block in section.blocks %}
           <a href="{{ block.settings.banner_link | default: '#' }}" class="banner-item" {{ block.shopify_attributes }}>
-            {% if block.settings.banner_image != blank %}
-              <img 
-                src="{{ block.settings.banner_image | image_url: width: 1200 }}"
-                alt="{{ block.settings.banner_image.alt | default: 'Vidhyut Saathi Banner' }}"
-                class="banner-img"
-                loading="lazy"
-                width="1200"
-                height="600"
-              >
+            {% if block.settings.banner_image != blank or block.settings.banner_image_mobile != blank %}
+              <picture class="banner-picture">
+                {% if block.settings.banner_image_mobile != blank %}
+                  <source media="(max-width: 767px)" srcset="{{ block.settings.banner_image_mobile | image_url: width: 1000 }}">
+                {% endif %}
+                {% if block.settings.banner_image != blank %}
+                  <source media="(min-width: 768px)" srcset="{{ block.settings.banner_image | image_url: width: 2400 }}">
+                {% endif %}
+                <img 
+                  src="{{ block.settings.banner_image_mobile | default: block.settings.banner_image | image_url: width: 1400 }}"
+                  alt="{{ block.settings.banner_image.alt | default: block.settings.banner_image_mobile.alt | default: 'Vidhyut Saathi Banner' }}"
+                  class="banner-img"
+                  loading="lazy"
+                >
+              </picture>
             {% else %}
               <div class="banner-placeholder">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -590,12 +610,18 @@
   "blocks": [
     {
       "type": "banner_1to1",
-      "name": "Square Banner",
+      "name": "Banner Slide",
       "settings": [
         {
           "type": "image_picker",
           "id": "banner_image",
-          "label": "1:1 Banner Image (Square)"
+          "label": "Desktop Banner Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "banner_image_mobile",
+          "label": "Mobile Banner Image (Optional)",
+          "info": "Upload specific banner for mobile. If empty, desktop image will be used."
         },
         {
           "type": "url",
