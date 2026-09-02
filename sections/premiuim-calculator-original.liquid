@@ -1,11 +1,14 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800;900&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
 
 {%- comment -%}
-  Vidhyut Saathi Premium Calculator - Strict Mobile-First & Desktop Optimized (Exact 31 August 1 PM Layout)
+  Vidhyut Saathi Premium Calculator - Strict Mobile-First & Desktop Optimized (Original Work Sans Font System)
 {%- endcomment -%}
 
 {%- style -%}
+  {{ section.settings.heading_font | font_face: font_display: 'swap' }}
+  {{ section.settings.body_font | font_face: font_display: 'swap' }}
+
   .premium-calculator-original-{{ section.id }} {
     --green: {{ section.settings.color_green }};
     --green2: {{ section.settings.color_green2 }};
@@ -13,8 +16,8 @@
     --text: {{ section.settings.color_text }};
     --muted: {{ section.settings.color_muted }};
     --gradient: linear-gradient(135deg, var(--green), var(--orange));
-    --heading-font: 'Baloo 2', sans-serif !important;
-    --body-font: 'Nunito', sans-serif !important;
+    --heading-font: {{ section.settings.heading_font.family }}, {{ section.settings.heading_font.fallback_families }};
+    --body-font: {{ section.settings.body_font.family }}, {{ section.settings.body_font.fallback_families }};
     font-family: var(--body-font);
     background:
       radial-gradient(circle at top right, rgba(20,140,58,.08), transparent 30%),
