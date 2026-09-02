@@ -1030,6 +1030,26 @@
       </div>
     </div>
 
+    <!-- PART 6: 3 SQUARE CARDS (CARDS 19, 20, 21 IN 3 EQUAL COLUMNS) -->
+    <div class="vsg-30cards-grid" id="vsg30GridC-{{ section.id }}">
+      {%- if section.blocks.size > 6 -%}
+        {%- for block in section.blocks offset: 6 limit: 3 -%}
+          <div class="vsg-card-item vsg-square-card" data-category="{{ block.settings.category | default: 'all' }}" {{ block.shopify_attributes }}>
+            <div class="vsg-card-img-wrap">
+              {%- if block.settings.image != blank -%}
+                <img src="{{ block.settings.image | image_url: width: 1000 }}" alt="{{ block.settings.title | default: 'Vidhyut Saathi Moments' | escape }}" class="vsg-card-img" loading="lazy">
+              {%- elsif block.settings.fallback_asset != blank -%}
+                <img src="{{ block.settings.fallback_asset | asset_url }}" alt="{{ block.settings.title | default: 'Vidhyut Saathi Moments' | escape }}" class="vsg-card-img" loading="lazy">
+              {%- else -%}
+                <img src="{{ 'vidhyut-saathi-team-bg.jpg' | asset_url }}" alt="Vidhyut Saathi Moments" class="vsg-card-img" loading="lazy">
+              {%- endif -%}
+              <div class="vsg-expand-btn"><i class="fa-solid fa-expand"></i></div>
+            </div>
+          </div>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+
   </div>
 </section>
 
