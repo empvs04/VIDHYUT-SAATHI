@@ -873,71 +873,67 @@
 
   .vsres-case-card {
     background: #ffffff;
-    border: 1.5px solid var(--line);
-    border-radius: 18px;
+    border: 2px solid #f1e7db;
+    border-radius: 20px;
     padding: 16px;
-    box-shadow: 0 4px 18px rgba(0,0,0,0.04);
-    transition: all 0.3s ease;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     display: flex;
     flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+  .vsres-case-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #ec5c0a 0%, #ff8800 50%, #007b3e 100%);
+    opacity: 0.85;
   }
   .vsres-case-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 28px rgba(236, 92, 10, 0.12);
-    border-color: rgba(236, 92, 10, 0.4);
+    transform: translateY(-6px);
+    box-shadow: 0 16px 36px rgba(236, 92, 10, 0.16);
+    border-color: rgba(236, 92, 10, 0.5);
   }
   .vsres-case-img-box {
     position: relative;
     width: 100%;
-    height: 185px;
-    border-radius: 12px;
+    height: 195px;
+    border-radius: 14px;
     overflow: hidden;
     margin-bottom: 14px;
-    background: #0f172a;
+    background: #1e293b;
+    border: 1px solid rgba(0,0,0,0.06);
   }
   .vsres-case-cover-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center top;
-    transition: transform 0.4s ease;
+    object-position: center;
+    transition: transform 0.5s ease;
     display: block;
   }
   .vsres-case-card:hover .vsres-case-cover-img {
-    transform: scale(1.05);
-  }
-  .vsres-case-tag {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background: rgba(15, 23, 42, 0.85);
-    backdrop-filter: blur(6px);
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    color: #4ade80;
-    font-size: 11px;
-    font-weight: 700;
-    padding: 4px 10px;
-    border-radius: 50px;
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    letter-spacing: 0.3px;
+    transform: scale(1.06);
   }
   .vsres-case-header {
     display: flex;
     align-items: center;
     gap: 12px;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
   }
   .vsres-case-avatar {
-    width: 44px;
-    height: 44px;
+    width: 46px;
+    height: 46px;
     border-radius: 50%;
     overflow: hidden;
     flex-shrink: 0;
-    border: 2px solid var(--orange);
-    box-shadow: 0 2px 8px rgba(236, 92, 10, 0.25);
-    background: var(--orange-t);
+    border: 2px solid #ec5c0a;
+    box-shadow: 0 4px 10px rgba(236, 92, 10, 0.25);
+    background: #fff5eb;
   }
   .vsres-case-avatar-img {
     width: 100%;
@@ -946,47 +942,95 @@
     display: block;
   }
   .vsres-case-name {
-    font-size: 14.5px;
+    font-size: 15.5px;
     font-weight: 800;
-    color: var(--ink);
-    margin: 0;
+    font-family: 'Baloo 2', sans-serif !important;
+    color: #0f172a;
+    margin: 0 0 2px 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
   }
   .vsres-case-location {
-    font-size: 11.5px;
-    color: var(--muted-2);
+    font-size: 12px;
+    font-family: 'Nunito', sans-serif;
+    color: #64748b;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 4px;
   }
-
   .vsres-case-stats {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 8px;
-    background: var(--panel-2);
-    border: 1px solid var(--line);
-    padding: 10px;
-    border-radius: 10px;
     margin-bottom: 12px;
-    font-size: 11.5px;
   }
-  .vsres-case-stat-val {
-    font-family: 'IBM Plex Mono', monospace;
-    font-weight: 700;
-    color: var(--ink);
-    font-size: 13.5px;
-  }
-
-  .vsres-case-result {
-    background: var(--orange-t);
-    border: 1px solid rgba(236, 92, 10, 0.3);
-    padding: 10px 12px;
+  .vsres-stat-col {
+    padding: 9px 11px;
     border-radius: 10px;
-    color: var(--orange-d);
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .vsres-stat-col.old {
+    background: #fff1f2;
+    border: 1px solid #fecdd3;
+  }
+  .vsres-stat-col.old .vsres-stat-lbl {
+    color: #e11d48;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+  }
+  .vsres-stat-col.old .vsres-stat-val {
+    font-family: 'IBM Plex Mono', monospace;
+    color: #9f1239;
+    font-size: 14px;
+    font-weight: 800;
+    text-decoration: line-through;
+  }
+  .vsres-stat-col.new {
+    background: #ecfdf5;
+    border: 1px solid #a7f3d0;
+  }
+  .vsres-stat-col.new .vsres-stat-lbl {
+    color: #059669;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+  }
+  .vsres-stat-col.new .vsres-stat-val {
+    font-family: 'IBM Plex Mono', monospace;
+    color: #065f46;
+    font-size: 14px;
+    font-weight: 800;
+  }
+  .vsres-case-result {
+    background: linear-gradient(135deg, #007b3e 0%, #00994d 100%);
+    border: 1.5px solid #005a2d;
+    padding: 11px 14px;
+    border-radius: 12px;
+    color: #ffffff;
     font-size: 12.5px;
     font-weight: 700;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    gap: 4px 8px;
+    box-shadow: 0 4px 14px rgba(0, 123, 62, 0.2);
+  }
+  .vsres-case-result span {
+    color: #a7f3d0;
+    font-size: 11.5px;
+    font-weight: 700;
+  }
+  .vsres-case-result strong {
+    color: #ffffff;
+    font-size: 13.5px;
+    font-weight: 800;
   }
 
   /* ---- FOOTER CTA BAND ---- */
@@ -1994,24 +2038,29 @@
           <!-- CARD 1: ROHAN MEHTA (MUMBAI) -->
           <div class="vsres-case-card">
             <div class="vsres-case-img-box">
-              <img src="{{ 'real-mumbai-2bhk-apartment.jpg' | asset_url }}" alt="Rohan Mehta 2 BHK Apartment Mumbai Home Savings" loading="lazy" class="vsres-case-cover-img" onerror="this.onerror=null; this.src='https://cdn.shopify.com/s/files/1/0663/8783/7093/files/VS_Card_Final_Design_Golden_1.png';">
-              <span class="vsres-case-tag"><i class="fa-solid fa-circle-check"></i> Verified Home Savings</span>
+              <img src="{{ 'residential-house-1.png' | asset_url }}" alt="Rohan Mehta 2 BHK Apartment Mumbai Home Savings" loading="lazy" class="vsres-case-cover-img" onerror="this.onerror=null; this.src='https://cdn.shopify.com/s/files/1/0663/8783/7093/files/VS_Card_Final_Design_Golden_1.png';">
             </div>
             <div class="vsres-case-header">
               <div class="vsres-case-avatar">
                 <img src="{{ 'wvs-happy-man.jpg' | asset_url }}" alt="Rohan Mehta" class="vsres-case-avatar-img">
               </div>
               <div>
-                <div class="vsres-case-name">Rohan Mehta</div>
-                <div class="vsres-case-location"><i class="fa-solid fa-location-dot" style="color:var(--orange);"></i> 2 BHK Apartment, Mumbai</div>
+                <div class="vsres-case-name">Rohan Mehta <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></div>
+                <div class="vsres-case-location"><i class="fa-solid fa-location-dot" style="color:#ec5c0a;"></i> 2 BHK Apartment, Mumbai</div>
               </div>
             </div>
             <div class="vsres-case-stats">
-              <div>Old Bill: <span class="vsres-case-stat-val">₹8,400/mo</span></div>
-              <div>New Bill: <span class="vsres-case-stat-val">₹6,100/mo</span></div>
+              <div class="vsres-stat-col old">
+                <span class="vsres-stat-lbl">Old DISCOM Bill</span>
+                <span class="vsres-stat-val">₹8,400/mo</span>
+              </div>
+              <div class="vsres-stat-col new">
+                <span class="vsres-stat-lbl">New DISCOM Bill</span>
+                <span class="vsres-stat-val">₹6,100/mo</span>
+              </div>
             </div>
             <div class="vsres-case-result">
-              <span>2 Cards Installed</span>
+              <span>⚡ 2 Cards Installed</span>
               <strong>Saved ₹2,300/mo (27%)</strong>
             </div>
           </div>
@@ -2019,24 +2068,29 @@
           <!-- CARD 2: SUNITA SHARMA (JAIPUR) -->
           <div class="vsres-case-card">
             <div class="vsres-case-img-box">
-              <img src="{{ 'real-jaipur-3bhk-house.jpg' | asset_url }}" alt="Sunita Sharma 3 BHK House Jaipur Home Savings" loading="lazy" class="vsres-case-cover-img" onerror="this.onerror=null; this.src='https://cdn.shopify.com/s/files/1/0663/8783/7093/files/VS_Card_Final_Design_Golden_1.png';">
-              <span class="vsres-case-tag"><i class="fa-solid fa-circle-check"></i> Verified Home Savings</span>
+              <img src="{{ 'case-residential.jpg' | asset_url }}" alt="Sunita Sharma 3 BHK House Jaipur Home Savings" loading="lazy" class="vsres-case-cover-img" onerror="this.onerror=null; this.src='https://cdn.shopify.com/s/files/1/0663/8783/7093/files/VS_Card_Final_Design_Golden_1.png';">
             </div>
             <div class="vsres-case-header">
               <div class="vsres-case-avatar">
                 <img src="{{ 'wvs-card-guide-woman.jpg' | asset_url }}" alt="Sunita Sharma" class="vsres-case-avatar-img">
               </div>
               <div>
-                <div class="vsres-case-name">Sunita Sharma</div>
-                <div class="vsres-case-location"><i class="fa-solid fa-location-dot" style="color:var(--orange);"></i> 3 BHK House, Jaipur</div>
+                <div class="vsres-case-name">Sunita Sharma <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></div>
+                <div class="vsres-case-location"><i class="fa-solid fa-location-dot" style="color:#ec5c0a;"></i> 3 BHK House, Jaipur</div>
               </div>
             </div>
             <div class="vsres-case-stats">
-              <div>Old Bill: <span class="vsres-case-stat-val">₹14,500/mo</span></div>
-              <div>New Bill: <span class="vsres-case-stat-val">₹10,600/mo</span></div>
+              <div class="vsres-stat-col old">
+                <span class="vsres-stat-lbl">Old DISCOM Bill</span>
+                <span class="vsres-stat-val">₹14,500/mo</span>
+              </div>
+              <div class="vsres-stat-col new">
+                <span class="vsres-stat-lbl">New DISCOM Bill</span>
+                <span class="vsres-stat-val">₹10,600/mo</span>
+              </div>
             </div>
             <div class="vsres-case-result">
-              <span>3 Cards Installed</span>
+              <span>⚡ 3 Cards Installed</span>
               <strong>Saved ₹3,900/mo (26.8%)</strong>
             </div>
           </div>
@@ -2044,24 +2098,29 @@
           <!-- CARD 3: VIKRAM VERMA (LUCKNOW) -->
           <div class="vsres-case-card">
             <div class="vsres-case-img-box">
-              <img src="{{ 'real-lucknow-villa-house.jpg' | asset_url }}" alt="Vikram Verma Independent Villa Lucknow Home Savings" loading="lazy" class="vsres-case-cover-img" onerror="this.onerror=null; this.src='https://cdn.shopify.com/s/files/1/0663/8783/7093/files/VS_Card_Final_Design_Golden_1.png';">
-              <span class="vsres-case-tag"><i class="fa-solid fa-circle-check"></i> Verified Home Savings</span>
+              <img src="{{ 'residential-house-2.png' | asset_url }}" alt="Vikram Verma Independent Villa Lucknow Home Savings" loading="lazy" class="vsres-case-cover-img" onerror="this.onerror=null; this.src='https://cdn.shopify.com/s/files/1/0663/8783/7093/files/VS_Card_Final_Design_Golden_1.png';">
             </div>
             <div class="vsres-case-header">
               <div class="vsres-case-avatar">
                 <img src="{{ 'wvs-indian-businessman.jpg' | asset_url }}" alt="Vikram Verma" class="vsres-case-avatar-img">
               </div>
               <div>
-                <div class="vsres-case-name">Vikram Verma</div>
-                <div class="vsres-case-location"><i class="fa-solid fa-location-dot" style="color:var(--orange);"></i> Independent Villa, Lucknow</div>
+                <div class="vsres-case-name">Vikram Verma <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></div>
+                <div class="vsres-case-location"><i class="fa-solid fa-location-dot" style="color:#ec5c0a;"></i> Independent Villa, Lucknow</div>
               </div>
             </div>
             <div class="vsres-case-stats">
-              <div>Old Bill: <span class="vsres-case-stat-val">₹22,000/mo</span></div>
-              <div>New Bill: <span class="vsres-case-stat-val">₹15,800/mo</span></div>
+              <div class="vsres-stat-col old">
+                <span class="vsres-stat-lbl">Old DISCOM Bill</span>
+                <span class="vsres-stat-val">₹22,000/mo</span>
+              </div>
+              <div class="vsres-stat-col new">
+                <span class="vsres-stat-lbl">New DISCOM Bill</span>
+                <span class="vsres-stat-val">₹15,800/mo</span>
+              </div>
             </div>
             <div class="vsres-case-result">
-              <span>4 Cards (3-Phase)</span>
+              <span>⚡ 4 Cards (3-Phase)</span>
               <strong>Saved ₹6,200/mo (28.1%)</strong>
             </div>
           </div>
