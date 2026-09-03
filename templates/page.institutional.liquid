@@ -694,15 +694,33 @@
   }
 
   /* ══ SECTION 6: CASE STUDIES ══ */
+  .vs-cases-slider-wrap {
+    width: 100%;
+    position: relative;
+  }
+  .vs-slider-dots-bar {
+    display: none;
+  }
+  .vs-slider-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #cbd5e1;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .vs-slider-dot.active {
+    width: 24px;
+    border-radius: 50px;
+    background: #d97706;
+  }
+
   .vsinst-case-grid {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
-  }
-  @media (min-width: 768px) {
-    .vsinst-case-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
   }
 
   .vsinst-case-card {
@@ -1265,14 +1283,36 @@
       vertical-align: middle !important;
     }
 
-    /* 6. Case Studies on Mobile */
+    /* 6. Case Studies on Mobile (Auto-Sliding Single Card Carousel) */
+    .vs-cases-slider-wrap {
+      overflow: hidden !important;
+      width: 100% !important;
+      position: relative !important;
+      padding: 4px 0 6px 0 !important;
+    }
     .vsinst-case-grid {
-      grid-template-columns: 1fr !important;
-      gap: 14px !important;
+      display: flex !important;
+      flex-direction: row !important;
+      transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1) !important;
+      width: 100% !important;
+      gap: 0 !important;
+      will-change: transform;
     }
     .vsinst-case-card {
-      padding: 14px !important;
-      border-radius: 14px !important;
+      flex: 0 0 100% !important;
+      min-width: 100% !important;
+      max-width: 100% !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+      padding: 16px 14px !important;
+      border-radius: 16px !important;
+    }
+    .vs-slider-dots-bar {
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      gap: 8px !important;
+      margin-top: 14px !important;
     }
 
     /* 7. Footer CTA Band on Mobile */
@@ -1751,108 +1791,119 @@
         <p class="vsinst-sec-desc">See how Indian healthcare centers, universities, and administrative campuses reduced their monthly DISCOM bills by 20–30%.</p>
       </div>
 
-      <div class="vsinst-case-grid">
-        <!-- EXAMPLE 1: MULTI-SPECIALTY HOSPITAL -->
-        <div class="vsinst-case-card" style="border-top: 4px solid #d97706;">
-          <div>
-            <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:10px; margin-bottom:14px; min-height:64px;">
-              <div style="display:flex; align-items:flex-start; gap:12px; flex:1; min-width:0;">
-                <div style="width:44px; height:44px; border-radius:12px; background:linear-gradient(135deg, #d97706 0%, #f59e0b 100%); color:#ffffff; display:flex; align-items:center; justify-content:center; font-size:18px; box-shadow: 0 4px 12px rgba(217, 119, 6, 0.25); flex-shrink:0;">
-                  <i class="fa-solid fa-hospital"></i>
+      <!-- MOBILE CAROUSEL SLIDER WRAPPER -->
+      <div class="vs-cases-slider-wrap" id="vsinstCaseSliderWrap">
+        <div class="vsinst-case-grid" id="vsinstCaseTrack">
+          <!-- EXAMPLE 1: MULTI-SPECIALTY HOSPITAL -->
+          <div class="vsinst-case-card" style="border-top: 4px solid #d97706;">
+            <div>
+              <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:10px; margin-bottom:14px; min-height:64px;">
+                <div style="display:flex; align-items:flex-start; gap:12px; flex:1; min-width:0;">
+                  <div style="width:44px; height:44px; border-radius:12px; background:linear-gradient(135deg, #d97706 0%, #f59e0b 100%); color:#ffffff; display:flex; align-items:center; justify-content:center; font-size:18px; box-shadow: 0 4px 12px rgba(217, 119, 6, 0.25); flex-shrink:0;">
+                    <i class="fa-solid fa-hospital"></i>
+                  </div>
+                  <div style="flex:1; min-width:0;">
+                    <h4 style="font-size:14px; font-weight:800; color:var(--ink); margin:0 0 4px 0; line-height:1.3; min-height:36px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">Metro Multi-Specialty Hospital</h4>
+                    <div style="font-size:11.5px; color:var(--muted-2); font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"><i class="fa-solid fa-location-dot" style="color:var(--orange);"></i> 160 KW Load, Delhi NCR</div>
+                  </div>
                 </div>
-                <div style="flex:1; min-width:0;">
-                  <h4 style="font-size:14px; font-weight:800; color:var(--ink); margin:0 0 4px 0; line-height:1.3; min-height:36px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">Metro Multi-Specialty Hospital</h4>
-                  <div style="font-size:11.5px; color:var(--muted-2); font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"><i class="fa-solid fa-location-dot" style="color:var(--orange);"></i> 160 KW Load, Delhi NCR</div>
+                <span style="background: #fef9c3; color: #854d0e; font-size:9.5px; font-weight:800; font-family:'IBM Plex Mono',monospace; padding:4px 9px; border-radius:50px; border: 1px solid #facc15; white-space:nowrap; flex-shrink:0;"><i class="fa-solid fa-circle-check"></i> VERIFIED</span>
+              </div>
+
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:16px;">
+                <div style="background:rgba(239, 68, 68, 0.06); border:1px solid rgba(239, 68, 68, 0.2); padding:10px 12px; border-radius:12px; min-height:58px; display:flex; flex-direction:column; justify-content:center;">
+                  <span style="font-size:9.5px; font-weight:800; font-family:'IBM Plex Mono',monospace; color:#dc2626; text-transform:uppercase; display:block; margin-bottom:2px;">BEFORE DISCOM BILL</span>
+                  <div style="font-size:14.5px; font-weight:800; color:#dc2626; text-decoration:line-through; font-family:'Space Grotesk',sans-serif; white-space:nowrap;">₹2,40,000 / mo</div>
+                </div>
+                <div style="background:rgba(16, 185, 129, 0.1); border:1px solid rgba(16, 185, 129, 0.3); padding:10px 12px; border-radius:12px; min-height:58px; display:flex; flex-direction:column; justify-content:center;">
+                  <span style="font-size:9.5px; font-weight:800; font-family:'IBM Plex Mono',monospace; color:#047857; text-transform:uppercase; display:block; margin-bottom:2px;">AFTER VS CARDS BILL</span>
+                  <div style="font-size:14.5px; font-weight:800; color:#047857; font-family:'Space Grotesk',sans-serif; white-space:nowrap;">₹1,71,600 / mo</div>
                 </div>
               </div>
-              <span style="background: #fef9c3; color: #854d0e; font-size:9.5px; font-weight:800; font-family:'IBM Plex Mono',monospace; padding:4px 9px; border-radius:50px; border: 1px solid #facc15; white-space:nowrap; flex-shrink:0;"><i class="fa-solid fa-circle-check"></i> VERIFIED</span>
             </div>
 
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:16px;">
-              <div style="background:rgba(239, 68, 68, 0.06); border:1px solid rgba(239, 68, 68, 0.2); padding:10px 12px; border-radius:12px; min-height:58px; display:flex; flex-direction:column; justify-content:center;">
-                <span style="font-size:9.5px; font-weight:800; font-family:'IBM Plex Mono',monospace; color:#dc2626; text-transform:uppercase; display:block; margin-bottom:2px;">BEFORE DISCOM BILL</span>
-                <div style="font-size:14.5px; font-weight:800; color:#dc2626; text-decoration:line-through; font-family:'Space Grotesk',sans-serif; white-space:nowrap;">₹2,40,000 / mo</div>
-              </div>
-              <div style="background:rgba(16, 185, 129, 0.1); border:1px solid rgba(16, 185, 129, 0.3); padding:10px 12px; border-radius:12px; min-height:58px; display:flex; flex-direction:column; justify-content:center;">
-                <span style="font-size:9.5px; font-weight:800; font-family:'IBM Plex Mono',monospace; color:#047857; text-transform:uppercase; display:block; margin-bottom:2px;">AFTER VS CARDS BILL</span>
-                <div style="font-size:14.5px; font-weight:800; color:#047857; font-family:'Space Grotesk',sans-serif; white-space:nowrap;">₹1,71,600 / mo</div>
-              </div>
+            <div class="vsinst-case-result-badge">
+              <span>⚡ 33 Institutional Cards</span>
+              <strong>Saved ₹68,400/mo (28.5%) 🎉</strong>
             </div>
           </div>
 
-          <div class="vsinst-case-result-badge">
-            <span>⚡ 33 Institutional Cards</span>
-            <strong>Saved ₹68,400/mo (28.5%) 🎉</strong>
+          <!-- EXAMPLE 2: UNIVERSITY CAMPUS -->
+          <div class="vsinst-case-card" style="border-top: 4px solid #f59e0b;">
+            <div>
+              <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:10px; margin-bottom:14px; min-height:64px;">
+                <div style="display:flex; align-items:flex-start; gap:12px; flex:1; min-width:0;">
+                  <div style="width:44px; height:44px; border-radius:12px; background:linear-gradient(135deg, #7c3aed 0%, #a855f7 100%); color:#ffffff; display:flex; align-items:center; justify-content:center; font-size:18px; box-shadow:0 4px 12px rgba(245, 158, 11,0.25); flex-shrink:0;">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                  </div>
+                  <div style="flex:1; min-width:0;">
+                    <h4 style="font-size:14px; font-weight:800; color:var(--ink); margin:0 0 4px 0; line-height:1.3; min-height:36px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">Apex University Campus & Labs</h4>
+                    <div style="font-size:11.5px; color:var(--muted-2); font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"><i class="fa-solid fa-location-dot" style="color:var(--orange);"></i> 280 KW Load, Pune</div>
+                  </div>
+                </div>
+                <span style="background: #fefce8; color: #854d0e; font-size:9.5px; font-weight:800; font-family:'IBM Plex Mono',monospace; padding:4px 9px; border-radius:50px; border: 1px solid #fde047; white-space:nowrap; flex-shrink:0;"><i class="fa-solid fa-circle-check"></i> VERIFIED</span>
+              </div>
+
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:16px;">
+                <div style="background:rgba(239, 68, 68, 0.06); border:1px solid rgba(239, 68, 68, 0.2); padding:10px 12px; border-radius:12px; min-height:58px; display:flex; flex-direction:column; justify-content:center;">
+                  <span style="font-size:9.5px; font-weight:800; font-family:'IBM Plex Mono',monospace; color:#dc2626; text-transform:uppercase; display:block; margin-bottom:2px;">BEFORE DISCOM BILL</span>
+                  <div style="font-size:14.5px; font-weight:800; color:#dc2626; text-decoration:line-through; font-family:'Space Grotesk',sans-serif; white-space:nowrap;">₹4,20,000 / mo</div>
+                </div>
+                <div style="background:rgba(16, 185, 129, 0.1); border:1px solid rgba(16, 185, 129, 0.3); padding:10px 12px; border-radius:12px; min-height:58px; display:flex; flex-direction:column; justify-content:center;">
+                  <span style="font-size:9.5px; font-weight:800; font-family:'IBM Plex Mono',monospace; color:#047857; text-transform:uppercase; display:block; margin-bottom:2px;">AFTER VS CARDS BILL</span>
+                  <div style="font-size:14.5px; font-weight:800; color:#047857; font-family:'Space Grotesk',sans-serif; white-space:nowrap;">₹3,02,400 / mo</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="vsinst-case-result-badge">
+              <span>⚡ 57 Institutional Cards</span>
+              <strong>Saved ₹1,17,600/mo (28.0%) 🎉</strong>
+            </div>
+          </div>
+
+          <!-- EXAMPLE 3: GOVT COMPLEX -->
+          <div class="vsinst-case-card" style="border-top:4px solid #008744;">
+            <div>
+              <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:10px; margin-bottom:14px; min-height:64px;">
+                <div style="display:flex; align-items:flex-start; gap:12px; flex:1; min-width:0;">
+                  <div style="width:44px; height:44px; border-radius:12px; background:linear-gradient(135deg, #008744 0%, #00b050 100%); color:#ffffff; display:flex; align-items:center; justify-content:center; font-size:18px; box-shadow:0 4px 12px rgba(0,176,80,0.25); flex-shrink:0;">
+                    <i class="fa-solid fa-building-flag"></i>
+                  </div>
+                  <div style="flex:1; min-width:0;">
+                    <h4 style="font-size:14px; font-weight:800; color:var(--ink); margin:0 0 4px 0; line-height:1.3; min-height:36px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">State Administrative Complex</h4>
+                    <div style="font-size:11.5px; color:var(--muted-2); font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"><i class="fa-solid fa-location-dot" style="color:var(--orange);"></i> 95 KW Load, Jaipur</div>
+                  </div>
+                </div>
+                <span style="background:#e6f4ec; color:#007b3e; font-size:9.5px; font-weight:800; font-family:'IBM Plex Mono',monospace; padding:4px 9px; border-radius:50px; border:1px solid #007b3e; white-space:nowrap; flex-shrink:0;"><i class="fa-solid fa-circle-check"></i> VERIFIED</span>
+              </div>
+
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:16px;">
+                <div style="background:rgba(239, 68, 68, 0.06); border:1px solid rgba(239, 68, 68, 0.2); padding:10px 12px; border-radius:12px; min-height:58px; display:flex; flex-direction:column; justify-content:center;">
+                  <span style="font-size:9.5px; font-weight:800; font-family:'IBM Plex Mono',monospace; color:#dc2626; text-transform:uppercase; display:block; margin-bottom:2px;">BEFORE DISCOM BILL</span>
+                  <div style="font-size:14.5px; font-weight:800; color:#dc2626; text-decoration:line-through; font-family:'Space Grotesk',sans-serif; white-space:nowrap;">₹1,45,000 / mo</div>
+                </div>
+                <div style="background:rgba(16, 185, 129, 0.1); border:1px solid rgba(16, 185, 129, 0.3); padding:10px 12px; border-radius:12px; min-height:58px; display:flex; flex-direction:column; justify-content:center;">
+                  <span style="font-size:9.5px; font-weight:800; font-family:'IBM Plex Mono',monospace; color:#047857; text-transform:uppercase; display:block; margin-bottom:2px;">AFTER VS CARDS BILL</span>
+                  <div style="font-size:14.5px; font-weight:800; color:#047857; font-family:'Space Grotesk',sans-serif; white-space:nowrap;">₹1,03,800 / mo</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="vsinst-case-result-badge">
+              <span>⚡ 20 Institutional Cards</span>
+              <strong>Saved ₹41,200/mo (28.4%) 🎉</strong>
+            </div>
           </div>
         </div>
 
-        <!-- EXAMPLE 2: UNIVERSITY CAMPUS -->
-        <div class="vsinst-case-card" style="border-top: 4px solid #f59e0b;">
-          <div>
-            <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:10px; margin-bottom:14px; min-height:64px;">
-              <div style="display:flex; align-items:flex-start; gap:12px; flex:1; min-width:0;">
-                <div style="width:44px; height:44px; border-radius:12px; background:linear-gradient(135deg, #7c3aed 0%, #a855f7 100%); color:#ffffff; display:flex; align-items:center; justify-content:center; font-size:18px; box-shadow:0 4px 12px rgba(245, 158, 11,0.25); flex-shrink:0;">
-                  <i class="fa-solid fa-graduation-cap"></i>
-                </div>
-                <div style="flex:1; min-width:0;">
-                  <h4 style="font-size:14px; font-weight:800; color:var(--ink); margin:0 0 4px 0; line-height:1.3; min-height:36px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">Apex University Campus & Labs</h4>
-                  <div style="font-size:11.5px; color:var(--muted-2); font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"><i class="fa-solid fa-location-dot" style="color:var(--orange);"></i> 280 KW Load, Pune</div>
-                </div>
-              </div>
-              <span style="background: #fefce8; color: #854d0e; font-size:9.5px; font-weight:800; font-family:'IBM Plex Mono',monospace; padding:4px 9px; border-radius:50px; border: 1px solid #fde047; white-space:nowrap; flex-shrink:0;"><i class="fa-solid fa-circle-check"></i> VERIFIED</span>
-            </div>
-
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:16px;">
-              <div style="background:rgba(239, 68, 68, 0.06); border:1px solid rgba(239, 68, 68, 0.2); padding:10px 12px; border-radius:12px; min-height:58px; display:flex; flex-direction:column; justify-content:center;">
-                <span style="font-size:9.5px; font-weight:800; font-family:'IBM Plex Mono',monospace; color:#dc2626; text-transform:uppercase; display:block; margin-bottom:2px;">BEFORE DISCOM BILL</span>
-                <div style="font-size:14.5px; font-weight:800; color:#dc2626; text-decoration:line-through; font-family:'Space Grotesk',sans-serif; white-space:nowrap;">₹4,20,000 / mo</div>
-              </div>
-              <div style="background:rgba(16, 185, 129, 0.1); border:1px solid rgba(16, 185, 129, 0.3); padding:10px 12px; border-radius:12px; min-height:58px; display:flex; flex-direction:column; justify-content:center;">
-                <span style="font-size:9.5px; font-weight:800; font-family:'IBM Plex Mono',monospace; color:#047857; text-transform:uppercase; display:block; margin-bottom:2px;">AFTER VS CARDS BILL</span>
-                <div style="font-size:14.5px; font-weight:800; color:#047857; font-family:'Space Grotesk',sans-serif; white-space:nowrap;">₹3,02,400 / mo</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="vsinst-case-result-badge">
-            <span>⚡ 57 Institutional Cards</span>
-            <strong>Saved ₹1,17,600/mo (28.0%) 🎉</strong>
-          </div>
+        <!-- MOBILE SLIDER DOTS -->
+        <div class="vs-slider-dots-bar" id="vsinstCaseDots">
+          <button type="button" class="vs-slider-dot active" onclick="vsinstGoSlide(0)" aria-label="Slide 1"></button>
+          <button type="button" class="vs-slider-dot" onclick="vsinstGoSlide(1)" aria-label="Slide 2"></button>
+          <button type="button" class="vs-slider-dot" onclick="vsinstGoSlide(2)" aria-label="Slide 3"></button>
         </div>
-
-        <!-- EXAMPLE 3: GOVT COMPLEX -->
-        <div class="vsinst-case-card" style="border-top:4px solid #008744;">
-          <div>
-            <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:10px; margin-bottom:14px; min-height:64px;">
-              <div style="display:flex; align-items:flex-start; gap:12px; flex:1; min-width:0;">
-                <div style="width:44px; height:44px; border-radius:12px; background:linear-gradient(135deg, #008744 0%, #00b050 100%); color:#ffffff; display:flex; align-items:center; justify-content:center; font-size:18px; box-shadow:0 4px 12px rgba(0,176,80,0.25); flex-shrink:0;">
-                  <i class="fa-solid fa-building-flag"></i>
-                </div>
-                <div style="flex:1; min-width:0;">
-                  <h4 style="font-size:14px; font-weight:800; color:var(--ink); margin:0 0 4px 0; line-height:1.3; min-height:36px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">State Administrative Complex</h4>
-                  <div style="font-size:11.5px; color:var(--muted-2); font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"><i class="fa-solid fa-location-dot" style="color:var(--orange);"></i> 95 KW Load, Jaipur</div>
-                </div>
-              </div>
-              <span style="background:#e6f4ec; color:#007b3e; font-size:9.5px; font-weight:800; font-family:'IBM Plex Mono',monospace; padding:4px 9px; border-radius:50px; border:1px solid #007b3e; white-space:nowrap; flex-shrink:0;"><i class="fa-solid fa-circle-check"></i> VERIFIED</span>
-            </div>
-
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:16px;">
-              <div style="background:rgba(239, 68, 68, 0.06); border:1px solid rgba(239, 68, 68, 0.2); padding:10px 12px; border-radius:12px; min-height:58px; display:flex; flex-direction:column; justify-content:center;">
-                <span style="font-size:9.5px; font-weight:800; font-family:'IBM Plex Mono',monospace; color:#dc2626; text-transform:uppercase; display:block; margin-bottom:2px;">BEFORE DISCOM BILL</span>
-                <div style="font-size:14.5px; font-weight:800; color:#dc2626; text-decoration:line-through; font-family:'Space Grotesk',sans-serif; white-space:nowrap;">₹1,45,000 / mo</div>
-              </div>
-              <div style="background:rgba(16, 185, 129, 0.1); border:1px solid rgba(16, 185, 129, 0.3); padding:10px 12px; border-radius:12px; min-height:58px; display:flex; flex-direction:column; justify-content:center;">
-                <span style="font-size:9.5px; font-weight:800; font-family:'IBM Plex Mono',monospace; color:#047857; text-transform:uppercase; display:block; margin-bottom:2px;">AFTER VS CARDS BILL</span>
-                <div style="font-size:14.5px; font-weight:800; color:#047857; font-family:'Space Grotesk',sans-serif; white-space:nowrap;">₹1,03,800 / mo</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="vsinst-case-result-badge">
-            <span>⚡ 20 Institutional Cards</span>
-            <strong>Saved ₹41,200/mo (28.4%) 🎉</strong>
-          </div>
-        </div>
+      </div>
       </div>
     </div>
   </section>
@@ -2060,6 +2111,93 @@
   function closeInstLightbox() {
     document.getElementById('inst_lightbox').classList.remove('active');
   }
+
+  /* ══ MOBILE 5-SECOND CASE STUDIES AUTO-SLIDER ══ */
+  (function() {
+    var track = document.getElementById('vsinstCaseTrack');
+    var wrap = document.getElementById('vsinstCaseSliderWrap');
+    var dots = document.querySelectorAll('#vsinstCaseDots .vs-slider-dot');
+    if (!track || !wrap) return;
+
+    var currentIdx = 0;
+    var totalSlides = dots.length || 3;
+    var timer = null;
+    var isMobile = function() { return window.innerWidth < 768; };
+
+    window.vsinstGoSlide = function(idx) {
+      if (!isMobile()) return;
+      currentIdx = (idx + totalSlides) % totalSlides;
+      track.style.transform = 'translateX(-' + (currentIdx * 100) + '%)';
+      dots.forEach(function(dot, i) {
+        dot.classList.toggle('active', i === currentIdx);
+      });
+    };
+
+    function startAutoSlide() {
+      stopAutoSlide();
+      if (!isMobile()) return;
+      timer = setInterval(function() {
+        if (isMobile()) {
+          window.vsinstGoSlide(currentIdx + 1);
+        }
+      }, 5000);
+    }
+
+    function stopAutoSlide() {
+      if (timer) {
+        clearInterval(timer);
+        timer = null;
+      }
+    }
+
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            startAutoSlide();
+          } else {
+            stopAutoSlide();
+          }
+        });
+      }, { threshold: 0.2 });
+      observer.observe(wrap);
+    } else {
+      startAutoSlide();
+    }
+
+    var startX = 0;
+    var deltaX = 0;
+    wrap.addEventListener('touchstart', function(e) {
+      if (!isMobile()) return;
+      stopAutoSlide();
+      startX = e.touches[0].clientX;
+      deltaX = 0;
+    }, { passive: true });
+
+    wrap.addEventListener('touchmove', function(e) {
+      if (!isMobile()) return;
+      deltaX = e.touches[0].clientX - startX;
+    }, { passive: true });
+
+    wrap.addEventListener('touchend', function() {
+      if (!isMobile()) return;
+      if (deltaX < -40) {
+        window.vsinstGoSlide(currentIdx + 1);
+      } else if (deltaX > 40) {
+        window.vsinstGoSlide(currentIdx - 1);
+      }
+      startAutoSlide();
+    }, { passive: true });
+
+    window.addEventListener('resize', function() {
+      if (!isMobile()) {
+        track.style.transform = '';
+        stopAutoSlide();
+      } else if (!timer) {
+        startAutoSlide();
+      }
+    });
+  })();
 </script>
 
 

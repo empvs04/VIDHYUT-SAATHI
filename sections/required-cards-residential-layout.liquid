@@ -832,14 +832,34 @@
     font-size: 14.5px;
   }
 
-  /* ---- RESIDENTIAL CUSTOMER CASE STUDIES ---- */
+  /* ---- RESIDENTIAL CUSTOMER CASE STUDIES SLIDER ---- */
+  .vs-cases-slider-wrap {
+    width: 100%;
+    position: relative;
+  }
+  .vs-slider-dots-bar {
+    display: none;
+  }
+  .vs-slider-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #cbd5e1;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .vs-slider-dot.active {
+    width: 24px;
+    border-radius: 50px;
+    background: #ec5c0a;
+  }
+
   .vsres-case-grid {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-  @media(min-width: 640px){
-    .vsres-case-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
   }
 
   .vsres-case-card {
@@ -848,6 +868,7 @@
     border-radius: 16px;
     padding: 20px;
     box-shadow: 0 4px 14px rgba(0,0,0,0.025);
+    transition: all 0.3s ease;
   }
   .vsres-case-header {
     display: flex;
@@ -1366,6 +1387,38 @@
       vertical-align: middle !important;
     }
 
+    /* CASE STUDIES MOBILE SLIDER */
+    .vs-cases-slider-wrap {
+      overflow: hidden !important;
+      width: 100% !important;
+      position: relative !important;
+      padding: 4px 0 6px 0 !important;
+    }
+    .vsres-case-grid {
+      display: flex !important;
+      flex-direction: row !important;
+      transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1) !important;
+      width: 100% !important;
+      gap: 0 !important;
+      will-change: transform;
+    }
+    .vsres-case-card {
+      flex: 0 0 100% !important;
+      min-width: 100% !important;
+      max-width: 100% !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+      padding: 16px 14px !important;
+      border-radius: 16px !important;
+    }
+    .vs-slider-dots-bar {
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      gap: 8px !important;
+      margin-top: 14px !important;
+    }
+
     .vsres-cta-band {
       padding: 28px 18px;
       border-radius: 18px;
@@ -1844,59 +1897,69 @@
         <p class="vsres-sec-desc">See how Indian homeowners cut their monthly electricity bills by 20–30% with Vidhyut Saathi.</p>
       </div>
 
-      <div class="vsres-case-grid">
-        <div class="vsres-case-card">
-          <div class="vsres-case-header">
-            <div class="vsres-case-avatar">R</div>
-            <div>
-              <div class="vsres-case-name">Rohan Mehta</div>
-              <div class="vsres-case-location">2 BHK Apartment, Mumbai</div>
+      <!-- MOBILE CAROUSEL SLIDER WRAPPER -->
+      <div class="vs-cases-slider-wrap" id="vsresCaseSliderWrap">
+        <div class="vsres-case-grid" id="vsresCaseTrack">
+          <div class="vsres-case-card">
+            <div class="vsres-case-header">
+              <div class="vsres-case-avatar">R</div>
+              <div>
+                <div class="vsres-case-name">Rohan Mehta</div>
+                <div class="vsres-case-location">2 BHK Apartment, Mumbai</div>
+              </div>
+            </div>
+            <div class="vsres-case-stats">
+              <div>Old Bill: <span class="vsres-case-stat-val">₹8,400/mo</span></div>
+              <div>New Bill: <span class="vsres-case-stat-val">₹6,100/mo</span></div>
+            </div>
+            <div class="vsres-case-result">
+              <span>2 Cards Installed</span>
+              <strong>Saved ₹2,300/mo (27%)</strong>
             </div>
           </div>
-          <div class="vsres-case-stats">
-            <div>Old Bill: <span class="vsres-case-stat-val">₹8,400/mo</span></div>
-            <div>New Bill: <span class="vsres-case-stat-val">₹6,100/mo</span></div>
+
+          <div class="vsres-case-card">
+            <div class="vsres-case-header">
+              <div class="vsres-case-avatar">S</div>
+              <div>
+                <div class="vsres-case-name">Sunita Sharma</div>
+                <div class="vsres-case-location">3 BHK House, Jaipur</div>
+              </div>
+            </div>
+            <div class="vsres-case-stats">
+              <div>Old Bill: <span class="vsres-case-stat-val">₹14,500/mo</span></div>
+              <div>New Bill: <span class="vsres-case-stat-val">₹10,600/mo</span></div>
+            </div>
+            <div class="vsres-case-result">
+              <span>3 Cards Installed</span>
+              <strong>Saved ₹3,900/mo (26.8%)</strong>
+            </div>
           </div>
-          <div class="vsres-case-result">
-            <span>2 Cards Installed</span>
-            <strong>Saved ₹2,300/mo (27%)</strong>
+
+          <div class="vsres-case-card">
+            <div class="vsres-case-header">
+              <div class="vsres-case-avatar">V</div>
+              <div>
+                <div class="vsres-case-name">Vikram Verma</div>
+                <div class="vsres-case-location">Independent Villa, Lucknow</div>
+              </div>
+            </div>
+            <div class="vsres-case-stats">
+              <div>Old Bill: <span class="vsres-case-stat-val">₹22,000/mo</span></div>
+              <div>New Bill: <span class="vsres-case-stat-val">₹15,800/mo</span></div>
+            </div>
+            <div class="vsres-case-result">
+              <span>4 Cards (3-Phase)</span>
+              <strong>Saved ₹6,200/mo (28.1%)</strong>
+            </div>
           </div>
         </div>
 
-        <div class="vsres-case-card">
-          <div class="vsres-case-header">
-            <div class="vsres-case-avatar">S</div>
-            <div>
-              <div class="vsres-case-name">Sunita Sharma</div>
-              <div class="vsres-case-location">3 BHK House, Jaipur</div>
-            </div>
-          </div>
-          <div class="vsres-case-stats">
-            <div>Old Bill: <span class="vsres-case-stat-val">₹14,500/mo</span></div>
-            <div>New Bill: <span class="vsres-case-stat-val">₹10,600/mo</span></div>
-          </div>
-          <div class="vsres-case-result">
-            <span>3 Cards Installed</span>
-            <strong>Saved ₹3,900/mo (26.8%)</strong>
-          </div>
-        </div>
-
-        <div class="vsres-case-card">
-          <div class="vsres-case-header">
-            <div class="vsres-case-avatar">V</div>
-            <div>
-              <div class="vsres-case-name">Vikram Verma</div>
-              <div class="vsres-case-location">Independent Villa, Lucknow</div>
-            </div>
-          </div>
-          <div class="vsres-case-stats">
-            <div>Old Bill: <span class="vsres-case-stat-val">₹22,000/mo</span></div>
-            <div>New Bill: <span class="vsres-case-stat-val">₹15,800/mo</span></div>
-          </div>
-          <div class="vsres-case-result">
-            <span>4 Cards (3-Phase)</span>
-            <strong>Saved ₹6,200/mo (28.1%)</strong>
-          </div>
+        <!-- MOBILE SLIDER DOTS -->
+        <div class="vs-slider-dots-bar" id="vsresCaseDots">
+          <button type="button" class="vs-slider-dot active" onclick="vsresGoSlide(0)" aria-label="Slide 1"></button>
+          <button type="button" class="vs-slider-dot" onclick="vsresGoSlide(1)" aria-label="Slide 2"></button>
+          <button type="button" class="vs-slider-dot" onclick="vsresGoSlide(2)" aria-label="Slide 3"></button>
         </div>
       </div>
     </div>
@@ -2097,6 +2160,93 @@
   function closeMcbLightbox() {
     document.getElementById('mcb_lightbox').classList.remove('active');
   }
+
+  /* ══ MOBILE 5-SECOND CASE STUDIES AUTO-SLIDER ══ */
+  (function() {
+    var track = document.getElementById('vsresCaseTrack');
+    var wrap = document.getElementById('vsresCaseSliderWrap');
+    var dots = document.querySelectorAll('#vsresCaseDots .vs-slider-dot');
+    if (!track || !wrap) return;
+
+    var currentIdx = 0;
+    var totalSlides = dots.length || 3;
+    var timer = null;
+    var isMobile = function() { return window.innerWidth < 768; };
+
+    window.vsresGoSlide = function(idx) {
+      if (!isMobile()) return;
+      currentIdx = (idx + totalSlides) % totalSlides;
+      track.style.transform = 'translateX(-' + (currentIdx * 100) + '%)';
+      dots.forEach(function(dot, i) {
+        dot.classList.toggle('active', i === currentIdx);
+      });
+    };
+
+    function startAutoSlide() {
+      stopAutoSlide();
+      if (!isMobile()) return;
+      timer = setInterval(function() {
+        if (isMobile()) {
+          window.vsresGoSlide(currentIdx + 1);
+        }
+      }, 5000);
+    }
+
+    function stopAutoSlide() {
+      if (timer) {
+        clearInterval(timer);
+        timer = null;
+      }
+    }
+
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            startAutoSlide();
+          } else {
+            stopAutoSlide();
+          }
+        });
+      }, { threshold: 0.2 });
+      observer.observe(wrap);
+    } else {
+      startAutoSlide();
+    }
+
+    var startX = 0;
+    var deltaX = 0;
+    wrap.addEventListener('touchstart', function(e) {
+      if (!isMobile()) return;
+      stopAutoSlide();
+      startX = e.touches[0].clientX;
+      deltaX = 0;
+    }, { passive: true });
+
+    wrap.addEventListener('touchmove', function(e) {
+      if (!isMobile()) return;
+      deltaX = e.touches[0].clientX - startX;
+    }, { passive: true });
+
+    wrap.addEventListener('touchend', function() {
+      if (!isMobile()) return;
+      if (deltaX < -40) {
+        window.vsresGoSlide(currentIdx + 1);
+      } else if (deltaX > 40) {
+        window.vsresGoSlide(currentIdx - 1);
+      }
+      startAutoSlide();
+    }, { passive: true });
+
+    window.addEventListener('resize', function() {
+      if (!isMobile()) {
+        track.style.transform = '';
+        stopAutoSlide();
+      } else if (!timer) {
+        startAutoSlide();
+      }
+    });
+  })();
 </script>
 
 {% schema %}
