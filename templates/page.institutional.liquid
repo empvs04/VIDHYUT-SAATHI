@@ -986,43 +986,286 @@
     font-weight: 800;
   }
 
-  /* MOBILE SPECIFIC (STRICTLY 2 BOXES IN 1 LINE) */
+  /* ══ COMPREHENSIVE MOBILE OPTIMIZATIONS (< 768px) ══ */
   @media (max-width: 767px) {
+    .vsinst .wrap {
+      padding: 0 14px !important;
+    }
+    .vsinst-sec {
+      padding: 32px 0 !important;
+    }
+    .vsinst-sec-head {
+      margin-bottom: 24px !important;
+    }
+    .vsinst-sec-title {
+      font-size: clamp(22px, 5.5vw, 28px) !important;
+      line-height: 1.25 !important;
+    }
+    .vsinst-sec-desc {
+      font-size: 13.5px !important;
+      line-height: 1.5 !important;
+    }
+
+    /* 1. Category Nav Strip on Mobile */
+    .vsinst-nav-container {
+      padding: 8px 12px !important;
+      gap: 8px !important;
+    }
+    .vsinst-nav-title {
+      display: none !important;
+    }
+    .vsinst-nav-links {
+      width: 100% !important;
+      overflow-x: auto !important;
+      -webkit-overflow-scrolling: touch !important;
+      padding-bottom: 2px !important;
+    }
+    .vsinst-nav-item {
+      font-size: 11.5px !important;
+      padding: 5px 12px !important;
+      flex-shrink: 0 !important;
+    }
+
+    /* 2. Hero Section on Mobile */
+    .vsinst-hero {
+      padding: 24px 0 32px 0 !important;
+    }
+    .vsinst-hero-grid {
+      gap: 20px !important;
+    }
+    .vsinst-eyebrow {
+      font-size: 10px !important;
+      padding: 4px 12px !important;
+      margin-bottom: 12px !important;
+    }
+    .vsinst-hero h1 {
+      font-size: clamp(23px, 6.5vw, 32px) !important;
+      line-height: 1.2 !important;
+      margin-bottom: 10px !important;
+    }
+    .vsinst-hero-lead {
+      font-size: 13.5px !important;
+      line-height: 1.5 !important;
+      margin-bottom: 18px !important;
+    }
+    .vsinst-hero-ctas {
+      flex-direction: column !important;
+      width: 100% !important;
+      gap: 10px !important;
+      margin-bottom: 18px !important;
+    }
+    .vsinst-btn-primary, .vsinst-btn-secondary {
+      width: 100% !important;
+      justify-content: center !important;
+      padding: 13px 18px !important;
+      font-size: 14px !important;
+      border-radius: 10px !important;
+    }
+    .vsinst-trust-badges {
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 8px !important;
+    }
+    .vsinst-trust-badge-item {
+      padding: 8px 10px !important;
+      gap: 8px !important;
+      border-radius: 10px !important;
+    }
+    .vsinst-trust-badge-icon {
+      width: 28px !important;
+      height: 28px !important;
+      font-size: 12px !important;
+      border-radius: 6px !important;
+    }
+    .vsinst-trust-badge-text strong {
+      font-size: 11.5px !important;
+    }
+    .vsinst-trust-badge-text span {
+      font-size: 9.5px !important;
+    }
+    .vsinst-hero-image-box {
+      padding: 14px 10px !important;
+      border-radius: 16px !important;
+      margin-top: 6px !important;
+    }
+    .vsinst-hero-card-tag {
+      font-size: 9px !important;
+      padding: 3px 10px !important;
+      top: 10px !important;
+      left: 10px !important;
+    }
+    .vsinst-mcb-hero-link {
+      font-size: 11.5px !important;
+      padding: 10px 12px !important;
+    }
+
+    /* 3. Calculator Section on Mobile */
+    .vsinst-calc-box {
+      padding: 16px 12px !important;
+      gap: 20px !important;
+      border-radius: 16px !important;
+    }
+    .vsinst-field {
+      margin-bottom: 16px !important;
+    }
+    .vsinst-field-label {
+      font-size: 12.5px !important;
+    }
+    .vsinst-toggle-btn {
+      padding: 10px 8px !important;
+      font-size: 12px !important;
+    }
+    .vsinst-num-input {
+      padding: 10px 12px !important;
+      font-size: 14.5px !important;
+    }
+    .vsinst-output-card {
+      padding: 18px 14px !important;
+      border-radius: 14px !important;
+      gap: 16px !important;
+      text-align: center !important;
+    }
+    .vsinst-res-val {
+      justify-content: center !important;
+    }
+    .vsinst-res-val span:first-child {
+      font-size: 42px !important;
+    }
+    .vsinst-savings-box {
+      flex-direction: column !important;
+      gap: 4px !important;
+      padding: 10px !important;
+      text-align: center !important;
+    }
+
+    /* 4. 20 MCB Substation Gallery on Mobile */
+    .inst-filter-bar {
+      margin-bottom: 18px !important;
+    }
+    .inst-filter-row {
+      flex-wrap: nowrap !important;
+      overflow-x: auto !important;
+      -webkit-overflow-scrolling: touch !important;
+      justify-content: flex-start !important;
+      padding: 4px 2px 8px 2px !important;
+      scrollbar-width: none !important;
+      width: 100% !important;
+    }
+    .inst-filter-row::-webkit-scrollbar { display: none; }
+    .inst-filter-btn {
+      white-space: nowrap !important;
+      flex-shrink: 0 !important;
+      padding: 6px 14px !important;
+      font-size: 11.5px !important;
+    }
+    .inst-gallery-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 10px !important;
+    }
+    .inst-card {
+      border-radius: 12px !important;
+    }
+    .inst-card-badge {
+      font-size: 8px !important;
+      padding: 2px 6px !important;
+      top: 6px !important;
+      left: 6px !important;
+    }
+    .inst-card-body {
+      padding: 8px !important;
+      gap: 2px !important;
+    }
+    .inst-card-title {
+      font-size: 12px !important;
+      line-height: 1.25 !important;
+    }
+    .inst-card-desc {
+      font-size: 10px !important;
+      line-height: 1.3 !important;
+      display: -webkit-box !important;
+      -webkit-line-clamp: 2 !important;
+      -webkit-box-orient: vertical !important;
+      overflow: hidden !important;
+    }
+
+    /* 5. Sizing Reference Matrix Table on Mobile */
+    .vsinst-table-wrap {
+      border-radius: 14px !important;
+      overflow-x: auto !important;
+      -webkit-overflow-scrolling: touch !important;
+    }
+    .vsinst-table {
+      min-width: 540px !important;
+      font-size: 12px !important;
+    }
+    .vsinst-table th, .vsinst-table td {
+      padding: 10px 12px !important;
+      white-space: nowrap !important;
+    }
+
+    /* 6. Case Studies on Mobile */
+    .vsinst-case-grid {
+      grid-template-columns: 1fr !important;
+      gap: 14px !important;
+    }
+    .vsinst-case-card {
+      padding: 14px !important;
+      border-radius: 14px !important;
+    }
+
+    /* 7. Footer CTA Band on Mobile */
+    .vsinst-cta-band {
+      padding: 26px 14px !important;
+      border-radius: 16px !important;
+    }
+    .vsinst-cta-band h3 {
+      font-size: 20px !important;
+      line-height: 1.3 !important;
+    }
+    .vsinst-cta-band p {
+      font-size: 13.5px !important;
+      margin-bottom: 18px !important;
+    }
+
+    /* 8. Section 8 Companion Showcase on Mobile */
     .vsinst-sec8-custom {
-      padding: 36px 0 44px 0 !important;
+      padding: 32px 0 40px 0 !important;
     }
     .vsinst-sec8-grid {
-      gap: 24px !important;
+      gap: 22px !important;
+    }
+    .vsinst-sec8-badge {
+      font-size: 10.5px !important;
+      padding: 5px 12px !important;
     }
     .vsinst-sec8-title {
-      font-size: 24px !important;
+      font-size: 23px !important;
       line-height: 1.2 !important;
     }
     .vsinst-sec8-lead {
-      font-size: 14.5px !important;
-      line-height: 1.55 !important;
-      margin-bottom: 18px !important;
+      font-size: 13.5px !important;
+      line-height: 1.5 !important;
+      margin-bottom: 16px !important;
     }
     .vsinst-sec8-pills-2x2 {
       display: grid !important;
       grid-template-columns: repeat(2, 1fr) !important;
       gap: 8px !important;
-      margin-bottom: 20px !important;
+      margin-bottom: 18px !important;
     }
     .vsinst-sec8-pill {
       flex-direction: column !important;
       align-items: center !important;
       text-align: center !important;
-      padding: 12px 6px 10px 6px !important;
-      gap: 6px !important;
+      padding: 10px 6px 8px 6px !important;
+      gap: 5px !important;
       border-radius: 12px !important;
-      min-height: 108px !important;
+      min-height: 98px !important;
       justify-content: center !important;
     }
     .vsinst-sec8-pill-icon {
-      width: 32px !important;
-      height: 32px !important;
-      font-size: 14px !important;
+      width: 30px !important;
+      height: 30px !important;
+      font-size: 13px !important;
       border-radius: 8px !important;
       margin-bottom: 2px !important;
     }
@@ -1030,7 +1273,7 @@
       width: 100% !important;
     }
     .vsinst-sec8-pill-text strong {
-      font-size: 11.5px !important;
+      font-size: 11px !important;
       line-height: 1.2 !important;
       white-space: normal !important;
       display: -webkit-box !important;
@@ -1038,7 +1281,7 @@
       -webkit-box-orient: vertical !important;
     }
     .vsinst-sec8-pill-text span {
-      font-size: 9.5px !important;
+      font-size: 9px !important;
       line-height: 1.2 !important;
       -webkit-line-clamp: 2 !important;
     }
@@ -1046,6 +1289,11 @@
       max-width: 100% !important;
       padding: 10px !important;
       border-radius: 18px !important;
+    }
+    .vsinst-sec8-img-box {
+      aspect-ratio: 1024 / 749 !important;
+      width: 100% !important;
+      border-radius: 14px !important;
     }
     .vsinst-sec8-moment-caption {
       padding: 8px 10px !important;
