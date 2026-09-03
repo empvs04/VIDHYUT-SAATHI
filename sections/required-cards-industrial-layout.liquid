@@ -744,143 +744,6 @@ den;
     font-weight: inherit !important;
   }
 
-  /* ══ CASE STUDY CARD MULTI-IMAGE MINI SLIDER ══ */
-  .vs-card-media-slider {
-    position: relative;
-    width: 100%;
-    height: 200px;
-    border-radius: 14px;
-    overflow: hidden;
-    margin-bottom: 14px;
-    background: #0f172a;
-    user-select: none;
-  }
-  .vs-card-media-slides {
-    position: relative;
-    width: 100%;
-    height: 100%;
-  }
-  .vs-card-media-slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    transform: scale(1.02);
-  }
-  .vs-card-media-slide.active {
-    opacity: 1;
-    visibility: visible;
-    transform: scale(1);
-  }
-  .vs-card-media-slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-  .vs-media-tag {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background: rgba(15, 23, 42, 0.82);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    color: #f8fafc;
-    font-size: 10.5px;
-    font-weight: 700;
-    padding: 4px 9px;
-    border-radius: 6px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    letter-spacing: 0.3px;
-    z-index: 3;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
-  }
-  .vs-media-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background: rgba(15, 23, 42, 0.75);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-    color: #ffffff;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 11px;
-    cursor: pointer;
-    z-index: 4;
-    opacity: 0.85;
-    transition: all 0.25s ease;
-    padding: 0;
-  }
-  .vs-card-media-slider:hover .vs-media-arrow {
-    opacity: 1;
-    transform: translateY(-50%) scale(1.06);
-  }
-  .vs-media-arrow:hover {
-    background: #0284c7 !important;
-    border-color: #38bdf8 !important;
-    color: #ffffff !important;
-    box-shadow: 0 4px 12px rgba(2, 132, 199, 0.5);
-  }
-  .vs-media-prev {
-    left: 8px;
-  }
-  .vs-media-next {
-    right: 8px;
-  }
-  .vs-media-dots-bar {
-    position: absolute;
-    bottom: 8px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 5px;
-    z-index: 4;
-    background: rgba(15, 23, 42, 0.65);
-    backdrop-filter: blur(4px);
-    padding: 4px 8px;
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-  }
-  .vs-media-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.45);
-    cursor: pointer;
-    transition: all 0.25s ease;
-  }
-  .vs-media-dot.active {
-    width: 14px;
-    border-radius: 6px;
-    background: #38bdf8;
-  }
-  .vs-media-counter {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: rgba(15, 23, 42, 0.82);
-    backdrop-filter: blur(8px);
-    color: #ffffff;
-    font-size: 10px;
-    font-weight: 700;
-    font-family: 'IBM Plex Mono', monospace;
-    padding: 4px 8px;
-    border-radius: 6px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    z-index: 3;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
-  }
-
   /* Worked Examples Summary Badge - Responsive for Mobile */
   .vsind-case-result-badge {
     background: linear-gradient(135deg, #0f172a 0%, #0284c7 100%);
@@ -2007,32 +1870,9 @@ den;
         <div class="vsind-case-grid" id="vsindCaseTrack">
           <!-- CARD 1: PLASTIC MOLDING -->
           <div class="vsind-case-card" style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
-            <!-- MINI SLIDER -->
-            <div class="vs-card-media-slider">
-              <div class="vs-card-media-slides">
-                <div class="vs-card-media-slide active">
-                  <img src="{% if section.settings.case_1_img_1 != blank %}{{ section.settings.case_1_img_1 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Injection Molding Machine" loading="lazy">
-                  <span class="vs-media-tag"><i class="fa-solid fa-industry"></i> Injection Molding</span>
-                </div>
-                <div class="vs-card-media-slide">
-                  <img src="{% if section.settings.case_1_img_2 != blank %}{{ section.settings.case_1_img_2 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Robotic Conveyor Line" loading="lazy">
-                  <span class="vs-media-tag"><i class="fa-solid fa-robot"></i> Robotic Line</span>
-                </div>
-                <div class="vs-card-media-slide">
-                  <img src="{% if section.settings.case_1_img_3 != blank %}{{ section.settings.case_1_img_3 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=700&q=80{% endif %}" alt="125A Feeder Panel" loading="lazy">
-                  <span class="vs-media-tag"><i class="fa-solid fa-bolt"></i> 125A Feeder Panel</span>
-                </div>
-              </div>
-              <button type="button" class="vs-media-arrow vs-media-prev" onclick="vsSlideMedia(this, -1)" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
-              <button type="button" class="vs-media-arrow vs-media-next" onclick="vsSlideMedia(this, 1)" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
-              <div class="vs-media-dots-bar">
-                <span class="vs-media-dot active" onclick="vsGoMediaSlide(this, 0)"></span>
-                <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 1)"></span>
-                <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 2)"></span>
-              </div>
-              <div class="vs-media-counter"><span class="vs-media-cur">1</span>/<span class="vs-media-tot">3</span></div>
+            <div style="width:100%; height:195px; border-radius:14px; overflow:hidden; margin-bottom:14px; background:#1e293b;">
+              <img src="https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=700&q=80" alt="Precision Plastics Plant Ahmedabad" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'industrial-factory-1.png' | asset_url }}';">
             </div>
-
             <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
               <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #0284c7; box-shadow:0 4px 10px rgba(2,132,199,0.25);">
                 <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Plant Head" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'wvs-happy-man.jpg' | asset_url }}';">
@@ -2060,32 +1900,9 @@ den;
 
           <!-- CARD 2: TEXTILE MILL -->
           <div class="vsind-case-card" style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
-            <!-- MINI SLIDER -->
-            <div class="vs-card-media-slider">
-              <div class="vs-card-media-slides">
-                <div class="vs-card-media-slide active">
-                  <img src="{% if section.settings.case_2_img_1 != blank %}{{ section.settings.case_2_img_1 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1605518216938-7c31b7b14ad0?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Weaving Loom" loading="lazy">
-                  <span class="vs-media-tag"><i class="fa-solid fa-industry"></i> Weaving Looms</span>
-                </div>
-                <div class="vs-card-media-slide">
-                  <img src="{% if section.settings.case_2_img_2 != blank %}{{ section.settings.case_2_img_2 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Yarn Spinning" loading="lazy">
-                  <span class="vs-media-tag"><i class="fa-solid fa-layer-group"></i> Yarn Spinning</span>
-                </div>
-                <div class="vs-card-media-slide">
-                  <img src="{% if section.settings.case_2_img_3 != blank %}{{ section.settings.case_2_img_3 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Drive Motors" loading="lazy">
-                  <span class="vs-media-tag"><i class="fa-solid fa-bolt"></i> Drive Motors</span>
-                </div>
-              </div>
-              <button type="button" class="vs-media-arrow vs-media-prev" onclick="vsSlideMedia(this, -1)" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
-              <button type="button" class="vs-media-arrow vs-media-next" onclick="vsSlideMedia(this, 1)" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
-              <div class="vs-media-dots-bar">
-                <span class="vs-media-dot active" onclick="vsGoMediaSlide(this, 0)"></span>
-                <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 1)"></span>
-                <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 2)"></span>
-              </div>
-              <div class="vs-media-counter"><span class="vs-media-cur">1</span>/<span class="vs-media-tot">3</span></div>
+            <div style="width:100%; height:195px; border-radius:14px; overflow:hidden; margin-bottom:14px; background:#1e293b;">
+              <img src="https://images.unsplash.com/photo-1605518216938-7c31b7b14ad0?auto=format&fit=crop&w=700&q=80" alt="Surat Textile Weaving Mill" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'case-industrial.jpg' | asset_url }}';">
             </div>
-
             <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
               <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #0284c7; box-shadow:0 4px 10px rgba(2,132,199,0.25);">
                 <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" alt="Mill General Manager" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'wvs-indian-businessman.jpg' | asset_url }}';">
@@ -2113,32 +1930,9 @@ den;
 
           <!-- CARD 3: PHARMA COLD CHAIN -->
           <div class="vsind-case-card" style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
-            <!-- MINI SLIDER -->
-            <div class="vs-card-media-slider">
-              <div class="vs-card-media-slides">
-                <div class="vs-card-media-slide active">
-                  <img src="{% if section.settings.case_3_img_1 != blank %}{{ section.settings.case_3_img_1 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1582719471384-894fbb16e074?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Cleanroom Plant" loading="lazy">
-                  <span class="vs-media-tag"><i class="fa-solid fa-industry"></i> Cleanroom Plant</span>
-                </div>
-                <div class="vs-card-media-slide">
-                  <img src="{% if section.settings.case_3_img_2 != blank %}{{ section.settings.case_3_img_2 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Chiller Compressor" loading="lazy">
-                  <span class="vs-media-tag"><i class="fa-solid fa-snowflake"></i> Chiller Compressor</span>
-                </div>
-                <div class="vs-card-media-slide">
-                  <img src="{% if section.settings.case_3_img_3 != blank %}{{ section.settings.case_3_img_3 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Quality Sterile Lab" loading="lazy">
-                  <span class="vs-media-tag"><i class="fa-solid fa-flask-vial"></i> Sterile Lab Line</span>
-                </div>
-              </div>
-              <button type="button" class="vs-media-arrow vs-media-prev" onclick="vsSlideMedia(this, -1)" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
-              <button type="button" class="vs-media-arrow vs-media-next" onclick="vsSlideMedia(this, 1)" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
-              <div class="vs-media-dots-bar">
-                <span class="vs-media-dot active" onclick="vsGoMediaSlide(this, 0)"></span>
-                <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 1)"></span>
-                <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 2)"></span>
-              </div>
-              <div class="vs-media-counter"><span class="vs-media-cur">1</span>/<span class="vs-media-tot">3</span></div>
+            <div style="width:100%; height:195px; border-radius:14px; overflow:hidden; margin-bottom:14px; background:#1e293b;">
+              <img src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?auto=format&fit=crop&w=700&q=80" alt="Pharma Cold Chain Plant Baddi" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'industrial-factory-2.png' | asset_url }}';">
             </div>
-
             <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
               <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #0284c7; box-shadow:0 4px 10px rgba(2,132,199,0.25);">
                 <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&q=80" alt="Plant Operations Head" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'indian_entrepreneur.jpg' | asset_url }}';">
@@ -2166,32 +1960,9 @@ den;
 
           <!-- CARD 4: ROBOTIC AUTO WELDING -->
           <div class="vsind-case-card" style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
-            <!-- MINI SLIDER -->
-            <div class="vs-card-media-slider">
-              <div class="vs-card-media-slides">
-                <div class="vs-card-media-slide active">
-                  <img src="{% if section.settings.case_4_img_1 != blank %}{{ section.settings.case_4_img_1 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Robotic Welding" loading="lazy">
-                  <span class="vs-media-tag"><i class="fa-solid fa-robot"></i> Robotic Welding</span>
-                </div>
-                <div class="vs-card-media-slide">
-                  <img src="{% if section.settings.case_4_img_2 != blank %}{{ section.settings.case_4_img_2 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=700&q=80{% endif %}" alt="5-Axis CNC" loading="lazy">
-                  <span class="vs-media-tag"><i class="fa-solid fa-gears"></i> 5-Axis CNC</span>
-                </div>
-                <div class="vs-card-media-slide">
-                  <img src="{% if section.settings.case_4_img_3 != blank %}{{ section.settings.case_4_img_3 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Auto Assembly Line" loading="lazy">
-                  <span class="vs-media-tag"><i class="fa-solid fa-car"></i> Assembly Line</span>
-                </div>
-              </div>
-              <button type="button" class="vs-media-arrow vs-media-prev" onclick="vsSlideMedia(this, -1)" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
-              <button type="button" class="vs-media-arrow vs-media-next" onclick="vsSlideMedia(this, 1)" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
-              <div class="vs-media-dots-bar">
-                <span class="vs-media-dot active" onclick="vsGoMediaSlide(this, 0)"></span>
-                <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 1)"></span>
-                <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 2)"></span>
-              </div>
-              <div class="vs-media-counter"><span class="vs-media-cur">1</span>/<span class="vs-media-tot">3</span></div>
+            <div style="width:100%; height:195px; border-radius:14px; overflow:hidden; margin-bottom:14px; background:#1e293b;">
+              <img src="https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?auto=format&fit=crop&w=700&q=80" alt="Apex Auto Ancillary Manesar" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'industrial-factory-1.png' | asset_url }}';">
             </div>
-
             <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
               <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #0284c7; box-shadow:0 4px 10px rgba(2,132,199,0.25);">
                 <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=150&q=80" alt="Engineering Head" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'hero-advisor-calculator.jpg' | asset_url }}';">
@@ -2219,32 +1990,9 @@ den;
 
           <!-- CARD 5: STEEL RE-ROLLING MILL -->
           <div class="vsind-case-card" style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
-            <!-- MINI SLIDER -->
-            <div class="vs-card-media-slider">
-              <div class="vs-card-media-slides">
-                <div class="vs-card-media-slide active">
-                  <img src="{% if section.settings.case_5_img_1 != blank %}{{ section.settings.case_5_img_1 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Blast Furnace" loading="lazy">
-                  <span class="vs-media-tag"><i class="fa-solid fa-fire"></i> Blast Furnace</span>
-                </div>
-                <div class="vs-card-media-slide">
-                  <img src="{% if section.settings.case_5_img_2 != blank %}{{ section.settings.case_5_img_2 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1535813547-99c456a41d4a?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Steel Rolling Mill" loading="lazy">
-                  <span class="vs-media-tag"><i class="fa-solid fa-industry"></i> Rolling Mill</span>
-                </div>
-                <div class="vs-card-media-slide">
-                  <img src="{% if section.settings.case_5_img_3 != blank %}{{ section.settings.case_5_img_3 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Induction Plant" loading="lazy">
-                  <span class="vs-media-tag"><i class="fa-solid fa-bolt"></i> Induction Melt Yard</span>
-                </div>
-              </div>
-              <button type="button" class="vs-media-arrow vs-media-prev" onclick="vsSlideMedia(this, -1)" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
-              <button type="button" class="vs-media-arrow vs-media-next" onclick="vsSlideMedia(this, 1)" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
-              <div class="vs-media-dots-bar">
-                <span class="vs-media-dot active" onclick="vsGoMediaSlide(this, 0)"></span>
-                <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 1)"></span>
-                <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 2)"></span>
-              </div>
-              <div class="vs-media-counter"><span class="vs-media-cur">1</span>/<span class="vs-media-tot">3</span></div>
+            <div style="width:100%; height:195px; border-radius:14px; overflow:hidden; margin-bottom:14px; background:#1e293b;">
+              <img src="https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=700&q=80" alt="Mahalaxmi Steel Mill Raipur" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'case-industrial.jpg' | asset_url }}';">
             </div>
-
             <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
               <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #0284c7; box-shadow:0 4px 10px rgba(2,132,199,0.25);">
                 <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=150&q=80" alt="Managing Director" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'vidhyut-customer-call-support.jpg' | asset_url }}';">
@@ -2272,32 +2020,9 @@ den;
 
           <!-- CARD 6: FOOD PROCESSING CONVEYOR -->
           <div class="vsind-case-card" style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
-            <!-- MINI SLIDER -->
-            <div class="vs-card-media-slider">
-              <div class="vs-card-media-slides">
-                <div class="vs-card-media-slide active">
-                  <img src="{% if section.settings.case_6_img_1 != blank %}{{ section.settings.case_6_img_1 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Packaging Line" loading="lazy">
-                  <span class="vs-media-tag"><i class="fa-solid fa-industry"></i> Bottling & Packaging</span>
-                </div>
-                <div class="vs-card-media-slide">
-                  <img src="{% if section.settings.case_6_img_2 != blank %}{{ section.settings.case_6_img_2 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1595246140625-573b715d11dc?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Sorting Unit" loading="lazy">
-                  <span class="vs-media-tag"><i class="fa-solid fa-apple-whole"></i> Sorting Unit</span>
-                </div>
-                <div class="vs-card-media-slide">
-                  <img src="{% if section.settings.case_6_img_3 != blank %}{{ section.settings.case_6_img_3 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Cold Storage" loading="lazy">
-                  <span class="vs-media-tag"><i class="fa-solid fa-temperature-arrow-down"></i> Cold Storage Grid</span>
-                </div>
-              </div>
-              <button type="button" class="vs-media-arrow vs-media-prev" onclick="vsSlideMedia(this, -1)" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
-              <button type="button" class="vs-media-arrow vs-media-next" onclick="vsSlideMedia(this, 1)" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
-              <div class="vs-media-dots-bar">
-                <span class="vs-media-dot active" onclick="vsGoMediaSlide(this, 0)"></span>
-                <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 1)"></span>
-                <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 2)"></span>
-              </div>
-              <div class="vs-media-counter"><span class="vs-media-cur">1</span>/<span class="vs-media-tot">3</span></div>
+            <div style="width:100%; height:195px; border-radius:14px; overflow:hidden; margin-bottom:14px; background:#1e293b;">
+              <img src="https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&fit=crop&w=700&q=80" alt="Agro Fresh Food Processing Nashik" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'industrial-factory-2.png' | asset_url }}';">
             </div>
-
             <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
               <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #0284c7; box-shadow:0 4px 10px rgba(2,132,199,0.25);">
                 <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80" alt="Quality Director" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'wvs-card-guide-woman.jpg' | asset_url }}';">
@@ -2325,32 +2050,9 @@ den;
 
           <!-- CARD 7: PACKAGING LOGISTICS PLANT -->
           <div class="vsind-case-card" style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
-            <!-- MINI SLIDER -->
-            <div class="vs-card-media-slider">
-              <div class="vs-card-media-slides">
-                <div class="vs-card-media-slide active">
-                  <img src="{% if section.settings.case_7_img_1 != blank %}{{ section.settings.case_7_img_1 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Corrugation Unit" loading="lazy">
-                  <span class="vs-media-tag"><i class="fa-solid fa-box"></i> Corrugation Unit</span>
-                </div>
-                <div class="vs-card-media-slide">
-                  <img src="{% if section.settings.case_7_img_2 != blank %}{{ section.settings.case_7_img_2 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Paper Slitter" loading="lazy">
-                  <span class="vs-media-tag"><i class="fa-solid fa-scroll"></i> Slitting Machine</span>
-                </div>
-                <div class="vs-card-media-slide">
-                  <img src="{% if section.settings.case_7_img_3 != blank %}{{ section.settings.case_7_img_3 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1586528116493-a029325540fa?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Finished Goods" loading="lazy">
-                  <span class="vs-media-tag"><i class="fa-solid fa-warehouse"></i> Packing & Dispatch</span>
-                </div>
-              </div>
-              <button type="button" class="vs-media-arrow vs-media-prev" onclick="vsSlideMedia(this, -1)" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
-              <button type="button" class="vs-media-arrow vs-media-next" onclick="vsSlideMedia(this, 1)" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
-              <div class="vs-media-dots-bar">
-                <span class="vs-media-dot active" onclick="vsGoMediaSlide(this, 0)"></span>
-                <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 1)"></span>
-                <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 2)"></span>
-              </div>
-              <div class="vs-media-counter"><span class="vs-media-cur">1</span>/<span class="vs-media-tot">3</span></div>
+            <div style="width:100%; height:195px; border-radius:14px; overflow:hidden; margin-bottom:14px; background:#1e293b;">
+              <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=700&q=80" alt="Shree Balaji Paper Packaging Vapi" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'industrial-factory-1.png' | asset_url }}';">
             </div>
-
             <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
               <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #0284c7; box-shadow:0 4px 10px rgba(2,132,199,0.25);">
                 <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=150&q=80" alt="Production Head" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'indian_entrepreneur.jpg' | asset_url }}';">
@@ -2378,32 +2080,9 @@ den;
 
           <!-- CARD 8: CHEMICAL DISTILLATION TOWERS -->
           <div class="vsind-case-card" style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
-            <!-- MINI SLIDER -->
-            <div class="vs-card-media-slider">
-              <div class="vs-card-media-slides">
-                <div class="vs-card-media-slide active">
-                  <img src="{% if section.settings.case_8_img_1 != blank %}{{ section.settings.case_8_img_1 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Distillation Columns" loading="lazy">
-                  <span class="vs-media-tag"><i class="fa-solid fa-industry"></i> Distillation Columns</span>
-                </div>
-                <div class="vs-card-media-slide">
-                  <img src="{% if section.settings.case_8_img_2 != blank %}{{ section.settings.case_8_img_2 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1516937941344-00b4e0337589?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Reactor Units" loading="lazy">
-                  <span class="vs-media-tag"><i class="fa-solid fa-flask"></i> Reactor Units</span>
-                </div>
-                <div class="vs-card-media-slide">
-                  <img src="{% if section.settings.case_8_img_3 != blank %}{{ section.settings.case_8_img_3 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Boiler & Utilities" loading="lazy">
-                  <span class="vs-media-tag"><i class="fa-solid fa-gauge-high"></i> Boiler & Utilities</span>
-                </div>
-              </div>
-              <button type="button" class="vs-media-arrow vs-media-prev" onclick="vsSlideMedia(this, -1)" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
-              <button type="button" class="vs-media-arrow vs-media-next" onclick="vsSlideMedia(this, 1)" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
-              <div class="vs-media-dots-bar">
-                <span class="vs-media-dot active" onclick="vsGoMediaSlide(this, 0)"></span>
-                <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 1)"></span>
-                <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 2)"></span>
-              </div>
-              <div class="vs-media-counter"><span class="vs-media-cur">1</span>/<span class="vs-media-tot">3</span></div>
+            <div style="width:100%; height:195px; border-radius:14px; overflow:hidden; margin-bottom:14px; background:#1e293b;">
+              <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=700&q=80" alt="Kaveri Chemical Complex Ranipet" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'case-industrial.jpg' | asset_url }}';">
             </div>
-
             <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
               <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #0284c7; box-shadow:0 4px 10px rgba(2,132,199,0.25);">
                 <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=150&q=80" alt="Safety Director" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'wvs-pointing-woman.jpg' | asset_url }}';">
@@ -2431,32 +2110,9 @@ den;
 
           <!-- CARD 9: HEAVY CNC WORKSHOP -->
           <div class="vsind-case-card" style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
-            <!-- MINI SLIDER -->
-            <div class="vs-card-media-slider">
-              <div class="vs-card-media-slides">
-                <div class="vs-card-media-slide active">
-                  <img src="{% if section.settings.case_9_img_1 != blank %}{{ section.settings.case_9_img_1 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=700&q=80{% endif %}" alt="CNC Machining" loading="lazy">
-                  <span class="vs-media-tag"><i class="fa-solid fa-gears"></i> CNC Machining</span>
-                </div>
-                <div class="vs-card-media-slide">
-                  <img src="{% if section.settings.case_9_img_2 != blank %}{{ section.settings.case_9_img_2 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Heavy Metal Casting" loading="lazy">
-                  <span class="vs-media-tag"><i class="fa-solid fa-fire"></i> Heavy Casting</span>
-                </div>
-                <div class="vs-card-media-slide">
-                  <img src="{% if section.settings.case_9_img_3 != blank %}{{ section.settings.case_9_img_3 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Foundry Bay" loading="lazy">
-                  <span class="vs-media-tag"><i class="fa-solid fa-industry"></i> Foundry Bay</span>
-                </div>
-              </div>
-              <button type="button" class="vs-media-arrow vs-media-prev" onclick="vsSlideMedia(this, -1)" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
-              <button type="button" class="vs-media-arrow vs-media-next" onclick="vsSlideMedia(this, 1)" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
-              <div class="vs-media-dots-bar">
-                <span class="vs-media-dot active" onclick="vsGoMediaSlide(this, 0)"></span>
-                <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 1)"></span>
-                <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 2)"></span>
-              </div>
-              <div class="vs-media-counter"><span class="vs-media-cur">1</span>/<span class="vs-media-tot">3</span></div>
+            <div style="width:100%; height:195px; border-radius:14px; overflow:hidden; margin-bottom:14px; background:#1e293b;">
+              <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=700&q=80" alt="Kalyani Heavy Foundry Coimbatore" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'industrial-factory-2.png' | asset_url }}';">
             </div>
-
             <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
               <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #0284c7; box-shadow:0 4px 10px rgba(2,132,199,0.25);">
                 <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80" alt="General Manager" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'wvs-pointing-down-woman.jpg' | asset_url }}';">
@@ -2696,48 +2352,6 @@ den;
       }
     });
   })();
-
-  /* ══ CARD MULTI-IMAGE MINI SLIDER LOGIC ══ */
-  function vsSlideMedia(btn, direction) {
-    var slider = btn.closest('.vs-card-media-slider');
-    if (!slider) return;
-    var slides = slider.querySelectorAll('.vs-card-media-slide');
-    var dots = slider.querySelectorAll('.vs-media-dot');
-    var curSpan = slider.querySelector('.vs-media-cur');
-    if (!slides.length) return;
-    
-    var curIndex = 0;
-    slides.forEach(function(slide, idx) {
-      if (slide.classList.contains('active')) curIndex = idx;
-    });
-    
-    var newIndex = (curIndex + direction + slides.length) % slides.length;
-    
-    slides[curIndex].classList.remove('active');
-    slides[newIndex].classList.add('active');
-    
-    dots.forEach(function(dot, idx) {
-      dot.classList.toggle('active', idx === newIndex);
-    });
-    if (curSpan) curSpan.textContent = newIndex + 1;
-  }
-
-  function vsGoMediaSlide(dot, targetIndex) {
-    var slider = dot.closest('.vs-card-media-slider');
-    if (!slider) return;
-    var slides = slider.querySelectorAll('.vs-card-media-slide');
-    var dots = slider.querySelectorAll('.vs-media-dot');
-    var curSpan = slider.querySelector('.vs-media-cur');
-    if (!slides.length || targetIndex >= slides.length) return;
-    
-    slides.forEach(function(slide, idx) {
-      slide.classList.toggle('active', idx === targetIndex);
-    });
-    dots.forEach(function(d, idx) {
-      d.classList.toggle('active', idx === targetIndex);
-    });
-    if (curSpan) curSpan.textContent = targetIndex + 1;
-  }
 </script>
 
 {% schema %}
@@ -2765,52 +2379,7 @@ den;
     { "type": "image_picker", "id": "ind_mcb_img_17", "label": "Industrial LT Image 17" },
     { "type": "image_picker", "id": "ind_mcb_img_18", "label": "Industrial LT Image 18" },
     { "type": "image_picker", "id": "ind_mcb_img_19", "label": "Industrial LT Image 19" },
-    { "type": "image_picker", "id": "ind_mcb_img_20", "label": "Industrial LT Image 20" },
-
-    { "type": "header", "content": "Industrial Worked Examples - Card 1 (Plastics)" },
-    { "type": "image_picker", "id": "case_1_img_1", "label": "Card 1: Slide 1 Image" },
-    { "type": "image_picker", "id": "case_1_img_2", "label": "Card 1: Slide 2 Image" },
-    { "type": "image_picker", "id": "case_1_img_3", "label": "Card 1: Slide 3 Image" },
-
-    { "type": "header", "content": "Industrial Worked Examples - Card 2 (Textile)" },
-    { "type": "image_picker", "id": "case_2_img_1", "label": "Card 2: Slide 1 Image" },
-    { "type": "image_picker", "id": "case_2_img_2", "label": "Card 2: Slide 2 Image" },
-    { "type": "image_picker", "id": "case_2_img_3", "label": "Card 2: Slide 3 Image" },
-
-    { "type": "header", "content": "Industrial Worked Examples - Card 3 (Pharma)" },
-    { "type": "image_picker", "id": "case_3_img_1", "label": "Card 3: Slide 1 Image" },
-    { "type": "image_picker", "id": "case_3_img_2", "label": "Card 3: Slide 2 Image" },
-    { "type": "image_picker", "id": "case_3_img_3", "label": "Card 3: Slide 3 Image" },
-
-    { "type": "header", "content": "Industrial Worked Examples - Card 4 (Auto & CNC)" },
-    { "type": "image_picker", "id": "case_4_img_1", "label": "Card 4: Slide 1 Image" },
-    { "type": "image_picker", "id": "case_4_img_2", "label": "Card 4: Slide 2 Image" },
-    { "type": "image_picker", "id": "case_4_img_3", "label": "Card 4: Slide 3 Image" },
-
-    { "type": "header", "content": "Industrial Worked Examples - Card 5 (Steel Mill)" },
-    { "type": "image_picker", "id": "case_5_img_1", "label": "Card 5: Slide 1 Image" },
-    { "type": "image_picker", "id": "case_5_img_2", "label": "Card 5: Slide 2 Image" },
-    { "type": "image_picker", "id": "case_5_img_3", "label": "Card 5: Slide 3 Image" },
-
-    { "type": "header", "content": "Industrial Worked Examples - Card 6 (Food Processing)" },
-    { "type": "image_picker", "id": "case_6_img_1", "label": "Card 6: Slide 1 Image" },
-    { "type": "image_picker", "id": "case_6_img_2", "label": "Card 6: Slide 2 Image" },
-    { "type": "image_picker", "id": "case_6_img_3", "label": "Card 6: Slide 3 Image" },
-
-    { "type": "header", "content": "Industrial Worked Examples - Card 7 (Packaging)" },
-    { "type": "image_picker", "id": "case_7_img_1", "label": "Card 7: Slide 1 Image" },
-    { "type": "image_picker", "id": "case_7_img_2", "label": "Card 7: Slide 2 Image" },
-    { "type": "image_picker", "id": "case_7_img_3", "label": "Card 7: Slide 3 Image" },
-
-    { "type": "header", "content": "Industrial Worked Examples - Card 8 (Chemical Complex)" },
-    { "type": "image_picker", "id": "case_8_img_1", "label": "Card 8: Slide 1 Image" },
-    { "type": "image_picker", "id": "case_8_img_2", "label": "Card 8: Slide 2 Image" },
-    { "type": "image_picker", "id": "case_8_img_3", "label": "Card 8: Slide 3 Image" },
-
-    { "type": "header", "content": "Industrial Worked Examples - Card 9 (Heavy Foundry)" },
-    { "type": "image_picker", "id": "case_9_img_1", "label": "Card 9: Slide 1 Image" },
-    { "type": "image_picker", "id": "case_9_img_2", "label": "Card 9: Slide 2 Image" },
-    { "type": "image_picker", "id": "case_9_img_3", "label": "Card 9: Slide 3 Image" }
+    { "type": "image_picker", "id": "ind_mcb_img_20", "label": "Industrial LT Image 20" }
   ],
   "blocks": [
     {
