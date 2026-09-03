@@ -2005,482 +2005,561 @@ den;
       <!-- MOBILE CAROUSEL SLIDER WRAPPER -->
       <div class="vs-cases-slider-wrap" id="vsindCaseSliderWrap">
         <div class="vsind-case-grid" id="vsindCaseTrack">
-          <!-- CARD 1: PLASTIC MOLDING -->
-          <div class="vsind-case-card" style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
-            <!-- MINI SLIDER -->
-            <div class="vs-card-media-slider">
-              <div class="vs-card-media-slides">
-                <div class="vs-card-media-slide active">
-                  <img src="{% if section.settings.case_1_img_1 != blank %}{{ section.settings.case_1_img_1 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Injection Molding Machine" loading="lazy">
-                  <span class="vs-media-tag"><i class="fa-solid fa-industry"></i> Injection Molding</span>
+          {% assign case_blocks = section.blocks | where: "type", "industrial_case_study" %}
+          {% if case_blocks.size > 0 %}
+            {% for block in case_blocks %}
+              <div class="vsind-case-card" {{ block.shopify_attributes }} style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
+                <!-- MINI SLIDER -->
+                <div class="vs-card-media-slider">
+                  <div class="vs-card-media-slides">
+                    <div class="vs-card-media-slide active">
+                      {% if block.settings.image_1 != blank %}
+                        <img src="{{ block.settings.image_1 | image_url: width: 800 }}" alt="{{ block.settings.tag_1 | default: 'Slide 1' | escape }}" loading="lazy">
+                      {% else %}
+                        <img src="https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=700&q=80" alt="Machinery" loading="lazy">
+                      {% endif %}
+                      {% if block.settings.tag_1 != blank %}
+                        <span class="vs-media-tag"><i class="fa-solid fa-industry"></i> {{ block.settings.tag_1 }}</span>
+                      {% endif %}
+                    </div>
+                    <div class="vs-card-media-slide">
+                      {% if block.settings.image_2 != blank %}
+                        <img src="{{ block.settings.image_2 | image_url: width: 800 }}" alt="{{ block.settings.tag_2 | default: 'Slide 2' | escape }}" loading="lazy">
+                      {% else %}
+                        <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=700&q=80" alt="Automation" loading="lazy">
+                      {% endif %}
+                      {% if block.settings.tag_2 != blank %}
+                        <span class="vs-media-tag"><i class="fa-solid fa-robot"></i> {{ block.settings.tag_2 }}</span>
+                      {% endif %}
+                    </div>
+                    <div class="vs-card-media-slide">
+                      {% if block.settings.image_3 != blank %}
+                        <img src="{{ block.settings.image_3 | image_url: width: 800 }}" alt="{{ block.settings.tag_3 | default: 'Slide 3' | escape }}" loading="lazy">
+                      {% else %}
+                        <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=700&q=80" alt="Electrical Panel" loading="lazy">
+                      {% endif %}
+                      {% if block.settings.tag_3 != blank %}
+                        <span class="vs-media-tag"><i class="fa-solid fa-bolt"></i> {{ block.settings.tag_3 }}</span>
+                      {% endif %}
+                    </div>
+                  </div>
+                  <button type="button" class="vs-media-arrow vs-media-prev" onclick="vsSlideMedia(this, -1)" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+                  <button type="button" class="vs-media-arrow vs-media-next" onclick="vsSlideMedia(this, 1)" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+                  <div class="vs-media-dots-bar">
+                    <span class="vs-media-dot active" onclick="vsGoMediaSlide(this, 0)"></span>
+                    <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 1)"></span>
+                    <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 2)"></span>
+                  </div>
+                  <div class="vs-media-counter"><span class="vs-media-cur">1</span>/<span class="vs-media-tot">3</span></div>
                 </div>
-                <div class="vs-card-media-slide">
-                  <img src="{% if section.settings.case_1_img_2 != blank %}{{ section.settings.case_1_img_2 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Robotic Conveyor Line" loading="lazy">
-                  <span class="vs-media-tag"><i class="fa-solid fa-robot"></i> Robotic Line</span>
+
+                <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+                  <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #0284c7; box-shadow:0 4px 10px rgba(2,132,199,0.25);">
+                    {% if block.settings.avatar_image != blank %}
+                      <img src="{{ block.settings.avatar_image | image_url: width: 150 }}" alt="Client Avatar" style="width:100%; height:100%; object-fit:cover; display:block;">
+                    {% else %}
+                      <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Client Avatar" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'wvs-happy-man.jpg' | asset_url }}';">
+                    {% endif %}
+                  </div>
+                  <div>
+                    <h4 style="font-size:15px; font-weight:800; color:#0f172a; margin:0 0 2px 0; font-family:'Baloo 2',sans-serif;">{{ block.settings.company_name | default: 'Precision Plastics & Molding' }} <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></h4>
+                    <div style="font-size:12px; color:#64748b; font-weight:600;"><i class="fa-solid fa-location-dot" style="color:#0284c7;"></i> {{ block.settings.location_load | default: '90 KW Load, GIDC Ahmedabad' }}</div>
+                  </div>
                 </div>
-                <div class="vs-card-media-slide">
-                  <img src="{% if section.settings.case_1_img_3 != blank %}{{ section.settings.case_1_img_3 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=700&q=80{% endif %}" alt="125A Feeder Panel" loading="lazy">
-                  <span class="vs-media-tag"><i class="fa-solid fa-bolt"></i> 125A Feeder Panel</span>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
+                  <div style="background:#fff1f2; border:1px solid #fecdd3; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                    <span style="color:#e11d48; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">Old DISCOM Bill</span>
+                    <span style="font-family:'IBM Plex Mono',monospace; color:#9f1239; font-size:14px; font-weight:800; text-decoration:line-through;">{{ block.settings.old_bill | default: '₹1,40,000/mo' }}</span>
+                  </div>
+                  <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                    <span style="color:#059669; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">New DISCOM Bill</span>
+                    <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">{{ block.settings.new_bill | default: '₹99,400/mo' }}</span>
+                  </div>
+                </div>
+                <div style="background:linear-gradient(135deg, #0f172a 0%, #0284c7 100%); padding:11px 14px; border-radius:12px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(2,132,199,0.2);">
+                  <span style="color:#a7f3d0; font-size:11.5px;">{{ block.settings.cards_count | default: '⚡ 16 Industrial Cards' }}</span>
+                  <strong style="color:#ffffff; font-size:13.5px;">{{ block.settings.savings_summary | default: 'Saved ₹40,600/mo (29.0%)' }}</strong>
                 </div>
               </div>
-              <button type="button" class="vs-media-arrow vs-media-prev" onclick="vsSlideMedia(this, -1)" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
-              <button type="button" class="vs-media-arrow vs-media-next" onclick="vsSlideMedia(this, 1)" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
-              <div class="vs-media-dots-bar">
-                <span class="vs-media-dot active" onclick="vsGoMediaSlide(this, 0)"></span>
-                <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 1)"></span>
-                <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 2)"></span>
+            {% endfor %}
+          {% else %}
+            <!-- CARD 1: PLASTIC MOLDING -->
+            <div class="vsind-case-card" style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
+              <!-- MINI SLIDER -->
+              <div class="vs-card-media-slider">
+                <div class="vs-card-media-slides">
+                  <div class="vs-card-media-slide active">
+                    <img src="https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=700&q=80" alt="Injection Molding Machine" loading="lazy">
+                    <span class="vs-media-tag"><i class="fa-solid fa-industry"></i> Injection Molding</span>
+                  </div>
+                  <div class="vs-card-media-slide">
+                    <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=700&q=80" alt="Robotic Conveyor Line" loading="lazy">
+                    <span class="vs-media-tag"><i class="fa-solid fa-robot"></i> Robotic Line</span>
+                  </div>
+                  <div class="vs-card-media-slide">
+                    <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=700&q=80" alt="125A Feeder Panel" loading="lazy">
+                    <span class="vs-media-tag"><i class="fa-solid fa-bolt"></i> 125A Feeder Panel</span>
+                  </div>
+                </div>
+                <button type="button" class="vs-media-arrow vs-media-prev" onclick="vsSlideMedia(this, -1)" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+                <button type="button" class="vs-media-arrow vs-media-next" onclick="vsSlideMedia(this, 1)" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+                <div class="vs-media-dots-bar">
+                  <span class="vs-media-dot active" onclick="vsGoMediaSlide(this, 0)"></span>
+                  <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 1)"></span>
+                  <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 2)"></span>
+                </div>
+                <div class="vs-media-counter"><span class="vs-media-cur">1</span>/<span class="vs-media-tot">3</span></div>
               </div>
-              <div class="vs-media-counter"><span class="vs-media-cur">1</span>/<span class="vs-media-tot">3</span></div>
+
+              <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+                <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #0284c7; box-shadow:0 4px 10px rgba(2,132,199,0.25);">
+                  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Plant Head" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'wvs-happy-man.jpg' | asset_url }}';">
+                </div>
+                <div>
+                  <h4 style="font-size:15px; font-weight:800; color:#0f172a; margin:0 0 2px 0; font-family:'Baloo 2',sans-serif;">Precision Plastics & Molding <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></h4>
+                  <div style="font-size:12px; color:#64748b; font-weight:600;"><i class="fa-solid fa-location-dot" style="color:#0284c7;"></i> 90 KW Load, GIDC Ahmedabad</div>
+                </div>
+              </div>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
+                <div style="background:#fff1f2; border:1px solid #fecdd3; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                  <span style="color:#e11d48; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">Old DISCOM Bill</span>
+                  <span style="font-family:'IBM Plex Mono',monospace; color:#9f1239; font-size:14px; font-weight:800; text-decoration:line-through;">₹1,40,000/mo</span>
+                </div>
+                <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                  <span style="color:#059669; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">New DISCOM Bill</span>
+                  <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">₹99,400/mo</span>
+                </div>
+              </div>
+              <div style="background:linear-gradient(135deg, #0f172a 0%, #0284c7 100%); padding:11px 14px; border-radius:12px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(2,132,199,0.2);">
+                <span style="color:#a7f3d0; font-size:11.5px;">⚡ 16 Industrial Cards</span>
+                <strong style="color:#ffffff; font-size:13.5px;">Saved ₹40,600/mo (29.0%)</strong>
+              </div>
             </div>
 
-            <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
-              <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #0284c7; box-shadow:0 4px 10px rgba(2,132,199,0.25);">
-                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Plant Head" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'wvs-happy-man.jpg' | asset_url }}';">
+            <!-- CARD 2: TEXTILE MILL -->
+            <div class="vsind-case-card" style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
+              <!-- MINI SLIDER -->
+              <div class="vs-card-media-slider">
+                <div class="vs-card-media-slides">
+                  <div class="vs-card-media-slide active">
+                    <img src="https://images.unsplash.com/photo-1605518216938-7c31b7b14ad0?auto=format&fit=crop&w=700&q=80" alt="Weaving Loom" loading="lazy">
+                    <span class="vs-media-tag"><i class="fa-solid fa-industry"></i> Weaving Looms</span>
+                  </div>
+                  <div class="vs-card-media-slide">
+                    <img src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=700&q=80" alt="Yarn Spinning" loading="lazy">
+                    <span class="vs-media-tag"><i class="fa-solid fa-layer-group"></i> Yarn Spinning</span>
+                  </div>
+                  <div class="vs-card-media-slide">
+                    <img src="https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=700&q=80" alt="Drive Motors" loading="lazy">
+                    <span class="vs-media-tag"><i class="fa-solid fa-bolt"></i> Drive Motors</span>
+                  </div>
+                </div>
+                <button type="button" class="vs-media-arrow vs-media-prev" onclick="vsSlideMedia(this, -1)" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+                <button type="button" class="vs-media-arrow vs-media-next" onclick="vsSlideMedia(this, 1)" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+                <div class="vs-media-dots-bar">
+                  <span class="vs-media-dot active" onclick="vsGoMediaSlide(this, 0)"></span>
+                  <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 1)"></span>
+                  <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 2)"></span>
+                </div>
+                <div class="vs-media-counter"><span class="vs-media-cur">1</span>/<span class="vs-media-tot">3</span></div>
               </div>
-              <div>
-                <h4 style="font-size:15px; font-weight:800; color:#0f172a; margin:0 0 2px 0; font-family:'Baloo 2',sans-serif;">Precision Plastics & Molding <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></h4>
-                <div style="font-size:12px; color:#64748b; font-weight:600;"><i class="fa-solid fa-location-dot" style="color:#0284c7;"></i> 90 KW Load, GIDC Ahmedabad</div>
-              </div>
-            </div>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
-              <div style="background:#fff1f2; border:1px solid #fecdd3; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
-                <span style="color:#e11d48; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">Old DISCOM Bill</span>
-                <span style="font-family:'IBM Plex Mono',monospace; color:#9f1239; font-size:14px; font-weight:800; text-decoration:line-through;">₹1,40,000/mo</span>
-              </div>
-              <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
-                <span style="color:#059669; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">New DISCOM Bill</span>
-                <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">₹99,400/mo</span>
-              </div>
-            </div>
-            <div style="background:linear-gradient(135deg, #0f172a 0%, #0284c7 100%); padding:11px 14px; border-radius:12px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(2,132,199,0.2);">
-              <span style="color:#a7f3d0; font-size:11.5px;">⚡ 16 Industrial Cards</span>
-              <strong style="color:#ffffff; font-size:13.5px;">Saved ₹40,600/mo (29.0%)</strong>
-            </div>
-          </div>
 
-          <!-- CARD 2: TEXTILE MILL -->
-          <div class="vsind-case-card" style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
-            <!-- MINI SLIDER -->
-            <div class="vs-card-media-slider">
-              <div class="vs-card-media-slides">
-                <div class="vs-card-media-slide active">
-                  <img src="{% if section.settings.case_2_img_1 != blank %}{{ section.settings.case_2_img_1 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1605518216938-7c31b7b14ad0?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Weaving Loom" loading="lazy">
-                  <span class="vs-media-tag"><i class="fa-solid fa-industry"></i> Weaving Looms</span>
+              <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+                <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #0284c7; box-shadow:0 4px 10px rgba(2,132,199,0.25);">
+                  <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" alt="Mill General Manager" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'wvs-indian-businessman.jpg' | asset_url }}';">
                 </div>
-                <div class="vs-card-media-slide">
-                  <img src="{% if section.settings.case_2_img_2 != blank %}{{ section.settings.case_2_img_2 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Yarn Spinning" loading="lazy">
-                  <span class="vs-media-tag"><i class="fa-solid fa-layer-group"></i> Yarn Spinning</span>
-                </div>
-                <div class="vs-card-media-slide">
-                  <img src="{% if section.settings.case_2_img_3 != blank %}{{ section.settings.case_2_img_3 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Drive Motors" loading="lazy">
-                  <span class="vs-media-tag"><i class="fa-solid fa-bolt"></i> Drive Motors</span>
+                <div>
+                  <h4 style="font-size:15px; font-weight:800; color:#0f172a; margin:0 0 2px 0; font-family:'Baloo 2',sans-serif;">Surat Textile Weaving Mill <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></h4>
+                  <div style="font-size:12px; color:#64748b; font-weight:600;"><i class="fa-solid fa-location-dot" style="color:#0284c7;"></i> 180 KW Load, Surat</div>
                 </div>
               </div>
-              <button type="button" class="vs-media-arrow vs-media-prev" onclick="vsSlideMedia(this, -1)" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
-              <button type="button" class="vs-media-arrow vs-media-next" onclick="vsSlideMedia(this, 1)" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
-              <div class="vs-media-dots-bar">
-                <span class="vs-media-dot active" onclick="vsGoMediaSlide(this, 0)"></span>
-                <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 1)"></span>
-                <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 2)"></span>
-              </div>
-              <div class="vs-media-counter"><span class="vs-media-cur">1</span>/<span class="vs-media-tot">3</span></div>
-            </div>
-
-            <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
-              <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #0284c7; box-shadow:0 4px 10px rgba(2,132,199,0.25);">
-                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" alt="Mill General Manager" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'wvs-indian-businessman.jpg' | asset_url }}';">
-              </div>
-              <div>
-                <h4 style="font-size:15px; font-weight:800; color:#0f172a; margin:0 0 2px 0; font-family:'Baloo 2',sans-serif;">Surat Textile Weaving Mill <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></h4>
-                <div style="font-size:12px; color:#64748b; font-weight:600;"><i class="fa-solid fa-location-dot" style="color:#0284c7;"></i> 180 KW Load, Surat</div>
-              </div>
-            </div>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
-              <div style="background:#fff1f2; border:1px solid #fecdd3; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
-                <span style="color:#e11d48; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">Old DISCOM Bill</span>
-                <span style="font-family:'IBM Plex Mono',monospace; color:#9f1239; font-size:14px; font-weight:800; text-decoration:line-through;">₹2,80,000/mo</span>
-              </div>
-              <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
-                <span style="color:#059669; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">New DISCOM Bill</span>
-                <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">₹2,01,600/mo</span>
-              </div>
-            </div>
-            <div style="background:linear-gradient(135deg, #0f172a 0%, #0284c7 100%); padding:11px 14px; border-radius:12px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(2,132,199,0.2);">
-              <span style="color:#a7f3d0; font-size:11.5px;">⚡ 31 Industrial Cards</span>
-              <strong style="color:#ffffff; font-size:13.5px;">Saved ₹78,400/mo (28.0%)</strong>
-            </div>
-          </div>
-
-          <!-- CARD 3: PHARMA COLD CHAIN -->
-          <div class="vsind-case-card" style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
-            <!-- MINI SLIDER -->
-            <div class="vs-card-media-slider">
-              <div class="vs-card-media-slides">
-                <div class="vs-card-media-slide active">
-                  <img src="{% if section.settings.case_3_img_1 != blank %}{{ section.settings.case_3_img_1 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1582719471384-894fbb16e074?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Cleanroom Plant" loading="lazy">
-                  <span class="vs-media-tag"><i class="fa-solid fa-industry"></i> Cleanroom Plant</span>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
+                <div style="background:#fff1f2; border:1px solid #fecdd3; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                  <span style="color:#e11d48; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">Old DISCOM Bill</span>
+                  <span style="font-family:'IBM Plex Mono',monospace; color:#9f1239; font-size:14px; font-weight:800; text-decoration:line-through;">₹2,80,000/mo</span>
                 </div>
-                <div class="vs-card-media-slide">
-                  <img src="{% if section.settings.case_3_img_2 != blank %}{{ section.settings.case_3_img_2 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Chiller Compressor" loading="lazy">
-                  <span class="vs-media-tag"><i class="fa-solid fa-snowflake"></i> Chiller Compressor</span>
-                </div>
-                <div class="vs-card-media-slide">
-                  <img src="{% if section.settings.case_3_img_3 != blank %}{{ section.settings.case_3_img_3 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Quality Sterile Lab" loading="lazy">
-                  <span class="vs-media-tag"><i class="fa-solid fa-flask-vial"></i> Sterile Lab Line</span>
+                <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                  <span style="color:#059669; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">New DISCOM Bill</span>
+                  <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">₹2,01,600/mo</span>
                 </div>
               </div>
-              <button type="button" class="vs-media-arrow vs-media-prev" onclick="vsSlideMedia(this, -1)" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
-              <button type="button" class="vs-media-arrow vs-media-next" onclick="vsSlideMedia(this, 1)" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
-              <div class="vs-media-dots-bar">
-                <span class="vs-media-dot active" onclick="vsGoMediaSlide(this, 0)"></span>
-                <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 1)"></span>
-                <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 2)"></span>
+              <div style="background:linear-gradient(135deg, #0f172a 0%, #0284c7 100%); padding:11px 14px; border-radius:12px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(2,132,199,0.2);">
+                <span style="color:#a7f3d0; font-size:11.5px;">⚡ 31 Industrial Cards</span>
+                <strong style="color:#ffffff; font-size:13.5px;">Saved ₹78,400/mo (28.0%)</strong>
               </div>
-              <div class="vs-media-counter"><span class="vs-media-cur">1</span>/<span class="vs-media-tot">3</span></div>
             </div>
 
-            <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
-              <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #0284c7; box-shadow:0 4px 10px rgba(2,132,199,0.25);">
-                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&q=80" alt="Plant Operations Head" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'indian_entrepreneur.jpg' | asset_url }}';">
+            <!-- CARD 3: PHARMA COLD CHAIN -->
+            <div class="vsind-case-card" style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
+              <!-- MINI SLIDER -->
+              <div class="vs-card-media-slider">
+                <div class="vs-card-media-slides">
+                  <div class="vs-card-media-slide active">
+                    <img src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?auto=format&fit=crop&w=700&q=80" alt="Cleanroom Plant" loading="lazy">
+                    <span class="vs-media-tag"><i class="fa-solid fa-industry"></i> Cleanroom Plant</span>
+                  </div>
+                  <div class="vs-card-media-slide">
+                    <img src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=700&q=80" alt="Chiller Compressor" loading="lazy">
+                    <span class="vs-media-tag"><i class="fa-solid fa-snowflake"></i> Chiller Compressor</span>
+                  </div>
+                  <div class="vs-card-media-slide">
+                    <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=700&q=80" alt="Quality Sterile Lab" loading="lazy">
+                    <span class="vs-media-tag"><i class="fa-solid fa-flask-vial"></i> Sterile Lab Line</span>
+                  </div>
+                </div>
+                <button type="button" class="vs-media-arrow vs-media-prev" onclick="vsSlideMedia(this, -1)" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+                <button type="button" class="vs-media-arrow vs-media-next" onclick="vsSlideMedia(this, 1)" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+                <div class="vs-media-dots-bar">
+                  <span class="vs-media-dot active" onclick="vsGoMediaSlide(this, 0)"></span>
+                  <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 1)"></span>
+                  <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 2)"></span>
+                </div>
+                <div class="vs-media-counter"><span class="vs-media-cur">1</span>/<span class="vs-media-tot">3</span></div>
               </div>
-              <div>
-                <h4 style="font-size:15px; font-weight:800; color:#0f172a; margin:0 0 2px 0; font-family:'Baloo 2',sans-serif;">Pharma Cold Chain Plant <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></h4>
-                <div style="font-size:12px; color:#64748b; font-weight:600;"><i class="fa-solid fa-location-dot" style="color:#0284c7;"></i> 350 KW Load, Baddi HP</div>
-              </div>
-            </div>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
-              <div style="background:#fff1f2; border:1px solid #fecdd3; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
-                <span style="color:#e11d48; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">Old DISCOM Bill</span>
-                <span style="font-family:'IBM Plex Mono',monospace; color:#9f1239; font-size:14px; font-weight:800; text-decoration:line-through;">₹5,50,000/mo</span>
-              </div>
-              <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
-                <span style="color:#059669; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">New DISCOM Bill</span>
-                <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">₹3,96,000/mo</span>
-              </div>
-            </div>
-            <div style="background:linear-gradient(135deg, #0f172a 0%, #0284c7 100%); padding:11px 14px; border-radius:12px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(2,132,199,0.2);">
-              <span style="color:#a7f3d0; font-size:11.5px;">⚡ 60 Industrial Cards</span>
-              <strong style="color:#ffffff; font-size:13.5px;">Saved ₹1,54,000/mo (28.0%)</strong>
-            </div>
-          </div>
 
-          <!-- CARD 4: ROBOTIC AUTO WELDING -->
-          <div class="vsind-case-card" style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
-            <!-- MINI SLIDER -->
-            <div class="vs-card-media-slider">
-              <div class="vs-card-media-slides">
-                <div class="vs-card-media-slide active">
-                  <img src="{% if section.settings.case_4_img_1 != blank %}{{ section.settings.case_4_img_1 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Robotic Welding" loading="lazy">
-                  <span class="vs-media-tag"><i class="fa-solid fa-robot"></i> Robotic Welding</span>
+              <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+                <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #0284c7; box-shadow:0 4px 10px rgba(2,132,199,0.25);">
+                  <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&q=80" alt="Plant Operations Head" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'indian_entrepreneur.jpg' | asset_url }}';">
                 </div>
-                <div class="vs-card-media-slide">
-                  <img src="{% if section.settings.case_4_img_2 != blank %}{{ section.settings.case_4_img_2 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=700&q=80{% endif %}" alt="5-Axis CNC" loading="lazy">
-                  <span class="vs-media-tag"><i class="fa-solid fa-gears"></i> 5-Axis CNC</span>
-                </div>
-                <div class="vs-card-media-slide">
-                  <img src="{% if section.settings.case_4_img_3 != blank %}{{ section.settings.case_4_img_3 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Auto Assembly Line" loading="lazy">
-                  <span class="vs-media-tag"><i class="fa-solid fa-car"></i> Assembly Line</span>
+                <div>
+                  <h4 style="font-size:15px; font-weight:800; color:#0f172a; margin:0 0 2px 0; font-family:'Baloo 2',sans-serif;">Pharma Cold Chain Plant <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></h4>
+                  <div style="font-size:12px; color:#64748b; font-weight:600;"><i class="fa-solid fa-location-dot" style="color:#0284c7;"></i> 350 KW Load, Baddi HP</div>
                 </div>
               </div>
-              <button type="button" class="vs-media-arrow vs-media-prev" onclick="vsSlideMedia(this, -1)" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
-              <button type="button" class="vs-media-arrow vs-media-next" onclick="vsSlideMedia(this, 1)" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
-              <div class="vs-media-dots-bar">
-                <span class="vs-media-dot active" onclick="vsGoMediaSlide(this, 0)"></span>
-                <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 1)"></span>
-                <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 2)"></span>
-              </div>
-              <div class="vs-media-counter"><span class="vs-media-cur">1</span>/<span class="vs-media-tot">3</span></div>
-            </div>
-
-            <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
-              <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #0284c7; box-shadow:0 4px 10px rgba(2,132,199,0.25);">
-                <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=150&q=80" alt="Engineering Head" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'hero-advisor-calculator.jpg' | asset_url }}';">
-              </div>
-              <div>
-                <h4 style="font-size:15px; font-weight:800; color:#0f172a; margin:0 0 2px 0; font-family:'Baloo 2',sans-serif;">Apex Auto Ancillary & CNC <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></h4>
-                <div style="font-size:12px; color:#64748b; font-weight:600;"><i class="fa-solid fa-location-dot" style="color:#0284c7;"></i> 120 KW Load, Manesar Haryana</div>
-              </div>
-            </div>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
-              <div style="background:#fff1f2; border:1px solid #fecdd3; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
-                <span style="color:#e11d48; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">Old DISCOM Bill</span>
-                <span style="font-family:'IBM Plex Mono',monospace; color:#9f1239; font-size:14px; font-weight:800; text-decoration:line-through;">₹1,95,000/mo</span>
-              </div>
-              <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
-                <span style="color:#059669; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">New DISCOM Bill</span>
-                <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">₹1,39,000/mo</span>
-              </div>
-            </div>
-            <div style="background:linear-gradient(135deg, #0f172a 0%, #0284c7 100%); padding:11px 14px; border-radius:12px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(2,132,199,0.2);">
-              <span style="color:#a7f3d0; font-size:11.5px;">⚡ 21 Industrial Cards</span>
-              <strong style="color:#ffffff; font-size:13.5px;">Saved ₹56,000/mo (28.7%)</strong>
-            </div>
-          </div>
-
-          <!-- CARD 5: STEEL RE-ROLLING MILL -->
-          <div class="vsind-case-card" style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
-            <!-- MINI SLIDER -->
-            <div class="vs-card-media-slider">
-              <div class="vs-card-media-slides">
-                <div class="vs-card-media-slide active">
-                  <img src="{% if section.settings.case_5_img_1 != blank %}{{ section.settings.case_5_img_1 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Blast Furnace" loading="lazy">
-                  <span class="vs-media-tag"><i class="fa-solid fa-fire"></i> Blast Furnace</span>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
+                <div style="background:#fff1f2; border:1px solid #fecdd3; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                  <span style="color:#e11d48; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">Old DISCOM Bill</span>
+                  <span style="font-family:'IBM Plex Mono',monospace; color:#9f1239; font-size:14px; font-weight:800; text-decoration:line-through;">₹5,50,000/mo</span>
                 </div>
-                <div class="vs-card-media-slide">
-                  <img src="{% if section.settings.case_5_img_2 != blank %}{{ section.settings.case_5_img_2 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1535813547-99c456a41d4a?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Steel Rolling Mill" loading="lazy">
-                  <span class="vs-media-tag"><i class="fa-solid fa-industry"></i> Rolling Mill</span>
-                </div>
-                <div class="vs-card-media-slide">
-                  <img src="{% if section.settings.case_5_img_3 != blank %}{{ section.settings.case_5_img_3 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Induction Plant" loading="lazy">
-                  <span class="vs-media-tag"><i class="fa-solid fa-bolt"></i> Induction Melt Yard</span>
+                <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                  <span style="color:#059669; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">New DISCOM Bill</span>
+                  <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">₹3,96,000/mo</span>
                 </div>
               </div>
-              <button type="button" class="vs-media-arrow vs-media-prev" onclick="vsSlideMedia(this, -1)" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
-              <button type="button" class="vs-media-arrow vs-media-next" onclick="vsSlideMedia(this, 1)" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
-              <div class="vs-media-dots-bar">
-                <span class="vs-media-dot active" onclick="vsGoMediaSlide(this, 0)"></span>
-                <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 1)"></span>
-                <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 2)"></span>
+              <div style="background:linear-gradient(135deg, #0f172a 0%, #0284c7 100%); padding:11px 14px; border-radius:12px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(2,132,199,0.2);">
+                <span style="color:#a7f3d0; font-size:11.5px;">⚡ 60 Industrial Cards</span>
+                <strong style="color:#ffffff; font-size:13.5px;">Saved ₹1,54,000/mo (28.0%)</strong>
               </div>
-              <div class="vs-media-counter"><span class="vs-media-cur">1</span>/<span class="vs-media-tot">3</span></div>
             </div>
 
-            <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
-              <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #0284c7; box-shadow:0 4px 10px rgba(2,132,199,0.25);">
-                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=150&q=80" alt="Managing Director" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'vidhyut-customer-call-support.jpg' | asset_url }}';">
+            <!-- CARD 4: ROBOTIC AUTO WELDING -->
+            <div class="vsind-case-card" style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
+              <!-- MINI SLIDER -->
+              <div class="vs-card-media-slider">
+                <div class="vs-card-media-slides">
+                  <div class="vs-card-media-slide active">
+                    <img src="https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?auto=format&fit=crop&w=700&q=80" alt="Robotic Welding" loading="lazy">
+                    <span class="vs-media-tag"><i class="fa-solid fa-robot"></i> Robotic Welding</span>
+                  </div>
+                  <div class="vs-card-media-slide">
+                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=700&q=80" alt="5-Axis CNC" loading="lazy">
+                    <span class="vs-media-tag"><i class="fa-solid fa-gears"></i> 5-Axis CNC</span>
+                  </div>
+                  <div class="vs-card-media-slide">
+                    <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=700&q=80" alt="Auto Assembly Line" loading="lazy">
+                    <span class="vs-media-tag"><i class="fa-solid fa-car"></i> Assembly Line</span>
+                  </div>
+                </div>
+                <button type="button" class="vs-media-arrow vs-media-prev" onclick="vsSlideMedia(this, -1)" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+                <button type="button" class="vs-media-arrow vs-media-next" onclick="vsSlideMedia(this, 1)" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+                <div class="vs-media-dots-bar">
+                  <span class="vs-media-dot active" onclick="vsGoMediaSlide(this, 0)"></span>
+                  <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 1)"></span>
+                  <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 2)"></span>
+                </div>
+                <div class="vs-media-counter"><span class="vs-media-cur">1</span>/<span class="vs-media-tot">3</span></div>
               </div>
-              <div>
-                <h4 style="font-size:15px; font-weight:800; color:#0f172a; margin:0 0 2px 0; font-family:'Baloo 2',sans-serif;">Mahalaxmi Steel Re-Rolling Mill <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></h4>
-                <div style="font-size:12px; color:#64748b; font-weight:600;"><i class="fa-solid fa-location-dot" style="color:#0284c7;"></i> 480 KW Heavy Load, Raipur</div>
-              </div>
-            </div>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
-              <div style="background:#fff1f2; border:1px solid #fecdd3; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
-                <span style="color:#e11d48; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">Old DISCOM Bill</span>
-                <span style="font-family:'IBM Plex Mono',monospace; color:#9f1239; font-size:14px; font-weight:800; text-decoration:line-through;">₹7,80,000/mo</span>
-              </div>
-              <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
-                <span style="color:#059669; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">New DISCOM Bill</span>
-                <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">₹5,60,000/mo</span>
-              </div>
-            </div>
-            <div style="background:linear-gradient(135deg, #0f172a 0%, #0284c7 100%); padding:11px 14px; border-radius:12px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(2,132,199,0.2);">
-              <span style="color:#a7f3d0; font-size:11.5px;">⚡ 82 Industrial Cards</span>
-              <strong style="color:#ffffff; font-size:13.5px;">Saved ₹2,20,000/mo (28.2%)</strong>
-            </div>
-          </div>
 
-          <!-- CARD 6: FOOD PROCESSING CONVEYOR -->
-          <div class="vsind-case-card" style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
-            <!-- MINI SLIDER -->
-            <div class="vs-card-media-slider">
-              <div class="vs-card-media-slides">
-                <div class="vs-card-media-slide active">
-                  <img src="{% if section.settings.case_6_img_1 != blank %}{{ section.settings.case_6_img_1 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Packaging Line" loading="lazy">
-                  <span class="vs-media-tag"><i class="fa-solid fa-industry"></i> Bottling & Packaging</span>
+              <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+                <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #0284c7; box-shadow:0 4px 10px rgba(2,132,199,0.25);">
+                  <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=150&q=80" alt="Engineering Head" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'hero-advisor-calculator.jpg' | asset_url }}';">
                 </div>
-                <div class="vs-card-media-slide">
-                  <img src="{% if section.settings.case_6_img_2 != blank %}{{ section.settings.case_6_img_2 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1595246140625-573b715d11dc?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Sorting Unit" loading="lazy">
-                  <span class="vs-media-tag"><i class="fa-solid fa-apple-whole"></i> Sorting Unit</span>
-                </div>
-                <div class="vs-card-media-slide">
-                  <img src="{% if section.settings.case_6_img_3 != blank %}{{ section.settings.case_6_img_3 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Cold Storage" loading="lazy">
-                  <span class="vs-media-tag"><i class="fa-solid fa-temperature-arrow-down"></i> Cold Storage Grid</span>
+                <div>
+                  <h4 style="font-size:15px; font-weight:800; color:#0f172a; margin:0 0 2px 0; font-family:'Baloo 2',sans-serif;">Apex Auto Ancillary & CNC <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></h4>
+                  <div style="font-size:12px; color:#64748b; font-weight:600;"><i class="fa-solid fa-location-dot" style="color:#0284c7;"></i> 120 KW Load, Manesar Haryana</div>
                 </div>
               </div>
-              <button type="button" class="vs-media-arrow vs-media-prev" onclick="vsSlideMedia(this, -1)" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
-              <button type="button" class="vs-media-arrow vs-media-next" onclick="vsSlideMedia(this, 1)" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
-              <div class="vs-media-dots-bar">
-                <span class="vs-media-dot active" onclick="vsGoMediaSlide(this, 0)"></span>
-                <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 1)"></span>
-                <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 2)"></span>
-              </div>
-              <div class="vs-media-counter"><span class="vs-media-cur">1</span>/<span class="vs-media-tot">3</span></div>
-            </div>
-
-            <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
-              <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #0284c7; box-shadow:0 4px 10px rgba(2,132,199,0.25);">
-                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80" alt="Quality Director" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'wvs-card-guide-woman.jpg' | asset_url }}';">
-              </div>
-              <div>
-                <h4 style="font-size:15px; font-weight:800; color:#0f172a; margin:0 0 2px 0; font-family:'Baloo 2',sans-serif;">Agro Fresh Food Processing <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></h4>
-                <div style="font-size:12px; color:#64748b; font-weight:600;"><i class="fa-solid fa-location-dot" style="color:#0284c7;"></i> 75 KW Load, Nashik</div>
-              </div>
-            </div>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
-              <div style="background:#fff1f2; border:1px solid #fecdd3; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
-                <span style="color:#e11d48; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">Old DISCOM Bill</span>
-                <span style="font-family:'IBM Plex Mono',monospace; color:#9f1239; font-size:14px; font-weight:800; text-decoration:line-through;">₹1,15,000/mo</span>
-              </div>
-              <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
-                <span style="color:#059669; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">New DISCOM Bill</span>
-                <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">₹82,000/mo</span>
-              </div>
-            </div>
-            <div style="background:linear-gradient(135deg, #0f172a 0%, #0284c7 100%); padding:11px 14px; border-radius:12px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(2,132,199,0.2);">
-              <span style="color:#a7f3d0; font-size:11.5px;">⚡ 13 Industrial Cards</span>
-              <strong style="color:#ffffff; font-size:13.5px;">Saved ₹33,000/mo (28.7%)</strong>
-            </div>
-          </div>
-
-          <!-- CARD 7: PACKAGING LOGISTICS PLANT -->
-          <div class="vsind-case-card" style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
-            <!-- MINI SLIDER -->
-            <div class="vs-card-media-slider">
-              <div class="vs-card-media-slides">
-                <div class="vs-card-media-slide active">
-                  <img src="{% if section.settings.case_7_img_1 != blank %}{{ section.settings.case_7_img_1 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Corrugation Unit" loading="lazy">
-                  <span class="vs-media-tag"><i class="fa-solid fa-box"></i> Corrugation Unit</span>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
+                <div style="background:#fff1f2; border:1px solid #fecdd3; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                  <span style="color:#e11d48; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">Old DISCOM Bill</span>
+                  <span style="font-family:'IBM Plex Mono',monospace; color:#9f1239; font-size:14px; font-weight:800; text-decoration:line-through;">₹1,95,000/mo</span>
                 </div>
-                <div class="vs-card-media-slide">
-                  <img src="{% if section.settings.case_7_img_2 != blank %}{{ section.settings.case_7_img_2 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Paper Slitter" loading="lazy">
-                  <span class="vs-media-tag"><i class="fa-solid fa-scroll"></i> Slitting Machine</span>
-                </div>
-                <div class="vs-card-media-slide">
-                  <img src="{% if section.settings.case_7_img_3 != blank %}{{ section.settings.case_7_img_3 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1586528116493-a029325540fa?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Finished Goods" loading="lazy">
-                  <span class="vs-media-tag"><i class="fa-solid fa-warehouse"></i> Packing & Dispatch</span>
+                <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                  <span style="color:#059669; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">New DISCOM Bill</span>
+                  <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">₹1,39,000/mo</span>
                 </div>
               </div>
-              <button type="button" class="vs-media-arrow vs-media-prev" onclick="vsSlideMedia(this, -1)" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
-              <button type="button" class="vs-media-arrow vs-media-next" onclick="vsSlideMedia(this, 1)" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
-              <div class="vs-media-dots-bar">
-                <span class="vs-media-dot active" onclick="vsGoMediaSlide(this, 0)"></span>
-                <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 1)"></span>
-                <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 2)"></span>
+              <div style="background:linear-gradient(135deg, #0f172a 0%, #0284c7 100%); padding:11px 14px; border-radius:12px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(2,132,199,0.2);">
+                <span style="color:#a7f3d0; font-size:11.5px;">⚡ 21 Industrial Cards</span>
+                <strong style="color:#ffffff; font-size:13.5px;">Saved ₹56,000/mo (28.7%)</strong>
               </div>
-              <div class="vs-media-counter"><span class="vs-media-cur">1</span>/<span class="vs-media-tot">3</span></div>
             </div>
 
-            <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
-              <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #0284c7; box-shadow:0 4px 10px rgba(2,132,199,0.25);">
-                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=150&q=80" alt="Production Head" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'indian_entrepreneur.jpg' | asset_url }}';">
+            <!-- CARD 5: STEEL RE-ROLLING MILL -->
+            <div class="vsind-case-card" style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
+              <!-- MINI SLIDER -->
+              <div class="vs-card-media-slider">
+                <div class="vs-card-media-slides">
+                  <div class="vs-card-media-slide active">
+                    <img src="https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=700&q=80" alt="Blast Furnace" loading="lazy">
+                    <span class="vs-media-tag"><i class="fa-solid fa-fire"></i> Blast Furnace</span>
+                  </div>
+                  <div class="vs-card-media-slide">
+                    <img src="https://images.unsplash.com/photo-1535813547-99c456a41d4a?auto=format&fit=crop&w=700&q=80" alt="Steel Rolling Mill" loading="lazy">
+                    <span class="vs-media-tag"><i class="fa-solid fa-industry"></i> Rolling Mill</span>
+                  </div>
+                  <div class="vs-card-media-slide">
+                    <img src="https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?auto=format&fit=crop&w=700&q=80" alt="Induction Plant" loading="lazy">
+                    <span class="vs-media-tag"><i class="fa-solid fa-bolt"></i> Induction Melt Yard</span>
+                  </div>
+                </div>
+                <button type="button" class="vs-media-arrow vs-media-prev" onclick="vsSlideMedia(this, -1)" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+                <button type="button" class="vs-media-arrow vs-media-next" onclick="vsSlideMedia(this, 1)" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+                <div class="vs-media-dots-bar">
+                  <span class="vs-media-dot active" onclick="vsGoMediaSlide(this, 0)"></span>
+                  <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 1)"></span>
+                  <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 2)"></span>
+                </div>
+                <div class="vs-media-counter"><span class="vs-media-cur">1</span>/<span class="vs-media-tot">3</span></div>
               </div>
-              <div>
-                <h4 style="font-size:15px; font-weight:800; color:#0f172a; margin:0 0 2px 0; font-family:'Baloo 2',sans-serif;">Shree Balaji Packaging Mill <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></h4>
-                <div style="font-size:12px; color:#64748b; font-weight:600;"><i class="fa-solid fa-location-dot" style="color:#0284c7;"></i> 220 KW Load, Vapi Gujarat</div>
-              </div>
-            </div>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
-              <div style="background:#fff1f2; border:1px solid #fecdd3; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
-                <span style="color:#e11d48; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">Old DISCOM Bill</span>
-                <span style="font-family:'IBM Plex Mono',monospace; color:#9f1239; font-size:14px; font-weight:800; text-decoration:line-through;">₹3,40,000/mo</span>
-              </div>
-              <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
-                <span style="color:#059669; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">New DISCOM Bill</span>
-                <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">₹2,44,000/mo</span>
-              </div>
-            </div>
-            <div style="background:linear-gradient(135deg, #0f172a 0%, #0284c7 100%); padding:11px 14px; border-radius:12px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(2,132,199,0.2);">
-              <span style="color:#a7f3d0; font-size:11.5px;">⚡ 38 Industrial Cards</span>
-              <strong style="color:#ffffff; font-size:13.5px;">Saved ₹96,000/mo (28.2%)</strong>
-            </div>
-          </div>
 
-          <!-- CARD 8: CHEMICAL DISTILLATION TOWERS -->
-          <div class="vsind-case-card" style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
-            <!-- MINI SLIDER -->
-            <div class="vs-card-media-slider">
-              <div class="vs-card-media-slides">
-                <div class="vs-card-media-slide active">
-                  <img src="{% if section.settings.case_8_img_1 != blank %}{{ section.settings.case_8_img_1 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Distillation Columns" loading="lazy">
-                  <span class="vs-media-tag"><i class="fa-solid fa-industry"></i> Distillation Columns</span>
+              <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+                <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #0284c7; box-shadow:0 4px 10px rgba(2,132,199,0.25);">
+                  <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=150&q=80" alt="Managing Director" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'vidhyut-customer-call-support.jpg' | asset_url }}';">
                 </div>
-                <div class="vs-card-media-slide">
-                  <img src="{% if section.settings.case_8_img_2 != blank %}{{ section.settings.case_8_img_2 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1516937941344-00b4e0337589?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Reactor Units" loading="lazy">
-                  <span class="vs-media-tag"><i class="fa-solid fa-flask"></i> Reactor Units</span>
-                </div>
-                <div class="vs-card-media-slide">
-                  <img src="{% if section.settings.case_8_img_3 != blank %}{{ section.settings.case_8_img_3 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Boiler & Utilities" loading="lazy">
-                  <span class="vs-media-tag"><i class="fa-solid fa-gauge-high"></i> Boiler & Utilities</span>
+                <div>
+                  <h4 style="font-size:15px; font-weight:800; color:#0f172a; margin:0 0 2px 0; font-family:'Baloo 2',sans-serif;">Mahalaxmi Steel Re-Rolling Mill <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></h4>
+                  <div style="font-size:12px; color:#64748b; font-weight:600;"><i class="fa-solid fa-location-dot" style="color:#0284c7;"></i> 480 KW Heavy Load, Raipur</div>
                 </div>
               </div>
-              <button type="button" class="vs-media-arrow vs-media-prev" onclick="vsSlideMedia(this, -1)" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
-              <button type="button" class="vs-media-arrow vs-media-next" onclick="vsSlideMedia(this, 1)" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
-              <div class="vs-media-dots-bar">
-                <span class="vs-media-dot active" onclick="vsGoMediaSlide(this, 0)"></span>
-                <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 1)"></span>
-                <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 2)"></span>
-              </div>
-              <div class="vs-media-counter"><span class="vs-media-cur">1</span>/<span class="vs-media-tot">3</span></div>
-            </div>
-
-            <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
-              <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #0284c7; box-shadow:0 4px 10px rgba(2,132,199,0.25);">
-                <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=150&q=80" alt="Safety Director" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'wvs-pointing-woman.jpg' | asset_url }}';">
-              </div>
-              <div>
-                <h4 style="font-size:15px; font-weight:800; color:#0f172a; margin:0 0 2px 0; font-family:'Baloo 2',sans-serif;">Kaveri Chemical Complex <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></h4>
-                <div style="font-size:12px; color:#64748b; font-weight:600;"><i class="fa-solid fa-location-dot" style="color:#0284c7;"></i> 310 KW Heavy Load, Ranipet</div>
-              </div>
-            </div>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
-              <div style="background:#fff1f2; border:1px solid #fecdd3; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
-                <span style="color:#e11d48; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">Old DISCOM Bill</span>
-                <span style="font-family:'IBM Plex Mono',monospace; color:#9f1239; font-size:14px; font-weight:800; text-decoration:line-through;">₹4,90,000/mo</span>
-              </div>
-              <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
-                <span style="color:#059669; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">New DISCOM Bill</span>
-                <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">₹3,51,000/mo</span>
-              </div>
-            </div>
-            <div style="background:linear-gradient(135deg, #0f172a 0%, #0284c7 100%); padding:11px 14px; border-radius:12px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(2,132,199,0.2);">
-              <span style="color:#a7f3d0; font-size:11.5px;">⚡ 53 Industrial Cards</span>
-              <strong style="color:#ffffff; font-size:13.5px;">Saved ₹1,39,000/mo (28.4%)</strong>
-            </div>
-          </div>
-
-          <!-- CARD 9: HEAVY CNC WORKSHOP -->
-          <div class="vsind-case-card" style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
-            <!-- MINI SLIDER -->
-            <div class="vs-card-media-slider">
-              <div class="vs-card-media-slides">
-                <div class="vs-card-media-slide active">
-                  <img src="{% if section.settings.case_9_img_1 != blank %}{{ section.settings.case_9_img_1 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=700&q=80{% endif %}" alt="CNC Machining" loading="lazy">
-                  <span class="vs-media-tag"><i class="fa-solid fa-gears"></i> CNC Machining</span>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
+                <div style="background:#fff1f2; border:1px solid #fecdd3; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                  <span style="color:#e11d48; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">Old DISCOM Bill</span>
+                  <span style="font-family:'IBM Plex Mono',monospace; color:#9f1239; font-size:14px; font-weight:800; text-decoration:line-through;">₹7,80,000/mo</span>
                 </div>
-                <div class="vs-card-media-slide">
-                  <img src="{% if section.settings.case_9_img_2 != blank %}{{ section.settings.case_9_img_2 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Heavy Metal Casting" loading="lazy">
-                  <span class="vs-media-tag"><i class="fa-solid fa-fire"></i> Heavy Casting</span>
-                </div>
-                <div class="vs-card-media-slide">
-                  <img src="{% if section.settings.case_9_img_3 != blank %}{{ section.settings.case_9_img_3 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Foundry Bay" loading="lazy">
-                  <span class="vs-media-tag"><i class="fa-solid fa-industry"></i> Foundry Bay</span>
+                <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                  <span style="color:#059669; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">New DISCOM Bill</span>
+                  <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">₹5,60,000/mo</span>
                 </div>
               </div>
-              <button type="button" class="vs-media-arrow vs-media-prev" onclick="vsSlideMedia(this, -1)" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
-              <button type="button" class="vs-media-arrow vs-media-next" onclick="vsSlideMedia(this, 1)" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
-              <div class="vs-media-dots-bar">
-                <span class="vs-media-dot active" onclick="vsGoMediaSlide(this, 0)"></span>
-                <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 1)"></span>
-                <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 2)"></span>
+              <div style="background:linear-gradient(135deg, #0f172a 0%, #0284c7 100%); padding:11px 14px; border-radius:12px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(2,132,199,0.2);">
+                <span style="color:#a7f3d0; font-size:11.5px;">⚡ 82 Industrial Cards</span>
+                <strong style="color:#ffffff; font-size:13.5px;">Saved ₹2,20,000/mo (28.2%)</strong>
               </div>
-              <div class="vs-media-counter"><span class="vs-media-cur">1</span>/<span class="vs-media-tot">3</span></div>
             </div>
 
-            <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
-              <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #0284c7; box-shadow:0 4px 10px rgba(2,132,199,0.25);">
-                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80" alt="General Manager" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'wvs-pointing-down-woman.jpg' | asset_url }}';">
+            <!-- CARD 6: FOOD PROCESSING CONVEYOR -->
+            <div class="vsind-case-card" style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
+              <!-- MINI SLIDER -->
+              <div class="vs-card-media-slider">
+                <div class="vs-card-media-slides">
+                  <div class="vs-card-media-slide active">
+                    <img src="https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&fit=crop&w=700&q=80" alt="Packaging Line" loading="lazy">
+                    <span class="vs-media-tag"><i class="fa-solid fa-industry"></i> Bottling & Packaging</span>
+                  </div>
+                  <div class="vs-card-media-slide">
+                    <img src="https://images.unsplash.com/photo-1595246140625-573b715d11dc?auto=format&fit=crop&w=700&q=80" alt="Sorting Unit" loading="lazy">
+                    <span class="vs-media-tag"><i class="fa-solid fa-apple-whole"></i> Sorting Unit</span>
+                  </div>
+                  <div class="vs-card-media-slide">
+                    <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=700&q=80" alt="Cold Storage" loading="lazy">
+                    <span class="vs-media-tag"><i class="fa-solid fa-temperature-arrow-down"></i> Cold Storage Grid</span>
+                  </div>
+                </div>
+                <button type="button" class="vs-media-arrow vs-media-prev" onclick="vsSlideMedia(this, -1)" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+                <button type="button" class="vs-media-arrow vs-media-next" onclick="vsSlideMedia(this, 1)" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+                <div class="vs-media-dots-bar">
+                  <span class="vs-media-dot active" onclick="vsGoMediaSlide(this, 0)"></span>
+                  <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 1)"></span>
+                  <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 2)"></span>
+                </div>
+                <div class="vs-media-counter"><span class="vs-media-cur">1</span>/<span class="vs-media-tot">3</span></div>
               </div>
-              <div>
-                <h4 style="font-size:15px; font-weight:800; color:#0f172a; margin:0 0 2px 0; font-family:'Baloo 2',sans-serif;">Kalyani Heavy Foundry Plant <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></h4>
-                <div style="font-size:12px; color:#64748b; font-weight:600;"><i class="fa-solid fa-location-dot" style="color:#0284c7;"></i> 520 KW Heavy Load, Coimbatore</div>
+
+              <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+                <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #0284c7; box-shadow:0 4px 10px rgba(2,132,199,0.25);">
+                  <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80" alt="Quality Director" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'wvs-card-guide-woman.jpg' | asset_url }}';">
+                </div>
+                <div>
+                  <h4 style="font-size:15px; font-weight:800; color:#0f172a; margin:0 0 2px 0; font-family:'Baloo 2',sans-serif;">Agro Fresh Food Processing <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></h4>
+                  <div style="font-size:12px; color:#64748b; font-weight:600;"><i class="fa-solid fa-location-dot" style="color:#0284c7;"></i> 75 KW Load, Nashik</div>
+                </div>
+              </div>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
+                <div style="background:#fff1f2; border:1px solid #fecdd3; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                  <span style="color:#e11d48; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">Old DISCOM Bill</span>
+                  <span style="font-family:'IBM Plex Mono',monospace; color:#9f1239; font-size:14px; font-weight:800; text-decoration:line-through;">₹1,15,000/mo</span>
+                </div>
+                <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                  <span style="color:#059669; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">New DISCOM Bill</span>
+                  <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">₹82,000/mo</span>
+                </div>
+              </div>
+              <div style="background:linear-gradient(135deg, #0f172a 0%, #0284c7 100%); padding:11px 14px; border-radius:12px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(2,132,199,0.2);">
+                <span style="color:#a7f3d0; font-size:11.5px;">⚡ 13 Industrial Cards</span>
+                <strong style="color:#ffffff; font-size:13.5px;">Saved ₹33,000/mo (28.7%)</strong>
               </div>
             </div>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
-              <div style="background:#fff1f2; border:1px solid #fecdd3; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
-                <span style="color:#e11d48; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">Old DISCOM Bill</span>
-                <span style="font-family:'IBM Plex Mono',monospace; color:#9f1239; font-size:14px; font-weight:800; text-decoration:line-through;">₹8,40,000/mo</span>
+
+            <!-- CARD 7: PACKAGING LOGISTICS PLANT -->
+            <div class="vsind-case-card" style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
+              <!-- MINI SLIDER -->
+              <div class="vs-card-media-slider">
+                <div class="vs-card-media-slides">
+                  <div class="vs-card-media-slide active">
+                    <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=700&q=80" alt="Corrugation Unit" loading="lazy">
+                    <span class="vs-media-tag"><i class="fa-solid fa-box"></i> Corrugation Unit</span>
+                  </div>
+                  <div class="vs-card-media-slide">
+                    <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=700&q=80" alt="Paper Slitter" loading="lazy">
+                    <span class="vs-media-tag"><i class="fa-solid fa-scroll"></i> Slitting Machine</span>
+                  </div>
+                  <div class="vs-card-media-slide">
+                    <img src="https://images.unsplash.com/photo-1586528116493-a029325540fa?auto=format&fit=crop&w=700&q=80" alt="Finished Goods" loading="lazy">
+                    <span class="vs-media-tag"><i class="fa-solid fa-warehouse"></i> Packing & Dispatch</span>
+                  </div>
+                </div>
+                <button type="button" class="vs-media-arrow vs-media-prev" onclick="vsSlideMedia(this, -1)" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+                <button type="button" class="vs-media-arrow vs-media-next" onclick="vsSlideMedia(this, 1)" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+                <div class="vs-media-dots-bar">
+                  <span class="vs-media-dot active" onclick="vsGoMediaSlide(this, 0)"></span>
+                  <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 1)"></span>
+                  <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 2)"></span>
+                </div>
+                <div class="vs-media-counter"><span class="vs-media-cur">1</span>/<span class="vs-media-tot">3</span></div>
               </div>
-              <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
-                <span style="color:#059669; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">New DISCOM Bill</span>
-                <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">₹6,04,000/mo</span>
+
+              <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+                <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #0284c7; box-shadow:0 4px 10px rgba(2,132,199,0.25);">
+                  <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=150&q=80" alt="Production Head" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'indian_entrepreneur.jpg' | asset_url }}';">
+                </div>
+                <div>
+                  <h4 style="font-size:15px; font-weight:800; color:#0f172a; margin:0 0 2px 0; font-family:'Baloo 2',sans-serif;">Shree Balaji Packaging Mill <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></h4>
+                  <div style="font-size:12px; color:#64748b; font-weight:600;"><i class="fa-solid fa-location-dot" style="color:#0284c7;"></i> 220 KW Load, Vapi Gujarat</div>
+                </div>
+              </div>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
+                <div style="background:#fff1f2; border:1px solid #fecdd3; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                  <span style="color:#e11d48; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">Old DISCOM Bill</span>
+                  <span style="font-family:'IBM Plex Mono',monospace; color:#9f1239; font-size:14px; font-weight:800; text-decoration:line-through;">₹3,40,000/mo</span>
+                </div>
+                <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                  <span style="color:#059669; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">New DISCOM Bill</span>
+                  <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">₹2,44,000/mo</span>
+                </div>
+              </div>
+              <div style="background:linear-gradient(135deg, #0f172a 0%, #0284c7 100%); padding:11px 14px; border-radius:12px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(2,132,199,0.2);">
+                <span style="color:#a7f3d0; font-size:11.5px;">⚡ 38 Industrial Cards</span>
+                <strong style="color:#ffffff; font-size:13.5px;">Saved ₹96,000/mo (28.2%)</strong>
               </div>
             </div>
-            <div style="background:linear-gradient(135deg, #0f172a 0%, #0284c7 100%); padding:11px 14px; border-radius:12px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(2,132,199,0.2);">
-              <span style="color:#a7f3d0; font-size:11.5px;">⚡ 89 Industrial Cards</span>
-              <strong style="color:#ffffff; font-size:13.5px;">Saved ₹2,36,000/mo (28.1%)</strong>
+
+            <!-- CARD 8: CHEMICAL DISTILLATION TOWERS -->
+            <div class="vsind-case-card" style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
+              <!-- MINI SLIDER -->
+              <div class="vs-card-media-slider">
+                <div class="vs-card-media-slides">
+                  <div class="vs-card-media-slide active">
+                    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=700&q=80" alt="Distillation Columns" loading="lazy">
+                    <span class="vs-media-tag"><i class="fa-solid fa-industry"></i> Distillation Columns</span>
+                  </div>
+                  <div class="vs-card-media-slide">
+                    <img src="https://images.unsplash.com/photo-1516937941344-00b4e0337589?auto=format&fit=crop&w=700&q=80" alt="Reactor Units" loading="lazy">
+                    <span class="vs-media-tag"><i class="fa-solid fa-flask"></i> Reactor Units</span>
+                  </div>
+                  <div class="vs-card-media-slide">
+                    <img src="https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=700&q=80" alt="Boiler & Utilities" loading="lazy">
+                    <span class="vs-media-tag"><i class="fa-solid fa-gauge-high"></i> Boiler & Utilities</span>
+                  </div>
+                </div>
+                <button type="button" class="vs-media-arrow vs-media-prev" onclick="vsSlideMedia(this, -1)" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+                <button type="button" class="vs-media-arrow vs-media-next" onclick="vsSlideMedia(this, 1)" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+                <div class="vs-media-dots-bar">
+                  <span class="vs-media-dot active" onclick="vsGoMediaSlide(this, 0)"></span>
+                  <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 1)"></span>
+                  <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 2)"></span>
+                </div>
+                <div class="vs-media-counter"><span class="vs-media-cur">1</span>/<span class="vs-media-tot">3</span></div>
+              </div>
+
+              <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+                <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #0284c7; box-shadow:0 4px 10px rgba(2,132,199,0.25);">
+                  <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=150&q=80" alt="Safety Director" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'wvs-pointing-woman.jpg' | asset_url }}';">
+                </div>
+                <div>
+                  <h4 style="font-size:15px; font-weight:800; color:#0f172a; margin:0 0 2px 0; font-family:'Baloo 2',sans-serif;">Kaveri Chemical Complex <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></h4>
+                  <div style="font-size:12px; color:#64748b; font-weight:600;"><i class="fa-solid fa-location-dot" style="color:#0284c7;"></i> 310 KW Heavy Load, Ranipet</div>
+                </div>
+              </div>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
+                <div style="background:#fff1f2; border:1px solid #fecdd3; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                  <span style="color:#e11d48; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">Old DISCOM Bill</span>
+                  <span style="font-family:'IBM Plex Mono',monospace; color:#9f1239; font-size:14px; font-weight:800; text-decoration:line-through;">₹4,90,000/mo</span>
+                </div>
+                <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                  <span style="color:#059669; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">New DISCOM Bill</span>
+                  <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">₹3,51,000/mo</span>
+                </div>
+              </div>
+              <div style="background:linear-gradient(135deg, #0f172a 0%, #0284c7 100%); padding:11px 14px; border-radius:12px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(2,132,199,0.2);">
+                <span style="color:#a7f3d0; font-size:11.5px;">⚡ 53 Industrial Cards</span>
+                <strong style="color:#ffffff; font-size:13.5px;">Saved ₹1,39,000/mo (28.4%)</strong>
+              </div>
             </div>
-          </div>
+
+            <!-- CARD 9: HEAVY CNC WORKSHOP -->
+            <div class="vsind-case-card" style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
+              <!-- MINI SLIDER -->
+              <div class="vs-card-media-slider">
+                <div class="vs-card-media-slides">
+                  <div class="vs-card-media-slide active">
+                    <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=700&q=80" alt="CNC Machining" loading="lazy">
+                    <span class="vs-media-tag"><i class="fa-solid fa-gears"></i> CNC Machining</span>
+                  </div>
+                  <div class="vs-card-media-slide">
+                    <img src="https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=700&q=80" alt="Heavy Metal Casting" loading="lazy">
+                    <span class="vs-media-tag"><i class="fa-solid fa-fire"></i> Heavy Casting</span>
+                  </div>
+                  <div class="vs-card-media-slide">
+                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=700&q=80" alt="Foundry Bay" loading="lazy">
+                    <span class="vs-media-tag"><i class="fa-solid fa-industry"></i> Foundry Bay</span>
+                  </div>
+                </div>
+                <button type="button" class="vs-media-arrow vs-media-prev" onclick="vsSlideMedia(this, -1)" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+                <button type="button" class="vs-media-arrow vs-media-next" onclick="vsSlideMedia(this, 1)" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+                <div class="vs-media-dots-bar">
+                  <span class="vs-media-dot active" onclick="vsGoMediaSlide(this, 0)"></span>
+                  <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 1)"></span>
+                  <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 2)"></span>
+                </div>
+                <div class="vs-media-counter"><span class="vs-media-cur">1</span>/<span class="vs-media-tot">3</span></div>
+              </div>
+
+              <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+                <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #0284c7; box-shadow:0 4px 10px rgba(2,132,199,0.25);">
+                  <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80" alt="General Manager" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'wvs-pointing-down-woman.jpg' | asset_url }}';">
+                </div>
+                <div>
+                  <h4 style="font-size:15px; font-weight:800; color:#0f172a; margin:0 0 2px 0; font-family:'Baloo 2',sans-serif;">Kalyani Heavy Foundry Plant <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></h4>
+                  <div style="font-size:12px; color:#64748b; font-weight:600;"><i class="fa-solid fa-location-dot" style="color:#0284c7;"></i> 520 KW Heavy Load, Coimbatore</div>
+                </div>
+              </div>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
+                <div style="background:#fff1f2; border:1px solid #fecdd3; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                  <span style="color:#e11d48; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">Old DISCOM Bill</span>
+                  <span style="font-family:'IBM Plex Mono',monospace; color:#9f1239; font-size:14px; font-weight:800; text-decoration:line-through;">₹8,40,000/mo</span>
+                </div>
+                <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                  <span style="color:#059669; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">New DISCOM Bill</span>
+                  <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">₹6,04,000/mo</span>
+                </div>
+              </div>
+              <div style="background:linear-gradient(135deg, #0f172a 0%, #0284c7 100%); padding:11px 14px; border-radius:12px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(2,132,199,0.2);">
+                <span style="color:#a7f3d0; font-size:11.5px;">⚡ 89 Industrial Cards</span>
+                <strong style="color:#ffffff; font-size:13.5px;">Saved ₹2,36,000/mo (28.1%)</strong>
+              </div>
+            </div>
+          {% endif %}
         </div>
 
         <!-- MOBILE SLIDER DOTS -->
@@ -2765,54 +2844,32 @@ den;
     { "type": "image_picker", "id": "ind_mcb_img_17", "label": "Industrial LT Image 17" },
     { "type": "image_picker", "id": "ind_mcb_img_18", "label": "Industrial LT Image 18" },
     { "type": "image_picker", "id": "ind_mcb_img_19", "label": "Industrial LT Image 19" },
-    { "type": "image_picker", "id": "ind_mcb_img_20", "label": "Industrial LT Image 20" },
-
-    { "type": "header", "content": "Industrial Worked Examples - Card 1 (Plastics)" },
-    { "type": "image_picker", "id": "case_1_img_1", "label": "Card 1: Slide 1 Image" },
-    { "type": "image_picker", "id": "case_1_img_2", "label": "Card 1: Slide 2 Image" },
-    { "type": "image_picker", "id": "case_1_img_3", "label": "Card 1: Slide 3 Image" },
-
-    { "type": "header", "content": "Industrial Worked Examples - Card 2 (Textile)" },
-    { "type": "image_picker", "id": "case_2_img_1", "label": "Card 2: Slide 1 Image" },
-    { "type": "image_picker", "id": "case_2_img_2", "label": "Card 2: Slide 2 Image" },
-    { "type": "image_picker", "id": "case_2_img_3", "label": "Card 2: Slide 3 Image" },
-
-    { "type": "header", "content": "Industrial Worked Examples - Card 3 (Pharma)" },
-    { "type": "image_picker", "id": "case_3_img_1", "label": "Card 3: Slide 1 Image" },
-    { "type": "image_picker", "id": "case_3_img_2", "label": "Card 3: Slide 2 Image" },
-    { "type": "image_picker", "id": "case_3_img_3", "label": "Card 3: Slide 3 Image" },
-
-    { "type": "header", "content": "Industrial Worked Examples - Card 4 (Auto & CNC)" },
-    { "type": "image_picker", "id": "case_4_img_1", "label": "Card 4: Slide 1 Image" },
-    { "type": "image_picker", "id": "case_4_img_2", "label": "Card 4: Slide 2 Image" },
-    { "type": "image_picker", "id": "case_4_img_3", "label": "Card 4: Slide 3 Image" },
-
-    { "type": "header", "content": "Industrial Worked Examples - Card 5 (Steel Mill)" },
-    { "type": "image_picker", "id": "case_5_img_1", "label": "Card 5: Slide 1 Image" },
-    { "type": "image_picker", "id": "case_5_img_2", "label": "Card 5: Slide 2 Image" },
-    { "type": "image_picker", "id": "case_5_img_3", "label": "Card 5: Slide 3 Image" },
-
-    { "type": "header", "content": "Industrial Worked Examples - Card 6 (Food Processing)" },
-    { "type": "image_picker", "id": "case_6_img_1", "label": "Card 6: Slide 1 Image" },
-    { "type": "image_picker", "id": "case_6_img_2", "label": "Card 6: Slide 2 Image" },
-    { "type": "image_picker", "id": "case_6_img_3", "label": "Card 6: Slide 3 Image" },
-
-    { "type": "header", "content": "Industrial Worked Examples - Card 7 (Packaging)" },
-    { "type": "image_picker", "id": "case_7_img_1", "label": "Card 7: Slide 1 Image" },
-    { "type": "image_picker", "id": "case_7_img_2", "label": "Card 7: Slide 2 Image" },
-    { "type": "image_picker", "id": "case_7_img_3", "label": "Card 7: Slide 3 Image" },
-
-    { "type": "header", "content": "Industrial Worked Examples - Card 8 (Chemical Complex)" },
-    { "type": "image_picker", "id": "case_8_img_1", "label": "Card 8: Slide 1 Image" },
-    { "type": "image_picker", "id": "case_8_img_2", "label": "Card 8: Slide 2 Image" },
-    { "type": "image_picker", "id": "case_8_img_3", "label": "Card 8: Slide 3 Image" },
-
-    { "type": "header", "content": "Industrial Worked Examples - Card 9 (Heavy Foundry)" },
-    { "type": "image_picker", "id": "case_9_img_1", "label": "Card 9: Slide 1 Image" },
-    { "type": "image_picker", "id": "case_9_img_2", "label": "Card 9: Slide 2 Image" },
-    { "type": "image_picker", "id": "case_9_img_3", "label": "Card 9: Slide 3 Image" }
+    { "type": "image_picker", "id": "ind_mcb_img_20", "label": "Industrial LT Image 20" }
   ],
   "blocks": [
+    {
+      "type": "industrial_case_study",
+      "name": "Industrial Worked Example",
+      "limit": 30,
+      "settings": [
+        { "type": "header", "content": "Mini Slider Images (3 Photos)" },
+        { "type": "image_picker", "id": "image_1", "label": "Photo 1 (Slide 1)" },
+        { "type": "text", "id": "tag_1", "label": "Photo 1 Tag", "default": "Primary Machinery" },
+        { "type": "image_picker", "id": "image_2", "label": "Photo 2 (Slide 2)" },
+        { "type": "text", "id": "tag_2", "label": "Photo 2 Tag", "default": "Automation / Drive" },
+        { "type": "image_picker", "id": "image_3", "label": "Photo 3 (Slide 3)" },
+        { "type": "text", "id": "tag_3", "label": "Photo 3 Tag", "default": "Distribution Panel" },
+        { "type": "header", "content": "Plant & Client Details" },
+        { "type": "image_picker", "id": "avatar_image", "label": "Client / Plant Head Avatar" },
+        { "type": "text", "id": "company_name", "label": "Factory / Plant Name", "default": "Precision Plastics & Molding" },
+        { "type": "text", "id": "location_load", "label": "Load & Location", "default": "90 KW Load, GIDC Ahmedabad" },
+        { "type": "header", "content": "Electricity Bills & Savings" },
+        { "type": "text", "id": "old_bill", "label": "Old DISCOM Bill", "default": "₹1,40,000/mo" },
+        { "type": "text", "id": "new_bill", "label": "New DISCOM Bill", "default": "₹99,400/mo" },
+        { "type": "text", "id": "cards_count", "label": "Cards Installed Text", "default": "⚡ 16 Industrial Cards" },
+        { "type": "text", "id": "savings_summary", "label": "Savings Summary Text", "default": "Saved ₹40,600/mo (29.0%)" }
+      ]
+    },
     {
       "type": "ind_mcb_installation",
       "name": "Industrial LT Photo",
@@ -2841,6 +2898,132 @@ den;
     {
       "name": "Industrial Cards Layout",
       "blocks": [
+        {
+          "type": "industrial_case_study",
+          "settings": {
+            "company_name": "Precision Plastics & Molding",
+            "location_load": "90 KW Load, GIDC Ahmedabad",
+            "tag_1": "Injection Molding",
+            "tag_2": "Robotic Line",
+            "tag_3": "125A Feeder Panel",
+            "old_bill": "₹1,40,000/mo",
+            "new_bill": "₹99,400/mo",
+            "cards_count": "⚡ 16 Industrial Cards",
+            "savings_summary": "Saved ₹40,600/mo (29.0%)"
+          }
+        },
+        {
+          "type": "industrial_case_study",
+          "settings": {
+            "company_name": "Surat Textile Weaving Mill",
+            "location_load": "180 KW Load, Surat",
+            "tag_1": "Weaving Looms",
+            "tag_2": "Yarn Spinning",
+            "tag_3": "Drive Motors",
+            "old_bill": "₹2,80,000/mo",
+            "new_bill": "₹2,01,600/mo",
+            "cards_count": "⚡ 31 Industrial Cards",
+            "savings_summary": "Saved ₹78,400/mo (28.0%)"
+          }
+        },
+        {
+          "type": "industrial_case_study",
+          "settings": {
+            "company_name": "Pharma Cold Chain Plant",
+            "location_load": "350 KW Load, Baddi HP",
+            "tag_1": "Cleanroom Plant",
+            "tag_2": "Chiller Compressor",
+            "tag_3": "Sterile Lab Line",
+            "old_bill": "₹5,50,000/mo",
+            "new_bill": "₹3,96,000/mo",
+            "cards_count": "⚡ 60 Industrial Cards",
+            "savings_summary": "Saved ₹1,54,000/mo (28.0%)"
+          }
+        },
+        {
+          "type": "industrial_case_study",
+          "settings": {
+            "company_name": "Apex Auto Ancillary & CNC",
+            "location_load": "120 KW Load, Manesar Haryana",
+            "tag_1": "Robotic Welding",
+            "tag_2": "5-Axis CNC",
+            "tag_3": "Assembly Line",
+            "old_bill": "₹1,95,000/mo",
+            "new_bill": "₹1,39,000/mo",
+            "cards_count": "⚡ 21 Industrial Cards",
+            "savings_summary": "Saved ₹56,000/mo (28.7%)"
+          }
+        },
+        {
+          "type": "industrial_case_study",
+          "settings": {
+            "company_name": "Mahalaxmi Steel Re-Rolling Mill",
+            "location_load": "480 KW Heavy Load, Raipur",
+            "tag_1": "Blast Furnace",
+            "tag_2": "Rolling Mill",
+            "tag_3": "Induction Melt Yard",
+            "old_bill": "₹7,80,000/mo",
+            "new_bill": "₹5,60,000/mo",
+            "cards_count": "⚡ 82 Industrial Cards",
+            "savings_summary": "Saved ₹2,20,000/mo (28.2%)"
+          }
+        },
+        {
+          "type": "industrial_case_study",
+          "settings": {
+            "company_name": "Agro Fresh Food Processing",
+            "location_load": "75 KW Load, Nashik",
+            "tag_1": "Bottling & Packaging",
+            "tag_2": "Sorting Unit",
+            "tag_3": "Cold Storage Grid",
+            "old_bill": "₹1,15,000/mo",
+            "new_bill": "₹82,000/mo",
+            "cards_count": "⚡ 13 Industrial Cards",
+            "savings_summary": "Saved ₹33,000/mo (28.7%)"
+          }
+        },
+        {
+          "type": "industrial_case_study",
+          "settings": {
+            "company_name": "Shree Balaji Packaging Mill",
+            "location_load": "220 KW Load, Vapi Gujarat",
+            "tag_1": "Corrugation Unit",
+            "tag_2": "Slitting Machine",
+            "tag_3": "Packing & Dispatch",
+            "old_bill": "₹3,40,000/mo",
+            "new_bill": "₹2,44,000/mo",
+            "cards_count": "⚡ 38 Industrial Cards",
+            "savings_summary": "Saved ₹96,000/mo (28.2%)"
+          }
+        },
+        {
+          "type": "industrial_case_study",
+          "settings": {
+            "company_name": "Kaveri Chemical Complex",
+            "location_load": "310 KW Heavy Load, Ranipet",
+            "tag_1": "Distillation Columns",
+            "tag_2": "Reactor Units",
+            "tag_3": "Boiler & Utilities",
+            "old_bill": "₹4,90,000/mo",
+            "new_bill": "₹3,51,000/mo",
+            "cards_count": "⚡ 53 Industrial Cards",
+            "savings_summary": "Saved ₹1,39,000/mo (28.4%)"
+          }
+        },
+        {
+          "type": "industrial_case_study",
+          "settings": {
+            "company_name": "Kalyani Heavy Foundry Plant",
+            "location_load": "520 KW Heavy Load, Coimbatore",
+            "tag_1": "CNC Machining",
+            "tag_2": "Heavy Casting",
+            "tag_3": "Foundry Bay",
+            "old_bill": "₹8,40,000/mo",
+            "new_bill": "₹6,04,000/mo",
+            "cards_count": "⚡ 89 Industrial Cards",
+            "savings_summary": "Saved ₹2,36,000/mo (28.1%)"
+          }
+        },
         { "type": "ind_mcb_installation", "settings": { "title": "CNC Spindle DB Setup #1", "category": "cnc", "badge": "3-PHASE LT PANEL" } },
         { "type": "ind_mcb_installation", "settings": { "title": "CNC Spindle DB Setup #2", "category": "cnc", "badge": "3-PHASE LT PANEL" } },
         { "type": "ind_mcb_installation", "settings": { "title": "CNC Spindle DB Setup #3", "category": "cnc", "badge": "3-PHASE LT PANEL" } },

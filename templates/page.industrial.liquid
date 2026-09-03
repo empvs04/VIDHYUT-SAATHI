@@ -2005,6 +2005,84 @@ den;
       <!-- MOBILE CAROUSEL SLIDER WRAPPER -->
       <div class="vs-cases-slider-wrap" id="vsindCaseSliderWrap">
         <div class="vsind-case-grid" id="vsindCaseTrack">
+          {% assign case_blocks = section.blocks | where: "type", "industrial_case_study" %}
+          {% if case_blocks.size > 0 %}
+            {% for block in case_blocks %}
+              <div class="vsind-case-card" {{ block.shopify_attributes }} style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
+                <!-- MINI SLIDER -->
+                <div class="vs-card-media-slider">
+                  <div class="vs-card-media-slides">
+                    <div class="vs-card-media-slide active">
+                      {% if block.settings.image_1 != blank %}
+                        <img src="{{ block.settings.image_1 | image_url: width: 800 }}" alt="{{ block.settings.tag_1 | default: 'Slide 1' | escape }}" loading="lazy">
+                      {% else %}
+                        <img src="https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=700&q=80" alt="Machinery" loading="lazy">
+                      {% endif %}
+                      {% if block.settings.tag_1 != blank %}
+                        <span class="vs-media-tag"><i class="fa-solid fa-industry"></i> {{ block.settings.tag_1 }}</span>
+                      {% endif %}
+                    </div>
+                    <div class="vs-card-media-slide">
+                      {% if block.settings.image_2 != blank %}
+                        <img src="{{ block.settings.image_2 | image_url: width: 800 }}" alt="{{ block.settings.tag_2 | default: 'Slide 2' | escape }}" loading="lazy">
+                      {% else %}
+                        <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=700&q=80" alt="Automation" loading="lazy">
+                      {% endif %}
+                      {% if block.settings.tag_2 != blank %}
+                        <span class="vs-media-tag"><i class="fa-solid fa-robot"></i> {{ block.settings.tag_2 }}</span>
+                      {% endif %}
+                    </div>
+                    <div class="vs-card-media-slide">
+                      {% if block.settings.image_3 != blank %}
+                        <img src="{{ block.settings.image_3 | image_url: width: 800 }}" alt="{{ block.settings.tag_3 | default: 'Slide 3' | escape }}" loading="lazy">
+                      {% else %}
+                        <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=700&q=80" alt="Electrical Panel" loading="lazy">
+                      {% endif %}
+                      {% if block.settings.tag_3 != blank %}
+                        <span class="vs-media-tag"><i class="fa-solid fa-bolt"></i> {{ block.settings.tag_3 }}</span>
+                      {% endif %}
+                    </div>
+                  </div>
+                  <button type="button" class="vs-media-arrow vs-media-prev" onclick="vsSlideMedia(this, -1)" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+                  <button type="button" class="vs-media-arrow vs-media-next" onclick="vsSlideMedia(this, 1)" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+                  <div class="vs-media-dots-bar">
+                    <span class="vs-media-dot active" onclick="vsGoMediaSlide(this, 0)"></span>
+                    <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 1)"></span>
+                    <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 2)"></span>
+                  </div>
+                  <div class="vs-media-counter"><span class="vs-media-cur">1</span>/<span class="vs-media-tot">3</span></div>
+                </div>
+
+                <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+                  <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #0284c7; box-shadow:0 4px 10px rgba(2,132,199,0.25);">
+                    {% if block.settings.avatar_image != blank %}
+                      <img src="{{ block.settings.avatar_image | image_url: width: 150 }}" alt="Client Avatar" style="width:100%; height:100%; object-fit:cover; display:block;">
+                    {% else %}
+                      <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Client Avatar" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'wvs-happy-man.jpg' | asset_url }}';">
+                    {% endif %}
+                  </div>
+                  <div>
+                    <h4 style="font-size:15px; font-weight:800; color:#0f172a; margin:0 0 2px 0; font-family:'Baloo 2',sans-serif;">{{ block.settings.company_name | default: 'Precision Plastics & Molding' }} <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></h4>
+                    <div style="font-size:12px; color:#64748b; font-weight:600;"><i class="fa-solid fa-location-dot" style="color:#0284c7;"></i> {{ block.settings.location_load | default: '90 KW Load, GIDC Ahmedabad' }}</div>
+                  </div>
+                </div>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
+                  <div style="background:#fff1f2; border:1px solid #fecdd3; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                    <span style="color:#e11d48; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">Old DISCOM Bill</span>
+                    <span style="font-family:'IBM Plex Mono',monospace; color:#9f1239; font-size:14px; font-weight:800; text-decoration:line-through;">{{ block.settings.old_bill | default: '₹1,40,000/mo' }}</span>
+                  </div>
+                  <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                    <span style="color:#059669; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">New DISCOM Bill</span>
+                    <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">{{ block.settings.new_bill | default: '₹99,400/mo' }}</span>
+                  </div>
+                </div>
+                <div style="background:linear-gradient(135deg, #0f172a 0%, #0284c7 100%); padding:11px 14px; border-radius:12px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(2,132,199,0.2);">
+                  <span style="color:#a7f3d0; font-size:11.5px;">{{ block.settings.cards_count | default: '⚡ 16 Industrial Cards' }}</span>
+                  <strong style="color:#ffffff; font-size:13.5px;">{{ block.settings.savings_summary | default: 'Saved ₹40,600/mo (29.0%)' }}</strong>
+                </div>
+              </div>
+            {% endfor %}
+          {% else %}
           <!-- CARD 1: PLASTIC MOLDING -->
           <div class="vsind-case-card" style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
             <!-- MINI SLIDER -->
