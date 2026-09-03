@@ -874,28 +874,76 @@
   .vsres-case-card {
     background: #ffffff;
     border: 1.5px solid var(--line);
-    border-radius: 16px;
-    padding: 20px;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.025);
+    border-radius: 18px;
+    padding: 16px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.04);
     transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+  }
+  .vsres-case-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(236, 92, 10, 0.12);
+    border-color: rgba(236, 92, 10, 0.4);
+  }
+  .vsres-case-img-box {
+    position: relative;
+    width: 100%;
+    height: 185px;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 14px;
+    background: #0f172a;
+  }
+  .vsres-case-cover-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    transition: transform 0.4s ease;
+    display: block;
+  }
+  .vsres-case-card:hover .vsres-case-cover-img {
+    transform: scale(1.05);
+  }
+  .vsres-case-tag {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #4ade80;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 50px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    letter-spacing: 0.3px;
   }
   .vsres-case-header {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     margin-bottom: 12px;
   }
   .vsres-case-avatar {
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 2px solid var(--orange);
+    box-shadow: 0 2px 8px rgba(236, 92, 10, 0.25);
     background: var(--orange-t);
-    color: var(--orange);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
-    font-weight: 800;
+  }
+  .vsres-case-avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
   .vsres-case-name {
     font-size: 14.5px;
@@ -1943,12 +1991,19 @@
       <!-- MOBILE CAROUSEL SLIDER WRAPPER -->
       <div class="vs-cases-slider-wrap" id="vsresCaseSliderWrap">
         <div class="vsres-case-grid" id="vsresCaseTrack">
+          <!-- CARD 1: ROHAN MEHTA (MUMBAI) -->
           <div class="vsres-case-card">
+            <div class="vsres-case-img-box">
+              <img src="{{ 'wvs-happy-man.jpg' | asset_url }}" alt="Rohan Mehta Mumbai Home MCB Installation Savings" loading="lazy" class="vsres-case-cover-img" onerror="this.onerror=null; this.src='https://cdn.shopify.com/s/files/1/0663/8783/7093/files/VS_Card_Final_Design_Golden_1.png';">
+              <span class="vsres-case-tag"><i class="fa-solid fa-circle-check"></i> Verified DISCOM Savings</span>
+            </div>
             <div class="vsres-case-header">
-              <div class="vsres-case-avatar">R</div>
+              <div class="vsres-case-avatar">
+                <img src="{{ 'wvs-happy-man.jpg' | asset_url }}" alt="Rohan Mehta" class="vsres-case-avatar-img">
+              </div>
               <div>
                 <div class="vsres-case-name">Rohan Mehta</div>
-                <div class="vsres-case-location">2 BHK Apartment, Mumbai</div>
+                <div class="vsres-case-location"><i class="fa-solid fa-location-dot" style="color:var(--orange);"></i> 2 BHK Apartment, Mumbai</div>
               </div>
             </div>
             <div class="vsres-case-stats">
@@ -1961,12 +2016,19 @@
             </div>
           </div>
 
+          <!-- CARD 2: SUNITA SHARMA (JAIPUR) -->
           <div class="vsres-case-card">
+            <div class="vsres-case-img-box">
+              <img src="{{ 'wvs-card-guide-woman.jpg' | asset_url }}" alt="Sunita Sharma Jaipur Home AC Savings" loading="lazy" class="vsres-case-cover-img" onerror="this.onerror=null; this.src='https://cdn.shopify.com/s/files/1/0663/8783/7093/files/VS_Card_Final_Design_Golden_1.png';">
+              <span class="vsres-case-tag"><i class="fa-solid fa-circle-check"></i> Verified DISCOM Savings</span>
+            </div>
             <div class="vsres-case-header">
-              <div class="vsres-case-avatar">S</div>
+              <div class="vsres-case-avatar">
+                <img src="{{ 'wvs-card-guide-woman.jpg' | asset_url }}" alt="Sunita Sharma" class="vsres-case-avatar-img">
+              </div>
               <div>
                 <div class="vsres-case-name">Sunita Sharma</div>
-                <div class="vsres-case-location">3 BHK House, Jaipur</div>
+                <div class="vsres-case-location"><i class="fa-solid fa-location-dot" style="color:var(--orange);"></i> 3 BHK House, Jaipur</div>
               </div>
             </div>
             <div class="vsres-case-stats">
@@ -1979,12 +2041,19 @@
             </div>
           </div>
 
+          <!-- CARD 3: VIKRAM VERMA (LUCKNOW) -->
           <div class="vsres-case-card">
+            <div class="vsres-case-img-box">
+              <img src="{{ 'wvs-indian-businessman.jpg' | asset_url }}" alt="Vikram Verma Lucknow Villa 3-Phase Savings" loading="lazy" class="vsres-case-cover-img" onerror="this.onerror=null; this.src='https://cdn.shopify.com/s/files/1/0663/8783/7093/files/VS_Card_Final_Design_Golden_1.png';">
+              <span class="vsres-case-tag"><i class="fa-solid fa-circle-check"></i> Verified DISCOM Savings</span>
+            </div>
             <div class="vsres-case-header">
-              <div class="vsres-case-avatar">V</div>
+              <div class="vsres-case-avatar">
+                <img src="{{ 'wvs-indian-businessman.jpg' | asset_url }}" alt="Vikram Verma" class="vsres-case-avatar-img">
+              </div>
               <div>
                 <div class="vsres-case-name">Vikram Verma</div>
-                <div class="vsres-case-location">Independent Villa, Lucknow</div>
+                <div class="vsres-case-location"><i class="fa-solid fa-location-dot" style="color:var(--orange);"></i> Independent Villa, Lucknow</div>
               </div>
             </div>
             <div class="vsres-case-stats">
