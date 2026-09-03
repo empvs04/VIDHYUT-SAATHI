@@ -1483,79 +1483,99 @@
     }
   </script>
 
-  <!-- ══ HERO SECTION ══ -->
-  <section class="vscom-hero">
+  <!-- ══ SECTION 8 SHOWCASE (NOW MOVED TO TOP HERO POSITION) ══ -->
+  <section class="vscom-sec8-custom">
     <div class="wrap">
-      <div class="vscom-hero-grid">
+      <div class="vscom-sec8-grid">
+        <!-- LEFT COLUMN: ULTRA-LUCRATIVE COMMERCIAL DESIGN -->
         <div>
-          <div class="vscom-eyebrow">
-            <i class="fa-solid fa-building-flag"></i> Commercial Energy Saver Guide
+          <div class="vscom-sec8-badge">
+            <i class="fa-solid fa-bolt" style="color:#007b3e;"></i> Smart Commercial Energy Shield
           </div>
-          <h1>Vidhyut Saathi Card for <span>Commercial Establishments</span></h1>
-          <p class="vscom-hero-lead">
-            Lower operational overheads and stop paying heavy DISCOM reactive power surcharges. Designed for Offices, Retail Outlets, Supermarkets, Restaurants, Hotels, Hospitals, and Commercial DB Panels.
+
+          <h2 class="vscom-sec8-title">
+            Vidhyut Saathi Card for <span>Commercial Establishments</span>
+          </h2>
+
+          <p class="vscom-sec8-lead">
+            Lower operational overheads and stop paying heavy DISCOM reactive power surcharges. Designed for Offices, Retail Outlets, Supermarkets, Restaurants, Hotels, Hospitals, and Commercial DB Panels, calculate your exact card requirement below.
           </p>
 
+          <!-- 4 ULTRA-LUCRATIVE BENEFIT CARDS (2x2) -->
+          <div class="vscom-sec8-pills-grid">
+            <div class="vscom-sec8-pill c1-card">
+              <div class="vscom-sec8-pill-icon c1">
+                <i class="fa-solid fa-percent"></i>
+              </div>
+              <div class="vscom-sec8-pill-text">
+                <strong>20% to 30% Bill Cuts</strong>
+                <span>Direct on Monthly DISCOM Commercial Bills</span>
+              </div>
+            </div>
+
+            <div class="vscom-sec8-pill c2-card">
+              <div class="vscom-sec8-pill-icon c2">
+                <i class="fa-solid fa-chart-line"></i>
+              </div>
+              <div class="vscom-sec8-pill-text">
+                <strong>PF Improvement to 0.99</strong>
+                <span>Eliminates Surcharges & Lowers KVAh Billing</span>
+              </div>
+            </div>
+
+            <div class="vscom-sec8-pill c3-card">
+              <div class="vscom-sec8-pill-icon c3">
+                <i class="fa-solid fa-building"></i>
+              </div>
+              <div class="vscom-sec8-pill-text">
+                <strong>Offices, Malls & Hotels</strong>
+                <span>Engineered for Chillers, Elevators & Motors</span>
+              </div>
+            </div>
+
+            <div class="vscom-sec8-pill c4-card">
+              <div class="vscom-sec8-pill-icon c4">
+                <i class="fa-solid fa-award"></i>
+              </div>
+              <div class="vscom-sec8-pill-text">
+                <strong>10-Yr Lifespan</strong>
+                <span>3-Year Replacement Guarantee & Zero Rewiring</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- DUAL CTAS -->
           <div class="vscom-hero-ctas">
-            <a href="#vscom-calc" class="vscom-btn-primary">
+            <a href="#vscom-calc" class="vscom-btn-primary" style="background: linear-gradient(135deg, #008744 0%, #00b050 100%); box-shadow: 0 8px 24px rgba(0, 135, 68, 0.32);">
               <i class="fa-solid fa-calculator"></i> Calculate Commercial Cards
             </a>
             <a href="https://wa.me/919876543210?text=Hi%20Vidhyut%20Saathi%2C%20I%20want%20to%20order%20Commercial%20Saver%20Cards" class="vscom-btn-secondary" target="_blank">
-              <i class="fa-brands fa-whatsapp"></i> Commercial Inquiry
+              <i class="fa-brands fa-whatsapp" style="color: #25d366; font-size: 17px;"></i> Commercial Inquiry
             </a>
-          </div>
-
-          <div class="vscom-trust-badges">
-            <div class="vscom-trust-badge-item">
-              <div class="vscom-trust-badge-icon"><i class="fa-solid fa-bolt"></i></div>
-              <div class="vscom-trust-badge-text">
-                <strong>20–30% Savings</strong>
-                <span>On DISCOM Bills</span>
-              </div>
-            </div>
-            <div class="vscom-trust-badge-item">
-              <div class="vscom-trust-badge-icon"><i class="fa-solid fa-chart-line"></i></div>
-              <div class="vscom-trust-badge-text">
-                <strong>PF Improvement</strong>
-                <span>Up to 0.99 Lag</span>
-              </div>
-            </div>
-            <div class="vscom-trust-badge-item">
-              <div class="vscom-trust-badge-icon"><i class="fa-solid fa-shield-halved"></i></div>
-              <div class="vscom-trust-badge-text">
-                <strong>10-Yr Life</strong>
-                <span>3-Yr Warranty</span>
-              </div>
-            </div>
-            <div class="vscom-trust-badge-item">
-              <div class="vscom-trust-badge-icon"><i class="fa-solid fa-certificate"></i></div>
-              <div class="vscom-trust-badge-text">
-                <strong>ISO Certified</strong>
-                <span>100% Legal & Safe</span>
-              </div>
-            </div>
           </div>
         </div>
 
-        <!-- RIGHT HERO SHOWCASE -->
-        <div class="vscom-hero-image-box">
-          <span class="vscom-hero-card-tag"><i class="fa-solid fa-building"></i> Commercial Heavy Saver Card</span>
+        <!-- RIGHT COLUMN: 1:1 SQUARE CLEAN SHOWCASE WITH MOMENT CAPTION -->
+        <div style="display: flex; justify-content: center; align-items: center;">
+          <div class="vscom-sec8-card-frame">
+            <div class="vscom-sec8-img-box">
+              {% if section.settings.sec8_card_image != blank %}
+                <img src="{{ section.settings.sec8_card_image | image_url: width: 1000 }}" alt="Commercial 3-Phase DB Panel with Vidhyut Saathi Cards Installed" loading="lazy">
+              {% else %}
+                <img src="{{ 'commercial-mcb-multi-card-showcase.jpg' | asset_url }}" alt="Commercial 3-Phase DB Panel with Vidhyut Saathi Cards Installed" loading="lazy" onerror="this.onerror=null; this.src='https://cdn.shopify.com/s/files/1/0663/8783/7093/files/VS_Card_Final_Design_Golden_1.png';">
+              {% endif %}
+            </div>
 
-          <div style="width:100%; display:flex; justify-content:center; margin:12px 0;">
-            {% if section.settings.card_image != blank %}
-              <img src="{{ section.settings.card_image | image_url: width: 600 }}" alt="Vidhyut Saathi Commercial Electric Saver Card" style="width: 100%; max-width: 320px; border-radius: 16px; box-shadow: 0 16px 36px rgba(0,0,0,0.4); border: 2px solid rgba(255,255,255,0.25);">
-            {% else %}
-              <img src="{{ 'official-vs-card-front.jpg' | asset_url }}" alt="Vidhyut Saathi Commercial Electric Saver Card" style="width: 100%; max-width: 320px; border-radius: 16px; box-shadow: 0 16px 36px rgba(0,0,0,0.4); border: 2px solid rgba(255,255,255,0.25);" onerror="this.onerror=null; this.src='https://cdn.shopify.com/s/files/1/0663/8783/7093/files/VS_Card_Final_Design_Golden_1.png';">
-            {% endif %}
+            <div class="vscom-sec8-moment-caption">
+              <div class="vscom-moment-tag">
+                <i class="fa-solid fa-camera-retro" style="color: #007b3e;"></i>
+                <span>Captured Commercial Moment of Joy</span>
+              </div>
+              <p class="vscom-moment-quote">
+                "The pride of running a profitable business with <strong>20%–30% genuine savings</strong> on DISCOM electricity bills with Vidhyut Saathi Card."
+              </p>
+            </div>
           </div>
-
-          <p style="font-size:12.5px; color:var(--muted); margin:8px 0 12px 0; line-height:1.5;">
-            Patented US-German Terahertz frequency technology stabilizes voltage fluctuations across commercial 3-phase DB panels and eliminates inductive reactive current from elevators & HVAC motors.
-          </p>
-
-          <a href="#mcb-gallery" class="vscom-mcb-hero-link">
-            <i class="fa-solid fa-camera"></i> See 20 Commercial MCB Installations <i class="fa-solid fa-arrow-down-long"></i>
-          </a>
         </div>
       </div>
     </div>
@@ -1944,104 +1964,6 @@
         <a href="https://wa.me/919876543210?text=Hi%20Vidhyut%20Saathi%2C%20I%20want%20to%20order%20Commercial%20Saver%20Cards" class="vscom-btn-primary" style="background:#ffffff; color:#007b3e; font-size:15px; padding:15px 30px; border-radius:12px; font-weight:800;" target="_blank">
           <i class="fa-brands fa-whatsapp"></i> Order Commercial Cards Now
         </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══ SECTION 8: COMMERCIAL HERO SHOWCASE (ULTRA-LUCRATIVE) ══ -->
-  <section class="vscom-sec8-custom">
-    <div class="wrap">
-      <div class="vscom-sec8-grid">
-        <!-- LEFT COLUMN: ULTRA-LUCRATIVE COMMERCIAL DESIGN -->
-        <div>
-          <div class="vscom-sec8-badge">
-            <i class="fa-solid fa-bolt" style="color:#007b3e;"></i> Smart Commercial Energy Shield
-          </div>
-
-          <h2 class="vscom-sec8-title">
-            Vidhyut Saathi Card for <span>Commercial Establishments</span>
-          </h2>
-
-          <p class="vscom-sec8-lead">
-            Lower operational overheads and stop paying heavy DISCOM reactive power surcharges. Designed for Offices, Retail Outlets, Supermarkets, Restaurants, Hotels, Hospitals, and Commercial DB Panels, calculate your exact card requirement below.
-          </p>
-
-          <!-- 4 ULTRA-LUCRATIVE BENEFIT CARDS (2x2) -->
-          <div class="vscom-sec8-pills-grid">
-            <div class="vscom-sec8-pill c1-card">
-              <div class="vscom-sec8-pill-icon c1">
-                <i class="fa-solid fa-percent"></i>
-              </div>
-              <div class="vscom-sec8-pill-text">
-                <strong>20% to 30% Bill Cuts</strong>
-                <span>Direct on Monthly DISCOM Commercial Bills</span>
-              </div>
-            </div>
-
-            <div class="vscom-sec8-pill c2-card">
-              <div class="vscom-sec8-pill-icon c2">
-                <i class="fa-solid fa-chart-line"></i>
-              </div>
-              <div class="vscom-sec8-pill-text">
-                <strong>PF Improvement to 0.99</strong>
-                <span>Eliminates Surcharges & Lowers KVAh Billing</span>
-              </div>
-            </div>
-
-            <div class="vscom-sec8-pill c3-card">
-              <div class="vscom-sec8-pill-icon c3">
-                <i class="fa-solid fa-building"></i>
-              </div>
-              <div class="vscom-sec8-pill-text">
-                <strong>Offices, Malls & Hotels</strong>
-                <span>Engineered for Chillers, Elevators & Motors</span>
-              </div>
-            </div>
-
-            <div class="vscom-sec8-pill c4-card">
-              <div class="vscom-sec8-pill-icon c4">
-                <i class="fa-solid fa-award"></i>
-              </div>
-              <div class="vscom-sec8-pill-text">
-                <strong>10-Yr Lifespan</strong>
-                <span>3-Year Replacement Guarantee & Zero Rewiring</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- DUAL CTAS -->
-          <div class="vscom-hero-ctas">
-            <a href="#vscom-calc" class="vscom-btn-primary" style="background: linear-gradient(135deg, #008744 0%, #00b050 100%); box-shadow: 0 8px 24px rgba(0, 135, 68, 0.32);">
-              <i class="fa-solid fa-calculator"></i> Calculate Commercial Cards
-            </a>
-            <a href="https://wa.me/919876543210?text=Hi%20Vidhyut%20Saathi%2C%20I%20want%20to%20order%20Commercial%20Saver%20Cards" class="vscom-btn-secondary" target="_blank">
-              <i class="fa-brands fa-whatsapp" style="color: #25d366; font-size: 17px;"></i> Commercial Inquiry
-            </a>
-          </div>
-        </div>
-
-        <!-- RIGHT COLUMN: 1:1 SQUARE CLEAN SHOWCASE WITH MOMENT CAPTION -->
-        <div style="display: flex; justify-content: center; align-items: center;">
-          <div class="vscom-sec8-card-frame">
-            <div class="vscom-sec8-img-box">
-              {% if section.settings.sec8_card_image != blank %}
-                <img src="{{ section.settings.sec8_card_image | image_url: width: 1000 }}" alt="Commercial 3-Phase DB Panel with Vidhyut Saathi Cards Installed" loading="lazy">
-              {% else %}
-                <img src="{{ 'commercial-mcb-multi-card-showcase.jpg' | asset_url }}" alt="Commercial 3-Phase DB Panel with Vidhyut Saathi Cards Installed" loading="lazy" onerror="this.onerror=null; this.src='https://cdn.shopify.com/s/files/1/0663/8783/7093/files/VS_Card_Final_Design_Golden_1.png';">
-              {% endif %}
-            </div>
-
-            <div class="vscom-sec8-moment-caption">
-              <div class="vscom-moment-tag">
-                <i class="fa-solid fa-camera-retro" style="color: #007b3e;"></i>
-                <span>Captured Commercial Moment of Joy</span>
-              </div>
-              <p class="vscom-moment-quote">
-                "The pride of running a profitable business with <strong>20%–30% genuine savings</strong> on DISCOM electricity bills with Vidhyut Saathi Card."
-              </p>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </section>
