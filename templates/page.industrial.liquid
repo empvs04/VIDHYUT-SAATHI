@@ -1,1 +1,2889 @@
-{% section 'required-cards-industrial-layout' %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800;900&family=Nunito:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&family=IBM+Plex+Mono:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+  /* ============================================================
+     VIDHYUT SAATHI — INDUSTRIAL REQUIRED CARDS PAGE
+     Theme: Industrial Deep Slate #0f172a | Cyan #0284c7 | Green #008744 | Orange #ec5c0a
+  ============================================================ */
+  .vsind {
+    --bg:       #fff9f2;
+    --bg-warm:  #f5ebd9;
+    --panel:    #ffffff;
+    --panel-2:  #f8fafc;
+    --line:     #e2e8f0;
+    --line-s:   #cbd5e1;
+    --green:    #007b3e;
+    --green-d:  #064e3b;
+    --green-t:  #e6f4ec;
+    --cyan:     #0284c7;
+    --cyan-d:   #0369a1;
+    --cyan-t:   #e0f2fe;
+    --orange:   #ec5c0a;
+    --orange-d: #c84900;
+    --orange-t: #ffefe5;
+    --gold:     #c9982e;
+    --ink:      #0f172a;
+    --muted:    #475569;
+    --muted-2:  #64748b;
+    --maxw:     1180px;
+
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    font-size: 16px;
+    line-height: 1.55;
+  }
+
+  .vsind *, .vsind *::before, .vsind *::after {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .vsind h1, .vsind h2, .vsind h3, .vsind h4 {
+    font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: -0.02em;
+  }
+
+  .vsind a { color: inherit; text-decoration: none; }
+  .vsind img { max-width: 100%; display: block; }
+  .vsind button { font-family: inherit; cursor: pointer; }
+
+  .vsind .wrap {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+  @media(min-width: 640px){ .vsind .wrap { padding: 0 28px; } }
+
+  /* ---- CATEGORY NAVIGATION STRIP ---- */
+  .vsind-nav-strip {
+    background: #ffffff;
+    border-bottom: 1.5px solid var(--line);
+    padding: 12px 16px;
+    position: relative;
+    z-index: 9999;
+    pointer-events: auto !important;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.03);
+  }
+
+  .vsind-nav-container {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    pointer-events: auto !important;
+  }
+
+  .vsind-nav-title {
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--ink);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+  }
+  .vsind-nav-title i { color: var(--orange); }
+
+  .vsind-nav-links {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    pointer-events: auto !important;
+  }
+  .vsind-nav-links::-webkit-scrollbar { display: none; }
+
+  .vsind-nav-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 18px;
+    border-radius: 50px;
+    font-size: 12.5px;
+    font-weight: 700;
+    background: #f8fafc;
+    border: 1.5px solid #e2e8f0;
+    color: var(--muted);
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    cursor: pointer !important;
+    pointer-events: auto !important;
+    position: relative;
+    z-index: 10;
+  }
+  .vsind-nav-item:hover {
+    border-color: var(--cyan);
+    color: var(--cyan);
+  }
+  .vsind-nav-item.active {
+    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+    color: #ffffff;
+    border-color: #0284c7;
+    box-shadow: 0 4px 14px rgba(2, 132, 199, 0.3);
+  }
+
+  /* ---- HERO SECTION ---- */
+  .vsind-hero {
+    position: relative;
+    padding: clamp(32px, 5vw, 65px) 0 clamp(24px, 4vw, 45px) 0;
+    background: linear-gradient(135deg, #ffffff 0%, #e0f2fe 45%, #fff9f2 100%);
+    border-bottom: 1.5px solid var(--line);
+    overflow: hidden;
+  }
+
+  .vsind-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 28px;
+    align-items: center;
+  }
+  @media(min-width: 900px){
+    .vsind-hero-grid {
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 40px;
+    }
+  }
+
+  .vsind-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--cyan-t);
+    border: 1.5px solid #0284c7;
+    color: #0369a1;
+    font-size: 11px;
+    font-weight: 800;
+    font-family: 'IBM Plex Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding: 6px 16px;
+    border-radius: 50px;
+    margin-bottom: 16px;
+    box-shadow: 0 4px 14px rgba(2, 132, 199, 0.12);
+  }
+
+  .vsind-hero h1 {
+    font-size: clamp(25px, 5.2vw, 46px);
+    line-height: 1.15;
+    font-weight: 800;
+    color: var(--ink);
+    margin: 0 0 14px 0;
+  }
+  .vsind-hero h1 span {
+    background: linear-gradient(135deg, #0284c7 0%, #ec5c0a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .vsind-hero-lead {
+    color: var(--muted);
+    font-size: clamp(14px, 2vw, 16px);
+    line-height: 1.6;
+    margin: 0 0 24px 0;
+    max-width: 620px;
+  }
+
+  .vsind-hero-ctas {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+  }
+
+  .vsind-btn-primary {
+    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+    color: #ffffff;
+    font-weight: 800;
+    padding: 14px 26px;
+    border-radius: 12px;
+    font-size: 14.5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: none;
+    box-shadow: 0 6px 20px rgba(2, 132, 199, 0.3);
+    transition: all 0.2s ease;
+  }
+  .vsind-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 26px rgba(2, 132, 199, 0.42);
+    background: linear-gradient(135deg, #0369a1 0%, #0284c7 100%);
+  }
+
+  .vsind-btn-secondary {
+    background: #ffffff;
+    color: var(--orange-d);
+    border: 1.5px solid var(--orange);
+    font-weight: 700;
+    padding: 14px 24px;
+    border-radius: 12px;
+    font-size: 14.5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(236, 92, 10, 0.1);
+  }
+  .vsind-btn-secondary:hover {
+    background: var(--orange-t);
+    transform: translateY(-2px);
+  }
+
+  /* Trust Badges Strip */
+  .vsind-trust-badges {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding-top: 20px;
+    border-top: 1.5px solid var(--line);
+  }
+  @media(min-width: 600px){
+    .vsind-trust-badges { grid-template-columns: repeat(4, 1fr); }
+  }
+
+  .vsind-trust-badge-item {
+    background: #ffffff;
+    border: 1.5px solid var(--line);
+    border-radius: 12px;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    transition: all 0.25s ease;
+  }
+  .vsind-trust-badge-item:hover {
+    transform: translateY(-2px);
+    border-color: #0284c7;
+    box-shadow: 0 6px 16px rgba(2, 132, 199, 0.12);
+  }
+
+  .vsind-trust-badge-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    background: var(--cyan-t);
+    color: #0284c7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    flex-shrink: 0;
+  }
+
+  .vsind-trust-badge-text strong {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+  .vsind-trust-badge-text span {
+    font-size: 10.5px;
+    color: var(--muted-2);
+  }
+
+  /* Right Card Image Showcase */
+  .vsind-hero-image-box {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #ffffff 0%, #e0f2fe 60%, #fff7ed 100%);
+    border: 2px solid rgba(2, 132, 199, 0.2);
+    box-shadow: 0 16px 36px rgba(0,0,0,0.06);
+    padding: 24px;
+    color: var(--ink);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .vsind-hero-card-tag {
+    background: #e0f2fe;
+    border: 1px solid #0284c7;
+    color: #0369a1;
+    font-size: 10.5px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding: 4px 14px;
+    border-radius: 50px;
+    margin-bottom: 16px;
+  }
+
+  .vsind-mcb-hero-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #ffffff;
+    border: 1.5px solid #0284c7;
+    color: #0284c7;
+    font-size: 12.5px;
+    font-weight: 800;
+    padding: 8px 18px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+    box-shadow: 0 4px 14px rgba(2, 132, 199, 0.12);
+  }
+  .vsind-mcb-hero-link:hover {
+    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+    color: #ffffff;
+    border-color: #0284c7;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(2, 132, 199, 0.35);
+  }
+
+  /* ---- CALCULATOR SECTION ---- */
+  .vsind-sec {
+    padding: 44px 0;
+    font-family: 'Nunito', sans-serif;
+  }
+  @media(min-width: 768px){ .vsind-sec { padding: 60px 0; } }
+
+  .vsind-sec-head {
+    max-width: 680px;
+    margin: 0 auto 28px;
+    text-align: center;
+  }
+  .vsind-sec-eyebrow {
+    font-size: 12px;
+    font-weight: 800;
+    font-family: 'Baloo 2', sans-serif;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--cyan-d);
+    margin-bottom: 6px;
+  }
+  .vsind-sec-title {
+    font-size: clamp(24px, 4vw, 34px);
+    font-weight: 800;
+    font-family: 'Baloo 2', sans-serif !important;
+    color: var(--ink);
+    margin: 0 0 10px 0;
+  }
+  .vsind-sec-desc {
+    color: var(--muted);
+    font-size: 15px;
+    font-family: 'Nunito', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .vsind-calc-box {
+    background: #ffffff;
+    border: 1.5px solid var(--line);
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+    padding: 24px 18px;
+    font-family: 'Nunito', sans-serif;
+  }
+  @media(min-width: 860px){
+    .vsind-calc-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      padding: 36px 30px;
+    }
+  }
+
+  .vsind-field { margin-bottom: 20px; }
+  .vsind-field-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    font-weight: 800;
+    font-family: 'Nunito', sans-serif;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .vsind-field-badge {
+    background: var(--cyan-t);
+    color: var(--cyan-d);
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 800;
+    font-family: 'Baloo 2', sans-serif;
+  }
+
+  .vsind-range-slider {
+    width: 100%;
+    height: 8px;
+    border-radius: 50px;
+    background: var(--line);
+    outline: none;
+    accent-color: var(--cyan-d);
+    margin: 10px 0;
+  }
+
+  .vsind-num-input {
+    width: 100%;
+    height: 46px;
+    border: 1.5px solid var(--line);
+    border-radius: 10px;
+    padding: 0 14px;
+    font-size: 16px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    color: var(--ink);
+    background: #ffffff;
+    outline: none;
+  }
+  .vsind-num-input:focus {
+    border-color: var(--cyan);
+    box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+  }
+
+  .vsind-toggle-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 6px;
+  }
+  .vsind-toggle-btn {
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1.5px solid #cbd5e1;
+    background: #ffffff;
+    color: #475569;
+    font-weight: 700;
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+  }
+  .vsind-toggle-btn:hover {
+    border-color: #0284c7;
+    color: #0284c7;
+  }
+  .vsind-toggle-btn.active {
+    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+    color: #ffffff;
+    border-color: #0284c7;
+    box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+  }
+
+  .vsind-output-card {
+    background: var(--panel-2);
+    border: 1.5px solid var(--line);
+    border-radius: 16px;
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: 'Nunito', sans-serif;
+  }
+
+  .vsind-res-val {
+    font-family: 'Baloo 2', sans-serif !important;
+    font-size: clamp(48px, 10vw, 68px);
+    font-weight: 800;
+    color: #0284c7;
+    line-height: 1;
+    margin: 8px 0 16px 0;
+  }
+  .vsind-res-val span {
+    font-size: 18px;
+    color: var(--muted);
+    font-family: 'Nunito', sans-serif;
+  }
+
+  .vsind-savings-box {
+    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+    border-radius: 14px;
+    padding: 16px;
+    color: #ffffff;
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 14px rgba(2, 132, 199, 0.25);
+    font-family: 'Nunito', sans-serif;
+  }
+
+  /* ══ 20 INDUSTRIAL MCB & LT PANEL GALLERY ══ */
+  .ind-sec {
+    background: #ffffff;
+    border-top: 1.5px solid var(--line);
+    border-bottom: 1.5px solid var(--line);
+    padding: clamp(40px, 6vw, 75px) 0;
+  }
+
+  .ind-filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+
+  .ind-filter-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .ind-filter-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 22px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 700;
+    font-family: inherit;
+    background: #ffffff;
+    color: #334155;
+    border: 1.5px solid #cbd5e1;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    cursor: pointer;
+    transition: all 0.25s ease;
+    line-height: 1;
+    outline: none;
+  }
+
+  .ind-filter-btn i {
+    font-size: 14px;
+  }
+
+  .ind-filter-btn:hover {
+    border-color: #0284c7;
+    color: #0284c7;
+    background: #f0f9ff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(2, 132, 199, 0.12);
+  }
+
+  .ind-filter-btn.active {
+    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+    color: #ffffff;
+    border-color: #0284c7;
+    box-shadow: 0 4px 14px rgba(2, 132, 199, 0.3);
+  }
+
+  .ind-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    align-items: stretch;
+  }
+  @media(min-width: 640px){ .ind-gallery-grid { grid-template-columns: repeat(3, 1fr); gap: 18px; } }
+  @media(min-width: 1024px){ .ind-gallery-grid { grid-template-columns: repeat(4, 1fr); gap: 20px; } }
+
+  .ind-card {
+    background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+    border: 1.5px solid #cbd5e1;
+    border-top: 4px solid #0284c7;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+    cursor: pointer;
+  }
+  .ind-card:hover {
+    transform: translateY(-6px) scale(1.015);
+    box-shadow: 0 18px 40px rgba(2, 132, 199, 0.18);
+    border-color: #0284c7;
+  }
+
+  .ind-card-img-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: #0f172a;
+  }
+  .ind-card-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+  .ind-card:hover .ind-card-img-wrap img {
+    transform: scale(1.08);
+  }
+
+  .ind-card-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+    color: #ffffff;
+    font-size: 9px;
+    font-weight: 800;
+    font-family: 'IBM Plex Mono', monospace;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 50px;
+    border: 1px solid rgba(255,255,255,0.4);
+    box-shadow: 0 4px 12px rgba(2, 132, 199, 0.35);
+    z-index: 2;
+    white-space: nowrap;
+    max-width: calc(100% - 20px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .ind-card-body {
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    text-align: left;
+    background: #ffffff;
+  }
+  .ind-card-title {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--ink);
+    margin: 2px 0 4px 0;
+    line-height: 1.35;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .ind-card-desc {
+    font-size: 11px;
+    color: var(--muted-2);
+    margin: 0;
+den;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* ---- INDUSTRIAL SIZING TABLE (EXACT MATCH TO SCREENSHOT) ---- */
+  .vsind-table-wrap {
+    background: #ffffff;
+    border: 1.5px solid #f3e6d3;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+  }
+
+  .vsind-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+  }
+
+  .vsind-table thead tr {
+    background: #0284c7;
+    color: #ffffff;
+  }
+
+  .vsind-table th {
+    padding: 12px 10px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-align: center;
+    color: #ffffff;
+    vertical-align: middle;
+  }
+  .vsind-table th:first-child { text-align: left; padding-left: 14px; }
+
+  .vsind-table tbody tr {
+    border-bottom: 1px solid #f3e6d3;
+  }
+  .vsind-table tbody tr:nth-child(even) { background: #fffbf5; }
+  .vsind-table tbody tr:last-child { border-bottom: none; }
+
+  .vsind-table td {
+    padding: 12px 10px;
+    text-align: center;
+    color: #475569;
+    vertical-align: middle;
+    line-height: 1.4;
+  }
+  .vsind-table td:first-child {
+    text-align: left;
+    padding-left: 14px;
+    font-weight: 800;
+    color: #0f172a;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  .vsind-table td.highlight {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    color: #475569;
+    font-size: 13.5px;
+  }
+  .vs-mob-br {
+    display: none !important;
+  }
+  .vs-mob-kw, .vs-mob-cards {
+    display: inline !important;
+    font-size: inherit !important;
+    color: inherit !important;
+    font-weight: inherit !important;
+  }
+
+  /* ══ CASE STUDY CARD MULTI-IMAGE MINI SLIDER ══ */
+  .vs-card-media-slider {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    border-radius: 14px;
+    overflow: hidden;
+    margin-bottom: 14px;
+    background: #0f172a;
+    user-select: none;
+  }
+  .vs-card-media-slides {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  .vs-card-media-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: scale(1.02);
+  }
+  .vs-card-media-slide.active {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+  }
+  .vs-card-media-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .vs-media-tag {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(15, 23, 42, 0.82);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: #f8fafc;
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 4px 9px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    letter-spacing: 0.3px;
+    z-index: 3;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+  }
+  .vs-media-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    cursor: pointer;
+    z-index: 4;
+    opacity: 0.85;
+    transition: all 0.25s ease;
+    padding: 0;
+  }
+  .vs-card-media-slider:hover .vs-media-arrow {
+    opacity: 1;
+    transform: translateY(-50%) scale(1.06);
+  }
+  .vs-media-arrow:hover {
+    background: #0284c7 !important;
+    border-color: #38bdf8 !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 12px rgba(2, 132, 199, 0.5);
+  }
+  .vs-media-prev {
+    left: 8px;
+  }
+  .vs-media-next {
+    right: 8px;
+  }
+  .vs-media-dots-bar {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 5px;
+    z-index: 4;
+    background: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(4px);
+    padding: 4px 8px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+  .vs-media-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.45);
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+  .vs-media-dot.active {
+    width: 14px;
+    border-radius: 6px;
+    background: #38bdf8;
+  }
+  .vs-media-counter {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(15, 23, 42, 0.82);
+    backdrop-filter: blur(8px);
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: 700;
+    font-family: 'IBM Plex Mono', monospace;
+    padding: 4px 8px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    z-index: 3;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+  }
+
+  /* Worked Examples Summary Badge - Responsive for Mobile */
+  .vsind-case-result-badge {
+    background: linear-gradient(135deg, #0f172a 0%, #0284c7 100%);
+    padding: 10px 14px;
+    border-radius: 14px;
+    color: #ffffff;
+    font-size: 12.5px;
+    font-weight: 700;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px 12px;
+    box-shadow: 0 4px 14px rgba(2, 132, 199, 0.2);
+    min-height: 46px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .vsind-case-result-badge span {
+    white-space: nowrap;
+  }
+  .vsind-case-result-badge strong {
+    font-family: 'Baloo 2', 'Space Grotesk', sans-serif;
+    font-size: 13px;
+    color: #ffffff;
+    white-space: nowrap;
+  }
+
+  /* WORKED EXAMPLES SLIDER STYLING */
+  .vs-cases-slider-wrap {
+    width: 100%;
+    position: relative;
+  }
+  .vs-slider-dots-bar {
+    display: none;
+  }
+  .vs-slider-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #cbd5e1;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .vs-slider-dot.active {
+    width: 24px;
+    border-radius: 50px;
+    background: #0284c7;
+  }
+
+  .vsind-case-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .vsind-case-card {
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  }
+  .vsind-case-card:hover {
+    transform: translateY(-6px) !important;
+    box-shadow: 0 16px 36px rgba(0,0,0,0.09) !important;
+  }
+
+  @media (max-width: 767px) {
+    .vs-cases-slider-wrap {
+      overflow: hidden !important;
+      width: 100% !important;
+      position: relative !important;
+      padding: 4px 0 6px 0 !important;
+    }
+    .vsind-case-grid {
+      display: flex !important;
+      flex-direction: row !important;
+      transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1) !important;
+      width: 100% !important;
+      gap: 0 !important;
+      will-change: transform;
+    }
+    .vsind-case-card {
+      flex: 0 0 100% !important;
+      min-width: 100% !important;
+      max-width: 100% !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+      padding: 16px 14px !important;
+      border-radius: 16px !important;
+      background: #ffffff !important;
+      border: 1.5px solid #cbd5e1 !important;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.05) !important;
+    }
+    .vsind-case-card h4 {
+      font-size: 13.5px !important;
+      min-height: unset !important;
+      height: auto !important;
+      margin-bottom: 2px !important;
+    }
+    .vsind-case-result-badge {
+      padding: 9px 12px !important;
+      font-size: 11px !important;
+      gap: 4px 8px !important;
+      min-height: 42px !important;
+      border-radius: 12px !important;
+    }
+    .vsind-case-result-badge span {
+      font-size: 11.2px !important;
+    }
+    .vsind-case-result-badge strong {
+      font-size: 11.8px !important;
+    }
+    .vs-slider-dots-bar {
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      gap: 8px !important;
+      margin-top: 14px !important;
+    }
+  }
+
+  @media (max-width: 380px) {
+    .vsind-case-result-badge {
+      padding: 8px 10px !important;
+      font-size: 10.5px !important;
+      gap: 4px 6px !important;
+    }
+    .vsind-case-result-badge span {
+      font-size: 10.5px !important;
+    }
+    .vsind-case-result-badge strong {
+      font-size: 11px !important;
+    }
+  }
+
+  /* Mobile Justification & Lucrative Card Styling Overrides */
+  @media (max-width: 767px) {
+    .vsind p,
+    .vsind .vsind-hero-lead,
+    .vsind .vsind-sec-desc {
+      text-align: justify !important;
+      text-justify: inter-word !important;
+      hyphens: auto !important;
+    }
+
+    .vsind-hero {
+      padding: 24px 0 32px 0;
+      background: linear-gradient(180deg, #ffffff 0%, #e0f2fe 60%, #fff9f2 100%);
+    }
+    .vsind-hero h1 {
+      font-size: clamp(24px, 7.5vw, 34px);
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+
+    .vsind-hero-ctas {
+      flex-direction: column;
+      gap: 10px;
+    }
+    .vsind-btn-primary, .vsind-btn-secondary {
+      width: 100%;
+      justify-content: center;
+      padding: 14px 20px;
+      font-size: 15px;
+      border-radius: 14px;
+    }
+
+    .ind-sec {
+      padding: 28px 0 36px 0;
+      background: linear-gradient(180deg, #ffffff 0%, #f0f9ff 100%);
+    }
+
+    .ind-filter-bar {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      gap: 8px !important;
+      margin-bottom: 24px !important;
+      padding: 0 !important;
+      width: 100% !important;
+    }
+
+    .ind-filter-row {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 8px !important;
+      width: 100% !important;
+    }
+
+    .ind-filter-row.row-1 .ind-filter-btn {
+      width: 55% !important;
+      padding: 9px 16px !important;
+      font-size: 12.5px !important;
+      justify-content: center !important;
+    }
+
+    .ind-filter-row.row-2 .ind-filter-btn,
+    .ind-filter-row.row-3 .ind-filter-btn {
+      flex: 1 !important;
+      padding: 9px 8px !important;
+      font-size: 11px !important;
+      text-align: center !important;
+      white-space: nowrap !important;
+      justify-content: center !important;
+    }
+
+    .ind-filter-btn {
+      flex-shrink: 0 !important;
+      white-space: nowrap !important;
+      font-weight: 700 !important;
+      border-radius: 50px !important;
+      background: #ffffff !important;
+      color: #334155 !important;
+      border: 1.5px solid #cbd5e1 !important;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04) !important;
+    }
+    .ind-filter-btn.active {
+      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%) !important;
+      color: #ffffff !important;
+      border-color: #0284c7 !important;
+      box-shadow: 0 4px 14px rgba(2, 132, 199, 0.3) !important;
+    }
+
+    .ind-gallery-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 12px !important;
+    }
+
+    .ind-card {
+      border-radius: 16px !important;
+      border: 1.5px solid #cbd5e1 !important;
+      border-top: 4px solid #0284c7 !important;
+      box-shadow: 0 8px 22px rgba(0,0,0,0.06) !important;
+      background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%) !important;
+    }
+    .ind-card:active {
+      transform: scale(0.97) !important;
+    }
+    .ind-card-body {
+      padding: 10px 10px 12px 10px !important;
+    }
+    .ind-card-title {
+      font-size: 12px !important;
+      line-height: 1.3 !important;
+      margin-bottom: 4px !important;
+      font-weight: 800 !important;
+      color: #0f172a !important;
+    }
+    .ind-card-desc {
+      font-size: 10.5px !important;
+      line-height: 1.4 !important;
+      color: #64748b !important;
+    }
+    .ind-card-badge {
+      font-size: 8.5px !important;
+      padding: 3px 8px !important;
+      top: 6px !important;
+      left: 6px !important;
+      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%) !important;
+      color: #ffffff !important;
+      border: 1px solid rgba(255,255,255,0.4) !important;
+      box-shadow: 0 4px 10px rgba(2, 132, 199, 0.3) !important;
+    }
+
+    /* CALCULATOR BOX MOBILE ENHANCEMENTS */
+    .vsind-calc-box {
+      padding: 20px 14px !important;
+      border-radius: 18px !important;
+      border: 1.5px solid #0284c7 !important;
+      box-shadow: 0 10px 30px rgba(2, 132, 199, 0.08) !important;
+    }
+    .vsind-output-card {
+      padding: 18px 14px !important;
+      border-radius: 14px !important;
+    }
+
+    /* WORKED EXAMPLES MOBILE SLIDER */
+    .vs-cases-slider-wrap {
+      overflow: hidden !important;
+      width: 100% !important;
+      position: relative !important;
+      padding: 4px 0 6px 0 !important;
+    }
+    .vsind-case-grid {
+      display: flex !important;
+      flex-direction: row !important;
+      transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1) !important;
+      width: 100% !important;
+      gap: 0 !important;
+      will-change: transform;
+    }
+    .vsind-case-card {
+      flex: 0 0 100% !important;
+      min-width: 100% !important;
+      max-width: 100% !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+      padding: 16px 14px !important;
+      border-radius: 16px !important;
+      background: #ffffff !important;
+      border: 1.5px solid #cbd5e1 !important;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.05) !important;
+    }
+    .vsind-case-card h4 {
+      font-size: 13.5px !important;
+      min-height: unset !important;
+      height: auto !important;
+      margin-bottom: 2px !important;
+    }
+    .vs-slider-dots-bar {
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      gap: 8px !important;
+      margin-top: 14px !important;
+    }
+
+    /* SIZING TABLE MOBILE ENHANCEMENTS */
+    .vsind-table-wrap {
+      border-radius: 16px !important;
+      border: 1.5px solid #f3e6d3 !important;
+      overflow-x: hidden !important;
+      width: 100% !important;
+    }
+    .vsind-table {
+      table-layout: fixed !important;
+      width: 100% !important;
+      min-width: 0 !important;
+    }
+    .vsind-table th {
+      padding: 8px 3px !important;
+      font-size: 9px !important;
+      letter-spacing: 0px !important;
+      line-height: 1.2 !important;
+      text-align: center !important;
+      vertical-align: middle !important;
+    }
+    .vsind-table th:first-child {
+      padding-left: 6px !important;
+      text-align: left !important;
+      width: 29% !important;
+    }
+    .vsind-table th:nth-child(2) {
+      width: 21% !important;
+      text-align: center !important;
+    }
+    .vsind-table th:nth-child(3) {
+      width: 26% !important;
+      text-align: center !important;
+    }
+    .vsind-table th:nth-child(4) {
+      width: 24% !important;
+      text-align: center !important;
+    }
+    .vsind-table td {
+      padding: 8px 3px !important;
+      font-size: 10px !important;
+      line-height: 1.25 !important;
+      text-align: center !important;
+      vertical-align: middle !important;
+    }
+    .vsind-table td:first-child {
+      padding-left: 6px !important;
+      font-size: 10.5px !important;
+      font-weight: 800 !important;
+      text-align: left !important;
+      line-height: 1.25 !important;
+      white-space: normal !important;
+      word-break: break-word !important;
+    }
+    .vsind-table td:nth-child(2) {
+      white-space: nowrap !important;
+      font-size: 10px !important;
+      font-weight: 700 !important;
+      letter-spacing: -0.2px !important;
+      text-align: center !important;
+    }
+    .vsind-table td:nth-child(3) {
+      white-space: nowrap !important;
+      font-size: 9.5px !important;
+      font-weight: 600 !important;
+      letter-spacing: -0.3px !important;
+      text-align: center !important;
+    }
+    .vsind-table td.highlight,
+    .vsind-table td:nth-child(4),
+    .vsind-table td:last-child {
+      font-size: 10px !important;
+      font-weight: 800 !important;
+      white-space: nowrap !important;
+      letter-spacing: -0.2px !important;
+      text-align: center !important;
+      vertical-align: middle !important;
+    }
+    .vs-mob-br {
+      display: inline !important;
+    }
+    .vs-mob-kw {
+      display: inline !important;
+      font-size: 10px !important;
+      color: #64748b !important;
+      font-weight: 700 !important;
+    }
+    .vs-mob-cards {
+      display: inline !important;
+      font-size: 10px !important;
+      font-weight: 700 !important;
+    }
+  }
+
+  /* ══ SECTION 8: INDUSTRIAL BOTTOM SHOWCASE HERO (BALOO 2 + NUNITO) ══ */
+  .vsind-sec8-custom {
+    position: relative;
+    padding: clamp(34px, 4.5vw, 54px) 0;
+    background: radial-gradient(circle at 10% 20%, rgba(2, 132, 199, 0.08) 0%, transparent 45%),
+                radial-gradient(circle at 90% 80%, rgba(236, 92, 10, 0.08) 0%, transparent 45%),
+                linear-gradient(180deg, #ffffff 0%, #f0f9ff 45%, #fff8ef 100%);
+    border-top: 2px solid #cfe8fc;
+    border-bottom: 2px solid #cfe8fc;
+    overflow: hidden;
+    font-family: 'Nunito', sans-serif;
+  }
+
+  .vsind-sec8-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 28px;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+  @media (min-width: 900px) {
+    .vsind-sec8-grid {
+      grid-template-columns: 1.12fr 0.88fr;
+      gap: 40px;
+    }
+  }
+
+  .vsind-sec8-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px;
+    background: linear-gradient(135deg, #ffffff 0%, #e0f2fe 100%);
+    border: 1.5px solid rgba(2, 132, 199, 0.45);
+    border-radius: 999px;
+    color: #0284c7;
+    font-size: 11.5px;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    font-family: 'Baloo 2', sans-serif;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 14px rgba(2, 132, 199, 0.1);
+  }
+
+  .vsind-sec8-title {
+    font-family: 'Baloo 2', sans-serif !important;
+    font-size: clamp(28px, 4vw, 42px);
+    line-height: 1.15;
+    font-weight: 900;
+    color: #0f172a;
+    margin: 0 0 10px 0;
+    letter-spacing: -0.01em;
+  }
+  .vsind-sec8-title span {
+    background: linear-gradient(135deg, #0284c7 0%, #ec5c0a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .vsind-sec8-lead {
+    font-family: 'Nunito', sans-serif;
+    font-size: clamp(14px, 1.45vw, 15.5px);
+    color: #334155;
+    line-height: 1.6;
+    margin: 0 0 20px 0;
+    max-width: 620px;
+  }
+
+  /* 4 ULTRA-LUCRATIVE 3D CARDS (2x2 GRID) */
+  .vsind-sec8-pills-2x2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .vsind-sec8-pill {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+    border-radius: 16px;
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow: hidden;
+  }
+  .vsind-sec8-pill::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3.5px;
+    background: #cbd5e1;
+    transition: all 0.3s ease;
+  }
+  .vsind-sec8-pill.c1-card::before { background: linear-gradient(90deg, #0284c7, #38bdf8); }
+  .vsind-sec8-pill.c2-card::before { background: linear-gradient(90deg, #ec5c0a, #f97316); }
+  .vsind-sec8-pill.c3-card::before { background: linear-gradient(90deg, #0f172a, #0369a1); }
+  .vsind-sec8-pill.c4-card::before { background: linear-gradient(90deg, #008744, #10b981); }
+
+  .vsind-sec8-pill:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px rgba(2, 132, 199, 0.12), 0 2px 6px rgba(0, 0, 0, 0.04);
+    border-color: rgba(2, 132, 199, 0.3);
+  }
+
+  .vsind-sec8-pill-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  }
+  .vsind-sec8-pill-icon.c1 {
+    background: linear-gradient(135deg, #0284c7 0%, #38bdf8 100%);
+    color: #ffffff;
+  }
+  .vsind-sec8-pill-icon.c2 {
+    background: linear-gradient(135deg, #ec5c0a 0%, #fb923c 100%);
+    color: #ffffff;
+  }
+  .vsind-sec8-pill-icon.c3 {
+    background: linear-gradient(135deg, #0f172a 0%, #0369a1 100%);
+    color: #ffffff;
+  }
+  .vsind-sec8-pill-icon.c4 {
+    background: linear-gradient(135deg, #008744 0%, #10b981 100%);
+    color: #ffffff;
+  }
+
+  .vsind-sec8-pill-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+  }
+  .vsind-sec8-pill-text strong {
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 14.5px;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .vsind-sec8-pill-text span {
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: #64748b;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* RIGHT FRAME: 1:1 SQUARE SHOWCASE WITH MOMENT CAPTION */
+  /* RIGHT FRAME: LUXURY 3D SHOWCASE FRAME (MATCHING RESIDENTIAL) */
+  .vsind-sec8-card-frame {
+    background: #ffffff;
+    border: 2px solid rgba(2, 132, 199, 0.35);
+    border-radius: 24px;
+    padding: 10px;
+    box-shadow: 0 20px 50px rgba(2, 132, 199, 0.16), 0 4px 18px rgba(0, 0, 0, 0.04);
+    position: relative;
+    max-width: 400px;
+    margin: 0 auto;
+    width: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .vsind-sec8-card-frame:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 26px 60px rgba(2, 132, 199, 0.22);
+  }
+
+  .vsind-sec8-img-box {
+    position: relative;
+    border-radius: 18px;
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  }
+  .vsind-sec8-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 18px;
+  }
+
+  .vsind-sec8-moment-caption {
+    background: linear-gradient(135deg, #f8fafc 0%, #f0f9ff 100%);
+    border: 1px solid rgba(2, 132, 199, 0.2);
+    border-radius: 14px;
+    padding: 10px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .vsind-moment-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    color: #0284c7;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+  }
+  .vsind-moment-quote {
+    font-family: 'Nunito', sans-serif;
+    font-size: 12.5px;
+    font-style: italic;
+    color: #334155;
+    line-height: 1.45;
+    margin: 0;
+  }
+  .vsind-moment-quote strong {
+    color: #0284c7;
+    font-style: normal;
+    font-weight: 800;
+  }
+
+  /* MOBILE SPECIFIC OPTIMIZATIONS (STRICTLY 2 BOXES IN 1 LINE) */
+  @media (max-width: 767px) {
+    .vsind-sec8-custom {
+      padding: 36px 0 44px 0 !important;
+    }
+    .vsind-sec8-grid {
+      gap: 24px !important;
+    }
+    .vsind-sec8-title {
+      font-size: 24px !important;
+      line-height: 1.2 !important;
+    }
+    .vsind-sec8-lead {
+      font-size: 14.5px !important;
+      line-height: 1.55 !important;
+      margin-bottom: 18px !important;
+    }
+    .vsind-sec8-pills-2x2 {
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 8px !important;
+      margin-bottom: 20px !important;
+    }
+    .vsind-sec8-pill {
+      flex-direction: column !important;
+      align-items: center !important;
+      text-align: center !important;
+      padding: 12px 6px 10px 6px !important;
+      gap: 6px !important;
+      border-radius: 12px !important;
+      min-height: 108px !important;
+      justify-content: center !important;
+    }
+    .vsind-sec8-pill-icon {
+      width: 32px !important;
+      height: 32px !important;
+      font-size: 14px !important;
+      border-radius: 8px !important;
+      margin-bottom: 2px !important;
+    }
+    .vsind-sec8-pill-text {
+      width: 100% !important;
+    }
+    .vsind-sec8-pill-text strong {
+      font-size: 11.5px !important;
+      line-height: 1.2 !important;
+      white-space: normal !important;
+      display: -webkit-box !important;
+      -webkit-line-clamp: 2 !important;
+      -webkit-box-orient: vertical !important;
+    }
+    .vsind-sec8-pill-text span {
+      font-size: 9.5px !important;
+      line-height: 1.2 !important;
+      -webkit-line-clamp: 2 !important;
+    }
+    .vsind-sec8-card-frame {
+      max-width: 100% !important;
+      padding: 10px !important;
+      border-radius: 18px !important;
+    }
+    .vsind-sec8-moment-caption {
+      padding: 8px 10px !important;
+    }
+    .vsind-moment-quote {
+      font-size: 11.5px !important;
+    }
+  }
+</style>
+
+<div class="vsind">
+
+  <!-- ══ CATEGORY NAVIGATION STRIP ══ -->
+  <div class="vsind-nav-strip">
+    <div class="vsind-nav-container">
+      <div class="vsind-nav-title">
+        <i class="fa-solid fa-layer-group"></i> Sector Requirement Pages:
+      </div>
+      <div class="vsind-nav-links">
+        <a href="/pages/required-cards?view=residential" class="vsind-nav-item">
+          <i class="fa-solid fa-house"></i> Residential
+        </a>
+        <a href="/pages/required-cards?view=commercial" class="vsind-nav-item">
+          <i class="fa-solid fa-building"></i> Commercial
+        </a>
+        <a href="/pages/required-cards?view=industrial" class="vsind-nav-item active">
+          <i class="fa-solid fa-industry"></i> Industrial
+        </a>
+        <a href="/pages/required-cards?view=institutional" class="vsind-nav-item">
+          <i class="fa-solid fa-graduation-cap"></i> Institutional
+        </a>
+        <a href="/pages/b2c" class="vsind-nav-item" onclick="vsGoPage(event, 'b2c')">
+          <i class="fa-solid fa-bolt"></i> Power Saver Card
+        </a>
+        <a href="/pages/get-franchise" class="vsind-nav-item" onclick="vsGoPage(event, 'get-franchise')">
+          <i class="fa-solid fa-store"></i> Franchise Program
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function vsGoPage(e, handle) {
+      if (e && (e.ctrlKey || e.metaKey || e.shiftKey)) return;
+      var isEditor = (window.Shopify && window.Shopify.designMode) || location.search.indexOf('preview_theme_id') > -1;
+      if (isEditor) {
+        if (e && e.preventDefault) e.preventDefault();
+        var base = (location.pathname && location.pathname.indexOf('/pages/') === 0) ? location.pathname : '/pages/required-cards';
+        location.href = base + '?view=' + handle;
+      }
+    }
+  </script>
+
+  <!-- ══ SECTION 8 SHOWCASE (NOW MOVED TO TOP HERO POSITION) ══ -->
+  <section class="vsind-sec8-custom" id="vsind-sec8">
+    <div class="wrap">
+      <div class="vsind-sec8-grid">
+        <!-- LEFT COLUMN: HEADER, BENEFIT PILLS & DUAL CTAS -->
+        <div>
+          <div class="vsind-sec8-badge">
+            <i class="fa-solid fa-industry"></i> Industrial Energy Optimization
+          </div>
+
+          <h2 class="vsind-sec8-title">
+            Vidhyut Saathi Card for <span>Industrial Factories & Plants</span>
+          </h2>
+
+          <p class="vsind-sec8-lead">
+            Eliminate heavy kVAh DISCOM penalty surcharges, boost Power Factor (PF) to 0.99 lag, and protect heavy induction motors, CNC machines, injection molding units, cold storages, and LT/HT transformers. Whether operating a 50 KW workshop or a 500+ KW continuous production line, calculate your card requirement below.
+          </p>
+
+          <!-- 4 ULTRA-LUCRATIVE 3D GLASS CARDS (2x2 GRID) -->
+          <div class="vsind-sec8-pills-2x2">
+            <div class="vsind-sec8-pill c1-card">
+              <div class="vsind-sec8-pill-icon c1">
+                <i class="fa-solid fa-bolt-lightning"></i>
+              </div>
+              <div class="vsind-sec8-pill-text">
+                <strong>20%–30% kVAh Cuts</strong>
+                <span>Zero Inductive Reactive Losses on LT/HT Panels</span>
+              </div>
+            </div>
+
+            <div class="vsind-sec8-pill c2-card">
+              <div class="vsind-sec8-pill-icon c2">
+                <i class="fa-solid fa-chart-line"></i>
+              </div>
+              <div class="vsind-sec8-pill-text">
+                <strong>0.99 PF Correction</strong>
+                <span>Eliminates Low Power Factor Surcharges & Penalties</span>
+              </div>
+            </div>
+
+            <div class="vsind-sec8-pill c3-card">
+              <div class="vsind-sec8-pill-icon c3">
+                <i class="fa-solid fa-gears"></i>
+              </div>
+              <div class="vsind-sec8-pill-text">
+                <strong>CNC & Heavy Motors</strong>
+                <span>Engineered for Continuous 24/7 Factory Production</span>
+              </div>
+            </div>
+
+            <div class="vsind-sec8-pill c4-card">
+              <div class="vsind-sec8-pill-icon c4">
+                <i class="fa-solid fa-award"></i>
+              </div>
+              <div class="vsind-sec8-pill-text">
+                <strong>10-Yr Lifespan</strong>
+                <span>3-Year Replacement Guarantee & Zero Maintenance</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- DUAL CTAS -->
+          <div class="vsind-hero-ctas">
+            <a href="#vsind-calc" class="vsind-btn-primary" style="background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); box-shadow: 0 8px 24px rgba(2, 132, 199, 0.32);">
+              <i class="fa-solid fa-calculator"></i> Calculate Industrial Cards
+            </a>
+            <a href="https://wa.me/919876543210?text=Hi%20Vidhyut%20Saathi%2C%20I%20want%20to%20order%20Industrial%20Saver%20Cards" class="vsind-btn-secondary" target="_blank">
+              <i class="fa-brands fa-whatsapp" style="color: #25d366; font-size: 17px;"></i> Industrial Advisory Inquiry
+            </a>
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN: 1:1 SQUARE CLEAN SHOWCASE WITH MOMENT CAPTION -->
+        <div style="display: flex; justify-content: center; align-items: center;">
+          <div class="vsind-sec8-card-frame">
+            <div class="vsind-sec8-img-box">
+              {% if section.settings.sec8_card_image != blank %}
+                <img src="{{ section.settings.sec8_card_image | image_url: width: 1000 }}" alt="Industrial Factory LT/HT Panel with Vidhyut Saathi Cards Installed" loading="lazy">
+              {% else %}
+                <img src="{{ 'industrial-mcb-showcase-final.jpg' | asset_url }}" alt="Industrial Factory LT/HT Panel with Vidhyut Saathi Cards Installed" loading="lazy" onerror="this.onerror=null; this.src='https://cdn.shopify.com/s/files/1/0663/8783/7093/files/VS_Card_Final_Design_Golden_1.png';">
+              {% endif %}
+            </div>
+
+            <div class="vsind-sec8-moment-caption">
+              <div class="vsind-moment-tag">
+                <i class="fa-solid fa-camera-retro" style="color: #0284c7;"></i>
+                <span>Captured Industrial Moment of Joy</span>
+              </div>
+              <p class="vsind-moment-quote">
+                "The pride of running heavy manufacturing machinery 24/7 with <strong>20%–30% genuine savings</strong> on DISCOM kVAh bills with Vidhyut Saathi Card."
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ INTERACTIVE INDUSTRIAL CALCULATOR ══ -->
+  <section class="vsind-sec" id="vsind-calc">
+    <div class="wrap">
+      <div class="vsind-sec-head">
+        <div class="vsind-sec-eyebrow"><i class="fa-solid fa-sliders"></i> Industrial Calculator</div>
+        <h2 class="vsind-sec-title">Calculate Industrial Cards Needed</h2>
+        <p class="vsind-sec-desc">
+          Calculated using DISCOM industrial kVAh guidelines: 1 card per 6 KW connected load, adjusted for 3-phase LT/HT panel balancing and high harmonic motor loads.
+        </p>
+      </div>
+
+      <div class="vsind-calc-box">
+        <div>
+          <div class="vsind-field">
+            <div class="vsind-field-label">
+              <span>⚙️ CONNECTED INDUSTRIAL LOAD</span>
+              <span class="vsind-field-badge" id="vsind_kw_badge">60 KW</span>
+            </div>
+            <input type="range" class="vsind-range-slider" id="vsind_kw_slider" min="15" max="500" value="60" step="15" oninput="vsindSync('slider')">
+            <input type="number" class="vsind-num-input" id="vsind_kw_num" value="60" min="1" max="2000" oninput="vsindSync('kw')">
+          </div>
+
+          <div class="vsind-field">
+            <div class="vsind-field-label">
+              <span>💰 MONTHLY ELECTRICITY BILL</span>
+              <span class="vsind-field-badge" id="vsind_bill_badge">₹60,000</span>
+            </div>
+            <input type="number" class="vsind-num-input" id="vsind_bill_num" value="60000" min="5000" step="5000" oninput="vsindSync('bill')">
+          </div>
+
+          <!-- PHASE SELECTOR -->
+          <div class="vsind-field">
+            <div class="vsind-field-label">🔌 PANEL / PHASE TYPE</div>
+            <div class="vsind-toggle-group">
+              <button type="button" class="vsind-toggle-btn" id="vsind_btn_single" onclick="vsindSetPhase(false)">Single Phase</button>
+              <button type="button" class="vsind-toggle-btn active" id="vsind_btn_three" onclick="vsindSetPhase(true)">Three Phase (LT/HT Panel)</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="vsind-output-card">
+          <div>
+            <div style="font-size:11px; font-weight:800; color:var(--muted-2); letter-spacing:1px; text-transform:uppercase;">RECOMMENDED INDUSTRIAL CARDS</div>
+            <div class="vsind-res-val">
+              <span id="vsind_card_num">11</span>
+              <span id="vsind_card_unit">Cards</span>
+            </div>
+          </div>
+
+          <div class="vsind-savings-box">
+            <div>
+              <div style="font-size:10px; font-weight:700; color:#e0f2fe; text-transform:uppercase;">ESTIMATED MONTHLY SAVINGS (20-30%)</div>
+              <div style="font-size:22px; font-weight:800; font-family:'Space Grotesk', sans-serif;" id="vsind_savings_range">₹12,000 – ₹18,000 / mo</div>
+            </div>
+            <i class="fa-solid fa-piggy-bank" style="font-size:24px;"></i>
+          </div>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+            <a href="https://wa.me/919876543210?text=Hi%20Vidhyut%20Saathi%2C%20I%20need%20Industrial%20Cards" class="vsind-btn-primary" style="justify-content:center; font-size:13.5px;" target="_blank">
+              <i class="fa-brands fa-whatsapp"></i> Buy on WhatsApp
+            </a>
+            <a href="tel:+919876543210" class="vsind-btn-secondary" style="justify-content:center; font-size:13.5px;">
+              <i class="fa-solid fa-phone"></i> Call Industrial Rep
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 20 INDUSTRIAL MCB & LT/HT PANEL GALLERY ══ -->
+  <section class="ind-sec" id="ind-gallery">
+    <div class="wrap">
+      <div class="vsind-sec-head">
+        <div class="vsind-sec-eyebrow"><i class="fa-solid fa-industry"></i> Factory Installations</div>
+        <h2 class="vsind-sec-title">20 Industrial LT & HT Panel Connections</h2>
+        <p class="vsind-sec-desc">Click any factory installation photo to inspect full 3-phase LT/HT panel wiring. Vidhyut Saathi cards connect in parallel with zero production downtime.</p>
+      </div>
+
+      <!-- Category Filter Buttons arranged in clean rows -->
+      <div class="ind-filter-bar">
+        <div class="ind-filter-row row-1">
+          <button class="ind-filter-btn active" onclick="filterInd('all', this)"><i class="fa-solid fa-border-all"></i> All (20)</button>
+        </div>
+        <div class="ind-filter-row row-2">
+          <button class="ind-filter-btn" onclick="filterInd('cnc', this)"><i class="fa-solid fa-gear"></i> CNC & Machine Shop (5)</button>
+          <button class="ind-filter-btn" onclick="filterInd('molding', this)"><i class="fa-solid fa-cubes"></i> Molding & Extrusion (5)</button>
+        </div>
+        <div class="ind-filter-row row-3">
+          <button class="ind-filter-btn" onclick="filterInd('textile', this)"><i class="fa-solid fa-shirt"></i> Textile & Mills (5)</button>
+          <button class="ind-filter-btn" onclick="filterInd('pharma', this)"><i class="fa-solid fa-snowflake"></i> Cold Storage & Pharma (5)</button>
+        </div>
+      </div>
+
+      <div class="ind-gallery-grid">
+        {% for i in (1..20) %}
+          {% capture img_key %}ind_mcb_img_{{ i }}{% endcapture %}
+          {% assign custom_img = section.settings[img_key] %}
+
+          {% assign block = nil %}
+          {% if section.blocks.size >= i %}
+            {% assign block_idx = i | minus: 1 %}
+            {% assign block = section.blocks[block_idx] %}
+          {% endif %}
+
+          {% assign cat = 'cnc' %}
+          {% assign badge = '3-PHASE LT PANEL' %}
+          {% assign title = 'CNC Spindle DB Setup #' | append: i %}
+          {% assign desc = 'Parallel installation on main 125A industrial MCCB breaker.' %}
+
+          {% if i > 5 and i <= 10 %}
+            {% assign cat = 'molding' %}
+            {% assign badge = 'INJECTION MOLDING MCB' %}
+            {% assign title = 'Molding Machine DB #' | append: i %}
+          {% elsif i > 10 and i <= 15 %}
+            {% assign cat = 'textile' %}
+            {% assign badge = 'TEXTILE LOOM PANEL' %}
+            {% assign title = 'Weaving Mill Panel #' | append: i %}
+          {% elsif i > 15 %}
+            {% assign cat = 'pharma' %}
+            {% assign badge = 'COLD STORAGE MAINS' %}
+            {% assign title = 'Chiller Compressor DB #' | append: i %}
+          {% endif %}
+
+          {% if block != nil %}
+            {% if block.settings.title != blank %}{% assign title = block.settings.title %}{% endif %}
+            {% if block.settings.category != blank %}{% assign cat = block.settings.category %}{% endif %}
+            {% if block.settings.badge != blank %}{% assign badge = block.settings.badge %}{% endif %}
+            {% if block.settings.caption != blank %}{% assign desc = block.settings.caption %}{% endif %}
+            {% if block.settings.image != blank %}{% assign custom_img = block.settings.image %}{% endif %}
+          {% endif %}
+
+          <div class="ind-card" data-category="{{ cat }}" onclick="openIndLightbox('{% if custom_img != blank %}{{ custom_img | image_url: width: 1200 }}{% endif %}', '{{ title | escape }}', '{{ desc | escape }}')">
+            <div class="ind-card-img-wrap">
+              {% if custom_img != blank %}
+                <img src="{{ custom_img | image_url: width: 600 }}" alt="{{ title }}" loading="lazy">
+              {% else %}
+                <div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg, #0f172a 0%, #1e293b 100%);">
+                  <svg viewBox="0 0 400 300" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="400" height="300" fill="#0f172a"/>
+                    <rect x="25" y="25" width="350" height="250" rx="12" fill="#1e293b" stroke="#0284c7" stroke-width="2"/>
+                    <rect x="50" y="55" width="190" height="190" rx="8" fill="#0f172a" stroke="#0284c7" stroke-width="2"/>
+                    <!-- Heavy Industrial Breakers -->
+                    <rect x="70" y="80" width="22" height="65" rx="4" fill="#0284c7"/>
+                    <rect x="100" y="80" width="22" height="65" rx="4" fill="#0284c7"/>
+                    <rect x="130" y="80" width="22" height="65" rx="4" fill="#0284c7"/>
+                    <rect x="160" y="80" width="22" height="65" rx="4" fill="#ec5c0a"/>
+                    <rect x="190" y="80" width="22" height="65" rx="4" fill="#008744"/>
+                    <circle cx="120" cy="185" r="8" fill="#38bdf8"/>
+                    <text x="145" y="189" fill="#e0f2fe" font-size="10" font-family="Arial" font-weight="700">LT PANEL ON</text>
+                    <!-- Gold Industrial VS Card -->
+                    <rect x="260" y="75" width="95" height="150" rx="10" fill="url(#indMcbGlow{{ i }})" stroke="#ffd700" stroke-width="2"/>
+                    <circle cx="307" cy="120" r="20" fill="rgba(255,255,255,0.1)"/>
+                    <text x="307" y="124" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="800">⚡</text>
+                    <text x="307" y="165" text-anchor="middle" fill="#ffffff" font-size="9" font-weight="800" font-family="Arial">VIDHYUT SAATHI</text>
+                    <text x="307" y="180" text-anchor="middle" fill="#e0f2fe" font-size="8" font-family="Arial">INDUSTRIAL #{{ i }}</text>
+                    <line x1="220" y1="105" x2="260" y2="105" stroke="#ffd700" stroke-width="3" stroke-dasharray="4,4"/>
+                    <defs>
+                      <linearGradient id="indMcbGlow{{ i }}" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#0284c7"/>
+                        <stop offset="100%" stop-color="#0f172a"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                </div>
+              {% endif %}
+              <span class="ind-card-badge">{{ badge }}</span>
+            </div>
+            <div class="ind-card-body">
+              <span style="font-size:10px; font-weight:800; font-family:'IBM Plex Mono',monospace; color:#0284c7;">INDUSTRIAL SETUP #{{ i }}</span>
+              <h4 class="ind-card-title">{{ title }}</h4>
+              <p class="ind-card-desc">{{ desc }}</p>
+              <div style="margin-top:auto; padding-top:10px; display:flex; align-items:center; justify-content:space-between; font-size:11px; font-weight:800; color:#0284c7; border-top:1px dashed #cbd5e1;">
+                <span><i class="fa-solid fa-eye"></i> Inspect Wiring</span>
+                <i class="fa-solid fa-arrow-right-long" style="transition:transform 0.2s;"></i>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <!-- LIGHTBOX MODAL FOR INDUSTRIAL IMAGES -->
+  <div class="ind-lightbox-overlay" id="ind_lightbox" onclick="closeIndLightbox()" style="position:fixed; inset:0; background:rgba(15,23,42,0.85); backdrop-filter:blur(8px); z-index:99999; display:flex; align-items:center; justify-content:center; padding:20px; opacity:0; visibility:hidden; transition:all 0.25s ease;">
+    <div class="ind-lightbox-box" onclick="event.stopPropagation()" style="background:#ffffff; border-radius:20px; max-width:720px; width:100%; overflow:hidden; box-shadow:0 20px 50px rgba(0,0,0,0.5); position:relative; border:1.5px solid var(--cyan-d);">
+      <button type="button" class="ind-lightbox-close" onclick="closeIndLightbox()" style="position:absolute; top:14px; right:14px; width:36px; height:36px; border-radius:50%; background:#ffffff; color:#0f172a; border:1.5px solid #e2e8f0; display:flex; align-items:center; justify-content:center; font-size:18px; cursor:pointer; z-index:10;">&times;</button>
+      <div class="ind-lightbox-img-wrap" id="ind_lightbox_img_container" style="width:100%; max-height:420px; background:#0f172a; display:flex; align-items:center; justify-content:center;">
+        <!-- Image loaded dynamically -->
+      </div>
+      <div class="ind-lightbox-info" style="padding:20px;">
+        <h3 id="ind_lightbox_title" style="margin:0 0 6px 0; font-size:18px; color:var(--ink);">Title</h3>
+        <p id="ind_lightbox_desc" style="margin:0; font-size:13px; color:var(--muted);">Caption</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ INDUSTRIAL SIZING TABLE ══ -->
+  <section class="vsind-sec">
+    <div class="wrap">
+      <div class="vsind-sec-head">
+        <div class="vsind-sec-eyebrow"><i class="fa-solid fa-table"></i> Establishment Matrix</div>
+        <h2 class="vsind-sec-title">Industrial Sizing Reference Chart</h2>
+        <p class="vsind-sec-desc">Standard DISCOM energy audit matrix for Indian factories, manufacturing plants, and heavy processing units.</p>
+      </div>
+
+      <div class="vsind-table-wrap">
+        <table class="vsind-table">
+          <thead>
+            <tr>
+              <th>Industrial Establishment Type</th>
+              <th>Load (KW)</th>
+              <th>Monthly DISCOM Bill (₹)</th>
+              <th>Recommended Cards</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>CNC Machine Workshop / Lathe Unit</td>
+              <td>15–30<br class="vs-mob-br"> <span class="vs-mob-kw">KW</span></td>
+              <td>₹15,000 – ₹30,000</td>
+              <td class="highlight">3 – 6<br class="vs-mob-br"> <span class="vs-mob-cards">Cards</span></td>
+            </tr>
+            <tr>
+              <td>Plastic Injection Molding Plant</td>
+              <td>45–90<br class="vs-mob-br"> <span class="vs-mob-kw">KW</span></td>
+              <td>₹45,000 – ₹90,000</td>
+              <td class="highlight">8 – 16<br class="vs-mob-br"> <span class="vs-mob-cards">Cards</span></td>
+            </tr>
+            <tr>
+              <td>Textile Weaving Mill / Rice Mill</td>
+              <td>100–180<br class="vs-mob-br"> <span class="vs-mob-kw">KW</span></td>
+              <td>₹1,00,000 – ₹1,80,000</td>
+              <td class="highlight">17 – 31<br class="vs-mob-br"> <span class="vs-mob-cards">Cards</span></td>
+            </tr>
+            <tr>
+              <td>Pharma Unit / Cold Storage Facility</td>
+              <td>200–350<br class="vs-mob-br"> <span class="vs-mob-kw">KW</span></td>
+              <td>₹2,00,000 – ₹3,50,000</td>
+              <td class="highlight">34 – 60<br class="vs-mob-br"> <span class="vs-mob-cards">Cards</span></td>
+            </tr>
+            <tr>
+              <td>Steel Rolling / Foundry / Heavy Industrial Hub</td>
+              <td>400–600+<br class="vs-mob-br"> <span class="vs-mob-kw">KW</span></td>
+              <td>₹4,00,000 – ₹6,00,000+</td>
+              <td class="highlight">68 – 102+<br class="vs-mob-br"> <span class="vs-mob-cards">Cards</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ REAL INDUSTRIAL CASE STUDIES WORKED EXAMPLES ══ -->
+  <section class="vsind-sec" style="background:linear-gradient(180deg, #fff9f2 0%, #ffffff 100%); border-top:1.5px solid var(--line);">
+    <div class="wrap">
+      <div class="vsind-sec-head">
+        <div class="vsind-sec-eyebrow"><i class="fa-solid fa-square-check"></i> Verified Industrial Results</div>
+        <h2 class="vsind-sec-title">Real Industrial Worked Examples</h2>
+        <p class="vsind-sec-desc">See how Indian manufacturing plants cut operational energy expenses and monthly kVAh DISCOM bills by 20–30%.</p>
+      </div>
+
+      <!-- MOBILE CAROUSEL SLIDER WRAPPER -->
+      <div class="vs-cases-slider-wrap" id="vsindCaseSliderWrap">
+        <div class="vsind-case-grid" id="vsindCaseTrack">
+          {% assign case_blocks = section.blocks | where: "type", "industrial_case_study" %}
+          {% if case_blocks.size > 0 %}
+            {% for block in case_blocks %}
+              {% assign card_idx = forloop.index0 | modulo: 9 %}
+              {% case card_idx %}
+                {% when 0 %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=150&q=80" %}
+                {% when 1 %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1605518216938-7c31b7b14ad0?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" %}
+                {% when 2 %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1582719471384-894fbb16e074?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" %}
+                {% when 3 %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" %}
+                {% when 4 %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1535813547-99c456a41d4a?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=150&q=80" %}
+                {% when 5 %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1595246140625-573b715d11dc?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&q=80" %}
+                {% when 6 %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1586528116493-a029325540fa?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1605518216938-7c31b7b14ad0?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80" %}
+                {% when 7 %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1516937941344-00b4e0337589?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=150&q=80" %}
+                {% else %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1535813547-99c456a41d4a?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=150&q=80" %}
+              {% endcase %}
+              <div class="vsind-case-card" {{ block.shopify_attributes }} style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
+                <!-- MINI SLIDER -->
+                <div class="vs-card-media-slider">
+                  <div class="vs-card-media-slides">
+                    <div class="vs-card-media-slide active">
+                      {% if block.settings.image_1 != blank %}
+                        <img src="{{ block.settings.image_1 | image_url: width: 800 }}" alt="{{ block.settings.tag_1 | default: 'Slide 1' | escape }}" loading="lazy">
+                      {% else %}
+                        <img src="{{ def_img_1 }}" alt="{{ block.settings.tag_1 | default: 'Slide 1' | escape }}" loading="lazy">
+                      {% endif %}
+                      {% if block.settings.tag_1 != blank %}
+                        <span class="vs-media-tag"><i class="fa-solid fa-industry"></i> {{ block.settings.tag_1 }}</span>
+                      {% endif %}
+                    </div>
+                    <div class="vs-card-media-slide">
+                      {% if block.settings.image_2 != blank %}
+                        <img src="{{ block.settings.image_2 | image_url: width: 800 }}" alt="{{ block.settings.tag_2 | default: 'Slide 2' | escape }}" loading="lazy">
+                      {% else %}
+                        <img src="{{ def_img_2 }}" alt="{{ block.settings.tag_2 | default: 'Slide 2' | escape }}" loading="lazy">
+                      {% endif %}
+                      {% if block.settings.tag_2 != blank %}
+                        <span class="vs-media-tag"><i class="fa-solid fa-robot"></i> {{ block.settings.tag_2 }}</span>
+                      {% endif %}
+                    </div>
+                    <div class="vs-card-media-slide">
+                      {% if block.settings.image_3 != blank %}
+                        <img src="{{ block.settings.image_3 | image_url: width: 800 }}" alt="{{ block.settings.tag_3 | default: 'Slide 3' | escape }}" loading="lazy">
+                      {% else %}
+                        <img src="{{ def_img_3 }}" alt="{{ block.settings.tag_3 | default: 'Slide 3' | escape }}" loading="lazy">
+                      {% endif %}
+                      {% if block.settings.tag_3 != blank %}
+                        <span class="vs-media-tag"><i class="fa-solid fa-bolt"></i> {{ block.settings.tag_3 }}</span>
+                      {% endif %}
+                    </div>
+                    <div class="vs-card-media-slide">
+                      {% if block.settings.image_4 != blank %}
+                        <img src="{{ block.settings.image_4 | image_url: width: 800 }}" alt="{{ block.settings.tag_4 | default: 'Slide 4' | escape }}" loading="lazy">
+                      {% else %}
+                        <img src="{{ def_img_4 }}" alt="{{ block.settings.tag_4 | default: 'Slide 4' | escape }}" loading="lazy">
+                      {% endif %}
+                      {% if block.settings.tag_4 != blank %}
+                        <span class="vs-media-tag"><i class="fa-solid fa-gears"></i> {{ block.settings.tag_4 }}</span>
+                      {% endif %}
+                    </div>
+                  </div>
+                  <button type="button" class="vs-media-arrow vs-media-prev" onclick="vsSlideMedia(this, -1)" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+                  <button type="button" class="vs-media-arrow vs-media-next" onclick="vsSlideMedia(this, 1)" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+                  <div class="vs-media-dots-bar">
+                    <span class="vs-media-dot active" onclick="vsGoMediaSlide(this, 0)"></span>
+                    <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 1)"></span>
+                    <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 2)"></span>
+                    <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 3)"></span>
+                  </div>
+                  <div class="vs-media-counter"><span class="vs-media-cur">1</span>/<span class="vs-media-tot">4</span></div>
+                </div>
+
+                <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+                  <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #0284c7; box-shadow:0 4px 10px rgba(2,132,199,0.25);">
+                    {% if block.settings.avatar_image != blank %}
+                      <img src="{{ block.settings.avatar_image | image_url: width: 150 }}" alt="Client Avatar" style="width:100%; height:100%; object-fit:cover; display:block;">
+                    {% else %}
+                      <img src="{{ def_avatar }}" alt="Client Avatar" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'wvs-happy-man.jpg' | asset_url }}';">
+                    {% endif %}
+                  </div>
+                  <div>
+                    <h4 style="font-size:15px; font-weight:800; color:#0f172a; margin:0 0 2px 0; font-family:'Baloo 2',sans-serif;">{{ block.settings.company_name | default: 'Precision Plastics & Molding' }} <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></h4>
+                    <div style="font-size:12px; color:#64748b; font-weight:600;"><i class="fa-solid fa-location-dot" style="color:#0284c7;"></i> {{ block.settings.location_load | default: '90 KW Load, GIDC Ahmedabad' }}</div>
+                  </div>
+                </div>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
+                  <div style="background:#fff1f2; border:1px solid #fecdd3; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                    <span style="color:#e11d48; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">Old DISCOM Bill</span>
+                    <span style="font-family:'IBM Plex Mono',monospace; color:#9f1239; font-size:14px; font-weight:800; text-decoration:line-through;">{{ block.settings.old_bill | default: '₹1,40,000/mo' }}</span>
+                  </div>
+                  <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                    <span style="color:#059669; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">New DISCOM Bill</span>
+                    <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">{{ block.settings.new_bill | default: '₹99,400/mo' }}</span>
+                  </div>
+                </div>
+                <div style="background:linear-gradient(135deg, #0f172a 0%, #0284c7 100%); padding:11px 14px; border-radius:12px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(2,132,199,0.2);">
+                  <span style="color:#a7f3d0; font-size:11.5px;">{{ block.settings.cards_count | default: '⚡ 16 Industrial Cards' }}</span>
+                  <strong style="color:#ffffff; font-size:13.5px;">{{ block.settings.savings_summary | default: 'Saved ₹40,600/mo (29.0%)' }}</strong>
+                </div>
+              </div>
+            {% endfor %}
+          {% else %}
+          <!-- CARD 1: PLASTIC MOLDING -->
+          <div class="vsind-case-card" style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
+            <!-- MINI SLIDER -->
+            <div class="vs-card-media-slider">
+              <div class="vs-card-media-slides">
+                <div class="vs-card-media-slide active">
+                  <img src="{% if section.settings.case_1_img_1 != blank %}{{ section.settings.case_1_img_1 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Injection Molding Machine" loading="lazy">
+                  <span class="vs-media-tag"><i class="fa-solid fa-industry"></i> Injection Molding</span>
+                </div>
+                <div class="vs-card-media-slide">
+                  <img src="{% if section.settings.case_1_img_2 != blank %}{{ section.settings.case_1_img_2 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Robotic Conveyor Line" loading="lazy">
+                  <span class="vs-media-tag"><i class="fa-solid fa-robot"></i> Robotic Line</span>
+                </div>
+                <div class="vs-card-media-slide">
+                  <img src="{% if section.settings.case_1_img_3 != blank %}{{ section.settings.case_1_img_3 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=700&q=80{% endif %}" alt="125A Feeder Panel" loading="lazy">
+                  <span class="vs-media-tag"><i class="fa-solid fa-bolt"></i> 125A Feeder Panel</span>
+                </div>
+              </div>
+              <button type="button" class="vs-media-arrow vs-media-prev" onclick="vsSlideMedia(this, -1)" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+              <button type="button" class="vs-media-arrow vs-media-next" onclick="vsSlideMedia(this, 1)" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+              <div class="vs-media-dots-bar">
+                <span class="vs-media-dot active" onclick="vsGoMediaSlide(this, 0)"></span>
+                <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 1)"></span>
+                <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 2)"></span>
+              </div>
+              <div class="vs-media-counter"><span class="vs-media-cur">1</span>/<span class="vs-media-tot">3</span></div>
+            </div>
+
+            <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+              <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #0284c7; box-shadow:0 4px 10px rgba(2,132,199,0.25);">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Plant Head" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'wvs-happy-man.jpg' | asset_url }}';">
+              </div>
+              <div>
+                <h4 style="font-size:15px; font-weight:800; color:#0f172a; margin:0 0 2px 0; font-family:'Baloo 2',sans-serif;">Precision Plastics & Molding <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></h4>
+                <div style="font-size:12px; color:#64748b; font-weight:600;"><i class="fa-solid fa-location-dot" style="color:#0284c7;"></i> 90 KW Load, GIDC Ahmedabad</div>
+              </div>
+            </div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
+              <div style="background:#fff1f2; border:1px solid #fecdd3; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                <span style="color:#e11d48; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">Old DISCOM Bill</span>
+                <span style="font-family:'IBM Plex Mono',monospace; color:#9f1239; font-size:14px; font-weight:800; text-decoration:line-through;">₹1,40,000/mo</span>
+              </div>
+              <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                <span style="color:#059669; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">New DISCOM Bill</span>
+                <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">₹99,400/mo</span>
+              </div>
+            </div>
+            <div style="background:linear-gradient(135deg, #0f172a 0%, #0284c7 100%); padding:11px 14px; border-radius:12px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(2,132,199,0.2);">
+              <span style="color:#a7f3d0; font-size:11.5px;">⚡ 16 Industrial Cards</span>
+              <strong style="color:#ffffff; font-size:13.5px;">Saved ₹40,600/mo (29.0%)</strong>
+            </div>
+          </div>
+
+          <!-- CARD 2: TEXTILE MILL -->
+          <div class="vsind-case-card" style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
+            <!-- MINI SLIDER -->
+            <div class="vs-card-media-slider">
+              <div class="vs-card-media-slides">
+                <div class="vs-card-media-slide active">
+                  <img src="{% if section.settings.case_2_img_1 != blank %}{{ section.settings.case_2_img_1 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1605518216938-7c31b7b14ad0?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Weaving Loom" loading="lazy">
+                  <span class="vs-media-tag"><i class="fa-solid fa-industry"></i> Weaving Looms</span>
+                </div>
+                <div class="vs-card-media-slide">
+                  <img src="{% if section.settings.case_2_img_2 != blank %}{{ section.settings.case_2_img_2 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Yarn Spinning" loading="lazy">
+                  <span class="vs-media-tag"><i class="fa-solid fa-layer-group"></i> Yarn Spinning</span>
+                </div>
+                <div class="vs-card-media-slide">
+                  <img src="{% if section.settings.case_2_img_3 != blank %}{{ section.settings.case_2_img_3 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Drive Motors" loading="lazy">
+                  <span class="vs-media-tag"><i class="fa-solid fa-bolt"></i> Drive Motors</span>
+                </div>
+              </div>
+              <button type="button" class="vs-media-arrow vs-media-prev" onclick="vsSlideMedia(this, -1)" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+              <button type="button" class="vs-media-arrow vs-media-next" onclick="vsSlideMedia(this, 1)" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+              <div class="vs-media-dots-bar">
+                <span class="vs-media-dot active" onclick="vsGoMediaSlide(this, 0)"></span>
+                <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 1)"></span>
+                <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 2)"></span>
+              </div>
+              <div class="vs-media-counter"><span class="vs-media-cur">1</span>/<span class="vs-media-tot">3</span></div>
+            </div>
+
+            <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+              <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #0284c7; box-shadow:0 4px 10px rgba(2,132,199,0.25);">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" alt="Mill General Manager" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'wvs-indian-businessman.jpg' | asset_url }}';">
+              </div>
+              <div>
+                <h4 style="font-size:15px; font-weight:800; color:#0f172a; margin:0 0 2px 0; font-family:'Baloo 2',sans-serif;">Surat Textile Weaving Mill <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></h4>
+                <div style="font-size:12px; color:#64748b; font-weight:600;"><i class="fa-solid fa-location-dot" style="color:#0284c7;"></i> 180 KW Load, Surat</div>
+              </div>
+            </div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
+              <div style="background:#fff1f2; border:1px solid #fecdd3; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                <span style="color:#e11d48; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">Old DISCOM Bill</span>
+                <span style="font-family:'IBM Plex Mono',monospace; color:#9f1239; font-size:14px; font-weight:800; text-decoration:line-through;">₹2,80,000/mo</span>
+              </div>
+              <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                <span style="color:#059669; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">New DISCOM Bill</span>
+                <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">₹2,01,600/mo</span>
+              </div>
+            </div>
+            <div style="background:linear-gradient(135deg, #0f172a 0%, #0284c7 100%); padding:11px 14px; border-radius:12px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(2,132,199,0.2);">
+              <span style="color:#a7f3d0; font-size:11.5px;">⚡ 31 Industrial Cards</span>
+              <strong style="color:#ffffff; font-size:13.5px;">Saved ₹78,400/mo (28.0%)</strong>
+            </div>
+          </div>
+
+          <!-- CARD 3: PHARMA COLD CHAIN -->
+          <div class="vsind-case-card" style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
+            <!-- MINI SLIDER -->
+            <div class="vs-card-media-slider">
+              <div class="vs-card-media-slides">
+                <div class="vs-card-media-slide active">
+                  <img src="{% if section.settings.case_3_img_1 != blank %}{{ section.settings.case_3_img_1 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1582719471384-894fbb16e074?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Cleanroom Plant" loading="lazy">
+                  <span class="vs-media-tag"><i class="fa-solid fa-industry"></i> Cleanroom Plant</span>
+                </div>
+                <div class="vs-card-media-slide">
+                  <img src="{% if section.settings.case_3_img_2 != blank %}{{ section.settings.case_3_img_2 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Chiller Compressor" loading="lazy">
+                  <span class="vs-media-tag"><i class="fa-solid fa-snowflake"></i> Chiller Compressor</span>
+                </div>
+                <div class="vs-card-media-slide">
+                  <img src="{% if section.settings.case_3_img_3 != blank %}{{ section.settings.case_3_img_3 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Quality Sterile Lab" loading="lazy">
+                  <span class="vs-media-tag"><i class="fa-solid fa-flask-vial"></i> Sterile Lab Line</span>
+                </div>
+              </div>
+              <button type="button" class="vs-media-arrow vs-media-prev" onclick="vsSlideMedia(this, -1)" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+              <button type="button" class="vs-media-arrow vs-media-next" onclick="vsSlideMedia(this, 1)" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+              <div class="vs-media-dots-bar">
+                <span class="vs-media-dot active" onclick="vsGoMediaSlide(this, 0)"></span>
+                <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 1)"></span>
+                <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 2)"></span>
+              </div>
+              <div class="vs-media-counter"><span class="vs-media-cur">1</span>/<span class="vs-media-tot">3</span></div>
+            </div>
+
+            <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+              <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #0284c7; box-shadow:0 4px 10px rgba(2,132,199,0.25);">
+                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&q=80" alt="Plant Operations Head" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'indian_entrepreneur.jpg' | asset_url }}';">
+              </div>
+              <div>
+                <h4 style="font-size:15px; font-weight:800; color:#0f172a; margin:0 0 2px 0; font-family:'Baloo 2',sans-serif;">Pharma Cold Chain Plant <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></h4>
+                <div style="font-size:12px; color:#64748b; font-weight:600;"><i class="fa-solid fa-location-dot" style="color:#0284c7;"></i> 350 KW Load, Baddi HP</div>
+              </div>
+            </div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
+              <div style="background:#fff1f2; border:1px solid #fecdd3; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                <span style="color:#e11d48; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">Old DISCOM Bill</span>
+                <span style="font-family:'IBM Plex Mono',monospace; color:#9f1239; font-size:14px; font-weight:800; text-decoration:line-through;">₹5,50,000/mo</span>
+              </div>
+              <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                <span style="color:#059669; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">New DISCOM Bill</span>
+                <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">₹3,96,000/mo</span>
+              </div>
+            </div>
+            <div style="background:linear-gradient(135deg, #0f172a 0%, #0284c7 100%); padding:11px 14px; border-radius:12px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(2,132,199,0.2);">
+              <span style="color:#a7f3d0; font-size:11.5px;">⚡ 60 Industrial Cards</span>
+              <strong style="color:#ffffff; font-size:13.5px;">Saved ₹1,54,000/mo (28.0%)</strong>
+            </div>
+          </div>
+
+          <!-- CARD 4: ROBOTIC AUTO WELDING -->
+          <div class="vsind-case-card" style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
+            <!-- MINI SLIDER -->
+            <div class="vs-card-media-slider">
+              <div class="vs-card-media-slides">
+                <div class="vs-card-media-slide active">
+                  <img src="{% if section.settings.case_4_img_1 != blank %}{{ section.settings.case_4_img_1 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Robotic Welding" loading="lazy">
+                  <span class="vs-media-tag"><i class="fa-solid fa-robot"></i> Robotic Welding</span>
+                </div>
+                <div class="vs-card-media-slide">
+                  <img src="{% if section.settings.case_4_img_2 != blank %}{{ section.settings.case_4_img_2 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=700&q=80{% endif %}" alt="5-Axis CNC" loading="lazy">
+                  <span class="vs-media-tag"><i class="fa-solid fa-gears"></i> 5-Axis CNC</span>
+                </div>
+                <div class="vs-card-media-slide">
+                  <img src="{% if section.settings.case_4_img_3 != blank %}{{ section.settings.case_4_img_3 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Auto Assembly Line" loading="lazy">
+                  <span class="vs-media-tag"><i class="fa-solid fa-car"></i> Assembly Line</span>
+                </div>
+              </div>
+              <button type="button" class="vs-media-arrow vs-media-prev" onclick="vsSlideMedia(this, -1)" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+              <button type="button" class="vs-media-arrow vs-media-next" onclick="vsSlideMedia(this, 1)" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+              <div class="vs-media-dots-bar">
+                <span class="vs-media-dot active" onclick="vsGoMediaSlide(this, 0)"></span>
+                <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 1)"></span>
+                <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 2)"></span>
+              </div>
+              <div class="vs-media-counter"><span class="vs-media-cur">1</span>/<span class="vs-media-tot">3</span></div>
+            </div>
+
+            <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+              <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #0284c7; box-shadow:0 4px 10px rgba(2,132,199,0.25);">
+                <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=150&q=80" alt="Engineering Head" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'hero-advisor-calculator.jpg' | asset_url }}';">
+              </div>
+              <div>
+                <h4 style="font-size:15px; font-weight:800; color:#0f172a; margin:0 0 2px 0; font-family:'Baloo 2',sans-serif;">Apex Auto Ancillary & CNC <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></h4>
+                <div style="font-size:12px; color:#64748b; font-weight:600;"><i class="fa-solid fa-location-dot" style="color:#0284c7;"></i> 120 KW Load, Manesar Haryana</div>
+              </div>
+            </div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
+              <div style="background:#fff1f2; border:1px solid #fecdd3; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                <span style="color:#e11d48; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">Old DISCOM Bill</span>
+                <span style="font-family:'IBM Plex Mono',monospace; color:#9f1239; font-size:14px; font-weight:800; text-decoration:line-through;">₹1,95,000/mo</span>
+              </div>
+              <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                <span style="color:#059669; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">New DISCOM Bill</span>
+                <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">₹1,39,000/mo</span>
+              </div>
+            </div>
+            <div style="background:linear-gradient(135deg, #0f172a 0%, #0284c7 100%); padding:11px 14px; border-radius:12px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(2,132,199,0.2);">
+              <span style="color:#a7f3d0; font-size:11.5px;">⚡ 21 Industrial Cards</span>
+              <strong style="color:#ffffff; font-size:13.5px;">Saved ₹56,000/mo (28.7%)</strong>
+            </div>
+          </div>
+
+          <!-- CARD 5: STEEL RE-ROLLING MILL -->
+          <div class="vsind-case-card" style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
+            <!-- MINI SLIDER -->
+            <div class="vs-card-media-slider">
+              <div class="vs-card-media-slides">
+                <div class="vs-card-media-slide active">
+                  <img src="{% if section.settings.case_5_img_1 != blank %}{{ section.settings.case_5_img_1 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Blast Furnace" loading="lazy">
+                  <span class="vs-media-tag"><i class="fa-solid fa-fire"></i> Blast Furnace</span>
+                </div>
+                <div class="vs-card-media-slide">
+                  <img src="{% if section.settings.case_5_img_2 != blank %}{{ section.settings.case_5_img_2 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1535813547-99c456a41d4a?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Steel Rolling Mill" loading="lazy">
+                  <span class="vs-media-tag"><i class="fa-solid fa-industry"></i> Rolling Mill</span>
+                </div>
+                <div class="vs-card-media-slide">
+                  <img src="{% if section.settings.case_5_img_3 != blank %}{{ section.settings.case_5_img_3 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Induction Plant" loading="lazy">
+                  <span class="vs-media-tag"><i class="fa-solid fa-bolt"></i> Induction Melt Yard</span>
+                </div>
+              </div>
+              <button type="button" class="vs-media-arrow vs-media-prev" onclick="vsSlideMedia(this, -1)" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+              <button type="button" class="vs-media-arrow vs-media-next" onclick="vsSlideMedia(this, 1)" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+              <div class="vs-media-dots-bar">
+                <span class="vs-media-dot active" onclick="vsGoMediaSlide(this, 0)"></span>
+                <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 1)"></span>
+                <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 2)"></span>
+              </div>
+              <div class="vs-media-counter"><span class="vs-media-cur">1</span>/<span class="vs-media-tot">3</span></div>
+            </div>
+
+            <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+              <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #0284c7; box-shadow:0 4px 10px rgba(2,132,199,0.25);">
+                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=150&q=80" alt="Managing Director" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'vidhyut-customer-call-support.jpg' | asset_url }}';">
+              </div>
+              <div>
+                <h4 style="font-size:15px; font-weight:800; color:#0f172a; margin:0 0 2px 0; font-family:'Baloo 2',sans-serif;">Mahalaxmi Steel Re-Rolling Mill <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></h4>
+                <div style="font-size:12px; color:#64748b; font-weight:600;"><i class="fa-solid fa-location-dot" style="color:#0284c7;"></i> 480 KW Heavy Load, Raipur</div>
+              </div>
+            </div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
+              <div style="background:#fff1f2; border:1px solid #fecdd3; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                <span style="color:#e11d48; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">Old DISCOM Bill</span>
+                <span style="font-family:'IBM Plex Mono',monospace; color:#9f1239; font-size:14px; font-weight:800; text-decoration:line-through;">₹7,80,000/mo</span>
+              </div>
+              <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                <span style="color:#059669; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">New DISCOM Bill</span>
+                <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">₹5,60,000/mo</span>
+              </div>
+            </div>
+            <div style="background:linear-gradient(135deg, #0f172a 0%, #0284c7 100%); padding:11px 14px; border-radius:12px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(2,132,199,0.2);">
+              <span style="color:#a7f3d0; font-size:11.5px;">⚡ 82 Industrial Cards</span>
+              <strong style="color:#ffffff; font-size:13.5px;">Saved ₹2,20,000/mo (28.2%)</strong>
+            </div>
+          </div>
+
+          <!-- CARD 6: FOOD PROCESSING CONVEYOR -->
+          <div class="vsind-case-card" style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
+            <!-- MINI SLIDER -->
+            <div class="vs-card-media-slider">
+              <div class="vs-card-media-slides">
+                <div class="vs-card-media-slide active">
+                  <img src="{% if section.settings.case_6_img_1 != blank %}{{ section.settings.case_6_img_1 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Packaging Line" loading="lazy">
+                  <span class="vs-media-tag"><i class="fa-solid fa-industry"></i> Bottling & Packaging</span>
+                </div>
+                <div class="vs-card-media-slide">
+                  <img src="{% if section.settings.case_6_img_2 != blank %}{{ section.settings.case_6_img_2 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1595246140625-573b715d11dc?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Sorting Unit" loading="lazy">
+                  <span class="vs-media-tag"><i class="fa-solid fa-apple-whole"></i> Sorting Unit</span>
+                </div>
+                <div class="vs-card-media-slide">
+                  <img src="{% if section.settings.case_6_img_3 != blank %}{{ section.settings.case_6_img_3 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Cold Storage" loading="lazy">
+                  <span class="vs-media-tag"><i class="fa-solid fa-temperature-arrow-down"></i> Cold Storage Grid</span>
+                </div>
+              </div>
+              <button type="button" class="vs-media-arrow vs-media-prev" onclick="vsSlideMedia(this, -1)" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+              <button type="button" class="vs-media-arrow vs-media-next" onclick="vsSlideMedia(this, 1)" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+              <div class="vs-media-dots-bar">
+                <span class="vs-media-dot active" onclick="vsGoMediaSlide(this, 0)"></span>
+                <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 1)"></span>
+                <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 2)"></span>
+              </div>
+              <div class="vs-media-counter"><span class="vs-media-cur">1</span>/<span class="vs-media-tot">3</span></div>
+            </div>
+
+            <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+              <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #0284c7; box-shadow:0 4px 10px rgba(2,132,199,0.25);">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80" alt="Quality Director" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'wvs-card-guide-woman.jpg' | asset_url }}';">
+              </div>
+              <div>
+                <h4 style="font-size:15px; font-weight:800; color:#0f172a; margin:0 0 2px 0; font-family:'Baloo 2',sans-serif;">Agro Fresh Food Processing <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></h4>
+                <div style="font-size:12px; color:#64748b; font-weight:600;"><i class="fa-solid fa-location-dot" style="color:#0284c7;"></i> 75 KW Load, Nashik</div>
+              </div>
+            </div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
+              <div style="background:#fff1f2; border:1px solid #fecdd3; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                <span style="color:#e11d48; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">Old DISCOM Bill</span>
+                <span style="font-family:'IBM Plex Mono',monospace; color:#9f1239; font-size:14px; font-weight:800; text-decoration:line-through;">₹1,15,000/mo</span>
+              </div>
+              <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                <span style="color:#059669; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">New DISCOM Bill</span>
+                <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">₹82,000/mo</span>
+              </div>
+            </div>
+            <div style="background:linear-gradient(135deg, #0f172a 0%, #0284c7 100%); padding:11px 14px; border-radius:12px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(2,132,199,0.2);">
+              <span style="color:#a7f3d0; font-size:11.5px;">⚡ 13 Industrial Cards</span>
+              <strong style="color:#ffffff; font-size:13.5px;">Saved ₹33,000/mo (28.7%)</strong>
+            </div>
+          </div>
+
+          <!-- CARD 7: PACKAGING LOGISTICS PLANT -->
+          <div class="vsind-case-card" style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
+            <!-- MINI SLIDER -->
+            <div class="vs-card-media-slider">
+              <div class="vs-card-media-slides">
+                <div class="vs-card-media-slide active">
+                  <img src="{% if section.settings.case_7_img_1 != blank %}{{ section.settings.case_7_img_1 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Corrugation Unit" loading="lazy">
+                  <span class="vs-media-tag"><i class="fa-solid fa-box"></i> Corrugation Unit</span>
+                </div>
+                <div class="vs-card-media-slide">
+                  <img src="{% if section.settings.case_7_img_2 != blank %}{{ section.settings.case_7_img_2 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Paper Slitter" loading="lazy">
+                  <span class="vs-media-tag"><i class="fa-solid fa-scroll"></i> Slitting Machine</span>
+                </div>
+                <div class="vs-card-media-slide">
+                  <img src="{% if section.settings.case_7_img_3 != blank %}{{ section.settings.case_7_img_3 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1586528116493-a029325540fa?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Finished Goods" loading="lazy">
+                  <span class="vs-media-tag"><i class="fa-solid fa-warehouse"></i> Packing & Dispatch</span>
+                </div>
+              </div>
+              <button type="button" class="vs-media-arrow vs-media-prev" onclick="vsSlideMedia(this, -1)" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+              <button type="button" class="vs-media-arrow vs-media-next" onclick="vsSlideMedia(this, 1)" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+              <div class="vs-media-dots-bar">
+                <span class="vs-media-dot active" onclick="vsGoMediaSlide(this, 0)"></span>
+                <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 1)"></span>
+                <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 2)"></span>
+              </div>
+              <div class="vs-media-counter"><span class="vs-media-cur">1</span>/<span class="vs-media-tot">3</span></div>
+            </div>
+
+            <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+              <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #0284c7; box-shadow:0 4px 10px rgba(2,132,199,0.25);">
+                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=150&q=80" alt="Production Head" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'indian_entrepreneur.jpg' | asset_url }}';">
+              </div>
+              <div>
+                <h4 style="font-size:15px; font-weight:800; color:#0f172a; margin:0 0 2px 0; font-family:'Baloo 2',sans-serif;">Shree Balaji Packaging Mill <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></h4>
+                <div style="font-size:12px; color:#64748b; font-weight:600;"><i class="fa-solid fa-location-dot" style="color:#0284c7;"></i> 220 KW Load, Vapi Gujarat</div>
+              </div>
+            </div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
+              <div style="background:#fff1f2; border:1px solid #fecdd3; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                <span style="color:#e11d48; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">Old DISCOM Bill</span>
+                <span style="font-family:'IBM Plex Mono',monospace; color:#9f1239; font-size:14px; font-weight:800; text-decoration:line-through;">₹3,40,000/mo</span>
+              </div>
+              <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                <span style="color:#059669; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">New DISCOM Bill</span>
+                <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">₹2,44,000/mo</span>
+              </div>
+            </div>
+            <div style="background:linear-gradient(135deg, #0f172a 0%, #0284c7 100%); padding:11px 14px; border-radius:12px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(2,132,199,0.2);">
+              <span style="color:#a7f3d0; font-size:11.5px;">⚡ 38 Industrial Cards</span>
+              <strong style="color:#ffffff; font-size:13.5px;">Saved ₹96,000/mo (28.2%)</strong>
+            </div>
+          </div>
+
+          <!-- CARD 8: CHEMICAL DISTILLATION TOWERS -->
+          <div class="vsind-case-card" style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
+            <!-- MINI SLIDER -->
+            <div class="vs-card-media-slider">
+              <div class="vs-card-media-slides">
+                <div class="vs-card-media-slide active">
+                  <img src="{% if section.settings.case_8_img_1 != blank %}{{ section.settings.case_8_img_1 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Distillation Columns" loading="lazy">
+                  <span class="vs-media-tag"><i class="fa-solid fa-industry"></i> Distillation Columns</span>
+                </div>
+                <div class="vs-card-media-slide">
+                  <img src="{% if section.settings.case_8_img_2 != blank %}{{ section.settings.case_8_img_2 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1516937941344-00b4e0337589?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Reactor Units" loading="lazy">
+                  <span class="vs-media-tag"><i class="fa-solid fa-flask"></i> Reactor Units</span>
+                </div>
+                <div class="vs-card-media-slide">
+                  <img src="{% if section.settings.case_8_img_3 != blank %}{{ section.settings.case_8_img_3 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Boiler & Utilities" loading="lazy">
+                  <span class="vs-media-tag"><i class="fa-solid fa-gauge-high"></i> Boiler & Utilities</span>
+                </div>
+              </div>
+              <button type="button" class="vs-media-arrow vs-media-prev" onclick="vsSlideMedia(this, -1)" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+              <button type="button" class="vs-media-arrow vs-media-next" onclick="vsSlideMedia(this, 1)" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+              <div class="vs-media-dots-bar">
+                <span class="vs-media-dot active" onclick="vsGoMediaSlide(this, 0)"></span>
+                <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 1)"></span>
+                <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 2)"></span>
+              </div>
+              <div class="vs-media-counter"><span class="vs-media-cur">1</span>/<span class="vs-media-tot">3</span></div>
+            </div>
+
+            <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+              <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #0284c7; box-shadow:0 4px 10px rgba(2,132,199,0.25);">
+                <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=150&q=80" alt="Safety Director" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'wvs-pointing-woman.jpg' | asset_url }}';">
+              </div>
+              <div>
+                <h4 style="font-size:15px; font-weight:800; color:#0f172a; margin:0 0 2px 0; font-family:'Baloo 2',sans-serif;">Kaveri Chemical Complex <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></h4>
+                <div style="font-size:12px; color:#64748b; font-weight:600;"><i class="fa-solid fa-location-dot" style="color:#0284c7;"></i> 310 KW Heavy Load, Ranipet</div>
+              </div>
+            </div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
+              <div style="background:#fff1f2; border:1px solid #fecdd3; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                <span style="color:#e11d48; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">Old DISCOM Bill</span>
+                <span style="font-family:'IBM Plex Mono',monospace; color:#9f1239; font-size:14px; font-weight:800; text-decoration:line-through;">₹4,90,000/mo</span>
+              </div>
+              <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                <span style="color:#059669; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">New DISCOM Bill</span>
+                <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">₹3,51,000/mo</span>
+              </div>
+            </div>
+            <div style="background:linear-gradient(135deg, #0f172a 0%, #0284c7 100%); padding:11px 14px; border-radius:12px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(2,132,199,0.2);">
+              <span style="color:#a7f3d0; font-size:11.5px;">⚡ 53 Industrial Cards</span>
+              <strong style="color:#ffffff; font-size:13.5px;">Saved ₹1,39,000/mo (28.4%)</strong>
+            </div>
+          </div>
+
+          <!-- CARD 9: HEAVY CNC WORKSHOP -->
+          <div class="vsind-case-card" style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
+            <!-- MINI SLIDER -->
+            <div class="vs-card-media-slider">
+              <div class="vs-card-media-slides">
+                <div class="vs-card-media-slide active">
+                  <img src="{% if section.settings.case_9_img_1 != blank %}{{ section.settings.case_9_img_1 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=700&q=80{% endif %}" alt="CNC Machining" loading="lazy">
+                  <span class="vs-media-tag"><i class="fa-solid fa-gears"></i> CNC Machining</span>
+                </div>
+                <div class="vs-card-media-slide">
+                  <img src="{% if section.settings.case_9_img_2 != blank %}{{ section.settings.case_9_img_2 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Heavy Metal Casting" loading="lazy">
+                  <span class="vs-media-tag"><i class="fa-solid fa-fire"></i> Heavy Casting</span>
+                </div>
+                <div class="vs-card-media-slide">
+                  <img src="{% if section.settings.case_9_img_3 != blank %}{{ section.settings.case_9_img_3 | image_url: width: 800 }}{% else %}https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=700&q=80{% endif %}" alt="Foundry Bay" loading="lazy">
+                  <span class="vs-media-tag"><i class="fa-solid fa-industry"></i> Foundry Bay</span>
+                </div>
+              </div>
+              <button type="button" class="vs-media-arrow vs-media-prev" onclick="vsSlideMedia(this, -1)" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+              <button type="button" class="vs-media-arrow vs-media-next" onclick="vsSlideMedia(this, 1)" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+              <div class="vs-media-dots-bar">
+                <span class="vs-media-dot active" onclick="vsGoMediaSlide(this, 0)"></span>
+                <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 1)"></span>
+                <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 2)"></span>
+              </div>
+              <div class="vs-media-counter"><span class="vs-media-cur">1</span>/<span class="vs-media-tot">3</span></div>
+            </div>
+
+            <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+              <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #0284c7; box-shadow:0 4px 10px rgba(2,132,199,0.25);">
+                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80" alt="General Manager" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'wvs-pointing-down-woman.jpg' | asset_url }}';">
+              </div>
+              <div>
+                <h4 style="font-size:15px; font-weight:800; color:#0f172a; margin:0 0 2px 0; font-family:'Baloo 2',sans-serif;">Kalyani Heavy Foundry Plant <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></h4>
+                <div style="font-size:12px; color:#64748b; font-weight:600;"><i class="fa-solid fa-location-dot" style="color:#0284c7;"></i> 520 KW Heavy Load, Coimbatore</div>
+              </div>
+            </div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
+              <div style="background:#fff1f2; border:1px solid #fecdd3; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                <span style="color:#e11d48; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">Old DISCOM Bill</span>
+                <span style="font-family:'IBM Plex Mono',monospace; color:#9f1239; font-size:14px; font-weight:800; text-decoration:line-through;">₹8,40,000/mo</span>
+              </div>
+              <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                <span style="color:#059669; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">New DISCOM Bill</span>
+                <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">₹6,04,000/mo</span>
+              </div>
+            </div>
+            <div style="background:linear-gradient(135deg, #0f172a 0%, #0284c7 100%); padding:11px 14px; border-radius:12px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(2,132,199,0.2);">
+              <span style="color:#a7f3d0; font-size:11.5px;">⚡ 89 Industrial Cards</span>
+              <strong style="color:#ffffff; font-size:13.5px;">Saved ₹2,36,000/mo (28.1%)</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- MOBILE SLIDER DOTS -->
+        <div class="vs-slider-dots-bar" id="vsindCaseDots">
+          <button type="button" class="vs-slider-dot active" onclick="vsindGoSlide(0)" aria-label="Slide 1"></button>
+          <button type="button" class="vs-slider-dot" onclick="vsindGoSlide(1)" aria-label="Slide 2"></button>
+          <button type="button" class="vs-slider-dot" onclick="vsindGoSlide(2)" aria-label="Slide 3"></button>
+          <button type="button" class="vs-slider-dot" onclick="vsindGoSlide(3)" aria-label="Slide 4"></button>
+          <button type="button" class="vs-slider-dot" onclick="vsindGoSlide(4)" aria-label="Slide 5"></button>
+          <button type="button" class="vs-slider-dot" onclick="vsindGoSlide(5)" aria-label="Slide 6"></button>
+          <button type="button" class="vs-slider-dot" onclick="vsindGoSlide(6)" aria-label="Slide 7"></button>
+          <button type="button" class="vs-slider-dot" onclick="vsindGoSlide(7)" aria-label="Slide 8"></button>
+          <button type="button" class="vs-slider-dot" onclick="vsindGoSlide(8)" aria-label="Slide 9"></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ SECTION 7: FOOTER CTA BAND ══ -->
+  <section class="vsind-sec" style="padding-bottom:70px;">
+    <div class="wrap">
+      <div class="vsind-cta-band" style="background:linear-gradient(135deg, #0f172a 0%, #0284c7 100%); border-radius:20px; color:#ffffff; padding:36px 20px; text-align:center; box-shadow:0 10px 30px rgba(2, 132, 199, 0.25);">
+        <h3 style="font-size:clamp(20px, 4vw, 30px); font-weight:800; margin:0 0 10px 0;">Ready to Cut 20–30% off Your Industrial Electricity Bill?</h3>
+        <p style="color:#e0f2fe; font-size:14.5px; margin:0 auto 24px auto; max-width:540px;">Get a customized industrial audit & quote for your factory, mill, or manufacturing unit with free engineering advisory.</p>
+        <a href="https://wa.me/919876543210?text=Hi%20Vidhyut%20Saathi%2C%20I%20want%20to%20order%20Industrial%20Saver%20Cards" class="vsind-btn-primary" style="background:#ffffff; color:#0284c7; font-size:15px; padding:15px 30px; border-radius:12px; font-weight:800;" target="_blank">
+          <i class="fa-brands fa-whatsapp"></i> Order Industrial Cards Now
+        </a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  var vsindThreePhase = true;
+
+  function vsindSetPhase(isThree) {
+    vsindThreePhase = isThree;
+    var btnSingle = document.getElementById('vsind_btn_single');
+    var btnThree = document.getElementById('vsind_btn_three');
+    if (isThree) {
+      btnThree.classList.add('active');
+      btnSingle.classList.remove('active');
+    } else {
+      btnSingle.classList.add('active');
+      btnThree.classList.remove('active');
+    }
+    vsindSync();
+  }
+
+  function vsindSync(source) {
+    var kwSlider = document.getElementById('vsind_kw_slider');
+    var kwNum = document.getElementById('vsind_kw_num');
+    var billNum = document.getElementById('vsind_bill_num');
+
+    var kw = parseInt(kwNum.value) || 60;
+    var bill = parseInt(billNum.value) || 60000;
+
+    if (source === 'slider') {
+      kw = parseInt(kwSlider.value) || 15;
+      kwNum.value = kw;
+      bill = kw * 1000;
+      billNum.value = bill;
+    } else if (source === 'kw') {
+      kw = Math.max(1, kw);
+      kwSlider.value = Math.min(kw, 500);
+      bill = kw * 1000;
+      billNum.value = bill;
+    } else if (source === 'bill') {
+      bill = Math.max(1000, bill);
+      kw = Math.max(1, Math.round(bill / 1000));
+      kwNum.value = kw;
+      kwSlider.value = Math.min(kw, 500);
+    }
+
+    document.getElementById('vsind_kw_badge').innerText = kw + ' KW';
+    document.getElementById('vsind_bill_badge').innerText = '₹' + bill.toLocaleString('en-IN');
+
+    // Industrial Calculation: 1 card per 6 KW (+1 for 3-Phase LT/HT panel balancing)
+    var baseCards = Math.max(1, Math.ceil(kw / 6));
+    var total = vsindThreePhase ? baseCards + 1 : baseCards;
+
+    document.getElementById('vsind_card_num').innerText = total;
+    document.getElementById('vsind_card_unit').innerText = total > 1 ? 'Cards' : 'Card';
+
+    // 20-30% DISCOM Bill Savings
+    var sMin = Math.round((bill * 0.20) / 100) * 100;
+    var sMax = Math.round((bill * 0.30) / 100) * 100;
+    document.getElementById('vsind_savings_range').innerText = '₹' + sMin.toLocaleString('en-IN') + ' – ₹' + sMax.toLocaleString('en-IN') + ' / mo';
+  }
+
+  document.getElementById('vsind_kw_slider').addEventListener('input', function() { vsindSync('slider'); });
+  document.getElementById('vsind_kw_num').addEventListener('input', function() { vsindSync('kw'); });
+  document.getElementById('vsind_bill_num').addEventListener('input', function() { vsindSync('bill'); });
+
+  /* INDUSTRIAL MCB GALLERY FILTER & LIGHTBOX */
+  function filterInd(category, btnElem) {
+    if (btnElem) {
+      var allBtns = document.querySelectorAll('.ind-filter-btn');
+      allBtns.forEach(function(b) { b.classList.remove('active'); });
+      btnElem.classList.add('active');
+    }
+    var cards = document.querySelectorAll('.ind-card');
+    cards.forEach(function(card) {
+      var cat = card.getAttribute('data-category');
+      if (category === 'all' || cat === category) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  function openIndLightbox(imgSrc, title, caption) {
+    var container = document.getElementById('ind_lightbox_img_container');
+    if (imgSrc) {
+      container.innerHTML = '<img src="' + imgSrc + '" style="max-width:100%; max-height:420px; object-fit:contain;">';
+    } else {
+      container.innerHTML = '<div style="padding:40px; text-align:center; color:#0369a1; font-size:18px; font-weight:800;"><i class="fa-solid fa-industry" style="font-size:36px; margin-bottom:10px; display:block;"></i>' + title + '</div>';
+    }
+    document.getElementById('ind_lightbox_title').innerText = title;
+    document.getElementById('ind_lightbox_desc').innerText = caption;
+    document.getElementById('ind_lightbox').classList.add('active');
+  }
+
+  function closeIndLightbox() {
+    document.getElementById('ind_lightbox').classList.remove('active');
+  }
+
+  /* ══ MOBILE 5-SECOND CASE STUDIES AUTO-SLIDER ══ */
+  (function() {
+    var track = document.getElementById('vsindCaseTrack');
+    var wrap = document.getElementById('vsindCaseSliderWrap');
+    var dots = document.querySelectorAll('#vsindCaseDots .vs-slider-dot');
+    if (!track || !wrap) return;
+
+    var currentIdx = 0;
+    var totalSlides = dots.length || 3;
+    var timer = null;
+    var isMobile = function() { return window.innerWidth < 768; };
+
+    window.vsindGoSlide = function(idx) {
+      if (!isMobile()) return;
+      currentIdx = (idx + totalSlides) % totalSlides;
+      track.style.transform = 'translateX(-' + (currentIdx * 100) + '%)';
+      dots.forEach(function(dot, i) {
+        dot.classList.toggle('active', i === currentIdx);
+      });
+    };
+
+    function startAutoSlide() {
+      stopAutoSlide();
+      if (!isMobile()) return;
+      timer = setInterval(function() {
+        if (isMobile()) {
+          window.vsindGoSlide(currentIdx + 1);
+        }
+      }, 5000);
+    }
+
+    function stopAutoSlide() {
+      if (timer) {
+        clearInterval(timer);
+        timer = null;
+      }
+    }
+
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            startAutoSlide();
+          } else {
+            stopAutoSlide();
+          }
+        });
+      }, { threshold: 0.2 });
+      observer.observe(wrap);
+    } else {
+      startAutoSlide();
+    }
+
+    var startX = 0;
+    var deltaX = 0;
+    wrap.addEventListener('touchstart', function(e) {
+      if (!isMobile()) return;
+      stopAutoSlide();
+      startX = e.touches[0].clientX;
+      deltaX = 0;
+    }, { passive: true });
+
+    wrap.addEventListener('touchmove', function(e) {
+      if (!isMobile()) return;
+      deltaX = e.touches[0].clientX - startX;
+    }, { passive: true });
+
+    wrap.addEventListener('touchend', function() {
+      if (!isMobile()) return;
+      if (deltaX < -40) {
+        window.vsindGoSlide(currentIdx + 1);
+      } else if (deltaX > 40) {
+        window.vsindGoSlide(currentIdx - 1);
+      }
+      startAutoSlide();
+    }, { passive: true });
+
+    window.addEventListener('resize', function() {
+      if (!isMobile()) {
+        track.style.transform = '';
+        stopAutoSlide();
+      } else if (!timer) {
+        startAutoSlide();
+      }
+    });
+  })();
+
+  /* ══ CARD MULTI-IMAGE MINI SLIDER LOGIC ══ */
+  function vsSlideMedia(btn, direction) {
+    var slider = btn.closest('.vs-card-media-slider');
+    if (!slider) return;
+    var slides = slider.querySelectorAll('.vs-card-media-slide');
+    var dots = slider.querySelectorAll('.vs-media-dot');
+    var curSpan = slider.querySelector('.vs-media-cur');
+    if (!slides.length) return;
+    
+    var curIndex = 0;
+    slides.forEach(function(slide, idx) {
+      if (slide.classList.contains('active')) curIndex = idx;
+    });
+    
+    var newIndex = (curIndex + direction + slides.length) % slides.length;
+    
+    slides[curIndex].classList.remove('active');
+    slides[newIndex].classList.add('active');
+    
+    dots.forEach(function(dot, idx) {
+      dot.classList.toggle('active', idx === newIndex);
+    });
+    if (curSpan) curSpan.textContent = newIndex + 1;
+  }
+
+  function vsGoMediaSlide(dot, targetIndex) {
+    var slider = dot.closest('.vs-card-media-slider');
+    if (!slider) return;
+    var slides = slider.querySelectorAll('.vs-card-media-slide');
+    var dots = slider.querySelectorAll('.vs-media-dot');
+    var curSpan = slider.querySelector('.vs-media-cur');
+    if (!slides.length || targetIndex >= slides.length) return;
+    
+    slides.forEach(function(slide, idx) {
+      slide.classList.toggle('active', idx === targetIndex);
+    });
+    dots.forEach(function(d, idx) {
+      d.classList.toggle('active', idx === targetIndex);
+    });
+    if (curSpan) curSpan.textContent = targetIndex + 1;
+  }
+</script>
+
+
