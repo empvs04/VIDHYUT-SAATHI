@@ -758,31 +758,33 @@
     .premium-calculator-{{ section.id }} { 
       padding: 60px 24px 70px 24px !important; 
       min-height: auto !important;
+      display: block !important;
     }
     .premium-calculator-{{ section.id }} .wrapper { 
       max-width: 1180px !important; 
+      width: 100% !important;
       margin: 0 auto !important;
     }
 
     /* TOP CENTERED HEADER & SUBHEADER */
-    .vs-calc-top-header-{{ section.id }} {
+    .premium-calculator-{{ section.id }} .vs-calc-top-header-{{ section.id }} {
       text-align: center !important;
       max-width: 780px !important;
       margin: 0 auto 36px auto !important;
     }
-    .vs-calc-top-header-{{ section.id }} .tag-wrapper {
+    .premium-calculator-{{ section.id }} .tag-wrapper {
       display: flex !important;
       justify-content: center !important;
       margin-bottom: 14px !important;
     }
-    .vs-calc-top-header-{{ section.id }} .section-tag {
+    .premium-calculator-{{ section.id }} .section-tag {
       margin: 0 auto !important;
     }
-    .vs-calc-top-header-{{ section.id }} .section-title {
+    .premium-calculator-{{ section.id }} .section-title {
       text-align: center !important;
       margin-bottom: 12px !important;
     }
-    .vs-calc-top-header-{{ section.id }} .section-sub {
+    .premium-calculator-{{ section.id }} .section-sub {
       color: var(--muted) !important;
       text-align: center !important;
       margin: 0 auto !important;
@@ -790,7 +792,7 @@
     }
 
     /* 2 EQUAL & SYMMETRICAL COLUMNS (1fr 1fr WITH 32px BALANCED GAP) */
-    .vs-calc-desktop-grid-{{ section.id }} {
+    .premium-calculator-{{ section.id }} .vs-calc-desktop-grid-{{ section.id }} {
       display: grid !important;
       grid-template-columns: 1fr 1fr !important;
       align-items: stretch !important;
@@ -798,8 +800,8 @@
       width: 100% !important;
     }
     
-    .vs-calc-left-col-{{ section.id }},
-    .vs-calc-right-col-{{ section.id }} {
+    .premium-calculator-{{ section.id }} .vs-calc-left-col-{{ section.id }},
+    .premium-calculator-{{ section.id }} .vs-calc-right-col-{{ section.id }} {
       width: 100% !important;
       height: 100% !important;
       display: flex !important;
@@ -807,8 +809,8 @@
     }
 
     /* EXACT MATCHING DUAL CARDS */
-    .vs-calc-left-col-{{ section.id }} .calc-card,
-    .vs-calc-right-col-{{ section.id }} .calc-card-right { 
+    .premium-calculator-{{ section.id }} .vs-calc-left-col-{{ section.id }} .calc-card,
+    .premium-calculator-{{ section.id }} .vs-calc-right-col-{{ section.id }} .calc-card-right { 
       padding: 28px 26px !important; 
       border-radius: 26px !important; 
       background: linear-gradient(135deg, rgba(255,255,255,.96), rgba(255,255,255,.86)) !important;
@@ -820,6 +822,8 @@
       flex-direction: column !important;
       justify-content: space-between !important;
       box-sizing: border-box !important;
+      margin: 0 !important;
+      max-width: 100% !important;
     }
 
     .premium-calculator-{{ section.id }} .input-dual-row {
@@ -846,7 +850,7 @@
     }
 
     /* RIGHT COLUMN INNER ELEMENTS */
-    .vs-calc-right-col-{{ section.id }} .calc-results {
+    .premium-calculator-{{ section.id }} .vs-calc-right-col-{{ section.id }} .calc-results {
       display: grid !important;
       grid-template-columns: repeat(2, 1fr) !important;
       gap: 12px !important;
@@ -854,7 +858,7 @@
       margin-bottom: 12px !important;
       width: 100% !important;
     }
-    .vs-calc-right-col-{{ section.id }} .calc-result-card {
+    .premium-calculator-{{ section.id }} .vs-calc-right-col-{{ section.id }} .calc-result-card {
       background: #FFFFFF !important;
       border: 1.5px solid rgba(20, 140, 58, 0.16) !important;
       border-radius: 18px !important;
@@ -865,7 +869,7 @@
       overflow: hidden !important;
       transition: all 0.3s ease !important;
     }
-    .vs-calc-right-col-{{ section.id }} .calc-result-card::before {
+    .premium-calculator-{{ section.id }} .vs-calc-right-col-{{ section.id }} .calc-result-card::before {
       content: '' !important;
       position: absolute !important;
       top: 0 !important;
@@ -876,13 +880,13 @@
       border-radius: 18px 18px 0 0 !important;
       z-index: 2 !important;
     }
-    .vs-calc-right-col-{{ section.id }} .calc-result-card:hover {
+    .premium-calculator-{{ section.id }} .vs-calc-right-col-{{ section.id }} .calc-result-card:hover {
       transform: translateY(-3px) !important;
       border-color: #F58220 !important;
       box-shadow: 0 10px 25px rgba(245, 130, 32, 0.15) !important;
     }
 
-    .vs-calc-right-col-{{ section.id }} .calc-disclaimer {
+    .premium-calculator-{{ section.id }} .vs-calc-right-col-{{ section.id }} .calc-disclaimer {
       margin: 0 0 14px 0 !important;
       padding: 10px 14px !important;
       border-radius: 12px !important;
@@ -892,14 +896,14 @@
     }
 
     /* TRUST STRIP CAPSULE PILLS IN RIGHT COLUMN */
-    .vs-calc-right-col-{{ section.id }} .trust-strip { 
+    .premium-calculator-{{ section.id }} .vs-calc-right-col-{{ section.id }} .trust-strip { 
       display: grid !important; 
       grid-template-columns: repeat(2, 1fr) !important; 
       gap: 10px !important; 
       margin-top: auto !important; 
       width: 100% !important;
     }
-    .vs-calc-right-col-{{ section.id }} .trust-item { 
+    .premium-calculator-{{ section.id }} .vs-calc-right-col-{{ section.id }} .trust-item { 
       background: #FFFFFF !important;
       border: 1.5px solid rgba(245, 130, 32, 0.3) !important;
       border-radius: 999px !important;
@@ -913,12 +917,12 @@
       box-shadow: 0 3px 10px rgba(0, 0, 0, 0.03) !important;
       transition: all 0.3s ease !important;
     }
-    .vs-calc-right-col-{{ section.id }} .trust-item:hover {
+    .premium-calculator-{{ section.id }} .vs-calc-right-col-{{ section.id }} .trust-item:hover {
       transform: translateY(-2px) !important;
       border-color: #148C3A !important;
       box-shadow: 0 6px 18px rgba(20, 140, 58, 0.15) !important;
     }
-    .vs-calc-right-col-{{ section.id }} .trust-icon {
+    .premium-calculator-{{ section.id }} .vs-calc-right-col-{{ section.id }} .trust-icon {
       font-size: 1.05rem !important;
       margin-bottom: 0 !important;
       display: inline-flex !important;
