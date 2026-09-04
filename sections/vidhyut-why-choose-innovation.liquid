@@ -178,7 +178,7 @@
     font-weight: 500 !important;
   }
 
-  /* ---------- RIGHT ---------- */
+  /* ---------- RIGHT COLUMN & FLOATING TILT ANIMATION ---------- */
   .vs-why-sec-{{ section.id }} .right {
     display: flex !important;
     align-items: center !important;
@@ -187,12 +187,57 @@
     width: 100% !important;
   }
 
-  .vs-why-sec-{{ section.id }} .illustration-wrap {
+  @keyframes vsFloatAndTilt {
+    0% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    25% {
+      transform: translateY(-9px) rotate(-1.5deg);
+    }
+    50% {
+      transform: translateY(-18px) rotate(0deg);
+    }
+    75% {
+      transform: translateY(-9px) rotate(1.5deg);
+    }
+    100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+  }
+
+  .vs-why-sec-{{ section.id }} .vs-floating-girl-card {
     position: relative !important;
     width: 100% !important;
     max-width: 440px !important;
-    aspect-ratio: 4/4.8 !important;
-    margin: 0 auto !important;
+    animation: vsFloatAndTilt 5s ease-in-out infinite !important;
+    transform-origin: center center !important;
+    will-change: transform !important;
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+  }
+
+  .vs-why-sec-{{ section.id }} .vs-floating-girl-card:hover {
+    animation-play-state: paused !important;
+    transform: translateY(-12px) scale(1.02) rotate(1deg) !important;
+  }
+
+  .vs-why-sec-{{ section.id }} .vs-girl-photo-box {
+    position: relative !important;
+    width: 100% !important;
+    border-radius: 28px !important;
+    overflow: hidden !important;
+    background: linear-gradient(180deg, #FFFFFF 0%, #FFF5EB 100%) !important;
+    border: 2px solid rgba(255, 122, 26, 0.18) !important;
+    box-shadow: 0 20px 48px -12px rgba(42, 33, 24, 0.18), 0 0 30px rgba(255, 122, 26, 0.12) !important;
+  }
+
+  .vs-why-sec-{{ section.id }} .vs-girl-img {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 3.8 / 4.8 !important;
+    object-fit: cover !important;
+    object-position: top center !important;
+    display: block !important;
+    border-radius: 26px !important;
   }
 
   .vs-why-sec-{{ section.id }} .glow-1 {
@@ -202,7 +247,7 @@
     width: 280px !important;
     height: 280px !important;
     border-radius: 50% !important;
-    background: radial-gradient(circle, rgba(255,122,26,0.22), transparent 70%) !important;
+    background: radial-gradient(circle, rgba(255,122,26,0.25), transparent 70%) !important;
     z-index: 0 !important;
     pointer-events: none !important;
   }
@@ -214,46 +259,49 @@
     width: 260px !important;
     height: 260px !important;
     border-radius: 50% !important;
-    background: radial-gradient(circle, rgba(15,139,61,0.16), transparent 70%) !important;
+    background: radial-gradient(circle, rgba(15,139,61,0.18), transparent 70%) !important;
     z-index: 0 !important;
     pointer-events: none !important;
   }
 
   .vs-why-sec-{{ section.id }} .badge {
     position: absolute !important;
-    top: 10px !important;
-    left: 6px !important;
-    background: var(--white) !important;
+    top: 14px !important;
+    left: 14px !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(8px) !important;
     color: var(--ink) !important;
     font-family: 'Sora', sans-serif !important;
     font-size: 11.5px !important;
     font-weight: 700 !important;
-    padding: 8px 14px !important;
+    padding: 8px 15px !important;
     border-radius: 999px !important;
-    box-shadow: 0 6px 16px -6px rgba(42,33,24,0.2) !important;
+    box-shadow: 0 6px 18px rgba(42,33,24,0.16) !important;
+    border: 1px solid rgba(255, 122, 26, 0.2) !important;
     z-index: 3 !important;
   }
 
   .vs-why-sec-{{ section.id }} .seal {
     position: absolute !important;
-    top: 10px !important;
-    right: 6px !important;
-    width: 62px !important;
-    height: 62px !important;
+    top: 14px !important;
+    right: 14px !important;
+    width: 64px !important;
+    height: 64px !important;
     border-radius: 50% !important;
-    background: var(--white) !important;
+    background: #FFFFFF !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
     text-align: center !important;
-    box-shadow: 0 6px 16px -6px rgba(42,33,24,0.2) !important;
+    box-shadow: 0 8px 20px rgba(42,33,24,0.18) !important;
+    border: 2px dashed var(--leaf) !important;
     z-index: 3 !important;
   }
 
   .vs-why-sec-{{ section.id }} .seal .top {
     font-family: 'Sora', sans-serif !important;
-    font-size: 13px !important;
+    font-size: 13.5px !important;
     font-weight: 800 !important;
     color: var(--leaf) !important;
     line-height: 1 !important;
@@ -262,30 +310,24 @@
   .vs-why-sec-{{ section.id }} .seal .bot {
     font-size: 7px !important;
     letter-spacing: 0.04em !important;
-    color: rgba(42,33,24,0.5) !important;
+    color: rgba(42,33,24,0.6) !important;
     margin-top: 3px !important;
-    font-weight: 700 !important;
-  }
-
-  .vs-why-sec-{{ section.id }} svg.character {
-    position: absolute !important;
-    inset: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    z-index: 1 !important;
+    font-weight: 800 !important;
   }
 
   .vs-why-sec-{{ section.id }} .stat-card {
     position: absolute !important;
-    bottom: 4px !important;
-    left: 10px !important;
-    right: 10px !important;
-    background: var(--white) !important;
-    border-radius: 16px !important;
-    padding: 16px 18px !important;
+    bottom: 12px !important;
+    left: 12px !important;
+    right: 12px !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(12px) !important;
+    border-radius: 18px !important;
+    padding: 14px 18px !important;
     display: flex !important;
     justify-content: space-between !important;
-    box-shadow: 0 10px 24px -10px rgba(42,33,24,0.2) !important;
+    box-shadow: 0 12px 28px -8px rgba(42,33,24,0.22) !important;
+    border: 1px solid rgba(255, 122, 26, 0.2) !important;
     z-index: 3 !important;
   }
 
@@ -305,8 +347,8 @@
 
   .vs-why-sec-{{ section.id }} .stat .lbl {
     font-size: 10px !important;
-    color: rgba(42,33,24,0.55) !important;
-    font-weight: 600 !important;
+    color: rgba(42,33,24,0.6) !important;
+    font-weight: 700 !important;
   }
 
   /* ---------- RESPONSIVE BREAKPOINTS ---------- */
@@ -440,9 +482,9 @@
       {% endif %}
     </div>
 
-    <!-- RIGHT COLUMN -->
+    <!-- RIGHT COLUMN (GIRL WITH VIDHYUT SAATHI CARD & UP-DOWN TILT FLOATING ANIMATION) -->
     <div class="right">
-      <div class="illustration-wrap">
+      <div class="vs-floating-girl-card">
         <div class="glow-1"></div>
         <div class="glow-2"></div>
         
@@ -455,96 +497,24 @@
           <span class="bot">{{ section.settings.seal_bot | default: "CERTIFIED" }}</span>
         </div>
 
-        <svg class="character" viewBox="0 0 440 520" xmlns="http://www.w3.org/2000/svg">
-          <!-- soft ground shadow -->
-          <ellipse cx="220" cy="495" rx="120" ry="14" fill="rgba(42,33,24,0.08)"/>
-
-          <!-- hair back -->
-          <path d="M148 175 C140 240 138 320 150 400 L168 400 C158 320 162 245 176 185 Z" fill="#3A2A1E"/>
-          <path d="M292 175 C300 240 302 320 290 400 L272 400 C282 320 278 245 264 185 Z" fill="#3A2A1E"/>
-
-          <!-- neck -->
-          <rect x="204" y="185" width="32" height="30" rx="10" fill="#F3C6A0"/>
-
-          <!-- body / t-shirt (saffron) -->
-          <path d="M150 260
-                   C150 225 180 205 220 205
-                   C260 205 290 225 290 260
-                   L300 430
-                   C300 445 288 456 272 456
-                   L168 456
-                   C152 456 140 445 140 430 Z"
-                fill="var(--saffron)"/>
-
-          <!-- t-shirt shading -->
-          <path d="M220 205 C260 205 290 225 290 260 L296 400 L244 400 L236 220 Z" fill="rgba(0,0,0,0.05)"/>
-
-          <!-- collar -->
-          <path d="M198 208 C205 222 235 222 242 208 L232 200 C226 206 214 206 208 200 Z" fill="#FFEFE0"/>
-
-          <!-- left arm raised to face (surprise) -->
-          <path d="M172 235 C150 235 132 250 126 275 C122 292 128 305 138 300 C146 296 148 282 154 268 C160 254 172 250 178 248 Z" fill="#F3C6A0"/>
-          <path d="M168 232 C148 230 128 244 120 270 C116 288 122 302 132 300" fill="none" stroke="rgba(0,0,0,0.06)" stroke-width="3"/>
-
-          <!-- right arm extended holding card -->
-          <path d="M282 240 C310 250 328 275 332 305 C334 322 326 332 315 328 C306 324 304 308 298 292 C292 276 278 262 268 254 Z" fill="#F3C6A0"/>
-
-          <!-- card in hand -->
-          <g transform="translate(300 292) rotate(-18)">
-            <rect x="-38" y="-24" width="76" height="48" rx="7" fill="#1D2A22"/>
-            <rect x="-38" y="-24" width="76" height="14" rx="7" fill="var(--leaf)"/>
-            <circle cx="18" cy="10" r="8" fill="var(--gold)" opacity="0.85"/>
-            <text x="-30" y="18" font-family="Sora, sans-serif" font-size="9" font-weight="700" fill="#FFFFFF">VIDHYUT</text>
-            <text x="-30" y="-30" font-family="Sora, sans-serif" font-size="7" fill="#FFFFFF" opacity="0.001">.</text>
-          </g>
-
-          <!-- hand holding card -->
-          <circle cx="298" cy="300" r="13" fill="#F3C6A0"/>
-
-          <!-- hand near face -->
-          <circle cx="140" cy="292" r="13" fill="#F3C6A0"/>
-
-          <!-- head -->
-          <circle cx="220" cy="165" r="58" fill="#F6D2AC"/>
-
-          <!-- hair front / fringe -->
-          <path d="M162 150 C160 110 190 82 220 82 C252 82 282 110 280 150
-                   C270 130 255 118 220 118 C185 118 170 130 162 150 Z" fill="#3A2A1E"/>
-          <path d="M164 145 C160 175 162 200 168 215 C158 195 154 165 162 148 Z" fill="#3A2A1E"/>
-          <path d="M278 145 C282 175 280 200 274 215 C284 195 288 165 280 148 Z" fill="#3A2A1E"/>
-
-          <!-- surprised eyebrows -->
-          <path d="M192 148 C198 140 210 138 217 143" fill="none" stroke="#3A2A1E" stroke-width="4" stroke-linecap="round"/>
-          <path d="M248 148 C242 140 230 138 223 143" fill="none" stroke="#3A2A1E" stroke-width="4" stroke-linecap="round"/>
-
-          <!-- wide surprised eyes -->
-          <circle cx="202" cy="165" r="9" fill="#FFFFFF"/>
-          <circle cx="238" cy="165" r="9" fill="#FFFFFF"/>
-          <circle cx="203" cy="167" r="5" fill="#2A2118"/>
-          <circle cx="239" cy="167" r="5" fill="#2A2118"/>
-          <circle cx="205" cy="164" r="1.6" fill="#FFFFFF"/>
-          <circle cx="241" cy="164" r="1.6" fill="#FFFFFF"/>
-
-          <!-- blush -->
-          <ellipse cx="188" cy="188" rx="8" ry="5" fill="var(--saffron)" opacity="0.35"/>
-          <ellipse cx="252" cy="188" rx="8" ry="5" fill="var(--saffron)" opacity="0.35"/>
-
-          <!-- open surprised mouth -->
-          <ellipse cx="220" cy="200" rx="10" ry="12" fill="#8B3A2A"/>
-          <ellipse cx="220" cy="196" rx="9" ry="6" fill="#FFFFFF"/>
-
-          <!-- exclamation sparkle accents -->
-          <g fill="var(--gold)">
-            <path d="M330 210 l4 12 12 4 -12 4 -4 12 -4 -12 -12 -4 12 -4 Z"/>
-          </g>
-          <g fill="var(--leaf)">
-            <path d="M110 220 l3 9 9 3 -9 3 -3 9 -3 -9 -9 -3 9 -3 Z"/>
-          </g>
-          <g fill="var(--saffron)">
-            <circle cx="90" cy="330" r="5"/>
-            <circle cx="350" cy="360" r="4"/>
-          </g>
-        </svg>
+        <div class="vs-girl-photo-box">
+          {% if section.settings.custom_girl_image != blank %}
+            <img 
+              src="{{ section.settings.custom_girl_image | image_url: width: 1000 }}" 
+              alt="{{ section.settings.heading_prefix }} {{ section.settings.heading_accent }}" 
+              class="vs-girl-img" 
+              loading="lazy"
+            >
+          {% else %}
+            <img 
+              src="{{ 'vidhyut-girl-with-real-card.jpg' | asset_url }}" 
+              alt="Vidhyut Saathi Power Saving Card Holder" 
+              class="vs-girl-img" 
+              loading="lazy"
+              onerror="this.onerror=null; this.src='{{ 'vidhyut-girl-card-hero.jpg' | asset_url }}';"
+            >
+          {% endif %}
+        </div>
 
         <div class="stat-card">
           <div class="stat">
@@ -613,7 +583,13 @@
     },
     {
       "type": "header",
-      "content": "Right Illustration Badges"
+      "content": "Right Photo & Badges"
+    },
+    {
+      "type": "image_picker",
+      "id": "custom_girl_image",
+      "label": "Custom Girl / Product Image",
+      "info": "Upload custom image or leave blank to use the Vidhyut Saathi card girl photo"
     },
     {
       "type": "text",
