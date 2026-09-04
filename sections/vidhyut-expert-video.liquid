@@ -141,18 +141,19 @@
     transition: stroke 0.35s ease, fill 0.35s ease !important;
   }
 
-  /* VIDEO MODAL POPUP */
+  /* VIDEO MODAL POPUP BASE */
   .vs-video-modal-overlay {
     position: fixed !important;
     inset: 0 !important;
-    background: rgba(15, 23, 42, 0.88) !important;
-    backdrop-filter: blur(12px) !important;
-    -webkit-backdrop-filter: blur(12px) !important;
-    z-index: 99999 !important;
+    background: rgba(10, 15, 29, 0.92) !important;
+    backdrop-filter: blur(14px) !important;
+    -webkit-backdrop-filter: blur(14px) !important;
+    z-index: 999999 !important;
     display: none !important;
     align-items: center !important;
     justify-content: center !important;
-    padding: 20px !important;
+    padding: 50px 16px 20px 16px !important;
+    box-sizing: border-box !important;
     opacity: 0 !important;
     transition: opacity 0.3s ease !important;
   }
@@ -162,61 +163,76 @@
     opacity: 1 !important;
   }
 
-  .vs-video-modal-content {
+  .vs-video-modal-box {
     position: relative !important;
-    width: 90vw !important;
-    max-width: 960px !important;
-    height: 540px !important;
-    max-height: 82vh !important;
-    aspect-ratio: 16 / 9 !important;
-    background: #000000 !important;
-    border-radius: 20px !important;
-    overflow: hidden !important;
-    box-shadow: 0 35px 90px rgba(0, 0, 0, 0.75), 0 0 40px rgba(236, 92, 10, 0.3) !important;
-    border: 2px solid rgba(236, 92, 10, 0.4) !important;
     display: flex !important;
+    flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
+    max-width: 90vw !important;
+    max-height: 85vh !important;
+    margin: auto !important;
   }
 
   .vs-video-modal-close {
     position: absolute !important;
-    top: 15px !important;
-    right: 20px !important;
+    top: -46px !important;
+    right: 0 !important;
     color: #FFFFFF !important;
-    font-size: 2.2rem !important;
+    font-size: 1.8rem !important;
     cursor: pointer !important;
-    background: rgba(15, 23, 42, 0.7) !important;
+    background: #EC5C0A !important;
     border-radius: 50% !important;
-    width: 42px !important;
-    height: 42px !important;
+    width: 36px !important;
+    height: 36px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border: 2px solid #FFFFFF !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6) !important;
     line-height: 1 !important;
-    transition: transform 0.2s ease, color 0.2s ease !important;
-    z-index: 10 !important;
+    transition: transform 0.2s ease, background 0.2s ease !important;
+    z-index: 1000000 !important;
   }
 
   .vs-video-modal-close:hover {
-    transform: scale(1.15) !important;
-    color: #FF9A00 !important;
-    background: rgba(15, 23, 42, 0.9) !important;
+    transform: scale(1.1) !important;
+    background: #c84900 !important;
+  }
+
+  .vs-video-modal-player-wrap {
+    position: relative !important;
+    background: #000000 !important;
+    border-radius: 16px !important;
+    overflow: hidden !important;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9), 0 0 35px rgba(236, 92, 10, 0.35) !important;
+    border: 2px solid rgba(236, 92, 10, 0.6) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    max-width: 90vw !important;
+    max-height: 80vh !important;
   }
 
   .vs-video-modal-iframe {
-    width: 100% !important;
-    height: 100% !important;
+    width: 80vw !important;
+    max-width: 850px !important;
+    aspect-ratio: 16 / 9 !important;
+    min-height: 240px !important;
     border: none !important;
     display: block !important;
+    background: #000000 !important;
   }
 
   .vs-video-modal-video {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: contain !important;
+    width: auto !important;
+    max-width: 90vw !important;
+    height: auto !important;
+    max-height: 75vh !important;
+    display: block !important;
+    border-radius: 14px !important;
     background: #000000 !important;
+    object-fit: contain !important;
   }
 
   /* ===========================================================================
@@ -616,73 +632,45 @@
       margin: 0 !important;
     }
 
-    /* Video Modal Popup on Mobile (Perfect 16:9, Centered, Easy Close) */
+    /* Video Modal Popup on Mobile (Clean Centered, Any Aspect Ratio, Floating Close) */
     .vs-video-modal-overlay {
-      position: fixed !important;
-      inset: 0 !important;
-      background: rgba(15, 23, 42, 0.94) !important;
-      backdrop-filter: blur(10px) !important;
-      -webkit-backdrop-filter: blur(10px) !important;
-      z-index: 999999 !important;
-      display: none !important;
-      align-items: center !important;
-      justify-content: center !important;
-      padding: 60px 14px 20px 14px !important;
-      box-sizing: border-box !important;
+      padding: 50px 14px 20px 14px !important;
     }
 
-    .vs-video-modal-overlay.active {
-      display: flex !important;
-    }
-
-    .vs-video-modal-content {
+    .vs-video-modal-box {
       width: 100% !important;
-      max-width: 500px !important;
-      height: auto !important;
-      max-height: 75vh !important;
-      aspect-ratio: 16 / 9 !important;
-      border-radius: 16px !important;
-      border: 2px solid rgba(236, 92, 10, 0.6) !important;
-      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.8), 0 0 30px rgba(236, 92, 10, 0.35) !important;
-      background: #000000 !important;
-      position: relative !important;
-      overflow: visible !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: center !important;
+      max-width: 100% !important;
       margin: auto !important;
-      box-sizing: border-box !important;
+    }
+
+    .vs-video-modal-player-wrap {
+      width: 100% !important;
+      max-width: 100% !important;
+      max-height: 75vh !important;
+      border-radius: 14px !important;
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.9), 0 0 25px rgba(236, 92, 10, 0.3) !important;
     }
 
     .vs-video-modal-close {
-      position: absolute !important;
-      top: -46px !important;
+      top: -44px !important;
       right: 0 !important;
-      width: 38px !important;
-      height: 38px !important;
-      font-size: 1.8rem !important;
-      background: #EC5C0A !important;
-      color: #FFFFFF !important;
-      border: 2px solid #FFFFFF !important;
-      border-radius: 50% !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4) !important;
-      z-index: 1000000 !important;
-      cursor: pointer !important;
-      line-height: 1 !important;
+      width: 36px !important;
+      height: 36px !important;
+      font-size: 1.7rem !important;
     }
 
-    .vs-video-modal-iframe,
-    .vs-video-modal-video {
+    .vs-video-modal-iframe {
       width: 100% !important;
-      height: 100% !important;
-      border-radius: 14px !important;
-      border: none !important;
-      display: block !important;
+      aspect-ratio: 16 / 9 !important;
+      min-height: 210px !important;
+    }
+
+    .vs-video-modal-video {
+      width: auto !important;
+      max-width: 100% !important;
+      height: auto !important;
+      max-height: 70vh !important;
       object-fit: contain !important;
-      background: #000000 !important;
     }
   }
 {%- endstyle -%}
@@ -847,10 +835,12 @@
 
 <!-- VIDEO MODAL POPUP CONTAINER -->
 <div class="vs-video-modal-overlay" id="vsVideoModal" onclick="if(event.target === this) vsCloseVideoModal();">
-  <div class="vs-video-modal-content">
-    <button type="button" class="vs-video-modal-close" onclick="vsCloseVideoModal()">&times;</button>
-    <iframe id="vsVideoModalIframe" class="vs-video-modal-iframe" allow="autoplay; encrypted-media" allowfullscreen style="display: none;"></iframe>
-    <video id="vsVideoModalVideo" class="vs-video-modal-video" controls playsinline style="display: none; width: 100%; height: 100%; object-fit: contain;"></video>
+  <div class="vs-video-modal-box">
+    <button type="button" class="vs-video-modal-close" onclick="vsCloseVideoModal()" aria-label="Close Video">&times;</button>
+    <div class="vs-video-modal-player-wrap">
+      <iframe id="vsVideoModalIframe" class="vs-video-modal-iframe" allow="autoplay; encrypted-media" allowfullscreen style="display: none;"></iframe>
+      <video id="vsVideoModalVideo" class="vs-video-modal-video" controls playsinline style="display: none;"></video>
+    </div>
   </div>
 </div>
 
