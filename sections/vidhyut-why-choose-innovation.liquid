@@ -1,6 +1,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800;900&family=Nunito:wght@400;600;700;800&family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800;900&family=Nunito:wght@400;600;700;800;900&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
   .vs-why-sec-{{ section.id }} {
@@ -11,14 +12,13 @@
     --saffron: #F7941D;
     --leaf: #3EAD47;
     --gold: #D4900F;
-    --line: rgba(42,33,24,0.1);
     
     width: 100% !important;
     max-width: 100% !important;
     box-sizing: border-box !important;
-    font-family: 'Nunito', 'Inter', sans-serif !important;
+    font-family: 'Nunito', sans-serif !important;
     color: var(--ink) !important;
-    background: radial-gradient(circle at top right, rgba(247,148,29,0.06), transparent 45%), linear-gradient(180deg, #FAFAF7 0%, #FFFFFF 100%) !important;
+    background: radial-gradient(circle at top right, rgba(247,148,29,0.08), transparent 45%), radial-gradient(circle at bottom left, rgba(62,173,71,0.06), transparent 40%), linear-gradient(180deg, #FAFAF7 0%, #FFFFFF 100%) !important;
     padding: {{ section.settings.padding_top_desk | default: 70 }}px 20px {{ section.settings.padding_bottom_desk | default: 70 }}px 20px !important;
     position: relative !important;
     overflow: hidden !important;
@@ -39,44 +39,57 @@
     position: relative !important;
     z-index: 2 !important;
     display: grid !important;
-    grid-template-columns: 1.1fr 0.9fr !important;
-    gap: 48px !important;
+    grid-template-columns: 1.15fr 0.85fr !important;
+    gap: 40px !important;
     align-items: center !important;
     justify-content: space-between !important;
   }
 
-  /* ---------- LEFT COLUMN ---------- */
+  /* ---------- LUCRATIVE LEFT COLUMN ---------- */
   .vs-why-sec-{{ section.id }} .left {
-    max-width: 580px !important;
+    max-width: 620px !important;
     width: 100% !important;
     margin-right: auto !important;
   }
 
-  .vs-why-sec-{{ section.id }} .eyebrow {
+  /* Glowing Eyebrow Pill */
+  .vs-why-sec-{{ section.id }} .eyebrow-pill {
     display: inline-flex !important;
     align-items: center !important;
-    gap: 10px !important;
-    font-weight: 700 !important;
-    font-size: 13.5px !important;
-    color: var(--leaf) !important;
-    margin-bottom: 12px !important;
-    letter-spacing: 0.02em !important;
+    gap: 8px !important;
+    background: linear-gradient(90deg, #FFF4E5 0%, #E8F5E9 100%) !important;
+    border: 1px solid rgba(247, 148, 29, 0.28) !important;
+    padding: 6px 16px !important;
+    border-radius: 999px !important;
+    font-size: 13px !important;
+    font-weight: 800 !important;
+    color: #E07810 !important;
+    margin-bottom: 14px !important;
+    letter-spacing: 0.5px !important;
     text-transform: uppercase !important;
+    box-shadow: 0 4px 14px rgba(247, 148, 29, 0.12) !important;
   }
 
-  .vs-why-sec-{{ section.id }} .eyebrow .rule {
-    width: 28px !important;
-    height: 3px !important;
-    background: linear-gradient(90deg, #F7941D, #3EAD47) !important;
-    border-radius: 999px !important;
-    flex-shrink: 0 !important;
+  .vs-why-sec-{{ section.id }} .eyebrow-pill .pulse-dot {
+    width: 8px !important;
+    height: 8px !important;
+    background: #3EAD47 !important;
+    border-radius: 50% !important;
+    box-shadow: 0 0 0 3px rgba(62, 173, 71, 0.25) !important;
+    animation: vsPulseDot 2s infinite !important;
+  }
+
+  @keyframes vsPulseDot {
+    0% { box-shadow: 0 0 0 0 rgba(62, 173, 71, 0.5); }
+    70% { box-shadow: 0 0 0 6px rgba(62, 173, 71, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(62, 173, 71, 0); }
   }
 
   .vs-why-sec-{{ section.id }} h2.section-title {
-    font-family: 'Baloo 2', 'Sora', sans-serif !important;
+    font-family: 'Baloo 2', sans-serif !important;
     font-weight: 900 !important;
-    font-size: clamp(30px, 3.8vw, 44px) !important;
-    line-height: 1.15 !important;
+    font-size: clamp(32px, 4vw, 46px) !important;
+    line-height: 1.12 !important;
     letter-spacing: -0.5px !important;
     margin: 0 0 12px 0 !important;
     color: #1A1A1A !important;
@@ -87,92 +100,160 @@
     background: linear-gradient(90deg, #E07810 0%, #F7941D 55%, #FDB44B 100%) !important;
     -webkit-background-clip: text !important;
     -webkit-text-fill-color: transparent !important;
-    filter: drop-shadow(0 4px 12px rgba(247,148,29,.18)) !important;
+    filter: drop-shadow(0 6px 14px rgba(247,148,29,.20)) !important;
   }
 
   .vs-why-sec-{{ section.id }} .lede {
     font-size: 16px !important;
     line-height: 1.55 !important;
-    color: #555555 !important;
+    color: #4A4A4A !important;
     max-width: 52ch !important;
     margin: 0 !important;
     font-weight: 600 !important;
   }
 
+  /* ── LUCRATIVE PILLARS CARDS GRID ── */
   .vs-why-sec-{{ section.id }} .pillars {
-    margin-top: 28px !important;
+    margin-top: 24px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 14px !important;
   }
 
-  .vs-why-sec-{{ section.id }} .pillar {
+  .vs-why-sec-{{ section.id }} .pillar-card {
     display: grid !important;
     grid-template-columns: 52px 1fr !important;
     gap: 18px !important;
-    padding: 16px 0 !important;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.07) !important;
-    align-items: flex-start !important;
+    padding: 16px 20px !important;
+    background: #FFFFFF !important;
+    border-radius: 18px !important;
+    border: 1.5px solid rgba(247, 148, 29, 0.14) !important;
+    box-shadow: 0 6px 22px rgba(247, 148, 29, 0.05), 0 2px 8px rgba(0,0,0,0.02) !important;
+    align-items: center !important;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1) !important;
+    position: relative !important;
+    overflow: hidden !important;
   }
 
-  .vs-why-sec-{{ section.id }} .pillar:first-child {
-    padding-top: 0 !important;
+  .vs-why-sec-{{ section.id }} .pillar-card::before {
+    content: '' !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    width: 4px !important;
+    background: linear-gradient(180deg, #F7941D, #3EAD47) !important;
+    opacity: 0 !important;
+    transition: opacity 0.3s ease !important;
   }
 
-  .vs-why-sec-{{ section.id }} .pillar:last-child {
-    border-bottom: none !important;
-    padding-bottom: 0 !important;
+  .vs-why-sec-{{ section.id }} .pillar-card:hover {
+    transform: translateX(6px) !important;
+    border-color: rgba(247, 148, 29, 0.35) !important;
+    box-shadow: 0 10px 28px rgba(247, 148, 29, 0.12), 0 4px 12px rgba(0,0,0,0.04) !important;
+  }
+
+  .vs-why-sec-{{ section.id }} .pillar-card:hover::before {
+    opacity: 1 !important;
   }
 
   .vs-why-sec-{{ section.id }} .pillar-icon {
     width: 52px !important;
     height: 52px !important;
     border-radius: 14px !important;
-    background: #FFFFFF !important;
-    box-shadow: 0 8px 20px -4px rgba(247,148,29,0.22), 0 0 0 1.5px rgba(247,148,29,0.15) !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
     font-size: 22px !important;
     flex-shrink: 0 !important;
-    margin-top: 2px !important;
+    transition: transform 0.3s ease !important;
+  }
+
+  .vs-why-sec-{{ section.id }} .pillar-card:hover .pillar-icon {
+    transform: scale(1.08) rotate(4deg) !important;
   }
 
   .vs-why-sec-{{ section.id }} .pillar-icon.saffron { 
-    color: #F7941D !important; 
-    background: linear-gradient(135deg, #FFF8EF, #FFFFFF) !important;
+    color: #E07810 !important; 
+    background: linear-gradient(135deg, #FFF3E0, #FFE0B2) !important;
+    box-shadow: 0 6px 16px rgba(247,148,29,0.22) !important;
   }
   .vs-why-sec-{{ section.id }} .pillar-icon.gold { 
     color: #D4900F !important; 
-    background: linear-gradient(135deg, #FFFDEB, #FFFFFF) !important;
+    background: linear-gradient(135deg, #FFFDE7, #FFF59D) !important;
+    box-shadow: 0 6px 16px rgba(212,144,15,0.22) !important;
   }
   .vs-why-sec-{{ section.id }} .pillar-icon.leaf { 
-    color: #3EAD47 !important; 
-    background: linear-gradient(135deg, #F0FAF1, #FFFFFF) !important;
-    box-shadow: 0 8px 20px -4px rgba(62,173,71,0.22), 0 0 0 1.5px rgba(62,173,71,0.18) !important;
+    color: #2E7D32 !important; 
+    background: linear-gradient(135deg, #E8F5E9, #C8E6C9) !important;
+    box-shadow: 0 6px 16px rgba(62,173,71,0.22) !important;
   }
 
-  .vs-why-sec-{{ section.id }} .pillar h3 {
-    font-family: 'Baloo 2', 'Sora', sans-serif !important;
-    font-size: 19px !important;
+  .vs-why-sec-{{ section.id }} .pillar-content {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 3px !important;
+  }
+
+  .vs-why-sec-{{ section.id }} .pillar-header {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 10px !important;
+    flex-wrap: wrap !important;
+  }
+
+  .vs-why-sec-{{ section.id }} .pillar-header h3 {
+    font-family: 'Baloo 2', sans-serif !important;
+    font-size: 18.5px !important;
     font-weight: 800 !important;
-    line-height: 1.3 !important;
-    margin: 0 0 4px 0 !important;
+    line-height: 1.25 !important;
+    margin: 0 !important;
     letter-spacing: -0.2px !important;
     color: #222222 !important;
   }
 
-  .vs-why-sec-{{ section.id }} .pillar p {
-    font-size: 14px !important;
-    line-height: 1.55 !important;
+  .vs-why-sec-{{ section.id }} .pillar-tag {
+    font-size: 11px !important;
+    font-weight: 800 !important;
+    padding: 3px 9px !important;
+    border-radius: 6px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    white-space: nowrap !important;
+  }
+
+  .vs-why-sec-{{ section.id }} .pillar-tag.saffron {
+    background: #FFF3E0 !important;
+    color: #E07810 !important;
+    border: 1px solid rgba(247,148,29,0.3) !important;
+  }
+  .vs-why-sec-{{ section.id }} .pillar-tag.gold {
+    background: #FFFDE7 !important;
+    color: #B27B00 !important;
+    border: 1px solid rgba(212,144,15,0.3) !important;
+  }
+  .vs-why-sec-{{ section.id }} .pillar-tag.leaf {
+    background: #E8F5E9 !important;
+    color: #2E7D32 !important;
+    border: 1px solid rgba(62,173,71,0.3) !important;
+  }
+
+  .vs-why-sec-{{ section.id }} .pillar-content p {
+    font-size: 13.5px !important;
+    line-height: 1.5 !important;
     color: #666666 !important;
-    max-width: 48ch !important;
+    max-width: 50ch !important;
     margin: 0 !important;
     font-weight: 600 !important;
   }
 
+  /* ── LUCRATIVE CTA & TRUST STRIP ── */
   .vs-why-sec-{{ section.id }} .cta-strip {
     margin-top: 26px !important;
     display: flex !important;
     align-items: center !important;
-    gap: 16px !important;
+    gap: 20px !important;
     flex-wrap: wrap !important;
   }
 
@@ -181,26 +262,59 @@
     color: #FFFFFF !important;
     font-family: 'Baloo 2', sans-serif !important;
     font-weight: 800 !important;
-    font-size: 16px !important;
-    letter-spacing: 0.3px !important;
-    padding: 14px 30px !important;
+    font-size: 16.5px !important;
+    letter-spacing: 0.4px !important;
+    padding: 14px 32px !important;
     border-radius: 999px !important;
     text-decoration: none !important;
-    box-shadow: 0 10px 26px -6px rgba(247,148,29,0.45) !important;
+    box-shadow: 0 10px 26px -6px rgba(247,148,29,0.50) !important;
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
+    gap: 10px !important;
     transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+    position: relative !important;
+    overflow: hidden !important;
+  }
+
+  .vs-why-sec-{{ section.id }} .btn-primary::after {
+    content: '' !important;
+    position: absolute !important;
+    top: -50% !important;
+    left: -60% !important;
+    width: 40% !important;
+    height: 200% !important;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent) !important;
+    transform: rotate(25deg) !important;
+    transition: left 0.7s ease !important;
   }
 
   .vs-why-sec-{{ section.id }} .btn-primary:hover {
-    transform: translateY(-2px) !important;
-    box-shadow: 0 14px 30px -4px rgba(247,148,29,0.6) !important;
+    transform: translateY(-2px) scale(1.02) !important;
+    box-shadow: 0 14px 32px -4px rgba(247,148,29,0.65) !important;
+  }
+
+  .vs-why-sec-{{ section.id }} .btn-primary:hover::after {
+    left: 120% !important;
+  }
+
+  .vs-why-sec-{{ section.id }} .trust-badge-group {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2px !important;
+  }
+
+  .vs-why-sec-{{ section.id }} .stars {
+    display: flex !important;
+    align-items: center !important;
+    gap: 3px !important;
+    color: #F7941D !important;
+    font-size: 13px !important;
   }
 
   .vs-why-sec-{{ section.id }} .cta-note {
     font-size: 13px !important;
-    color: #777777 !important;
+    color: #555555 !important;
     font-weight: 700 !important;
   }
 
@@ -315,10 +429,10 @@
     .vs-why-sec-{{ section.id }} .lede {
       font-size: 14px !important;
     }
-    .vs-why-sec-{{ section.id }} .pillar {
+    .vs-why-sec-{{ section.id }} .pillar-card {
       grid-template-columns: 46px 1fr !important;
       gap: 14px !important;
-      padding: 12px 0 !important;
+      padding: 14px 14px !important;
     }
     .vs-why-sec-{{ section.id }} .pillar-icon {
       width: 46px !important;
@@ -326,24 +440,25 @@
       font-size: 18px !important;
       border-radius: 12px !important;
     }
-    .vs-why-sec-{{ section.id }} .pillar h3 {
-      font-size: 16.5px !important;
+    .vs-why-sec-{{ section.id }} .pillar-header h3 {
+      font-size: 16px !important;
     }
-    .vs-why-sec-{{ section.id }} .pillar p {
-      font-size: 13px !important;
+    .vs-why-sec-{{ section.id }} .pillar-content p {
+      font-size: 12.5px !important;
     }
     .vs-why-sec-{{ section.id }} .cta-strip {
       flex-direction: column !important;
       align-items: stretch !important;
-      gap: 10px !important;
+      gap: 12px !important;
     }
     .vs-why-sec-{{ section.id }} .btn-primary {
       width: 100% !important;
       text-align: center !important;
       justify-content: center !important;
     }
-    .vs-why-sec-{{ section.id }} .cta-note {
+    .vs-why-sec-{{ section.id }} .trust-badge-group {
       text-align: center !important;
+      align-items: center !important;
     }
   }
 </style>
@@ -354,9 +469,10 @@
     <!-- LEFT COLUMN -->
     <div class="left">
       {% if section.settings.eyebrow_text != blank %}
-        <div class="eyebrow">
-          <span class="rule"></span>
-          {{ section.settings.eyebrow_text }}
+        <div class="eyebrow-pill">
+          <span class="pulse-dot"></span>
+          <i class="fa-solid fa-bolt" style="color: #F7941D; font-size: 12px;"></i>
+          <span>{{ section.settings.eyebrow_text }}</span>
         </div>
       {% endif %}
 
@@ -372,35 +488,49 @@
       <div class="pillars">
         {% if section.blocks.size > 0 %}
           {% for block in section.blocks %}
-            <div class="pillar" {{ block.shopify_attributes }}>
+            <div class="pillar-card" {{ block.shopify_attributes }}>
               <div class="pillar-icon {{ block.settings.icon_theme }}">
                 {{ block.settings.icon_symbol }}
               </div>
-              <div>
-                <h3>{{ block.settings.title }}</h3>
+              <div class="pillar-content">
+                <div class="pillar-header">
+                  <h3>{{ block.settings.title }}</h3>
+                  {% if block.settings.tag_text != blank %}
+                    <span class="pillar-tag {{ block.settings.icon_theme }}">{{ block.settings.tag_text }}</span>
+                  {% endif %}
+                </div>
                 <p>{{ block.settings.text }}</p>
               </div>
             </div>
           {% endfor %}
         {% else %}
-          <div class="pillar">
+          <div class="pillar-card">
             <div class="pillar-icon saffron">⬡</div>
-            <div>
-              <h3>Based on US-German nano technology</h3>
+            <div class="pillar-content">
+              <div class="pillar-header">
+                <h3>Based on US-German nano technology</h3>
+                <span class="pillar-tag saffron">US-GERMAN TECH</span>
+              </div>
               <p>Advanced US-German nano technology designed for optimized electricity efficiency, stable performance and smarter energy management.</p>
             </div>
           </div>
-          <div class="pillar">
+          <div class="pillar-card">
             <div class="pillar-icon gold">⚡</div>
-            <div>
-              <h3>Made with terahertz chip & 20,000+ negative ions</h3>
+            <div class="pillar-content">
+              <div class="pillar-header">
+                <h3>Made with terahertz chip & 20,000+ negative ions</h3>
+                <span class="pillar-tag gold">20,000+ IONS</span>
+              </div>
               <p>Built with advanced terahertz chip technology and 20,000+ negative ions for smart energy optimization and efficient electrical performance.</p>
             </div>
           </div>
-          <div class="pillar">
+          <div class="pillar-card">
             <div class="pillar-icon leaf">✓</div>
-            <div>
-              <h3>100% legal & ISO certified</h3>
+            <div class="pillar-content">
+              <div class="pillar-header">
+                <h3>100% legal & ISO certified</h3>
+                <span class="pillar-tag leaf">100% LEGAL & ISO</span>
+              </div>
               <p>Completely legal, reliable and designed to follow quality standards for safe and trusted usage.</p>
             </div>
           </div>
@@ -410,11 +540,22 @@
       {% if section.settings.button_text != blank %}
         <div class="cta-strip">
           <a href="{{ section.settings.button_link | default: '/pages/get-franchise' }}" class="btn-primary">
-            {{ section.settings.button_text }}
+            <span>{{ section.settings.button_text }}</span>
+            <i class="fa-solid fa-arrow-right"></i>
           </a>
-          {% if section.settings.cta_note != blank %}
-            <span class="cta-note">{{ section.settings.cta_note }}</span>
-          {% endif %}
+          <div class="trust-badge-group">
+            <div class="stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <span style="font-weight: 800; color: #333; margin-left: 4px; font-size: 13px;">4.9/5</span>
+            </div>
+            {% if section.settings.cta_note != blank %}
+              <span class="cta-note">{{ section.settings.cta_note }}</span>
+            {% endif %}
+          </div>
         </div>
       {% endif %}
     </div>
@@ -490,7 +631,7 @@
       "type": "text",
       "id": "cta_note",
       "label": "CTA Note Text",
-      "default": "Trusted across India's energy-tech network"
+      "default": "Trusted across 500+ Cities in India"
     },
     {
       "type": "header",
@@ -576,6 +717,12 @@
           "default": "Advanced Energy Innovation"
         },
         {
+          "type": "text",
+          "id": "tag_text",
+          "label": "Mini Tag / Badge",
+          "default": "HIGHLIGHT"
+        },
+        {
           "type": "textarea",
           "id": "text",
           "label": "Pillar Description",
@@ -594,6 +741,7 @@
             "icon_theme": "saffron",
             "icon_symbol": "⬡",
             "title": "Based on US-German nano technology",
+            "tag_text": "US-GERMAN TECH",
             "text": "Advanced US-German nano technology designed for optimized electricity efficiency, stable performance and smarter energy management."
           }
         },
@@ -603,6 +751,7 @@
             "icon_theme": "gold",
             "icon_symbol": "⚡",
             "title": "Made with terahertz chip & 20,000+ negative ions",
+            "tag_text": "20,000+ IONS",
             "text": "Built with advanced terahertz chip technology and 20,000+ negative ions for smart energy optimization and efficient electrical performance."
           }
         },
@@ -612,6 +761,7 @@
             "icon_theme": "leaf",
             "icon_symbol": "✓",
             "title": "100% legal & ISO certified",
+            "tag_text": "100% LEGAL & ISO",
             "text": "Completely legal, reliable and designed to follow quality standards for safe and trusted usage."
           }
         }
