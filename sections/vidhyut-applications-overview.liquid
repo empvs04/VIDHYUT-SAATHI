@@ -80,18 +80,18 @@
   .vs-apps-sec-{{ section.id }} .top-badge {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    background: rgba(255, 255, 255, 0.96);
-    border: 1px solid var(--orange-100);
+    gap: 9px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 246, 238, 0.94) 100%);
+    border: 1px solid rgba(255, 122, 26, 0.28);
     border-radius: 999px;
-    padding: 7px 22px;
+    padding: 8px 24px;
     font-size: 13px;
     font-weight: 700;
     color: var(--ink);
-    box-shadow: 0 10px 24px -10px rgba(42, 33, 24, 0.2), 0 0 0 1px rgba(255, 122, 26, 0.12);
+    box-shadow: 0 10px 24px -8px rgba(255, 122, 26, 0.22), 0 0 0 1px rgba(255, 122, 26, 0.12);
     margin-bottom: 16px;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
   }
 
   .vs-apps-sec-{{ section.id }} .top-badge .dot {
@@ -99,7 +99,7 @@
     height: 8px;
     border-radius: 50%;
     background: var(--leaf);
-    box-shadow: 0 0 0 3px rgba(15, 139, 61, 0.25);
+    box-shadow: 0 0 0 3.5px rgba(15, 139, 61, 0.25);
     animation: vsDotPulse 2s infinite ease-in-out;
   }
 
@@ -112,16 +112,18 @@
     font-family: 'Outfit', sans-serif;
     font-weight: 800;
     font-size: 13.5px;
-    letter-spacing: 0.14em;
-    color: var(--saffron);
+    letter-spacing: 0.18em;
+    background: linear-gradient(90deg, #FF6A00, #FFA034, #D4900F);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     text-transform: uppercase;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
   }
 
   .vs-apps-sec-{{ section.id }} .section-title {
     font-family: 'Sora', sans-serif;
     font-weight: 800;
-    font-size: clamp(24px, 2.4vw, 36px);
+    font-size: clamp(25px, 2.5vw, 37px);
     letter-spacing: -0.025em;
     line-height: 1.22;
     color: var(--ink);
@@ -129,11 +131,12 @@
   }
 
   .vs-apps-sec-{{ section.id }} .section-title .accent {
-    background: linear-gradient(105deg, var(--saffron) 0%, #FF9636 50%, var(--gold) 100%);
+    background: linear-gradient(105deg, #FF6F00 0%, #FF8F1A 45%, #FFAF38 75%, #D4900F 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     color: var(--saffron);
     display: inline-block;
+    filter: drop-shadow(0 2px 10px rgba(255, 122, 26, 0.22));
   }
 
   /* ---------- MAIN CONTENT LAYOUT (1FR 1FR EQUAL HEIGHT) ---------- */
@@ -371,22 +374,48 @@
     -webkit-backdrop-filter: blur(4px);
   }
 
-  /* ---------- RIGHT: HEADING + 4 LUCRATIVE CARDS ---------- */
+  /* ---------- RIGHT: HEADING + 4 THEMED LUCRATIVE CARDS ---------- */
   .vs-apps-sec-{{ section.id }} .right {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
-    margin-top: 0;
-    padding-top: 0;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    height: 100% !important;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+
+  .vs-apps-sec-{{ section.id }} .right-header {
+    margin-bottom: 0;
+  }
+
+  .vs-apps-sec-{{ section.id }} .right-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: 11.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--saffron);
+    background: rgba(255, 122, 26, 0.1);
+    border: 1px solid rgba(255, 122, 26, 0.25);
+    padding: 4px 11px;
+    border-radius: 999px;
+    margin-bottom: 10px;
+  }
+
+  .vs-apps-sec-{{ section.id }} .right-kicker .kicker-bolt {
+    font-size: 11px;
+    color: var(--saffron);
   }
 
   .vs-apps-sec-{{ section.id }} .right h2 {
     font-family: 'Sora', sans-serif;
     font-weight: 800;
-    font-size: 32px;
+    font-size: 30px;
     line-height: 1.22;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.025em;
     color: var(--ink);
     margin-top: 0;
     margin-bottom: 0;
@@ -394,120 +423,287 @@
   }
 
   .vs-apps-sec-{{ section.id }} .right h2 .accent {
-    color: var(--saffron);
-    background: linear-gradient(105deg, var(--saffron), var(--gold));
+    background: linear-gradient(105deg, var(--saffron) 0%, #FFA834 60%, var(--gold) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    color: var(--saffron);
     display: inline;
   }
 
-  .vs-apps-sec-{{ section.id }} .checklist {
-    margin-top: 22px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    flex: 1;
-    gap: 13px;
+  .vs-apps-sec-{{ section.id }} .right-subtext {
+    font-size: 13.5px;
+    line-height: 1.45;
+    color: rgba(26, 18, 16, 0.68);
+    margin-top: 6px;
+    max-width: 95%;
   }
 
+  .vs-apps-sec-{{ section.id }} .checklist {
+    margin-top: 18px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    flex: 1 !important;
+    gap: 12px !important;
+  }
+
+  /* ── 4 THEMED LUCRATIVE CARDS ── */
   .vs-apps-sec-{{ section.id }} .check-item {
-    flex: 1;
-    min-height: 0;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 248, 242, 0.92) 100%);
-    border: 1px solid rgba(255, 255, 255, 0.9);
-    border-radius: 18px;
-    padding: 13px 20px;
-    box-shadow: 0 14px 30px -14px rgba(42, 33, 24, 0.18), 0 0 0 1px var(--orange-100);
-    transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease, border-color 0.35s ease;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    position: relative;
-    overflow: hidden;
+    flex: 1 !important;
+    min-height: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 14px !important;
+    border-radius: 16px !important;
+    padding: 12px 18px !important;
+    transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease, border-color 0.35s ease !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    position: relative !important;
+    overflow: hidden !important;
+    cursor: default !important;
   }
 
   .vs-apps-sec-{{ section.id }} .check-item::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 5px;
-    border-radius: 4px 0 0 4px;
-    background: linear-gradient(180deg, var(--saffron), var(--gold));
-    transition: width 0.3s ease;
-  }
-
-  .vs-apps-sec-{{ section.id }} .check-item.theme-res::before {
-    background: linear-gradient(180deg, #FF7A1A, #FFB03A);
-  }
-  .vs-apps-sec-{{ section.id }} .check-item.theme-com::before {
-    background: linear-gradient(180deg, #1E88E5, #00ACC1);
-  }
-  .vs-apps-sec-{{ section.id }} .check-item.theme-ind::before {
-    background: linear-gradient(180deg, #E65100, #F57C00);
-  }
-  .vs-apps-sec-{{ section.id }} .check-item.theme-ins::before {
-    background: linear-gradient(180deg, #0F8B3D, #00BFA5);
+    content: "" !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    width: 4.5px !important;
+    border-radius: 4px 0 0 4px !important;
+    transition: width 0.3s ease !important;
   }
 
   .vs-apps-sec-{{ section.id }} .check-item:hover {
-    transform: translateX(8px) translateY(-2px);
-    box-shadow: 0 22px 42px -12px rgba(255, 122, 26, 0.28), 0 0 0 1.5px rgba(255, 122, 26, 0.35);
+    transform: translateX(6px) translateY(-2px) !important;
   }
 
-  .vs-apps-sec-{{ section.id }} .check-circle {
-    width: 34px;
-    height: 34px;
-    border-radius: 50%;
-    background: linear-gradient(145deg, #FF9142 0%, var(--saffron) 100%);
-    color: var(--white);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 15px;
-    font-weight: 800;
-    flex-shrink: 0;
-    box-shadow: 0 8px 18px -4px rgba(255, 122, 26, 0.65), inset 0 1px 2px rgba(255, 255, 255, 0.4);
-    transition: transform 0.35s ease, box-shadow 0.35s ease;
+  .vs-apps-sec-{{ section.id }} .check-item:hover::before {
+    width: 6.5px !important;
   }
 
-  .vs-apps-sec-{{ section.id }} .check-item:hover .check-circle {
-    transform: scale(1.1) rotate(6deg);
-    box-shadow: 0 10px 22px -3px rgba(255, 122, 26, 0.85);
+  /* Themed Medallion Icon */
+  .vs-apps-sec-{{ section.id }} .check-medallion {
+    width: 44px !important;
+    height: 44px !important;
+    border-radius: 13px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 19px !important;
+    flex-shrink: 0 !important;
+    transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease !important;
   }
 
-  .vs-apps-sec-{{ section.id }} .check-text-wrap {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
+  .vs-apps-sec-{{ section.id }} .check-item:hover .check-medallion {
+    transform: scale(1.1) rotate(4deg) !important;
   }
 
-  .vs-apps-sec-{{ section.id }} .sector-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    font-family: 'Outfit', sans-serif;
-    font-size: 11.5px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--saffron);
-    line-height: 1.2;
+  .vs-apps-sec-{{ section.id }} .check-body {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 3px !important;
+    flex: 1 !important;
+    min-width: 0 !important;
   }
 
-  .vs-apps-sec-{{ section.id }} .check-item p {
-    font-size: 14.5px;
-    line-height: 1.45;
-    color: var(--ink);
-    margin: 0;
+  .vs-apps-sec-{{ section.id }} .check-top-bar {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 8px !important;
+    flex-wrap: wrap !important;
   }
 
-  .vs-apps-sec-{{ section.id }} .check-item p strong {
-    font-weight: 700;
-    color: var(--ink);
+  .vs-apps-sec-{{ section.id }} .sector-meta {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+  }
+
+  .vs-apps-sec-{{ section.id }} .sector-title {
+    font-family: 'Sora', sans-serif !important;
+    font-weight: 800 !important;
+    font-size: 15.5px !important;
+    letter-spacing: -0.01em !important;
+    color: var(--ink) !important;
+    line-height: 1.2 !important;
+  }
+
+  .vs-apps-sec-{{ section.id }} .sector-subtag {
+    font-family: 'Outfit', sans-serif !important;
+    font-weight: 800 !important;
+    font-size: 10px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.06em !important;
+    padding: 2px 7px !important;
+    border-radius: 5px !important;
+    line-height: 1.2 !important;
+  }
+
+  .vs-apps-sec-{{ section.id }} .sector-metric-pill {
+    font-family: 'Outfit', sans-serif !important;
+    font-weight: 800 !important;
+    font-size: 11px !important;
+    padding: 3px 10px !important;
+    border-radius: 999px !important;
+    letter-spacing: 0.02em !important;
+    white-space: nowrap !important;
+  }
+
+  .vs-apps-sec-{{ section.id }} .sector-desc {
+    font-size: 13.5px !important;
+    line-height: 1.45 !important;
+    color: rgba(26, 18, 16, 0.82) !important;
+    margin: 0 !important;
+  }
+
+  /* ════════ THEME SPECIFICS (PEARLESCENT GLASS THEME) ════════ */
+  /* 1. Residential (Amber Saffron Theme) */
+  .vs-apps-sec-{{ section.id }} .check-item.theme-res {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 248, 240, 0.95) 100%) !important;
+    border: 1px solid rgba(255, 122, 26, 0.22) !important;
+    box-shadow: 0 12px 28px -12px rgba(255, 122, 26, 0.16), 0 0 0 1px rgba(255, 122, 26, 0.06) !important;
+  }
+  .vs-apps-sec-{{ section.id }} .check-item.theme-res::before {
+    background: linear-gradient(180deg, #FF7A1A, #FFA834) !important;
+  }
+  .vs-apps-sec-{{ section.id }} .check-item.theme-res .check-medallion {
+    background: linear-gradient(145deg, #FF9547 0%, #FF7A1A 100%) !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 8px 18px -4px rgba(255, 122, 26, 0.55), inset 0 1px 2px rgba(255, 255, 255, 0.4) !important;
+  }
+  .vs-apps-sec-{{ section.id }} .check-item.theme-res .sector-subtag {
+    background: rgba(255, 122, 26, 0.1) !important;
+    color: #D65A00 !important;
+    border: 1px solid rgba(255, 122, 26, 0.2) !important;
+  }
+  .vs-apps-sec-{{ section.id }} .check-item.theme-res .sector-metric-pill {
+    background: linear-gradient(135deg, rgba(255, 122, 26, 0.12), rgba(255, 168, 52, 0.18)) !important;
+    border: 1px solid rgba(255, 122, 26, 0.35) !important;
+    color: #C85000 !important;
+  }
+  .vs-apps-sec-{{ section.id }} .check-item.theme-res:hover {
+    box-shadow: 0 20px 42px -10px rgba(255, 122, 26, 0.32), 0 0 0 1.5px rgba(255, 122, 26, 0.45) !important;
+  }
+
+  /* 2. Commercial (Electric Sapphire Theme) */
+  .vs-apps-sec-{{ section.id }} .check-item.theme-com {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(242, 248, 255, 0.95) 100%) !important;
+    border: 1px solid rgba(30, 136, 229, 0.22) !important;
+    box-shadow: 0 12px 28px -12px rgba(30, 136, 229, 0.16), 0 0 0 1px rgba(30, 136, 229, 0.06) !important;
+  }
+  .vs-apps-sec-{{ section.id }} .check-item.theme-com::before {
+    background: linear-gradient(180deg, #1E88E5, #00ACC1) !important;
+  }
+  .vs-apps-sec-{{ section.id }} .check-item.theme-com .check-medallion {
+    background: linear-gradient(145deg, #42A5F5 0%, #1E88E5 100%) !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 8px 18px -4px rgba(30, 136, 229, 0.55), inset 0 1px 2px rgba(255, 255, 255, 0.4) !important;
+  }
+  .vs-apps-sec-{{ section.id }} .check-item.theme-com .sector-subtag {
+    background: rgba(30, 136, 229, 0.1) !important;
+    color: #0D47A1 !important;
+    border: 1px solid rgba(30, 136, 229, 0.2) !important;
+  }
+  .vs-apps-sec-{{ section.id }} .check-item.theme-com .sector-metric-pill {
+    background: linear-gradient(135deg, rgba(30, 136, 229, 0.12), rgba(0, 172, 193, 0.18)) !important;
+    border: 1px solid rgba(30, 136, 229, 0.35) !important;
+    color: #0D47A1 !important;
+  }
+  .vs-apps-sec-{{ section.id }} .check-item.theme-com:hover {
+    box-shadow: 0 20px 42px -10px rgba(30, 136, 229, 0.32), 0 0 0 1.5px rgba(30, 136, 229, 0.45) !important;
+  }
+
+  /* 3. Industrial (Heavy Duty Copper Tangerine Theme) */
+  .vs-apps-sec-{{ section.id }} .check-item.theme-ind {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 246, 240, 0.95) 100%) !important;
+    border: 1px solid rgba(230, 81, 0, 0.22) !important;
+    box-shadow: 0 12px 28px -12px rgba(230, 81, 0, 0.16), 0 0 0 1px rgba(230, 81, 0, 0.06) !important;
+  }
+  .vs-apps-sec-{{ section.id }} .check-item.theme-ind::before {
+    background: linear-gradient(180deg, #E65100, #FF6D00) !important;
+  }
+  .vs-apps-sec-{{ section.id }} .check-item.theme-ind .check-medallion {
+    background: linear-gradient(145deg, #FF6D00 0%, #E65100 100%) !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 8px 18px -4px rgba(230, 81, 0, 0.55), inset 0 1px 2px rgba(255, 255, 255, 0.4) !important;
+  }
+  .vs-apps-sec-{{ section.id }} .check-item.theme-ind .sector-subtag {
+    background: rgba(230, 81, 0, 0.1) !important;
+    color: #BF360C !important;
+    border: 1px solid rgba(230, 81, 0, 0.2) !important;
+  }
+  .vs-apps-sec-{{ section.id }} .check-item.theme-ind .sector-metric-pill {
+    background: linear-gradient(135deg, rgba(230, 81, 0, 0.12), rgba(245, 124, 0, 0.18)) !important;
+    border: 1px solid rgba(230, 81, 0, 0.35) !important;
+    color: #BF360C !important;
+  }
+  .vs-apps-sec-{{ section.id }} .check-item.theme-ind:hover {
+    box-shadow: 0 20px 42px -10px rgba(230, 81, 0, 0.32), 0 0 0 1.5px rgba(230, 81, 0, 0.45) !important;
+  }
+
+  /* 4. Institutional (Bio Emerald Jade Theme) */
+  .vs-apps-sec-{{ section.id }} .check-item.theme-ins {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(241, 252, 246, 0.95) 100%) !important;
+    border: 1px solid rgba(15, 139, 61, 0.22) !important;
+    box-shadow: 0 12px 28px -12px rgba(15, 139, 61, 0.16), 0 0 0 1px rgba(15, 139, 61, 0.06) !important;
+  }
+  .vs-apps-sec-{{ section.id }} .check-item.theme-ins::before {
+    background: linear-gradient(180deg, #0F8B3D, #00BFA5) !important;
+  }
+  .vs-apps-sec-{{ section.id }} .check-item.theme-ins .check-medallion {
+    background: linear-gradient(145deg, #10B981 0%, #0F8B3D 100%) !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 8px 18px -4px rgba(15, 139, 61, 0.55), inset 0 1px 2px rgba(255, 255, 255, 0.4) !important;
+  }
+  .vs-apps-sec-{{ section.id }} .check-item.theme-ins .sector-subtag {
+    background: rgba(15, 139, 61, 0.1) !important;
+    color: #0D6E31 !important;
+    border: 1px solid rgba(15, 139, 61, 0.2) !important;
+  }
+  .vs-apps-sec-{{ section.id }} .check-item.theme-ins .sector-metric-pill {
+    background: linear-gradient(135deg, rgba(15, 139, 61, 0.12), rgba(0, 191, 165, 0.18)) !important;
+    border: 1px solid rgba(15, 139, 61, 0.35) !important;
+    color: #0A5C28 !important;
+  }
+  .vs-apps-sec-{{ section.id }} .check-item.theme-ins:hover {
+    box-shadow: 0 20px 42px -10px rgba(15, 139, 61, 0.32), 0 0 0 1.5px rgba(15, 139, 61, 0.45) !important;
+  }
+
+  /* ════════ DARK LUXURY OBSIDIAN THEME OPTION ════════ */
+  .vs-apps-sec-{{ section.id }}.theme-dark-right .right h2 {
+    color: #FFFFFF !important;
+  }
+  .vs-apps-sec-{{ section.id }}.theme-dark-right .right-subtext {
+    color: rgba(255, 255, 255, 0.75) !important;
+  }
+  .vs-apps-sec-{{ section.id }}.theme-dark-right .check-item {
+    background: linear-gradient(135deg, #1C1512 0%, #120E0C 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  }
+  .vs-apps-sec-{{ section.id }}.theme-dark-right .sector-title {
+    color: #FFFFFF !important;
+  }
+  .vs-apps-sec-{{ section.id }}.theme-dark-right .sector-desc {
+    color: rgba(255, 255, 255, 0.78) !important;
+  }
+  .vs-apps-sec-{{ section.id }}.theme-dark-right .check-item.theme-res {
+    border-color: rgba(255, 122, 26, 0.35) !important;
+    box-shadow: 0 14px 30px -10px rgba(255, 122, 26, 0.25) !important;
+  }
+  .vs-apps-sec-{{ section.id }}.theme-dark-right .check-item.theme-com {
+    border-color: rgba(30, 136, 229, 0.35) !important;
+    box-shadow: 0 14px 30px -10px rgba(30, 136, 229, 0.25) !important;
+  }
+  .vs-apps-sec-{{ section.id }}.theme-dark-right .check-item.theme-ind {
+    border-color: rgba(230, 81, 0, 0.35) !important;
+    box-shadow: 0 14px 30px -10px rgba(230, 81, 0, 0.25) !important;
+  }
+  .vs-apps-sec-{{ section.id }}.theme-dark-right .check-item.theme-ins {
+    border-color: rgba(15, 139, 61, 0.35) !important;
+    box-shadow: 0 14px 30px -10px rgba(15, 139, 61, 0.25) !important;
   }
 
   /* ---------- RESPONSIVE BREAKPOINTS ---------- */
@@ -528,14 +724,14 @@
     }
     .vs-apps-sec-{{ section.id }} .checklist {
       gap: 14px;
-      margin-top: 24px;
+      margin-top: 22px;
     }
     .vs-apps-sec-{{ section.id }} .check-item {
-      padding: 16px 20px;
+      padding: 15px 18px;
     }
     .vs-apps-sec-{{ section.id }} .right h2 {
       font-size: 28px;
-      text-align: center;
+      text-align: left;
     }
     .vs-apps-sec-{{ section.id }} .section-head {
       margin-bottom: 38px;
@@ -561,11 +757,14 @@
       padding: 7px 16px;
     }
     .vs-apps-sec-{{ section.id }} .check-item {
-      padding: 14px 16px;
+      padding: 14px 15px;
       gap: 12px;
     }
-    .vs-apps-sec-{{ section.id }} .check-item p {
-      font-size: 13.5px;
+    .vs-apps-sec-{{ section.id }} .sector-title {
+      font-size: 14.5px;
+    }
+    .vs-apps-sec-{{ section.id }} .sector-desc {
+      font-size: 13px;
     }
     .vs-apps-sec-{{ section.id }} .right h2 {
       font-size: 23px;
@@ -573,7 +772,7 @@
   }
 </style>
 
-<div class="vs-apps-sec-{{ section.id }}">
+<div class="vs-apps-sec-{{ section.id }} {% if section.settings.right_theme_style == 'lucrative_dark' %}theme-dark-right{% endif %}">
   <div class="ambient-glow-left"></div>
   <div class="ambient-glow-right"></div>
 
@@ -826,54 +1025,133 @@
         {% endif %}
       </div>
 
-      <!-- RIGHT: 4 LUCRATIVE CARDS (PERFECTLY ALIGNED) -->
+      <!-- RIGHT: 4 THEMED LUCRATIVE CARDS (PERFECTLY ALIGNED) -->
       <div class="right">
-        <h2>
-          {{ section.settings.right_heading_prefix | default: "WHEREVER ELECTRICITY LIVES," }}
-          <span class="accent">{{ section.settings.right_heading_accent | default: "VIDHYUT SAATHI BELONGS." }}</span>
-        </h2>
+        <div class="right-header">
+          {% if section.settings.right_kicker != blank %}
+            <div class="right-kicker">
+              <span class="kicker-bolt">⚡</span>
+              <span>{{ section.settings.right_kicker }}</span>
+            </div>
+          {% endif %}
+          <h2>
+            {{ section.settings.right_heading_prefix | default: "WHEREVER ELECTRICITY LIVES," }}
+            <span class="accent">{{ section.settings.right_heading_accent | default: "VIDHYUT SAATHI BELONGS." }}</span>
+          </h2>
+          {% if section.settings.right_subtext != blank %}
+            <p class="right-subtext">{{ section.settings.right_subtext }}</p>
+          {% endif %}
+        </div>
 
         <div class="checklist">
           {% assign check_items = section.blocks | where: "type", "checklist_item" %}
           {% if check_items.size > 0 %}
             {% for block in check_items %}
-              <div class="check-item theme-{{ block.settings.theme_color | default: 'res' }}" {{ block.shopify_attributes }}>
-                <div class="check-circle">{{ block.settings.check_icon | default: "✓" }}</div>
-                <div class="check-text-wrap">
-                  <p><strong>{{ block.settings.sector_name }}:</strong> {{ block.settings.sector_text }}</p>
+              {% assign theme_c = block.settings.theme_color | default: 'res' %}
+              {% case theme_c %}
+                {% when 'com' %}
+                  {% assign fallback_ic = "🏢" %}
+                  {% assign fallback_tag = "Offices & Malls" %}
+                  {% assign fallback_metric = "📉 Save kVAh Penalty" %}
+                {% when 'ind' %}
+                  {% assign fallback_ic = "🏭" %}
+                  {% assign fallback_tag = "Factories & Plants" %}
+                  {% assign fallback_metric = "⚙️ Heavy Motor Loads" %}
+                {% when 'ins' %}
+                  {% assign fallback_ic = "🏫" %}
+                  {% assign fallback_tag = "Schools & Hospitals" %}
+                  {% assign fallback_metric = "🛡️ Zero Leakage Safety" %}
+                {% else %}
+                  {% assign fallback_ic = "🏡" %}
+                  {% assign fallback_tag = "Homes & Living" %}
+                  {% assign fallback_metric = "💡 Save 25% Bill" %}
+              {% endcase %}
+
+              {% assign card_icon = block.settings.check_icon | default: fallback_ic %}
+              {% if card_icon == "✓" or card_icon == blank %}
+                {% assign card_icon = fallback_ic %}
+              {% endif %}
+              {% assign card_tag = block.settings.tag_text | default: fallback_tag %}
+              {% assign card_metric = block.settings.metric_text | default: fallback_metric %}
+
+              <div class="check-item theme-{{ theme_c }}" {{ block.shopify_attributes }}>
+                <div class="check-medallion">
+                  <span class="medallion-icon">{{ card_icon }}</span>
+                </div>
+                <div class="check-body">
+                  <div class="check-top-bar">
+                    <div class="sector-meta">
+                      <span class="sector-title">{{ block.settings.sector_name }}</span>
+                      {% if card_tag != blank %}
+                        <span class="sector-subtag">{{ card_tag }}</span>
+                      {% endif %}
+                    </div>
+                    {% if card_metric != blank %}
+                      <span class="sector-metric-pill">{{ card_metric }}</span>
+                    {% endif %}
+                  </div>
+                  <p class="sector-desc">{{ block.settings.sector_text }}</p>
                 </div>
               </div>
             {% endfor %}
           {% else %}
             <!-- Residential Card -->
             <div class="check-item theme-res">
-              <div class="check-circle">✓</div>
-              <div class="check-text-wrap">
-                <p><strong>Residential:</strong> Lowers home electricity bills & protects appliances from voltage spikes.</p>
+              <div class="check-medallion"><span class="medallion-icon">🏡</span></div>
+              <div class="check-body">
+                <div class="check-top-bar">
+                  <div class="sector-meta">
+                    <span class="sector-title">Residential</span>
+                    <span class="sector-subtag">Homes & Living</span>
+                  </div>
+                  <span class="sector-metric-pill">💡 Save 25% Bill</span>
+                </div>
+                <p class="sector-desc">Lowers home electricity bills & protects appliances from voltage spikes.</p>
               </div>
             </div>
 
             <!-- Commercial Card -->
             <div class="check-item theme-com">
-              <div class="check-circle">✓</div>
-              <div class="check-text-wrap">
-                <p><strong>Commercial:</strong> Reduces kVAh billing penalty & extends commercial equipment lifespan.</p>
+              <div class="check-medallion"><span class="medallion-icon">🏢</span></div>
+              <div class="check-body">
+                <div class="check-top-bar">
+                  <div class="sector-meta">
+                    <span class="sector-title">Commercial</span>
+                    <span class="sector-subtag">Offices & Malls</span>
+                  </div>
+                  <span class="sector-metric-pill">📉 Save kVAh Penalty</span>
+                </div>
+                <p class="sector-desc">Reduces kVAh billing penalty & extends commercial equipment lifespan.</p>
               </div>
             </div>
 
             <!-- Industrial Card -->
             <div class="check-item theme-ind">
-              <div class="check-circle">✓</div>
-              <div class="check-text-wrap">
-                <p><strong>Industrial:</strong> Handles heavy motor loads, cutting line losses in factories & plants.</p>
+              <div class="check-medallion"><span class="medallion-icon">🏭</span></div>
+              <div class="check-body">
+                <div class="check-top-bar">
+                  <div class="sector-meta">
+                    <span class="sector-title">Industrial</span>
+                    <span class="sector-subtag">Factories & Plants</span>
+                  </div>
+                  <span class="sector-metric-pill">⚙️ Heavy Motor Loads</span>
+                </div>
+                <p class="sector-desc">Handles heavy motor loads, cutting line losses in factories & plants.</p>
               </div>
             </div>
 
             <!-- Institutional Card -->
             <div class="check-item theme-ins">
-              <div class="check-circle">✓</div>
-              <div class="check-text-wrap">
-                <p><strong>Institutional:</strong> Zero energy leakage & maximum safety for schools & hospitals.</p>
+              <div class="check-medallion"><span class="medallion-icon">🏫</span></div>
+              <div class="check-body">
+                <div class="check-top-bar">
+                  <div class="sector-meta">
+                    <span class="sector-title">Institutional</span>
+                    <span class="sector-subtag">Schools & Hospitals</span>
+                  </div>
+                  <span class="sector-metric-pill">🛡️ Zero Leakage Safety</span>
+                </div>
+                <p class="sector-desc">Zero energy leakage & maximum safety for schools & hospitals.</p>
               </div>
             </div>
           {% endif %}
@@ -943,7 +1221,23 @@
     },
     {
       "type": "header",
-      "content": "Right Column Heading"
+      "content": "Right Column Heading & Theme"
+    },
+    {
+      "type": "select",
+      "id": "right_theme_style",
+      "label": "Right Column Card Theme",
+      "options": [
+        { "value": "lucrative_pearl", "label": "Themed Pearlescent Glass (Luminous)" },
+        { "value": "lucrative_dark", "label": "Executive Dark Luxury Obsidian" }
+      ],
+      "default": "lucrative_pearl"
+    },
+    {
+      "type": "text",
+      "id": "right_kicker",
+      "label": "Right Column Kicker",
+      "default": "POWER APPLICATION MATRIX"
     },
     {
       "type": "text",
@@ -956,6 +1250,12 @@
       "id": "right_heading_accent",
       "label": "Right Heading Accent",
       "default": "VIDHYUT SAATHI BELONGS."
+    },
+    {
+      "type": "textarea",
+      "id": "right_subtext",
+      "label": "Right Column Subtitle",
+      "default": "Engineered to eliminate inductive waste, correct power factor, and secure appliances across every electrical environment."
     },
     {
       "type": "header",
@@ -1354,14 +1654,26 @@
         {
           "type": "text",
           "id": "check_icon",
-          "label": "Check Icon",
-          "default": "✓"
+          "label": "Icon (Emoji or symbol)",
+          "default": "🏡"
         },
         {
           "type": "text",
           "id": "sector_name",
           "label": "Sector Name",
           "default": "Residential"
+        },
+        {
+          "type": "text",
+          "id": "tag_text",
+          "label": "Sector Sub-Tag",
+          "default": "Homes & Living"
+        },
+        {
+          "type": "text",
+          "id": "metric_text",
+          "label": "Metric Pill Text",
+          "default": "💡 Save 25% Bill"
         },
         {
           "type": "textarea",
