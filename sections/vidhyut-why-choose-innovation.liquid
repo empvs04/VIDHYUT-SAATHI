@@ -29,7 +29,7 @@
     box-sizing: border-box !important;
   }
 
-  /* ── STANDARD 1200PX CENTERED CONTAINER ── */
+  /* ── EQUAL 1FR 1FR 1200PX CENTERED CONTAINER ── */
   .vs-why-sec-{{ section.id }} .container {
     max-width: 1200px !important;
     width: 100% !important;
@@ -39,17 +39,19 @@
     position: relative !important;
     z-index: 2 !important;
     display: grid !important;
-    grid-template-columns: 1.15fr 0.85fr !important;
-    gap: 40px !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 50px !important;
     align-items: center !important;
-    justify-content: space-between !important;
+    justify-content: center !important;
   }
 
-  /* ---------- LUCRATIVE LEFT COLUMN ---------- */
+  /* ---------- LEFT COLUMN ---------- */
   .vs-why-sec-{{ section.id }} .left {
-    max-width: 620px !important;
+    max-width: 560px !important;
     width: 100% !important;
-    margin-right: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
   }
 
   /* Glowing Eyebrow Pill */
@@ -68,6 +70,7 @@
     letter-spacing: 0.5px !important;
     text-transform: uppercase !important;
     box-shadow: 0 4px 14px rgba(247, 148, 29, 0.12) !important;
+    align-self: flex-start !important;
   }
 
   .vs-why-sec-{{ section.id }} .eyebrow-pill .pulse-dot {
@@ -88,7 +91,7 @@
   .vs-why-sec-{{ section.id }} h2.section-title {
     font-family: 'Baloo 2', sans-serif !important;
     font-weight: 900 !important;
-    font-size: clamp(32px, 4vw, 46px) !important;
+    font-size: clamp(30px, 3.6vw, 42px) !important;
     line-height: 1.12 !important;
     letter-spacing: -0.5px !important;
     margin: 0 0 12px 0 !important;
@@ -104,27 +107,27 @@
   }
 
   .vs-why-sec-{{ section.id }} .lede {
-    font-size: 16px !important;
+    font-size: 15.5px !important;
     line-height: 1.55 !important;
     color: #4A4A4A !important;
-    max-width: 52ch !important;
+    max-width: 50ch !important;
     margin: 0 !important;
     font-weight: 600 !important;
   }
 
-  /* ── PILLARS CARDS GRID (CLEAN WITHOUT TAGS) ── */
+  /* ── PILLARS CARDS GRID ── */
   .vs-why-sec-{{ section.id }} .pillars {
-    margin-top: 24px !important;
+    margin-top: 22px !important;
     display: flex !important;
     flex-direction: column !important;
-    gap: 14px !important;
+    gap: 12px !important;
   }
 
   .vs-why-sec-{{ section.id }} .pillar-card {
     display: grid !important;
-    grid-template-columns: 52px 1fr !important;
-    gap: 18px !important;
-    padding: 16px 20px !important;
+    grid-template-columns: 50px 1fr !important;
+    gap: 16px !important;
+    padding: 15px 18px !important;
     background: #FFFFFF !important;
     border-radius: 18px !important;
     border: 1.5px solid rgba(247, 148, 29, 0.14) !important;
@@ -158,13 +161,13 @@
   }
 
   .vs-why-sec-{{ section.id }} .pillar-icon {
-    width: 52px !important;
-    height: 52px !important;
+    width: 50px !important;
+    height: 50px !important;
     border-radius: 14px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    font-size: 22px !important;
+    font-size: 20px !important;
     flex-shrink: 0 !important;
     transition: transform 0.3s ease !important;
   }
@@ -192,12 +195,12 @@
   .vs-why-sec-{{ section.id }} .pillar-content {
     display: flex !important;
     flex-direction: column !important;
-    gap: 3px !important;
+    gap: 2px !important;
   }
 
   .vs-why-sec-{{ section.id }} .pillar-content h3 {
     font-family: 'Baloo 2', sans-serif !important;
-    font-size: 18.5px !important;
+    font-size: 18px !important;
     font-weight: 800 !important;
     line-height: 1.25 !important;
     margin: 0 0 2px 0 !important;
@@ -209,19 +212,19 @@
     font-size: 13.5px !important;
     line-height: 1.5 !important;
     color: #666666 !important;
-    max-width: 50ch !important;
+    max-width: 48ch !important;
     margin: 0 !important;
     font-weight: 600 !important;
   }
 
-  /* ---------- RIGHT COLUMN & FLOATING TILT ANIMATION ---------- */
+  /* ---------- RIGHT COLUMN & COMPACT FLOATING TILT ANIMATION ---------- */
   .vs-why-sec-{{ section.id }} .right {
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
     position: relative !important;
     width: 100% !important;
-    margin-left: auto !important;
+    max-width: 560px !important;
   }
 
   @keyframes vsFloatAndTilt {
@@ -229,13 +232,13 @@
       transform: translateY(0px) rotate(0deg);
     }
     25% {
-      transform: translateY(-10px) rotate(-1.8deg);
+      transform: translateY(-8px) rotate(-1.5deg);
     }
     50% {
-      transform: translateY(-20px) rotate(0deg);
+      transform: translateY(-16px) rotate(0deg);
     }
     75% {
-      transform: translateY(-10px) rotate(1.8deg);
+      transform: translateY(-8px) rotate(1.5deg);
     }
     100% {
       transform: translateY(0px) rotate(0deg);
@@ -245,7 +248,7 @@
   .vs-why-sec-{{ section.id }} .vs-floating-girl-wrapper {
     position: relative !important;
     width: 100% !important;
-    max-width: 440px !important;
+    max-width: 330px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
@@ -253,29 +256,32 @@
     transform-origin: center center !important;
     will-change: transform !important;
     transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+    margin: 0 auto !important;
   }
 
   .vs-why-sec-{{ section.id }} .vs-floating-girl-wrapper:hover {
     animation-play-state: paused !important;
-    transform: translateY(-14px) scale(1.03) rotate(1.5deg) !important;
+    transform: translateY(-10px) scale(1.02) rotate(1deg) !important;
   }
 
   .vs-why-sec-{{ section.id }} .vs-girl-cutout-img {
     width: 100% !important;
-    max-width: 420px !important;
+    max-width: 320px !important;
+    max-height: 480px !important;
     height: auto !important;
+    object-fit: contain !important;
     display: block !important;
-    filter: drop-shadow(0 20px 32px rgba(42, 33, 24, 0.14)) drop-shadow(0 0 35px rgba(247, 148, 29, 0.14)) !important;
+    filter: drop-shadow(0 16px 28px rgba(42, 33, 24, 0.12)) drop-shadow(0 0 30px rgba(247, 148, 29, 0.12)) !important;
     user-select: none !important;
     pointer-events: auto !important;
   }
 
   .vs-why-sec-{{ section.id }} .glow-1 {
     position: absolute !important;
-    top: -20px !important;
+    top: -15px !important;
     right: -10px !important;
-    width: 320px !important;
-    height: 320px !important;
+    width: 260px !important;
+    height: 260px !important;
     border-radius: 50% !important;
     background: radial-gradient(circle, rgba(247,148,29,0.20), transparent 70%) !important;
     z-index: 0 !important;
@@ -284,10 +290,10 @@
 
   .vs-why-sec-{{ section.id }} .glow-2 {
     position: absolute !important;
-    bottom: -30px !important;
-    left: -20px !important;
-    width: 300px !important;
-    height: 300px !important;
+    bottom: -20px !important;
+    left: -15px !important;
+    width: 250px !important;
+    height: 250px !important;
     border-radius: 50% !important;
     background: radial-gradient(circle, rgba(62,173,71,0.16), transparent 70%) !important;
     z-index: 0 !important;
@@ -301,7 +307,7 @@
     }
     .vs-why-sec-{{ section.id }} .container {
       grid-template-columns: 1fr !important;
-      gap: 40px !important;
+      gap: 36px !important;
       padding-left: 10px !important;
       padding-right: 10px !important;
     }
@@ -310,11 +316,14 @@
       text-align: left !important;
     }
     .vs-why-sec-{{ section.id }} .right {
-      max-width: 360px !important;
+      max-width: 100% !important;
       margin: 0 auto !important;
     }
+    .vs-why-sec-{{ section.id }} .vs-floating-girl-wrapper {
+      max-width: 280px !important;
+    }
     .vs-why-sec-{{ section.id }} .vs-girl-cutout-img {
-      max-width: 340px !important;
+      max-width: 270px !important;
     }
   }
 
@@ -328,7 +337,7 @@
     .vs-why-sec-{{ section.id }} .pillar-card {
       grid-template-columns: 46px 1fr !important;
       gap: 14px !important;
-      padding: 14px 14px !important;
+      padding: 13px 14px !important;
     }
     .vs-why-sec-{{ section.id }} .pillar-icon {
       width: 46px !important;
@@ -414,7 +423,7 @@
         
         {% if section.settings.custom_girl_image != blank %}
           <img 
-            src="{{ section.settings.custom_girl_image | image_url: width: 1000 }}" 
+            src="{{ section.settings.custom_girl_image | image_url: width: 800 }}" 
             alt="{{ section.settings.heading_prefix }} {{ section.settings.heading_accent }}" 
             class="vs-girl-cutout-img" 
             loading="lazy"
