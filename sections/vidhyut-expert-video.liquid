@@ -168,15 +168,18 @@
   /* VIDEO MODAL POPUP BASE */
   .vs-video-modal-overlay {
     position: fixed !important;
-    inset: 0 !important;
-    background: rgba(10, 15, 29, 0.92) !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background: rgba(10, 15, 29, 0.94) !important;
     backdrop-filter: blur(14px) !important;
     -webkit-backdrop-filter: blur(14px) !important;
-    z-index: 999999 !important;
+    z-index: 9999999 !important;
     display: none !important;
     align-items: center !important;
     justify-content: center !important;
-    padding: 50px 16px 20px 16px !important;
+    padding: 24px 16px !important;
     box-sizing: border-box !important;
     opacity: 0 !important;
     transition: opacity 0.3s ease !important;
@@ -193,8 +196,8 @@
     flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
-    max-width: 90vw !important;
-    max-height: 85vh !important;
+    width: 100% !important;
+    max-width: 860px !important;
     margin: auto !important;
   }
 
@@ -203,12 +206,13 @@
     top: -46px !important;
     right: 0 !important;
     color: #FFFFFF !important;
-    font-size: 1.8rem !important;
+    font-size: 1.4rem !important;
+    font-weight: 700 !important;
     cursor: pointer !important;
     background: #EC5C0A !important;
     border-radius: 50% !important;
-    width: 36px !important;
-    height: 36px !important;
+    width: 38px !important;
+    height: 38px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
@@ -216,7 +220,7 @@
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6) !important;
     line-height: 1 !important;
     transition: transform 0.2s ease, background 0.2s ease !important;
-    z-index: 1000000 !important;
+    z-index: 10000000 !important;
   }
 
   .vs-video-modal-close:hover {
@@ -226,33 +230,29 @@
 
   .vs-video-modal-player-wrap {
     position: relative !important;
+    width: 100% !important;
     background: #000000 !important;
     border-radius: 16px !important;
     overflow: hidden !important;
-    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9), 0 0 35px rgba(236, 92, 10, 0.35) !important;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 30px rgba(236, 92, 10, 0.3) !important;
     border: 2px solid rgba(236, 92, 10, 0.6) !important;
+    aspect-ratio: 16 / 9 !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    max-width: 90vw !important;
-    max-height: 80vh !important;
   }
 
   .vs-video-modal-iframe {
-    width: 80vw !important;
-    max-width: 850px !important;
-    aspect-ratio: 16 / 9 !important;
-    min-height: 240px !important;
+    width: 100% !important;
+    height: 100% !important;
     border: none !important;
     display: block !important;
     background: #000000 !important;
   }
 
   .vs-video-modal-video {
-    width: auto !important;
-    max-width: 90vw !important;
-    height: auto !important;
-    max-height: 75vh !important;
+    width: 100% !important;
+    height: 100% !important;
     display: block !important;
     border-radius: 14px !important;
     background: #000000 !important;
@@ -656,9 +656,9 @@
       margin: 0 !important;
     }
 
-    /* Video Modal Popup on Mobile (Clean Centered, Any Aspect Ratio, Floating Close) */
+    /* Video Modal Popup on Mobile (Clean Centered, 16/9 Aspect Ratio, Floating Close) */
     .vs-video-modal-overlay {
-      padding: 50px 14px 20px 14px !important;
+      padding: 48px 12px 20px 12px !important;
     }
 
     .vs-video-modal-box {
@@ -670,7 +670,7 @@
     .vs-video-modal-player-wrap {
       width: 100% !important;
       max-width: 100% !important;
-      max-height: 75vh !important;
+      aspect-ratio: 16 / 9 !important;
       border-radius: 14px !important;
       box-shadow: 0 25px 70px rgba(0, 0, 0, 0.9), 0 0 25px rgba(236, 92, 10, 0.3) !important;
     }
@@ -680,20 +680,17 @@
       right: 0 !important;
       width: 36px !important;
       height: 36px !important;
-      font-size: 1.7rem !important;
+      font-size: 1.3rem !important;
     }
 
     .vs-video-modal-iframe {
       width: 100% !important;
-      aspect-ratio: 16 / 9 !important;
-      min-height: 210px !important;
+      height: 100% !important;
     }
 
     .vs-video-modal-video {
-      width: auto !important;
-      max-width: 100% !important;
-      height: auto !important;
-      max-height: 70vh !important;
+      width: 100% !important;
+      height: 100% !important;
       object-fit: contain !important;
     }
   }
@@ -714,12 +711,11 @@
           {%- endif -%}
         {%- endfor -%}
       {%- endif -%}
-      {%- if active_video_target == blank -%}
-        {%- if section.settings.custom_video_url != blank -%}
-          {%- assign active_video_target = section.settings.custom_video_url -%}
-        {%- else -%}
-          {%- assign active_video_target = section.settings.video_url -%}
-        {%- endif -%}
+      {%- if active_video_target == blank and section.settings.custom_video_url != blank -%}
+        {%- assign active_video_target = section.settings.custom_video_url -%}
+      {%- endif -%}
+      {%- if active_video_target == blank and section.settings.video_url != blank -%}
+        {%- assign active_video_target = section.settings.video_url -%}
       {%- endif -%}
       {%- if active_video_target == blank -%}
         {%- assign active_video_target = 'https://www.youtube.com/embed/eNPX8I7iRV8' -%}
@@ -728,8 +724,8 @@
       <!-- 2-COLUMN TOP GRID -->
       <div class="vs-video-top-grid">
         
-        <!-- LEFT COLUMN: VIDEO THUMBNAIL (ROUNDED CARD WITH FULL INLINE PLAYER) -->
-        <div class="vs-video-thumb-card" id="vsMainVideoCard">
+        <!-- LEFT COLUMN: VIDEO THUMBNAIL (ROUNDED CARD WITH GLOWING PLAY BUTTON) -->
+        <div class="vs-video-thumb-card" id="vsMainVideoCard" onclick="vsOpenVideoModal('{{ active_video_target | escape }}')">
           {%- if section.settings.thumbnail != blank -%}
             <img src="{{ section.settings.thumbnail | image_url: width: 1000 }}" alt="{{ section.settings.headline_text | escape }}" class="vs-video-thumb-img" id="vsCardThumbImg" loading="lazy">
           {%- elsif section.settings.thumbnail_image != blank -%}
@@ -738,20 +734,11 @@
             <img src="{{ 'hero-advisor-calculator.jpg' | asset_url }}" alt="Vidhyut Saathi Technology Showcase" class="vs-video-thumb-img" id="vsCardThumbImg" loading="lazy">
           {%- endif -%}
           
-          <div class="vs-video-thumb-overlay" id="vsCardOverlay" onclick="vsStartCardPlay(event)">
+          <div class="vs-video-thumb-overlay" id="vsCardOverlay">
             <div class="vs-play-btn-circle">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
             </div>
           </div>
-
-          <video id="vsCardVideoElement" class="vs-card-video-player" controls playsinline preload="metadata" style="display: none;">
-            {%- if section.settings.custom_video_file != blank -%}
-              {%- for src in section.settings.custom_video_file.sources -%}
-                <source src="{{ src.url }}" type="{{ src.mime_type }}">
-              {%- endfor -%}
-            {%- endif -%}
-          </video>
-          <iframe id="vsCardIframeElement" class="vs-card-iframe-player" allow="autoplay; encrypted-media; fullscreen" allowfullscreen style="display: none;"></iframe>
         </div>
 
         <!-- RIGHT COLUMN: BRAND THEMED CONTENT -->
@@ -878,104 +865,49 @@
   </div>
 </section>
 
-<!-- VIDEO MODAL POPUP CONTAINER -->
+<!-- VIDEO MODAL POPUP CONTAINER (CLEAN 16:9 MODAL) -->
 <div class="vs-video-modal-overlay" id="vsVideoModal" onclick="if(event.target === this) vsCloseVideoModal();">
   <div class="vs-video-modal-box">
-    <button type="button" class="vs-video-modal-close" onclick="vsCloseVideoModal()" aria-label="Close Video">&times;</button>
+    <button type="button" class="vs-video-modal-close" onclick="vsCloseVideoModal()" aria-label="Close Video">✕</button>
     <div class="vs-video-modal-player-wrap">
-      <iframe id="vsVideoModalIframe" class="vs-video-modal-iframe" allow="autoplay; encrypted-media" allowfullscreen style="display: none;"></iframe>
+      <iframe id="vsVideoModalIframe" class="vs-video-modal-iframe" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="display: none;"></iframe>
       <video id="vsVideoModalVideo" class="vs-video-modal-video" controls playsinline style="display: none;"></video>
     </div>
   </div>
 </div>
 
 <script>
-  function vsStartCardPlay(e) {
-    if (e) e.stopPropagation();
-    const thumb = document.getElementById('vsCardThumbImg');
-    const overlay = document.getElementById('vsCardOverlay');
-    const videoElem = document.getElementById('vsCardVideoElement');
-    const iframeElem = document.getElementById('vsCardIframeElement');
-
-    if (thumb) thumb.style.display = 'none';
-    if (overlay) overlay.style.display = 'none';
-
-    // If native HTML5 video has source children rendered by Liquid
-    if (videoElem && videoElem.querySelector('source')) {
-      if (iframeElem) iframeElem.style.display = 'none';
-      videoElem.style.display = 'block';
-      videoElem.play().catch(function(err) {
-        console.log('Autoplay blocked, user interaction required:', err);
-      });
-      return;
-    }
-
-    let targetUrl = '{{ active_video_target | escape }}';
-    if (!targetUrl) targetUrl = 'https://www.youtube.com/embed/eNPX8I7iRV8';
-
-    const isDirectVideoFile = targetUrl.match(/\.(mp4|webm|mov|ogg)(\?.*)?$/i) || targetUrl.includes('cdn.shopify.com/videos') || targetUrl.includes('cdn.shopify.com/files');
-
-    if (isDirectVideoFile && videoElem) {
-      if (iframeElem) iframeElem.style.display = 'none';
-      videoElem.style.display = 'block';
-      if (!videoElem.src || videoElem.src !== targetUrl) {
-        videoElem.src = targetUrl;
-      }
-      videoElem.play().catch(function(err) {
-        console.log('Video play error:', err);
-      });
-    } else if (iframeElem) {
-      if (videoElem) videoElem.style.display = 'none';
-      let videoId = '';
-      if (targetUrl.includes('/shorts/')) {
-        const parts = targetUrl.split('/shorts/');
-        if (parts[1]) videoId = parts[1].split('?')[0].split('&')[0];
-      } else if (targetUrl.includes('youtu.be/')) {
-        const parts = targetUrl.split('youtu.be/');
-        if (parts[1]) videoId = parts[1].split('?')[0].split('&')[0];
-      } else if (targetUrl.includes('v=')) {
-        const queryPart = targetUrl.split('?')[1] || '';
-        const params = new URLSearchParams(queryPart);
-        videoId = params.get('v') || '';
-      } else if (targetUrl.includes('/embed/')) {
-        const parts = targetUrl.split('/embed/');
-        if (parts[1]) videoId = parts[1].split('?')[0].split('&')[0];
-      }
-
-      if (videoId) {
-        targetUrl = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&enablejsapi=1&rel=0';
-      } else if (targetUrl.includes('embed/')) {
-        targetUrl = targetUrl.includes('?') ? targetUrl + '&autoplay=1' : targetUrl + '?autoplay=1';
-      }
-
-      iframeElem.style.display = 'block';
-      iframeElem.src = targetUrl;
-    }
-  }
-
   function vsOpenVideoModal(rawUrl) {
     document.body.style.overflow = 'hidden';
     const modal = document.getElementById('vsVideoModal');
     const iframe = document.getElementById('vsVideoModalIframe');
     const html5Video = document.getElementById('vsVideoModalVideo');
+    if (!modal) return;
     
     let targetUrl = rawUrl || 'https://www.youtube.com/embed/eNPX8I7iRV8';
 
     const isDirectVideoFile = targetUrl.match(/\.(mp4|webm|mov|ogg)(\?.*)?$/i) || targetUrl.includes('cdn.shopify.com/videos') || targetUrl.includes('cdn.shopify.com/files');
 
-    if (isDirectVideoFile) {
-      iframe.style.display = 'none';
-      iframe.src = '';
-      html5Video.style.display = 'block';
-      html5Video.src = targetUrl;
-      html5Video.play();
+    if (isDirectVideoFile && !targetUrl.startsWith('shopify://')) {
+      if (iframe) {
+        iframe.style.display = 'none';
+        iframe.src = '';
+      }
+      if (html5Video) {
+        html5Video.style.display = 'block';
+        html5Video.src = targetUrl;
+        html5Video.play().catch(function(err) {
+          console.log('Video play:', err);
+        });
+      }
     } else {
-      html5Video.style.display = 'none';
-      html5Video.pause();
-      html5Video.src = '';
-      iframe.style.display = 'block';
+      if (html5Video) {
+        html5Video.style.display = 'none';
+        html5Video.pause();
+        html5Video.src = '';
+      }
 
-      let videoId = '';
+      let videoId = 'eNPX8I7iRV8';
       if (targetUrl.includes('/shorts/')) {
         const parts = targetUrl.split('/shorts/');
         if (parts[1]) videoId = parts[1].split('?')[0].split('&')[0];
@@ -985,19 +917,16 @@
       } else if (targetUrl.includes('v=')) {
         const queryPart = targetUrl.split('?')[1] || '';
         const params = new URLSearchParams(queryPart);
-        videoId = params.get('v') || '';
+        videoId = params.get('v') || videoId;
       } else if (targetUrl.includes('/embed/')) {
         const parts = targetUrl.split('/embed/');
         if (parts[1]) videoId = parts[1].split('?')[0].split('&')[0];
       }
 
-      if (videoId) {
-        targetUrl = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&enablejsapi=1&rel=0';
-      } else if (targetUrl.includes('embed/')) {
-        targetUrl = targetUrl.includes('?') ? targetUrl + '&autoplay=1' : targetUrl + '?autoplay=1';
+      if (iframe) {
+        iframe.style.display = 'block';
+        iframe.src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&enablejsapi=1&rel=0&playsinline=1';
       }
-
-      iframe.src = targetUrl;
     }
 
     modal.classList.add('active');
@@ -1009,13 +938,19 @@
     const iframe = document.getElementById('vsVideoModalIframe');
     const html5Video = document.getElementById('vsVideoModalVideo');
 
-    iframe.src = '';
-    iframe.style.display = 'none';
-    html5Video.pause();
-    html5Video.src = '';
-    html5Video.style.display = 'none';
+    if (iframe) {
+      iframe.src = '';
+      iframe.style.display = 'none';
+    }
+    if (html5Video) {
+      html5Video.pause();
+      html5Video.src = '';
+      html5Video.style.display = 'none';
+    }
     
-    modal.classList.remove('active');
+    if (modal) {
+      modal.classList.remove('active');
+    }
   }
 
   document.addEventListener('keydown', function(e) {
