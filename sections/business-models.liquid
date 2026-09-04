@@ -37,21 +37,29 @@
     margin-bottom: 52px !important;
     margin-left: auto !important;
     margin-right: auto !important;
+    width: 100% !important;
   }
 
   .business-section-{{ section.id }} .heading h1 {
     margin: 0 auto !important;
     font-family: 'Baloo 2', sans-serif !important;
-    font-size: clamp(3.5rem, 12vw, 6.5rem) !important;
+    font-size: clamp(2.2rem, 5vw, 3.8rem) !important;
     font-weight: 900 !important;
-    line-height: 1 !important;
-    letter-spacing: -2px !important;
+    line-height: 1.1 !important;
+    letter-spacing: -1px !important;
     text-transform: uppercase !important;
     text-align: center !important;
+    white-space: nowrap !important;
+    word-break: keep-all !important;
     background: linear-gradient(90deg, #E07810 0%, #F7941D 55%, #FDB44B 100%) !important;
     -webkit-background-clip: text !important;
     -webkit-text-fill-color: transparent !important;
     filter: drop-shadow(0 10px 20px rgba(247,148,29,.18)) !important;
+  }
+
+  .business-section-{{ section.id }} .heading h1 br {
+    display: inline !important;
+    content: ' ' !important;
   }
 
   .business-section-{{ section.id }} .heading h1 span {
@@ -826,7 +834,7 @@
       letter-spacing: 0.8px !important;
     }
     .business-section-{{ section.id }} .heading h1 {
-      font-size: clamp(1.75rem, 7.5vw, 2.6rem) !important;
+      font-size: clamp(1.35rem, 6.2vw, 2.2rem) !important;
       line-height: 1.15 !important;
       letter-spacing: -0.5px !important;
       white-space: nowrap !important;
@@ -1045,7 +1053,7 @@
       "type": "textarea",
       "id": "heading",
       "label": "Section Heading",
-      "default": "BUSINESS<br>WITH US"
+      "default": "BUSINESS WITH US"
     }
   ],
   "blocks": [
