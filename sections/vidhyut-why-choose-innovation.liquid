@@ -1,0 +1,793 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  .vs-why-sec-{{ section.id }} {
+    --ink: #2A2118;
+    --white: #FFFFFF;
+    --orange-50: #FFF4EB;
+    --orange-100: #FFE4CC;
+    --saffron: #FF7A1A;
+    --leaf: #0F8B3D;
+    --gold: #D4900F;
+    --line: rgba(42,33,24,0.1);
+    
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    font-family: 'Inter', sans-serif !important;
+    color: var(--ink) !important;
+    background: linear-gradient(135deg, var(--white) 0%, var(--orange-50) 55%, var(--orange-100) 100%) !important;
+    padding: {{ section.settings.padding_top_desk | default: 80 }}px 24px {{ section.settings.padding_bottom_desk | default: 80 }}px 24px !important;
+    position: relative !important;
+    overflow: hidden !important;
+  }
+
+  .vs-why-sec-{{ section.id }} * {
+    box-sizing: border-box !important;
+  }
+
+  .vs-why-sec-{{ section.id }} .section-inner {
+    max-width: 1360px !important;
+    margin: 0 auto !important;
+    padding: 0 32px !important;
+    display: grid !important;
+    grid-template-columns: 1.05fr 0.95fr !important;
+    gap: 70px !important;
+    align-items: center !important;
+  }
+
+  /* ---------- LEFT ---------- */
+  .vs-why-sec-{{ section.id }} .left {
+    max-width: 580px !important;
+    padding-right: 8px !important;
+  }
+
+  .vs-why-sec-{{ section.id }} .eyebrow {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    font-weight: 600 !important;
+    font-size: 13px !important;
+    color: var(--leaf) !important;
+    margin-bottom: 14px !important;
+    letter-spacing: 0.02em !important;
+  }
+
+  .vs-why-sec-{{ section.id }} .eyebrow .rule {
+    width: 30px !important;
+    height: 2px !important;
+    background: linear-gradient(90deg, var(--saffron), var(--leaf)) !important;
+    border-radius: 999px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .vs-why-sec-{{ section.id }} h2.section-title {
+    font-family: 'Sora', sans-serif !important;
+    font-weight: 800 !important;
+    font-size: clamp(28px, 3.5vw, 42px) !important;
+    line-height: 1.1 !important;
+    letter-spacing: -0.015em !important;
+    margin: 0 0 14px 0 !important;
+    color: var(--ink) !important;
+  }
+
+  .vs-why-sec-{{ section.id }} h2.section-title .accent {
+    color: var(--saffron) !important;
+  }
+
+  .vs-why-sec-{{ section.id }} .lede {
+    font-size: 15.5px !important;
+    line-height: 1.55 !important;
+    color: rgba(42,33,24,0.68) !important;
+    max-width: 48ch !important;
+    margin: 0 !important;
+  }
+
+  .vs-why-sec-{{ section.id }} .pillars {
+    margin-top: 32px !important;
+  }
+
+  .vs-why-sec-{{ section.id }} .pillar {
+    display: grid !important;
+    grid-template-columns: 54px 1fr !important;
+    gap: 22px !important;
+    padding: 18px 0 !important;
+    border-bottom: 1px solid var(--line) !important;
+    align-items: flex-start !important;
+  }
+
+  .vs-why-sec-{{ section.id }} .pillar:first-child {
+    padding-top: 0 !important;
+  }
+
+  .vs-why-sec-{{ section.id }} .pillar:last-child {
+    border-bottom: none !important;
+    padding-bottom: 0 !important;
+  }
+
+  .vs-why-sec-{{ section.id }} .pillar-icon {
+    width: 54px !important;
+    height: 54px !important;
+    border-radius: 14px !important;
+    background: var(--white) !important;
+    box-shadow: 0 8px 18px -6px rgba(255,122,26,0.35), 0 0 0 1px var(--orange-100) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 22px !important;
+    flex-shrink: 0 !important;
+    margin-top: 2px !important;
+  }
+
+  .vs-why-sec-{{ section.id }} .pillar-icon.saffron { color: var(--saffron) !important; }
+  .vs-why-sec-{{ section.id }} .pillar-icon.gold { color: var(--gold) !important; }
+  .vs-why-sec-{{ section.id }} .pillar-icon.leaf { color: var(--leaf) !important; }
+
+  .vs-why-sec-{{ section.id }} .pillar h3 {
+    font-family: 'Sora', sans-serif !important;
+    font-size: 19px !important;
+    font-weight: 700 !important;
+    line-height: 1.32 !important;
+    margin: 0 0 6px 0 !important;
+    letter-spacing: -0.005em !important;
+    color: var(--ink) !important;
+  }
+
+  .vs-why-sec-{{ section.id }} .pillar p {
+    font-size: 14px !important;
+    line-height: 1.55 !important;
+    color: rgba(42,33,24,0.62) !important;
+    max-width: 44ch !important;
+    margin: 0 !important;
+  }
+
+  .vs-why-sec-{{ section.id }} .cta-strip {
+    margin-top: 28px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 18px !important;
+    flex-wrap: wrap !important;
+  }
+
+  .vs-why-sec-{{ section.id }} .btn-primary {
+    background: linear-gradient(100deg, var(--saffron), var(--gold)) !important;
+    color: var(--white) !important;
+    font-family: 'Sora', sans-serif !important;
+    font-weight: 700 !important;
+    font-size: 14.5px !important;
+    padding: 14px 28px !important;
+    border-radius: 11px !important;
+    text-decoration: none !important;
+    box-shadow: 0 14px 26px -10px rgba(255,122,26,0.5) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+  }
+
+  .vs-why-sec-{{ section.id }} .btn-primary:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 18px 30px -8px rgba(255,122,26,0.65) !important;
+  }
+
+  .vs-why-sec-{{ section.id }} .cta-note {
+    font-size: 12.5px !important;
+    color: rgba(42,33,24,0.55) !important;
+    font-weight: 500 !important;
+  }
+
+  /* ---------- RIGHT ---------- */
+  .vs-why-sec-{{ section.id }} .right {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: relative !important;
+    width: 100% !important;
+  }
+
+  .vs-why-sec-{{ section.id }} .illustration-wrap {
+    position: relative !important;
+    width: 100% !important;
+    max-width: 440px !important;
+    aspect-ratio: 4/4.8 !important;
+    margin: 0 auto !important;
+  }
+
+  .vs-why-sec-{{ section.id }} .glow-1 {
+    position: absolute !important;
+    top: -40px !important;
+    right: -20px !important;
+    width: 280px !important;
+    height: 280px !important;
+    border-radius: 50% !important;
+    background: radial-gradient(circle, rgba(255,122,26,0.22), transparent 70%) !important;
+    z-index: 0 !important;
+    pointer-events: none !important;
+  }
+
+  .vs-why-sec-{{ section.id }} .glow-2 {
+    position: absolute !important;
+    bottom: -60px !important;
+    left: -40px !important;
+    width: 260px !important;
+    height: 260px !important;
+    border-radius: 50% !important;
+    background: radial-gradient(circle, rgba(15,139,61,0.16), transparent 70%) !important;
+    z-index: 0 !important;
+    pointer-events: none !important;
+  }
+
+  .vs-why-sec-{{ section.id }} .badge {
+    position: absolute !important;
+    top: 10px !important;
+    left: 6px !important;
+    background: var(--white) !important;
+    color: var(--ink) !important;
+    font-family: 'Sora', sans-serif !important;
+    font-size: 11.5px !important;
+    font-weight: 700 !important;
+    padding: 8px 14px !important;
+    border-radius: 999px !important;
+    box-shadow: 0 6px 16px -6px rgba(42,33,24,0.2) !important;
+    z-index: 3 !important;
+  }
+
+  .vs-why-sec-{{ section.id }} .seal {
+    position: absolute !important;
+    top: 10px !important;
+    right: 6px !important;
+    width: 62px !important;
+    height: 62px !important;
+    border-radius: 50% !important;
+    background: var(--white) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    box-shadow: 0 6px 16px -6px rgba(42,33,24,0.2) !important;
+    z-index: 3 !important;
+  }
+
+  .vs-why-sec-{{ section.id }} .seal .top {
+    font-family: 'Sora', sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 800 !important;
+    color: var(--leaf) !important;
+    line-height: 1 !important;
+  }
+
+  .vs-why-sec-{{ section.id }} .seal .bot {
+    font-size: 7px !important;
+    letter-spacing: 0.04em !important;
+    color: rgba(42,33,24,0.5) !important;
+    margin-top: 3px !important;
+    font-weight: 700 !important;
+  }
+
+  .vs-why-sec-{{ section.id }} svg.character {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    z-index: 1 !important;
+  }
+
+  .vs-why-sec-{{ section.id }} .stat-card {
+    position: absolute !important;
+    bottom: 4px !important;
+    left: 10px !important;
+    right: 10px !important;
+    background: var(--white) !important;
+    border-radius: 16px !important;
+    padding: 16px 18px !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    box-shadow: 0 10px 24px -10px rgba(42,33,24,0.2) !important;
+    z-index: 3 !important;
+  }
+
+  .vs-why-sec-{{ section.id }} .stat {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2px !important;
+    text-align: center !important;
+  }
+
+  .vs-why-sec-{{ section.id }} .stat .val {
+    font-family: 'Sora', sans-serif !important;
+    font-weight: 800 !important;
+    font-size: 18px !important;
+    color: var(--saffron) !important;
+  }
+
+  .vs-why-sec-{{ section.id }} .stat .lbl {
+    font-size: 10px !important;
+    color: rgba(42,33,24,0.55) !important;
+    font-weight: 600 !important;
+  }
+
+  /* ---------- RESPONSIVE BREAKPOINTS ---------- */
+  @media (max-width: 991px) {
+    .vs-why-sec-{{ section.id }} {
+      padding: {{ section.settings.padding_top_mob | default: 50 }}px 16px {{ section.settings.padding_bottom_mob | default: 50 }}px 16px !important;
+    }
+    .vs-why-sec-{{ section.id }} .section-inner {
+      grid-template-columns: 1fr !important;
+      gap: 48px !important;
+      padding: 0 !important;
+    }
+    .vs-why-sec-{{ section.id }} .left {
+      max-width: 100% !important;
+      padding-right: 0 !important;
+    }
+    .vs-why-sec-{{ section.id }} .right {
+      max-width: 420px !important;
+      margin: 0 auto !important;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .vs-why-sec-{{ section.id }} h2.section-title {
+      font-size: 27px !important;
+    }
+    .vs-why-sec-{{ section.id }} .lede {
+      font-size: 14px !important;
+    }
+    .vs-why-sec-{{ section.id }} .pillar {
+      grid-template-columns: 46px 1fr !important;
+      gap: 14px !important;
+      padding: 14px 0 !important;
+    }
+    .vs-why-sec-{{ section.id }} .pillar-icon {
+      width: 46px !important;
+      height: 46px !important;
+      font-size: 18px !important;
+      border-radius: 11px !important;
+    }
+    .vs-why-sec-{{ section.id }} .pillar h3 {
+      font-size: 16.5px !important;
+    }
+    .vs-why-sec-{{ section.id }} .pillar p {
+      font-size: 13px !important;
+    }
+    .vs-why-sec-{{ section.id }} .cta-strip {
+      flex-direction: column !important;
+      align-items: stretch !important;
+      gap: 12px !important;
+    }
+    .vs-why-sec-{{ section.id }} .btn-primary {
+      width: 100% !important;
+      text-align: center !important;
+      justify-content: center !important;
+    }
+    .vs-why-sec-{{ section.id }} .cta-note {
+      text-align: center !important;
+    }
+  }
+</style>
+
+<div class="vs-why-sec-{{ section.id }}">
+  <div class="section-inner">
+
+    <!-- LEFT COLUMN -->
+    <div class="left">
+      {% if section.settings.eyebrow_text != blank %}
+        <div class="eyebrow">
+          <span class="rule"></span>
+          {{ section.settings.eyebrow_text }}
+        </div>
+      {% endif %}
+
+      <h2 class="section-title">
+        {{ section.settings.heading_prefix | default: "Why choose" }}
+        <span class="accent">{{ section.settings.heading_accent | default: "Vidhyut Saathi?" }}</span>
+      </h2>
+
+      {% if section.settings.lede_text != blank %}
+        <p class="lede">{{ section.settings.lede_text }}</p>
+      {% endif %}
+
+      <div class="pillars">
+        {% if section.blocks.size > 0 %}
+          {% for block in section.blocks %}
+            <div class="pillar" {{ block.shopify_attributes }}>
+              <div class="pillar-icon {{ block.settings.icon_theme }}">
+                {{ block.settings.icon_symbol }}
+              </div>
+              <div>
+                <h3>{{ block.settings.title }}</h3>
+                <p>{{ block.settings.text }}</p>
+              </div>
+            </div>
+          {% endfor %}
+        {% else %}
+          <div class="pillar">
+            <div class="pillar-icon saffron">⬡</div>
+            <div>
+              <h3>Based on US-German nano technology</h3>
+              <p>Advanced US-German nano technology designed for optimized electricity efficiency, stable performance and smarter energy management.</p>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon gold">⚡</div>
+            <div>
+              <h3>Made with terahertz chip & 20,000+ negative ions</h3>
+              <p>Built with advanced terahertz chip technology and 20,000+ negative ions for smart energy optimization and efficient electrical performance.</p>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon leaf">✓</div>
+            <div>
+              <h3>100% legal & ISO certified</h3>
+              <p>Completely legal, reliable and designed to follow quality standards for safe and trusted usage.</p>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+
+      {% if section.settings.button_text != blank %}
+        <div class="cta-strip">
+          <a href="{{ section.settings.button_link | default: '/pages/get-franchise' }}" class="btn-primary">
+            {{ section.settings.button_text }}
+          </a>
+          {% if section.settings.cta_note != blank %}
+            <span class="cta-note">{{ section.settings.cta_note }}</span>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+
+    <!-- RIGHT COLUMN -->
+    <div class="right">
+      <div class="illustration-wrap">
+        <div class="glow-1"></div>
+        <div class="glow-2"></div>
+        
+        {% if section.settings.badge_text != blank %}
+          <div class="badge">{{ section.settings.badge_text }}</div>
+        {% endif %}
+
+        <div class="seal">
+          <span class="top">{{ section.settings.seal_top | default: "ISO" }}</span>
+          <span class="bot">{{ section.settings.seal_bot | default: "CERTIFIED" }}</span>
+        </div>
+
+        <svg class="character" viewBox="0 0 440 520" xmlns="http://www.w3.org/2000/svg">
+          <!-- soft ground shadow -->
+          <ellipse cx="220" cy="495" rx="120" ry="14" fill="rgba(42,33,24,0.08)"/>
+
+          <!-- hair back -->
+          <path d="M148 175 C140 240 138 320 150 400 L168 400 C158 320 162 245 176 185 Z" fill="#3A2A1E"/>
+          <path d="M292 175 C300 240 302 320 290 400 L272 400 C282 320 278 245 264 185 Z" fill="#3A2A1E"/>
+
+          <!-- neck -->
+          <rect x="204" y="185" width="32" height="30" rx="10" fill="#F3C6A0"/>
+
+          <!-- body / t-shirt (saffron) -->
+          <path d="M150 260
+                   C150 225 180 205 220 205
+                   C260 205 290 225 290 260
+                   L300 430
+                   C300 445 288 456 272 456
+                   L168 456
+                   C152 456 140 445 140 430 Z"
+                fill="var(--saffron)"/>
+
+          <!-- t-shirt shading -->
+          <path d="M220 205 C260 205 290 225 290 260 L296 400 L244 400 L236 220 Z" fill="rgba(0,0,0,0.05)"/>
+
+          <!-- collar -->
+          <path d="M198 208 C205 222 235 222 242 208 L232 200 C226 206 214 206 208 200 Z" fill="#FFEFE0"/>
+
+          <!-- left arm raised to face (surprise) -->
+          <path d="M172 235 C150 235 132 250 126 275 C122 292 128 305 138 300 C146 296 148 282 154 268 C160 254 172 250 178 248 Z" fill="#F3C6A0"/>
+          <path d="M168 232 C148 230 128 244 120 270 C116 288 122 302 132 300" fill="none" stroke="rgba(0,0,0,0.06)" stroke-width="3"/>
+
+          <!-- right arm extended holding card -->
+          <path d="M282 240 C310 250 328 275 332 305 C334 322 326 332 315 328 C306 324 304 308 298 292 C292 276 278 262 268 254 Z" fill="#F3C6A0"/>
+
+          <!-- card in hand -->
+          <g transform="translate(300 292) rotate(-18)">
+            <rect x="-38" y="-24" width="76" height="48" rx="7" fill="#1D2A22"/>
+            <rect x="-38" y="-24" width="76" height="14" rx="7" fill="var(--leaf)"/>
+            <circle cx="18" cy="10" r="8" fill="var(--gold)" opacity="0.85"/>
+            <text x="-30" y="18" font-family="Sora, sans-serif" font-size="9" font-weight="700" fill="#FFFFFF">VIDHYUT</text>
+            <text x="-30" y="-30" font-family="Sora, sans-serif" font-size="7" fill="#FFFFFF" opacity="0.001">.</text>
+          </g>
+
+          <!-- hand holding card -->
+          <circle cx="298" cy="300" r="13" fill="#F3C6A0"/>
+
+          <!-- hand near face -->
+          <circle cx="140" cy="292" r="13" fill="#F3C6A0"/>
+
+          <!-- head -->
+          <circle cx="220" cy="165" r="58" fill="#F6D2AC"/>
+
+          <!-- hair front / fringe -->
+          <path d="M162 150 C160 110 190 82 220 82 C252 82 282 110 280 150
+                   C270 130 255 118 220 118 C185 118 170 130 162 150 Z" fill="#3A2A1E"/>
+          <path d="M164 145 C160 175 162 200 168 215 C158 195 154 165 162 148 Z" fill="#3A2A1E"/>
+          <path d="M278 145 C282 175 280 200 274 215 C284 195 288 165 280 148 Z" fill="#3A2A1E"/>
+
+          <!-- surprised eyebrows -->
+          <path d="M192 148 C198 140 210 138 217 143" fill="none" stroke="#3A2A1E" stroke-width="4" stroke-linecap="round"/>
+          <path d="M248 148 C242 140 230 138 223 143" fill="none" stroke="#3A2A1E" stroke-width="4" stroke-linecap="round"/>
+
+          <!-- wide surprised eyes -->
+          <circle cx="202" cy="165" r="9" fill="#FFFFFF"/>
+          <circle cx="238" cy="165" r="9" fill="#FFFFFF"/>
+          <circle cx="203" cy="167" r="5" fill="#2A2118"/>
+          <circle cx="239" cy="167" r="5" fill="#2A2118"/>
+          <circle cx="205" cy="164" r="1.6" fill="#FFFFFF"/>
+          <circle cx="241" cy="164" r="1.6" fill="#FFFFFF"/>
+
+          <!-- blush -->
+          <ellipse cx="188" cy="188" rx="8" ry="5" fill="var(--saffron)" opacity="0.35"/>
+          <ellipse cx="252" cy="188" rx="8" ry="5" fill="var(--saffron)" opacity="0.35"/>
+
+          <!-- open surprised mouth -->
+          <ellipse cx="220" cy="200" rx="10" ry="12" fill="#8B3A2A"/>
+          <ellipse cx="220" cy="196" rx="9" ry="6" fill="#FFFFFF"/>
+
+          <!-- exclamation sparkle accents -->
+          <g fill="var(--gold)">
+            <path d="M330 210 l4 12 12 4 -12 4 -4 12 -4 -12 -12 -4 12 -4 Z"/>
+          </g>
+          <g fill="var(--leaf)">
+            <path d="M110 220 l3 9 9 3 -9 3 -3 9 -3 -9 -9 -3 9 -3 Z"/>
+          </g>
+          <g fill="var(--saffron)">
+            <circle cx="90" cy="330" r="5"/>
+            <circle cx="350" cy="360" r="4"/>
+          </g>
+        </svg>
+
+        <div class="stat-card">
+          <div class="stat">
+            <span class="val">{{ section.settings.stat1_val | default: "ISO" }}</span>
+            <span class="lbl">{{ section.settings.stat1_lbl | default: "Certified" }}</span>
+          </div>
+          <div class="stat">
+            <span class="val">{{ section.settings.stat2_val | default: "20K+" }}</span>
+            <span class="lbl">{{ section.settings.stat2_lbl | default: "Negative Ions" }}</span>
+          </div>
+          <div class="stat">
+            <span class="val">{{ section.settings.stat3_val | default: "100%" }}</span>
+            <span class="lbl">{{ section.settings.stat3_lbl | default: "Legal" }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Vidhyut Why Choose Us",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow_text",
+      "label": "Eyebrow Text",
+      "default": "India's Premium Energy-Tech Innovation"
+    },
+    {
+      "type": "text",
+      "id": "heading_prefix",
+      "label": "Heading Prefix",
+      "default": "Why choose"
+    },
+    {
+      "type": "text",
+      "id": "heading_accent",
+      "label": "Heading Highlight (Accent)",
+      "default": "Vidhyut Saathi?"
+    },
+    {
+      "type": "textarea",
+      "id": "lede_text",
+      "label": "Lede / Description Text",
+      "default": "Precision engineering, certified quality, and technology built to deliver — this is what sets our devices apart."
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Explore the technology"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "text",
+      "id": "cta_note",
+      "label": "CTA Note Text",
+      "default": "Trusted across India's energy-tech network"
+    },
+    {
+      "type": "header",
+      "content": "Right Illustration Badges"
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Top Badge Text",
+      "default": "⚡ Smart Energy Device"
+    },
+    {
+      "type": "text",
+      "id": "seal_top",
+      "label": "Seal Top Text",
+      "default": "ISO"
+    },
+    {
+      "type": "text",
+      "id": "seal_bot",
+      "label": "Seal Bottom Text",
+      "default": "CERTIFIED"
+    },
+    {
+      "type": "header",
+      "content": "Floating Stat Card"
+    },
+    {
+      "type": "text",
+      "id": "stat1_val",
+      "label": "Stat 1 Value",
+      "default": "ISO"
+    },
+    {
+      "type": "text",
+      "id": "stat1_lbl",
+      "label": "Stat 1 Label",
+      "default": "Certified"
+    },
+    {
+      "type": "text",
+      "id": "stat2_val",
+      "label": "Stat 2 Value",
+      "default": "20K+"
+    },
+    {
+      "type": "text",
+      "id": "stat2_lbl",
+      "label": "Stat 2 Label",
+      "default": "Negative Ions"
+    },
+    {
+      "type": "text",
+      "id": "stat3_val",
+      "label": "Stat 3 Value",
+      "default": "100%"
+    },
+    {
+      "type": "text",
+      "id": "stat3_lbl",
+      "label": "Stat 3 Label",
+      "default": "Legal"
+    },
+    {
+      "type": "header",
+      "content": "Section Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desk",
+      "label": "Desktop Padding Top",
+      "min": 20,
+      "max": 140,
+      "step": 5,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desk",
+      "label": "Desktop Padding Bottom",
+      "min": 20,
+      "max": 140,
+      "step": 5,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mob",
+      "label": "Mobile Padding Top",
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mob",
+      "label": "Mobile Padding Bottom",
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 50
+    }
+  ],
+  "blocks": [
+    {
+      "type": "pillar_item",
+      "name": "Pillar Item",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon_theme",
+          "label": "Icon Color Theme",
+          "options": [
+            { "value": "saffron", "label": "Saffron Orange" },
+            { "value": "gold", "label": "Gold / Terahertz" },
+            { "value": "leaf", "label": "Leaf Green" }
+          ],
+          "default": "saffron"
+        },
+        {
+          "type": "text",
+          "id": "icon_symbol",
+          "label": "Icon Symbol / Emoji",
+          "default": "⚡"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Pillar Title",
+          "default": "Advanced Energy Innovation"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Pillar Description",
+          "default": "High-efficiency smart technology built to deliver maximum energy savings and safety."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Vidhyut Why Choose Us",
+      "blocks": [
+        {
+          "type": "pillar_item",
+          "settings": {
+            "icon_theme": "saffron",
+            "icon_symbol": "⬡",
+            "title": "Based on US-German nano technology",
+            "text": "Advanced US-German nano technology designed for optimized electricity efficiency, stable performance and smarter energy management."
+          }
+        },
+        {
+          "type": "pillar_item",
+          "settings": {
+            "icon_theme": "gold",
+            "icon_symbol": "⚡",
+            "title": "Made with terahertz chip & 20,000+ negative ions",
+            "text": "Built with advanced terahertz chip technology and 20,000+ negative ions for smart energy optimization and efficient electrical performance."
+          }
+        },
+        {
+          "type": "pillar_item",
+          "settings": {
+            "icon_theme": "leaf",
+            "icon_symbol": "✓",
+            "title": "100% legal & ISO certified",
+            "text": "Completely legal, reliable and designed to follow quality standards for safe and trusted usage."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
