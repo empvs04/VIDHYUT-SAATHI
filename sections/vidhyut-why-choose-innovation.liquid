@@ -217,7 +217,7 @@
     font-weight: 600 !important;
   }
 
-  /* ---------- RIGHT COLUMN & COMPACT FLOATING TILT ANIMATION ---------- */
+  /* ---------- RIGHT COLUMN & PURE UP-DOWN FLOATING ANIMATION ---------- */
   .vs-why-sec-{{ section.id }} .right {
     display: flex !important;
     align-items: center !important;
@@ -227,21 +227,15 @@
     max-width: 560px !important;
   }
 
-  @keyframes vsFloatAndTilt {
+  @keyframes vsFloatUpDown {
     0% {
-      transform: translateY(0px) rotate(0deg);
-    }
-    25% {
-      transform: translateY(-8px) rotate(-1.5deg);
+      transform: translateY(0px);
     }
     50% {
-      transform: translateY(-16px) rotate(0deg);
-    }
-    75% {
-      transform: translateY(-8px) rotate(1.5deg);
+      transform: translateY(-16px);
     }
     100% {
-      transform: translateY(0px) rotate(0deg);
+      transform: translateY(0px);
     }
   }
 
@@ -252,16 +246,15 @@
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    animation: vsFloatAndTilt 5s ease-in-out infinite !important;
-    transform-origin: center center !important;
+    animation: vsFloatUpDown 4s ease-in-out infinite !important;
     will-change: transform !important;
-    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+    transition: transform 0.3s ease !important;
     margin: 0 auto !important;
   }
 
   .vs-why-sec-{{ section.id }} .vs-floating-girl-wrapper:hover {
     animation-play-state: paused !important;
-    transform: translateY(-10px) scale(1.02) rotate(1deg) !important;
+    transform: translateY(-10px) !important;
   }
 
   .vs-why-sec-{{ section.id }} .vs-girl-cutout-img {
