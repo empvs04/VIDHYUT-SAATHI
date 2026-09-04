@@ -2348,9 +2348,10 @@
               </div>
             {% endif %}
           {% endfor %}
-          {% if case_study_count == 0 %}
-            <!-- FALLBACK IF NO BLOCKS ADDED YET (9 DEFAULT CARDS) -->
-            {% for i in (1..9) %}
+          {% if case_study_count < 9 %}
+            <!-- REMAINING DEFAULT CARDS (SO ALL 9 CARDS ALWAYS STAY VISIBLE) -->
+            {% assign start_fallback = case_study_count | plus: 1 %}
+            {% for i in (start_fallback..9) %}
               {% case i %}
                 {% when 1 %}
                   {% assign c_name = "Rohan Mehta" %}
