@@ -15,29 +15,34 @@
     --line: rgba(42, 33, 24, 0.08);
 
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-    color: var(--ink);
+    color: var(--ink) !important;
     background: radial-gradient(circle at 12% 18%, rgba(255, 244, 235, 0.95) 0%, #FFFFFF 48%),
                 radial-gradient(circle at 88% 82%, rgba(255, 230, 208, 0.55) 0%, transparent 60%),
-                linear-gradient(180deg, #FFFFFF 0%, #FFF9F4 100%);
-    padding: {{ section.settings.padding_top_desk | default: 85 }}px 24px {{ section.settings.padding_bottom_desk | default: 85 }}px 24px;
-    position: relative;
-    overflow: hidden;
-    box-sizing: border-box;
+                linear-gradient(180deg, #FFFFFF 0%, #FFF9F4 100%) !important;
+    padding: {{ section.settings.padding_top_desk | default: 70 }}px 20px {{ section.settings.padding_bottom_desk | default: 70 }}px 20px !important;
+    position: relative !important;
+    overflow: hidden !important;
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
   }
 
   .vs-apps-sec-{{ section.id }} *,
   .vs-apps-sec-{{ section.id }} *::before,
   .vs-apps-sec-{{ section.id }} *::after {
-    box-sizing: border-box;
+    box-sizing: border-box !important;
     margin: 0;
     padding: 0;
   }
 
+  /* ── EQUAL 1200PX CENTERED CONTAINER MATCHING SECTION 21 ── */
   .vs-apps-sec-{{ section.id }} .container {
-    max-width: 1320px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 2;
+    max-width: 1200px !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    position: relative !important;
+    z-index: 2 !important;
   }
 
   /* Decorative Ambient Glows */
@@ -68,8 +73,8 @@
   /* ---------- SECTION HEADER (SINGLE LINE ON DESKTOP) ---------- */
   .vs-apps-sec-{{ section.id }} .section-head {
     text-align: center;
-    max-width: 1240px;
-    margin: 0 auto 52px auto;
+    max-width: 1200px !important;
+    margin: 0 auto 46px auto !important;
   }
 
   .vs-apps-sec-{{ section.id }} .top-badge {
@@ -79,12 +84,12 @@
     background: rgba(255, 255, 255, 0.96);
     border: 1px solid var(--orange-100);
     border-radius: 999px;
-    padding: 8px 24px;
+    padding: 7px 22px;
     font-size: 13px;
     font-weight: 700;
     color: var(--ink);
     box-shadow: 0 10px 24px -10px rgba(42, 33, 24, 0.2), 0 0 0 1px rgba(255, 122, 26, 0.12);
-    margin-bottom: 18px;
+    margin-bottom: 16px;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
   }
@@ -110,13 +115,13 @@
     letter-spacing: 0.14em;
     color: var(--saffron);
     text-transform: uppercase;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
   }
 
   .vs-apps-sec-{{ section.id }} .section-title {
     font-family: 'Sora', sans-serif;
     font-weight: 800;
-    font-size: clamp(26px, 2.65vw, 38px);
+    font-size: clamp(24px, 2.4vw, 36px);
     letter-spacing: -0.025em;
     line-height: 1.22;
     color: var(--ink);
@@ -131,33 +136,33 @@
     display: inline-block;
   }
 
-  /* ---------- MAIN CONTENT LAYOUT (EQUAL HEIGHT & ALIGNED TOP) ---------- */
+  /* ---------- MAIN CONTENT LAYOUT (1FR 1FR EQUAL HEIGHT) ---------- */
   .vs-apps-sec-{{ section.id }} .content {
-    display: grid;
-    grid-template-columns: 1.15fr 0.85fr;
-    gap: 48px;
-    align-items: stretch; /* Equal height */
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 40px !important;
+    align-items: stretch !important; /* Equal height */
   }
 
   /* ---------- LEFT: CARD GRID ---------- */
   .vs-apps-sec-{{ section.id }} .cards-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 22px;
-    height: 100%;
-    margin-top: 0;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 16px !important;
+    height: 100% !important;
+    margin-top: 0 !important;
   }
 
   .vs-apps-sec-{{ section.id }} .app-card {
-    position: relative;
-    border-radius: 22px;
-    overflow: hidden;
-    aspect-ratio: 4 / 3.3;
-    box-shadow: 0 20px 40px -15px rgba(42, 33, 24, 0.32), 0 0 0 1px rgba(255, 255, 255, 0.6);
-    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease, border-color 0.4s ease;
-    user-select: none;
-    background-color: #1F1714;
-    cursor: pointer;
+    position: relative !important;
+    border-radius: 18px !important;
+    overflow: hidden !important;
+    aspect-ratio: 4 / 3.3 !important;
+    box-shadow: 0 16px 36px -12px rgba(42, 33, 24, 0.32), 0 0 0 1px rgba(255, 255, 255, 0.6) !important;
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease, border-color 0.4s ease !important;
+    user-select: none !important;
+    background-color: #1F1714 !important;
+    cursor: pointer !important;
   }
 
   .vs-apps-sec-{{ section.id }} .app-card:hover {
@@ -601,19 +606,33 @@
         {% assign sector_cards = section.blocks | where: "type", "sector_card" %}
         {% if sector_cards.size > 0 %}
           {% for block in sector_cards %}
+            {% assign card_idx = forloop.index %}
+            {% assign custom_img = block.settings.card_image %}
+            {% if custom_img == blank %}
+              {% if card_idx == 1 and section.settings.card1_image != blank %}
+                {% assign custom_img = section.settings.card1_image %}
+              {% elsif card_idx == 2 and section.settings.card2_image != blank %}
+                {% assign custom_img = section.settings.card2_image %}
+              {% elsif card_idx == 3 and section.settings.card3_image != blank %}
+                {% assign custom_img = section.settings.card3_image %}
+              {% elsif card_idx == 4 and section.settings.card4_image != blank %}
+                {% assign custom_img = section.settings.card4_image %}
+              {% endif %}
+            {% endif %}
+
             <div class="app-card {% if block.settings.ribbon_text != blank %}popular{% endif %}" {{ block.shopify_attributes }}>
               {% if block.settings.ribbon_text != blank %}
                 <div class="ribbon">{{ block.settings.ribbon_text }}</div>
               {% endif %}
 
               <div 
-                class="card-bg {{ block.settings.card_theme | default: 'residential' }} {% if block.settings.card_image != blank %}has-custom-img{% endif %}"
-                {% if block.settings.card_image != blank %}
-                  style="background-image: url('{{ block.settings.card_image | image_url: width: 900 }}');"
+                class="card-bg {{ block.settings.card_theme | default: 'residential' }} {% if custom_img != blank %}has-custom-img{% endif %}"
+                {% if custom_img != blank %}
+                  style="background-image: url('{{ custom_img | image_url: width: 1000 }}');"
                 {% endif %}
               ></div>
 
-              {% if block.settings.card_image == blank %}
+              {% if custom_img == blank %}
                 {% case block.settings.card_theme %}
                   {% when 'commercial' %}
                     <svg class="icon-motif" viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg">
@@ -872,6 +891,30 @@
   "settings": [
     {
       "type": "header",
+      "content": "📸 4 CARDS PHOTOS (UPLOAD HERE)"
+    },
+    {
+      "type": "image_picker",
+      "id": "card1_image",
+      "label": "1. Residential Card Photo"
+    },
+    {
+      "type": "image_picker",
+      "id": "card2_image",
+      "label": "2. Commercial Card Photo"
+    },
+    {
+      "type": "image_picker",
+      "id": "card3_image",
+      "label": "3. Industrial Card Photo"
+    },
+    {
+      "type": "image_picker",
+      "id": "card4_image",
+      "label": "4. Institutional Card Photo"
+    },
+    {
+      "type": "header",
       "content": "Section Header"
     },
     {
@@ -916,12 +959,7 @@
     },
     {
       "type": "header",
-      "content": "Fallback: 1. Residential Card"
-    },
-    {
-      "type": "image_picker",
-      "id": "card1_image",
-      "label": "Residential Card Background Image"
+      "content": "Card 1: Residential Details"
     },
     {
       "type": "text",
@@ -985,12 +1023,7 @@
     },
     {
       "type": "header",
-      "content": "Fallback: 2. Commercial Card"
-    },
-    {
-      "type": "image_picker",
-      "id": "card2_image",
-      "label": "Commercial Card Background Image"
+      "content": "Card 2: Commercial Details"
     },
     {
       "type": "text",
@@ -1048,12 +1081,7 @@
     },
     {
       "type": "header",
-      "content": "Fallback: 3. Industrial Card"
-    },
-    {
-      "type": "image_picker",
-      "id": "card3_image",
-      "label": "Industrial Card Background Image"
+      "content": "Card 3: Industrial Details"
     },
     {
       "type": "text",
@@ -1111,12 +1139,7 @@
     },
     {
       "type": "header",
-      "content": "Fallback: 4. Institutional Card"
-    },
-    {
-      "type": "image_picker",
-      "id": "card4_image",
-      "label": "Institutional Card Background Image"
+      "content": "Card 4: Institutional Details"
     },
     {
       "type": "text",
