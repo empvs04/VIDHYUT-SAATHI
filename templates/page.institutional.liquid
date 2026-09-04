@@ -744,24 +744,182 @@
     height: 100%;
     transition: all 0.3s ease;
   }
-  .vsinst-case-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 14px 32px rgba(217, 119, 6, 0.12);
+  .vsinst-case-card {
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
   }
-  .vsinst-case-result-badge {
-    margin-top: 14px;
-    padding: 10px 14px;
-    border-radius: 12px;
-    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  .vsinst-case-card:hover {
+    transform: translateY(-6px) !important;
+    box-shadow: 0 16px 36px rgba(217, 119, 6, 0.14) !important;
+  }
+
+  /* ══ CASE STUDY CARD MULTI-IMAGE MINI SLIDER ══ */
+  .vs-card-media-slider {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    border-radius: 14px;
+    overflow: hidden;
+    margin-bottom: 14px;
+    background: #0f172a;
+    user-select: none;
+  }
+  .vs-card-media-slides {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  .vs-card-media-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: scale(1.02);
+  }
+  .vs-card-media-slide.active {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+  }
+  .vs-card-media-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .vs-media-tag {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(15, 23, 42, 0.82);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: #f8fafc;
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 4px 9px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    letter-spacing: 0.3px;
+    z-index: 3;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+  }
+  .vs-media-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
     color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
     display: flex;
     align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    cursor: pointer;
+    z-index: 4;
+    opacity: 0.85;
+    transition: all 0.25s ease;
+    padding: 0;
+  }
+  .vs-card-media-slider:hover .vs-media-arrow {
+    opacity: 1;
+    transform: translateY(-50%) scale(1.06);
+  }
+  .vs-media-arrow:hover {
+    background: #d97706 !important;
+    border-color: #f59e0b !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 12px rgba(217, 119, 6, 0.5);
+  }
+  .vs-media-prev {
+    left: 8px;
+  }
+  .vs-media-next {
+    right: 8px;
+  }
+  .vs-media-dots-bar {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 5px;
+    z-index: 4;
+    background: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(4px);
+    padding: 4px 8px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+  .vs-media-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.45);
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+  .vs-media-dot.active {
+    width: 14px;
+    border-radius: 6px;
+    background: #f59e0b;
+  }
+  .vs-media-counter {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(15, 23, 42, 0.82);
+    backdrop-filter: blur(8px);
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: 700;
+    font-family: 'IBM Plex Mono', monospace;
+    padding: 4px 8px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    z-index: 3;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+  }
+
+  .vs-slider-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #cbd5e1;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .vs-slider-dot.active {
+    width: 24px;
+    border-radius: 50px;
+    background: #d97706;
+  }
+
+  .vsinst-case-result-badge {
+    background: linear-gradient(135deg, #d97706 0%, #f59e0b 100%);
+    padding: 10px 14px;
+    border-radius: 12px;
+    color: #ffffff;
+    font-size: 12.5px;
+    font-weight: 700;
+    display: flex;
     justify-content: space-between;
-    font-size: 12px;
+    align-items: center;
+    box-shadow: 0 4px 14px rgba(217, 119, 6, 0.2);
   }
   .vsinst-case-result-badge strong {
-    color: #ffd700;
-    font-weight: 800;
+    color: #ffffff;
+    font-size: 13.5px;
   }
 
   /* ══ SECTION 8: COMPANION SHOWCASE (BALOO 2 + NUNITO) ══ */
@@ -1830,275 +1988,674 @@
       <!-- MOBILE CAROUSEL SLIDER WRAPPER -->
       <div class="vs-cases-slider-wrap" id="vsinstCaseSliderWrap">
         <div class="vsinst-case-grid" id="vsinstCaseTrack">
-          <!-- CARD 1: HOSPITAL -->
-          <div class="vsinst-case-card" style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
-            <div style="width:100%; height:195px; border-radius:14px; overflow:hidden; margin-bottom:14px; background:#1e293b;">
-              <img src="{{ 'commercial-building-2.png' | asset_url }}" alt="Metro Multi-Specialty Hospital Delhi NCR" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;">
-            </div>
-            <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
-              <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #d97706; box-shadow:0 4px 10px rgba(217,119,6,0.25);">
-                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Medical Superintendent" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'wvs-happy-man.jpg' | asset_url }}';">
-              </div>
-              <div>
-                <h4 style="font-size:15px; font-weight:800; color:#0f172a; margin:0 0 2px 0; font-family:'Baloo 2',sans-serif;">Metro Multi-Specialty Hospital <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></h4>
-                <div style="font-size:12px; color:#64748b; font-weight:600;"><i class="fa-solid fa-location-dot" style="color:#d97706;"></i> 160 KW Load, Delhi NCR</div>
-              </div>
-            </div>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
-              <div style="background:#fff1f2; border:1px solid #fecdd3; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
-                <span style="color:#e11d48; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">Old DISCOM Bill</span>
-                <span style="font-family:'IBM Plex Mono',monospace; color:#9f1239; font-size:14px; font-weight:800; text-decoration:line-through;">₹2,40,000/mo</span>
-              </div>
-              <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
-                <span style="color:#059669; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">New DISCOM Bill</span>
-                <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">₹1,71,600/mo</span>
-              </div>
-            </div>
-            <div style="background:linear-gradient(135deg, #d97706 0%, #f59e0b 100%); padding:11px 14px; border-radius:12px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(217,119,6,0.2);">
-              <span style="color:#fef3c7; font-size:11.5px;">⚡ 33 Institutional Cards</span>
-              <strong style="color:#ffffff; font-size:13.5px;">Saved ₹68,400/mo (28.5%)</strong>
-            </div>
-          </div>
+          {% assign case_blocks = section.blocks | where: "type", "institutional_case_study" %}
+          {% if case_blocks.size > 0 %}
+            {% for block in case_blocks %}
+              {% assign card_idx = forloop.index0 | modulo: 9 %}
+              {% case card_idx %}
+                {% when 0 %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" %}
+                {% when 1 %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80" %}
+                {% when 2 %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" %}
+                {% when 3 %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&q=80" %}
+                {% when 4 %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=150&q=80" %}
+                {% when 5 %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=150&q=80" %}
+                {% when 6 %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=150&q=80" %}
+                {% when 7 %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1582719471384-894fbb16e074?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80" %}
+                {% else %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=150&q=80" %}
+              {% endcase %}
+              <div class="vsinst-case-card" {{ block.shopify_attributes }} style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
+                <!-- MINI SLIDER -->
+                <div class="vs-card-media-slider">
+                  <div class="vs-card-media-slides">
+                    <div class="vs-card-media-slide active">
+                      {% if block.settings.image_1 != blank %}
+                        <img src="{{ block.settings.image_1 | image_url: width: 800 }}" alt="{{ block.settings.tag_1 | default: 'Slide 1' | escape }}" loading="lazy">
+                      {% else %}
+                        <img src="{{ def_img_1 }}" alt="{{ block.settings.tag_1 | default: 'Slide 1' | escape }}" loading="lazy">
+                      {% endif %}
+                      {% if block.settings.tag_1 != blank %}
+                        <span class="vs-media-tag"><i class="fa-solid fa-hospital"></i> {{ block.settings.tag_1 }}</span>
+                      {% endif %}
+                    </div>
+                    <div class="vs-card-media-slide">
+                      {% if block.settings.image_2 != blank %}
+                        <img src="{{ block.settings.image_2 | image_url: width: 800 }}" alt="{{ block.settings.tag_2 | default: 'Slide 2' | escape }}" loading="lazy">
+                      {% else %}
+                        <img src="{{ def_img_2 }}" alt="{{ block.settings.tag_2 | default: 'Slide 2' | escape }}" loading="lazy">
+                      {% endif %}
+                      {% if block.settings.tag_2 != blank %}
+                        <span class="vs-media-tag"><i class="fa-solid fa-flask-vial"></i> {{ block.settings.tag_2 }}</span>
+                      {% endif %}
+                    </div>
+                    <div class="vs-card-media-slide">
+                      {% if block.settings.image_3 != blank %}
+                        <img src="{{ block.settings.image_3 | image_url: width: 800 }}" alt="{{ block.settings.tag_3 | default: 'Slide 3' | escape }}" loading="lazy">
+                      {% else %}
+                        <img src="{{ def_img_3 }}" alt="{{ block.settings.tag_3 | default: 'Slide 3' | escape }}" loading="lazy">
+                      {% endif %}
+                      {% if block.settings.tag_3 != blank %}
+                        <span class="vs-media-tag"><i class="fa-solid fa-snowflake"></i> {{ block.settings.tag_3 }}</span>
+                      {% endif %}
+                    </div>
+                    <div class="vs-card-media-slide">
+                      {% if block.settings.image_4 != blank %}
+                        <img src="{{ block.settings.image_4 | image_url: width: 800 }}" alt="{{ block.settings.tag_4 | default: 'Slide 4' | escape }}" loading="lazy">
+                      {% else %}
+                        <img src="{{ def_img_4 }}" alt="{{ block.settings.tag_4 | default: 'Slide 4' | escape }}" loading="lazy">
+                      {% endif %}
+                      {% if block.settings.tag_4 != blank %}
+                        <span class="vs-media-tag"><i class="fa-solid fa-bolt"></i> {{ block.settings.tag_4 }}</span>
+                      {% endif %}
+                    </div>
+                  </div>
+                  <button type="button" class="vs-media-arrow vs-media-prev" onclick="vsSlideMedia(this, -1)" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+                  <button type="button" class="vs-media-arrow vs-media-next" onclick="vsSlideMedia(this, 1)" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+                  <div class="vs-media-dots-bar">
+                    <span class="vs-media-dot active" onclick="vsGoMediaSlide(this, 0)"></span>
+                    <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 1)"></span>
+                    <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 2)"></span>
+                    <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 3)"></span>
+                  </div>
+                  <div class="vs-media-counter"><span class="vs-media-cur">1</span>/<span class="vs-media-tot">4</span></div>
+                </div>
 
-          <!-- CARD 2: UNIVERSITY -->
-          <div class="vsinst-case-card" style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
-            <div style="width:100%; height:195px; border-radius:14px; overflow:hidden; margin-bottom:14px; background:#1e293b;">
-              <img src="{{ 'case-institutional.jpg' | asset_url }}" alt="Apex University Campus Pune" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;">
-            </div>
-            <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
-              <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #d97706; box-shadow:0 4px 10px rgba(217,119,6,0.25);">
-                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80" alt="Registrar / Dean" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'wvs-card-guide-woman.jpg' | asset_url }}';">
+                <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+                  <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #d97706; box-shadow:0 4px 10px rgba(217,119,6,0.25);">
+                    {% if block.settings.avatar_image != blank %}
+                      <img src="{{ block.settings.avatar_image | image_url: width: 150 }}" alt="Authority Avatar" style="width:100%; height:100%; object-fit:cover; display:block;">
+                    {% else %}
+                      <img src="{{ def_avatar }}" alt="Authority Avatar" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'wvs-happy-man.jpg' | asset_url }}';">
+                    {% endif %}
+                  </div>
+                  <div>
+                    <h4 style="font-size:15px; font-weight:800; color:#0f172a; margin:0 0 2px 0; font-family:'Baloo 2',sans-serif;">{{ block.settings.company_name | default: 'Metro Multi-Specialty Hospital' }} <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></h4>
+                    <div style="font-size:12px; color:#64748b; font-weight:600;"><i class="fa-solid fa-location-dot" style="color:#d97706;"></i> {{ block.settings.location_load | default: '160 KW Load, Delhi NCR' }}</div>
+                  </div>
+                </div>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
+                  <div style="background:#fff1f2; border:1px solid #fecdd3; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                    <span style="color:#e11d48; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">Old DISCOM Bill</span>
+                    <span style="font-family:'IBM Plex Mono',monospace; color:#9f1239; font-size:14px; font-weight:800; text-decoration:line-through;">{{ block.settings.old_bill | default: '₹2,40,000/mo' }}</span>
+                  </div>
+                  <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                    <span style="color:#059669; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">New DISCOM Bill</span>
+                    <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">{{ block.settings.new_bill | default: '₹1,71,600/mo' }}</span>
+                  </div>
+                </div>
+                <div style="background:linear-gradient(135deg, #d97706 0%, #f59e0b 100%); padding:11px 14px; border-radius:12px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(217,119,6,0.2);">
+                  <span style="color:#fef3c7; font-size:11.5px;">{{ block.settings.cards_count | default: '⚡ 33 Institutional Cards' }}</span>
+                  <strong style="color:#ffffff; font-size:13.5px;">{{ block.settings.savings_summary | default: 'Saved ₹68,400/mo (28.5%)' }}</strong>
+                </div>
               </div>
-              <div>
-                <h4 style="font-size:15px; font-weight:800; color:#0f172a; margin:0 0 2px 0; font-family:'Baloo 2',sans-serif;">Apex University Campus & Labs <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></h4>
-                <div style="font-size:12px; color:#64748b; font-weight:600;"><i class="fa-solid fa-location-dot" style="color:#d97706;"></i> 280 KW Load, Pune</div>
+            {% endfor %}
+          {% else %}
+            <!-- CARD 1: HOSPITAL -->
+            <div class="vsinst-case-card" style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
+              <!-- MINI SLIDER -->
+              <div class="vs-card-media-slider">
+                <div class="vs-card-media-slides">
+                  <div class="vs-card-media-slide active">
+                    <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=700&q=80" alt="ICU & OT Wing" loading="lazy">
+                    <span class="vs-media-tag"><i class="fa-solid fa-hospital"></i> ICU & OT Wing</span>
+                  </div>
+                  <div class="vs-card-media-slide">
+                    <img src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=700&q=80" alt="MRI Scan Lab" loading="lazy">
+                    <span class="vs-media-tag"><i class="fa-solid fa-flask-vial"></i> MRI & Diagnostic Lab</span>
+                  </div>
+                  <div class="vs-card-media-slide">
+                    <img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=700&q=80" alt="Central HVAC Plant" loading="lazy">
+                    <span class="vs-media-tag"><i class="fa-solid fa-snowflake"></i> Central HVAC Plant</span>
+                  </div>
+                  <div class="vs-card-media-slide">
+                    <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=700&q=80" alt="400A Main Panel" loading="lazy">
+                    <span class="vs-media-tag"><i class="fa-solid fa-bolt"></i> 400A Main Panel</span>
+                  </div>
+                </div>
+                <button type="button" class="vs-media-arrow vs-media-prev" onclick="vsSlideMedia(this, -1)" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+                <button type="button" class="vs-media-arrow vs-media-next" onclick="vsSlideMedia(this, 1)" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+                <div class="vs-media-dots-bar">
+                  <span class="vs-media-dot active" onclick="vsGoMediaSlide(this, 0)"></span>
+                  <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 1)"></span>
+                  <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 2)"></span>
+                  <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 3)"></span>
+                </div>
+                <div class="vs-media-counter"><span class="vs-media-cur">1</span>/<span class="vs-media-tot">4</span></div>
               </div>
-            </div>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
-              <div style="background:#fff1f2; border:1px solid #fecdd3; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
-                <span style="color:#e11d48; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">Old DISCOM Bill</span>
-                <span style="font-family:'IBM Plex Mono',monospace; color:#9f1239; font-size:14px; font-weight:800; text-decoration:line-through;">₹4,20,000/mo</span>
-              </div>
-              <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
-                <span style="color:#059669; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">New DISCOM Bill</span>
-                <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">₹3,02,400/mo</span>
-              </div>
-            </div>
-            <div style="background:linear-gradient(135deg, #d97706 0%, #f59e0b 100%); padding:11px 14px; border-radius:12px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(217,119,6,0.2);">
-              <span style="color:#fef3c7; font-size:11.5px;">⚡ 57 Institutional Cards</span>
-              <strong style="color:#ffffff; font-size:13.5px;">Saved ₹1,17,600/mo (28.0%)</strong>
-            </div>
-          </div>
 
-          <!-- CARD 3: GOVT COMPLEX -->
-          <div class="vsinst-case-card" style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
-            <div style="width:100%; height:195px; border-radius:14px; overflow:hidden; margin-bottom:14px; background:#1e293b;">
-              <img src="{{ 'commercial-building-1.png' | asset_url }}" alt="State Administrative Complex Jaipur" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;">
-            </div>
-            <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
-              <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #d97706; box-shadow:0 4px 10px rgba(217,119,6,0.25);">
-                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" alt="Estate Officer" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'wvs-indian-businessman.jpg' | asset_url }}';">
+              <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+                <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #d97706; box-shadow:0 4px 10px rgba(217,119,6,0.25);">
+                  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Medical Superintendent" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'wvs-happy-man.jpg' | asset_url }}';">
+                </div>
+                <div>
+                  <h4 style="font-size:15px; font-weight:800; color:#0f172a; margin:0 0 2px 0; font-family:'Baloo 2',sans-serif;">Metro Multi-Specialty Hospital <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></h4>
+                  <div style="font-size:12px; color:#64748b; font-weight:600;"><i class="fa-solid fa-location-dot" style="color:#d97706;"></i> 160 KW Load, Delhi NCR</div>
+                </div>
               </div>
-              <div>
-                <h4 style="font-size:15px; font-weight:800; color:#0f172a; margin:0 0 2px 0; font-family:'Baloo 2',sans-serif;">State Administrative Complex <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></h4>
-                <div style="font-size:12px; color:#64748b; font-weight:600;"><i class="fa-solid fa-location-dot" style="color:#d97706;"></i> 95 KW Load, Jaipur</div>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
+                <div style="background:#fff1f2; border:1px solid #fecdd3; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                  <span style="color:#e11d48; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">Old DISCOM Bill</span>
+                  <span style="font-family:'IBM Plex Mono',monospace; color:#9f1239; font-size:14px; font-weight:800; text-decoration:line-through;">₹2,40,000/mo</span>
+                </div>
+                <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                  <span style="color:#059669; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">New DISCOM Bill</span>
+                  <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">₹1,71,600/mo</span>
+                </div>
+              </div>
+              <div style="background:linear-gradient(135deg, #d97706 0%, #f59e0b 100%); padding:11px 14px; border-radius:12px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(217,119,6,0.2);">
+                <span style="color:#fef3c7; font-size:11.5px;">⚡ 33 Institutional Cards</span>
+                <strong style="color:#ffffff; font-size:13.5px;">Saved ₹68,400/mo (28.5%)</strong>
               </div>
             </div>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
-              <div style="background:#fff1f2; border:1px solid #fecdd3; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
-                <span style="color:#e11d48; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">Old DISCOM Bill</span>
-                <span style="font-family:'IBM Plex Mono',monospace; color:#9f1239; font-size:14px; font-weight:800; text-decoration:line-through;">₹1,45,000/mo</span>
-              </div>
-              <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
-                <span style="color:#059669; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">New DISCOM Bill</span>
-                <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">₹1,03,800/mo</span>
-              </div>
-            </div>
-            <div style="background:linear-gradient(135deg, #d97706 0%, #f59e0b 100%); padding:11px 14px; border-radius:12px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(217,119,6,0.2);">
-              <span style="color:#fef3c7; font-size:11.5px;">⚡ 20 Institutional Cards</span>
-              <strong style="color:#ffffff; font-size:13.5px;">Saved ₹41,200/mo (28.4%)</strong>
-            </div>
-          </div>
 
-          <!-- CARD 4: IIT RESEARCH CAMPUS -->
-          <div class="vsinst-case-card" style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
-            <div style="width:100%; height:195px; border-radius:14px; overflow:hidden; margin-bottom:14px; background:#1e293b;">
-              <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=700&q=80" alt="IIT Research Campus Roorkee" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'case-institutional.jpg' | asset_url }}';">
-            </div>
-            <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
-              <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #d97706; box-shadow:0 4px 10px rgba(217,119,6,0.25);">
-                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&q=80" alt="Dean Infrastructure" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'indian_entrepreneur.jpg' | asset_url }}';">
+            <!-- CARD 2: UNIVERSITY -->
+            <div class="vsinst-case-card" style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
+              <!-- MINI SLIDER -->
+              <div class="vs-card-media-slider">
+                <div class="vs-card-media-slides">
+                  <div class="vs-card-media-slide active">
+                    <img src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=700&q=80" alt="Main Academic Block" loading="lazy">
+                    <span class="vs-media-tag"><i class="fa-solid fa-graduation-cap"></i> Main Academic Block</span>
+                  </div>
+                  <div class="vs-card-media-slide">
+                    <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=700&q=80" alt="Engineering Labs" loading="lazy">
+                    <span class="vs-media-tag"><i class="fa-solid fa-laptop-code"></i> Engineering Labs</span>
+                  </div>
+                  <div class="vs-card-media-slide">
+                    <img src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=700&q=80" alt="Central Library" loading="lazy">
+                    <span class="vs-media-tag"><i class="fa-solid fa-book-open"></i> Central Library HVAC</span>
+                  </div>
+                  <div class="vs-card-media-slide">
+                    <img src="https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=700&q=80" alt="Campus Substation DB" loading="lazy">
+                    <span class="vs-media-tag"><i class="fa-solid fa-bolt"></i> Campus Substation DB</span>
+                  </div>
+                </div>
+                <button type="button" class="vs-media-arrow vs-media-prev" onclick="vsSlideMedia(this, -1)" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+                <button type="button" class="vs-media-arrow vs-media-next" onclick="vsSlideMedia(this, 1)" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+                <div class="vs-media-dots-bar">
+                  <span class="vs-media-dot active" onclick="vsGoMediaSlide(this, 0)"></span>
+                  <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 1)"></span>
+                  <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 2)"></span>
+                  <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 3)"></span>
+                </div>
+                <div class="vs-media-counter"><span class="vs-media-cur">1</span>/<span class="vs-media-tot">4</span></div>
               </div>
-              <div>
-                <h4 style="font-size:15px; font-weight:800; color:#0f172a; margin:0 0 2px 0; font-family:'Baloo 2',sans-serif;">IIT Research & Tech Campus <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></h4>
-                <div style="font-size:12px; color:#64748b; font-weight:600;"><i class="fa-solid fa-location-dot" style="color:#d97706;"></i> 320 KW Load, Roorkee</div>
-              </div>
-            </div>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
-              <div style="background:#fff1f2; border:1px solid #fecdd3; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
-                <span style="color:#e11d48; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">Old DISCOM Bill</span>
-                <span style="font-family:'IBM Plex Mono',monospace; color:#9f1239; font-size:14px; font-weight:800; text-decoration:line-through;">₹4,80,000/mo</span>
-              </div>
-              <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
-                <span style="color:#059669; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">New DISCOM Bill</span>
-                <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">₹3,44,000/mo</span>
-              </div>
-            </div>
-            <div style="background:linear-gradient(135deg, #d97706 0%, #f59e0b 100%); padding:11px 14px; border-radius:12px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(217,119,6,0.2);">
-              <span style="color:#fef3c7; font-size:11.5px;">⚡ 65 Institutional Cards</span>
-              <strong style="color:#ffffff; font-size:13.5px;">Saved ₹1,36,000/mo (28.3%)</strong>
-            </div>
-          </div>
 
-          <!-- CARD 5: INTERNATIONAL SCHOOL -->
-          <div class="vsinst-case-card" style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
-            <div style="width:100%; height:195px; border-radius:14px; overflow:hidden; margin-bottom:14px; background:#1e293b;">
-              <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=700&q=80" alt="DPS International School Bengaluru" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'case-institutional.jpg' | asset_url }}';">
-            </div>
-            <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
-              <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #d97706; box-shadow:0 4px 10px rgba(217,119,6,0.25);">
-                <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=150&q=80" alt="Principal / Administrator" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'wvs-pointing-woman.jpg' | asset_url }}';">
+              <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+                <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #d97706; box-shadow:0 4px 10px rgba(217,119,6,0.25);">
+                  <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80" alt="Registrar / Dean" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'wvs-card-guide-woman.jpg' | asset_url }}';">
+                </div>
+                <div>
+                  <h4 style="font-size:15px; font-weight:800; color:#0f172a; margin:0 0 2px 0; font-family:'Baloo 2',sans-serif;">Apex University Campus & Labs <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></h4>
+                  <div style="font-size:12px; color:#64748b; font-weight:600;"><i class="fa-solid fa-location-dot" style="color:#d97706;"></i> 280 KW Load, Pune</div>
+                </div>
               </div>
-              <div>
-                <h4 style="font-size:15px; font-weight:800; color:#0f172a; margin:0 0 2px 0; font-family:'Baloo 2',sans-serif;">DPS International School <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></h4>
-                <div style="font-size:12px; color:#64748b; font-weight:600;"><i class="fa-solid fa-location-dot" style="color:#d97706;"></i> 65 KW HVAC Load, Bengaluru</div>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
+                <div style="background:#fff1f2; border:1px solid #fecdd3; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                  <span style="color:#e11d48; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">Old DISCOM Bill</span>
+                  <span style="font-family:'IBM Plex Mono',monospace; color:#9f1239; font-size:14px; font-weight:800; text-decoration:line-through;">₹4,20,000/mo</span>
+                </div>
+                <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                  <span style="color:#059669; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">New DISCOM Bill</span>
+                  <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">₹3,02,400/mo</span>
+                </div>
+              </div>
+              <div style="background:linear-gradient(135deg, #d97706 0%, #f59e0b 100%); padding:11px 14px; border-radius:12px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(217,119,6,0.2);">
+                <span style="color:#fef3c7; font-size:11.5px;">⚡ 57 Institutional Cards</span>
+                <strong style="color:#ffffff; font-size:13.5px;">Saved ₹1,17,600/mo (28.0%)</strong>
               </div>
             </div>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
-              <div style="background:#fff1f2; border:1px solid #fecdd3; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
-                <span style="color:#e11d48; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">Old DISCOM Bill</span>
-                <span style="font-family:'IBM Plex Mono',monospace; color:#9f1239; font-size:14px; font-weight:800; text-decoration:line-through;">₹98,000/mo</span>
-              </div>
-              <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
-                <span style="color:#059669; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">New DISCOM Bill</span>
-                <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">₹70,500/mo</span>
-              </div>
-            </div>
-            <div style="background:linear-gradient(135deg, #d97706 0%, #f59e0b 100%); padding:11px 14px; border-radius:12px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(217,119,6,0.2);">
-              <span style="color:#fef3c7; font-size:11.5px;">⚡ 14 Institutional Cards</span>
-              <strong style="color:#ffffff; font-size:13.5px;">Saved ₹27,500/mo (28.1%)</strong>
-            </div>
-          </div>
 
-          <!-- CARD 6: CANCER CARE HOSPITAL -->
-          <div class="vsinst-case-card" style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
-            <div style="width:100%; height:195px; border-radius:14px; overflow:hidden; margin-bottom:14px; background:#1e293b;">
-              <img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=700&q=80" alt="National Cancer Care Hospital Mumbai" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'commercial-building-2.png' | asset_url }}';">
-            </div>
-            <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
-              <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #d97706; box-shadow:0 4px 10px rgba(217,119,6,0.25);">
-                <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=150&q=80" alt="Hospital Director" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'hero-advisor-calculator.jpg' | asset_url }}';">
+            <!-- CARD 3: GOVT COMPLEX -->
+            <div class="vsinst-case-card" style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
+              <!-- MINI SLIDER -->
+              <div class="vs-card-media-slider">
+                <div class="vs-card-media-slides">
+                  <div class="vs-card-media-slide active">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=700&q=80" alt="Secretariat Wing" loading="lazy">
+                    <span class="vs-media-tag"><i class="fa-solid fa-building-columns"></i> Secretariat Wing</span>
+                  </div>
+                  <div class="vs-card-media-slide">
+                    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=700&q=80" alt="Server Room" loading="lazy">
+                    <span class="vs-media-tag"><i class="fa-solid fa-server"></i> Server Room</span>
+                  </div>
+                  <div class="vs-card-media-slide">
+                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=700&q=80" alt="AHU HVAC" loading="lazy">
+                    <span class="vs-media-tag"><i class="fa-solid fa-fan"></i> Air Handling Units</span>
+                  </div>
+                  <div class="vs-card-media-slide">
+                    <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=700&q=80" alt="Distribution Breakers" loading="lazy">
+                    <span class="vs-media-tag"><i class="fa-solid fa-bolt"></i> Distribution Breakers</span>
+                  </div>
+                </div>
+                <button type="button" class="vs-media-arrow vs-media-prev" onclick="vsSlideMedia(this, -1)" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+                <button type="button" class="vs-media-arrow vs-media-next" onclick="vsSlideMedia(this, 1)" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+                <div class="vs-media-dots-bar">
+                  <span class="vs-media-dot active" onclick="vsGoMediaSlide(this, 0)"></span>
+                  <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 1)"></span>
+                  <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 2)"></span>
+                  <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 3)"></span>
+                </div>
+                <div class="vs-media-counter"><span class="vs-media-cur">1</span>/<span class="vs-media-tot">4</span></div>
               </div>
-              <div>
-                <h4 style="font-size:15px; font-weight:800; color:#0f172a; margin:0 0 2px 0; font-family:'Baloo 2',sans-serif;">National Cancer Care Hospital <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></h4>
-                <div style="font-size:12px; color:#64748b; font-weight:600;"><i class="fa-solid fa-location-dot" style="color:#d97706;"></i> 240 KW Load, Mumbai</div>
-              </div>
-            </div>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
-              <div style="background:#fff1f2; border:1px solid #fecdd3; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
-                <span style="color:#e11d48; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">Old DISCOM Bill</span>
-                <span style="font-family:'IBM Plex Mono',monospace; color:#9f1239; font-size:14px; font-weight:800; text-decoration:line-through;">₹3,60,000/mo</span>
-              </div>
-              <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
-                <span style="color:#059669; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">New DISCOM Bill</span>
-                <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">₹2,58,000/mo</span>
-              </div>
-            </div>
-            <div style="background:linear-gradient(135deg, #d97706 0%, #f59e0b 100%); padding:11px 14px; border-radius:12px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(217,119,6,0.2);">
-              <span style="color:#fef3c7; font-size:11.5px;">⚡ 49 Institutional Cards</span>
-              <strong style="color:#ffffff; font-size:13.5px;">Saved ₹1,02,000/mo (28.3%)</strong>
-            </div>
-          </div>
 
-          <!-- CARD 7: LAW ACADEMY -->
-          <div class="vsinst-case-card" style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
-            <div style="width:100%; height:195px; border-radius:14px; overflow:hidden; margin-bottom:14px; background:#1e293b;">
-              <img src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=700&q=80" alt="National Law Academy Bhopal" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'case-institutional.jpg' | asset_url }}';">
-            </div>
-            <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
-              <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #d97706; box-shadow:0 4px 10px rgba(217,119,6,0.25);">
-                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=150&q=80" alt="Director General" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'vidhyut-customer-call-support.jpg' | asset_url }}';">
+              <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+                <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #d97706; box-shadow:0 4px 10px rgba(217,119,6,0.25);">
+                  <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" alt="Estate Officer" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'wvs-indian-businessman.jpg' | asset_url }}';">
+                </div>
+                <div>
+                  <h4 style="font-size:15px; font-weight:800; color:#0f172a; margin:0 0 2px 0; font-family:'Baloo 2',sans-serif;">State Administrative Complex <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></h4>
+                  <div style="font-size:12px; color:#64748b; font-weight:600;"><i class="fa-solid fa-location-dot" style="color:#d97706;"></i> 95 KW Load, Jaipur</div>
+                </div>
               </div>
-              <div>
-                <h4 style="font-size:15px; font-weight:800; color:#0f172a; margin:0 0 2px 0; font-family:'Baloo 2',sans-serif;">National Law & Judicial Academy <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></h4>
-                <div style="font-size:12px; color:#64748b; font-weight:600;"><i class="fa-solid fa-location-dot" style="color:#d97706;"></i> 110 KW Load, Bhopal</div>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
+                <div style="background:#fff1f2; border:1px solid #fecdd3; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                  <span style="color:#e11d48; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">Old DISCOM Bill</span>
+                  <span style="font-family:'IBM Plex Mono',monospace; color:#9f1239; font-size:14px; font-weight:800; text-decoration:line-through;">₹1,45,000/mo</span>
+                </div>
+                <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                  <span style="color:#059669; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">New DISCOM Bill</span>
+                  <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">₹1,03,800/mo</span>
+                </div>
+              </div>
+              <div style="background:linear-gradient(135deg, #d97706 0%, #f59e0b 100%); padding:11px 14px; border-radius:12px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(217,119,6,0.2);">
+                <span style="color:#fef3c7; font-size:11.5px;">⚡ 20 Institutional Cards</span>
+                <strong style="color:#ffffff; font-size:13.5px;">Saved ₹41,200/mo (28.4%)</strong>
               </div>
             </div>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
-              <div style="background:#fff1f2; border:1px solid #fecdd3; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
-                <span style="color:#e11d48; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">Old DISCOM Bill</span>
-                <span style="font-family:'IBM Plex Mono',monospace; color:#9f1239; font-size:14px; font-weight:800; text-decoration:line-through;">₹1,65,000/mo</span>
-              </div>
-              <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
-                <span style="color:#059669; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">New DISCOM Bill</span>
-                <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">₹1,18,000/mo</span>
-              </div>
-            </div>
-            <div style="background:linear-gradient(135deg, #d97706 0%, #f59e0b 100%); padding:11px 14px; border-radius:12px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(217,119,6,0.2);">
-              <span style="color:#fef3c7; font-size:11.5px;">⚡ 23 Institutional Cards</span>
-              <strong style="color:#ffffff; font-size:13.5px;">Saved ₹47,000/mo (28.5%)</strong>
-            </div>
-          </div>
 
-          <!-- CARD 8: DIAGNOSTIC HUB -->
-          <div class="vsinst-case-card" style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
-            <div style="width:100%; height:195px; border-radius:14px; overflow:hidden; margin-bottom:14px; background:#1e293b;">
-              <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=700&q=80" alt="Apollo Diagnostic Hub Hyderabad" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'commercial-building-2.png' | asset_url }}';">
-            </div>
-            <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
-              <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #d97706; box-shadow:0 4px 10px rgba(217,119,6,0.25);">
-                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80" alt="Facility Head" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'wvs-pointing-down-woman.jpg' | asset_url }}';">
+            <!-- CARD 4: IIT RESEARCH CAMPUS -->
+            <div class="vsinst-case-card" style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
+              <!-- MINI SLIDER -->
+              <div class="vs-card-media-slider">
+                <div class="vs-card-media-slides">
+                  <div class="vs-card-media-slide active">
+                    <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=700&q=80" alt="Research Labs" loading="lazy">
+                    <span class="vs-media-tag"><i class="fa-solid fa-atom"></i> Research Labs</span>
+                  </div>
+                  <div class="vs-card-media-slide">
+                    <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=700&q=80" alt="Cleanroom Testing" loading="lazy">
+                    <span class="vs-media-tag"><i class="fa-solid fa-flask-vial"></i> Cleanroom Testing</span>
+                  </div>
+                  <div class="vs-card-media-slide">
+                    <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=700&q=80" alt="High-Voltage Lab" loading="lazy">
+                    <span class="vs-media-tag"><i class="fa-solid fa-bolt"></i> High-Voltage Lab</span>
+                  </div>
+                  <div class="vs-card-media-slide">
+                    <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=700&q=80" alt="630A LT Breaker" loading="lazy">
+                    <span class="vs-media-tag"><i class="fa-solid fa-plug"></i> 630A LT Breaker</span>
+                  </div>
+                </div>
+                <button type="button" class="vs-media-arrow vs-media-prev" onclick="vsSlideMedia(this, -1)" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+                <button type="button" class="vs-media-arrow vs-media-next" onclick="vsSlideMedia(this, 1)" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+                <div class="vs-media-dots-bar">
+                  <span class="vs-media-dot active" onclick="vsGoMediaSlide(this, 0)"></span>
+                  <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 1)"></span>
+                  <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 2)"></span>
+                  <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 3)"></span>
+                </div>
+                <div class="vs-media-counter"><span class="vs-media-cur">1</span>/<span class="vs-media-tot">4</span></div>
               </div>
-              <div>
-                <h4 style="font-size:15px; font-weight:800; color:#0f172a; margin:0 0 2px 0; font-family:'Baloo 2',sans-serif;">Apollo Diagnostic & Bio-Hub <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></h4>
-                <div style="font-size:12px; color:#64748b; font-weight:600;"><i class="fa-solid fa-location-dot" style="color:#d97706;"></i> 140 KW Load, Hyderabad</div>
-              </div>
-            </div>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
-              <div style="background:#fff1f2; border:1px solid #fecdd3; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
-                <span style="color:#e11d48; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">Old DISCOM Bill</span>
-                <span style="font-family:'IBM Plex Mono',monospace; color:#9f1239; font-size:14px; font-weight:800; text-decoration:line-through;">₹2,10,000/mo</span>
-              </div>
-              <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
-                <span style="color:#059669; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">New DISCOM Bill</span>
-                <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">₹1,51,000/mo</span>
-              </div>
-            </div>
-            <div style="background:linear-gradient(135deg, #d97706 0%, #f59e0b 100%); padding:11px 14px; border-radius:12px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(217,119,6,0.2);">
-              <span style="color:#fef3c7; font-size:11.5px;">⚡ 29 Institutional Cards</span>
-              <strong style="color:#ffffff; font-size:13.5px;">Saved ₹59,000/mo (28.1%)</strong>
-            </div>
-          </div>
 
-          <!-- CARD 9: SPORTS COMPLEX -->
-          <div class="vsinst-case-card" style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
-            <div style="width:100%; height:195px; border-radius:14px; overflow:hidden; margin-bottom:14px; background:#1e293b;">
-              <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=700&q=80" alt="Central Sports Stadium Ahmedabad" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'commercial-building-1.png' | asset_url }}';">
-            </div>
-            <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
-              <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #d97706; box-shadow:0 4px 10px rgba(217,119,6,0.25);">
-                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=150&q=80" alt="Sports Secretary" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'indian_entrepreneur.jpg' | asset_url }}';">
+              <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+                <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #d97706; box-shadow:0 4px 10px rgba(217,119,6,0.25);">
+                  <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&q=80" alt="Dean Infrastructure" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'indian_entrepreneur.jpg' | asset_url }}';">
+                </div>
+                <div>
+                  <h4 style="font-size:15px; font-weight:800; color:#0f172a; margin:0 0 2px 0; font-family:'Baloo 2',sans-serif;">IIT Research & Tech Campus <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></h4>
+                  <div style="font-size:12px; color:#64748b; font-weight:600;"><i class="fa-solid fa-location-dot" style="color:#d97706;"></i> 320 KW Load, Roorkee</div>
+                </div>
               </div>
-              <div>
-                <h4 style="font-size:15px; font-weight:800; color:#0f172a; margin:0 0 2px 0; font-family:'Baloo 2',sans-serif;">Central Sports Stadium & Hub <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></h4>
-                <div style="font-size:12px; color:#64748b; font-weight:600;"><i class="fa-solid fa-location-dot" style="color:#d97706;"></i> 190 KW Load, Ahmedabad</div>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
+                <div style="background:#fff1f2; border:1px solid #fecdd3; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                  <span style="color:#e11d48; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">Old DISCOM Bill</span>
+                  <span style="font-family:'IBM Plex Mono',monospace; color:#9f1239; font-size:14px; font-weight:800; text-decoration:line-through;">₹4,80,000/mo</span>
+                </div>
+                <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                  <span style="color:#059669; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">New DISCOM Bill</span>
+                  <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">₹3,44,000/mo</span>
+                </div>
+              </div>
+              <div style="background:linear-gradient(135deg, #d97706 0%, #f59e0b 100%); padding:11px 14px; border-radius:12px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(217,119,6,0.2);">
+                <span style="color:#fef3c7; font-size:11.5px;">⚡ 65 Institutional Cards</span>
+                <strong style="color:#ffffff; font-size:13.5px;">Saved ₹1,36,000/mo (28.3%)</strong>
               </div>
             </div>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
-              <div style="background:#fff1f2; border:1px solid #fecdd3; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
-                <span style="color:#e11d48; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">Old DISCOM Bill</span>
-                <span style="font-family:'IBM Plex Mono',monospace; color:#9f1239; font-size:14px; font-weight:800; text-decoration:line-through;">₹2,90,000/mo</span>
+
+            <!-- CARD 5: INTERNATIONAL SCHOOL -->
+            <div class="vsinst-case-card" style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
+              <!-- MINI SLIDER -->
+              <div class="vs-card-media-slider">
+                <div class="vs-card-media-slides">
+                  <div class="vs-card-media-slide active">
+                    <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=700&q=80" alt="Primary Academic Block" loading="lazy">
+                    <span class="vs-media-tag"><i class="fa-solid fa-school"></i> Academic Blocks</span>
+                  </div>
+                  <div class="vs-card-media-slide">
+                    <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=700&q=80" alt="Robotics & STEM Lab" loading="lazy">
+                    <span class="vs-media-tag"><i class="fa-solid fa-robot"></i> STEM & Robotics</span>
+                  </div>
+                  <div class="vs-card-media-slide">
+                    <img src="https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=700&q=80" alt="Auditorium AC Grid" loading="lazy">
+                    <span class="vs-media-tag"><i class="fa-solid fa-snowflake"></i> Auditorium AC Grid</span>
+                  </div>
+                  <div class="vs-card-media-slide">
+                    <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=700&q=80" alt="Mains Control Panel" loading="lazy">
+                    <span class="vs-media-tag"><i class="fa-solid fa-bolt"></i> Mains Control Panel</span>
+                  </div>
+                </div>
+                <button type="button" class="vs-media-arrow vs-media-prev" onclick="vsSlideMedia(this, -1)" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+                <button type="button" class="vs-media-arrow vs-media-next" onclick="vsSlideMedia(this, 1)" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+                <div class="vs-media-dots-bar">
+                  <span class="vs-media-dot active" onclick="vsGoMediaSlide(this, 0)"></span>
+                  <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 1)"></span>
+                  <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 2)"></span>
+                  <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 3)"></span>
+                </div>
+                <div class="vs-media-counter"><span class="vs-media-cur">1</span>/<span class="vs-media-tot">4</span></div>
               </div>
-              <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
-                <span style="color:#059669; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">New DISCOM Bill</span>
-                <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">₹2,08,000/mo</span>
+
+              <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+                <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #d97706; box-shadow:0 4px 10px rgba(217,119,6,0.25);">
+                  <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=150&q=80" alt="Principal / Administrator" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'wvs-pointing-woman.jpg' | asset_url }}';">
+                </div>
+                <div>
+                  <h4 style="font-size:15px; font-weight:800; color:#0f172a; margin:0 0 2px 0; font-family:'Baloo 2',sans-serif;">DPS International School <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></h4>
+                  <div style="font-size:12px; color:#64748b; font-weight:600;"><i class="fa-solid fa-location-dot" style="color:#d97706;"></i> 65 KW HVAC Load, Bengaluru</div>
+                </div>
+              </div>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
+                <div style="background:#fff1f2; border:1px solid #fecdd3; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                  <span style="color:#e11d48; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">Old DISCOM Bill</span>
+                  <span style="font-family:'IBM Plex Mono',monospace; color:#9f1239; font-size:14px; font-weight:800; text-decoration:line-through;">₹98,000/mo</span>
+                </div>
+                <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                  <span style="color:#059669; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">New DISCOM Bill</span>
+                  <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">₹70,500/mo</span>
+                </div>
+              </div>
+              <div style="background:linear-gradient(135deg, #d97706 0%, #f59e0b 100%); padding:11px 14px; border-radius:12px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(217,119,6,0.2);">
+                <span style="color:#fef3c7; font-size:11.5px;">⚡ 14 Institutional Cards</span>
+                <strong style="color:#ffffff; font-size:13.5px;">Saved ₹27,500/mo (28.1%)</strong>
               </div>
             </div>
-            <div style="background:linear-gradient(135deg, #d97706 0%, #f59e0b 100%); padding:11px 14px; border-radius:12px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(217,119,6,0.2);">
-              <span style="color:#fef3c7; font-size:11.5px;">⚡ 39 Institutional Cards</span>
-              <strong style="color:#ffffff; font-size:13.5px;">Saved ₹82,000/mo (28.3%)</strong>
+
+            <!-- CARD 6: CANCER CARE HOSPITAL -->
+            <div class="vsinst-case-card" style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
+              <!-- MINI SLIDER -->
+              <div class="vs-card-media-slider">
+                <div class="vs-card-media-slides">
+                  <div class="vs-card-media-slide active">
+                    <img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=700&q=80" alt="Radiation Therapy Wing" loading="lazy">
+                    <span class="vs-media-tag"><i class="fa-solid fa-hospital"></i> Radiation Therapy Wing</span>
+                  </div>
+                  <div class="vs-card-media-slide">
+                    <img src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=700&q=80" alt="Sterile Surgical OT" loading="lazy">
+                    <span class="vs-media-tag"><i class="fa-solid fa-shield-heart"></i> Sterile Surgical OT</span>
+                  </div>
+                  <div class="vs-card-media-slide">
+                    <img src="https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=700&q=80" alt="Chiller Plant Room" loading="lazy">
+                    <span class="vs-media-tag"><i class="fa-solid fa-temperature-arrow-down"></i> Chiller Plant Room</span>
+                  </div>
+                  <div class="vs-card-media-slide">
+                    <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=700&q=80" alt="Emergency LT DB" loading="lazy">
+                    <span class="vs-media-tag"><i class="fa-solid fa-bolt"></i> Emergency LT DB</span>
+                  </div>
+                </div>
+                <button type="button" class="vs-media-arrow vs-media-prev" onclick="vsSlideMedia(this, -1)" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+                <button type="button" class="vs-media-arrow vs-media-next" onclick="vsSlideMedia(this, 1)" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+                <div class="vs-media-dots-bar">
+                  <span class="vs-media-dot active" onclick="vsGoMediaSlide(this, 0)"></span>
+                  <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 1)"></span>
+                  <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 2)"></span>
+                  <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 3)"></span>
+                </div>
+                <div class="vs-media-counter"><span class="vs-media-cur">1</span>/<span class="vs-media-tot">4</span></div>
+              </div>
+
+              <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+                <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #d97706; box-shadow:0 4px 10px rgba(217,119,6,0.25);">
+                  <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=150&q=80" alt="Hospital Director" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'hero-advisor-calculator.jpg' | asset_url }}';">
+                </div>
+                <div>
+                  <h4 style="font-size:15px; font-weight:800; color:#0f172a; margin:0 0 2px 0; font-family:'Baloo 2',sans-serif;">National Cancer Care Hospital <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></h4>
+                  <div style="font-size:12px; color:#64748b; font-weight:600;"><i class="fa-solid fa-location-dot" style="color:#d97706;"></i> 240 KW Load, Mumbai</div>
+                </div>
+              </div>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
+                <div style="background:#fff1f2; border:1px solid #fecdd3; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                  <span style="color:#e11d48; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">Old DISCOM Bill</span>
+                  <span style="font-family:'IBM Plex Mono',monospace; color:#9f1239; font-size:14px; font-weight:800; text-decoration:line-through;">₹3,60,000/mo</span>
+                </div>
+                <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                  <span style="color:#059669; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">New DISCOM Bill</span>
+                  <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">₹2,58,000/mo</span>
+                </div>
+              </div>
+              <div style="background:linear-gradient(135deg, #d97706 0%, #f59e0b 100%); padding:11px 14px; border-radius:12px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(217,119,6,0.2);">
+                <span style="color:#fef3c7; font-size:11.5px;">⚡ 49 Institutional Cards</span>
+                <strong style="color:#ffffff; font-size:13.5px;">Saved ₹1,02,000/mo (28.3%)</strong>
+              </div>
             </div>
-          </div>
+
+            <!-- CARD 7: LAW ACADEMY -->
+            <div class="vsinst-case-card" style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
+              <!-- MINI SLIDER -->
+              <div class="vs-card-media-slider">
+                <div class="vs-card-media-slides">
+                  <div class="vs-card-media-slide active">
+                    <img src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=700&q=80" alt="Judicial Moot Court" loading="lazy">
+                    <span class="vs-media-tag"><i class="fa-solid fa-scale-balanced"></i> Judicial Moot Court</span>
+                  </div>
+                  <div class="vs-card-media-slide">
+                    <img src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=700&q=80" alt="Digital Library" loading="lazy">
+                    <span class="vs-media-tag"><i class="fa-solid fa-book"></i> Digital E-Library</span>
+                  </div>
+                  <div class="vs-card-media-slide">
+                    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=700&q=80" alt="Convention Hall HVAC" loading="lazy">
+                    <span class="vs-media-tag"><i class="fa-solid fa-snowflake"></i> Convention HVAC</span>
+                  </div>
+                  <div class="vs-card-media-slide">
+                    <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=700&q=80" alt="Substation Panel" loading="lazy">
+                    <span class="vs-media-tag"><i class="fa-solid fa-bolt"></i> Substation Panel</span>
+                  </div>
+                </div>
+                <button type="button" class="vs-media-arrow vs-media-prev" onclick="vsSlideMedia(this, -1)" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+                <button type="button" class="vs-media-arrow vs-media-next" onclick="vsSlideMedia(this, 1)" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+                <div class="vs-media-dots-bar">
+                  <span class="vs-media-dot active" onclick="vsGoMediaSlide(this, 0)"></span>
+                  <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 1)"></span>
+                  <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 2)"></span>
+                  <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 3)"></span>
+                </div>
+                <div class="vs-media-counter"><span class="vs-media-cur">1</span>/<span class="vs-media-tot">4</span></div>
+              </div>
+
+              <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+                <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #d97706; box-shadow:0 4px 10px rgba(217,119,6,0.25);">
+                  <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=150&q=80" alt="Director General" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'vidhyut-customer-call-support.jpg' | asset_url }}';">
+                </div>
+                <div>
+                  <h4 style="font-size:15px; font-weight:800; color:#0f172a; margin:0 0 2px 0; font-family:'Baloo 2',sans-serif;">National Law & Judicial Academy <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></h4>
+                  <div style="font-size:12px; color:#64748b; font-weight:600;"><i class="fa-solid fa-location-dot" style="color:#d97706;"></i> 110 KW Load, Bhopal</div>
+                </div>
+              </div>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
+                <div style="background:#fff1f2; border:1px solid #fecdd3; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                  <span style="color:#e11d48; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">Old DISCOM Bill</span>
+                  <span style="font-family:'IBM Plex Mono',monospace; color:#9f1239; font-size:14px; font-weight:800; text-decoration:line-through;">₹1,65,000/mo</span>
+                </div>
+                <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                  <span style="color:#059669; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">New DISCOM Bill</span>
+                  <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">₹1,18,000/mo</span>
+                </div>
+              </div>
+              <div style="background:linear-gradient(135deg, #d97706 0%, #f59e0b 100%); padding:11px 14px; border-radius:12px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(217,119,6,0.2);">
+                <span style="color:#fef3c7; font-size:11.5px;">⚡ 23 Institutional Cards</span>
+                <strong style="color:#ffffff; font-size:13.5px;">Saved ₹47,000/mo (28.5%)</strong>
+              </div>
+            </div>
+
+            <!-- CARD 8: DIAGNOSTIC HUB -->
+            <div class="vsinst-case-card" style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
+              <!-- MINI SLIDER -->
+              <div class="vs-card-media-slider">
+                <div class="vs-card-media-slides">
+                  <div class="vs-card-media-slide active">
+                    <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=700&q=80" alt="Pathology Diagnostics" loading="lazy">
+                    <span class="vs-media-tag"><i class="fa-solid fa-microscope"></i> Pathology Diagnostics</span>
+                  </div>
+                  <div class="vs-card-media-slide">
+                    <img src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?auto=format&fit=crop&w=700&q=80" alt="Cold Plasma Storage" loading="lazy">
+                    <span class="vs-media-tag"><i class="fa-solid fa-temperature-arrow-down"></i> Cold Plasma Storage</span>
+                  </div>
+                  <div class="vs-card-media-slide">
+                    <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=700&q=80" alt="Spectrometry Lab" loading="lazy">
+                    <span class="vs-media-tag"><i class="fa-solid fa-vial-virus"></i> Spectrometry Lab</span>
+                  </div>
+                  <div class="vs-card-media-slide">
+                    <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=700&q=80" alt="Isolated Main Feeder" loading="lazy">
+                    <span class="vs-media-tag"><i class="fa-solid fa-bolt"></i> Isolated Feeder</span>
+                  </div>
+                </div>
+                <button type="button" class="vs-media-arrow vs-media-prev" onclick="vsSlideMedia(this, -1)" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+                <button type="button" class="vs-media-arrow vs-media-next" onclick="vsSlideMedia(this, 1)" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+                <div class="vs-media-dots-bar">
+                  <span class="vs-media-dot active" onclick="vsGoMediaSlide(this, 0)"></span>
+                  <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 1)"></span>
+                  <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 2)"></span>
+                  <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 3)"></span>
+                </div>
+                <div class="vs-media-counter"><span class="vs-media-cur">1</span>/<span class="vs-media-tot">4</span></div>
+              </div>
+
+              <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+                <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #d97706; box-shadow:0 4px 10px rgba(217,119,6,0.25);">
+                  <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80" alt="Facility Head" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'wvs-pointing-down-woman.jpg' | asset_url }}';">
+                </div>
+                <div>
+                  <h4 style="font-size:15px; font-weight:800; color:#0f172a; margin:0 0 2px 0; font-family:'Baloo 2',sans-serif;">Apollo Diagnostic & Bio-Hub <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></h4>
+                  <div style="font-size:12px; color:#64748b; font-weight:600;"><i class="fa-solid fa-location-dot" style="color:#d97706;"></i> 140 KW Load, Hyderabad</div>
+                </div>
+              </div>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
+                <div style="background:#fff1f2; border:1px solid #fecdd3; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                  <span style="color:#e11d48; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">Old DISCOM Bill</span>
+                  <span style="font-family:'IBM Plex Mono',monospace; color:#9f1239; font-size:14px; font-weight:800; text-decoration:line-through;">₹2,10,000/mo</span>
+                </div>
+                <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                  <span style="color:#059669; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">New DISCOM Bill</span>
+                  <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">₹1,51,000/mo</span>
+                </div>
+              </div>
+              <div style="background:linear-gradient(135deg, #d97706 0%, #f59e0b 100%); padding:11px 14px; border-radius:12px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(217,119,6,0.2);">
+                <span style="color:#fef3c7; font-size:11.5px;">⚡ 29 Institutional Cards</span>
+                <strong style="color:#ffffff; font-size:13.5px;">Saved ₹59,000/mo (28.1%)</strong>
+              </div>
+            </div>
+
+            <!-- CARD 9: SPORTS COMPLEX -->
+            <div class="vsinst-case-card" style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
+              <!-- MINI SLIDER -->
+              <div class="vs-card-media-slider">
+                <div class="vs-card-media-slides">
+                  <div class="vs-card-media-slide active">
+                    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=700&q=80" alt="Floodlights Arena" loading="lazy">
+                    <span class="vs-media-tag"><i class="fa-solid fa-trophy"></i> Stadium Arenas</span>
+                  </div>
+                  <div class="vs-card-media-slide">
+                    <img src="https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=700&q=80" alt="Indoor Sports Complex" loading="lazy">
+                    <span class="vs-media-tag"><i class="fa-solid fa-basketball"></i> Indoor Sports Complex</span>
+                  </div>
+                  <div class="vs-card-media-slide">
+                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=700&q=80" alt="Water Chilling Plants" loading="lazy">
+                    <span class="vs-media-tag"><i class="fa-solid fa-snowflake"></i> Chilling Plants</span>
+                  </div>
+                  <div class="vs-card-media-slide">
+                    <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=700&q=80" alt="Main Grid Substation" loading="lazy">
+                    <span class="vs-media-tag"><i class="fa-solid fa-bolt"></i> Grid Substation</span>
+                  </div>
+                </div>
+                <button type="button" class="vs-media-arrow vs-media-prev" onclick="vsSlideMedia(this, -1)" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+                <button type="button" class="vs-media-arrow vs-media-next" onclick="vsSlideMedia(this, 1)" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+                <div class="vs-media-dots-bar">
+                  <span class="vs-media-dot active" onclick="vsGoMediaSlide(this, 0)"></span>
+                  <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 1)"></span>
+                  <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 2)"></span>
+                  <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 3)"></span>
+                </div>
+                <div class="vs-media-counter"><span class="vs-media-cur">1</span>/<span class="vs-media-tot">4</span></div>
+              </div>
+
+              <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+                <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #d97706; box-shadow:0 4px 10px rgba(217,119,6,0.25);">
+                  <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=150&q=80" alt="Sports Secretary" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'indian_entrepreneur.jpg' | asset_url }}';">
+                </div>
+                <div>
+                  <h4 style="font-size:15px; font-weight:800; color:#0f172a; margin:0 0 2px 0; font-family:'Baloo 2',sans-serif;">Central Sports Stadium & Hub <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></h4>
+                  <div style="font-size:12px; color:#64748b; font-weight:600;"><i class="fa-solid fa-location-dot" style="color:#d97706;"></i> 190 KW Load, Ahmedabad</div>
+                </div>
+              </div>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
+                <div style="background:#fff1f2; border:1px solid #fecdd3; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                  <span style="color:#e11d48; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">Old DISCOM Bill</span>
+                  <span style="font-family:'IBM Plex Mono',monospace; color:#9f1239; font-size:14px; font-weight:800; text-decoration:line-through;">₹2,90,000/mo</span>
+                </div>
+                <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                  <span style="color:#059669; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">New DISCOM Bill</span>
+                  <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">₹2,08,000/mo</span>
+                </div>
+              </div>
+              <div style="background:linear-gradient(135deg, #d97706 0%, #f59e0b 100%); padding:11px 14px; border-radius:12px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(217,119,6,0.2);">
+                <span style="color:#fef3c7; font-size:11.5px;">⚡ 39 Institutional Cards</span>
+                <strong style="color:#ffffff; font-size:13.5px;">Saved ₹82,000/mo (28.3%)</strong>
+              </div>
+            </div>
+          {% endif %}
         </div>
 
         <!-- MOBILE SLIDER DOTS -->
@@ -2307,6 +2864,48 @@
       }
     });
   })();
+
+  /* ══ CARD MULTI-IMAGE MINI SLIDER LOGIC ══ */
+  function vsSlideMedia(btn, direction) {
+    var slider = btn.closest('.vs-card-media-slider');
+    if (!slider) return;
+    var slides = slider.querySelectorAll('.vs-card-media-slide');
+    var dots = slider.querySelectorAll('.vs-media-dot');
+    var curSpan = slider.querySelector('.vs-media-cur');
+    if (!slides.length) return;
+    
+    var curIndex = 0;
+    slides.forEach(function(slide, idx) {
+      if (slide.classList.contains('active')) curIndex = idx;
+    });
+    
+    var newIndex = (curIndex + direction + slides.length) % slides.length;
+    
+    slides[curIndex].classList.remove('active');
+    slides[newIndex].classList.add('active');
+    
+    dots.forEach(function(dot, idx) {
+      dot.classList.toggle('active', idx === newIndex);
+    });
+    if (curSpan) curSpan.textContent = newIndex + 1;
+  }
+
+  function vsGoMediaSlide(dot, targetIndex) {
+    var slider = dot.closest('.vs-card-media-slider');
+    if (!slider) return;
+    var slides = slider.querySelectorAll('.vs-card-media-slide');
+    var dots = slider.querySelectorAll('.vs-media-dot');
+    var curSpan = slider.querySelector('.vs-media-cur');
+    if (!slides.length || targetIndex >= slides.length) return;
+    
+    slides.forEach(function(slide, idx) {
+      slide.classList.toggle('active', idx === targetIndex);
+    });
+    dots.forEach(function(d, idx) {
+      d.classList.toggle('active', idx === targetIndex);
+    });
+    if (curSpan) curSpan.textContent = targetIndex + 1;
+  }
 </script>
 
 
