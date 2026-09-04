@@ -706,18 +706,30 @@
     <div class="vs-video-main-wrapper">
       
       <!-- Determine Video URL -->
-      {%- assign active_video_target = section.settings.video_url -%}
+      {%- assign active_video_target = '' -%}
       {%- if section.settings.custom_video_file != blank -%}
-        {%- assign active_video_target = section.settings.custom_video_file.sources[0].url -%}
-      {%- elsif section.settings.custom_video_url != blank -%}
-        {%- assign active_video_target = section.settings.custom_video_url -%}
+        {%- for src in section.settings.custom_video_file.sources -%}
+          {%- if src.format == 'mp4' or forloop.first -%}
+            {%- assign active_video_target = src.url -%}
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endif -%}
+      {%- if active_video_target == blank -%}
+        {%- if section.settings.custom_video_url != blank -%}
+          {%- assign active_video_target = section.settings.custom_video_url -%}
+        {%- else -%}
+          {%- assign active_video_target = section.settings.video_url -%}
+        {%- endif -%}
+      {%- endif -%}
+      {%- if active_video_target == blank -%}
+        {%- assign active_video_target = 'https://www.youtube.com/embed/eNPX8I7iRV8' -%}
       {%- endif -%}
 
       <!-- 2-COLUMN TOP GRID -->
       <div class="vs-video-top-grid">
         
         <!-- LEFT COLUMN: VIDEO THUMBNAIL (ROUNDED CARD WITH FULL INLINE PLAYER) -->
-        <div class="vs-video-thumb-card" id="vsMainVideoCard" onclick="vsPlayCardVideo(event, '{{ active_video_target | escape }}')">
+        <div class="vs-video-thumb-card" id="vsMainVideoCard">
           {%- if section.settings.thumbnail != blank -%}
             <img src="{{ section.settings.thumbnail | image_url: width: 1000 }}" alt="{{ section.settings.headline_text | escape }}" class="vs-video-thumb-img" id="vsCardThumbImg" loading="lazy">
           {%- elsif section.settings.thumbnail_image != blank -%}
@@ -726,13 +738,19 @@
             <img src="{{ 'hero-advisor-calculator.jpg' | asset_url }}" alt="Vidhyut Saathi Technology Showcase" class="vs-video-thumb-img" id="vsCardThumbImg" loading="lazy">
           {%- endif -%}
           
-          <div class="vs-video-thumb-overlay" id="vsCardOverlay">
+          <div class="vs-video-thumb-overlay" id="vsCardOverlay" onclick="vsStartCardPlay(event)">
             <div class="vs-play-btn-circle">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
             </div>
           </div>
 
-          <video id="vsCardVideoElement" class="vs-card-video-player" controls playsinline preload="metadata" style="display: none;"></video>
+          <video id="vsCardVideoElement" class="vs-card-video-player" controls playsinline preload="metadata" style="display: none;">
+            {%- if section.settings.custom_video_file != blank -%}
+              {%- for src in section.settings.custom_video_file.sources -%}
+                <source src="{{ src.url }}" type="{{ src.mime_type }}">
+              {%- endfor -%}
+            {%- endif -%}
+          </video>
           <iframe id="vsCardIframeElement" class="vs-card-iframe-player" allow="autoplay; encrypted-media; fullscreen" allowfullscreen style="display: none;"></iframe>
         </div>
 
@@ -872,28 +890,42 @@
 </div>
 
 <script>
-  function vsPlayCardVideo(e, rawUrl) {
+  function vsStartCardPlay(e) {
     if (e) e.stopPropagation();
     const thumb = document.getElementById('vsCardThumbImg');
     const overlay = document.getElementById('vsCardOverlay');
     const videoElem = document.getElementById('vsCardVideoElement');
     const iframeElem = document.getElementById('vsCardIframeElement');
 
-    let targetUrl = rawUrl || 'https://www.youtube.com/embed/eNPX8I7iRV8';
+    if (thumb) thumb.style.display = 'none';
+    if (overlay) overlay.style.display = 'none';
+
+    // If native HTML5 video has source children rendered by Liquid
+    if (videoElem && videoElem.querySelector('source')) {
+      if (iframeElem) iframeElem.style.display = 'none';
+      videoElem.style.display = 'block';
+      videoElem.play().catch(function(err) {
+        console.log('Autoplay blocked, user interaction required:', err);
+      });
+      return;
+    }
+
+    let targetUrl = '{{ active_video_target | escape }}';
+    if (!targetUrl) targetUrl = 'https://www.youtube.com/embed/eNPX8I7iRV8';
+
     const isDirectVideoFile = targetUrl.match(/\.(mp4|webm|mov|ogg)(\?.*)?$/i) || targetUrl.includes('cdn.shopify.com/videos') || targetUrl.includes('cdn.shopify.com/files');
 
-    if (isDirectVideoFile) {
-      if (thumb) thumb.style.display = 'none';
-      if (overlay) overlay.style.display = 'none';
+    if (isDirectVideoFile && videoElem) {
       if (iframeElem) iframeElem.style.display = 'none';
-      if (videoElem) {
-        videoElem.style.display = 'block';
-        if (!videoElem.src || videoElem.src !== targetUrl) {
-          videoElem.src = targetUrl;
-        }
-        videoElem.play();
+      videoElem.style.display = 'block';
+      if (!videoElem.src || videoElem.src !== targetUrl) {
+        videoElem.src = targetUrl;
       }
-    } else {
+      videoElem.play().catch(function(err) {
+        console.log('Video play error:', err);
+      });
+    } else if (iframeElem) {
+      if (videoElem) videoElem.style.display = 'none';
       let videoId = '';
       if (targetUrl.includes('/shorts/')) {
         const parts = targetUrl.split('/shorts/');
@@ -916,13 +948,8 @@
         targetUrl = targetUrl.includes('?') ? targetUrl + '&autoplay=1' : targetUrl + '?autoplay=1';
       }
 
-      if (thumb) thumb.style.display = 'none';
-      if (overlay) overlay.style.display = 'none';
-      if (videoElem) videoElem.style.display = 'none';
-      if (iframeElem) {
-        iframeElem.style.display = 'block';
-        iframeElem.src = targetUrl;
-      }
+      iframeElem.style.display = 'block';
+      iframeElem.src = targetUrl;
     }
   }
 
