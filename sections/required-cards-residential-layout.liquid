@@ -1665,6 +1665,130 @@
     }
   }
 
+  /* ============================================================
+     RESIDENTIAL 4-IMAGE MINI SLIDER FOR CASE STUDY CARDS
+     ============================================================ */
+  .vs-card-media-slider {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    border-radius: 14px;
+    overflow: hidden;
+    margin-bottom: 14px;
+    background: #0f172a;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+  }
+  .vs-card-media-slides {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  .vs-card-media-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+  }
+  .vs-card-media-slide.active {
+    opacity: 1;
+    visibility: visible;
+  }
+  .vs-card-media-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .vs-media-tag {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(6px);
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 6px;
+    border: 1px solid rgba(236, 92, 10, 0.5);
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    z-index: 2;
+  }
+  .vs-media-tag i {
+    color: #ec5c0a;
+  }
+  .vs-media-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.92);
+    color: #0f172a;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    z-index: 3;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    opacity: 0.85;
+  }
+  .vs-media-arrow:hover {
+    background: #ec5c0a;
+    color: #ffffff;
+    opacity: 1;
+    transform: translateY(-50%) scale(1.1);
+  }
+  .vs-media-prev { left: 8px; }
+  .vs-media-next { right: 8px; }
+  .vs-media-dots-bar {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    gap: 5px;
+    z-index: 2;
+    background: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(4px);
+    padding: 4px 8px;
+    border-radius: 12px;
+  }
+  .vs-media-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.45);
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+  .vs-media-dot.active {
+    background: #ec5c0a;
+    width: 16px;
+    border-radius: 4px;
+  }
+  .vs-media-counter {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(6px);
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 6px;
+    z-index: 2;
+    font-family: 'IBM Plex Mono', monospace;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
 </style>
 
 <div class="vsres">
@@ -2075,275 +2199,336 @@
       <!-- MOBILE CAROUSEL SLIDER WRAPPER -->
       <div class="vs-cases-slider-wrap" id="vsresCaseSliderWrap">
         <div class="vsres-case-grid" id="vsresCaseTrack">
-          <!-- CARD 1: ROHAN MEHTA (MUMBAI) -->
-          <div class="vsres-case-card">
-            <div class="vsres-case-img-box">
-              <img src="{{ 'residential-house-1.png' | asset_url }}" alt="Rohan Mehta 2 BHK Apartment Mumbai Home Savings" loading="lazy" class="vsres-case-cover-img" onerror="this.onerror=null; this.src='https://cdn.shopify.com/s/files/1/0663/8783/7093/files/VS_Card_Final_Design_Golden_1.png';">
-            </div>
-            <div class="vsres-case-header">
-              <div class="vsres-case-avatar">
-                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Rohan Mehta" class="vsres-case-avatar-img" onerror="this.onerror=null; this.src='{{ 'wvs-happy-man.jpg' | asset_url }}';">
-              </div>
-              <div>
-                <div class="vsres-case-name">Rohan Mehta <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></div>
-                <div class="vsres-case-location"><i class="fa-solid fa-location-dot" style="color:#ec5c0a;"></i> 2 BHK Apartment, Mumbai</div>
-              </div>
-            </div>
-            <div class="vsres-case-stats">
-              <div class="vsres-stat-col old">
-                <span class="vsres-stat-lbl">Old DISCOM Bill</span>
-                <span class="vsres-stat-val">₹8,400/mo</span>
-              </div>
-              <div class="vsres-stat-col new">
-                <span class="vsres-stat-lbl">New DISCOM Bill</span>
-                <span class="vsres-stat-val">₹6,100/mo</span>
-              </div>
-            </div>
-            <div class="vsres-case-result">
-              <span>⚡ 2 Cards Installed</span>
-              <strong>Saved ₹2,300/mo (27%)</strong>
-            </div>
-          </div>
+          {% assign case_study_count = 0 %}
+          {% for block in section.blocks %}
+            {% if block.type == 'residential_case_study' %}
+              {% assign case_study_count = case_study_count | plus: 1 %}
+              {% assign idx = case_study_count %}
+              
+              {% case idx %}
+                {% when 1 %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1593784991095-a205069470b6?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" %}
+                {% when 2 %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80" %}
+                {% when 3 %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" %}
+                {% when 4 %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1509391365360-2e959784a276?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&q=80" %}
+                {% when 5 %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=150&q=80" %}
+                {% when 6 %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1582735689369-4fe89db7114c?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80" %}
+                {% when 7 %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1585338107529-13afc5f02586?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=150&q=80" %}
+                {% when 8 %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=150&q=80" %}
+                {% else %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=150&q=80" %}
+              {% endcase %}
 
-          <!-- CARD 2: SUNITA SHARMA (JAIPUR) -->
-          <div class="vsres-case-card">
-            <div class="vsres-case-img-box">
-              <img src="{{ 'case-residential.jpg' | asset_url }}" alt="Sunita Sharma 3 BHK House Jaipur Home Savings" loading="lazy" class="vsres-case-cover-img" onerror="this.onerror=null; this.src='https://cdn.shopify.com/s/files/1/0663/8783/7093/files/VS_Card_Final_Design_Golden_1.png';">
-            </div>
-            <div class="vsres-case-header">
-              <div class="vsres-case-avatar">
-                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80" alt="Sunita Sharma" class="vsres-case-avatar-img" onerror="this.onerror=null; this.src='{{ 'wvs-card-guide-woman.jpg' | asset_url }}';">
-              </div>
-              <div>
-                <div class="vsres-case-name">Sunita Sharma <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></div>
-                <div class="vsres-case-location"><i class="fa-solid fa-location-dot" style="color:#ec5c0a;"></i> 3 BHK House, Jaipur</div>
-              </div>
-            </div>
-            <div class="vsres-case-stats">
-              <div class="vsres-stat-col old">
-                <span class="vsres-stat-lbl">Old DISCOM Bill</span>
-                <span class="vsres-stat-val">₹14,500/mo</span>
-              </div>
-              <div class="vsres-stat-col new">
-                <span class="vsres-stat-lbl">New DISCOM Bill</span>
-                <span class="vsres-stat-val">₹10,600/mo</span>
-              </div>
-            </div>
-            <div class="vsres-case-result">
-              <span>⚡ 3 Cards Installed</span>
-              <strong>Saved ₹3,900/mo (26.8%)</strong>
-            </div>
-          </div>
+              <div class="vsres-case-card" {{ block.shopify_attributes }} style="background:#ffffff; border:2px solid #e7dcce; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
+                <!-- MINI SLIDER -->
+                <div class="vs-card-media-slider">
+                  <div class="vs-card-media-slides">
+                    <div class="vs-card-media-slide active">
+                      {% if block.settings.image_1 != blank %}
+                        <img src="{{ block.settings.image_1 | image_url: width: 800 }}" alt="{{ block.settings.tag_1 | default: 'Living Room AC' | escape }}" loading="lazy">
+                      {% else %}
+                        <img src="{{ def_img_1 }}" alt="{{ block.settings.tag_1 | default: 'Living Room AC' | escape }}" loading="lazy">
+                      {% endif %}
+                      {% if block.settings.tag_1 != blank %}
+                        <span class="vs-media-tag"><i class="fa-solid fa-snowflake"></i> {{ block.settings.tag_1 }}</span>
+                      {% endif %}
+                    </div>
+                    <div class="vs-card-media-slide">
+                      {% if block.settings.image_2 != blank %}
+                        <img src="{{ block.settings.image_2 | image_url: width: 800 }}" alt="{{ block.settings.tag_2 | default: 'Refrigerator' | escape }}" loading="lazy">
+                      {% else %}
+                        <img src="{{ def_img_2 }}" alt="{{ block.settings.tag_2 | default: 'Refrigerator' | escape }}" loading="lazy">
+                      {% endif %}
+                      {% if block.settings.tag_2 != blank %}
+                        <span class="vs-media-tag"><i class="fa-solid fa-cube"></i> {{ block.settings.tag_2 }}</span>
+                      {% endif %}
+                    </div>
+                    <div class="vs-card-media-slide">
+                      {% if block.settings.image_3 != blank %}
+                        <img src="{{ block.settings.image_3 | image_url: width: 800 }}" alt="{{ block.settings.tag_3 | default: 'Kitchen Grid' | escape }}" loading="lazy">
+                      {% else %}
+                        <img src="{{ def_img_3 }}" alt="{{ block.settings.tag_3 | default: 'Kitchen Grid' | escape }}" loading="lazy">
+                      {% endif %}
+                      {% if block.settings.tag_3 != blank %}
+                        <span class="vs-media-tag"><i class="fa-solid fa-tv"></i> {{ block.settings.tag_3 }}</span>
+                      {% endif %}
+                    </div>
+                    <div class="vs-card-media-slide">
+                      {% if block.settings.image_4 != blank %}
+                        <img src="{{ block.settings.image_4 | image_url: width: 800 }}" alt="{{ block.settings.tag_4 | default: 'Main MCB Board' | escape }}" loading="lazy">
+                      {% else %}
+                        <img src="{{ def_img_4 }}" alt="{{ block.settings.tag_4 | default: 'Main MCB Board' | escape }}" loading="lazy">
+                      {% endif %}
+                      {% if block.settings.tag_4 != blank %}
+                        <span class="vs-media-tag"><i class="fa-solid fa-bolt"></i> {{ block.settings.tag_4 }}</span>
+                      {% endif %}
+                    </div>
+                  </div>
+                  <button type="button" class="vs-media-arrow vs-media-prev" onclick="vsSlideMedia(this, -1)" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+                  <button type="button" class="vs-media-arrow vs-media-next" onclick="vsSlideMedia(this, 1)" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+                  <div class="vs-media-dots-bar">
+                    <span class="vs-media-dot active" onclick="vsGoMediaSlide(this, 0)"></span>
+                    <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 1)"></span>
+                    <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 2)"></span>
+                    <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 3)"></span>
+                  </div>
+                  <div class="vs-media-counter"><span class="vs-media-cur">1</span>/<span class="vs-media-tot">4</span></div>
+                </div>
 
-          <!-- CARD 3: VIKRAM VERMA (LUCKNOW) -->
-          <div class="vsres-case-card">
-            <div class="vsres-case-img-box">
-              <img src="{{ 'residential-house-2.png' | asset_url }}" alt="Vikram Verma Independent Villa Lucknow Home Savings" loading="lazy" class="vsres-case-cover-img" onerror="this.onerror=null; this.src='https://cdn.shopify.com/s/files/1/0663/8783/7093/files/VS_Card_Final_Design_Golden_1.png';">
-            </div>
-            <div class="vsres-case-header">
-              <div class="vsres-case-avatar">
-                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" alt="Vikram Verma" class="vsres-case-avatar-img" onerror="this.onerror=null; this.src='{{ 'wvs-indian-businessman.jpg' | asset_url }}';">
+                <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+                  <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #ec5c0a; box-shadow:0 4px 10px rgba(236,92,10,0.25);">
+                    {% if block.settings.avatar_image != blank %}
+                      <img src="{{ block.settings.avatar_image | image_url: width: 150 }}" alt="Customer Avatar" style="width:100%; height:100%; object-fit:cover; display:block;">
+                    {% else %}
+                      <img src="{{ def_avatar }}" alt="Customer Avatar" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'wvs-happy-man.jpg' | asset_url }}';">
+                    {% endif %}
+                  </div>
+                  <div>
+                    <h4 style="font-size:15px; font-weight:800; color:#0f172a; margin:0 0 2px 0; font-family:'Space Grotesk',sans-serif;">{{ block.settings.customer_name | default: 'Rohan Mehta' }} <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></h4>
+                    <div style="font-size:12px; color:#64748b; font-weight:600;"><i class="fa-solid fa-location-dot" style="color:#ec5c0a;"></i> {{ block.settings.location_load | default: '2 BHK Apartment, Mumbai' }}</div>
+                  </div>
+                </div>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
+                  <div style="background:#fff1f2; border:1px solid #fecdd3; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                    <span style="color:#e11d48; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">Old DISCOM Bill</span>
+                    <span style="font-family:'IBM Plex Mono',monospace; color:#9f1239; font-size:14px; font-weight:800; text-decoration:line-through;">{{ block.settings.old_bill | default: '₹8,400/mo' }}</span>
+                  </div>
+                  <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                    <span style="color:#059669; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">New DISCOM Bill</span>
+                    <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">{{ block.settings.new_bill | default: '₹6,100/mo' }}</span>
+                  </div>
+                </div>
+                <div style="background:linear-gradient(135deg, #0a4a2c 0%, #ec5c0a 100%); padding:11px 14px; border-radius:12px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(236,92,10,0.2);">
+                  <span style="color:#a7f3d0; font-size:11.5px;">{{ block.settings.cards_count | default: '⚡ 2 Residential Cards' }}</span>
+                  <strong style="color:#ffffff; font-size:13.5px;">{{ block.settings.savings_summary | default: 'Saved ₹2,300/mo (27%)' }}</strong>
+                </div>
               </div>
-              <div>
-                <div class="vsres-case-name">Vikram Verma <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></div>
-                <div class="vsres-case-location"><i class="fa-solid fa-location-dot" style="color:#ec5c0a;"></i> Independent Villa, Lucknow</div>
-              </div>
-            </div>
-            <div class="vsres-case-stats">
-              <div class="vsres-stat-col old">
-                <span class="vsres-stat-lbl">Old DISCOM Bill</span>
-                <span class="vsres-stat-val">₹22,000/mo</span>
-              </div>
-              <div class="vsres-stat-col new">
-                <span class="vsres-stat-lbl">New DISCOM Bill</span>
-                <span class="vsres-stat-val">₹15,800/mo</span>
-              </div>
-            </div>
-            <div class="vsres-case-result">
-              <span>⚡ 4 Cards (3-Phase)</span>
-              <strong>Saved ₹6,200/mo (28.1%)</strong>
-            </div>
-          </div>
+            {% endif %}
+          {% endfor %}
+          {% if case_study_count == 0 %}
+            <!-- FALLBACK IF NO BLOCKS ADDED YET (9 DEFAULT CARDS) -->
+            {% for i in (1..9) %}
+              {% case i %}
+                {% when 1 %}
+                  {% assign c_name = "Rohan Mehta" %}
+                  {% assign c_loc = "2 BHK Apartment, Mumbai" %}
+                  {% assign c_old = "₹8,400/mo" %}
+                  {% assign c_new = "₹6,100/mo" %}
+                  {% assign c_cards = "⚡ 2 Residential Cards" %}
+                  {% assign c_save = "Saved ₹2,300/mo (27%)" %}
+                  {% assign t1 = "Living Room AC & Inverter" %}{% assign t2 = "Double-Door Refrigerator" %}{% assign t3 = "4K Smart TV & Audio" %}{% assign t4 = "Main Home MCB Board" %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1593784991095-a205069470b6?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" %}
+                {% when 2 %}
+                  {% assign c_name = "Sunita Sharma" %}
+                  {% assign c_loc = "3 BHK House, Jaipur" %}
+                  {% assign c_old = "₹14,500/mo" %}
+                  {% assign c_new = "₹10,600/mo" %}
+                  {% assign c_cards = "⚡ 3 Residential Cards" %}
+                  {% assign c_save = "Saved ₹3,900/mo (26.8%)" %}
+                  {% assign t1 = "Master Bed Dual AC" %}{% assign t2 = "Water Submersible Pump" %}{% assign t3 = "Kitchen Induction Hub" %}{% assign t4 = "3-Phase Main DB Box" %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80" %}
+                {% when 3 %}
+                  {% assign c_name = "Vikram Verma" %}
+                  {% assign c_loc = "Independent Villa, Lucknow" %}
+                  {% assign c_old = "₹22,000/mo" %}
+                  {% assign c_new = "₹15,800/mo" %}
+                  {% assign c_cards = "⚡ 4 Cards (3-Phase)" %}
+                  {% assign c_save = "Saved ₹6,200/mo (28.1%)" %}
+                  {% assign t1 = "Multi-Split VRV AirCon" %}{% assign t2 = "2 HP Borewell Motor" %}{% assign t3 = "EV Home Charger Grid" %}{% assign t4 = "Villa Distribution Panel" %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" %}
+                {% when 4 %}
+                  {% assign c_name = "Anil Deshmukh" %}
+                  {% assign c_loc = "3 BHK House, Pune" %}
+                  {% assign c_old = "₹12,800/mo" %}
+                  {% assign c_new = "₹9,200/mo" %}
+                  {% assign c_cards = "⚡ 3 Residential Cards" %}
+                  {% assign c_save = "Saved ₹3,600/mo (28.1%)" %}
+                  {% assign t1 = "3x Split AC Grid" %}{% assign t2 = "Solar Hybrid Inverter" %}{% assign t3 = "Heavy Kitchen Load" %}{% assign t4 = "32A 3-Phase DB Board" %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1509391365360-2e959784a276?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&q=80" %}
+                {% when 5 %}
+                  {% assign c_name = "Pooja Iyer" %}
+                  {% assign c_loc = "4 BHK Duplex Villa, Bengaluru" %}
+                  {% assign c_old = "₹19,600/mo" %}
+                  {% assign c_new = "₹14,100/mo" %}
+                  {% assign c_cards = "⚡ 4 Cards (3-Phase)" %}
+                  {% assign c_save = "Saved ₹5,500/mo (28.0%)" %}
+                  {% assign t1 = "Home Theater & Lab" %}{% assign t2 = "3 HP Submersible & RO" %}{% assign t3 = "4x Inverter AC Setup" %}{% assign t4 = "Main LT Distribution Box" %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=150&q=80" %}
+                {% when 6 %}
+                  {% assign c_name = "Kavita Reddy" %}
+                  {% assign c_loc = "3 BHK Flat, Hyderabad" %}
+                  {% assign c_old = "₹11,400/mo" %}
+                  {% assign c_new = "₹8,100/mo" %}
+                  {% assign c_cards = "⚡ 2 Residential Cards" %}
+                  {% assign c_save = "Saved ₹3,300/mo (28.9%)" %}
+                  {% assign t1 = "Living Hall Dual AC" %}{% assign t2 = "Smart Washing & Fridge" %}{% assign t3 = "Water Heater Geysers" %}{% assign t4 = "Single-Phase Home DB" %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1582735689369-4fe89db7114c?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80" %}
+                {% when 7 %}
+                  {% assign c_name = "Rajesh Singhania" %}
+                  {% assign c_loc = "Luxury Builder Floor, Delhi NCR" %}
+                  {% assign c_old = "₹26,500/mo" %}
+                  {% assign c_new = "₹18,900/mo" %}
+                  {% assign c_cards = "⚡ 5 Cards (3-Phase)" %}
+                  {% assign c_save = "Saved ₹7,600/mo (28.6%)" %}
+                  {% assign t1 = "Central VRF AirCon" %}{% assign t2 = "High-Power Appliances" %}{% assign t3 = "Booster Water Pump" %}{% assign t4 = "63A 3-Phase Panel" %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1585338107529-13afc5f02586?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=150&q=80" %}
+                {% when 8 %}
+                  {% assign c_name = "Harish Patel" %}
+                  {% assign c_loc = "Modern Row House, Ahmedabad" %}
+                  {% assign c_old = "₹16,200/mo" %}
+                  {% assign c_new = "₹11,800/mo" %}
+                  {% assign c_cards = "⚡ 3 Residential Cards" %}
+                  {% assign c_save = "Saved ₹4,400/mo (27.1%)" %}
+                  {% assign t1 = "2x 2.0T Split ACs" %}{% assign t2 = "Auto Water Pump" %}{% assign t3 = "Home Office Workstations" %}{% assign t4 = "3-Phase Breaker Board" %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=150&q=80" %}
+                {% else %}
+                  {% assign c_name = "Subhash Bose" %}
+                  {% assign c_loc = "Classical Villa, Kolkata" %}
+                  {% assign c_old = "₹18,000/mo" %}
+                  {% assign c_new = "₹12,900/mo" %}
+                  {% assign c_cards = "⚡ 4 Cards (3-Phase)" %}
+                  {% assign c_save = "Saved ₹5,100/mo (28.3%)" %}
+                  {% assign t1 = "Heritage Hall AC" %}{% assign t2 = "Deep Freezer & Fridge" %}{% assign t3 = "Water Heater Circuits" %}{% assign t4 = "4-Pole MCB DB Box" %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=150&q=80" %}
+              {% endcase %}
 
-          <!-- CARD 4: ANIL DESHMUKH (PUNE) -->
-          <div class="vsres-case-card">
-            <div class="vsres-case-img-box">
-              <img src="{{ 'real-jaipur-3bhk-house.jpg' | asset_url }}" alt="Anil Deshmukh 3 BHK Independent House Pune Home Savings" loading="lazy" class="vsres-case-cover-img" onerror="this.onerror=null; this.src='https://cdn.shopify.com/s/files/1/0663/8783/7093/files/VS_Card_Final_Design_Golden_1.png';">
-            </div>
-            <div class="vsres-case-header">
-              <div class="vsres-case-avatar">
-                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&q=80" alt="Anil Deshmukh" class="vsres-case-avatar-img" onerror="this.onerror=null; this.src='{{ 'indian_entrepreneur.jpg' | asset_url }}';">
-              </div>
-              <div>
-                <div class="vsres-case-name">Anil Deshmukh <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></div>
-                <div class="vsres-case-location"><i class="fa-solid fa-location-dot" style="color:#ec5c0a;"></i> 3 BHK House, Pune</div>
-              </div>
-            </div>
-            <div class="vsres-case-stats">
-              <div class="vsres-stat-col old">
-                <span class="vsres-stat-lbl">Old DISCOM Bill</span>
-                <span class="vsres-stat-val">₹12,800/mo</span>
-              </div>
-              <div class="vsres-stat-col new">
-                <span class="vsres-stat-lbl">New DISCOM Bill</span>
-                <span class="vsres-stat-val">₹9,200/mo</span>
-              </div>
-            </div>
-            <div class="vsres-case-result">
-              <span>⚡ 3 Cards Installed</span>
-              <strong>Saved ₹3,600/mo (28.1%)</strong>
-            </div>
-          </div>
+              <div class="vsres-case-card" style="background:#ffffff; border:2px solid #e7dcce; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
+                <!-- MINI SLIDER -->
+                <div class="vs-card-media-slider">
+                  <div class="vs-card-media-slides">
+                    <div class="vs-card-media-slide active">
+                      <img src="{{ def_img_1 }}" alt="{{ t1 }}" loading="lazy">
+                      <span class="vs-media-tag"><i class="fa-solid fa-snowflake"></i> {{ t1 }}</span>
+                    </div>
+                    <div class="vs-card-media-slide">
+                      <img src="{{ def_img_2 }}" alt="{{ t2 }}" loading="lazy">
+                      <span class="vs-media-tag"><i class="fa-solid fa-cube"></i> {{ t2 }}</span>
+                    </div>
+                    <div class="vs-card-media-slide">
+                      <img src="{{ def_img_3 }}" alt="{{ t3 }}" loading="lazy">
+                      <span class="vs-media-tag"><i class="fa-solid fa-tv"></i> {{ t3 }}</span>
+                    </div>
+                    <div class="vs-card-media-slide">
+                      <img src="{{ def_img_4 }}" alt="{{ t4 }}" loading="lazy">
+                      <span class="vs-media-tag"><i class="fa-solid fa-bolt"></i> {{ t4 }}</span>
+                    </div>
+                  </div>
+                  <button type="button" class="vs-media-arrow vs-media-prev" onclick="vsSlideMedia(this, -1)" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+                  <button type="button" class="vs-media-arrow vs-media-next" onclick="vsSlideMedia(this, 1)" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+                  <div class="vs-media-dots-bar">
+                    <span class="vs-media-dot active" onclick="vsGoMediaSlide(this, 0)"></span>
+                    <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 1)"></span>
+                    <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 2)"></span>
+                    <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 3)"></span>
+                  </div>
+                  <div class="vs-media-counter"><span class="vs-media-cur">1</span>/<span class="vs-media-tot">4</span></div>
+                </div>
 
-          <!-- CARD 5: POOJA IYER (BENGALURU) -->
-          <div class="vsres-case-card">
-            <div class="vsres-case-img-box">
-              <img src="{{ 'real-lucknow-villa-house.jpg' | asset_url }}" alt="Pooja Iyer 4 BHK Duplex Villa Bengaluru Home Savings" loading="lazy" class="vsres-case-cover-img" onerror="this.onerror=null; this.src='https://cdn.shopify.com/s/files/1/0663/8783/7093/files/VS_Card_Final_Design_Golden_1.png';">
-            </div>
-            <div class="vsres-case-header">
-              <div class="vsres-case-avatar">
-                <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=150&q=80" alt="Pooja Iyer" class="vsres-case-avatar-img" onerror="this.onerror=null; this.src='{{ 'wvs-pointing-woman.jpg' | asset_url }}';">
+                <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+                  <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #ec5c0a; box-shadow:0 4px 10px rgba(236,92,10,0.25);">
+                    <img src="{{ def_avatar }}" alt="{{ c_name }}" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'wvs-happy-man.jpg' | asset_url }}';">
+                  </div>
+                  <div>
+                    <h4 style="font-size:15px; font-weight:800; color:#0f172a; margin:0 0 2px 0; font-family:'Space Grotesk',sans-serif;">{{ c_name }} <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></h4>
+                    <div style="font-size:12px; color:#64748b; font-weight:600;"><i class="fa-solid fa-location-dot" style="color:#ec5c0a;"></i> {{ c_loc }}</div>
+                  </div>
+                </div>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
+                  <div style="background:#fff1f2; border:1px solid #fecdd3; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                    <span style="color:#e11d48; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">Old DISCOM Bill</span>
+                    <span style="font-family:'IBM Plex Mono',monospace; color:#9f1239; font-size:14px; font-weight:800; text-decoration:line-through;">{{ c_old }}</span>
+                  </div>
+                  <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                    <span style="color:#059669; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">New DISCOM Bill</span>
+                    <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">{{ c_new }}</span>
+                  </div>
+                </div>
+                <div style="background:linear-gradient(135deg, #0a4a2c 0%, #ec5c0a 100%); padding:11px 14px; border-radius:12px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(236,92,10,0.2);">
+                  <span style="color:#a7f3d0; font-size:11.5px;">{{ c_cards }}</span>
+                  <strong style="color:#ffffff; font-size:13.5px;">{{ c_save }}</strong>
+                </div>
               </div>
-              <div>
-                <div class="vsres-case-name">Pooja Iyer <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></div>
-                <div class="vsres-case-location"><i class="fa-solid fa-location-dot" style="color:#ec5c0a;"></i> 4 BHK Duplex Villa, Bengaluru</div>
-              </div>
-            </div>
-            <div class="vsres-case-stats">
-              <div class="vsres-stat-col old">
-                <span class="vsres-stat-lbl">Old DISCOM Bill</span>
-                <span class="vsres-stat-val">₹19,600/mo</span>
-              </div>
-              <div class="vsres-stat-col new">
-                <span class="vsres-stat-lbl">New DISCOM Bill</span>
-                <span class="vsres-stat-val">₹14,100/mo</span>
-              </div>
-            </div>
-            <div class="vsres-case-result">
-              <span>⚡ 4 Cards (3-Phase)</span>
-              <strong>Saved ₹5,500/mo (28.0%)</strong>
-            </div>
-          </div>
-
-          <!-- CARD 6: KAVITA REDDY (HYDERABAD) -->
-          <div class="vsres-case-card">
-            <div class="vsres-case-img-box">
-              <img src="{{ 'real-mumbai-2bhk-apartment.jpg' | asset_url }}" alt="Kavita Reddy 3 BHK Flat Hyderabad Home Savings" loading="lazy" class="vsres-case-cover-img" onerror="this.onerror=null; this.src='https://cdn.shopify.com/s/files/1/0663/8783/7093/files/VS_Card_Final_Design_Golden_1.png';">
-            </div>
-            <div class="vsres-case-header">
-              <div class="vsres-case-avatar">
-                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80" alt="Kavita Reddy" class="vsres-case-avatar-img" onerror="this.onerror=null; this.src='{{ 'wvs-pointing-down-woman.jpg' | asset_url }}';">
-              </div>
-              <div>
-                <div class="vsres-case-name">Kavita Reddy <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></div>
-                <div class="vsres-case-location"><i class="fa-solid fa-location-dot" style="color:#ec5c0a;"></i> 3 BHK Flat, Hyderabad</div>
-              </div>
-            </div>
-            <div class="vsres-case-stats">
-              <div class="vsres-stat-col old">
-                <span class="vsres-stat-lbl">Old DISCOM Bill</span>
-                <span class="vsres-stat-val">₹11,400/mo</span>
-              </div>
-              <div class="vsres-stat-col new">
-                <span class="vsres-stat-lbl">New DISCOM Bill</span>
-                <span class="vsres-stat-val">₹8,100/mo</span>
-              </div>
-            </div>
-            <div class="vsres-case-result">
-              <span>⚡ 2 Cards Installed</span>
-              <strong>Saved ₹3,300/mo (28.9%)</strong>
-            </div>
-          </div>
-
-          <!-- CARD 7: RAJESH SINGHANIA (DELHI NCR) -->
-          <div class="vsres-case-card">
-            <div class="vsres-case-img-box">
-              <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=700&q=80" alt="Rajesh Singhania Luxury Floor Delhi NCR Home Savings" loading="lazy" class="vsres-case-cover-img" onerror="this.onerror=null; this.src='{{ 'case-residential.jpg' | asset_url }}';">
-            </div>
-            <div class="vsres-case-header">
-              <div class="vsres-case-avatar">
-                <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=150&q=80" alt="Rajesh Singhania" class="vsres-case-avatar-img" onerror="this.onerror=null; this.src='{{ 'hero-advisor-calculator.jpg' | asset_url }}';">
-              </div>
-              <div>
-                <div class="vsres-case-name">Rajesh Singhania <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></div>
-                <div class="vsres-case-location"><i class="fa-solid fa-location-dot" style="color:#ec5c0a;"></i> Luxury Builder Floor, Delhi NCR</div>
-              </div>
-            </div>
-            <div class="vsres-case-stats">
-              <div class="vsres-stat-col old">
-                <span class="vsres-stat-lbl">Old DISCOM Bill</span>
-                <span class="vsres-stat-val">₹26,500/mo</span>
-              </div>
-              <div class="vsres-stat-col new">
-                <span class="vsres-stat-lbl">New DISCOM Bill</span>
-                <span class="vsres-stat-val">₹18,900/mo</span>
-              </div>
-            </div>
-            <div class="vsres-case-result">
-              <span>⚡ 5 Cards (3-Phase)</span>
-              <strong>Saved ₹7,600/mo (28.6%)</strong>
-            </div>
-          </div>
-
-          <!-- CARD 8: HARISH PATEL (AHMEDABAD) -->
-          <div class="vsres-case-card">
-            <div class="vsres-case-img-box">
-              <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=700&q=80" alt="Harish Patel Modern Row House Ahmedabad Home Savings" loading="lazy" class="vsres-case-cover-img" onerror="this.onerror=null; this.src='{{ 'residential-house-1.png' | asset_url }}';">
-            </div>
-            <div class="vsres-case-header">
-              <div class="vsres-case-avatar">
-                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=150&q=80" alt="Harish Patel" class="vsres-case-avatar-img" onerror="this.onerror=null; this.src='{{ 'vidhyut-customer-call-support.jpg' | asset_url }}';">
-              </div>
-              <div>
-                <div class="vsres-case-name">Harish Patel <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></div>
-                <div class="vsres-case-location"><i class="fa-solid fa-location-dot" style="color:#ec5c0a;"></i> Modern Row House, Ahmedabad</div>
-              </div>
-            </div>
-            <div class="vsres-case-stats">
-              <div class="vsres-stat-col old">
-                <span class="vsres-stat-lbl">Old DISCOM Bill</span>
-                <span class="vsres-stat-val">₹16,200/mo</span>
-              </div>
-              <div class="vsres-stat-col new">
-                <span class="vsres-stat-lbl">New DISCOM Bill</span>
-                <span class="vsres-stat-val">₹11,800/mo</span>
-              </div>
-            </div>
-            <div class="vsres-case-result">
-              <span>⚡ 3 Cards Installed</span>
-              <strong>Saved ₹4,400/mo (27.1%)</strong>
-            </div>
-          </div>
-
-          <!-- CARD 9: SUBHASH BOSE (KOLKATA) -->
-          <div class="vsres-case-card">
-            <div class="vsres-case-img-box">
-              <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=700&q=80" alt="Subhash Bose Classical Heritage Villa Kolkata Home Savings" loading="lazy" class="vsres-case-cover-img" onerror="this.onerror=null; this.src='{{ 'residential-house-2.png' | asset_url }}';">
-            </div>
-            <div class="vsres-case-header">
-              <div class="vsres-case-avatar">
-                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=150&q=80" alt="Subhash Bose" class="vsres-case-avatar-img" onerror="this.onerror=null; this.src='{{ 'indian_entrepreneur.jpg' | asset_url }}';">
-              </div>
-              <div>
-                <div class="vsres-case-name">Subhash Bose <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></div>
-                <div class="vsres-case-location"><i class="fa-solid fa-location-dot" style="color:#ec5c0a;"></i> Classical Villa, Kolkata</div>
-              </div>
-            </div>
-            <div class="vsres-case-stats">
-              <div class="vsres-stat-col old">
-                <span class="vsres-stat-lbl">Old DISCOM Bill</span>
-                <span class="vsres-stat-val">₹18,000/mo</span>
-              </div>
-              <div class="vsres-stat-col new">
-                <span class="vsres-stat-lbl">New DISCOM Bill</span>
-                <span class="vsres-stat-val">₹12,900/mo</span>
-              </div>
-            </div>
-            <div class="vsres-case-result">
-              <span>⚡ 4 Cards (3-Phase)</span>
-              <strong>Saved ₹5,100/mo (28.3%)</strong>
-            </div>
-          </div>
+            {% endfor %}
+          {% endif %}
         </div>
 
         <!-- MOBILE SLIDER DOTS -->
@@ -2459,6 +2644,42 @@
   function closeMcbLightbox() {
     document.getElementById('mcb_lightbox').classList.remove('active');
   }
+
+  /* ══ 4-IMAGE MINI SLIDER CONTROLS ══ */
+  window.vsSlideMedia = function(btn, dir) {
+    var slider = btn.closest('.vs-card-media-slider');
+    if (!slider) return;
+    var slides = slider.querySelectorAll('.vs-card-media-slide');
+    var dots = slider.querySelectorAll('.vs-media-dot');
+    var curSpan = slider.querySelector('.vs-media-cur');
+    if (!slides.length) return;
+    var activeIdx = 0;
+    slides.forEach(function(s, idx) {
+      if (s.classList.contains('active')) activeIdx = idx;
+    });
+    var nextIdx = (activeIdx + dir + slides.length) % slides.length;
+    slides[activeIdx].classList.remove('active');
+    slides[nextIdx].classList.add('active');
+    if (dots.length > nextIdx) {
+      dots[activeIdx].classList.remove('active');
+      dots[nextIdx].classList.add('active');
+    }
+    if (curSpan) curSpan.innerText = nextIdx + 1;
+  };
+
+  window.vsGoMediaSlide = function(dot, idx) {
+    var slider = dot.closest('.vs-card-media-slider');
+    if (!slider) return;
+    var slides = slider.querySelectorAll('.vs-card-media-slide');
+    var dots = slider.querySelectorAll('.vs-media-dot');
+    var curSpan = slider.querySelector('.vs-media-cur');
+    if (!slides.length || idx >= slides.length) return;
+    slides.forEach(function(s) { s.classList.remove('active'); });
+    dots.forEach(function(d) { d.classList.remove('active'); });
+    slides[idx].classList.add('active');
+    if (dots[idx]) dots[idx].classList.add('active');
+    if (curSpan) curSpan.innerText = idx + 1;
+  };
 
   /* ══ MOBILE 5-SECOND CASE STUDIES AUTO-SLIDER ══ */
   (function() {
@@ -2593,6 +2814,28 @@
   ],
   "blocks": [
     {
+      "type": "residential_case_study",
+      "name": "Residential Case Study (4-Img)",
+      "limit": 9,
+      "settings": [
+        { "type": "image_picker", "id": "image_1", "label": "Slide 1 Image" },
+        { "type": "text", "id": "tag_1", "label": "Slide 1 Tag", "default": "Living Room AC & Inverter" },
+        { "type": "image_picker", "id": "image_2", "label": "Slide 2 Image" },
+        { "type": "text", "id": "tag_2", "label": "Slide 2 Tag", "default": "Double-Door Refrigerator" },
+        { "type": "image_picker", "id": "image_3", "label": "Slide 3 Image" },
+        { "type": "text", "id": "tag_3", "label": "Slide 3 Tag", "default": "4K Smart TV & Audio" },
+        { "type": "image_picker", "id": "image_4", "label": "Slide 4 Image" },
+        { "type": "text", "id": "tag_4", "label": "Slide 4 Tag", "default": "Main Home MCB Board" },
+        { "type": "image_picker", "id": "avatar_image", "label": "Customer Avatar Photo" },
+        { "type": "text", "id": "customer_name", "label": "Customer Name", "default": "Rohan Mehta" },
+        { "type": "text", "id": "location_load", "label": "Location & House Type", "default": "2 BHK Apartment, Mumbai" },
+        { "type": "text", "id": "old_bill", "label": "Old Monthly Bill", "default": "₹8,400/mo" },
+        { "type": "text", "id": "new_bill", "label": "New Monthly Bill", "default": "₹6,100/mo" },
+        { "type": "text", "id": "cards_count", "label": "Cards Installed Text", "default": "⚡ 2 Residential Cards" },
+        { "type": "text", "id": "savings_summary", "label": "Savings Summary Text", "default": "Saved ₹2,300/mo (27%)" }
+      ]
+    },
+    {
       "type": "mcb_installation",
       "name": "MCB Installation Photo",
       "limit": 20,
@@ -2638,6 +2881,15 @@
     {
       "name": "Residential Cards Layout",
       "blocks": [
+        { "type": "residential_case_study", "settings": { "customer_name": "Rohan Mehta", "location_load": "2 BHK Apartment, Mumbai", "old_bill": "₹8,400/mo", "new_bill": "₹6,100/mo", "cards_count": "⚡ 2 Residential Cards", "savings_summary": "Saved ₹2,300/mo (27%)", "tag_1": "Living Room AC & Inverter", "tag_2": "Double-Door Refrigerator", "tag_3": "4K Smart TV & Audio", "tag_4": "Main Home MCB Board" } },
+        { "type": "residential_case_study", "settings": { "customer_name": "Sunita Sharma", "location_load": "3 BHK House, Jaipur", "old_bill": "₹14,500/mo", "new_bill": "₹10,600/mo", "cards_count": "⚡ 3 Residential Cards", "savings_summary": "Saved ₹3,900/mo (26.8%)", "tag_1": "Master Bed Dual AC", "tag_2": "Water Submersible Pump", "tag_3": "Kitchen Induction Hub", "tag_4": "3-Phase Main DB Box" } },
+        { "type": "residential_case_study", "settings": { "customer_name": "Vikram Verma", "location_load": "Independent Villa, Lucknow", "old_bill": "₹22,000/mo", "new_bill": "₹15,800/mo", "cards_count": "⚡ 4 Cards (3-Phase)", "savings_summary": "Saved ₹6,200/mo (28.1%)", "tag_1": "Multi-Split VRV AirCon", "tag_2": "2 HP Borewell Motor", "tag_3": "EV Home Charger Grid", "tag_4": "Villa Distribution Panel" } },
+        { "type": "residential_case_study", "settings": { "customer_name": "Anil Deshmukh", "location_load": "3 BHK House, Pune", "old_bill": "₹12,800/mo", "new_bill": "₹9,200/mo", "cards_count": "⚡ 3 Residential Cards", "savings_summary": "Saved ₹3,600/mo (28.1%)", "tag_1": "3x Split AC Grid", "tag_2": "Solar Hybrid Inverter", "tag_3": "Heavy Kitchen Load", "tag_4": "32A 3-Phase DB Board" } },
+        { "type": "residential_case_study", "settings": { "customer_name": "Pooja Iyer", "location_load": "4 BHK Duplex Villa, Bengaluru", "old_bill": "₹19,600/mo", "new_bill": "₹14,100/mo", "cards_count": "⚡ 4 Cards (3-Phase)", "savings_summary": "Saved ₹5,500/mo (28.0%)", "tag_1": "Home Theater & Lab", "tag_2": "3 HP Submersible & RO", "tag_3": "4x Inverter AC Setup", "tag_4": "Main LT Distribution Box" } },
+        { "type": "residential_case_study", "settings": { "customer_name": "Kavita Reddy", "location_load": "3 BHK Flat, Hyderabad", "old_bill": "₹11,400/mo", "new_bill": "₹8,100/mo", "cards_count": "⚡ 2 Residential Cards", "savings_summary": "Saved ₹3,300/mo (28.9%)", "tag_1": "Living Hall Dual AC", "tag_2": "Smart Washing & Fridge", "tag_3": "Water Heater Geysers", "tag_4": "Single-Phase Home DB" } },
+        { "type": "residential_case_study", "settings": { "customer_name": "Rajesh Singhania", "location_load": "Luxury Builder Floor, Delhi NCR", "old_bill": "₹26,500/mo", "new_bill": "₹18,900/mo", "cards_count": "⚡ 5 Cards (3-Phase)", "savings_summary": "Saved ₹7,600/mo (28.6%)", "tag_1": "Central VRF AirCon", "tag_2": "High-Power Appliances", "tag_3": "Booster Water Pump", "tag_4": "63A 3-Phase Panel" } },
+        { "type": "residential_case_study", "settings": { "customer_name": "Harish Patel", "location_load": "Modern Row House, Ahmedabad", "old_bill": "₹16,200/mo", "new_bill": "₹11,800/mo", "cards_count": "⚡ 3 Residential Cards", "savings_summary": "Saved ₹4,400/mo (27.1%)", "tag_1": "2x 2.0T Split ACs", "tag_2": "Auto Water Pump", "tag_3": "Home Office Workstations", "tag_4": "3-Phase Breaker Board" } },
+        { "type": "residential_case_study", "settings": { "customer_name": "Subhash Bose", "location_load": "Classical Villa, Kolkata", "old_bill": "₹18,000/mo", "new_bill": "₹12,900/mo", "cards_count": "⚡ 4 Cards (3-Phase)", "savings_summary": "Saved ₹5,100/mo (28.3%)", "tag_1": "Heritage Hall AC", "tag_2": "Deep Freezer & Fridge", "tag_3": "Water Heater Circuits", "tag_4": "4-Pole MCB DB Box" } },
         { "type": "mcb_installation", "settings": { "title": "Home MCB Setup #1", "category": "single", "badge": "16A SINGLE PHASE" } },
         { "type": "mcb_installation", "settings": { "title": "Home MCB Setup #2", "category": "single", "badge": "16A SINGLE PHASE" } },
         { "type": "mcb_installation", "settings": { "title": "Home MCB Setup #3", "category": "single", "badge": "16A SINGLE PHASE" } },
