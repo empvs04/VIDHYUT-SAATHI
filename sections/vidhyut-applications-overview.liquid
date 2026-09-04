@@ -1,6 +1,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&family=Baloo+2:wght@600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
 
 <style>
   .vs-apps-sec-{{ section.id }} {
@@ -14,11 +14,11 @@
     --gold: #D4900F;
     --line: rgba(42, 33, 24, 0.08);
 
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     color: var(--ink);
-    background: radial-gradient(circle at 15% 20%, rgba(255, 244, 235, 0.9) 0%, #FFFFFF 50%),
-                radial-gradient(circle at 85% 80%, rgba(255, 230, 208, 0.5) 0%, transparent 60%),
-                linear-gradient(180deg, #FFFFFF 0%, #FFF8F2 100%);
+    background: radial-gradient(circle at 12% 18%, rgba(255, 244, 235, 0.95) 0%, #FFFFFF 48%),
+                radial-gradient(circle at 88% 82%, rgba(255, 230, 208, 0.55) 0%, transparent 60%),
+                linear-gradient(180deg, #FFFFFF 0%, #FFF9F4 100%);
     padding: {{ section.settings.padding_top_desk | default: 85 }}px 24px {{ section.settings.padding_bottom_desk | default: 85 }}px 24px;
     position: relative;
     overflow: hidden;
@@ -45,10 +45,10 @@
     position: absolute;
     top: 5%;
     left: -100px;
-    width: 450px;
-    height: 450px;
+    width: 480px;
+    height: 480px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(255, 122, 26, 0.12), transparent 70%);
+    background: radial-gradient(circle, rgba(255, 122, 26, 0.14), transparent 70%);
     pointer-events: none;
     z-index: 1;
   }
@@ -57,36 +57,36 @@
     position: absolute;
     bottom: 5%;
     right: -80px;
-    width: 450px;
-    height: 450px;
+    width: 480px;
+    height: 480px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(212, 144, 15, 0.1), transparent 70%);
+    background: radial-gradient(circle, rgba(212, 144, 15, 0.12), transparent 70%);
     pointer-events: none;
     z-index: 1;
   }
 
-  /* ---------- SECTION HEADER ---------- */
+  /* ---------- SECTION HEADER (SINGLE LINE ON DESKTOP) ---------- */
   .vs-apps-sec-{{ section.id }} .section-head {
     text-align: center;
-    max-width: 900px;
-    margin: 0 auto 56px auto;
+    max-width: 1240px;
+    margin: 0 auto 52px auto;
   }
 
   .vs-apps-sec-{{ section.id }} .top-badge {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.96);
     border: 1px solid var(--orange-100);
     border-radius: 999px;
-    padding: 8px 22px;
+    padding: 8px 24px;
     font-size: 13px;
     font-weight: 700;
     color: var(--ink);
-    box-shadow: 0 10px 24px -10px rgba(42, 33, 24, 0.2), 0 0 0 1px rgba(255, 122, 26, 0.1);
+    box-shadow: 0 10px 24px -10px rgba(42, 33, 24, 0.2), 0 0 0 1px rgba(255, 122, 26, 0.12);
     margin-bottom: 18px;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
   }
 
   .vs-apps-sec-{{ section.id }} .top-badge .dot {
@@ -94,7 +94,7 @@
     height: 8px;
     border-radius: 50%;
     background: var(--leaf);
-    box-shadow: 0 0 0 3px rgba(15, 139, 61, 0.2);
+    box-shadow: 0 0 0 3px rgba(15, 139, 61, 0.25);
     animation: vsDotPulse 2s infinite ease-in-out;
   }
 
@@ -104,22 +104,23 @@
   }
 
   .vs-apps-sec-{{ section.id }} .kicker {
-    font-family: 'Sora', sans-serif;
+    font-family: 'Outfit', sans-serif;
     font-weight: 800;
     font-size: 13.5px;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.14em;
     color: var(--saffron);
     text-transform: uppercase;
     margin-bottom: 10px;
   }
 
   .vs-apps-sec-{{ section.id }} .section-title {
-    font-family: 'Sora', 'Baloo 2', sans-serif;
+    font-family: 'Sora', sans-serif;
     font-weight: 800;
-    font-size: 40px;
+    font-size: clamp(26px, 2.65vw, 38px);
     letter-spacing: -0.025em;
     line-height: 1.22;
     color: var(--ink);
+    white-space: nowrap; /* Single line on desktop */
   }
 
   .vs-apps-sec-{{ section.id }} .section-title .accent {
@@ -135,7 +136,7 @@
     display: grid;
     grid-template-columns: 1.15fr 0.85fr;
     gap: 48px;
-    align-items: stretch; /* Equal height for both columns */
+    align-items: stretch; /* Equal height */
   }
 
   /* ---------- LEFT: CARD GRID ---------- */
@@ -180,10 +181,10 @@
     transform: rotate(40deg);
     background: linear-gradient(100deg, var(--saffron), #FFA034, var(--gold));
     color: var(--white);
-    font-family: 'Sora', sans-serif;
+    font-family: 'Outfit', sans-serif;
     font-size: 9.5px;
     font-weight: 800;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.06em;
     text-align: center;
     padding: 4px 0;
     z-index: 5;
@@ -257,19 +258,19 @@
     position: absolute;
     top: 15px;
     left: 16px;
-    font-family: 'Sora', sans-serif;
+    font-family: 'Outfit', sans-serif;
     font-weight: 800;
-    font-size: 11.5px;
-    letter-spacing: 0.1em;
+    font-size: 11px;
+    letter-spacing: 0.12em;
     color: var(--saffron);
     z-index: 4;
     text-transform: uppercase;
-    background: rgba(0, 0, 0, 0.35);
-    padding: 2px 8px;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 3px 9px;
     border-radius: 6px;
-    border: 1px solid rgba(255, 122, 26, 0.3);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 122, 26, 0.35);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
   }
 
   .vs-apps-sec-{{ section.id }} .card-inner {
@@ -303,10 +304,10 @@
     gap: 6px;
     background: linear-gradient(100deg, var(--leaf), #1BA852);
     color: var(--white);
-    font-family: 'Sora', sans-serif;
+    font-family: 'Outfit', sans-serif;
     font-weight: 700;
     font-size: 9.5px;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.03em;
     padding: 5px 12px;
     border-radius: 999px;
     margin-bottom: 7px;
@@ -319,7 +320,7 @@
   }
 
   .vs-apps-sec-{{ section.id }} .card-title {
-    font-family: 'Sora', 'Baloo 2', sans-serif;
+    font-family: 'Sora', sans-serif;
     font-weight: 800;
     font-size: 16.5px;
     color: var(--white);
@@ -365,7 +366,7 @@
     -webkit-backdrop-filter: blur(4px);
   }
 
-  /* ---------- RIGHT: HEADING + CHECKLIST (EQUAL HEIGHT & ALIGNED TOP) ---------- */
+  /* ---------- RIGHT: HEADING + 4 LUCRATIVE CARDS ---------- */
   .vs-apps-sec-{{ section.id }} .right {
     display: flex;
     flex-direction: column;
@@ -376,11 +377,11 @@
   }
 
   .vs-apps-sec-{{ section.id }} .right h2 {
-    font-family: 'Sora', 'Baloo 2', sans-serif;
+    font-family: 'Sora', sans-serif;
     font-weight: 800;
     font-size: 32px;
     line-height: 1.22;
-    letter-spacing: -0.015em;
+    letter-spacing: -0.02em;
     color: var(--ink);
     margin-top: 0;
     margin-bottom: 0;
@@ -410,39 +411,91 @@
     display: flex;
     align-items: center;
     gap: 16px;
-    background: rgba(255, 255, 255, 0.95);
-    border-left: 4.5px solid var(--saffron);
-    border-radius: 16px;
-    padding: 14px 20px;
-    box-shadow: 0 14px 28px -14px rgba(42, 33, 24, 0.2), 0 0 0 1px var(--orange-100);
-    transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 248, 242, 0.92) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 18px;
+    padding: 13px 20px;
+    box-shadow: 0 14px 30px -14px rgba(42, 33, 24, 0.18), 0 0 0 1px var(--orange-100);
+    transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .vs-apps-sec-{{ section.id }} .check-item::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 5px;
+    border-radius: 4px 0 0 4px;
+    background: linear-gradient(180deg, var(--saffron), var(--gold));
+    transition: width 0.3s ease;
+  }
+
+  .vs-apps-sec-{{ section.id }} .check-item.theme-res::before {
+    background: linear-gradient(180deg, #FF7A1A, #FFB03A);
+  }
+  .vs-apps-sec-{{ section.id }} .check-item.theme-com::before {
+    background: linear-gradient(180deg, #1E88E5, #00ACC1);
+  }
+  .vs-apps-sec-{{ section.id }} .check-item.theme-ind::before {
+    background: linear-gradient(180deg, #E65100, #F57C00);
+  }
+  .vs-apps-sec-{{ section.id }} .check-item.theme-ins::before {
+    background: linear-gradient(180deg, #0F8B3D, #00BFA5);
   }
 
   .vs-apps-sec-{{ section.id }} .check-item:hover {
-    transform: translateX(6px);
-    box-shadow: 0 22px 40px -12px rgba(255, 122, 26, 0.32), 0 0 0 1.5px var(--saffron);
+    transform: translateX(8px) translateY(-2px);
+    box-shadow: 0 22px 42px -12px rgba(255, 122, 26, 0.28), 0 0 0 1.5px rgba(255, 122, 26, 0.35);
   }
 
   .vs-apps-sec-{{ section.id }} .check-circle {
-    width: 32px;
-    height: 32px;
+    width: 34px;
+    height: 34px;
     border-radius: 50%;
-    background: linear-gradient(150deg, #FF9142, var(--saffron));
+    background: linear-gradient(145deg, #FF9142 0%, var(--saffron) 100%);
     color: var(--white);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 800;
     flex-shrink: 0;
-    box-shadow: 0 8px 18px -6px rgba(255, 122, 26, 0.6);
+    box-shadow: 0 8px 18px -4px rgba(255, 122, 26, 0.65), inset 0 1px 2px rgba(255, 255, 255, 0.4);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+  }
+
+  .vs-apps-sec-{{ section.id }} .check-item:hover .check-circle {
+    transform: scale(1.1) rotate(6deg);
+    box-shadow: 0 10px 22px -3px rgba(255, 122, 26, 0.85);
+  }
+
+  .vs-apps-sec-{{ section.id }} .check-text-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .vs-apps-sec-{{ section.id }} .sector-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 11.5px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--saffron);
+    line-height: 1.2;
   }
 
   .vs-apps-sec-{{ section.id }} .check-item p {
     font-size: 14.5px;
-    line-height: 1.48;
+    line-height: 1.45;
     color: var(--ink);
     margin: 0;
   }
@@ -450,13 +503,16 @@
   .vs-apps-sec-{{ section.id }} .check-item p strong {
     font-weight: 700;
     color: var(--ink);
-    font-family: 'Sora', sans-serif;
   }
 
   /* ---------- RESPONSIVE BREAKPOINTS ---------- */
   @media (max-width: 1024px) {
     .vs-apps-sec-{{ section.id }} {
       padding: {{ section.settings.padding_top_mob | default: 56 }}px 20px {{ section.settings.padding_bottom_mob | default: 56 }}px 20px;
+    }
+    .vs-apps-sec-{{ section.id }} .section-title {
+      white-space: normal;
+      font-size: 28px;
     }
     .vs-apps-sec-{{ section.id }} .content {
       grid-template-columns: 1fr;
@@ -479,9 +535,6 @@
     .vs-apps-sec-{{ section.id }} .section-head {
       margin-bottom: 38px;
     }
-    .vs-apps-sec-{{ section.id }} .section-title {
-      font-size: 30px;
-    }
   }
 
   @media (max-width: 640px) {
@@ -496,7 +549,7 @@
       font-size: 12px;
     }
     .vs-apps-sec-{{ section.id }} .section-title {
-      font-size: 25px;
+      font-size: 24px;
     }
     .vs-apps-sec-{{ section.id }} .top-badge {
       font-size: 11.5px;
@@ -521,7 +574,7 @@
 
   <div class="container">
 
-    <!-- SECTION HEADER -->
+    <!-- SECTION HEADER (SINGLE LINE ON DESKTOP) -->
     <div class="section-head">
       {% if section.settings.badge_text != blank %}
         <div class="top-badge">
@@ -545,153 +598,216 @@
 
       <!-- LEFT: 4 SECTOR CARDS WITH SHOPIFY IMAGE SUPPORT -->
       <div class="cards-grid">
+        {% assign sector_cards = section.blocks | where: "type", "sector_card" %}
+        {% if sector_cards.size > 0 %}
+          {% for block in sector_cards %}
+            <div class="app-card {% if block.settings.ribbon_text != blank %}popular{% endif %}" {{ block.shopify_attributes }}>
+              {% if block.settings.ribbon_text != blank %}
+                <div class="ribbon">{{ block.settings.ribbon_text }}</div>
+              {% endif %}
 
-        <!-- 1. Residential -->
-        <div class="app-card popular">
-          <div class="ribbon">{{ section.settings.card1_ribbon | default: "MOST POPULAR" }}</div>
-          
-          <div 
-            class="card-bg residential {% if section.settings.card1_image != blank %}has-custom-img{% endif %}"
-            {% if section.settings.card1_image != blank %}
-              style="background-image: url('{{ section.settings.card1_image | image_url: width: 900 }}');"
+              <div 
+                class="card-bg {{ block.settings.card_theme | default: 'residential' }} {% if block.settings.card_image != blank %}has-custom-img{% endif %}"
+                {% if block.settings.card_image != blank %}
+                  style="background-image: url('{{ block.settings.card_image | image_url: width: 900 }}');"
+                {% endif %}
+              ></div>
+
+              {% if block.settings.card_image == blank %}
+                {% case block.settings.card_theme %}
+                  {% when 'commercial' %}
+                    <svg class="icon-motif" viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg">
+                      <rect x="60" y="20" width="80" height="120" fill="rgba(255,255,255,0.08)"/>
+                      <rect x="72" y="34" width="14" height="14" fill="rgba(255,255,255,0.12)"/>
+                      <rect x="93" y="34" width="14" height="14" fill="rgba(255,255,255,0.12)"/>
+                      <rect x="114" y="34" width="14" height="14" fill="rgba(255,255,255,0.12)"/>
+                      <rect x="72" y="56" width="14" height="14" fill="rgba(255,255,255,0.12)"/>
+                      <rect x="93" y="56" width="14" height="14" fill="rgba(255,255,255,0.12)"/>
+                      <rect x="114" y="56" width="14" height="14" fill="rgba(255,255,255,0.12)"/>
+                      <rect x="72" y="78" width="14" height="14" fill="rgba(255,255,255,0.12)"/>
+                      <rect x="93" y="78" width="14" height="14" fill="rgba(255,255,255,0.12)"/>
+                      <rect x="114" y="78" width="14" height="14" fill="rgba(255,255,255,0.12)"/>
+                    </svg>
+                  {% when 'industrial' %}
+                    <svg class="icon-motif" viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg">
+                      <rect x="40" y="80" width="120" height="60" fill="rgba(255,255,255,0.08)"/>
+                      <rect x="55" y="45" width="16" height="35" fill="rgba(255,255,255,0.1)"/>
+                      <rect x="90" y="35" width="16" height="45" fill="rgba(255,255,255,0.1)"/>
+                      <rect x="125" y="50" width="16" height="30" fill="rgba(255,255,255,0.1)"/>
+                      <circle cx="63" cy="40" r="6" fill="rgba(255,255,255,0.15)"/>
+                      <circle cx="98" cy="30" r="6" fill="rgba(255,255,255,0.15)"/>
+                    </svg>
+                  {% when 'institutional' %}
+                    <svg class="icon-motif" viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg">
+                      <rect x="50" y="60" width="100" height="80" fill="rgba(255,255,255,0.08)"/>
+                      <polygon points="45,60 100,25 155,60" fill="rgba(255,255,255,0.1)"/>
+                      <rect x="68" y="80" width="12" height="30" fill="rgba(255,255,255,0.12)"/>
+                      <rect x="94" y="80" width="12" height="30" fill="rgba(255,255,255,0.12)"/>
+                      <rect x="120" y="80" width="12" height="30" fill="rgba(255,255,255,0.12)"/>
+                    </svg>
+                  {% else %}
+                    <svg class="icon-motif" viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M100 25 L170 80 L160 80 L160 140 L40 140 L40 80 L30 80 Z" fill="rgba(255,255,255,0.08)"/>
+                      <rect x="90" y="105" width="20" height="35" fill="rgba(255,255,255,0.1)"/>
+                      <rect x="55" y="95" width="18" height="18" fill="rgba(255,255,255,0.08)"/>
+                      <rect x="127" y="95" width="18" height="18" fill="rgba(255,255,255,0.08)"/>
+                    </svg>
+                {% endcase %}
+              {% endif %}
+
+              <div class="use-tag">USE</div>
+              <div class="card-inner">
+                <p class="card-tagline">{{ block.settings.tagline }}</p>
+                <div class="card-bottom">
+                  <div class="card-chip"><span class="bolt">⚡</span>{{ block.settings.chip_text | default: "EVERY 6 KW REQUIRED 1 CARD" }}</div>
+                  <div class="card-title">{{ block.settings.title }}</div>
+                  <div class="card-benefits">
+                    <div class="b"><span class="ic">{{ block.settings.benefit_1_icon | default: "💡" }}</span>{{ block.settings.benefit_1_text }}</div>
+                    <div class="b"><span class="ic">{{ block.settings.benefit_2_icon | default: "🛡️" }}</span>{{ block.settings.benefit_2_text }}</div>
+                    <div class="b"><span class="ic">{{ block.settings.benefit_3_icon | default: "✓" }}</span>{{ block.settings.benefit_3_text }}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        {% else %}
+          <!-- 1. Residential -->
+          <div class="app-card popular">
+            <div class="ribbon">{{ section.settings.card1_ribbon | default: "MOST POPULAR" }}</div>
+            <div 
+              class="card-bg residential {% if section.settings.card1_image != blank %}has-custom-img{% endif %}"
+              {% if section.settings.card1_image != blank %}
+                style="background-image: url('{{ section.settings.card1_image | image_url: width: 900 }}');"
+              {% endif %}
+            ></div>
+            {% if section.settings.card1_image == blank %}
+              <svg class="icon-motif" viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg">
+                <path d="M100 25 L170 80 L160 80 L160 140 L40 140 L40 80 L30 80 Z" fill="rgba(255,255,255,0.08)"/>
+                <rect x="90" y="105" width="20" height="35" fill="rgba(255,255,255,0.1)"/>
+                <rect x="55" y="95" width="18" height="18" fill="rgba(255,255,255,0.08)"/>
+                <rect x="127" y="95" width="18" height="18" fill="rgba(255,255,255,0.08)"/>
+              </svg>
             {% endif %}
-          ></div>
-
-          {% if section.settings.card1_image == blank %}
-            <svg class="icon-motif" viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg">
-              <path d="M100 25 L170 80 L160 80 L160 140 L40 140 L40 80 L30 80 Z" fill="rgba(255,255,255,0.08)"/>
-              <rect x="90" y="105" width="20" height="35" fill="rgba(255,255,255,0.1)"/>
-              <rect x="55" y="95" width="18" height="18" fill="rgba(255,255,255,0.08)"/>
-              <rect x="127" y="95" width="18" height="18" fill="rgba(255,255,255,0.08)"/>
-            </svg>
-          {% endif %}
-
-          <div class="use-tag">USE</div>
-          <div class="card-inner">
-            <p class="card-tagline">{{ section.settings.card1_tagline | default: "Smart Saving for Every Home" }}</p>
-            <div class="card-bottom">
-              <div class="card-chip"><span class="bolt">⚡</span>{{ section.settings.card1_chip | default: "EVERY 6 KW REQUIRED 1 CARD" }}</div>
-              <div class="card-title">{{ section.settings.card1_title | default: "RESIDENTIAL USE" }}</div>
-              <div class="card-benefits">
-                <div class="b"><span class="ic">{{ section.settings.card1_b1_icon | default: "💡" }}</span>{{ section.settings.card1_b1_text | default: "Save 25% Electricity Bill" }}</div>
-                <div class="b"><span class="ic">{{ section.settings.card1_b2_icon | default: "🛡️" }}</span>{{ section.settings.card1_b2_text | default: "Voltage Protection" }}</div>
-                <div class="b"><span class="ic">{{ section.settings.card1_b3_icon | default: "✓" }}</span>{{ section.settings.card1_b3_text | default: "Guaranteed Results" }}</div>
+            <div class="use-tag">USE</div>
+            <div class="card-inner">
+              <p class="card-tagline">{{ section.settings.card1_tagline | default: "Smart Saving for Every Home" }}</p>
+              <div class="card-bottom">
+                <div class="card-chip"><span class="bolt">⚡</span>{{ section.settings.card1_chip | default: "EVERY 6 KW REQUIRED 1 CARD" }}</div>
+                <div class="card-title">{{ section.settings.card1_title | default: "RESIDENTIAL USE" }}</div>
+                <div class="card-benefits">
+                  <div class="b"><span class="ic">{{ section.settings.card1_b1_icon | default: "💡" }}</span>{{ section.settings.card1_b1_text | default: "Save 25% Electricity Bill" }}</div>
+                  <div class="b"><span class="ic">{{ section.settings.card1_b2_icon | default: "🛡️" }}</span>{{ section.settings.card1_b2_text | default: "Voltage Protection" }}</div>
+                  <div class="b"><span class="ic">{{ section.settings.card1_b3_icon | default: "✓" }}</span>{{ section.settings.card1_b3_text | default: "Guaranteed Results" }}</div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <!-- 2. Commercial -->
-        <div class="app-card">
-          <div 
-            class="card-bg commercial {% if section.settings.card2_image != blank %}has-custom-img{% endif %}"
-            {% if section.settings.card2_image != blank %}
-              style="background-image: url('{{ section.settings.card2_image | image_url: width: 900 }}');"
+          <!-- 2. Commercial -->
+          <div class="app-card">
+            <div 
+              class="card-bg commercial {% if section.settings.card2_image != blank %}has-custom-img{% endif %}"
+              {% if section.settings.card2_image != blank %}
+                style="background-image: url('{{ section.settings.card2_image | image_url: width: 900 }}');"
+              {% endif %}
+            ></div>
+            {% if section.settings.card2_image == blank %}
+              <svg class="icon-motif" viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg">
+                <rect x="60" y="20" width="80" height="120" fill="rgba(255,255,255,0.08)"/>
+                <rect x="72" y="34" width="14" height="14" fill="rgba(255,255,255,0.12)"/>
+                <rect x="93" y="34" width="14" height="14" fill="rgba(255,255,255,0.12)"/>
+                <rect x="114" y="34" width="14" height="14" fill="rgba(255,255,255,0.12)"/>
+                <rect x="72" y="56" width="14" height="14" fill="rgba(255,255,255,0.12)"/>
+                <rect x="93" y="56" width="14" height="14" fill="rgba(255,255,255,0.12)"/>
+                <rect x="114" y="56" width="14" height="14" fill="rgba(255,255,255,0.12)"/>
+                <rect x="72" y="78" width="14" height="14" fill="rgba(255,255,255,0.12)"/>
+                <rect x="93" y="78" width="14" height="14" fill="rgba(255,255,255,0.12)"/>
+                <rect x="114" y="78" width="14" height="14" fill="rgba(255,255,255,0.12)"/>
+              </svg>
             {% endif %}
-          ></div>
-
-          {% if section.settings.card2_image == blank %}
-            <svg class="icon-motif" viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg">
-              <rect x="60" y="20" width="80" height="120" fill="rgba(255,255,255,0.08)"/>
-              <rect x="72" y="34" width="14" height="14" fill="rgba(255,255,255,0.12)"/>
-              <rect x="93" y="34" width="14" height="14" fill="rgba(255,255,255,0.12)"/>
-              <rect x="114" y="34" width="14" height="14" fill="rgba(255,255,255,0.12)"/>
-              <rect x="72" y="56" width="14" height="14" fill="rgba(255,255,255,0.12)"/>
-              <rect x="93" y="56" width="14" height="14" fill="rgba(255,255,255,0.12)"/>
-              <rect x="114" y="56" width="14" height="14" fill="rgba(255,255,255,0.12)"/>
-              <rect x="72" y="78" width="14" height="14" fill="rgba(255,255,255,0.12)"/>
-              <rect x="93" y="78" width="14" height="14" fill="rgba(255,255,255,0.12)"/>
-              <rect x="114" y="78" width="14" height="14" fill="rgba(255,255,255,0.12)"/>
-            </svg>
-          {% endif %}
-
-          <div class="use-tag">USE</div>
-          <div class="card-inner">
-            <p class="card-tagline">{{ section.settings.card2_tagline | default: "Smart Energy for Smart Business" }}</p>
-            <div class="card-bottom">
-              <div class="card-chip"><span class="bolt">⚡</span>{{ section.settings.card2_chip | default: "EVERY 6 KW REQUIRED 1 CARD" }}</div>
-              <div class="card-title">{{ section.settings.card2_title | default: "COMMERCIAL USE" }}</div>
-              <div class="card-benefits">
-                <div class="b"><span class="ic">{{ section.settings.card2_b1_icon | default: "📉" }}</span>{{ section.settings.card2_b1_text | default: "Save kVAh Penalty" }}</div>
-                <div class="b"><span class="ic">{{ section.settings.card2_b2_icon | default: "🔌" }}</span>{{ section.settings.card2_b2_text | default: "Stable Supply" }}</div>
-                <div class="b"><span class="ic">{{ section.settings.card2_b3_icon | default: "🛠️" }}</span>{{ section.settings.card2_b3_text | default: "Control Leakage Current" }}</div>
+            <div class="use-tag">USE</div>
+            <div class="card-inner">
+              <p class="card-tagline">{{ section.settings.card2_tagline | default: "Smart Energy for Smart Business" }}</p>
+              <div class="card-bottom">
+                <div class="card-chip"><span class="bolt">⚡</span>{{ section.settings.card2_chip | default: "EVERY 6 KW REQUIRED 1 CARD" }}</div>
+                <div class="card-title">{{ section.settings.card2_title | default: "COMMERCIAL USE" }}</div>
+                <div class="card-benefits">
+                  <div class="b"><span class="ic">{{ section.settings.card2_b1_icon | default: "📉" }}</span>{{ section.settings.card2_b1_text | default: "Save kVAh Penalty" }}</div>
+                  <div class="b"><span class="ic">{{ section.settings.card2_b2_icon | default: "🔌" }}</span>{{ section.settings.card2_b2_text | default: "Stable Supply" }}</div>
+                  <div class="b"><span class="ic">{{ section.settings.card2_b3_icon | default: "🛠️" }}</span>{{ section.settings.card2_b3_text | default: "Control Leakage Current" }}</div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <!-- 3. Industrial -->
-        <div class="app-card">
-          <div 
-            class="card-bg industrial {% if section.settings.card3_image != blank %}has-custom-img{% endif %}"
-            {% if section.settings.card3_image != blank %}
-              style="background-image: url('{{ section.settings.card3_image | image_url: width: 900 }}');"
+          <!-- 3. Industrial -->
+          <div class="app-card">
+            <div 
+              class="card-bg industrial {% if section.settings.card3_image != blank %}has-custom-img{% endif %}"
+              {% if section.settings.card3_image != blank %}
+                style="background-image: url('{{ section.settings.card3_image | image_url: width: 900 }}');"
+              {% endif %}
+            ></div>
+            {% if section.settings.card3_image == blank %}
+              <svg class="icon-motif" viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg">
+                <rect x="40" y="80" width="120" height="60" fill="rgba(255,255,255,0.08)"/>
+                <rect x="55" y="45" width="16" height="35" fill="rgba(255,255,255,0.1)"/>
+                <rect x="90" y="35" width="16" height="45" fill="rgba(255,255,255,0.1)"/>
+                <rect x="125" y="50" width="16" height="30" fill="rgba(255,255,255,0.1)"/>
+                <circle cx="63" cy="40" r="6" fill="rgba(255,255,255,0.15)"/>
+                <circle cx="98" cy="30" r="6" fill="rgba(255,255,255,0.15)"/>
+              </svg>
             {% endif %}
-          ></div>
-
-          {% if section.settings.card3_image == blank %}
-            <svg class="icon-motif" viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg">
-              <rect x="40" y="80" width="120" height="60" fill="rgba(255,255,255,0.08)"/>
-              <rect x="55" y="45" width="16" height="35" fill="rgba(255,255,255,0.1)"/>
-              <rect x="90" y="35" width="16" height="45" fill="rgba(255,255,255,0.1)"/>
-              <rect x="125" y="50" width="16" height="30" fill="rgba(255,255,255,0.1)"/>
-              <circle cx="63" cy="40" r="6" fill="rgba(255,255,255,0.15)"/>
-              <circle cx="98" cy="30" r="6" fill="rgba(255,255,255,0.15)"/>
-            </svg>
-          {% endif %}
-
-          <div class="use-tag">USE</div>
-          <div class="card-inner">
-            <p class="card-tagline">{{ section.settings.card3_tagline | default: "Maximum Power, Maximum Savings" }}</p>
-            <div class="card-bottom">
-              <div class="card-chip"><span class="bolt">⚡</span>{{ section.settings.card3_chip | default: "EVERY 6 KW REQUIRED 1 CARD" }}</div>
-              <div class="card-title">{{ section.settings.card3_title | default: "INDUSTRIAL USE" }}</div>
-              <div class="card-benefits">
-                <div class="b"><span class="ic">{{ section.settings.card3_b1_icon | default: "📊" }}</span>{{ section.settings.card3_b1_text | default: "Save 20% Electricity Bill" }}</div>
-                <div class="b"><span class="ic">{{ section.settings.card3_b2_icon | default: "⚙️" }}</span>{{ section.settings.card3_b2_text | default: "Handles Heavy Loads" }}</div>
-                <div class="b"><span class="ic">{{ section.settings.card3_b3_icon | default: "🔋" }}</span>{{ section.settings.card3_b3_text | default: "Reduces Line Losses" }}</div>
+            <div class="use-tag">USE</div>
+            <div class="card-inner">
+              <p class="card-tagline">{{ section.settings.card3_tagline | default: "Maximum Power, Maximum Savings" }}</p>
+              <div class="card-bottom">
+                <div class="card-chip"><span class="bolt">⚡</span>{{ section.settings.card3_chip | default: "EVERY 6 KW REQUIRED 1 CARD" }}</div>
+                <div class="card-title">{{ section.settings.card3_title | default: "INDUSTRIAL USE" }}</div>
+                <div class="card-benefits">
+                  <div class="b"><span class="ic">{{ section.settings.card3_b1_icon | default: "📊" }}</span>{{ section.settings.card3_b1_text | default: "Save 20% Electricity Bill" }}</div>
+                  <div class="b"><span class="ic">{{ section.settings.card3_b2_icon | default: "⚙️" }}</span>{{ section.settings.card3_b2_text | default: "Handles Heavy Loads" }}</div>
+                  <div class="b"><span class="ic">{{ section.settings.card3_b3_icon | default: "🔋" }}</span>{{ section.settings.card3_b3_text | default: "Reduces Line Losses" }}</div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <!-- 4. Institutional -->
-        <div class="app-card">
-          <div 
-            class="card-bg institutional {% if section.settings.card4_image != blank %}has-custom-img{% endif %}"
-            {% if section.settings.card4_image != blank %}
-              style="background-image: url('{{ section.settings.card4_image | image_url: width: 900 }}');"
+          <!-- 4. Institutional -->
+          <div class="app-card">
+            <div 
+              class="card-bg institutional {% if section.settings.card4_image != blank %}has-custom-img{% endif %}"
+              {% if section.settings.card4_image != blank %}
+                style="background-image: url('{{ section.settings.card4_image | image_url: width: 900 }}');"
+              {% endif %}
+            ></div>
+            {% if section.settings.card4_image == blank %}
+              <svg class="icon-motif" viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg">
+                <rect x="50" y="60" width="100" height="80" fill="rgba(255,255,255,0.08)"/>
+                <polygon points="45,60 100,25 155,60" fill="rgba(255,255,255,0.1)"/>
+                <rect x="68" y="80" width="12" height="30" fill="rgba(255,255,255,0.12)"/>
+                <rect x="94" y="80" width="12" height="30" fill="rgba(255,255,255,0.12)"/>
+                <rect x="120" y="80" width="12" height="30" fill="rgba(255,255,255,0.12)"/>
+              </svg>
             {% endif %}
-          ></div>
-
-          {% if section.settings.card4_image == blank %}
-            <svg class="icon-motif" viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg">
-              <rect x="50" y="60" width="100" height="80" fill="rgba(255,255,255,0.08)"/>
-              <polygon points="45,60 100,25 155,60" fill="rgba(255,255,255,0.1)"/>
-              <rect x="68" y="80" width="12" height="30" fill="rgba(255,255,255,0.12)"/>
-              <rect x="94" y="80" width="12" height="30" fill="rgba(255,255,255,0.12)"/>
-              <rect x="120" y="80" width="12" height="30" fill="rgba(255,255,255,0.12)"/>
-            </svg>
-          {% endif %}
-
-          <div class="use-tag">USE</div>
-          <div class="card-inner">
-            <p class="card-tagline">{{ section.settings.card4_tagline | default: "Reliable Power for a Better Tomorrow" }}</p>
-            <div class="card-bottom">
-              <div class="card-chip"><span class="bolt">⚡</span>{{ section.settings.card4_chip | default: "EVERY 6 KW REQUIRED 1 CARD" }}</div>
-              <div class="card-title">{{ section.settings.card4_title | default: "INSTITUTIONAL USE" }}</div>
-              <div class="card-benefits">
-                <div class="b"><span class="ic">{{ section.settings.card4_b1_icon | default: "🏫" }}</span>{{ section.settings.card4_b1_text | default: "Save 22% Electricity Bill" }}</div>
-                <div class="b"><span class="ic">{{ section.settings.card4_b2_icon | default: "⚡" }}</span>{{ section.settings.card4_b2_text | default: "Stable Power Supply" }}</div>
-                <div class="b"><span class="ic">{{ section.settings.card4_b3_icon | default: "🛡️" }}</span>{{ section.settings.card4_b3_text | default: "Safer Performance" }}</div>
+            <div class="use-tag">USE</div>
+            <div class="card-inner">
+              <p class="card-tagline">{{ section.settings.card4_tagline | default: "Reliable Power for a Better Tomorrow" }}</p>
+              <div class="card-bottom">
+                <div class="card-chip"><span class="bolt">⚡</span>{{ section.settings.card4_chip | default: "EVERY 6 KW REQUIRED 1 CARD" }}</div>
+                <div class="card-title">{{ section.settings.card4_title | default: "INSTITUTIONAL USE" }}</div>
+                <div class="card-benefits">
+                  <div class="b"><span class="ic">{{ section.settings.card4_b1_icon | default: "🏫" }}</span>{{ section.settings.card4_b1_text | default: "Save 22% Electricity Bill" }}</div>
+                  <div class="b"><span class="ic">{{ section.settings.card4_b2_icon | default: "⚡" }}</span>{{ section.settings.card4_b2_text | default: "Stable Power Supply" }}</div>
+                  <div class="b"><span class="ic">{{ section.settings.card4_b3_icon | default: "🛡️" }}</span>{{ section.settings.card4_b3_text | default: "Safer Performance" }}</div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-
+        {% endif %}
       </div>
 
-      <!-- RIGHT: CHECKLIST (PERFECTLY ALIGNED) -->
+      <!-- RIGHT: 4 LUCRATIVE CARDS (PERFECTLY ALIGNED) -->
       <div class="right">
         <h2>
           {{ section.settings.right_heading_prefix | default: "WHEREVER ELECTRICITY LIVES," }}
@@ -699,29 +815,47 @@
         </h2>
 
         <div class="checklist">
-          {% if section.blocks.size > 0 %}
-            {% for block in section.blocks %}
-              <div class="check-item" {{ block.shopify_attributes }}>
+          {% assign check_items = section.blocks | where: "type", "checklist_item" %}
+          {% if check_items.size > 0 %}
+            {% for block in check_items %}
+              <div class="check-item theme-{{ block.settings.theme_color | default: 'res' }}" {{ block.shopify_attributes }}>
                 <div class="check-circle">{{ block.settings.check_icon | default: "✓" }}</div>
-                <p><strong>{{ block.settings.sector_name }}:</strong> {{ block.settings.sector_text }}</p>
+                <div class="check-text-wrap">
+                  <p><strong>{{ block.settings.sector_name }}:</strong> {{ block.settings.sector_text }}</p>
+                </div>
               </div>
             {% endfor %}
           {% else %}
-            <div class="check-item">
+            <!-- Residential Card -->
+            <div class="check-item theme-res">
               <div class="check-circle">✓</div>
-              <p><strong>Residential:</strong> Lowers home electricity bills & protects appliances from voltage spikes.</p>
+              <div class="check-text-wrap">
+                <p><strong>Residential:</strong> Lowers home electricity bills & protects appliances from voltage spikes.</p>
+              </div>
             </div>
-            <div class="check-item">
+
+            <!-- Commercial Card -->
+            <div class="check-item theme-com">
               <div class="check-circle">✓</div>
-              <p><strong>Commercial:</strong> Reduces kVAh billing penalty & extends commercial equipment lifespan.</p>
+              <div class="check-text-wrap">
+                <p><strong>Commercial:</strong> Reduces kVAh billing penalty & extends commercial equipment lifespan.</p>
+              </div>
             </div>
-            <div class="check-item">
+
+            <!-- Industrial Card -->
+            <div class="check-item theme-ind">
               <div class="check-circle">✓</div>
-              <p><strong>Industrial:</strong> Handles heavy motor loads, cutting line losses in factories & plants.</p>
+              <div class="check-text-wrap">
+                <p><strong>Industrial:</strong> Handles heavy motor loads, cutting line losses in factories & plants.</p>
+              </div>
             </div>
-            <div class="check-item">
+
+            <!-- Institutional Card -->
+            <div class="check-item theme-ins">
               <div class="check-circle">✓</div>
-              <p><strong>Institutional:</strong> Zero energy leakage & maximum safety for schools & hospitals.</p>
+              <div class="check-text-wrap">
+                <p><strong>Institutional:</strong> Zero energy leakage & maximum safety for schools & hospitals.</p>
+              </div>
             </div>
           {% endif %}
         </div>
@@ -782,7 +916,7 @@
     },
     {
       "type": "header",
-      "content": "1. Residential Card (Custom Image & Texts)"
+      "content": "Fallback: 1. Residential Card"
     },
     {
       "type": "image_picker",
@@ -851,7 +985,7 @@
     },
     {
       "type": "header",
-      "content": "2. Commercial Card (Custom Image & Texts)"
+      "content": "Fallback: 2. Commercial Card"
     },
     {
       "type": "image_picker",
@@ -914,7 +1048,7 @@
     },
     {
       "type": "header",
-      "content": "3. Industrial Card (Custom Image & Texts)"
+      "content": "Fallback: 3. Industrial Card"
     },
     {
       "type": "image_picker",
@@ -977,7 +1111,7 @@
     },
     {
       "type": "header",
-      "content": "4. Institutional Card (Custom Image & Texts)"
+      "content": "Fallback: 4. Institutional Card"
     },
     {
       "type": "image_picker",
@@ -1097,9 +1231,103 @@
   ],
   "blocks": [
     {
-      "type": "checklist_item",
-      "name": "Checklist Item",
+      "type": "sector_card",
+      "name": "Sector Card (Left Grid)",
       "settings": [
+        {
+          "type": "image_picker",
+          "id": "card_image",
+          "label": "Card Background Image"
+        },
+        {
+          "type": "select",
+          "id": "card_theme",
+          "label": "Theme Motif",
+          "options": [
+            { "value": "residential", "label": "Residential (House Motif)" },
+            { "value": "commercial", "label": "Commercial (Building Motif)" },
+            { "value": "industrial", "label": "Industrial (Factory Motif)" },
+            { "value": "institutional", "label": "Institutional (Campus Motif)" }
+          ],
+          "default": "residential"
+        },
+        {
+          "type": "text",
+          "id": "ribbon_text",
+          "label": "Ribbon Text (Optional, e.g. MOST POPULAR)"
+        },
+        {
+          "type": "text",
+          "id": "tagline",
+          "label": "Card Tagline",
+          "default": "Smart Saving for Every Home"
+        },
+        {
+          "type": "text",
+          "id": "chip_text",
+          "label": "Chip Text",
+          "default": "EVERY 6 KW REQUIRED 1 CARD"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Card Title",
+          "default": "RESIDENTIAL USE"
+        },
+        {
+          "type": "text",
+          "id": "benefit_1_icon",
+          "label": "Benefit 1 Icon",
+          "default": "💡"
+        },
+        {
+          "type": "text",
+          "id": "benefit_1_text",
+          "label": "Benefit 1 Text",
+          "default": "Save 25% Electricity Bill"
+        },
+        {
+          "type": "text",
+          "id": "benefit_2_icon",
+          "label": "Benefit 2 Icon",
+          "default": "🛡️"
+        },
+        {
+          "type": "text",
+          "id": "benefit_2_text",
+          "label": "Benefit 2 Text",
+          "default": "Voltage Protection"
+        },
+        {
+          "type": "text",
+          "id": "benefit_3_icon",
+          "label": "Benefit 3 Icon",
+          "default": "✓"
+        },
+        {
+          "type": "text",
+          "id": "benefit_3_text",
+          "label": "Benefit 3 Text",
+          "default": "Guaranteed Results"
+        }
+      ]
+    },
+    {
+      "type": "checklist_item",
+      "name": "Checklist Card (Right Column)",
+      "settings": [
+        {
+          "type": "select",
+          "id": "theme_color",
+          "label": "Theme Color",
+          "options": [
+            { "value": "res", "label": "Residential (Saffron/Orange)" },
+            { "value": "com", "label": "Commercial (Blue/Cyan)" },
+            { "value": "ind", "label": "Industrial (Amber/Deep Orange)" },
+            { "value": "ins", "label": "Institutional (Emerald Green)" }
+          ],
+          "default": "res"
+        },
         {
           "type": "text",
           "id": "check_icon",
@@ -1126,8 +1354,73 @@
       "name": "Vidhyut Apps Overview",
       "blocks": [
         {
+          "type": "sector_card",
+          "settings": {
+            "card_theme": "residential",
+            "ribbon_text": "MOST POPULAR",
+            "tagline": "Smart Saving for Every Home",
+            "chip_text": "EVERY 6 KW REQUIRED 1 CARD",
+            "title": "RESIDENTIAL USE",
+            "benefit_1_icon": "💡",
+            "benefit_1_text": "Save 25% Electricity Bill",
+            "benefit_2_icon": "🛡️",
+            "benefit_2_text": "Voltage Protection",
+            "benefit_3_icon": "✓",
+            "benefit_3_text": "Guaranteed Results"
+          }
+        },
+        {
+          "type": "sector_card",
+          "settings": {
+            "card_theme": "commercial",
+            "ribbon_text": "",
+            "tagline": "Smart Energy for Smart Business",
+            "chip_text": "EVERY 6 KW REQUIRED 1 CARD",
+            "title": "COMMERCIAL USE",
+            "benefit_1_icon": "📉",
+            "benefit_1_text": "Save kVAh Penalty",
+            "benefit_2_icon": "🔌",
+            "benefit_2_text": "Stable Supply",
+            "benefit_3_icon": "🛠️",
+            "benefit_3_text": "Control Leakage Current"
+          }
+        },
+        {
+          "type": "sector_card",
+          "settings": {
+            "card_theme": "industrial",
+            "ribbon_text": "",
+            "tagline": "Maximum Power, Maximum Savings",
+            "chip_text": "EVERY 6 KW REQUIRED 1 CARD",
+            "title": "INDUSTRIAL USE",
+            "benefit_1_icon": "📊",
+            "benefit_1_text": "Save 20% Electricity Bill",
+            "benefit_2_icon": "⚙️",
+            "benefit_2_text": "Handles Heavy Loads",
+            "benefit_3_icon": "🔋",
+            "benefit_3_text": "Reduces Line Losses"
+          }
+        },
+        {
+          "type": "sector_card",
+          "settings": {
+            "card_theme": "institutional",
+            "ribbon_text": "",
+            "tagline": "Reliable Power for a Better Tomorrow",
+            "chip_text": "EVERY 6 KW REQUIRED 1 CARD",
+            "title": "INSTITUTIONAL USE",
+            "benefit_1_icon": "🏫",
+            "benefit_1_text": "Save 22% Electricity Bill",
+            "benefit_2_icon": "⚡",
+            "benefit_2_text": "Stable Power Supply",
+            "benefit_3_icon": "🛡️",
+            "benefit_3_text": "Safer Performance"
+          }
+        },
+        {
           "type": "checklist_item",
           "settings": {
+            "theme_color": "res",
             "check_icon": "✓",
             "sector_name": "Residential",
             "sector_text": "Lowers home electricity bills & protects appliances from voltage spikes."
@@ -1136,6 +1429,7 @@
         {
           "type": "checklist_item",
           "settings": {
+            "theme_color": "com",
             "check_icon": "✓",
             "sector_name": "Commercial",
             "sector_text": "Reduces kVAh billing penalty & extends commercial equipment lifespan."
@@ -1144,6 +1438,7 @@
         {
           "type": "checklist_item",
           "settings": {
+            "theme_color": "ind",
             "check_icon": "✓",
             "sector_name": "Industrial",
             "sector_text": "Handles heavy motor loads, cutting line losses in factories & plants."
@@ -1152,6 +1447,7 @@
         {
           "type": "checklist_item",
           "settings": {
+            "theme_color": "ins",
             "check_icon": "✓",
             "sector_name": "Institutional",
             "sector_text": "Zero energy leakage & maximum safety for schools & hospitals."
