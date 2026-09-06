@@ -1422,6 +1422,36 @@
     </div>
   </section>
 
+  <!-- NEW SECTION (SECTION 2 EXACT COPY) -->
+  <section class="guideline-sec" id="vscc-guidelines-copy">
+    <div class="wrap">
+      <div class="guideline-head">
+        <div class="guideline-badge">⚡ HOW MANY CARDS REQUIRED</div>
+        <h2>The Number Of VIDHYUT SAATHI CARD Required Will Depend On Your Connection.</h2>
+        <p class="sub">The table below serves as a good guideline based on Connected Load (KW) & Monthly Electricity Bill (₹):</p>
+      </div>
+
+      <div class="guide-grid">
+        {% for card_data in guideline_cards %}
+          {% assign card_parts = card_data | split: ":" %}
+          <div class="guide-card">
+            <div class="guide-icon-circle">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M16 7V3h-2v4h-4V3H8v4H6v5c0 2.97 2.16 5.43 5 5.91V21h2v-3.09c2.84-.48 5-2.94 5-5.91V7h-2z"/>
+              </svg>
+            </div>
+            <h4 class="guide-title">CONNECTION = <span>{{ card_parts[0] }}</span></h4>
+            <div class="guide-bill-pill"><span class="guide-rupee-pill">₹</span> Bill: {{ card_parts[1] }}</div>
+            <div class="guide-req-row">
+              <p class="guide-req-text">Cards Required</p>
+              <div class="guide-shockwave-badge">{{ card_parts[2] }}</div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
   <!-- CALCULATOR -->
   <section class="sec" id="vscc-calc">
     <div class="wrap">
