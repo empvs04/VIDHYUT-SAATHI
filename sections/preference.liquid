@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800;900&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 
 {%- comment -%}
 
@@ -6,15 +7,7 @@
 
 {%- endcomment -%}
 
-
-
 {%- style -%}
-
-  {{ section.settings.heading_font | font_face: font_display: 'swap' }}
-
-  {{ section.settings.body_font | font_face: font_display: 'swap' }}
-
-
 
   .premium-calculator-{{ section.id }} {
 
@@ -30,11 +23,9 @@
 
     --gradient: linear-gradient(135deg, var(--green), var(--orange));
 
-    --heading-font: {{ section.settings.heading_font.family }}, {{ section.settings.heading_font.fallback_families }};
+    --heading-font: 'Baloo 2', sans-serif !important;
 
-    --body-font: {{ section.settings.body_font.family }}, {{ section.settings.body_font.fallback_families }};
-
-   
+    --body-font: 'Nunito', sans-serif !important;
 
     font-family: var(--body-font);
 
