@@ -346,39 +346,63 @@
   }
 
   /* ---- CALCULATOR SECTION ---- */
+  /* ---- INDUSTRIAL SECTIONS & LUCATIVE HEADERS ---- */
   .vsind-sec {
-    padding: 44px 0;
+    padding: 50px 0;
     font-family: 'Nunito', sans-serif;
   }
-  @media(min-width: 768px){ .vsind-sec { padding: 60px 0; } }
+  @media(min-width: 768px){ .vsind-sec { padding: 68px 0; } }
 
   .vsind-sec-head {
-    max-width: 680px;
-    margin: 0 auto 28px;
+    max-width: 760px;
+    margin: 0 auto 34px;
     text-align: center;
+    position: relative;
   }
   .vsind-sec-eyebrow {
-    font-size: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #ffffff 0%, #e0f2fe 100%);
+    border: 1.5px solid #0284c7;
+    color: #0369a1;
+    font-family: 'Baloo 2', sans-serif !important;
+    font-size: 11.5px;
     font-weight: 800;
-    font-family: 'Baloo 2', sans-serif;
-    letter-spacing: 1px;
+    letter-spacing: 0.8px;
     text-transform: uppercase;
-    color: var(--cyan-d);
-    margin-bottom: 6px;
+    padding: 6px 18px;
+    border-radius: 999px;
+    margin-bottom: 12px;
+    box-shadow: 0 4px 14px rgba(2, 132, 199, 0.12);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .vsind-sec-eyebrow:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(2, 132, 199, 0.18);
   }
   .vsind-sec-title {
-    font-size: clamp(24px, 4vw, 34px);
+    font-size: clamp(24px, 4.5vw, 36px);
     font-weight: 800;
+    line-height: 1.2;
     font-family: 'Baloo 2', sans-serif !important;
-    color: var(--ink);
+    color: #0f172a;
     margin: 0 0 10px 0;
+    letter-spacing: -0.015em;
+  }
+  .vsind-sec-title span {
+    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
   .vsind-sec-desc {
-    color: var(--muted);
-    font-size: 15px;
+    color: #475569;
+    font-size: clamp(14px, 2.2vw, 15.5px);
     font-family: 'Nunito', sans-serif;
-    line-height: 1.6;
-    margin: 0;
+    font-weight: 600;
+    line-height: 1.65;
+    max-width: 680px;
+    margin: 0 auto;
   }
 
   .vsind-calc-box {
@@ -1795,10 +1819,10 @@ den;
   <section class="vsind-sec" id="vsind-calc">
     <div class="wrap">
       <div class="vsind-sec-head">
-        <div class="vsind-sec-eyebrow"><i class="fa-solid fa-sliders"></i> Industrial Calculator</div>
-        <h2 class="vsind-sec-title">Calculate Industrial Cards Needed</h2>
+        <div class="vsind-sec-eyebrow"><i class="fa-solid fa-sliders"></i> Interactive Industrial Calculator</div>
+        <h2 class="vsind-sec-title">Calculate Cards Needed for <span>Your Factory Load</span></h2>
         <p class="vsind-sec-desc">
-          Calculated using DISCOM industrial kVAh guidelines: 1 card per 6 KW connected load, adjusted for 3-phase LT/HT panel balancing and high harmonic motor loads.
+          Calculated using standard DISCOM industrial kVAh guidelines: 1 card per 6 KW connected load, adjusted for 3-phase LT/HT panel balancing and high harmonic motor loads.
         </p>
       </div>
 
@@ -1868,7 +1892,7 @@ den;
     <div class="wrap">
       <div class="vsind-sec-head">
         <div class="vsind-sec-eyebrow"><i class="fa-solid fa-industry"></i> Factory Installations</div>
-        <h2 class="vsind-sec-title">20 Industrial LT & HT Panel Connections</h2>
+        <h2 class="vsind-sec-title">20 Industrial LT & <span>HT Panel Connections</span></h2>
         <p class="vsind-sec-desc">Click any factory installation photo to inspect full 3-phase LT/HT panel wiring. Vidhyut Saathi cards connect in parallel with zero production downtime.</p>
       </div>
 
@@ -1994,8 +2018,8 @@ den;
   <section class="vsind-sec">
     <div class="wrap">
       <div class="vsind-sec-head">
-        <div class="vsind-sec-eyebrow"><i class="fa-solid fa-table"></i> Establishment Matrix</div>
-        <h2 class="vsind-sec-title">Industrial Sizing Reference Chart</h2>
+        <div class="vsind-sec-eyebrow"><i class="fa-solid fa-table-cells"></i> Industrial Sizing Reference</div>
+        <h2 class="vsind-sec-title">Industrial Sizing & <span>Load Requirement Chart</span></h2>
         <p class="vsind-sec-desc">Standard DISCOM energy audit matrix for Indian factories, manufacturing plants, and heavy processing units.</p>
       </div>
 
@@ -2051,7 +2075,7 @@ den;
     <div class="wrap">
       <div class="vsind-sec-head">
         <div class="vsind-sec-eyebrow"><i class="fa-solid fa-square-check"></i> Verified Industrial Results</div>
-        <h2 class="vsind-sec-title">Real Industrial Worked Examples</h2>
+        <h2 class="vsind-sec-title">Real Industrial <span>Worked Examples & Savings</span></h2>
         <p class="vsind-sec-desc">See how Indian manufacturing plants cut operational energy expenses and monthly kVAh DISCOM bills by 20–30%.</p>
       </div>
 
@@ -2703,8 +2727,11 @@ den;
   <section class="vsind-sec" style="padding-bottom:70px;">
     <div class="wrap">
       <div class="vsind-cta-band" style="background:linear-gradient(135deg, #0f172a 0%, #0284c7 100%); border-radius:20px; color:#ffffff; padding:36px 20px; text-align:center; box-shadow:0 10px 30px rgba(2, 132, 199, 0.25);">
-        <h3 style="font-size:clamp(20px, 4vw, 30px); font-weight:800; margin:0 0 10px 0;">Ready to Cut 20–30% off Your Industrial Electricity Bill?</h3>
-        <p style="color:#e0f2fe; font-size:14.5px; margin:0 auto 24px auto; max-width:540px;">Get a customized industrial audit & quote for your factory, mill, or manufacturing unit with free engineering advisory.</p>
+        <div style="display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.35); color:#ffffff; font-size:11.5px; font-weight:800; letter-spacing:1px; text-transform:uppercase; padding:6px 16px; border-radius:999px; margin-bottom:14px; font-family:'Baloo 2',sans-serif; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
+          <i class="fa-solid fa-shield-halved"></i> 100% LEGAL & CERTIFIED SAVINGS
+        </div>
+        <h3 style="font-size:clamp(20px, 4vw, 32px); font-weight:800; margin:0 0 10px 0; font-family:'Baloo 2',sans-serif; color:#ffffff;">Ready to Cut <span style="background:linear-gradient(135deg, #ffd700 0%, #ffffff 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">20–30% off Your Industrial</span> Electricity Bill?</h3>
+        <p style="color:#e0f2fe; font-size:14.5px; margin:0 auto 24px auto; max-width:560px; line-height:1.65; font-family:'Nunito',sans-serif;">Get a customized industrial audit & quote for your factory, mill, or manufacturing unit with free engineering advisory.</p>
         <a href="https://wa.me/919876543210?text=Hi%20Vidhyut%20Saathi%2C%20I%20want%20to%20order%20Industrial%20Saver%20Cards" class="vsind-btn-primary" style="background:#ffffff; color:#0284c7; font-size:15px; padding:15px 30px; border-radius:12px; font-weight:800;" target="_blank">
           <i class="fa-brands fa-whatsapp"></i> Order Industrial Cards Now
         </a>
