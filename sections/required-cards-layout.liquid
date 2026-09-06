@@ -1442,14 +1442,17 @@
         ⚡ Sector Specific Requirement Pages:
       </span>
       <div style="display:flex; gap:8px; align-items:center; overflow-x:auto;">
-        <a href="/pages/required-cards?view=residential" style="padding:6px 14px; border-radius:50px; background:#fff0e5; border:1.5px solid #f0631b; color:#f0631b; font-size:12px; font-weight:700; text-decoration:none; display:inline-flex; align-items:center; gap:5px; white-space:nowrap; font-family:'Baloo 2',sans-serif;">
+        <a href="/pages/required-cards?view=residential" onclick="vsGoPage(event, 'residential')" style="padding:6px 14px; border-radius:50px; background:#fff0e5; border:1.5px solid #f0631b; color:#f0631b; font-size:12px; font-weight:700; text-decoration:none; display:inline-flex; align-items:center; gap:5px; white-space:nowrap; font-family:'Baloo 2',sans-serif;">
           🏠 Residential Page
         </a>
-        <a href="/pages/required-cards?view=commercial" style="padding:6px 14px; border-radius:50px; background:#e6f4ec; border:1.5px solid #064e3b; color:#064e3b; font-size:12px; font-weight:700; text-decoration:none; display:inline-flex; align-items:center; gap:5px; white-space:nowrap; font-family:'Baloo 2',sans-serif;">
+        <a href="/pages/required-cards?view=commercial" onclick="vsGoPage(event, 'commercial')" style="padding:6px 14px; border-radius:50px; background:#e6f4ec; border:1.5px solid #064e3b; color:#064e3b; font-size:12px; font-weight:700; text-decoration:none; display:inline-flex; align-items:center; gap:5px; white-space:nowrap; font-family:'Baloo 2',sans-serif;">
           🏢 Commercial Page
         </a>
-        <a href="/pages/required-cards?view=industrial" style="padding:6px 14px; border-radius:50px; background:#e0f2fe; border:1.5px solid #0284c7; color:#0284c7; font-size:12px; font-weight:700; text-decoration:none; display:inline-flex; align-items:center; gap:5px; white-space:nowrap; font-family:'Baloo 2',sans-serif;">
+        <a href="/pages/required-cards?view=industrial" onclick="vsGoPage(event, 'industrial')" style="padding:6px 14px; border-radius:50px; background:#e0f2fe; border:1.5px solid #0284c7; color:#0284c7; font-size:12px; font-weight:700; text-decoration:none; display:inline-flex; align-items:center; gap:5px; white-space:nowrap; font-family:'Baloo 2',sans-serif;">
           🏭 Industrial Page
+        </a>
+        <a href="/pages/required-cards?view=institutional" onclick="vsGoPage(event, 'institutional')" style="padding:6px 14px; border-radius:50px; background:#fef9c3; border:1.5px solid #d97706; color:#854d0e; font-size:12px; font-weight:700; text-decoration:none; display:inline-flex; align-items:center; gap:5px; white-space:nowrap; font-family:'Baloo 2',sans-serif;">
+          🏛️ Institutional Page
         </a>
         <a href="/pages/required-cards" style="padding:6px 14px; border-radius:50px; background:#0a4a2c; border:1.5px solid #0a4a2c; color:#ffffff; font-size:12px; font-weight:700; text-decoration:none; display:inline-flex; align-items:center; gap:5px; white-space:nowrap; font-family:'Baloo 2',sans-serif;">
           🧮 Calculator (All)
@@ -1834,6 +1837,16 @@
 </div>
 
 <script>
+  window.vsGoPage = function(e, handle) {
+    if (e && (e.ctrlKey || e.metaKey || e.shiftKey)) return;
+    var isEditor = (window.Shopify && window.Shopify.designMode) || location.search.indexOf('preview_theme_id') > -1;
+    if (isEditor) {
+      if (e && e.preventDefault) e.preventDefault();
+      var base = (location.pathname && location.pathname.indexOf('/pages/') === 0) ? location.pathname : '/pages/required-cards';
+      location.href = base + '?view=' + handle;
+    }
+  };
+
 (function(){
   'use strict';
 
