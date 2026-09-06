@@ -1020,6 +1020,178 @@
   .vscc .tab-btn { font-size: 12px; padding: 9px 12px; }
 }
 
+/* ---- REQUIRED CARDS GUIDELINE 4-COLUMN CARDS SECTION (POST-HERO) ---- */
+.vscc .guideline-sec {
+  padding: 56px 0 36px;
+  position: relative;
+  background: radial-gradient(circle at 50% 10%, rgba(255, 246, 238, 0.7) 0%, transparent 60%);
+}
+.vscc .guideline-head {
+  text-align: center;
+  max-width: 860px;
+  margin: 0 auto 36px;
+}
+.vscc .guideline-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #ffffff;
+  border: 1.5px solid #f0631b;
+  color: #f0631b;
+  font-family: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 6px 18px;
+  border-radius: 999px;
+  margin-bottom: 14px;
+  box-shadow: 0 4px 14px rgba(240, 99, 27, 0.12);
+}
+.vscc .guideline-head h2 {
+  font-family: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(22px, 4.5vw, 34px);
+  font-weight: 800;
+  line-height: 1.25;
+  color: #16281f;
+  margin: 0 0 10px;
+}
+.vscc .guideline-head .sub {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #5e7568;
+  margin: 0 auto;
+}
+
+.vscc .guide-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+@media(max-width: 1024px) {
+  .vscc .guide-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+}
+@media(max-width: 768px) {
+  .vscc .guide-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+}
+@media(max-width: 420px) {
+  .vscc .guide-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+.vscc .guide-card {
+  background: #ffffff;
+  border: 1.5px solid #e5e0cf;
+  border-radius: 20px;
+  padding: 26px 18px 20px;
+  text-align: center;
+  box-shadow: 0 10px 28px -8px rgba(22, 40, 31, 0.07);
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+.vscc .guide-card:hover {
+  transform: translateY(-5px);
+  border-color: #009b37;
+  box-shadow: 0 18px 36px -10px rgba(0, 155, 55, 0.18), 0 0 0 1.5px rgba(0, 155, 55, 0.3);
+}
+
+.vscc .guide-icon-circle {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: #009b37;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  margin-bottom: 16px;
+  box-shadow: 0 6px 18px rgba(0, 155, 55, 0.35);
+  transition: transform 0.3s ease;
+}
+.vscc .guide-card:hover .guide-icon-circle {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.vscc .guide-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: #16281f;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.vscc .guide-bill-pill {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #0e6b3e;
+  background: #e6f2ea;
+  border: 1px solid rgba(14, 107, 62, 0.25);
+  padding: 4px 12px;
+  border-radius: 999px;
+  margin-bottom: 14px;
+  display: inline-block;
+}
+
+.vscc .guide-req-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding-top: 14px;
+  border-top: 1px dashed #e5e0cf;
+  margin-top: auto;
+}
+
+.vscc .guide-req-text {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #5e7568;
+  text-transform: capitalize;
+  margin: 0;
+}
+
+.vscc .guide-shockwave-badge {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #f0631b;
+  color: #ffffff;
+  font-family: 'Space Grotesk', 'IBM Plex Mono', monospace;
+  font-weight: 800;
+  font-size: 13.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 3px rgba(240, 99, 27, 0.25);
+  animation: vsccShockwave 2.2s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes vsccShockwave {
+  0% { box-shadow: 0 0 0 0 rgba(240, 99, 27, 0.6); }
+  70% { box-shadow: 0 0 0 8px rgba(240, 99, 27, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(240, 99, 27, 0); }
+}
+
 :focus-visible { outline: 2px solid #f0631b; outline-offset: 2px; }
 </style>
 
@@ -1095,6 +1267,37 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REQUIRED CARDS GUIDELINE 4-COLUMN CARDS SECTION (POST-HERO) -->
+  <section class="guideline-sec" id="vscc-guidelines">
+    <div class="wrap">
+      <div class="guideline-head">
+        <div class="guideline-badge">⚡ HOW MANY CARDS REQUIRED</div>
+        <h2>The Number Of VIDHYUT SAATHI CARD Required Will Depend On Your Connection.</h2>
+        <p class="sub">The table below serves as a good guideline based on Connected Load (KW) & Monthly Electricity Bill (₹):</p>
+      </div>
+
+      <div class="guide-grid">
+        {% assign guideline_cards = "1–6 KW:Up to ₹6,000:01|6–12 KW:₹6,001 – ₹12,000:02|12–18 KW:₹12,001 – ₹18,000:03|18–24 KW:₹18,001 – ₹24,000:04|24–30 KW:₹24,001 – ₹30,000:05|30–36 KW:₹30,001 – ₹36,000:06|36–42 KW:₹36,001 – ₹42,000:07|42–48 KW:₹42,001 – ₹48,000:08|48–54 KW:₹48,001 – ₹54,000:09|54–60 KW:₹54,001 – ₹60,000:10|60–66 KW:₹60,001 – ₹66,000:11|66–72 KW:₹66,001 – ₹72,000:12|72–78 KW:₹72,001 – ₹78,000:13|78–84 KW:₹78,001 – ₹84,000:14|84–90 KW:₹84,001 – ₹90,000:15|90–96 KW:₹90,001 – ₹96,000:16|96–102 KW:₹96,001 – ₹1,02,000:17|102–108 KW:₹1,02,001 – ₹1,08,000:18|108–114 KW:₹1,08,001 – ₹1,14,000:19|114–120 KW:₹1,14,001 – ₹1,20,000:20" | split: "|" %}
+        {% for card_data in guideline_cards %}
+          {% assign card_parts = card_data | split: ":" %}
+          <div class="guide-card">
+            <div class="guide-icon-circle">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M16 7V3h-2v4h-4V3H8v4H6v5c0 2.97 2.16 5.43 5 5.91V21h2v-3.09c2.84-.48 5-2.94 5-5.91V7h-2z"/>
+              </svg>
+            </div>
+            <h4 class="guide-title">CONNECTION = {{ card_parts[0] }}</h4>
+            <div class="guide-bill-pill">Bill: {{ card_parts[1] }}</div>
+            <div class="guide-req-row">
+              <p class="guide-req-text">Number Of Cards Required</p>
+              <div class="guide-shockwave-badge">{{ card_parts[2] }}</div>
+            </div>
+          </div>
+        {% endfor %}
       </div>
     </div>
   </section>
