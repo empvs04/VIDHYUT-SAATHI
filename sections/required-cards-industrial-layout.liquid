@@ -421,13 +421,41 @@
   }
 
   .vsind-range-slider {
+    -webkit-appearance: none;
+    appearance: none;
     width: 100%;
-    height: 8px;
+    height: 10px;
     border-radius: 50px;
-    background: var(--line);
+    background: linear-gradient(90deg, #0284c7 0%, #0284c7 var(--fill, 12%), var(--line) var(--fill, 12%));
     outline: none;
-    accent-color: var(--cyan-d);
-    margin: 10px 0;
+    margin: 12px 0 14px 0;
+    touch-action: pan-y;
+    cursor: pointer;
+  }
+  .vsind-range-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: #0284c7;
+    border: 3.5px solid #ffffff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    cursor: grab;
+    transition: transform 0.15s ease;
+  }
+  .vsind-range-slider::-webkit-slider-thumb:active {
+    cursor: grabbing;
+    transform: scale(1.15);
+  }
+  .vsind-range-slider::-moz-range-thumb {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: #0284c7;
+    border: 3.5px solid #ffffff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    cursor: grab;
   }
 
   .vsind-num-input {
@@ -442,10 +470,33 @@
     color: var(--ink);
     background: #ffffff;
     outline: none;
+    transition: border-color 0.2s;
   }
   .vsind-num-input:focus {
     border-color: var(--cyan);
     box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+  }
+
+  /* Dynamic Mini Cards Row */
+  .vsind-mini-cards-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+    margin: 10px 0 16px 0;
+  }
+
+  .vsind-mini-card-icon {
+    width: 34px;
+    height: 22px;
+    border-radius: 5px;
+    background: linear-gradient(135deg, #e8c766 0%, #c9982e 100%);
+    border: 1px solid #b8860b;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.18);
+    transition: transform 0.18s ease;
+  }
+  .vsind-mini-card-icon:hover {
+    transform: translateY(-2px) scale(1.1);
   }
 
   .vsind-toggle-group {
@@ -1758,8 +1809,8 @@ den;
               <span>⚙️ CONNECTED INDUSTRIAL LOAD</span>
               <span class="vsind-field-badge" id="vsind_kw_badge">60 KW</span>
             </div>
-            <input type="range" class="vsind-range-slider" id="vsind_kw_slider" min="15" max="500" value="60" step="15" oninput="vsindSync('slider')">
-            <input type="number" class="vsind-num-input" id="vsind_kw_num" value="60" min="1" max="2000" oninput="vsindSync('kw')">
+            <input type="range" class="vsind-range-slider" id="vsind_kw_slider" min="15" max="500" value="60" step="15">
+            <input type="number" class="vsind-num-input" id="vsind_kw_num" value="60" min="1" max="2000">
           </div>
 
           <div class="vsind-field">
@@ -1767,7 +1818,7 @@ den;
               <span>💰 MONTHLY ELECTRICITY BILL</span>
               <span class="vsind-field-badge" id="vsind_bill_badge">₹60,000</span>
             </div>
-            <input type="number" class="vsind-num-input" id="vsind_bill_num" value="60000" min="5000" step="5000" oninput="vsindSync('bill')">
+            <input type="number" class="vsind-num-input" id="vsind_bill_num" value="60000" min="5000" step="5000">
           </div>
 
           <!-- PHASE SELECTOR -->
@@ -1787,6 +1838,8 @@ den;
               <span id="vsind_card_num">11</span>
               <span id="vsind_card_unit">Cards</span>
             </div>
+            <!-- Dynamic Mini Gold Cards Row -->
+            <div class="vsind-mini-cards-row" id="vsind_mini_cards_row"></div>
           </div>
 
           <div class="vsind-savings-box">
@@ -2683,45 +2736,89 @@ den;
     var kwNum = document.getElementById('vsind_kw_num');
     var billNum = document.getElementById('vsind_bill_num');
 
+    if (!kwSlider || !kwNum || !billNum) return;
+
     var kw = parseInt(kwNum.value) || 60;
     var bill = parseInt(billNum.value) || 60000;
 
     if (source === 'slider') {
       kw = parseInt(kwSlider.value) || 15;
       kwNum.value = kw;
-      bill = kw * 1000;
-      billNum.value = bill;
     } else if (source === 'kw') {
       kw = Math.max(1, kw);
       kwSlider.value = Math.min(kw, 500);
-      bill = kw * 1000;
-      billNum.value = bill;
     } else if (source === 'bill') {
       bill = Math.max(1000, bill);
-      kw = Math.max(1, Math.round(bill / 1000));
-      kwNum.value = kw;
-      kwSlider.value = Math.min(kw, 500);
     }
 
-    document.getElementById('vsind_kw_badge').innerText = kw + ' KW';
-    document.getElementById('vsind_bill_badge').innerText = '₹' + bill.toLocaleString('en-IN');
+    kwSlider.style.setProperty('--fill', (Math.min(kw, 500) / 500 * 100) + '%');
+
+    var kwBadge = document.getElementById('vsind_kw_badge');
+    var billBadge = document.getElementById('vsind_bill_badge');
+    if (kwBadge) kwBadge.innerText = kw + ' KW';
+    if (billBadge) billBadge.innerText = '₹' + bill.toLocaleString('en-IN');
 
     // Industrial Calculation: 1 card per 6 KW (+1 for 3-Phase LT/HT panel balancing)
-    var baseCards = Math.max(1, Math.ceil(kw / 6));
+    var kwCards = Math.max(1, Math.ceil(kw / 6));
+    var billCards = bill > 0 ? Math.max(1, Math.ceil(bill / 6000)) : 1;
+    var baseCards = Math.max(kwCards, billCards);
     var total = vsindThreePhase ? baseCards + 1 : baseCards;
 
-    document.getElementById('vsind_card_num').innerText = total;
-    document.getElementById('vsind_card_unit').innerText = total > 1 ? 'Cards' : 'Card';
+    var numCardEl = document.getElementById('vsind_card_num');
+    var unitCardEl = document.getElementById('vsind_card_unit');
+    if (numCardEl) numCardEl.innerText = total;
+    if (unitCardEl) unitCardEl.innerText = total > 1 ? 'Cards' : 'Card';
+
+    /* Dynamic Mini Gold Cards Row */
+    var miniCardsRow = document.getElementById('vsind_mini_cards_row');
+    if (miniCardsRow) {
+      miniCardsRow.innerHTML = '';
+      var capped = Math.min(total, 30);
+      for (var i = 0; i < capped; i++) {
+        var icon = document.createElement('div');
+        icon.className = 'vsind-mini-card-icon';
+        icon.title = 'Industrial Card ' + (i + 1);
+        miniCardsRow.appendChild(icon);
+      }
+      if (total > 30) {
+        var more = document.createElement('span');
+        more.style.cssText = 'font-family:Baloo 2,sans-serif;color:#0284c7;font-size:13px;font-weight:800;align-self:center;margin-left:4px;';
+        more.textContent = '+' + (total - 30) + ' more';
+        miniCardsRow.appendChild(more);
+      }
+    }
 
     // 20-30% DISCOM Bill Savings
     var sMin = Math.round((bill * 0.20) / 100) * 100;
     var sMax = Math.round((bill * 0.30) / 100) * 100;
-    document.getElementById('vsind_savings_range').innerText = '₹' + sMin.toLocaleString('en-IN') + ' – ₹' + sMax.toLocaleString('en-IN') + ' / mo';
+    var savingsRangeEl = document.getElementById('vsind_savings_range');
+    if (savingsRangeEl) {
+      savingsRangeEl.innerText = '₹' + sMin.toLocaleString('en-IN') + ' – ₹' + sMax.toLocaleString('en-IN') + ' / mo';
+    }
   }
 
-  document.getElementById('vsind_kw_slider').addEventListener('input', function() { vsindSync('slider'); });
-  document.getElementById('vsind_kw_num').addEventListener('input', function() { vsindSync('kw'); });
-  document.getElementById('vsind_bill_num').addEventListener('input', function() { vsindSync('bill'); });
+  var kwSliderElemInd = document.getElementById('vsind_kw_slider');
+  if (kwSliderElemInd) {
+    kwSliderElemInd.addEventListener('input', function() { vsindSync('slider'); });
+    kwSliderElemInd.addEventListener('change', function() { vsindSync('slider'); });
+  }
+
+  var kwNumElemInd = document.getElementById('vsind_kw_num');
+  if (kwNumElemInd) {
+    kwNumElemInd.addEventListener('input', function() { vsindSync('kw'); });
+  }
+
+  var billNumElemInd = document.getElementById('vsind_bill_num');
+  if (billNumElemInd) {
+    billNumElemInd.addEventListener('input', function() { vsindSync('bill'); });
+  }
+
+  // Initial Sync
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() { vsindSync('init'); });
+  } else {
+    vsindSync('init');
+  }
 
   /* INDUSTRIAL MCB GALLERY FILTER & LIGHTBOX */
   function filterInd(category, btnElem) {
