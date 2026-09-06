@@ -1038,6 +1038,7 @@
   background: #1e293b;
   border: 1.5px solid rgba(254, 215, 170, 0.6);
   box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .vscc .eg-img-wrap img {
@@ -1046,6 +1047,11 @@
   object-fit: cover;
   display: block;
   transition: transform 0.4s ease;
+}
+
+.vscc .eg-card:hover .eg-img-wrap {
+  border-color: #f97316;
+  box-shadow: 0 6px 20px rgba(240, 99, 27, 0.25);
 }
 
 .vscc .eg-card:hover .eg-img-wrap img {
@@ -1068,6 +1074,12 @@
   border: 1.5px solid rgba(254, 240, 138, 0.45);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   font-family: 'Baloo 2', sans-serif;
+  transition: all 0.3s ease;
+}
+
+.vscc .eg-card:hover .eg-tag {
+  border-color: #fde047;
+  box-shadow: 0 4px 16px rgba(234, 179, 8, 0.4);
 }
 
 .vscc .eg-person-row {
@@ -1086,6 +1098,12 @@
   flex-shrink: 0;
   border: 2px solid #f97316;
   box-shadow: 0 4px 12px rgba(240, 99, 27, 0.28);
+  transition: all 0.3s ease;
+}
+
+.vscc .eg-card:hover .eg-avatar {
+  transform: scale(1.06);
+  box-shadow: 0 6px 16px rgba(240, 99, 27, 0.4);
 }
 
 .vscc .eg-avatar img {
@@ -1125,6 +1143,19 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  transition: all 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.vscc .eg-card:hover .eg-stat {
+  border-color: #fdba74;
+  box-shadow: 0 4px 14px rgba(240, 99, 27, 0.12);
+}
+
+.vscc .eg-stat:hover {
+  border-color: #f97316 !important;
+  background: #fffaf5;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(240, 99, 27, 0.22) !important;
 }
 
 .vscc .eg-stat .k { color: #64748b; font-size: 10px; text-transform: uppercase; letter-spacing: .06em; font-weight: 800; margin-bottom: 3px; font-family: 'Work Sans', sans-serif; }
@@ -1139,6 +1170,19 @@
   margin-bottom: 12px;
   box-shadow: 0 4px 14px rgba(240, 99, 27, 0.08);
   min-height: 50px;
+  transition: all 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.vscc .eg-card:hover .eg-result {
+  border-color: #f97316;
+  box-shadow: 0 6px 18px rgba(240, 99, 27, 0.18);
+}
+
+.vscc .eg-result:hover {
+  border-color: #ea580c !important;
+  background: linear-gradient(135deg, #ffedd5 0%, #fed7aa 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(240, 99, 27, 0.28) !important;
 }
 
 .vscc .eg-result .rl { font-size: 12px; color: #ea580c; font-weight: 800; font-family: 'Work Sans', sans-serif; text-transform: uppercase; letter-spacing: 0.5px; }
@@ -1149,8 +1193,8 @@
   color: #334155;
   line-height: 1.55;
   background: #f0fdf4;
-  border: 1px solid #bbf7d0;
-  border-left: 3.5px solid #008744;
+  border: 1.5px solid #bbf7d0;
+  border-left: 4px solid #008744;
   padding: 12px 14px;
   border-radius: 10px;
   font-family: 'Nunito', sans-serif;
@@ -1161,6 +1205,21 @@
   display: flex;
   align-items: center;
   box-sizing: border-box;
+  transition: all 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.vscc .eg-card:hover .eg-why {
+  border-color: #86efac;
+  border-left-color: #008744;
+  box-shadow: 0 4px 16px rgba(16, 185, 129, 0.14);
+}
+
+.vscc .eg-why:hover {
+  border-color: #4ade80 !important;
+  border-left-color: #006633 !important;
+  background: #ecfdf5;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.24) !important;
 }
 
 /* ---- BADGES ---- */
