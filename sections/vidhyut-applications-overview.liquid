@@ -408,7 +408,7 @@
     box-shadow: 0 22px 42px -12px rgba(217, 119, 6, 0.32), 0 0 0 1.5px rgba(217, 119, 6, 0.45) !important;
   }
 
-  /* Desktop Checklist Layout (Locked) */
+  /* ── DESKTOP: Checklist column layout locked ── */
   .vs-apps-sec-{{ section.id }} .vs-checklist-slider-wrap {
     width: 100% !important;
   }
@@ -416,6 +416,7 @@
     display: none !important;
   }
 
+  /* Desktop (>992px): vertical stacked checklist, NO slider */
   @media (min-width: 992px) {
     .vs-apps-sec-{{ section.id }} .checklist {
       margin-top: 22px !important;
@@ -437,6 +438,7 @@
     }
   }
 
+  /* Tablet + Mobile (<= 1024px) */
   @media (max-width: 1024px) {
     .vs-apps-sec-{{ section.id }} {
       padding: {{ section.settings.padding_top_mob | default: 50 }}px 20px {{ section.settings.padding_bottom_mob | default: 50 }}px 20px !important;
@@ -460,7 +462,7 @@
       margin-bottom: 32px !important;
     }
 
-    /* ── ONLY 4 POINTS (CHECKLIST) IN MOBILE SLIDER (1 POINT PER VIEW) ── */
+    /* ── CHECKLIST POINTS: horizontal auto-slider on mobile (1 at a time) ── */
     .vs-apps-sec-{{ section.id }} .vs-checklist-slider-wrap {
       width: 100% !important;
       overflow: hidden !important;
@@ -521,6 +523,7 @@
     }
   }
 
+  /* ── ORIGINAL UNTOUCHED IMAGE CARDS CSS ── */
   @media (max-width: 768px) {
     .vs-apps-sec-{{ section.id }} {
       padding: {{ section.settings.padding_top_mob | default: 36 }}px 14px {{ section.settings.padding_bottom_mob | default: 36 }}px 14px !important;
