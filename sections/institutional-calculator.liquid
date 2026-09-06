@@ -1,0 +1,537 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800;900&family=Nunito:wght@400;600;700;800;900&family=Space+Grotesk:wght@600;700;800&family=IBM+Plex+Mono:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+  /* ============================================================
+     VIDHYUT SAATHI — INSTITUTIONAL CALCULATOR SECTION
+     Theme: Warm Amber #d97706 | Gold #f59e0b | Deep Gold #b45309 | Panel #ffffff
+  ============================================================ */
+  .vsinst-calc-section {
+    --bg:       #fffdf5;
+    --panel:    #ffffff;
+    --panel-2:  #f8fafc;
+    --line:     #e2e8f0;
+    --line-s:   #cbd5e1;
+    --gold:     #d97706;
+    --gold-d:   #b45309;
+    --gold-l:   #f59e0b;
+    --gold-t:   #fef9c3;
+    --ink:      #0f172a;
+    --muted:    #475569;
+    --muted-2:  #64748b;
+    --maxw:     1180px;
+
+    background: #ffffff;
+    color: var(--ink);
+    font-family: 'Nunito', -apple-system, BlinkMacSystemFont, sans-serif;
+    padding: 44px 0;
+    box-sizing: border-box;
+  }
+  @media(min-width: 768px){ .vsinst-calc-section { padding: 60px 0; } }
+
+  .vsinst-calc-section *, .vsinst-calc-section *::before, .vsinst-calc-section *::after {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .vsinst-calc-wrap {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+  @media(min-width: 640px){ .vsinst-calc-wrap { padding: 0 28px; } }
+
+  .vsinst-sec-head {
+    max-width: 680px;
+    margin: 0 auto 28px;
+    text-align: center;
+  }
+  .vsinst-sec-eyebrow {
+    font-size: 12px;
+    font-weight: 800;
+    font-family: 'Baloo 2', sans-serif;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--gold-d);
+    margin-bottom: 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .vsinst-sec-title {
+    font-size: clamp(24px, 4vw, 34px);
+    font-weight: 800;
+    font-family: 'Baloo 2', sans-serif !important;
+    color: var(--ink);
+    margin: 0 0 10px 0;
+    line-height: 1.2;
+  }
+  .vsinst-sec-desc {
+    color: var(--muted);
+    font-size: 15px;
+    font-family: 'Nunito', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .vsinst-calc-box {
+    background: #ffffff;
+    border: 1.5px solid var(--line);
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+    padding: 24px 18px;
+    font-family: 'Nunito', sans-serif;
+  }
+  @media(min-width: 860px){
+    .vsinst-calc-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      padding: 36px 30px;
+    }
+  }
+
+  .vsinst-field { margin-bottom: 20px; }
+  .vsinst-field-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    font-weight: 800;
+    font-family: 'Nunito', sans-serif;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .vsinst-field-badge {
+    background: var(--gold-t);
+    color: var(--gold-d);
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 800;
+    font-family: 'Baloo 2', sans-serif;
+  }
+
+  .vsinst-range-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 10px;
+    border-radius: 50px;
+    background: linear-gradient(90deg, #d97706 0%, #d97706 var(--fill, 12.5%), #e2e8f0 var(--fill, 12.5%));
+    outline: none;
+    margin: 12px 0 14px 0;
+    touch-action: pan-y;
+    cursor: pointer;
+  }
+  .vsinst-range-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: #d97706;
+    border: 3.5px solid #ffffff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    cursor: grab;
+    transition: transform 0.15s ease;
+  }
+  .vsinst-range-slider::-webkit-slider-thumb:active {
+    cursor: grabbing;
+    transform: scale(1.15);
+  }
+  .vsinst-range-slider::-moz-range-thumb {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: #d97706;
+    border: 3.5px solid #ffffff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    cursor: grab;
+  }
+
+  .vsinst-num-input {
+    width: 100%;
+    height: 46px;
+    border: 1.5px solid var(--line);
+    border-radius: 10px;
+    padding: 0 14px;
+    font-size: 16px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    color: var(--ink);
+    background: #ffffff;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .vsinst-num-input:focus {
+    border-color: #d97706;
+    box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.15);
+  }
+
+  /* Dynamic Mini Cards Row */
+  .vsinst-mini-cards-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+    margin: 10px 0 16px 0;
+  }
+
+  .vsinst-mini-card-icon {
+    width: 34px;
+    height: 22px;
+    border-radius: 5px;
+    background: linear-gradient(135deg, #e8c766 0%, #c9982e 100%);
+    border: 1px solid #b8860b;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.18);
+    transition: transform 0.18s ease;
+  }
+  .vsinst-mini-card-icon:hover {
+    transform: translateY(-2px) scale(1.1);
+  }
+
+  .vsinst-toggle-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 6px;
+  }
+  .vsinst-toggle-btn {
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1.5px solid #cbd5e1;
+    background: #ffffff;
+    color: #475569;
+    font-weight: 700;
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+  }
+  .vsinst-toggle-btn:hover {
+    border-color: #d97706;
+    color: #d97706;
+  }
+  .vsinst-toggle-btn.active {
+    background: linear-gradient(135deg, #d97706 0%, #f59e0b 100%);
+    color: #ffffff;
+    border-color: #d97706;
+    box-shadow: 0 4px 12px rgba(217, 119, 6, 0.25);
+  }
+
+  .vsinst-output-card {
+    background: #f8fafc;
+    border: 1.5px solid var(--line);
+    border-radius: 16px;
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: 'Nunito', sans-serif;
+  }
+
+  .vsinst-res-val {
+    font-family: 'Baloo 2', sans-serif !important;
+    font-size: clamp(48px, 10vw, 68px);
+    font-weight: 800;
+    color: #d97706;
+    line-height: 1;
+    margin: 8px 0 16px 0;
+  }
+  .vsinst-res-val span {
+    font-size: 18px;
+    color: var(--muted);
+    font-family: 'Nunito', sans-serif;
+  }
+
+  .vsinst-savings-box {
+    background: linear-gradient(135deg, #d97706 0%, #f59e0b 100%);
+    border-radius: 14px;
+    padding: 16px;
+    color: #ffffff;
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 14px rgba(217, 119, 6, 0.25);
+    font-family: 'Nunito', sans-serif;
+  }
+
+  .vsinst-btn-primary {
+    background: linear-gradient(135deg, #d97706 0%, #f59e0b 100%);
+    color: #ffffff;
+    font-weight: 800;
+    padding: 14px 26px;
+    border-radius: 12px;
+    font-size: 14.5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: none;
+    box-shadow: 0 6px 20px rgba(217, 119, 6, 0.3);
+    transition: all 0.2s ease;
+    text-decoration: none;
+  }
+  .vsinst-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 26px rgba(217, 119, 6, 0.42);
+    background: linear-gradient(135deg, #b45309 0%, #d97706 100%);
+    color: #ffffff;
+  }
+
+  .vsinst-btn-secondary {
+    background: #ffffff;
+    color: #b45309;
+    border: 1.5px solid #d97706;
+    font-weight: 700;
+    padding: 14px 24px;
+    border-radius: 12px;
+    font-size: 14.5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(217, 119, 6, 0.1);
+    text-decoration: none;
+  }
+  .vsinst-btn-secondary:hover {
+    background: #fef9c3;
+    transform: translateY(-2px);
+    color: #b45309;
+  }
+
+  @media(max-width: 767px){
+    .vsinst-calc-box {
+      padding: 20px 14px !important;
+      border-radius: 18px !important;
+      border: 1.5px solid #d97706 !important;
+      box-shadow: 0 10px 30px rgba(217, 119, 6, 0.08) !important;
+    }
+    .vsinst-output-card {
+      padding: 18px 14px !important;
+      border-radius: 14px !important;
+      margin-top: 16px;
+    }
+  }
+</style>
+
+<section class="vsinst-calc-section" id="vsinst-calc">
+  <div class="vsinst-calc-wrap">
+    <div class="vsinst-sec-head">
+      <div class="vsinst-sec-eyebrow"><i class="fa-solid fa-sliders"></i> Institutional Calculator</div>
+      <h2 class="vsinst-sec-title">{{ section.settings.title | default: 'Calculate Institutional Cards Needed' }}</h2>
+      <p class="vsinst-sec-desc">
+        {{ section.settings.description | default: 'Calculated using DISCOM institutional tariff standards: 1 card per 5 KW connected load, balanced across 3-phase campus substations, hospital ICU wings, and academic blocks.' }}
+      </p>
+    </div>
+
+    <div class="vsinst-calc-box">
+      <div>
+        <div class="vsinst-field">
+          <div class="vsinst-field-label">
+            <span>🏛️ CONNECTED INSTITUTIONAL LOAD</span>
+            <span class="vsinst-field-badge" id="sec_vsinst_kw_badge">50 KW</span>
+          </div>
+          <input type="range" class="vsinst-range-slider" id="sec_vsinst_kw_slider" min="10" max="400" value="50" step="10">
+          <input type="number" class="vsinst-num-input" id="sec_vsinst_kw_num" value="50" min="1" max="1500">
+        </div>
+
+        <div class="vsinst-field">
+          <div class="vsinst-field-label">
+            <span>💰 MONTHLY ELECTRICITY BILL</span>
+            <span class="vsinst-field-badge" id="sec_vsinst_bill_badge">₹50,000</span>
+          </div>
+          <input type="number" class="vsinst-num-input" id="sec_vsinst_bill_num" value="50000" min="5000" step="5000">
+        </div>
+
+        <!-- PHASE SELECTOR -->
+        <div class="vsinst-field">
+          <div class="vsinst-field-label">🔌 PANEL / SUBSTATION TYPE</div>
+          <div class="vsinst-toggle-group">
+            <button type="button" class="vsinst-toggle-btn" id="sec_vsinst_btn_single" onclick="secVsinstSetPhase(false)">Single Phase</button>
+            <button type="button" class="vsinst-toggle-btn active" id="sec_vsinst_btn_three" onclick="secVsinstSetPhase(true)">Three Phase (Substation / LT Panel)</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="vsinst-output-card">
+        <div>
+          <div style="font-size:11px; font-weight:800; color:var(--muted-2); letter-spacing:1px; text-transform:uppercase;">RECOMMENDED INSTITUTIONAL CARDS</div>
+          <div class="vsinst-res-val">
+            <span id="sec_vsinst_card_num">11</span>
+            <span id="sec_vsinst_card_unit">Cards</span>
+          </div>
+          <!-- Dynamic Mini Gold Cards Row -->
+          <div class="vsinst-mini-cards-row" id="sec_vsinst_mini_cards_row"></div>
+        </div>
+
+        <div class="vsinst-savings-box">
+          <div>
+            <div style="font-size:10px; font-weight:700; color:#fef3c7; text-transform:uppercase;">ESTIMATED MONTHLY SAVINGS (20-30%)</div>
+            <div style="font-size:22px; font-weight:800; font-family:'Space Grotesk', sans-serif;" id="sec_vsinst_savings_range">₹10,000 – ₹15,000 / mo</div>
+          </div>
+          <i class="fa-solid fa-piggy-bank" style="font-size:24px;"></i>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+          <a href="https://wa.me/{{ section.settings.whatsapp | default: '919876543210' }}?text=Hi%20Vidhyut%20Saathi%2C%20I%20need%20Institutional%20Saver%20Cards" class="vsinst-btn-primary" style="justify-content:center; font-size:13.5px;" target="_blank">
+            <i class="fa-brands fa-whatsapp"></i> Buy on WhatsApp
+          </a>
+          <a href="tel:{{ section.settings.phone | default: '+919876543210' }}" class="vsinst-btn-secondary" style="justify-content:center; font-size:13.5px;">
+            <i class="fa-solid fa-phone"></i> Call Representative
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function() {
+  var secVsinstThreePhase = true;
+
+  window.secVsinstSetPhase = function(isThree) {
+    secVsinstThreePhase = isThree;
+    var btnSingle = document.getElementById('sec_vsinst_btn_single');
+    var btnThree = document.getElementById('sec_vsinst_btn_three');
+    if (btnSingle && btnThree) {
+      if (isThree) {
+        btnThree.classList.add('active');
+        btnSingle.classList.remove('active');
+      } else {
+        btnSingle.classList.add('active');
+        btnThree.classList.remove('active');
+      }
+    }
+    secVsinstSync();
+  };
+
+  function secVsinstSync(source) {
+    var kwSlider = document.getElementById('sec_vsinst_kw_slider');
+    var kwNum = document.getElementById('sec_vsinst_kw_num');
+    var billNum = document.getElementById('sec_vsinst_bill_num');
+
+    if (!kwSlider || !kwNum || !billNum) return;
+
+    var kw = parseInt(kwNum.value) || 50;
+    var bill = parseInt(billNum.value) || 50000;
+
+    if (source === 'slider') {
+      kw = parseInt(kwSlider.value) || 10;
+      kwNum.value = kw;
+    } else if (source === 'kw') {
+      kw = Math.max(1, kw);
+      kwSlider.value = Math.min(kw, 400);
+    } else if (source === 'bill') {
+      bill = Math.max(1000, bill);
+    }
+
+    kwSlider.style.setProperty('--fill', (Math.min(kw, 400) / 400 * 100) + '%');
+
+    var kwBadge = document.getElementById('sec_vsinst_kw_badge');
+    var billBadge = document.getElementById('sec_vsinst_bill_badge');
+    if (kwBadge) kwBadge.innerText = kw + ' KW';
+    if (billBadge) billBadge.innerText = '₹' + bill.toLocaleString('en-IN');
+
+    // Institutional calculation: 1 card per 5 KW (+1 for 3-Phase substation balancing)
+    var kwCards = Math.max(1, Math.ceil(kw / 5));
+    var billCards = bill > 0 ? Math.max(1, Math.ceil(bill / 5000)) : 1;
+    var baseCards = Math.max(kwCards, billCards);
+    var total = secVsinstThreePhase ? baseCards + 1 : baseCards;
+
+    var numCardEl = document.getElementById('sec_vsinst_card_num');
+    var unitCardEl = document.getElementById('sec_vsinst_card_unit');
+    if (numCardEl) numCardEl.innerText = total;
+    if (unitCardEl) unitCardEl.innerText = total > 1 ? 'Cards' : 'Card';
+
+    /* Dynamic Mini Gold Cards Row */
+    var miniCardsRow = document.getElementById('sec_vsinst_mini_cards_row');
+    if (miniCardsRow) {
+      miniCardsRow.innerHTML = '';
+      var capped = Math.min(total, 30);
+      for (var i = 0; i < capped; i++) {
+        var icon = document.createElement('div');
+        icon.className = 'vsinst-mini-card-icon';
+        icon.title = 'Institutional Card ' + (i + 1);
+        miniCardsRow.appendChild(icon);
+      }
+      if (total > 30) {
+        var more = document.createElement('span');
+        more.style.cssText = 'font-family:Baloo 2,sans-serif;color:#d97706;font-size:13px;font-weight:800;align-self:center;margin-left:4px;';
+        more.textContent = '+' + (total - 30) + ' more';
+        miniCardsRow.appendChild(more);
+      }
+    }
+
+    // Monthly Savings (20% - 30%)
+    var minSave = Math.round(bill * 0.20);
+    var maxSave = Math.round(bill * 0.30);
+    var savingsRangeEl = document.getElementById('sec_vsinst_savings_range');
+    if (savingsRangeEl) {
+      savingsRangeEl.innerText = '₹' + minSave.toLocaleString('en-IN') + ' – ₹' + maxSave.toLocaleString('en-IN') + ' / mo';
+    }
+  }
+
+  var kwSliderElem = document.getElementById('sec_vsinst_kw_slider');
+  if (kwSliderElem) {
+    kwSliderElem.addEventListener('input', function() { secVsinstSync('slider'); });
+    kwSliderElem.addEventListener('change', function() { secVsinstSync('slider'); });
+  }
+
+  var kwNumElem = document.getElementById('sec_vsinst_kw_num');
+  if (kwNumElem) {
+    kwNumElem.addEventListener('input', function() { secVsinstSync('kw'); });
+  }
+
+  var billNumElem = document.getElementById('sec_vsinst_bill_num');
+  if (billNumElem) {
+    billNumElem.addEventListener('input', function() { secVsinstSync('bill'); });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() { secVsinstSync('init'); });
+  } else {
+    secVsinstSync('init');
+  }
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Institutional Calculator",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Calculate Institutional Cards Needed"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Section Description",
+      "default": "Calculated using DISCOM institutional tariff standards: 1 card per 5 KW connected load, balanced across 3-phase campus substations, hospital ICU wings, and academic blocks."
+    },
+    {
+      "type": "text",
+      "id": "whatsapp",
+      "label": "WhatsApp Number",
+      "default": "919876543210"
+    },
+    {
+      "type": "text",
+      "id": "phone",
+      "label": "Phone Number",
+      "default": "+919876543210"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Institutional Calculator"
+    }
+  ]
+}
+{% endschema %}
