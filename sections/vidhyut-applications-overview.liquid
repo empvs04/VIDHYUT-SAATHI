@@ -408,6 +408,35 @@
     box-shadow: 0 22px 42px -12px rgba(217, 119, 6, 0.32), 0 0 0 1.5px rgba(217, 119, 6, 0.45) !important;
   }
 
+  /* Desktop Checklist Layout (Locked) */
+  .vs-apps-sec-{{ section.id }} .vs-checklist-slider-wrap {
+    width: 100% !important;
+  }
+  .vs-apps-sec-{{ section.id }} .vs-checklist-dots {
+    display: none !important;
+  }
+
+  @media (min-width: 992px) {
+    .vs-apps-sec-{{ section.id }} .checklist {
+      margin-top: 22px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
+      flex: 1 !important;
+      gap: 13px !important;
+      overflow: visible !important;
+    }
+    .vs-apps-sec-{{ section.id }} .check-item {
+      flex: 1 !important;
+      min-width: auto !important;
+      max-width: 100% !important;
+      width: auto !important;
+    }
+    .vs-apps-sec-{{ section.id }} .vs-checklist-dots {
+      display: none !important;
+    }
+  }
+
   @media (max-width: 1024px) {
     .vs-apps-sec-{{ section.id }} {
       padding: {{ section.settings.padding_top_mob | default: 50 }}px 20px {{ section.settings.padding_bottom_mob | default: 50 }}px 20px !important;
@@ -423,19 +452,72 @@
     .vs-apps-sec-{{ section.id }} .right {
       height: auto !important;
     }
-    .vs-apps-sec-{{ section.id }} .checklist {
-      gap: 13px !important;
-      margin-top: 20px !important;
-    }
-    .vs-apps-sec-{{ section.id }} .check-item {
-      padding: 14px 18px !important;
-    }
     .vs-apps-sec-{{ section.id }} .right h2 {
       font-size: 28px !important;
       text-align: center !important;
     }
     .vs-apps-sec-{{ section.id }} .section-head {
       margin-bottom: 32px !important;
+    }
+
+    /* ── ONLY 4 POINTS (CHECKLIST) IN MOBILE SLIDER (1 POINT PER VIEW) ── */
+    .vs-apps-sec-{{ section.id }} .vs-checklist-slider-wrap {
+      width: 100% !important;
+      overflow: hidden !important;
+      position: relative !important;
+      margin-top: 16px !important;
+    }
+    .vs-apps-sec-{{ section.id }} .checklist {
+      display: flex !important;
+      flex-direction: row !important;
+      overflow-x: auto !important;
+      scroll-snap-type: x mandatory !important;
+      scroll-behavior: smooth !important;
+      -webkit-overflow-scrolling: touch !important;
+      gap: 0 !important;
+      padding: 4px 0 6px 0 !important;
+      margin-top: 0 !important;
+      scrollbar-width: none !important;
+      -ms-overflow-style: none !important;
+      width: 100% !important;
+    }
+    .vs-apps-sec-{{ section.id }} .checklist::-webkit-scrollbar {
+      display: none !important;
+    }
+    .vs-apps-sec-{{ section.id }} .check-item {
+      flex: 0 0 100% !important;
+      width: 100% !important;
+      min-width: 100% !important;
+      max-width: 100% !important;
+      scroll-snap-align: start !important;
+      scroll-snap-stop: always !important;
+      box-sizing: border-box !important;
+      padding: 14px 18px !important;
+      min-height: 80px !important;
+      margin: 0 !important;
+    }
+    .vs-apps-sec-{{ section.id }} .vs-checklist-dots {
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      gap: 8px !important;
+      margin-top: 14px !important;
+    }
+    .vs-apps-sec-{{ section.id }} .vs-c-dot {
+      width: 9px !important;
+      height: 9px !important;
+      border-radius: 999px !important;
+      background: rgba(42, 33, 24, 0.2) !important;
+      border: none !important;
+      padding: 0 !important;
+      cursor: pointer !important;
+      transition: all 0.35s ease !important;
+      outline: none !important;
+    }
+    .vs-apps-sec-{{ section.id }} .vs-c-dot.active {
+      width: 26px !important;
+      background: #FF7A1A !important;
+      box-shadow: 0 2px 10px rgba(255, 122, 26, 0.45) !important;
     }
   }
 
@@ -590,74 +672,84 @@
           <span class="accent">{{ section.settings.right_heading_accent | default: "VIDHYUT SAATHI BELONGS." }}</span>
         </h2>
 
-        <div class="checklist">
-          {% assign check_items = section.blocks | where: "type", "checklist_item" %}
-          {% if check_items.size > 0 %}
-            {% for block in check_items %}
-              {% assign s_name = block.settings.sector_name | downcase %}
-              {% if s_name contains 'com' %}
-                {% assign card_theme = 'com' %}
-              {% elsif s_name contains 'ind' %}
-                {% assign card_theme = 'ind' %}
-              {% elsif s_name contains 'ins' %}
-                {% assign card_theme = 'ins' %}
-              {% elsif s_name contains 'res' %}
-                {% assign card_theme = 'res' %}
-              {% elsif block.settings.theme_color != blank and block.settings.theme_color != 'res' %}
-                {% assign card_theme = block.settings.theme_color %}
-              {% else %}
-                {% case forloop.index %}
-                  {% when 2 %}
-                    {% assign card_theme = 'com' %}
-                  {% when 3 %}
-                    {% assign card_theme = 'ind' %}
-                  {% when 4 %}
-                    {% assign card_theme = 'ins' %}
-                  {% else %}
-                    {% assign card_theme = 'res' %}
-                {% endcase %}
-              {% endif %}
+        <div class="vs-checklist-slider-wrap">
+          <div class="checklist" id="vs-apps-checklist-{{ section.id }}">
+            {% assign check_items = section.blocks | where: "type", "checklist_item" %}
+            {% if check_items.size > 0 %}
+              {% for block in check_items %}
+                {% assign s_name = block.settings.sector_name | downcase %}
+                {% if s_name contains 'com' %}
+                  {% assign card_theme = 'com' %}
+                {% elsif s_name contains 'ind' %}
+                  {% assign card_theme = 'ind' %}
+                {% elsif s_name contains 'ins' %}
+                  {% assign card_theme = 'ins' %}
+                {% elsif s_name contains 'res' %}
+                  {% assign card_theme = 'res' %}
+                {% elsif block.settings.theme_color != blank and block.settings.theme_color != 'res' %}
+                  {% assign card_theme = block.settings.theme_color %}
+                {% else %}
+                  {% case forloop.index %}
+                    {% when 2 %}
+                      {% assign card_theme = 'com' %}
+                    {% when 3 %}
+                      {% assign card_theme = 'ind' %}
+                    {% when 4 %}
+                      {% assign card_theme = 'ins' %}
+                    {% else %}
+                      {% assign card_theme = 'res' %}
+                  {% endcase %}
+                {% endif %}
 
-              <div class="check-item theme-{{ card_theme }}" {{ block.shopify_attributes }}>
-                <div class="check-circle">{{ block.settings.check_icon | default: "✓" }}</div>
+                <div class="check-item theme-{{ card_theme }}" {{ block.shopify_attributes }}>
+                  <div class="check-circle">{{ block.settings.check_icon | default: "✓" }}</div>
+                  <div class="check-text-wrap">
+                    <p><strong>{{ block.settings.sector_name }}{% unless block.settings.sector_name contains '—' or block.settings.sector_name contains ':' %} —{% endunless %}</strong> {{ block.settings.sector_text }}</p>
+                  </div>
+                </div>
+              {% endfor %}
+            {% else %}
+              <!-- Residential Card -->
+              <div class="check-item theme-res">
+                <div class="check-circle">✓</div>
                 <div class="check-text-wrap">
-                  <p><strong>{{ block.settings.sector_name }}{% unless block.settings.sector_name contains '—' or block.settings.sector_name contains ':' %} —{% endunless %}</strong> {{ block.settings.sector_text }}</p>
+                  <p><strong>🏠 RESIDENTIAL —</strong> Lower electricity bills, reduce power wastage & protect your valuable home appliances from voltage fluctuations.</p>
                 </div>
               </div>
-            {% endfor %}
-          {% else %}
-            <!-- Residential Card -->
-            <div class="check-item theme-res">
-              <div class="check-circle">✓</div>
-              <div class="check-text-wrap">
-                <p><strong>🏠 RESIDENTIAL —</strong> Lower electricity bills, reduce power wastage & protect your valuable home appliances from voltage fluctuations.</p>
-              </div>
-            </div>
 
-            <!-- Commercial Card -->
-            <div class="check-item theme-com">
-              <div class="check-circle">✓</div>
-              <div class="check-text-wrap">
-                <p><strong>🏢 COMMERCIAL —</strong> Reduce electricity expenses, minimize power losses in shops, offices, malls, hotels and commercial spaces.</p>
+              <!-- Commercial Card -->
+              <div class="check-item theme-com">
+                <div class="check-circle">✓</div>
+                <div class="check-text-wrap">
+                  <p><strong>🏢 COMMERCIAL —</strong> Reduce electricity expenses, minimize power losses in shops, offices, malls, hotels and commercial spaces.</p>
+                </div>
               </div>
-            </div>
 
-            <!-- Industrial Card -->
-            <div class="check-item theme-ind">
-              <div class="check-circle">✓</div>
-              <div class="check-text-wrap">
-                <p><strong>🏭 INDUSTRIAL —</strong> Built for heavy motor loads, helping improve power efficiency & drive greater savings across factories and plants.</p>
+              <!-- Industrial Card -->
+              <div class="check-item theme-ind">
+                <div class="check-circle">✓</div>
+                <div class="check-text-wrap">
+                  <p><strong>🏭 INDUSTRIAL —</strong> Built for heavy motor loads, helping improve power efficiency & drive greater savings across factories and plants.</p>
+                </div>
               </div>
-            </div>
 
-            <!-- Institutional Card -->
-            <div class="check-item theme-ins">
-              <div class="check-circle">✓</div>
-              <div class="check-text-wrap">
-                <p><strong>🏫 INSTITUTIONAL —</strong> Smarter power management, improved efficiency & enhanced electrical safety for schools, hospitals and institutions.</p>
+              <!-- Institutional Card -->
+              <div class="check-item theme-ins">
+                <div class="check-circle">✓</div>
+                <div class="check-text-wrap">
+                  <p><strong>🏫 INSTITUTIONAL —</strong> Smarter power management, improved efficiency & enhanced electrical safety for schools, hospitals and institutions.</p>
+                </div>
               </div>
-            </div>
-          {% endif %}
+            {% endif %}
+          </div>
+
+          <!-- Indicator Dots for Mobile Slider -->
+          <div class="vs-checklist-dots" id="vs-apps-dots-{{ section.id }}">
+            <button type="button" class="vs-c-dot active" data-idx="0" aria-label="Card 1"></button>
+            <button type="button" class="vs-c-dot" data-idx="1" aria-label="Card 2"></button>
+            <button type="button" class="vs-c-dot" data-idx="2" aria-label="Card 3"></button>
+            <button type="button" class="vs-c-dot" data-idx="3" aria-label="Card 4"></button>
+          </div>
         </div>
       </div>
 
@@ -665,6 +757,148 @@
 
   </div>
 </div>
+
+<script>
+(function() {
+  function initCardSlider() {
+    var sec = document.querySelector('.vs-apps-sec-{{ section.id }}');
+    if (!sec) return;
+    
+    var checklist = sec.querySelector('#vs-apps-checklist-{{ section.id }}');
+    var dots = sec.querySelectorAll('#vs-apps-dots-{{ section.id }} .vs-c-dot');
+    if (!checklist) return;
+    
+    var items = checklist.querySelectorAll('.check-item');
+    if (!items.length) return;
+    
+    var currentIndex = 0;
+    var timer = null;
+    var isIntersecting = false;
+    var isUserInteracting = false;
+    var userInteractTimeout = null;
+
+    function updateDots(idx) {
+      for (var i = 0; i < dots.length; i++) {
+        if (i === idx) {
+          dots[i].classList.add('active');
+        } else {
+          dots[i].classList.remove('active');
+        }
+      }
+    }
+
+    function scrollToIndex(idx, smooth) {
+      if (window.innerWidth > 991) return;
+      if (idx >= items.length) idx = 0;
+      if (idx < 0) idx = items.length - 1;
+      currentIndex = idx;
+      
+      var targetItem = items[currentIndex];
+      if (targetItem) {
+        checklist.scrollTo({
+          left: targetItem.offsetLeft - checklist.offsetLeft,
+          behavior: smooth ? 'smooth' : 'auto'
+        });
+        updateDots(currentIndex);
+      }
+    }
+
+    function nextSlide() {
+      if (window.innerWidth > 991 || isUserInteracting) return;
+      currentIndex = (currentIndex + 1) % items.length;
+      scrollToIndex(currentIndex, true);
+    }
+
+    function startTimer() {
+      stopTimer();
+      if (window.innerWidth <= 991 && isIntersecting) {
+        timer = setInterval(nextSlide, 3000);
+      }
+    }
+
+    function stopTimer() {
+      if (timer) {
+        clearInterval(timer);
+        timer = null;
+      }
+    }
+
+    // Trigger auto-scroll only when user enters this section
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            isIntersecting = true;
+            startTimer();
+          } else {
+            isIntersecting = false;
+            stopTimer();
+          }
+        });
+      }, { threshold: 0.2 });
+      observer.observe(sec);
+    } else {
+      isIntersecting = true;
+      startTimer();
+    }
+
+    // Sync dots and index on swipe/touch
+    var scrollDebounce;
+    checklist.addEventListener('scroll', function() {
+      if (window.innerWidth > 991) return;
+      isUserInteracting = true;
+      clearTimeout(userInteractTimeout);
+      userInteractTimeout = setTimeout(function() {
+        isUserInteracting = false;
+      }, 4000);
+
+      clearTimeout(scrollDebounce);
+      scrollDebounce = setTimeout(function() {
+        var scrollLeft = checklist.scrollLeft;
+        var closestIdx = 0;
+        var minDiff = Infinity;
+        items.forEach(function(item, idx) {
+          var itemLeft = item.offsetLeft - checklist.offsetLeft;
+          var diff = Math.abs(scrollLeft - itemLeft);
+          if (diff < minDiff) {
+            minDiff = diff;
+            closestIdx = idx;
+          }
+        });
+        currentIndex = closestIdx;
+        updateDots(currentIndex);
+      }, 80);
+    }, { passive: true });
+
+    // Click on dots
+    dots.forEach(function(dot, idx) {
+      dot.addEventListener('click', function(e) {
+        e.preventDefault();
+        isUserInteracting = true;
+        clearTimeout(userInteractTimeout);
+        userInteractTimeout = setTimeout(function() {
+          isUserInteracting = false;
+        }, 4000);
+        scrollToIndex(idx, true);
+      });
+    });
+
+    window.addEventListener('resize', function() {
+      if (window.innerWidth > 991) {
+        stopTimer();
+      } else if (isIntersecting && !timer) {
+        startTimer();
+      }
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCardSlider);
+  } else {
+    initCardSlider();
+  }
+})();
+</script>
 
 {% schema %}
 {
