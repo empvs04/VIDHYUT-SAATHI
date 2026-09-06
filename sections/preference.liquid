@@ -1,5 +1,4 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800;900&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 
 {%- comment -%}
 
@@ -7,7 +6,15 @@
 
 {%- endcomment -%}
 
+
+
 {%- style -%}
+
+  {{ section.settings.heading_font | font_face: font_display: 'swap' }}
+
+  {{ section.settings.body_font | font_face: font_display: 'swap' }}
+
+
 
   .premium-calculator-{{ section.id }} {
 
@@ -23,9 +30,11 @@
 
     --gradient: linear-gradient(135deg, var(--green), var(--orange));
 
-    --heading-font: 'Baloo 2', sans-serif !important;
+    --heading-font: {{ section.settings.heading_font.family }}, {{ section.settings.heading_font.fallback_families }};
 
-    --body-font: 'Nunito', sans-serif !important;
+    --body-font: {{ section.settings.body_font.family }}, {{ section.settings.body_font.fallback_families }};
+
+   
 
     font-family: var(--body-font);
 
@@ -625,25 +634,24 @@
       max-width: 720px !important;
     }
 
-    /* 2 EQUAL COLUMNS BELOW HEADER (1fr 1fr WITH 42px GAP) */
+    /* 2 COLUMNS BELOW HEADER */
     .vs-calc-desktop-grid-{{ section.id }} {
-      display: grid !important;
-      grid-template-columns: 1fr 1fr !important;
-      align-items: start !important;
-      gap: 42px !important;
-      width: 100% !important;
+      display: flex !important;
+      flex-direction: row !important;
+      align-items: flex-start !important;
+      justify-content: center !important;
+      gap: 36px !important;
     }
     
     /* LEFT COLUMN: COMPACT & ELEGANT CALCULATOR CONTROLS CARD */
     .vs-calc-left-col-{{ section.id }} {
-      width: 100% !important;
-      max-width: 100% !important;
+      flex: 0 0 540px !important;
+      max-width: 540px !important;
     }
     .vs-calc-left-col-{{ section.id }} .calc-card { 
       padding: 24px 22px !important; 
       border-radius: 22px !important; 
       box-shadow: 0 15px 45px rgba(0,0,0,0.05), 0 0 25px rgba(245,130,32,0.06) !important;
-      width: 100% !important;
     }
     .premium-calculator-{{ section.id }} .calc-current { 
       font-size: 2.2rem !important; 
@@ -655,7 +663,7 @@
     .premium-calculator-{{ section.id }} .calc-recommendation-bar {
       padding: 10px 12px !important;
       margin-top: 14px !important;
-      margin-bottom: 0 !important;
+      margin-bottom: 16px !important;
     }
     .premium-calculator-{{ section.id }} .calc-rec-pill {
       font-size: 0.8rem !important;
@@ -664,10 +672,10 @@
       font-size: 0.88rem !important;
     }
 
-    /* RIGHT COLUMN: 4 CALCULATION RESULTS CARDS, EXPLANATION, DISCLAIMER & 4 TRUST BADGES */
+    /* RIGHT COLUMN: 4 CALCULATION RESULTS CARDS & 4 TRUST BADGES */
     .vs-calc-right-col-{{ section.id }} {
-      width: 100% !important;
-      max-width: 100% !important;
+      flex: 0 0 490px !important;
+      max-width: 490px !important;
     }
     .vs-calc-right-col-{{ section.id }} .calc-results {
       display: grid !important;
@@ -707,15 +715,6 @@
       font-size: 0.85rem !important;
       color: #64748B !important;
       font-weight: 600 !important;
-    }
-
-    .vs-calc-right-col-{{ section.id }} .calc-explain-badge {
-      margin-top: 14px !important;
-      margin-bottom: 12px !important;
-    }
-    .vs-calc-right-col-{{ section.id }} .calc-disclaimer {
-      margin-top: 0 !important;
-      margin-bottom: 16px !important;
     }
 
     /* TRUST STRIP CAPSULE PILLS IN RIGHT COLUMN */
@@ -898,10 +897,17 @@
             </div>
           </div>
 
+          <!-- EXPLANATION BADGE (HIGHER RULE APPLIED) -->
+          <div class="calc-explain-badge" id="recReason-{{ section.id }}">
+            ⚡ <strong>Smart Selection:</strong> Evaluated from both KW Load and Monthly Bill — Higher Requirement Selected.
+          </div>
+
+          <p class="calc-disclaimer">{{ section.settings.disclaimer_text }}</p>
+
         </div>
       </div>
 
-      <!-- RIGHT COLUMN: RESULTS CARDS, EXPLANATION, DISCLAIMER & TRUST CAPSULE PILLS -->
+      <!-- RIGHT COLUMN: RESULTS CARDS & TRUST CAPSULE PILLS -->
       <div class="vs-calc-right-col-{{ section.id }}">
         <!-- 4 CALCULATION RESULT CARDS -->
         <div class="calc-results">
@@ -922,13 +928,6 @@
             <div class="calc-result-label">{{ section.settings.label_roi }}</div>
           </div>
         </div>
-
-        <!-- EXPLANATION BADGE & DISCLAIMER (MOVED HERE BELOW RESULTS CARDS) -->
-        <div class="calc-explain-badge" id="recReason-{{ section.id }}">
-          ⚡ <strong>Smart Selection:</strong> Evaluated from both KW Load and Monthly Bill — Higher Requirement Selected.
-        </div>
-
-        <p class="calc-disclaimer">{{ section.settings.disclaimer_text }}</p>
 
         <!-- TRUST STRIP CAPSULE PILLS -->
         <div class="trust-strip">
