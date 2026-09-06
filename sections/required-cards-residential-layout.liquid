@@ -502,6 +502,28 @@
     font-family: 'Nunito', sans-serif;
   }
 
+  /* Dynamic Mini Cards Row */
+  .vsres-mini-cards-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+    margin: 10px 0 16px 0;
+  }
+
+  .vsres-mini-card-icon {
+    width: 34px;
+    height: 22px;
+    border-radius: 5px;
+    background: linear-gradient(135deg, #e8c766 0%, #c9982e 100%);
+    border: 1px solid #b8860b;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.18);
+    transition: transform 0.18s ease;
+  }
+  .vsres-mini-card-icon:hover {
+    transform: translateY(-2px) scale(1.1);
+  }
+
   .vsres-savings-box {
     background: linear-gradient(135deg, #0a4a2c 0%, #007b3e 100%);
     border-radius: 14px;
@@ -1983,6 +2005,8 @@
               <span id="vsres_card_num">1</span>
               <span id="vsres_card_unit">Card</span>
             </div>
+            <!-- Dynamic Mini Gold Cards Row -->
+            <div class="vsres-mini-cards-row" id="vsres_mini_cards_row"></div>
           </div>
 
           <div class="vsres-savings-box">
@@ -2588,6 +2612,25 @@
     document.getElementById('vsres_card_num').innerText = total;
     document.getElementById('vsres_card_unit').innerText = total > 1 ? 'Cards' : 'Card';
 
+    /* Dynamic Mini Gold Cards Row */
+    var miniCardsRow = document.getElementById('vsres_mini_cards_row');
+    if (miniCardsRow) {
+      miniCardsRow.innerHTML = '';
+      var capped = Math.min(total, 30);
+      for (var i = 0; i < capped; i++) {
+        var icon = document.createElement('div');
+        icon.className = 'vsres-mini-card-icon';
+        icon.title = 'Residential Card ' + (i + 1);
+        miniCardsRow.appendChild(icon);
+      }
+      if (total > 30) {
+        var more = document.createElement('span');
+        more.style.cssText = 'font-family:Baloo 2,sans-serif;color:#ec5c0a;font-size:13px;font-weight:800;align-self:center;margin-left:4px;';
+        more.textContent = '+' + (total - 30) + ' more';
+        miniCardsRow.appendChild(more);
+      }
+    }
+
     var sMin = Math.round((bill * 0.20) / 100) * 100;
     var sMax = Math.round((bill * 0.30) / 100) * 100;
     document.getElementById('vsres_savings_range').innerText = '₹' + sMin.toLocaleString('en-IN') + ' – ₹' + sMax.toLocaleString('en-IN') + ' / mo';
@@ -2607,10 +2650,21 @@
     vsresSync();
   }
 
-  document.getElementById('vsres_kw_slider').addEventListener('input', function() {
-    document.getElementById('vsres_kw_num').value = this.value;
+  var kwSliderElem = document.getElementById('vsres_kw_slider');
+  if (kwSliderElem) {
+    kwSliderElem.addEventListener('input', function() {
+      var numElem = document.getElementById('vsres_kw_num');
+      if (numElem) numElem.value = this.value;
+      vsresSync();
+    });
+  }
+
+  // Initial Sync
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', vsresSync);
+  } else {
     vsresSync();
-  });
+  }
 
   /* MCB GALLERY FILTER & LIGHTBOX */
   function filterMcb(category, btnElem) {
