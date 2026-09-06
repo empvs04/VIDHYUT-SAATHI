@@ -1,4 +1,5 @@
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800;900&family=Nunito:wght@400;500;600;700;800;900&family=Work+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
 /* ============================================================
@@ -266,19 +267,67 @@
   font-weight: 600;
 }
 
-/* ---- SECTIONS ---- */
-.vscc .sec { padding: 52px 0; }
-@media(min-width:760px){ .vscc .sec { padding: 72px 0; } }
+/* ---- SECTIONS & LUCATIVE HEADERS ---- */
+.vscc .sec { padding: 56px 0; }
+@media(min-width:760px){ .vscc .sec { padding: 76px 0; } }
 
-.vscc .sec-head { max-width: 640px; margin: 0 auto 32px; text-align: center; }
-.vscc .sec-eyebrow {
-  font-size: 11px; letter-spacing: .14em;
-  text-transform: uppercase; color: var(--orange);
-  margin-bottom: 8px; font-weight: 800;
-  font-family: 'Work Sans', 'Baloo 2', sans-serif !important;
+.vscc .sec-head,
+.vscc .guideline-head {
+  max-width: 780px;
+  margin: 0 auto 34px;
+  text-align: center;
+  position: relative;
 }
-.vscc .sec h2 { font-size: clamp(24px, 5vw, 36px); margin: 0 0 10px; font-weight: 800; font-family: 'Baloo 2', sans-serif !important; }
-.vscc .sec p.desc { color: var(--muted); font-size: 15px; line-height: 1.65; margin: 0 auto; font-family: 'Nunito', sans-serif !important; font-weight: 600; }
+.vscc .sec-eyebrow,
+.vscc .guideline-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #ffffff 0%, #fdece1 100%);
+  border: 1.5px solid #f0631b;
+  color: #c2410c;
+  font-family: 'Baloo 2', sans-serif !important;
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  padding: 6px 18px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 14px rgba(240, 99, 27, 0.12);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.vscc .sec-eyebrow:hover,
+.vscc .guideline-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(240, 99, 27, 0.18);
+}
+.vscc .sec h2,
+.vscc .guideline-head h2 {
+  font-family: 'Baloo 2', sans-serif !important;
+  font-size: clamp(24px, 4.5vw, 36px);
+  font-weight: 800;
+  line-height: 1.2;
+  color: #16281f;
+  margin: 0 0 10px;
+  letter-spacing: -0.015em;
+}
+.vscc .sec h2 span,
+.vscc .guideline-head h2 span {
+  background: linear-gradient(135deg, #f0631b 0%, #d97706 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.vscc .sec p.desc,
+.vscc .guideline-head .sub {
+  font-family: 'Nunito', sans-serif !important;
+  font-size: clamp(14px, 2.2vw, 15.5px);
+  font-weight: 600;
+  color: #5e7568;
+  line-height: 1.65;
+  max-width: 680px;
+  margin: 0 auto;
+}
 
 /* ---- CALCULATOR ---- */
 .vscc .calc-outer-box {
@@ -1464,9 +1513,9 @@
   <section class="guideline-sec" id="vscc-guidelines">
     <div class="wrap">
       <div class="guideline-head">
-        <div class="guideline-badge">⚡ HOW MANY CARDS REQUIRED</div>
-        <h2>The Number Of VIDHYUT SAATHI CARD Required Will Depend On Your Connection.</h2>
-        <p class="sub">The table below serves as a good guideline based on Connected Load (KW) & Monthly Electricity Bill (₹):</p>
+        <div class="guideline-badge"><i class="fa-solid fa-bolt-lightning"></i> HOW MANY CARDS REQUIRED</div>
+        <h2>The Number Of <span>VIDHYUT SAATHI CARDS</span> Required For Your Connection</h2>
+        <p class="sub">Standard DISCOM guidelines mapped across Connected Load (KW) & Monthly Electricity Bill (₹):</p>
       </div>
 
       <div class="guide-grid">
@@ -1495,9 +1544,9 @@
   <section class="guideline-sec" id="vscc-guidelines-copy">
     <div class="wrap">
       <div class="guideline-head">
-        <div class="guideline-badge">⚡ HOW MANY CARDS REQUIRED</div>
-        <h2>The Number Of VIDHYUT SAATHI CARD Required Will Depend On Your Connection.</h2>
-        <p class="sub">The table below serves as a good guideline based on Connected Load (KW) & Monthly Electricity Bill (₹):</p>
+        <div class="guideline-badge"><i class="fa-solid fa-layer-group"></i> COMPLETE CONNECTION MATRIX</div>
+        <h2>Detailed Load & Bill Reference for <span>Vidhyut Saathi Cards</span></h2>
+        <p class="sub">Reference table to accurately match your domestic, commercial, or industrial power load requirements:</p>
       </div>
 
       <div class="guide-grid">
@@ -1525,9 +1574,9 @@
   <section class="sec" id="vscc-calc">
     <div class="wrap">
       <div class="sec-head">
-        <div class="sec-eyebrow">CARD CALCULATOR</div>
-        <h2>Get your exact card count</h2>
-        <p class="desc">One card saves 20–30% on a small load — bigger connections and heavier bills both call for more coverage. We calculate it both ways and take whichever number is higher.</p>
+        <div class="sec-eyebrow"><i class="fa-solid fa-sliders"></i> INTERACTIVE CARD CALCULATOR</div>
+        <h2>Calculate Your Exact <span>Card Count & Savings</span></h2>
+        <p class="desc">Enter your connected load and monthly bill — our dual-check calculation algorithm automatically considers the higher requirement with instant 20%–30% monthly savings projection.</p>
       </div>
 
       <div class="calc-outer-box">
@@ -1634,9 +1683,9 @@
   <section class="sec" id="vscc-chart" style="padding-top:10px;">
     <div class="wrap">
       <div class="sec-head">
-        <div class="sec-eyebrow" style="color:var(--orange);font-family:'Work Sans',sans-serif;letter-spacing:.12em;font-size:11px;font-weight:800;">REFERENCE</div>
-        <h2 style="font-family:'Baloo 2',sans-serif !important;font-size:clamp(24px, 5vw, 32px);font-weight:800;margin:4px 0 10px;">Full requirement chart</h2>
-        <p class="desc" style="color:var(--muted);font-size:14.5px;line-height:1.6;margin:0;">The same logic as the calculator above, laid out by connection size — from a single home to a full industrial load.</p>
+        <div class="sec-eyebrow"><i class="fa-solid fa-table-cells"></i> DISCOM TARIFF REFERENCE</div>
+        <h2>Full Requirement <span>Comparison Chart</span></h2>
+        <p class="desc">The same certified calculation logic laid out across all scale brackets — from a single home connection to full industrial factory panels.</p>
       </div>
 
       <div class="chart-outer-box">
@@ -1664,9 +1713,9 @@
   <section class="sec" id="vscc-examples">
     <div class="wrap">
       <div class="sec-head" style="text-align:center;margin-left:auto;margin-right:auto;">
-        <div class="sec-eyebrow">Worked Examples</div>
-        <h2>See the logic in action</h2>
-        <p class="desc" style="margin-left:auto;margin-right:auto;">Real scenarios where KW-based and bill-based counts disagree — and why we always go with the larger one.</p>
+        <div class="sec-eyebrow"><i class="fa-solid fa-lightbulb"></i> REAL-WORLD EXAMPLES</div>
+        <h2>See The Logic In <span>Real Customer Scenarios</span></h2>
+        <p class="desc" style="margin-left:auto;margin-right:auto;">Real scenarios where KW-based and bill-based counts disagree — and why our conservative dual-audit method guarantees maximum savings.</p>
       </div>
 
       <div class="tabs" style="justify-content:center;">
@@ -1763,8 +1812,11 @@
   <section class="sec" style="padding-bottom:80px;">
     <div class="wrap">
       <div class="cta-band">
-        <h3>Know your number. Order the right count the first time.</h3>
-        <p>Built on US–German nanotechnology with a Terahertz chip — ISO-certified and ready for home, commercial, or industrial connections.</p>
+        <div style="display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,0.16); border:1px solid rgba(255,255,255,0.32); color:#ffffff; font-size:11.5px; font-weight:800; letter-spacing:1px; text-transform:uppercase; padding:6px 16px; border-radius:999px; margin-bottom:14px; font-family:'Baloo 2',sans-serif; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
+          <i class="fa-solid fa-shield-halved"></i> 100% LEGAL & CERTIFIED SAVINGS
+        </div>
+        <h3 style="font-size:clamp(22px, 4.5vw, 34px); font-weight:800; margin:0 0 12px; font-family:'Baloo 2',sans-serif; color:#ffffff;">Know your number. <span style="background:linear-gradient(135deg, #ffd700 0%, #ffffff 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">Order the right card count</span> the first time.</h3>
+        <p style="font-size:15px; max-width:620px; margin:0 auto 24px; color:#fdece1; line-height:1.65; font-family:'Nunito',sans-serif;">Built on advanced US–German nanotechnology with a Terahertz chip — ISO-certified, legal, and ready for home, commercial, or industrial connections.</p>
         <a href="#vscc-calc" class="btn-white">Calculate My Cards ↑</a>
       </div>
     </div>
