@@ -2002,8 +2002,8 @@
               <span>⚙️ HOME CONNECTED LOAD</span>
               <span class="vsres-field-badge" id="vsres_kw_badge">6 KW</span>
             </div>
-            <input type="range" class="vsres-range-slider" id="vsres_kw_slider" min="1" max="40" value="6" step="1" oninput="vsresSync()">
-            <input type="number" class="vsres-num-input" id="vsres_kw_num" value="6" min="1" max="100" oninput="vsresSync()">
+            <input type="range" class="vsres-range-slider" id="vsres_kw_slider" min="1" max="40" value="6" step="1">
+            <input type="number" class="vsres-num-input" id="vsres_kw_num" value="6" min="1" max="100">
           </div>
 
           <!-- MONTHLY BILL -->
@@ -2012,7 +2012,7 @@
               <span>💰 MONTHLY ELECTRICITY BILL</span>
               <span class="vsres-field-badge" id="vsres_bill_badge">₹6,000</span>
             </div>
-            <input type="number" class="vsres-num-input" id="vsres_bill_num" value="6000" min="500" step="500" oninput="vsresSync()">
+            <input type="number" class="vsres-num-input" id="vsres_bill_num" value="6000" min="500" step="500">
           </div>
 
           <!-- PHASE SELECTOR -->
@@ -2618,28 +2618,38 @@
 <script>
   var vsresThreePhase = false;
 
-  function vsresSync() {
+  function vsresSync(fromSlider) {
     var kwSlider = document.getElementById('vsres_kw_slider');
     var kwNum = document.getElementById('vsres_kw_num');
     var billNum = document.getElementById('vsres_bill_num');
     var kwBadge = document.getElementById('vsres_kw_badge');
     var billBadge = document.getElementById('vsres_bill_badge');
 
-    var kw = Math.max(1, parseInt(kwNum.value) || 1);
+    if (!kwSlider || !kwNum || !billNum) return;
+
+    var kw;
+    if (fromSlider) {
+      kw = Math.max(1, parseInt(kwSlider.value) || 1);
+      kwNum.value = kw;
+    } else {
+      kw = Math.max(1, parseInt(kwNum.value) || 1);
+      kwSlider.value = Math.min(kw, 40);
+    }
     var bill = Math.max(0, parseInt(billNum.value) || 0);
 
-    kwSlider.value = Math.min(kw, 40);
     kwSlider.style.setProperty('--fill', (Math.min(kw, 40) / 40 * 100) + '%');
-    kwBadge.innerText = kw + ' KW';
-    billBadge.innerText = '₹' + bill.toLocaleString('en-IN');
+    if (kwBadge) kwBadge.innerText = kw + ' KW';
+    if (billBadge) billBadge.innerText = '₹' + bill.toLocaleString('en-IN');
 
     var kwCards = Math.max(1, Math.ceil(kw / 6));
     var billCards = bill > 0 ? Math.max(1, Math.ceil(bill / 6000)) : 1;
     var base = Math.max(kwCards, billCards);
     var total = vsresThreePhase ? base + 1 : base;
 
-    document.getElementById('vsres_card_num').innerText = total;
-    document.getElementById('vsres_card_unit').innerText = total > 1 ? 'Cards' : 'Card';
+    var numCardEl = document.getElementById('vsres_card_num');
+    var unitCardEl = document.getElementById('vsres_card_unit');
+    if (numCardEl) numCardEl.innerText = total;
+    if (unitCardEl) unitCardEl.innerText = total > 1 ? 'Cards' : 'Card';
 
     /* Dynamic Mini Gold Cards Row */
     var miniCardsRow = document.getElementById('vsres_mini_cards_row');
@@ -2662,7 +2672,10 @@
 
     var sMin = Math.round((bill * 0.20) / 100) * 100;
     var sMax = Math.round((bill * 0.30) / 100) * 100;
-    document.getElementById('vsres_savings_range').innerText = '₹' + sMin.toLocaleString('en-IN') + ' – ₹' + sMax.toLocaleString('en-IN') + ' / mo';
+    var savingsRangeEl = document.getElementById('vsres_savings_range');
+    if (savingsRangeEl) {
+      savingsRangeEl.innerText = '₹' + sMin.toLocaleString('en-IN') + ' – ₹' + sMax.toLocaleString('en-IN') + ' / mo';
+    }
   }
 
   function vsresSetPhase(isThree) {
@@ -2676,23 +2689,39 @@
       btnSingle.classList.add('active');
       btnThree.classList.remove('active');
     }
-    vsresSync();
+    vsresSync(false);
   }
 
+  // Two-way interactive event binding for slider and text boxes
   var kwSliderElem = document.getElementById('vsres_kw_slider');
   if (kwSliderElem) {
     kwSliderElem.addEventListener('input', function() {
-      var numElem = document.getElementById('vsres_kw_num');
-      if (numElem) numElem.value = this.value;
-      vsresSync();
+      vsresSync(true);
+    });
+    kwSliderElem.addEventListener('change', function() {
+      vsresSync(true);
+    });
+  }
+
+  var kwNumElem = document.getElementById('vsres_kw_num');
+  if (kwNumElem) {
+    kwNumElem.addEventListener('input', function() {
+      vsresSync(false);
+    });
+  }
+
+  var billNumElem = document.getElementById('vsres_bill_num');
+  if (billNumElem) {
+    billNumElem.addEventListener('input', function() {
+      vsresSync(false);
     });
   }
 
   // Initial Sync
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', vsresSync);
+    document.addEventListener('DOMContentLoaded', function() { vsresSync(false); });
   } else {
-    vsresSync();
+    vsresSync(false);
   }
 
   /* MCB GALLERY FILTER & LIGHTBOX */
