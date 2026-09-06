@@ -921,10 +921,81 @@
   border-color: var(--green); color: #fff;
   box-shadow: 0 6px 18px rgba(14,107,62,.25);
 }
-.vscc .eg-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
-@media(min-width:768px){ .vscc .eg-grid { grid-template-columns: 1fr 1fr; gap: 24px; } }
-.vscc .eg-panel { display: none; }
-.vscc .eg-panel.active { display: grid; }
+/* ---- EXAMPLES SLIDER & CARDS ---- */
+.vscc .vscc-eg-slider-wrap {
+  width: 100%;
+  position: relative;
+}
+
+@media(max-width: 767px) {
+  .vscc .vscc-eg-slider-wrap {
+    overflow: hidden !important;
+    border-radius: 20px !important;
+  }
+  .vscc .eg-grid {
+    display: none !important;
+    gap: 0 !important;
+  }
+  .vscc .eg-panel.active {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    width: 100% !important;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1) !important;
+    will-change: transform !important;
+  }
+  .vscc .eg-card {
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 100% !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+    border-radius: 20px !important;
+  }
+  .vscc .vscc-eg-dots {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 8px !important;
+    margin-top: 16px !important;
+  }
+  .vscc .vscc-eg-dot {
+    width: 8px !important;
+    height: 8px !important;
+    border-radius: 50% !important;
+    background: #cbd5e1 !important;
+    border: none !important;
+    padding: 0 !important;
+    cursor: pointer !important;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1) !important;
+  }
+  .vscc .vscc-eg-dot.active {
+    background: var(--orange) !important;
+    width: 24px !important;
+    border-radius: 50px !important;
+    box-shadow: 0 2px 8px rgba(240, 99, 27, 0.4) !important;
+  }
+}
+
+@media(min-width: 768px) {
+  .vscc .vscc-eg-slider-wrap {
+    overflow: visible !important;
+  }
+  .vscc .eg-grid {
+    display: none;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .vscc .eg-panel.active {
+    display: grid !important;
+    transform: none !important;
+  }
+  .vscc .vscc-eg-dots {
+    display: none !important;
+  }
+}
+
 .vscc .eg-card {
   background: var(--panel); border: 1.5px solid var(--line);
   border-radius: 20px; padding: 18px;
@@ -1863,193 +1934,196 @@
 
       <div class="tabs" style="justify-content:center;">
         <button class="tab-btn active" data-vscc-tab="res">🏠 Residential</button>
-        <button class="tab-btn" data-vscc-tab="com">🏢 Commercial</button>
-        <button class="tab-btn" data-vscc-tab="ind">🏭 Industrial</button>
-        <button class="tab-btn" data-vscc-tab="inst">🏛️ Institutional</button>
+        <div class="vscc-eg-slider-wrap">
+        <div class="eg-grid eg-panel active" data-vscc-panel="res">
+          <div class="eg-card">
+            <div class="eg-img-wrap">
+              <img src="{{ 'real-mumbai-2bhk-apartment.jpg' | asset_url }}" alt="2 BHK Apartment Mumbai" loading="lazy" onerror="this.onerror=null; this.src='{{ 'residential-house-1.png' | asset_url }}';">
+              <span class="eg-tag">2 BHK Apartment</span>
+            </div>
+            <div class="eg-person-row">
+              <div class="eg-avatar">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Mr. Rohan" loading="lazy" onerror="this.onerror=null; this.src='{{ 'wvs-happy-man.jpg' | asset_url }}';">
+              </div>
+              <div>
+                <h4>Mr. Rohan <i class="fa-solid fa-circle-check" style="color:#008744; font-size:12px;"></i></h4>
+                <div class="eg-sub"><i class="fa-solid fa-location-dot" style="color:var(--orange);"></i> Mumbai • Low load, high bill</div>
+              </div>
+            </div>
+            <div class="eg-stats">
+              <div class="eg-stat"><div class="k">Load</div><div class="v">5 KW</div></div>
+              <div class="eg-stat"><div class="k">Bill</div><div class="v">₹18,000</div></div>
+            </div>
+            <div class="eg-result"><span class="rl">Cards Required</span><span class="rn">3 Cards</span></div>
+            <p class="eg-why">5 KW only needs 1 card, but ₹18,000 needs 3 — the bill-based count wins.</p>
+          </div>
+
+          <div class="eg-card">
+            <div class="eg-img-wrap">
+              <img src="{{ 'real-lucknow-villa-house.jpg' | asset_url }}" alt="3 BHK Duplex Villa Lucknow" loading="lazy" onerror="this.onerror=null; this.src='{{ 'residential-house-2.png' | asset_url }}';">
+              <span class="eg-tag">3 BHK Duplex Villa</span>
+            </div>
+            <div class="eg-person-row">
+              <div class="eg-avatar">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" alt="Mr. Rahul Mohan" loading="lazy" onerror="this.onerror=null; this.src='{{ 'wvs-indian-businessman.jpg' | asset_url }}';">
+              </div>
+              <div>
+                <h4>Mr. Rahul Mohan <i class="fa-solid fa-circle-check" style="color:#008744; font-size:12px;"></i></h4>
+                <div class="eg-sub"><i class="fa-solid fa-location-dot" style="color:var(--orange);"></i> Lucknow • Higher load, lower bill</div>
+              </div>
+            </div>
+            <div class="eg-stats">
+              <div class="eg-stat"><div class="k">Load</div><div class="v">15 KW</div></div>
+              <div class="eg-stat"><div class="k">Bill</div><div class="v">₹10,000</div></div>
+            </div>
+            <div class="eg-result"><span class="rl">Cards Required</span><span class="rn">3 Cards</span></div>
+            <p class="eg-why">15 KW needs 3 cards, while ₹10,000 only needs 2 — the KW-based count wins.</p>
+          </div>
+        </div>
+
+        <div class="eg-grid eg-panel" data-vscc-panel="com">
+          <div class="eg-card">
+            <div class="eg-img-wrap">
+              <img src="{{ 'commercial-building-1.png' | asset_url }}" alt="Retail Showroom Commercial Building" loading="lazy" onerror="this.onerror=null; this.src='{{ 'case-commercial.jpg' | asset_url }}';">
+              <span class="eg-tag">Retail Showroom</span>
+            </div>
+            <div class="eg-person-row">
+              <div class="eg-avatar">
+                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&q=80" alt="Mr. Deepak Sawlani" loading="lazy" onerror="this.onerror=null; this.src='{{ 'indian_entrepreneur.jpg' | asset_url }}';">
+              </div>
+              <div>
+                <h4>Mr. Deepak Sawlani <i class="fa-solid fa-circle-check" style="color:#008744; font-size:12px;"></i></h4>
+                <div class="eg-sub"><i class="fa-solid fa-location-dot" style="color:var(--orange);"></i> Ahmedabad • Low load, high bill</div>
+              </div>
+            </div>
+            <div class="eg-stats">
+              <div class="eg-stat"><div class="k">Load</div><div class="v">10 KW</div></div>
+              <div class="eg-stat"><div class="k">Bill</div><div class="v">₹24,000</div></div>
+            </div>
+            <div class="eg-result"><span class="rl">Cards Required</span><span class="rn">4 Cards</span></div>
+            <p class="eg-why">10 KW needs 2 cards, but ₹24,000 needs 4 — the bill-based count wins.</p>
+          </div>
+
+          <div class="eg-card">
+            <div class="eg-img-wrap">
+              <img src="{{ 'commercial-building-2.png' | asset_url }}" alt="IT Tech Park & Offices" loading="lazy" onerror="this.onerror=null; this.src='{{ 'case-commercial.jpg' | asset_url }}';">
+              <span class="eg-tag">IT Tech Park</span>
+            </div>
+            <div class="eg-person-row">
+              <div class="eg-avatar">
+                <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=150&q=80" alt="Mr. Satyajeet" loading="lazy" onerror="this.onerror=null; this.src='{{ 'hero-advisor-calculator.jpg' | asset_url }}';">
+              </div>
+              <div>
+                <h4>Mr. Satyajeet <i class="fa-solid fa-circle-check" style="color:#008744; font-size:12px;"></i></h4>
+                <div class="eg-sub"><i class="fa-solid fa-location-dot" style="color:var(--orange);"></i> Pune • High load, lower bill</div>
+              </div>
+            </div>
+            <div class="eg-stats">
+              <div class="eg-stat"><div class="k">Load</div><div class="v">35 KW</div></div>
+              <div class="eg-stat"><div class="k">Bill</div><div class="v">₹29,000</div></div>
+            </div>
+            <div class="eg-result"><span class="rl">Cards Required</span><span class="rn">6 Cards</span></div>
+            <p class="eg-why">35 KW needs 6 cards, while ₹29,000 only needs 5 — KW-based count wins.</p>
+          </div>
+        </div>
+
+        <div class="eg-grid eg-panel" data-vscc-panel="ind">
+          <div class="eg-card">
+            <div class="eg-img-wrap">
+              <img src="{{ 'industrial-factory-1.png' | asset_url }}" alt="Heavy Engineering Factory" loading="lazy" onerror="this.onerror=null; this.src='{{ 'case-industrial.jpg' | asset_url }}';">
+              <span class="eg-tag">Heavy Engineering Plant</span>
+            </div>
+            <div class="eg-person-row">
+              <div class="eg-avatar">
+                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=150&q=80" alt="Mr. Rajeev Sharma" loading="lazy" onerror="this.onerror=null; this.src='{{ 'vidhyut-customer-call-support.jpg' | asset_url }}';">
+              </div>
+              <div>
+                <h4>Mr. Rajeev Sharma <i class="fa-solid fa-circle-check" style="color:#008744; font-size:12px;"></i></h4>
+                <div class="eg-sub"><i class="fa-solid fa-location-dot" style="color:var(--orange);"></i> Surat • Low load, high bill</div>
+              </div>
+            </div>
+            <div class="eg-stats">
+              <div class="eg-stat"><div class="k">Load</div><div class="v">90 KW</div></div>
+              <div class="eg-stat"><div class="k">Bill</div><div class="v">₹2,40,000</div></div>
+            </div>
+            <div class="eg-result"><span class="rl">Cards Required</span><span class="rn">40 Cards</span></div>
+            <p class="eg-why">90 KW needs 15 cards, but ₹2,40,000 needs 40 — bill-based count wins.</p>
+          </div>
+
+          <div class="eg-card">
+            <div class="eg-img-wrap">
+              <img src="{{ 'industrial-factory-2.png' | asset_url }}" alt="Agro Processing Plant" loading="lazy" onerror="this.onerror=null; this.src='{{ 'case-industrial.jpg' | asset_url }}';">
+              <span class="eg-tag">Agro Processing Plant</span>
+            </div>
+            <div class="eg-person-row">
+              <div class="eg-avatar">
+                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=150&q=80" alt="Mr. Ashish Patel" loading="lazy" onerror="this.onerror=null; this.src='{{ 'indian_entrepreneur.jpg' | asset_url }}';">
+              </div>
+              <div>
+                <h4>Mr. Ashish Patel <i class="fa-solid fa-circle-check" style="color:#008744; font-size:12px;"></i></h4>
+                <div class="eg-sub"><i class="fa-solid fa-location-dot" style="color:var(--orange);"></i> Rajkot • High load, lower bill</div>
+              </div>
+            </div>
+            <div class="eg-stats">
+              <div class="eg-stat"><div class="k">Load</div><div class="v">180 KW</div></div>
+              <div class="eg-stat"><div class="k">Bill</div><div class="v">₹120,000</div></div>
+            </div>
+            <div class="eg-result"><span class="rl">Cards Required</span><span class="rn">30 Cards</span></div>
+            <p class="eg-why">180 KW needs 30 cards, while ₹120,000 only needs 20 — KW-based count wins.</p>
+          </div>
+        </div>
+
+        <div class="eg-grid eg-panel" data-vscc-panel="inst">
+          <div class="eg-card">
+            <div class="eg-img-wrap">
+              <img src="{{ 'commercial-building-2.png' | asset_url }}" alt="Metro Multi-Specialty Hospital" loading="lazy" onerror="this.onerror=null; this.src='{{ 'case-institutional.jpg' | asset_url }}';">
+              <span class="eg-tag">Hospital & ICU Facility</span>
+            </div>
+            <div class="eg-person-row">
+              <div class="eg-avatar">
+                <img src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=150&q=80" alt="Dr. Arvind Mehra" loading="lazy" onerror="this.onerror=null; this.src='{{ 'wvs-happy-man.jpg' | asset_url }}';">
+              </div>
+              <div>
+                <h4>Dr. Arvind Mehra <i class="fa-solid fa-circle-check" style="color:#008744; font-size:12px;"></i></h4>
+                <div class="eg-sub"><i class="fa-solid fa-location-dot" style="color:var(--orange);"></i> Delhi NCR • 24/7 critical load, high bill</div>
+              </div>
+            </div>
+            <div class="eg-stats">
+              <div class="eg-stat"><div class="k">Load</div><div class="v">160 KW (3-Ph)</div></div>
+              <div class="eg-stat"><div class="k">Bill</div><div class="v">₹2,40,000</div></div>
+            </div>
+            <div class="eg-result"><span class="rl">Cards Required</span><span class="rn">33 Cards</span></div>
+            <p class="eg-why">160 KW needs 32 cards (1 per 5 KW) + 1 extra card for 3-phase LT panel — guarantees 28.5% bill reduction.</p>
+          </div>
+
+          <div class="eg-card">
+            <div class="eg-img-wrap">
+              <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=700&q=80" alt="DPS International School Campus" loading="lazy" onerror="this.onerror=null; this.src='{{ 'case-institutional.jpg' | asset_url }}';">
+              <span class="eg-tag">CBSE School Campus</span>
+            </div>
+            <div class="eg-person-row">
+              <div class="eg-avatar">
+                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80" alt="Principal Vandana" loading="lazy" onerror="this.onerror=null; this.src='{{ 'wvs-pointing-down-woman.jpg' | asset_url }}';">
+              </div>
+              <div>
+                <h4>DPS International Campus <i class="fa-solid fa-circle-check" style="color:#008744; font-size:12px;"></i></h4>
+                <div class="eg-sub"><i class="fa-solid fa-location-dot" style="color:var(--orange);"></i> Bengaluru • Central HVAC & smart labs</div>
+              </div>
+            </div>
+            <div class="eg-stats">
+              <div class="eg-stat"><div class="k">Load</div><div class="v">65 KW (3-Ph)</div></div>
+              <div class="eg-stat"><div class="k">Bill</div><div class="v">₹98,000</div></div>
+            </div>
+            <div class="eg-result"><span class="rl">Cards Required</span><span class="rn">14 Cards</span></div>
+            <p class="eg-why">65 KW needs 13 cards + 1 for 3-phase connection — saves ₹27,500/mo on institutional tariff.</p>
+          </div>
+        </div>
       </div>
 
-      <div class="eg-grid eg-panel active" data-vscc-panel="res">
-        <div class="eg-card">
-          <div class="eg-img-wrap">
-            <img src="{{ 'real-mumbai-2bhk-apartment.jpg' | asset_url }}" alt="2 BHK Apartment Mumbai" loading="lazy" onerror="this.onerror=null; this.src='{{ 'residential-house-1.png' | asset_url }}';">
-            <span class="eg-tag">2 BHK Apartment</span>
-          </div>
-          <div class="eg-person-row">
-            <div class="eg-avatar">
-              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Mr. Rohan" loading="lazy" onerror="this.onerror=null; this.src='{{ 'wvs-happy-man.jpg' | asset_url }}';">
-            </div>
-            <div>
-              <h4>Mr. Rohan <i class="fa-solid fa-circle-check" style="color:#008744; font-size:12px;"></i></h4>
-              <div class="eg-sub"><i class="fa-solid fa-location-dot" style="color:var(--orange);"></i> Mumbai • Low load, high bill</div>
-            </div>
-          </div>
-          <div class="eg-stats">
-            <div class="eg-stat"><div class="k">Load</div><div class="v">5 KW</div></div>
-            <div class="eg-stat"><div class="k">Bill</div><div class="v">₹18,000</div></div>
-          </div>
-          <div class="eg-result"><span class="rl">Cards Required</span><span class="rn">3 Cards</span></div>
-          <p class="eg-why">5 KW only needs 1 card, but ₹18,000 needs 3 — the bill-based count wins.</p>
-        </div>
-
-        <div class="eg-card">
-          <div class="eg-img-wrap">
-            <img src="{{ 'real-lucknow-villa-house.jpg' | asset_url }}" alt="3 BHK Duplex Villa Lucknow" loading="lazy" onerror="this.onerror=null; this.src='{{ 'residential-house-2.png' | asset_url }}';">
-            <span class="eg-tag">3 BHK Duplex Villa</span>
-          </div>
-          <div class="eg-person-row">
-            <div class="eg-avatar">
-              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" alt="Mr. Rahul Mohan" loading="lazy" onerror="this.onerror=null; this.src='{{ 'wvs-indian-businessman.jpg' | asset_url }}';">
-            </div>
-            <div>
-              <h4>Mr. Rahul Mohan <i class="fa-solid fa-circle-check" style="color:#008744; font-size:12px;"></i></h4>
-              <div class="eg-sub"><i class="fa-solid fa-location-dot" style="color:var(--orange);"></i> Lucknow • Higher load, lower bill</div>
-            </div>
-          </div>
-          <div class="eg-stats">
-            <div class="eg-stat"><div class="k">Load</div><div class="v">15 KW</div></div>
-            <div class="eg-stat"><div class="k">Bill</div><div class="v">₹10,000</div></div>
-          </div>
-          <div class="eg-result"><span class="rl">Cards Required</span><span class="rn">3 Cards</span></div>
-          <p class="eg-why">15 KW needs 3 cards, while ₹10,000 only needs 2 — the KW-based count wins.</p>
-        </div>
-      </div>
-
-      <div class="eg-grid eg-panel" data-vscc-panel="com">
-        <div class="eg-card">
-          <div class="eg-img-wrap">
-            <img src="{{ 'commercial-building-1.png' | asset_url }}" alt="Retail Showroom Commercial Building" loading="lazy" onerror="this.onerror=null; this.src='{{ 'case-commercial.jpg' | asset_url }}';">
-            <span class="eg-tag">Retail Showroom</span>
-          </div>
-          <div class="eg-person-row">
-            <div class="eg-avatar">
-              <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&q=80" alt="Mr. Deepak Sawlani" loading="lazy" onerror="this.onerror=null; this.src='{{ 'indian_entrepreneur.jpg' | asset_url }}';">
-            </div>
-            <div>
-              <h4>Mr. Deepak Sawlani <i class="fa-solid fa-circle-check" style="color:#008744; font-size:12px;"></i></h4>
-              <div class="eg-sub"><i class="fa-solid fa-location-dot" style="color:var(--orange);"></i> Ahmedabad • Low load, high bill</div>
-            </div>
-          </div>
-          <div class="eg-stats">
-            <div class="eg-stat"><div class="k">Load</div><div class="v">10 KW</div></div>
-            <div class="eg-stat"><div class="k">Bill</div><div class="v">₹24,000</div></div>
-          </div>
-          <div class="eg-result"><span class="rl">Cards Required</span><span class="rn">4 Cards</span></div>
-          <p class="eg-why">10 KW needs 2 cards, but ₹24,000 needs 4 — the bill-based count wins.</p>
-        </div>
-
-        <div class="eg-card">
-          <div class="eg-img-wrap">
-            <img src="{{ 'commercial-building-2.png' | asset_url }}" alt="IT Tech Park & Offices" loading="lazy" onerror="this.onerror=null; this.src='{{ 'case-commercial.jpg' | asset_url }}';">
-            <span class="eg-tag">IT Tech Park</span>
-          </div>
-          <div class="eg-person-row">
-            <div class="eg-avatar">
-              <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=150&q=80" alt="Mr. Satyajeet" loading="lazy" onerror="this.onerror=null; this.src='{{ 'hero-advisor-calculator.jpg' | asset_url }}';">
-            </div>
-            <div>
-              <h4>Mr. Satyajeet <i class="fa-solid fa-circle-check" style="color:#008744; font-size:12px;"></i></h4>
-              <div class="eg-sub"><i class="fa-solid fa-location-dot" style="color:var(--orange);"></i> Pune • High load, lower bill</div>
-            </div>
-          </div>
-          <div class="eg-stats">
-            <div class="eg-stat"><div class="k">Load</div><div class="v">35 KW</div></div>
-            <div class="eg-stat"><div class="k">Bill</div><div class="v">₹29,000</div></div>
-          </div>
-          <div class="eg-result"><span class="rl">Cards Required</span><span class="rn">6 Cards</span></div>
-          <p class="eg-why">35 KW needs 6 cards, while ₹29,000 only needs 5 — KW-based count wins.</p>
-        </div>
-      </div>
-
-      <div class="eg-grid eg-panel" data-vscc-panel="ind">
-        <div class="eg-card">
-          <div class="eg-img-wrap">
-            <img src="{{ 'industrial-factory-1.png' | asset_url }}" alt="Heavy Engineering Factory" loading="lazy" onerror="this.onerror=null; this.src='{{ 'case-industrial.jpg' | asset_url }}';">
-            <span class="eg-tag">Heavy Engineering Plant</span>
-          </div>
-          <div class="eg-person-row">
-            <div class="eg-avatar">
-              <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=150&q=80" alt="Mr. Rajeev Sharma" loading="lazy" onerror="this.onerror=null; this.src='{{ 'vidhyut-customer-call-support.jpg' | asset_url }}';">
-            </div>
-            <div>
-              <h4>Mr. Rajeev Sharma <i class="fa-solid fa-circle-check" style="color:#008744; font-size:12px;"></i></h4>
-              <div class="eg-sub"><i class="fa-solid fa-location-dot" style="color:var(--orange);"></i> Surat • Low load, high bill</div>
-            </div>
-          </div>
-          <div class="eg-stats">
-            <div class="eg-stat"><div class="k">Load</div><div class="v">90 KW</div></div>
-            <div class="eg-stat"><div class="k">Bill</div><div class="v">₹2,40,000</div></div>
-          </div>
-          <div class="eg-result"><span class="rl">Cards Required</span><span class="rn">40 Cards</span></div>
-          <p class="eg-why">90 KW needs 15 cards, but ₹2,40,000 needs 40 — bill-based count wins.</p>
-        </div>
-
-        <div class="eg-card">
-          <div class="eg-img-wrap">
-            <img src="{{ 'industrial-factory-2.png' | asset_url }}" alt="Agro Processing Plant" loading="lazy" onerror="this.onerror=null; this.src='{{ 'case-industrial.jpg' | asset_url }}';">
-            <span class="eg-tag">Agro Processing Plant</span>
-          </div>
-          <div class="eg-person-row">
-            <div class="eg-avatar">
-              <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=150&q=80" alt="Mr. Ashish Patel" loading="lazy" onerror="this.onerror=null; this.src='{{ 'indian_entrepreneur.jpg' | asset_url }}';">
-            </div>
-            <div>
-              <h4>Mr. Ashish Patel <i class="fa-solid fa-circle-check" style="color:#008744; font-size:12px;"></i></h4>
-              <div class="eg-sub"><i class="fa-solid fa-location-dot" style="color:var(--orange);"></i> Rajkot • High load, lower bill</div>
-            </div>
-          </div>
-          <div class="eg-stats">
-            <div class="eg-stat"><div class="k">Load</div><div class="v">180 KW</div></div>
-            <div class="eg-stat"><div class="k">Bill</div><div class="v">₹1,20,000</div></div>
-          </div>
-          <div class="eg-result"><span class="rl">Cards Required</span><span class="rn">30 Cards</span></div>
-          <p class="eg-why">180 KW needs 30 cards, while ₹1,20,000 only needs 20 — KW-based count wins.</p>
-        </div>
-      </div>
-
-      <div class="eg-grid eg-panel" data-vscc-panel="inst">
-        <div class="eg-card">
-          <div class="eg-img-wrap">
-            <img src="{{ 'commercial-building-2.png' | asset_url }}" alt="Metro Multi-Specialty Hospital" loading="lazy" onerror="this.onerror=null; this.src='{{ 'case-institutional.jpg' | asset_url }}';">
-            <span class="eg-tag">Hospital & ICU Facility</span>
-          </div>
-          <div class="eg-person-row">
-            <div class="eg-avatar">
-              <img src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=150&q=80" alt="Dr. Arvind Mehra" loading="lazy" onerror="this.onerror=null; this.src='{{ 'wvs-happy-man.jpg' | asset_url }}';">
-            </div>
-            <div>
-              <h4>Dr. Arvind Mehra <i class="fa-solid fa-circle-check" style="color:#008744; font-size:12px;"></i></h4>
-              <div class="eg-sub"><i class="fa-solid fa-location-dot" style="color:var(--orange);"></i> Delhi NCR • 24/7 critical load, high bill</div>
-            </div>
-          </div>
-          <div class="eg-stats">
-            <div class="eg-stat"><div class="k">Load</div><div class="v">160 KW (3-Ph)</div></div>
-            <div class="eg-stat"><div class="k">Bill</div><div class="v">₹2,40,000</div></div>
-          </div>
-          <div class="eg-result"><span class="rl">Cards Required</span><span class="rn">33 Cards</span></div>
-          <p class="eg-why">160 KW needs 32 cards (1 per 5 KW) + 1 extra card for 3-phase LT panel — guarantees 28.5% bill reduction.</p>
-        </div>
-
-        <div class="eg-card">
-          <div class="eg-img-wrap">
-            <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=700&q=80" alt="DPS International School Campus" loading="lazy" onerror="this.onerror=null; this.src='{{ 'case-institutional.jpg' | asset_url }}';">
-            <span class="eg-tag">CBSE School Campus</span>
-          </div>
-          <div class="eg-person-row">
-            <div class="eg-avatar">
-              <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80" alt="Principal Vandana" loading="lazy" onerror="this.onerror=null; this.src='{{ 'wvs-pointing-down-woman.jpg' | asset_url }}';">
-            </div>
-            <div>
-              <h4>DPS International Campus <i class="fa-solid fa-circle-check" style="color:#008744; font-size:12px;"></i></h4>
-              <div class="eg-sub"><i class="fa-solid fa-location-dot" style="color:var(--orange);"></i> Bengaluru • Central HVAC & smart labs</div>
-            </div>
-          </div>
-          <div class="eg-stats">
-            <div class="eg-stat"><div class="k">Load</div><div class="v">65 KW (3-Ph)</div></div>
-            <div class="eg-stat"><div class="k">Bill</div><div class="v">₹98,000</div></div>
-          </div>
-          <div class="eg-result"><span class="rl">Cards Required</span><span class="rn">14 Cards</span></div>
-          <p class="eg-why">65 KW needs 13 cards + 1 for 3-phase connection — saves ₹27,500/mo on institutional tariff.</p>
-        </div>
+      <!-- Mobile Dots Indicator -->
+      <div class="vscc-eg-dots" id="vsccEgDots">
+        <button type="button" class="vscc-eg-dot active" onclick="vsccGoEgSlide(0)" aria-label="Slide 1"></button>
+        <button type="button" class="vscc-eg-dot" onclick="vsccGoEgSlide(1)" aria-label="Slide 2"></button>
       </div>
     </div>
   </section>
@@ -2230,11 +2304,136 @@
   document.querySelectorAll('.vscc .tab-btn').forEach(function(btn){
     btn.addEventListener('click', function(){
       document.querySelectorAll('.vscc .tab-btn').forEach(function(b){ b.classList.remove('active'); });
-      document.querySelectorAll('.vscc .eg-panel').forEach(function(p){ p.classList.remove('active'); });
+      document.querySelectorAll('.vscc .eg-panel').forEach(function(p){
+        p.classList.remove('active');
+        p.style.transform = 'none';
+      });
       btn.classList.add('active');
       var panel = document.querySelector('.vscc .eg-panel[data-vscc-panel="' + btn.dataset.vsccTab + '"]');
-      if(panel) panel.classList.add('active');
+      if(panel) {
+        panel.classList.add('active');
+        currentEgSlide = 0;
+        vsccUpdateEgSlider();
+        vsccRestartEgTimer();
+      }
     });
+  });
+
+  /* ---- MOBILE SLIDER FOR REAL CUSTOMER SCENARIOS (4s AUTO-ADVANCE) ---- */
+  var currentEgSlide = 0;
+  var egAutoTimer = null;
+  var egSliderInView = false;
+
+  function vsccUpdateEgSlider() {
+    var activePanel = document.querySelector('.vscc .eg-panel.active');
+    if (!activePanel) return;
+    
+    if (window.innerWidth < 768) {
+      activePanel.style.transform = 'translateX(-' + (currentEgSlide * 100) + '%)';
+    } else {
+      activePanel.style.transform = 'none';
+    }
+
+    var dots = document.querySelectorAll('.vscc .vscc-eg-dot');
+    dots.forEach(function(dot, idx) {
+      if (idx === currentEgSlide) {
+        dot.classList.add('active');
+      } else {
+        dot.classList.remove('active');
+      }
+    });
+  }
+
+  window.vsccGoEgSlide = function(idx) {
+    var activePanel = document.querySelector('.vscc .eg-panel.active');
+    if (!activePanel) return;
+    var totalCards = activePanel.querySelectorAll('.eg-card').length || 2;
+    currentEgSlide = (idx + totalCards) % totalCards;
+    vsccUpdateEgSlider();
+    vsccRestartEgTimer();
+  };
+
+  function vsccNextEgSlide() {
+    var activePanel = document.querySelector('.vscc .eg-panel.active');
+    if (!activePanel) return;
+    var totalCards = activePanel.querySelectorAll('.eg-card').length || 2;
+    currentEgSlide = (currentEgSlide + 1) % totalCards;
+    vsccUpdateEgSlider();
+  }
+
+  function vsccStartEgTimer() {
+    if (egAutoTimer) clearInterval(egAutoTimer);
+    if (window.innerWidth < 768 && egSliderInView) {
+      egAutoTimer = setInterval(function() {
+        vsccNextEgSlide();
+      }, 4000);
+    }
+  }
+
+  function vsccStopEgTimer() {
+    if (egAutoTimer) {
+      clearInterval(egAutoTimer);
+      egAutoTimer = null;
+    }
+  }
+
+  function vsccRestartEgTimer() {
+    vsccStopEgTimer();
+    vsccStartEgTimer();
+  }
+
+  // Touch Swipe Support on Mobile for Examples
+  var touchStartX = 0;
+  var touchEndX = 0;
+  var egSliderWrap = document.querySelector('.vscc .vscc-eg-slider-wrap');
+  if (egSliderWrap) {
+    egSliderWrap.addEventListener('touchstart', function(e) {
+      touchStartX = e.changedTouches[0].screenX;
+      vsccStopEgTimer();
+    }, {passive: true});
+
+    egSliderWrap.addEventListener('touchend', function(e) {
+      touchEndX = e.changedTouches[0].screenX;
+      var diff = touchStartX - touchEndX;
+      if (Math.abs(diff) > 40) {
+        if (diff > 0) {
+          // swipe left -> next slide
+          vsccGoEgSlide(currentEgSlide + 1);
+        } else {
+          // swipe right -> prev slide
+          vsccGoEgSlide(currentEgSlide - 1);
+        }
+      }
+      vsccStartEgTimer();
+    }, {passive: true});
+  }
+
+  // IntersectionObserver to auto-play only when section is in view on mobile
+  var egSection = document.getElementById('vscc-examples');
+  if (egSection && 'IntersectionObserver' in window) {
+    var egIo = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        egSliderInView = entry.isIntersecting;
+        if (entry.isIntersecting) {
+          vsccStartEgTimer();
+        } else {
+          vsccStopEgTimer();
+        }
+      });
+    }, {threshold: 0.15});
+    egIo.observe(egSection);
+  } else {
+    egSliderInView = true;
+    vsccStartEgTimer();
+  }
+
+  window.addEventListener('resize', function() {
+    vsccUpdateEgSlider();
+    if (window.innerWidth >= 768) {
+      vsccStopEgTimer();
+    } else if (egSliderInView) {
+      vsccStartEgTimer();
+    }
   });
 
   /* ---- STICKY BAR ---- */
