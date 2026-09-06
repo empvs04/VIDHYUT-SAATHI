@@ -420,12 +420,40 @@
 
   .vsres-range-slider {
     width: 100%;
+    -webkit-appearance: none;
+    appearance: none;
     height: 8px;
-    border-radius: 50px;
-    background: var(--line);
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--orange) 0%, var(--orange) var(--fill, 15%), var(--line) var(--fill, 15%));
     outline: none;
-    accent-color: var(--orange);
-    margin: 10px 0;
+    margin: 12px 0 14px 0;
+    touch-action: pan-y;
+    cursor: pointer;
+  }
+  .vsres-range-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--orange);
+    border: 3.5px solid #ffffff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    cursor: grab;
+    transition: transform 0.15s ease;
+  }
+  .vsres-range-slider::-webkit-slider-thumb:active {
+    cursor: grabbing;
+    transform: scale(1.15);
+  }
+  .vsres-range-slider::-moz-range-thumb {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--orange);
+    border: 3.5px solid #ffffff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    cursor: grab;
   }
 
   .vsres-num-input {
@@ -2601,6 +2629,7 @@
     var bill = Math.max(0, parseInt(billNum.value) || 0);
 
     kwSlider.value = Math.min(kw, 40);
+    kwSlider.style.setProperty('--fill', (Math.min(kw, 40) / 40 * 100) + '%');
     kwBadge.innerText = kw + ' KW';
     billBadge.innerText = '₹' + bill.toLocaleString('en-IN');
 
