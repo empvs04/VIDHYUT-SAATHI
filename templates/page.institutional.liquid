@@ -311,222 +311,270 @@
 
   /* ══ SECTION 3: CALCULATOR ══ */
   .vsinst-sec {
-    padding: clamp(40px, 6vw, 70px) 0;
-    border-bottom: 1.5px solid var(--line);
+    padding: 44px 0;
+    font-family: 'Nunito', sans-serif;
   }
+  @media(min-width: 768px){ .vsinst-sec { padding: 60px 0; } }
+
   .vsinst-sec-head {
-    text-align: center;
     max-width: 680px;
-    margin: 0 auto 36px auto;
+    margin: 0 auto 28px;
+    text-align: center;
   }
   .vsinst-sec-eyebrow {
+    font-size: 12px;
+    font-weight: 800;
+    font-family: 'Baloo 2', sans-serif;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #0284c7;
+    margin-bottom: 6px;
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    background: var(--indigo-t);
-    color: var(--indigo);
-    font-size: 11px;
-    font-weight: 800;
-    font-family: 'IBM Plex Mono', monospace;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-    padding: 5px 14px;
-    border-radius: 50px;
-    margin-bottom: 10px;
   }
   .vsinst-sec-title {
-    font-size: clamp(24px, 4vw, 36px);
+    font-size: clamp(24px, 4vw, 34px);
     font-weight: 800;
+    font-family: 'Baloo 2', sans-serif !important;
     color: var(--ink);
     margin: 0 0 10px 0;
   }
   .vsinst-sec-desc {
-    font-size: clamp(13.5px, 1.8vw, 15px);
     color: var(--muted);
-    line-height: 1.55;
+    font-size: 15px;
+    font-family: 'Nunito', sans-serif;
+    line-height: 1.6;
     margin: 0;
   }
 
   .vsinst-calc-box {
     background: #ffffff;
-    border: 1.5px solid #e2e8f0;
+    border: 1.5px solid var(--line);
     border-radius: 20px;
-    box-shadow: 0 12px 32px rgba(0,0,0,0.06);
-    padding: clamp(20px, 4vw, 36px);
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 28px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+    padding: 24px 18px;
+    font-family: 'Nunito', sans-serif;
   }
-  @media (min-width: 860px) {
+  @media(min-width: 860px){
     .vsinst-calc-box {
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 36px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      padding: 36px 30px;
     }
   }
 
-  .vsinst-field {
-    margin-bottom: 22px;
-  }
+  .vsinst-field { margin-bottom: 20px; }
   .vsinst-field-label {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 13.5px;
+    font-size: 13px;
     font-weight: 800;
+    font-family: 'Nunito', sans-serif;
+    text-transform: uppercase;
     color: var(--ink);
     margin-bottom: 8px;
   }
   .vsinst-field-badge {
-    background: var(--indigo-t);
-    color: var(--indigo);
-    font-size: 12px;
-    font-weight: 800;
+    background: #e0f2fe;
+    color: #0284c7;
     padding: 3px 10px;
     border-radius: 6px;
-    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    font-weight: 800;
+    font-family: 'Baloo 2', sans-serif;
   }
 
   .vsinst-range-slider {
-    width: 100% !important;
-    height: 10px !important;
-    border-radius: 10px !important;
-    background: #e2e8f0 !important;
-    outline: none !important;
-    -webkit-appearance: none !important;
-    appearance: none !important;
-    cursor: pointer !important;
-    margin: 14px 0 !important;
-    border: 1px solid #cbd5e1 !important;
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.08) !important;
-  }
-  .vsinst-range-slider::-webkit-slider-runnable-track {
-    width: 100% !important;
-    height: 10px !important;
-    cursor: pointer !important;
-    background: #cbd5e1 !important;
-    border-radius: 10px !important;
-    border: 1px solid #94a3b8 !important;
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 10px;
+    border-radius: 50px;
+    background: linear-gradient(90deg, #0284c7 0%, #0284c7 var(--fill, 15%), var(--line) var(--fill, 15%));
+    outline: none;
+    margin: 12px 0 14px 0;
+    touch-action: pan-y;
+    cursor: pointer;
   }
   .vsinst-range-slider::-webkit-slider-thumb {
-    -webkit-appearance: none !important;
-    appearance: none !important;
-    width: 28px !important;
-    height: 28px !important;
-    border-radius: 50% !important;
-    background: linear-gradient(135deg, #d97706 0%, #f59e0b 100%) !important;
-    border: 3.5px solid #ffffff !important;
-    box-shadow: 0 3px 12px rgba(217, 119, 6, 0.6) !important;
-    cursor: pointer !important;
-    margin-top: -10px !important;
-    transition: transform 0.15s ease, box-shadow 0.15s ease !important;
+    -webkit-appearance: none;
+    appearance: none;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: #0284c7;
+    border: 3.5px solid #ffffff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    cursor: grab;
+    transition: transform 0.15s ease;
   }
-  .vsinst-range-slider::-webkit-slider-thumb:hover {
-    transform: scale(1.2) !important;
-    box-shadow: 0 4px 16px rgba(217, 119, 6, 0.8) !important;
-  }
-  .vsinst-range-slider::-moz-range-track {
-    width: 100% !important;
-    height: 10px !important;
-    cursor: pointer !important;
-    background: #cbd5e1 !important;
-    border-radius: 10px !important;
-    border: 1px solid #94a3b8 !important;
+  .vsinst-range-slider::-webkit-slider-thumb:active {
+    cursor: grabbing;
+    transform: scale(1.15);
   }
   .vsinst-range-slider::-moz-range-thumb {
-    width: 28px !important;
-    height: 28px !important;
-    border-radius: 50% !important;
-    background: linear-gradient(135deg, #d97706 0%, #f59e0b 100%) !important;
-    border: 3.5px solid #ffffff !important;
-    box-shadow: 0 3px 12px rgba(217, 119, 6, 0.6) !important;
-    cursor: pointer !important;
-  }
-  .vsinst-range-slider::-moz-range-progress {
-    background: linear-gradient(90deg, #d97706, #f59e0b) !important;
-    height: 10px !important;
-    border-radius: 10px !important;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: #0284c7;
+    border: 3.5px solid #ffffff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    cursor: grab;
   }
 
   .vsinst-num-input {
     width: 100%;
-    padding: 12px 16px;
-    border: 1.5px solid #cbd5e1;
+    height: 46px;
+    border: 1.5px solid var(--line);
     border-radius: 10px;
+    padding: 0 14px;
     font-size: 16px;
+    font-family: 'Nunito', sans-serif;
     font-weight: 700;
     color: var(--ink);
-    margin-top: 8px;
+    background: #ffffff;
     outline: none;
-    transition: border-color 0.2s ease;
+    transition: border-color 0.2s;
   }
   .vsinst-num-input:focus {
-    border-color: #f59e0b;
-    box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.15);
+    border-color: #0284c7;
+    box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+  }
+
+  /* Dynamic Mini Cards Row */
+  .vsinst-mini-cards-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 6px;
+    margin: 10px 0 16px 0;
+  }
+
+  .vsinst-mini-card-icon {
+    width: 34px;
+    height: 22px;
+    border-radius: 5px;
+    background: linear-gradient(135deg, #e8c766 0%, #c9982e 100%);
+    border: 1px solid #b8860b;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.18);
+    transition: transform 0.18s ease;
+  }
+  .vsinst-mini-card-icon:hover {
+    transform: translateY(-2px) scale(1.1);
   }
 
   .vsinst-toggle-group {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 8px;
-    margin-top: 8px;
+    gap: 10px;
+    margin-top: 6px;
   }
   .vsinst-toggle-btn {
     padding: 12px 14px;
-    border-radius: 10px;
+    border-radius: 12px;
     border: 1.5px solid #cbd5e1;
-    background: #f8fafc;
+    background: #ffffff;
     color: #475569;
-    font-size: 13.5px;
     font-weight: 700;
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    cursor: pointer;
     transition: all 0.2s ease;
+    text-align: center;
+  }
+  .vsinst-toggle-btn:hover {
+    border-color: #0284c7;
+    color: #0284c7;
   }
   .vsinst-toggle-btn.active {
-    background: var(--indigo-t);
-    border-color: #f59e0b;
-    color: #854d0e;
-    font-weight: 800;
+    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+    color: #ffffff;
+    border-color: #0284c7;
+    box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
   }
 
   .vsinst-output-card {
-    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-    border-radius: 18px;
-    padding: clamp(20px, 3vw, 28px);
-    color: #ffffff;
+    background: var(--panel-2, #f8fafc);
+    border: 1.5px solid var(--line);
+    border-radius: 16px;
+    padding: 24px 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 20px;
-    box-shadow: 0 12px 30px rgba(49, 46, 129, 0.35);
+    font-family: 'Nunito', sans-serif;
   }
+
   .vsinst-res-val {
-    display: flex;
-    align-items: baseline;
-    gap: 8px;
-    margin: 8px 0;
-  }
-  .vsinst-res-val span:first-child {
-    font-size: clamp(38px, 6vw, 56px);
-    font-weight: 900;
-    font-family: 'Space Grotesk', sans-serif;
-    color: #ffd700;
-    line-height: 1;
-  }
-  .vsinst-res-val span:last-child {
-    font-size: 18px;
+    font-family: 'Baloo 2', sans-serif !important;
+    font-size: clamp(48px, 10vw, 68px);
     font-weight: 800;
-    color: #e0e7ff;
+    color: var(--ink);
+    line-height: 1;
+    margin: 8px 0 16px 0;
+  }
+  .vsinst-res-val span {
+    font-size: 18px;
+    color: var(--muted);
+    font-family: 'Nunito', sans-serif;
   }
 
   .vsinst-savings-box {
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 12px;
-    padding: 12px 16px;
+    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+    border-radius: 14px;
+    padding: 16px;
+    color: #ffffff;
+    margin-bottom: 16px;
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    gap: 12px;
+    align-items: center;
+    box-shadow: 0 4px 14px rgba(2, 132, 199, 0.25);
+    font-family: 'Nunito', sans-serif;
+  }
+
+  .vsinst-btn-primary {
+    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+    color: #ffffff;
+    font-weight: 800;
+    padding: 14px 26px;
+    border-radius: 12px;
+    font-size: 14.5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: none;
+    box-shadow: 0 6px 20px rgba(2, 132, 199, 0.3);
+    transition: all 0.2s ease;
+    text-decoration: none;
+  }
+  .vsinst-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 26px rgba(2, 132, 199, 0.42);
+    background: linear-gradient(135deg, #0369a1 0%, #0284c7 100%);
+    color: #ffffff;
+  }
+
+  .vsinst-btn-secondary {
+    background: #ffffff;
+    color: var(--ink);
+    border: 1.5px solid #ec5c0a;
+    font-weight: 700;
+    padding: 14px 24px;
+    border-radius: 12px;
+    font-size: 14.5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(236, 92, 10, 0.1);
+    text-decoration: none;
+  }
+  .vsinst-btn-secondary:hover {
+    background: #fff0e5;
+    transform: translateY(-2px);
+    color: var(--ink);
   }
 
   /* ══ SECTION 4: 20 MCB GALLERY ══ */
@@ -1580,54 +1628,56 @@
         <div>
           <div class="vsinst-field">
             <div class="vsinst-field-label">
-              <span>🏛️ CONNECTED INSTITUTIONAL LOAD</span>
-              <span class="vsinst-field-badge" id="vsinst_kw_badge">50 KW</span>
+              <span>⚙️ CONNECTED INDUSTRIAL LOAD</span>
+              <span class="vsinst-field-badge" id="vsinst_kw_badge">60 KW</span>
             </div>
-            <input type="range" class="vsinst-range-slider" id="vsinst_kw_slider" min="10" max="400" value="50" step="10" oninput="vsinstSync('slider')">
-            <input type="number" class="vsinst-num-input" id="vsinst_kw_num" value="50" min="1" max="1500" oninput="vsinstSync('kw')">
+            <input type="range" class="vsinst-range-slider" id="vsinst_kw_slider" min="15" max="500" value="60" step="15">
+            <input type="number" class="vsinst-num-input" id="vsinst_kw_num" value="60" min="1" max="2000">
           </div>
 
           <div class="vsinst-field">
             <div class="vsinst-field-label">
               <span>💰 MONTHLY ELECTRICITY BILL</span>
-              <span class="vsinst-field-badge" id="vsinst_bill_badge">₹50,000</span>
+              <span class="vsinst-field-badge" id="vsinst_bill_badge">₹60,000</span>
             </div>
-            <input type="number" class="vsinst-num-input" id="vsinst_bill_num" value="50000" min="5000" step="5000" oninput="vsinstSync('bill')">
+            <input type="number" class="vsinst-num-input" id="vsinst_bill_num" value="60000" min="5000" step="5000">
           </div>
 
           <!-- PHASE SELECTOR -->
           <div class="vsinst-field">
-            <div class="vsinst-field-label">🔌 PANEL / SUBSTATION TYPE</div>
+            <div class="vsinst-field-label">🔌 PANEL / PHASE TYPE</div>
             <div class="vsinst-toggle-group">
               <button type="button" class="vsinst-toggle-btn" id="vsinst_btn_single" onclick="vsinstSetPhase(false)">Single Phase</button>
-              <button type="button" class="vsinst-toggle-btn active" id="vsinst_btn_three" onclick="vsinstSetPhase(true)">Three Phase (Substation / LT Panel)</button>
+              <button type="button" class="vsinst-toggle-btn active" id="vsinst_btn_three" onclick="vsinstSetPhase(true)">Three Phase (LT/HT Panel)</button>
             </div>
           </div>
         </div>
 
         <div class="vsinst-output-card">
           <div>
-            <div style="font-size:11px; font-weight:800; color:#c7d2fe; letter-spacing:1px; text-transform:uppercase;">RECOMMENDED INSTITUTIONAL CARDS</div>
+            <div style="font-size:11px; font-weight:800; color:var(--muted-2); letter-spacing:1px; text-transform:uppercase;">RECOMMENDED INDUSTRIAL CARDS</div>
             <div class="vsinst-res-val">
               <span id="vsinst_card_num">11</span>
               <span id="vsinst_card_unit">Cards</span>
             </div>
+            <!-- Dynamic Mini Gold Cards Row -->
+            <div class="vsinst-mini-cards-row" id="vsinst_mini_cards_row"></div>
           </div>
 
           <div class="vsinst-savings-box">
             <div>
-              <div style="font-size:10px; font-weight:700; color:#e0e7ff; text-transform:uppercase;">ESTIMATED MONTHLY SAVINGS (20-30%)</div>
-              <div style="font-size:22px; font-weight:800; font-family:'Space Grotesk', sans-serif;" id="vsinst_savings_range">₹10,000 – ₹15,000 / mo</div>
+              <div style="font-size:10px; font-weight:700; color:#e0f2fe; text-transform:uppercase;">ESTIMATED MONTHLY SAVINGS (20-30%)</div>
+              <div style="font-size:22px; font-weight:800; font-family:'Space Grotesk', sans-serif;" id="vsinst_savings_range">₹12,000 – ₹18,000 / mo</div>
             </div>
-            <i class="fa-solid fa-piggy-bank" style="font-size:24px; color:#ffd700;"></i>
+            <i class="fa-solid fa-piggy-bank" style="font-size:24px;"></i>
           </div>
 
           <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
-            <a href="https://wa.me/919876543210?text=Hi%20Vidhyut%20Saathi%2C%20I%20need%20Institutional%20Saver%20Cards" class="vsinst-btn-primary" style="justify-content:center; font-size:13.5px;" target="_blank">
+            <a href="https://wa.me/919876543210?text=Hi%20Vidhyut%20Saathi%2C%20I%20need%20Industrial%20Cards" class="vsinst-btn-primary" style="justify-content:center; font-size:13.5px;" target="_blank">
               <i class="fa-brands fa-whatsapp"></i> Buy on WhatsApp
             </a>
             <a href="tel:+919876543210" class="vsinst-btn-secondary" style="justify-content:center; font-size:13.5px;">
-              <i class="fa-solid fa-phone"></i> Call Representative
+              <i class="fa-solid fa-phone"></i> Call Industrial Rep
             </a>
           </div>
         </div>
@@ -2142,9 +2192,20 @@
     if (isThree) {
       btnThree.classList.add('active');
       btnSingle.classList.remove('active');
-    } else {
-      btnSingle.classList.add('active');
-      btnThree.classList.remove('active');
+  var vsinstThreePhase = true;
+
+  function vsinstSetPhase(isThree) {
+    vsinstThreePhase = isThree;
+    var btnSingle = document.getElementById('vsinst_btn_single');
+    var btnThree = document.getElementById('vsinst_btn_three');
+    if (btnSingle && btnThree) {
+      if (isThree) {
+        btnThree.classList.add('active');
+        btnSingle.classList.remove('active');
+      } else {
+        btnSingle.classList.add('active');
+        btnThree.classList.remove('active');
+      }
     }
     vsinstSync();
   }
@@ -2154,40 +2215,88 @@
     var kwNum = document.getElementById('vsinst_kw_num');
     var billNum = document.getElementById('vsinst_bill_num');
 
-    var kw = parseInt(kwNum.value) || 50;
-    var bill = parseInt(billNum.value) || 50000;
+    if (!kwSlider || !kwNum || !billNum) return;
+
+    var kw = parseInt(kwNum.value) || 60;
+    var bill = parseInt(billNum.value) || 60000;
 
     if (source === 'slider') {
-      kw = parseInt(kwSlider.value) || 10;
+      kw = parseInt(kwSlider.value) || 15;
       kwNum.value = kw;
-      bill = kw * 1000;
-      billNum.value = bill;
     } else if (source === 'kw') {
       kw = Math.max(1, kw);
-      kwSlider.value = Math.min(kw, 400);
-      bill = kw * 1000;
-      billNum.value = bill;
+      kwSlider.value = Math.min(kw, 500);
     } else if (source === 'bill') {
       bill = Math.max(1000, bill);
-      kw = Math.max(1, Math.round(bill / 1000));
-      kwNum.value = kw;
-      kwSlider.value = Math.min(kw, 400);
     }
 
-    document.getElementById('vsinst_kw_badge').innerText = kw + ' KW';
-    document.getElementById('vsinst_bill_badge').innerText = '₹' + bill.toLocaleString('en-IN');
+    kwSlider.style.setProperty('--fill', (Math.min(kw, 500) / 500 * 100) + '%');
 
-    // Institutional calculation: 1 card per 5 KW (+1 for 3-Phase substation balancing)
-    var baseCards = Math.max(1, Math.ceil(kw / 5));
-    if (vsinstThreePhase) {
-      baseCards = baseCards + 1;
+    var kwBadge = document.getElementById('vsinst_kw_badge');
+    var billBadge = document.getElementById('vsinst_bill_badge');
+    if (kwBadge) kwBadge.innerText = kw + ' KW';
+    if (billBadge) billBadge.innerText = '₹' + bill.toLocaleString('en-IN');
+
+    // 1 card per 6 KW (+1 for 3-Phase LT/HT panel balancing)
+    var kwCards = Math.max(1, Math.ceil(kw / 6));
+    var billCards = bill > 0 ? Math.max(1, Math.ceil(bill / 6000)) : 1;
+    var baseCards = Math.max(kwCards, billCards);
+    var total = vsinstThreePhase ? baseCards + 1 : baseCards;
+
+    var numCardEl = document.getElementById('vsinst_card_num');
+    var unitCardEl = document.getElementById('vsinst_card_unit');
+    if (numCardEl) numCardEl.innerText = total;
+    if (unitCardEl) unitCardEl.innerText = total > 1 ? 'Cards' : 'Card';
+
+    /* Dynamic Mini Gold Cards Row */
+    var miniCardsRow = document.getElementById('vsinst_mini_cards_row');
+    if (miniCardsRow) {
+      miniCardsRow.innerHTML = '';
+      var capped = Math.min(total, 30);
+      for (var i = 0; i < capped; i++) {
+        var icon = document.createElement('div');
+        icon.className = 'vsinst-mini-card-icon';
+        icon.title = 'Industrial Card ' + (i + 1);
+        miniCardsRow.appendChild(icon);
+      }
+      if (total > 30) {
+        var more = document.createElement('span');
+        more.style.cssText = 'font-family:Baloo 2,sans-serif;color:#0284c7;font-size:13px;font-weight:800;align-self:center;margin-left:4px;';
+        more.textContent = '+' + (total - 30) + ' more';
+        miniCardsRow.appendChild(more);
+      }
     }
-    document.getElementById('vsinst_card_num').innerText = baseCards;
 
-    // Monthly Savings (20% - 30%)
-    var minSave = Math.round(bill * 0.20);
-    var maxSave = Math.round(bill * 0.30);
-    document.getElementById('vsinst_savings_range').innerText = '₹' + minSave.toLocaleString('en-IN') + ' – ₹' + maxSave.toLocaleString('en-IN') + ' / mo';
+    // 20-30% DISCOM Bill Savings
+    var sMin = Math.round((bill * 0.20) / 100) * 100;
+    var sMax = Math.round((bill * 0.30) / 100) * 100;
+    var savingsRangeEl = document.getElementById('vsinst_savings_range');
+    if (savingsRangeEl) {
+      savingsRangeEl.innerText = '₹' + sMin.toLocaleString('en-IN') + ' – ₹' + sMax.toLocaleString('en-IN') + ' / mo';
+    }
+  }
+
+  var kwSliderElemInst = document.getElementById('vsinst_kw_slider');
+  if (kwSliderElemInst) {
+    kwSliderElemInst.addEventListener('input', function() { vsinstSync('slider'); });
+    kwSliderElemInst.addEventListener('change', function() { vsinstSync('slider'); });
+  }
+
+  var kwNumElemInst = document.getElementById('vsinst_kw_num');
+  if (kwNumElemInst) {
+    kwNumElemInst.addEventListener('input', function() { vsinstSync('kw'); });
+  }
+
+  var billNumElemInst = document.getElementById('vsinst_bill_num');
+  if (billNumElemInst) {
+    billNumElemInst.addEventListener('input', function() { vsinstSync('bill'); });
+  }
+
+  // Initial Sync
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() { vsinstSync('init'); });
+  } else {
+    vsinstSync('init');
   }
 
   function filterInst(cat, btn) {
@@ -2309,4 +2418,84 @@
   })();
 </script>
 
-
+{% schema %}
+{
+  "name": "Institutional Cards Layout",
+  "settings": [
+    { "type": "image_picker", "id": "card_image", "label": "Institutional Hero Card Image" },
+    { "type": "image_picker", "id": "sec8_card_image", "label": "Section 8 Showcase Image" },
+    { "type": "image_picker", "id": "inst_mcb_img_1", "label": "Institutional Substation Image 1" },
+    { "type": "image_picker", "id": "inst_mcb_img_2", "label": "Institutional Substation Image 2" },
+    { "type": "image_picker", "id": "inst_mcb_img_3", "label": "Institutional Substation Image 3" },
+    { "type": "image_picker", "id": "inst_mcb_img_4", "label": "Institutional Substation Image 4" },
+    { "type": "image_picker", "id": "inst_mcb_img_5", "label": "Institutional Substation Image 5" },
+    { "type": "image_picker", "id": "inst_mcb_img_6", "label": "Institutional Substation Image 6" },
+    { "type": "image_picker", "id": "inst_mcb_img_7", "label": "Institutional Substation Image 7" },
+    { "type": "image_picker", "id": "inst_mcb_img_8", "label": "Institutional Substation Image 8" },
+    { "type": "image_picker", "id": "inst_mcb_img_9", "label": "Institutional Substation Image 9" },
+    { "type": "image_picker", "id": "inst_mcb_img_10", "label": "Institutional Substation Image 10" },
+    { "type": "image_picker", "id": "inst_mcb_img_11", "label": "Institutional Substation Image 11" },
+    { "type": "image_picker", "id": "inst_mcb_img_12", "label": "Institutional Substation Image 12" },
+    { "type": "image_picker", "id": "inst_mcb_img_13", "label": "Institutional Substation Image 13" },
+    { "type": "image_picker", "id": "inst_mcb_img_14", "label": "Institutional Substation Image 14" },
+    { "type": "image_picker", "id": "inst_mcb_img_15", "label": "Institutional Substation Image 15" },
+    { "type": "image_picker", "id": "inst_mcb_img_16", "label": "Institutional Substation Image 16" },
+    { "type": "image_picker", "id": "inst_mcb_img_17", "label": "Institutional Substation Image 17" },
+    { "type": "image_picker", "id": "inst_mcb_img_18", "label": "Institutional Substation Image 18" },
+    { "type": "image_picker", "id": "inst_mcb_img_19", "label": "Institutional Substation Image 19" },
+    { "type": "image_picker", "id": "inst_mcb_img_20", "label": "Institutional Substation Image 20" }
+  ],
+  "blocks": [
+    {
+      "type": "inst_mcb_installation",
+      "name": "Substation Photo",
+      "limit": 20,
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Installation Photo" },
+        { "type": "text", "id": "title", "label": "Installation Title", "default": "Institutional Substation Setup" },
+        {
+          "type": "select",
+          "id": "category",
+          "label": "Category",
+          "options": [
+            { "value": "hospital", "label": "Hospitals & Healthcare" },
+            { "value": "university", "label": "Colleges & Universities" },
+            { "value": "school", "label": "Schools & Academies" },
+            { "value": "govt", "label": "Govt & Research Labs" }
+          ],
+          "default": "hospital"
+        },
+        { "type": "text", "id": "badge", "label": "Badge Text", "default": "HOSPITAL ICU PANEL" },
+        { "type": "text", "id": "caption", "label": "Caption Description", "default": "Parallel connection on main 100A institutional distribution panel with zero downtime." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Institutional Cards Layout",
+      "blocks": [
+        { "type": "inst_mcb_installation", "settings": { "title": "Apollo ICU Wing DB #1", "category": "hospital", "badge": "HOSPITAL ICU PANEL" } },
+        { "type": "inst_mcb_installation", "settings": { "title": "Hospital Diagnostics DB #2", "category": "hospital", "badge": "HOSPITAL ICU PANEL" } },
+        { "type": "inst_mcb_installation", "settings": { "title": "Operation Theater Substation #3", "category": "hospital", "badge": "HOSPITAL ICU PANEL" } },
+        { "type": "inst_mcb_installation", "settings": { "title": "Emergency Wing Panel #4", "category": "hospital", "badge": "HOSPITAL ICU PANEL" } },
+        { "type": "inst_mcb_installation", "settings": { "title": "Hospital Central HVAC DB #5", "category": "hospital", "badge": "HOSPITAL ICU PANEL" } },
+        { "type": "inst_mcb_installation", "settings": { "title": "University Science Lab DB #6", "category": "university", "badge": "CAMPUS LAB MAINS" } },
+        { "type": "inst_mcb_installation", "settings": { "title": "Computer Engineering Block #7", "category": "university", "badge": "CAMPUS LAB MAINS" } },
+        { "type": "inst_mcb_installation", "settings": { "title": "Central Library DB #8", "category": "university", "badge": "CAMPUS LAB MAINS" } },
+        { "type": "inst_mcb_installation", "settings": { "title": "Campus Auditorium Panel #9", "category": "university", "badge": "CAMPUS LAB MAINS" } },
+        { "type": "inst_mcb_installation", "settings": { "title": "Student Hostel Substation #10", "category": "university", "badge": "CAMPUS LAB MAINS" } },
+        { "type": "inst_mcb_installation", "settings": { "title": "CBSE School Main DB #11", "category": "school", "badge": "SCHOOL HVAC PANEL" } },
+        { "type": "inst_mcb_installation", "settings": { "title": "School Science Wing #12", "category": "school", "badge": "SCHOOL HVAC PANEL" } },
+        { "type": "inst_mcb_installation", "settings": { "title": "Indoor Sports Complex DB #13", "category": "school", "badge": "SCHOOL HVAC PANEL" } },
+        { "type": "inst_mcb_installation", "settings": { "title": "Primary Wing Substation #14", "category": "school", "badge": "SCHOOL HVAC PANEL" } },
+        { "type": "inst_mcb_installation", "settings": { "title": "Admin & Accounts Block #15", "category": "school", "badge": "SCHOOL HVAC PANEL" } },
+        { "type": "inst_mcb_installation", "settings": { "title": "Govt Administrative Complex #16", "category": "govt", "badge": "GOVT RESEARCH MAINS" } },
+        { "type": "inst_mcb_installation", "settings": { "title": "High Court Annexe Substation #17", "category": "govt", "badge": "GOVT RESEARCH MAINS" } },
+        { "type": "inst_mcb_installation", "settings": { "title": "National Research Institute #18", "category": "govt", "badge": "GOVT RESEARCH MAINS" } },
+        { "type": "inst_mcb_installation", "settings": { "title": "Biotech Testing Center #19", "category": "govt", "badge": "GOVT RESEARCH MAINS" } },
+        { "type": "inst_mcb_installation", "settings": { "title": "District Treasury DB #20", "category": "govt", "badge": "GOVT RESEARCH MAINS" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
