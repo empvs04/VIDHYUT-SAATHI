@@ -137,18 +137,17 @@
     display: inline-block;
   }
 
-  /* ---------- MAIN CONTENT LAYOUT (1FR 1FR EQUAL HEIGHT) ---------- */
   .vs-apps-sec-{{ section.id }} .content {
     display: grid !important;
     grid-template-columns: 1fr 1fr !important;
     gap: 40px !important;
-    align-items: stretch !important; /* Equal height */
+    align-items: stretch !important;
   }
 
-  /* ---------- LEFT: CARD GRID ---------- */
   .vs-apps-sec-{{ section.id }} .cards-grid {
     display: grid !important;
-    grid-template-columns: 1fr 1fr !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    grid-template-rows: repeat(2, 1fr) !important;
     gap: 16px !important;
     height: 100% !important;
     margin-top: 0 !important;
@@ -158,221 +157,72 @@
     position: relative !important;
     border-radius: 18px !important;
     overflow: hidden !important;
-    aspect-ratio: 4 / 3.3 !important;
-    box-shadow: 0 16px 36px -12px rgba(42, 33, 24, 0.32), 0 0 0 1px rgba(255, 255, 255, 0.6) !important;
-    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease, border-color 0.4s ease !important;
+    box-shadow: 0 14px 32px -10px rgba(42, 33, 24, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.06) !important;
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease !important;
     user-select: none !important;
-    background-color: #1F1714 !important;
-    cursor: pointer !important;
+    background-color: #ffffff !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: 190px !important;
+    aspect-ratio: 4 / 3 !important;
   }
 
   .vs-apps-sec-{{ section.id }} .app-card:hover {
-    transform: translateY(-8px) scale(1.015);
-    box-shadow: 0 32px 60px -15px rgba(255, 122, 26, 0.38), 0 0 0 2px rgba(255, 122, 26, 0.5);
+    transform: translateY(-6px) scale(1.02) !important;
+    box-shadow: 0 24px 50px -12px rgba(255, 122, 26, 0.35), 0 0 0 2px rgba(255, 122, 26, 0.5) !important;
   }
 
-  .vs-apps-sec-{{ section.id }} .app-card.popular {
-    box-shadow: 0 22px 45px -15px rgba(255, 122, 26, 0.45), 0 0 0 2px var(--saffron);
+  .vs-apps-sec-{{ section.id }} .app-card-img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    display: block !important;
+    border-radius: 18px !important;
+    transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
   }
 
-  .vs-apps-sec-{{ section.id }} .app-card.popular:hover {
-    box-shadow: 0 36px 65px -15px rgba(255, 122, 26, 0.55), 0 0 0 2.5px var(--saffron);
+  .vs-apps-sec-{{ section.id }} .app-card:hover .app-card-img {
+    transform: scale(1.04) !important;
   }
 
-  .vs-apps-sec-{{ section.id }} .ribbon {
-    position: absolute;
-    top: 16px;
-    right: -36px;
-    width: 145px;
-    transform: rotate(40deg);
-    background: linear-gradient(100deg, var(--saffron), #FFA034, var(--gold));
-    color: var(--white);
-    font-family: 'Outfit', sans-serif;
-    font-size: 9.5px;
-    font-weight: 800;
-    letter-spacing: 0.06em;
-    text-align: center;
-    padding: 4px 0;
-    z-index: 5;
-    box-shadow: 0 4px 14px -2px rgba(255, 122, 26, 0.7);
+  .vs-apps-sec-{{ section.id }} .card-placeholder {
+    width: 100% !important;
+    height: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 20px !important;
+    text-align: center !important;
+    border-radius: 18px !important;
   }
 
-  .vs-apps-sec-{{ section.id }} .card-bg {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+  .vs-apps-sec-{{ section.id }} .card-placeholder.residential {
+    background: linear-gradient(145deg, #FFF4EB 0%, #FFE5D1 100%);
+    color: #c84900;
+  }
+  .vs-apps-sec-{{ section.id }} .card-placeholder.commercial {
+    background: linear-gradient(145deg, #F0FBF4 0%, #D7F3E2 100%);
+    color: #007b3e;
+  }
+  .vs-apps-sec-{{ section.id }} .card-placeholder.industrial {
+    background: linear-gradient(145deg, #F0F8FF 0%, #D8EDFE 100%);
+    color: #0284c7;
+  }
+  .vs-apps-sec-{{ section.id }} .card-placeholder.institutional {
+    background: linear-gradient(145deg, #FEFCE8 0%, #FEF08A 100%);
+    color: #b45309;
   }
 
-  .vs-apps-sec-{{ section.id }} .app-card:hover .card-bg {
-    transform: scale(1.06);
-  }
-
-  .vs-apps-sec-{{ section.id }} .card-bg.residential {
-    background-color: #2A1E18;
-    background-image: linear-gradient(145deg, #4F382A 0%, #2A1E18 75%);
-  }
-
-  .vs-apps-sec-{{ section.id }} .card-bg.commercial {
-    background-color: #121A24;
-    background-image: linear-gradient(145deg, #203144 0%, #121A24 75%);
-  }
-
-  .vs-apps-sec-{{ section.id }} .card-bg.industrial {
-    background-color: #22140E;
-    background-image: linear-gradient(145deg, #442316 0%, #22140E 75%);
-  }
-
-  .vs-apps-sec-{{ section.id }} .card-bg.institutional {
-    background-color: #12221A;
-    background-image: linear-gradient(145deg, #234736 0%, #12221A 75%);
-  }
-
-  .vs-apps-sec-{{ section.id }} .card-bg.has-custom-img {
-    background-color: #1A1210 !important;
-  }
-
-  .vs-apps-sec-{{ section.id }} .card-bg::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(0deg, rgba(15, 10, 8, 0.92) 0%, rgba(20, 14, 10, 0.45) 55%, rgba(0, 0, 0, 0.2) 100%);
-    pointer-events: none;
-  }
-
-  .vs-apps-sec-{{ section.id }} .icon-motif {
-    position: absolute;
-    top: 48%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 60%;
-    opacity: 0.85;
-    z-index: 2;
-    pointer-events: none;
-    transition: transform 0.5s ease, opacity 0.5s ease;
-  }
-
-  .vs-apps-sec-{{ section.id }} .app-card:hover .icon-motif {
-    transform: translate(-50%, -52%) scale(1.05);
-    opacity: 0.95;
-  }
-
-  .vs-apps-sec-{{ section.id }} .use-tag {
-    position: absolute;
-    top: 15px;
-    left: 16px;
+  .vs-apps-sec-{{ section.id }} .placeholder-title {
     font-family: 'Outfit', sans-serif;
     font-weight: 800;
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    color: var(--saffron);
-    z-index: 4;
+    font-size: 15px;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
-    background: rgba(0, 0, 0, 0.4);
-    padding: 3px 9px;
-    border-radius: 6px;
-    border: 1px solid rgba(255, 122, 26, 0.35);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
   }
 
-  .vs-apps-sec-{{ section.id }} .card-inner {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 16px;
-    z-index: 4;
-  }
-
-  .vs-apps-sec-{{ section.id }} .card-tagline {
-    color: rgba(255, 255, 255, 0.95);
-    font-size: 12px;
-    font-weight: 600;
-    max-width: 65%;
-    margin-top: 24px;
-    line-height: 1.35;
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
-  }
-
-  .vs-apps-sec-{{ section.id }} .card-bottom {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .vs-apps-sec-{{ section.id }} .card-chip {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: linear-gradient(100deg, var(--leaf), #1BA852);
-    color: var(--white);
-    font-family: 'Outfit', sans-serif;
-    font-weight: 700;
-    font-size: 9.5px;
-    letter-spacing: 0.03em;
-    padding: 5px 12px;
-    border-radius: 999px;
-    margin-bottom: 7px;
-    width: fit-content;
-    box-shadow: 0 4px 12px -3px rgba(15, 139, 61, 0.7);
-  }
-
-  .vs-apps-sec-{{ section.id }} .card-chip .bolt {
-    font-size: 10px;
-  }
-
-  .vs-apps-sec-{{ section.id }} .card-title {
-    font-family: 'Sora', sans-serif;
-    font-weight: 800;
-    font-size: 16.5px;
-    color: var(--white);
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
-    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
-  }
-
-  .vs-apps-sec-{{ section.id }} .card-benefits {
-    display: flex;
-    gap: 8px;
-    margin-top: 8px;
-    padding-top: 8px;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
-  }
-
-  .vs-apps-sec-{{ section.id }} .card-benefits .b {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 3px;
-    font-size: 8.5px;
-    font-weight: 600;
-    color: rgba(255, 255, 255, 0.92);
-    text-align: center;
-    line-height: 1.2;
-    flex: 1;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
-  }
-
-  .vs-apps-sec-{{ section.id }} .card-benefits .b .ic {
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.16);
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 11px;
-    flex-shrink: 0;
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-  }
-
-  /* ---------- RIGHT: HEADING + 4 LUCRATIVE CARDS ---------- */
   .vs-apps-sec-{{ section.id }} .right {
     display: flex;
     flex-direction: column;
@@ -471,19 +321,6 @@
     gap: 2px;
   }
 
-  .vs-apps-sec-{{ section.id }} .sector-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    font-family: 'Outfit', sans-serif;
-    font-size: 11.5px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--saffron);
-    line-height: 1.2;
-  }
-
   .vs-apps-sec-{{ section.id }} .check-item p {
     font-size: 14.5px;
     line-height: 1.45;
@@ -495,8 +332,6 @@
     font-weight: 800;
   }
 
-  /* ══ EXACT SECTOR PAGE COLORS ══ */
-  /* 1. Residential (Orange: #ec5c0a / #ff7b00) */
   .vs-apps-sec-{{ section.id }} .check-item.theme-res {
     background: linear-gradient(135deg, #ffffff 0%, #fffaf5 55%, #ffefe5 100%) !important;
     border: 1.5px solid rgba(236, 92, 10, 0.3) !important;
@@ -516,7 +351,6 @@
     box-shadow: 0 22px 42px -12px rgba(236, 92, 10, 0.32), 0 0 0 1.5px rgba(236, 92, 10, 0.45) !important;
   }
 
-  /* 2. Commercial (Green: #008744 / #00b050) */
   .vs-apps-sec-{{ section.id }} .check-item.theme-com {
     background: linear-gradient(135deg, #ffffff 0%, #f6fbf8 55%, #e6f4ec 100%) !important;
     border: 1.5px solid rgba(0, 135, 68, 0.3) !important;
@@ -536,7 +370,6 @@
     box-shadow: 0 22px 42px -12px rgba(0, 135, 68, 0.32), 0 0 0 1.5px rgba(0, 135, 68, 0.45) !important;
   }
 
-  /* 3. Industrial (Cyan / Electric Blue: #0284c7 / #0369a1) */
   .vs-apps-sec-{{ section.id }} .check-item.theme-ind {
     background: linear-gradient(135deg, #ffffff 0%, #f5faff 55%, #e0f2fe 100%) !important;
     border: 1.5px solid rgba(2, 132, 199, 0.3) !important;
@@ -556,7 +389,6 @@
     box-shadow: 0 22px 42px -12px rgba(2, 132, 199, 0.32), 0 0 0 1.5px rgba(2, 132, 199, 0.45) !important;
   }
 
-  /* 4. Institutional (Golden Amber: #d97706 / #f59e0b) */
   .vs-apps-sec-{{ section.id }} .check-item.theme-ins {
     background: linear-gradient(135deg, #ffffff 0%, #fffef8 55%, #fef9c3 100%) !important;
     border: 1.5px solid rgba(217, 119, 6, 0.3) !important;
@@ -576,7 +408,6 @@
     box-shadow: 0 22px 42px -12px rgba(217, 119, 6, 0.32), 0 0 0 1.5px rgba(217, 119, 6, 0.45) !important;
   }
 
-  /* ---------- RESPONSIVE BREAKPOINTS (DESKTOP IS LOCKED) ---------- */
   @media (max-width: 1024px) {
     .vs-apps-sec-{{ section.id }} {
       padding: {{ section.settings.padding_top_mob | default: 50 }}px 20px {{ section.settings.padding_bottom_mob | default: 50 }}px 20px !important;
@@ -617,112 +448,20 @@
       padding-right: 0 !important;
       max-width: 100% !important;
     }
-    .vs-apps-sec-{{ section.id }} .section-head {
-      margin-bottom: 20px !important;
-    }
-    .vs-apps-sec-{{ section.id }} .top-badge {
-      font-size: 11px !important;
-      padding: 5px 14px !important;
-      margin-bottom: 10px !important;
-      max-width: 100% !important;
-      white-space: normal !important;
-      text-align: center !important;
-      line-height: 1.3 !important;
-    }
-    .vs-apps-sec-{{ section.id }} .kicker {
-      font-size: 11.5px !important;
-      margin-bottom: 5px !important;
-    }
-    .vs-apps-sec-{{ section.id }} .section-title {
-      font-size: clamp(21px, 5.5vw, 26px) !important;
-      line-height: 1.25 !important;
-      white-space: normal !important;
-      text-align: center !important;
-    }
-    .vs-apps-sec-{{ section.id }} .content {
-      gap: 26px !important;
-    }
-    /* 2x2 GRID FOR 4 SECTOR CARDS ON MOBILE */
     .vs-apps-sec-{{ section.id }} .cards-grid {
       grid-template-columns: repeat(2, 1fr) !important;
+      grid-template-rows: repeat(2, 1fr) !important;
       gap: 10px !important;
       height: auto !important;
     }
     .vs-apps-sec-{{ section.id }} .app-card {
-      aspect-ratio: 1 / 1.15 !important;
+      aspect-ratio: 4 / 3 !important;
       border-radius: 14px !important;
-      box-shadow: 0 10px 24px -8px rgba(42, 33, 24, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.5) !important;
+      min-height: 130px !important;
+      box-shadow: 0 10px 24px -8px rgba(42, 33, 24, 0.25), 0 0 0 1px rgba(0, 0, 0, 0.04) !important;
     }
-    .vs-apps-sec-{{ section.id }} .use-tag {
-      font-size: 8px !important;
-      padding: 2.5px 6px !important;
-      top: 8px !important;
-      left: 8px !important;
-      border-radius: 5px !important;
-      letter-spacing: 0.06em !important;
-    }
-    .vs-apps-sec-{{ section.id }} .ribbon {
-      font-size: 7.5px !important;
-      padding: 2.5px 0 !important;
-      width: 95px !important;
-      right: -25px !important;
-      top: 9px !important;
-      letter-spacing: 0.04em !important;
-    }
-    .vs-apps-sec-{{ section.id }} .icon-motif {
-      width: 48% !important;
-      opacity: 0.7 !important;
-    }
-    .vs-apps-sec-{{ section.id }} .card-inner {
-      padding: 10px 9px 8px 9px !important;
-    }
-    .vs-apps-sec-{{ section.id }} .card-tagline {
-      font-size: 9.5px !important;
-      line-height: 1.22 !important;
-      margin-top: 15px !important;
-      max-width: 82% !important;
-      display: -webkit-box !important;
-      -webkit-line-clamp: 2 !important;
-      -webkit-box-orient: vertical !important;
-      overflow: hidden !important;
-    }
-    .vs-apps-sec-{{ section.id }} .card-bottom {
-      display: flex !important;
-      flex-direction: column !important;
-    }
-    .vs-apps-sec-{{ section.id }} .card-chip {
-      font-size: 7.5px !important;
-      padding: 2.5px 8px !important;
-      margin-bottom: 4px !important;
-      letter-spacing: 0.01em !important;
-      gap: 3px !important;
-    }
-    .vs-apps-sec-{{ section.id }} .card-chip .bolt {
-      font-size: 8px !important;
-    }
-    .vs-apps-sec-{{ section.id }} .card-title {
-      font-size: 12.5px !important;
-      line-height: 1.15 !important;
-      letter-spacing: 0.01em !important;
-    }
-    .vs-apps-sec-{{ section.id }} .card-benefits {
-      display: flex !important;
-      gap: 3px !important;
-      margin-top: 5px !important;
-      padding-top: 5px !important;
-      border-top: 1px solid rgba(255, 255, 255, 0.18) !important;
-    }
-    .vs-apps-sec-{{ section.id }} .card-benefits .b {
-      font-size: 6.8px !important;
-      line-height: 1.1 !important;
-      gap: 2px !important;
-      white-space: normal !important;
-      text-align: center !important;
-    }
-    .vs-apps-sec-{{ section.id }} .card-benefits .b .ic {
-      width: 17px !important;
-      height: 17px !important;
-      font-size: 8.5px !important;
+    .vs-apps-sec-{{ section.id }} .app-card-img {
+      border-radius: 14px !important;
     }
     .vs-apps-sec-{{ section.id }} .right {
       margin-top: 6px !important;
@@ -734,119 +473,24 @@
       line-height: 1.25 !important;
       margin-bottom: 16px !important;
     }
-    .vs-apps-sec-{{ section.id }} .checklist {
-      gap: 11px !important;
-      margin-top: 0 !important;
-    }
-    .vs-apps-sec-{{ section.id }} .check-item {
-      padding: 12px 14px !important;
-      gap: 12px !important;
-      border-radius: 14px !important;
-      align-items: flex-start !important;
-    }
-    .vs-apps-sec-{{ section.id }} .check-circle {
-      width: 28px !important;
-      height: 28px !important;
-      font-size: 12.5px !important;
-      flex-shrink: 0 !important;
-      margin-top: 2px !important;
-    }
-    .vs-apps-sec-{{ section.id }} .check-item p {
-      font-size: 13px !important;
-      line-height: 1.45 !important;
-    }
-    .vs-apps-sec-{{ section.id }} .check-item p strong {
-      font-size: 13.5px !important;
-    }
   }
 
   @media (max-width: 480px) {
-    .vs-apps-sec-{{ section.id }} {
-      padding: {{ section.settings.padding_top_mob | default: 30 }}px 10px {{ section.settings.padding_bottom_mob | default: 30 }}px 10px !important;
-    }
-    .vs-apps-sec-{{ section.id }} .section-head {
-      margin-bottom: 16px !important;
-    }
-    .vs-apps-sec-{{ section.id }} .section-title {
-      font-size: 20px !important;
-    }
-    .vs-apps-sec-{{ section.id }} .content {
-      gap: 22px !important;
-    }
     .vs-apps-sec-{{ section.id }} .cards-grid {
       grid-template-columns: repeat(2, 1fr) !important;
       gap: 8px !important;
     }
     .vs-apps-sec-{{ section.id }} .app-card {
-      aspect-ratio: 1 / 1.18 !important;
+      aspect-ratio: 4 / 3 !important;
       border-radius: 12px !important;
+      min-height: 110px !important;
     }
-    .vs-apps-sec-{{ section.id }} .use-tag {
-      font-size: 7px !important;
-      padding: 2px 5px !important;
-      top: 6px !important;
-      left: 6px !important;
-    }
-    .vs-apps-sec-{{ section.id }} .ribbon {
-      top: 8px !important;
-      right: -24px !important;
-      width: 86px !important;
-      font-size: 6.5px !important;
-      padding: 2px 0 !important;
-    }
-    .vs-apps-sec-{{ section.id }} .card-inner {
-      padding: 8px 7px 6px 7px !important;
-    }
-    .vs-apps-sec-{{ section.id }} .card-title {
-      font-size: 11.5px !important;
-    }
-    .vs-apps-sec-{{ section.id }} .card-tagline {
-      font-size: 8.5px !important;
-      margin-top: 13px !important;
-      max-width: 85% !important;
-      line-height: 1.18 !important;
-    }
-    .vs-apps-sec-{{ section.id }} .card-chip {
-      font-size: 6.8px !important;
-      padding: 2px 6px !important;
-      margin-bottom: 3px !important;
-    }
-    .vs-apps-sec-{{ section.id }} .card-chip .bolt {
-      font-size: 7.5px !important;
-    }
-    .vs-apps-sec-{{ section.id }} .card-benefits {
-      gap: 2px !important;
-      margin-top: 4px !important;
-      padding-top: 4px !important;
-    }
-    .vs-apps-sec-{{ section.id }} .card-benefits .b {
-      font-size: 6.2px !important;
-      line-height: 1.05 !important;
-    }
-    .vs-apps-sec-{{ section.id }} .card-benefits .b .ic {
-      width: 15px !important;
-      height: 15px !important;
-      font-size: 7.5px !important;
+    .vs-apps-sec-{{ section.id }} .app-card-img {
+      border-radius: 12px !important;
     }
     .vs-apps-sec-{{ section.id }} .right h2 {
       font-size: 20px !important;
       margin-bottom: 14px !important;
-    }
-    .vs-apps-sec-{{ section.id }} .check-item {
-      padding: 10px 12px !important;
-      gap: 10px !important;
-      border-radius: 12px !important;
-    }
-    .vs-apps-sec-{{ section.id }} .check-circle {
-      width: 26px !important;
-      height: 26px !important;
-      font-size: 11.5px !important;
-    }
-    .vs-apps-sec-{{ section.id }} .check-item p {
-      font-size: 12px !important;
-    }
-    .vs-apps-sec-{{ section.id }} .check-item p strong {
-      font-size: 12.5px !important;
     }
   }
 </style>
@@ -856,8 +500,6 @@
   <div class="ambient-glow-right"></div>
 
   <div class="container">
-
-    <!-- SECTION HEADER (SINGLE LINE ON DESKTOP) -->
     <div class="section-head">
       {% if section.settings.badge_text != blank %}
         <div class="top-badge">
@@ -876,10 +518,7 @@
       </h2>
     </div>
 
-    <!-- MAIN GRID CONTENT -->
     <div class="content">
-
-      <!-- LEFT: 4 SECTOR CARDS WITH SHOPIFY IMAGE SUPPORT -->
       <div class="cards-grid">
         {% assign sector_cards = section.blocks | where: "type", "sector_card" %}
         {% if sector_cards.size > 0 %}
@@ -898,213 +537,53 @@
               {% endif %}
             {% endif %}
 
-            <div class="app-card {% if block.settings.ribbon_text != blank %}popular{% endif %}" {{ block.shopify_attributes }}>
-              {% if block.settings.ribbon_text != blank %}
-                <div class="ribbon">{{ block.settings.ribbon_text }}</div>
-              {% endif %}
-
-              <div 
-                class="card-bg {{ block.settings.card_theme | default: 'residential' }} {% if custom_img != blank %}has-custom-img{% endif %}"
-                {% if custom_img != blank %}
-                  style="background-image: url('{{ custom_img | image_url: width: 1000 }}');"
-                {% endif %}
-              ></div>
-
-              {% if custom_img == blank %}
-                {% case block.settings.card_theme %}
-                  {% when 'commercial' %}
-                    <svg class="icon-motif" viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg">
-                      <rect x="60" y="20" width="80" height="120" fill="rgba(255,255,255,0.08)"/>
-                      <rect x="72" y="34" width="14" height="14" fill="rgba(255,255,255,0.12)"/>
-                      <rect x="93" y="34" width="14" height="14" fill="rgba(255,255,255,0.12)"/>
-                      <rect x="114" y="34" width="14" height="14" fill="rgba(255,255,255,0.12)"/>
-                      <rect x="72" y="56" width="14" height="14" fill="rgba(255,255,255,0.12)"/>
-                      <rect x="93" y="56" width="14" height="14" fill="rgba(255,255,255,0.12)"/>
-                      <rect x="114" y="56" width="14" height="14" fill="rgba(255,255,255,0.12)"/>
-                      <rect x="72" y="78" width="14" height="14" fill="rgba(255,255,255,0.12)"/>
-                      <rect x="93" y="78" width="14" height="14" fill="rgba(255,255,255,0.12)"/>
-                      <rect x="114" y="78" width="14" height="14" fill="rgba(255,255,255,0.12)"/>
-                    </svg>
-                  {% when 'industrial' %}
-                    <svg class="icon-motif" viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg">
-                      <rect x="40" y="80" width="120" height="60" fill="rgba(255,255,255,0.08)"/>
-                      <rect x="55" y="45" width="16" height="35" fill="rgba(255,255,255,0.1)"/>
-                      <rect x="90" y="35" width="16" height="45" fill="rgba(255,255,255,0.1)"/>
-                      <rect x="125" y="50" width="16" height="30" fill="rgba(255,255,255,0.1)"/>
-                      <circle cx="63" cy="40" r="6" fill="rgba(255,255,255,0.15)"/>
-                      <circle cx="98" cy="30" r="6" fill="rgba(255,255,255,0.15)"/>
-                    </svg>
-                  {% when 'institutional' %}
-                    <svg class="icon-motif" viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg">
-                      <rect x="50" y="60" width="100" height="80" fill="rgba(255,255,255,0.08)"/>
-                      <polygon points="45,60 100,25 155,60" fill="rgba(255,255,255,0.1)"/>
-                      <rect x="68" y="80" width="12" height="30" fill="rgba(255,255,255,0.12)"/>
-                      <rect x="94" y="80" width="12" height="30" fill="rgba(255,255,255,0.12)"/>
-                      <rect x="120" y="80" width="12" height="30" fill="rgba(255,255,255,0.12)"/>
-                    </svg>
-                  {% else %}
-                    <svg class="icon-motif" viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M100 25 L170 80 L160 80 L160 140 L40 140 L40 80 L30 80 Z" fill="rgba(255,255,255,0.08)"/>
-                      <rect x="90" y="105" width="20" height="35" fill="rgba(255,255,255,0.1)"/>
-                      <rect x="55" y="95" width="18" height="18" fill="rgba(255,255,255,0.08)"/>
-                      <rect x="127" y="95" width="18" height="18" fill="rgba(255,255,255,0.08)"/>
-                    </svg>
-                {% endcase %}
-              {% endif %}
-
-              <div class="use-tag">USE</div>
-              <div class="card-inner">
-                <p class="card-tagline">{{ block.settings.tagline }}</p>
-                <div class="card-bottom">
-                  <div class="card-chip"><span class="bolt">⚡</span>{{ block.settings.chip_text | default: "EVERY 6 KW REQUIRED 1 CARD" }}</div>
-                  <div class="card-title">{{ block.settings.title }}</div>
-                  <div class="card-benefits">
-                    <div class="b"><span class="ic">{{ block.settings.benefit_1_icon | default: "💡" }}</span>{{ block.settings.benefit_1_text }}</div>
-                    <div class="b"><span class="ic">{{ block.settings.benefit_2_icon | default: "🛡️" }}</span>{{ block.settings.benefit_2_text }}</div>
-                    <div class="b"><span class="ic">{{ block.settings.benefit_3_icon | default: "✓" }}</span>{{ block.settings.benefit_3_text }}</div>
-                  </div>
+            <div class="app-card" {{ block.shopify_attributes }}>
+              {% if custom_img != blank %}
+                <img 
+                  class="app-card-img"
+                  src="{{ custom_img | image_url: width: 1000 }}" 
+                  alt="{{ block.settings.title | default: 'Sector Card' | escape }}" 
+                  loading="lazy"
+                >
+              {% else %}
+                <div class="card-placeholder {{ block.settings.card_theme | default: 'residential' }}">
+                  <span class="placeholder-title">{{ block.settings.title | default: "Sector Application" }}</span>
                 </div>
-              </div>
+              {% endif %}
             </div>
           {% endfor %}
         {% else %}
-          <!-- 1. Residential -->
-          <div class="app-card popular">
-            <div class="ribbon">{{ section.settings.card1_ribbon | default: "MOST POPULAR" }}</div>
-            <div 
-              class="card-bg residential {% if section.settings.card1_image != blank %}has-custom-img{% endif %}"
-              {% if section.settings.card1_image != blank %}
-                style="background-image: url('{{ section.settings.card1_image | image_url: width: 900 }}');"
-              {% endif %}
-            ></div>
-            {% if section.settings.card1_image == blank %}
-              <svg class="icon-motif" viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg">
-                <path d="M100 25 L170 80 L160 80 L160 140 L40 140 L40 80 L30 80 Z" fill="rgba(255,255,255,0.08)"/>
-                <rect x="90" y="105" width="20" height="35" fill="rgba(255,255,255,0.1)"/>
-                <rect x="55" y="95" width="18" height="18" fill="rgba(255,255,255,0.08)"/>
-                <rect x="127" y="95" width="18" height="18" fill="rgba(255,255,255,0.08)"/>
-              </svg>
-            {% endif %}
-            <div class="use-tag">USE</div>
-            <div class="card-inner">
-              <p class="card-tagline">{{ section.settings.card1_tagline | default: "Smart Saving for Every Home" }}</p>
-              <div class="card-bottom">
-                <div class="card-chip"><span class="bolt">⚡</span>{{ section.settings.card1_chip | default: "EVERY 6 KW REQUIRED 1 CARD" }}</div>
-                <div class="card-title">{{ section.settings.card1_title | default: "RESIDENTIAL USE" }}</div>
-                <div class="card-benefits">
-                  <div class="b"><span class="ic">{{ section.settings.card1_b1_icon | default: "💡" }}</span>{{ section.settings.card1_b1_text | default: "Save 25% Electricity Bill" }}</div>
-                  <div class="b"><span class="ic">{{ section.settings.card1_b2_icon | default: "🛡️" }}</span>{{ section.settings.card1_b2_text | default: "Voltage Protection" }}</div>
-                  <div class="b"><span class="ic">{{ section.settings.card1_b3_icon | default: "✓" }}</span>{{ section.settings.card1_b3_text | default: "Guaranteed Results" }}</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 2. Commercial -->
           <div class="app-card">
-            <div 
-              class="card-bg commercial {% if section.settings.card2_image != blank %}has-custom-img{% endif %}"
-              {% if section.settings.card2_image != blank %}
-                style="background-image: url('{{ section.settings.card2_image | image_url: width: 900 }}');"
-              {% endif %}
-            ></div>
-            {% if section.settings.card2_image == blank %}
-              <svg class="icon-motif" viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg">
-                <rect x="60" y="20" width="80" height="120" fill="rgba(255,255,255,0.08)"/>
-                <rect x="72" y="34" width="14" height="14" fill="rgba(255,255,255,0.12)"/>
-                <rect x="93" y="34" width="14" height="14" fill="rgba(255,255,255,0.12)"/>
-                <rect x="114" y="34" width="14" height="14" fill="rgba(255,255,255,0.12)"/>
-                <rect x="72" y="56" width="14" height="14" fill="rgba(255,255,255,0.12)"/>
-                <rect x="93" y="56" width="14" height="14" fill="rgba(255,255,255,0.12)"/>
-                <rect x="114" y="56" width="14" height="14" fill="rgba(255,255,255,0.12)"/>
-                <rect x="72" y="78" width="14" height="14" fill="rgba(255,255,255,0.12)"/>
-                <rect x="93" y="78" width="14" height="14" fill="rgba(255,255,255,0.12)"/>
-                <rect x="114" y="78" width="14" height="14" fill="rgba(255,255,255,0.12)"/>
-              </svg>
+            {% if section.settings.card1_image != blank %}
+              <img class="app-card-img" src="{{ section.settings.card1_image | image_url: width: 1000 }}" alt="Residential Use" loading="lazy">
+            {% else %}
+              <div class="card-placeholder residential"><span class="placeholder-title">Residential Use</span></div>
             {% endif %}
-            <div class="use-tag">USE</div>
-            <div class="card-inner">
-              <p class="card-tagline">{{ section.settings.card2_tagline | default: "Smart Energy for Smart Business" }}</p>
-              <div class="card-bottom">
-                <div class="card-chip"><span class="bolt">⚡</span>{{ section.settings.card2_chip | default: "EVERY 6 KW REQUIRED 1 CARD" }}</div>
-                <div class="card-title">{{ section.settings.card2_title | default: "COMMERCIAL USE" }}</div>
-                <div class="card-benefits">
-                  <div class="b"><span class="ic">{{ section.settings.card2_b1_icon | default: "📉" }}</span>{{ section.settings.card2_b1_text | default: "Save kVAh Penalty" }}</div>
-                  <div class="b"><span class="ic">{{ section.settings.card2_b2_icon | default: "🔌" }}</span>{{ section.settings.card2_b2_text | default: "Stable Supply" }}</div>
-                  <div class="b"><span class="ic">{{ section.settings.card2_b3_icon | default: "🛠️" }}</span>{{ section.settings.card2_b3_text | default: "Control Leakage Current" }}</div>
-                </div>
-              </div>
-            </div>
           </div>
-
-          <!-- 3. Industrial -->
           <div class="app-card">
-            <div 
-              class="card-bg industrial {% if section.settings.card3_image != blank %}has-custom-img{% endif %}"
-              {% if section.settings.card3_image != blank %}
-                style="background-image: url('{{ section.settings.card3_image | image_url: width: 900 }}');"
-              {% endif %}
-            ></div>
-            {% if section.settings.card3_image == blank %}
-              <svg class="icon-motif" viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg">
-                <rect x="40" y="80" width="120" height="60" fill="rgba(255,255,255,0.08)"/>
-                <rect x="55" y="45" width="16" height="35" fill="rgba(255,255,255,0.1)"/>
-                <rect x="90" y="35" width="16" height="45" fill="rgba(255,255,255,0.1)"/>
-                <rect x="125" y="50" width="16" height="30" fill="rgba(255,255,255,0.1)"/>
-                <circle cx="63" cy="40" r="6" fill="rgba(255,255,255,0.15)"/>
-                <circle cx="98" cy="30" r="6" fill="rgba(255,255,255,0.15)"/>
-              </svg>
+            {% if section.settings.card2_image != blank %}
+              <img class="app-card-img" src="{{ section.settings.card2_image | image_url: width: 1000 }}" alt="Commercial Use" loading="lazy">
+            {% else %}
+              <div class="card-placeholder commercial"><span class="placeholder-title">Commercial Use</span></div>
             {% endif %}
-            <div class="use-tag">USE</div>
-            <div class="card-inner">
-              <p class="card-tagline">{{ section.settings.card3_tagline | default: "Maximum Power, Maximum Savings" }}</p>
-              <div class="card-bottom">
-                <div class="card-chip"><span class="bolt">⚡</span>{{ section.settings.card3_chip | default: "EVERY 6 KW REQUIRED 1 CARD" }}</div>
-                <div class="card-title">{{ section.settings.card3_title | default: "INDUSTRIAL USE" }}</div>
-                <div class="card-benefits">
-                  <div class="b"><span class="ic">{{ section.settings.card3_b1_icon | default: "📊" }}</span>{{ section.settings.card3_b1_text | default: "Save 20% Electricity Bill" }}</div>
-                  <div class="b"><span class="ic">{{ section.settings.card3_b2_icon | default: "⚙️" }}</span>{{ section.settings.card3_b2_text | default: "Handles Heavy Loads" }}</div>
-                  <div class="b"><span class="ic">{{ section.settings.card3_b3_icon | default: "🔋" }}</span>{{ section.settings.card3_b3_text | default: "Reduces Line Losses" }}</div>
-                </div>
-              </div>
-            </div>
           </div>
-
-          <!-- 4. Institutional -->
           <div class="app-card">
-            <div 
-              class="card-bg institutional {% if section.settings.card4_image != blank %}has-custom-img{% endif %}"
-              {% if section.settings.card4_image != blank %}
-                style="background-image: url('{{ section.settings.card4_image | image_url: width: 900 }}');"
-              {% endif %}
-            ></div>
-            {% if section.settings.card4_image == blank %}
-              <svg class="icon-motif" viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg">
-                <rect x="50" y="60" width="100" height="80" fill="rgba(255,255,255,0.08)"/>
-                <polygon points="45,60 100,25 155,60" fill="rgba(255,255,255,0.1)"/>
-                <rect x="68" y="80" width="12" height="30" fill="rgba(255,255,255,0.12)"/>
-                <rect x="94" y="80" width="12" height="30" fill="rgba(255,255,255,0.12)"/>
-                <rect x="120" y="80" width="12" height="30" fill="rgba(255,255,255,0.12)"/>
-              </svg>
+            {% if section.settings.card3_image != blank %}
+              <img class="app-card-img" src="{{ section.settings.card3_image | image_url: width: 1000 }}" alt="Industrial Use" loading="lazy">
+            {% else %}
+              <div class="card-placeholder industrial"><span class="placeholder-title">Industrial Use</span></div>
             {% endif %}
-            <div class="use-tag">USE</div>
-            <div class="card-inner">
-              <p class="card-tagline">{{ section.settings.card4_tagline | default: "Reliable Power for a Better Tomorrow" }}</p>
-              <div class="card-bottom">
-                <div class="card-chip"><span class="bolt">⚡</span>{{ section.settings.card4_chip | default: "EVERY 6 KW REQUIRED 1 CARD" }}</div>
-                <div class="card-title">{{ section.settings.card4_title | default: "INSTITUTIONAL USE" }}</div>
-                <div class="card-benefits">
-                  <div class="b"><span class="ic">{{ section.settings.card4_b1_icon | default: "🏫" }}</span>{{ section.settings.card4_b1_text | default: "Save 22% Electricity Bill" }}</div>
-                  <div class="b"><span class="ic">{{ section.settings.card4_b2_icon | default: "⚡" }}</span>{{ section.settings.card4_b2_text | default: "Stable Power Supply" }}</div>
-                  <div class="b"><span class="ic">{{ section.settings.card4_b3_icon | default: "🛡️" }}</span>{{ section.settings.card4_b3_text | default: "Safer Performance" }}</div>
-                </div>
-              </div>
-            </div>
+          </div>
+          <div class="app-card">
+            {% if section.settings.card4_image != blank %}
+              <img class="app-card-img" src="{{ section.settings.card4_image | image_url: width: 1000 }}" alt="Institutional Use" loading="lazy">
+            {% else %}
+              <div class="card-placeholder institutional"><span class="placeholder-title">Institutional Use</span></div>
+            {% endif %}
           </div>
         {% endif %}
       </div>
 
-      <!-- RIGHT: 4 LUCRATIVE CARDS (PERFECTLY ALIGNED) -->
       <div class="right">
         <h2>
           {{ section.settings.right_heading_prefix | default: "WHEREVER ELECTRICITY LIVES," }}
