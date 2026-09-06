@@ -419,12 +419,40 @@
 
   .vscom-range-slider {
     width: 100%;
+    -webkit-appearance: none;
+    appearance: none;
     height: 8px;
-    border-radius: 50px;
-    background: var(--line);
+    border-radius: 999px;
+    background: linear-gradient(90deg, #008744 0%, #008744 var(--fill, 12%), var(--line) var(--fill, 12%));
     outline: none;
-    accent-color: var(--green-d);
-    margin: 10px 0;
+    margin: 12px 0 14px 0;
+    touch-action: pan-y;
+    cursor: pointer;
+  }
+  .vscom-range-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: #008744;
+    border: 3.5px solid #ffffff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    cursor: grab;
+    transition: transform 0.15s ease;
+  }
+  .vscom-range-slider::-webkit-slider-thumb:active {
+    cursor: grabbing;
+    transform: scale(1.15);
+  }
+  .vscom-range-slider::-moz-range-thumb {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: #008744;
+    border: 3.5px solid #ffffff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    cursor: grab;
   }
 
   .vscom-num-input {
@@ -439,6 +467,10 @@
     color: var(--ink);
     background: #ffffff;
     outline: none;
+    transition: border-color 0.2s;
+  }
+  .vscom-num-input:focus {
+    border-color: #008744;
   }
 
   .vscom-toggle-group {
@@ -494,6 +526,28 @@
     font-size: 18px;
     color: var(--muted);
     font-family: 'Nunito', sans-serif;
+  }
+
+  /* Dynamic Mini Cards Row */
+  .vscom-mini-cards-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+    margin: 10px 0 16px 0;
+  }
+
+  .vscom-mini-card-icon {
+    width: 34px;
+    height: 22px;
+    border-radius: 5px;
+    background: linear-gradient(135deg, #e8c766 0%, #c9982e 100%);
+    border: 1px solid #b8860b;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.18);
+    transition: transform 0.18s ease;
+  }
+  .vscom-mini-card-icon:hover {
+    transform: translateY(-2px) scale(1.1);
   }
 
   .vscom-savings-box {
@@ -1599,8 +1653,8 @@
               <span>⚙️ CONNECTED COMMERCIAL LOAD</span>
               <span class="vscom-field-badge" id="vscom_kw_badge">18 KW</span>
             </div>
-            <input type="range" class="vscom-range-slider" id="vscom_kw_slider" min="6" max="150" value="18" step="6" oninput="vscomSync('slider')">
-            <input type="number" class="vscom-num-input" id="vscom_kw_num" value="18" min="1" max="500" oninput="vscomSync('kw')">
+            <input type="range" class="vscom-range-slider" id="vscom_kw_slider" min="6" max="150" value="18" step="6">
+            <input type="number" class="vscom-num-input" id="vscom_kw_num" value="18" min="1" max="500">
           </div>
 
           <div class="vscom-field">
@@ -1608,7 +1662,7 @@
               <span>💰 MONTHLY ELECTRICITY BILL</span>
               <span class="vscom-field-badge" id="vscom_bill_badge">₹18,000</span>
             </div>
-            <input type="number" class="vscom-num-input" id="vscom_bill_num" value="18000" min="1000" step="1000" oninput="vscomSync('bill')">
+            <input type="number" class="vscom-num-input" id="vscom_bill_num" value="18000" min="1000" step="1000">
           </div>
 
           <!-- PHASE SELECTOR -->
@@ -1628,6 +1682,8 @@
               <span id="vscom_card_num">4</span>
               <span id="vscom_card_unit">Cards</span>
             </div>
+            <!-- Dynamic Mini Gold Cards Row -->
+            <div class="vscom-mini-cards-row" id="vscom_mini_cards_row"></div>
           </div>
 
           <div class="vscom-savings-box">
@@ -2166,45 +2222,89 @@
     var kwNum = document.getElementById('vscom_kw_num');
     var billNum = document.getElementById('vscom_bill_num');
 
+    if (!kwSlider || !kwNum || !billNum) return;
+
     var kw = parseInt(kwNum.value) || 18;
     var bill = parseInt(billNum.value) || 18000;
 
     if (source === 'slider') {
       kw = parseInt(kwSlider.value) || 6;
       kwNum.value = kw;
-      bill = kw * 1000;
-      billNum.value = bill;
     } else if (source === 'kw') {
       kw = Math.max(1, kw);
       kwSlider.value = Math.min(kw, 150);
-      bill = kw * 1000;
-      billNum.value = bill;
     } else if (source === 'bill') {
       bill = Math.max(1000, bill);
-      kw = Math.max(1, Math.round(bill / 1000));
-      kwNum.value = kw;
-      kwSlider.value = Math.min(kw, 150);
     }
 
-    document.getElementById('vscom_kw_badge').innerText = kw + ' KW';
-    document.getElementById('vscom_bill_badge').innerText = '₹' + bill.toLocaleString('en-IN');
+    kwSlider.style.setProperty('--fill', (Math.min(kw, 150) / 150 * 100) + '%');
+
+    var kwBadge = document.getElementById('vscom_kw_badge');
+    var billBadge = document.getElementById('vscom_bill_badge');
+    if (kwBadge) kwBadge.innerText = kw + ' KW';
+    if (billBadge) billBadge.innerText = '₹' + bill.toLocaleString('en-IN');
 
     // 1 Card per 6 KW (if 3-Phase, +1 card to balance 3 phase lines)
-    var baseCards = Math.max(1, Math.ceil(kw / 6));
+    var kwCards = Math.max(1, Math.ceil(kw / 6));
+    var billCards = bill > 0 ? Math.max(1, Math.ceil(bill / 6000)) : 1;
+    var baseCards = Math.max(kwCards, billCards);
     var total = vscomThreePhase ? baseCards + 1 : baseCards;
 
-    document.getElementById('vscom_card_num').innerText = total;
-    document.getElementById('vscom_card_unit').innerText = total > 1 ? 'Cards' : 'Card';
+    var numCardEl = document.getElementById('vscom_card_num');
+    var unitCardEl = document.getElementById('vscom_card_unit');
+    if (numCardEl) numCardEl.innerText = total;
+    if (unitCardEl) unitCardEl.innerText = total > 1 ? 'Cards' : 'Card';
+
+    /* Dynamic Mini Gold Cards Row */
+    var miniCardsRow = document.getElementById('vscom_mini_cards_row');
+    if (miniCardsRow) {
+      miniCardsRow.innerHTML = '';
+      var capped = Math.min(total, 30);
+      for (var i = 0; i < capped; i++) {
+        var icon = document.createElement('div');
+        icon.className = 'vscom-mini-card-icon';
+        icon.title = 'Commercial Card ' + (i + 1);
+        miniCardsRow.appendChild(icon);
+      }
+      if (total > 30) {
+        var more = document.createElement('span');
+        more.style.cssText = 'font-family:Baloo 2,sans-serif;color:#008744;font-size:13px;font-weight:800;align-self:center;margin-left:4px;';
+        more.textContent = '+' + (total - 30) + ' more';
+        miniCardsRow.appendChild(more);
+      }
+    }
 
     // 20-30% DISCOM Bill Savings
     var sMin = Math.round((bill * 0.20) / 100) * 100;
     var sMax = Math.round((bill * 0.30) / 100) * 100;
-    document.getElementById('vscom_savings_range').innerText = '₹' + sMin.toLocaleString('en-IN') + ' – ₹' + sMax.toLocaleString('en-IN') + ' / mo';
+    var savingsRangeEl = document.getElementById('vscom_savings_range');
+    if (savingsRangeEl) {
+      savingsRangeEl.innerText = '₹' + sMin.toLocaleString('en-IN') + ' – ₹' + sMax.toLocaleString('en-IN') + ' / mo';
+    }
   }
 
-  document.getElementById('vscom_kw_slider').addEventListener('input', function() { vscomSync('slider'); });
-  document.getElementById('vscom_kw_num').addEventListener('input', function() { vscomSync('kw'); });
-  document.getElementById('vscom_bill_num').addEventListener('input', function() { vscomSync('bill'); });
+  var kwSliderElemCom = document.getElementById('vscom_kw_slider');
+  if (kwSliderElemCom) {
+    kwSliderElemCom.addEventListener('input', function() { vscomSync('slider'); });
+    kwSliderElemCom.addEventListener('change', function() { vscomSync('slider'); });
+  }
+
+  var kwNumElemCom = document.getElementById('vscom_kw_num');
+  if (kwNumElemCom) {
+    kwNumElemCom.addEventListener('input', function() { vscomSync('kw'); });
+  }
+
+  var billNumElemCom = document.getElementById('vscom_bill_num');
+  if (billNumElemCom) {
+    billNumElemCom.addEventListener('input', function() { vscomSync('bill'); });
+  }
+
+  // Initial Sync
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() { vscomSync('init'); });
+  } else {
+    vscomSync('init');
+  }
 
   /* COMMERCIAL MCB GALLERY FILTER & LIGHTBOX */
   function filterMcb(category, btnElem) {
