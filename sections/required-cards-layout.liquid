@@ -1036,16 +1036,84 @@
 
 /* ---- BADGES ---- */
 .vscc .badges-row {
-  display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
 }
-@media(min-width:600px){ .vscc .badges-row { grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--line); border: 1.5px solid var(--line); border-radius: 18px; overflow: hidden; } }
 .vscc .badge-item {
-  background: var(--panel); padding: 22px 14px; text-align: center;
-  border-radius: 14px; border: 1.5px solid var(--line);
+  background: var(--panel);
+  padding: 18px 14px;
+  text-align: center;
+  border-radius: 14px;
+  border: 1.5px solid var(--line);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-@media(min-width:600px){ .vscc .badge-item { border-radius: 0; border: none; padding: 28px 14px; } }
-.vscc .badge-item .big { font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 22px; color: var(--orange); }
-.vscc .badge-item .lbl { font-size: 12px; color: var(--muted); margin-top: 6px; line-height: 1.4; font-family: 'Nunito', sans-serif; font-weight: 700; }
+.vscc .badge-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+}
+.vscc .badge-item.full-width-mob {
+  grid-column: 1 / -1;
+  flex-direction: row;
+  gap: 14px;
+  padding: 14px 20px;
+}
+.vscc .badge-item.full-width-mob .lbl {
+  margin-top: 0;
+  text-align: left;
+}
+.vscc .badge-item .big {
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 800;
+  font-size: 22px;
+  color: var(--orange);
+  line-height: 1.1;
+}
+.vscc .badge-item .lbl {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 6px;
+  line-height: 1.35;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+}
+
+@media(min-width:600px){
+  .vscc .badges-row {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1.5px solid var(--line);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+  }
+  .vscc .badge-item {
+    background: var(--panel);
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    padding: 28px 14px;
+    display: block;
+    text-align: center;
+  }
+  .vscc .badge-item.full-width-mob {
+    grid-column: auto;
+    flex-direction: column;
+    gap: 0;
+    padding: 28px 14px;
+    display: block;
+  }
+  .vscc .badge-item.full-width-mob .lbl {
+    margin-top: 6px;
+    text-align: center;
+  }
+}
 
 /* ---- CTA ---- */
 .vscc .cta-band {
@@ -1147,9 +1215,10 @@
 
   /* badges */
   .vscc .badges-row { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-  .vscc .badge-item { padding: 18px 12px; border-radius: 12px; }
-  .vscc .badge-item .big { font-size: 19px; }
-  .vscc .badge-item .lbl { font-size: 11px; }
+  .vscc .badge-item { padding: 14px 10px; border-radius: 14px; }
+  .vscc .badge-item.full-width-mob { padding: 12px 16px; }
+  .vscc .badge-item .big { font-size: 20px; }
+  .vscc .badge-item .lbl { font-size: 11.5px; }
 
   /* cta */
   .vscc .cta-band { border-radius: 16px; padding: 28px 18px; }
@@ -1993,7 +2062,7 @@
         <div class="badge-item"><div class="big">10 Yrs</div><div class="lbl">Long product life</div></div>
         <div class="badge-item"><div class="big">3 Yrs</div><div class="lbl">Replacement warranty</div></div>
         <div class="badge-item"><div class="big">100%</div><div class="lbl">Eco-friendly</div></div>
-        <div class="badge-item"><div class="big">100%</div><div class="lbl">Legal to use</div></div>
+        <div class="badge-item full-width-mob"><div class="big">100%</div><div class="lbl">Legal to use (Govt & DISCOM Approved)</div></div>
       </div>
     </div>
   </section>
