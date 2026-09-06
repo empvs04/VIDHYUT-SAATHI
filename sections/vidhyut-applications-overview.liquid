@@ -408,7 +408,9 @@
     box-shadow: 0 22px 42px -12px rgba(217, 119, 6, 0.32), 0 0 0 1.5px rgba(217, 119, 6, 0.45) !important;
   }
 
-  /* ── DESKTOP: Checklist column layout locked ── */
+  /* ═══════════════════════════════════════════════
+     DESKTOP LOCK — dots hidden, checklist vertical
+  ═══════════════════════════════════════════════ */
   .vs-apps-sec-{{ section.id }} .vs-checklist-slider-wrap {
     width: 100% !important;
   }
@@ -416,82 +418,114 @@
     display: none !important;
   }
 
-  /* Desktop (>992px): vertical stacked checklist, NO slider */
-  @media (min-width: 992px) {
+  @media (min-width: 1025px) {
     .vs-apps-sec-{{ section.id }} .checklist {
-      margin-top: 22px !important;
       display: flex !important;
       flex-direction: column !important;
       justify-content: space-between !important;
       flex: 1 !important;
       gap: 13px !important;
       overflow: visible !important;
+      margin-top: 22px !important;
     }
     .vs-apps-sec-{{ section.id }} .check-item {
       flex: 1 !important;
       min-width: auto !important;
       max-width: 100% !important;
       width: auto !important;
+      scroll-snap-align: unset !important;
     }
     .vs-apps-sec-{{ section.id }} .vs-checklist-dots {
       display: none !important;
     }
   }
 
-  /* Tablet + Mobile (<= 1024px) */
+  /* ═══════════════════════════════════════════════
+     MOBILE / TABLET  (≤ 1024px)
+     — images: 2×2 grid (NEVER collapse)
+     — checklist: horizontal slider (1 per view)
+  ═══════════════════════════════════════════════ */
   @media (max-width: 1024px) {
+
+    /* Section padding */
     .vs-apps-sec-{{ section.id }} {
-      padding: {{ section.settings.padding_top_mob | default: 50 }}px 20px {{ section.settings.padding_bottom_mob | default: 50 }}px 20px !important;
+      padding: {{ section.settings.padding_top_mob | default: 40 }}px 16px {{ section.settings.padding_bottom_mob | default: 40 }}px 16px !important;
+    }
+    .vs-apps-sec-{{ section.id }} .container {
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+      max-width: 100% !important;
+    }
+    .vs-apps-sec-{{ section.id }} .section-head {
+      margin-bottom: 28px !important;
     }
     .vs-apps-sec-{{ section.id }} .section-title {
       white-space: normal !important;
-      font-size: 32px !important;
+      font-size: clamp(22px, 6vw, 32px) !important;
     }
+
+    /* Content: stack vertically */
     .vs-apps-sec-{{ section.id }} .content {
-      grid-template-columns: 1fr !important;
-      gap: 36px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 28px !important;
     }
-    /* ── FIX: cards-grid must NOT collapse when content goes single-column ── */
+
+    /* ── IMAGE CARDS: 2×2 grid, always visible ── */
     .vs-apps-sec-{{ section.id }} .cards-grid {
       display: grid !important;
-      grid-template-columns: repeat(2, 1fr) !important;
-      grid-template-rows: repeat(2, 1fr) !important;
-      gap: 12px !important;
+      grid-template-columns: 1fr 1fr !important;
+      grid-template-rows: auto auto !important;
+      gap: 10px !important;
+      width: 100% !important;
+      height: auto !important;
+    }
+    .vs-apps-sec-{{ section.id }} .app-card {
+      width: 100% !important;
+      height: auto !important;
+      aspect-ratio: 4 / 3 !important;
+      min-height: 120px !important;
+      border-radius: 14px !important;
+      box-shadow: 0 8px 20px -8px rgba(42, 33, 24, 0.22), 0 0 0 1px rgba(0, 0, 0, 0.05) !important;
+    }
+    .vs-apps-sec-{{ section.id }} .app-card-img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      border-radius: 14px !important;
+    }
+
+    /* ── RIGHT COLUMN ── */
+    .vs-apps-sec-{{ section.id }} .right {
       height: auto !important;
       width: 100% !important;
     }
-    .vs-apps-sec-{{ section.id }} .app-card {
-      aspect-ratio: 4 / 3 !important;
-      min-height: 130px !important;
-    }
-    .vs-apps-sec-{{ section.id }} .right {
-      height: auto !important;
-    }
     .vs-apps-sec-{{ section.id }} .right h2 {
-      font-size: 28px !important;
+      font-size: clamp(20px, 5.5vw, 28px) !important;
       text-align: center !important;
-    }
-    .vs-apps-sec-{{ section.id }} .section-head {
-      margin-bottom: 32px !important;
+      margin-bottom: 14px !important;
+      line-height: 1.25 !important;
     }
 
-    /* ── CHECKLIST POINTS: horizontal auto-slider on mobile (1 at a time) ── */
+    /* ── CHECKLIST SLIDER WRAPPER ── */
     .vs-apps-sec-{{ section.id }} .vs-checklist-slider-wrap {
       width: 100% !important;
       overflow: hidden !important;
       position: relative !important;
-      margin-top: 16px !important;
     }
+
+    /* ── CHECKLIST: horizontal scroll slider ── */
     .vs-apps-sec-{{ section.id }} .checklist {
       display: flex !important;
       flex-direction: row !important;
+      flex-wrap: nowrap !important;
       overflow-x: auto !important;
       scroll-snap-type: x mandatory !important;
       scroll-behavior: smooth !important;
       -webkit-overflow-scrolling: touch !important;
       gap: 0 !important;
-      padding: 4px 0 6px 0 !important;
       margin-top: 0 !important;
+      padding: 2px 0 4px 0 !important;
       scrollbar-width: none !important;
       -ms-overflow-style: none !important;
       width: 100% !important;
@@ -499,18 +533,23 @@
     .vs-apps-sec-{{ section.id }} .checklist::-webkit-scrollbar {
       display: none !important;
     }
+
+    /* ── EACH CHECKLIST ITEM: full-width slide ── */
     .vs-apps-sec-{{ section.id }} .check-item {
       flex: 0 0 100% !important;
       width: 100% !important;
       min-width: 100% !important;
       max-width: 100% !important;
+      height: auto !important;
+      min-height: 76px !important;
       scroll-snap-align: start !important;
       scroll-snap-stop: always !important;
       box-sizing: border-box !important;
-      padding: 14px 18px !important;
-      min-height: 80px !important;
+      padding: 14px 16px !important;
       margin: 0 !important;
     }
+
+    /* ── DOTS ── */
     .vs-apps-sec-{{ section.id }} .vs-checklist-dots {
       display: flex !important;
       justify-content: center !important;
@@ -522,12 +561,13 @@
       width: 9px !important;
       height: 9px !important;
       border-radius: 999px !important;
-      background: rgba(42, 33, 24, 0.2) !important;
+      background: rgba(42, 33, 24, 0.18) !important;
       border: none !important;
       padding: 0 !important;
       cursor: pointer !important;
       transition: all 0.35s ease !important;
       outline: none !important;
+      flex-shrink: 0 !important;
     }
     .vs-apps-sec-{{ section.id }} .vs-c-dot.active {
       width: 26px !important;
@@ -536,62 +576,21 @@
     }
   }
 
-  /* ── ORIGINAL UNTOUCHED IMAGE CARDS CSS ── */
-  @media (max-width: 768px) {
-    .vs-apps-sec-{{ section.id }} {
-      padding: {{ section.settings.padding_top_mob | default: 36 }}px 14px {{ section.settings.padding_bottom_mob | default: 36 }}px 14px !important;
-    }
-    .vs-apps-sec-{{ section.id }} .container {
-      padding-left: 0 !important;
-      padding-right: 0 !important;
-      max-width: 100% !important;
-    }
+  /* Extra-small phones */
+  @media (max-width: 400px) {
     .vs-apps-sec-{{ section.id }} .cards-grid {
-      grid-template-columns: repeat(2, 1fr) !important;
-      grid-template-rows: repeat(2, 1fr) !important;
-      gap: 10px !important;
-      height: auto !important;
+      gap: 7px !important;
     }
     .vs-apps-sec-{{ section.id }} .app-card {
-      aspect-ratio: 4 / 3 !important;
-      border-radius: 14px !important;
-      min-height: 130px !important;
-      box-shadow: 0 10px 24px -8px rgba(42, 33, 24, 0.25), 0 0 0 1px rgba(0, 0, 0, 0.04) !important;
-    }
-    .vs-apps-sec-{{ section.id }} .app-card-img {
-      border-radius: 14px !important;
-    }
-    .vs-apps-sec-{{ section.id }} .right {
-      margin-top: 6px !important;
-      height: auto !important;
-    }
-    .vs-apps-sec-{{ section.id }} .right h2 {
-      font-size: clamp(21px, 5.5vw, 25px) !important;
-      text-align: center !important;
-      line-height: 1.25 !important;
-      margin-bottom: 16px !important;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .vs-apps-sec-{{ section.id }} .cards-grid {
-      grid-template-columns: repeat(2, 1fr) !important;
-      gap: 8px !important;
-    }
-    .vs-apps-sec-{{ section.id }} .app-card {
-      aspect-ratio: 4 / 3 !important;
-      border-radius: 12px !important;
-      min-height: 110px !important;
-    }
-    .vs-apps-sec-{{ section.id }} .app-card-img {
+      min-height: 100px !important;
       border-radius: 12px !important;
     }
     .vs-apps-sec-{{ section.id }} .right h2 {
-      font-size: 20px !important;
-      margin-bottom: 14px !important;
+      font-size: 19px !important;
     }
   }
 </style>
+
 
 <div class="vs-apps-sec-{{ section.id }}">
   <div class="ambient-glow-left"></div>
