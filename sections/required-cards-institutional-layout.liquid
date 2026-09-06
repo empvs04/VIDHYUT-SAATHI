@@ -448,7 +448,7 @@
   .vsinst-mini-cards-row {
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: center;
     gap: 6px;
     margin: 10px 0 16px 0;
   }
@@ -511,7 +511,7 @@
     font-family: 'Baloo 2', sans-serif !important;
     font-size: clamp(48px, 10vw, 68px);
     font-weight: 800;
-    color: var(--ink);
+    color: #0284c7;
     line-height: 1;
     margin: 8px 0 16px 0;
   }
@@ -1628,7 +1628,7 @@
         <div>
           <div class="vsinst-field">
             <div class="vsinst-field-label">
-              <span>⚙️ CONNECTED INDUSTRIAL LOAD</span>
+              <span>⚙️ CONNECTED INSTITUTIONAL LOAD</span>
               <span class="vsinst-field-badge" id="vsinst_kw_badge">60 KW</span>
             </div>
             <input type="range" class="vsinst-range-slider" id="vsinst_kw_slider" min="15" max="500" value="60" step="15">
@@ -1655,7 +1655,7 @@
 
         <div class="vsinst-output-card">
           <div>
-            <div style="font-size:11px; font-weight:800; color:var(--muted-2); letter-spacing:1px; text-transform:uppercase;">RECOMMENDED INDUSTRIAL CARDS</div>
+            <div style="font-size:11px; font-weight:800; color:var(--muted-2); letter-spacing:1px; text-transform:uppercase;">RECOMMENDED INSTITUTIONAL CARDS</div>
             <div class="vsinst-res-val">
               <span id="vsinst_card_num">11</span>
               <span id="vsinst_card_unit">Cards</span>
@@ -1673,11 +1673,11 @@
           </div>
 
           <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
-            <a href="https://wa.me/919876543210?text=Hi%20Vidhyut%20Saathi%2C%20I%20need%20Industrial%20Cards" class="vsinst-btn-primary" style="justify-content:center; font-size:13.5px;" target="_blank">
+            <a href="https://wa.me/919876543210?text=Hi%20Vidhyut%20Saathi%2C%20I%20need%20Institutional%20Cards" class="vsinst-btn-primary" style="justify-content:center; font-size:13.5px;" target="_blank">
               <i class="fa-brands fa-whatsapp"></i> Buy on WhatsApp
             </a>
             <a href="tel:+919876543210" class="vsinst-btn-secondary" style="justify-content:center; font-size:13.5px;">
-              <i class="fa-solid fa-phone"></i> Call Industrial Rep
+              <i class="fa-solid fa-phone"></i> Call Institutional Rep
             </a>
           </div>
         </div>
@@ -2189,15 +2189,6 @@
     vsinstThreePhase = isThree;
     var btnSingle = document.getElementById('vsinst_btn_single');
     var btnThree = document.getElementById('vsinst_btn_three');
-    if (isThree) {
-      btnThree.classList.add('active');
-      btnSingle.classList.remove('active');
-  var vsinstThreePhase = true;
-
-  function vsinstSetPhase(isThree) {
-    vsinstThreePhase = isThree;
-    var btnSingle = document.getElementById('vsinst_btn_single');
-    var btnThree = document.getElementById('vsinst_btn_three');
     if (btnSingle && btnThree) {
       if (isThree) {
         btnThree.classList.add('active');
@@ -2256,7 +2247,7 @@
       for (var i = 0; i < capped; i++) {
         var icon = document.createElement('div');
         icon.className = 'vsinst-mini-card-icon';
-        icon.title = 'Industrial Card ' + (i + 1);
+        icon.title = 'Institutional Card ' + (i + 1);
         miniCardsRow.appendChild(icon);
       }
       if (total > 30) {
