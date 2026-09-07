@@ -2208,89 +2208,97 @@
     </div>
   </section>
 
-  <!-- ══ SECTION 8: 4:3 INSTITUTIONAL BANNER MARQUEE SLIDER ══ -->
-  <section class="vsinst-sec vsinst-slider-section" id="vsinst-banners-slider" style="border-top:1.5px solid var(--line); padding:60px 0 70px 0; background:var(--bg-warm);">
+  <!-- ══ SECTION 8: 3:2 INSTITUTIONAL BANNER MARQUEE SLIDER ══ -->
+  <section class="vsinst-sec vsinst-slider-section" id="vsinst-banners-slider" style="padding:50px 0 60px 0; background:var(--bg);">
     <div class="wrap">
-      <div class="vsinst-sec-head" style="text-align:center; margin-bottom:34px;">
+      <div class="vsinst-sec-head" style="text-align:center; margin-bottom:28px;">
         <div class="vsinst-sec-eyebrow" style="margin:0 auto 12px auto;"><i class="fa-solid fa-layer-group"></i> {{ section.settings.slider_eyebrow | default: '🏛️ INSTITUTIONAL SPOTLIGHT & BANNERS' }}</div>
         <h2 class="vsinst-sec-title">{{ section.settings.slider_heading | default: 'Institutional Showcase <span>& High-Power Solutions</span>' }}</h2>
         <p class="vsinst-sec-desc" style="margin:0 auto; max-width:620px;">{{ section.settings.slider_subheading | default: 'Explore verified installations, continuous 3-phase power management, and DISCOM tariff optimization for hospitals, universities, and administrative complexes.' }}</p>
       </div>
     </div>
 
-    <!-- RIGHT-TO-LEFT SMOOTH MARQUEE TRACK -->
-    <div class="vsinst-marquee-outer" id="vsinstMarqueeOuterLayout" style="position:relative; width:100%; overflow:hidden; padding:10px 0 16px 0; mask-image:linear-gradient(to right, transparent, black 3%, black 97%, transparent); -webkit-mask-image:linear-gradient(to right, transparent, black 3%, black 97%, transparent);">
-      <div class="vsinst-marquee-track" id="vsinstMarqueeTrackLayout" style="display:flex; gap:20px; width:max-content; animation:vsinstMarqueeLeftLayout 30s linear infinite; cursor:grab; will-change:transform;">
-        
-        <!-- PASS 1: 5 TO 10 CARDS -->
-        {% for i in (1..10) %}
-          {% capture img_key %}banner_img_{{ i }}{% endcapture %}
-          {% capture link_key %}banner_link_{{ i }}{% endcapture %}
+    <!-- FRAMED SLIDER STRIP (TOP & BOTTOM THICK LINES) -->
+    <div class="vsinst-slider-strip-wrap" style="position:relative; width:100%; border-top:4px solid #d97706; border-bottom:4px solid #d97706; padding:24px 0; background:#fffef9; box-shadow:inset 0 6px 16px rgba(217, 119, 6, 0.04), inset 0 -6px 16px rgba(217, 119, 6, 0.04);">
+      <div class="vsinst-marquee-outer" id="vsinstMarqueeOuterLayout" style="position:relative; width:100%; overflow:hidden; mask-image:linear-gradient(to right, transparent, black 2.5%, black 97.5%, transparent); -webkit-mask-image:linear-gradient(to right, transparent, black 2.5%, black 97.5%, transparent);">
+        <div class="vsinst-marquee-track" id="vsinstMarqueeTrackLayout" style="display:flex; align-items:center; gap:24px; width:max-content; animation:vsinstMarqueeLeftLayout 30s linear infinite; cursor:grab; will-change:transform; padding:6px 0;">
+          
+          <!-- PASS 1: 5 TO 10 CARDS -->
+          {% for i in (1..10) %}
+            {% capture img_key %}banner_img_{{ i }}{% endcapture %}
+            {% capture link_key %}banner_link_{{ i }}{% endcapture %}
 
-          {% assign card_img = section.settings[img_key] %}
-          {% assign card_link = section.settings[link_key] %}
+            {% assign card_img = section.settings[img_key] %}
+            {% assign card_link = section.settings[link_key] %}
 
-          {% if card_img != blank or i <= 5 %}
-            {% assign img_url = '' %}
-            {% if card_img != blank %}
-              {% assign img_url = card_img | image_url: width: 900 %}
-            {% elsif i == 1 %}
-              {% assign img_url = 'commercial-building-2.png' | asset_url %}
-            {% elsif i == 2 %}
-              {% assign img_url = 'case-institutional.jpg' | asset_url %}
-            {% elsif i == 3 %}
-              {% assign img_url = 'commercial-building-1.png' | asset_url %}
-            {% elsif i == 4 %}
-              {% assign img_url = 'institutional-mcb-showcase-final.jpg' | asset_url %}
-            {% elsif i == 5 %}
-              {% assign img_url = 'https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=800&q=80' %}
-            {% else %}
-              {% assign img_url = 'commercial-building-2.png' | asset_url %}
+            {% if card_img != blank or i <= 5 %}
+              {% assign img_url = '' %}
+              {% if card_img != blank %}
+                {% assign img_url = card_img | image_url: width: 900 %}
+              {% elsif i == 1 %}
+                {% assign img_url = 'commercial-building-2.png' | asset_url %}
+              {% elsif i == 2 %}
+                {% assign img_url = 'case-institutional.jpg' | asset_url %}
+              {% elsif i == 3 %}
+                {% assign img_url = 'commercial-building-1.png' | asset_url %}
+              {% elsif i == 4 %}
+                {% assign img_url = 'institutional-mcb-showcase-final.jpg' | asset_url %}
+              {% elsif i == 5 %}
+                {% assign img_url = 'https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=800&q=80' %}
+              {% else %}
+                {% assign img_url = 'commercial-building-2.png' | asset_url %}
+              {% endif %}
+
+              <a href="{{ card_link | default: '#vsinst-calc' }}" class="vsinst-banner-card" target="{% if card_link contains 'http' or card_link contains 'wa.me' %}_blank{% else %}_self{% endif %}">
+                <img src="{{ img_url }}" alt="Institutional Banner" class="vsinst-banner-img" loading="lazy" onerror="this.onerror=null; this.src='https://cdn.shopify.com/s/files/1/0663/8783/7093/files/VS_Card_Final_Design_Golden_1.png';">
+              </a>
+
+              <!-- STRAIGHT VERTICAL THICK DIVIDER -->
+              <div class="vsinst-card-divider" style="width:4px; height:clamp(190px, 21vw, 275px); background:#d97706; border-radius:2px; flex-shrink:0; align-self:center; box-shadow:0 0 10px rgba(217,119,6,0.3);"></div>
             {% endif %}
+          {% endfor %}
 
-            <a href="{{ card_link | default: '#vsinst-calc' }}" class="vsinst-banner-card" target="{% if card_link contains 'http' or card_link contains 'wa.me' %}_blank{% else %}_self{% endif %}">
-              <img src="{{ img_url }}" alt="Institutional Banner" class="vsinst-banner-img" loading="lazy" onerror="this.onerror=null; this.src='https://cdn.shopify.com/s/files/1/0663/8783/7093/files/VS_Card_Final_Design_Golden_1.png';">
-            </a>
-          {% endif %}
-        {% endfor %}
+          <!-- PASS 2: DUPLICATE PASS FOR SEAMLESS 100% INFINITE LOOP -->
+          {% for i in (1..10) %}
+            {% capture img_key %}banner_img_{{ i }}{% endcapture %}
+            {% capture link_key %}banner_link_{{ i }}{% endcapture %}
 
-        <!-- PASS 2: DUPLICATE PASS FOR SEAMLESS 100% INFINITE LOOP -->
-        {% for i in (1..10) %}
-          {% capture img_key %}banner_img_{{ i }}{% endcapture %}
-          {% capture link_key %}banner_link_{{ i }}{% endcapture %}
+            {% assign card_img = section.settings[img_key] %}
+            {% assign card_link = section.settings[link_key] %}
 
-          {% assign card_img = section.settings[img_key] %}
-          {% assign card_link = section.settings[link_key] %}
+            {% if card_img != blank or i <= 5 %}
+              {% assign img_url = '' %}
+              {% if card_img != blank %}
+                {% assign img_url = card_img | image_url: width: 900 %}
+              {% elsif i == 1 %}
+                {% assign img_url = 'commercial-building-2.png' | asset_url %}
+              {% elsif i == 2 %}
+                {% assign img_url = 'case-institutional.jpg' | asset_url %}
+              {% elsif i == 3 %}
+                {% assign img_url = 'commercial-building-1.png' | asset_url %}
+              {% elsif i == 4 %}
+                {% assign img_url = 'institutional-mcb-showcase-final.jpg' | asset_url %}
+              {% elsif i == 5 %}
+                {% assign img_url = 'https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=800&q=80' %}
+              {% else %}
+                {% assign img_url = 'commercial-building-2.png' | asset_url %}
+              {% endif %}
 
-          {% if card_img != blank or i <= 5 %}
-            {% assign img_url = '' %}
-            {% if card_img != blank %}
-              {% assign img_url = card_img | image_url: width: 900 %}
-            {% elsif i == 1 %}
-              {% assign img_url = 'commercial-building-2.png' | asset_url %}
-            {% elsif i == 2 %}
-              {% assign img_url = 'case-institutional.jpg' | asset_url %}
-            {% elsif i == 3 %}
-              {% assign img_url = 'commercial-building-1.png' | asset_url %}
-            {% elsif i == 4 %}
-              {% assign img_url = 'institutional-mcb-showcase-final.jpg' | asset_url %}
-            {% elsif i == 5 %}
-              {% assign img_url = 'https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=800&q=80' %}
-            {% else %}
-              {% assign img_url = 'commercial-building-2.png' | asset_url %}
+              <a href="{{ card_link | default: '#vsinst-calc' }}" class="vsinst-banner-card" aria-hidden="true" tabindex="-1" target="{% if card_link contains 'http' or card_link contains 'wa.me' %}_blank{% else %}_self{% endif %}">
+                <img src="{{ img_url }}" alt="Institutional Banner" class="vsinst-banner-img" loading="lazy" onerror="this.onerror=null; this.src='https://cdn.shopify.com/s/files/1/0663/8783/7093/files/VS_Card_Final_Design_Golden_1.png';">
+              </a>
+
+              <!-- STRAIGHT VERTICAL THICK DIVIDER -->
+              <div class="vsinst-card-divider" style="width:4px; height:clamp(190px, 21vw, 275px); background:#d97706; border-radius:2px; flex-shrink:0; align-self:center; box-shadow:0 0 10px rgba(217,119,6,0.3);"></div>
             {% endif %}
+          {% endfor %}
 
-            <a href="{{ card_link | default: '#vsinst-calc' }}" class="vsinst-banner-card" aria-hidden="true" tabindex="-1" target="{% if card_link contains 'http' or card_link contains 'wa.me' %}_blank{% else %}_self{% endif %}">
-              <img src="{{ img_url }}" alt="Institutional Banner" class="vsinst-banner-img" loading="lazy" onerror="this.onerror=null; this.src='https://cdn.shopify.com/s/files/1/0663/8783/7093/files/VS_Card_Final_Design_Golden_1.png';">
-            </a>
-          {% endif %}
-        {% endfor %}
-
+        </div>
       </div>
     </div>
 
     <!-- CONTROLS -->
-    <div class="vsinst-slider-controls" style="display:flex; align-items:center; justify-content:center; gap:14px; margin-top:20px;">
+    <div class="vsinst-slider-controls" style="display:flex; align-items:center; justify-content:center; gap:14px; margin-top:24px;">
       <button type="button" class="vsinst-ctrl-btn" onclick="document.getElementById('vsinstMarqueeOuterLayout').scrollBy({left:-320,behavior:'smooth'})" aria-label="Slide Left" style="width:40px; height:40px; border-radius:50%; background:#ffffff; border:1.5px solid #fde68a; color:#b45309; display:flex; align-items:center; justify-content:center; cursor:pointer;">
         <i class="fa-solid fa-arrow-left"></i>
       </button>
@@ -2309,7 +2317,7 @@
       width: clamp(290px, 32vw, 420px);
       aspect-ratio: 3 / 2;
       flex-shrink: 0;
-      border-radius: 18px;
+      border-radius: 16px;
       overflow: hidden;
       background: #f1f5f9;
       border: 2px solid #fde68a;
@@ -2341,9 +2349,19 @@
       animation-play-state: paused !important;
     }
     @media (max-width: 768px) {
+      .vsinst-slider-section {
+        padding: 38px 0 42px 0;
+      }
+      .vsinst-slider-strip-wrap {
+        padding: 18px 0 !important;
+      }
       .vsinst-slider-section .vsinst-banner-card {
         width: 260px;
-        border-radius: 14px;
+        border-radius: 13px;
+      }
+      .vsinst-slider-section .vsinst-card-divider {
+        height: 170px !important;
+        width: 3.5px !important;
       }
     }
   </style>
