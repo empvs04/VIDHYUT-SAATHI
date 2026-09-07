@@ -3191,6 +3191,27 @@
   }
 
   /* ══ 4-IMAGE MINI SLIDER CONTROLS ══ */
+  window.advanceCardMedia = function(cardOrSlider) {
+    var slider = cardOrSlider.classList && cardOrSlider.classList.contains('vs-card-media-slider') ? cardOrSlider : cardOrSlider.querySelector('.vs-card-media-slider');
+    if (!slider) return;
+    var slides = slider.querySelectorAll('.vs-card-media-slide');
+    var dots = slider.querySelectorAll('.vs-media-dot');
+    var curSpan = slider.querySelector('.vs-media-cur');
+    if (!slides.length) return;
+    var activeIdx = 0;
+    slides.forEach(function(s, idx) {
+      if (s.classList.contains('active')) activeIdx = idx;
+    });
+    var nextIdx = (activeIdx + 1) % slides.length;
+    slides[activeIdx].classList.remove('active');
+    slides[nextIdx].classList.add('active');
+    if (dots.length > nextIdx) {
+      dots[activeIdx].classList.remove('active');
+      dots[nextIdx].classList.add('active');
+    }
+    if (curSpan) curSpan.innerText = nextIdx + 1;
+  };
+
   window.vsSlideMedia = function(btn, dir) {
     var slider = btn.closest('.vs-card-media-slider');
     if (!slider) return;
@@ -3226,7 +3247,35 @@
     if (curSpan) curSpan.innerText = idx + 1;
   };
 
-  /* ══ MOBILE 5-SECOND CASE STUDIES AUTO-SLIDER ══ */
+  /* ══ DESKTOP HOVER AUTO-SLIDE INTERNAL IMAGES ══ */
+  (function() {
+    var cards = document.querySelectorAll('#vsresCaseTrack .vsres-case-card');
+    cards.forEach(function(card) {
+      var hoverTimer = null;
+
+      card.addEventListener('mouseenter', function() {
+        if (window.innerWidth < 768) return; // Desktop only
+        if (hoverTimer) clearInterval(hoverTimer);
+        hoverTimer = setInterval(function() {
+          if (window.innerWidth >= 768) {
+            window.advanceCardMedia(card);
+          } else {
+            clearInterval(hoverTimer);
+            hoverTimer = null;
+          }
+        }, 1800);
+      });
+
+      card.addEventListener('mouseleave', function() {
+        if (hoverTimer) {
+          clearInterval(hoverTimer);
+          hoverTimer = null;
+        }
+      });
+    });
+  })();
+
+  /* ══ MOBILE 2-SECOND PHOTOS THEN CARD AUTO-SLIDER ══ */
   (function() {
     var track = document.getElementById('vsresCaseTrack');
     var wrap = document.getElementById('vsresCaseSliderWrap');
@@ -3246,18 +3295,73 @@
       dots.forEach(function(dot, i) {
         dot.classList.toggle('active', i === currentIdx);
       });
+
+      var cards = track.querySelectorAll('.vsres-case-card');
+      if (cards[currentIdx]) {
+        var ms = cards[currentIdx].querySelector('.vs-card-media-slider');
+        if (ms) {
+          var s = ms.querySelectorAll('.vs-card-media-slide');
+          var d = ms.querySelectorAll('.vs-media-dot');
+          var c = ms.querySelector('.vs-media-cur');
+          s.forEach(function(el, i) { el.classList.toggle('active', i === 0); });
+          d.forEach(function(el, i) { el.classList.toggle('active', i === 0); });
+          if (c) c.innerText = 1;
+        }
+      }
     };
+
+    function stepMediaOrCard() {
+      if (!isMobile() || !isSectionInView) return;
+
+      var cards = track.querySelectorAll('.vsres-case-card');
+      if (!cards.length) return;
+
+      var currentCard = cards[currentIdx];
+      if (!currentCard) return;
+
+      var mediaSlider = currentCard.querySelector('.vs-card-media-slider');
+      if (!mediaSlider) {
+        window.vsresGoSlide(currentIdx + 1);
+        return;
+      }
+
+      var slides = mediaSlider.querySelectorAll('.vs-card-media-slide');
+      var cardDots = mediaSlider.querySelectorAll('.vs-media-dot');
+      var curSpan = mediaSlider.querySelector('.vs-media-cur');
+      var totalMediaSlides = slides.length;
+
+      if (totalMediaSlides <= 1) {
+        window.vsresGoSlide(currentIdx + 1);
+        return;
+      }
+
+      var activePhotoIdx = 0;
+      slides.forEach(function(s, idx) {
+        if (s.classList.contains('active')) activePhotoIdx = idx;
+      });
+
+      if (activePhotoIdx < totalMediaSlides - 1) {
+        var nextPhotoIdx = activePhotoIdx + 1;
+        slides[activePhotoIdx].classList.remove('active');
+        slides[nextPhotoIdx].classList.add('active');
+        if (cardDots[activePhotoIdx]) cardDots[activePhotoIdx].classList.remove('active');
+        if (cardDots[nextPhotoIdx]) cardDots[nextPhotoIdx].classList.add('active');
+        if (curSpan) curSpan.innerText = nextPhotoIdx + 1;
+      } else {
+        window.vsresGoSlide(currentIdx + 1);
+      }
+    }
 
     function startAutoSlide() {
       stopAutoSlide();
       if (!isMobile() || !isSectionInView) return;
       timer = setInterval(function() {
         if (isMobile() && isSectionInView) {
-          window.vsresGoSlide(currentIdx + 1);
+          stepMediaOrCard();
         } else {
           stopAutoSlide();
         }
-      }, 5000);
+      }, 2000);
     }
 
     function stopAutoSlide() {
