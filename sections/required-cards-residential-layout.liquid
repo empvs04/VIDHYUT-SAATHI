@@ -2733,8 +2733,8 @@
                   data-new-bill="{{ block.settings.new_bill | default: '₹6,100/mo' | escape }}" 
                   data-savings="{{ block.settings.savings_summary | default: 'Saved ₹2,300/mo (27%)' | escape }}" 
                   data-cards="{{ block.settings.cards_count | default: '⚡ 2 Residential Cards' | escape }}" 
-                  data-old-img="{% if block.settings.old_bill_image != blank %}{{ block.settings.old_bill_image | image_url: width: 1200 }}{% endif %}" 
-                  data-new-img="{% if block.settings.new_bill_image != blank %}{{ block.settings.new_bill_image | image_url: width: 1200 }}{% endif %}"
+                  data-old-img="{% if block.settings.old_bill_image != blank %}{{ block.settings.old_bill_image | image_url: width: 1200 }}{% elsif section.settings.global_old_bill_image != blank %}{{ section.settings.global_old_bill_image | image_url: width: 1200 }}{% endif %}" 
+                  data-new-img="{% if block.settings.new_bill_image != blank %}{{ block.settings.new_bill_image | image_url: width: 1200 }}{% elsif section.settings.global_new_bill_image != blank %}{{ section.settings.global_new_bill_image | image_url: width: 1200 }}{% endif %}"
                   onclick="vsOpenBillsModal(this)">
                   <i class="fa-solid fa-file-invoice-dollar"></i> Show Bills
                   <span class="vsres-btn-pulse-dot"></span>
@@ -2929,8 +2929,8 @@
                   data-new-bill="{{ c_new | escape }}" 
                   data-savings="{{ c_save | escape }}" 
                   data-cards="{{ c_cards | escape }}" 
-                  data-old-img="" 
-                  data-new-img=""
+                  data-old-img="{% if section.settings.global_old_bill_image != blank %}{{ section.settings.global_old_bill_image | image_url: width: 1200 }}{% endif %}" 
+                  data-new-img="{% if section.settings.global_new_bill_image != blank %}{{ section.settings.global_new_bill_image | image_url: width: 1200 }}{% endif %}"
                   onclick="vsOpenBillsModal(this)">
                   <i class="fa-solid fa-file-invoice-dollar"></i> Show Bills
                   <span class="vsres-btn-pulse-dot"></span>
@@ -3437,6 +3437,20 @@
     },
     {
       "type": "header",
+      "content": "Case Studies Verified Bills (Global Fallback)"
+    },
+    {
+      "type": "image_picker",
+      "id": "global_old_bill_image",
+      "label": "Old Electricity Bill Photo (Before Vidhyut Saathi)"
+    },
+    {
+      "type": "image_picker",
+      "id": "global_new_bill_image",
+      "label": "New Electricity Bill Photo (After Vidhyut Saathi)"
+    },
+    {
+      "type": "header",
       "content": "20 MCB Installation Images"
     },
     { "type": "image_picker", "id": "mcb_img_1", "label": "MCB Installation Image 1" },
@@ -3479,6 +3493,7 @@
         { "type": "text", "id": "location_load", "label": "Location & House Type", "default": "2 BHK Apartment, Mumbai" },
         { "type": "text", "id": "old_bill", "label": "Old Monthly Bill", "default": "₹8,400/mo" },
         { "type": "text", "id": "new_bill", "label": "New Monthly Bill", "default": "₹6,100/mo" },
+        { "type": "header", "content": "📄 Verified Electricity Bills (Before & After)" },
         { "type": "image_picker", "id": "old_bill_image", "label": "Old Electricity Bill Document (Before)" },
         { "type": "image_picker", "id": "new_bill_image", "label": "New Electricity Bill Document (After)" },
         { "type": "text", "id": "cards_count", "label": "Cards Installed Text", "default": "⚡ 2 Residential Cards" },
