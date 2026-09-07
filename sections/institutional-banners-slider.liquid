@@ -72,12 +72,13 @@
   .vsinst-slider-strip-wrap {
     position: relative;
     width: 100%;
-    border-top: {{ section.settings.line_thickness | default: 4 }}px solid {{ section.settings.line_color | default: '#d97706' }};
-    border-bottom: {{ section.settings.line_thickness | default: 4 }}px solid {{ section.settings.line_color | default: '#d97706' }};
+    border-top: {{ section.settings.line_thickness | default: 6 }}px solid {{ section.settings.line_color | default: '#d97706' }};
+    border-bottom: {{ section.settings.line_thickness | default: 6 }}px solid {{ section.settings.line_color | default: '#d97706' }};
     padding: 0;
     margin: 0;
     background: {{ section.settings.strip_bg | default: '#0f172a' }};
     line-height: 0;
+    box-shadow: 0 4px 20px rgba(217, 119, 6, 0.18);
   }
 
   /* Slider Outer & Track */
@@ -155,7 +156,7 @@
 
   /* ══ STRAIGHT THICK VERTICAL DIVIDER LINE CONNECTING TOP & BOTTOM FLUSH ══ */
   .vsinst-card-divider {
-    width: {{ section.settings.line_thickness | default: 4 }}px;
+    width: {{ section.settings.line_thickness | default: 6 }}px;
     background: {{ section.settings.line_color | default: '#d97706' }};
     border-radius: 0;
     flex-shrink: 0;
@@ -502,11 +503,11 @@
       "type": "range",
       "id": "line_thickness",
       "min": 2,
-      "max": 8,
+      "max": 14,
       "step": 1,
       "unit": "px",
       "label": "Line Thickness (Top/Bottom & Vertical Dividers)",
-      "default": 4
+      "default": 6
     },
     {
       "type": "range",
