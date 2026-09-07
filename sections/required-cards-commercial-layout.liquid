@@ -1523,6 +1523,426 @@
       line-height: 1.35;
     }
   }
+
+  /* ============================================================
+     COMMERCIAL 4-IMAGE MINI SLIDER FOR CASE STUDY CARDS
+     ============================================================ */
+  .vs-card-media-slider {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    border-radius: 14px;
+    overflow: hidden;
+    margin-bottom: 14px;
+    background: #0f172a;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+  }
+  .vs-card-media-slides {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  .vs-card-media-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+  }
+  .vs-card-media-slide.active {
+    opacity: 1;
+    visibility: visible;
+  }
+  .vs-card-media-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .vs-media-tag {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(6px);
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 6px;
+    border: 1px solid rgba(0, 135, 68, 0.6);
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    z-index: 2;
+  }
+  .vs-media-tag i {
+    color: #00b050;
+  }
+  .vs-media-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.92);
+    color: #0f172a;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    z-index: 3;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+  .vs-media-arrow:hover {
+    background: #008744;
+    color: #ffffff;
+  }
+  .vs-media-prev {
+    left: 8px;
+  }
+  .vs-media-next {
+    right: 8px;
+  }
+  .vs-media-dots-bar {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    z-index: 3;
+    background: rgba(15, 23, 42, 0.7);
+    padding: 4px 8px;
+    border-radius: 20px;
+    backdrop-filter: blur(4px);
+  }
+  .vs-media-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.45);
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+  .vs-media-dot.active {
+    background: #00b050;
+    width: 16px;
+    border-radius: 4px;
+  }
+  .vs-media-counter {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(6px);
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 6px;
+    z-index: 2;
+    font-family: 'IBM Plex Mono', monospace;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  /* ============================================================
+     SHOW BILLS BUTTON & COMPARISON LIGHTBOX MODAL
+     ============================================================ */
+  .vsres-btn-view-bills {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);
+    border: 1.5px solid #86efac;
+    color: #047857;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.2px;
+    cursor: pointer;
+    margin: 4px 0 10px 0;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 14px rgba(16, 185, 129, 0.15);
+    transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .vsres-btn-view-bills:hover {
+    background: linear-gradient(135deg, #008744 0%, #00b050 100%);
+    color: #ffffff;
+    border-color: #008744;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 135, 68, 0.32);
+  }
+  .vsres-btn-view-bills:hover .vsres-btn-pulse-dot {
+    background: #ffffff;
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.3);
+  }
+  .vsres-btn-pulse-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #008744;
+    display: inline-block;
+    animation: vsresPulse 1.8s infinite;
+  }
+  @keyframes vsresPulse {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 135, 68, 0.7); }
+    70% { transform: scale(1.15); box-shadow: 0 0 0 6px rgba(0, 135, 68, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 135, 68, 0); }
+  }
+
+  /* BILLS MODAL OVERLAY */
+  .vsres-bills-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 999999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    overflow-y: auto;
+  }
+  .vsres-bills-modal-overlay.active {
+    display: flex;
+    animation: vsresFadeIn 0.25s ease forwards;
+  }
+
+  .vsres-bills-modal-dialog {
+    background: #ffffff;
+    border-radius: 22px;
+    border: 2px solid #e2e8f0;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.35);
+    width: 100%;
+    max-width: 960px;
+    max-height: 92vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    animation: vsresScaleUp 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  }
+
+  .vsres-bills-modal-header {
+    background: linear-gradient(135deg, #064e3b 0%, #0f172a 100%);
+    color: #ffffff;
+    padding: 18px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    border-bottom: 2px solid #134e4a;
+  }
+  .vsres-bills-header-left {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .vsres-bills-header-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: #ffd700;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  .vsres-bills-modal-title {
+    font-size: clamp(18px, 3.5vw, 24px);
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0;
+    font-family: 'Baloo 2', sans-serif;
+  }
+  .vsres-bills-modal-loc {
+    font-size: 12.5px;
+    color: #94a3b8;
+    font-family: 'Nunito', sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .vsres-bills-header-right {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .vsres-bills-savings-badge {
+    background: linear-gradient(135deg, #008744 0%, #00b050 100%);
+    color: #ffffff;
+    font-size: 13.5px;
+    font-weight: 800;
+    font-family: 'Baloo 2', sans-serif;
+    padding: 8px 16px;
+    border-radius: 50px;
+    white-space: nowrap;
+    box-shadow: 0 4px 14px rgba(0, 135, 68, 0.35);
+  }
+  .vsres-bills-modal-close {
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+    border: none;
+    font-size: 26px;
+    line-height: 1;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+  }
+  .vsres-bills-modal-close:hover {
+    background: #e11d48;
+    transform: rotate(90deg);
+  }
+
+  /* MODAL BODY (2-COLUMN GRID) */
+  .vsres-bills-modal-body {
+    padding: 24px;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    background: #f8fafc;
+  }
+  @media(min-width: 768px) {
+    .vsres-bills-modal-body {
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      padding: 28px;
+    }
+  }
+
+  .vsres-bill-col {
+    background: #ffffff;
+    border-radius: 16px;
+    border: 2px solid #e2e8f0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+  }
+  .vsres-bill-col.vsres-bill-old {
+    border-color: #fecdd3;
+  }
+  .vsres-bill-col.vsres-bill-new {
+    border-color: #a7f3d0;
+  }
+
+  .vsres-bill-col-header {
+    padding: 14px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1.5px solid #e2e8f0;
+  }
+  .vsres-bill-col.vsres-bill-old .vsres-bill-col-header {
+    background: #fff1f2;
+    border-color: #fecdd3;
+  }
+  .vsres-bill-col.vsres-bill-new .vsres-bill-col-header {
+    background: #ecfdf5;
+    border-color: #a7f3d0;
+  }
+
+  .vsres-bill-badge-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 5px 12px;
+    border-radius: 50px;
+    font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: 0.5px;
+  }
+  .vsres-bill-badge-pill.old {
+    background: #e11d48;
+    color: #ffffff;
+  }
+  .vsres-bill-badge-pill.new {
+    background: #008744;
+    color: #ffffff;
+  }
+
+  .vsres-bill-amount-wrap {
+    text-align: right;
+  }
+  .vsres-bill-lbl {
+    display: block;
+    font-size: 10px;
+    font-weight: 700;
+    color: #64748b;
+    text-transform: uppercase;
+  }
+  .vsres-bill-amount {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 17px;
+    font-weight: 800;
+  }
+  .vsres-bill-amount.old {
+    color: #9f1239;
+    text-decoration: line-through;
+  }
+  .vsres-bill-amount.new {
+    color: #008744;
+  }
+
+  .vsres-bill-doc-box {
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 280px;
+    background: #ffffff;
+  }
+  .vsres-bill-uploaded-img {
+    max-width: 100%;
+    max-height: 380px;
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    cursor: zoom-in;
+    transition: transform 0.2s ease;
+  }
+  .vsres-bill-uploaded-img:hover {
+    transform: scale(1.02);
+  }
+
+  /* MODAL FOOTER */
+  .vsres-bills-modal-footer {
+    background: #ffffff;
+    border-top: 2px solid #e2e8f0;
+    padding: 16px 24px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 14px;
+  }
+  .vsres-bills-footer-text {
+    font-size: 13.5px;
+    color: #334155;
+    font-family: 'Nunito', sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
 </style>
 
 <div class="vscom">
@@ -1930,275 +2350,366 @@
       <!-- MOBILE CAROUSEL SLIDER WRAPPER -->
       <div class="vs-cases-slider-wrap" id="vscomCaseSliderWrap">
         <div class="vsres-case-grid" id="vscomCaseTrack">
-          <!-- CARD 1: SUPERMARKET -->
-          <div class="vsres-case-card" style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
-            <div style="width:100%; height:195px; border-radius:14px; overflow:hidden; margin-bottom:14px; background:#1e293b;">
-              <img src="{{ 'commercial-building-1.png' | asset_url }}" alt="Landmark Retail Supermarket CP Delhi" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;">
-            </div>
-            <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
-              <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #008744; box-shadow:0 4px 10px rgba(0,135,68,0.25);">
-                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Supermarket Director" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'wvs-happy-man.jpg' | asset_url }}';">
-              </div>
-              <div>
-                <h4 style="font-size:15px; font-weight:800; color:#0f172a; margin:0 0 2px 0; font-family:'Baloo 2',sans-serif;">Landmark Retail Supermarket <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></h4>
-                <div style="font-size:12px; color:#64748b; font-weight:600;"><i class="fa-solid fa-location-dot" style="color:#008744;"></i> 36 KW Load, CP Delhi</div>
-              </div>
-            </div>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
-              <div style="background:#fff1f2; border:1px solid #fecdd3; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
-                <span style="color:#e11d48; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">Old DISCOM Bill</span>
-                <span style="font-family:'IBM Plex Mono',monospace; color:#9f1239; font-size:14px; font-weight:800; text-decoration:line-through;">₹54,000/mo</span>
-              </div>
-              <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
-                <span style="color:#059669; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">New DISCOM Bill</span>
-                <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">₹39,200/mo</span>
-              </div>
-            </div>
-            <div style="background:linear-gradient(135deg, #008744 0%, #00b050 100%); padding:11px 14px; border-radius:12px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(0,135,68,0.2);">
-              <span style="color:#a7f3d0; font-size:11.5px;">⚡ 7 Commercial Cards</span>
-              <strong style="color:#ffffff; font-size:13.5px;">Saved ₹14,800/mo (27.4%)</strong>
-            </div>
-          </div>
+          {% assign case_study_count = 0 %}
+          {% for block in section.blocks %}
+            {% if block.type == 'commercial_case_study' %}
+              {% assign case_study_count = case_study_count | plus: 1 %}
+              {% assign idx = case_study_count %}
 
-          <!-- CARD 2: HOTEL -->
-          <div class="vsres-case-card" style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
-            <div style="width:100%; height:195px; border-radius:14px; overflow:hidden; margin-bottom:14px; background:#1e293b;">
-              <img src="{{ 'case-commercial.jpg' | asset_url }}" alt="Grand Sapphire Hotel Jaipur" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;">
-            </div>
-            <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
-              <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #008744; box-shadow:0 4px 10px rgba(0,135,68,0.25);">
-                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80" alt="Hotel Manager" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'wvs-card-guide-woman.jpg' | asset_url }}';">
-              </div>
-              <div>
-                <h4 style="font-size:15px; font-weight:800; color:#0f172a; margin:0 0 2px 0; font-family:'Baloo 2',sans-serif;">Grand Sapphire Hotel & Banquet <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></h4>
-                <div style="font-size:12px; color:#64748b; font-weight:600;"><i class="fa-solid fa-location-dot" style="color:#008744;"></i> 75 KW HVAC Load, Jaipur</div>
-              </div>
-            </div>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
-              <div style="background:#fff1f2; border:1px solid #fecdd3; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
-                <span style="color:#e11d48; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">Old DISCOM Bill</span>
-                <span style="font-family:'IBM Plex Mono',monospace; color:#9f1239; font-size:14px; font-weight:800; text-decoration:line-through;">₹1,25,000/mo</span>
-              </div>
-              <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
-                <span style="color:#059669; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">New DISCOM Bill</span>
-                <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">₹89,500/mo</span>
-              </div>
-            </div>
-            <div style="background:linear-gradient(135deg, #008744 0%, #00b050 100%); padding:11px 14px; border-radius:12px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(0,135,68,0.2);">
-              <span style="color:#a7f3d0; font-size:11.5px;">⚡ 14 Commercial Cards</span>
-              <strong style="color:#ffffff; font-size:13.5px;">Saved ₹35,500/mo (28.4%)</strong>
-            </div>
-          </div>
+              {% case idx %}
+                {% when 1 %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1578916171728-46686eac8d58?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" %}
+                {% when 2 %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80" %}
+                {% when 3 %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" %}
+                {% when 4 %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1509391365360-2e959784a276?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&q=80" %}
+                {% when 5 %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=150&q=80" %}
+                {% when 6 %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1582735689369-4fe89db7114c?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80" %}
+                {% when 7 %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1585338107529-13afc5f02586?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=150&q=80" %}
+                {% when 8 %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1554469384-e58fac16e23a?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=150&q=80" %}
+                {% else %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=150&q=80" %}
+              {% endcase %}
 
-          <!-- CARD 3: HOSPITAL -->
-          <div class="vsres-case-card" style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
-            <div style="width:100%; height:195px; border-radius:14px; overflow:hidden; margin-bottom:14px; background:#1e293b;">
-              <img src="{{ 'commercial-building-2.png' | asset_url }}" alt="Apex Specialty Hospital Lucknow" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;">
-            </div>
-            <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
-              <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #008744; box-shadow:0 4px 10px rgba(0,135,68,0.25);">
-                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" alt="Hospital Admin" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'wvs-indian-businessman.jpg' | asset_url }}';">
-              </div>
-              <div>
-                <h4 style="font-size:15px; font-weight:800; color:#0f172a; margin:0 0 2px 0; font-family:'Baloo 2',sans-serif;">Apex Specialty Hospital <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></h4>
-                <div style="font-size:12px; color:#64748b; font-weight:600;"><i class="fa-solid fa-location-dot" style="color:#008744;"></i> 110 KW Load, Lucknow</div>
-              </div>
-            </div>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
-              <div style="background:#fff1f2; border:1px solid #fecdd3; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
-                <span style="color:#e11d48; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">Old DISCOM Bill</span>
-                <span style="font-family:'IBM Plex Mono',monospace; color:#9f1239; font-size:14px; font-weight:800; text-decoration:line-through;">₹2,10,000/mo</span>
-              </div>
-              <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
-                <span style="color:#059669; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">New DISCOM Bill</span>
-                <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">₹1,52,000/mo</span>
-              </div>
-            </div>
-            <div style="background:linear-gradient(135deg, #008744 0%, #00b050 100%); padding:11px 14px; border-radius:12px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(0,135,68,0.2);">
-              <span style="color:#a7f3d0; font-size:11.5px;">⚡ 20 Commercial Cards</span>
-              <strong style="color:#ffffff; font-size:13.5px;">Saved ₹58,000/mo (27.6%)</strong>
-            </div>
-          </div>
+              <div class="vsres-case-card" {{ block.shopify_attributes }} style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
+                <!-- MINI SLIDER -->
+                <div class="vs-card-media-slider">
+                  <div class="vs-card-media-slides">
+                    <div class="vs-card-media-slide active">
+                      {% if block.settings.image_1 != blank %}
+                        <img src="{{ block.settings.image_1 | image_url: width: 800 }}" alt="{{ block.settings.tag_1 | default: 'Commercial Setup' | escape }}" loading="lazy">
+                      {% else %}
+                        <img src="{{ def_img_1 }}" alt="{{ block.settings.tag_1 | default: 'Commercial Setup' | escape }}" loading="lazy">
+                      {% endif %}
+                      {% if block.settings.tag_1 != blank %}
+                        <span class="vs-media-tag"><i class="fa-solid fa-building"></i> {{ block.settings.tag_1 }}</span>
+                      {% endif %}
+                    </div>
+                    <div class="vs-card-media-slide">
+                      {% if block.settings.image_2 != blank %}
+                        <img src="{{ block.settings.image_2 | image_url: width: 800 }}" alt="{{ block.settings.tag_2 | default: 'HVAC Chiller' | escape }}" loading="lazy">
+                      {% else %}
+                        <img src="{{ def_img_2 }}" alt="{{ block.settings.tag_2 | default: 'HVAC Chiller' | escape }}" loading="lazy">
+                      {% endif %}
+                      {% if block.settings.tag_2 != blank %}
+                        <span class="vs-media-tag"><i class="fa-solid fa-fan"></i> {{ block.settings.tag_2 }}</span>
+                      {% endif %}
+                    </div>
+                    <div class="vs-card-media-slide">
+                      {% if block.settings.image_3 != blank %}
+                        <img src="{{ block.settings.image_3 | image_url: width: 800 }}" alt="{{ block.settings.tag_3 | default: 'Heavy Lighting Grid' | escape }}" loading="lazy">
+                      {% else %}
+                        <img src="{{ def_img_3 }}" alt="{{ block.settings.tag_3 | default: 'Heavy Lighting Grid' | escape }}" loading="lazy">
+                      {% endif %}
+                      {% if block.settings.tag_3 != blank %}
+                        <span class="vs-media-tag"><i class="fa-solid fa-lightbulb"></i> {{ block.settings.tag_3 }}</span>
+                      {% endif %}
+                    </div>
+                    <div class="vs-card-media-slide">
+                      {% if block.settings.image_4 != blank %}
+                        <img src="{{ block.settings.image_4 | image_url: width: 800 }}" alt="{{ block.settings.tag_4 | default: 'Main Commercial DB' | escape }}" loading="lazy">
+                      {% else %}
+                        <img src="{{ def_img_4 }}" alt="{{ block.settings.tag_4 | default: 'Main Commercial DB' | escape }}" loading="lazy">
+                      {% endif %}
+                      {% if block.settings.tag_4 != blank %}
+                        <span class="vs-media-tag"><i class="fa-solid fa-bolt"></i> {{ block.settings.tag_4 }}</span>
+                      {% endif %}
+                    </div>
+                  </div>
+                  <button type="button" class="vs-media-arrow vs-media-prev" onclick="vsSlideMedia(this, -1)" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+                  <button type="button" class="vs-media-arrow vs-media-next" onclick="vsSlideMedia(this, 1)" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+                  <div class="vs-media-dots-bar">
+                    <span class="vs-media-dot active" onclick="vsGoMediaSlide(this, 0)"></span>
+                    <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 1)"></span>
+                    <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 2)"></span>
+                    <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 3)"></span>
+                  </div>
+                  <div class="vs-media-counter"><span class="vs-media-cur">1</span>/<span class="vs-media-tot">4</span></div>
+                </div>
 
-          <!-- CARD 4: IT TECH PARK -->
-          <div class="vsres-case-card" style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
-            <div style="width:100%; height:195px; border-radius:14px; overflow:hidden; margin-bottom:14px; background:#1e293b;">
-              <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=700&q=80" alt="Nexus IT Tech Park Bengaluru" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'commercial-building-1.png' | asset_url }}';">
-            </div>
-            <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
-              <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #008744; box-shadow:0 4px 10px rgba(0,135,68,0.25);">
-                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&q=80" alt="IT Director" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'indian_entrepreneur.jpg' | asset_url }}';">
+                <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+                  <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #008744; box-shadow:0 4px 10px rgba(0,135,68,0.25);">
+                    {% if block.settings.avatar_image != blank %}
+                      <img src="{{ block.settings.avatar_image | image_url: width: 150 }}" alt="Business Avatar" style="width:100%; height:100%; object-fit:cover; display:block;">
+                    {% else %}
+                      <img src="{{ def_avatar }}" alt="Business Avatar" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'wvs-happy-man.jpg' | asset_url }}';">
+                    {% endif %}
+                  </div>
+                  <div>
+                    <h4 style="font-size:15px; font-weight:800; color:#0f172a; margin:0 0 2px 0; font-family:'Baloo 2',sans-serif;">{{ block.settings.customer_name | default: 'Landmark Retail Supermarket' }} <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></h4>
+                    <div style="font-size:12px; color:#64748b; font-weight:600;"><i class="fa-solid fa-location-dot" style="color:#008744;"></i> {{ block.settings.location_load | default: '36 KW Load, CP Delhi' }}</div>
+                  </div>
+                </div>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
+                  <div style="background:#fff1f2; border:1px solid #fecdd3; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                    <span style="color:#e11d48; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">Old DISCOM Bill</span>
+                    <span style="font-family:'IBM Plex Mono',monospace; color:#9f1239; font-size:14px; font-weight:800; text-decoration:line-through;">{{ block.settings.old_bill | default: '₹54,000/mo' }}</span>
+                  </div>
+                  <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                    <span style="color:#059669; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">New DISCOM Bill</span>
+                    <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">{{ block.settings.new_bill | default: '₹39,200/mo' }}</span>
+                  </div>
+                </div>
+                <!-- SHOW BILLS BUTTON (HIGHLIGHTED) -->
+                <button type="button" class="vsres-btn-view-bills" 
+                  data-customer="{{ block.settings.customer_name | default: 'Landmark Retail Supermarket' | escape }}" 
+                  data-location="{{ block.settings.location_load | default: '36 KW Load, CP Delhi' | escape }}" 
+                  data-old-bill="{{ block.settings.old_bill | default: '₹54,000/mo' | escape }}" 
+                  data-new-bill="{{ block.settings.new_bill | default: '₹39,200/mo' | escape }}" 
+                  data-savings="{{ block.settings.savings_summary | default: 'Saved ₹14,800/mo (27.4%)' | escape }}" 
+                  data-cards="{{ block.settings.cards_count | default: '⚡ 7 Commercial Cards' | escape }}" 
+                  data-old-img="{% if block.settings.old_bill_image != blank %}{{ block.settings.old_bill_image | image_url: width: 1200 }}{% elsif section.settings.global_old_bill_image != blank %}{{ section.settings.global_old_bill_image | image_url: width: 1200 }}{% endif %}" 
+                  data-new-img="{% if block.settings.new_bill_image != blank %}{{ block.settings.new_bill_image | image_url: width: 1200 }}{% elsif section.settings.global_new_bill_image != blank %}{{ section.settings.global_new_bill_image | image_url: width: 1200 }}{% endif %}"
+                  onclick="vsOpenBillsModal(this)">
+                  <i class="fa-solid fa-file-invoice-dollar"></i> Show Bills
+                  <span class="vsres-btn-pulse-dot"></span>
+                </button>
+                <div style="background:linear-gradient(135deg, #008744 0%, #00b050 100%); padding:11px 14px; border-radius:12px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(0,135,68,0.2);">
+                  <span style="color:#a7f3d0; font-size:11.5px;">{{ block.settings.cards_count | default: '⚡ 7 Commercial Cards' }}</span>
+                  <strong style="color:#ffffff; font-size:13.5px;">{{ block.settings.savings_summary | default: 'Saved ₹14,800/mo (27.4%)' }}</strong>
+                </div>
               </div>
-              <div>
-                <h4 style="font-size:15px; font-weight:800; color:#0f172a; margin:0 0 2px 0; font-family:'Baloo 2',sans-serif;">Nexus IT Tech Park & Hub <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></h4>
-                <div style="font-size:12px; color:#64748b; font-weight:600;"><i class="fa-solid fa-location-dot" style="color:#008744;"></i> 90 KW Load, Bengaluru</div>
-              </div>
-            </div>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
-              <div style="background:#fff1f2; border:1px solid #fecdd3; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
-                <span style="color:#e11d48; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">Old DISCOM Bill</span>
-                <span style="font-family:'IBM Plex Mono',monospace; color:#9f1239; font-size:14px; font-weight:800; text-decoration:line-through;">₹1,65,000/mo</span>
-              </div>
-              <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
-                <span style="color:#059669; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">New DISCOM Bill</span>
-                <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">₹1,18,000/mo</span>
-              </div>
-            </div>
-            <div style="background:linear-gradient(135deg, #008744 0%, #00b050 100%); padding:11px 14px; border-radius:12px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(0,135,68,0.2);">
-              <span style="color:#a7f3d0; font-size:11.5px;">⚡ 16 Commercial Cards</span>
-              <strong style="color:#ffffff; font-size:13.5px;">Saved ₹47,000/mo (28.5%)</strong>
-            </div>
-          </div>
+            {% endif %}
+          {% endfor %}
 
-          <!-- CARD 5: RESTAURANT -->
-          <div class="vsres-case-card" style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
-            <div style="width:100%; height:195px; border-radius:14px; overflow:hidden; margin-bottom:14px; background:#1e293b;">
-              <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=700&q=80" alt="Barbeque Grill Restaurant Mumbai" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'case-commercial.jpg' | asset_url }}';">
-            </div>
-            <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
-              <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #008744; box-shadow:0 4px 10px rgba(0,135,68,0.25);">
-                <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=150&q=80" alt="Restaurant Owner" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'wvs-pointing-woman.jpg' | asset_url }}';">
-              </div>
-              <div>
-                <h4 style="font-size:15px; font-weight:800; color:#0f172a; margin:0 0 2px 0; font-family:'Baloo 2',sans-serif;">Barbeque Grill Dining <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></h4>
-                <div style="font-size:12px; color:#64748b; font-weight:600;"><i class="fa-solid fa-location-dot" style="color:#008744;"></i> 45 KW HVAC Load, Mumbai</div>
-              </div>
-            </div>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
-              <div style="background:#fff1f2; border:1px solid #fecdd3; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
-                <span style="color:#e11d48; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">Old DISCOM Bill</span>
-                <span style="font-family:'IBM Plex Mono',monospace; color:#9f1239; font-size:14px; font-weight:800; text-decoration:line-through;">₹78,000/mo</span>
-              </div>
-              <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
-                <span style="color:#059669; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">New DISCOM Bill</span>
-                <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">₹56,000/mo</span>
-              </div>
-            </div>
-            <div style="background:linear-gradient(135deg, #008744 0%, #00b050 100%); padding:11px 14px; border-radius:12px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(0,135,68,0.2);">
-              <span style="color:#a7f3d0; font-size:11.5px;">⚡ 9 Commercial Cards</span>
-              <strong style="color:#ffffff; font-size:13.5px;">Saved ₹22,000/mo (28.2%)</strong>
-            </div>
-          </div>
+          {% if case_study_count < 9 %}
+            <!-- REMAINING DEFAULT COMMERCIAL CARDS (SO ALL 9 CARDS ALWAYS STAY VISIBLE) -->
+            {% assign start_fallback = case_study_count | plus: 1 %}
+            {% for i in (start_fallback..9) %}
+              {% case i %}
+                {% when 1 %}
+                  {% assign c_name = "Landmark Retail Supermarket" %}
+                  {% assign c_loc = "36 KW Load, CP Delhi" %}
+                  {% assign c_old = "₹54,000/mo" %}
+                  {% assign c_new = "₹39,200/mo" %}
+                  {% assign c_cards = "⚡ 7 Commercial Cards" %}
+                  {% assign c_save = "Saved ₹14,800/mo (27.4%)" %}
+                  {% assign t1 = "HVAC & Chillers" %}{% assign t2 = "Commercial Freezers" %}{% assign t3 = "Display Lighting Grid" %}{% assign t4 = "Main 3-Phase DB Panel" %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1578916171728-46686eac8d58?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" %}
+                {% when 2 %}
+                  {% assign c_name = "Grand Sapphire Hotel & Banquet" %}
+                  {% assign c_loc = "75 KW HVAC Load, Jaipur" %}
+                  {% assign c_old = "₹1,25,000/mo" %}
+                  {% assign c_new = "₹89,500/mo" %}
+                  {% assign c_cards = "⚡ 14 Commercial Cards" %}
+                  {% assign c_save = "Saved ₹35,500/mo (28.4%)" %}
+                  {% assign t1 = "Central Air Conditioning" %}{% assign t2 = "Commercial Kitchen Hoods" %}{% assign t3 = "Banquet Chandelier Grid" %}{% assign t4 = "Substation Main Panel" %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80" %}
+                {% when 3 %}
+                  {% assign c_name = "Apex Specialty Hospital" %}
+                  {% assign c_loc = "110 KW Load, Lucknow" %}
+                  {% assign c_old = "₹2,10,000/mo" %}
+                  {% assign c_new = "₹1,52,000/mo" %}
+                  {% assign c_cards = "⚡ 20 Commercial Cards" %}
+                  {% assign c_save = "Saved ₹58,000/mo (27.6%)" %}
+                  {% assign t1 = "Diagnostic & Imaging Grid" %}{% assign t2 = "Clean Room HVAC Chillers" %}{% assign t3 = "Elevators & Pumps" %}{% assign t4 = "Main HT/LT Substation" %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" %}
+                {% when 4 %}
+                  {% assign c_name = "Nexus IT Tech Park & Hub" %}
+                  {% assign c_loc = "90 KW Load, Bengaluru" %}
+                  {% assign c_old = "₹1,65,000/mo" %}
+                  {% assign c_new = "₹1,18,000/mo" %}
+                  {% assign c_cards = "⚡ 16 Commercial Cards" %}
+                  {% assign c_save = "Saved ₹47,000/mo (28.5%)" %}
+                  {% assign t1 = "Server Room Cooling Rack" %}{% assign t2 = "Open Workstation Floor" %}{% assign t3 = "Multi-Lift Elevators" %}{% assign t4 = "Main Distribution Board" %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1509391365360-2e959784a276?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&q=80" %}
+                {% when 5 %}
+                  {% assign c_name = "Barbeque Grill Dining" %}
+                  {% assign c_loc = "45 KW HVAC Load, Mumbai" %}
+                  {% assign c_old = "₹78,000/mo" %}
+                  {% assign c_new = "₹56,000/mo" %}
+                  {% assign c_cards = "⚡ 9 Commercial Cards" %}
+                  {% assign c_save = "Saved ₹22,000/mo (28.2%)" %}
+                  {% assign t1 = "Kitchen Heavy Exhaust" %}{% assign t2 = "Dining Area Split ACs" %}{% assign t3 = "Tandoor & Induction Grids" %}{% assign t4 = "3-Phase Commercial DB" %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=150&q=80" %}
+                {% when 6 %}
+                  {% assign c_name = "Royal Palms Luxury Resort" %}
+                  {% assign c_loc = "130 KW Chiller Load, Goa" %}
+                  {% assign c_old = "₹2,45,000/mo" %}
+                  {% assign c_new = "₹1,76,000/mo" %}
+                  {% assign c_cards = "⚡ 23 Commercial Cards" %}
+                  {% assign c_save = "Saved ₹69,000/mo (28.2%)" %}
+                  {% assign t1 = "Pool Booster Pumps" %}{% assign t2 = "Villa Central Chiller" %}{% assign t3 = "Clubhouse Lighting" %}{% assign t4 = "Master HT Transformer DB" %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1582735689369-4fe89db7114c?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80" %}
+                {% when 7 %}
+                  {% assign c_name = "Croma Mega Electronics" %}
+                  {% assign c_loc = "50 KW Load, Ahmedabad" %}
+                  {% assign c_old = "₹85,000/mo" %}
+                  {% assign c_new = "₹61,000/mo" %}
+                  {% assign c_cards = "⚡ 10 Commercial Cards" %}
+                  {% assign c_save = "Saved ₹24,000/mo (28.2%)" %}
+                  {% assign t1 = "Showroom Demo Floor Grid" %}{% assign t2 = "Central Inverter AC" %}{% assign t3 = "Glass Facade Lighting" %}{% assign t4 = "Commercial MCB Panel" %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1585338107529-13afc5f02586?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=150&q=80" %}
+                {% when 8 %}
+                  {% assign c_name = "HDFC Corporate Banking Hub" %}
+                  {% assign c_loc = "40 KW Load, Pune" %}
+                  {% assign c_old = "₹68,000/mo" %}
+                  {% assign c_new = "₹49,000/mo" %}
+                  {% assign c_cards = "⚡ 8 Commercial Cards" %}
+                  {% assign c_save = "Saved ₹19,000/mo (27.9%)" %}
+                  {% assign t1 = "Branch Cash Vault HVAC" %}{% assign t2 = "ATM Kiosk Air Conditioners" %}{% assign t3 = "Server UPS Bank" %}{% assign t4 = "3-Phase Secure Mains DB" %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1554469384-e58fac16e23a?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=150&q=80" %}
+                {% else %}
+                  {% assign c_name = "Gold's Fitness Complex" %}
+                  {% assign c_loc = "32 KW Heavy Load, Hyderabad" %}
+                  {% assign c_old = "₹52,000/mo" %}
+                  {% assign c_new = "₹37,500/mo" %}
+                  {% assign c_cards = "⚡ 7 Commercial Cards" %}
+                  {% assign c_save = "Saved ₹14,500/mo (27.9%)" %}
+                  {% assign t1 = "Gym Floor Multi-ACs" %}{% assign t2 = "Treadmills & Cardio Bank" %}{% assign t3 = "Steam & Sauna Heaters" %}{% assign t4 = "Main Heavy-Duty DB" %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=150&q=80" %}
+              {% endcase %}
 
-          <!-- CARD 6: RESORT -->
-          <div class="vsres-case-card" style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
-            <div style="width:100%; height:195px; border-radius:14px; overflow:hidden; margin-bottom:14px; background:#1e293b;">
-              <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=700&q=80" alt="Royal Palms Resort Goa" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'commercial-building-2.png' | asset_url }}';">
-            </div>
-            <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
-              <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #008744; box-shadow:0 4px 10px rgba(0,135,68,0.25);">
-                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80" alt="Resort Director" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'wvs-pointing-down-woman.jpg' | asset_url }}';">
-              </div>
-              <div>
-                <h4 style="font-size:15px; font-weight:800; color:#0f172a; margin:0 0 2px 0; font-family:'Baloo 2',sans-serif;">Royal Palms Luxury Resort <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></h4>
-                <div style="font-size:12px; color:#64748b; font-weight:600;"><i class="fa-solid fa-location-dot" style="color:#008744;"></i> 130 KW Chiller Load, Goa</div>
-              </div>
-            </div>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
-              <div style="background:#fff1f2; border:1px solid #fecdd3; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
-                <span style="color:#e11d48; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">Old DISCOM Bill</span>
-                <span style="font-family:'IBM Plex Mono',monospace; color:#9f1239; font-size:14px; font-weight:800; text-decoration:line-through;">₹2,45,000/mo</span>
-              </div>
-              <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
-                <span style="color:#059669; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">New DISCOM Bill</span>
-                <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">₹1,76,000/mo</span>
-              </div>
-            </div>
-            <div style="background:linear-gradient(135deg, #008744 0%, #00b050 100%); padding:11px 14px; border-radius:12px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(0,135,68,0.2);">
-              <span style="color:#a7f3d0; font-size:11.5px;">⚡ 23 Commercial Cards</span>
-              <strong style="color:#ffffff; font-size:13.5px;">Saved ₹69,000/mo (28.2%)</strong>
-            </div>
-          </div>
+              <div class="vsres-case-card" style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
+                <!-- MINI SLIDER -->
+                <div class="vs-card-media-slider">
+                  <div class="vs-card-media-slides">
+                    <div class="vs-card-media-slide active">
+                      <img src="{{ def_img_1 }}" alt="{{ t1 }}" loading="lazy">
+                      <span class="vs-media-tag"><i class="fa-solid fa-building"></i> {{ t1 }}</span>
+                    </div>
+                    <div class="vs-card-media-slide">
+                      <img src="{{ def_img_2 }}" alt="{{ t2 }}" loading="lazy">
+                      <span class="vs-media-tag"><i class="fa-solid fa-fan"></i> {{ t2 }}</span>
+                    </div>
+                    <div class="vs-card-media-slide">
+                      <img src="{{ def_img_3 }}" alt="{{ t3 }}" loading="lazy">
+                      <span class="vs-media-tag"><i class="fa-solid fa-lightbulb"></i> {{ t3 }}</span>
+                    </div>
+                    <div class="vs-card-media-slide">
+                      <img src="{{ def_img_4 }}" alt="{{ t4 }}" loading="lazy">
+                      <span class="vs-media-tag"><i class="fa-solid fa-bolt"></i> {{ t4 }}</span>
+                    </div>
+                  </div>
+                  <button type="button" class="vs-media-arrow vs-media-prev" onclick="vsSlideMedia(this, -1)" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+                  <button type="button" class="vs-media-arrow vs-media-next" onclick="vsSlideMedia(this, 1)" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+                  <div class="vs-media-dots-bar">
+                    <span class="vs-media-dot active" onclick="vsGoMediaSlide(this, 0)"></span>
+                    <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 1)"></span>
+                    <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 2)"></span>
+                    <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 3)"></span>
+                  </div>
+                  <div class="vs-media-counter"><span class="vs-media-cur">1</span>/<span class="vs-media-tot">4</span></div>
+                </div>
 
-          <!-- CARD 7: ELECTRONICS SHOWROOM -->
-          <div class="vsres-case-card" style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
-            <div style="width:100%; height:195px; border-radius:14px; overflow:hidden; margin-bottom:14px; background:#1e293b;">
-              <img src="https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?auto=format&fit=crop&w=700&q=80" alt="Croma Mega Showroom Ahmedabad" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'commercial-building-1.png' | asset_url }}';">
-            </div>
-            <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
-              <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #008744; box-shadow:0 4px 10px rgba(0,135,68,0.25);">
-                <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=150&q=80" alt="Showroom Manager" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'hero-advisor-calculator.jpg' | asset_url }}';">
+                <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+                  <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #008744; box-shadow:0 4px 10px rgba(0,135,68,0.25);">
+                    <img src="{{ def_avatar }}" alt="{{ c_name }}" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'wvs-happy-man.jpg' | asset_url }}';">
+                  </div>
+                  <div>
+                    <h4 style="font-size:15px; font-weight:800; color:#0f172a; margin:0 0 2px 0; font-family:'Baloo 2',sans-serif;">{{ c_name }} <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></h4>
+                    <div style="font-size:12px; color:#64748b; font-weight:600;"><i class="fa-solid fa-location-dot" style="color:#008744;"></i> {{ c_loc }}</div>
+                  </div>
+                </div>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
+                  <div style="background:#fff1f2; border:1px solid #fecdd3; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                    <span style="color:#e11d48; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">Old DISCOM Bill</span>
+                    <span style="font-family:'IBM Plex Mono',monospace; color:#9f1239; font-size:14px; font-weight:800; text-decoration:line-through;">{{ c_old }}</span>
+                  </div>
+                  <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                    <span style="color:#059669; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">New DISCOM Bill</span>
+                    <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">{{ c_new }}</span>
+                  </div>
+                </div>
+                <!-- SHOW BILLS BUTTON (HIGHLIGHTED) -->
+                <button type="button" class="vsres-btn-view-bills" 
+                  data-customer="{{ c_name | escape }}" 
+                  data-location="{{ c_loc | escape }}" 
+                  data-old-bill="{{ c_old | escape }}" 
+                  data-new-bill="{{ c_new | escape }}" 
+                  data-savings="{{ c_save | escape }}" 
+                  data-cards="{{ c_cards | escape }}" 
+                  data-old-img="{% if section.settings.global_old_bill_image != blank %}{{ section.settings.global_old_bill_image | image_url: width: 1200 }}{% endif %}" 
+                  data-new-img="{% if section.settings.global_new_bill_image != blank %}{{ section.settings.global_new_bill_image | image_url: width: 1200 }}{% endif %}"
+                  onclick="vsOpenBillsModal(this)">
+                  <i class="fa-solid fa-file-invoice-dollar"></i> Show Bills
+                  <span class="vsres-btn-pulse-dot"></span>
+                </button>
+                <div style="background:linear-gradient(135deg, #008744 0%, #00b050 100%); padding:11px 14px; border-radius:12px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(0,135,68,0.2);">
+                  <span style="color:#a7f3d0; font-size:11.5px;">{{ c_cards }}</span>
+                  <strong style="color:#ffffff; font-size:13.5px;">{{ c_save }}</strong>
+                </div>
               </div>
-              <div>
-                <h4 style="font-size:15px; font-weight:800; color:#0f172a; margin:0 0 2px 0; font-family:'Baloo 2',sans-serif;">Croma Mega Electronics <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></h4>
-                <div style="font-size:12px; color:#64748b; font-weight:600;"><i class="fa-solid fa-location-dot" style="color:#008744;"></i> 50 KW Load, Ahmedabad</div>
-              </div>
-            </div>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
-              <div style="background:#fff1f2; border:1px solid #fecdd3; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
-                <span style="color:#e11d48; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">Old DISCOM Bill</span>
-                <span style="font-family:'IBM Plex Mono',monospace; color:#9f1239; font-size:14px; font-weight:800; text-decoration:line-through;">₹85,000/mo</span>
-              </div>
-              <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
-                <span style="color:#059669; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">New DISCOM Bill</span>
-                <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">₹61,000/mo</span>
-              </div>
-            </div>
-            <div style="background:linear-gradient(135deg, #008744 0%, #00b050 100%); padding:11px 14px; border-radius:12px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(0,135,68,0.2);">
-              <span style="color:#a7f3d0; font-size:11.5px;">⚡ 10 Commercial Cards</span>
-              <strong style="color:#ffffff; font-size:13.5px;">Saved ₹24,000/mo (28.2%)</strong>
-            </div>
-          </div>
-
-          <!-- CARD 8: BANKING HUB -->
-          <div class="vsres-case-card" style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
-            <div style="width:100%; height:195px; border-radius:14px; overflow:hidden; margin-bottom:14px; background:#1e293b;">
-              <img src="https://images.unsplash.com/photo-1554469384-e58fac16e23a?auto=format&fit=crop&w=700&q=80" alt="HDFC Banking Hub Pune" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'case-commercial.jpg' | asset_url }}';">
-            </div>
-            <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
-              <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #008744; box-shadow:0 4px 10px rgba(0,135,68,0.25);">
-                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=150&q=80" alt="Branch Head" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'vidhyut-customer-call-support.jpg' | asset_url }}';">
-              </div>
-              <div>
-                <h4 style="font-size:15px; font-weight:800; color:#0f172a; margin:0 0 2px 0; font-family:'Baloo 2',sans-serif;">HDFC Corporate Banking Hub <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></h4>
-                <div style="font-size:12px; color:#64748b; font-weight:600;"><i class="fa-solid fa-location-dot" style="color:#008744;"></i> 40 KW Load, Pune</div>
-              </div>
-            </div>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
-              <div style="background:#fff1f2; border:1px solid #fecdd3; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
-                <span style="color:#e11d48; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">Old DISCOM Bill</span>
-                <span style="font-family:'IBM Plex Mono',monospace; color:#9f1239; font-size:14px; font-weight:800; text-decoration:line-through;">₹68,000/mo</span>
-              </div>
-              <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
-                <span style="color:#059669; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">New DISCOM Bill</span>
-                <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">₹49,000/mo</span>
-              </div>
-            </div>
-            <div style="background:linear-gradient(135deg, #008744 0%, #00b050 100%); padding:11px 14px; border-radius:12px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(0,135,68,0.2);">
-              <span style="color:#a7f3d0; font-size:11.5px;">⚡ 8 Commercial Cards</span>
-              <strong style="color:#ffffff; font-size:13.5px;">Saved ₹19,000/mo (27.9%)</strong>
-            </div>
-          </div>
-
-          <!-- CARD 9: FITNESS CENTER -->
-          <div class="vsres-case-card" style="background:#ffffff; border:2px solid #e2e8f0; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
-            <div style="width:100%; height:195px; border-radius:14px; overflow:hidden; margin-bottom:14px; background:#1e293b;">
-              <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=700&q=80" alt="Golds Fitness Center Hyderabad" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'commercial-building-2.png' | asset_url }}';">
-            </div>
-            <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
-              <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #008744; box-shadow:0 4px 10px rgba(0,135,68,0.25);">
-                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=150&q=80" alt="Club Director" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'indian_entrepreneur.jpg' | asset_url }}';">
-              </div>
-              <div>
-                <h4 style="font-size:15px; font-weight:800; color:#0f172a; margin:0 0 2px 0; font-family:'Baloo 2',sans-serif;">Gold's Fitness Complex <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></h4>
-                <div style="font-size:12px; color:#64748b; font-weight:600;"><i class="fa-solid fa-location-dot" style="color:#008744;"></i> 32 KW Heavy Load, Hyderabad</div>
-              </div>
-            </div>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
-              <div style="background:#fff1f2; border:1px solid #fecdd3; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
-                <span style="color:#e11d48; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">Old DISCOM Bill</span>
-                <span style="font-family:'IBM Plex Mono',monospace; color:#9f1239; font-size:14px; font-weight:800; text-decoration:line-through;">₹52,000/mo</span>
-              </div>
-              <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
-                <span style="color:#059669; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">New DISCOM Bill</span>
-                <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">₹37,500/mo</span>
-              </div>
-            </div>
-            <div style="background:linear-gradient(135deg, #008744 0%, #00b050 100%); padding:11px 14px; border-radius:12px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(0,135,68,0.2);">
-              <span style="color:#a7f3d0; font-size:11.5px;">⚡ 7 Commercial Cards</span>
-              <strong style="color:#ffffff; font-size:13.5px;">Saved ₹14,500/mo (27.9%)</strong>
-            </div>
-          </div>
+            {% endfor %}
+          {% endif %}
         </div>
 
         <!-- MOBILE SLIDER DOTS -->
@@ -2232,6 +2743,76 @@
       </div>
     </div>
   </section>
+
+  <!-- ══ VERIFIED COMMERCIAL BILLS COMPARISON LIGHTBOX MODAL ══ -->
+  <div class="vsres-bills-modal-overlay" id="vscom_bills_modal" onclick="vsCloseBillsModal(event)">
+    <div class="vsres-bills-modal-dialog" onclick="event.stopPropagation()">
+      <!-- Top Header Bar -->
+      <div class="vsres-bills-modal-header" style="background:linear-gradient(135deg, #064e3b 0%, #008744 100%);">
+        <div class="vsres-bills-header-left">
+          <div class="vsres-bills-header-tag" style="color:#a7f3d0;">
+            <i class="fa-solid fa-certificate"></i> VERIFIED COMMERCIAL DISCOM BILL AUDIT
+          </div>
+          <h3 id="vscom_bills_modal_customer" class="vsres-bills-modal-title">Customer Name</h3>
+          <div id="vscom_bills_modal_loc" class="vsres-bills-modal-loc"><i class="fa-solid fa-location-dot" style="color:#008744;"></i> Location</div>
+        </div>
+        <div class="vsres-bills-header-right">
+          <div id="vscom_bills_modal_savings_badge" class="vsres-bills-savings-badge" style="background:rgba(255,255,255,0.18); border-color:rgba(255,255,255,0.35);">
+            ⚡ Saved ₹14,800/mo (27.4%)
+          </div>
+          <button type="button" class="vsres-bills-modal-close" onclick="vsCloseBillsModal(event)" aria-label="Close modal">&times;</button>
+        </div>
+      </div>
+
+      <!-- Side-by-Side Comparison Container -->
+      <div class="vsres-bills-modal-body">
+        <!-- LEFT: OLD BILL (BEFORE) -->
+        <div class="vsres-bill-col vsres-bill-old">
+          <div class="vsres-bill-col-header">
+            <div class="vsres-bill-badge-pill old">
+              <i class="fa-solid fa-circle-xmark"></i> BEFORE VIDHYUT SAATHI
+            </div>
+            <div class="vsres-bill-amount-wrap">
+              <span class="vsres-bill-lbl">OLD COMMERCIAL BILL:</span>
+              <span id="vscom_modal_old_val" class="vsres-bill-amount old">₹54,000</span>
+            </div>
+          </div>
+          <div class="vsres-bill-doc-box" id="vscom_modal_old_doc">
+            <!-- Image or Dynamic SVG Invoice Bill -->
+          </div>
+        </div>
+
+        <!-- RIGHT: NEW BILL (AFTER) -->
+        <div class="vsres-bill-col vsres-bill-new">
+          <div class="vsres-bill-col-header">
+            <div class="vsres-bill-badge-pill new">
+              <i class="fa-solid fa-circle-check"></i> AFTER VIDHYUT SAATHI (20-30% SAVED)
+            </div>
+            <div class="vsres-bill-amount-wrap">
+              <span class="vsres-bill-lbl">NEW REDUCED BILL:</span>
+              <span id="vscom_modal_new_val" class="vsres-bill-amount new">₹39,200</span>
+            </div>
+          </div>
+          <div class="vsres-bill-doc-box" id="vscom_modal_new_doc">
+            <!-- Image or Dynamic SVG Invoice Bill -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Footer CTA -->
+      <div class="vsres-bills-modal-footer">
+        <div class="vsres-bills-footer-text">
+          <i class="fa-solid fa-shield-halved" style="color:#008744; font-size:18px;"></i>
+          <span>Want to achieve similar verified <strong>20% to 30% commercial DISCOM savings</strong> for your facility?</span>
+        </div>
+        <div class="vsres-bills-footer-btns">
+          <a href="https://wa.me/919876543210?text=Hi%20Vidhyut%20Saathi%2C%20I%20saw%20the%20verified%20commercial%20bills%20savings%20and%20want%20to%20order%20cards%20for%20my%20business" class="vscom-btn-primary" target="_blank" style="padding:10px 20px; font-size:13.5px; border-radius:10px; background:#008744; color:#ffffff;">
+            <i class="fa-brands fa-whatsapp"></i> Order Commercial Cards
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </div>
 
@@ -2375,6 +2956,42 @@
     document.getElementById('mcb_lightbox').classList.remove('active');
   }
 
+  /* ══ 4-IMAGE MINI SLIDER CONTROLS ══ */
+  window.vsSlideMedia = function(btn, dir) {
+    var slider = btn.closest('.vs-card-media-slider');
+    if (!slider) return;
+    var slides = slider.querySelectorAll('.vs-card-media-slide');
+    var dots = slider.querySelectorAll('.vs-media-dot');
+    var curSpan = slider.querySelector('.vs-media-cur');
+    if (!slides.length) return;
+    var activeIdx = 0;
+    slides.forEach(function(s, idx) {
+      if (s.classList.contains('active')) activeIdx = idx;
+    });
+    var nextIdx = (activeIdx + dir + slides.length) % slides.length;
+    slides[activeIdx].classList.remove('active');
+    slides[nextIdx].classList.add('active');
+    if (dots.length > nextIdx) {
+      dots[activeIdx].classList.remove('active');
+      dots[nextIdx].classList.add('active');
+    }
+    if (curSpan) curSpan.innerText = nextIdx + 1;
+  };
+
+  window.vsGoMediaSlide = function(dot, idx) {
+    var slider = dot.closest('.vs-card-media-slider');
+    if (!slider) return;
+    var slides = slider.querySelectorAll('.vs-card-media-slide');
+    var dots = slider.querySelectorAll('.vs-media-dot');
+    var curSpan = slider.querySelector('.vs-media-cur');
+    if (!slides.length || idx >= slides.length) return;
+    slides.forEach(function(s) { s.classList.remove('active'); });
+    dots.forEach(function(d) { d.classList.remove('active'); });
+    slides[idx].classList.add('active');
+    if (dots[idx]) dots[idx].classList.add('active');
+    if (curSpan) curSpan.innerText = idx + 1;
+  };
+
   /* ══ MOBILE 5-SECOND CASE STUDIES AUTO-SLIDER ══ */
   (function() {
     var track = document.getElementById('vscomCaseTrack');
@@ -2461,13 +3078,126 @@
       }
     });
   })();
+
+  /* ══ VERIFIED COMMERCIAL BILLS COMPARISON LIGHTBOX MODAL ══ */
+  function vsOpenBillsModal(btn) {
+    if (!btn) return;
+    var customer = btn.getAttribute('data-customer') || 'Commercial Establishment';
+    var location = btn.getAttribute('data-location') || 'Commercial Connection';
+    var oldBill = btn.getAttribute('data-old-bill') || '₹54,000/mo';
+    var newBill = btn.getAttribute('data-new-bill') || '₹39,200/mo';
+    var savings = btn.getAttribute('data-savings') || 'Saved ₹14,800/mo (27.4%)';
+    var cards = btn.getAttribute('data-cards') || '⚡ 7 Commercial Cards';
+    var oldImg = btn.getAttribute('data-old-img') || '';
+    var newImg = btn.getAttribute('data-new-img') || '';
+
+    var modal = document.getElementById('vscom_bills_modal');
+    if (!modal) return;
+
+    var custEl = document.getElementById('vscom_bills_modal_customer');
+    var locEl = document.getElementById('vscom_bills_modal_loc');
+    var saveBadge = document.getElementById('vscom_bills_modal_savings_badge');
+    var oldValEl = document.getElementById('vscom_modal_old_val');
+    var newValEl = document.getElementById('vscom_modal_new_val');
+    var oldDocBox = document.getElementById('vscom_modal_old_doc');
+    var newDocBox = document.getElementById('vscom_modal_new_doc');
+
+    if (custEl) custEl.textContent = customer;
+    if (locEl) locEl.innerHTML = '<i class="fa-solid fa-location-dot" style="color:#008744;"></i> ' + location + ' &bull; ' + cards;
+    if (saveBadge) saveBadge.textContent = '⚡ ' + savings;
+    if (oldValEl) oldValEl.textContent = oldBill;
+    if (newValEl) newValEl.textContent = newBill;
+
+    // Render Old Bill Document
+    if (oldDocBox) {
+      if (oldImg && oldImg.trim() !== '') {
+        oldDocBox.innerHTML = '<a href="' + oldImg + '" target="_blank" title="Click to view full size"><img src="' + oldImg + '" alt="Old Commercial DISCOM Bill" class="vsres-bill-uploaded-img"></a>';
+      } else {
+        oldDocBox.innerHTML = vsGenerateCommercialBillSvg(customer, location, oldBill, 'OLD', cards);
+      }
+    }
+
+    // Render New Bill Document
+    if (newDocBox) {
+      if (newImg && newImg.trim() !== '') {
+        newDocBox.innerHTML = '<a href="' + newImg + '" target="_blank" title="Click to view full size"><img src="' + newImg + '" alt="New Commercial DISCOM Bill" class="vsres-bill-uploaded-img"></a>';
+      } else {
+        newDocBox.innerHTML = vsGenerateCommercialBillSvg(customer, location, newBill, 'NEW', cards);
+      }
+    }
+
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function vsCloseBillsModal(e) {
+    if (e && e.stopPropagation) e.stopPropagation();
+    var modal = document.getElementById('vscom_bills_modal');
+    if (modal) {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      vsCloseBillsModal();
+    }
+  });
+
+  function vsGenerateCommercialBillSvg(name, loc, amount, type, cards) {
+    var isNew = type === 'NEW';
+    var bgHeader = isNew ? '#008744' : '#b91c1c';
+    var accentBorder = isNew ? '#10b981' : '#f87171';
+    var statusTitle = isNew ? 'REDUCED COMMERCIAL LT/HT TARIFF' : 'HIGH COMMERCIAL NON-DOMESTIC TARIFF';
+    var stampText = isNew ? 'PAID & SAVED (20-30%)' : 'HIGH PENALTY LEVY';
+    var stampColor = isNew ? '#008744' : '#b91c1c';
+    var billDate = isNew ? 'Post-Installation Bill' : 'Pre-Installation Bill';
+    var caNum = 'COMM-CA-' + Math.floor(10000000 + Math.random() * 90000000);
+    
+    return '<div style="width:100%; max-width:400px; background:#ffffff; border:2px solid ' + accentBorder + '; border-radius:12px; box-shadow:0 8px 24px rgba(0,0,0,0.06); font-family:\'Nunito\',sans-serif; overflow:hidden; position:relative;">' +
+      '<div style="background:' + bgHeader + '; color:#ffffff; padding:12px 16px; display:flex; justify-content:space-between; align-items:center;">' +
+      '<div>' +
+        '<div style="font-size:10px; font-weight:800; letter-spacing:0.8px; opacity:0.9;">COMMERCIAL POWER DISTRIBUTION CORP</div>' +
+        '<div style="font-size:13px; font-weight:800; font-family:\'Baloo 2\',sans-serif;">' + statusTitle + '</div>' +
+      '</div>' +
+      '<div style="font-size:18px;">' + (isNew ? '⚡' : '🏢') + '</div>' +
+    '</div>' +
+    '<div style="padding:14px 16px; font-size:11.5px; color:#334155; line-height:1.5;">' +
+      '<div style="display:flex; justify-content:space-between; margin-bottom:8px; border-bottom:1px dashed #e2e8f0; padding-bottom:6px;">' +
+        '<div><strong>Enterprise:</strong> ' + name + '<br><span style="color:#64748b; font-size:10.5px;">' + loc + '</span></div>' +
+        '<div style="text-align:right;"><strong>' + caNum + '</strong><br><span style="color:#64748b; font-size:10.5px;">Tariff: LT/HT Commercial</span></div>' +
+      '</div>' +
+      '<div style="display:grid; grid-template-columns:1fr 1fr; gap:6px; background:#f8fafc; padding:8px 10px; border-radius:8px; margin-bottom:10px; font-size:11px;">' +
+        '<div>Billing Cycle: <strong>Monthly Commercial</strong></div>' +
+        '<div>Status: <strong style="color:' + (isNew ? '#008744' : '#b91c1c') + ';">' + billDate + '</strong></div>' +
+        '<div>Grid Setup: <strong>' + cards + '</strong></div>' +
+        '<div>Power Factor: <strong>' + (isNew ? '0.99 (Penalty Waived)' : '0.82 (KVAh Penalty & Losses)') + '</strong></div>' +
+      '</div>' +
+      '<div style="border-top:1.5px solid #cbd5e1; padding-top:8px; display:flex; justify-content:space-between; align-items:center;">' +
+        '<div>' +
+          '<span style="font-size:10px; font-weight:800; color:#64748b; text-transform:uppercase;">TOTAL AMOUNT DUE</span>' +
+          '<div style="font-size:19px; font-weight:800; font-family:\'IBM Plex Mono\',monospace; color:' + (isNew ? '#008744' : '#b91c1c') + ';">' + amount + '</div>' +
+        '</div>' +
+        '<div style="border:2px solid ' + stampColor + '; color:' + stampColor + '; font-size:9px; font-weight:900; padding:4px 8px; border-radius:6px; text-transform:uppercase; transform:rotate(-4deg); font-family:\'Baloo 2\',sans-serif; letter-spacing:0.5px;">' +
+          stampText +
+        '</div>' +
+      '</div>' +
+    '</div>' +
+  '</div>';
+  }
 </script>
 
 {% schema %}
 {
   "name": "Commercial Cards Layout",
   "settings": [
+    { "type": "header", "content": "Commercial Hero Settings" },
     { "type": "image_picker", "id": "card_image", "label": "Commercial Hero Card Image" },
+    { "type": "header", "content": "Case Studies Verified Bills (Global Fallback)" },
+    { "type": "image_picker", "id": "global_old_bill_image", "label": "Old Commercial Bill Photo (Before Vidhyut Saathi)" },
+    { "type": "image_picker", "id": "global_new_bill_image", "label": "New Commercial Bill Photo (After Vidhyut Saathi)" },
+    { "type": "header", "content": "Commercial MCB Images (1 to 20)" },
     { "type": "image_picker", "id": "comm_mcb_img_1", "label": "Commercial MCB Image 1" },
     { "type": "image_picker", "id": "comm_mcb_img_2", "label": "Commercial MCB Image 2" },
     { "type": "image_picker", "id": "comm_mcb_img_3", "label": "Commercial MCB Image 3" },
@@ -2490,6 +3220,34 @@
     { "type": "image_picker", "id": "comm_mcb_img_20", "label": "Commercial MCB Image 20" }
   ],
   "blocks": [
+    {
+      "type": "commercial_case_study",
+      "name": "Commercial Case Study Card",
+      "limit": 12,
+      "settings": [
+        { "type": "header", "content": "Establishment / Business Details" },
+        { "type": "text", "id": "customer_name", "label": "Business / Commercial Name", "default": "Landmark Retail Supermarket" },
+        { "type": "text", "id": "location_load", "label": "Load & Location", "default": "36 KW Load, CP Delhi" },
+        { "type": "image_picker", "id": "avatar_image", "label": "Business / Director Avatar" },
+        { "type": "header", "content": "Electricity Bills & Savings" },
+        { "type": "text", "id": "old_bill", "label": "Old DISCOM Bill (Before)", "default": "₹54,000/mo" },
+        { "type": "text", "id": "new_bill", "label": "New DISCOM Bill (After)", "default": "₹39,200/mo" },
+        { "type": "text", "id": "cards_count", "label": "Cards Count Badge", "default": "⚡ 7 Commercial Cards" },
+        { "type": "text", "id": "savings_summary", "label": "Savings Summary Badge", "default": "Saved ₹14,800/mo (27.4%)" },
+        { "type": "header", "content": "4 Establishment Photos (1 Card = 4 Images)" },
+        { "type": "image_picker", "id": "image_1", "label": "Photo 1" },
+        { "type": "text", "id": "tag_1", "label": "Photo 1 Tag", "default": "HVAC & Chillers" },
+        { "type": "image_picker", "id": "image_2", "label": "Photo 2" },
+        { "type": "text", "id": "tag_2", "label": "Photo 2 Tag", "default": "Commercial Freezers" },
+        { "type": "image_picker", "id": "image_3", "label": "Photo 3" },
+        { "type": "text", "id": "tag_3", "label": "Photo 3 Tag", "default": "Display Lighting Grid" },
+        { "type": "image_picker", "id": "image_4", "label": "Photo 4" },
+        { "type": "text", "id": "tag_4", "label": "Photo 4 Tag", "default": "Main 3-Phase DB Panel" },
+        { "type": "header", "content": "Custom Uploaded Verified Bills" },
+        { "type": "image_picker", "id": "old_bill_image", "label": "Old DISCOM Bill Photo" },
+        { "type": "image_picker", "id": "new_bill_image", "label": "New Reduced DISCOM Bill Photo" }
+      ]
+    },
     {
       "type": "comm_mcb_installation",
       "name": "Commercial MCB Photo",
@@ -2518,6 +3276,141 @@
     {
       "name": "Commercial Cards Layout",
       "blocks": [
+        {
+          "type": "commercial_case_study",
+          "settings": {
+            "customer_name": "Landmark Retail Supermarket",
+            "location_load": "36 KW Load, CP Delhi",
+            "old_bill": "₹54,000/mo",
+            "new_bill": "₹39,200/mo",
+            "cards_count": "⚡ 7 Commercial Cards",
+            "savings_summary": "Saved ₹14,800/mo (27.4%)",
+            "tag_1": "HVAC & Chillers",
+            "tag_2": "Commercial Freezers",
+            "tag_3": "Display Lighting Grid",
+            "tag_4": "Main 3-Phase DB Panel"
+          }
+        },
+        {
+          "type": "commercial_case_study",
+          "settings": {
+            "customer_name": "Grand Sapphire Hotel & Banquet",
+            "location_load": "75 KW HVAC Load, Jaipur",
+            "old_bill": "₹1,25,000/mo",
+            "new_bill": "₹89,500/mo",
+            "cards_count": "⚡ 14 Commercial Cards",
+            "savings_summary": "Saved ₹35,500/mo (28.4%)",
+            "tag_1": "Central Air Conditioning",
+            "tag_2": "Commercial Kitchen Hoods",
+            "tag_3": "Banquet Chandelier Grid",
+            "tag_4": "Substation Main Panel"
+          }
+        },
+        {
+          "type": "commercial_case_study",
+          "settings": {
+            "customer_name": "Apex Specialty Hospital",
+            "location_load": "110 KW Load, Lucknow",
+            "old_bill": "₹2,10,000/mo",
+            "new_bill": "₹1,52,000/mo",
+            "cards_count": "⚡ 20 Commercial Cards",
+            "savings_summary": "Saved ₹58,000/mo (27.6%)",
+            "tag_1": "Diagnostic & Imaging Grid",
+            "tag_2": "Clean Room HVAC Chillers",
+            "tag_3": "Elevators & Pumps",
+            "tag_4": "Main HT/LT Substation"
+          }
+        },
+        {
+          "type": "commercial_case_study",
+          "settings": {
+            "customer_name": "Nexus IT Tech Park & Hub",
+            "location_load": "90 KW Load, Bengaluru",
+            "old_bill": "₹1,65,000/mo",
+            "new_bill": "₹1,18,000/mo",
+            "cards_count": "⚡ 16 Commercial Cards",
+            "savings_summary": "Saved ₹47,000/mo (28.5%)",
+            "tag_1": "Server Room Cooling Rack",
+            "tag_2": "Open Workstation Floor",
+            "tag_3": "Multi-Lift Elevators",
+            "tag_4": "Main Distribution Board"
+          }
+        },
+        {
+          "type": "commercial_case_study",
+          "settings": {
+            "customer_name": "Barbeque Grill Dining",
+            "location_load": "45 KW HVAC Load, Mumbai",
+            "old_bill": "₹78,000/mo",
+            "new_bill": "₹56,000/mo",
+            "cards_count": "⚡ 9 Commercial Cards",
+            "savings_summary": "Saved ₹22,000/mo (28.2%)",
+            "tag_1": "Kitchen Heavy Exhaust",
+            "tag_2": "Dining Area Split ACs",
+            "tag_3": "Tandoor & Induction Grids",
+            "tag_4": "3-Phase Commercial DB"
+          }
+        },
+        {
+          "type": "commercial_case_study",
+          "settings": {
+            "customer_name": "Royal Palms Luxury Resort",
+            "location_load": "130 KW Chiller Load, Goa",
+            "old_bill": "₹2,45,000/mo",
+            "new_bill": "₹1,76,000/mo",
+            "cards_count": "⚡ 23 Commercial Cards",
+            "savings_summary": "Saved ₹69,000/mo (28.2%)",
+            "tag_1": "Pool Booster Pumps",
+            "tag_2": "Villa Central Chiller",
+            "tag_3": "Clubhouse Lighting",
+            "tag_4": "Master HT Transformer DB"
+          }
+        },
+        {
+          "type": "commercial_case_study",
+          "settings": {
+            "customer_name": "Croma Mega Electronics",
+            "location_load": "50 KW Load, Ahmedabad",
+            "old_bill": "₹85,000/mo",
+            "new_bill": "₹61,000/mo",
+            "cards_count": "⚡ 10 Commercial Cards",
+            "savings_summary": "Saved ₹24,000/mo (28.2%)",
+            "tag_1": "Showroom Demo Floor Grid",
+            "tag_2": "Central Inverter AC",
+            "tag_3": "Glass Facade Lighting",
+            "tag_4": "Commercial MCB Panel"
+          }
+        },
+        {
+          "type": "commercial_case_study",
+          "settings": {
+            "customer_name": "HDFC Corporate Banking Hub",
+            "location_load": "40 KW Load, Pune",
+            "old_bill": "₹68,000/mo",
+            "new_bill": "₹49,000/mo",
+            "cards_count": "⚡ 8 Commercial Cards",
+            "savings_summary": "Saved ₹19,000/mo (27.9%)",
+            "tag_1": "Branch Cash Vault HVAC",
+            "tag_2": "ATM Kiosk Air Conditioners",
+            "tag_3": "Server UPS Bank",
+            "tag_4": "3-Phase Secure Mains DB"
+          }
+        },
+        {
+          "type": "commercial_case_study",
+          "settings": {
+            "customer_name": "Gold's Fitness Complex",
+            "location_load": "32 KW Heavy Load, Hyderabad",
+            "old_bill": "₹52,000/mo",
+            "new_bill": "₹37,500/mo",
+            "cards_count": "⚡ 7 Commercial Cards",
+            "savings_summary": "Saved ₹14,500/mo (27.9%)",
+            "tag_1": "Gym Floor Multi-ACs",
+            "tag_2": "Treadmills & Cardio Bank",
+            "tag_3": "Steam & Sauna Heaters",
+            "tag_4": "Main Heavy-Duty DB"
+          }
+        },
         { "type": "comm_mcb_installation", "settings": { "title": "Office 3-Phase DB #1", "category": "office", "badge": "OFFICE DB PANEL" } },
         { "type": "comm_mcb_installation", "settings": { "title": "Office 3-Phase DB #2", "category": "office", "badge": "OFFICE DB PANEL" } },
         { "type": "comm_mcb_installation", "settings": { "title": "Office 3-Phase DB #3", "category": "office", "badge": "OFFICE DB PANEL" } },
