@@ -2639,10 +2639,89 @@
     </div>
   </section>
 
+  <!-- ══ SECTION 8: SMART HOME ENERGY & MONTHLY BILL REDUCER CALCULATOR ══ -->
+  <section class="vsres-sec" id="vsres-calc-bottom" style="background:#fbf8f0; border-top:1.5px solid var(--line); padding:60px 0;">
+    <div class="wrap">
+      <div class="vsres-sec-head">
+        <div class="vsres-sec-eyebrow" style="background:#ffffff; border-color:#ec5c0a; color:#ec5c0a;">
+          <i class="fa-solid fa-calculator"></i> ⚡ SMART HOME BILL & TARIFF REDUCER
+        </div>
+        <h2 class="vsres-sec-title">Instant Residential <span>ROI & Electricity Bill Estimator</span></h2>
+        <p class="vsres-sec-desc">
+          Accurately calculate your required Vidhyut Saathi cards and monthly savings for all household appliances including multi-split ACs, submersible water pumps, and inverters.
+        </p>
+      </div>
+
+      <div class="vsres-calc-box" style="box-shadow:0 12px 36px rgba(236,92,10,0.08); border:2px solid #e7dcce;">
+        <!-- LEFT INPUTS -->
+        <div>
+          <!-- KW LOAD -->
+          <div class="vsres-field">
+            <div class="vsres-field-label">
+              <span>⚙️ HOME CONNECTED LOAD</span>
+              <span class="vsres-field-badge" id="vsres2_kw_badge">6 KW</span>
+            </div>
+            <input type="range" class="vsres-range-slider" id="vsres2_kw_slider" min="1" max="40" value="6" step="1">
+            <input type="number" class="vsres-num-input" id="vsres2_kw_num" value="6" min="1" max="100">
+          </div>
+
+          <!-- MONTHLY BILL -->
+          <div class="vsres-field">
+            <div class="vsres-field-label">
+              <span>💰 MONTHLY ELECTRICITY BILL</span>
+              <span class="vsres-field-badge" id="vsres2_bill_badge">₹6,000</span>
+            </div>
+            <input type="number" class="vsres-num-input" id="vsres2_bill_num" value="6000" min="500" step="500">
+          </div>
+
+          <!-- PHASE SELECTOR -->
+          <div class="vsres-field">
+            <div class="vsres-field-label">🔌 PHASE TYPE</div>
+            <div class="vsres-toggle-group">
+              <button class="vsres-toggle-btn active" id="vsres2_btn_single" onclick="vsres2SetPhase(false)">Single Phase</button>
+              <button class="vsres-toggle-btn" id="vsres2_btn_three" onclick="vsres2SetPhase(true)">Three Phase</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT OUTPUT -->
+        <div class="vsres-output-card">
+          <div>
+            <div class="vsres-res-label">RECOMMENDED RESIDENTIAL CARDS</div>
+            <div class="vsres-res-val">
+              <span id="vsres2_card_num">1</span>
+              <span id="vsres2_card_unit">Card</span>
+            </div>
+            <!-- Dynamic Mini Gold Cards Row -->
+            <div class="vsres-mini-cards-row" id="vsres2_mini_cards_row"></div>
+          </div>
+
+          <div class="vsres-savings-box" style="background:linear-gradient(135deg, #0a4a2c 0%, #ec5c0a 100%);">
+            <div>
+              <div class="vsres-savings-lbl">PROJECTED MONTHLY SAVINGS (20-30%)</div>
+              <div class="vsres-savings-amount" id="vsres2_savings_range">₹1,200 – ₹1,800 / mo</div>
+            </div>
+            <i class="fa-solid fa-piggy-bank" style="font-size:24px;"></i>
+          </div>
+
+          <div class="vsres-action-btns">
+            <a href="https://wa.me/919876543210?text=Hi%20Vidhyut%20Saathi%2C%20I%20want%20to%20order%20Residential%20Saver%20Cards" class="vsres-btn-wa" target="_blank">
+              <i class="fa-brands fa-whatsapp"></i> Buy on WhatsApp
+            </a>
+            <a href="tel:+919876543210" class="vsres-btn-phone">
+              <i class="fa-solid fa-phone"></i> Call Advisor
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
 </div>
 
 <script>
   var vsresThreePhase = false;
+  var vsres2ThreePhase = false;
 
   function vsresSync(fromSlider) {
     var kwSlider = document.getElementById('vsres_kw_slider');
@@ -2718,36 +2797,123 @@
     vsresSync(false);
   }
 
-  // Two-way interactive event binding for slider and text boxes
+  // Section 8 Calculator Synchronization
+  function vsres2Sync(fromSlider) {
+    var kwSlider = document.getElementById('vsres2_kw_slider');
+    var kwNum = document.getElementById('vsres2_kw_num');
+    var billNum = document.getElementById('vsres2_bill_num');
+    var kwBadge = document.getElementById('vsres2_kw_badge');
+    var billBadge = document.getElementById('vsres2_bill_badge');
+
+    if (!kwSlider || !kwNum || !billNum) return;
+
+    var kw;
+    if (fromSlider) {
+      kw = Math.max(1, parseInt(kwSlider.value) || 1);
+      kwNum.value = kw;
+    } else {
+      kw = Math.max(1, parseInt(kwNum.value) || 1);
+      kwSlider.value = Math.min(kw, 40);
+    }
+    var bill = Math.max(0, parseInt(billNum.value) || 0);
+
+    kwSlider.style.setProperty('--fill', (Math.min(kw, 40) / 40 * 100) + '%');
+    if (kwBadge) kwBadge.innerText = kw + ' KW';
+    if (billBadge) billBadge.innerText = '₹' + bill.toLocaleString('en-IN');
+
+    var kwCards = Math.max(1, Math.ceil(kw / 6));
+    var billCards = bill > 0 ? Math.max(1, Math.ceil(bill / 6000)) : 1;
+    var base = Math.max(kwCards, billCards);
+    var total = vsres2ThreePhase ? base + 1 : base;
+
+    var numCardEl = document.getElementById('vsres2_card_num');
+    var unitCardEl = document.getElementById('vsres2_card_unit');
+    if (numCardEl) numCardEl.innerText = total;
+    if (unitCardEl) unitCardEl.innerText = total > 1 ? 'Cards' : 'Card';
+
+    var miniCardsRow = document.getElementById('vsres2_mini_cards_row');
+    if (miniCardsRow) {
+      miniCardsRow.innerHTML = '';
+      var capped = Math.min(total, 30);
+      for (var i = 0; i < capped; i++) {
+        var icon = document.createElement('div');
+        icon.className = 'vsres-mini-card-icon';
+        icon.title = 'Residential Card ' + (i + 1);
+        miniCardsRow.appendChild(icon);
+      }
+      if (total > 30) {
+        var more = document.createElement('span');
+        more.style.cssText = 'font-family:Baloo 2,sans-serif;color:#ec5c0a;font-size:13px;font-weight:800;align-self:center;margin-left:4px;';
+        more.textContent = '+' + (total - 30) + ' more';
+        miniCardsRow.appendChild(more);
+      }
+    }
+
+    var sMin = Math.round((bill * 0.20) / 100) * 100;
+    var sMax = Math.round((bill * 0.30) / 100) * 100;
+    var savingsRangeEl = document.getElementById('vsres2_savings_range');
+    if (savingsRangeEl) {
+      savingsRangeEl.innerText = '₹' + sMin.toLocaleString('en-IN') + ' – ₹' + sMax.toLocaleString('en-IN') + ' / mo';
+    }
+  }
+
+  function vsres2SetPhase(isThree) {
+    vsres2ThreePhase = isThree;
+    var btnSingle = document.getElementById('vsres2_btn_single');
+    var btnThree = document.getElementById('vsres2_btn_three');
+    if (isThree) {
+      btnThree.classList.add('active');
+      btnSingle.classList.remove('active');
+    } else {
+      btnSingle.classList.add('active');
+      btnThree.classList.remove('active');
+    }
+    vsres2Sync(false);
+  }
+
+  // Two-way interactive event binding for Section 3
   var kwSliderElem = document.getElementById('vsres_kw_slider');
   if (kwSliderElem) {
-    kwSliderElem.addEventListener('input', function() {
-      vsresSync(true);
-    });
-    kwSliderElem.addEventListener('change', function() {
-      vsresSync(true);
-    });
+    kwSliderElem.addEventListener('input', function() { vsresSync(true); });
+    kwSliderElem.addEventListener('change', function() { vsresSync(true); });
   }
 
   var kwNumElem = document.getElementById('vsres_kw_num');
   if (kwNumElem) {
-    kwNumElem.addEventListener('input', function() {
-      vsresSync(false);
-    });
+    kwNumElem.addEventListener('input', function() { vsresSync(false); });
   }
 
   var billNumElem = document.getElementById('vsres_bill_num');
   if (billNumElem) {
-    billNumElem.addEventListener('input', function() {
-      vsresSync(false);
-    });
+    billNumElem.addEventListener('input', function() { vsresSync(false); });
+  }
+
+  // Two-way interactive event binding for Section 8
+  var kwSliderElem2 = document.getElementById('vsres2_kw_slider');
+  if (kwSliderElem2) {
+    kwSliderElem2.addEventListener('input', function() { vsres2Sync(true); });
+    kwSliderElem2.addEventListener('change', function() { vsres2Sync(true); });
+  }
+
+  var kwNumElem2 = document.getElementById('vsres2_kw_num');
+  if (kwNumElem2) {
+    kwNumElem2.addEventListener('input', function() { vsres2Sync(false); });
+  }
+
+  var billNumElem2 = document.getElementById('vsres2_bill_num');
+  if (billNumElem2) {
+    billNumElem2.addEventListener('input', function() { vsres2Sync(false); });
   }
 
   // Initial Sync
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function() { vsresSync(false); });
+    document.addEventListener('DOMContentLoaded', function() {
+      vsresSync(false);
+      vsres2Sync(false);
+    });
   } else {
     vsresSync(false);
+    vsres2Sync(false);
   }
 
   /* MCB GALLERY FILTER & LIGHTBOX */
