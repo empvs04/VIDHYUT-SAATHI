@@ -1,0 +1,723 @@
+{%- comment -%}
+  Vidhyut Saathi - Institutional 4:3 Banner Slider (Right-to-Left Continuous Marquee)
+  Aspect Ratio: 4:3 with Infinite Loop, Pause on Hover, Touch Drag, & Schema Block Customizer
+{%- endcomment -%}
+
+<style>
+  .vsinst-slider-section-{{ section.id }} {
+    width: 100%;
+    background: {{ section.settings.bg_color | default: '#fffdf5' }};
+    padding: {{ section.settings.padding_top | default: 60 }}px 0 {{ section.settings.padding_bottom | default: 70 }}px 0;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    border-top: 1.5px solid #fef08a;
+  }
+
+  .vsinst-slider-section-{{ section.id }} .wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  /* Header Styles */
+  .vsinst-slider-head {
+    text-align: center;
+    margin-bottom: 36px;
+    position: relative;
+  }
+
+  .vsinst-slider-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 11.5px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: #b45309;
+    background: #fef3c7;
+    border: 1px solid #fde68a;
+    padding: 6px 16px;
+    border-radius: 999px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 8px rgba(217, 119, 6, 0.08);
+  }
+
+  .vsinst-slider-title {
+    font-family: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
+    font-size: clamp(24px, 4vw, 36px);
+    font-weight: 800;
+    color: #0f172a;
+    margin: 0 0 10px 0;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+  }
+
+  .vsinst-slider-title span {
+    background: linear-gradient(135deg, #d97706 0%, #f59e0b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .vsinst-slider-desc {
+    font-size: 14.5px;
+    color: #64748b;
+    max-width: 620px;
+    margin: 0 auto;
+    line-height: 1.6;
+    font-weight: 500;
+  }
+
+  /* Slider Outer & Track */
+  .vsinst-marquee-outer {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding: 10px 0 20px 0;
+    mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+  }
+
+  .vsinst-marquee-track {
+    display: flex;
+    gap: 22px;
+    width: max-content;
+    animation: vsinstMarqueeLeft {{ section.settings.scroll_speed | default: 32 }}s linear infinite;
+    cursor: grab;
+    will-change: transform;
+  }
+
+  .vsinst-marquee-track:active {
+    cursor: grabbing;
+  }
+
+  {% if section.settings.pause_on_hover %}
+  .vsinst-marquee-outer:hover .vsinst-marquee-track {
+    animation-play-state: paused !important;
+  }
+  {% endif %}
+
+  @keyframes vsinstMarqueeLeft {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-50% - 11px));
+    }
+  }
+
+  /* 4:3 Banner Card Styles */
+  .vsinst-banner-card {
+    position: relative;
+    width: clamp(290px, 32vw, 380px);
+    aspect-ratio: 4 / 3;
+    flex-shrink: 0;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #0f172a;
+    border: 2px solid #fde68a;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08), 0 2px 8px rgba(217, 119, 6, 0.06);
+    transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .vsinst-banner-card:hover {
+    transform: translateY(-6px) scale(1.015);
+    box-shadow: 0 18px 40px rgba(217, 119, 6, 0.22), 0 4px 12px rgba(15, 23, 42, 0.12);
+    border-color: #f59e0b;
+  }
+
+  /* Card Image */
+  .vsinst-banner-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+    z-index: 1;
+  }
+
+  .vsinst-banner-card:hover .vsinst-banner-img {
+    transform: scale(1.08);
+  }
+
+  /* Gradient Overlay */
+  .vsinst-banner-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(15, 23, 42, 0.15) 0%, rgba(15, 23, 42, 0.45) 45%, rgba(15, 23, 42, 0.95) 100%);
+    z-index: 2;
+    transition: background 0.35s ease;
+  }
+
+  .vsinst-banner-card:hover .vsinst-banner-overlay {
+    background: linear-gradient(180deg, rgba(15, 23, 42, 0.05) 0%, rgba(15, 23, 42, 0.4) 40%, rgba(15, 23, 42, 0.98) 100%);
+  }
+
+  /* Top Badge */
+  .vsinst-card-top-badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    z-index: 3;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 999px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+  }
+
+  /* Aspect 4:3 Ratio Tag */
+  .vsinst-card-ratio-tag {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    z-index: 3;
+    font-size: 10px;
+    font-weight: 800;
+    font-family: 'Space Grotesk', monospace;
+    background: rgba(15, 23, 42, 0.65);
+    color: #fef08a;
+    border: 1px solid rgba(250, 204, 21, 0.4);
+    padding: 3px 8px;
+    border-radius: 6px;
+    backdrop-filter: blur(6px);
+  }
+
+  /* Card Content */
+  .vsinst-banner-content {
+    position: relative;
+    z-index: 3;
+    padding: 16px 18px;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .vsinst-banner-heading {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(15px, 1.8vw, 18px);
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .vsinst-banner-sub {
+    font-size: 12px;
+    color: #fef3c7;
+    margin: 0;
+    line-height: 1.45;
+    font-weight: 500;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .vsinst-banner-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 4px;
+    padding-top: 8px;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .vsinst-banner-btn {
+    font-size: 11.5px;
+    font-weight: 800;
+    color: #fbbf24;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: transform 0.2s, color 0.2s;
+  }
+
+  .vsinst-banner-card:hover .vsinst-banner-btn {
+    color: #fef08a;
+    transform: translateX(4px);
+  }
+
+  .vsinst-banner-stat {
+    font-size: 10.5px;
+    font-weight: 700;
+    color: #86efac;
+    background: rgba(34, 197, 94, 0.15);
+    border: 1px solid rgba(34, 197, 94, 0.35);
+    padding: 2px 8px;
+    border-radius: 999px;
+  }
+
+  /* Nav Controls & Drag Helpers */
+  .vsinst-slider-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 24px;
+  }
+
+  .vsinst-ctrl-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 1.5px solid #fde68a;
+    color: #b45309;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(217, 119, 6, 0.12);
+    transition: all 0.25s ease;
+  }
+
+  .vsinst-ctrl-btn:hover {
+    background: #f59e0b;
+    color: #ffffff;
+    border-color: #f59e0b;
+    transform: scale(1.08);
+  }
+
+  .vsinst-ctrl-badge {
+    font-size: 11.5px;
+    font-weight: 700;
+    color: #854d0e;
+    background: #fef3c7;
+    border: 1px solid #fde68a;
+    padding: 6px 14px;
+    border-radius: 50px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* Responsive Rules */
+  @media (max-width: 768px) {
+    .vsinst-slider-section-{{ section.id }} {
+      padding: 45px 0 50px 0;
+    }
+    .vsinst-banner-card {
+      width: 270px;
+      border-radius: 16px;
+    }
+    .vsinst-marquee-track {
+      gap: 16px;
+    }
+    .vsinst-banner-heading {
+      font-size: 14px;
+    }
+    .vsinst-banner-sub {
+      font-size: 11px;
+    }
+  }
+</style>
+
+<section class="vsinst-slider-section-{{ section.id }}" id="vsinst-banners-slider-{{ section.id }}">
+  <div class="wrap">
+    <div class="vsinst-slider-head">
+      {% if section.settings.eyebrow != blank %}
+        <div class="vsinst-slider-eyebrow">
+          <i class="fa-solid fa-layer-group"></i> {{ section.settings.eyebrow }}
+        </div>
+      {% endif %}
+
+      <h2 class="vsinst-slider-title">
+        {{ section.settings.heading | default: 'Institutional Showcase <span>& High-Power Solutions</span>' }}
+      </h2>
+
+      {% if section.settings.subheading != blank %}
+        <p class="vsinst-desc">{{ section.settings.subheading }}</p>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- RIGHT-TO-LEFT SMOOTH MARQUEE TRACK (DUPLICATED FOR INFINITE CONTINUOUS LOOP) -->
+  <div class="vsinst-marquee-outer" id="vsinstMarqueeOuter-{{ section.id }}">
+    <div class="vsinst-marquee-track" id="vsinstMarqueeTrack-{{ section.id }}">
+      
+      <!-- FIRST SET OF 4:3 CARDS -->
+      {% for block in section.blocks %}
+        {% assign img_url = '' %}
+        {% if block.settings.image != blank %}
+          {% assign img_url = block.settings.image | image_url: width: 900 %}
+        {% elsif forloop.index == 1 %}
+          {% assign img_url = 'commercial-building-2.png' | asset_url %}
+        {% elsif forloop.index == 2 %}
+          {% assign img_url = 'case-institutional.jpg' | asset_url %}
+        {% elsif forloop.index == 3 %}
+          {% assign img_url = 'commercial-building-1.png' | asset_url %}
+        {% elsif forloop.index == 4 %}
+          {% assign img_url = 'institutional-mcb-showcase-final.jpg' | asset_url %}
+        {% else %}
+          {% assign img_url = 'https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=800&q=80' %}
+        {% endif %}
+
+        <a href="{{ block.settings.link | default: '#vsinst-calc' }}" class="vsinst-banner-card" {{ block.shopify_attributes }} target="{% if block.settings.link contains 'http' or block.settings.link contains 'wa.me' %}_blank{% else %}_self{% endif %}">
+          <img src="{{ img_url }}" alt="{{ block.settings.title | escape }}" class="vsinst-banner-img" loading="lazy" onerror="this.onerror=null; this.src='https://cdn.shopify.com/s/files/1/0663/8783/7093/files/VS_Card_Final_Design_Golden_1.png';">
+          
+          <div class="vsinst-banner-overlay"></div>
+
+          {% if block.settings.badge != blank %}
+            <span class="vsinst-card-top-badge" style="background: {{ block.settings.badge_bg | default: '#d97706' }}; color: {{ block.settings.badge_color | default: '#ffffff' }};">
+              {{ block.settings.badge }}
+            </span>
+          {% endif %}
+
+          <span class="vsinst-card-ratio-tag">4:3</span>
+
+          <div class="vsinst-banner-content">
+            <h3 class="vsinst-banner-heading">{{ block.settings.title }}</h3>
+            {% if block.settings.description != blank %}
+              <p class="vsinst-banner-sub">{{ block.settings.description }}</p>
+            {% endif %}
+
+            <div class="vsinst-banner-footer">
+              <span class="vsinst-banner-btn">
+                {{ block.settings.button_text | default: 'Learn More' }} <i class="fa-solid fa-arrow-right-long"></i>
+              </span>
+              {% if block.settings.stat_tag != blank %}
+                <span class="vsinst-banner-stat">{{ block.settings.stat_tag }}</span>
+              {% endif %}
+            </div>
+          </div>
+        </a>
+      {% endfor %}
+
+      <!-- DUPLICATE SET FOR SEAMLESS 100% INFINITE LOOP -->
+      {% for block in section.blocks %}
+        {% assign img_url = '' %}
+        {% if block.settings.image != blank %}
+          {% assign img_url = block.settings.image | image_url: width: 900 %}
+        {% elsif forloop.index == 1 %}
+          {% assign img_url = 'commercial-building-2.png' | asset_url %}
+        {% elsif forloop.index == 2 %}
+          {% assign img_url = 'case-institutional.jpg' | asset_url %}
+        {% elsif forloop.index == 3 %}
+          {% assign img_url = 'commercial-building-1.png' | asset_url %}
+        {% elsif forloop.index == 4 %}
+          {% assign img_url = 'institutional-mcb-showcase-final.jpg' | asset_url %}
+        {% else %}
+          {% assign img_url = 'https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=800&q=80' %}
+        {% endif %}
+
+        <a href="{{ block.settings.link | default: '#vsinst-calc' }}" class="vsinst-banner-card" aria-hidden="true" tabindex="-1" target="{% if block.settings.link contains 'http' or block.settings.link contains 'wa.me' %}_blank{% else %}_self{% endif %}">
+          <img src="{{ img_url }}" alt="{{ block.settings.title | escape }}" class="vsinst-banner-img" loading="lazy" onerror="this.onerror=null; this.src='https://cdn.shopify.com/s/files/1/0663/8783/7093/files/VS_Card_Final_Design_Golden_1.png';">
+          
+          <div class="vsinst-banner-overlay"></div>
+
+          {% if block.settings.badge != blank %}
+            <span class="vsinst-card-top-badge" style="background: {{ block.settings.badge_bg | default: '#d97706' }}; color: {{ block.settings.badge_color | default: '#ffffff' }};">
+              {{ block.settings.badge }}
+            </span>
+          {% endif %}
+
+          <span class="vsinst-card-ratio-tag">4:3</span>
+
+          <div class="vsinst-banner-content">
+            <h3 class="vsinst-banner-heading">{{ block.settings.title }}</h3>
+            {% if block.settings.description != blank %}
+              <p class="vsinst-banner-sub">{{ block.settings.description }}</p>
+            {% endif %}
+
+            <div class="vsinst-banner-footer">
+              <span class="vsinst-banner-btn">
+                {{ block.settings.button_text | default: 'Learn More' }} <i class="fa-solid fa-arrow-right-long"></i>
+              </span>
+              {% if block.settings.stat_tag != blank %}
+                <span class="vsinst-banner-stat">{{ block.settings.stat_tag }}</span>
+              {% endif %}
+            </div>
+          </div>
+        </a>
+      {% endfor %}
+
+    </div>
+  </div>
+
+  <!-- INTERACTIVE CONTROLS -->
+  <div class="vsinst-slider-controls">
+    <button type="button" class="vsinst-ctrl-btn" id="vsinstPrev-{{ section.id }}" aria-label="Slide Left">
+      <i class="fa-solid fa-arrow-left"></i>
+    </button>
+    <div class="vsinst-ctrl-badge">
+      <i class="fa-solid fa-arrows-left-right" style="color:#d97706;"></i> Auto-Sliding Right to Left • Hover to Pause
+    </div>
+    <button type="button" class="vsinst-ctrl-btn" id="vsinstNext-{{ section.id }}" aria-label="Slide Right">
+      <i class="fa-solid fa-arrow-right"></i>
+    </button>
+  </div>
+</section>
+
+<script>
+  (function() {
+    var sectionId = '{{ section.id }}';
+    var outer = document.getElementById('vsinstMarqueeOuter-' + sectionId);
+    var track = document.getElementById('vsinstMarqueeTrack-' + sectionId);
+    var btnPrev = document.getElementById('vsinstPrev-' + sectionId);
+    var btnNext = document.getElementById('vsinstNext-' + sectionId);
+
+    if (!outer || !track) return;
+
+    // Arrow click adjustments for quick manual browsing
+    if (btnPrev) {
+      btnPrev.addEventListener('click', function() {
+        track.style.animationPlayState = 'paused';
+        outer.scrollBy({ left: -320, behavior: 'smooth' });
+        setTimeout(function() {
+          track.style.animationPlayState = '';
+        }, 2500);
+      });
+    }
+
+    if (btnNext) {
+      btnNext.addEventListener('click', function() {
+        track.style.animationPlayState = 'paused';
+        outer.scrollBy({ left: 320, behavior: 'smooth' });
+        setTimeout(function() {
+          track.style.animationPlayState = '';
+        }, 2500);
+      });
+    }
+
+    // Touch Drag support
+    var isDown = false;
+    var startX, scrollLeft;
+    outer.addEventListener('mousedown', function(e) {
+      isDown = true;
+      startX = e.pageX - outer.offsetLeft;
+      scrollLeft = outer.scrollLeft;
+      track.style.animationPlayState = 'paused';
+    });
+    window.addEventListener('mouseup', function() {
+      if (!isDown) return;
+      isDown = false;
+      track.style.animationPlayState = '';
+    });
+    outer.addEventListener('mousemove', function(e) {
+      if (!isDown) return;
+      e.preventDefault();
+      var x = e.pageX - outer.offsetLeft;
+      var walk = (x - startX) * 1.5;
+      outer.scrollLeft = scrollLeft - walk;
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Institutional 4:3 Slider",
+  "tag": "section",
+  "class": "vsinst-banner-slider-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow Badge",
+      "default": "🏛️ INSTITUTIONAL SPOTLIGHT & BANNERS"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "Institutional Showcase <span>& High-Power Solutions</span>"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Explore verified installations, continuous 3-phase power management, and DISCOM tariff optimization for hospitals, universities, and administrative complexes."
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#fffdf5"
+    },
+    {
+      "type": "range",
+      "id": "scroll_speed",
+      "min": 15,
+      "max": 60,
+      "step": 1,
+      "unit": "s",
+      "label": "Right-to-Left Scroll Duration",
+      "default": 30
+    },
+    {
+      "type": "checkbox",
+      "id": "pause_on_hover",
+      "label": "Pause Auto-Slide on Hover",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 20,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 20,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 70
+    }
+  ],
+  "blocks": [
+    {
+      "type": "banner_card",
+      "name": "4:3 Banner Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Card Banner Image (4:3 Recommended)"
+        },
+        {
+          "type": "text",
+          "id": "badge",
+          "label": "Top Badge Text",
+          "default": "🏥 HEALTHCARE CRITICAL"
+        },
+        {
+          "type": "color",
+          "id": "badge_bg",
+          "label": "Badge Background Color",
+          "default": "#d97706"
+        },
+        {
+          "type": "color",
+          "id": "badge_color",
+          "label": "Badge Text Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Banner Title",
+          "default": "24/7 ICU & Diagnostic Zero-Spike Power"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Banner Subtitle / Description",
+          "default": "Stabilizing sensitive MRI, CT & surgical suites with 20%–30% DISCOM bill reduction."
+        },
+        {
+          "type": "text",
+          "id": "stat_tag",
+          "label": "Stat Tag",
+          "default": "⚡ 28% Saved"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text",
+          "default": "Explore Setup"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Banner Link URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Institutional 4:3 Slider",
+      "blocks": [
+        {
+          "type": "banner_card",
+          "settings": {
+            "badge": "🏥 HEALTHCARE CRITICAL",
+            "badge_bg": "#d97706",
+            "title": "24/7 ICU & Diagnostic Zero-Spike Power",
+            "description": "Stabilizing sensitive MRI, CT & surgical suites with 20%–30% genuine bill reduction.",
+            "stat_tag": "⚡ 28.5% Saved",
+            "button_text": "View Medical Setup",
+            "link": "#vsinst-calc"
+          }
+        },
+        {
+          "type": "banner_card",
+          "settings": {
+            "badge": "🎓 CAMPUS INFRASTRUCTURE",
+            "badge_bg": "#7c3aed",
+            "title": "Centralized HVAC & Research Lab Efficiency",
+            "description": "Heavy 3-phase LT panel power factor correction across universities & academic blocks.",
+            "stat_tag": "⚡ 28.0% Saved",
+            "button_text": "View Campus Setup",
+            "link": "#vsinst-calc"
+          }
+        },
+        {
+          "type": "banner_card",
+          "settings": {
+            "badge": "🏫 INSTITUTIONAL HUBS",
+            "badge_bg": "#059669",
+            "title": "Smart Power Management for CBSE Campuses",
+            "description": "Safe, eco-certified power conservation for auditoriums, smart classes & labs.",
+            "stat_tag": "⚡ 28.1% Saved",
+            "button_text": "View School Setup",
+            "link": "#vsinst-calc"
+          }
+        },
+        {
+          "type": "banner_card",
+          "settings": {
+            "badge": "🏛️ GOVT & PUBLIC BUILDINGS",
+            "badge_bg": "#b45309",
+            "title": "DISCOM Non-Domestic Tariff Slashing",
+            "description": "Proven ₹1,00,000+ monthly budget savings with 10-year maintenance-free durability.",
+            "stat_tag": "⚡ 28.4% Saved",
+            "button_text": "View Govt Case",
+            "link": "#vsinst-calc"
+          }
+        },
+        {
+          "type": "banner_card",
+          "settings": {
+            "badge": "⚡ 0.99 POWER FACTOR",
+            "badge_bg": "#ea580c",
+            "title": "Continuous 3-Phase Substation Load Balancing",
+            "description": "Protecting high-load diagnostic scanners and centralized chillers with zero downtime.",
+            "stat_tag": "⚡ Surge Protected",
+            "button_text": "Calculate Cards",
+            "link": "#vsinst-calc"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
