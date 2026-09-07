@@ -2218,10 +2218,10 @@
       </div>
     </div>
 
-    <!-- FRAMED SLIDER STRIP (TOP & BOTTOM THICK LINES) -->
-    <div class="vsinst-slider-strip-wrap" style="position:relative; width:100%; border-top:4px solid #d97706; border-bottom:4px solid #d97706; padding:24px 0; background:#fffef9; box-shadow:inset 0 6px 16px rgba(217, 119, 6, 0.04), inset 0 -6px 16px rgba(217, 119, 6, 0.04);">
-      <div class="vsinst-marquee-outer" id="vsinstMarqueeOuterLayout" style="position:relative; width:100%; overflow:hidden; mask-image:linear-gradient(to right, transparent, black 2.5%, black 97.5%, transparent); -webkit-mask-image:linear-gradient(to right, transparent, black 2.5%, black 97.5%, transparent);">
-        <div class="vsinst-marquee-track" id="vsinstMarqueeTrackLayout" style="display:flex; align-items:center; gap:24px; width:max-content; animation:vsinstMarqueeLeftLayout 30s linear infinite; cursor:grab; will-change:transform; padding:6px 0;">
+    <!-- FRAMED SLIDER STRIP (FLUSH TOP & BOTTOM THICK LINES) -->
+    <div class="vsinst-slider-strip-wrap" style="position:relative; width:100%; border-top:4px solid #d97706; border-bottom:4px solid #d97706; padding:0; margin:0; background:#0f172a; line-height:0;">
+      <div class="vsinst-marquee-outer" id="vsinstMarqueeOuterLayout" style="position:relative; width:100%; overflow:hidden; padding:0; margin:0; mask-image:linear-gradient(to right, transparent, black 2%, black 98%, transparent); -webkit-mask-image:linear-gradient(to right, transparent, black 2%, black 98%, transparent);">
+        <div class="vsinst-marquee-track" id="vsinstMarqueeTrackLayout" style="display:flex; align-items:stretch; gap:0; width:max-content; animation:vsinstMarqueeLeftLayout 30s linear infinite; cursor:grab; will-change:transform; padding:0; margin:0;">
           
           <!-- PASS 1: 5 TO 10 CARDS -->
           {% for i in (1..10) %}
@@ -2254,7 +2254,7 @@
               </a>
 
               <!-- STRAIGHT VERTICAL THICK DIVIDER -->
-              <div class="vsinst-card-divider" style="width:4px; height:clamp(190px, 21vw, 275px); background:#d97706; border-radius:2px; flex-shrink:0; align-self:center; box-shadow:0 0 10px rgba(217,119,6,0.3);"></div>
+              <div class="vsinst-card-divider" style="width:4px; background:#d97706; border-radius:0; flex-shrink:0; align-self:stretch; margin:0; padding:0;"></div>
             {% endif %}
           {% endfor %}
 
@@ -2289,7 +2289,7 @@
               </a>
 
               <!-- STRAIGHT VERTICAL THICK DIVIDER -->
-              <div class="vsinst-card-divider" style="width:4px; height:clamp(190px, 21vw, 275px); background:#d97706; border-radius:2px; flex-shrink:0; align-self:center; box-shadow:0 0 10px rgba(217,119,6,0.3);"></div>
+              <div class="vsinst-card-divider" style="width:4px; background:#d97706; border-radius:0; flex-shrink:0; align-self:stretch; margin:0; padding:0;"></div>
             {% endif %}
           {% endfor %}
 
@@ -2314,22 +2314,19 @@
   <style>
     .vsinst-slider-section .vsinst-banner-card {
       position: relative;
-      width: clamp(290px, 32vw, 420px);
+      width: clamp(290px, 32vw, 440px);
       aspect-ratio: 3 / 2;
       flex-shrink: 0;
-      border-radius: 16px;
+      border-radius: 0;
       overflow: hidden;
       background: #f1f5f9;
-      border: 2px solid #fde68a;
-      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08), 0 2px 6px rgba(217, 119, 6, 0.06);
-      transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+      border: none;
+      box-shadow: none;
       text-decoration: none;
       display: block;
-    }
-    .vsinst-slider-section .vsinst-banner-card:hover {
-      transform: translateY(-6px) scale(1.02);
-      box-shadow: 0 16px 36px rgba(217, 119, 6, 0.2), 0 4px 12px rgba(15, 23, 42, 0.12);
-      border-color: #f59e0b;
+      margin: 0;
+      padding: 0;
+      line-height: 0;
     }
     .vsinst-slider-section .vsinst-banner-img {
       width: 100%;
@@ -2339,7 +2336,7 @@
       transition: transform 0.5s ease;
     }
     .vsinst-slider-section .vsinst-banner-card:hover .vsinst-banner-img {
-      transform: scale(1.05);
+      transform: scale(1.06);
     }
     @keyframes vsinstMarqueeLeftLayout {
       0% { transform: translateX(0); }
@@ -2352,16 +2349,8 @@
       .vsinst-slider-section {
         padding: 38px 0 42px 0;
       }
-      .vsinst-slider-strip-wrap {
-        padding: 18px 0 !important;
-      }
       .vsinst-slider-section .vsinst-banner-card {
         width: 260px;
-        border-radius: 13px;
-      }
-      .vsinst-slider-section .vsinst-card-divider {
-        height: 170px !important;
-        width: 3.5px !important;
       }
     }
   </style>
