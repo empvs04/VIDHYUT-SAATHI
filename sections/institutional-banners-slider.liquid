@@ -1,13 +1,13 @@
 {%- comment -%}
-  Vidhyut Saathi - Institutional 4:3 Banner Slider (Right-to-Left Continuous Marquee)
-  Supports both Section-Level Settings (Cards 1-10) and Dynamic Blocks with 100% Fallback Cards
+  Vidhyut Saathi - Institutional 4:3 Banner Slider (Clean Image Banners, Right-to-Left Continuous Marquee)
+  Supports both Section-Level Image Settings (Cards 1-10) and Dynamic Blocks with 100% Full-Bleed 4:3 Images
 {%- endcomment -%}
 
 <style>
   .vsinst-slider-section-{{ section.id }} {
     width: 100%;
     background: {{ section.settings.bg_color | default: '#fffdf5' }};
-    padding: {{ section.settings.padding_top | default: 60 }}px 0 {{ section.settings.padding_bottom | default: 70 }}px 0;
+    padding: {{ section.settings.padding_top | default: 50 }}px 0 {{ section.settings.padding_bottom | default: 60 }}px 0;
     position: relative;
     overflow: hidden;
     font-family: 'Plus Jakarta Sans', sans-serif;
@@ -23,7 +23,7 @@
   /* Header Styles */
   .vsinst-slider-head {
     text-align: center;
-    margin-bottom: 36px;
+    margin-bottom: 30px;
     position: relative;
   }
 
@@ -74,14 +74,14 @@
     position: relative;
     width: 100%;
     overflow: hidden;
-    padding: 10px 0 20px 0;
+    padding: 10px 0 16px 0;
     mask-image: linear-gradient(to right, transparent, black 3%, black 97%, transparent);
     -webkit-mask-image: linear-gradient(to right, transparent, black 3%, black 97%, transparent);
   }
 
   .vsinst-marquee-track {
     display: flex;
-    gap: 22px;
+    gap: 20px;
     width: max-content;
     animation: vsinstMarqueeLeft-{{ section.id }} {{ section.settings.scroll_speed | default: 30 }}s linear infinite;
     cursor: grab;
@@ -107,165 +107,39 @@
     }
   }
 
-  /* 4:3 Banner Card Styles */
+  /* Clean 4:3 Banner Card Styles */
   .vsinst-banner-card {
     position: relative;
-    width: clamp(290px, 32vw, 380px);
+    width: clamp(280px, 30vw, 380px);
     aspect-ratio: 4 / 3;
     flex-shrink: 0;
-    border-radius: 20px;
+    border-radius: 18px;
     overflow: hidden;
-    background: #0f172a;
+    background: #f1f5f9;
     border: 2px solid #fde68a;
-    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08), 0 2px 8px rgba(217, 119, 6, 0.06);
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08), 0 2px 6px rgba(217, 119, 6, 0.06);
     transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease, border-color 0.35s ease;
     text-decoration: none;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+    display: block;
   }
 
   .vsinst-banner-card:hover {
-    transform: translateY(-6px) scale(1.015);
-    box-shadow: 0 18px 40px rgba(217, 119, 6, 0.22), 0 4px 12px rgba(15, 23, 42, 0.12);
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 16px 36px rgba(217, 119, 6, 0.2), 0 4px 12px rgba(15, 23, 42, 0.12);
     border-color: #f59e0b;
   }
 
-  /* Card Image */
+  /* Card Image Full-Bleed */
   .vsinst-banner-img {
-    position: absolute;
-    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform 0.6s ease;
-    z-index: 1;
+    transition: transform 0.5s ease;
   }
 
   .vsinst-banner-card:hover .vsinst-banner-img {
-    transform: scale(1.08);
-  }
-
-  /* Gradient Overlay */
-  .vsinst-banner-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, rgba(15, 23, 42, 0.15) 0%, rgba(15, 23, 42, 0.5) 45%, rgba(15, 23, 42, 0.95) 100%);
-    z-index: 2;
-    transition: background 0.35s ease;
-  }
-
-  .vsinst-banner-card:hover .vsinst-banner-overlay {
-    background: linear-gradient(180deg, rgba(15, 23, 42, 0.05) 0%, rgba(15, 23, 42, 0.45) 40%, rgba(15, 23, 42, 0.98) 100%);
-  }
-
-  /* Top Badge */
-  .vsinst-card-top-badge {
-    position: absolute;
-    top: 14px;
-    left: 14px;
-    z-index: 3;
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 0.8px;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    border-radius: 999px;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-    border: 1px solid rgba(255, 255, 255, 0.25);
-  }
-
-  /* Aspect 4:3 Ratio Tag */
-  .vsinst-card-ratio-tag {
-    position: absolute;
-    top: 14px;
-    right: 14px;
-    z-index: 3;
-    font-size: 10px;
-    font-weight: 800;
-    font-family: 'Space Grotesk', monospace;
-    background: rgba(15, 23, 42, 0.65);
-    color: #fef08a;
-    border: 1px solid rgba(250, 204, 21, 0.4);
-    padding: 3px 8px;
-    border-radius: 6px;
-    backdrop-filter: blur(6px);
-  }
-
-  /* Card Content */
-  .vsinst-banner-content {
-    position: relative;
-    z-index: 3;
-    padding: 16px 18px;
-    color: #ffffff;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-
-  .vsinst-banner-heading {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: clamp(15px, 1.8vw, 18px);
-    font-weight: 800;
-    color: #ffffff;
-    margin: 0;
-    line-height: 1.3;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  .vsinst-banner-sub {
-    font-size: 12px;
-    color: #fef3c7;
-    margin: 0;
-    line-height: 1.45;
-    font-weight: 500;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  .vsinst-banner-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 4px;
-    padding-top: 8px;
-    border-top: 1px solid rgba(255, 255, 255, 0.15);
-  }
-
-  .vsinst-banner-btn {
-    font-size: 11.5px;
-    font-weight: 800;
-    color: #fbbf24;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    transition: transform 0.2s, color 0.2s;
-  }
-
-  .vsinst-banner-card:hover .vsinst-banner-btn {
-    color: #fef08a;
-    transform: translateX(4px);
-  }
-
-  .vsinst-banner-stat {
-    font-size: 10.5px;
-    font-weight: 700;
-    color: #86efac;
-    background: rgba(34, 197, 94, 0.15);
-    border: 1px solid rgba(34, 197, 94, 0.35);
-    padding: 2px 8px;
-    border-radius: 999px;
+    transform: scale(1.05);
   }
 
   /* Nav Controls & Drag Helpers */
@@ -274,12 +148,12 @@
     align-items: center;
     justify-content: center;
     gap: 14px;
-    margin-top: 24px;
+    margin-top: 20px;
   }
 
   .vsinst-ctrl-btn {
-    width: 42px;
-    height: 42px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     background: #ffffff;
     border: 1.5px solid #fde68a;
@@ -316,20 +190,14 @@
   /* Responsive Rules */
   @media (max-width: 768px) {
     .vsinst-slider-section-{{ section.id }} {
-      padding: 45px 0 50px 0;
+      padding: 40px 0 45px 0;
     }
     .vsinst-banner-card {
-      width: 270px;
-      border-radius: 16px;
+      width: 260px;
+      border-radius: 14px;
     }
     .vsinst-marquee-track {
-      gap: 16px;
-    }
-    .vsinst-banner-heading {
-      font-size: 14px;
-    }
-    .vsinst-banner-sub {
-      font-size: 11px;
+      gap: 14px;
     }
   }
 </style>
@@ -376,33 +244,7 @@
           {% endif %}
 
           <a href="{{ block.settings.link | default: '#vsinst-calc' }}" class="vsinst-banner-card" {{ block.shopify_attributes }} target="{% if block.settings.link contains 'http' or block.settings.link contains 'wa.me' %}_blank{% else %}_self{% endif %}">
-            <img src="{{ img_url }}" alt="{{ block.settings.title | escape }}" class="vsinst-banner-img" loading="lazy" onerror="this.onerror=null; this.src='https://cdn.shopify.com/s/files/1/0663/8783/7093/files/VS_Card_Final_Design_Golden_1.png';">
-            
-            <div class="vsinst-banner-overlay"></div>
-
-            {% if block.settings.badge != blank %}
-              <span class="vsinst-card-top-badge" style="background: {{ block.settings.badge_bg | default: '#d97706' }}; color: {{ block.settings.badge_color | default: '#ffffff' }};">
-                {{ block.settings.badge }}
-              </span>
-            {% endif %}
-
-            <span class="vsinst-card-ratio-tag">4:3</span>
-
-            <div class="vsinst-banner-content">
-              <h3 class="vsinst-banner-heading">{{ block.settings.title }}</h3>
-              {% if block.settings.description != blank %}
-                <p class="vsinst-banner-sub">{{ block.settings.description }}</p>
-              {% endif %}
-
-              <div class="vsinst-banner-footer">
-                <span class="vsinst-banner-btn">
-                  {{ block.settings.button_text | default: 'Explore Setup' }} <i class="fa-solid fa-arrow-right-long"></i>
-                </span>
-                {% if block.settings.stat_tag != blank %}
-                  <span class="vsinst-banner-stat">{{ block.settings.stat_tag }}</span>
-                {% endif %}
-              </div>
-            </div>
+            <img src="{{ img_url }}" alt="Institutional Banner" class="vsinst-banner-img" loading="lazy" onerror="this.onerror=null; this.src='https://cdn.shopify.com/s/files/1/0663/8783/7093/files/VS_Card_Final_Design_Golden_1.png';">
           </a>
         {% endfor %}
 
@@ -410,62 +252,13 @@
         <!-- SECTION SETTINGS FALLBACK CARDS (CARDS 1 TO 10) -->
         {% for i in (1..10) %}
           {% capture img_key %}banner_img_{{ i }}{% endcapture %}
-          {% capture badge_key %}banner_badge_{{ i }}{% endcapture %}
-          {% capture title_key %}banner_title_{{ i }}{% endcapture %}
-          {% capture desc_key %}banner_desc_{{ i }}{% endcapture %}
-          {% capture stat_key %}banner_stat_{{ i }}{% endcapture %}
-          {% capture btn_key %}banner_btn_{{ i }}{% endcapture %}
           {% capture link_key %}banner_link_{{ i }}{% endcapture %}
-          {% capture badge_bg_key %}banner_badge_bg_{{ i }}{% endcapture %}
 
           {% assign card_img = section.settings[img_key] %}
-          {% assign card_badge = section.settings[badge_key] %}
-          {% assign card_title = section.settings[title_key] %}
-          {% assign card_desc = section.settings[desc_key] %}
-          {% assign card_stat = section.settings[stat_key] %}
-          {% assign card_btn = section.settings[btn_key] %}
           {% assign card_link = section.settings[link_key] %}
-          {% assign card_badge_bg = section.settings[badge_bg_key] | default: '#d97706' %}
 
-          {%- comment -%} DEFAULT HARDCODED CONTENT FOR FIRST 5 CARDS IF SETTINGS ARE BLANK {%- endcomment -%}
-          {% if i == 1 and card_title == blank %}
-            {% assign card_badge = '🏥 HEALTHCARE CRITICAL' %}
-            {% assign card_title = '24/7 ICU & Diagnostic Zero-Spike Power' %}
-            {% assign card_desc = 'Stabilizing sensitive MRI, CT & surgical suites with 20%–30% genuine bill reduction.' %}
-            {% assign card_stat = '⚡ 28.5% Saved' %}
-            {% assign card_btn = 'View Medical Setup' %}
-            {% assign card_badge_bg = '#d97706' %}
-          {% elsif i == 2 and card_title == blank %}
-            {% assign card_badge = '🎓 CAMPUS INFRASTRUCTURE' %}
-            {% assign card_title = 'Centralized HVAC & Research Lab Efficiency' %}
-            {% assign card_desc = 'Heavy 3-phase LT panel power factor correction across universities & academic blocks.' %}
-            {% assign card_stat = '⚡ 28.0% Saved' %}
-            {% assign card_btn = 'View Campus Setup' %}
-            {% assign card_badge_bg = '#7c3aed' %}
-          {% elsif i == 3 and card_title == blank %}
-            {% assign card_badge = '🏫 INSTITUTIONAL HUBS' %}
-            {% assign card_title = 'Smart Power Management for CBSE Campuses' %}
-            {% assign card_desc = 'Safe, eco-certified power conservation for auditoriums, smart classes & labs.' %}
-            {% assign card_stat = '⚡ 28.1% Saved' %}
-            {% assign card_btn = 'View School Setup' %}
-            {% assign card_badge_bg = '#059669' %}
-          {% elsif i == 4 and card_title == blank %}
-            {% assign card_badge = '🏛️ GOVT & PUBLIC BUILDINGS' %}
-            {% assign card_title = 'DISCOM Non-Domestic Tariff Slashing' %}
-            {% assign card_desc = 'Proven ₹1,00,000+ monthly budget savings with 10-year maintenance-free durability.' %}
-            {% assign card_stat = '⚡ 28.4% Saved' %}
-            {% assign card_btn = 'View Govt Case' %}
-            {% assign card_badge_bg = '#b45309' %}
-          {% elsif i == 5 and card_title == blank %}
-            {% assign card_badge = '⚡ 0.99 POWER FACTOR' %}
-            {% assign card_title = 'Continuous 3-Phase Substation Load Balancing' %}
-            {% assign card_desc = 'Protecting high-load diagnostic scanners and centralized chillers with zero downtime.' %}
-            {% assign card_stat = '⚡ Surge Protected' %}
-            {% assign card_btn = 'Calculate Cards' %}
-            {% assign card_badge_bg = '#ea580c' %}
-          {% endif %}
-
-          {% if card_title != blank %}
+          {%- comment -%} Only show card if user configured image or it is one of the 5 default cards {%- endcomment -%}
+          {% if card_img != blank or i <= 5 %}
             {% assign img_url = '' %}
             {% if card_img != blank %}
               {% assign img_url = card_img | image_url: width: 900 %}
@@ -484,33 +277,7 @@
             {% endif %}
 
             <a href="{{ card_link | default: '#vsinst-calc' }}" class="vsinst-banner-card" target="{% if card_link contains 'http' or card_link contains 'wa.me' %}_blank{% else %}_self{% endif %}">
-              <img src="{{ img_url }}" alt="{{ card_title | escape }}" class="vsinst-banner-img" loading="lazy" onerror="this.onerror=null; this.src='https://cdn.shopify.com/s/files/1/0663/8783/7093/files/VS_Card_Final_Design_Golden_1.png';">
-              
-              <div class="vsinst-banner-overlay"></div>
-
-              {% if card_badge != blank %}
-                <span class="vsinst-card-top-badge" style="background: {{ card_badge_bg }}; color: #ffffff;">
-                  {{ card_badge }}
-                </span>
-              {% endif %}
-
-              <span class="vsinst-card-ratio-tag">4:3</span>
-
-              <div class="vsinst-banner-content">
-                <h3 class="vsinst-banner-heading">{{ card_title }}</h3>
-                {% if card_desc != blank %}
-                  <p class="vsinst-banner-sub">{{ card_desc }}</p>
-                {% endif %}
-
-                <div class="vsinst-banner-footer">
-                  <span class="vsinst-banner-btn">
-                    {{ card_btn | default: 'Explore Setup' }} <i class="fa-solid fa-arrow-right-long"></i>
-                  </span>
-                  {% if card_stat != blank %}
-                    <span class="vsinst-banner-stat">{{ card_stat }}</span>
-                  {% endif %}
-                </div>
-              </div>
+              <img src="{{ img_url }}" alt="Institutional Banner" class="vsinst-banner-img" loading="lazy" onerror="this.onerror=null; this.src='https://cdn.shopify.com/s/files/1/0663/8783/7093/files/VS_Card_Final_Design_Golden_1.png';">
             </a>
           {% endif %}
         {% endfor %}
@@ -535,33 +302,7 @@
           {% endif %}
 
           <a href="{{ block.settings.link | default: '#vsinst-calc' }}" class="vsinst-banner-card" aria-hidden="true" tabindex="-1" target="{% if block.settings.link contains 'http' or block.settings.link contains 'wa.me' %}_blank{% else %}_self{% endif %}">
-            <img src="{{ img_url }}" alt="{{ block.settings.title | escape }}" class="vsinst-banner-img" loading="lazy" onerror="this.onerror=null; this.src='https://cdn.shopify.com/s/files/1/0663/8783/7093/files/VS_Card_Final_Design_Golden_1.png';">
-            
-            <div class="vsinst-banner-overlay"></div>
-
-            {% if block.settings.badge != blank %}
-              <span class="vsinst-card-top-badge" style="background: {{ block.settings.badge_bg | default: '#d97706' }}; color: {{ block.settings.badge_color | default: '#ffffff' }};">
-                {{ block.settings.badge }}
-              </span>
-            {% endif %}
-
-            <span class="vsinst-card-ratio-tag">4:3</span>
-
-            <div class="vsinst-banner-content">
-              <h3 class="vsinst-banner-heading">{{ block.settings.title }}</h3>
-              {% if block.settings.description != blank %}
-                <p class="vsinst-banner-sub">{{ block.settings.description }}</p>
-              {% endif %}
-
-              <div class="vsinst-banner-footer">
-                <span class="vsinst-banner-btn">
-                  {{ block.settings.button_text | default: 'Explore Setup' }} <i class="fa-solid fa-arrow-right-long"></i>
-                </span>
-                {% if block.settings.stat_tag != blank %}
-                  <span class="vsinst-banner-stat">{{ block.settings.stat_tag }}</span>
-                {% endif %}
-              </div>
-            </div>
+            <img src="{{ img_url }}" alt="Institutional Banner" class="vsinst-banner-img" loading="lazy" onerror="this.onerror=null; this.src='https://cdn.shopify.com/s/files/1/0663/8783/7093/files/VS_Card_Final_Design_Golden_1.png';">
           </a>
         {% endfor %}
 
@@ -569,61 +310,12 @@
         <!-- DUPLICATE PASS FOR SETTINGS FALLBACK CARDS -->
         {% for i in (1..10) %}
           {% capture img_key %}banner_img_{{ i }}{% endcapture %}
-          {% capture badge_key %}banner_badge_{{ i }}{% endcapture %}
-          {% capture title_key %}banner_title_{{ i }}{% endcapture %}
-          {% capture desc_key %}banner_desc_{{ i }}{% endcapture %}
-          {% capture stat_key %}banner_stat_{{ i }}{% endcapture %}
-          {% capture btn_key %}banner_btn_{{ i }}{% endcapture %}
           {% capture link_key %}banner_link_{{ i }}{% endcapture %}
-          {% capture badge_bg_key %}banner_badge_bg_{{ i }}{% endcapture %}
 
           {% assign card_img = section.settings[img_key] %}
-          {% assign card_badge = section.settings[badge_key] %}
-          {% assign card_title = section.settings[title_key] %}
-          {% assign card_desc = section.settings[desc_key] %}
-          {% assign card_stat = section.settings[stat_key] %}
-          {% assign card_btn = section.settings[btn_key] %}
           {% assign card_link = section.settings[link_key] %}
-          {% assign card_badge_bg = section.settings[badge_bg_key] | default: '#d97706' %}
 
-          {% if i == 1 and card_title == blank %}
-            {% assign card_badge = '🏥 HEALTHCARE CRITICAL' %}
-            {% assign card_title = '24/7 ICU & Diagnostic Zero-Spike Power' %}
-            {% assign card_desc = 'Stabilizing sensitive MRI, CT & surgical suites with 20%–30% genuine bill reduction.' %}
-            {% assign card_stat = '⚡ 28.5% Saved' %}
-            {% assign card_btn = 'View Medical Setup' %}
-            {% assign card_badge_bg = '#d97706' %}
-          {% elsif i == 2 and card_title == blank %}
-            {% assign card_badge = '🎓 CAMPUS INFRASTRUCTURE' %}
-            {% assign card_title = 'Centralized HVAC & Research Lab Efficiency' %}
-            {% assign card_desc = 'Heavy 3-phase LT panel power factor correction across universities & academic blocks.' %}
-            {% assign card_stat = '⚡ 28.0% Saved' %}
-            {% assign card_btn = 'View Campus Setup' %}
-            {% assign card_badge_bg = '#7c3aed' %}
-          {% elsif i == 3 and card_title == blank %}
-            {% assign card_badge = '🏫 INSTITUTIONAL HUBS' %}
-            {% assign card_title = 'Smart Power Management for CBSE Campuses' %}
-            {% assign card_desc = 'Safe, eco-certified power conservation for auditoriums, smart classes & labs.' %}
-            {% assign card_stat = '⚡ 28.1% Saved' %}
-            {% assign card_btn = 'View School Setup' %}
-            {% assign card_badge_bg = '#059669' %}
-          {% elsif i == 4 and card_title == blank %}
-            {% assign card_badge = '🏛️ GOVT & PUBLIC BUILDINGS' %}
-            {% assign card_title = 'DISCOM Non-Domestic Tariff Slashing' %}
-            {% assign card_desc = 'Proven ₹1,00,000+ monthly budget savings with 10-year maintenance-free durability.' %}
-            {% assign card_stat = '⚡ 28.4% Saved' %}
-            {% assign card_btn = 'View Govt Case' %}
-            {% assign card_badge_bg = '#b45309' %}
-          {% elsif i == 5 and card_title == blank %}
-            {% assign card_badge = '⚡ 0.99 POWER FACTOR' %}
-            {% assign card_title = 'Continuous 3-Phase Substation Load Balancing' %}
-            {% assign card_desc = 'Protecting high-load diagnostic scanners and centralized chillers with zero downtime.' %}
-            {% assign card_stat = '⚡ Surge Protected' %}
-            {% assign card_btn = 'Calculate Cards' %}
-            {% assign card_badge_bg = '#ea580c' %}
-          {% endif %}
-
-          {% if card_title != blank %}
+          {% if card_img != blank or i <= 5 %}
             {% assign img_url = '' %}
             {% if card_img != blank %}
               {% assign img_url = card_img | image_url: width: 900 %}
@@ -642,33 +334,7 @@
             {% endif %}
 
             <a href="{{ card_link | default: '#vsinst-calc' }}" class="vsinst-banner-card" aria-hidden="true" tabindex="-1" target="{% if card_link contains 'http' or card_link contains 'wa.me' %}_blank{% else %}_self{% endif %}">
-              <img src="{{ img_url }}" alt="{{ card_title | escape }}" class="vsinst-banner-img" loading="lazy" onerror="this.onerror=null; this.src='https://cdn.shopify.com/s/files/1/0663/8783/7093/files/VS_Card_Final_Design_Golden_1.png';">
-              
-              <div class="vsinst-banner-overlay"></div>
-
-              {% if card_badge != blank %}
-                <span class="vsinst-card-top-badge" style="background: {{ card_badge_bg }}; color: #ffffff;">
-                  {{ card_badge }}
-                </span>
-              {% endif %}
-
-              <span class="vsinst-card-ratio-tag">4:3</span>
-
-              <div class="vsinst-banner-content">
-                <h3 class="vsinst-banner-heading">{{ card_title }}</h3>
-                {% if card_desc != blank %}
-                  <p class="vsinst-banner-sub">{{ card_desc }}</p>
-                {% endif %}
-
-                <div class="vsinst-banner-footer">
-                  <span class="vsinst-banner-btn">
-                    {{ card_btn | default: 'Explore Setup' }} <i class="fa-solid fa-arrow-right-long"></i>
-                  </span>
-                  {% if card_stat != blank %}
-                    <span class="vsinst-banner-stat">{{ card_stat }}</span>
-                  {% endif %}
-                </div>
-              </div>
+              <img src="{{ img_url }}" alt="Institutional Banner" class="vsinst-banner-img" loading="lazy" onerror="this.onerror=null; this.src='https://cdn.shopify.com/s/files/1/0663/8783/7093/files/VS_Card_Final_Design_Golden_1.png';">
             </a>
           {% endif %}
         {% endfor %}
@@ -800,7 +466,7 @@
       "step": 5,
       "unit": "px",
       "label": "Padding Top",
-      "default": 60
+      "default": 50
     },
     {
       "type": "range",
@@ -810,107 +476,47 @@
       "step": 5,
       "unit": "px",
       "label": "Padding Bottom",
-      "default": 70
+      "default": 60
     },
 
     { "type": "header", "content": "🖼️ Banner Card #1 (4:3)" },
     { "type": "image_picker", "id": "banner_img_1", "label": "Card 1 Image" },
-    { "type": "text", "id": "banner_badge_1", "label": "Card 1 Badge", "default": "🏥 HEALTHCARE CRITICAL" },
-    { "type": "color", "id": "banner_badge_bg_1", "label": "Card 1 Badge Color", "default": "#d97706" },
-    { "type": "text", "id": "banner_title_1", "label": "Card 1 Title", "default": "24/7 ICU & Diagnostic Zero-Spike Power" },
-    { "type": "text", "id": "banner_desc_1", "label": "Card 1 Description", "default": "Stabilizing sensitive MRI, CT & surgical suites with 20%–30% genuine bill reduction." },
-    { "type": "text", "id": "banner_stat_1", "label": "Card 1 Stat Tag", "default": "⚡ 28.5% Saved" },
-    { "type": "text", "id": "banner_btn_1", "label": "Card 1 Button Text", "default": "View Medical Setup" },
     { "type": "url", "id": "banner_link_1", "label": "Card 1 Link" },
 
     { "type": "header", "content": "🖼️ Banner Card #2 (4:3)" },
     { "type": "image_picker", "id": "banner_img_2", "label": "Card 2 Image" },
-    { "type": "text", "id": "banner_badge_2", "label": "Card 2 Badge", "default": "🎓 CAMPUS INFRASTRUCTURE" },
-    { "type": "color", "id": "banner_badge_bg_2", "label": "Card 2 Badge Color", "default": "#7c3aed" },
-    { "type": "text", "id": "banner_title_2", "label": "Card 2 Title", "default": "Centralized HVAC & Research Lab Efficiency" },
-    { "type": "text", "id": "banner_desc_2", "label": "Card 2 Description", "default": "Heavy 3-phase LT panel power factor correction across universities & academic blocks." },
-    { "type": "text", "id": "banner_stat_2", "label": "Card 2 Stat Tag", "default": "⚡ 28.0% Saved" },
-    { "type": "text", "id": "banner_btn_2", "label": "Card 2 Button Text", "default": "View Campus Setup" },
     { "type": "url", "id": "banner_link_2", "label": "Card 2 Link" },
 
     { "type": "header", "content": "🖼️ Banner Card #3 (4:3)" },
     { "type": "image_picker", "id": "banner_img_3", "label": "Card 3 Image" },
-    { "type": "text", "id": "banner_badge_3", "label": "Card 3 Badge", "default": "🏫 INSTITUTIONAL HUBS" },
-    { "type": "color", "id": "banner_badge_bg_3", "label": "Card 3 Badge Color", "default": "#059669" },
-    { "type": "text", "id": "banner_title_3", "label": "Card 3 Title", "default": "Smart Power Management for CBSE Campuses" },
-    { "type": "text", "id": "banner_desc_3", "label": "Card 3 Description", "default": "Safe, eco-certified power conservation for auditoriums, smart classes & labs." },
-    { "type": "text", "id": "banner_stat_3", "label": "Card 3 Stat Tag", "default": "⚡ 28.1% Saved" },
-    { "type": "text", "id": "banner_btn_3", "label": "Card 3 Button Text", "default": "View School Setup" },
     { "type": "url", "id": "banner_link_3", "label": "Card 3 Link" },
 
     { "type": "header", "content": "🖼️ Banner Card #4 (4:3)" },
     { "type": "image_picker", "id": "banner_img_4", "label": "Card 4 Image" },
-    { "type": "text", "id": "banner_badge_4", "label": "Card 4 Badge", "default": "🏛️ GOVT & PUBLIC BUILDINGS" },
-    { "type": "color", "id": "banner_badge_bg_4", "label": "Card 4 Badge Color", "default": "#b45309" },
-    { "type": "text", "id": "banner_title_4", "label": "Card 4 Title", "default": "DISCOM Non-Domestic Tariff Slashing" },
-    { "type": "text", "id": "banner_desc_4", "label": "Card 4 Description", "default": "Proven ₹1,00,000+ monthly budget savings with 10-year maintenance-free durability." },
-    { "type": "text", "id": "banner_stat_4", "label": "Card 4 Stat Tag", "default": "⚡ 28.4% Saved" },
-    { "type": "text", "id": "banner_btn_4", "label": "Card 4 Button Text", "default": "View Govt Case" },
     { "type": "url", "id": "banner_link_4", "label": "Card 4 Link" },
 
     { "type": "header", "content": "🖼️ Banner Card #5 (4:3)" },
     { "type": "image_picker", "id": "banner_img_5", "label": "Card 5 Image" },
-    { "type": "text", "id": "banner_badge_5", "label": "Card 5 Badge", "default": "⚡ 0.99 POWER FACTOR" },
-    { "type": "color", "id": "banner_badge_bg_5", "label": "Card 5 Badge Color", "default": "#ea580c" },
-    { "type": "text", "id": "banner_title_5", "label": "Card 5 Title", "default": "Continuous 3-Phase Substation Load Balancing" },
-    { "type": "text", "id": "banner_desc_5", "label": "Card 5 Description", "default": "Protecting high-load diagnostic scanners and centralized chillers with zero downtime." },
-    { "type": "text", "id": "banner_stat_5", "label": "Card 5 Stat Tag", "default": "⚡ Surge Protected" },
-    { "type": "text", "id": "banner_btn_5", "label": "Card 5 Button Text", "default": "Calculate Cards" },
     { "type": "url", "id": "banner_link_5", "label": "Card 5 Link" },
 
     { "type": "header", "content": "🖼️ Banner Card #6 (Optional)" },
     { "type": "image_picker", "id": "banner_img_6", "label": "Card 6 Image" },
-    { "type": "text", "id": "banner_badge_6", "label": "Card 6 Badge" },
-    { "type": "color", "id": "banner_badge_bg_6", "label": "Card 6 Badge Color", "default": "#d97706" },
-    { "type": "text", "id": "banner_title_6", "label": "Card 6 Title" },
-    { "type": "text", "id": "banner_desc_6", "label": "Card 6 Description" },
-    { "type": "text", "id": "banner_stat_6", "label": "Card 6 Stat Tag" },
-    { "type": "text", "id": "banner_btn_6", "label": "Card 6 Button Text", "default": "Explore Setup" },
     { "type": "url", "id": "banner_link_6", "label": "Card 6 Link" },
 
     { "type": "header", "content": "🖼️ Banner Card #7 (Optional)" },
     { "type": "image_picker", "id": "banner_img_7", "label": "Card 7 Image" },
-    { "type": "text", "id": "banner_badge_7", "label": "Card 7 Badge" },
-    { "type": "color", "id": "banner_badge_bg_7", "label": "Card 7 Badge Color", "default": "#d97706" },
-    { "type": "text", "id": "banner_title_7", "label": "Card 7 Title" },
-    { "type": "text", "id": "banner_desc_7", "label": "Card 7 Description" },
-    { "type": "text", "id": "banner_stat_7", "label": "Card 7 Stat Tag" },
-    { "type": "text", "id": "banner_btn_7", "label": "Card 7 Button Text", "default": "Explore Setup" },
     { "type": "url", "id": "banner_link_7", "label": "Card 7 Link" },
 
     { "type": "header", "content": "🖼️ Banner Card #8 (Optional)" },
     { "type": "image_picker", "id": "banner_img_8", "label": "Card 8 Image" },
-    { "type": "text", "id": "banner_badge_8", "label": "Card 8 Badge" },
-    { "type": "color", "id": "banner_badge_bg_8", "label": "Card 8 Badge Color", "default": "#d97706" },
-    { "type": "text", "id": "banner_title_8", "label": "Card 8 Title" },
-    { "type": "text", "id": "banner_desc_8", "label": "Card 8 Description" },
-    { "type": "text", "id": "banner_stat_8", "label": "Card 8 Stat Tag" },
-    { "type": "text", "id": "banner_btn_8", "label": "Card 8 Button Text", "default": "Explore Setup" },
     { "type": "url", "id": "banner_link_8", "label": "Card 8 Link" },
 
     { "type": "header", "content": "🖼️ Banner Card #9 (Optional)" },
     { "type": "image_picker", "id": "banner_img_9", "label": "Card 9 Image" },
-    { "type": "text", "id": "banner_badge_9", "label": "Card 9 Badge" },
-    { "type": "color", "id": "banner_badge_bg_9", "label": "Card 9 Badge Color", "default": "#d97706" },
-    { "type": "text", "id": "banner_title_9", "label": "Card 9 Title" },
-    { "type": "text", "id": "banner_desc_9", "label": "Card 9 Description" },
-    { "type": "text", "id": "banner_stat_9", "label": "Card 9 Stat Tag" },
-    { "type": "text", "id": "banner_btn_9", "label": "Card 9 Button Text", "default": "Explore Setup" },
     { "type": "url", "id": "banner_link_9", "label": "Card 9 Link" },
 
     { "type": "header", "content": "🖼️ Banner Card #10 (Optional)" },
     { "type": "image_picker", "id": "banner_img_10", "label": "Card 10 Image" },
-    { "type": "text", "id": "banner_badge_10", "label": "Card 10 Badge" },
-    { "type": "color", "id": "banner_badge_bg_10", "label": "Card 10 Badge Color", "default": "#d97706" },
-    { "type": "text", "id": "banner_title_10", "label": "Card 10 Title" },
-    { "type": "text", "id": "banner_desc_10", "label": "Card 10 Description" },
-    { "type": "text", "id": "banner_stat_10", "label": "Card 10 Stat Tag" },
-    { "type": "text", "id": "banner_btn_10", "label": "Card 10 Button Text", "default": "Explore Setup" },
     { "type": "url", "id": "banner_link_10", "label": "Card 10 Link" }
   ],
   "blocks": [
@@ -922,48 +528,6 @@
           "type": "image_picker",
           "id": "image",
           "label": "Card Banner Image (4:3 Recommended)"
-        },
-        {
-          "type": "text",
-          "id": "badge",
-          "label": "Top Badge Text",
-          "default": "🏥 HEALTHCARE CRITICAL"
-        },
-        {
-          "type": "color",
-          "id": "badge_bg",
-          "label": "Badge Background Color",
-          "default": "#d97706"
-        },
-        {
-          "type": "color",
-          "id": "badge_color",
-          "label": "Badge Text Color",
-          "default": "#ffffff"
-        },
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Banner Title",
-          "default": "24/7 ICU & Diagnostic Zero-Spike Power"
-        },
-        {
-          "type": "text",
-          "id": "description",
-          "label": "Banner Subtitle / Description",
-          "default": "Stabilizing sensitive MRI, CT & surgical suites with 20%–30% DISCOM bill reduction."
-        },
-        {
-          "type": "text",
-          "id": "stat_tag",
-          "label": "Stat Tag",
-          "default": "⚡ 28.5% Saved"
-        },
-        {
-          "type": "text",
-          "id": "button_text",
-          "label": "Button Text",
-          "default": "Explore Setup"
         },
         {
           "type": "url",
