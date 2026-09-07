@@ -1870,6 +1870,307 @@
     border: 1px solid rgba(255, 255, 255, 0.2);
   }
 
+  /* ============================================================
+     SHOW BILLS BUTTON & COMPARISON LIGHTBOX MODAL
+     ============================================================ */
+  .vsres-btn-view-bills {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #ffffff 0%, #fff7ed 100%);
+    border: 1.5px solid #fdba74;
+    color: #c2410c;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.2px;
+    cursor: pointer;
+    margin: 4px 0 10px 0;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 14px rgba(249, 115, 22, 0.15);
+    transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .vsres-btn-view-bills:hover {
+    background: linear-gradient(135deg, #ea580c 0%, #f97316 100%);
+    color: #ffffff;
+    border-color: #ea580c;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(234, 88, 12, 0.32);
+  }
+  .vsres-btn-view-bills:hover .vsres-btn-pulse-dot {
+    background: #ffffff;
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.3);
+  }
+  .vsres-btn-pulse-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ea580c;
+    display: inline-block;
+    animation: vsresPulse 1.8s infinite;
+  }
+  @keyframes vsresPulse {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(234, 88, 12, 0.7); }
+    70% { transform: scale(1.15); box-shadow: 0 0 0 6px rgba(234, 88, 12, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(234, 88, 12, 0); }
+  }
+
+  /* BILLS MODAL OVERLAY */
+  .vsres-bills-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 999999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    overflow-y: auto;
+  }
+  .vsres-bills-modal-overlay.active {
+    display: flex;
+    animation: vsresFadeIn 0.25s ease forwards;
+  }
+  @keyframes vsresFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .vsres-bills-modal-dialog {
+    background: #ffffff;
+    border-radius: 22px;
+    border: 2px solid #e2e8f0;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.35);
+    width: 100%;
+    max-width: 960px;
+    max-height: 92vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    animation: vsresScaleUp 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  }
+  @keyframes vsresScaleUp {
+    from { transform: scale(0.92); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+
+  .vsres-bills-modal-header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    color: #ffffff;
+    padding: 18px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    border-bottom: 2px solid #334155;
+  }
+  .vsres-bills-header-left {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .vsres-bills-header-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: #ffd700;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  .vsres-bills-modal-title {
+    font-size: clamp(18px, 3.5vw, 24px);
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0;
+    font-family: 'Baloo 2', sans-serif;
+  }
+  .vsres-bills-modal-loc {
+    font-size: 12.5px;
+    color: #94a3b8;
+    font-family: 'Nunito', sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .vsres-bills-header-right {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .vsres-bills-savings-badge {
+    background: linear-gradient(135deg, #007b3e 0%, #10b981 100%);
+    color: #ffffff;
+    font-size: 13.5px;
+    font-weight: 800;
+    font-family: 'Baloo 2', sans-serif;
+    padding: 8px 16px;
+    border-radius: 50px;
+    white-space: nowrap;
+    box-shadow: 0 4px 14px rgba(0, 123, 62, 0.35);
+  }
+  .vsres-bills-modal-close {
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+    border: none;
+    font-size: 26px;
+    line-height: 1;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+  }
+  .vsres-bills-modal-close:hover {
+    background: #e11d48;
+    transform: rotate(90deg);
+  }
+
+  /* MODAL BODY (2-COLUMN GRID) */
+  .vsres-bills-modal-body {
+    padding: 24px;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    background: #f8fafc;
+  }
+  @media(min-width: 768px) {
+    .vsres-bills-modal-body {
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      padding: 28px;
+    }
+  }
+
+  .vsres-bill-col {
+    background: #ffffff;
+    border-radius: 16px;
+    border: 2px solid #e2e8f0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+  }
+  .vsres-bill-col.vsres-bill-old {
+    border-color: #fecdd3;
+  }
+  .vsres-bill-col.vsres-bill-new {
+    border-color: #a7f3d0;
+  }
+
+  .vsres-bill-col-header {
+    padding: 14px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1.5px solid #e2e8f0;
+  }
+  .vsres-bill-col.vsres-bill-old .vsres-bill-col-header {
+    background: #fff1f2;
+    border-color: #fecdd3;
+  }
+  .vsres-bill-col.vsres-bill-new .vsres-bill-col-header {
+    background: #ecfdf5;
+    border-color: #a7f3d0;
+  }
+
+  .vsres-bill-badge-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 5px 12px;
+    border-radius: 50px;
+    font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: 0.5px;
+  }
+  .vsres-bill-badge-pill.old {
+    background: #e11d48;
+    color: #ffffff;
+  }
+  .vsres-bill-badge-pill.new {
+    background: #059669;
+    color: #ffffff;
+  }
+
+  .vsres-bill-amount-wrap {
+    text-align: right;
+  }
+  .vsres-bill-lbl {
+    display: block;
+    font-size: 10px;
+    font-weight: 700;
+    color: #64748b;
+    text-transform: uppercase;
+  }
+  .vsres-bill-amount {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 17px;
+    font-weight: 800;
+  }
+  .vsres-bill-amount.old {
+    color: #9f1239;
+    text-decoration: line-through;
+  }
+  .vsres-bill-amount.new {
+    color: #065f46;
+  }
+
+  .vsres-bill-doc-box {
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 280px;
+    background: #ffffff;
+  }
+  .vsres-bill-uploaded-img {
+    max-width: 100%;
+    max-height: 380px;
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    cursor: zoom-in;
+    transition: transform 0.2s ease;
+  }
+  .vsres-bill-uploaded-img:hover {
+    transform: scale(1.02);
+  }
+
+  /* MODAL FOOTER */
+  .vsres-bills-modal-footer {
+    background: #ffffff;
+    border-top: 2px solid #e2e8f0;
+    padding: 16px 24px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 14px;
+  }
+  .vsres-bills-footer-text {
+    font-size: 13.5px;
+    color: #334155;
+    font-family: 'Nunito', sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
 </style>
 
 <div class="vsres">
@@ -2424,6 +2725,20 @@
                     <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">{{ block.settings.new_bill | default: '₹6,100/mo' }}</span>
                   </div>
                 </div>
+                <!-- SHOW BILLS BUTTON (HIGHLIGHTED) -->
+                <button type="button" class="vsres-btn-view-bills" 
+                  data-customer="{{ block.settings.customer_name | default: 'Rohan Mehta' | escape }}" 
+                  data-location="{{ block.settings.location_load | default: '2 BHK Apartment, Mumbai' | escape }}" 
+                  data-old-bill="{{ block.settings.old_bill | default: '₹8,400/mo' | escape }}" 
+                  data-new-bill="{{ block.settings.new_bill | default: '₹6,100/mo' | escape }}" 
+                  data-savings="{{ block.settings.savings_summary | default: 'Saved ₹2,300/mo (27%)' | escape }}" 
+                  data-cards="{{ block.settings.cards_count | default: '⚡ 2 Residential Cards' | escape }}" 
+                  data-old-img="{% if block.settings.old_bill_image != blank %}{{ block.settings.old_bill_image | image_url: width: 1200 }}{% endif %}" 
+                  data-new-img="{% if block.settings.new_bill_image != blank %}{{ block.settings.new_bill_image | image_url: width: 1200 }}{% endif %}"
+                  onclick="vsOpenBillsModal(this)">
+                  <i class="fa-solid fa-file-invoice-dollar"></i> Show Bills
+                  <span class="vsres-btn-pulse-dot"></span>
+                </button>
                 <div style="background:linear-gradient(135deg, #0a4a2c 0%, #ec5c0a 100%); padding:11px 14px; border-radius:12px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(236,92,10,0.2);">
                   <span style="color:#a7f3d0; font-size:11.5px;">{{ block.settings.cards_count | default: '⚡ 2 Residential Cards' }}</span>
                   <strong style="color:#ffffff; font-size:13.5px;">{{ block.settings.savings_summary | default: 'Saved ₹2,300/mo (27%)' }}</strong>
@@ -2606,6 +2921,20 @@
                     <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">{{ c_new }}</span>
                   </div>
                 </div>
+                <!-- SHOW BILLS BUTTON (HIGHLIGHTED) -->
+                <button type="button" class="vsres-btn-view-bills" 
+                  data-customer="{{ c_name | escape }}" 
+                  data-location="{{ c_loc | escape }}" 
+                  data-old-bill="{{ c_old | escape }}" 
+                  data-new-bill="{{ c_new | escape }}" 
+                  data-savings="{{ c_save | escape }}" 
+                  data-cards="{{ c_cards | escape }}" 
+                  data-old-img="" 
+                  data-new-img=""
+                  onclick="vsOpenBillsModal(this)">
+                  <i class="fa-solid fa-file-invoice-dollar"></i> Show Bills
+                  <span class="vsres-btn-pulse-dot"></span>
+                </button>
                 <div style="background:linear-gradient(135deg, #0a4a2c 0%, #ec5c0a 100%); padding:11px 14px; border-radius:12px; color:#ffffff; font-size:12.5px; font-weight:700; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 14px rgba(236,92,10,0.2);">
                   <span style="color:#a7f3d0; font-size:11.5px;">{{ c_cards }}</span>
                   <strong style="color:#ffffff; font-size:13.5px;">{{ c_save }}</strong>
@@ -2646,6 +2975,76 @@
       </div>
     </div>
   </section>
+
+  <!-- ══ VERIFIED BILLS COMPARISON LIGHTBOX MODAL ══ -->
+  <div class="vsres-bills-modal-overlay" id="vsres_bills_modal" onclick="vsCloseBillsModal(event)">
+    <div class="vsres-bills-modal-dialog" onclick="event.stopPropagation()">
+      <!-- Top Header Bar -->
+      <div class="vsres-bills-modal-header">
+        <div class="vsres-bills-header-left">
+          <div class="vsres-bills-header-tag">
+            <i class="fa-solid fa-certificate"></i> VERIFIED DISCOM ELECTRICITY BILL PROOF
+          </div>
+          <h3 id="vsres_bills_modal_customer" class="vsres-bills-modal-title">Customer Name</h3>
+          <div id="vsres_bills_modal_loc" class="vsres-bills-modal-loc"><i class="fa-solid fa-location-dot" style="color:#ec5c0a;"></i> Location</div>
+        </div>
+        <div class="vsres-bills-header-right">
+          <div id="vsres_bills_modal_savings_badge" class="vsres-bills-savings-badge">
+            ⚡ Saved ₹2,300/mo (27%)
+          </div>
+          <button type="button" class="vsres-bills-modal-close" onclick="vsCloseBillsModal(event)" aria-label="Close modal">&times;</button>
+        </div>
+      </div>
+
+      <!-- Side-by-Side Comparison Container -->
+      <div class="vsres-bills-modal-body">
+        <!-- LEFT: OLD BILL (BEFORE) -->
+        <div class="vsres-bill-col vsres-bill-old">
+          <div class="vsres-bill-col-header">
+            <div class="vsres-bill-badge-pill old">
+              <i class="fa-solid fa-circle-xmark"></i> BEFORE VIDHYUT SAATHI
+            </div>
+            <div class="vsres-bill-amount-wrap">
+              <span class="vsres-bill-lbl">OLD MONTHLY BILL:</span>
+              <span id="vsres_modal_old_val" class="vsres-bill-amount old">₹8,400</span>
+            </div>
+          </div>
+          <div class="vsres-bill-doc-box" id="vsres_modal_old_doc">
+            <!-- Image or Dynamic SVG Invoice Bill -->
+          </div>
+        </div>
+
+        <!-- RIGHT: NEW BILL (AFTER) -->
+        <div class="vsres-bill-col vsres-bill-new">
+          <div class="vsres-bill-col-header">
+            <div class="vsres-bill-badge-pill new">
+              <i class="fa-solid fa-circle-check"></i> AFTER VIDHYUT SAATHI (REDUCED)
+            </div>
+            <div class="vsres-bill-amount-wrap">
+              <span class="vsres-bill-lbl">NEW REDUCED BILL:</span>
+              <span id="vsres_modal_new_val" class="vsres-bill-amount new">₹6,100</span>
+            </div>
+          </div>
+          <div class="vsres-bill-doc-box" id="vsres_modal_new_doc">
+            <!-- Image or Dynamic SVG Invoice Bill -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Footer CTA -->
+      <div class="vsres-bills-modal-footer">
+        <div class="vsres-bills-footer-text">
+          <i class="fa-solid fa-shield-halved" style="color:#007b3e; font-size:18px;"></i>
+          <span>Want to achieve similar verified <strong>20% to 30% monthly savings</strong> for your home?</span>
+        </div>
+        <div class="vsres-bills-footer-btns">
+          <a href="https://wa.me/919876543210?text=Hi%20Vidhyut%20Saathi%2C%20I%20saw%20the%20verified%20electricity%20bill%20savings%20and%20want%20to%20order%20cards%20for%20my%20home" class="vsres-btn-primary" target="_blank" style="padding:10px 20px; font-size:13.5px; border-radius:10px;">
+            <i class="fa-brands fa-whatsapp"></i> Order Residential Cards
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </div>
 
@@ -2908,6 +3307,114 @@
       }
     });
   })();
+
+  /* ══ VERIFIED BILLS COMPARISON LIGHTBOX MODAL ══ */
+  function vsOpenBillsModal(btn) {
+    if (!btn) return;
+    var customer = btn.getAttribute('data-customer') || 'Verified Customer';
+    var location = btn.getAttribute('data-location') || 'Residential House';
+    var oldBill = btn.getAttribute('data-old-bill') || '₹8,400/mo';
+    var newBill = btn.getAttribute('data-new-bill') || '₹6,100/mo';
+    var savings = btn.getAttribute('data-savings') || 'Saved ₹2,300/mo (27%)';
+    var cards = btn.getAttribute('data-cards') || '⚡ 2 Residential Cards';
+    var oldImg = btn.getAttribute('data-old-img') || '';
+    var newImg = btn.getAttribute('data-new-img') || '';
+
+    var modal = document.getElementById('vsres_bills_modal');
+    if (!modal) return;
+
+    var custEl = document.getElementById('vsres_bills_modal_customer');
+    var locEl = document.getElementById('vsres_bills_modal_loc');
+    var saveBadge = document.getElementById('vsres_bills_modal_savings_badge');
+    var oldValEl = document.getElementById('vsres_modal_old_val');
+    var newValEl = document.getElementById('vsres_modal_new_val');
+    var oldDocBox = document.getElementById('vsres_modal_old_doc');
+    var newDocBox = document.getElementById('vsres_modal_new_doc');
+
+    if (custEl) custEl.textContent = customer;
+    if (locEl) locEl.innerHTML = '<i class="fa-solid fa-location-dot" style="color:#ec5c0a;"></i> ' + location + ' &bull; ' + cards;
+    if (saveBadge) saveBadge.textContent = '⚡ ' + savings;
+    if (oldValEl) oldValEl.textContent = oldBill;
+    if (newValEl) newValEl.textContent = newBill;
+
+    // Render Old Bill Document
+    if (oldDocBox) {
+      if (oldImg && oldImg.trim() !== '') {
+        oldDocBox.innerHTML = '<a href="' + oldImg + '" target="_blank" title="Click to view full size"><img src="' + oldImg + '" alt="Old DISCOM Bill" class="vsres-bill-uploaded-img"></a>';
+      } else {
+        oldDocBox.innerHTML = vsGenerateBillSvg(customer, location, oldBill, 'OLD', cards);
+      }
+    }
+
+    // Render New Bill Document
+    if (newDocBox) {
+      if (newImg && newImg.trim() !== '') {
+        newDocBox.innerHTML = '<a href="' + newImg + '" target="_blank" title="Click to view full size"><img src="' + newImg + '" alt="New DISCOM Bill" class="vsres-bill-uploaded-img"></a>';
+      } else {
+        newDocBox.innerHTML = vsGenerateBillSvg(customer, location, newBill, 'NEW', cards);
+      }
+    }
+
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function vsCloseBillsModal(e) {
+    if (e && e.stopPropagation) e.stopPropagation();
+    var modal = document.getElementById('vsres_bills_modal');
+    if (modal) {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      vsCloseBillsModal();
+    }
+  });
+
+  function vsGenerateBillSvg(name, loc, amount, type, cards) {
+    var isNew = type === 'NEW';
+    var bgHeader = isNew ? '#007b3e' : '#e11d48';
+    var accentBorder = isNew ? '#10b981' : '#f43f5e';
+    var statusTitle = isNew ? 'REDUCED DISCOM TARIFF' : 'STANDARD REGULAR TARIFF';
+    var stampText = isNew ? 'PAID & SAVED (20-30%)' : 'HIGH CONSUMPTION';
+    var stampColor = isNew ? '#007b3e' : '#e11d48';
+    var billDate = isNew ? 'Post-Installation Bill' : 'Pre-Installation Bill';
+    var caNum = 'CA-' + Math.floor(10000000 + Math.random() * 90000000);
+    
+    return '<div style="width:100%; max-width:400px; background:#ffffff; border:2px solid ' + accentBorder + '; border-radius:12px; box-shadow:0 8px 24px rgba(0,0,0,0.06); font-family:\'Nunito\',sans-serif; overflow:hidden; position:relative;">' +
+      '<div style="background:' + bgHeader + '; color:#ffffff; padding:12px 16px; display:flex; justify-content:space-between; align-items:center;">' +
+        '<div>' +
+          '<div style="font-size:10px; font-weight:800; letter-spacing:0.8px; opacity:0.9;">ELECTRICITY DISTRIBUTION CO.</div>' +
+          '<div style="font-size:13px; font-weight:800; font-family:\'Space Grotesk\',sans-serif;">' + statusTitle + '</div>' +
+        '</div>' +
+        '<div style="font-size:18px;">' + (isNew ? '⚡' : '🏛️') + '</div>' +
+      '</div>' +
+      '<div style="padding:14px 16px; font-size:11.5px; color:#334155; line-height:1.5;">' +
+        '<div style="display:flex; justify-content:space-between; margin-bottom:8px; border-bottom:1px dashed #e2e8f0; padding-bottom:6px;">' +
+          '<div><strong>Consumer:</strong> ' + name + '<br><span style="color:#64748b; font-size:10.5px;">' + loc + '</span></div>' +
+          '<div style="text-align:right;"><strong>' + caNum + '</strong><br><span style="color:#64748b; font-size:10.5px;">Tariff: LT-Domestic</span></div>' +
+        '</div>' +
+        '<div style="display:grid; grid-template-columns:1fr 1fr; gap:6px; background:#f8fafc; padding:8px 10px; border-radius:8px; margin-bottom:10px; font-size:11px;">' +
+          '<div>Billing Cycle: <strong>Monthly</strong></div>' +
+          '<div>Status: <strong style="color:' + (isNew ? '#007b3e' : '#e11d48') + ';">' + billDate + '</strong></div>' +
+          '<div>Grid Setup: <strong>' + cards + '</strong></div>' +
+          '<div>Power Factor: <strong>' + (isNew ? '0.98 (Optimized)' : '0.81 (Losses)') + '</strong></div>' +
+        '</div>' +
+        '<div style="border-top:1.5px solid #cbd5e1; padding-top:8px; display:flex; justify-content:space-between; align-items:center;">' +
+          '<div>' +
+            '<span style="font-size:10px; font-weight:800; color:#64748b; text-transform:uppercase;">TOTAL AMOUNT DUE</span>' +
+            '<div style="font-size:19px; font-weight:800; font-family:\'IBM Plex Mono\',monospace; color:' + (isNew ? '#007b3e' : '#e11d48') + ';">' + amount + '</div>' +
+          '</div>' +
+          '<div style="border:2px solid ' + stampColor + '; color:' + stampColor + '; font-size:9px; font-weight:900; padding:4px 8px; border-radius:6px; text-transform:uppercase; transform:rotate(-4deg); font-family:\'Space Grotesk\',sans-serif; letter-spacing:0.5px;">' +
+            stampText +
+          '</div>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+  }
 </script>
 
 {% schema %}
@@ -2972,6 +3479,8 @@
         { "type": "text", "id": "location_load", "label": "Location & House Type", "default": "2 BHK Apartment, Mumbai" },
         { "type": "text", "id": "old_bill", "label": "Old Monthly Bill", "default": "₹8,400/mo" },
         { "type": "text", "id": "new_bill", "label": "New Monthly Bill", "default": "₹6,100/mo" },
+        { "type": "image_picker", "id": "old_bill_image", "label": "Old Electricity Bill Document (Before)" },
+        { "type": "image_picker", "id": "new_bill_image", "label": "New Electricity Bill Document (After)" },
         { "type": "text", "id": "cards_count", "label": "Cards Installed Text", "default": "⚡ 2 Residential Cards" },
         { "type": "text", "id": "savings_summary", "label": "Savings Summary Text", "default": "Saved ₹2,300/mo (27%)" }
       ]
