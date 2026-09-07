@@ -3236,6 +3236,7 @@
     var currentIdx = 0;
     var totalSlides = dots.length || 3;
     var timer = null;
+    var isSectionInView = false;
     var isMobile = function() { return window.innerWidth < 768; };
 
     window.vsresGoSlide = function(idx) {
@@ -3249,10 +3250,12 @@
 
     function startAutoSlide() {
       stopAutoSlide();
-      if (!isMobile()) return;
+      if (!isMobile() || !isSectionInView) return;
       timer = setInterval(function() {
-        if (isMobile()) {
+        if (isMobile() && isSectionInView) {
           window.vsresGoSlide(currentIdx + 1);
+        } else {
+          stopAutoSlide();
         }
       }, 5000);
     }
@@ -3264,19 +3267,21 @@
       }
     }
 
+    var targetSection = wrap.closest('.vsres-sec') || wrap;
+
     if ('IntersectionObserver' in window) {
       var observer = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
           if (entry.isIntersecting) {
+            isSectionInView = true;
             startAutoSlide();
           } else {
+            isSectionInView = false;
             stopAutoSlide();
           }
         });
       }, { threshold: 0.2 });
-      observer.observe(wrap);
-    } else {
-      startAutoSlide();
+      observer.observe(targetSection);
     }
 
     var startX = 0;
@@ -3300,14 +3305,16 @@
       } else if (deltaX > 40) {
         window.vsresGoSlide(currentIdx - 1);
       }
-      startAutoSlide();
+      if (isSectionInView) {
+        startAutoSlide();
+      }
     }, { passive: true });
 
     window.addEventListener('resize', function() {
       if (!isMobile()) {
         track.style.transform = '';
         stopAutoSlide();
-      } else if (!timer) {
+      } else if (!timer && isSectionInView) {
         startAutoSlide();
       }
     });
