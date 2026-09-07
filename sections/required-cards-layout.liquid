@@ -737,16 +737,24 @@
 }
 
 .vscc .vscc-mini-card-icon {
-  width: 32px;
-  height: 20px;
-  border-radius: 5px;
-  background: linear-gradient(135deg, #e8c766 0%, #c9982e 100%);
-  border: 1px solid #b8860b;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.18);
-  transition: transform 0.18s ease;
+  width: 48px;
+  height: 30px;
+  border-radius: 4px;
+  background-color: #050c26;
+  background-image: url("{{ 'official-vs-card-front.jpg' | asset_url }}");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
+  display: inline-block;
+  cursor: pointer;
 }
 .vscc .vscc-mini-card-icon:hover {
-  transform: translateY(-2px) scale(1.1);
+  transform: translateY(-3px) scale(1.18);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
+  z-index: 2;
 }
 
 .vscc .chip-meter { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 18px; }
