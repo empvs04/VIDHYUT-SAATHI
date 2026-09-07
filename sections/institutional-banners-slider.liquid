@@ -1,6 +1,6 @@
 {%- comment -%}
-  Vidhyut Saathi - Institutional 4:3 Banner Slider (Clean Image Banners, Right-to-Left Continuous Marquee)
-  Supports both Section-Level Image Settings (Cards 1-10) and Dynamic Blocks with 100% Full-Bleed 4:3 Images
+  Vidhyut Saathi - Institutional 3:2 Banner Slider
+  Clean Image Banners with Thick Top/Bottom Rails & Straight Vertical Thick Dividers Between Cards
 {%- endcomment -%}
 
 <style>
@@ -11,7 +11,6 @@
     position: relative;
     overflow: hidden;
     font-family: 'Plus Jakarta Sans', sans-serif;
-    border-top: 1.5px solid #fef08a;
   }
 
   .vsinst-slider-section-{{ section.id }} .wrap {
@@ -23,7 +22,7 @@
   /* Header Styles */
   .vsinst-slider-head {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 28px;
     position: relative;
   }
 
@@ -69,23 +68,39 @@
     font-weight: 500;
   }
 
+  /* ══ FRAMED SLIDER STRIP WITH FLUSH TOP & BOTTOM THICK LINES ══ */
+  .vsinst-slider-strip-wrap {
+    position: relative;
+    width: 100%;
+    border-top: {{ section.settings.line_thickness | default: 4 }}px solid {{ section.settings.line_color | default: '#d97706' }};
+    border-bottom: {{ section.settings.line_thickness | default: 4 }}px solid {{ section.settings.line_color | default: '#d97706' }};
+    padding: 0;
+    margin: 0;
+    background: {{ section.settings.strip_bg | default: '#0f172a' }};
+    line-height: 0;
+  }
+
   /* Slider Outer & Track */
   .vsinst-marquee-outer {
     position: relative;
     width: 100%;
     overflow: hidden;
-    padding: 10px 0 16px 0;
-    mask-image: linear-gradient(to right, transparent, black 3%, black 97%, transparent);
-    -webkit-mask-image: linear-gradient(to right, transparent, black 3%, black 97%, transparent);
+    padding: 0;
+    margin: 0;
+    mask-image: linear-gradient(to right, transparent, black 2%, black 98%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 2%, black 98%, transparent);
   }
 
   .vsinst-marquee-track {
     display: flex;
-    gap: 20px;
+    align-items: stretch;
+    gap: 0;
     width: max-content;
     animation: vsinstMarqueeLeft-{{ section.id }} {{ section.settings.scroll_speed | default: 30 }}s linear infinite;
     cursor: grab;
     will-change: transform;
+    padding: 0;
+    margin: 0;
   }
 
   .vsinst-marquee-track:active {
@@ -107,26 +122,22 @@
     }
   }
 
-  /* Clean 3:2 Banner Card Styles */
+  /* Clean 3:2 Banner Card Flush with Frame */
   .vsinst-banner-card {
     position: relative;
-    width: clamp(290px, 32vw, 420px);
+    width: clamp(290px, 32vw, 440px);
     aspect-ratio: 3 / 2;
     flex-shrink: 0;
-    border-radius: 18px;
+    border-radius: 0;
     overflow: hidden;
     background: #f1f5f9;
-    border: 2px solid #fde68a;
-    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08), 0 2px 6px rgba(217, 119, 6, 0.06);
-    transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+    border: none;
+    box-shadow: none;
     text-decoration: none;
     display: block;
-  }
-
-  .vsinst-banner-card:hover {
-    transform: translateY(-6px) scale(1.02);
-    box-shadow: 0 16px 36px rgba(217, 119, 6, 0.2), 0 4px 12px rgba(15, 23, 42, 0.12);
-    border-color: #f59e0b;
+    margin: 0;
+    padding: 0;
+    line-height: 0;
   }
 
   /* Card Image Full-Bleed */
@@ -139,7 +150,18 @@
   }
 
   .vsinst-banner-card:hover .vsinst-banner-img {
-    transform: scale(1.05);
+    transform: scale(1.06);
+  }
+
+  /* ══ STRAIGHT THICK VERTICAL DIVIDER LINE CONNECTING TOP & BOTTOM FLUSH ══ */
+  .vsinst-card-divider {
+    width: {{ section.settings.line_thickness | default: 4 }}px;
+    background: {{ section.settings.line_color | default: '#d97706' }};
+    border-radius: 0;
+    flex-shrink: 0;
+    align-self: stretch;
+    margin: 0;
+    padding: 0;
   }
 
   /* Nav Controls & Drag Helpers */
@@ -148,7 +170,7 @@
     align-items: center;
     justify-content: center;
     gap: 14px;
-    margin-top: 20px;
+    margin-top: 24px;
   }
 
   .vsinst-ctrl-btn {
@@ -190,14 +212,21 @@
   /* Responsive Rules */
   @media (max-width: 768px) {
     .vsinst-slider-section-{{ section.id }} {
-      padding: 40px 0 45px 0;
+      padding: 38px 0 42px 0;
+    }
+    .vsinst-slider-strip-wrap {
+      padding: 18px 0;
     }
     .vsinst-banner-card {
       width: 260px;
-      border-radius: 14px;
+      border-radius: 13px;
+    }
+    .vsinst-card-divider {
+      height: 170px;
+      width: 3.5px;
     }
     .vsinst-marquee-track {
-      gap: 14px;
+      gap: 16px;
     }
   }
 </style>
@@ -221,125 +250,138 @@
     </div>
   </div>
 
-  <!-- RIGHT-TO-LEFT SMOOTH MARQUEE TRACK (DUPLICATED FOR INFINITE CONTINUOUS LOOP) -->
-  <div class="vsinst-marquee-outer" id="vsinstMarqueeOuter-{{ section.id }}">
-    <div class="vsinst-marquee-track" id="vsinstMarqueeTrack-{{ section.id }}">
+  <!-- FRAMED SLIDER STRIP (TOP & BOTTOM THICK LINES) -->
+  <div class="vsinst-slider-strip-wrap">
+    <div class="vsinst-marquee-outer" id="vsinstMarqueeOuter-{{ section.id }}">
+      <div class="vsinst-marquee-track" id="vsinstMarqueeTrack-{{ section.id }}">
 
-      <!-- RENDER PASS 1 -->
-      {% if section.blocks.size > 0 %}
-        {% for block in section.blocks %}
-          {% assign img_url = '' %}
-          {% if block.settings.image != blank %}
-            {% assign img_url = block.settings.image | image_url: width: 900 %}
-          {% elsif forloop.index == 1 %}
-            {% assign img_url = 'commercial-building-2.png' | asset_url %}
-          {% elsif forloop.index == 2 %}
-            {% assign img_url = 'case-institutional.jpg' | asset_url %}
-          {% elsif forloop.index == 3 %}
-            {% assign img_url = 'commercial-building-1.png' | asset_url %}
-          {% elsif forloop.index == 4 %}
-            {% assign img_url = 'institutional-mcb-showcase-final.jpg' | asset_url %}
-          {% else %}
-            {% assign img_url = 'https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=800&q=80' %}
-          {% endif %}
-
-          <a href="{{ block.settings.link | default: '#vsinst-calc' }}" class="vsinst-banner-card" {{ block.shopify_attributes }} target="{% if block.settings.link contains 'http' or block.settings.link contains 'wa.me' %}_blank{% else %}_self{% endif %}">
-            <img src="{{ img_url }}" alt="Institutional Banner" class="vsinst-banner-img" loading="lazy" onerror="this.onerror=null; this.src='https://cdn.shopify.com/s/files/1/0663/8783/7093/files/VS_Card_Final_Design_Golden_1.png';">
-          </a>
-        {% endfor %}
-
-      {% else %}
-        <!-- SECTION SETTINGS FALLBACK CARDS (CARDS 1 TO 10) -->
-        {% for i in (1..10) %}
-          {% capture img_key %}banner_img_{{ i }}{% endcapture %}
-          {% capture link_key %}banner_link_{{ i }}{% endcapture %}
-
-          {% assign card_img = section.settings[img_key] %}
-          {% assign card_link = section.settings[link_key] %}
-
-          {%- comment -%} Only show card if user configured image or it is one of the 5 default cards {%- endcomment -%}
-          {% if card_img != blank or i <= 5 %}
+        <!-- RENDER PASS 1 -->
+        {% if section.blocks.size > 0 %}
+          {% for block in section.blocks %}
             {% assign img_url = '' %}
-            {% if card_img != blank %}
-              {% assign img_url = card_img | image_url: width: 900 %}
-            {% elsif i == 1 %}
+            {% if block.settings.image != blank %}
+              {% assign img_url = block.settings.image | image_url: width: 900 %}
+            {% elsif forloop.index == 1 %}
               {% assign img_url = 'commercial-building-2.png' | asset_url %}
-            {% elsif i == 2 %}
+            {% elsif forloop.index == 2 %}
               {% assign img_url = 'case-institutional.jpg' | asset_url %}
-            {% elsif i == 3 %}
+            {% elsif forloop.index == 3 %}
               {% assign img_url = 'commercial-building-1.png' | asset_url %}
-            {% elsif i == 4 %}
+            {% elsif forloop.index == 4 %}
               {% assign img_url = 'institutional-mcb-showcase-final.jpg' | asset_url %}
-            {% elsif i == 5 %}
-              {% assign img_url = 'https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=800&q=80' %}
             {% else %}
-              {% assign img_url = 'commercial-building-2.png' | asset_url %}
+              {% assign img_url = 'https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=800&q=80' %}
             {% endif %}
 
-            <a href="{{ card_link | default: '#vsinst-calc' }}" class="vsinst-banner-card" target="{% if card_link contains 'http' or card_link contains 'wa.me' %}_blank{% else %}_self{% endif %}">
+            <a href="{{ block.settings.link | default: '#vsinst-calc' }}" class="vsinst-banner-card" {{ block.shopify_attributes }} target="{% if block.settings.link contains 'http' or block.settings.link contains 'wa.me' %}_blank{% else %}_self{% endif %}">
               <img src="{{ img_url }}" alt="Institutional Banner" class="vsinst-banner-img" loading="lazy" onerror="this.onerror=null; this.src='https://cdn.shopify.com/s/files/1/0663/8783/7093/files/VS_Card_Final_Design_Golden_1.png';">
             </a>
-          {% endif %}
-        {% endfor %}
-      {% endif %}
 
-      <!-- RENDER PASS 2 (DUPLICATE FOR SEAMLESS 100% INFINITE LOOP) -->
-      {% if section.blocks.size > 0 %}
-        {% for block in section.blocks %}
-          {% assign img_url = '' %}
-          {% if block.settings.image != blank %}
-            {% assign img_url = block.settings.image | image_url: width: 900 %}
-          {% elsif forloop.index == 1 %}
-            {% assign img_url = 'commercial-building-2.png' | asset_url %}
-          {% elsif forloop.index == 2 %}
-            {% assign img_url = 'case-institutional.jpg' | asset_url %}
-          {% elsif forloop.index == 3 %}
-            {% assign img_url = 'commercial-building-1.png' | asset_url %}
-          {% elsif forloop.index == 4 %}
-            {% assign img_url = 'institutional-mcb-showcase-final.jpg' | asset_url %}
-          {% else %}
-            {% assign img_url = 'https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=800&q=80' %}
-          {% endif %}
+            <!-- VERTICAL THICK STRAIGHT LINE DIVIDER -->
+            <div class="vsinst-card-divider"></div>
+          {% endfor %}
 
-          <a href="{{ block.settings.link | default: '#vsinst-calc' }}" class="vsinst-banner-card" aria-hidden="true" tabindex="-1" target="{% if block.settings.link contains 'http' or block.settings.link contains 'wa.me' %}_blank{% else %}_self{% endif %}">
-            <img src="{{ img_url }}" alt="Institutional Banner" class="vsinst-banner-img" loading="lazy" onerror="this.onerror=null; this.src='https://cdn.shopify.com/s/files/1/0663/8783/7093/files/VS_Card_Final_Design_Golden_1.png';">
-          </a>
-        {% endfor %}
+        {% else %}
+          <!-- SECTION SETTINGS FALLBACK CARDS (CARDS 1 TO 10) -->
+          {% for i in (1..10) %}
+            {% capture img_key %}banner_img_{{ i }}{% endcapture %}
+            {% capture link_key %}banner_link_{{ i }}{% endcapture %}
 
-      {% else %}
-        <!-- DUPLICATE PASS FOR SETTINGS FALLBACK CARDS -->
-        {% for i in (1..10) %}
-          {% capture img_key %}banner_img_{{ i }}{% endcapture %}
-          {% capture link_key %}banner_link_{{ i }}{% endcapture %}
+            {% assign card_img = section.settings[img_key] %}
+            {% assign card_link = section.settings[link_key] %}
 
-          {% assign card_img = section.settings[img_key] %}
-          {% assign card_link = section.settings[link_key] %}
+            {% if card_img != blank or i <= 5 %}
+              {% assign img_url = '' %}
+              {% if card_img != blank %}
+                {% assign img_url = card_img | image_url: width: 900 %}
+              {% elsif i == 1 %}
+                {% assign img_url = 'commercial-building-2.png' | asset_url %}
+              {% elsif i == 2 %}
+                {% assign img_url = 'case-institutional.jpg' | asset_url %}
+              {% elsif i == 3 %}
+                {% assign img_url = 'commercial-building-1.png' | asset_url %}
+              {% elsif i == 4 %}
+                {% assign img_url = 'institutional-mcb-showcase-final.jpg' | asset_url %}
+              {% elsif i == 5 %}
+                {% assign img_url = 'https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=800&q=80' %}
+              {% else %}
+                {% assign img_url = 'commercial-building-2.png' | asset_url %}
+              {% endif %}
 
-          {% if card_img != blank or i <= 5 %}
+              <a href="{{ card_link | default: '#vsinst-calc' }}" class="vsinst-banner-card" target="{% if card_link contains 'http' or card_link contains 'wa.me' %}_blank{% else %}_self{% endif %}">
+                <img src="{{ img_url }}" alt="Institutional Banner" class="vsinst-banner-img" loading="lazy" onerror="this.onerror=null; this.src='https://cdn.shopify.com/s/files/1/0663/8783/7093/files/VS_Card_Final_Design_Golden_1.png';">
+              </a>
+
+              <!-- VERTICAL THICK STRAIGHT LINE DIVIDER -->
+              <div class="vsinst-card-divider"></div>
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+
+        <!-- RENDER PASS 2 (DUPLICATE PASS FOR SEAMLESS 100% INFINITE LOOP) -->
+        {% if section.blocks.size > 0 %}
+          {% for block in section.blocks %}
             {% assign img_url = '' %}
-            {% if card_img != blank %}
-              {% assign img_url = card_img | image_url: width: 900 %}
-            {% elsif i == 1 %}
+            {% if block.settings.image != blank %}
+              {% assign img_url = block.settings.image | image_url: width: 900 %}
+            {% elsif forloop.index == 1 %}
               {% assign img_url = 'commercial-building-2.png' | asset_url %}
-            {% elsif i == 2 %}
+            {% elsif forloop.index == 2 %}
               {% assign img_url = 'case-institutional.jpg' | asset_url %}
-            {% elsif i == 3 %}
+            {% elsif forloop.index == 3 %}
               {% assign img_url = 'commercial-building-1.png' | asset_url %}
-            {% elsif i == 4 %}
+            {% elsif forloop.index == 4 %}
               {% assign img_url = 'institutional-mcb-showcase-final.jpg' | asset_url %}
-            {% elsif i == 5 %}
-              {% assign img_url = 'https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=800&q=80' %}
             {% else %}
-              {% assign img_url = 'commercial-building-2.png' | asset_url %}
+              {% assign img_url = 'https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=800&q=80' %}
             {% endif %}
 
-            <a href="{{ card_link | default: '#vsinst-calc' }}" class="vsinst-banner-card" aria-hidden="true" tabindex="-1" target="{% if card_link contains 'http' or card_link contains 'wa.me' %}_blank{% else %}_self{% endif %}">
+            <a href="{{ block.settings.link | default: '#vsinst-calc' }}" class="vsinst-banner-card" aria-hidden="true" tabindex="-1" target="{% if block.settings.link contains 'http' or block.settings.link contains 'wa.me' %}_blank{% else %}_self{% endif %}">
               <img src="{{ img_url }}" alt="Institutional Banner" class="vsinst-banner-img" loading="lazy" onerror="this.onerror=null; this.src='https://cdn.shopify.com/s/files/1/0663/8783/7093/files/VS_Card_Final_Design_Golden_1.png';">
             </a>
-          {% endif %}
-        {% endfor %}
-      {% endif %}
 
+            <!-- VERTICAL THICK STRAIGHT LINE DIVIDER -->
+            <div class="vsinst-card-divider"></div>
+          {% endfor %}
+
+        {% else %}
+          <!-- DUPLICATE PASS FOR SETTINGS FALLBACK CARDS -->
+          {% for i in (1..10) %}
+            {% capture img_key %}banner_img_{{ i }}{% endcapture %}
+            {% capture link_key %}banner_link_{{ i }}{% endcapture %}
+
+            {% assign card_img = section.settings[img_key] %}
+            {% assign card_link = section.settings[link_key] %}
+
+            {% if card_img != blank or i <= 5 %}
+              {% assign img_url = '' %}
+              {% if card_img != blank %}
+                {% assign img_url = card_img | image_url: width: 900 %}
+              {% elsif i == 1 %}
+                {% assign img_url = 'commercial-building-2.png' | asset_url %}
+              {% elsif i == 2 %}
+                {% assign img_url = 'case-institutional.jpg' | asset_url %}
+              {% elsif i == 3 %}
+                {% assign img_url = 'commercial-building-1.png' | asset_url %}
+              {% elsif i == 4 %}
+                {% assign img_url = 'institutional-mcb-showcase-final.jpg' | asset_url %}
+              {% elsif i == 5 %}
+                {% assign img_url = 'https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=800&q=80' %}
+              {% else %}
+                {% assign img_url = 'commercial-building-2.png' | asset_url %}
+              {% endif %}
+
+              <a href="{{ card_link | default: '#vsinst-calc' }}" class="vsinst-banner-card" aria-hidden="true" tabindex="-1" target="{% if card_link contains 'http' or card_link contains 'wa.me' %}_blank{% else %}_self{% endif %}">
+                <img src="{{ img_url }}" alt="Institutional Banner" class="vsinst-banner-img" loading="lazy" onerror="this.onerror=null; this.src='https://cdn.shopify.com/s/files/1/0663/8783/7093/files/VS_Card_Final_Design_Golden_1.png';">
+              </a>
+
+              <!-- VERTICAL THICK STRAIGHT LINE DIVIDER -->
+              <div class="vsinst-card-divider"></div>
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+
+      </div>
     </div>
   </div>
 
@@ -367,7 +409,6 @@
 
     if (!outer || !track) return;
 
-    // Arrow click adjustments for quick manual browsing
     if (btnPrev) {
       btnPrev.addEventListener('click', function() {
         track.style.animationPlayState = 'paused';
@@ -388,7 +429,6 @@
       });
     }
 
-    // Touch Drag support
     var isDown = false;
     var startX, scrollLeft;
     outer.addEventListener('mousedown', function(e) {
@@ -414,7 +454,7 @@
 
 {% schema %}
 {
-  "name": "Institutional 4:3 Slider",
+  "name": "Institutional 3:2 Slider",
   "tag": "section",
   "class": "vsinst-banner-slider-section",
   "settings": [
@@ -441,6 +481,32 @@
       "id": "bg_color",
       "label": "Background Color",
       "default": "#fffdf5"
+    },
+    {
+      "type": "color",
+      "id": "strip_bg",
+      "label": "Slider Strip Background",
+      "default": "#fffef9"
+    },
+    {
+      "type": "header",
+      "content": "📏 Thick Line Border Settings"
+    },
+    {
+      "type": "color",
+      "id": "line_color",
+      "label": "Thick Line Color",
+      "default": "#d97706"
+    },
+    {
+      "type": "range",
+      "id": "line_thickness",
+      "min": 2,
+      "max": 8,
+      "step": 1,
+      "unit": "px",
+      "label": "Line Thickness (Top/Bottom & Vertical Dividers)",
+      "default": 4
     },
     {
       "type": "range",
