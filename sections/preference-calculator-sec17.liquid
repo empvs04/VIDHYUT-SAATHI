@@ -281,13 +281,19 @@
 
   .premium-calculator-{{ section.id }} .heading-line { display: inline-block; white-space: nowrap; }
 
-  /* CUSTOM EDITABLE NUMBER INPUT BOXES & PHASE SELECTOR */
   .premium-calculator-{{ section.id }} .input-dual-row {
     display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 14px;
-    margin-bottom: 20px;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 12px;
+    margin-bottom: 12px;
     margin-top: 10px;
+  }
+
+  .premium-calculator-{{ section.id }} .input-single-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 18px;
   }
 
   .premium-calculator-{{ section.id }} .input-field-group {
@@ -852,21 +858,32 @@
             <span id="maxLabel-{{ section.id }}">₹{{ section.settings.slider_max }}</span>
           </div>
 
-          <!-- DUAL EDITABLE NUMBER INPUTS (BILL RS SECOND & LOAD KW THIRD) -->
+          <!-- EDITABLE NUMBER INPUTS (MONTHLY BILL & LOAD KW) -->
           <div class="input-dual-row">
             <div class="input-field-group">
               <div class="calc-label">💰 Monthly Electricity Bill</div>
               <div class="custom-bill-box">
                 <span class="currency-symbol">₹</span>
-                <input type="number" id="billInput-{{ section.id }}" class="custom-num-input" value="{{ section.settings.slider_default }}" min="500" max="300000" step="50">
+                <input type="number" id="billInput-{{ section.id }}" class="custom-num-input" value="{{ section.settings.slider_default }}" min="500" max="300000" step="50" placeholder="e.g. 10000">
               </div>
             </div>
 
             <div class="input-field-group">
               <div class="calc-label">⚡ Sanctioned Load</div>
               <div class="custom-bill-box">
-                <input type="number" id="kwInput-{{ section.id }}" class="custom-num-input" value="" min="1" max="60" step="1">
+                <input type="number" id="kwInput-{{ section.id }}" class="custom-num-input" value="" min="1" max="250" step="1" placeholder="e.g. 30">
                 <span class="unit-symbol">KW</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- HIGHEST BILL IN LAST 12 MONTHS (PEAK BILL INPUT) -->
+          <div class="input-single-row">
+            <div class="input-field-group">
+              <div class="calc-label">📈 Highest Bill in Last 12 Months (Peak/Summer Bill)</div>
+              <div class="custom-bill-box">
+                <span class="currency-symbol">₹</span>
+                <input type="number" id="peakBillInput-{{ section.id }}" class="custom-num-input" value="" min="500" max="1000000" step="100" placeholder="e.g. 60000 (Optional)">
               </div>
             </div>
           </div>
@@ -980,6 +997,7 @@
       const recReason = document.getElementById(`recReason-${sectionId}`);
 
       const billInput = document.getElementById(`billInput-${sectionId}`);
+      const peakBillInput = document.getElementById(`peakBillInput-${sectionId}`);
       const kwInput = document.getElementById(`kwInput-${sectionId}`);
       const btnSingle = document.getElementById(`btnSinglePhase-${sectionId}`);
       const btnThree = document.getElementById(`btnThreePhase-${sectionId}`);
@@ -1026,14 +1044,16 @@
           bill = parseFloat(billInput && billInput.value ? billInput.value : (slider ? slider.value : 0)) || 0;
         }
 
-        // Read KW load directly from user input without auto-writing kwInput.value on bill/slider change
+        // Read Peak Bill and KW load directly from user input
+        let peakBill = parseFloat(peakBillInput && peakBillInput.value ? peakBillInput.value : 0) || 0;
         let kw = parseFloat(kwInput && kwInput.value ? kwInput.value : 0) || 0;
 
-        const cardsFromKW = kw > 0 ? getCardsByKW(kw) : 0;
         const cardsFromBill = getCardsByBill(bill);
+        const cardsFromPeakBill = peakBill > 0 ? getCardsByBill(peakBill) : 0;
+        const cardsFromKW = kw > 0 ? getCardsByKW(kw) : 0;
 
-        // HIGHER PRIORITY SELECTION RULE
-        const baseRequiredCards = Math.max(cardsFromKW, cardsFromBill);
+        // 3-WAY HIGHER PRIORITY SELECTION RULE
+        const baseRequiredCards = Math.max(cardsFromBill, cardsFromPeakBill, cardsFromKW);
         const totalCards = currentPhase === 'three' ? baseRequiredCards + 1 : baseRequiredCards;
 
         let pct = pctBase;
@@ -1053,16 +1073,14 @@
         }
 
         let higherReasonText = '';
-        if (kw > 0) {
-          if (cardsFromKW > cardsFromBill) {
-            higherReasonText = `⚡ <strong>KW Rule Applied:</strong> ${kw} KW load requires ${cardsFromKW} Cards, while ₹${Math.round(bill).toLocaleString('en-IN')} bill requires ${cardsFromBill} Cards. Higher requirement considered (${cardsFromKW} Cards${currentPhase === 'three' ? ' + 1 Extra for 3-Phase = ' + totalCards + ' Cards' : ''}).`;
-          } else if (cardsFromBill > cardsFromKW) {
-            higherReasonText = `💰 <strong>Bill Rule Applied:</strong> ₹${Math.round(bill).toLocaleString('en-IN')} bill requires ${cardsFromBill} Cards, while ${kw} KW load requires ${cardsFromKW} Cards. Higher requirement considered (${cardsFromBill} Cards${currentPhase === 'three' ? ' + 1 Extra for 3-Phase = ' + totalCards + ' Cards' : ''}).`;
-          } else {
-            higherReasonText = `⚡ <strong>Balanced Load:</strong> Both ${kw} KW load and ₹${Math.round(bill).toLocaleString('en-IN')} bill require ${baseRequiredCards} Cards${currentPhase === 'three' ? ' (+ 1 Extra for 3-Phase = ' + totalCards + ' Cards)' : ''}.`;
-          }
+        if (cardsFromPeakBill >= cardsFromBill && cardsFromPeakBill >= cardsFromKW && peakBill > 0) {
+          higherReasonText = `📈 <strong>Peak 12-Mo Bill Rule Applied:</strong> Highest 12-month bill of ₹${Math.round(peakBill).toLocaleString('en-IN')} requires ${cardsFromPeakBill} Cards (vs ${kw > 0 ? kw + ' KW -> ' + cardsFromKW + ' Cards, ' : ''}₹${Math.round(bill).toLocaleString('en-IN')} avg bill -> ${cardsFromBill} Cards). Peak requirement considered (${cardsFromPeakBill} Cards${currentPhase === 'three' ? ' + 1 Extra for 3-Phase = ' + totalCards + ' Cards' : ''}).`;
+        } else if (cardsFromKW >= cardsFromBill && cardsFromKW >= cardsFromPeakBill && kw > 0) {
+          higherReasonText = `⚡ <strong>KW Load Rule Applied:</strong> ${kw} KW load requires ${cardsFromKW} Cards, higher than bill metrics (${cardsFromBill} Cards). Higher requirement selected (${cardsFromKW} Cards${currentPhase === 'three' ? ' + 1 Extra for 3-Phase = ' + totalCards + ' Cards' : ''}).`;
+        } else if (cardsFromBill >= cardsFromKW && cardsFromBill >= cardsFromPeakBill) {
+          higherReasonText = `💰 <strong>Monthly Bill Rule Applied:</strong> ₹${Math.round(bill).toLocaleString('en-IN')} monthly bill requires ${cardsFromBill} Cards${currentPhase === 'three' ? ' (+ 1 Extra for 3-Phase = ' + totalCards + ' Cards)' : ''}.`;
         } else {
-          higherReasonText = `💰 <strong>Bill Rule Applied:</strong> ₹${Math.round(bill).toLocaleString('en-IN')} bill requires ${cardsFromBill} Cards${currentPhase === 'three' ? ' (+ 1 Extra for 3-Phase = ' + totalCards + ' Cards)' : ''}. (Enter your KW load above if known).`;
+          higherReasonText = `⚡ <strong>Smart Selection:</strong> Evaluated across Average Bill, Peak 12-Mo Bill, and KW Load. Higher requirement (${baseRequiredCards} Cards) selected.`;
         }
 
         if (display) display.textContent = Math.round(bill).toLocaleString('en-IN');
@@ -1070,7 +1088,7 @@
         if (ySaving) ySaving.textContent = '₹' + yearly.toLocaleString('en-IN');
         if (nBill) nBill.textContent = '₹' + newBill.toLocaleString('en-IN');
         if (roi) roi.textContent = (isFinite(roiMonths) && roiMonths > 0 ? roiMonths : 0) + ' Mo';
-        if (recLoad) recLoad.textContent = kw > 0 ? (kw + ' KW') : 'Enter KW';
+        if (recLoad) recLoad.textContent = kw > 0 ? (kw + ' KW') : (peakBill > 0 ? ('Peak ₹' + Math.round(peakBill).toLocaleString('en-IN')) : 'Enter Load / Peak');
         if (recCards) recCards.textContent = cardsStr;
         if (recReason) recReason.innerHTML = higherReasonText;
       }
@@ -1097,6 +1115,11 @@
       if (billInput) {
         billInput.addEventListener('input', function() { updateCalculator('billInput'); });
         billInput.addEventListener('change', function() { updateCalculator('billInput'); });
+      }
+
+      if (peakBillInput) {
+        peakBillInput.addEventListener('input', function() { updateCalculator('peakBillInput'); });
+        peakBillInput.addEventListener('change', function() { updateCalculator('peakBillInput'); });
       }
 
       if (kwInput) {
