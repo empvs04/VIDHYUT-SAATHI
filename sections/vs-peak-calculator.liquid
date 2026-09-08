@@ -2,281 +2,145 @@
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800;900&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 
 {%- comment -%}
-
-  Vidhyut Saathi Premium Calculator - Strict Mobile-First & Desktop Optimized
-
+  Vidhyut Saathi 3-Way Peak Load & Savings Calculator
 {%- endcomment -%}
 
 {%- style -%}
-
   .premium-calculator-{{ section.id }} {
-
     --green: {{ section.settings.color_green }};
-
     --green2: {{ section.settings.color_green2 }};
-
     --orange: {{ section.settings.color_orange }};
-
     --text: {{ section.settings.color_text }};
-
     --muted: {{ section.settings.color_muted }};
-
     --gradient: linear-gradient(135deg, var(--green), var(--orange));
-
     --heading-font: 'Baloo 2', sans-serif !important;
-
     --body-font: 'Nunito', sans-serif !important;
-
     font-family: var(--body-font);
-
     background:
-
       radial-gradient(circle at top right, rgba(20,140,58,.08), transparent 30%),
-
       radial-gradient(circle at bottom left, rgba(245,130,32,.08), transparent 30%), #fff;
-
     min-height: 100vh;
-
     display: flex;
-
     align-items: center;
-
     justify-content: center;
-
-    padding: 40px 20px; /* Original mobile padding */
-
+    padding: 40px 20px;
     position: relative;
-
     overflow: hidden;
-
     animation: bgFloat-{{ section.id }} 10s ease-in-out infinite alternate;
-
   }
-
-
 
   .premium-calculator-{{ section.id }} * {
-
     margin: 0;
-
     padding: 0;
-
     box-sizing: border-box;
-
   }
-
-
 
   .premium-calculator-{{ section.id }} .bg-grid {
-
     position: absolute;
-
     inset: 0;
-
     background-image: linear-gradient(rgba(20,140,58,.03) 1px, transparent 1px), linear-gradient(90deg, rgba(20,140,58,.03) 1px, transparent 1px);
-
     background-size: 40px 40px;
-
     pointer-events: none;
-
   }
 
-
-
   .premium-calculator-{{ section.id }} .blur {
-
     position: absolute;
-
     border-radius: 50%;
-
     filter: blur(90px);
-
     animation: floatBlur-{{ section.id }} 8s ease-in-out infinite alternate;
-
   }
 
   .premium-calculator-{{ section.id }} .blur1 { width: 300px; height: 300px; background: rgba(20,140,58,.08); top: -100px; right: -100px; }
-
   .premium-calculator-{{ section.id }} .blur2 { width: 260px; height: 260px; background: rgba(245,130,32,.08); bottom: -100px; left: -100px; }
 
- 
-
   /* BASE WRAPPER (Mobile / Tablet) */
-
   .premium-calculator-{{ section.id }} .wrapper { width: 100%; max-width: 520px; position: relative; z-index: 10; margin: 0 auto; }
 
- 
-
   .premium-calculator-{{ section.id }} .calc-card {
-
     animation: floatCard-{{ section.id }} 4s ease-in-out infinite alternate;
-
     background: linear-gradient(135deg, rgba(255,255,255,.95), rgba(255,255,255,.82));
-
     border: 1px solid rgba(20,140,58,.12);
-
     border-radius: 30px;
-
-    padding: 34px 26px; /* Original mobile padding */
-
+    padding: 34px 26px;
     backdrop-filter: blur(18px);
-
     box-shadow: 0 20px 60px rgba(0,0,0,.05), 0 0 35px rgba(245,130,32,.06);
-
     animation: cardEnter-{{ section.id }} .8s ease;
-
   }
-
-
 
   .premium-calculator-{{ section.id }} .tag-wrapper { text-align: center; }
-
   .premium-calculator-{{ section.id }} .section-tag {
-
     display: inline-flex; align-items: center; gap: 10px; padding: 10px 18px; border-radius: 999px;
-
     background: rgba(20,140,58,.06); border: 1px solid rgba(20,140,58,.10);
-
     color: var(--green); font-size: .72rem; font-weight: 700; letter-spacing: .12em;
-
     text-transform: uppercase; margin-bottom: 22px;
-
   }
-
   .premium-calculator-{{ section.id }} .tag-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--orange); animation: pulse-{{ section.id }} 1.4s infinite; }
 
- 
-
   .premium-calculator-{{ section.id }} .section-title {
-
     font-family: var(--heading-font); font-size: 3rem; line-height: 1.1; font-weight: 900; margin-bottom: 18px; color: var(--text); text-align: center;
-
   }
-
   .premium-calculator-{{ section.id }} .section-title span { background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-
   .premium-calculator-{{ section.id }} .section-sub { text-align: center; color: var(--muted); font-size: 1rem; line-height: 1.8; margin: 0 auto 34px; }
 
- 
-
   .premium-calculator-{{ section.id }} .calc-label { font-size: .8rem; color: var(--muted); margin-bottom: 10px; }
-
   .premium-calculator-{{ section.id }} .calc-val-display { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
-
   .premium-calculator-{{ section.id }} .calc-current {
-
     font-family: var(--heading-font); font-size: 3rem; font-weight: 900; background: linear-gradient(135deg, var(--green), var(--green2));
-
     -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 0 0 20px rgba(20,140,58,.15);
-
   }
-
- 
 
   .premium-calculator-{{ section.id }} .calc-slider {
-
     -webkit-appearance: none; width: 100%; height: 8px; border-radius: 999px;
-
     background: linear-gradient(90deg, var(--orange), #ffc642, var(--green2));
-
     background-size: 200% 200%; animation: sliderMove-{{ section.id }} 4s linear infinite; cursor: pointer;
-
   }
-
   .premium-calculator-{{ section.id }} .calc-slider::-webkit-slider-thumb {
-
     -webkit-appearance: none; width: 28px; height: 28px; background: #fff; border-radius: 50%;
-
     border: 4px solid var(--green); box-shadow: 0 0 0 8px rgba(20,140,58,.12), 0 5px 15px rgba(0,0,0,.08);
-
   }
-
- 
 
   /* BASE 2-COLUMN GRID (Original Mobile) */
-
   .premium-calculator-{{ section.id }} .calc-results { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 28px; }
-
   .premium-calculator-{{ section.id }} .calc-result-card {
-
     background: rgba(255,255,255,.92); border: 1px solid rgba(20,140,58,.10); border-radius: 18px;
-
     padding: 22px 16px; text-align: center; transition: .35s ease; position: relative; box-shadow: 0 10px 25px rgba(0,0,0,.03);
-
   }
-
   .premium-calculator-{{ section.id }} .calc-result-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--gradient); border-radius: 18px 18px 0 0; }
-
   .premium-calculator-{{ section.id }} .calc-result-card:hover { transform: translateY(-6px) scale(1.02); box-shadow: 0 18px 35px rgba(20,140,58,.08); }
 
- 
-
   .premium-calculator-{{ section.id }} .calc-result-val {
-
     font-family: var(--heading-font); font-size: 2rem; font-weight: 900; background: var(--gradient);
-
     -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: softGlow-{{ section.id }} 2s infinite;
-
   }
-
   .premium-calculator-{{ section.id }} .calc-result-label { font-size: .78rem; color: var(--muted); margin-top: 6px; }
 
- 
-
   .premium-calculator-{{ section.id }} .calc-disclaimer {
-
     margin-top: 24px; background: rgba(20,140,58,.04); border: 1px solid rgba(20,140,58,.08); border-radius: 14px;
-
     padding: 14px 16px; text-align: center; color: var(--muted); font-size: .75rem; line-height: 1.7;
-
   }
-
- 
 
   /* BASE 2-COLUMN TRUST STRIP (Original Mobile) */
-
   .premium-calculator-{{ section.id }} .trust-strip { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 22px; }
-
   .premium-calculator-{{ section.id }} .trust-item {
-
     position: relative; overflow: hidden; background: rgba(255,255,255,.88);
-
     border-radius: 22px; padding: 18px 12px; text-align: center; transition: .35s ease; z-index: 1;
-
   }
-
   .premium-calculator-{{ section.id }} .trust-item::before {
-
     content: ''; position: absolute; inset: -4px; border-radius: 26px;
-
     background: linear-gradient(90deg, var(--green), #22c55e, var(--orange), #ffd44d, var(--green));
-
     background-size: 300% 300%; animation: premiumOutline-{{ section.id }} 4s linear infinite; z-index: -2;
-
   }
-
   .premium-calculator-{{ section.id }} .trust-item::after {
-
     content: ''; position: absolute; inset: 4px;
-
     background: linear-gradient(135deg, rgba(255,255,255,.96), rgba(255,255,255,.90)); border-radius: 18px; z-index: -1;
-
   }
-
   .premium-calculator-{{ section.id }} .trust-item:hover {
-
     transform: translateY(-8px) scale(1.03); box-shadow: 0 15px 40px rgba(20,140,58,.15), 0 0 30px rgba(245,130,32,.12);
-
   }
-
- 
 
   .premium-calculator-{{ section.id }} .electric-particle {
-
     position: absolute; width: 10px; height: 10px; border-radius: 50%;
-
     background: rgba(245,130,32,.25); animation: particleMove-{{ section.id }} 10s linear infinite; filter: blur(1px);
-
   }
 
   .premium-calculator-{{ section.id }} .heading-line { display: inline-block; white-space: nowrap; }
@@ -441,9 +305,7 @@
     box-shadow: 0 4px 14px rgba(245, 130, 32, 0.12);
   }
 
-
-
-  /* HIGHLY LUCRACTIVE MOBILE & TABLET OPTIMIZATION */
+  /* MOBILE & TABLET OPTIMIZATION */
   @media(max-width: 768px) {
     .premium-calculator-{{ section.id }} {
       padding: 30px 12px !important;
@@ -588,9 +450,7 @@
     }
   }
 
-
-
-  /* DESKTOP CENTERED HEADER WITH SHUFFLED 2-COLUMN LAYOUT */
+  /* DESKTOP CENTERED HEADER WITH 2-COLUMN LAYOUT */
   @media(min-width: 769px) {
     .premium-calculator-{{ section.id }} { 
       padding: 70px 24px !important; 
@@ -631,7 +491,7 @@
       max-width: 720px !important;
     }
 
-    /* 2 EQUAL COLUMNS BELOW HEADER (1fr 1fr WITH 42px GAP) */
+    /* 2 EQUAL COLUMNS BELOW HEADER */
     .vs-calc-desktop-grid-{{ section.id }} {
       display: grid !important;
       grid-template-columns: 1fr 1fr !important;
@@ -640,7 +500,6 @@
       width: 100% !important;
     }
     
-    /* LEFT COLUMN: COMPACT & ELEGANT CALCULATOR CONTROLS CARD */
     .vs-calc-left-col-{{ section.id }} {
       width: 100% !important;
       max-width: 100% !important;
@@ -670,7 +529,6 @@
       font-size: 0.88rem !important;
     }
 
-    /* RIGHT COLUMN: 4 CALCULATION RESULTS CARDS, EXPLANATION, DISCLAIMER & 4 TRUST BADGES */
     .vs-calc-right-col-{{ section.id }} {
       width: 100% !important;
       max-width: 100% !important;
@@ -724,7 +582,6 @@
       margin-bottom: 16px !important;
     }
 
-    /* TRUST STRIP CAPSULE PILLS IN RIGHT COLUMN */
     .vs-calc-right-col-{{ section.id }} .trust-strip { 
       display: grid !important; 
       grid-template-columns: repeat(2, 1fr) !important; 
@@ -764,33 +621,17 @@
     .premium-calculator-{{ section.id }} .blur2 { width: 300px; height: 300px; bottom: -50px; left: -50px; }
   }
 
-
-
   /* Animations */
-
   @keyframes pulse-{{ section.id }} { 50% { transform: scale(1.4); } }
-
   @keyframes sliderMove-{{ section.id }} { 0% { background-position: left center; } 100% { background-position: right center; } }
-
   @keyframes floatBlur-{{ section.id }} { 100% { transform: translateY(20px) translateX(10px); } }
-
   @keyframes bgFloat-{{ section.id }} { 100% { background-position: right bottom; } }
-
   @keyframes softGlow-{{ section.id }} { 50% { filter: drop-shadow(0 0 8px rgba(245,130,32,.25)); } }
-
   @keyframes cardEnter-{{ section.id }} { from { opacity: 0; transform: translateY(25px); } to { opacity: 1; transform: translateY(0); } }
-
   @keyframes floatCard-{{ section.id }} { 0% { transform: translateY(0); } 100% { transform: translateY(-8px); } }
-
   @keyframes particleMove-{{ section.id }} { 0% { transform: translateY(100vh) translateX(0); } 100% { transform: translateY(-100vh) translateX(80px); } }
-
   @keyframes premiumOutline-{{ section.id }} { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-
-
-
 {%- endstyle -%}
-
-
 
 <div class="premium-calculator-{{ section.id }}"
      id="calc-data-{{ section.id }}"
@@ -799,25 +640,14 @@
      data-pct-mid="{{ section.settings.pct_mid }}"
      data-pct-high="{{ section.settings.pct_high }}">
 
- 
-
   <div class="electric-particle" style="left:15%; animation-duration:7s;"></div>
-
   <div class="electric-particle" style="left:40%; animation-duration:11s;"></div>
-
   <div class="electric-particle" style="left:75%; animation-duration:9s;"></div>
-
   <div class="electric-particle" style="left:90%; animation-duration:13s;"></div>
 
-
-
   <div class="bg-grid"></div>
-
   <div class="blur blur1"></div>
-
   <div class="blur blur2"></div>
-
-
 
   <div class="wrapper">
     <!-- TOP CENTERED SECTION HEADER & SUBHEADER -->
@@ -940,7 +770,7 @@
           </div>
         </div>
 
-        <!-- EXPLANATION BADGE & DISCLAIMER (MOVED HERE BELOW RESULTS CARDS) -->
+        <!-- EXPLANATION BADGE & DISCLAIMER -->
         <div class="calc-explain-badge" id="recReason-{{ section.id }}">
           ⚡ <strong>Smart Selection:</strong> Evaluated from both KW Load and Monthly Bill — Higher Requirement Selected.
         </div>
@@ -962,8 +792,6 @@
   </div>
 
 </div>
-
-
 
 <script>
   (function() {
@@ -1138,153 +966,79 @@
   })();
 </script>
 
-
-
 {% schema %}
 {
-  "name": "Savings Calculator (Sec 17)",
+  "name": "Peak Load Calculator",
   "settings": [
-
     {
-
       "type": "header",
-
       "content": "Fonts & Colors"
-
     },
-
     {
-
       "type": "font_picker",
-
       "id": "heading_font",
-
       "label": "Heading Font",
-
       "default": "work_sans_n9"
-
     },
-
     {
-
       "type": "font_picker",
-
       "id": "body_font",
-
       "label": "Body Font",
-
       "default": "work_sans_n4"
-
     },
-
     { "type": "color", "id": "color_green", "label": "Primary Green", "default": "#148C3A" },
-
     { "type": "color", "id": "color_green2", "label": "Secondary Green", "default": "#20b14b" },
-
     { "type": "color", "id": "color_orange", "label": "Orange", "default": "#F58220" },
-
     { "type": "color", "id": "color_text", "label": "Text Color", "default": "#1f2937" },
-
     { "type": "color", "id": "color_muted", "label": "Muted Text", "default": "#6b7280" },
-
     {
-
       "type": "header",
-
       "content": "Math & Logic"
-
     },
-
     { "type": "number", "id": "calc_price", "label": "Product Price (For ROI)", "default": 3498 },
-
     { "type": "number", "id": "pct_base", "label": "Base Saving % (<=10K)", "default": 25 },
-
     { "type": "number", "id": "pct_mid", "label": "Mid Saving % (10K-50K)", "default": 27 },
-
     { "type": "number", "id": "pct_high", "label": "High Saving % (>50K)", "default": 30 },
-
     { "type": "number", "id": "slider_min", "label": "Slider Minimum", "default": 500 },
-
     { "type": "number", "id": "slider_max", "label": "Slider Maximum", "default": 300000 },
-
     { "type": "number", "id": "slider_step", "label": "Slider Step", "default": 500 },
-
     { "type": "number", "id": "slider_default", "label": "Slider Default", "default": 4000 },
-
     {
-
       "type": "header",
-
       "content": "Text Content"
-
     },
-
-    { "type": "text", "id": "tag_text", "label": "Tag Text", "default": "Smart Savings Calculator" },
-
-    { "type": "text", "id": "heading_text", "label": "Heading Line 1", "default": "Calculate Your" },
-
+    { "type": "text", "id": "tag_text", "label": "Tag Text", "default": "Peak Load & Savings Sizing" },
+    { "type": "text", "id": "heading_text", "label": "Heading Line 1", "default": "Calculate Your Peak &" },
     { "type": "text", "id": "heading_highlight", "label": "Heading Highlight", "default": "Electricity Savings" },
-
-    { "type": "textarea", "id": "subheading_text", "label": "Subheading", "default": "Move the slider to estimate how much you can save every month with Vidhyut Saathi Smart Energy Saving Technology." },
-
+    { "type": "textarea", "id": "subheading_text", "label": "Subheading", "default": "Move the slider or enter your peak 12-month bill and KW load to get exact sizing with Vidhyut Saathi Smart Energy Saving Technology." },
     { "type": "text", "id": "slider_label", "label": "Slider Label", "default": "📄 Your Current Monthly Bill" },
-
     { "type": "text", "id": "label_monthly", "label": "Monthly Saving Label", "default": "Monthly Saving" },
-
     { "type": "text", "id": "label_yearly", "label": "Yearly Saving Label", "default": "Yearly Saving" },
-
     { "type": "text", "id": "label_newbill", "label": "New Bill Label", "default": "New Bill" },
-
     { "type": "text", "id": "label_roi", "label": "ROI Label", "default": "ROI" },
-
     { "type": "textarea", "id": "disclaimer_text", "label": "Disclaimer", "default": "Savings of 25–30% are estimated. Actual savings may vary based on usage patterns." }
-
   ],
-
   "blocks": [
-
     {
-
       "type": "trust_item",
-
       "name": "Trust Feature",
-
       "limit": 4,
-
       "settings": [
-
         { "type": "text", "id": "icon", "label": "Emoji/Icon", "default": "⚡" },
-
         { "type": "text", "id": "text", "label": "Text", "default": "Save Upto 30%" }
-
       ]
-
     }
-
   ],
-
   "presets": [
-
     {
-
-      "name": "Premium Calculator",
-
+      "name": "Peak Load Calculator",
       "blocks": [
-
         { "type": "trust_item", "settings": { "icon": "⚡", "text": "Save Upto 30%" } },
-
         { "type": "trust_item", "settings": { "icon": "🌿", "text": "Eco Friendly" } },
-
         { "type": "trust_item", "settings": { "icon": "⚙️", "text": "Smart Technology" } },
-
         { "type": "trust_item", "settings": { "icon": "🏆", "text": "Trusted Choice" } }
-
       ]
-
     }
-
   ]
-
 }
-
 {% endschema %}
