@@ -637,6 +637,250 @@
 }
 .vscc .btn-quote:hover { background: #e6f2ea; }
 
+/* How it Works Button with blinking glowing bulb */
+@keyframes vsccBulbPulse {
+  0%, 100% {
+    color: #f59e0b;
+    filter: drop-shadow(0 0 2px rgba(245, 158, 11, 0.4));
+    transform: scale(1);
+  }
+  50% {
+    color: #fbbf24;
+    filter: drop-shadow(0 0 8px rgba(251, 191, 36, 0.9)) drop-shadow(0 0 14px rgba(240, 99, 27, 0.6));
+    transform: scale(1.18);
+  }
+}
+
+.vscc .vscc-bulb-glow {
+  animation: vsccBulbPulse 1.4s ease-in-out infinite;
+  display: inline-block;
+  font-size: 13px;
+  color: #f59e0b;
+}
+
+.vscc .vscc-how-it-works-btn {
+  background: rgba(240, 99, 27, 0.08);
+  border: 1.5px solid rgba(240, 99, 27, 0.3);
+  color: #c2410c;
+  font-family: 'Baloo 2', sans-serif !important;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 8px rgba(240, 99, 27, 0.08);
+}
+
+.vscc .vscc-how-it-works-btn:hover {
+  background: rgba(240, 99, 27, 0.16);
+  border-color: #ea580c;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(240, 99, 27, 0.16);
+}
+
+.vscc .vscc-how-desktop-only {
+  display: inline-flex !important;
+}
+
+.vscc .vscc-how-mobile-only {
+  display: none !important;
+}
+
+@media(max-width: 768px) {
+  .vscc .vscc-how-desktop-only {
+    display: none !important;
+  }
+  .vscc .vscc-how-mobile-only {
+    display: inline-flex !important;
+  }
+}
+
+/* HOW IT WORKS MODAL */
+.vscc .vscc-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.vscc .vscc-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 28, 21, 0.65);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.vscc .vscc-modal-card {
+  position: relative;
+  width: 100%;
+  max-width: 540px;
+  background: #ffffff;
+  border: 2px solid #fed7aa;
+  border-radius: 24px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 35px rgba(240, 99, 27, 0.15);
+  overflow: hidden;
+  animation: vsccModalPop 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 10;
+}
+
+@keyframes vsccModalPop {
+  from { opacity: 0; transform: scale(0.92) translateY(12px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.vscc .vscc-modal-top-bar {
+  padding: 16px 20px;
+  background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+  border-bottom: 1px solid #fed7aa;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.vscc .vscc-modal-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.vscc .vscc-modal-title-wrap h3 {
+  font-family: 'Baloo 2', sans-serif !important;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #16281f;
+  margin: 0;
+}
+
+.vscc .vscc-modal-close-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid #fed7aa;
+  background: #ffffff;
+  color: #64748b;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.vscc .vscc-modal-close-btn:hover {
+  background: #ef4444;
+  color: #ffffff;
+  border-color: #ef4444;
+}
+
+.vscc .vscc-modal-content {
+  padding: 20px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.vscc .vscc-popup-reason-badge {
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  border: 1.5px solid #86efac;
+  border-radius: 14px;
+  padding: 12px 14px;
+  color: #14532d;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  margin-bottom: 16px;
+  font-family: 'Nunito', sans-serif !important;
+}
+
+.vscc .vscc-rules-step-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.vscc .vscc-rule-step-item {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  background: #f8faf9;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 10px 12px;
+}
+
+.vscc .vscc-rule-step-num {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--green);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+  font-family: 'Baloo 2', sans-serif;
+}
+
+.vscc .vscc-rule-step-info strong {
+  font-size: 0.84rem;
+  color: #16281f;
+  display: block;
+  margin-bottom: 2px;
+  font-family: 'Baloo 2', sans-serif;
+}
+
+.vscc .vscc-rule-step-info p {
+  font-size: 0.78rem;
+  color: #64748b;
+  line-height: 1.45;
+  margin: 0;
+  font-family: 'Nunito', sans-serif;
+}
+
+.vscc .vscc-modal-cta-box {
+  background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+  border: 1.5px dashed #f97316;
+  border-radius: 14px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #9a3412;
+}
+
+.vscc .vscc-modal-wa-btn {
+  background: #25d366;
+  color: #ffffff !important;
+  font-size: 0.78rem;
+  font-weight: 800;
+  padding: 8px 14px;
+  border-radius: 999px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+.vscc .vscc-modal-wa-btn:hover {
+  background: #16a34a;
+  transform: translateY(-1px);
+}
+
 /* output side */
 .vscc .c-output {
   padding: 28px 24px;
@@ -1946,7 +2190,13 @@
           <div class="field">
             <div class="field-label">
               <span>💰 MONTHLY ELECTRICITY BILL</span>
-              <span class="field-val" id="vscc-billVal">₹6,000</span>
+              <div style="display:flex; align-items:center; gap:8px;">
+                <span class="field-val" id="vscc-billVal">₹6,000</span>
+                <button type="button" class="vscc-how-it-works-btn vscc-how-mobile-only" id="vsccHowItWorksBtnMobile" aria-label="How it works">
+                  <i class="fa-solid fa-lightbulb vscc-bulb-glow"></i>
+                  <span>How it works</span>
+                </button>
+              </div>
             </div>
             <div class="field-input-box">
               <div class="prefix-wrap">
@@ -1956,9 +2206,29 @@
             </div>
           </div>
 
+          <!-- Peak 12-Month Bill Input -->
+          <div class="field">
+            <div class="field-label">
+              <span>📈 HIGHEST BILL IN LAST 12 MONTHS (PEAK BILL)</span>
+              <span class="field-val" id="vscc-peakBillVal">₹0</span>
+            </div>
+            <div class="field-input-box">
+              <div class="prefix-wrap">
+                <span class="pfx">₹</span>
+                <input type="number" inputmode="numeric" class="num-input" id="vscc-peakBillNumber" value="" min="0" step="500" placeholder="Enter highest peak bill">
+              </div>
+            </div>
+          </div>
+
           <!-- Phase Toggle -->
           <div class="field" style="margin-bottom:20px;">
-            <div class="field-label">CONNECTION TYPE</div>
+            <div class="field-label">
+              <span>CONNECTION TYPE</span>
+              <button type="button" class="vscc-how-it-works-btn vscc-how-desktop-only" id="vsccHowItWorksBtn" aria-label="How it works">
+                <i class="fa-solid fa-lightbulb vscc-bulb-glow"></i>
+                <span>How it works</span>
+              </button>
+            </div>
             <div class="toggle-grp">
               <button class="tog-btn active" id="vscc-btnSingle">Single Phase</button>
               <button class="tog-btn" id="vscc-btnThree">Three Phase</button>
@@ -1967,15 +2237,16 @@
 
           <!-- Breakdown Box -->
           <div class="breakdown" style="background:#ffffff;margin-bottom:18px;">
-            <div class="brow"><span>Based on KW load (⌈KW ÷ 6⌉)</span><b id="vscc-kwCards">1</b></div>
-            <div class="brow"><span>Based on bill amount (⌈Bill ÷ ₹6,000⌉)</span><b id="vscc-billCards">1</b></div>
+            <div class="brow"><span>Based on KW load (⌈KW ÷ 6⌉)</span><b id="vscc-kwCards">2</b></div>
+            <div class="brow"><span>Based on monthly bill (⌈Bill ÷ ₹6,000⌉)</span><b id="vscc-billCards">1</b></div>
+            <div class="brow" id="vscc-peakRow" style="display:none;"><span>Based on peak 12-mo bill (⌈Peak ÷ ₹6,000⌉)</span><b id="vscc-peakCards">0</b></div>
             <hr class="bdivider">
-            <div class="brow win"><span>Higher requirement considered</span><b id="vscc-baseWin" style="color:var(--green)">1</b></div>
+            <div class="brow win"><span>Higher requirement considered</span><b id="vscc-baseWin" style="color:var(--green)">2</b></div>
             <div class="brow" id="vscc-phaseRow" style="display:none;"><span>+ 1 extra for 3-phase connection</span><b style="color:var(--orange)">+1</b></div>
           </div>
 
           <p class="calc-note" style="background:transparent;border:none;padding:0;color:var(--muted-2);font-size:12px;line-height:1.65;margin-top:auto;">
-            Rule of thumb: 1 card per 6 KW of load, or 1 card per ₹6,000 of monthly bill — whichever gives the bigger number. Three-phase connections always get one additional card. Savings and quote figures update instantly as you adjust the sliders.
+            Rule of thumb: 1 card per 6 KW of load, 1 card per ₹6,000 of monthly bill, or sized for peak 12-month bill — whichever gives the bigger number. Three-phase connections always get one additional card. Savings and quote figures update instantly as you adjust the inputs.
           </p>
         </div>
 
@@ -2024,6 +2295,68 @@
       </div>
     </div>
   </section>
+
+  <!-- HOW IT WORKS POPUP MODAL -->
+  <div class="vscc-modal" id="vsccModal" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="vsccModalTitle">
+    <div class="vscc-modal-backdrop" id="vsccModalBackdrop"></div>
+    <div class="vscc-modal-card">
+      <div class="vscc-modal-top-bar">
+        <div class="vscc-modal-title-wrap" id="vsccModalTitle">
+          <i class="fa-solid fa-lightbulb vscc-bulb-glow" style="font-size:1.2rem;"></i>
+          <h3>How Sizing Logic & Rules Work</h3>
+        </div>
+        <button type="button" class="vscc-modal-close-btn" id="vsccModalCloseBtn" aria-label="Close modal">✕</button>
+      </div>
+
+      <div class="vscc-modal-content">
+        <!-- Live Rule Reason Text Injected Dynamically Based on User Inputs -->
+        <div class="vscc-popup-reason-badge" id="vsccRecReason">
+          ⚡ <strong>Smart Selection:</strong> Evaluated across Connected Load (KW), Monthly Bill, and Peak 12-Month Bill.
+        </div>
+
+        <div class="vscc-rules-step-list">
+          <div class="vscc-rule-step-item">
+            <div class="vscc-rule-step-num">1</div>
+            <div class="vscc-rule-step-info">
+              <strong>Connected Load (KW):</strong>
+              <p>1 Vidhyut Saathi Card handles up to 6 KW of connected electrical load (⌈KW ÷ 6⌉).</p>
+            </div>
+          </div>
+
+          <div class="vscc-rule-step-item">
+            <div class="vscc-rule-step-num">2</div>
+            <div class="vscc-rule-step-info">
+              <strong>Average Monthly Bill:</strong>
+              <p>1 Card is rated for up to ₹6,000 monthly bill (2 Cards for ₹12,000, 3 Cards for ₹18,000, etc.).</p>
+            </div>
+          </div>
+
+          <div class="vscc-rule-step-item">
+            <div class="vscc-rule-step-num">3</div>
+            <div class="vscc-rule-step-info">
+              <strong>Peak 12-Month Bill:</strong>
+              <p>If your peak summer bill was higher (e.g. ₹60,000), capacity is sized for that peak so your appliances are 100% protected during heavy load months.</p>
+            </div>
+          </div>
+
+          <div class="vscc-rule-step-item">
+            <div class="vscc-rule-step-num">4</div>
+            <div class="vscc-rule-step-info">
+              <strong>Three-Phase Supply:</strong>
+              <p>3-Phase lines require 1 extra card (+1) to balance inter-phase harmonics and voltage fluctuations across all phases.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="vscc-modal-cta-box">
+          <span>Need custom machinery load sizing?</span>
+          <a href="https://wa.me/918949826388?text=Hello%20Vidhyut%20Saathi%2C%20I%20want%20to%20verify%20my%20exact%20card%20calculation." target="_blank" rel="noopener noreferrer" class="vscc-modal-wa-btn">
+            <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- FULL REQUIREMENT CHART -->
   <section class="sec" id="vscc-chart" style="padding-top:10px;">
@@ -2138,49 +2471,70 @@
   });
 
   /* ---- CALCULATOR ---- */
-  var kwSlider    = document.getElementById('vscc-kwSlider');
-  var kwNumber    = document.getElementById('vscc-kwNumber');
-  var kwVal       = document.getElementById('vscc-kwVal');
-  var billNumber  = document.getElementById('vscc-billNumber');
-  var billVal     = document.getElementById('vscc-billVal');
-  var btnSingle   = document.getElementById('vscc-btnSingle');
-  var btnThree    = document.getElementById('vscc-btnThree');
-  var resultNum   = document.getElementById('vscc-resultNum');
-  var resultUnit  = document.getElementById('vscc-resultUnit');
-  var kwCardsEl   = document.getElementById('vscc-kwCards');
-  var billCardsEl = document.getElementById('vscc-billCards');
-  var baseWinEl   = document.getElementById('vscc-baseWin');
-  var phaseRow    = document.getElementById('vscc-phaseRow');
-  var stickyBar   = document.getElementById('vscc-stickyBar');
-  var stickyNum   = document.getElementById('vscc-stickyNum');
-  var stickyUnit  = document.getElementById('vscc-stickyUnit');
+  var kwSlider       = document.getElementById('vscc-kwSlider');
+  var kwNumber       = document.getElementById('vscc-kwNumber');
+  var kwVal          = document.getElementById('vscc-kwVal');
+  var billNumber     = document.getElementById('vscc-billNumber');
+  var billVal        = document.getElementById('vscc-billVal');
+  var peakBillNumber = document.getElementById('vscc-peakBillNumber');
+  var peakBillVal    = document.getElementById('vscc-peakBillVal');
+  var btnSingle      = document.getElementById('vscc-btnSingle');
+  var btnThree       = document.getElementById('vscc-btnThree');
+  var resultNum      = document.getElementById('vscc-resultNum');
+  var resultUnit     = document.getElementById('vscc-resultUnit');
+  var kwCardsEl      = document.getElementById('vscc-kwCards');
+  var billCardsEl    = document.getElementById('vscc-billCards');
+  var peakCardsEl    = document.getElementById('vscc-peakCards');
+  var peakRow        = document.getElementById('vscc-peakRow');
+  var baseWinEl      = document.getElementById('vscc-baseWin');
+  var phaseRow       = document.getElementById('vscc-phaseRow');
+  var stickyBar      = document.getElementById('vscc-stickyBar');
+  var stickyNum      = document.getElementById('vscc-stickyNum');
+  var stickyUnit     = document.getElementById('vscc-stickyUnit');
+  var recReasonEl    = document.getElementById('vsccRecReason');
 
   var threePhase = false;
 
   function inr(n){ return '₹' + Number(n).toLocaleString('en-IN'); }
 
   function sync(){
-    var kw   = Math.max(1, Number(kwNumber.value) || 1);
-    var bill = Math.max(0, Number(billNumber.value) || 0);
+    var kw       = Math.max(1, Number(kwNumber.value) || 1);
+    var bill     = Math.max(0, Number(billNumber.value) || 0);
+    var peakBill = Math.max(0, Number(peakBillNumber && peakBillNumber.value ? peakBillNumber.value : 0) || 0);
 
-    kwVal.textContent   = kw + ' KW';
-    billVal.textContent = inr(bill);
-    kwSlider.value      = Math.min(kw, 200);
+    kwVal.textContent       = kw + ' KW';
+    billVal.textContent     = inr(bill);
+    if (peakBillVal) peakBillVal.textContent = peakBill > 0 ? inr(peakBill) : '₹0';
+    kwSlider.value          = Math.min(kw, 200);
     kwSlider.style.setProperty('--fill', (Math.min(kw,200)/200*100) + '%');
 
-    var kwCards   = Math.max(1, Math.ceil(kw / 6));
-    var billCards = bill > 0 ? Math.max(1, Math.ceil(bill / 6000)) : 1;
-    var base      = Math.max(kwCards, billCards);
-    var total     = threePhase ? base + 1 : base;
+    var kwCards       = Math.max(1, Math.ceil(kw / 6));
+    var billCards     = bill > 0 ? Math.max(1, Math.ceil(bill / 6000)) : 1;
+    var peakBillCards = peakBill > 0 ? Math.max(1, Math.ceil(peakBill / 6000)) : 0;
+    var base          = Math.max(kwCards, billCards, peakBillCards);
+    var total         = threePhase ? base + 1 : base;
 
     kwCardsEl.textContent   = kwCards;
     billCardsEl.textContent = billCards;
+    if (peakCardsEl) peakCardsEl.textContent = peakBillCards;
+    if (peakRow) peakRow.style.display = peakBill > 0 ? 'flex' : 'none';
     baseWinEl.textContent   = base;
     phaseRow.style.display  = threePhase ? 'flex' : 'none';
     resultNum.textContent   = total;
     resultUnit.textContent  = total > 1 ? 'Cards' : 'Card';
-    stickyNum.textContent   = total;
-    stickyUnit.textContent  = total > 1 ? 'Cards' : 'Card';
+    if (stickyNum) stickyNum.textContent   = total;
+    if (stickyUnit) stickyUnit.textContent  = total > 1 ? 'Cards' : 'Card';
+
+    /* Dynamic Reason Badge */
+    if (recReasonEl) {
+      if (peakBillCards >= billCards && peakBillCards >= kwCards && peakBill > 0) {
+        recReasonEl.innerHTML = '📈 <strong>Peak 12-Mo Bill Rule Applied:</strong> Highest 12-month bill of ' + inr(peakBill) + ' requires ' + peakBillCards + ' Cards (vs ' + (kw > 0 ? kw + ' KW -> ' + kwCards + ' Cards, ' : '') + inr(bill) + ' avg bill -> ' + billCards + ' Cards). Peak requirement considered (' + peakBillCards + ' Cards' + (threePhase ? ' + 1 Extra for 3-Phase = ' + total + ' Cards' : '') + ').';
+      } else if (kwCards >= billCards && kwCards >= peakBillCards && kw > 0) {
+        recReasonEl.innerHTML = '⚡ <strong>KW Load Rule Applied:</strong> ' + kw + ' KW load requires ' + kwCards + ' Cards, higher than bill metrics (' + billCards + ' Cards). Higher requirement selected (' + kwCards + ' Cards' + (threePhase ? ' + 1 Extra for 3-Phase = ' + total + ' Cards' : '') + ').';
+      } else {
+        recReasonEl.innerHTML = '💰 <strong>Monthly Bill Rule Applied:</strong> ' + inr(bill) + ' monthly bill requires ' + billCards + ' Cards' + (threePhase ? ' (+ 1 Extra for 3-Phase = ' + total + ' Cards)' : '') + '.';
+      }
+    }
 
     /* Estimated Savings (20%-30%) */
     var savingsMin = Math.round((bill * 0.20) / 100) * 100;
@@ -2213,6 +2567,9 @@
   kwSlider.addEventListener('input', function(){ kwNumber.value = kwSlider.value; sync(); });
   kwNumber.addEventListener('input', sync);
   billNumber.addEventListener('input', sync);
+  if (peakBillNumber) {
+    peakBillNumber.addEventListener('input', sync);
+  }
 
   btnSingle.addEventListener('click', function(){
     threePhase = false;
@@ -2223,6 +2580,38 @@
     threePhase = true;
     btnThree.classList.add('active'); btnSingle.classList.remove('active');
     sync();
+  });
+
+  /* ---- HOW IT WORKS MODAL ---- */
+  var howItWorksBtn = document.getElementById('vsccHowItWorksBtn');
+  var howItWorksBtnMobile = document.getElementById('vsccHowItWorksBtnMobile');
+  var modal = document.getElementById('vsccModal');
+  var modalBackdrop = document.getElementById('vsccModalBackdrop');
+  var modalCloseBtn = document.getElementById('vsccModalCloseBtn');
+
+  function openModal(e) {
+    if (e) e.preventDefault();
+    if (modal) {
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  function closeModal() {
+    if (modal) {
+      modal.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+  }
+
+  if (howItWorksBtn) howItWorksBtn.addEventListener('click', openModal);
+  if (howItWorksBtnMobile) howItWorksBtnMobile.addEventListener('click', openModal);
+  if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeModal);
+  if (modalBackdrop) modalBackdrop.addEventListener('click', closeModal);
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && modal && modal.style.display === 'flex') {
+      closeModal();
+    }
   });
 
   /* ---- STICKY BAR ---- */
