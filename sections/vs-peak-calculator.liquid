@@ -241,6 +241,241 @@
     margin-bottom: 22px;
   }
 
+  .premium-calculator-{{ section.id }} .phase-header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    gap: 10px;
+  }
+
+  @keyframes bulbPulseGlow {
+    0%, 100% {
+      color: #eab308;
+      filter: drop-shadow(0 0 2px rgba(234, 179, 8, 0.4));
+      transform: scale(1);
+    }
+    50% {
+      color: #facc15;
+      filter: drop-shadow(0 0 8px rgba(250, 204, 21, 0.9)) drop-shadow(0 0 14px rgba(245, 130, 32, 0.6));
+      transform: scale(1.18);
+    }
+  }
+
+  .premium-calculator-{{ section.id }} .bulb-glow-anim {
+    animation: bulbPulseGlow 1.4s ease-in-out infinite;
+    display: inline-block;
+    font-size: 0.95rem;
+    color: #f59e0b;
+  }
+
+  .premium-calculator-{{ section.id }} .how-it-works-btn {
+    background: rgba(245, 130, 32, 0.08);
+    border: 1.5px solid rgba(245, 130, 32, 0.3);
+    color: #c2410c;
+    font-family: inherit;
+    font-size: 0.76rem;
+    font-weight: 800;
+    padding: 5px 12px;
+    border-radius: 999px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.25s ease;
+    box-shadow: 0 2px 8px rgba(245, 130, 32, 0.08);
+  }
+
+  .premium-calculator-{{ section.id }} .how-it-works-btn:hover {
+    background: rgba(245, 130, 32, 0.16);
+    border-color: #ea580c;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(245, 130, 32, 0.16);
+  }
+
+  /* HOW IT WORKS INTERACTIVE POPUP MODAL */
+  .premium-calculator-{{ section.id }} .how-it-works-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+  }
+
+  .premium-calculator-{{ section.id }} .how-it-works-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 28, 21, 0.65);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+
+  .premium-calculator-{{ section.id }} .how-it-works-card {
+    position: relative;
+    width: 100%;
+    max-width: 540px;
+    background: #ffffff;
+    border: 2px solid #fed7aa;
+    border-radius: 24px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 35px rgba(245, 130, 32, 0.15);
+    overflow: hidden;
+    animation: modalPop-{{ section.id }} 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 10;
+  }
+
+  @keyframes modalPop-{{ section.id }} {
+    from { opacity: 0; transform: scale(0.92) translateY(12px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+
+  .premium-calculator-{{ section.id }} .modal-top-bar {
+    padding: 16px 20px;
+    background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+    border-bottom: 1px solid #fed7aa;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .premium-calculator-{{ section.id }} .modal-title-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .premium-calculator-{{ section.id }} .modal-bulb-icon {
+    font-size: 1.2rem;
+    color: #f59e0b;
+  }
+
+  .premium-calculator-{{ section.id }} .modal-title-wrap h3 {
+    font-family: 'Baloo 2', sans-serif !important;
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #16281f;
+    margin: 0;
+  }
+
+  .premium-calculator-{{ section.id }} .modal-close-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid #fed7aa;
+    background: #ffffff;
+    color: #64748b;
+    font-size: 14px;
+    font-weight: 800;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+  }
+
+  .premium-calculator-{{ section.id }} .modal-close-btn:hover {
+    background: #ef4444;
+    color: #ffffff;
+    border-color: #ef4444;
+  }
+
+  .premium-calculator-{{ section.id }} .modal-content-area {
+    padding: 20px;
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+
+  .premium-calculator-{{ section.id }} .popup-reason-badge {
+    background: #f0fdf4;
+    border: 1.5px solid #86efac;
+    border-radius: 14px;
+    padding: 14px 16px;
+    color: #14532d;
+    font-size: 0.92rem;
+    line-height: 1.55;
+    margin-bottom: 16px;
+    box-shadow: 0 4px 12px rgba(20, 140, 58, 0.06);
+  }
+
+  .premium-calculator-{{ section.id }} .rules-step-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .premium-calculator-{{ section.id }} .rule-step-item {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    background: #f8faf9;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 10px 12px;
+  }
+
+  .premium-calculator-{{ section.id }} .rule-step-num {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #148C3A;
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .premium-calculator-{{ section.id }} .rule-step-info strong {
+    font-size: 0.84rem;
+    color: #16281f;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .premium-calculator-{{ section.id }} .rule-step-info p {
+    font-size: 0.78rem;
+    color: #64748b;
+    line-height: 1.45;
+    margin: 0;
+  }
+
+  .premium-calculator-{{ section.id }} .modal-cta-box {
+    background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+    border: 1.5px dashed #f97316;
+    border-radius: 14px;
+    padding: 12px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .premium-calculator-{{ section.id }} .modal-cta-box span {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #9a3412;
+  }
+
+  .premium-calculator-{{ section.id }} .modal-wa-btn {
+    background: #25D366;
+    color: #ffffff;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 800;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 3px 8px rgba(37, 211, 102, 0.25);
+  }
+
   .premium-calculator-{{ section.id }} .phase-toggle-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -746,9 +981,15 @@
             </div>
           </div>
 
-          <!-- PHASE TYPE SELECTOR TOGGLE BUTTONS -->
+          <!-- PHASE TYPE SELECTOR TOGGLE BUTTONS WITH "HOW IT WORKS" BLINKING BULB -->
           <div class="phase-selector-container">
-            <div class="calc-label">🔌 SELECT PHASE TYPE</div>
+            <div class="phase-header-row">
+              <div class="calc-label"><i class="fa-solid fa-bolt" style="color:var(--green); font-size:0.95rem; margin-right:5px; vertical-align:middle;"></i> SELECT PHASE TYPE</div>
+              <button type="button" class="how-it-works-btn" id="howItWorksBtn-{{ section.id }}" aria-label="How it works">
+                <i class="fa-solid fa-lightbulb bulb-glow-anim"></i>
+                <span>How it works</span>
+              </button>
+            </div>
             <div class="phase-toggle-grid">
               <button type="button" class="phase-btn active" id="btnSinglePhase-{{ section.id }}" data-phase="single">
                 <i class="fa-solid fa-bolt"></i> Single Phase
@@ -776,7 +1017,7 @@
         </div>
       </div>
 
-      <!-- RIGHT COLUMN: RESULTS CARDS, EXPLANATION, DISCLAIMER & TRUST CAPSULE PILLS -->
+      <!-- RIGHT COLUMN: RESULTS CARDS, DISCLAIMER & TRUST CAPSULE PILLS -->
       <div class="vs-calc-right-col-{{ section.id }}">
         <!-- 4 CALCULATION RESULT CARDS -->
         <div class="calc-results">
@@ -798,11 +1039,6 @@
           </div>
         </div>
 
-        <!-- EXPLANATION BADGE & DISCLAIMER -->
-        <div class="calc-explain-badge" id="recReason-{{ section.id }}">
-          ⚡ <strong>Smart Selection:</strong> Evaluated from both KW Load and Monthly Bill — Higher Requirement Selected.
-        </div>
-
         <p class="calc-disclaimer">{{ section.settings.disclaimer_text }}</p>
 
         <!-- TRUST STRIP CAPSULE PILLS -->
@@ -816,6 +1052,68 @@
         </div>
       </div>
 
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS POPUP MODAL -->
+  <div class="how-it-works-modal" id="howItWorksModal-{{ section.id }}" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="modalTitle-{{ section.id }}">
+    <div class="how-it-works-backdrop" id="howItWorksBackdrop-{{ section.id }}"></div>
+    <div class="how-it-works-card">
+      <div class="modal-top-bar">
+        <div class="modal-title-wrap" id="modalTitle-{{ section.id }}">
+          <i class="fa-solid fa-lightbulb modal-bulb-icon"></i>
+          <h3>How Sizing Logic & Rules Work</h3>
+        </div>
+        <button type="button" class="modal-close-btn" id="modalCloseBtn-{{ section.id }}" aria-label="Close modal">✕</button>
+      </div>
+
+      <div class="modal-content-area">
+        <!-- Live Rule Reason Text Injected Dynamically Based on User Inputs -->
+        <div class="popup-reason-badge" id="recReason-{{ section.id }}">
+          ⚡ <strong>Smart Selection:</strong> Evaluated from Monthly Bill, Peak 12-Mo Bill, and KW Load.
+        </div>
+
+        <div class="rules-step-list">
+          <div class="rule-step-item">
+            <div class="rule-step-num">1</div>
+            <div class="rule-step-info">
+              <strong>Average Monthly Bill:</strong>
+              <p>1 Vidhyut Saathi Card handles up to ₹6,000 electricity bill (2 Cards for ₹12,000, 3 Cards for ₹18,000, etc.).</p>
+            </div>
+          </div>
+
+          <div class="rule-step-item">
+            <div class="rule-step-num">2</div>
+            <div class="rule-step-info">
+              <strong>Peak 12-Month Bill:</strong>
+              <p>If your peak summer bill was higher (e.g. ₹60,000), capacity is sized for that peak so your appliances are 100% protected during heavy load months.</p>
+            </div>
+          </div>
+
+          <div class="rule-step-item">
+            <div class="rule-step-num">3</div>
+            <div class="rule-step-info">
+              <strong>Sanctioned Load (KW):</strong>
+              <p>1 Card is rated for every 6 KW connected load. If load requires more cards than bill, the higher KW requirement is prioritized.</p>
+            </div>
+          </div>
+
+          <div class="rule-step-item">
+            <div class="rule-step-num">4</div>
+            <div class="rule-step-info">
+              <strong>Three-Phase Supply:</strong>
+              <p>3-Phase lines require 1 extra card (+1) to balance inter-phase harmonics and voltage fluctuations across all phases.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-cta-box">
+          <span>Need custom machinery load sizing?</span>
+          <a href="https://wa.me/918949826388?text=Hello%20Vidhyut%20Saathi%2C%20I%20want%20to%20verify%20my%20exact%20load%20calculation." target="_blank" rel="noopener noreferrer" class="modal-wa-btn">
+            <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -993,6 +1291,35 @@
         kwInput.addEventListener('input', function() { updateCalculator('kwInput'); });
         kwInput.addEventListener('change', function() { updateCalculator('kwInput'); });
       }
+
+      /* HOW IT WORKS MODAL POPUP CONTROLLERS */
+      const howItWorksBtn = document.getElementById(`howItWorksBtn-${sectionId}`);
+      const modal = document.getElementById(`howItWorksModal-${sectionId}`);
+      const backdrop = document.getElementById(`howItWorksBackdrop-${sectionId}`);
+      const closeBtn = document.getElementById(`modalCloseBtn-${sectionId}`);
+
+      if (howItWorksBtn && modal) {
+        howItWorksBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          modal.style.display = 'flex';
+          document.body.style.overflow = 'hidden';
+        });
+      }
+
+      function closeModal() {
+        if (modal) {
+          modal.style.display = 'none';
+          document.body.style.overflow = '';
+        }
+      }
+
+      if (closeBtn) closeBtn.addEventListener('click', closeModal);
+      if (backdrop) backdrop.addEventListener('click', closeModal);
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal && modal.style.display === 'flex') {
+          closeModal();
+        }
+      });
 
       updateCalculator('init');
     }
