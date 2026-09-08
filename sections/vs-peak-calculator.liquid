@@ -293,6 +293,31 @@
     box-shadow: 0 4px 12px rgba(245, 130, 32, 0.16);
   }
 
+  .premium-calculator-{{ section.id }} .how-it-works-desktop-only {
+    display: inline-flex !important;
+  }
+
+  .premium-calculator-{{ section.id }} .how-it-works-mobile-only {
+    display: none !important;
+  }
+
+  .premium-calculator-{{ section.id }} .input-label-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 2px;
+  }
+
+  @media(max-width: 768px) {
+    .premium-calculator-{{ section.id }} .how-it-works-desktop-only {
+      display: none !important;
+    }
+    .premium-calculator-{{ section.id }} .how-it-works-mobile-only {
+      display: inline-flex !important;
+    }
+  }
+
   /* HOW IT WORKS INTERACTIVE POPUP MODAL */
   .premium-calculator-{{ section.id }} .how-it-works-modal {
     position: fixed;
@@ -954,7 +979,13 @@
           <!-- EDITABLE NUMBER INPUTS (MONTHLY BILL & LOAD KW) -->
           <div class="input-dual-row">
             <div class="input-field-group">
-              <div class="calc-label"><i class="fa-solid fa-receipt" style="color:var(--green); font-size:0.95rem; margin-right:5px; vertical-align:middle;"></i> Monthly Electricity Bill</div>
+              <div class="input-label-row">
+                <div class="calc-label"><i class="fa-solid fa-receipt" style="color:var(--green); font-size:0.95rem; margin-right:5px; vertical-align:middle;"></i> Monthly Electricity Bill</div>
+                <button type="button" class="how-it-works-btn how-it-works-mobile-only" id="howItWorksBtnMobile-{{ section.id }}" aria-label="How it works">
+                  <i class="fa-solid fa-lightbulb bulb-glow-anim"></i>
+                  <span>How it works</span>
+                </button>
+              </div>
               <div class="custom-bill-box">
                 <span class="currency-symbol">₹</span>
                 <input type="number" id="billInput-{{ section.id }}" class="custom-num-input" value="{{ section.settings.slider_default }}" min="500" max="300000" step="50">
@@ -985,7 +1016,7 @@
           <div class="phase-selector-container">
             <div class="phase-header-row">
               <div class="calc-label"><i class="fa-solid fa-bolt" style="color:var(--green); font-size:0.95rem; margin-right:5px; vertical-align:middle;"></i> SELECT PHASE TYPE</div>
-              <button type="button" class="how-it-works-btn" id="howItWorksBtn-{{ section.id }}" aria-label="How it works">
+              <button type="button" class="how-it-works-btn how-it-works-desktop-only" id="howItWorksBtn-{{ section.id }}" aria-label="How it works">
                 <i class="fa-solid fa-lightbulb bulb-glow-anim"></i>
                 <span>How it works</span>
               </button>
@@ -1294,17 +1325,21 @@
 
       /* HOW IT WORKS MODAL POPUP CONTROLLERS */
       const howItWorksBtn = document.getElementById(`howItWorksBtn-${sectionId}`);
+      const howItWorksBtnMobile = document.getElementById(`howItWorksBtnMobile-${sectionId}`);
       const modal = document.getElementById(`howItWorksModal-${sectionId}`);
       const backdrop = document.getElementById(`howItWorksBackdrop-${sectionId}`);
       const closeBtn = document.getElementById(`modalCloseBtn-${sectionId}`);
 
-      if (howItWorksBtn && modal) {
-        howItWorksBtn.addEventListener('click', function(e) {
-          e.preventDefault();
+      function openModal(e) {
+        if (e) e.preventDefault();
+        if (modal) {
           modal.style.display = 'flex';
           document.body.style.overflow = 'hidden';
-        });
+        }
       }
+
+      if (howItWorksBtn) howItWorksBtn.addEventListener('click', openModal);
+      if (howItWorksBtnMobile) howItWorksBtnMobile.addEventListener('click', openModal);
 
       function closeModal() {
         if (modal) {
