@@ -992,8 +992,8 @@
   }
   .vscc .eg-grid {
     display: none;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
   }
   .vscc .eg-panel.active {
     display: grid !important;
@@ -1001,6 +1001,27 @@
   }
   .vscc .vscc-eg-dots {
     display: none !important;
+  }
+}
+
+@media(min-width: 1024px) {
+  .vscc .eg-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .vscc .eg-img-wrap {
+    height: 145px !important;
+  }
+  .vscc .eg-card {
+    padding: 14px !important;
+  }
+  .vscc .eg-card h4 {
+    font-size: 15px !important;
+  }
+  .vscc .eg-why {
+    font-size: 11.5px !important;
+    padding: 10px 12px !important;
+    min-height: 68px !important;
   }
 }
 
@@ -1968,10 +1989,12 @@
       </div>
 
       <div class="vscc-eg-slider-wrap">
+        <!-- TAB 1: RESIDENTIAL (4 EXAMPLES) -->
         <div class="eg-grid eg-panel active" data-vscc-panel="res">
+          <!-- Card 1 -->
           <div class="eg-card">
             <div class="eg-img-wrap">
-              <img src="{{ 'real-mumbai-2bhk-apartment.jpg' | asset_url }}" alt="2 BHK Apartment Mumbai" loading="lazy" onerror="this.onerror=null; this.src='{{ 'residential-house-1.png' | asset_url }}';">
+              <img src="{% if section.settings.res_img_1 != blank %}{{ section.settings.res_img_1 | image_url: width: 600 }}{% else %}{{ 'real-mumbai-2bhk-apartment.jpg' | asset_url }}{% endif %}" alt="2 BHK Apartment Mumbai" loading="lazy" onerror="this.onerror=null; this.src='{{ 'residential-house-1.png' | asset_url }}';">
               <span class="eg-tag">2 BHK Apartment</span>
             </div>
             <div class="eg-person-row">
@@ -1991,9 +2014,10 @@
             <p class="eg-why">5 KW only needs 1 card, but ₹18,000 needs 3 — the bill-based count wins.</p>
           </div>
 
+          <!-- Card 2 -->
           <div class="eg-card">
             <div class="eg-img-wrap">
-              <img src="{{ 'real-lucknow-villa-house.jpg' | asset_url }}" alt="3 BHK Duplex Villa Lucknow" loading="lazy" onerror="this.onerror=null; this.src='{{ 'residential-house-2.png' | asset_url }}';">
+              <img src="{% if section.settings.res_img_2 != blank %}{{ section.settings.res_img_2 | image_url: width: 600 }}{% else %}{{ 'real-lucknow-villa-house.jpg' | asset_url }}{% endif %}" alt="3 BHK Duplex Villa Lucknow" loading="lazy" onerror="this.onerror=null; this.src='{{ 'residential-house-2.png' | asset_url }}';">
               <span class="eg-tag">3 BHK Duplex Villa</span>
             </div>
             <div class="eg-person-row">
@@ -2012,12 +2036,60 @@
             <div class="eg-result"><span class="rl">Cards Required</span><span class="rn">3 Cards</span></div>
             <p class="eg-why">15 KW needs 3 cards, while ₹10,000 only needs 2 — the KW-based count wins.</p>
           </div>
-        </div>
 
-        <div class="eg-grid eg-panel" data-vscc-panel="com">
+          <!-- Card 3 -->
           <div class="eg-card">
             <div class="eg-img-wrap">
-              <img src="{{ 'commercial-building-1.png' | asset_url }}" alt="Retail Showroom Commercial Building" loading="lazy" onerror="this.onerror=null; this.src='{{ 'case-commercial.jpg' | asset_url }}';">
+              <img src="{% if section.settings.res_img_3 != blank %}{{ section.settings.res_img_3 | image_url: width: 600 }}{% else %}{{ 'residential-house-1.png' | asset_url }}{% endif %}" alt="4 BHK Row House Pune" loading="lazy" onerror="this.onerror=null; this.src='{{ 'real-mumbai-2bhk-apartment.jpg' | asset_url }}';">
+              <span class="eg-tag">4 BHK Row House</span>
+            </div>
+            <div class="eg-person-row">
+              <div class="eg-avatar">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80" alt="Mrs. Sunita Kulkarni" loading="lazy" onerror="this.onerror=null; this.src='{{ 'wvs-pointing-down-woman.jpg' | asset_url }}';">
+              </div>
+              <div>
+                <h4>Mrs. Sunita Kulkarni <i class="fa-solid fa-circle-check" style="color:#008744; font-size:12px;"></i></h4>
+                <div class="eg-sub"><i class="fa-solid fa-location-dot" style="color:var(--orange);"></i> Pune • Multi-AC high bill</div>
+              </div>
+            </div>
+            <div class="eg-stats">
+              <div class="eg-stat"><div class="k">Load</div><div class="v">8 KW</div></div>
+              <div class="eg-stat"><div class="k">Bill</div><div class="v">₹26,000</div></div>
+            </div>
+            <div class="eg-result"><span class="rl">Cards Required</span><span class="rn">5 Cards</span></div>
+            <p class="eg-why">8 KW needs 2 cards, but ₹26,000 bill needs 5 — bill-based count wins.</p>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="eg-card">
+            <div class="eg-img-wrap">
+              <img src="{% if section.settings.res_img_4 != blank %}{{ section.settings.res_img_4 | image_url: width: 600 }}{% else %}{{ 'residential-house-2.png' | asset_url }}{% endif %}" alt="Independent Bungalow Jaipur" loading="lazy" onerror="this.onerror=null; this.src='{{ 'real-lucknow-villa-house.jpg' | asset_url }}';">
+              <span class="eg-tag">Independent Kothi</span>
+            </div>
+            <div class="eg-person-row">
+              <div class="eg-avatar">
+                <img src="https://images.unsplash.com/photo-1566492031773-4f4e44671857?auto=format&fit=crop&w=150&q=80" alt="Mr. Alok Singhal" loading="lazy" onerror="this.onerror=null; this.src='{{ 'indian_entrepreneur.jpg' | asset_url }}';">
+              </div>
+              <div>
+                <h4>Mr. Alok Singhal <i class="fa-solid fa-circle-check" style="color:#008744; font-size:12px;"></i></h4>
+                <div class="eg-sub"><i class="fa-solid fa-location-dot" style="color:var(--orange);"></i> Jaipur • High load bungalow</div>
+              </div>
+            </div>
+            <div class="eg-stats">
+              <div class="eg-stat"><div class="k">Load</div><div class="v">20 KW</div></div>
+              <div class="eg-stat"><div class="k">Bill</div><div class="v">₹16,000</div></div>
+            </div>
+            <div class="eg-result"><span class="rl">Cards Required</span><span class="rn">4 Cards</span></div>
+            <p class="eg-why">20 KW needs 4 cards, while ₹16,000 only needs 3 — KW load wins.</p>
+          </div>
+        </div>
+
+        <!-- TAB 2: COMMERCIAL (4 EXAMPLES) -->
+        <div class="eg-grid eg-panel" data-vscc-panel="com">
+          <!-- Card 1 -->
+          <div class="eg-card">
+            <div class="eg-img-wrap">
+              <img src="{% if section.settings.com_img_1 != blank %}{{ section.settings.com_img_1 | image_url: width: 600 }}{% else %}{{ 'commercial-building-1.png' | asset_url }}{% endif %}" alt="Retail Showroom Commercial Building" loading="lazy" onerror="this.onerror=null; this.src='{{ 'case-commercial.jpg' | asset_url }}';">
               <span class="eg-tag">Retail Showroom</span>
             </div>
             <div class="eg-person-row">
@@ -2037,9 +2109,10 @@
             <p class="eg-why">10 KW needs 2 cards, but ₹24,000 needs 4 — the bill-based count wins.</p>
           </div>
 
+          <!-- Card 2 -->
           <div class="eg-card">
             <div class="eg-img-wrap">
-              <img src="{{ 'commercial-building-2.png' | asset_url }}" alt="IT Tech Park & Offices" loading="lazy" onerror="this.onerror=null; this.src='{{ 'case-commercial.jpg' | asset_url }}';">
+              <img src="{% if section.settings.com_img_2 != blank %}{{ section.settings.com_img_2 | image_url: width: 600 }}{% else %}{{ 'commercial-building-2.png' | asset_url }}{% endif %}" alt="IT Tech Park & Offices" loading="lazy" onerror="this.onerror=null; this.src='{{ 'case-commercial.jpg' | asset_url }}';">
               <span class="eg-tag">IT Tech Park</span>
             </div>
             <div class="eg-person-row">
@@ -2058,12 +2131,60 @@
             <div class="eg-result"><span class="rl">Cards Required</span><span class="rn">6 Cards</span></div>
             <p class="eg-why">35 KW needs 6 cards, while ₹29,000 only needs 5 — KW-based count wins.</p>
           </div>
-        </div>
 
-        <div class="eg-grid eg-panel" data-vscc-panel="ind">
+          <!-- Card 3 -->
           <div class="eg-card">
             <div class="eg-img-wrap">
-              <img src="{{ 'industrial-factory-1.png' | asset_url }}" alt="Heavy Engineering Factory" loading="lazy" onerror="this.onerror=null; this.src='{{ 'case-industrial.jpg' | asset_url }}';">
+              <img src="{% if section.settings.com_img_3 != blank %}{{ section.settings.com_img_3 | image_url: width: 600 }}{% else %}{{ 'case-commercial.jpg' | asset_url }}{% endif %}" alt="Multi-Cuisine Cafe & Dine" loading="lazy" onerror="this.onerror=null; this.src='{{ 'commercial-building-1.png' | asset_url }}';">
+              <span class="eg-tag">Restaurant & Cafe</span>
+            </div>
+            <div class="eg-person-row">
+              <div class="eg-avatar">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Mr. Kabir Sethi" loading="lazy" onerror="this.onerror=null; this.src='{{ 'wvs-happy-man.jpg' | asset_url }}';">
+              </div>
+              <div>
+                <h4>Mr. Kabir Sethi <i class="fa-solid fa-circle-check" style="color:#008744; font-size:12px;"></i></h4>
+                <div class="eg-sub"><i class="fa-solid fa-location-dot" style="color:var(--orange);"></i> Delhi NCR • Commercial kitchen load</div>
+              </div>
+            </div>
+            <div class="eg-stats">
+              <div class="eg-stat"><div class="k">Load</div><div class="v">25 KW</div></div>
+              <div class="eg-stat"><div class="k">Bill</div><div class="v">₹52,000</div></div>
+            </div>
+            <div class="eg-result"><span class="rl">Cards Required</span><span class="rn">9 Cards</span></div>
+            <p class="eg-why">25 KW needs 5 cards, but ₹52,000 bill needs 9 — bill-based count wins.</p>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="eg-card">
+            <div class="eg-img-wrap">
+              <img src="{% if section.settings.com_img_4 != blank %}{{ section.settings.com_img_4 | image_url: width: 600 }}{% else %}{{ 'commercial-building-1.png' | asset_url }}{% endif %}" alt="Diagnostic Center Labs" loading="lazy" onerror="this.onerror=null; this.src='{{ 'commercial-building-2.png' | asset_url }}';">
+              <span class="eg-tag">Diagnostic Center</span>
+            </div>
+            <div class="eg-person-row">
+              <div class="eg-avatar">
+                <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=150&q=80" alt="Dr. Raman Rao" loading="lazy" onerror="this.onerror=null; this.src='{{ 'wvs-indian-businessman.jpg' | asset_url }}';">
+              </div>
+              <div>
+                <h4>Dr. Raman Rao <i class="fa-solid fa-circle-check" style="color:#008744; font-size:12px;"></i></h4>
+                <div class="eg-sub"><i class="fa-solid fa-location-dot" style="color:var(--orange);"></i> Hyderabad • 3-Phase Lab Setup</div>
+              </div>
+            </div>
+            <div class="eg-stats">
+              <div class="eg-stat"><div class="k">Load</div><div class="v">45 KW</div></div>
+              <div class="eg-stat"><div class="k">Bill</div><div class="v">₹40,000</div></div>
+            </div>
+            <div class="eg-result"><span class="rl">Cards Required</span><span class="rn">8 Cards</span></div>
+            <p class="eg-why">45 KW needs 8 cards, while ₹40,000 bill needs 7 — KW load wins.</p>
+          </div>
+        </div>
+
+        <!-- TAB 3: INDUSTRIAL (4 EXAMPLES) -->
+        <div class="eg-grid eg-panel" data-vscc-panel="ind">
+          <!-- Card 1 -->
+          <div class="eg-card">
+            <div class="eg-img-wrap">
+              <img src="{% if section.settings.ind_img_1 != blank %}{{ section.settings.ind_img_1 | image_url: width: 600 }}{% else %}{{ 'industrial-factory-1.png' | asset_url }}{% endif %}" alt="Heavy Engineering Factory" loading="lazy" onerror="this.onerror=null; this.src='{{ 'case-industrial.jpg' | asset_url }}';">
               <span class="eg-tag">Heavy Engineering Plant</span>
             </div>
             <div class="eg-person-row">
@@ -2083,9 +2204,10 @@
             <p class="eg-why">90 KW needs 15 cards, but ₹2,40,000 needs 40 — bill-based count wins.</p>
           </div>
 
+          <!-- Card 2 -->
           <div class="eg-card">
             <div class="eg-img-wrap">
-              <img src="{{ 'industrial-factory-2.png' | asset_url }}" alt="Agro Processing Plant" loading="lazy" onerror="this.onerror=null; this.src='{{ 'case-industrial.jpg' | asset_url }}';">
+              <img src="{% if section.settings.ind_img_2 != blank %}{{ section.settings.ind_img_2 | image_url: width: 600 }}{% else %}{{ 'industrial-factory-2.png' | asset_url }}{% endif %}" alt="Agro Processing Plant" loading="lazy" onerror="this.onerror=null; this.src='{{ 'case-industrial.jpg' | asset_url }}';">
               <span class="eg-tag">Agro Processing Plant</span>
             </div>
             <div class="eg-person-row">
@@ -2104,12 +2226,60 @@
             <div class="eg-result"><span class="rl">Cards Required</span><span class="rn">30 Cards</span></div>
             <p class="eg-why">180 KW needs 30 cards, while ₹120,000 only needs 20 — KW-based count wins.</p>
           </div>
-        </div>
 
-        <div class="eg-grid eg-panel" data-vscc-panel="inst">
+          <!-- Card 3 -->
           <div class="eg-card">
             <div class="eg-img-wrap">
-              <img src="{{ 'commercial-building-2.png' | asset_url }}" alt="Metro Multi-Specialty Hospital" loading="lazy" onerror="this.onerror=null; this.src='{{ 'case-institutional.jpg' | asset_url }}';">
+              <img src="{% if section.settings.ind_img_3 != blank %}{{ section.settings.ind_img_3 | image_url: width: 600 }}{% else %}{{ 'case-industrial.jpg' | asset_url }}{% endif %}" alt="Plastic Injection Molding Plant" loading="lazy" onerror="this.onerror=null; this.src='{{ 'industrial-factory-1.png' | asset_url }}';">
+              <span class="eg-tag">Plastic Molding Unit</span>
+            </div>
+            <div class="eg-person-row">
+              <div class="eg-avatar">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Mr. Hitesh Shah" loading="lazy" onerror="this.onerror=null; this.src='{{ 'indian_entrepreneur.jpg' | asset_url }}';">
+              </div>
+              <div>
+                <h4>Mr. Hitesh Shah <i class="fa-solid fa-circle-check" style="color:#008744; font-size:12px;"></i></h4>
+                <div class="eg-sub"><i class="fa-solid fa-location-dot" style="color:var(--orange);"></i> Vapi GIDC • Heavy inductive load</div>
+              </div>
+            </div>
+            <div class="eg-stats">
+              <div class="eg-stat"><div class="k">Load</div><div class="v">120 KW</div></div>
+              <div class="eg-stat"><div class="k">Bill</div><div class="v">₹1,80,000</div></div>
+            </div>
+            <div class="eg-result"><span class="rl">Cards Required</span><span class="rn">30 Cards</span></div>
+            <p class="eg-why">120 KW needs 20 cards, but ₹1,80,000 needs 30 — bill-based count wins.</p>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="eg-card">
+            <div class="eg-img-wrap">
+              <img src="{% if section.settings.ind_img_4 != blank %}{{ section.settings.ind_img_4 | image_url: width: 600 }}{% else %}{{ 'industrial-factory-1.png' | asset_url }}{% endif %}" alt="Textile Dyeing Mills Ludhiana" loading="lazy" onerror="this.onerror=null; this.src='{{ 'industrial-factory-2.png' | asset_url }}';">
+              <span class="eg-tag">Textile Dyeing Mill</span>
+            </div>
+            <div class="eg-person-row">
+              <div class="eg-avatar">
+                <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=150&q=80" alt="S. Gurpreet Singh" loading="lazy" onerror="this.onerror=null; this.src='{{ 'wvs-indian-businessman.jpg' | asset_url }}';">
+              </div>
+              <div>
+                <h4>S. Gurpreet Singh <i class="fa-solid fa-circle-check" style="color:#008744; font-size:12px;"></i></h4>
+                <div class="eg-sub"><i class="fa-solid fa-location-dot" style="color:var(--orange);"></i> Ludhiana • 24/7 continuous operation</div>
+              </div>
+            </div>
+            <div class="eg-stats">
+              <div class="eg-stat"><div class="k">Load</div><div class="v">240 KW</div></div>
+              <div class="eg-stat"><div class="k">Bill</div><div class="v">₹3,10,000</div></div>
+            </div>
+            <div class="eg-result"><span class="rl">Cards Required</span><span class="rn">52 Cards</span></div>
+            <p class="eg-why">240 KW needs 40 cards, but ₹3,10,000 needs 52 — bill-based count wins.</p>
+          </div>
+        </div>
+
+        <!-- TAB 4: INSTITUTIONAL (4 EXAMPLES) -->
+        <div class="eg-grid eg-panel" data-vscc-panel="inst">
+          <!-- Card 1 -->
+          <div class="eg-card">
+            <div class="eg-img-wrap">
+              <img src="{% if section.settings.inst_img_1 != blank %}{{ section.settings.inst_img_1 | image_url: width: 600 }}{% else %}{{ 'case-institutional.jpg' | asset_url }}{% endif %}" alt="Metro Multi-Specialty Hospital" loading="lazy" onerror="this.onerror=null; this.src='{{ 'commercial-building-2.png' | asset_url }}';">
               <span class="eg-tag">Hospital & ICU Facility</span>
             </div>
             <div class="eg-person-row">
@@ -2129,9 +2299,10 @@
             <p class="eg-why">160 KW needs 32 cards (1 per 5 KW) + 1 extra card for 3-phase LT panel — guarantees 28.5% bill reduction.</p>
           </div>
 
+          <!-- Card 2 -->
           <div class="eg-card">
             <div class="eg-img-wrap">
-              <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=700&q=80" alt="DPS International School Campus" loading="lazy" onerror="this.onerror=null; this.src='{{ 'case-institutional.jpg' | asset_url }}';">
+              <img src="{% if section.settings.inst_img_2 != blank %}{{ section.settings.inst_img_2 | image_url: width: 600 }}{% else %}{{ 'commercial-building-2.png' | asset_url }}{% endif %}" alt="DPS International School Campus" loading="lazy" onerror="this.onerror=null; this.src='{{ 'case-institutional.jpg' | asset_url }}';">
               <span class="eg-tag">CBSE School Campus</span>
             </div>
             <div class="eg-person-row">
@@ -2150,6 +2321,52 @@
             <div class="eg-result"><span class="rl">Cards Required</span><span class="rn">14 Cards</span></div>
             <p class="eg-why">65 KW needs 13 cards + 1 for 3-phase connection — saves ₹27,500/mo on institutional tariff.</p>
           </div>
+
+          <!-- Card 3 -->
+          <div class="eg-card">
+            <div class="eg-img-wrap">
+              <img src="{% if section.settings.inst_img_3 != blank %}{{ section.settings.inst_img_3 | image_url: width: 600 }}{% else %}{{ 'case-institutional.jpg' | asset_url }}{% endif %}" alt="Engineering College Campus" loading="lazy" onerror="this.onerror=null; this.src='{{ 'commercial-building-2.png' | asset_url }}';">
+              <span class="eg-tag">Engineering College</span>
+            </div>
+            <div class="eg-person-row">
+              <div class="eg-avatar">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" alt="Prof. M. K. Verma" loading="lazy" onerror="this.onerror=null; this.src='{{ 'wvs-indian-businessman.jpg' | asset_url }}';">
+              </div>
+              <div>
+                <h4>Prof. M. K. Verma <i class="fa-solid fa-circle-check" style="color:#008744; font-size:12px;"></i></h4>
+                <div class="eg-sub"><i class="fa-solid fa-location-dot" style="color:var(--orange);"></i> Bhopal • Labs & Computer Center</div>
+              </div>
+            </div>
+            <div class="eg-stats">
+              <div class="eg-stat"><div class="k">Load</div><div class="v">110 KW (3-Ph)</div></div>
+              <div class="eg-stat"><div class="k">Bill</div><div class="v">₹1,45,000</div></div>
+            </div>
+            <div class="eg-result"><span class="rl">Cards Required</span><span class="rn">25 Cards</span></div>
+            <p class="eg-why">110 KW needs 22 cards, but ₹1,45,000 needs 24 + 1 for 3-phase = 25 cards.</p>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="eg-card">
+            <div class="eg-img-wrap">
+              <img src="{% if section.settings.inst_img_4 != blank %}{{ section.settings.inst_img_4 | image_url: width: 600 }}{% else %}{{ 'commercial-building-1.png' | asset_url }}{% endif %}" alt="Government Administrative Bhavan" loading="lazy" onerror="this.onerror=null; this.src='{{ 'commercial-building-2.png' | asset_url }}';">
+              <span class="eg-tag">Admin Bhavan</span>
+            </div>
+            <div class="eg-person-row">
+              <div class="eg-avatar">
+                <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=150&q=80" alt="Er. Rajeshwar Nath" loading="lazy" onerror="this.onerror=null; this.src='{{ 'hero-advisor-calculator.jpg' | asset_url }}';">
+              </div>
+              <div>
+                <h4>Er. Rajeshwar Nath <i class="fa-solid fa-circle-check" style="color:#008744; font-size:12px;"></i></h4>
+                <div class="eg-sub"><i class="fa-solid fa-location-dot" style="color:var(--orange);"></i> Chandigarh • Govt Central Complex</div>
+              </div>
+            </div>
+            <div class="eg-stats">
+              <div class="eg-stat"><div class="k">Load</div><div class="v">80 KW (3-Ph)</div></div>
+              <div class="eg-stat"><div class="k">Bill</div><div class="v">₹85,000</div></div>
+            </div>
+            <div class="eg-result"><span class="rl">Cards Required</span><span class="rn">15 Cards</span></div>
+            <p class="eg-why">80 KW needs 14 cards + 1 for 3-phase = 15 cards — continuous stability.</p>
+          </div>
         </div>
       </div>
 
@@ -2157,6 +2374,8 @@
       <div class="vscc-eg-dots" id="vsccEgDots">
         <button type="button" class="vscc-eg-dot active" onclick="vsccGoEgSlide(0)" aria-label="Slide 1"></button>
         <button type="button" class="vscc-eg-dot" onclick="vsccGoEgSlide(1)" aria-label="Slide 2"></button>
+        <button type="button" class="vscc-eg-dot" onclick="vsccGoEgSlide(2)" aria-label="Slide 3"></button>
+        <button type="button" class="vscc-eg-dot" onclick="vsccGoEgSlide(3)" aria-label="Slide 4"></button>
       </div>
     </div>
   </section>
@@ -2487,3 +2706,112 @@
   sync();
 })();
 </script>
+
+{% schema %}
+{
+  "name": "Required Cards Layout",
+  "settings": [
+    {
+      "type": "header",
+      "content": "🏠 Residential Examples (4 Cards)"
+    },
+    {
+      "type": "image_picker",
+      "id": "res_img_1",
+      "label": "Residential 1 - 2 BHK Apartment Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "res_img_2",
+      "label": "Residential 2 - 3 BHK Duplex Villa Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "res_img_3",
+      "label": "Residential 3 - 4 BHK Row House Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "res_img_4",
+      "label": "Residential 4 - Independent Kothi Image"
+    },
+    {
+      "type": "header",
+      "content": "🏢 Commercial Examples (4 Cards)"
+    },
+    {
+      "type": "image_picker",
+      "id": "com_img_1",
+      "label": "Commercial 1 - Retail Showroom Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "com_img_2",
+      "label": "Commercial 2 - IT Tech Park Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "com_img_3",
+      "label": "Commercial 3 - Restaurant & Cafe Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "com_img_4",
+      "label": "Commercial 4 - Diagnostic Center Image"
+    },
+    {
+      "type": "header",
+      "content": "🏭 Industrial Examples (4 Cards)"
+    },
+    {
+      "type": "image_picker",
+      "id": "ind_img_1",
+      "label": "Industrial 1 - Heavy Engineering Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "ind_img_2",
+      "label": "Industrial 2 - Agro Processing Plant Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "ind_img_3",
+      "label": "Industrial 3 - Plastic Molding Unit Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "ind_img_4",
+      "label": "Industrial 4 - Textile Dyeing Mill Image"
+    },
+    {
+      "type": "header",
+      "content": "🏛️ Institutional Examples (4 Cards)"
+    },
+    {
+      "type": "image_picker",
+      "id": "inst_img_1",
+      "label": "Institutional 1 - Hospital & ICU Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "inst_img_2",
+      "label": "Institutional 2 - CBSE School Campus Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "inst_img_3",
+      "label": "Institutional 3 - Engineering College Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "inst_img_4",
+      "label": "Institutional 4 - Admin Bhavan Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Required Cards Layout"
+    }
+  ]
+}
+{% endschema %}
