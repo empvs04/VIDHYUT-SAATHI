@@ -318,6 +318,84 @@
     }
   }
 
+  /* DYNAMIC MINI CARDS SHOWCASE IN RIGHT COLUMN */
+  .premium-calculator-{{ section.id }} .calc-mini-cards-wrapper {
+    background: linear-gradient(135deg, rgba(20, 140, 58, 0.04) 0%, rgba(245, 130, 32, 0.05) 100%);
+    border: 1.5px solid rgba(20, 140, 58, 0.16);
+    border-radius: 18px;
+    padding: 14px 16px;
+    margin-top: 14px;
+    margin-bottom: 14px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+    transition: all 0.3s ease;
+  }
+
+  .premium-calculator-{{ section.id }} .calc-mini-cards-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--muted);
+  }
+
+  .premium-calculator-{{ section.id }} .calc-mini-cards-header span.count-badge {
+    background: linear-gradient(135deg, var(--green), var(--orange));
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 800;
+    padding: 3px 10px;
+    border-radius: 999px;
+    letter-spacing: 0.3px;
+  }
+
+  .premium-calculator-{{ section.id }} .calc-mini-cards-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    min-height: 36px;
+  }
+
+  .premium-calculator-{{ section.id }} .vs-calc-mini-card-icon {
+    width: 50px;
+    height: 31px;
+    border-radius: 5px;
+    background-color: #050c26;
+    background-image: url("{{ 'official-vs-card-front.jpg' | asset_url }}");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 1.5px solid rgba(245, 130, 32, 0.4);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18);
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .premium-calculator-{{ section.id }} .vs-calc-mini-card-icon:hover {
+    transform: translateY(-4px) scale(1.22);
+    border-color: #F58220;
+    box-shadow: 0 8px 20px rgba(245, 130, 32, 0.35);
+    z-index: 5;
+  }
+
+  .premium-calculator-{{ section.id }} .vs-calc-mini-card-more {
+    font-family: inherit;
+    color: var(--orange);
+    font-size: 0.82rem;
+    font-weight: 800;
+    align-self: center;
+    margin-left: 4px;
+    padding: 4px 8px;
+    background: rgba(245, 130, 32, 0.1);
+    border-radius: 8px;
+  }
+
   /* HOW IT WORKS INTERACTIVE POPUP MODAL */
   .premium-calculator-{{ section.id }} .how-it-works-modal {
     position: fixed;
@@ -1070,6 +1148,15 @@
           </div>
         </div>
 
+        <!-- DYNAMIC MINI CARDS SHOWCASE (RIGHT COLUMN) -->
+        <div class="calc-mini-cards-wrapper" id="miniCardsWrapper-{{ section.id }}">
+          <div class="calc-mini-cards-header">
+            <span><i class="fa-solid fa-layer-group" style="color:var(--orange); margin-right:6px;"></i> Recommended Vidhyut Saathi Cards</span>
+            <span class="count-badge" id="miniCardCountBadge-{{ section.id }}">1 Card</span>
+          </div>
+          <div class="calc-mini-cards-row" id="miniCardsRow-{{ section.id }}"></div>
+        </div>
+
         <p class="calc-disclaimer">{{ section.settings.disclaimer_text }}</p>
 
         <!-- TRUST STRIP CAPSULE PILLS -->
@@ -1287,6 +1374,30 @@
         if (recLoad) recLoad.textContent = kw > 0 ? (kw + ' KW') : (peakBill > 0 ? ('Peak ₹' + Math.round(peakBill).toLocaleString('en-IN')) : 'Enter Load / Peak');
         if (recCards) recCards.textContent = cardsStr;
         if (recReason) recReason.innerHTML = higherReasonText;
+
+        /* Dynamic Mini Cards Row Rendering in Right Column */
+        const miniCardsRow = document.getElementById(`miniCardsRow-${sectionId}`);
+        const miniCardCountBadge = document.getElementById(`miniCardCountBadge-${sectionId}`);
+        if (miniCardCountBadge) {
+          miniCardCountBadge.textContent = totalCards + (totalCards === 1 ? ' Card' : ' Cards');
+        }
+        if (miniCardsRow) {
+          miniCardsRow.innerHTML = '';
+          const maxDisplay = 24;
+          const capped = Math.min(totalCards, maxDisplay);
+          for (let i = 0; i < capped; i++) {
+            const cardEl = document.createElement('div');
+            cardEl.className = 'vs-calc-mini-card-icon';
+            cardEl.title = `Vidhyut Saathi Card ${i + 1} of ${totalCards}`;
+            miniCardsRow.appendChild(cardEl);
+          }
+          if (totalCards > maxDisplay) {
+            const moreEl = document.createElement('span');
+            moreEl.className = 'vs-calc-mini-card-more';
+            moreEl.textContent = `+${totalCards - maxDisplay} more`;
+            miniCardsRow.appendChild(moreEl);
+          }
+        }
       }
 
       if (btnSingle && btnThree) {
