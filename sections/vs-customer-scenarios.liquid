@@ -1,0 +1,1037 @@
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800;900&family=Nunito:wght@400;500;600;700;800;900&family=Work+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+/* ============================================================
+   VIDHYUT SAATHI — REAL-WORLD CUSTOMER SCENARIOS SECTION
+   ============================================================ */
+.vscc-scenarios-sec {
+  --bg:       #faf7ee;
+  --panel:    #ffffff;
+  --line:     #e5e0cf;
+  --green:    #0e6b3e;
+  --green-d:  #0a4a2c;
+  --green-t:  #e6f2ea;
+  --orange:   #f0631b;
+  --orange-t: #fdece1;
+  --ink:      #16281f;
+  --muted:    #5e7568;
+  --muted-2:  #8ba095;
+  --maxw:     1140px;
+
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Nunito', 'Work Sans', sans-serif;
+  padding: 56px 0;
+  position: relative;
+}
+@media(min-width:760px){ .vscc-scenarios-sec { padding: 76px 0; } }
+
+.vscc-scenarios-sec *, .vscc-scenarios-sec *::before, .vscc-scenarios-sec *::after {
+  box-sizing: border-box;
+}
+.vscc-scenarios-sec h2, .vscc-scenarios-sec h3, .vscc-scenarios-sec h4 {
+  font-family: 'Baloo 2', sans-serif !important;
+  letter-spacing: -.02em;
+}
+
+.vscc-scenarios-sec .wrap {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 18px;
+}
+@media(min-width:640px){ .vscc-scenarios-sec .wrap { padding: 0 32px; } }
+
+/* Section Header */
+.vscc-scenarios-sec .sec-head {
+  max-width: 780px;
+  margin: 0 auto 34px;
+  text-align: center;
+}
+.vscc-scenarios-sec .sec-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #ffffff 0%, #fdece1 100%);
+  border: 1.5px solid #f0631b;
+  color: #c2410c;
+  font-family: 'Baloo 2', sans-serif !important;
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  padding: 6px 18px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 14px rgba(240, 99, 27, 0.12);
+}
+.vscc-scenarios-sec .sec-head h2 {
+  font-size: clamp(24px, 4.5vw, 36px);
+  font-weight: 800;
+  line-height: 1.2;
+  color: #16281f;
+  margin: 0 0 10px;
+}
+.vscc-scenarios-sec .sec-head h2 span {
+  background: linear-gradient(135deg, #f0631b 0%, #d97706 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.vscc-scenarios-sec .sec-head p.desc {
+  font-size: clamp(14px, 2.2vw, 15.5px);
+  font-weight: 600;
+  color: #5e7568;
+  line-height: 1.65;
+  margin: 0 auto;
+}
+
+/* Category Tabs */
+.vscc-scenarios-sec .tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+  justify-content: center;
+}
+.vscc-scenarios-sec .tab-btn {
+  padding: 11px 20px;
+  border-radius: 999px;
+  border: 1.5px solid var(--line);
+  background: #ffffff;
+  color: var(--muted);
+  font-weight: 700;
+  font-size: 13.5px;
+  min-height: 44px;
+  cursor: pointer;
+  transition: all .2s ease;
+  font-family: 'Baloo 2', sans-serif;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.vscc-scenarios-sec .tab-btn:hover {
+  border-color: var(--green-d);
+  color: var(--green-d);
+}
+.vscc-scenarios-sec .tab-btn.active {
+  background: linear-gradient(135deg, var(--green-d), var(--green));
+  border-color: var(--green);
+  color: #ffffff;
+  box-shadow: 0 6px 18px rgba(14,107,62,.25);
+}
+
+/* Panels */
+.vscc-scenarios-sec .eg-panel {
+  display: none;
+  width: 100%;
+}
+.vscc-scenarios-sec .eg-panel.active {
+  display: block !important;
+  animation: vsccFadeIn 0.35s ease;
+}
+
+@keyframes vsccFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* In-Card Showcase Layout */
+.vscc-scenarios-sec .eg-card-showcase {
+  max-width: 980px;
+  margin: 0 auto;
+  background: linear-gradient(180deg, #ffffff 0%, #fffdfa 100%);
+  border: 1.5px solid #fed7aa;
+  border-radius: 24px;
+  padding: 24px;
+  box-shadow: 0 16px 40px -10px rgba(240, 99, 27, 0.12), 0 4px 16px rgba(0, 0, 0, 0.03);
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.vscc-scenarios-sec .eg-card-showcase::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 32px;
+  right: 32px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent 0%, #f97316 50%, transparent 100%);
+  border-radius: 50px;
+}
+.vscc-scenarios-sec .eg-card-showcase:hover {
+  border-color: #f97316;
+  box-shadow: 0 22px 50px -10px rgba(240, 99, 27, 0.2);
+}
+
+@media(min-width: 860px) {
+  .vscc-scenarios-sec .eg-card-showcase {
+    grid-template-columns: 1.1fr 1fr;
+    gap: 32px;
+    padding: 32px;
+    align-items: center;
+  }
+}
+
+/* In-Card 4-Image Slider */
+.vscc-scenarios-sec .eg-slider-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #0f172a;
+  border: 1.5px solid rgba(254, 215, 170, 0.8);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.1);
+  user-select: none;
+}
+
+.vscc-scenarios-sec .eg-slide-track {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.vscc-scenarios-sec .eg-slide-item {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.vscc-scenarios-sec .eg-slide-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+.vscc-scenarios-sec .eg-card-showcase:hover .eg-slide-item img {
+  transform: scale(1.02);
+}
+
+.vscc-scenarios-sec .eg-slider-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(6px);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 6;
+  transition: all 0.2s ease;
+  font-size: 13px;
+  padding: 0;
+}
+.vscc-scenarios-sec .eg-slider-nav-btn:hover {
+  background: #f0631b;
+  border-color: #f0631b;
+  transform: translateY(-50%) scale(1.1);
+}
+.vscc-scenarios-sec .eg-slider-prev { left: 10px; }
+.vscc-scenarios-sec .eg-slider-next { right: 10px; }
+
+.vscc-scenarios-sec .eg-slider-badge-count {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(6px);
+  color: #fef08a;
+  font-size: 11px;
+  font-weight: 800;
+  font-family: 'Baloo 2', sans-serif;
+  padding: 3px 10px;
+  border-radius: 20px;
+  border: 1px solid rgba(254, 240, 138, 0.4);
+  z-index: 5;
+  letter-spacing: 0.5px;
+}
+
+.vscc-scenarios-sec .eg-slider-pills {
+  position: absolute;
+  bottom: 12px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  z-index: 5;
+}
+
+.vscc-scenarios-sec .eg-slider-pill-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+.vscc-scenarios-sec .eg-slider-pill-dot.active {
+  background: #f0631b;
+  width: 22px;
+  border-radius: 20px;
+  box-shadow: 0 2px 6px rgba(240, 99, 27, 0.5);
+}
+
+.vscc-scenarios-sec .eg-tag-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(15, 23, 42, 0.88);
+  backdrop-filter: blur(6px);
+  color: #fef08a;
+  font-size: 10.5px;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: 50px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  border: 1.5px solid rgba(254, 240, 138, 0.45);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  font-family: 'Baloo 2', sans-serif;
+  z-index: 5;
+}
+
+/* Right Content Info */
+.vscc-scenarios-sec .eg-info-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.vscc-scenarios-sec .eg-person-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.vscc-scenarios-sec .eg-avatar {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 2px solid #f97316;
+  box-shadow: 0 4px 12px rgba(240, 99, 27, 0.28);
+}
+.vscc-scenarios-sec .eg-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.vscc-scenarios-sec .eg-person-row h4 {
+  margin: 0 0 2px;
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--ink);
+  line-height: 1.25;
+}
+.vscc-scenarios-sec .eg-sub {
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.vscc-scenarios-sec .eg-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.vscc-scenarios-sec .eg-stat {
+  background: #ffffff;
+  border: 1.5px solid #ffedd5;
+  border-radius: 12px;
+  padding: 10px 14px;
+  box-shadow: 0 2px 8px rgba(240, 99, 27, 0.04);
+  display: flex;
+  flex-direction: column;
+}
+.vscc-scenarios-sec .eg-stat .k {
+  color: #64748b;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  font-weight: 800;
+  margin-bottom: 3px;
+  font-family: 'Work Sans', sans-serif;
+}
+.vscc-scenarios-sec .eg-stat .v {
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 800;
+  font-size: 17px;
+}
+
+.vscc-scenarios-sec .eg-result {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+  border: 1.5px solid #fdba74;
+  border-radius: 12px;
+  padding: 12px 16px;
+  margin-bottom: 14px;
+  box-shadow: 0 4px 14px rgba(240, 99, 27, 0.08);
+}
+.vscc-scenarios-sec .eg-result .rl {
+  font-size: 12px;
+  color: #ea580c;
+  font-weight: 800;
+  font-family: 'Work Sans', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.vscc-scenarios-sec .eg-result .rn {
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 800;
+  color: #ea580c;
+  font-size: 19px;
+}
+
+.vscc-scenarios-sec .eg-why {
+  font-size: 12.5px;
+  color: #334155;
+  line-height: 1.55;
+  background: #f0fdf4;
+  border: 1.5px solid #bbf7d0;
+  border-left: 4px solid #008744;
+  padding: 12px 14px;
+  border-radius: 10px;
+  font-weight: 600;
+  margin: 0 0 14px 0;
+}
+
+.vscc-scenarios-sec .btn-wa {
+  background: #25D366;
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 14.5px;
+  padding: 13px 16px;
+  border-radius: 12px;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(37,211,102,0.25);
+  transition: transform .15s;
+  font-family: 'Baloo 2', sans-serif !important;
+}
+.vscc-scenarios-sec .btn-wa:hover {
+  transform: translateY(-1px);
+}
+</style>
+
+<section class="vscc-scenarios-sec" id="vscc-examples">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-eyebrow"><i class="fa-solid fa-lightbulb"></i> {{ section.settings.eyebrow_text | default: "REAL-WORLD EXAMPLES" }}</div>
+      <h2>{{ section.settings.heading_main | default: "See The Logic In" }} <span>{{ section.settings.heading_highlight | default: "Real Customer Scenarios" }}</span></h2>
+      <p class="desc">{{ section.settings.subheading | default: "Real scenarios where KW-based and bill-based counts disagree — and why our conservative dual-audit method guarantees maximum savings." }}</p>
+    </div>
+
+    <!-- Category Tabs -->
+    <div class="tabs">
+      <button type="button" class="tab-btn active" data-vscc-tab="res">🏠 Residential</button>
+      <button type="button" class="tab-btn" data-vscc-tab="com">🏢 Commercial</button>
+      <button type="button" class="tab-btn" data-vscc-tab="ind">🏭 Industrial</button>
+      <button type="button" class="tab-btn" data-vscc-tab="inst">🏛️ Institutional</button>
+    </div>
+
+    <div class="vscc-eg-slider-wrap">
+      <!-- ==================== TAB 1: RESIDENTIAL SHOWCASE (4-IMAGE SLIDER) ==================== -->
+      <div class="eg-panel active" data-vscc-panel="res">
+        <div class="eg-card-showcase">
+          <!-- LEFT: 4-IMAGE SLIDER -->
+          <div class="eg-slider-container">
+            <span class="eg-tag-badge">🏠 Residential Connection</span>
+            <span class="eg-slider-badge-count">1 / 4</span>
+            
+            <div class="eg-slide-track">
+              <div class="eg-slide-item">
+                <img src="{% if section.settings.res_img_1 != blank %}{{ section.settings.res_img_1 | image_url: width: 800 }}{% else %}{{ 'real-mumbai-2bhk-apartment.jpg' | asset_url }}{% endif %}" alt="Residential Case Study Photo 1 - Apartment" loading="lazy" onerror="this.onerror=null; this.src='{{ 'residential-house-1.png' | asset_url }}';">
+              </div>
+              <div class="eg-slide-item">
+                <img src="{% if section.settings.res_img_2 != blank %}{{ section.settings.res_img_2 | image_url: width: 800 }}{% else %}{{ 'real-lucknow-villa-house.jpg' | asset_url }}{% endif %}" alt="Residential Case Study Photo 2 - Duplex Villa" loading="lazy" onerror="this.onerror=null; this.src='{{ 'residential-house-2.png' | asset_url }}';">
+              </div>
+              <div class="eg-slide-item">
+                <img src="{% if section.settings.res_img_3 != blank %}{{ section.settings.res_img_3 | image_url: width: 800 }}{% else %}{{ 'residential-house-1.png' | asset_url }}{% endif %}" alt="Residential Case Study Photo 3 - Main MCB Panel" loading="lazy" onerror="this.onerror=null; this.src='{{ 'real-mumbai-2bhk-apartment.jpg' | asset_url }}';">
+              </div>
+              <div class="eg-slide-item">
+                <img src="{% if section.settings.res_img_4 != blank %}{{ section.settings.res_img_4 | image_url: width: 800 }}{% else %}{{ 'residential-house-2.png' | asset_url }}{% endif %}" alt="Residential Case Study Photo 4 - Card Installed" loading="lazy" onerror="this.onerror=null; this.src='{{ 'real-lucknow-villa-house.jpg' | asset_url }}';">
+              </div>
+            </div>
+
+            <!-- Navigation Arrows -->
+            <button type="button" class="eg-slider-nav-btn eg-slider-prev" onclick="vsccPrevCardImg('res')" aria-label="Previous Image">
+              <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <button type="button" class="eg-slider-nav-btn eg-slider-next" onclick="vsccNextCardImg('res')" aria-label="Next Image">
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+
+            <!-- 4 Dot Indicators -->
+            <div class="eg-slider-pills">
+              <button type="button" class="eg-slider-pill-dot active" onclick="vsccGoCardImg('res', 0)" aria-label="Image 1"></button>
+              <button type="button" class="eg-slider-pill-dot" onclick="vsccGoCardImg('res', 1)" aria-label="Image 2"></button>
+              <button type="button" class="eg-slider-pill-dot" onclick="vsccGoCardImg('res', 2)" aria-label="Image 3"></button>
+              <button type="button" class="eg-slider-pill-dot" onclick="vsccGoCardImg('res', 3)" aria-label="Image 4"></button>
+            </div>
+          </div>
+
+          <!-- RIGHT: CUSTOMER & LOAD DETAILS -->
+          <div class="eg-info-col">
+            <div class="eg-person-row">
+              <div class="eg-avatar">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Mr. Rohan Sharma" loading="lazy" onerror="this.onerror=null; this.src='{{ 'wvs-happy-man.jpg' | asset_url }}';">
+              </div>
+              <div>
+                <h4>Mr. Rohan Sharma <i class="fa-solid fa-circle-check" style="color:#008744; font-size:13px;"></i></h4>
+                <div class="eg-sub"><i class="fa-solid fa-location-dot" style="color:var(--orange);"></i> Mumbai, Maharashtra • Verified Residential Case</div>
+              </div>
+            </div>
+
+            <div class="eg-stats">
+              <div class="eg-stat">
+                <div class="k">Connected Load</div>
+                <div class="v" style="color:#0a4a2c;">5 KW</div>
+              </div>
+              <div class="eg-stat">
+                <div class="k">Monthly Bill</div>
+                <div class="v" style="color:#f0631b;">₹18,000</div>
+              </div>
+            </div>
+
+            <div class="eg-result">
+              <span class="rl">Recommended Count</span>
+              <span class="rn">3 Cards Required</span>
+            </div>
+
+            <div style="background:#eaf7ee; border:1px solid #b7e4c7; border-radius:12px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+              <span style="font-size:11px; font-weight:800; color:#0e6b3e; text-transform:uppercase; font-family:'Work Sans',sans-serif;">Est. Monthly Savings</span>
+              <span style="font-size:16px; font-weight:800; color:#0e6b3e; font-family:'Baloo 2',sans-serif;">₹3,600 – ₹5,400 / mo</span>
+            </div>
+
+            <p class="eg-why">
+              <b>Why 3 Cards?</b> 5 KW only requires 1 card by load, but ₹18,000 requires 3 cards by bill — our dual-audit algorithm always recommends the higher requirement for maximum bill reduction.
+            </p>
+
+            <a href="https://wa.me/?text=Hi%2C%20I%20want%20to%20order%20Residential%20Vidhyut%20Saathi%20Cards" class="btn-wa" target="_blank">
+              <i class="fa-brands fa-whatsapp" style="font-size:17px;"></i> Order Residential Cards on WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================== TAB 2: COMMERCIAL SHOWCASE (4-IMAGE SLIDER) ==================== -->
+      <div class="eg-panel" data-vscc-panel="com">
+        <div class="eg-card-showcase">
+          <!-- LEFT: 4-IMAGE SLIDER -->
+          <div class="eg-slider-container">
+            <span class="eg-tag-badge">🏢 Commercial Complex</span>
+            <span class="eg-slider-badge-count">1 / 4</span>
+            
+            <div class="eg-slide-track">
+              <div class="eg-slide-item">
+                <img src="{% if section.settings.com_img_1 != blank %}{{ section.settings.com_img_1 | image_url: width: 800 }}{% else %}{{ 'commercial-building-1.png' | asset_url }}{% endif %}" alt="Commercial Case Study Photo 1 - Showroom" loading="lazy" onerror="this.onerror=null; this.src='{{ 'case-commercial.jpg' | asset_url }}';">
+              </div>
+              <div class="eg-slide-item">
+                <img src="{% if section.settings.com_img_2 != blank %}{{ section.settings.com_img_2 | image_url: width: 800 }}{% else %}{{ 'commercial-building-2.png' | asset_url }}{% endif %}" alt="Commercial Case Study Photo 2 - Tech Park" loading="lazy" onerror="this.onerror=null; this.src='{{ 'case-commercial.jpg' | asset_url }}';">
+              </div>
+              <div class="eg-slide-item">
+                <img src="{% if section.settings.com_img_3 != blank %}{{ section.settings.com_img_3 | image_url: width: 800 }}{% else %}{{ 'case-commercial.jpg' | asset_url }}{% endif %}" alt="Commercial Case Study Photo 3 - Main Board" loading="lazy" onerror="this.onerror=null; this.src='{{ 'commercial-building-1.png' | asset_url }}';">
+              </div>
+              <div class="eg-slide-item">
+                <img src="{% if section.settings.com_img_4 != blank %}{{ section.settings.com_img_4 | image_url: width: 800 }}{% else %}{{ 'hero-advisor-calculator.jpg' | asset_url }}{% endif %}" alt="Commercial Case Study Photo 4 - Site Audit" loading="lazy" onerror="this.onerror=null; this.src='{{ 'commercial-building-2.png' | asset_url }}';">
+              </div>
+            </div>
+
+            <!-- Navigation Arrows -->
+            <button type="button" class="eg-slider-nav-btn eg-slider-prev" onclick="vsccPrevCardImg('com')" aria-label="Previous Image">
+              <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <button type="button" class="eg-slider-nav-btn eg-slider-next" onclick="vsccNextCardImg('com')" aria-label="Next Image">
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+
+            <!-- 4 Dot Indicators -->
+            <div class="eg-slider-pills">
+              <button type="button" class="eg-slider-pill-dot active" onclick="vsccGoCardImg('com', 0)" aria-label="Image 1"></button>
+              <button type="button" class="eg-slider-pill-dot" onclick="vsccGoCardImg('com', 1)" aria-label="Image 2"></button>
+              <button type="button" class="eg-slider-pill-dot" onclick="vsccGoCardImg('com', 2)" aria-label="Image 3"></button>
+              <button type="button" class="eg-slider-pill-dot" onclick="vsccGoCardImg('com', 3)" aria-label="Image 4"></button>
+            </div>
+          </div>
+
+          <!-- RIGHT: CUSTOMER & LOAD DETAILS -->
+          <div class="eg-info-col">
+            <div class="eg-person-row">
+              <div class="eg-avatar">
+                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&q=80" alt="Mr. Deepak Sawlani" loading="lazy" onerror="this.onerror=null; this.src='{{ 'indian_entrepreneur.jpg' | asset_url }}';">
+              </div>
+              <div>
+                <h4>Mr. Deepak Sawlani <i class="fa-solid fa-circle-check" style="color:#008744; font-size:13px;"></i></h4>
+                <div class="eg-sub"><i class="fa-solid fa-location-dot" style="color:var(--orange);"></i> Ahmedabad, Gujarat • Retail Showroom</div>
+              </div>
+            </div>
+
+            <div class="eg-stats">
+              <div class="eg-stat">
+                <div class="k">Connected Load</div>
+                <div class="v" style="color:#0a4a2c;">10 KW</div>
+              </div>
+              <div class="eg-stat">
+                <div class="k">Monthly Bill</div>
+                <div class="v" style="color:#f0631b;">₹24,000</div>
+              </div>
+            </div>
+
+            <div class="eg-result">
+              <span class="rl">Recommended Count</span>
+              <span class="rn">4 Cards Required</span>
+            </div>
+
+            <div style="background:#eaf7ee; border:1px solid #b7e4c7; border-radius:12px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+              <span style="font-size:11px; font-weight:800; color:#0e6b3e; text-transform:uppercase; font-family:'Work Sans',sans-serif;">Est. Monthly Savings</span>
+              <span style="font-size:16px; font-weight:800; color:#0e6b3e; font-family:'Baloo 2',sans-serif;">₹4,800 – ₹7,200 / mo</span>
+            </div>
+
+            <p class="eg-why">
+              <b>Why 4 Cards?</b> 10 KW load needs 2 cards, but ₹24,000 bill demands 4 cards — bill-based calculation is selected to support commercial lighting and AC loads.
+            </p>
+
+            <a href="https://wa.me/?text=Hi%2C%20I%20want%20to%20order%20Commercial%20Vidhyut%20Saathi%20Cards" class="btn-wa" target="_blank">
+              <i class="fa-brands fa-whatsapp" style="font-size:17px;"></i> Order Commercial Cards on WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================== TAB 3: INDUSTRIAL SHOWCASE (4-IMAGE SLIDER) ==================== -->
+      <div class="eg-panel" data-vscc-panel="ind">
+        <div class="eg-card-showcase">
+          <!-- LEFT: 4-IMAGE SLIDER -->
+          <div class="eg-slider-container">
+            <span class="eg-tag-badge">🏭 Heavy Industrial Plant</span>
+            <span class="eg-slider-badge-count">1 / 4</span>
+            
+            <div class="eg-slide-track">
+              <div class="eg-slide-item">
+                <img src="{% if section.settings.ind_img_1 != blank %}{{ section.settings.ind_img_1 | image_url: width: 800 }}{% else %}{{ 'industrial-factory-1.png' | asset_url }}{% endif %}" alt="Industrial Case Study Photo 1 - Factory" loading="lazy" onerror="this.onerror=null; this.src='{{ 'case-industrial.jpg' | asset_url }}';">
+              </div>
+              <div class="eg-slide-item">
+                <img src="{% if section.settings.ind_img_2 != blank %}{{ section.settings.ind_img_2 | image_url: width: 800 }}{% else %}{{ 'industrial-factory-2.png' | asset_url }}{% endif %}" alt="Industrial Case Study Photo 2 - Plant" loading="lazy" onerror="this.onerror=null; this.src='{{ 'case-industrial.jpg' | asset_url }}';">
+              </div>
+              <div class="eg-slide-item">
+                <img src="{% if section.settings.ind_img_3 != blank %}{{ section.settings.ind_img_3 | image_url: width: 800 }}{% else %}{{ 'case-industrial.jpg' | asset_url }}{% endif %}" alt="Industrial Case Study Photo 3 - Main LT Switchgear" loading="lazy" onerror="this.onerror=null; this.src='{{ 'industrial-factory-1.png' | asset_url }}';">
+              </div>
+              <div class="eg-slide-item">
+                <img src="{% if section.settings.ind_img_4 != blank %}{{ section.settings.ind_img_4 | image_url: width: 800 }}{% else %}{{ 'vidhyut-customer-call-support.jpg' | asset_url }}{% endif %}" alt="Industrial Case Study Photo 4 - Multi-Card Panel" loading="lazy" onerror="this.onerror=null; this.src='{{ 'industrial-factory-2.png' | asset_url }}';">
+              </div>
+            </div>
+
+            <!-- Navigation Arrows -->
+            <button type="button" class="eg-slider-nav-btn eg-slider-prev" onclick="vsccPrevCardImg('ind')" aria-label="Previous Image">
+              <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <button type="button" class="eg-slider-nav-btn eg-slider-next" onclick="vsccNextCardImg('ind')" aria-label="Next Image">
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+
+            <!-- 4 Dot Indicators -->
+            <div class="eg-slider-pills">
+              <button type="button" class="eg-slider-pill-dot active" onclick="vsccGoCardImg('ind', 0)" aria-label="Image 1"></button>
+              <button type="button" class="eg-slider-pill-dot" onclick="vsccGoCardImg('ind', 1)" aria-label="Image 2"></button>
+              <button type="button" class="eg-slider-pill-dot" onclick="vsccGoCardImg('ind', 2)" aria-label="Image 3"></button>
+              <button type="button" class="eg-slider-pill-dot" onclick="vsccGoCardImg('ind', 3)" aria-label="Image 4"></button>
+            </div>
+          </div>
+
+          <!-- RIGHT: CUSTOMER & LOAD DETAILS -->
+          <div class="eg-info-col">
+            <div class="eg-person-row">
+              <div class="eg-avatar">
+                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=150&q=80" alt="Mr. Rajeev Sharma" loading="lazy" onerror="this.onerror=null; this.src='{{ 'vidhyut-customer-call-support.jpg' | asset_url }}';">
+              </div>
+              <div>
+                <h4>Mr. Rajeev Sharma <i class="fa-solid fa-circle-check" style="color:#008744; font-size:13px;"></i></h4>
+                <div class="eg-sub"><i class="fa-solid fa-location-dot" style="color:var(--orange);"></i> Surat, Gujarat • Heavy Engineering Unit</div>
+              </div>
+            </div>
+
+            <div class="eg-stats">
+              <div class="eg-stat">
+                <div class="k">Connected Load</div>
+                <div class="v" style="color:#0a4a2c;">90 KW (3-Ph)</div>
+              </div>
+              <div class="eg-stat">
+                <div class="k">Monthly Bill</div>
+                <div class="v" style="color:#f0631b;">₹2,40,000</div>
+              </div>
+            </div>
+
+            <div class="eg-result">
+              <span class="rl">Recommended Count</span>
+              <span class="rn">40 Cards Required</span>
+            </div>
+
+            <div style="background:#eaf7ee; border:1px solid #b7e4c7; border-radius:12px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+              <span style="font-size:11px; font-weight:800; color:#0e6b3e; text-transform:uppercase; font-family:'Work Sans',sans-serif;">Est. Monthly Savings</span>
+              <span style="font-size:16px; font-weight:800; color:#0e6b3e; font-family:'Baloo 2',sans-serif;">₹48,000 – ₹72,000 / mo</span>
+            </div>
+
+            <p class="eg-why">
+              <b>Why 40 Cards?</b> 90 KW needs 15 cards, but heavy 24/7 machinery produced ₹2,40,000/month bill requiring 40 cards to stabilize power factor and protect motors.
+            </p>
+
+            <a href="https://wa.me/?text=Hi%2C%20I%20want%20to%20order%20Industrial%20Vidhyut%20Saathi%20Cards" class="btn-wa" target="_blank">
+              <i class="fa-brands fa-whatsapp" style="font-size:17px;"></i> Order Industrial Cards on WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================== TAB 4: INSTITUTIONAL SHOWCASE (4-IMAGE SLIDER) ==================== -->
+      <div class="eg-panel" data-vscc-panel="inst">
+        <div class="eg-card-showcase">
+          <!-- LEFT: 4-IMAGE SLIDER -->
+          <div class="eg-slider-container">
+            <span class="eg-tag-badge">🏛️ Multi-Specialty Campus</span>
+            <span class="eg-slider-badge-count">1 / 4</span>
+            
+            <div class="eg-slide-track">
+              <div class="eg-slide-item">
+                <img src="{% if section.settings.inst_img_1 != blank %}{{ section.settings.inst_img_1 | image_url: width: 800 }}{% else %}{{ 'case-institutional.jpg' | asset_url }}{% endif %}" alt="Institutional Case Study Photo 1 - Hospital" loading="lazy" onerror="this.onerror=null; this.src='{{ 'commercial-building-2.png' | asset_url }}';">
+              </div>
+              <div class="eg-slide-item">
+                <img src="{% if section.settings.inst_img_2 != blank %}{{ section.settings.inst_img_2 | image_url: width: 800 }}{% else %}{{ 'commercial-building-2.png' | asset_url }}{% endif %}" alt="Institutional Case Study Photo 2 - School Campus" loading="lazy" onerror="this.onerror=null; this.src='{{ 'case-institutional.jpg' | asset_url }}';">
+              </div>
+              <div class="eg-slide-item">
+                <img src="{% if section.settings.inst_img_3 != blank %}{{ section.settings.inst_img_3 | image_url: width: 800 }}{% else %}{{ 'commercial-building-1.png' | asset_url }}{% endif %}" alt="Institutional Case Study Photo 3 - Main LT Panel" loading="lazy" onerror="this.onerror=null; this.src='{{ 'case-institutional.jpg' | asset_url }}';">
+              </div>
+              <div class="eg-slide-item">
+                <img src="{% if section.settings.inst_img_4 != blank %}{{ section.settings.inst_img_4 | image_url: width: 800 }}{% else %}{{ 'hero-advisor-calculator.jpg' | asset_url }}{% endif %}" alt="Institutional Case Study Photo 4 - Certified Setup" loading="lazy" onerror="this.onerror=null; this.src='{{ 'commercial-building-2.png' | asset_url }}';">
+              </div>
+            </div>
+
+            <!-- Navigation Arrows -->
+            <button type="button" class="eg-slider-nav-btn eg-slider-prev" onclick="vsccPrevCardImg('inst')" aria-label="Previous Image">
+              <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <button type="button" class="eg-slider-nav-btn eg-slider-next" onclick="vsccNextCardImg('inst')" aria-label="Next Image">
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+
+            <!-- 4 Dot Indicators -->
+            <div class="eg-slider-pills">
+              <button type="button" class="eg-slider-pill-dot active" onclick="vsccGoCardImg('inst', 0)" aria-label="Image 1"></button>
+              <button type="button" class="eg-slider-pill-dot" onclick="vsccGoCardImg('inst', 1)" aria-label="Image 2"></button>
+              <button type="button" class="eg-slider-pill-dot" onclick="vsccGoCardImg('inst', 2)" aria-label="Image 3"></button>
+              <button type="button" class="eg-slider-pill-dot" onclick="vsccGoCardImg('inst', 3)" aria-label="Image 4"></button>
+            </div>
+          </div>
+
+          <!-- RIGHT: CUSTOMER & LOAD DETAILS -->
+          <div class="eg-info-col">
+            <div class="eg-person-row">
+              <div class="eg-avatar">
+                <img src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=150&q=80" alt="Dr. Arvind Mehra" loading="lazy" onerror="this.onerror=null; this.src='{{ 'wvs-happy-man.jpg' | asset_url }}';">
+              </div>
+              <div>
+                <h4>Dr. Arvind Mehra <i class="fa-solid fa-circle-check" style="color:#008744; font-size:13px;"></i></h4>
+                <div class="eg-sub"><i class="fa-solid fa-location-dot" style="color:var(--orange);"></i> Delhi NCR • 24/7 Critical Load Hospital</div>
+              </div>
+            </div>
+
+            <div class="eg-stats">
+              <div class="eg-stat">
+                <div class="k">Connected Load</div>
+                <div class="v" style="color:#0a4a2c;">160 KW (3-Ph)</div>
+              </div>
+              <div class="eg-stat">
+                <div class="k">Monthly Bill</div>
+                <div class="v" style="color:#f0631b;">₹2,40,000</div>
+              </div>
+            </div>
+
+            <div class="eg-result">
+              <span class="rl">Recommended Count</span>
+              <span class="rn">33 Cards Required</span>
+            </div>
+
+            <div style="background:#eaf7ee; border:1px solid #b7e4c7; border-radius:12px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+              <span style="font-size:11px; font-weight:800; color:#0e6b3e; text-transform:uppercase; font-family:'Work Sans',sans-serif;">Est. Monthly Savings</span>
+              <span style="font-size:16px; font-weight:800; color:#0e6b3e; font-family:'Baloo 2',sans-serif;">₹48,000 – ₹68,400 / mo</span>
+            </div>
+
+            <p class="eg-why">
+              <b>Why 33 Cards?</b> 160 KW needs 32 cards (1 per 5 KW on LT connection) + 1 extra card for 3-phase balancing — guaranteeing 28.5% institutional bill reduction.
+            </p>
+
+            <a href="https://wa.me/?text=Hi%2C%20I%20want%20to%20order%20Institutional%20Vidhyut%20Saathi%20Cards" class="btn-wa" target="_blank">
+              <i class="fa-brands fa-whatsapp" style="font-size:17px;"></i> Order Institutional Cards on WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  /* ---- TAB SWITCHING ---- */
+  var tabButtons = document.querySelectorAll('.vscc-scenarios-sec .tab-btn');
+  var panels = document.querySelectorAll('.vscc-scenarios-sec .eg-panel');
+
+  tabButtons.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      tabButtons.forEach(function(b){ b.classList.remove('active'); });
+      panels.forEach(function(p){ p.classList.remove('active'); });
+      
+      btn.classList.add('active');
+      var target = btn.getAttribute('data-vscc-tab');
+      var activeP = document.querySelector('.vscc-scenarios-sec .eg-panel[data-vscc-panel="' + target + '"]');
+      if(activeP){
+        activeP.classList.add('active');
+        vsccUpdateCardSlider(target);
+      }
+    });
+  });
+
+  /* ---- IN-CARD 4-IMAGE SLIDER CONTROLLER ---- */
+  var vsccSliderIndex = {
+    res: 0,
+    com: 0,
+    ind: 0,
+    inst: 0
+  };
+
+  window.vsccGoCardImg = function(panelKey, idx) {
+    vsccSliderIndex[panelKey] = (idx + 4) % 4;
+    vsccUpdateCardSlider(panelKey);
+  };
+
+  window.vsccPrevCardImg = function(panelKey) {
+    vsccSliderIndex[panelKey] = (vsccSliderIndex[panelKey] - 1 + 4) % 4;
+    vsccUpdateCardSlider(panelKey);
+  };
+
+  window.vsccNextCardImg = function(panelKey) {
+    vsccSliderIndex[panelKey] = (vsccSliderIndex[panelKey] + 1) % 4;
+    vsccUpdateCardSlider(panelKey);
+  };
+
+  function vsccUpdateCardSlider(panelKey) {
+    var panel = document.querySelector('.vscc-scenarios-sec .eg-panel[data-vscc-panel="' + panelKey + '"]');
+    if (!panel) return;
+    var track = panel.querySelector('.eg-slide-track');
+    var badge = panel.querySelector('.eg-slider-badge-count');
+    var dots = panel.querySelectorAll('.eg-slider-pill-dot');
+    var cur = vsccSliderIndex[panelKey] || 0;
+    
+    if (track) {
+      track.style.transform = 'translateX(-' + (cur * 100) + '%)';
+    }
+    if (badge) {
+      badge.textContent = (cur + 1) + ' / 4';
+    }
+    dots.forEach(function(dot, i) {
+      if (i === cur) {
+        dot.classList.add('active');
+      } else {
+        dot.classList.remove('active');
+      }
+    });
+  }
+
+  // Touch Swipe for in-card image sliders
+  document.querySelectorAll('.vscc-scenarios-sec .eg-slider-container').forEach(function(container) {
+    var touchStartX = 0;
+    var touchEndX = 0;
+    var panel = container.closest('.eg-panel');
+    if (!panel) return;
+    var key = panel.getAttribute('data-vscc-panel');
+
+    container.addEventListener('touchstart', function(e) {
+      touchStartX = e.changedTouches[0].screenX;
+    }, {passive: true});
+
+    container.addEventListener('touchend', function(e) {
+      touchEndX = e.changedTouches[0].screenX;
+      var diff = touchStartX - touchEndX;
+      if (Math.abs(diff) > 35) {
+        if (diff > 0) {
+          vsccNextCardImg(key);
+        } else {
+          vsccPrevCardImg(key);
+        }
+      }
+    }, {passive: true});
+  });
+
+  // Auto-play active in-card image slider every 3.5s
+  setInterval(function() {
+    var activePanel = document.querySelector('.vscc-scenarios-sec .eg-panel.active');
+    if (activePanel) {
+      var key = activePanel.getAttribute('data-vscc-panel');
+      if (key && vsccSliderIndex.hasOwnProperty(key)) {
+        vsccSliderIndex[key] = (vsccSliderIndex[key] + 1) % 4;
+        vsccUpdateCardSlider(key);
+      }
+    }
+  }, 3500);
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Real-World Scenarios",
+  "settings": [
+    {
+      "type": "header",
+      "content": "📌 Section Headings"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow_text",
+      "label": "Eyebrow Badge Text",
+      "default": "REAL-WORLD EXAMPLES"
+    },
+    {
+      "type": "text",
+      "id": "heading_main",
+      "label": "Heading (First Part)",
+      "default": "See The Logic In"
+    },
+    {
+      "type": "text",
+      "id": "heading_highlight",
+      "label": "Heading (Highlighted Part)",
+      "default": "Real Customer Scenarios"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading Description",
+      "default": "Real scenarios where KW-based and bill-based counts disagree — and why our conservative dual-audit method guarantees maximum savings."
+    },
+    {
+      "type": "header",
+      "content": "🏠 Residential Card (4 Slider Images)"
+    },
+    {
+      "type": "image_picker",
+      "id": "res_img_1",
+      "label": "Residential Image 1 (e.g. Building / House)"
+    },
+    {
+      "type": "image_picker",
+      "id": "res_img_2",
+      "label": "Residential Image 2 (e.g. Duplex / Villa)"
+    },
+    {
+      "type": "image_picker",
+      "id": "res_img_3",
+      "label": "Residential Image 3 (e.g. Meter Box / MCB)"
+    },
+    {
+      "type": "image_picker",
+      "id": "res_img_4",
+      "label": "Residential Image 4 (e.g. Installed Card)"
+    },
+    {
+      "type": "header",
+      "content": "🏢 Commercial Card (4 Slider Images)"
+    },
+    {
+      "type": "image_picker",
+      "id": "com_img_1",
+      "label": "Commercial Image 1 (e.g. Retail Showroom)"
+    },
+    {
+      "type": "image_picker",
+      "id": "com_img_2",
+      "label": "Commercial Image 2 (e.g. Tech Park / Office)"
+    },
+    {
+      "type": "image_picker",
+      "id": "com_img_3",
+      "label": "Commercial Image 3 (e.g. Distribution Board)"
+    },
+    {
+      "type": "image_picker",
+      "id": "com_img_4",
+      "label": "Commercial Image 4 (e.g. Energy Audit)"
+    },
+    {
+      "type": "header",
+      "content": "🏭 Industrial Card (4 Slider Images)"
+    },
+    {
+      "type": "image_picker",
+      "id": "ind_img_1",
+      "label": "Industrial Image 1 (e.g. Heavy Factory)"
+    },
+    {
+      "type": "image_picker",
+      "id": "ind_img_2",
+      "label": "Industrial Image 2 (e.g. Processing Plant)"
+    },
+    {
+      "type": "image_picker",
+      "id": "ind_img_3",
+      "label": "Industrial Image 3 (e.g. LT Switchgear Panel)"
+    },
+    {
+      "type": "image_picker",
+      "id": "ind_img_4",
+      "label": "Industrial Image 4 (e.g. Industrial Cards Panel)"
+    },
+    {
+      "type": "header",
+      "content": "🏛️ Institutional Card (4 Slider Images)"
+    },
+    {
+      "type": "image_picker",
+      "id": "inst_img_1",
+      "label": "Institutional Image 1 (e.g. Hospital Campus)"
+    },
+    {
+      "type": "image_picker",
+      "id": "inst_img_2",
+      "label": "Institutional Image 2 (e.g. School / College)"
+    },
+    {
+      "type": "image_picker",
+      "id": "inst_img_3",
+      "label": "Institutional Image 3 (e.g. Main LT Substation)"
+    },
+    {
+      "type": "image_picker",
+      "id": "inst_img_4",
+      "label": "Institutional Image 4 (e.g. Installation Proof)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Real-World Scenarios"
+    }
+  ]
+}
+{% endschema %}

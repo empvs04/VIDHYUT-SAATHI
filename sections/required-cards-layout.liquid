@@ -929,125 +929,208 @@
   border-color: var(--green); color: #fff;
   box-shadow: 0 6px 18px rgba(14,107,62,.25);
 }
-/* ---- EXAMPLES SLIDER & CARDS ---- */
+/* ---- IN-CARD 4-IMAGE SLIDER & SHOWCASE CARD ---- */
 .vscc .vscc-eg-slider-wrap {
   width: 100%;
   position: relative;
 }
 
-@media(max-width: 767px) {
-  .vscc .vscc-eg-slider-wrap {
-    overflow: hidden !important;
-    border-radius: 20px !important;
-  }
-  .vscc .eg-grid {
-    display: none !important;
-    gap: 0 !important;
-  }
-  .vscc .eg-panel.active {
-    display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: nowrap !important;
-    width: 100% !important;
-    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1) !important;
-    will-change: transform !important;
-  }
-  .vscc .eg-card {
-    flex: 0 0 100% !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    min-width: 100% !important;
-    box-sizing: border-box !important;
-    margin: 0 !important;
-    border-radius: 20px !important;
-  }
-  .vscc .vscc-eg-dots {
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    gap: 8px !important;
-    margin-top: 16px !important;
-  }
-  .vscc .vscc-eg-dot {
-    width: 8px !important;
-    height: 8px !important;
-    border-radius: 50% !important;
-    background: #cbd5e1 !important;
-    border: none !important;
-    padding: 0 !important;
-    cursor: pointer !important;
-    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1) !important;
-  }
-  .vscc .vscc-eg-dot.active {
-    background: var(--orange) !important;
-    width: 24px !important;
-    border-radius: 50px !important;
-    box-shadow: 0 2px 8px rgba(240, 99, 27, 0.4) !important;
-  }
+.vscc .eg-panel {
+  display: none;
+  width: 100%;
+}
+.vscc .eg-panel.active {
+  display: block !important;
+  animation: vsccFadeIn 0.35s ease;
 }
 
-@media(min-width: 768px) {
-  .vscc .vscc-eg-slider-wrap {
-    overflow: visible !important;
-  }
-  .vscc .eg-grid {
-    display: none;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 18px;
-  }
-  .vscc .eg-panel.active {
-    display: grid !important;
-    transform: none !important;
-  }
-  .vscc .vscc-eg-dots {
-    display: none !important;
-  }
+@keyframes vsccFadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-@media(min-width: 1024px) {
-  .vscc .eg-grid {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-  }
-  .vscc .eg-img-wrap {
-    height: 145px !important;
-  }
-  .vscc .eg-card {
-    padding: 14px !important;
-  }
-  .vscc .eg-card h4 {
-    font-size: 15px !important;
-  }
-  .vscc .eg-why {
-    font-size: 11.5px !important;
-    padding: 10px 12px !important;
-    min-height: 68px !important;
-  }
-}
-
-.vscc .eg-card {
+.vscc .eg-card-showcase {
+  max-width: 980px;
+  margin: 0 auto;
   background: linear-gradient(180deg, #ffffff 0%, #fffdfa 100%);
   border: 1.5px solid #fed7aa;
-  border-radius: 22px;
-  padding: 18px;
-  transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
-  font-family: 'Nunito', sans-serif;
-  display: flex;
-  flex-direction: column;
+  border-radius: 24px;
+  padding: 24px;
+  box-shadow: 0 16px 40px -10px rgba(240, 99, 27, 0.12), 0 4px 16px rgba(0, 0, 0, 0.03);
   position: relative;
-  box-shadow: 0 10px 28px -6px rgba(240, 99, 27, 0.08), 0 2px 10px rgba(0, 0, 0, 0.03);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  font-family: 'Nunito', sans-serif;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
-
-.vscc .eg-card::before {
+.vscc .eg-card-showcase::before {
   content: '';
   position: absolute;
   top: 0;
-  left: 24px;
-  right: 24px;
+  left: 32px;
+  right: 32px;
   height: 3px;
   background: linear-gradient(90deg, transparent 0%, #f97316 50%, transparent 100%);
   border-radius: 50px;
-  opacity: 0.85;
+}
+.vscc .eg-card-showcase:hover {
+  border-color: #f97316;
+  box-shadow: 0 22px 50px -10px rgba(240, 99, 27, 0.2);
+}
+
+@media(min-width: 860px) {
+  .vscc .eg-card-showcase {
+    grid-template-columns: 1.1fr 1fr;
+    gap: 32px;
+    padding: 32px;
+    align-items: center;
+  }
+}
+
+/* In-Card Slider Gallery */
+.vscc .eg-slider-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #0f172a;
+  border: 1.5px solid rgba(254, 215, 170, 0.8);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.1);
+  user-select: none;
+}
+
+.vscc .eg-slide-track {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.vscc .eg-slide-item {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.vscc .eg-slide-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+.vscc .eg-card-showcase:hover .eg-slide-item img {
+  transform: scale(1.02);
+}
+
+.vscc .eg-slider-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(6px);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 6;
+  transition: all 0.2s ease;
+  font-size: 13px;
+  padding: 0;
+}
+.vscc .eg-slider-nav-btn:hover {
+  background: #f0631b;
+  border-color: #f0631b;
+  transform: translateY(-50%) scale(1.1);
+}
+.vscc .eg-slider-prev { left: 10px; }
+.vscc .eg-slider-next { right: 10px; }
+
+.vscc .eg-slider-badge-count {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(6px);
+  color: #fef08a;
+  font-size: 11px;
+  font-weight: 800;
+  font-family: 'Baloo 2', sans-serif;
+  padding: 3px 10px;
+  border-radius: 20px;
+  border: 1px solid rgba(254, 240, 138, 0.4);
+  z-index: 5;
+  letter-spacing: 0.5px;
+}
+
+.vscc .eg-slider-pills {
+  position: absolute;
+  bottom: 12px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  z-index: 5;
+}
+
+.vscc .eg-slider-pill-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+.vscc .eg-slider-pill-dot.active {
+  background: #f0631b;
+  width: 22px;
+  border-radius: 20px;
+  box-shadow: 0 2px 6px rgba(240, 99, 27, 0.5);
+}
+
+.vscc .eg-tag-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(15, 23, 42, 0.88);
+  backdrop-filter: blur(6px);
+  color: #fef08a;
+  font-size: 10.5px;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: 50px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  border: 1.5px solid rgba(254, 240, 138, 0.45);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  font-family: 'Baloo 2', sans-serif;
+  z-index: 5;
+}
+
+/* Right Content Column */
+.vscc .eg-info-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.vscc .eg-card {
+  background: transparent;
+  border: none;
+  padding: 0;
+  box-shadow: none;
+}
   transition: opacity 0.3s ease;
 }
 
@@ -1972,414 +2055,6 @@
     </div>
   </section>
 
-  <!-- WORKED EXAMPLES -->
-  <section class="sec" id="vscc-examples">
-    <div class="wrap">
-      <div class="sec-head" style="text-align:center;margin-left:auto;margin-right:auto;">
-        <div class="sec-eyebrow"><i class="fa-solid fa-lightbulb"></i> REAL-WORLD EXAMPLES</div>
-        <h2>See The Logic In <span>Real Customer Scenarios</span></h2>
-        <p class="desc" style="margin-left:auto;margin-right:auto;">Real scenarios where KW-based and bill-based counts disagree — and why our conservative dual-audit method guarantees maximum savings.</p>
-      </div>
-
-      <div class="tabs" style="justify-content:center;">
-        <button class="tab-btn active" data-vscc-tab="res">🏠 Residential</button>
-        <button class="tab-btn" data-vscc-tab="com">🏢 Commercial</button>
-        <button class="tab-btn" data-vscc-tab="ind">🏭 Industrial</button>
-        <button class="tab-btn" data-vscc-tab="inst">🏛️ Institutional</button>
-      </div>
-
-      <div class="vscc-eg-slider-wrap">
-        <!-- TAB 1: RESIDENTIAL (4 EXAMPLES) -->
-        <div class="eg-grid eg-panel active" data-vscc-panel="res">
-          <!-- Card 1 -->
-          <div class="eg-card">
-            <div class="eg-img-wrap">
-              <img src="{% if section.settings.res_img_1 != blank %}{{ section.settings.res_img_1 | image_url: width: 600 }}{% else %}{{ 'real-mumbai-2bhk-apartment.jpg' | asset_url }}{% endif %}" alt="2 BHK Apartment Mumbai" loading="lazy" onerror="this.onerror=null; this.src='{{ 'residential-house-1.png' | asset_url }}';">
-              <span class="eg-tag">2 BHK Apartment</span>
-            </div>
-            <div class="eg-person-row">
-              <div class="eg-avatar">
-                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Mr. Rohan" loading="lazy" onerror="this.onerror=null; this.src='{{ 'wvs-happy-man.jpg' | asset_url }}';">
-              </div>
-              <div>
-                <h4>Mr. Rohan <i class="fa-solid fa-circle-check" style="color:#008744; font-size:12px;"></i></h4>
-                <div class="eg-sub"><i class="fa-solid fa-location-dot" style="color:var(--orange);"></i> Mumbai • Low load, high bill</div>
-              </div>
-            </div>
-            <div class="eg-stats">
-              <div class="eg-stat"><div class="k">Load</div><div class="v">5 KW</div></div>
-              <div class="eg-stat"><div class="k">Bill</div><div class="v">₹18,000</div></div>
-            </div>
-            <div class="eg-result"><span class="rl">Cards Required</span><span class="rn">3 Cards</span></div>
-            <p class="eg-why">5 KW only needs 1 card, but ₹18,000 needs 3 — the bill-based count wins.</p>
-          </div>
-
-          <!-- Card 2 -->
-          <div class="eg-card">
-            <div class="eg-img-wrap">
-              <img src="{% if section.settings.res_img_2 != blank %}{{ section.settings.res_img_2 | image_url: width: 600 }}{% else %}{{ 'real-lucknow-villa-house.jpg' | asset_url }}{% endif %}" alt="3 BHK Duplex Villa Lucknow" loading="lazy" onerror="this.onerror=null; this.src='{{ 'residential-house-2.png' | asset_url }}';">
-              <span class="eg-tag">3 BHK Duplex Villa</span>
-            </div>
-            <div class="eg-person-row">
-              <div class="eg-avatar">
-                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" alt="Mr. Rahul Mohan" loading="lazy" onerror="this.onerror=null; this.src='{{ 'wvs-indian-businessman.jpg' | asset_url }}';">
-              </div>
-              <div>
-                <h4>Mr. Rahul Mohan <i class="fa-solid fa-circle-check" style="color:#008744; font-size:12px;"></i></h4>
-                <div class="eg-sub"><i class="fa-solid fa-location-dot" style="color:var(--orange);"></i> Lucknow • Higher load, lower bill</div>
-              </div>
-            </div>
-            <div class="eg-stats">
-              <div class="eg-stat"><div class="k">Load</div><div class="v">15 KW</div></div>
-              <div class="eg-stat"><div class="k">Bill</div><div class="v">₹10,000</div></div>
-            </div>
-            <div class="eg-result"><span class="rl">Cards Required</span><span class="rn">3 Cards</span></div>
-            <p class="eg-why">15 KW needs 3 cards, while ₹10,000 only needs 2 — the KW-based count wins.</p>
-          </div>
-
-          <!-- Card 3 -->
-          <div class="eg-card">
-            <div class="eg-img-wrap">
-              <img src="{% if section.settings.res_img_3 != blank %}{{ section.settings.res_img_3 | image_url: width: 600 }}{% else %}{{ 'residential-house-1.png' | asset_url }}{% endif %}" alt="4 BHK Row House Pune" loading="lazy" onerror="this.onerror=null; this.src='{{ 'real-mumbai-2bhk-apartment.jpg' | asset_url }}';">
-              <span class="eg-tag">4 BHK Row House</span>
-            </div>
-            <div class="eg-person-row">
-              <div class="eg-avatar">
-                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80" alt="Mrs. Sunita Kulkarni" loading="lazy" onerror="this.onerror=null; this.src='{{ 'wvs-pointing-down-woman.jpg' | asset_url }}';">
-              </div>
-              <div>
-                <h4>Mrs. Sunita Kulkarni <i class="fa-solid fa-circle-check" style="color:#008744; font-size:12px;"></i></h4>
-                <div class="eg-sub"><i class="fa-solid fa-location-dot" style="color:var(--orange);"></i> Pune • Multi-AC high bill</div>
-              </div>
-            </div>
-            <div class="eg-stats">
-              <div class="eg-stat"><div class="k">Load</div><div class="v">8 KW</div></div>
-              <div class="eg-stat"><div class="k">Bill</div><div class="v">₹26,000</div></div>
-            </div>
-            <div class="eg-result"><span class="rl">Cards Required</span><span class="rn">5 Cards</span></div>
-            <p class="eg-why">8 KW needs 2 cards, but ₹26,000 bill needs 5 — bill-based count wins.</p>
-          </div>
-
-          <!-- Card 4 -->
-          <div class="eg-card">
-            <div class="eg-img-wrap">
-              <img src="{% if section.settings.res_img_4 != blank %}{{ section.settings.res_img_4 | image_url: width: 600 }}{% else %}{{ 'residential-house-2.png' | asset_url }}{% endif %}" alt="Independent Bungalow Jaipur" loading="lazy" onerror="this.onerror=null; this.src='{{ 'real-lucknow-villa-house.jpg' | asset_url }}';">
-              <span class="eg-tag">Independent Kothi</span>
-            </div>
-            <div class="eg-person-row">
-              <div class="eg-avatar">
-                <img src="https://images.unsplash.com/photo-1566492031773-4f4e44671857?auto=format&fit=crop&w=150&q=80" alt="Mr. Alok Singhal" loading="lazy" onerror="this.onerror=null; this.src='{{ 'indian_entrepreneur.jpg' | asset_url }}';">
-              </div>
-              <div>
-                <h4>Mr. Alok Singhal <i class="fa-solid fa-circle-check" style="color:#008744; font-size:12px;"></i></h4>
-                <div class="eg-sub"><i class="fa-solid fa-location-dot" style="color:var(--orange);"></i> Jaipur • High load bungalow</div>
-              </div>
-            </div>
-            <div class="eg-stats">
-              <div class="eg-stat"><div class="k">Load</div><div class="v">20 KW</div></div>
-              <div class="eg-stat"><div class="k">Bill</div><div class="v">₹16,000</div></div>
-            </div>
-            <div class="eg-result"><span class="rl">Cards Required</span><span class="rn">4 Cards</span></div>
-            <p class="eg-why">20 KW needs 4 cards, while ₹16,000 only needs 3 — KW load wins.</p>
-          </div>
-        </div>
-
-        <!-- TAB 2: COMMERCIAL (4 EXAMPLES) -->
-        <div class="eg-grid eg-panel" data-vscc-panel="com">
-          <!-- Card 1 -->
-          <div class="eg-card">
-            <div class="eg-img-wrap">
-              <img src="{% if section.settings.com_img_1 != blank %}{{ section.settings.com_img_1 | image_url: width: 600 }}{% else %}{{ 'commercial-building-1.png' | asset_url }}{% endif %}" alt="Retail Showroom Commercial Building" loading="lazy" onerror="this.onerror=null; this.src='{{ 'case-commercial.jpg' | asset_url }}';">
-              <span class="eg-tag">Retail Showroom</span>
-            </div>
-            <div class="eg-person-row">
-              <div class="eg-avatar">
-                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&q=80" alt="Mr. Deepak Sawlani" loading="lazy" onerror="this.onerror=null; this.src='{{ 'indian_entrepreneur.jpg' | asset_url }}';">
-              </div>
-              <div>
-                <h4>Mr. Deepak Sawlani <i class="fa-solid fa-circle-check" style="color:#008744; font-size:12px;"></i></h4>
-                <div class="eg-sub"><i class="fa-solid fa-location-dot" style="color:var(--orange);"></i> Ahmedabad • Low load, high bill</div>
-              </div>
-            </div>
-            <div class="eg-stats">
-              <div class="eg-stat"><div class="k">Load</div><div class="v">10 KW</div></div>
-              <div class="eg-stat"><div class="k">Bill</div><div class="v">₹24,000</div></div>
-            </div>
-            <div class="eg-result"><span class="rl">Cards Required</span><span class="rn">4 Cards</span></div>
-            <p class="eg-why">10 KW needs 2 cards, but ₹24,000 needs 4 — the bill-based count wins.</p>
-          </div>
-
-          <!-- Card 2 -->
-          <div class="eg-card">
-            <div class="eg-img-wrap">
-              <img src="{% if section.settings.com_img_2 != blank %}{{ section.settings.com_img_2 | image_url: width: 600 }}{% else %}{{ 'commercial-building-2.png' | asset_url }}{% endif %}" alt="IT Tech Park & Offices" loading="lazy" onerror="this.onerror=null; this.src='{{ 'case-commercial.jpg' | asset_url }}';">
-              <span class="eg-tag">IT Tech Park</span>
-            </div>
-            <div class="eg-person-row">
-              <div class="eg-avatar">
-                <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=150&q=80" alt="Mr. Satyajeet" loading="lazy" onerror="this.onerror=null; this.src='{{ 'hero-advisor-calculator.jpg' | asset_url }}';">
-              </div>
-              <div>
-                <h4>Mr. Satyajeet <i class="fa-solid fa-circle-check" style="color:#008744; font-size:12px;"></i></h4>
-                <div class="eg-sub"><i class="fa-solid fa-location-dot" style="color:var(--orange);"></i> Pune • High load, lower bill</div>
-              </div>
-            </div>
-            <div class="eg-stats">
-              <div class="eg-stat"><div class="k">Load</div><div class="v">35 KW</div></div>
-              <div class="eg-stat"><div class="k">Bill</div><div class="v">₹29,000</div></div>
-            </div>
-            <div class="eg-result"><span class="rl">Cards Required</span><span class="rn">6 Cards</span></div>
-            <p class="eg-why">35 KW needs 6 cards, while ₹29,000 only needs 5 — KW-based count wins.</p>
-          </div>
-
-          <!-- Card 3 -->
-          <div class="eg-card">
-            <div class="eg-img-wrap">
-              <img src="{% if section.settings.com_img_3 != blank %}{{ section.settings.com_img_3 | image_url: width: 600 }}{% else %}{{ 'case-commercial.jpg' | asset_url }}{% endif %}" alt="Multi-Cuisine Cafe & Dine" loading="lazy" onerror="this.onerror=null; this.src='{{ 'commercial-building-1.png' | asset_url }}';">
-              <span class="eg-tag">Restaurant & Cafe</span>
-            </div>
-            <div class="eg-person-row">
-              <div class="eg-avatar">
-                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Mr. Kabir Sethi" loading="lazy" onerror="this.onerror=null; this.src='{{ 'wvs-happy-man.jpg' | asset_url }}';">
-              </div>
-              <div>
-                <h4>Mr. Kabir Sethi <i class="fa-solid fa-circle-check" style="color:#008744; font-size:12px;"></i></h4>
-                <div class="eg-sub"><i class="fa-solid fa-location-dot" style="color:var(--orange);"></i> Delhi NCR • Commercial kitchen load</div>
-              </div>
-            </div>
-            <div class="eg-stats">
-              <div class="eg-stat"><div class="k">Load</div><div class="v">25 KW</div></div>
-              <div class="eg-stat"><div class="k">Bill</div><div class="v">₹52,000</div></div>
-            </div>
-            <div class="eg-result"><span class="rl">Cards Required</span><span class="rn">9 Cards</span></div>
-            <p class="eg-why">25 KW needs 5 cards, but ₹52,000 bill needs 9 — bill-based count wins.</p>
-          </div>
-
-          <!-- Card 4 -->
-          <div class="eg-card">
-            <div class="eg-img-wrap">
-              <img src="{% if section.settings.com_img_4 != blank %}{{ section.settings.com_img_4 | image_url: width: 600 }}{% else %}{{ 'commercial-building-1.png' | asset_url }}{% endif %}" alt="Diagnostic Center Labs" loading="lazy" onerror="this.onerror=null; this.src='{{ 'commercial-building-2.png' | asset_url }}';">
-              <span class="eg-tag">Diagnostic Center</span>
-            </div>
-            <div class="eg-person-row">
-              <div class="eg-avatar">
-                <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=150&q=80" alt="Dr. Raman Rao" loading="lazy" onerror="this.onerror=null; this.src='{{ 'wvs-indian-businessman.jpg' | asset_url }}';">
-              </div>
-              <div>
-                <h4>Dr. Raman Rao <i class="fa-solid fa-circle-check" style="color:#008744; font-size:12px;"></i></h4>
-                <div class="eg-sub"><i class="fa-solid fa-location-dot" style="color:var(--orange);"></i> Hyderabad • 3-Phase Lab Setup</div>
-              </div>
-            </div>
-            <div class="eg-stats">
-              <div class="eg-stat"><div class="k">Load</div><div class="v">45 KW</div></div>
-              <div class="eg-stat"><div class="k">Bill</div><div class="v">₹40,000</div></div>
-            </div>
-            <div class="eg-result"><span class="rl">Cards Required</span><span class="rn">8 Cards</span></div>
-            <p class="eg-why">45 KW needs 8 cards, while ₹40,000 bill needs 7 — KW load wins.</p>
-          </div>
-        </div>
-
-        <!-- TAB 3: INDUSTRIAL (4 EXAMPLES) -->
-        <div class="eg-grid eg-panel" data-vscc-panel="ind">
-          <!-- Card 1 -->
-          <div class="eg-card">
-            <div class="eg-img-wrap">
-              <img src="{% if section.settings.ind_img_1 != blank %}{{ section.settings.ind_img_1 | image_url: width: 600 }}{% else %}{{ 'industrial-factory-1.png' | asset_url }}{% endif %}" alt="Heavy Engineering Factory" loading="lazy" onerror="this.onerror=null; this.src='{{ 'case-industrial.jpg' | asset_url }}';">
-              <span class="eg-tag">Heavy Engineering Plant</span>
-            </div>
-            <div class="eg-person-row">
-              <div class="eg-avatar">
-                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=150&q=80" alt="Mr. Rajeev Sharma" loading="lazy" onerror="this.onerror=null; this.src='{{ 'vidhyut-customer-call-support.jpg' | asset_url }}';">
-              </div>
-              <div>
-                <h4>Mr. Rajeev Sharma <i class="fa-solid fa-circle-check" style="color:#008744; font-size:12px;"></i></h4>
-                <div class="eg-sub"><i class="fa-solid fa-location-dot" style="color:var(--orange);"></i> Surat • Low load, high bill</div>
-              </div>
-            </div>
-            <div class="eg-stats">
-              <div class="eg-stat"><div class="k">Load</div><div class="v">90 KW</div></div>
-              <div class="eg-stat"><div class="k">Bill</div><div class="v">₹2,40,000</div></div>
-            </div>
-            <div class="eg-result"><span class="rl">Cards Required</span><span class="rn">40 Cards</span></div>
-            <p class="eg-why">90 KW needs 15 cards, but ₹2,40,000 needs 40 — bill-based count wins.</p>
-          </div>
-
-          <!-- Card 2 -->
-          <div class="eg-card">
-            <div class="eg-img-wrap">
-              <img src="{% if section.settings.ind_img_2 != blank %}{{ section.settings.ind_img_2 | image_url: width: 600 }}{% else %}{{ 'industrial-factory-2.png' | asset_url }}{% endif %}" alt="Agro Processing Plant" loading="lazy" onerror="this.onerror=null; this.src='{{ 'case-industrial.jpg' | asset_url }}';">
-              <span class="eg-tag">Agro Processing Plant</span>
-            </div>
-            <div class="eg-person-row">
-              <div class="eg-avatar">
-                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=150&q=80" alt="Mr. Ashish Patel" loading="lazy" onerror="this.onerror=null; this.src='{{ 'indian_entrepreneur.jpg' | asset_url }}';">
-              </div>
-              <div>
-                <h4>Mr. Ashish Patel <i class="fa-solid fa-circle-check" style="color:#008744; font-size:12px;"></i></h4>
-                <div class="eg-sub"><i class="fa-solid fa-location-dot" style="color:var(--orange);"></i> Rajkot • High load, lower bill</div>
-              </div>
-            </div>
-            <div class="eg-stats">
-              <div class="eg-stat"><div class="k">Load</div><div class="v">180 KW</div></div>
-              <div class="eg-stat"><div class="k">Bill</div><div class="v">₹120,000</div></div>
-            </div>
-            <div class="eg-result"><span class="rl">Cards Required</span><span class="rn">30 Cards</span></div>
-            <p class="eg-why">180 KW needs 30 cards, while ₹120,000 only needs 20 — KW-based count wins.</p>
-          </div>
-
-          <!-- Card 3 -->
-          <div class="eg-card">
-            <div class="eg-img-wrap">
-              <img src="{% if section.settings.ind_img_3 != blank %}{{ section.settings.ind_img_3 | image_url: width: 600 }}{% else %}{{ 'case-industrial.jpg' | asset_url }}{% endif %}" alt="Plastic Injection Molding Plant" loading="lazy" onerror="this.onerror=null; this.src='{{ 'industrial-factory-1.png' | asset_url }}';">
-              <span class="eg-tag">Plastic Molding Unit</span>
-            </div>
-            <div class="eg-person-row">
-              <div class="eg-avatar">
-                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Mr. Hitesh Shah" loading="lazy" onerror="this.onerror=null; this.src='{{ 'indian_entrepreneur.jpg' | asset_url }}';">
-              </div>
-              <div>
-                <h4>Mr. Hitesh Shah <i class="fa-solid fa-circle-check" style="color:#008744; font-size:12px;"></i></h4>
-                <div class="eg-sub"><i class="fa-solid fa-location-dot" style="color:var(--orange);"></i> Vapi GIDC • Heavy inductive load</div>
-              </div>
-            </div>
-            <div class="eg-stats">
-              <div class="eg-stat"><div class="k">Load</div><div class="v">120 KW</div></div>
-              <div class="eg-stat"><div class="k">Bill</div><div class="v">₹1,80,000</div></div>
-            </div>
-            <div class="eg-result"><span class="rl">Cards Required</span><span class="rn">30 Cards</span></div>
-            <p class="eg-why">120 KW needs 20 cards, but ₹1,80,000 needs 30 — bill-based count wins.</p>
-          </div>
-
-          <!-- Card 4 -->
-          <div class="eg-card">
-            <div class="eg-img-wrap">
-              <img src="{% if section.settings.ind_img_4 != blank %}{{ section.settings.ind_img_4 | image_url: width: 600 }}{% else %}{{ 'industrial-factory-1.png' | asset_url }}{% endif %}" alt="Textile Dyeing Mills Ludhiana" loading="lazy" onerror="this.onerror=null; this.src='{{ 'industrial-factory-2.png' | asset_url }}';">
-              <span class="eg-tag">Textile Dyeing Mill</span>
-            </div>
-            <div class="eg-person-row">
-              <div class="eg-avatar">
-                <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=150&q=80" alt="S. Gurpreet Singh" loading="lazy" onerror="this.onerror=null; this.src='{{ 'wvs-indian-businessman.jpg' | asset_url }}';">
-              </div>
-              <div>
-                <h4>S. Gurpreet Singh <i class="fa-solid fa-circle-check" style="color:#008744; font-size:12px;"></i></h4>
-                <div class="eg-sub"><i class="fa-solid fa-location-dot" style="color:var(--orange);"></i> Ludhiana • 24/7 continuous operation</div>
-              </div>
-            </div>
-            <div class="eg-stats">
-              <div class="eg-stat"><div class="k">Load</div><div class="v">240 KW</div></div>
-              <div class="eg-stat"><div class="k">Bill</div><div class="v">₹3,10,000</div></div>
-            </div>
-            <div class="eg-result"><span class="rl">Cards Required</span><span class="rn">52 Cards</span></div>
-            <p class="eg-why">240 KW needs 40 cards, but ₹3,10,000 needs 52 — bill-based count wins.</p>
-          </div>
-        </div>
-
-        <!-- TAB 4: INSTITUTIONAL (4 EXAMPLES) -->
-        <div class="eg-grid eg-panel" data-vscc-panel="inst">
-          <!-- Card 1 -->
-          <div class="eg-card">
-            <div class="eg-img-wrap">
-              <img src="{% if section.settings.inst_img_1 != blank %}{{ section.settings.inst_img_1 | image_url: width: 600 }}{% else %}{{ 'case-institutional.jpg' | asset_url }}{% endif %}" alt="Metro Multi-Specialty Hospital" loading="lazy" onerror="this.onerror=null; this.src='{{ 'commercial-building-2.png' | asset_url }}';">
-              <span class="eg-tag">Hospital & ICU Facility</span>
-            </div>
-            <div class="eg-person-row">
-              <div class="eg-avatar">
-                <img src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=150&q=80" alt="Dr. Arvind Mehra" loading="lazy" onerror="this.onerror=null; this.src='{{ 'wvs-happy-man.jpg' | asset_url }}';">
-              </div>
-              <div>
-                <h4>Dr. Arvind Mehra <i class="fa-solid fa-circle-check" style="color:#008744; font-size:12px;"></i></h4>
-                <div class="eg-sub"><i class="fa-solid fa-location-dot" style="color:var(--orange);"></i> Delhi NCR • 24/7 critical load, high bill</div>
-              </div>
-            </div>
-            <div class="eg-stats">
-              <div class="eg-stat"><div class="k">Load</div><div class="v">160 KW (3-Ph)</div></div>
-              <div class="eg-stat"><div class="k">Bill</div><div class="v">₹2,40,000</div></div>
-            </div>
-            <div class="eg-result"><span class="rl">Cards Required</span><span class="rn">33 Cards</span></div>
-            <p class="eg-why">160 KW needs 32 cards (1 per 5 KW) + 1 extra card for 3-phase LT panel — guarantees 28.5% bill reduction.</p>
-          </div>
-
-          <!-- Card 2 -->
-          <div class="eg-card">
-            <div class="eg-img-wrap">
-              <img src="{% if section.settings.inst_img_2 != blank %}{{ section.settings.inst_img_2 | image_url: width: 600 }}{% else %}{{ 'commercial-building-2.png' | asset_url }}{% endif %}" alt="DPS International School Campus" loading="lazy" onerror="this.onerror=null; this.src='{{ 'case-institutional.jpg' | asset_url }}';">
-              <span class="eg-tag">CBSE School Campus</span>
-            </div>
-            <div class="eg-person-row">
-              <div class="eg-avatar">
-                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80" alt="Principal Vandana" loading="lazy" onerror="this.onerror=null; this.src='{{ 'wvs-pointing-down-woman.jpg' | asset_url }}';">
-              </div>
-              <div>
-                <h4>DPS International Campus <i class="fa-solid fa-circle-check" style="color:#008744; font-size:12px;"></i></h4>
-                <div class="eg-sub"><i class="fa-solid fa-location-dot" style="color:var(--orange);"></i> Bengaluru • Central HVAC & smart labs</div>
-              </div>
-            </div>
-            <div class="eg-stats">
-              <div class="eg-stat"><div class="k">Load</div><div class="v">65 KW (3-Ph)</div></div>
-              <div class="eg-stat"><div class="k">Bill</div><div class="v">₹98,000</div></div>
-            </div>
-            <div class="eg-result"><span class="rl">Cards Required</span><span class="rn">14 Cards</span></div>
-            <p class="eg-why">65 KW needs 13 cards + 1 for 3-phase connection — saves ₹27,500/mo on institutional tariff.</p>
-          </div>
-
-          <!-- Card 3 -->
-          <div class="eg-card">
-            <div class="eg-img-wrap">
-              <img src="{% if section.settings.inst_img_3 != blank %}{{ section.settings.inst_img_3 | image_url: width: 600 }}{% else %}{{ 'case-institutional.jpg' | asset_url }}{% endif %}" alt="Engineering College Campus" loading="lazy" onerror="this.onerror=null; this.src='{{ 'commercial-building-2.png' | asset_url }}';">
-              <span class="eg-tag">Engineering College</span>
-            </div>
-            <div class="eg-person-row">
-              <div class="eg-avatar">
-                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" alt="Prof. M. K. Verma" loading="lazy" onerror="this.onerror=null; this.src='{{ 'wvs-indian-businessman.jpg' | asset_url }}';">
-              </div>
-              <div>
-                <h4>Prof. M. K. Verma <i class="fa-solid fa-circle-check" style="color:#008744; font-size:12px;"></i></h4>
-                <div class="eg-sub"><i class="fa-solid fa-location-dot" style="color:var(--orange);"></i> Bhopal • Labs & Computer Center</div>
-              </div>
-            </div>
-            <div class="eg-stats">
-              <div class="eg-stat"><div class="k">Load</div><div class="v">110 KW (3-Ph)</div></div>
-              <div class="eg-stat"><div class="k">Bill</div><div class="v">₹1,45,000</div></div>
-            </div>
-            <div class="eg-result"><span class="rl">Cards Required</span><span class="rn">25 Cards</span></div>
-            <p class="eg-why">110 KW needs 22 cards, but ₹1,45,000 needs 24 + 1 for 3-phase = 25 cards.</p>
-          </div>
-
-          <!-- Card 4 -->
-          <div class="eg-card">
-            <div class="eg-img-wrap">
-              <img src="{% if section.settings.inst_img_4 != blank %}{{ section.settings.inst_img_4 | image_url: width: 600 }}{% else %}{{ 'commercial-building-1.png' | asset_url }}{% endif %}" alt="Government Administrative Bhavan" loading="lazy" onerror="this.onerror=null; this.src='{{ 'commercial-building-2.png' | asset_url }}';">
-              <span class="eg-tag">Admin Bhavan</span>
-            </div>
-            <div class="eg-person-row">
-              <div class="eg-avatar">
-                <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=150&q=80" alt="Er. Rajeshwar Nath" loading="lazy" onerror="this.onerror=null; this.src='{{ 'hero-advisor-calculator.jpg' | asset_url }}';">
-              </div>
-              <div>
-                <h4>Er. Rajeshwar Nath <i class="fa-solid fa-circle-check" style="color:#008744; font-size:12px;"></i></h4>
-                <div class="eg-sub"><i class="fa-solid fa-location-dot" style="color:var(--orange);"></i> Chandigarh • Govt Central Complex</div>
-              </div>
-            </div>
-            <div class="eg-stats">
-              <div class="eg-stat"><div class="k">Load</div><div class="v">80 KW (3-Ph)</div></div>
-              <div class="eg-stat"><div class="k">Bill</div><div class="v">₹85,000</div></div>
-            </div>
-            <div class="eg-result"><span class="rl">Cards Required</span><span class="rn">15 Cards</span></div>
-            <p class="eg-why">80 KW needs 14 cards + 1 for 3-phase = 15 cards — continuous stability.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Mobile Dots Indicator -->
-      <div class="vscc-eg-dots" id="vsccEgDots">
-        <button type="button" class="vscc-eg-dot active" onclick="vsccGoEgSlide(0)" aria-label="Slide 1"></button>
-        <button type="button" class="vscc-eg-dot" onclick="vsccGoEgSlide(1)" aria-label="Slide 2"></button>
-        <button type="button" class="vscc-eg-dot" onclick="vsccGoEgSlide(2)" aria-label="Slide 3"></button>
-        <button type="button" class="vscc-eg-dot" onclick="vsccGoEgSlide(3)" aria-label="Slide 4"></button>
-      </div>
-    </div>
-  </section>
-
   <!-- BADGES -->
   <section class="sec" style="padding-top:0;">
     <div class="wrap">
@@ -2446,9 +2121,8 @@
     ['55–60 KW', '₹55,001 – ₹60,000',  10, 11],
   ];
 
-  /* build desktop table & mobile cards */
+  /* build desktop table */
   var tbody = document.getElementById('vscc-chartBody');
-  var mobileContainer = document.getElementById('vscc-mobileCards');
 
   CHART.forEach(function(row){
     if(tbody){
@@ -2477,7 +2151,6 @@
   var billCardsEl = document.getElementById('vscc-billCards');
   var baseWinEl   = document.getElementById('vscc-baseWin');
   var phaseRow    = document.getElementById('vscc-phaseRow');
-  var chipMeter   = document.getElementById('vscc-chipMeter');
   var stickyBar   = document.getElementById('vscc-stickyBar');
   var stickyNum   = document.getElementById('vscc-stickyNum');
   var stickyUnit  = document.getElementById('vscc-stickyUnit');
@@ -2552,142 +2225,6 @@
     sync();
   });
 
-  /* ---- TABS ---- */
-  document.querySelectorAll('.vscc .tab-btn').forEach(function(btn){
-    btn.addEventListener('click', function(){
-      document.querySelectorAll('.vscc .tab-btn').forEach(function(b){ b.classList.remove('active'); });
-      document.querySelectorAll('.vscc .eg-panel').forEach(function(p){
-        p.classList.remove('active');
-        p.style.transform = 'none';
-      });
-      btn.classList.add('active');
-      var panel = document.querySelector('.vscc .eg-panel[data-vscc-panel="' + btn.dataset.vsccTab + '"]');
-      if(panel) {
-        panel.classList.add('active');
-        currentEgSlide = 0;
-        vsccUpdateEgSlider();
-        vsccRestartEgTimer();
-      }
-    });
-  });
-
-  /* ---- MOBILE SLIDER FOR REAL CUSTOMER SCENARIOS (4s AUTO-ADVANCE) ---- */
-  var currentEgSlide = 0;
-  var egAutoTimer = null;
-  var egSliderInView = false;
-
-  function vsccUpdateEgSlider() {
-    var activePanel = document.querySelector('.vscc .eg-panel.active');
-    if (!activePanel) return;
-    
-    if (window.innerWidth < 768) {
-      activePanel.style.transform = 'translateX(-' + (currentEgSlide * 100) + '%)';
-    } else {
-      activePanel.style.transform = 'none';
-    }
-
-    var dots = document.querySelectorAll('.vscc .vscc-eg-dot');
-    dots.forEach(function(dot, idx) {
-      if (idx === currentEgSlide) {
-        dot.classList.add('active');
-      } else {
-        dot.classList.remove('active');
-      }
-    });
-  }
-
-  window.vsccGoEgSlide = function(idx) {
-    var activePanel = document.querySelector('.vscc .eg-panel.active');
-    if (!activePanel) return;
-    var totalCards = activePanel.querySelectorAll('.eg-card').length || 2;
-    currentEgSlide = (idx + totalCards) % totalCards;
-    vsccUpdateEgSlider();
-    vsccRestartEgTimer();
-  };
-
-  function vsccNextEgSlide() {
-    var activePanel = document.querySelector('.vscc .eg-panel.active');
-    if (!activePanel) return;
-    var totalCards = activePanel.querySelectorAll('.eg-card').length || 2;
-    currentEgSlide = (currentEgSlide + 1) % totalCards;
-    vsccUpdateEgSlider();
-  }
-
-  function vsccStartEgTimer() {
-    if (egAutoTimer) clearInterval(egAutoTimer);
-    if (window.innerWidth < 768 && egSliderInView) {
-      egAutoTimer = setInterval(function() {
-        vsccNextEgSlide();
-      }, 4000);
-    }
-  }
-
-  function vsccStopEgTimer() {
-    if (egAutoTimer) {
-      clearInterval(egAutoTimer);
-      egAutoTimer = null;
-    }
-  }
-
-  function vsccRestartEgTimer() {
-    vsccStopEgTimer();
-    vsccStartEgTimer();
-  }
-
-  // Touch Swipe Support on Mobile for Examples
-  var touchStartX = 0;
-  var touchEndX = 0;
-  var egSliderWrap = document.querySelector('.vscc .vscc-eg-slider-wrap');
-  if (egSliderWrap) {
-    egSliderWrap.addEventListener('touchstart', function(e) {
-      touchStartX = e.changedTouches[0].screenX;
-      vsccStopEgTimer();
-    }, {passive: true});
-
-    egSliderWrap.addEventListener('touchend', function(e) {
-      touchEndX = e.changedTouches[0].screenX;
-      var diff = touchStartX - touchEndX;
-      if (Math.abs(diff) > 40) {
-        if (diff > 0) {
-          // swipe left -> next slide
-          vsccGoEgSlide(currentEgSlide + 1);
-        } else {
-          // swipe right -> prev slide
-          vsccGoEgSlide(currentEgSlide - 1);
-        }
-      }
-      vsccStartEgTimer();
-    }, {passive: true});
-  }
-
-  // IntersectionObserver to auto-play only when section is in view on mobile
-  var egSection = document.getElementById('vscc-examples');
-  if (egSection && 'IntersectionObserver' in window) {
-    var egIo = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        egSliderInView = entry.isIntersecting;
-        if (entry.isIntersecting) {
-          vsccStartEgTimer();
-        } else {
-          vsccStopEgTimer();
-        }
-      });
-    }, {threshold: 0.15});
-    egIo.observe(egSection);
-  } else {
-    egSliderInView = true;
-    vsccStartEgTimer();
-  }
-
-  window.addEventListener('resize', function() {
-    vsccUpdateEgSlider();
-    if (window.innerWidth >= 768) {
-      vsccStopEgTimer();
-    } else if (egSliderInView) {
-      vsccStartEgTimer();
-    }
-  });
-
   /* ---- STICKY BAR ---- */
   var calcSection = document.getElementById('vscc-calc');
   if(calcSection && stickyBar){
@@ -2710,104 +2247,7 @@
 {% schema %}
 {
   "name": "Required Cards Layout",
-  "settings": [
-    {
-      "type": "header",
-      "content": "🏠 Residential Examples (4 Cards)"
-    },
-    {
-      "type": "image_picker",
-      "id": "res_img_1",
-      "label": "Residential 1 - 2 BHK Apartment Image"
-    },
-    {
-      "type": "image_picker",
-      "id": "res_img_2",
-      "label": "Residential 2 - 3 BHK Duplex Villa Image"
-    },
-    {
-      "type": "image_picker",
-      "id": "res_img_3",
-      "label": "Residential 3 - 4 BHK Row House Image"
-    },
-    {
-      "type": "image_picker",
-      "id": "res_img_4",
-      "label": "Residential 4 - Independent Kothi Image"
-    },
-    {
-      "type": "header",
-      "content": "🏢 Commercial Examples (4 Cards)"
-    },
-    {
-      "type": "image_picker",
-      "id": "com_img_1",
-      "label": "Commercial 1 - Retail Showroom Image"
-    },
-    {
-      "type": "image_picker",
-      "id": "com_img_2",
-      "label": "Commercial 2 - IT Tech Park Image"
-    },
-    {
-      "type": "image_picker",
-      "id": "com_img_3",
-      "label": "Commercial 3 - Restaurant & Cafe Image"
-    },
-    {
-      "type": "image_picker",
-      "id": "com_img_4",
-      "label": "Commercial 4 - Diagnostic Center Image"
-    },
-    {
-      "type": "header",
-      "content": "🏭 Industrial Examples (4 Cards)"
-    },
-    {
-      "type": "image_picker",
-      "id": "ind_img_1",
-      "label": "Industrial 1 - Heavy Engineering Image"
-    },
-    {
-      "type": "image_picker",
-      "id": "ind_img_2",
-      "label": "Industrial 2 - Agro Processing Plant Image"
-    },
-    {
-      "type": "image_picker",
-      "id": "ind_img_3",
-      "label": "Industrial 3 - Plastic Molding Unit Image"
-    },
-    {
-      "type": "image_picker",
-      "id": "ind_img_4",
-      "label": "Industrial 4 - Textile Dyeing Mill Image"
-    },
-    {
-      "type": "header",
-      "content": "🏛️ Institutional Examples (4 Cards)"
-    },
-    {
-      "type": "image_picker",
-      "id": "inst_img_1",
-      "label": "Institutional 1 - Hospital & ICU Image"
-    },
-    {
-      "type": "image_picker",
-      "id": "inst_img_2",
-      "label": "Institutional 2 - CBSE School Campus Image"
-    },
-    {
-      "type": "image_picker",
-      "id": "inst_img_3",
-      "label": "Institutional 3 - Engineering College Image"
-    },
-    {
-      "type": "image_picker",
-      "id": "inst_img_4",
-      "label": "Institutional 4 - Admin Bhavan Image"
-    }
-  ],
+  "settings": [],
   "presets": [
     {
       "name": "Required Cards Layout"
