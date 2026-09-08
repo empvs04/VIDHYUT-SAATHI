@@ -480,37 +480,37 @@
 
   .vscc .c-output-card .vscc-cascade-showcase {
     margin: 8px 0 14px 0 !important;
-    gap: 12px !important;
+    gap: 14px !important;
   }
 
   .vscc .c-output-card .vscc-top-tier-row {
-    gap: 10px !important;
+    gap: 12px !important;
   }
 
   .vscc .c-output-card .vscc-cascade-card.vscc-tier-single {
-    width: 200px !important;
+    width: 240px !important;
   }
 
   .vscc .c-output-card .vscc-cascade-card.vscc-tier-1 {
-    width: 160px !important;
+    width: 195px !important;
   }
 
   .vscc .c-output-card .vscc-cascade-card.vscc-tier-2 {
-    width: 120px !important;
+    width: 150px !important;
   }
 
   .vscc .c-output-card .vscc-cascade-card.vscc-tier-3 {
-    width: 86px !important;
+    width: 110px !important;
   }
 
   .vscc .c-output-card .vscc-sub-tier-grid {
     gap: 6px !important;
-    max-width: 440px !important;
+    max-width: 480px !important;
   }
 
   .vscc .c-output-card .vscc-cascade-card.vscc-tier-sub {
-    width: 46px !important;
-    height: 29px !important;
+    width: 48px !important;
+    height: 30px !important;
   }
 
   .vscc .c-output-card .savings-box {
@@ -1064,7 +1064,7 @@
 }
 .vscc .res-number .unit { font-size: 16px; color: var(--muted); font-weight: 700; font-family: 'Nunito', sans-serif !important; }
 
-/* ---- CASCADING STEPPED CARDS SHOWCASE (LARGE -> SMALLER -> SMALLER) ---- */
+/* ---- CASCADING STEPPED CARDS SHOWCASE (CRYSTAL CLEAR HIGH-RES DISPLAY) ---- */
 .vscc .vscc-cascade-showcase {
   width: 100%;
   display: flex;
@@ -1091,7 +1091,9 @@
   display: inline-block;
   cursor: pointer;
   flex-shrink: 0;
-  transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.28s ease;
+  transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.28s ease, filter 0.2s ease;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: high-quality;
 }
 
 .vscc .vscc-cascade-card img {
@@ -1099,57 +1101,59 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: high-quality;
 }
 
 /* Single Solo Card */
 .vscc .vscc-cascade-card.vscc-tier-single {
-  width: 220px;
-  border-radius: 12px;
-  border: 1.5px solid rgba(255, 255, 255, 0.7);
-  box-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.45), 0 6px 16px rgba(0, 0, 0, 0.2);
+  width: 250px;
+  border-radius: 14px;
+  border: 1.5px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 18px 40px -6px rgba(0, 0, 0, 0.5), 0 6px 16px rgba(0, 0, 0, 0.22);
 }
 .vscc .vscc-cascade-card.vscc-tier-single:hover {
-  transform: translateY(-4px) scale(1.03);
-  box-shadow: 0 22px 46px -6px rgba(0, 0, 0, 0.52), 0 8px 20px rgba(240, 99, 27, 0.25);
+  transform: translateY(-4px) scale(1.04);
+  box-shadow: 0 24px 50px -6px rgba(0, 0, 0, 0.58), 0 8px 22px rgba(240, 99, 27, 0.3);
 }
 
-/* Tier 1 (Largest in Step) */
+/* Tier 1 (Largest in Step - Ultra Sharp) */
 .vscc .vscc-cascade-card.vscc-tier-1 {
-  width: 175px;
-  border-radius: 11px;
-  border: 1.5px solid rgba(255, 255, 255, 0.75);
-  box-shadow: 0 14px 32px -4px rgba(0, 0, 0, 0.42), 0 4px 14px rgba(0, 0, 0, 0.2);
+  width: 200px;
+  border-radius: 12px;
+  border: 1.5px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 16px 36px -4px rgba(0, 0, 0, 0.48), 0 4px 14px rgba(0, 0, 0, 0.22);
 }
 .vscc .vscc-cascade-card.vscc-tier-1:hover {
-  transform: translateY(-4px) scale(1.04);
-  box-shadow: 0 20px 42px -4px rgba(0, 0, 0, 0.5), 0 6px 18px rgba(240, 99, 27, 0.25);
-  z-index: 3;
+  transform: translateY(-5px) scale(1.06);
+  box-shadow: 0 24px 48px -4px rgba(0, 0, 0, 0.58), 0 8px 22px rgba(240, 99, 27, 0.3);
+  z-index: 5;
 }
 
-/* Tier 2 (Medium in Step) */
+/* Tier 2 (Medium in Step - High Clarity) */
 .vscc .vscc-cascade-card.vscc-tier-2 {
-  width: 130px;
-  border-radius: 9px;
-  border: 1.2px solid rgba(255, 255, 255, 0.7);
-  box-shadow: 0 10px 24px -4px rgba(0, 0, 0, 0.35);
+  width: 155px;
+  border-radius: 10px;
+  border: 1.5px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 12px 28px -4px rgba(0, 0, 0, 0.4);
 }
 .vscc .vscc-cascade-card.vscc-tier-2:hover {
-  transform: translateY(-3px) scale(1.06);
-  box-shadow: 0 16px 32px -4px rgba(0, 0, 0, 0.45);
-  z-index: 3;
+  transform: translateY(-4px) scale(1.08);
+  box-shadow: 0 18px 36px -4px rgba(0, 0, 0, 0.52);
+  z-index: 5;
 }
 
-/* Tier 3 (Smaller in Step) */
+/* Tier 3 (Smaller in Step - Crisp & Clear) */
 .vscc .vscc-cascade-card.vscc-tier-3 {
-  width: 92px;
-  border-radius: 7px;
-  border: 1px solid rgba(255, 255, 255, 0.65);
-  box-shadow: 0 8px 18px -3px rgba(0, 0, 0, 0.3);
+  width: 115px;
+  border-radius: 8px;
+  border: 1.2px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 10px 22px -3px rgba(0, 0, 0, 0.36);
 }
 .vscc .vscc-cascade-card.vscc-tier-3:hover {
-  transform: translateY(-3px) scale(1.1);
-  box-shadow: 0 12px 24px -3px rgba(0, 0, 0, 0.42);
-  z-index: 3;
+  transform: translateY(-4px) scale(1.12);
+  box-shadow: 0 16px 30px -3px rgba(0, 0, 0, 0.48);
+  z-index: 5;
 }
 
 /* Subordinate Grid for 4+ Cards */
@@ -1168,13 +1172,13 @@
   width: 50px;
   height: 31.5px;
   border-radius: 4px;
-  border: 1px solid rgba(255, 255, 255, 0.7);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.32);
 }
 .vscc .vscc-cascade-card.vscc-tier-sub:hover {
-  transform: translateY(-3px) scale(1.18);
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.45);
-  z-index: 4;
+  transform: translateY(-3px) scale(1.2);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.48);
+  z-index: 6;
 }
 
 @media(max-width: 600px) {
@@ -1182,16 +1186,16 @@
     gap: 8px;
   }
   .vscc .vscc-cascade-card.vscc-tier-single {
-    width: 190px;
+    width: 210px;
   }
   .vscc .vscc-cascade-card.vscc-tier-1 {
-    width: 135px;
+    width: 145px;
   }
   .vscc .vscc-cascade-card.vscc-tier-2 {
-    width: 100px;
+    width: 112px;
   }
   .vscc .vscc-cascade-card.vscc-tier-3 {
-    width: 72px;
+    width: 82px;
   }
   .vscc .vscc-cascade-card.vscc-tier-sub {
     width: 44px;
