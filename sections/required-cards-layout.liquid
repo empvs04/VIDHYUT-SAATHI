@@ -478,25 +478,27 @@
     margin-bottom: 6px !important;
   }
 
-  .vscc .c-output-card .vscc-3d-container {
-    height: 105px !important;
-    margin-bottom: 6px !important;
+  .vscc .c-output-card .vscc-dynamic-showcase {
+    margin: 8px 0 14px 0 !important;
   }
 
-  .vscc .c-output-card .vscc-3d-card-stage {
-    width: 165px !important;
-    height: 100px !important;
+  .vscc .c-output-card .vscc-featured-card-wrap {
+    margin-bottom: 16px !important;
   }
 
-  .vscc .c-output-card .vscc-mini-cards-row {
+  .vscc .c-output-card .vscc-featured-card {
+    max-width: 210px !important;
+  }
+
+  .vscc .c-output-card .vscc-mini-cards-grid {
     gap: 6px !important;
-    margin: 4px 0 8px 0 !important;
-    min-height: 30px !important;
+    max-width: 440px !important;
+    min-height: 28px !important;
   }
 
   .vscc .c-output-card .vscc-mini-card-icon {
     width: 46px !important;
-    height: 28px !important;
+    height: 29px !important;
   }
 
   .vscc .c-output-card .savings-box {
@@ -1050,100 +1052,81 @@
 }
 .vscc .res-number .unit { font-size: 16px; color: var(--muted); font-weight: 700; font-family: 'Nunito', sans-serif !important; }
 
-/* ---- REAL 3D CARD COMPONENT (STATIC 3D ANGLE) ---- */
-.vscc .vscc-3d-container {
-  perspective: 1000px;
+/* ---- DYNAMIC CARDS SHOWCASE (MATCHING USER REFERENCE SCREENSHOT) ---- */
+.vscc .vscc-dynamic-showcase {
   width: 100%;
-  max-width: 380px;
-  margin: 16px auto 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 14px 0 20px 0;
+}
+
+.vscc .vscc-featured-card-wrap {
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 22px;
 }
 
-.vscc .vscc-3d-card-stage {
+.vscc .vscc-featured-card {
   width: 100%;
+  max-width: 236px;
   aspect-ratio: 1.586 / 1;
   position: relative;
-  transform-style: preserve-3d;
-  transform: rotateY(-6deg) rotateX(4deg);
-  border-radius: 16px;
-  box-shadow: 0 16px 36px rgba(0,0,0,0.28), 0 6px 16px rgba(240,99,27,0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.vscc .vscc-3d-container:hover .vscc-3d-card-stage {
-  transform: rotateY(0deg) rotateX(0deg) scale(1.02);
-  box-shadow: 0 20px 44px rgba(0,0,0,0.32), 0 8px 20px rgba(240,99,27,0.25);
-}
-
-.vscc .vscc-3d-face {
-  position: absolute;
-  inset: 0;
-  border-radius: 16px;
+  border-radius: 12px;
   overflow: hidden;
-  border: 1px solid rgba(255,255,255,0.25);
+  box-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.45), 0 6px 16px rgba(0, 0, 0, 0.22);
+  border: 1px solid rgba(255, 255, 255, 0.65);
   background: #0d2238;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
 }
 
-.vscc .vscc-3d-face img {
+.vscc .vscc-featured-card:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 22px 46px -6px rgba(0, 0, 0, 0.52), 0 8px 20px rgba(240, 99, 27, 0.25);
+}
+
+.vscc .vscc-featured-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
 
-.vscc .vscc-3d-glare {
-  position: absolute;
-  inset: 0;
-  border-radius: 16px;
-  background: linear-gradient(115deg, transparent 35%, rgba(255,255,255,0.22) 50%, transparent 65%);
-  pointer-events: none;
-  z-index: 3;
-}
-
-.vscc .vscc-3d-ribbon {
-  position: absolute;
-  top: 12px;
-  right: -32px;
-  background: var(--orange);
-  color: #ffffff;
-  font-size: 9.5px;
-  font-weight: 800;
-  font-family: 'Baloo 2', sans-serif;
-  letter-spacing: .05em;
-  padding: 4px 36px;
-  transform: rotate(28deg);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
-  z-index: 4;
-}
-
-/* Dynamic Mini Cards Row */
-.vscc .vscc-mini-cards-row {
+/* Subordinate Mini Cards Grid */
+.vscc .vscc-mini-cards-grid {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 6px;
-  margin: 14px 0 18px 0;
+  align-items: center;
+  gap: 7px;
+  max-width: 480px;
+  margin: 0 auto;
+  min-height: 32px;
 }
 
 .vscc .vscc-mini-card-icon {
-  width: 48px;
-  height: 30px;
+  width: 50px;
+  height: 31.5px;
   border-radius: 4px;
   background-color: #050c26;
   background-image: url("{{ 'official-vs-card-front.jpg' | asset_url }}");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  border: 1px solid rgba(255, 255, 255, 0.45);
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.32);
   transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
   display: inline-block;
   cursor: pointer;
+  flex-shrink: 0;
 }
+
 .vscc .vscc-mini-card-icon:hover {
   transform: translateY(-3px) scale(1.18);
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.45);
   z-index: 2;
 }
 
@@ -2539,18 +2522,15 @@
             <span class="unit" id="vscc-resultUnit">Card</span>
           </div>
 
-          <!-- Real 3D Vidhyut Saathi Card (Static 3D Angle) -->
-          <div class="vscc-3d-container">
-            <div class="vscc-3d-card-stage">
-              <div class="vscc-3d-face">
+          <!-- Dynamic Cards Showcase matching reference screenshot -->
+          <div class="vscc-dynamic-showcase" id="vsccDynamicShowcase">
+            <div class="vscc-featured-card-wrap">
+              <div class="vscc-featured-card">
                 <img src="{{ 'official-vs-card-front.jpg' | asset_url }}" alt="Vidhyut Saathi Electric Power Saving Card">
-                <div class="vscc-3d-glare"></div>
               </div>
             </div>
+            <div class="vscc-mini-cards-grid" id="vscc-miniCardsRow"></div>
           </div>
-
-          <!-- Dynamic Mini Gold Cards Row -->
-          <div class="vscc-mini-cards-row" id="vscc-miniCardsRow"></div>
 
           <!-- Estimated Monthly Savings Banner -->
           <div class="savings-box">
