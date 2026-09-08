@@ -2877,7 +2877,11 @@
     /* Dynamic Cascading Stepped Cards Showcase */
     var topTierRow = document.getElementById('vsccTopTierRow');
     var subTierGrid = document.getElementById('vsccSubTierGrid');
-    var cardImgUrl = "{{ 'official-vs-card-front.jpg' | asset_url }}";
+    {% assign custom_card_img = 'official-vs-card-front.jpg' | asset_url %}
+    {% if section.settings.card_image != blank %}
+      {% assign custom_card_img = section.settings.card_image | image_url: width: 1000 %}
+    {% endif %}
+    var cardImgUrl = "{{ custom_card_img }}";
 
     if (topTierRow && subTierGrid) {
       topTierRow.innerHTML = '';
@@ -3012,7 +3016,14 @@
 {% schema %}
 {
   "name": "Required Cards Layout",
-  "settings": [],
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "card_image",
+      "label": "Custom Vidhyut Saathi Card Image",
+      "info": "Upload your custom card photo (front view). If left empty, default HD card image is used."
+    }
+  ],
   "presets": [
     {
       "name": "Required Cards Layout"
