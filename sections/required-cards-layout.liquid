@@ -478,25 +478,37 @@
     margin-bottom: 6px !important;
   }
 
-  .vscc .c-output-card .vscc-dynamic-showcase {
+  .vscc .c-output-card .vscc-cascade-showcase {
     margin: 8px 0 14px 0 !important;
+    gap: 12px !important;
   }
 
-  .vscc .c-output-card .vscc-featured-card-wrap {
-    margin-bottom: 16px !important;
+  .vscc .c-output-card .vscc-top-tier-row {
+    gap: 10px !important;
   }
 
-  .vscc .c-output-card .vscc-featured-card {
-    max-width: 210px !important;
+  .vscc .c-output-card .vscc-cascade-card.vscc-tier-single {
+    width: 200px !important;
   }
 
-  .vscc .c-output-card .vscc-mini-cards-grid {
+  .vscc .c-output-card .vscc-cascade-card.vscc-tier-1 {
+    width: 160px !important;
+  }
+
+  .vscc .c-output-card .vscc-cascade-card.vscc-tier-2 {
+    width: 120px !important;
+  }
+
+  .vscc .c-output-card .vscc-cascade-card.vscc-tier-3 {
+    width: 86px !important;
+  }
+
+  .vscc .c-output-card .vscc-sub-tier-grid {
     gap: 6px !important;
     max-width: 440px !important;
-    min-height: 28px !important;
   }
 
-  .vscc .c-output-card .vscc-mini-card-icon {
+  .vscc .c-output-card .vscc-cascade-card.vscc-tier-sub {
     width: 46px !important;
     height: 29px !important;
   }
@@ -1052,82 +1064,139 @@
 }
 .vscc .res-number .unit { font-size: 16px; color: var(--muted); font-weight: 700; font-family: 'Nunito', sans-serif !important; }
 
-/* ---- DYNAMIC CARDS SHOWCASE (MATCHING USER REFERENCE SCREENSHOT) ---- */
-.vscc .vscc-dynamic-showcase {
+/* ---- CASCADING STEPPED CARDS SHOWCASE (LARGE -> SMALLER -> SMALLER) ---- */
+.vscc .vscc-cascade-showcase {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 14px 0 20px 0;
+  margin: 12px 0 18px 0;
+  gap: 16px;
 }
 
-.vscc .vscc-featured-card-wrap {
-  width: 100%;
+.vscc .vscc-top-tier-row {
   display: flex;
+  align-items: flex-end;
   justify-content: center;
-  align-items: center;
-  margin-bottom: 22px;
-}
-
-.vscc .vscc-featured-card {
+  gap: 12px;
   width: 100%;
-  max-width: 236px;
-  aspect-ratio: 1.586 / 1;
+}
+
+.vscc .vscc-cascade-card {
   position: relative;
-  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.45), 0 6px 16px rgba(0, 0, 0, 0.22);
-  border: 1px solid rgba(255, 255, 255, 0.65);
+  aspect-ratio: 1.586 / 1;
   background: #0d2238;
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+  display: inline-block;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.28s ease;
 }
 
-.vscc .vscc-featured-card:hover {
-  transform: translateY(-3px) scale(1.03);
-  box-shadow: 0 22px 46px -6px rgba(0, 0, 0, 0.52), 0 8px 20px rgba(240, 99, 27, 0.25);
-}
-
-.vscc .vscc-featured-card img {
+.vscc .vscc-cascade-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
 
-/* Subordinate Mini Cards Grid */
-.vscc .vscc-mini-cards-grid {
+/* Single Solo Card */
+.vscc .vscc-cascade-card.vscc-tier-single {
+  width: 220px;
+  border-radius: 12px;
+  border: 1.5px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.45), 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+.vscc .vscc-cascade-card.vscc-tier-single:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 22px 46px -6px rgba(0, 0, 0, 0.52), 0 8px 20px rgba(240, 99, 27, 0.25);
+}
+
+/* Tier 1 (Largest in Step) */
+.vscc .vscc-cascade-card.vscc-tier-1 {
+  width: 175px;
+  border-radius: 11px;
+  border: 1.5px solid rgba(255, 255, 255, 0.75);
+  box-shadow: 0 14px 32px -4px rgba(0, 0, 0, 0.42), 0 4px 14px rgba(0, 0, 0, 0.2);
+}
+.vscc .vscc-cascade-card.vscc-tier-1:hover {
+  transform: translateY(-4px) scale(1.04);
+  box-shadow: 0 20px 42px -4px rgba(0, 0, 0, 0.5), 0 6px 18px rgba(240, 99, 27, 0.25);
+  z-index: 3;
+}
+
+/* Tier 2 (Medium in Step) */
+.vscc .vscc-cascade-card.vscc-tier-2 {
+  width: 130px;
+  border-radius: 9px;
+  border: 1.2px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 10px 24px -4px rgba(0, 0, 0, 0.35);
+}
+.vscc .vscc-cascade-card.vscc-tier-2:hover {
+  transform: translateY(-3px) scale(1.06);
+  box-shadow: 0 16px 32px -4px rgba(0, 0, 0, 0.45);
+  z-index: 3;
+}
+
+/* Tier 3 (Smaller in Step) */
+.vscc .vscc-cascade-card.vscc-tier-3 {
+  width: 92px;
+  border-radius: 7px;
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  box-shadow: 0 8px 18px -3px rgba(0, 0, 0, 0.3);
+}
+.vscc .vscc-cascade-card.vscc-tier-3:hover {
+  transform: translateY(-3px) scale(1.1);
+  box-shadow: 0 12px 24px -3px rgba(0, 0, 0, 0.42);
+  z-index: 3;
+}
+
+/* Subordinate Grid for 4+ Cards */
+.vscc .vscc-sub-tier-grid {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   gap: 7px;
   max-width: 480px;
+  width: 100%;
   margin: 0 auto;
-  min-height: 32px;
 }
 
-.vscc .vscc-mini-card-icon {
+.vscc .vscc-cascade-card.vscc-tier-sub {
   width: 50px;
   height: 31.5px;
   border-radius: 4px;
-  background-color: #050c26;
-  background-image: url("{{ 'official-vs-card-front.jpg' | asset_url }}");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   border: 1px solid rgba(255, 255, 255, 0.7);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.32);
-  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
-  display: inline-block;
-  cursor: pointer;
-  flex-shrink: 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
-
-.vscc .vscc-mini-card-icon:hover {
+.vscc .vscc-cascade-card.vscc-tier-sub:hover {
   transform: translateY(-3px) scale(1.18);
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.45);
-  z-index: 2;
+  z-index: 4;
+}
+
+@media(max-width: 600px) {
+  .vscc .vscc-top-tier-row {
+    gap: 8px;
+  }
+  .vscc .vscc-cascade-card.vscc-tier-single {
+    width: 190px;
+  }
+  .vscc .vscc-cascade-card.vscc-tier-1 {
+    width: 135px;
+  }
+  .vscc .vscc-cascade-card.vscc-tier-2 {
+    width: 100px;
+  }
+  .vscc .vscc-cascade-card.vscc-tier-3 {
+    width: 72px;
+  }
+  .vscc .vscc-cascade-card.vscc-tier-sub {
+    width: 44px;
+    height: 28px;
+  }
 }
 
 .vscc .chip-meter { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 18px; }
@@ -2522,14 +2591,10 @@
             <span class="unit" id="vscc-resultUnit">Card</span>
           </div>
 
-          <!-- Dynamic Cards Showcase matching reference screenshot -->
-          <div class="vscc-dynamic-showcase" id="vsccDynamicShowcase">
-            <div class="vscc-featured-card-wrap">
-              <div class="vscc-featured-card">
-                <img src="{{ 'official-vs-card-front.jpg' | asset_url }}" alt="Vidhyut Saathi Electric Power Saving Card">
-              </div>
-            </div>
-            <div class="vscc-mini-cards-grid" id="vscc-miniCardsRow"></div>
+          <!-- Cascading Stepped Cards Showcase (Big -> Medium -> Small -> Mini Grid) -->
+          <div class="vscc-cascade-showcase" id="vsccCascadeShowcase">
+            <div class="vscc-top-tier-row" id="vsccTopTierRow"></div>
+            <div class="vscc-sub-tier-grid" id="vsccSubTierGrid"></div>
           </div>
 
           <!-- Estimated Monthly Savings Banner -->
@@ -2805,22 +2870,68 @@
       savingsRangeEl.textContent = inr(savingsMin) + ' – ' + inr(savingsMax);
     }
 
-    /* dynamic mini gold cards row */
-    var miniCardsRow = document.getElementById('vscc-miniCardsRow');
-    if(miniCardsRow){
-      miniCardsRow.innerHTML = '';
-      var capped = Math.min(total, 30);
-      for(var i=0; i<capped; i++){
-        var icon = document.createElement('div');
-        icon.className = 'vscc-mini-card-icon';
-        icon.title = 'Card ' + (i + 1);
-        miniCardsRow.appendChild(icon);
-      }
-      if(total > 30){
-        var more = document.createElement('span');
-        more.style.cssText = 'font-family:Baloo 2,sans-serif;color:#f0631b;font-size:13px;font-weight:800;align-self:center;margin-left:4px;';
-        more.textContent = '+' + (total - 30) + ' more';
-        miniCardsRow.appendChild(more);
+    /* Dynamic Cascading Stepped Cards Showcase */
+    var topTierRow = document.getElementById('vsccTopTierRow');
+    var subTierGrid = document.getElementById('vsccSubTierGrid');
+    var cardImgUrl = "{{ 'official-vs-card-front.jpg' | asset_url }}";
+
+    if (topTierRow && subTierGrid) {
+      topTierRow.innerHTML = '';
+      subTierGrid.innerHTML = '';
+
+      if (total === 1) {
+        var c1 = document.createElement('div');
+        c1.className = 'vscc-cascade-card vscc-tier-single';
+        c1.innerHTML = '<img src="' + cardImgUrl + '" alt="Vidhyut Saathi Card 1">';
+        c1.title = 'Card #1';
+        topTierRow.appendChild(c1);
+      } else if (total === 2) {
+        var c1 = document.createElement('div');
+        c1.className = 'vscc-cascade-card vscc-tier-1';
+        c1.innerHTML = '<img src="' + cardImgUrl + '" alt="Vidhyut Saathi Card 1">';
+        c1.title = 'Card #1';
+        topTierRow.appendChild(c1);
+
+        var c2 = document.createElement('div');
+        c2.className = 'vscc-cascade-card vscc-tier-2';
+        c2.innerHTML = '<img src="' + cardImgUrl + '" alt="Vidhyut Saathi Card 2">';
+        c2.title = 'Card #2';
+        topTierRow.appendChild(c2);
+      } else {
+        // total >= 3
+        var c1 = document.createElement('div');
+        c1.className = 'vscc-cascade-card vscc-tier-1';
+        c1.innerHTML = '<img src="' + cardImgUrl + '" alt="Vidhyut Saathi Card 1">';
+        c1.title = 'Card #1';
+        topTierRow.appendChild(c1);
+
+        var c2 = document.createElement('div');
+        c2.className = 'vscc-cascade-card vscc-tier-2';
+        c2.innerHTML = '<img src="' + cardImgUrl + '" alt="Vidhyut Saathi Card 2">';
+        c2.title = 'Card #2';
+        topTierRow.appendChild(c2);
+
+        var c3 = document.createElement('div');
+        c3.className = 'vscc-cascade-card vscc-tier-3';
+        c3.innerHTML = '<img src="' + cardImgUrl + '" alt="Vidhyut Saathi Card 3">';
+        c3.title = 'Card #3';
+        topTierRow.appendChild(c3);
+
+        // Subordinate cards (4 to total)
+        var capped = Math.min(total, 35);
+        for (var i = 3; i < capped; i++) {
+          var sub = document.createElement('div');
+          sub.className = 'vscc-cascade-card vscc-tier-sub';
+          sub.innerHTML = '<img src="' + cardImgUrl + '" alt="Vidhyut Saathi Card ' + (i + 1) + '">';
+          sub.title = 'Card #' + (i + 1);
+          subTierGrid.appendChild(sub);
+        }
+        if (total > 35) {
+          var more = document.createElement('span');
+          more.style.cssText = 'font-family:Baloo 2,sans-serif;color:#f0631b;font-size:12.5px;font-weight:800;align-self:center;margin-left:4px;';
+          more.textContent = '+' + (total - 35) + ' more';
+          subTierGrid.appendChild(more);
+        }
       }
     }
   }
