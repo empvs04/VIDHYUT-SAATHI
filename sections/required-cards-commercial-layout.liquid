@@ -2104,26 +2104,39 @@
 
       <div class="vscom-calc-box">
         <div>
+          <!-- 1. KW LOAD -->
           <div class="vscom-field">
             <div class="vscom-field-label">
-              <span>⚙️ CONNECTED COMMERCIAL LOAD</span>
+              <span>1. ⚙️ CONNECTED COMMERCIAL LOAD (KW)</span>
               <span class="vscom-field-badge" id="vscom_kw_badge">18 KW</span>
             </div>
             <input type="range" class="vscom-range-slider" id="vscom_kw_slider" min="6" max="150" value="18" step="6">
             <input type="number" class="vscom-num-input" id="vscom_kw_num" value="18" min="1" max="500">
           </div>
 
+          <!-- 2. MONTHLY BILL -->
           <div class="vscom-field">
             <div class="vscom-field-label">
-              <span>💰 MONTHLY ELECTRICITY BILL</span>
+              <span>2. 💰 AVERAGE MONTHLY BILL (₹)</span>
               <span class="vscom-field-badge" id="vscom_bill_badge">₹18,000</span>
             </div>
-            <input type="number" class="vscom-num-input" id="vscom_bill_num" value="18000" min="1000" step="1000">
+            <input type="number" class="vscom-num-input" id="vscom_bill_num" value="18000" min="0" step="1000" placeholder="e.g. 18000">
           </div>
 
-          <!-- PHASE SELECTOR -->
+          <!-- 3. HIGHEST BILL IN LAST 12 MONTHS -->
           <div class="vscom-field">
-            <div class="vscom-field-label">🔌 PHASE TYPE</div>
+            <div class="vscom-field-label">
+              <span>3. 📈 HIGHEST BILL IN LAST 12 MONTHS (₹)</span>
+              <span class="vscom-field-badge" id="vscom_peak_bill_badge">₹0</span>
+            </div>
+            <input type="number" class="vscom-num-input" id="vscom_peak_bill_num" value="" min="0" step="1000" placeholder="Optional peak summer bill (₹)">
+          </div>
+
+          <!-- 4. PHASE SELECTOR -->
+          <div class="vscom-field">
+            <div class="vscom-field-label">
+              <span>4. 🔌 CONNECTION TYPE</span>
+            </div>
             <div class="vscom-toggle-group">
               <button type="button" class="vscom-toggle-btn" id="vscom_btn_single" onclick="vscomSetPhase(false)">Single Phase</button>
               <button type="button" class="vscom-toggle-btn active" id="vscom_btn_three" onclick="vscomSetPhase(true)">Three Phase</button>
@@ -2842,11 +2855,13 @@
     var kwSlider = document.getElementById('vscom_kw_slider');
     var kwNum = document.getElementById('vscom_kw_num');
     var billNum = document.getElementById('vscom_bill_num');
+    var peakBillNum = document.getElementById('vscom_peak_bill_num');
 
     if (!kwSlider || !kwNum || !billNum) return;
 
     var kw = parseInt(kwNum.value) || 18;
-    var bill = parseInt(billNum.value) || 18000;
+    var bill = parseInt(billNum.value) || 0;
+    var peakBill = parseInt(peakBillNum ? peakBillNum.value : 0) || 0;
 
     if (source === 'slider') {
       kw = parseInt(kwSlider.value) || 6;
@@ -2855,20 +2870,25 @@
       kw = Math.max(1, kw);
       kwSlider.value = Math.min(kw, 150);
     } else if (source === 'bill') {
-      bill = Math.max(1000, bill);
+      bill = Math.max(0, bill);
+    } else if (source === 'peakBill') {
+      peakBill = Math.max(0, peakBill);
     }
 
     kwSlider.style.setProperty('--fill', (Math.min(kw, 150) / 150 * 100) + '%');
 
     var kwBadge = document.getElementById('vscom_kw_badge');
     var billBadge = document.getElementById('vscom_bill_badge');
+    var peakBillBadge = document.getElementById('vscom_peak_bill_badge');
     if (kwBadge) kwBadge.innerText = kw + ' KW';
     if (billBadge) billBadge.innerText = '₹' + bill.toLocaleString('en-IN');
+    if (peakBillBadge) peakBillBadge.innerText = peakBill > 0 ? '₹' + peakBill.toLocaleString('en-IN') : '₹0';
 
     // 1 Card per 6 KW (if 3-Phase, +1 card to balance 3 phase lines)
     var kwCards = Math.max(1, Math.ceil(kw / 6));
     var billCards = bill > 0 ? Math.max(1, Math.ceil(bill / 6000)) : 1;
-    var baseCards = Math.max(kwCards, billCards);
+    var peakBillCards = peakBill > 0 ? Math.max(1, Math.ceil(peakBill / 6000)) : 0;
+    var baseCards = Math.max(kwCards, billCards, peakBillCards);
     var total = vscomThreePhase ? baseCards + 1 : baseCards;
 
     var numCardEl = document.getElementById('vscom_card_num');
@@ -2896,8 +2916,9 @@
     }
 
     // 20-30% DISCOM Bill Savings
-    var sMin = Math.round((bill * 0.20) / 100) * 100;
-    var sMax = Math.round((bill * 0.30) / 100) * 100;
+    var baseBillForSavings = Math.max(bill, peakBill);
+    var sMin = Math.round((baseBillForSavings * 0.20) / 100) * 100;
+    var sMax = Math.round((baseBillForSavings * 0.30) / 100) * 100;
     var savingsRangeEl = document.getElementById('vscom_savings_range');
     if (savingsRangeEl) {
       savingsRangeEl.innerText = '₹' + sMin.toLocaleString('en-IN') + ' – ₹' + sMax.toLocaleString('en-IN') + ' / mo';
@@ -2918,6 +2939,11 @@
   var billNumElemCom = document.getElementById('vscom_bill_num');
   if (billNumElemCom) {
     billNumElemCom.addEventListener('input', function() { vscomSync('bill'); });
+  }
+
+  var peakBillNumElemCom = document.getElementById('vscom_peak_bill_num');
+  if (peakBillNumElemCom) {
+    peakBillNumElemCom.addEventListener('input', function() { vscomSync('peakBill'); });
   }
 
   // Initial Sync
