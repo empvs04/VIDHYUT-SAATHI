@@ -1,0 +1,256 @@
+{% render 'vs-residential-styles' %}
+
+<div class="vsres">
+  <!-- ══ INTERACTIVE RESIDENTIAL CALCULATOR ══ -->
+  <section class="vsres-sec" id="vsres-calc">
+    <div class="wrap">
+      <div class="vsres-sec-head">
+        <div class="vsres-sec-eyebrow"><i class="fa-solid fa-sliders"></i> {{ section.settings.eyebrow | default: 'Interactive Residential Calculator' }}</div>
+        <h2 class="vsres-sec-title">{{ section.settings.title_prefix | default: 'Calculate Cards Needed for' }} <span>{{ section.settings.title_highlight | default: 'Your Home Connection' }}</span></h2>
+        <p class="vsres-sec-desc">
+          {{ section.settings.desc | default: 'Calculated using standard DISCOM guidelines: 1 card per 6 KW load, or 1 card per ₹6,000 monthly bill — with instant 20%–30% monthly savings projection.' }}
+        </p>
+      </div>
+
+      <div class="vsres-calc-box">
+        <!-- LEFT INPUTS -->
+        <div>
+          <!-- 1. KW LOAD -->
+          <div class="vsres-field">
+            <div class="vsres-field-label">
+              <span>1. ⚙️ CONNECTED LOAD (KW)</span>
+              <span class="vsres-field-badge" id="vsres_kw_badge">6 KW</span>
+            </div>
+            <input type="range" class="vsres-range-slider" id="vsres_kw_slider" min="1" max="40" value="6" step="1">
+            <input type="number" class="vsres-num-input" id="vsres_kw_num" value="6" min="1" max="100">
+          </div>
+
+          <!-- 2. MONTHLY BILL -->
+          <div class="vsres-field">
+            <div class="vsres-field-label">
+              <span>2. 💰 AVERAGE MONTHLY BILL (₹)</span>
+              <span class="vsres-field-badge" id="vsres_bill_badge">₹6,000</span>
+            </div>
+            <input type="number" class="vsres-num-input" id="vsres_bill_num" value="6000" min="0" step="500" placeholder="e.g. 6000">
+          </div>
+
+          <!-- 3. HIGHEST BILL IN LAST 12 MONTHS -->
+          <div class="vsres-field">
+            <div class="vsres-field-label">
+              <span>3. 📈 HIGHEST BILL IN LAST 12 MONTHS (₹)</span>
+              <span class="vsres-field-badge" id="vsres_peak_bill_badge">₹0</span>
+            </div>
+            <input type="number" class="vsres-num-input" id="vsres_peak_bill_num" value="" min="0" step="500" placeholder="Optional peak summer bill (₹)">
+          </div>
+
+          <!-- 4. PHASE SELECTOR -->
+          <div class="vsres-field">
+            <div class="vsres-field-label">
+              <span>4. 🔌 CONNECTION TYPE</span>
+            </div>
+            <div class="vsres-toggle-group">
+              <button class="vsres-toggle-btn active" id="vsres_btn_single" onclick="vsresSetPhase(false)">⚡ Single Phase</button>
+              <button class="vsres-toggle-btn" id="vsres_btn_three" onclick="vsresSetPhase(true)">⚡ Three Phase</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT OUTPUT -->
+        <div class="vsres-output-card">
+          <div>
+            <div class="vsres-res-label">REQUIRED RESIDENTIAL CARDS</div>
+            <div class="vsres-res-val">
+              <span id="vsres_card_num">1</span>
+              <span id="vsres_card_unit">Card</span>
+            </div>
+            <!-- Dynamic Mini Gold Cards Row -->
+            <div class="vsres-mini-cards-row" id="vsres_mini_cards_row"></div>
+          </div>
+
+          <div class="vsres-savings-box">
+            <div>
+              <div class="vsres-savings-lbl">ESTIMATED MONTHLY SAVINGS (20-30%)</div>
+              <div class="vsres-savings-amount" id="vsres_savings_range">₹1,200 – ₹1,800 / mo</div>
+            </div>
+            <i class="fa-solid fa-piggy-bank" style="font-size:24px;"></i>
+          </div>
+
+          <div class="vsres-action-btns">
+            {% assign wa_num = section.settings.whatsapp_number | default: '919876543210' %}
+            {% assign tel_num = section.settings.phone_number | default: '+919876543210' %}
+            <a href="https://wa.me/{{ wa_num }}?text=Hi%20Vidhyut%20Saathi%2C%20I%20need%20to%20buy%20residential%20cards" class="vsres-btn-wa" target="_blank">
+              <i class="fa-brands fa-whatsapp"></i> Buy on WhatsApp
+            </a>
+            <a href="tel:{{ tel_num }}" class="vsres-btn-phone">
+              <i class="fa-solid fa-phone"></i> Call Advisor
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+  var vsresThreePhase = false;
+
+  function vsresSync(fromSlider) {
+    var kwSlider = document.getElementById('vsres_kw_slider');
+    var kwNum = document.getElementById('vsres_kw_num');
+    var billNum = document.getElementById('vsres_bill_num');
+    var peakBillNum = document.getElementById('vsres_peak_bill_num');
+    var kwBadge = document.getElementById('vsres_kw_badge');
+    var billBadge = document.getElementById('vsres_bill_badge');
+    var peakBillBadge = document.getElementById('vsres_peak_bill_badge');
+
+    if (!kwSlider || !kwNum || !billNum) return;
+
+    var kw;
+    if (fromSlider) {
+      kw = Math.max(1, parseInt(kwSlider.value) || 1);
+      kwNum.value = kw;
+    } else {
+      kw = Math.max(1, parseInt(kwNum.value) || 1);
+      kwSlider.value = Math.min(kw, 40);
+    }
+    var bill = Math.max(0, parseInt(billNum.value) || 0);
+    var peakBill = Math.max(0, parseInt(peakBillNum ? peakBillNum.value : 0) || 0);
+
+    kwSlider.style.setProperty('--fill', (Math.min(kw, 40) / 40 * 100) + '%');
+    if (kwBadge) kwBadge.innerText = kw + ' KW';
+    if (billBadge) billBadge.innerText = '₹' + bill.toLocaleString('en-IN');
+    if (peakBillBadge) peakBillBadge.innerText = peakBill > 0 ? '₹' + peakBill.toLocaleString('en-IN') : '₹0';
+
+    var kwCards = Math.max(1, Math.ceil(kw / 6));
+    var billCards = bill > 0 ? Math.max(1, Math.ceil(bill / 6000)) : 1;
+    var peakBillCards = peakBill > 0 ? Math.max(1, Math.ceil(peakBill / 6000)) : 0;
+    var base = Math.max(kwCards, billCards, peakBillCards);
+    var total = vsresThreePhase ? base + 1 : base;
+
+    var numCardEl = document.getElementById('vsres_card_num');
+    var unitCardEl = document.getElementById('vsres_card_unit');
+    if (numCardEl) numCardEl.innerText = total;
+    if (unitCardEl) unitCardEl.innerText = total > 1 ? 'Cards' : 'Card';
+
+    /* Dynamic Mini Gold Cards Row */
+    var miniCardsRow = document.getElementById('vsres_mini_cards_row');
+    if (miniCardsRow) {
+      miniCardsRow.innerHTML = '';
+      var capped = Math.min(total, 30);
+      for (var i = 0; i < capped; i++) {
+        var icon = document.createElement('div');
+        icon.className = 'vsres-mini-card-icon';
+        icon.title = 'Residential Card ' + (i + 1);
+        miniCardsRow.appendChild(icon);
+      }
+      if (total > 30) {
+        var more = document.createElement('span');
+        more.style.cssText = 'font-family:Baloo 2,sans-serif;color:#ec5c0a;font-size:13px;font-weight:800;align-self:center;margin-left:4px;';
+        more.textContent = '+' + (total - 30) + ' more';
+        miniCardsRow.appendChild(more);
+      }
+    }
+
+    var baseBillForSavings = Math.max(bill, peakBill);
+    var sMin = Math.round((baseBillForSavings * 0.20) / 100) * 100;
+    var sMax = Math.round((baseBillForSavings * 0.30) / 100) * 100;
+    var savingsRangeEl = document.getElementById('vsres_savings_range');
+    if (savingsRangeEl) {
+      savingsRangeEl.innerText = '₹' + sMin.toLocaleString('en-IN') + ' – ₹' + sMax.toLocaleString('en-IN') + ' / mo';
+    }
+  }
+
+  function vsresSetPhase(isThree) {
+    vsresThreePhase = isThree;
+    var btnSingle = document.getElementById('vsres_btn_single');
+    var btnThree = document.getElementById('vsres_btn_three');
+    if (isThree) {
+      btnThree.classList.add('active');
+      btnSingle.classList.remove('active');
+    } else {
+      btnSingle.classList.add('active');
+      btnThree.classList.remove('active');
+    }
+    vsresSync(false);
+  }
+
+  // Two-way interactive event binding for Section 3
+  var kwSliderElem = document.getElementById('vsres_kw_slider');
+  if (kwSliderElem) {
+    kwSliderElem.addEventListener('input', function() { vsresSync(true); });
+    kwSliderElem.addEventListener('change', function() { vsresSync(true); });
+  }
+
+  var kwNumElem = document.getElementById('vsres_kw_num');
+  if (kwNumElem) {
+    kwNumElem.addEventListener('input', function() { vsresSync(false); });
+  }
+
+  var billNumElem = document.getElementById('vsres_bill_num');
+  if (billNumElem) {
+    billNumElem.addEventListener('input', function() { vsresSync(false); });
+  }
+
+  var peakBillNumElem = document.getElementById('vsres_peak_bill_num');
+  if (peakBillNumElem) {
+    peakBillNumElem.addEventListener('input', function() { vsresSync(false); });
+  }
+
+  // Initial Sync
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+      vsresSync(false);
+    });
+  } else {
+    vsresSync(false);
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Residential - Calculator",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow Text",
+      "default": "Interactive Residential Calculator"
+    },
+    {
+      "type": "text",
+      "id": "title_prefix",
+      "label": "Title Prefix",
+      "default": "Calculate Cards Needed for"
+    },
+    {
+      "type": "text",
+      "id": "title_highlight",
+      "label": "Title Highlight",
+      "default": "Your Home Connection"
+    },
+    {
+      "type": "textarea",
+      "id": "desc",
+      "label": "Description",
+      "default": "Calculated using standard DISCOM guidelines: 1 card per 6 KW load, or 1 card per ₹6,000 monthly bill — with instant 20%–30% monthly savings projection."
+    },
+    {
+      "type": "text",
+      "id": "whatsapp_number",
+      "label": "WhatsApp Number",
+      "default": "919876543210"
+    },
+    {
+      "type": "text",
+      "id": "phone_number",
+      "label": "Phone Number",
+      "default": "+919876543210"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Residential - Calculator"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,104 @@
+{% render 'vs-residential-styles' %}
+
+<div class="vsres">
+  <!-- ══ RESIDENTIAL REQUIREMENT CHART TABLE ══ -->
+  <section class="vsres-sec">
+    <div class="wrap">
+      <div class="vsres-sec-head">
+        <div class="vsres-sec-eyebrow"><i class="fa-solid fa-table-cells"></i> {{ section.settings.eyebrow | default: 'Home Sizing Reference' }}</div>
+        <h2 class="vsres-sec-title">{{ section.settings.title_prefix | default: 'Residential Home' }} <span>{{ section.settings.title_highlight | default: 'Sizing & Requirement Chart' }}</span></h2>
+        <p class="vsres-sec-desc">
+          {{ section.settings.desc | default: 'Quick reference table based on house type, connected load (KW), and typical monthly electricity bill brackets.' }}
+        </p>
+      </div>
+
+      <div class="vsres-table-wrap">
+        <table class="vsres-table">
+          <thead>
+            <tr>
+              <th>House Type</th>
+              <th>Load (KW)</th>
+              <th>Monthly Bill (₹)</th>
+              <th>Single-Phase</th>
+              <th>3-Phase</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1 BHK Flat / Studio</td>
+              <td>1–3<br class="vs-mob-br"> <span class="vs-mob-kw">KW</span></td>
+              <td>Up to ₹4,000</td>
+              <td class="highlight">1<br class="vs-mob-br"> <span class="vs-mob-cards">Card</span></td>
+              <td class="highlight">2<br class="vs-mob-br"> <span class="vs-mob-cards">Cards</span></td>
+            </tr>
+            <tr>
+              <td>2 BHK Apartment (1 AC)</td>
+              <td>4–6<br class="vs-mob-br"> <span class="vs-mob-kw">KW</span></td>
+              <td>₹4,001 – ₹7,000</td>
+              <td class="highlight">1<br class="vs-mob-br"> <span class="vs-mob-cards">Card</span></td>
+              <td class="highlight">2<br class="vs-mob-br"> <span class="vs-mob-cards">Cards</span></td>
+            </tr>
+            <tr>
+              <td>3 BHK Apartment (2 ACs)</td>
+              <td>7–12<br class="vs-mob-br"> <span class="vs-mob-kw">KW</span></td>
+              <td>₹7,001 – ₹13,000</td>
+              <td class="highlight">2<br class="vs-mob-br"> <span class="vs-mob-cards">Cards</span></td>
+              <td class="highlight">3<br class="vs-mob-br"> <span class="vs-mob-cards">Cards</span></td>
+            </tr>
+            <tr>
+              <td>4 BHK House / Duplex (3+ ACs)</td>
+              <td>13–18<br class="vs-mob-br"> <span class="vs-mob-kw">KW</span></td>
+              <td>₹13,001 – ₹19,000</td>
+              <td class="highlight">3<br class="vs-mob-br"> <span class="vs-mob-cards">Cards</span></td>
+              <td class="highlight">4<br class="vs-mob-br"> <span class="vs-mob-cards">Cards</span></td>
+            </tr>
+            <tr>
+              <td>Independent Villa / Bungalow</td>
+              <td>19–24<br class="vs-mob-br"> <span class="vs-mob-kw">KW</span></td>
+              <td>₹19,001 – ₹26,000</td>
+              <td class="highlight">4<br class="vs-mob-br"> <span class="vs-mob-cards">Cards</span></td>
+              <td class="highlight">5<br class="vs-mob-br"> <span class="vs-mob-cards">Cards</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "Residential - Sizing Chart",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow Text",
+      "default": "Home Sizing Reference"
+    },
+    {
+      "type": "text",
+      "id": "title_prefix",
+      "label": "Title Prefix",
+      "default": "Residential Home"
+    },
+    {
+      "type": "text",
+      "id": "title_highlight",
+      "label": "Title Highlight",
+      "default": "Sizing & Requirement Chart"
+    },
+    {
+      "type": "textarea",
+      "id": "desc",
+      "label": "Description",
+      "default": "Quick reference table based on house type, connected load (KW), and typical monthly electricity bill brackets."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Residential - Sizing Chart"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,255 @@
+{% render 'vs-residential-styles' %}
+
+<div class="vsres">
+  <!-- ══ LUCRATIVE 20 MCB INSTALLATION GALLERY SHOWCASE ══ -->
+  <section class="mcb-sec" id="mcb-gallery">
+    <div class="wrap">
+      <div class="vsres-sec-head">
+        <div class="vsres-sec-eyebrow"><i class="fa-solid fa-bolt"></i> {{ section.settings.eyebrow | default: 'Real Installation Gallery' }}</div>
+        <h2 class="vsres-sec-title">{{ section.settings.title_prefix | default: '20 Residential MCB &' }} <span>{{ section.settings.title_highlight | default: 'Distribution Board Setups' }}</span></h2>
+        <p class="vsres-sec-desc">
+          {{ section.settings.desc | default: 'Click any home installation photo to inspect single-phase & 3-phase DB panel connections. 100% legal parallel installation with zero wire cutting.' }}
+        </p>
+      </div>
+
+      <!-- Category Filter Buttons -->
+      <div class="mcb-filter-bar">
+        <button class="mcb-filter-btn active" onclick="filterMcb('all', this)"><i class="fa-solid fa-border-all"></i> All (20)</button>
+        <button class="mcb-filter-btn" onclick="filterMcb('single', this)"><i class="fa-solid fa-plug"></i> Single-Phase MCB (10)</button>
+        <button class="mcb-filter-btn" onclick="filterMcb('three', this)"><i class="fa-solid fa-bolt-lightning"></i> 3-Phase MCB (6)</button>
+        <button class="mcb-filter-btn" onclick="filterMcb('panel', this)"><i class="fa-solid fa-server"></i> Main DB Panel (4)</button>
+      </div>
+
+      <!-- 20 Installation Cards Grid -->
+      <div class="mcb-gallery-grid">
+        {% for i in (1..20) %}
+          {% capture img_key %}mcb_img_{{ i }}{% endcapture %}
+          {% assign custom_img = section.settings[img_key] %}
+
+          {% assign block = nil %}
+          {% if section.blocks.size >= i %}
+            {% assign block_idx = i | minus: 1 %}
+            {% assign block = section.blocks[block_idx] %}
+          {% endif %}
+
+          {% assign cat = 'single' %}
+          {% assign badge = '16A SINGLE PHASE' %}
+          {% assign title = 'Home MCB Board Setup #' | append: i %}
+          {% assign desc = 'Connected parallel to main MCB switch board with zero wire cutting.' %}
+
+          {% if i > 10 and i <= 16 %}
+            {% assign cat = 'three' %}
+            {% assign badge = '32A 3-PHASE MCB' %}
+            {% assign title = '3-Phase Submersible MCB #' | append: i %}
+          {% elsif i > 16 %}
+            {% assign cat = 'panel' %}
+            {% assign badge = 'MAIN DB PANEL' %}
+            {% assign title = 'Villa Main DB Box Setup #' | append: i %}
+          {% endif %}
+
+          {% if block != nil %}
+            {% if block.settings.title != blank %}{% assign title = block.settings.title %}{% endif %}
+            {% if block.settings.category != blank %}{% assign cat = block.settings.category %}{% endif %}
+            {% if block.settings.badge != blank %}{% assign badge = block.settings.badge %}{% endif %}
+            {% if block.settings.caption != blank %}{% assign desc = block.settings.caption %}{% endif %}
+            {% if block.settings.image != blank %}{% assign custom_img = block.settings.image %}{% endif %}
+          {% endif %}
+
+          <div class="mcb-card" data-category="{{ cat }}" onclick="openMcbLightbox('{% if custom_img != blank %}{{ custom_img | image_url: width: 1200 }}{% endif %}', '{{ title | escape }}', '{{ desc | escape }}')">
+            <div class="mcb-card-img-wrap">
+              {% if custom_img != blank %}
+                <img src="{{ custom_img | image_url: width: 600 }}" alt="{{ title }}" loading="lazy">
+              {% else %}
+                <div class="mcb-svg-mockup">
+                  <svg viewBox="0 0 400 300" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="400" height="300" fill="#0f172a"/>
+                    <rect x="25" y="25" width="350" height="250" rx="12" fill="#1e293b" stroke="rgba(236,92,10,0.4)" stroke-width="2"/>
+                    <rect x="50" y="55" width="190" height="190" rx="8" fill="#0f172a" stroke="#007b3e" stroke-width="2"/>
+                    <!-- MCB Switches -->
+                    <rect x="70" y="80" width="22" height="55" rx="4" fill="#007b3e"/>
+                    <rect x="100" y="80" width="22" height="55" rx="4" fill="#007b3e"/>
+                    <rect x="130" y="80" width="22" height="55" rx="4" fill="#ec5c0a"/>
+                    <rect x="160" y="80" width="22" height="55" rx="4" fill="#007b3e"/>
+                    <rect x="190" y="80" width="22" height="55" rx="4" fill="#007b3e"/>
+                    <circle cx="120" cy="180" r="8" fill="#25d366"/>
+                    <text x="145" y="184" fill="#a7f3d0" font-size="10" font-family="Arial" font-weight="700">ONLINE</text>
+                    <!-- VS Card -->
+                    <rect x="260" y="75" width="95" height="150" rx="10" fill="url(#mcbCardGlow{{ i }})" stroke="#ffd700" stroke-width="2"/>
+                    <circle cx="307" cy="120" r="20" fill="rgba(255,255,255,0.1)"/>
+                    <text x="307" y="124" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="800">⚡</text>
+                    <text x="307" y="165" text-anchor="middle" fill="#ffffff" font-size="9" font-weight="800" font-family="Arial">VIDHYUT SAATHI</text>
+                    <text x="307" y="180" text-anchor="middle" fill="#ff9d66" font-size="8" font-family="Arial">MCB SETUP #{{ i }}</text>
+                    <!-- Wiring -->
+                    <line x1="220" y1="105" x2="260" y2="105" stroke="#ffd700" stroke-width="3" stroke-dasharray="4,4"/>
+                    <defs>
+                      <linearGradient id="mcbCardGlow{{ i }}" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="{% if cat == 'three' %}#007b3e{% elsif cat == 'panel' %}#0f172a{% else %}#ec5c0a{% endif %}"/>
+                        <stop offset="100%" stop-color="#1e293b"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                </div>
+              {% endif %}
+              <span class="mcb-card-badge">{{ badge }}</span>
+              <div class="mcb-zoom-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+            <div class="mcb-card-body">
+              <span class="mcb-card-num">Installation #{{ i }}</span>
+              <h4 class="mcb-card-title">{{ title }}</h4>
+              <p class="mcb-card-desc">{{ desc }}</p>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <!-- LIGHTBOX MODAL FOR MCB IMAGES -->
+  <div class="mcb-lightbox-overlay" id="mcb_lightbox" onclick="closeMcbLightbox()">
+    <div class="mcb-lightbox-box" onclick="event.stopPropagation()">
+      <button type="button" class="mcb-lightbox-close" onclick="closeMcbLightbox()">&times;</button>
+      <div class="mcb-lightbox-img-wrap" id="mcb_lightbox_img_container">
+        <!-- Image or SVG loaded here dynamically -->
+      </div>
+      <div class="mcb-lightbox-info">
+        <h3 id="mcb_lightbox_title" style="margin:0 0 6px 0; font-size:18px; color:var(--ink);">Title</h3>
+        <p id="mcb_lightbox_desc" style="margin:0; font-size:13px; color:var(--muted);">Caption</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function filterMcb(category, btnElem) {
+    if (btnElem) {
+      var allBtns = document.querySelectorAll('.mcb-filter-btn');
+      allBtns.forEach(function(b) { b.classList.remove('active'); });
+      btnElem.classList.add('active');
+    }
+    var cards = document.querySelectorAll('.mcb-card');
+    cards.forEach(function(card) {
+      var cat = card.getAttribute('data-category');
+      if (category === 'all' || cat === category) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  function openMcbLightbox(imgSrc, title, caption) {
+    var container = document.getElementById('mcb_lightbox_img_container');
+    if (imgSrc) {
+      container.innerHTML = '<img src="' + imgSrc + '" style="max-width:100%; max-height:420px; object-fit:contain;">';
+    } else {
+      container.innerHTML = '<div style="padding:40px; text-align:center; color:#ff9d66; font-size:18px; font-weight:800;"><i class="fa-solid fa-bolt" style="font-size:36px; margin-bottom:10px; display:block;"></i>' + title + '</div>';
+    }
+    document.getElementById('mcb_lightbox_title').innerText = title;
+    document.getElementById('mcb_lightbox_desc').innerText = caption;
+    document.getElementById('mcb_lightbox').classList.add('active');
+  }
+
+  function closeMcbLightbox() {
+    document.getElementById('mcb_lightbox').classList.remove('active');
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Residential - MCB Gallery",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow Text",
+      "default": "Real Installation Gallery"
+    },
+    {
+      "type": "text",
+      "id": "title_prefix",
+      "label": "Title Prefix",
+      "default": "20 Residential MCB &"
+    },
+    {
+      "type": "text",
+      "id": "title_highlight",
+      "label": "Title Highlight",
+      "default": "Distribution Board Setups"
+    },
+    {
+      "type": "textarea",
+      "id": "desc",
+      "label": "Description",
+      "default": "Click any home installation photo to inspect single-phase & 3-phase DB panel connections. 100% legal parallel installation with zero wire cutting."
+    },
+    { "type": "header", "content": "20 MCB Installation Images" },
+    { "type": "image_picker", "id": "mcb_img_1", "label": "MCB Installation Image 1" },
+    { "type": "image_picker", "id": "mcb_img_2", "label": "MCB Installation Image 2" },
+    { "type": "image_picker", "id": "mcb_img_3", "label": "MCB Installation Image 3" },
+    { "type": "image_picker", "id": "mcb_img_4", "label": "MCB Installation Image 4" },
+    { "type": "image_picker", "id": "mcb_img_5", "label": "MCB Installation Image 5" },
+    { "type": "image_picker", "id": "mcb_img_6", "label": "MCB Installation Image 6" },
+    { "type": "image_picker", "id": "mcb_img_7", "label": "MCB Installation Image 7" },
+    { "type": "image_picker", "id": "mcb_img_8", "label": "MCB Installation Image 8" },
+    { "type": "image_picker", "id": "mcb_img_9", "label": "MCB Installation Image 9" },
+    { "type": "image_picker", "id": "mcb_img_10", "label": "MCB Installation Image 10" },
+    { "type": "image_picker", "id": "mcb_img_11", "label": "MCB Installation Image 11" },
+    { "type": "image_picker", "id": "mcb_img_12", "label": "MCB Installation Image 12" },
+    { "type": "image_picker", "id": "mcb_img_13", "label": "MCB Installation Image 13" },
+    { "type": "image_picker", "id": "mcb_img_14", "label": "MCB Installation Image 14" },
+    { "type": "image_picker", "id": "mcb_img_15", "label": "MCB Installation Image 15" },
+    { "type": "image_picker", "id": "mcb_img_16", "label": "MCB Installation Image 16" },
+    { "type": "image_picker", "id": "mcb_img_17", "label": "MCB Installation Image 17" },
+    { "type": "image_picker", "id": "mcb_img_18", "label": "MCB Installation Image 18" },
+    { "type": "image_picker", "id": "mcb_img_19", "label": "MCB Installation Image 19" },
+    { "type": "image_picker", "id": "mcb_img_20", "label": "MCB Installation Image 20" }
+  ],
+  "blocks": [
+    {
+      "type": "mcb_installation",
+      "name": "MCB Installation Photo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Installation Photo"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Installation Title",
+          "default": "MCB Distribution Board Connection"
+        },
+        {
+          "type": "select",
+          "id": "category",
+          "label": "Installation Category",
+          "options": [
+            { "value": "single", "label": "Single-Phase MCB" },
+            { "value": "three", "label": "3-Phase MCB" },
+            { "value": "panel", "label": "Main DB Panel" }
+          ],
+          "default": "single"
+        },
+        {
+          "type": "text",
+          "id": "badge",
+          "label": "Badge Text",
+          "default": "MCB INSTALLED"
+        },
+        {
+          "type": "text",
+          "id": "caption",
+          "label": "Caption Description",
+          "default": "Connected in parallel to MCB main switch with zero load disruption."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Residential - MCB Gallery"
+    }
+  ]
+}
+{% endschema %}

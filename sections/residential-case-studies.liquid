@@ -1,0 +1,886 @@
+{% render 'vs-residential-styles' %}
+
+<div class="vsres">
+  <!-- ══ REAL CUSTOMER SCENARIOS / CASE STUDIES SLIDER ══ -->
+  <section class="vsres-sec" style="background:#fbf8f0; border-top:1px solid var(--line);">
+    <div class="wrap">
+      <div class="vsres-sec-head">
+        <div class="vsres-sec-eyebrow"><i class="fa-solid fa-circle-check"></i> {{ section.settings.eyebrow | default: 'Customer Case Studies' }}</div>
+        <h2 class="vsres-sec-title">{{ section.settings.title_prefix | default: 'Real Residential' }} <span>{{ section.settings.title_highlight | default: 'Savings Stories' }}</span></h2>
+        <p class="vsres-sec-desc">{{ section.settings.desc | default: 'See how Indian households cut their monthly electricity bills by 20%–30% with Vidhyut Saathi.' }}</p>
+      </div>
+
+      <!-- MOBILE CAROUSEL SLIDER WRAPPER -->
+      <div class="vs-cases-slider-wrap" id="vsresCaseSliderWrap">
+        <div class="vsres-case-grid" id="vsresCaseTrack">
+          {% assign case_study_count = 0 %}
+          {% for block in section.blocks %}
+            {% if block.type == 'residential_case_study' %}
+              {% assign case_study_count = case_study_count | plus: 1 %}
+              {% assign idx = case_study_count %}
+              
+              {% case idx %}
+                {% when 1 %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1593784991095-a205069470b6?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" %}
+                {% when 2 %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80" %}
+                {% when 3 %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" %}
+                {% when 4 %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1509391365360-2e959784a276?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&q=80" %}
+                {% when 5 %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=150&q=80" %}
+                {% when 6 %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1582735689369-4fe89db7114c?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80" %}
+                {% when 7 %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1585338107529-13afc5f02586?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=150&q=80" %}
+                {% when 8 %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=150&q=80" %}
+                {% else %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=150&q=80" %}
+              {% endcase %}
+
+              <div class="vsres-case-card" {{ block.shopify_attributes }} style="background:#ffffff; border:2px solid #e7dcce; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
+                <!-- MINI SLIDER -->
+                <div class="vs-card-media-slider">
+                  <div class="vs-card-media-slides">
+                    <div class="vs-card-media-slide active">
+                      {% if block.settings.image_1 != blank %}
+                        <img src="{{ block.settings.image_1 | image_url: width: 800 }}" alt="{{ block.settings.tag_1 | default: 'Living Room AC' | escape }}" loading="lazy">
+                      {% else %}
+                        <img src="{{ def_img_1 }}" alt="{{ block.settings.tag_1 | default: 'Living Room AC' | escape }}" loading="lazy">
+                      {% endif %}
+                      {% if block.settings.tag_1 != blank %}
+                        <span class="vs-media-tag"><i class="fa-solid fa-snowflake"></i> {{ block.settings.tag_1 }}</span>
+                      {% endif %}
+                    </div>
+                    <div class="vs-card-media-slide">
+                      {% if block.settings.image_2 != blank %}
+                        <img src="{{ block.settings.image_2 | image_url: width: 800 }}" alt="{{ block.settings.tag_2 | default: 'Refrigerator' | escape }}" loading="lazy">
+                      {% else %}
+                        <img src="{{ def_img_2 }}" alt="{{ block.settings.tag_2 | default: 'Refrigerator' | escape }}" loading="lazy">
+                      {% endif %}
+                      {% if block.settings.tag_2 != blank %}
+                        <span class="vs-media-tag"><i class="fa-solid fa-cube"></i> {{ block.settings.tag_2 }}</span>
+                      {% endif %}
+                    </div>
+                    <div class="vs-card-media-slide">
+                      {% if block.settings.image_3 != blank %}
+                        <img src="{{ block.settings.image_3 | image_url: width: 800 }}" alt="{{ block.settings.tag_3 | default: 'Kitchen Grid' | escape }}" loading="lazy">
+                      {% else %}
+                        <img src="{{ def_img_3 }}" alt="{{ block.settings.tag_3 | default: 'Kitchen Grid' | escape }}" loading="lazy">
+                      {% endif %}
+                      {% if block.settings.tag_3 != blank %}
+                        <span class="vs-media-tag"><i class="fa-solid fa-tv"></i> {{ block.settings.tag_3 }}</span>
+                      {% endif %}
+                    </div>
+                    <div class="vs-card-media-slide">
+                      {% if block.settings.image_4 != blank %}
+                        <img src="{{ block.settings.image_4 | image_url: width: 800 }}" alt="{{ block.settings.tag_4 | default: 'Main MCB Board' | escape }}" loading="lazy">
+                      {% else %}
+                        <img src="{{ def_img_4 }}" alt="{{ block.settings.tag_4 | default: 'Main MCB Board' | escape }}" loading="lazy">
+                      {% endif %}
+                      {% if block.settings.tag_4 != blank %}
+                        <span class="vs-media-tag"><i class="fa-solid fa-bolt"></i> {{ block.settings.tag_4 }}</span>
+                      {% endif %}
+                    </div>
+                  </div>
+                  <button type="button" class="vs-media-arrow vs-media-prev" onclick="vsSlideMedia(this, -1)" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+                  <button type="button" class="vs-media-arrow vs-media-next" onclick="vsSlideMedia(this, 1)" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+                  <div class="vs-media-dots-bar">
+                    <span class="vs-media-dot active" onclick="vsGoMediaSlide(this, 0)"></span>
+                    <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 1)"></span>
+                    <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 2)"></span>
+                    <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 3)"></span>
+                  </div>
+                  <div class="vs-media-counter"><span class="vs-media-cur">1</span>/<span class="vs-media-tot">4</span></div>
+                </div>
+
+                <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+                  <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #ec5c0a; box-shadow:0 4px 10px rgba(236,92,10,0.25);">
+                    {% if block.settings.avatar_image != blank %}
+                      <img src="{{ block.settings.avatar_image | image_url: width: 150 }}" alt="Customer Avatar" style="width:100%; height:100%; object-fit:cover; display:block;">
+                    {% else %}
+                      <img src="{{ def_avatar }}" alt="Customer Avatar" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'wvs-happy-man.jpg' | asset_url }}';">
+                    {% endif %}
+                  </div>
+                  <div>
+                    <h4 style="font-size:15px; font-weight:800; color:#0f172a; margin:0 0 2px 0; font-family:'Space Grotesk',sans-serif;">{{ block.settings.customer_name | default: 'Rohan Mehta' }} <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></h4>
+                    <div style="font-size:12px; color:#64748b; font-weight:600;"><i class="fa-solid fa-location-dot" style="color:#ec5c0a;"></i> {{ block.settings.location_load | default: '2 BHK Apartment, Mumbai' }}</div>
+                  </div>
+                </div>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
+                  <div style="background:#fff1f2; border:1px solid #fecdd3; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                    <span style="color:#e11d48; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">Old DISCOM Bill</span>
+                    <span style="font-family:'IBM Plex Mono',monospace; color:#9f1239; font-size:14px; font-weight:800; text-decoration:line-through;">{{ block.settings.old_bill | default: '₹8,400/mo' }}</span>
+                  </div>
+                  <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                    <span style="color:#059669; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">New DISCOM Bill</span>
+                    <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">{{ block.settings.new_bill | default: '₹6,100/mo' }}</span>
+                  </div>
+                </div>
+                <!-- SHOW BILLS BUTTON (HIGHLIGHTED) -->
+                <button type="button" class="vsres-btn-view-bills" 
+                  data-customer="{{ block.settings.customer_name | default: 'Rohan Mehta' | escape }}" 
+                  data-location="{{ block.settings.location_load | default: '2 BHK Apartment, Mumbai' | escape }}" 
+                  data-old-bill="{{ block.settings.old_bill | default: '₹8,400/mo' | escape }}" 
+                  data-new-bill="{{ block.settings.new_bill | default: '₹6,100/mo' | escape }}" 
+                  data-savings="{{ block.settings.savings_summary | default: 'Saved ₹2,300/mo (27%)' | escape }}" 
+                  data-cards="{{ block.settings.cards_count | default: '⚡ 2 Residential Cards' | escape }}" 
+                  data-old-img="{% if block.settings.old_bill_image != blank %}{{ block.settings.old_bill_image | image_url: width: 1200 }}{% elsif section.settings.global_old_bill_image != blank %}{{ section.settings.global_old_bill_image | image_url: width: 1200 }}{% endif %}" 
+                  data-new-img="{% if block.settings.new_bill_image != blank %}{{ block.settings.new_bill_image | image_url: width: 1200 }}{% elsif section.settings.global_new_bill_image != blank %}{{ section.settings.global_new_bill_image | image_url: width: 1200 }}{% endif %}"
+                  onclick="vsOpenBillsModal(this)">
+                  <i class="fa-solid fa-file-invoice-dollar"></i> Show Bills
+                  <span class="vsres-btn-pulse-dot"></span>
+                </button>
+                <div style="background:linear-gradient(135deg, #0a4a2c 0%, #ec5c0a 100%); padding:9px 12px; border-radius:12px; color:#ffffff; display:flex; justify-content:space-between; align-items:center; gap:8px; white-space:nowrap; overflow:hidden; box-shadow:0 4px 14px rgba(236,92,10,0.2);">
+                  <span style="color:#a7f3d0; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0;">{{ block.settings.cards_count | default: '⚡ 2 Residential Cards' }}</span>
+                  <strong style="color:#ffffff; font-size:12px; font-weight:800; white-space:nowrap; flex-shrink:0;">{{ block.settings.savings_summary | default: 'Saved ₹2,300/mo (27%)' }}</strong>
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+          {% if case_study_count < 9 %}
+            <!-- REMAINING DEFAULT CARDS (SO ALL 9 CARDS ALWAYS STAY VISIBLE) -->
+            {% assign start_fallback = case_study_count | plus: 1 %}
+            {% for i in (start_fallback..9) %}
+              {% case i %}
+                {% when 1 %}
+                  {% assign c_name = "Rohan Mehta" %}
+                  {% assign c_loc = "2 BHK Apartment, Mumbai" %}
+                  {% assign c_old = "₹8,400/mo" %}
+                  {% assign c_new = "₹6,100/mo" %}
+                  {% assign c_cards = "⚡ 2 Residential Cards" %}
+                  {% assign c_save = "Saved ₹2,300/mo (27%)" %}
+                  {% assign t1 = "Living Room AC & Inverter" %}{% assign t2 = "Double-Door Refrigerator" %}{% assign t3 = "4K Smart TV & Audio" %}{% assign t4 = "Main Home MCB Board" %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1593784991095-a205069470b6?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" %}
+                {% when 2 %}
+                  {% assign c_name = "Sunita Sharma" %}
+                  {% assign c_loc = "3 BHK House, Jaipur" %}
+                  {% assign c_old = "₹14,500/mo" %}
+                  {% assign c_new = "₹10,600/mo" %}
+                  {% assign c_cards = "⚡ 3 Residential Cards" %}
+                  {% assign c_save = "Saved ₹3,900/mo (26.8%)" %}
+                  {% assign t1 = "Master Bed Dual AC" %}{% assign t2 = "Water Submersible Pump" %}{% assign t3 = "Kitchen Induction Hub" %}{% assign t4 = "3-Phase Main DB Box" %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80" %}
+                {% when 3 %}
+                  {% assign c_name = "Vikram Verma" %}
+                  {% assign c_loc = "Independent Villa, Lucknow" %}
+                  {% assign c_old = "₹22,000/mo" %}
+                  {% assign c_new = "₹15,800/mo" %}
+                  {% assign c_cards = "⚡ 4 Cards (3-Phase)" %}
+                  {% assign c_save = "Saved ₹6,200/mo (28.1%)" %}
+                  {% assign t1 = "Multi-Split VRV AirCon" %}{% assign t2 = "2 HP Borewell Motor" %}{% assign t3 = "EV Home Charger Grid" %}{% assign t4 = "Villa Distribution Panel" %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" %}
+                {% when 4 %}
+                  {% assign c_name = "Anil Deshmukh" %}
+                  {% assign c_loc = "3 BHK House, Pune" %}
+                  {% assign c_old = "₹12,800/mo" %}
+                  {% assign c_new = "₹9,200/mo" %}
+                  {% assign c_cards = "⚡ 3 Residential Cards" %}
+                  {% assign c_save = "Saved ₹3,600/mo (28.1%)" %}
+                  {% assign t1 = "3x Split AC Grid" %}{% assign t2 = "Solar Hybrid Inverter" %}{% assign t3 = "Heavy Kitchen Load" %}{% assign t4 = "32A 3-Phase DB Board" %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1509391365360-2e959784a276?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&q=80" %}
+                {% when 5 %}
+                  {% assign c_name = "Pooja Iyer" %}
+                  {% assign c_loc = "4 BHK Duplex Villa, Bengaluru" %}
+                  {% assign c_old = "₹19,600/mo" %}
+                  {% assign c_new = "₹14,100/mo" %}
+                  {% assign c_cards = "⚡ 4 Cards (3-Phase)" %}
+                  {% assign c_save = "Saved ₹5,500/mo (28.0%)" %}
+                  {% assign t1 = "Home Theater & Lab" %}{% assign t2 = "3 HP Submersible & RO" %}{% assign t3 = "4x Inverter AC Setup" %}{% assign t4 = "Main LT Distribution Box" %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=150&q=80" %}
+                {% when 6 %}
+                  {% assign c_name = "Kavita Reddy" %}
+                  {% assign c_loc = "3 BHK Flat, Hyderabad" %}
+                  {% assign c_old = "₹11,400/mo" %}
+                  {% assign c_new = "₹8,100/mo" %}
+                  {% assign c_cards = "⚡ 2 Residential Cards" %}
+                  {% assign c_save = "Saved ₹3,300/mo (28.9%)" %}
+                  {% assign t1 = "Living Hall Dual AC" %}{% assign t2 = "Smart Washing & Fridge" %}{% assign t3 = "Water Heater Geysers" %}{% assign t4 = "Single-Phase Home DB" %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1582735689369-4fe89db7114c?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80" %}
+                {% when 7 %}
+                  {% assign c_name = "Rajesh Singhania" %}
+                  {% assign c_loc = "Luxury Builder Floor, Delhi NCR" %}
+                  {% assign c_old = "₹26,500/mo" %}
+                  {% assign c_new = "₹18,900/mo" %}
+                  {% assign c_cards = "⚡ 5 Cards (3-Phase)" %}
+                  {% assign c_save = "Saved ₹7,600/mo (28.6%)" %}
+                  {% assign t1 = "Central VRF AirCon" %}{% assign t2 = "High-Power Appliances" %}{% assign t3 = "Booster Water Pump" %}{% assign t4 = "63A 3-Phase Panel" %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1585338107529-13afc5f02586?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=150&q=80" %}
+                {% when 8 %}
+                  {% assign c_name = "Harish Patel" %}
+                  {% assign c_loc = "Modern Row House, Ahmedabad" %}
+                  {% assign c_old = "₹16,200/mo" %}
+                  {% assign c_new = "₹11,800/mo" %}
+                  {% assign c_cards = "⚡ 3 Residential Cards" %}
+                  {% assign c_save = "Saved ₹4,400/mo (27.1%)" %}
+                  {% assign t1 = "2x 2.0T Split ACs" %}{% assign t2 = "Auto Water Pump" %}{% assign t3 = "Home Office Workstations" %}{% assign t4 = "3-Phase Breaker Board" %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=150&q=80" %}
+                {% else %}
+                  {% assign c_name = "Subhash Bose" %}
+                  {% assign c_loc = "Classical Villa, Kolkata" %}
+                  {% assign c_old = "₹18,000/mo" %}
+                  {% assign c_new = "₹12,900/mo" %}
+                  {% assign c_cards = "⚡ 4 Cards (3-Phase)" %}
+                  {% assign c_save = "Saved ₹5,100/mo (28.3%)" %}
+                  {% assign t1 = "Heritage Hall AC" %}{% assign t2 = "Deep Freezer & Fridge" %}{% assign t3 = "Water Heater Circuits" %}{% assign t4 = "4-Pole MCB DB Box" %}
+                  {% assign def_img_1 = "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_2 = "https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_3 = "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_img_4 = "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=700&q=80" %}
+                  {% assign def_avatar = "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=150&q=80" %}
+              {% endcase %}
+
+              <div class="vsres-case-card" style="background:#ffffff; border:2px solid #e7dcce; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,0.05); transition:all 0.35s ease; display:flex; flex-direction:column; position:relative; overflow:hidden;">
+                <!-- MINI SLIDER -->
+                <div class="vs-card-media-slider">
+                  <div class="vs-card-media-slides">
+                    <div class="vs-card-media-slide active">
+                      <img src="{{ def_img_1 }}" alt="{{ t1 }}" loading="lazy">
+                      <span class="vs-media-tag"><i class="fa-solid fa-snowflake"></i> {{ t1 }}</span>
+                    </div>
+                    <div class="vs-card-media-slide">
+                      <img src="{{ def_img_2 }}" alt="{{ t2 }}" loading="lazy">
+                      <span class="vs-media-tag"><i class="fa-solid fa-cube"></i> {{ t2 }}</span>
+                    </div>
+                    <div class="vs-card-media-slide">
+                      <img src="{{ def_img_3 }}" alt="{{ t3 }}" loading="lazy">
+                      <span class="vs-media-tag"><i class="fa-solid fa-tv"></i> {{ t3 }}</span>
+                    </div>
+                    <div class="vs-card-media-slide">
+                      <img src="{{ def_img_4 }}" alt="{{ t4 }}" loading="lazy">
+                      <span class="vs-media-tag"><i class="fa-solid fa-bolt"></i> {{ t4 }}</span>
+                    </div>
+                  </div>
+                  <button type="button" class="vs-media-arrow vs-media-prev" onclick="vsSlideMedia(this, -1)" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+                  <button type="button" class="vs-media-arrow vs-media-next" onclick="vsSlideMedia(this, 1)" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+                  <div class="vs-media-dots-bar">
+                    <span class="vs-media-dot active" onclick="vsGoMediaSlide(this, 0)"></span>
+                    <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 1)"></span>
+                    <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 2)"></span>
+                    <span class="vs-media-dot" onclick="vsGoMediaSlide(this, 3)"></span>
+                  </div>
+                  <div class="vs-media-counter"><span class="vs-media-cur">1</span>/<span class="vs-media-tot">4</span></div>
+                </div>
+
+                <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+                  <div style="width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid #ec5c0a; box-shadow:0 4px 10px rgba(236,92,10,0.25);">
+                    <img src="{{ def_avatar }}" alt="{{ c_name }}" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null; this.src='{{ 'wvs-happy-man.jpg' | asset_url }}';">
+                  </div>
+                  <div>
+                    <h4 style="font-size:15px; font-weight:800; color:#0f172a; margin:0 0 2px 0; font-family:'Space Grotesk',sans-serif;">{{ c_name }} <i class="fa-solid fa-circle-check" style="color:#007b3e; font-size:13px;"></i></h4>
+                    <div style="font-size:12px; color:#64748b; font-weight:600;"><i class="fa-solid fa-location-dot" style="color:#ec5c0a;"></i> {{ c_loc }}</div>
+                  </div>
+                </div>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
+                  <div style="background:#fff1f2; border:1px solid #fecdd3; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                    <span style="color:#e11d48; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">Old DISCOM Bill</span>
+                    <span style="font-family:'IBM Plex Mono',monospace; color:#9f1239; font-size:14px; font-weight:800; text-decoration:line-through;">{{ c_old }}</span>
+                  </div>
+                  <div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:9px 11px; border-radius:10px; display:flex; flex-direction:column; gap:2px;">
+                    <span style="color:#059669; font-size:10px; font-weight:700; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;">New DISCOM Bill</span>
+                    <span style="font-family:'IBM Plex Mono',monospace; color:#065f46; font-size:14px; font-weight:800;">{{ c_new }}</span>
+                  </div>
+                </div>
+                <!-- SHOW BILLS BUTTON (HIGHLIGHTED) -->
+                <button type="button" class="vsres-btn-view-bills" 
+                  data-customer="{{ c_name | escape }}" 
+                  data-location="{{ c_loc | escape }}" 
+                  data-old-bill="{{ c_old | escape }}" 
+                  data-new-bill="{{ c_new | escape }}" 
+                  data-savings="{{ c_save | escape }}" 
+                  data-cards="{{ c_cards | escape }}" 
+                  data-old-img="{% if section.settings.global_old_bill_image != blank %}{{ section.settings.global_old_bill_image | image_url: width: 1200 }}{% endif %}" 
+                  data-new-img="{% if section.settings.global_new_bill_image != blank %}{{ section.settings.global_new_bill_image | image_url: width: 1200 }}{% endif %}"
+                  onclick="vsOpenBillsModal(this)">
+                  <i class="fa-solid fa-file-invoice-dollar"></i> Show Bills
+                  <span class="vsres-btn-pulse-dot"></span>
+                </button>
+                <div style="background:linear-gradient(135deg, #0a4a2c 0%, #ec5c0a 100%); padding:9px 12px; border-radius:12px; color:#ffffff; display:flex; justify-content:space-between; align-items:center; gap:8px; white-space:nowrap; overflow:hidden; box-shadow:0 4px 14px rgba(236,92,10,0.2);">
+                  <span style="color:#a7f3d0; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0;">{{ c_cards }}</span>
+                  <strong style="color:#ffffff; font-size:12px; font-weight:800; white-space:nowrap; flex-shrink:0;">{{ c_save }}</strong>
+                </div>
+              </div>
+            {% endfor %}
+          {% endif %}
+        </div>
+
+        <!-- MOBILE SLIDER DOTS -->
+        <div class="vs-slider-dots-bar" id="vsresCaseDots">
+          <button type="button" class="vs-slider-dot active" onclick="vsresGoSlide(0)" aria-label="Slide 1"></button>
+          <button type="button" class="vs-slider-dot" onclick="vsresGoSlide(1)" aria-label="Slide 2"></button>
+          <button type="button" class="vs-slider-dot" onclick="vsresGoSlide(2)" aria-label="Slide 3"></button>
+          <button type="button" class="vs-slider-dot" onclick="vsresGoSlide(3)" aria-label="Slide 4"></button>
+          <button type="button" class="vs-slider-dot" onclick="vsresGoSlide(4)" aria-label="Slide 5"></button>
+          <button type="button" class="vs-slider-dot" onclick="vsresGoSlide(5)" aria-label="Slide 6"></button>
+          <button type="button" class="vs-slider-dot" onclick="vsresGoSlide(6)" aria-label="Slide 7"></button>
+          <button type="button" class="vs-slider-dot" onclick="vsresGoSlide(7)" aria-label="Slide 8"></button>
+          <button type="button" class="vs-slider-dot" onclick="vsresGoSlide(8)" aria-label="Slide 9"></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ VERIFIED BILLS COMPARISON LIGHTBOX MODAL ══ -->
+  <div class="vsres-bills-modal-overlay" id="vsres_bills_modal" onclick="vsCloseBillsModal(event)">
+    <div class="vsres-bills-modal-dialog" onclick="event.stopPropagation()">
+      <!-- Top Header Bar -->
+      <div class="vsres-bills-modal-header">
+        <div class="vsres-bills-header-left">
+          <div class="vsres-bills-header-tag">
+            <i class="fa-solid fa-certificate"></i> VERIFIED DISCOM ELECTRICITY BILL PROOF
+          </div>
+          <h3 id="vsres_bills_modal_customer" class="vsres-bills-modal-title">Customer Name</h3>
+          <div id="vsres_bills_modal_loc" class="vsres-bills-modal-loc"><i class="fa-solid fa-location-dot" style="color:#ec5c0a;"></i> Location</div>
+        </div>
+        <div class="vsres-bills-header-right">
+          <div id="vsres_bills_modal_savings_badge" class="vsres-bills-savings-badge">
+            ⚡ Saved ₹2,300/mo (27%)
+          </div>
+          <button type="button" class="vsres-bills-modal-close" onclick="vsCloseBillsModal(event)" aria-label="Close modal">&times;</button>
+        </div>
+      </div>
+
+      <!-- Side-by-Side Comparison Container -->
+      <div class="vsres-bills-modal-body">
+        <!-- LEFT: OLD BILL (BEFORE) -->
+        <div class="vsres-bill-col vsres-bill-old">
+          <div class="vsres-bill-col-header">
+            <div class="vsres-bill-badge-pill old">
+              <i class="fa-solid fa-circle-xmark"></i> BEFORE VIDHYUT SAATHI
+            </div>
+            <div class="vsres-bill-amount-wrap">
+              <span class="vsres-bill-lbl">OLD MONTHLY BILL:</span>
+              <span id="vsres_modal_old_val" class="vsres-bill-amount old">₹8,400</span>
+            </div>
+          </div>
+          <div class="vsres-bill-doc-box" id="vsres_modal_old_doc">
+            <!-- Image or Dynamic SVG Invoice Bill -->
+          </div>
+        </div>
+
+        <!-- RIGHT: NEW BILL (AFTER) -->
+        <div class="vsres-bill-col vsres-bill-new">
+          <div class="vsres-bill-col-header">
+            <div class="vsres-bill-badge-pill new">
+              <i class="fa-solid fa-circle-check"></i> AFTER VIDHYUT SAATHI (REDUCED)
+            </div>
+            <div class="vsres-bill-amount-wrap">
+              <span class="vsres-bill-lbl">NEW REDUCED BILL:</span>
+              <span id="vsres_modal_new_val" class="vsres-bill-amount new">₹6,100</span>
+            </div>
+          </div>
+          <div class="vsres-bill-doc-box" id="vsres_modal_new_doc">
+            <!-- Image or Dynamic SVG Invoice Bill -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Footer CTA -->
+      <div class="vsres-bills-modal-footer">
+        <div class="vsres-bills-footer-text">
+          <i class="fa-solid fa-shield-halved" style="color:#007b3e; font-size:18px;"></i>
+          <span>Want to achieve similar verified <strong>20% to 30% monthly savings</strong> for your home?</span>
+        </div>
+        <div class="vsres-bills-footer-btns">
+          {% assign wa_num = section.settings.whatsapp_number | default: '919876543210' %}
+          <a href="https://wa.me/{{ wa_num }}?text=Hi%20Vidhyut%20Saathi%2C%20I%20saw%20the%20verified%20electricity%20bill%20savings%20and%20want%20to%20order%20cards%20for%20my%20home" class="vsres-btn-primary" target="_blank" style="padding:10px 20px; font-size:13.5px; border-radius:10px;">
+            <i class="fa-brands fa-whatsapp"></i> Order Residential Cards
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  /* ══ 4-IMAGE MINI SLIDER CONTROLS ══ */
+  window.advanceCardMedia = function(cardOrSlider) {
+    var slider = cardOrSlider.classList && cardOrSlider.classList.contains('vs-card-media-slider') ? cardOrSlider : cardOrSlider.querySelector('.vs-card-media-slider');
+    if (!slider) return;
+    var slides = slider.querySelectorAll('.vs-card-media-slide');
+    var dots = slider.querySelectorAll('.vs-media-dot');
+    var curSpan = slider.querySelector('.vs-media-cur');
+    if (!slides.length) return;
+    var activeIdx = 0;
+    slides.forEach(function(s, idx) {
+      if (s.classList.contains('active')) activeIdx = idx;
+    });
+    var nextIdx = (activeIdx + 1) % slides.length;
+    slides[activeIdx].classList.remove('active');
+    slides[nextIdx].classList.add('active');
+    if (dots.length > nextIdx) {
+      dots[activeIdx].classList.remove('active');
+      dots[nextIdx].classList.add('active');
+    }
+    if (curSpan) curSpan.innerText = nextIdx + 1;
+  };
+
+  window.vsSlideMedia = function(btn, dir) {
+    var slider = btn.closest('.vs-card-media-slider');
+    if (!slider) return;
+    var slides = slider.querySelectorAll('.vs-card-media-slide');
+    var dots = slider.querySelectorAll('.vs-media-dot');
+    var curSpan = slider.querySelector('.vs-media-cur');
+    if (!slides.length) return;
+    var activeIdx = 0;
+    slides.forEach(function(s, idx) {
+      if (s.classList.contains('active')) activeIdx = idx;
+    });
+    var nextIdx = (activeIdx + dir + slides.length) % slides.length;
+    slides[activeIdx].classList.remove('active');
+    slides[nextIdx].classList.add('active');
+    if (dots.length > nextIdx) {
+      dots[activeIdx].classList.remove('active');
+      dots[nextIdx].classList.add('active');
+    }
+    if (curSpan) curSpan.innerText = nextIdx + 1;
+  };
+
+  window.vsGoMediaSlide = function(dot, idx) {
+    var slider = dot.closest('.vs-card-media-slider');
+    if (!slider) return;
+    var slides = slider.querySelectorAll('.vs-card-media-slide');
+    var dots = slider.querySelectorAll('.vs-media-dot');
+    var curSpan = slider.querySelector('.vs-media-cur');
+    if (!slides.length || idx >= slides.length) return;
+    slides.forEach(function(s) { s.classList.remove('active'); });
+    dots.forEach(function(d) { d.classList.remove('active'); });
+    slides[idx].classList.add('active');
+    if (dots[idx]) dots[idx].classList.add('active');
+    if (curSpan) curSpan.innerText = idx + 1;
+  };
+
+  /* ══ DESKTOP HOVER AUTO-SLIDE INTERNAL IMAGES ══ */
+  (function() {
+    var cards = document.querySelectorAll('#vsresCaseTrack .vsres-case-card');
+    cards.forEach(function(card) {
+      var hoverTimer = null;
+
+      card.addEventListener('mouseenter', function() {
+        if (window.innerWidth < 768) return;
+        if (hoverTimer) clearInterval(hoverTimer);
+        hoverTimer = setInterval(function() {
+          if (window.innerWidth >= 768) {
+            window.advanceCardMedia(card);
+          } else {
+            clearInterval(hoverTimer);
+            hoverTimer = null;
+          }
+        }, 1800);
+      });
+
+      card.addEventListener('mouseleave', function() {
+        if (hoverTimer) {
+          clearInterval(hoverTimer);
+          hoverTimer = null;
+        }
+      });
+    });
+  })();
+
+  /* ══ MOBILE SLIDER ══ */
+  (function() {
+    var track = document.getElementById('vsresCaseTrack');
+    var wrap = document.getElementById('vsresCaseSliderWrap');
+    var dots = document.querySelectorAll('#vsresCaseDots .vs-slider-dot');
+    if (!track || !wrap) return;
+
+    var currentIdx = 0;
+    var totalSlides = dots.length || 3;
+    var timer = null;
+    var isSectionInView = false;
+    var isMobile = function() { return window.innerWidth < 768; };
+
+    window.vsresGoSlide = function(idx) {
+      if (!isMobile()) return;
+      currentIdx = (idx + totalSlides) % totalSlides;
+      track.style.transform = 'translateX(-' + (currentIdx * 100) + '%)';
+      dots.forEach(function(dot, i) {
+        dot.classList.toggle('active', i === currentIdx);
+      });
+
+      var cards = track.querySelectorAll('.vsres-case-card');
+      if (cards[currentIdx]) {
+        var ms = cards[currentIdx].querySelector('.vs-card-media-slider');
+        if (ms) {
+          var s = ms.querySelectorAll('.vs-card-media-slide');
+          var d = ms.querySelectorAll('.vs-media-dot');
+          var c = ms.querySelector('.vs-media-cur');
+          s.forEach(function(el, i) { el.classList.toggle('active', i === 0); });
+          d.forEach(function(el, i) { el.classList.toggle('active', i === 0); });
+          if (c) c.innerText = 1;
+        }
+      }
+    };
+
+    function stepMediaOrCard() {
+      if (!isMobile() || !isSectionInView) return;
+      var cards = track.querySelectorAll('.vsres-case-card');
+      if (!cards.length) return;
+      var currentCard = cards[currentIdx];
+      if (!currentCard) return;
+
+      var mediaSlider = currentCard.querySelector('.vs-card-media-slider');
+      if (!mediaSlider) {
+        window.vsresGoSlide(currentIdx + 1);
+        return;
+      }
+
+      var slides = mediaSlider.querySelectorAll('.vs-card-media-slide');
+      var cardDots = mediaSlider.querySelectorAll('.vs-media-dot');
+      var curSpan = mediaSlider.querySelector('.vs-media-cur');
+      var totalMediaSlides = slides.length;
+
+      if (totalMediaSlides <= 1) {
+        window.vsresGoSlide(currentIdx + 1);
+        return;
+      }
+
+      var activePhotoIdx = 0;
+      slides.forEach(function(s, idx) {
+        if (s.classList.contains('active')) activePhotoIdx = idx;
+      });
+
+      if (activePhotoIdx < totalMediaSlides - 1) {
+        var nextPhotoIdx = activePhotoIdx + 1;
+        slides[activePhotoIdx].classList.remove('active');
+        slides[nextPhotoIdx].classList.add('active');
+        if (cardDots[activePhotoIdx]) cardDots[activePhotoIdx].classList.remove('active');
+        if (cardDots[nextPhotoIdx]) cardDots[nextPhotoIdx].classList.add('active');
+        if (curSpan) curSpan.innerText = nextPhotoIdx + 1;
+      } else {
+        window.vsresGoSlide(currentIdx + 1);
+      }
+    }
+
+    function startAutoSlide() {
+      stopAutoSlide();
+      if (!isMobile() || !isSectionInView) return;
+      timer = setInterval(function() {
+        if (isMobile() && isSectionInView) {
+          stepMediaOrCard();
+        } else {
+          stopAutoSlide();
+        }
+      }, 2000);
+    }
+
+    function stopAutoSlide() {
+      if (timer) {
+        clearInterval(timer);
+        timer = null;
+      }
+    }
+
+    var targetSection = wrap.closest('.vsres-sec') || wrap;
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            isSectionInView = true;
+            startAutoSlide();
+          } else {
+            isSectionInView = false;
+            stopAutoSlide();
+          }
+        });
+      }, { threshold: 0.2 });
+      observer.observe(targetSection);
+    }
+
+    var startX = 0;
+    var deltaX = 0;
+    wrap.addEventListener('touchstart', function(e) {
+      if (!isMobile()) return;
+      stopAutoSlide();
+      startX = e.touches[0].clientX;
+      deltaX = 0;
+    }, { passive: true });
+
+    wrap.addEventListener('touchmove', function(e) {
+      if (!isMobile()) return;
+      deltaX = e.touches[0].clientX - startX;
+    }, { passive: true });
+
+    wrap.addEventListener('touchend', function() {
+      if (!isMobile()) return;
+      if (deltaX < -40) {
+        window.vsresGoSlide(currentIdx + 1);
+      } else if (deltaX > 40) {
+        window.vsresGoSlide(currentIdx - 1);
+      }
+      if (isSectionInView) {
+        startAutoSlide();
+      }
+    }, { passive: true });
+
+    window.addEventListener('resize', function() {
+      if (!isMobile()) {
+        track.style.transform = '';
+        stopAutoSlide();
+      } else if (!timer && isSectionInView) {
+        startAutoSlide();
+      }
+    });
+  })();
+
+  /* ══ VERIFIED BILLS COMPARISON LIGHTBOX MODAL ══ */
+  function vsOpenBillsModal(btn) {
+    if (!btn) return;
+    var customer = btn.getAttribute('data-customer') || 'Verified Customer';
+    var location = btn.getAttribute('data-location') || 'Residential House';
+    var oldBill = btn.getAttribute('data-old-bill') || '₹8,400/mo';
+    var newBill = btn.getAttribute('data-new-bill') || '₹6,100/mo';
+    var savings = btn.getAttribute('data-savings') || 'Saved ₹2,300/mo (27%)';
+    var cards = btn.getAttribute('data-cards') || '⚡ 2 Residential Cards';
+    var oldImg = btn.getAttribute('data-old-img') || '';
+    var newImg = btn.getAttribute('data-new-img') || '';
+
+    var modal = document.getElementById('vsres_bills_modal');
+    if (!modal) return;
+
+    var custEl = document.getElementById('vsres_bills_modal_customer');
+    var locEl = document.getElementById('vsres_bills_modal_loc');
+    var saveBadge = document.getElementById('vsres_bills_modal_savings_badge');
+    var oldValEl = document.getElementById('vsres_modal_old_val');
+    var newValEl = document.getElementById('vsres_modal_new_val');
+    var oldDocBox = document.getElementById('vsres_modal_old_doc');
+    var newDocBox = document.getElementById('vsres_modal_new_doc');
+
+    if (custEl) custEl.textContent = customer;
+    if (locEl) locEl.innerHTML = '<i class="fa-solid fa-location-dot" style="color:#ec5c0a;"></i> ' + location + ' &bull; ' + cards;
+    if (saveBadge) saveBadge.textContent = '⚡ ' + savings;
+    if (oldValEl) oldValEl.textContent = oldBill;
+    if (newValEl) newValEl.textContent = newBill;
+
+    if (oldDocBox) {
+      if (oldImg && oldImg.trim() !== '') {
+        oldDocBox.innerHTML = '<a href="' + oldImg + '" target="_blank" title="Click to view full size"><img src="' + oldImg + '" alt="Old DISCOM Bill" class="vsres-bill-uploaded-img"></a>';
+      } else {
+        oldDocBox.innerHTML = vsGenerateBillSvg(customer, location, oldBill, 'OLD', cards);
+      }
+    }
+
+    if (newDocBox) {
+      if (newImg && newImg.trim() !== '') {
+        newDocBox.innerHTML = '<a href="' + newImg + '" target="_blank" title="Click to view full size"><img src="' + newImg + '" alt="New DISCOM Bill" class="vsres-bill-uploaded-img"></a>';
+      } else {
+        newDocBox.innerHTML = vsGenerateBillSvg(customer, location, newBill, 'NEW', cards);
+      }
+    }
+
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function vsCloseBillsModal(e) {
+    if (e && e.stopPropagation) e.stopPropagation();
+    var modal = document.getElementById('vsres_bills_modal');
+    if (modal) {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      vsCloseBillsModal();
+    }
+  });
+
+  function vsGenerateBillSvg(name, loc, amount, type, cards) {
+    var isNew = type === 'NEW';
+    var bgHeader = isNew ? '#007b3e' : '#e11d48';
+    var accentBorder = isNew ? '#10b981' : '#f43f5e';
+    var statusTitle = isNew ? 'REDUCED DISCOM TARIFF' : 'STANDARD REGULAR TARIFF';
+    var stampText = isNew ? 'PAID & SAVED (20-30%)' : 'HIGH CONSUMPTION';
+    var stampColor = isNew ? '#007b3e' : '#e11d48';
+    var billDate = isNew ? 'Post-Installation Bill' : 'Pre-Installation Bill';
+    var caNum = 'CA-' + Math.floor(10000000 + Math.random() * 90000000);
+    
+    return '<div style="width:100%; max-width:400px; background:#ffffff; border:2px solid ' + accentBorder + '; border-radius:12px; box-shadow:0 8px 24px rgba(0,0,0,0.06); font-family:\'Nunito\',sans-serif; overflow:hidden; position:relative;">' +
+      '<div style="background:' + bgHeader + '; color:#ffffff; padding:12px 16px; display:flex; justify-content:space-between; align-items:center;">' +
+        '<div>' +
+          '<div style="font-size:10px; font-weight:800; letter-spacing:0.8px; opacity:0.9;">ELECTRICITY DISTRIBUTION CO.</div>' +
+          '<div style="font-size:13px; font-weight:800; font-family:\'Space Grotesk\',sans-serif;">' + statusTitle + '</div>' +
+        '</div>' +
+        '<div style="font-size:18px;">' + (isNew ? '⚡' : '🏛️') + '</div>' +
+      '</div>' +
+      '<div style="padding:14px 16px; font-size:11.5px; color:#334155; line-height:1.5;">' +
+        '<div style="display:flex; justify-content:space-between; margin-bottom:8px; border-bottom:1px dashed #e2e8f0; padding-bottom:6px;">' +
+          '<div><strong>Consumer:</strong> ' + name + '<br><span style="color:#64748b; font-size:10.5px;">' + loc + '</span></div>' +
+          '<div style="text-align:right;"><strong>' + caNum + '</strong><br><span style="color:#64748b; font-size:10.5px;">Tariff: LT-Domestic</span></div>' +
+        '</div>' +
+        '<div style="display:grid; grid-template-columns:1fr 1fr; gap:6px; background:#f8fafc; padding:8px 10px; border-radius:8px; margin-bottom:10px; font-size:11px;">' +
+          '<div>Billing Cycle: <strong>Monthly</strong></div>' +
+          '<div>Status: <strong style="color:' + (isNew ? '#007b3e' : '#e11d48') + ';">' + billDate + '</strong></div>' +
+          '<div>Grid Setup: <strong>' + cards + '</strong></div>' +
+          '<div>Power Factor: <strong>' + (isNew ? '0.98 (Optimized)' : '0.81 (Losses)') + '</strong></div>' +
+        '</div>' +
+        '<div style="border-top:1.5px solid #cbd5e1; padding-top:8px; display:flex; justify-content:space-between; align-items:center;">' +
+          '<div>' +
+            '<span style="font-size:10px; font-weight:800; color:#64748b; text-transform:uppercase;">TOTAL AMOUNT DUE</span>' +
+            '<div style="font-size:19px; font-weight:800; font-family:\'IBM Plex Mono\',monospace; color:' + (isNew ? '#007b3e' : '#e11d48') + ';">' + amount + '</div>' +
+          '</div>' +
+          '<div style="border:2px solid ' + stampColor + '; color:' + stampColor + '; font-size:9px; font-weight:900; padding:4px 8px; border-radius:6px; text-transform:uppercase; transform:rotate(-4deg); font-family:\'Space Grotesk\',sans-serif; letter-spacing:0.5px;">' +
+            stampText +
+          '</div>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Residential - Case Studies",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow Text",
+      "default": "Customer Case Studies"
+    },
+    {
+      "type": "text",
+      "id": "title_prefix",
+      "label": "Title Prefix",
+      "default": "Real Residential"
+    },
+    {
+      "type": "text",
+      "id": "title_highlight",
+      "label": "Title Highlight",
+      "default": "Savings Stories"
+    },
+    {
+      "type": "textarea",
+      "id": "desc",
+      "label": "Description",
+      "default": "See how Indian households cut their monthly electricity bills by 20%–30% with Vidhyut Saathi."
+    },
+    {
+      "type": "header",
+      "content": "Case Studies Verified Bills (Global Fallback)"
+    },
+    {
+      "type": "image_picker",
+      "id": "global_old_bill_image",
+      "label": "Old Electricity Bill Photo (Before Vidhyut Saathi)"
+    },
+    {
+      "type": "image_picker",
+      "id": "global_new_bill_image",
+      "label": "New Electricity Bill Photo (After Vidhyut Saathi)"
+    },
+    {
+      "type": "text",
+      "id": "whatsapp_number",
+      "label": "WhatsApp Number",
+      "default": "919876543210"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "residential_case_study",
+      "name": "Residential Case Study",
+      "limit": 9,
+      "settings": [
+        { "type": "image_picker", "id": "image_1", "label": "Slide 1 Image" },
+        { "type": "text", "id": "tag_1", "label": "Slide 1 Tag", "default": "Living Room AC & Inverter" },
+        { "type": "image_picker", "id": "image_2", "label": "Slide 2 Image" },
+        { "type": "text", "id": "tag_2", "label": "Slide 2 Tag", "default": "Double-Door Refrigerator" },
+        { "type": "image_picker", "id": "image_3", "label": "Slide 3 Image" },
+        { "type": "text", "id": "tag_3", "label": "Slide 3 Tag", "default": "4K Smart TV & Audio" },
+        { "type": "image_picker", "id": "image_4", "label": "Slide 4 Image" },
+        { "type": "text", "id": "tag_4", "label": "Slide 4 Tag", "default": "Main Home MCB Board" },
+        { "type": "image_picker", "id": "avatar_image", "label": "Customer Avatar Photo" },
+        { "type": "text", "id": "customer_name", "label": "Customer Name", "default": "Rohan Mehta" },
+        { "type": "text", "id": "location_load", "label": "Location & House Type", "default": "2 BHK Apartment, Mumbai" },
+        { "type": "text", "id": "old_bill", "label": "Old Monthly Bill", "default": "₹8,400/mo" },
+        { "type": "text", "id": "new_bill", "label": "New Monthly Bill", "default": "₹6,100/mo" },
+        { "type": "header", "content": "Verified Electricity Bills (Before & After)" },
+        { "type": "image_picker", "id": "old_bill_image", "label": "Old Electricity Bill Document (Before)" },
+        { "type": "image_picker", "id": "new_bill_image", "label": "New Electricity Bill Document (After)" },
+        { "type": "text", "id": "cards_count", "label": "Cards Installed Text", "default": "⚡ 2 Residential Cards" },
+        { "type": "text", "id": "savings_summary", "label": "Savings Summary Text", "default": "Saved ₹2,300/mo (27%)" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Residential - Case Studies"
+    }
+  ]
+}
+{% endschema %}

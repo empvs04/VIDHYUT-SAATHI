@@ -1,0 +1,149 @@
+{% render 'vs-residential-styles' %}
+
+<div class="vsres">
+  <!-- ══ SECTION 8 SHOWCASE (TOP HERO POSITION) ══ -->
+  <section class="vsres-sec8-custom">
+    <div class="wrap">
+      <div class="vsres-sec8-grid">
+        <!-- LEFT COLUMN: COMPACT & POWERFUL -->
+        <div>
+          <div class="vsres-sec8-badge">
+            <i class="fa-solid fa-bolt" style="color:#ec5c0a;"></i> {{ section.settings.badge_text | default: 'Smart Residential Energy Shield' }}
+          </div>
+
+          <h2 class="vsres-sec8-title">
+            {{ section.settings.heading_prefix | default: 'Vidhyut Saathi Card for' }} <span>{{ section.settings.heading_highlight | default: 'Residential Homes' }}</span>
+          </h2>
+
+          <p class="vsres-sec8-lead">
+            {{ section.settings.lead_text | default: 'Protect your household appliances and stop overpaying on electricity bills. Whether you live in a <strong>1 BHK flat</strong> or a <strong>4 BHK villa</strong> with multiple ACs and water submersible pumps, calculate your exact card requirement below.' }}
+          </p>
+
+          <!-- 4 ULTRA-LUCRATIVE BENEFIT CARDS (2x2) -->
+          <div class="vsres-sec8-pills-grid">
+            <div class="vsres-sec8-pill c1-card">
+              <div class="vsres-sec8-pill-icon c1">
+                <i class="fa-solid fa-shield-halved"></i>
+              </div>
+              <div class="vsres-sec8-pill-text">
+                <strong>100% Appliance Safety</strong>
+                <span>Shields AC, TV, Fridge & Motors from Spikes</span>
+              </div>
+            </div>
+
+            <div class="vsres-sec8-pill c2-card">
+              <div class="vsres-sec8-pill-icon c2">
+                <i class="fa-solid fa-bolt"></i>
+              </div>
+              <div class="vsres-sec8-pill-text">
+                <strong>20% to 30% Bill Cuts</strong>
+                <span>Cuts Power Wastage & Lowers Monthly Units</span>
+              </div>
+            </div>
+
+            <div class="vsres-sec8-pill c3-card">
+              <div class="vsres-sec8-pill-icon c3">
+                <i class="fa-solid fa-house-chimney"></i>
+              </div>
+              <div class="vsres-sec8-pill-text">
+                <strong>1 BHK to 4 BHK Villa</strong>
+                <span>Sized for Multi-ACs & Submersible Pumps</span>
+              </div>
+            </div>
+
+            <div class="vsres-sec8-pill c4-card">
+              <div class="vsres-sec8-pill-icon c4">
+                <i class="fa-solid fa-award"></i>
+              </div>
+              <div class="vsres-sec8-pill-text">
+                <strong>10-Yr Lifespan</strong>
+                <span>3-Year Replacement Guarantee & Zero Rewiring</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- DUAL CTAS -->
+          <div class="vsres-hero-ctas">
+            <a href="#vsres-calc" class="vsres-btn-primary" style="box-shadow: 0 8px 24px rgba(236, 92, 10, 0.32);">
+              <i class="fa-solid fa-calculator"></i> Calculate My Home Cards
+            </a>
+            {% assign wa_num = section.settings.whatsapp_number | default: '919876543210' %}
+            <a href="https://wa.me/{{ wa_num }}?text=Hi%20Vidhyut%20Saathi%2C%20I%20want%20to%20order%20Residential%20Saver%20Cards" class="vsres-btn-secondary" target="_blank">
+              <i class="fa-brands fa-whatsapp" style="color: #25d366; font-size: 17px;"></i> Order on WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN: 1:1 SQUARE CLEAN SHOWCASE WITH MOMENT CAPTION -->
+        <div style="display: flex; justify-content: center; align-items: center;">
+          <div class="vsres-sec8-card-frame">
+            <div class="vsres-sec8-img-box">
+              {% if section.settings.sec8_image != blank %}
+                <img src="{{ section.settings.sec8_image | image_url: width: 1000 }}" alt="Happy Indian Family Celebrating Electricity Savings with Vidhyut Saathi" loading="lazy">
+              {% else %}
+                <img src="{{ 'residential-happy-family-mcb-saver.jpg' | asset_url }}" alt="Happy Indian Family Celebrating Electricity Savings with Vidhyut Saathi" loading="lazy" onerror="this.onerror=null; this.src='https://cdn.shopify.com/s/files/1/0663/8783/7093/files/VS_Card_Final_Design_Golden_1.png';">
+              {% endif %}
+            </div>
+
+            <div class="vsres-sec8-moment-caption">
+              <div class="vsres-moment-tag">
+                <i class="fa-solid fa-camera-retro" style="color: #ec5c0a;"></i>
+                <span>Captured Real Moment of Joy</span>
+              </div>
+              <p class="vsres-moment-quote">
+                "The priceless smile when your family opens the monthly electricity bill and sees <strong>20%–30% genuine savings</strong> with Vidhyut Saathi Card."
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "Residential - Hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text",
+      "default": "Smart Residential Energy Shield"
+    },
+    {
+      "type": "text",
+      "id": "heading_prefix",
+      "label": "Heading Prefix",
+      "default": "Vidhyut Saathi Card for"
+    },
+    {
+      "type": "text",
+      "id": "heading_highlight",
+      "label": "Heading Highlight",
+      "default": "Residential Homes"
+    },
+    {
+      "type": "richtext",
+      "id": "lead_text",
+      "label": "Lead Description"
+    },
+    {
+      "type": "image_picker",
+      "id": "sec8_image",
+      "label": "Hero Family Showcase Image (1:1)"
+    },
+    {
+      "type": "text",
+      "id": "whatsapp_number",
+      "label": "WhatsApp Number",
+      "default": "919876543210"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Residential - Hero"
+    }
+  ]
+}
+{% endschema %}

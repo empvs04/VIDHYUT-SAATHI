@@ -1,0 +1,56 @@
+{% render 'vs-residential-styles' %}
+
+<div class="vsres">
+  <!-- ══ CATEGORY NAVIGATION STRIP ══ -->
+  <div class="vsres-nav-strip">
+    <div class="vsres-nav-container">
+      <div class="vsres-nav-title">
+        <i class="fa-solid fa-layer-group"></i> Sector Requirement Pages:
+      </div>
+      <div class="vsres-nav-links">
+        <a href="/pages/required-cards?view=residential" class="vsres-nav-item active">
+          <i class="fa-solid fa-house"></i> Residential
+        </a>
+        <a href="/pages/required-cards?view=commercial" class="vsres-nav-item">
+          <i class="fa-solid fa-building"></i> Commercial
+        </a>
+        <a href="/pages/required-cards?view=industrial" class="vsres-nav-item">
+          <i class="fa-solid fa-industry"></i> Industrial
+        </a>
+        <a href="/pages/required-cards?view=institutional" class="vsres-nav-item">
+          <i class="fa-solid fa-graduation-cap"></i> Institutional
+        </a>
+        <a href="/pages/b2c" class="vsres-nav-item" onclick="vsGoPage(event, 'b2c')">
+          <i class="fa-solid fa-bolt"></i> Power Saver Card
+        </a>
+        <a href="/pages/get-franchise" class="vsres-nav-item" onclick="vsGoPage(event, 'get-franchise')">
+          <i class="fa-solid fa-store"></i> Franchise Program
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function vsGoPage(e, handle) {
+    if (e && (e.ctrlKey || e.metaKey || e.shiftKey)) return;
+    var isEditor = (window.Shopify && window.Shopify.designMode) || location.search.indexOf('preview_theme_id') > -1;
+    if (isEditor) {
+      if (e && e.preventDefault) e.preventDefault();
+      var base = (location.pathname && location.pathname.indexOf('/pages/') === 0) ? location.pathname : '/pages/required-cards';
+      location.href = base + '?view=' + handle;
+    }
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Residential - Nav Strip",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Residential - Nav Strip"
+    }
+  ]
+}
+{% endschema %}
