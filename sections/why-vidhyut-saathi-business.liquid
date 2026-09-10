@@ -1,4 +1,4 @@
-﻿{%- style -%}
+{%- style -%}
   @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Anton&display=swap');
 
   /* ==========================================================================
@@ -1039,9 +1039,9 @@
     color: #FDBA00;
   }
 
-  /* Slider Dots Styling for Mobile */
+  /* Slider Dots Styling for Mobile (Hidden on Desktop) */
   .wvs-slider-dots-p4, .wvs-slider-dots-p5, .wvs-slider-dots-p6 {
-    display: none !important;
+    display: none;
   }
 
   /* Responsive Design & Mobile Clean Full-Width Sliders */
@@ -1495,16 +1495,15 @@
       scroll-snap-align: start;
       margin: 0;
     }
-    }
 
     /* Active Pagination Dots */
     .wvs-slider-dots-p4, .wvs-slider-dots-p6 {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 8px;
-      margin-top: 6px;
-      margin-bottom: 24px;
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      gap: 10px !important;
+      margin-top: 14px !important;
+      margin-bottom: 24px !important;
     }
     .wvs-slider-dots-p5 {
       display: none !important;
@@ -1514,13 +1513,14 @@
       height: 10px;
       border-radius: 50%;
       background: #cbd5e1;
-      transition: all 0.3s ease;
+      transition: all 0.35s ease;
       cursor: pointer;
     }
     .wvs-dot.active {
-      width: 26px;
+      width: 32px;
       border-radius: 20px;
-      background: #ec5c0a;
+      background: linear-gradient(135deg, #F17022 0%, #FB5900 100%);
+      box-shadow: 0 4px 12px rgba(241, 112, 34, 0.4);
     }
 
     .wvs-scratch-grid, .wvs-vs-grid {
