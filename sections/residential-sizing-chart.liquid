@@ -1,12 +1,12 @@
 {% render 'vs-residential-styles' %}
 
 <div class="vsres">
-  <!-- ══ RESIDENTIAL REQUIREMENT CHART TABLE ══ -->
-  <section class="vsres-sec">
+  <!-- ══ RESIDENTIAL HOME SIZING & REQUIREMENT CHART ══ -->
+  <section class="vsres-sec" id="vsres-sizing-chart">
     <div class="wrap">
       <div class="vsres-sec-head">
         <div class="vsres-sec-eyebrow"><i class="fa-solid fa-table-cells"></i> {{ section.settings.eyebrow | default: 'Home Sizing Reference' }}</div>
-        <h2 class="vsres-sec-title">{{ section.settings.title_prefix | default: 'Residential Home' }} <span>{{ section.settings.title_highlight | default: 'Sizing & Requirement Chart' }}</span></h2>
+        <h2 class="vsres-sec-title">{{ section.settings.title_prefix | default: 'Residential Home' }} <span>{{ section.settings.title_highlight | default: 'Sizing and Requirement Chart' }}</span></h2>
         <p class="vsres-sec-desc">
           {{ section.settings.desc | default: 'Quick reference table based on house type, connected load (KW), and typical monthly electricity bill brackets.' }}
         </p>
@@ -18,7 +18,7 @@
             <tr>
               <th>House Type</th>
               <th>Load (KW)</th>
-              <th>Monthly Bill (₹)</th>
+              <th>Monthly Bill</th>
               <th>Single-Phase</th>
               <th>3-Phase</th>
             </tr>
@@ -26,38 +26,38 @@
           <tbody>
             <tr>
               <td>1 BHK Flat / Studio</td>
-              <td>1–3<br class="vs-mob-br"> <span class="vs-mob-kw">KW</span></td>
-              <td>Up to ₹4,000</td>
-              <td class="highlight">1<br class="vs-mob-br"> <span class="vs-mob-cards">Card</span></td>
-              <td class="highlight">2<br class="vs-mob-br"> <span class="vs-mob-cards">Cards</span></td>
+              <td>1–3 KW</td>
+              <td>Up to Rs.4,000</td>
+              <td class="highlight">1 Card</td>
+              <td class="highlight">2 Cards</td>
             </tr>
             <tr>
               <td>2 BHK Apartment (1 AC)</td>
-              <td>4–6<br class="vs-mob-br"> <span class="vs-mob-kw">KW</span></td>
-              <td>₹4,001 – ₹7,000</td>
-              <td class="highlight">1<br class="vs-mob-br"> <span class="vs-mob-cards">Card</span></td>
-              <td class="highlight">2<br class="vs-mob-br"> <span class="vs-mob-cards">Cards</span></td>
+              <td>4–6 KW</td>
+              <td>Rs.4,001 – Rs.7,000</td>
+              <td class="highlight">1 Card</td>
+              <td class="highlight">2 Cards</td>
             </tr>
             <tr>
               <td>3 BHK Apartment (2 ACs)</td>
-              <td>7–12<br class="vs-mob-br"> <span class="vs-mob-kw">KW</span></td>
-              <td>₹7,001 – ₹13,000</td>
-              <td class="highlight">2<br class="vs-mob-br"> <span class="vs-mob-cards">Cards</span></td>
-              <td class="highlight">3<br class="vs-mob-br"> <span class="vs-mob-cards">Cards</span></td>
+              <td>7–12 KW</td>
+              <td>Rs.7,001 – Rs.13,000</td>
+              <td class="highlight">2 Cards</td>
+              <td class="highlight">3 Cards</td>
             </tr>
             <tr>
               <td>4 BHK House / Duplex (3+ ACs)</td>
-              <td>13–18<br class="vs-mob-br"> <span class="vs-mob-kw">KW</span></td>
-              <td>₹13,001 – ₹19,000</td>
-              <td class="highlight">3<br class="vs-mob-br"> <span class="vs-mob-cards">Cards</span></td>
-              <td class="highlight">4<br class="vs-mob-br"> <span class="vs-mob-cards">Cards</span></td>
+              <td>13–18 KW</td>
+              <td>Rs.13,001 – Rs.19,000</td>
+              <td class="highlight">3 Cards</td>
+              <td class="highlight">4 Cards</td>
             </tr>
             <tr>
               <td>Independent Villa / Bungalow</td>
-              <td>19–24<br class="vs-mob-br"> <span class="vs-mob-kw">KW</span></td>
-              <td>₹19,001 – ₹26,000</td>
-              <td class="highlight">4<br class="vs-mob-br"> <span class="vs-mob-cards">Cards</span></td>
-              <td class="highlight">5<br class="vs-mob-br"> <span class="vs-mob-cards">Cards</span></td>
+              <td>19–24 KW</td>
+              <td>Rs.19,001 – Rs.26,000</td>
+              <td class="highlight">4 Cards</td>
+              <td class="highlight">5 Cards</td>
             </tr>
           </tbody>
         </table>
@@ -69,8 +69,6 @@
 {% schema %}
 {
   "name": "Residential - Sizing Chart",
-  "tag": "section",
-  "class": "vsres-sizing-chart-section",
   "settings": [
     {
       "type": "text",
