@@ -2333,31 +2333,42 @@
       <div class="vsres-calc-box">
         <!-- LEFT INPUTS -->
         <div>
-          <!-- KW LOAD -->
+          <!-- 1. KW LOAD -->
           <div class="vsres-field">
             <div class="vsres-field-label">
-              <span>⚙️ HOME CONNECTED LOAD</span>
+              <span>1. ⚙️ CONNECTED LOAD (KW)</span>
               <span class="vsres-field-badge" id="vsres_kw_badge">6 KW</span>
             </div>
             <input type="range" class="vsres-range-slider" id="vsres_kw_slider" min="1" max="40" value="6" step="1">
             <input type="number" class="vsres-num-input" id="vsres_kw_num" value="6" min="1" max="100">
           </div>
 
-          <!-- MONTHLY BILL -->
+          <!-- 2. MONTHLY BILL -->
           <div class="vsres-field">
             <div class="vsres-field-label">
-              <span>💰 MONTHLY ELECTRICITY BILL</span>
+              <span>2. 💰 AVERAGE MONTHLY BILL (₹)</span>
               <span class="vsres-field-badge" id="vsres_bill_badge">₹6,000</span>
             </div>
-            <input type="number" class="vsres-num-input" id="vsres_bill_num" value="6000" min="500" step="500">
+            <input type="number" class="vsres-num-input" id="vsres_bill_num" value="6000" min="0" step="500" placeholder="e.g. 6000">
           </div>
 
-          <!-- PHASE SELECTOR -->
+          <!-- 3. HIGHEST BILL IN LAST 12 MONTHS -->
           <div class="vsres-field">
-            <div class="vsres-field-label">🔌 PHASE TYPE</div>
+            <div class="vsres-field-label">
+              <span>3. 📈 HIGHEST BILL IN LAST 12 MONTHS (₹)</span>
+              <span class="vsres-field-badge" id="vsres_peak_bill_badge">₹0</span>
+            </div>
+            <input type="number" class="vsres-num-input" id="vsres_peak_bill_num" value="" min="0" step="500" placeholder="Optional peak summer bill (₹)">
+          </div>
+
+          <!-- 4. PHASE SELECTOR -->
+          <div class="vsres-field">
+            <div class="vsres-field-label">
+              <span>4. 🔌 CONNECTION TYPE</span>
+            </div>
             <div class="vsres-toggle-group">
-              <button class="vsres-toggle-btn active" id="vsres_btn_single" onclick="vsresSetPhase(false)">Single Phase</button>
-              <button class="vsres-toggle-btn" id="vsres_btn_three" onclick="vsresSetPhase(true)">Three Phase</button>
+              <button class="vsres-toggle-btn active" id="vsres_btn_single" onclick="vsresSetPhase(false)">⚡ Single Phase</button>
+              <button class="vsres-toggle-btn" id="vsres_btn_three" onclick="vsresSetPhase(true)">⚡ Three Phase</button>
             </div>
           </div>
         </div>
@@ -3060,8 +3071,10 @@
     var kwSlider = document.getElementById('vsres_kw_slider');
     var kwNum = document.getElementById('vsres_kw_num');
     var billNum = document.getElementById('vsres_bill_num');
+    var peakBillNum = document.getElementById('vsres_peak_bill_num');
     var kwBadge = document.getElementById('vsres_kw_badge');
     var billBadge = document.getElementById('vsres_bill_badge');
+    var peakBillBadge = document.getElementById('vsres_peak_bill_badge');
 
     if (!kwSlider || !kwNum || !billNum) return;
 
@@ -3074,14 +3087,17 @@
       kwSlider.value = Math.min(kw, 40);
     }
     var bill = Math.max(0, parseInt(billNum.value) || 0);
+    var peakBill = Math.max(0, parseInt(peakBillNum ? peakBillNum.value : 0) || 0);
 
     kwSlider.style.setProperty('--fill', (Math.min(kw, 40) / 40 * 100) + '%');
     if (kwBadge) kwBadge.innerText = kw + ' KW';
     if (billBadge) billBadge.innerText = '₹' + bill.toLocaleString('en-IN');
+    if (peakBillBadge) peakBillBadge.innerText = peakBill > 0 ? '₹' + peakBill.toLocaleString('en-IN') : '₹0';
 
     var kwCards = Math.max(1, Math.ceil(kw / 6));
     var billCards = bill > 0 ? Math.max(1, Math.ceil(bill / 6000)) : 1;
-    var base = Math.max(kwCards, billCards);
+    var peakBillCards = peakBill > 0 ? Math.max(1, Math.ceil(peakBill / 6000)) : 0;
+    var base = Math.max(kwCards, billCards, peakBillCards);
     var total = vsresThreePhase ? base + 1 : base;
 
     var numCardEl = document.getElementById('vsres_card_num');
@@ -3108,8 +3124,9 @@
       }
     }
 
-    var sMin = Math.round((bill * 0.20) / 100) * 100;
-    var sMax = Math.round((bill * 0.30) / 100) * 100;
+    var baseBillForSavings = Math.max(bill, peakBill);
+    var sMin = Math.round((baseBillForSavings * 0.20) / 100) * 100;
+    var sMax = Math.round((baseBillForSavings * 0.30) / 100) * 100;
     var savingsRangeEl = document.getElementById('vsres_savings_range');
     if (savingsRangeEl) {
       savingsRangeEl.innerText = '₹' + sMin.toLocaleString('en-IN') + ' – ₹' + sMax.toLocaleString('en-IN') + ' / mo';
@@ -3145,6 +3162,11 @@
   var billNumElem = document.getElementById('vsres_bill_num');
   if (billNumElem) {
     billNumElem.addEventListener('input', function() { vsresSync(false); });
+  }
+
+  var peakBillNumElem = document.getElementById('vsres_peak_bill_num');
+  if (peakBillNumElem) {
+    peakBillNumElem.addEventListener('input', function() { vsresSync(false); });
   }
 
   // Initial Sync
