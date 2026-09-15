@@ -137,17 +137,30 @@
   .vsi-poster-stage {
     background: #ffffff;
     border-radius: 18px;
-    padding: 10px;
+    padding: 0;
     border: 1.5px solid rgba(247, 148, 29, 0.2);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
+    overflow: hidden;
+  }
+
+  .vsi-poster-link {
+    display: block;
+    width: 100%;
+    text-decoration: none;
+  }
+
+  .vsi-poster-picture {
+    display: block;
+    width: 100%;
+    height: 100%;
   }
 
   .vsi-poster-stage-img {
     width: 100%;
     height: auto;
     display: block;
-    border-radius: 12px;
-    object-fit: contain;
+    border-radius: 16px;
+    object-fit: cover;
   }
 
   /* --- 4 GUARANTEE BADGES GRID --- */
@@ -540,15 +553,29 @@
 
       <!-- POSTER IMAGE PASTED EXACTLY INSIDE THE STEP AREA OF MASTER CARD -->
       <div class="vsi-poster-stage">
-        <img 
-          src="{{ 'vs-how-to-install-poster.png' | asset_url }}" 
-          alt="HOW TO INSTALL Vidhyut Saathi Card Process" 
-          class="vsi-poster-stage-img" 
-          loading="eager" 
-          width="1920" 
-          height="1080"
-          onerror="this.onerror=null; this.src='https://cdn.shopify.com/s/files/1/0663/8783/7093/files/file_00000000714c7206a34d95fc7b046fb2.png';"
-        >
+        {% if section.settings.poster_link != blank %}
+          <a href="{{ section.settings.poster_link }}" class="vsi-poster-link">
+        {% endif %}
+          <picture class="vsi-poster-picture">
+            {% if section.settings.poster_image_mobile != blank %}
+              <source media="(max-width: 767px)" srcset="{{ section.settings.poster_image_mobile | image_url: width: 1200 }}">
+            {% endif %}
+            {% if section.settings.poster_image_desk != blank %}
+              <source media="(min-width: 768px)" srcset="{{ section.settings.poster_image_desk | image_url: width: 2400 }}">
+            {% endif %}
+            <img 
+              src="{% if section.settings.poster_image_desk != blank %}{{ section.settings.poster_image_desk | image_url: width: 1920 }}{% elsif section.settings.poster_image_mobile != blank %}{{ section.settings.poster_image_mobile | image_url: width: 1200 }}{% else %}{{ 'vs-how-to-install-poster.png' | asset_url }}{% endif %}" 
+              alt="{{ section.settings.section_title | default: 'HOW TO INSTALL Vidhyut Saathi Card Process' }}" 
+              class="vsi-poster-stage-img" 
+              loading="eager" 
+              width="1920" 
+              height="1080"
+              onerror="this.onerror=null; this.src='https://cdn.shopify.com/s/files/1/0663/8783/7093/files/file_00000000714c7206a34d95fc7b046fb2.png';"
+            >
+          </picture>
+        {% if section.settings.poster_link != blank %}
+          </a>
+        {% endif %}
       </div>
 
     </div>
@@ -635,6 +662,25 @@
       "id": "section_title",
       "label": "Section Title",
       "default": "HOW TO INSTALL VIDHYUT SAATHI CARD"
+    },
+    {
+      "type": "header",
+      "content": "🖼️ How To Install Banner / Poster"
+    },
+    {
+      "type": "image_picker",
+      "id": "poster_image_desk",
+      "label": "🖥️ Desktop Banner Image (Recommended: 1920x720 or 2400x900)"
+    },
+    {
+      "type": "image_picker",
+      "id": "poster_image_mobile",
+      "label": "📱 Mobile Banner Image (Recommended: 1080x1080 or 1080x1350)"
+    },
+    {
+      "type": "url",
+      "id": "poster_link",
+      "label": "Banner Click Link (Optional)"
     }
   ],
   "presets": [
