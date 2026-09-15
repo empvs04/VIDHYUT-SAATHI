@@ -1,176 +1,593 @@
-{%- style -%}
-  .animated-book-section-{{ section.id }} {
-    padding: 30px 15px;
-    background-color: {{ section.settings.section_bg_color }};
-    text-align: center;
-  }
+{%- comment -%}
+  Vidhyut Saathi - Full Width Clickable Responsive Banner Section (Desktop & Mobile)
+  File: sections/image.liquid
+{%- endcomment -%}
 
-  .animated-book-section-{{ section.id }} .heading-text {
-    color: #000;
-    font-weight: bold;
-    font-size: 20px;
-    margin-bottom: 20px;
-  }
-
-  /* Flexbox wrapper to keep hands perfectly glued to the button */
-  .animated-book-wrapper-{{ section.id }} {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px; /* Space between hands and button */
-    margin: 0 auto;
-  }
-
-  /* Button Styling - widths removed so it hugs the text */
-  .animated-book-btn-{{ section.id }} {
-    background-color: {{ section.settings.button_bg_color }};
-    color: {{ section.settings.button_text_color }};
-    padding: 12px 40px;
-    border-radius: 30px;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 18px;
-    transition: opacity 0.3s ease;
-    display: inline-block;
-    white-space: nowrap; /* Prevents text from wrapping to a second line */
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  }
-
-  .animated-book-btn-{{ section.id }}:hover {
-    opacity: 0.85;
-    color: {{ section.settings.button_text_color }};
-  }
-
-  /* Icon Styling and Animation */
-  .animated-book-icon-{{ section.id }} {
-    color: {{ section.settings.icon_color }};
-    width: 35px; /* Slightly larger to accommodate the wide SVG shape */
-    height: 35px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .animated-book-icon-{{ section.id }} svg {
+<style>
+  .vs-responsive-banner-{{ section.id }} {
     width: 100%;
-    height: 100%;
-    fill: currentColor; /* Forces the SVG to take the schema color */
+    max-width: 100%;
+    background-color: {{ section.settings.bg_color | default: 'transparent' }};
+    padding-top: {{ section.settings.padding_top_desk | default: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom_desk | default: 0 }}px;
+    margin: 0 !important;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
   }
 
-  .icon-left-{{ section.id }} {
-    animation: moveRight-{{ section.id }} {{ section.settings.animation_speed }}s infinite alternate ease-in-out;
+  .vs-responsive-banner-{{ section.id }} .banner-inner-wrap {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    position: relative;
   }
 
-  .icon-right-{{ section.id }} {
-    animation: moveLeft-{{ section.id }} {{ section.settings.animation_speed }}s infinite alternate ease-in-out;
-  }
-
-  @keyframes moveRight-{{ section.id }} {
-    0% { transform: translateX(-8px); }
-    100% { transform: translateX(8px); }
-  }
-
-  @keyframes moveLeft-{{ section.id }} {
-    0% { transform: translateX(8px); }
-    100% { transform: translateX(-8px); }
-  }
-
-  @media (max-width: 480px) {
-    .animated-book-wrapper-{{ section.id }} {
-      gap: 10px;
+  {% if section.settings.section_heading != blank %}
+    .vs-responsive-banner-{{ section.id }} .section-header {
+      text-align: center;
+      margin-bottom: 20px;
+      padding: 0 16px;
     }
-    .animated-book-btn-{{ section.id }} {
-      padding: 10px 20px;
-      font-size: 16px;
+    .vs-responsive-banner-{{ section.id }} .section-header h2 {
+      font-family: 'Baloo 2', 'Outfit', sans-serif;
+      font-size: 26px;
+      font-weight: 800;
+      color: #0F172A;
+      margin: 0;
     }
-    .animated-book-icon-{{ section.id }} {
-      width: 28px;
-      height: 28px;
+  {% endif %}
+
+  .vs-responsive-banner-{{ section.id }} .banners-outer-container {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    border-radius: {{ section.settings.border_radius_desk | default: 0 }}px;
+    overflow: hidden;
+    background: transparent;
+  }
+
+  .vs-responsive-banner-{{ section.id }} .banners-wrapper {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    gap: 0px;
+    padding: 0;
+    margin: 0;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    width: 100%;
+  }
+
+  .vs-responsive-banner-{{ section.id }} .banners-wrapper::-webkit-scrollbar {
+    display: none;
+  }
+
+  .vs-responsive-banner-{{ section.id }} .banner-item {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+    min-width: 100% !important;
+    width: 100% !important;
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+    border-radius: 0;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .vs-responsive-banner-{{ section.id }} .banner-picture {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .vs-responsive-banner-{{ section.id }} .banner-img {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    max-height: 85vh;
+    object-fit: cover !important;
+    object-position: center !important;
+    display: block !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    transition: transform 0.4s ease;
+  }
+
+  .vs-responsive-banner-{{ section.id }} .banner-item:hover .banner-img {
+    {% if section.settings.enable_hover_zoom %}
+      transform: scale(1.015);
+    {% endif %}
+  }
+
+  .vs-responsive-banner-{{ section.id }} .banner-placeholder {
+    width: 100%;
+    min-height: 380px;
+    background: linear-gradient(135deg, #FFF3E0 0%, #FFE0B2 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    box-sizing: border-box;
+    text-align: center;
+    color: #E07810;
+    border: 2px dashed rgba(236, 92, 10, 0.35);
+  }
+
+  .vs-responsive-banner-{{ section.id }} .banner-placeholder svg {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 12px;
+  }
+
+  .vs-responsive-banner-{{ section.id }} .banner-placeholder span {
+    font-family: 'Baloo 2', 'Outfit', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+  }
+
+  /* Slider Navigation Arrows */
+  .vs-responsive-banner-{{ section.id }} .vs-banner-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 12;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: #0F172A;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+    transition: all 0.3s ease;
+    opacity: 0.85;
+  }
+
+  .vs-responsive-banner-{{ section.id }} .vs-banner-nav:hover {
+    background: #FFFFFF;
+    color: #EC5C0A;
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 6px 22px rgba(236, 92, 10, 0.35);
+    opacity: 1;
+  }
+
+  .vs-responsive-banner-{{ section.id }} .vs-prev-btn { left: 24px; }
+  .vs-responsive-banner-{{ section.id }} .vs-next-btn { right: 24px; }
+
+  /* Navigation Dots */
+  .vs-responsive-banner-dots-{{ section.id }} {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    margin: 0;
+    padding: 0;
+    gap: 8px;
+  }
+
+  .vs-responsive-banner-dots-{{ section.id }} .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .vs-responsive-banner-dots-{{ section.id }} .dot.active {
+    background: #EC5C0A;
+    border-color: #FFFFFF;
+    transform: scale(1.3);
+    box-shadow: 0 2px 8px rgba(236, 92, 10, 0.6);
+  }
+
+  /* Mobile Responsive */
+  @media(max-width: 767px) {
+    .vs-responsive-banner-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top_mob | default: 0 }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mob | default: 0 }}px;
+    }
+
+    .vs-responsive-banner-{{ section.id }} .banners-outer-container {
+      border-radius: {{ section.settings.border_radius_mob | default: 0 }}px;
+    }
+
+    .vs-responsive-banner-{{ section.id }} .banner-img {
+      max-height: none !important;
+    }
+
+    .vs-responsive-banner-{{ section.id }} .vs-banner-nav {
+      display: none !important;
+    }
+
+    .vs-responsive-banner-dots-{{ section.id }} {
+      bottom: 12px;
+      gap: 6px;
     }
   }
-{%- endstyle -%}
+</style>
 
-<div class="animated-book-section-{{ section.id }}">
-  {%- if section.settings.heading_text != blank -%}
-    <h4 class="heading-text">{{ section.settings.heading_text }}</h4>
-  {%- endif -%}
+<div class="vs-responsive-banner-{{ section.id }}" id="vs-responsive-banner-{{ section.id }}">
+  <div class="banner-inner-wrap">
+    {% if section.settings.section_heading != blank %}
+      <div class="section-header">
+        <h2>{{ section.settings.section_heading }}</h2>
+      </div>
+    {% endif %}
 
-  <div class="animated-book-wrapper-{{ section.id }}">
-    <div class="animated-book-icon-{{ section.id }} icon-right-{{ section.id }}">
-      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 122.88 84.93" style="enable-background:new 0 0 122.88 84.93" xml:space="preserve"><g><path d="M43.75,52.91c-1.6-0.3-3.23-0.26-4.78,0.08c-6.37,1.42-10.25,7.58-8.48,13.92c0.58,2.07,1.72,4.02,3.33,5.63 c-3.52-0.95-6.58-2.24-10.7-4.87c-7.2-4.59-12.06-10.49-14.75-16.8c-2.06-4.85-2.85-9.95-2.43-14.92 c0.41-4.97,2.02-9.79,4.74-14.05c3.4-5.34,8.56-9.83,15.33-12.71c3.9-1.66,8.71-2.67,13.66-3.11C45.16,5.59,50.8,5.8,55.56,6.6 c2.45,0.41,4.49,1.3,5.95,2.63c1.28,1.18,2.14,2.76,2.4,4.73c0.96,7.19,0,14.78,0.52,22.04c0.23,3.16,0.39,5.48-2.9,5.85 c-1.2,0.13-2.3,0.08-3.29-0.14c-2.21-0.47-3.96-1.77-5.24-3.51c-1.37-1.88-2.21-4.29-2.49-6.8c-0.19-1.7-0.12-3.44,0.21-5.08 c0.42-1.52-0.46-3.1-1.98-3.56c-6.88-2.07-1.14,13.28-13.96,13.64c-0.37,0.01-0.74,0.02-0.98,0.03c-1.61,0.05-2.87,1.4-2.82,3 c0.05,1.61,1.39,2.87,3,2.82c0.43-0.01,0.7-0.02,0.95-0.03c5.63-0.16,8.61-0.24,11.25-4.39c0.56,1.35,1.26,2.63,2.11,3.8 c0.35,0.48,0.72,0.92,1.12,1.32c-1.47,0.81-2.77,1.94-3.76,3.37c-0.09,0.12-0.17,0.25-0.26,0.38 C44.19,48.64,43.66,50.78,43.75,52.91L43.75,52.91z M42.98,78.93l5.85,3.89c4.54,3.01,9.23,2.52,12.71,0.21 c1.33-0.88,2.47-2.03,3.36-3.36c0.89-1.33,1.51-2.84,1.79-4.43c0.12-0.67,0.18-1.35,0.17-2.04c1.22,0.15,2.45,0.1,3.63-0.14 c2.8-0.56,5.38-2.14,7.07-4.57c0.09-0.13,0.17-0.25,0.26-0.38c1.68-2.64,2.05-5.69,1.33-8.54c-0.16-0.61-0.36-1.21-0.62-1.8 c2.03,0.44,4.08,0.39,5.99-0.11c3.06-0.79,5.75-2.73,7.35-5.66c1.61-2.94,1.79-6.28,0.81-9.3c-0.97-2.96-3.08-5.63-6.09-7.28 c-6.22-3.4-7.06-3.76-7.89-4.12c-0.62-0.27-1.24-0.53-4.94-2.53l36.53-0.04v0.01l0,0v-0.01c3.44,0,6.56-1.33,8.83-3.47 c5.01-4.72,5.01-12.39-0.01-17.11c-2.28-2.14-5.41-3.46-8.84-3.45V4.69l0,0V4.7L67.64,4.74l0-0.01c-0.67,0-1.29,0.23-1.79,0.61 c-0.14-0.14-0.28-0.27-0.42-0.4c-2.31-2.12-5.38-3.49-8.91-4.09c-5.19-0.87-11.35-1.11-17.36-0.57C33.63,0.78,28.2,1.93,23.73,3.83 C15.84,7.18,9.8,12.47,5.78,18.77c-3.25,5.09-5.16,10.81-5.65,16.69c-0.49,5.88,0.44,11.94,2.89,17.69 C6.14,60.49,11.74,67.3,20,72.58c7.6,4.85,11.82,5.67,20.06,7.27l0.17,0.04C41.29,80.09,42.32,79.69,42.98,78.93L42.98,78.93z M47.28,60.87c0.58,0.6,1.24,1.16,1.95,1.66l11.07,7.72c0.88,1.33,1.12,2.74,0.89,4.03c-0.15,0.82-0.47,1.61-0.94,2.31 c-0.47,0.7-1.08,1.32-1.78,1.79c-1.75,1.16-4.16,1.38-6.55-0.21l-12.94-8.6c-1.58-1.05-2.66-2.54-3.11-4.15 c-0.9-3.24,1.06-6.27,4.31-6.99c1.49-0.33,3.11-0.12,4.53,0.73c0.11,0.07,0.18,0.12,0.22,0.14L47.28,60.87L47.28,60.87z M60.95,63.25l-10.02-6.66c-0.69-0.82-1.17-1.75-1.41-2.72c-0.36-1.42-0.2-2.91,0.61-4.17c0.04-0.06,0.08-0.12,0.12-0.19 c0.84-1.2,2.14-1.99,3.58-2.28c1.45-0.29,3.02-0.06,4.36,0.79c0.07,0.05,0.14,0.09,0.21,0.14l12.44,8.68 c1.5,1.05,2.51,2.53,2.91,4.09c0.36,1.42,0.2,2.92-0.61,4.17c-0.04,0.07-0.08,0.13-0.12,0.19c-0.84,1.2-2.14,1.99-3.58,2.28 c-1.45,0.29-3.02,0.06-4.36-0.79c-0.07-0.05-0.14-0.09-0.21-0.14l-0.53-0.37C63.45,65.2,62.34,64.17,60.95,63.25L60.95,63.25z M87.14,44.5c0.51,1.56,0.42,3.25-0.37,4.71c-0.79,1.44-2.14,2.4-3.7,2.81c-1.67,0.43-3.55,0.24-5.27-0.65l-9.96-5.21 c1.33-0.99,2.44-2.22,3.3-3.71c1.18-2.03,1.86-4.49,1.98-7.43c2.17,1.15,2.74,1.4,3.3,1.63c0.74,0.31,1.47,0.63,7.39,3.87 C85.46,41.43,86.61,42.88,87.14,44.5L87.14,44.5z M115.13,21.02c-1.24,1.17-2.95,1.89-4.84,1.9V22.9l0,0v0.01l-39.72,0.04 l-0.01-12.4l39.72-0.04v0.01l0,0v-0.01c1.89,0,3.61,0.72,4.85,1.88C117.68,14.81,117.7,18.6,115.13,21.02L115.13,21.02z"/></g></svg>
-    </div>    
+    {%- assign total_blocks = section.blocks.size -%}
 
-    <a href="{% if section.settings.button_link != blank %}{{ section.settings.button_link }}{% else %}/pages/get-franchise{% endif %}" class="animated-book-btn-{{ section.id }}">
-      {{ section.settings.button_text }}
-    </a>
+    <div class="banners-outer-container">
+      {% if total_blocks > 1 %}
+        <button class="vs-banner-nav vs-prev-btn" id="vs-prev-btn-{{ section.id }}" aria-label="Previous Banner">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+      {% endif %}
 
-    <div class="animated-book-icon-{{ section.id }} icon-left-{{ section.id }}">
-      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 122.88 84.93" style="enable-background:new 0 0 122.88 84.93" xml:space="preserve"><g><path d="M79.13,52.91c1.6-0.3,3.23-0.26,4.78,0.08c6.37,1.42,10.25,7.58,8.48,13.92c-0.58,2.07-1.72,4.02-3.33,5.63 c3.52-0.95,6.58-2.24,10.7-4.87c7.2-4.59,12.06-10.49,14.75-16.8c2.06-4.85,2.85-9.95,2.43-14.92c-0.41-4.97-2.02-9.79-4.74-14.05 c-3.4-5.34-8.56-9.83-15.33-12.71c-3.9-1.66-8.71-2.67-13.66-3.11C77.72,5.59,72.08,5.8,67.31,6.6c-2.45,0.41-4.49,1.3-5.95,2.63 c-1.28,1.18-2.14,2.76-2.4,4.73c-0.96,7.19,0,14.78-0.52,22.04c-0.23,3.16-0.39,5.48,2.9,5.85c1.2,0.13,2.3,0.08,3.29-0.14 c2.21-0.47,3.96-1.77,5.24-3.51c1.37-1.88,2.21-4.29,2.49-6.8c0.19-1.7,0.12-3.44-0.21-5.08c-0.42-1.52,0.46-3.1,1.98-3.56 C81,20.7,75.27,36.05,88.08,36.41c0.37,0.01,0.74,0.02,0.98,0.03c1.61,0.05,2.87,1.4,2.82,3c-0.05,1.61-1.39,2.87-3,2.82 c-0.43-0.01-0.7-0.02-0.96-0.03c-5.63-0.16-8.61-0.24-11.25-4.39c-0.56,1.35-1.26,2.63-2.11,3.8c-0.35,0.48-0.72,0.92-1.12,1.32 c1.47,0.81,2.77,1.94,3.76,3.37c0.09,0.12,0.17,0.25,0.26,0.38C78.69,48.64,79.22,50.78,79.13,52.91L79.13,52.91z M79.9,78.93 l-5.85,3.89c-4.54,3.01-9.23,2.52-12.71,0.21C60,82.15,58.86,81,57.98,79.68c-0.89-1.33-1.51-2.84-1.79-4.43 c-0.12-0.67-0.18-1.35-0.17-2.04c-1.22,0.15-2.45,0.1-3.63-0.14c-2.8-0.56-5.38-2.14-7.07-4.57c-0.09-0.13-0.17-0.25-0.26-0.38 c-1.68-2.64-2.05-5.69-1.33-8.54c0.16-0.61,0.36-1.21,0.62-1.8c-2.03,0.44-4.08,0.39-5.99-0.11C35.29,56.86,32.6,54.92,31,52 c-1.61-2.94-1.79-6.28-0.81-9.3c0.97-2.96,3.08-5.63,6.09-7.28c6.22-3.4,7.06-3.76,7.89-4.12c0.62-0.27,1.24-0.53,4.94-2.53 l-36.53-0.04v0.01l0,0v-0.01c-3.44,0-6.56-1.33-8.83-3.47c-5.01-4.72-5.01-12.39,0.01-17.11C6.05,6.02,9.17,4.7,12.61,4.7V4.69l0,0 V4.7l42.63,0.04l0-0.01c0.67,0,1.29,0.23,1.79,0.61c0.14-0.14,0.28-0.27,0.42-0.4c2.31-2.12,5.38-3.49,8.91-4.09 c5.19-0.87,11.35-1.11,17.36-0.57c5.54,0.49,10.97,1.64,15.43,3.54c7.89,3.36,13.94,8.65,17.95,14.95 c3.25,5.09,5.16,10.81,5.65,16.69c0.49,5.88-0.44,11.94-2.89,17.69c-3.12,7.34-8.72,14.15-16.98,19.42 c-7.6,4.85-11.82,5.67-20.06,7.27l-0.17,0.04C81.59,80.09,80.56,79.69,79.9,78.93L79.9,78.93z M75.6,60.87 c-0.58,0.6-1.24,1.16-1.95,1.66l-11.07,7.72c-0.88,1.33-1.12,2.74-0.89,4.03c0.15,0.82,0.47,1.61,0.94,2.31 c0.47,0.7,1.08,1.32,1.78,1.79c1.75,1.16,4.16,1.38,6.55-0.21l12.94-8.6c1.58-1.05,2.66-2.54,3.11-4.15 c0.9-3.24-1.06-6.27-4.31-6.99c-1.49-0.33-3.11-0.12-4.53,0.73c-0.11,0.07-0.18,0.12-0.22,0.14L75.6,60.87L75.6,60.87z M61.93,63.25l10.02-6.66c0.69-0.82,1.17-1.75,1.41-2.72c0.36-1.42,0.2-2.91-0.61-4.17c-0.04-0.06-0.08-0.12-0.12-0.19 c-0.84-1.2-2.14-1.99-3.58-2.28c-1.45-0.29-3.02-0.06-4.36,0.79c-0.07,0.05-0.14,0.09-0.21,0.14l-12.44,8.68 c-1.5,1.05-2.51,2.53-2.91,4.09c-0.36,1.42-0.2,2.92,0.61,4.17c0.04,0.07,0.08,0.13,0.12,0.19c0.84,1.2,2.14,1.99,3.58,2.28 c1.45,0.29,3.02,0.06,4.36-0.79c0.07-0.05,0.14-0.09,0.21-0.14l0.53-0.37C59.43,65.2,60.54,64.17,61.93,63.25L61.93,63.25z M35.74,44.5c-0.51,1.56-0.42,3.25,0.37,4.71c0.79,1.44,2.14,2.4,3.7,2.81c1.67,0.43,3.55,0.24,5.27-0.65l9.96-5.21 c-1.33-0.99-2.44-2.22-3.3-3.71c-1.18-2.03-1.86-4.49-1.98-7.43c-2.17,1.15-2.74,1.4-3.3,1.63c-0.74,0.31-1.47,0.63-7.39,3.87 C37.42,41.43,36.26,42.88,35.74,44.5L35.74,44.5z M7.75,21.02c1.24,1.17,2.95,1.89,4.84,1.9V22.9l0,0v0.01l39.72,0.04l0.01-12.4 l-39.72-0.04v0.01l0,0v-0.01c-1.89,0-3.61,0.72-4.85,1.88C5.19,14.81,5.18,18.6,7.75,21.02L7.75,21.02z"/></g></svg>
+      <div class="banners-wrapper" id="vs-wrapper-{{ section.id }}">
+        {% if total_blocks > 0 %}
+          {% for block in section.blocks %}
+            <a href="{{ block.settings.banner_link | default: '#' }}" class="banner-item" {{ block.shopify_attributes }}>
+              {% if block.settings.banner_image != blank or block.settings.banner_image_mobile != blank %}
+                <picture class="banner-picture">
+                  {% if block.settings.banner_image_mobile != blank %}
+                    <source media="(max-width: 767px)" srcset="{{ block.settings.banner_image_mobile | image_url: width: 1000 }}">
+                  {% endif %}
+                  {% if block.settings.banner_image != blank %}
+                    <source media="(min-width: 768px)" srcset="{{ block.settings.banner_image | image_url: width: 2400 }}">
+                  {% endif %}
+                  <img 
+                    src="{{ block.settings.banner_image_mobile | default: block.settings.banner_image | image_url: width: 1400 }}"
+                    alt="{{ block.settings.banner_image.alt | default: block.settings.banner_image_mobile.alt | default: 'Vidhyut Saathi Banner' }}"
+                    class="banner-img"
+                    loading="lazy"
+                    width="1400"
+                    height="600"
+                  >
+                </picture>
+              {% else %}
+                <div class="banner-placeholder">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                    <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                    <polyline points="21 15 16 10 5 21"></polyline>
+                  </svg>
+                  <span>Upload Desktop & Mobile Banner in Shopify Customizer</span>
+                </div>
+              {% endif %}
+            </a>
+          {% endfor %}
+        {% else %}
+          {% comment %} Fallback to section-level settings if no blocks exist {% endcomment %}
+          <a href="{{ section.settings.banner_link | default: '#' }}" class="banner-item">
+            {% if section.settings.banner_image != blank or section.settings.banner_image_mobile != blank %}
+              <picture class="banner-picture">
+                {% if section.settings.banner_image_mobile != blank %}
+                  <source media="(max-width: 767px)" srcset="{{ section.settings.banner_image_mobile | image_url: width: 1000 }}">
+                {% endif %}
+                {% if section.settings.banner_image != blank %}
+                  <source media="(min-width: 768px)" srcset="{{ section.settings.banner_image | image_url: width: 2400 }}">
+                {% endif %}
+                <img 
+                  src="{{ section.settings.banner_image_mobile | default: section.settings.banner_image | image_url: width: 1400 }}"
+                  alt="{{ section.settings.banner_image.alt | default: section.settings.banner_image_mobile.alt | default: 'Vidhyut Saathi Banner' }}"
+                  class="banner-img"
+                  loading="lazy"
+                  width="1400"
+                  height="600"
+                >
+              </picture>
+            {% else %}
+              <div class="banner-placeholder">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                  <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                  <polyline points="21 15 16 10 5 21"></polyline>
+                </svg>
+                <span>Upload Desktop & Mobile Banner in Shopify Customizer</span>
+              </div>
+            {% endif %}
+          </a>
+        {% endif %}
+      </div>
+
+      {% if total_blocks > 1 %}
+        <button class="vs-banner-nav vs-next-btn" id="vs-next-btn-{{ section.id }}" aria-label="Next Banner">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+
+        <div class="vs-responsive-banner-dots-{{ section.id }}" id="vs-dots-{{ section.id }}">
+          {% for block in section.blocks %}
+            <span class="dot {% if forloop.first %}active{% endif %}" data-index="{{ forloop.index0 }}"></span>
+          {% endfor %}
+        </div>
+      {% endif %}
     </div>
-
   </div>
 </div>
 
+{% if total_blocks > 1 %}
+<script>
+  (function() {
+    function initSlider() {
+      const sectionEl = document.getElementById('vs-responsive-banner-{{ section.id }}');
+      if (!sectionEl) return;
+
+      const wrapper = document.getElementById('vs-wrapper-{{ section.id }}');
+      const prevBtn = document.getElementById('vs-prev-btn-{{ section.id }}');
+      const nextBtn = document.getElementById('vs-next-btn-{{ section.id }}');
+      const dotsContainer = document.getElementById('vs-dots-{{ section.id }}');
+      if (!wrapper) return;
+
+      const dots = dotsContainer ? dotsContainer.querySelectorAll('.dot') : [];
+      let autoplayTimer = null;
+      const isAutoplay = {{ section.settings.autoplay | default: true }};
+      const speed = {{ section.settings.autoplay_speed | default: 4 }} * 1000;
+
+      function updateDots(index) {
+        dots.forEach((d, i) => {
+          if (i === index) d.classList.add('active');
+          else d.classList.remove('active');
+        });
+      }
+
+      function getActiveIndex() {
+        const itemWidth = wrapper.offsetWidth;
+        if (!itemWidth) return 0;
+        return Math.round(wrapper.scrollLeft / itemWidth);
+      }
+
+      function scrollToIndex(idx) {
+        const total = wrapper.children.length;
+        if (idx < 0) idx = total - 1;
+        if (idx >= total) idx = 0;
+        wrapper.scrollTo({
+          left: idx * wrapper.offsetWidth,
+          behavior: 'smooth'
+        });
+        updateDots(idx);
+      }
+
+      if (prevBtn) {
+        prevBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          scrollToIndex(getActiveIndex() - 1);
+          resetAutoplay();
+        });
+      }
+
+      if (nextBtn) {
+        nextBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          scrollToIndex(getActiveIndex() + 1);
+          resetAutoplay();
+        });
+      }
+
+      dots.forEach(dot => {
+        dot.addEventListener('click', function() {
+          const idx = parseInt(this.getAttribute('data-index'), 10);
+          scrollToIndex(idx);
+          resetAutoplay();
+        });
+      });
+
+      wrapper.addEventListener('scroll', function() {
+        updateDots(getActiveIndex());
+      }, { passive: true });
+
+      function startAutoplay() {
+        if (!isAutoplay) return;
+        stopAutoplay();
+        autoplayTimer = setInterval(function() {
+          scrollToIndex(getActiveIndex() + 1);
+        }, speed);
+      }
+
+      function stopAutoplay() {
+        if (autoplayTimer) clearInterval(autoplayTimer);
+      }
+
+      function resetAutoplay() {
+        stopAutoplay();
+        startAutoplay();
+      }
+
+      sectionEl.addEventListener('mouseenter', stopAutoplay);
+      sectionEl.addEventListener('mouseleave', startAutoplay);
+      sectionEl.addEventListener('touchstart', stopAutoplay, { passive: true });
+      sectionEl.addEventListener('touchend', startAutoplay, { passive: true });
+
+      startAutoplay();
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initSlider);
+    } else {
+      initSlider();
+    }
+    document.addEventListener('shopify:section:load', function(e) {
+      if (e.detail.sectionId === '{{ section.id }}') initSlider();
+    });
+  })();
+</script>
+{% endif %}
+
 {% schema %}
 {
-  "name": "Animated Book Now",
+  "name": "Clickable Full Banner",
   "settings": [
     {
-      "type": "color",
-      "id": "section_bg_color",
-      "label": "Section Background Color",
-      "default": "transparent"
+      "type": "text",
+      "id": "section_heading",
+      "label": "Section Heading (Optional)",
+      "default": ""
     },
     {
-      "type": "text",
-      "id": "heading_text",
-      "label": "Heading Text",
-      "default": "Exclusive Opportunity"
+      "type": "image_picker",
+      "id": "banner_image",
+      "label": "🖥️ Desktop Banner Image (Recommended: 1920x720 or 2400x900)"
     },
     {
-      "type": "text",
-      "id": "button_text",
-      "label": "Button Text",
-      "default": "Book Your Spot Now!"
+      "type": "image_picker",
+      "id": "banner_image_mobile",
+      "label": "📱 Mobile Banner Image (Recommended: 1080x1080 or 1080x1350)"
     },
     {
       "type": "url",
-      "id": "button_link",
-      "label": "Button Link"
+      "id": "banner_link",
+      "label": "Banner Link URL",
+      "default": "/pages/get-franchise"
     },
     {
       "type": "color",
-      "id": "button_bg_color",
-      "label": "Button Background Color",
-      "default": "#ff0000"
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "transparent"
     },
     {
-      "type": "color",
-      "id": "button_text_color",
-      "label": "Button Text Color",
-      "default": "#ffffff"
+      "type": "checkbox",
+      "id": "enable_hover_zoom",
+      "label": "Enable Subtle Hover Zoom (Desktop)",
+      "default": true
     },
     {
-      "type": "color",
-      "id": "icon_color",
-      "label": "Icon Color",
-      "default": "#ff0000"
+      "type": "header",
+      "content": "Slider Settings (When using multiple blocks)"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Auto-Slide Banners",
+      "default": true
     },
     {
       "type": "range",
-      "id": "animation_speed",
-      "min": 0.2,
-      "max": 2.0,
-      "step": 0.1,
+      "id": "autoplay_speed",
+      "min": 2,
+      "max": 10,
+      "step": 1,
       "unit": "s",
-      "label": "Animation Speed",
-      "default": 0.5
+      "label": "Autoplay Speed",
+      "default": 4
+    },
+    {
+      "type": "header",
+      "content": "Dimensions & Spacing"
+    },
+    {
+      "type": "range",
+      "id": "border_radius_desk",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Border Radius (Desktop)",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "border_radius_mob",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "label": "Border Radius (Mobile)",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desk",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top (Desktop)",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desk",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom (Desktop)",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mob",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top (Mobile)",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mob",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom (Mobile)",
+      "default": 0
+    }
+  ],
+  "blocks": [
+    {
+      "type": "banner_slide",
+      "name": "Banner Slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "banner_image",
+          "label": "🖥️ Desktop Banner Image (1920x720)"
+        },
+        {
+          "type": "image_picker",
+          "id": "banner_image_mobile",
+          "label": "📱 Mobile Banner Image (1080x1080)"
+        },
+        {
+          "type": "url",
+          "id": "banner_link",
+          "label": "Banner Link URL"
+        }
+      ]
     }
   ],
   "presets": [
     {
-      "name": "Animated Book Now",
-      "category": "Custom Elements"
+      "name": "Clickable Full Banner",
+      "category": "Image"
     }
   ]
 }
