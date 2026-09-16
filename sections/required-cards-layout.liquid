@@ -396,10 +396,9 @@
   object-fit: cover;
   object-position: center;
   display: block;
-  /* Valid image-rendering values only */
   image-rendering: auto;
-  /* Boost contrast + saturation for sharper perceived quality */
-  filter: contrast(1.18) brightness(1.05) saturate(1.22);
+  /* Natural colors — no saturation boost (card is blue by design, don't amplify) */
+  filter: brightness(1.1) contrast(1.08);
 }
 
 .vscc .vscc-card-badge-num {
@@ -423,17 +422,18 @@
    Ratios 5:4:3 → ~42% : ~33% : ~25%
    Min-widths ensure all 3 cards stay readable regardless of column size. */
 
-/* Single card (total=1) - full showcase width */
+/* Single card (total=1) - full showcase width, prominently displayed */
 .vscc .vscc-cascade-card.vscc-tier-single {
   width: 100%;
-  max-width: 380px;
-  border-radius: 18px;
+  max-width: 420px;
+  border-radius: 20px;
   border: none;
-  box-shadow: 0 22px 55px rgba(0, 0, 0, 0.52), 0 0 32px rgba(236, 92, 10, 0.36);
+  background: transparent;
+  box-shadow: 0 24px 58px rgba(0, 0, 0, 0.55), 0 0 36px rgba(236, 92, 10, 0.38);
 }
 .vscc .vscc-cascade-card.vscc-tier-single:hover {
   transform: translateY(-8px) scale(1.04);
-  box-shadow: 0 32px 68px rgba(0, 0, 0, 0.65), 0 0 44px rgba(255, 180, 0, 0.48);
+  box-shadow: 0 32px 70px rgba(0, 0, 0, 0.68), 0 0 48px rgba(255, 180, 0, 0.50);
 }
 
 /* tier-3 = BIGGEST (~42% of row, min 155px) */
