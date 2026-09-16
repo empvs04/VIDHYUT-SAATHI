@@ -87,8 +87,10 @@
 
 @media(min-width: 900px) {
   .vscc .calc-outer-box {
-    grid-template-columns: 1.05fr 0.95fr;
-    gap: 28px;
+    /* Left col locked, right col gets more space for readable cards */
+    grid-template-columns: minmax(340px, 0.9fr) minmax(360px, 1.1fr);
+    gap: 24px;
+    /* stretch = both columns same height always */
     align-items: stretch;
   }
 }
@@ -371,70 +373,84 @@
   position: relative;
   overflow: hidden;
   aspect-ratio: 1.586 / 1;
-  background: #0d2238;
+  background: transparent;
   display: inline-block;
   cursor: pointer;
-  flex-shrink: 0;
-  transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.28s ease;
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: high-quality;
+  /* flex-shrink allowed so flex ratios work properly */
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease;
+  border: none !important;
 }
 
 .vscc .vscc-cascade-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   display: block;
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: high-quality;
+  /* Valid image-rendering values only */
+  image-rendering: auto;
+  /* Natural sharp HD colors */
+  filter: brightness(1.1) contrast(1.08);
 }
 
-/* Top Stepped Card Sizes */
+/* ===== CARD TIER SIZES: 3 (biggest/left) > 2 (medium) > 1 (smallest/right) =====
+   Ratios 5:4:3 → ~42% : ~33% : ~25%
+   Min-widths ensure all cards stay readable regardless of column size. */
+
+/* Single card (total=1) - full showcase width, prominently displayed */
 .vscc .vscc-cascade-card.vscc-tier-single {
-  width: 250px;
-  border-radius: 14px;
-  border: 1.5px solid rgba(255, 255, 255, 0.85);
-  box-shadow: 0 18px 40px -6px rgba(0, 0, 0, 0.5), 0 6px 16px rgba(0, 0, 0, 0.22);
+  width: 100%;
+  max-width: 420px;
+  border-radius: 20px;
+  border: none;
+  background: transparent;
+  box-shadow: 0 24px 58px rgba(0, 0, 0, 0.55), 0 0 36px rgba(236, 92, 10, 0.38);
 }
 .vscc .vscc-cascade-card.vscc-tier-single:hover {
-  transform: translateY(-4px) scale(1.04);
-  box-shadow: 0 24px 50px -6px rgba(0, 0, 0, 0.58), 0 8px 22px rgba(240, 99, 27, 0.3);
+  transform: translateY(-8px) scale(1.04);
+  box-shadow: 0 32px 70px rgba(0, 0, 0, 0.68), 0 0 48px rgba(255, 180, 0, 0.50);
 }
 
-.vscc .vscc-cascade-card.vscc-tier-1 {
-  width: 200px;
-  border-radius: 12px;
-  border: 1.5px solid rgba(255, 255, 255, 0.9);
-  box-shadow: 0 16px 36px -4px rgba(0, 0, 0, 0.48), 0 4px 14px rgba(0, 0, 0, 0.22);
-}
-.vscc .vscc-cascade-card.vscc-tier-1:hover {
-  transform: translateY(-5px) scale(1.06);
-  box-shadow: 0 24px 48px -4px rgba(0, 0, 0, 0.58), 0 8px 22px rgba(240, 99, 27, 0.3);
-  z-index: 5;
-}
-
-.vscc .vscc-cascade-card.vscc-tier-2 {
-  width: 155px;
-  border-radius: 10px;
-  border: 1.5px solid rgba(255, 255, 255, 0.85);
-  box-shadow: 0 12px 28px -4px rgba(0, 0, 0, 0.4);
-}
-.vscc .vscc-cascade-card.vscc-tier-2:hover {
-  transform: translateY(-4px) scale(1.08);
-  box-shadow: 0 18px 36px -4px rgba(0, 0, 0, 0.52);
-  z-index: 5;
-}
-
+/* tier-3 = BIGGEST (~42% of row, min 155px) */
 .vscc .vscc-cascade-card.vscc-tier-3 {
-  width: 115px;
-  border-radius: 8px;
-  border: 1.2px solid rgba(255, 255, 255, 0.8);
-  box-shadow: 0 10px 22px -3px rgba(0, 0, 0, 0.36);
+  flex: 5 1 0;
+  min-width: 155px;
+  border-radius: 16px;
+  border: none;
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.50), 0 0 24px rgba(236, 92, 10, 0.32);
 }
 .vscc .vscc-cascade-card.vscc-tier-3:hover {
-  transform: translateY(-4px) scale(1.12);
-  box-shadow: 0 16px 30px -3px rgba(0, 0, 0, 0.48);
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 28px 62px rgba(0, 0, 0, 0.60), 0 0 34px rgba(255, 180, 0, 0.44);
   z-index: 5;
+}
+
+/* tier-2 = MEDIUM (~33% of row, min 120px) */
+.vscc .vscc-cascade-card.vscc-tier-2 {
+  flex: 4 1 0;
+  min-width: 120px;
+  border-radius: 13px;
+  border: none;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.44), 0 0 18px rgba(0, 123, 62, 0.24);
+}
+.vscc .vscc-cascade-card.vscc-tier-2:hover {
+  transform: translateY(-8px) scale(1.12);
+  box-shadow: 0 24px 52px rgba(0, 0, 0, 0.55), 0 0 28px rgba(255, 180, 0, 0.40);
+  z-index: 6;
+}
+
+/* tier-1 = SMALLEST (~25% of row, min 90px) - hover zooms large for clarity */
+.vscc .vscc-cascade-card.vscc-tier-1 {
+  flex: 3 1 0;
+  min-width: 90px;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.38);
+}
+.vscc .vscc-cascade-card.vscc-tier-1:hover {
+  transform: translateY(-10px) scale(1.45);
+  box-shadow: 0 22px 46px rgba(0, 0, 0, 0.55), 0 0 22px rgba(255, 180, 0, 0.42);
+  z-index: 10;
 }
 
 /* Subordinate Grid for 4+ Cards */
@@ -443,22 +459,22 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 7px;
-  max-width: 480px;
+  gap: 10px;
+  max-width: 500px;
   width: 100%;
   margin: 0 auto;
 }
 
 .vscc .vscc-cascade-card.vscc-tier-sub {
-  width: 50px;
-  height: 31.5px;
-  border-radius: 4px;
-  border: 1px solid rgba(255, 255, 255, 0.75);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.32);
+  width: 72px;
+  height: 45.4px;
+  border-radius: 8px;
+  border: 2px solid rgba(255, 204, 0, 0.9);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
 }
 .vscc .vscc-cascade-card.vscc-tier-sub:hover {
-  transform: translateY(-3px) scale(1.2);
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.48);
+  transform: translateY(-4px) scale(1.28);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.52), 0 0 14px rgba(236, 92, 10, 0.45);
   z-index: 6;
 }
 
@@ -638,12 +654,14 @@
 }
 
 @media(max-width: 600px) {
-  .vscc .vscc-top-tier-row { gap: 8px; }
-  .vscc .vscc-cascade-card.vscc-tier-single { width: 210px; }
-  .vscc .vscc-cascade-card.vscc-tier-1 { width: 145px; }
-  .vscc .vscc-cascade-card.vscc-tier-2 { width: 112px; }
-  .vscc .vscc-cascade-card.vscc-tier-3 { width: 82px; }
-  .vscc .vscc-cascade-card.vscc-tier-sub { width: 44px; height: 28px; }
+  .vscc .vscc-top-tier-row { gap: 6px; }
+  /* On mobile, single card centered */
+  .vscc .vscc-cascade-card.vscc-tier-single { max-width: 290px; }
+  /* tier-3 = biggest, tier-2 = medium, tier-1 = smallest */
+  .vscc .vscc-cascade-card.vscc-tier-3 { max-width: 44%; }
+  .vscc .vscc-cascade-card.vscc-tier-2 { max-width: 36%; }
+  .vscc .vscc-cascade-card.vscc-tier-1 { max-width: 28%; }
+  .vscc .vscc-cascade-card.vscc-tier-sub { width: 58px; height: 36.5px; }
 }
 </style>
 
@@ -891,7 +909,7 @@
     var subTierGrid = document.getElementById('vsccSubTierGrid');
     {% assign custom_card_img = 'official-vs-card-front.jpg' | asset_url %}
     {% if section.settings.card_image != blank %}
-      {% assign custom_card_img = section.settings.card_image | image_url: width: 1000 %}
+      {% assign custom_card_img = section.settings.card_image | image_url: width: 2000 %}
     {% endif %}
     var cardImgUrl = "{{ custom_card_img }}";
 
@@ -900,49 +918,47 @@
       subTierGrid.innerHTML = '';
 
       if (total === 1) {
+        // Single card — full size, no badge
         var c1 = document.createElement('div');
         c1.className = 'vscc-cascade-card vscc-tier-single';
-        c1.innerHTML = '<img src="' + cardImgUrl + '" alt="Vidhyut Saathi Card 1">';
-        c1.title = 'Card #1';
+        c1.innerHTML = '<img src="' + cardImgUrl + '" alt="Vidhyut Saathi Card" loading="eager">';
         topTierRow.appendChild(c1);
+
       } else if (total === 2) {
+        // 2 cards: Card 2 (bigger/left) → Card 1 (smaller/right) — order: 2>1
+        var c2 = document.createElement('div');
+        c2.className = 'vscc-cascade-card vscc-tier-3'; /* tier-3 = biggest */
+        c2.innerHTML = '<img src="' + cardImgUrl + '" alt="Vidhyut Saathi Card" loading="eager">';
+        topTierRow.appendChild(c2);
+
         var c1 = document.createElement('div');
-        c1.className = 'vscc-cascade-card vscc-tier-1';
-        c1.innerHTML = '<img src="' + cardImgUrl + '" alt="Vidhyut Saathi Card 1">';
-        c1.title = 'Card #1';
+        c1.className = 'vscc-cascade-card vscc-tier-2'; /* tier-2 = medium */
+        c1.innerHTML = '<img src="' + cardImgUrl + '" alt="Vidhyut Saathi Card" loading="eager">';
         topTierRow.appendChild(c1);
 
-        var c2 = document.createElement('div');
-        c2.className = 'vscc-cascade-card vscc-tier-2';
-        c2.innerHTML = '<img src="' + cardImgUrl + '" alt="Vidhyut Saathi Card 2">';
-        c2.title = 'Card #2';
-        topTierRow.appendChild(c2);
       } else {
-        // total >= 3
-        var c1 = document.createElement('div');
-        c1.className = 'vscc-cascade-card vscc-tier-1';
-        c1.innerHTML = '<img src="' + cardImgUrl + '" alt="Vidhyut Saathi Card 1">';
-        c1.title = 'Card #1';
-        topTierRow.appendChild(c1);
+        // total >= 3: Card 3 (biggest/left), Card 2 (medium), Card 1 (smallest/right) — order: 3>2>1
+        var c3 = document.createElement('div');
+        c3.className = 'vscc-cascade-card vscc-tier-3'; /* biggest */
+        c3.innerHTML = '<img src="' + cardImgUrl + '" alt="Vidhyut Saathi Card" loading="eager">';
+        topTierRow.appendChild(c3);
 
         var c2 = document.createElement('div');
-        c2.className = 'vscc-cascade-card vscc-tier-2';
-        c2.innerHTML = '<img src="' + cardImgUrl + '" alt="Vidhyut Saathi Card 2">';
-        c2.title = 'Card #2';
+        c2.className = 'vscc-cascade-card vscc-tier-2'; /* medium */
+        c2.innerHTML = '<img src="' + cardImgUrl + '" alt="Vidhyut Saathi Card" loading="eager">';
         topTierRow.appendChild(c2);
 
-        var c3 = document.createElement('div');
-        c3.className = 'vscc-cascade-card vscc-tier-3';
-        c3.innerHTML = '<img src="' + cardImgUrl + '" alt="Vidhyut Saathi Card 3">';
-        c3.title = 'Card #3';
-        topTierRow.appendChild(c3);
+        var c1 = document.createElement('div');
+        c1.className = 'vscc-cascade-card vscc-tier-1'; /* smallest */
+        c1.innerHTML = '<img src="' + cardImgUrl + '" alt="Vidhyut Saathi Card" loading="eager">';
+        topTierRow.appendChild(c1);
 
         // Subordinate cards (4 to total)
         var capped = Math.min(total, 35);
         for (var i = 3; i < capped; i++) {
           var sub = document.createElement('div');
           sub.className = 'vscc-cascade-card vscc-tier-sub';
-          sub.innerHTML = '<img src="' + cardImgUrl + '" alt="Vidhyut Saathi Card ' + (i + 1) + '">';
+          sub.innerHTML = '<img src="' + cardImgUrl + '" alt="Vidhyut Saathi Card ' + (i + 1) + '" loading="lazy">';
           sub.title = 'Card #' + (i + 1);
           subTierGrid.appendChild(sub);
         }
