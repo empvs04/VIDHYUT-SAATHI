@@ -90,7 +90,8 @@
     /* Left column fixed minimum so it NEVER shrinks */
     grid-template-columns: minmax(380px, 1.05fr) minmax(0, 1fr);
     gap: 28px;
-    align-items: start;
+    /* stretch = both columns same height always */
+    align-items: stretch;
   }
 }
 
@@ -104,6 +105,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  height: 100%; /* fills full grid row height */
 }
 
 .vscc .field {
@@ -322,6 +324,7 @@
   /* Prevent this column from expanding and squashing left column */
   min-width: 0;
   overflow: hidden;
+  height: 100%; /* fills full grid row height */
 }
 
 .vscc .res-label {
@@ -420,7 +423,8 @@
 }
 
 /* ===== CARD TIER SIZES: 3 (biggest/left) > 2 (medium) > 1 (smallest/right) =====
-   No borders, no badges. Pure image fills edge-to-edge. Shadow only. */
+   No borders, no badges. Pure image fills edge-to-edge. Shadow only.
+   Flex ratios: tier-3 = 5, tier-2 = 3.5, tier-1 = 2  → ~47% : ~33% : ~20% */
 
 /* Single card (total=1) */
 .vscc .vscc-cascade-card.vscc-tier-single {
@@ -435,11 +439,10 @@
   box-shadow: 0 30px 65px rgba(0, 0, 0, 0.62), 0 0 40px rgba(255, 180, 0, 0.45);
 }
 
-/* tier-3 = BIGGEST card (Card 3, shown leftmost/tallest) */
+/* tier-3 = BIGGEST (~47% of row) */
 .vscc .vscc-cascade-card.vscc-tier-3 {
-  flex: 1 1 0;
+  flex: 5 1 0;
   min-width: 0;
-  max-width: 44%;
   border-radius: 16px;
   border: none;
   box-shadow: 0 20px 48px rgba(0, 0, 0, 0.48), 0 0 22px rgba(236, 92, 10, 0.30);
@@ -450,12 +453,11 @@
   z-index: 5;
 }
 
-/* tier-2 = MEDIUM card (Card 2, center) */
+/* tier-2 = MEDIUM (~33% of row) */
 .vscc .vscc-cascade-card.vscc-tier-2 {
-  flex: 1 1 0;
+  flex: 3.5 1 0;
   min-width: 0;
-  max-width: 36%;
-  border-radius: 14px;
+  border-radius: 13px;
   border: none;
   box-shadow: 0 16px 38px rgba(0, 0, 0, 0.42), 0 0 16px rgba(0, 123, 62, 0.22);
 }
@@ -465,12 +467,11 @@
   z-index: 5;
 }
 
-/* tier-1 = SMALLEST card (Card 1, rightmost) */
+/* tier-1 = SMALLEST (~20% of row) */
 .vscc .vscc-cascade-card.vscc-tier-1 {
-  flex: 1 1 0;
+  flex: 2 1 0;
   min-width: 0;
-  max-width: 28%;
-  border-radius: 12px;
+  border-radius: 10px;
   border: none;
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.36);
 }
