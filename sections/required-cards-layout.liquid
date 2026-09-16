@@ -87,9 +87,9 @@
 
 @media(min-width: 900px) {
   .vscc .calc-outer-box {
-    /* Left column fixed minimum so it NEVER shrinks */
-    grid-template-columns: minmax(380px, 1.05fr) minmax(0, 1fr);
-    gap: 28px;
+    /* Left col locked, right col gets more space for readable cards */
+    grid-template-columns: minmax(340px, 0.9fr) minmax(360px, 1.1fr);
+    gap: 24px;
     /* stretch = both columns same height always */
     align-items: stretch;
   }
@@ -385,11 +385,8 @@
   background: transparent;
   display: inline-block;
   cursor: pointer;
-  flex-shrink: 0;
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: high-quality;
-  /* no border here — tier classes handle their own borders */
+  /* flex-shrink allowed so flex ratios work properly */
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease;
   border: none !important;
 }
 
@@ -399,10 +396,10 @@
   object-fit: cover;
   object-position: center;
   display: block;
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: high-quality;
-  filter: contrast(1.15) brightness(1.06) saturate(1.18) drop-shadow(0 0 0px transparent);
-  will-change: transform;
+  /* Valid image-rendering values only */
+  image-rendering: auto;
+  /* Boost contrast + saturation for sharper perceived quality */
+  filter: contrast(1.18) brightness(1.05) saturate(1.22);
 }
 
 .vscc .vscc-card-badge-num {
@@ -423,62 +420,62 @@
 }
 
 /* ===== CARD TIER SIZES: 3 (biggest/left) > 2 (medium) > 1 (smallest/right) =====
-   No borders, no badges. Pure image fills edge-to-edge. Shadow only.
-   Flex ratios: tier-3 = 5, tier-2 = 3.5, tier-1 = 2  → ~47% : ~33% : ~20% */
+   Ratios 5:4:3 → ~42% : ~33% : ~25%
+   Min-widths ensure all 3 cards stay readable regardless of column size. */
 
-/* Single card (total=1) */
+/* Single card (total=1) - full showcase width */
 .vscc .vscc-cascade-card.vscc-tier-single {
   width: 100%;
-  max-width: 360px;
+  max-width: 380px;
   border-radius: 18px;
   border: none;
-  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.50), 0 0 30px rgba(236, 92, 10, 0.35);
+  box-shadow: 0 22px 55px rgba(0, 0, 0, 0.52), 0 0 32px rgba(236, 92, 10, 0.36);
 }
 .vscc .vscc-cascade-card.vscc-tier-single:hover {
-  transform: translateY(-7px) scale(1.04);
-  box-shadow: 0 30px 65px rgba(0, 0, 0, 0.62), 0 0 40px rgba(255, 180, 0, 0.45);
+  transform: translateY(-8px) scale(1.04);
+  box-shadow: 0 32px 68px rgba(0, 0, 0, 0.65), 0 0 44px rgba(255, 180, 0, 0.48);
 }
 
-/* tier-3 = BIGGEST (~47% of row) */
+/* tier-3 = BIGGEST (~42% of row, min 155px) */
 .vscc .vscc-cascade-card.vscc-tier-3 {
   flex: 5 1 0;
-  min-width: 0;
+  min-width: 155px;
   border-radius: 16px;
   border: none;
-  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.48), 0 0 22px rgba(236, 92, 10, 0.30);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.50), 0 0 24px rgba(236, 92, 10, 0.32);
 }
 .vscc .vscc-cascade-card.vscc-tier-3:hover {
-  transform: translateY(-8px) scale(1.04);
-  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.58), 0 0 30px rgba(255, 180, 0, 0.42);
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 28px 62px rgba(0, 0, 0, 0.60), 0 0 34px rgba(255, 180, 0, 0.44);
   z-index: 5;
 }
 
-/* tier-2 = MEDIUM (~33% of row) */
+/* tier-2 = MEDIUM (~33% of row, min 120px) */
 .vscc .vscc-cascade-card.vscc-tier-2 {
-  flex: 3.5 1 0;
-  min-width: 0;
+  flex: 4 1 0;
+  min-width: 120px;
   border-radius: 13px;
   border: none;
-  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.42), 0 0 16px rgba(0, 123, 62, 0.22);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.44), 0 0 18px rgba(0, 123, 62, 0.24);
 }
 .vscc .vscc-cascade-card.vscc-tier-2:hover {
-  transform: translateY(-7px) scale(1.05);
-  box-shadow: 0 22px 48px rgba(0, 0, 0, 0.52), 0 0 24px rgba(255, 180, 0, 0.38);
-  z-index: 5;
+  transform: translateY(-8px) scale(1.12);
+  box-shadow: 0 24px 52px rgba(0, 0, 0, 0.55), 0 0 28px rgba(255, 180, 0, 0.40);
+  z-index: 6;
 }
 
-/* tier-1 = SMALLEST (~20% of row) */
+/* tier-1 = SMALLEST (~25% of row, min 90px) - hover zooms large for clarity */
 .vscc .vscc-cascade-card.vscc-tier-1 {
-  flex: 2 1 0;
-  min-width: 0;
+  flex: 3 1 0;
+  min-width: 90px;
   border-radius: 10px;
   border: none;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.36);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.38);
 }
 .vscc .vscc-cascade-card.vscc-tier-1:hover {
-  transform: translateY(-6px) scale(1.06);
-  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.46);
-  z-index: 5;
+  transform: translateY(-10px) scale(1.45);
+  box-shadow: 0 22px 46px rgba(0, 0, 0, 0.55), 0 0 22px rgba(255, 180, 0, 0.42);
+  z-index: 10;
 }
 
 /* Subordinate Grid for 4+ Cards */
