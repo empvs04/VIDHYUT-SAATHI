@@ -368,13 +368,13 @@
 
   .vscc .calc-outer-box {
     display: grid !important;
-    grid-template-columns: minmax(320px, 1.04fr) minmax(320px, 0.96fr) !important;
+    grid-template-columns: 1fr 1fr !important;
     gap: 24px !important;
     background: transparent !important;
     border: none !important;
     box-shadow: none !important;
     padding: 0 !important;
-    max-width: 1080px !important;
+    max-width: 1100px !important;
     margin: 0 auto !important;
     align-items: stretch !important;
   }
@@ -519,8 +519,9 @@
   }
 
   .vscc .c-output-card .vscc-cascade-card.vscc-tier-sub {
-    width: 64px !important;
-    height: 40px !important;
+    width: 68px !important;
+    height: 44px !important;
+    border: none !important;
   }
 
   .vscc .c-output-card .savings-box {
@@ -1181,23 +1182,32 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   max-width: 500px;
   width: 100%;
-  margin: 0 auto;
+  margin: 10px auto 0 auto;
 }
 
 .vscc .vscc-cascade-card.vscc-tier-sub {
-  width: 72px;
-  height: 45.4px;
-  border-radius: 8px;
-  border: 2px solid rgba(255, 204, 0, 0.9);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+  width: 68px;
+  height: 44px;
+  aspect-ratio: 1024 / 662;
+  border-radius: 6px;
+  border: none !important;
+  background: transparent;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.22);
+  transform: translateZ(0);
+}
+.vscc .vscc-cascade-card.vscc-tier-sub img {
+  border-radius: 6px;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: auto;
+  filter: contrast(1.06) brightness(1.02);
 }
 .vscc .vscc-cascade-card.vscc-tier-sub:hover {
-  transform: translateY(-4px) scale(1.28);
-  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.52), 0 0 14px rgba(236, 92, 10, 0.45);
-  z-index: 6;
+  transform: translateY(-4px) scale(1.45);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.40);
+  z-index: 15;
 }
 
 /* ---- SECTION 3 REQUIREMENT CHART TABLE (EXACT MATCH FOR USER MOBILE PHOTO) ---- */
@@ -2009,7 +2019,7 @@
   .vscc .vscc-cascade-card.vscc-tier-3 { max-width: 44% !important; }
   .vscc .vscc-cascade-card.vscc-tier-2 { max-width: 36% !important; }
   .vscc .vscc-cascade-card.vscc-tier-1 { max-width: 28% !important; }
-  .vscc .vscc-cascade-card.vscc-tier-sub { width: 58px !important; height: 36.5px !important; }
+  .vscc .vscc-cascade-card.vscc-tier-sub { width: 58px !important; height: 37.5px !important; border: none !important; }
 
   /* modal mobile friendly */
   .vscc .vscc-modal {
@@ -2491,11 +2501,11 @@
           <div class="field">
             <div class="field-label">
               <span>⚙️ CONNECTED LOAD</span>
-              <span class="field-val" id="vscc-kwVal">10 KW</span>
+              <span class="field-val" id="vscc-kwVal">3 KW</span>
             </div>
-            <input type="range" id="vscc-kwSlider" min="1" max="200" value="10" step="1">
+            <input type="range" id="vscc-kwSlider" min="1" max="200" value="3" step="1">
             <div class="field-input-box">
-              <input type="number" inputmode="numeric" class="num-input" id="vscc-kwNumber" value="10" min="1" max="2000" placeholder="Enter KW load">
+              <input type="number" inputmode="numeric" class="num-input" id="vscc-kwNumber" value="3" min="1" max="2000" placeholder="Enter KW load">
             </div>
           </div>
 
