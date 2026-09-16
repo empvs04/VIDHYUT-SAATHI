@@ -3434,9 +3434,9 @@
 
       <!-- Lucrative Center CTA -->
       <div class="company-cta-group-center">
-        <a href="/pages/b2c" class="company-btn-primary">
+        <a href="javascript:void(0)" onclick="openVsSavingsModal(event)" class="company-btn-primary" style="cursor: pointer;">
           <span>📊 Calculate Your Savings</span>
-          <span style="font-size: 1.2rem; margin-left: 4px;">→</span>
+          <span style="font-size: 1.2rem; margin-left: 4px;">⚡</span>
         </a>
       </div>
 
@@ -4118,9 +4118,301 @@
   <!-- SECTION 11: QUALITIES THAT WE ARE PROUD OF (GOLDEN SEALS SHOWCASE) -->
   {% render 'qualities-we-are-proud-of' %}
 
+  <!-- =========================================================================
+       POPUP MODAL: LIVE VIDHYUT SAATHI SAVINGS & CARD CALCULATOR
+       ========================================================================= -->
+  <div id="vsSavingsModalOverlay" style="display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); z-index: 999999; align-items: center; justify-content: center; padding: 16px; box-sizing: border-box; overflow-y: auto;">
+    
+    <div id="vsSavingsModalBox" style="width: 100%; max-width: 780px; background: #ffffff; border-radius: 24px; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4); border: 2px solid #ec5c0a; overflow: hidden; position: relative; max-height: 92vh; display: flex; flex-direction: column; font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif; animation: vsModalScaleIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);">
+      
+      <!-- Modal Header -->
+      <div style="background: linear-gradient(135deg, #075985 0%, #0284c7 50%, #ec5c0a 100%); color: #ffffff; padding: 20px 24px; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: center; font-size: 22px; border: 1px solid rgba(255, 255, 255, 0.3);">
+            ⚡
+          </div>
+          <div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <h3 style="margin: 0; font-size: 19px; font-weight: 800; color: #ffffff; font-family: 'Baloo 2', sans-serif;">Electricity Bill Savings Calculator</h3>
+              <span style="background: #16a34a; color: #ffffff; font-size: 10px; font-weight: 800; padding: 2px 8px; border-radius: 20px; text-transform: uppercase;">Live Engine</span>
+            </div>
+            <p style="margin: 3px 0 0 0; font-size: 12.5px; opacity: 0.92; color: #ffffff;">Calculate your monthly power reduction &amp; recommended Vidhyut Saathi cards</p>
+          </div>
+        </div>
+
+        <button type="button" onclick="closeVsSavingsModal()" style="background: rgba(255, 255, 255, 0.2); border: none; width: 34px; height: 34px; border-radius: 50%; color: #ffffff; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s ease;">
+          ✕
+        </button>
+      </div>
+
+      <!-- Modal Body -->
+      <div style="padding: 22px 24px; overflow-y: auto; display: flex; flex-direction: column; gap: 20px;">
+        
+        <!-- Presets Bar -->
+        <div>
+          <div style="font-size: 11px; font-weight: 800; text-transform: uppercase; color: #64748b; margin-bottom: 8px; letter-spacing: 0.5px;">
+            ⚡ Quick Load Presets:
+          </div>
+          <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+            <button type="button" onclick="setVsPreset(3000, 2, 'RESIDENTIAL', false)" class="vs-calc-preset-btn" style="padding: 6px 12px; border-radius: 8px; border: 1px solid #cbd5e1; background: #f8fafc; color: #334155; font-size: 12px; font-weight: 700; cursor: pointer;">🏠 1-2 BHK (₹3,000)</button>
+            <button type="button" onclick="setVsPreset(8000, 5, 'RESIDENTIAL', false)" class="vs-calc-preset-btn" style="padding: 6px 12px; border-radius: 8px; border: 1px solid #cbd5e1; background: #f8fafc; color: #334155; font-size: 12px; font-weight: 700; cursor: pointer;">🏡 3-4 BHK / AC (₹8,000)</button>
+            <button type="button" onclick="setVsPreset(15000, 8, 'COMMERCIAL', false)" class="vs-calc-preset-btn" style="padding: 6px 12px; border-radius: 8px; border: 1px solid #cbd5e1; background: #f8fafc; color: #334155; font-size: 12px; font-weight: 700; cursor: pointer;">🏪 Shop / Showroom (₹15,000)</button>
+            <button type="button" onclick="setVsPreset(35000, 15, 'COMMERCIAL', true)" class="vs-calc-preset-btn" style="padding: 6px 12px; border-radius: 8px; border: 1px solid #cbd5e1; background: #f8fafc; color: #334155; font-size: 12px; font-weight: 700; cursor: pointer;">🏨 Restaurant / 3-Phase (₹35,000)</button>
+            <button type="button" onclick="setVsPreset(80000, 30, 'INDUSTRIAL', true)" class="vs-calc-preset-btn" style="padding: 6px 12px; border-radius: 8px; border: 1px solid #cbd5e1; background: #f8fafc; color: #334155; font-size: 12px; font-weight: 700; cursor: pointer;">🏭 Factory / Unit (₹80,000)</button>
+          </div>
+        </div>
+
+        <!-- Sliders & Inputs Box -->
+        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 18px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px;">
+          
+          <!-- Slider 1: Monthly Bill -->
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <span style="font-size: 12.5px; font-weight: 700; color: #0f172a;">Average Monthly Bill:</span>
+              <span id="vsBillDisplay" style="font-size: 15px; font-weight: 900; color: #ec5c0a; font-family: 'Baloo 2', sans-serif;">₹5,000</span>
+            </div>
+            <input type="range" id="vsBillSlider" min="1000" max="100000" step="500" value="5000" oninput="updateVsCalculator()" style="width: 100%; accent-color: #ec5c0a; cursor: pointer;">
+            <div style="display: flex; justify-content: space-between; font-size: 10.5px; color: #94a3b8; margin-top: 2px;">
+              <span>₹1,000</span>
+              <span>₹50,000</span>
+              <span>₹1,00,000+</span>
+            </div>
+          </div>
+
+          <!-- Slider 2: Connected Load -->
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <span style="font-size: 12.5px; font-weight: 700; color: #0f172a;">Connected Load (kW):</span>
+              <span id="vsLoadDisplay" style="font-size: 15px; font-weight: 900; color: #0284c7; font-family: 'Baloo 2', sans-serif;">3 kW</span>
+            </div>
+            <input type="range" id="vsLoadSlider" min="1" max="50" step="1" value="3" oninput="updateVsCalculator()" style="width: 100%; accent-color: #0284c7; cursor: pointer;">
+            <div style="display: flex; justify-content: space-between; font-size: 10.5px; color: #94a3b8; margin-top: 2px;">
+              <span>1 kW</span>
+              <span>25 kW</span>
+              <span>50 kW</span>
+            </div>
+          </div>
+
+          <!-- Category Toggle -->
+          <div>
+            <span style="font-size: 12px; font-weight: 700; color: #0f172a; display: block; margin-bottom: 6px;">Connection Category:</span>
+            <div style="display: flex; gap: 4px;">
+              <button type="button" id="vsCatRes" onclick="setVsCategory('RESIDENTIAL')" style="flex: 1; padding: 7px 4px; border-radius: 6px; border: 1.5px solid #ec5c0a; background: #ec5c0a; color: #ffffff; font-size: 11px; font-weight: 800; cursor: pointer;">Home</button>
+              <button type="button" id="vsCatCom" onclick="setVsCategory('COMMERCIAL')" style="flex: 1; padding: 7px 4px; border-radius: 6px; border: 1px solid #cbd5e1; background: #ffffff; color: #475569; font-size: 11px; font-weight: 800; cursor: pointer;">Shop/Office</button>
+              <button type="button" id="vsCatInd" onclick="setVsCategory('INDUSTRIAL')" style="flex: 1; padding: 7px 4px; border-radius: 6px; border: 1px solid #cbd5e1; background: #ffffff; color: #475569; font-size: 11px; font-weight: 800; cursor: pointer;">Industry</button>
+            </div>
+          </div>
+
+          <!-- Phase Toggle -->
+          <div>
+            <span style="font-size: 12px; font-weight: 700; color: #0f172a; display: block; margin-bottom: 6px;">Meter Phase:</span>
+            <div style="display: flex; gap: 4px;">
+              <button type="button" id="vsPhase1" onclick="setVsPhase(false)" style="flex: 1; padding: 7px; border-radius: 6px; border: 1.5px solid #0284c7; background: #0284c7; color: #ffffff; font-size: 11px; font-weight: 800; cursor: pointer;">Single Phase</button>
+              <button type="button" id="vsPhase3" onclick="setVsPhase(true)" style="flex: 1; padding: 7px; border-radius: 6px; border: 1px solid #cbd5e1; background: #ffffff; color: #475569; font-size: 11px; font-weight: 800; cursor: pointer;">3-Phase (+1 Card)</button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Calculated Live Results Grid -->
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;">
+          
+          <!-- Card Count -->
+          <div style="background: #f0fdf4; border: 1.5px solid #bbf7d0; border-radius: 14px; padding: 14px; text-align: center;">
+            <div style="font-size: 10.5px; font-weight: 800; color: #16a34a; text-transform: uppercase;">Recommended</div>
+            <div id="vsResultCards" style="font-size: 24px; font-weight: 900; color: #15803d; font-family: 'Baloo 2', sans-serif; line-height: 1.1; margin: 4px 0;">1 Card</div>
+            <div style="font-size: 11px; color: #16a34a; font-weight: 600;">Optimal Protection</div>
+          </div>
+
+          <!-- Monthly Savings -->
+          <div style="background: #f0f9ff; border: 1.5px solid #bae6fd; border-radius: 14px; padding: 14px; text-align: center;">
+            <div style="font-size: 10.5px; font-weight: 800; color: #0284c7; text-transform: uppercase;">Monthly Savings</div>
+            <div id="vsResultMonthly" style="font-size: 24px; font-weight: 900; color: #0369a1; font-family: 'Baloo 2', sans-serif; line-height: 1.1; margin: 4px 0;">₹1,100</div>
+            <div id="vsResultPercent" style="font-size: 11px; color: #0284c7; font-weight: 600;">~22% Bill Cut</div>
+          </div>
+
+          <!-- Annual Savings -->
+          <div style="background: #fff7ed; border: 1.5px solid #fed7aa; border-radius: 14px; padding: 14px; text-align: center;">
+            <div style="font-size: 10.5px; font-weight: 800; color: #ea580c; text-transform: uppercase;">1-Year Savings</div>
+            <div id="vsResultAnnual" style="font-size: 24px; font-weight: 900; color: #c2410c; font-family: 'Baloo 2', sans-serif; line-height: 1.1; margin: 4px 0;">₹13,200</div>
+            <div id="vsResult5Year" style="font-size: 11px; color: #ea580c; font-weight: 600;">5-Yr: ₹66,000</div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Modal Footer CTA -->
+      <div style="padding: 16px 24px; border-top: 1px solid #f1f5f9; background: #ffffff; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; flex-shrink: 0;">
+        <button type="button" onclick="closeVsSavingsModal()" style="background: #f1f5f9; border: 1px solid #cbd5e1; color: #475569; padding: 10px 18px; border-radius: 10px; font-weight: 700; font-size: 13px; cursor: pointer;">
+          Close
+        </button>
+
+        <a id="vsWhatsappCta" href="https://wa.me/919999999999" target="_blank" style="background: linear-gradient(135deg, #16a34a 0%, #15803d 100%); color: #ffffff; text-decoration: none; padding: 11px 22px; border-radius: 10px; font-weight: 800; font-size: 13.5px; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 12px rgba(22, 163, 74, 0.35);">
+          <span>💬 Book Cards On WhatsApp</span>
+          <span>→</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <style>
+    @keyframes vsModalScaleIn {
+      from { transform: scale(0.92) translateY(20px); opacity: 0; }
+      to { transform: scale(1) translateY(0); opacity: 1; }
+    }
+    @media (max-width: 600px) {
+      #vsSavingsModalBox > div:nth-child(2) > div:nth-child(2) {
+        grid-template-columns: 1fr !important;
+      }
+      #vsSavingsModalBox > div:nth-child(2) > div:nth-child(3) {
+        grid-template-columns: 1fr !important;
+      }
+    }
+  </style>
+
 </div>
 
 <script>
+  // =========================================================================
+  // SAVINGS CALCULATOR MODAL ENGINE
+  // =========================================================================
+  var vsCurrentCategory = 'RESIDENTIAL';
+  var vsCurrentThreePhase = false;
+
+  function openVsSavingsModal(e) {
+    if (e && e.preventDefault) e.preventDefault();
+    var overlay = document.getElementById('vsSavingsModalOverlay');
+    if (overlay) {
+      overlay.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+      updateVsCalculator();
+    }
+  }
+
+  function closeVsSavingsModal() {
+    var overlay = document.getElementById('vsSavingsModalOverlay');
+    if (overlay) {
+      overlay.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+  }
+
+  // Close on backdrop click
+  document.addEventListener('click', function(e) {
+    var overlay = document.getElementById('vsSavingsModalOverlay');
+    if (overlay && e.target === overlay) {
+      closeVsSavingsModal();
+    }
+  });
+
+  function setVsPreset(bill, load, cat, phase) {
+    var billSlider = document.getElementById('vsBillSlider');
+    var loadSlider = document.getElementById('vsLoadSlider');
+    if (billSlider) billSlider.value = bill;
+    if (loadSlider) loadSlider.value = load;
+    setVsCategory(cat);
+    setVsPhase(phase);
+  }
+
+  function setVsCategory(cat) {
+    vsCurrentCategory = cat;
+    ['RESIDENTIAL', 'COMMERCIAL', 'INDUSTRIAL'].forEach(function(c) {
+      var btn = document.getElementById('vsCat' + c.substring(0, 3));
+      if (btn) {
+        if (c === cat) {
+          btn.style.border = '1.5px solid #ec5c0a';
+          btn.style.background = '#ec5c0a';
+          btn.style.color = '#ffffff';
+        } else {
+          btn.style.border = '1px solid #cbd5e1';
+          btn.style.background = '#ffffff';
+          btn.style.color = '#475569';
+        }
+      }
+    });
+    updateVsCalculator();
+  }
+
+  function setVsPhase(isThree) {
+    vsCurrentThreePhase = isThree;
+    var p1 = document.getElementById('vsPhase1');
+    var p3 = document.getElementById('vsPhase3');
+    if (p1 && p3) {
+      if (!isThree) {
+        p1.style.border = '1.5px solid #0284c7';
+        p1.style.background = '#0284c7';
+        p1.style.color = '#ffffff';
+        p3.style.border = '1px solid #cbd5e1';
+        p3.style.background = '#ffffff';
+        p3.style.color = '#475569';
+      } else {
+        p3.style.border = '1.5px solid #0284c7';
+        p3.style.background = '#0284c7';
+        p3.style.color = '#ffffff';
+        p1.style.border = '1px solid #cbd5e1';
+        p1.style.background = '#ffffff';
+        p1.style.color = '#475569';
+      }
+    }
+    updateVsCalculator();
+  }
+
+  function updateVsCalculator() {
+    var billSlider = document.getElementById('vsBillSlider');
+    var loadSlider = document.getElementById('vsLoadSlider');
+    if (!billSlider || !loadSlider) return;
+
+    var bill = parseInt(billSlider.value, 10) || 5000;
+    var load = parseInt(loadSlider.value, 10) || 3;
+
+    var billDisplay = document.getElementById('vsBillDisplay');
+    var loadDisplay = document.getElementById('vsLoadDisplay');
+    if (billDisplay) billDisplay.textContent = '₹' + bill.toLocaleString('en-IN');
+    if (loadDisplay) loadDisplay.textContent = load + ' kW';
+
+    var rate = 0.22;
+    if (vsCurrentCategory === 'COMMERCIAL') rate = 0.24;
+    if (vsCurrentCategory === 'INDUSTRIAL') rate = 0.18;
+
+    var cardsFromLoad = Math.max(1, Math.ceil(load / 6));
+    var cardsFromBill = Math.max(1, Math.ceil(bill / 5000));
+    var totalCards = Math.max(cardsFromLoad, cardsFromBill);
+    if (vsCurrentThreePhase) totalCards += 1;
+
+    var monthlySavings = Math.round(bill * rate);
+    var annualSavings = monthlySavings * 12;
+    var fiveYearSavings = annualSavings * 5;
+
+    var resCards = document.getElementById('vsResultCards');
+    var resMonthly = document.getElementById('vsResultMonthly');
+    var resPercent = document.getElementById('vsResultPercent');
+    var resAnnual = document.getElementById('vsResultAnnual');
+    var res5Year = document.getElementById('vsResult5Year');
+
+    if (resCards) resCards.textContent = totalCards + (totalCards === 1 ? ' Card' : ' Cards');
+    if (resMonthly) resMonthly.textContent = '₹' + monthlySavings.toLocaleString('en-IN');
+    if (resPercent) resPercent.textContent = '~' + Math.round(rate * 100) + '% Bill Cut';
+    if (resAnnual) resAnnual.textContent = '₹' + annualSavings.toLocaleString('en-IN');
+    if (res5Year) res5Year.textContent = '5-Yr: ₹' + fiveYearSavings.toLocaleString('en-IN');
+
+    var waCta = document.getElementById('vsWhatsappCta');
+    if (waCta) {
+      var msg = encodeURIComponent(
+        'Hello Vidhyut Saathi Team! I calculated savings on your website:\n' +
+        '• Monthly Bill: ₹' + bill.toLocaleString('en-IN') + '\n' +
+        '• Connected Load: ' + load + ' kW\n' +
+        '• Category: ' + vsCurrentCategory + '\n' +
+        '• Phase: ' + (vsCurrentThreePhase ? '3-Phase' : 'Single Phase') + '\n' +
+        '• Recommended Cards: ' + totalCards + ' Cards\n' +
+        '• Estimated Monthly Savings: ₹' + monthlySavings.toLocaleString('en-IN') + '/mo\n\n' +
+        'Please guide me with the booking & installation!'
+      );
+      waCta.href = 'https://wa.me/919999999999?text=' + msg;
+    }
+  }
+
   document.addEventListener('DOMContentLoaded', function() {
     // =========================================================================
     // SECTION 8: INTERACTIVE MOUSE SPOTLIGHT AURA

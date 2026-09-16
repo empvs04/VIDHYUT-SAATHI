@@ -524,7 +524,8 @@
 
   .vscc .c-output-card .vscc-cascade-card.vscc-tier-sub {
     width: 68px !important;
-    height: 44px !important;
+    height: auto !important;
+    aspect-ratio: 1024 / 662 !important;
     border: none !important;
   }
 
@@ -1107,21 +1108,20 @@
   cursor: pointer;
   transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease;
   border-radius: 18px;
-  will-change: transform;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 .vscc .vscc-cascade-card img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
   display: block;
-  image-rendering: auto;
-  filter: none;
-  transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
-}
-.vscc .vscc-cascade-card:hover img {
-  transform: scale(1.06);
+  image-rendering: -webkit-optimize-contrast;
+  filter: none !important;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 /* ===== CARD TIER SIZES: 3 (biggest/left) > 2 (medium) > 1 (smallest/right) =====
@@ -1201,20 +1201,21 @@
 
 .vscc .vscc-cascade-card.vscc-tier-sub {
   width: 68px;
-  height: 44px;
+  height: auto;
   aspect-ratio: 1024 / 662;
   border-radius: 6px;
   border: none !important;
   background: transparent;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.22);
-  transform: translateZ(0);
   transition: transform 0.32s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.32s ease;
 }
 .vscc .vscc-cascade-card.vscc-tier-sub img {
   border-radius: 6px;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
   image-rendering: -webkit-optimize-contrast;
-  image-rendering: auto;
-  filter: contrast(1.06) brightness(1.02);
+  filter: none !important;
 }
 .vscc .vscc-cascade-card.vscc-tier-sub:hover {
   transform: scale(1.22);
@@ -2031,7 +2032,7 @@
   .vscc .vscc-cascade-card.vscc-tier-3 { max-width: 44% !important; }
   .vscc .vscc-cascade-card.vscc-tier-2 { max-width: 36% !important; }
   .vscc .vscc-cascade-card.vscc-tier-1 { max-width: 28% !important; }
-  .vscc .vscc-cascade-card.vscc-tier-sub { width: 58px !important; height: 37.5px !important; border: none !important; }
+  .vscc .vscc-cascade-card.vscc-tier-sub { width: 58px !important; height: auto !important; aspect-ratio: 1024 / 662 !important; border: none !important; }
 
   /* modal mobile friendly */
   .vscc .vscc-modal {
@@ -2875,11 +2876,34 @@
     /* Dynamic Cascading Stepped Cards Showcase */
     var topTierRow = document.getElementById('vsccTopTierRow');
     var subTierGrid = document.getElementById('vsccSubTierGrid');
-    {% assign custom_card_img = 'official-vs-card-front.jpg' | asset_url %}
     {% if section.settings.card_image != blank %}
-      {% assign custom_card_img = section.settings.card_image | image_url: width: 2000 %}
+      {% assign custom_card_img = section.settings.card_image | image_url: width: 1200 %}
+      {% capture custom_card_srcset %}
+        {{ section.settings.card_image | image_url: width: 300 }} 300w,
+        {{ section.settings.card_image | image_url: width: 600 }} 600w,
+        {{ section.settings.card_image | image_url: width: 900 }} 900w,
+        {{ section.settings.card_image | image_url: width: 1200 }} 1200w,
+        {{ section.settings.card_image | image_url: width: 2000 }} 2000w
+      {% endcapture %}
+    {% else %}
+      {% assign custom_card_img = 'official-vs-card-front.jpg' | asset_url %}
+      {% capture custom_card_srcset %}
+        {{ 'official-vs-card-front.jpg' | asset_img_url: '300x' }} 300w,
+        {{ 'official-vs-card-front.jpg' | asset_img_url: '600x' }} 600w,
+        {{ 'official-vs-card-front.jpg' | asset_img_url: '900x' }} 900w,
+        {{ 'official-vs-card-front.jpg' | asset_img_url: '1200x' }} 1200w,
+        {{ 'official-vs-card-front.jpg' | asset_url }} 2048w
+      {% endcapture %}
     {% endif %}
     var cardImgUrl = "{{ custom_card_img }}";
+    var cardImgSrcset = "{{ custom_card_srcset | strip_newlines | replace: '  ', ' ' | strip }}";
+
+    function buildCardImgHtml(sizes, isLazy, altSuffix) {
+      var alt = 'Vidhyut Saathi Electric Power Saving Card' + (altSuffix ? ' ' + altSuffix : '');
+      var loading = isLazy ? 'lazy' : 'eager';
+      var srcsetAttribute = (cardImgSrcset && cardImgSrcset.indexOf('w') > -1) ? ' srcset="' + cardImgSrcset + '" sizes="' + sizes + '"' : '';
+      return '<img src="' + cardImgUrl + '"' + srcsetAttribute + ' width="1024" height="662" alt="' + alt + '" loading="' + loading + '" decoding="async">';
+    }
 
     if (topTierRow && subTierGrid) {
       topTierRow.innerHTML = '';
@@ -2889,36 +2913,36 @@
         // Single card — full size, no badge
         var c1 = document.createElement('div');
         c1.className = 'vscc-cascade-card vscc-tier-single';
-        c1.innerHTML = '<img src="' + cardImgUrl + '" alt="Vidhyut Saathi Card" loading="eager">';
+        c1.innerHTML = buildCardImgHtml('(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 480px', false);
         topTierRow.appendChild(c1);
 
       } else if (total === 2) {
         // 2 cards: Card 2 (bigger/left) → Card 1 (smaller/right) — order: 2>1
         var c2 = document.createElement('div');
         c2.className = 'vscc-cascade-card vscc-tier-3'; /* tier-3 = biggest */
-        c2.innerHTML = '<img src="' + cardImgUrl + '" alt="Vidhyut Saathi Card" loading="eager">';
+        c2.innerHTML = buildCardImgHtml('(max-width: 640px) 45vw, (max-width: 1024px) 25vw, 240px', false, '#1');
         topTierRow.appendChild(c2);
 
         var c1 = document.createElement('div');
         c1.className = 'vscc-cascade-card vscc-tier-2'; /* tier-2 = medium */
-        c1.innerHTML = '<img src="' + cardImgUrl + '" alt="Vidhyut Saathi Card" loading="eager">';
+        c1.innerHTML = buildCardImgHtml('(max-width: 640px) 40vw, (max-width: 1024px) 20vw, 200px', false, '#2');
         topTierRow.appendChild(c1);
 
       } else {
         // total >= 3: Card 3 (biggest/left), Card 2 (medium), Card 1 (smallest/right) — order: 3>2>1
         var c3 = document.createElement('div');
         c3.className = 'vscc-cascade-card vscc-tier-3'; /* biggest */
-        c3.innerHTML = '<img src="' + cardImgUrl + '" alt="Vidhyut Saathi Card" loading="eager">';
+        c3.innerHTML = buildCardImgHtml('(max-width: 640px) 40vw, (max-width: 1024px) 25vw, 240px', false, '#1');
         topTierRow.appendChild(c3);
 
         var c2 = document.createElement('div');
         c2.className = 'vscc-cascade-card vscc-tier-2'; /* medium */
-        c2.innerHTML = '<img src="' + cardImgUrl + '" alt="Vidhyut Saathi Card" loading="eager">';
+        c2.innerHTML = buildCardImgHtml('(max-width: 640px) 35vw, (max-width: 1024px) 20vw, 200px', false, '#2');
         topTierRow.appendChild(c2);
 
         var c1 = document.createElement('div');
         c1.className = 'vscc-cascade-card vscc-tier-1'; /* smallest */
-        c1.innerHTML = '<img src="' + cardImgUrl + '" alt="Vidhyut Saathi Card" loading="eager">';
+        c1.innerHTML = buildCardImgHtml('(max-width: 640px) 30vw, (max-width: 1024px) 16vw, 160px', false, '#3');
         topTierRow.appendChild(c1);
 
         // Subordinate cards (4 to total)
@@ -2926,7 +2950,7 @@
         for (var i = 3; i < capped; i++) {
           var sub = document.createElement('div');
           sub.className = 'vscc-cascade-card vscc-tier-sub';
-          sub.innerHTML = '<img src="' + cardImgUrl + '" alt="Vidhyut Saathi Card ' + (i + 1) + '" loading="lazy">';
+          sub.innerHTML = buildCardImgHtml('(max-width: 640px) 70px, 90px', false, '#' + (i + 1));
           sub.title = 'Card #' + (i + 1);
           subTierGrid.appendChild(sub);
         }
