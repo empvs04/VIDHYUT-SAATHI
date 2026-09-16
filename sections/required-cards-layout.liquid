@@ -485,7 +485,7 @@
   }
 
   .vscc .c-output-card .vscc-top-tier-row {
-    gap: 12px !important;
+    gap: 10px !important;
     width: 100% !important;
     justify-content: center !important;
   }
@@ -496,20 +496,20 @@
   }
 
   .vscc .c-output-card .vscc-cascade-card.vscc-tier-3 {
-    flex: 5 1 0 !important;
-    min-width: 135px !important;
+    flex: 1.1 1 0 !important;
+    min-width: 115px !important;
     width: auto !important;
   }
 
   .vscc .c-output-card .vscc-cascade-card.vscc-tier-2 {
-    flex: 4 1 0 !important;
+    flex: 1.05 1 0 !important;
     min-width: 110px !important;
     width: auto !important;
   }
 
   .vscc .c-output-card .vscc-cascade-card.vscc-tier-1 {
-    flex: 3 1 0 !important;
-    min-width: 85px !important;
+    flex: 1 1 0 !important;
+    min-width: 105px !important;
     width: auto !important;
   }
 
@@ -1101,8 +1101,9 @@
   display: inline-block;
   cursor: pointer;
   transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease;
-  border-radius: 18px;
+  border-radius: 14px;
   will-change: transform;
+  transform: translateZ(0);
 }
 
 .vscc .vscc-cascade-card img {
@@ -1111,13 +1112,13 @@
   object-fit: cover;
   object-position: center;
   display: block;
+  image-rendering: -webkit-optimize-contrast;
   image-rendering: auto;
-  filter: none;
+  filter: contrast(1.04) brightness(1.02);
+  transform: translateZ(0);
 }
 
-/* ===== CARD TIER SIZES: 3 (biggest/left) > 2 (medium) > 1 (smallest/right) =====
-   Ratios 5:4:3 → ~42% : ~33% : ~25%
-   Min-widths ensure all cards stay readable regardless of column size. */
+/* ===== BALANCED 3-CARD SIZING: All 3 cards are large, prominent, and readable ===== */
 
 /* Single card (total=1) - full showcase width, prominently displayed */
 .vscc .vscc-cascade-card.vscc-tier-single {
@@ -1133,45 +1134,45 @@
   box-shadow: 0 24px 50px -4px rgba(10, 40, 25, 0.30), 0 6px 18px rgba(240, 99, 27, 0.25);
 }
 
-/* tier-3 = BIGGEST (~42% of row, min 135px) */
+/* tier-3 = Left card (large & sharp ~35% width) */
 .vscc .vscc-cascade-card.vscc-tier-3 {
-  flex: 5 1 0;
-  min-width: 135px;
-  border-radius: 16px;
-  border: none;
-  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.50), 0 0 24px rgba(236, 92, 10, 0.32);
+  flex: 1.1 1 0;
+  min-width: 115px;
+  border-radius: 14px;
+  border: 1px solid rgba(240, 99, 27, 0.20);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.28), 0 0 16px rgba(236, 92, 10, 0.18);
 }
 .vscc .vscc-cascade-card.vscc-tier-3:hover {
-  transform: translateY(-8px) scale(1.05);
-  box-shadow: 0 28px 62px rgba(0, 0, 0, 0.60), 0 0 34px rgba(255, 180, 0, 0.44);
-  z-index: 5;
+  transform: translateY(-8px) scale(1.28);
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.45), 0 0 28px rgba(255, 180, 0, 0.40);
+  z-index: 10;
 }
 
-/* tier-2 = MEDIUM (~33% of row, min 110px) */
+/* tier-2 = Middle card (large & sharp ~33% width) */
 .vscc .vscc-cascade-card.vscc-tier-2 {
-  flex: 4 1 0;
+  flex: 1.05 1 0;
   min-width: 110px;
   border-radius: 13px;
-  border: none;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.44), 0 0 18px rgba(0, 123, 62, 0.24);
+  border: 1px solid rgba(14, 107, 62, 0.20);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25), 0 0 14px rgba(0, 123, 62, 0.18);
 }
 .vscc .vscc-cascade-card.vscc-tier-2:hover {
-  transform: translateY(-8px) scale(1.12);
-  box-shadow: 0 24px 52px rgba(0, 0, 0, 0.55), 0 0 28px rgba(255, 180, 0, 0.40);
-  z-index: 6;
+  transform: translateY(-8px) scale(1.30);
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.45), 0 0 28px rgba(255, 180, 0, 0.40);
+  z-index: 10;
 }
 
-/* tier-1 = SMALLEST (~25% of row, min 85px) - hover zooms large for clarity */
+/* tier-1 = Right card (large & sharp ~32% width) - big and clear */
 .vscc .vscc-cascade-card.vscc-tier-1 {
-  flex: 3 1 0;
-  min-width: 85px;
-  border-radius: 10px;
-  border: none;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.38);
+  flex: 1 1 0;
+  min-width: 105px;
+  border-radius: 12px;
+  border: 1px solid rgba(240, 99, 27, 0.20);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
 }
 .vscc .vscc-cascade-card.vscc-tier-1:hover {
-  transform: translateY(-10px) scale(1.45);
-  box-shadow: 0 22px 46px rgba(0, 0, 0, 0.55), 0 0 22px rgba(255, 180, 0, 0.42);
+  transform: translateY(-8px) scale(1.35);
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.45), 0 0 28px rgba(255, 180, 0, 0.40);
   z-index: 10;
 }
 
