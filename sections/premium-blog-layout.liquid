@@ -231,23 +231,40 @@
     }
 
     .vsblog-hero-pills {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: flex-start;
-      gap: 8px 10px;
-      margin-top: 4px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      width: 100%;
+      max-width: 420px;
+      margin-top: 6px;
     }
 
     .vsblog-hero-pill {
       display: inline-flex;
       align-items: center;
-      gap: 7px;
-      font-size: 12.5px;
-      padding: 7px 14px;
+      justify-content: center;
+      gap: 6px;
+      font-size: 12px;
+      padding: 8px 10px;
       border-radius: 50px;
       white-space: nowrap;
+      text-align: center;
+      width: 100%;
+    }
+
+    .vsblog-hero-pill:nth-child(3) {
+      grid-column: 1 / -1;
+      width: fit-content;
+      margin: 0 auto;
+      padding: 8px 18px;
+    }
+
+    @media (max-width: 370px) {
+      .vsblog-hero-pill {
+        font-size: 11px;
+        padding: 7px 6px;
+        gap: 5px;
+      }
     }
 
     .vsblog-hero-illustration {
