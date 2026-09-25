@@ -1317,14 +1317,8 @@
           </div>
 
           <div class="vs-reader-hero-right">
-            <div class="vs-reader-hero-img-box" style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #007b3e 100%);">
-              <div style="padding: 30px; text-align: center; color: #ffffff; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; min-height: 220px;">
-                <div style="width: 64px; height: 64px; border-radius: 50%; background: rgba(0, 123, 62, 0.25); border: 2px solid #10b981; display: flex; align-items: center; justify-content: center; font-size: 26px; color: #10b981; margin-bottom: 14px; box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);">
-                  <i class="fa-solid fa-snowflake"></i>
-                </div>
-                <h4 style="margin: 0 0 6px 0; font-size: 18px; font-weight: 800; color: #ffffff;">AC vs Whole-Home Load</h4>
-                <p style="margin: 0; font-size: 13px; color: #cbd5e1; max-width: 280px; line-height: 1.5;">Smart energy diagnostics for residential & commercial setups</p>
-              </div>
+            <div class="vs-reader-hero-img-box">
+              <img id="vsmodal_article_img_1" src="{{ 'crisis_card_1_custom.jpg' | asset_url }}" alt="Think Your AC Is the Only Thing Increasing Your Electricity Expenses?" class="vs-reader-hero-img">
             </div>
           </div>
         </div>
@@ -1491,14 +1485,8 @@
           </div>
 
           <div class="vs-reader-hero-right">
-            <div class="vs-reader-hero-img-box" style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #007b3e 100%);">
-              <div style="padding: 30px; text-align: center; color: #ffffff; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; min-height: 220px;">
-                <div style="width: 64px; height: 64px; border-radius: 50%; background: rgba(0, 123, 62, 0.25); border: 2px solid #10b981; display: flex; align-items: center; justify-content: center; font-size: 26px; color: #10b981; margin-bottom: 14px; box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);">
-                  <i class="fa-solid fa-wave-square"></i>
-                </div>
-                <h4 style="margin: 0 0 6px 0; font-size: 18px; font-weight: 800; color: #ffffff;">Power Factor Diagnostics</h4>
-                <p style="margin: 0; font-size: 13px; color: #cbd5e1; max-width: 280px; line-height: 1.5;">Active vs Reactive Power Optimization</p>
-              </div>
+            <div class="vs-reader-hero-img-box">
+              <img id="vsmodal_article_img_2" src="{{ 'commercial-mcb-multi-card-showcase.jpg' | asset_url }}" alt="What Is Power Factor? The Hidden Factor Behind Electrical Efficiency ⚡" class="vs-reader-hero-img">
             </div>
           </div>
         </div>
@@ -1903,24 +1891,27 @@
     if (readTimeElem) readTimeElem.innerText = article.readTime;
     if (htmlElem) htmlElem.innerHTML = article.html;
     
-    // Top Featured Image handling
-    var customImg = document.getElementById('vsblog_featured_custom_img') || document.querySelector('.vsblog-feat-img img');
+    // Top Hero Image handling
     if (index === 0) {
-      if (customImg && customImg.src && customImg.src.indexOf('svg') === -1) {
+      var customImg = document.getElementById('vsblog_featured_custom_img') || document.querySelector('.vsblog-feat-img img');
+      if (customImg && customImg.src && customImg.src.indexOf('svg') === -1 && customImg.src.indexOf('data:') === -1) {
         if (topImg) topImg.src = customImg.src;
         if (topImgWrap) topImgWrap.style.display = 'flex';
       } else if (article.image) {
         if (topImg) topImg.src = article.image;
         if (topImgWrap) topImgWrap.style.display = 'flex';
       }
-    } else if (article.image) {
-      if (topImg && topImgWrap) {
-        topImg.src = article.image;
-        topImgWrap.style.display = 'block';
-      }
     } else {
-      if (topImgWrap) {
-        topImgWrap.style.display = 'none';
+      var targetModalImg = document.getElementById('vsmodal_article_img_' + index);
+      if (targetModalImg) {
+        var allGridCards = document.querySelectorAll('#vsblog_article_grid .vsblog-card, .vsblog-grid .vsblog-card');
+        var matchingCard = allGridCards[index - 1];
+        var cardImgElem = matchingCard ? matchingCard.querySelector('.vsblog-card-img img') : null;
+        if (cardImgElem && cardImgElem.src && cardImgElem.src.indexOf('svg') === -1 && cardImgElem.src.indexOf('data:') === -1) {
+          targetModalImg.src = cardImgElem.src;
+        } else if (article.image) {
+          targetModalImg.src = article.image;
+        }
       }
     }
     

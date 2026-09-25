@@ -3047,21 +3047,27 @@
     if (readTimeElem) readTimeElem.innerText = article.readTime;
     if (htmlElem) htmlElem.innerHTML = article.html;
     
-    // Top Featured Image handling
-    var customImg = document.getElementById('vsblog_featured_custom_img') || document.querySelector('.vsblog-feat-img img');
-    if (index === 0 && customImg && customImg.src && customImg.src.indexOf('svg') === -1) {
-      if (topImg && topImgWrap) {
-        topImg.src = customImg.src;
-        topImgWrap.style.display = 'block';
-      }
-    } else if (article.image) {
-      if (topImg && topImgWrap) {
-        topImg.src = article.image;
-        topImgWrap.style.display = 'block';
+    // Top Hero Image handling
+    if (index === 0) {
+      var customImg = document.getElementById('vsblog_featured_custom_img') || document.querySelector('.vsblog-feat-img img');
+      if (customImg && customImg.src && customImg.src.indexOf('svg') === -1 && customImg.src.indexOf('data:') === -1) {
+        if (topImg) topImg.src = customImg.src;
+        if (topImgWrap) topImgWrap.style.display = 'block';
+      } else if (article.image) {
+        if (topImg) topImg.src = article.image;
+        if (topImgWrap) topImgWrap.style.display = 'block';
       }
     } else {
-      if (topImgWrap) {
-        topImgWrap.style.display = 'none';
+      var targetModalImg = document.getElementById('vsmodal_article_img_' + index);
+      if (targetModalImg) {
+        var allGridCards = document.querySelectorAll('#vsblog_article_grid .vsblog-card, .vsblog-grid .vsblog-card');
+        var matchingCard = allGridCards[index - 1];
+        var cardImgElem = matchingCard ? matchingCard.querySelector('.vsblog-card-img img') : null;
+        if (cardImgElem && cardImgElem.src && cardImgElem.src.indexOf('svg') === -1 && cardImgElem.src.indexOf('data:') === -1) {
+          targetModalImg.src = cardImgElem.src;
+        } else if (article.image) {
+          targetModalImg.src = article.image;
+        }
       }
     }
     
