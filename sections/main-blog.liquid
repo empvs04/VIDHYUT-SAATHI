@@ -779,20 +779,6 @@
     width: 100%;
   }
 
-  .vsblog-card.vsblog-card-compact {
-    max-width: 86%;
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    justify-self: center;
-  }
-
-  @media (max-width: 639px) {
-    .vsblog-card.vsblog-card-compact {
-      max-width: 92%;
-    }
-  }
-
   .vsblog-card::before {
     content: '';
     position: absolute;
@@ -2185,7 +2171,7 @@
         <div class="vsblog-grid" id="vsblog_article_grid">
 
           <!-- Card 1 (Blog 2) -->
-          <div class="vsblog-card vsblog-card-compact" data-category="Energy Savings" data-title="Your AC Isn’t the Only Reason for Your High Electricity Bill ⚡">
+          <div class="vsblog-card" data-category="Energy Savings" data-title="Your AC Isn’t the Only Reason for Your High Electricity Bill ⚡">
             <div class="vsblog-card-img">
               {% if section.settings.card_1_image != blank %}
                 <img src="{{ section.settings.card_1_image | image_url: width: 600 }}" alt="AC Electricity Bill Tips" loading="lazy">
@@ -2213,7 +2199,7 @@
           </div>
 
           <!-- Card 2 (Blog 3) -->
-          <div class="vsblog-card vsblog-card-compact" data-category="Technology" data-title="What Is Power Factor? The Hidden Factor Behind Electrical Efficiency ⚡">
+          <div class="vsblog-card" data-category="Technology" data-title="What Is Power Factor? The Hidden Factor Behind Electrical Efficiency ⚡">
             <div class="vsblog-card-img">
               {% if section.settings.card_2_image != blank %}
                 <img src="{{ section.settings.card_2_image | image_url: width: 600 }}" alt="Power Factor Efficiency Guide" loading="lazy">
