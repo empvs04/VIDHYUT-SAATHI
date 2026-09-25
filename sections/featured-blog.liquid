@@ -67,9 +67,9 @@
 
   @media (min-width: 1040px) {
     .vsblog-feat-card { 
-      grid-template-columns: 1.15fr 1fr; 
+      grid-template-columns: 1fr 1fr; 
       border-radius: 22px; 
-      min-height: 370px;
+      min-height: 380px;
     }
   }
 
@@ -83,14 +83,14 @@
 
   .vsblog-feat-img {
     position: relative;
-    height: 220px;
-    min-height: 220px;
+    height: 240px;
+    min-height: 240px;
     overflow: hidden;
     background: #0f172a;
   }
 
   @media (min-width: 1040px) {
-    .vsblog-feat-img { height: 100%; min-height: 370px; }
+    .vsblog-feat-img { height: 100%; min-height: 380px; }
   }
 
   .vsblog-feat-img img {
@@ -101,7 +101,7 @@
   }
 
   .vsblog-feat-card:hover .vsblog-feat-img img {
-    transform: scale(1.05);
+    transform: scale(1.04);
   }
 
   .vsblog-feat-svg-placeholder {
@@ -113,50 +113,6 @@
     background: #0b1120;
   }
 
-  .vsblog-feat-badge {
-    position: absolute;
-    top: 14px;
-    left: 14px;
-    background: rgba(15, 23, 42, 0.75);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #ffffff;
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-    padding: 6px 14px;
-    border-radius: 50px;
-    z-index: 2;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  }
-
-  .vsblog-feat-badge i {
-    color: #ec5c0a;
-    font-size: 11px;
-  }
-
-  .vsblog-feat-readtime-badge {
-    position: absolute;
-    bottom: 14px;
-    right: 14px;
-    background: rgba(15, 23, 42, 0.75);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    color: #f1f5f9;
-    font-size: 11px;
-    font-weight: 500;
-    padding: 5px 12px;
-    border-radius: 50px;
-    z-index: 2;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-
   .vsblog-feat-content {
     padding: 24px;
     display: flex;
@@ -166,37 +122,16 @@
   }
 
   @media (min-width: 1040px) {
-    .vsblog-feat-content { padding: 36px; }
-  }
-
-  .vsblog-cat-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    color: #ea580c;
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.6px;
-    margin-bottom: 12px;
-    background: #fff7ed;
-    padding: 5px 12px;
-    border-radius: 6px;
-    width: fit-content;
-    border: 1px solid #ffedd5;
-  }
-
-  .vsblog-cat-tag i {
-    font-size: 11px;
+    .vsblog-feat-content { padding: 36px 40px; }
   }
 
   .vsblog-feat-content h2 {
-    font-size: clamp(18px, 2.2vw, 24px);
+    font-size: clamp(20px, 2.4vw, 28px);
     font-weight: 800;
     color: #0f172a;
-    line-height: 1.32;
-    margin: 0 0 12px 0;
-    letter-spacing: -0.015em;
+    line-height: 1.28;
+    margin: 0 0 14px 0;
+    letter-spacing: -0.02em;
     transition: color 0.2s ease;
   }
 
@@ -349,11 +284,8 @@
               </svg>
             </div>
           {% endif %}
-          <span class="vsblog-feat-badge"><i class="fa-solid fa-star"></i> Featured</span>
-          <span class="vsblog-feat-readtime-badge"><i class="fa-solid fa-clock"></i> {{ section.settings.read_time | default: "6 min read" }}</span>
         </div>
         <div class="vsblog-feat-content">
-          <span class="vsblog-cat-tag"><i class="fa-solid fa-bolt"></i> {{ section.settings.article_category | default: "Energy Savings" }}</span>
           <h2>{{ section.settings.article_title | default: "How to Reduce Your Electricity Bill in India: 10 Smart Tips with Vidhyut Saathi ⚡" }}</h2>
           <p>{{ section.settings.article_excerpt | default: "Is your electricity bill increasing every month? Unnecessary power wastage can increase your monthly expenses. With Vidhyut Saathi Card, explore a modern approach to electricity saving through advanced US–German Nanotechnology and MCB-based installation to reduce bills by 20–30%." }}</p>
           <div class="vsblog-meta-row">
