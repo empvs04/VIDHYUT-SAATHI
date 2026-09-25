@@ -249,7 +249,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     margin-top: 2px;
   }
 
@@ -906,13 +906,32 @@
     }
 
     .vs-reader-hero-pills {
-      gap: 6px;
+      display: grid !important;
+      grid-template-columns: repeat(3, 1fr) !important;
+      gap: 6px !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+      margin-top: 6px !important;
     }
 
     .vs-reader-hpill {
-      font-size: 11px;
-      padding: 4px 10px;
-      gap: 5px;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      font-size: 10.5px !important;
+      padding: 6px 3px !important;
+      gap: 4px !important;
+      border-radius: 50px !important;
+      white-space: nowrap !important;
+      text-align: center !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+      min-width: 0 !important;
+    }
+
+    .vs-reader-hpill i {
+      font-size: 10.5px !important;
+      flex-shrink: 0 !important;
     }
 
     .vs-reader-hero-right {
@@ -1176,9 +1195,20 @@
       font-size: 19px;
     }
 
+    .vs-reader-hero-pills {
+      gap: 4px !important;
+    }
+
     .vs-reader-hpill {
-      font-size: 10.5px;
-      padding: 3px 8px;
+      font-size: 9.5px !important;
+      padding: 5px 2px !important;
+      gap: 3px !important;
+      letter-spacing: -0.2px !important;
+    }
+
+    .vs-reader-hpill i {
+      font-size: 9px !important;
+      flex-shrink: 0 !important;
     }
 
     .vs-tip-item {
