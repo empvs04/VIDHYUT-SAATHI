@@ -1762,6 +1762,12 @@
     <div class="vsblog-hero-container">
       <!-- Left Column: Information & Badges -->
       <div class="vsblog-hero-left">
+        <div class="vsblog-hero-breadcrumb-tag">
+          <a href="/"><i class="fa-solid fa-house"></i> {{ section.settings.breadcrumb_home | default: "HOME" }}</a>
+          <span class="sep">&gt;</span>
+          <span class="cur">{{ section.settings.breadcrumb_cur | default: "NEWS & BLOG" }}</span>
+        </div>
+        
         <h1>{{ section.settings.hero_title | default: "Whats New?" }}</h1>
         <p class="vsblog-hero-desc">{{ section.settings.hero_subtitle | default: "Checkout our latest updates, electricity saving guides & franchise insights." }}</p>
         
@@ -1936,17 +1942,49 @@
     <!-- DYNAMIC OVERLAPPING WAVE RIBBONS AT BOTTOM -->
     <div class="vsblog-hero-bottom-curves">
       <svg viewBox="0 0 1440 120" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- Neon Glow Ribbon 1 (Cyan) - Follows border curve contour -->
-        <path d="M0,58 C380,102 820,64 1440,12" stroke="#00e5ff" stroke-width="3.5" fill="none" opacity="0.95"/>
-        <!-- Neon Glow Ribbon 2 (Magenta / Rose) - Follows border curve contour -->
-        <path d="M0,63 C380,107 820,68 1440,16" stroke="#ec4899" stroke-width="2.5" fill="none" opacity="0.85"/>
-        <!-- White/Cream Solid Wave Body Base (Seamless border curve transition) -->
-        <path d="M0,68 C380,112 820,72 1440,20 L1440,120 L0,120 Z" fill="#fff8ef"/>
+        <!-- Neon Glow Ribbon 1 (Cyan) -->
+        <path d="M0,70 C360,130 720,20 1080,80 C1260,110 1380,60 1440,50" stroke="#00e5ff" stroke-width="4.5" fill="none" opacity="0.85"/>
+        <!-- Neon Glow Ribbon 2 (Magenta / Orange) -->
+        <path d="M0,95 C320,30 680,140 1100,60 C1280,20 1390,90 1440,95" stroke="#ec4899" stroke-width="3.5" fill="none" opacity="0.8"/>
+        <!-- White/Cream Solid Wave Body Base (Seamless fill transition) -->
+        <path d="M0,60 Q360,130 720,60 T1440,80 L1440,120 L0,120 Z" fill="#fff8ef"/>
       </svg>
     </div>
   </section>
 
-
+  <!-- ══ FLOATING STATS STRIP ══ -->
+  <div class="vsblog-stats-strip">
+    <div class="vsblog-stats-card">
+      <div class="vsblog-stat-item">
+        <div class="vsblog-stat-icon"><i class="fa-solid fa-newspaper"></i></div>
+        <div class="vsblog-stat-text">
+          <strong>50+ Articles</strong>
+          <span>Published & Verified</span>
+        </div>
+      </div>
+      <div class="vsblog-stat-item">
+        <div class="vsblog-stat-icon"><i class="fa-solid fa-users"></i></div>
+        <div class="vsblog-stat-text">
+          <strong>10,000+ Readers</strong>
+          <span>Monthly Active Traffic</span>
+        </div>
+      </div>
+      <div class="vsblog-stat-item">
+        <div class="vsblog-stat-icon"><i class="fa-solid fa-certificate"></i></div>
+        <div class="vsblog-stat-text">
+          <strong>ISO 9001:2015</strong>
+          <span>Certified Quality Brand</span>
+        </div>
+      </div>
+      <div class="vsblog-stat-item">
+        <div class="vsblog-stat-icon"><i class="fa-solid fa-bolt"></i></div>
+        <div class="vsblog-stat-text">
+          <strong>20–30% Savings</strong>
+          <span>Electricity Bill Reduction</span>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- ══ MAIN BODY ══ -->
   <div class="vsblog-body">
