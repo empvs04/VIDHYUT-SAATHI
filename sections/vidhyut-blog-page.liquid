@@ -1117,6 +1117,29 @@
     }
   }
 
+  /* ============================================================
+     ULTRA-PREMIUM MODAL READER STYLES
+     ============================================================ */
+  .vsblog-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(8, 15, 28, 0.82);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-sizing: border-box;
+  }
+
   .vsblog-modal-overlay.active {
     opacity: 1;
     visibility: visible;
@@ -1124,92 +1147,520 @@
 
   .vsblog-modal-box {
     background: #ffffff;
-    border-radius: 24px 24px 0 0;
-    max-width: 820px;
+    border-radius: 24px;
+    max-width: 900px;
     width: 100%;
-    max-height: 90vh;
+    max-height: 92vh;
     overflow-y: auto;
     position: relative;
-    box-shadow: 0 -10px 35px rgba(0, 0, 0, 0.16);
-    border: 1.5px solid rgba(236, 92, 10, 0.22);
-    animation: vsModalSlideSheet 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(236, 92, 10, 0.25);
+    border: 1px solid rgba(236, 92, 10, 0.28);
+    animation: vsModalPopUp 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    scrollbar-width: thin;
+    scrollbar-color: #ec5c0a #f1f5f9;
   }
 
-  @media (min-width: 640px) {
-    .vsblog-modal-box {
-      border-radius: 22px;
-      box-shadow: 0 20px 48px rgba(0, 0, 0, 0.16);
-    }
+  .vsblog-modal-box::-webkit-scrollbar {
+    width: 6px;
+  }
+  .vsblog-modal-box::-webkit-scrollbar-thumb {
+    background: #ec5c0a;
+    border-radius: 4px;
+  }
+  .vsblog-modal-box::-webkit-scrollbar-track {
+    background: #f1f5f9;
   }
 
-  @keyframes vsModalSlideSheet {
-    from { opacity: 0; transform: translateY(45px); }
-    to { opacity: 1; transform: translateY(0); }
+  @keyframes vsModalPopUp {
+    from { opacity: 0; transform: translateY(30px) scale(0.97); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
   }
 
   .vsblog-modal-close {
-    position: sticky;
-    top: 12px;
-    float: right;
-    margin-right: 14px;
-    margin-top: 12px;
-    width: 36px;
-    height: 36px;
-    background: #ffffff;
-    color: #0f172a;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 38px;
+    height: 38px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    color: #ffffff;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 17px;
+    font-size: 16px;
     cursor: pointer;
-    z-index: 20;
-    border: 1.5px solid #e2e8f0;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    z-index: 30;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+  }
+
+  .vsblog-modal-close:hover {
+    background: #ec5c0a;
+    color: #ffffff;
+    transform: rotate(90deg) scale(1.08);
+    border-color: #ec5c0a;
   }
 
   .vsblog-modal-header-banner {
-    height: 140px;
-    background: linear-gradient(135deg, #fff7ed 0%, #ffe8d6 100%);
-    border-bottom: 1.5px solid rgba(236, 92, 10, 0.15);
     position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    text-align: center;
+    background: linear-gradient(135deg, #070d19 0%, #0f1c32 55%, #182b49 100%);
+    padding: 34px 28px 26px 28px;
+    border-bottom: 2px solid rgba(236, 92, 10, 0.35);
+    overflow: hidden;
   }
 
-  .vsblog-modal-header-title {
+  .vsblog-modal-header-glow {
+    position: absolute;
+    top: -60px;
+    right: -60px;
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(236,92,10,0.4) 0%, rgba(236,92,10,0) 70%);
+    pointer-events: none;
+  }
+
+  .vsblog-modal-header-content {
     position: relative;
     z-index: 2;
-    color: #0f172a;
-    font-size: clamp(16px, 2.7vw, 22px);
-    font-weight: 700;
-    line-height: 1.3;
-    max-width: 640px;
   }
 
-  .vsblog-modal-body-content {
-    padding: 18px;
-    color: #334155;
-    font-size: 13.5px;
-    line-height: 1.68;
-    font-weight: 400;
-  }
-
-  @media (min-width: 768px) {
-    .vsblog-modal-body-content { padding: 30px; font-size: 14.5px; line-height: 1.72; }
-  }
-
-  .vsblog-modal-meta {
+  .vsblog-modal-meta-top {
     display: flex;
     align-items: center;
     gap: 10px;
     flex-wrap: wrap;
-    padding-bottom: 14px;
-    margin-bottom: 16px;
-    border-bottom: 1.5px solid #f1f5f9;
+    margin-bottom: 12px;
+  }
+
+  .vsmodal-badge-cat {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: linear-gradient(135deg, #ec5c0a 0%, #ff7b00 100%);
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    padding: 4px 12px;
+    border-radius: 50px;
+    box-shadow: 0 2px 10px rgba(236,92,10,0.4);
+  }
+
+  .vsmodal-badge-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(4px);
+    color: #cbd5e1;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 4px 11px;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .vsmodal-badge-chip i {
+    color: #fb923c;
+  }
+
+  .vsblog-modal-header-title {
+    color: #ffffff;
+    font-size: clamp(18px, 3.2vw, 24px);
+    font-weight: 800;
+    line-height: 1.35;
+    margin: 0 0 14px 0;
+    letter-spacing: -0.3px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  }
+
+  .vsmodal-author-strip {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .vsmodal-author-avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ec5c0a 0%, #007b3e 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 14px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  }
+
+  .vsmodal-author-name {
+    color: #f8fafc;
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .vsmodal-author-sub {
+    color: #94a3b8;
+    font-size: 11px;
+    font-weight: 500;
+  }
+
+  .vsblog-modal-body-content {
+    padding: 24px 20px;
+    color: #334155;
+    font-size: 14.5px;
+    line-height: 1.7;
+    background: #ffffff;
+  }
+
+  @media (min-width: 768px) {
+    .vsblog-modal-body-content { padding: 30px 34px; font-size: 15px; }
+  }
+
+  /* Reader Hero Highlight Box */
+  .vsblog-reader-hero-box {
+    background: linear-gradient(135deg, #fff7ed 0%, #fef3c7 100%);
+    border: 1.5px solid #fed7aa;
+    border-left: 5px solid #ec5c0a;
+    border-radius: 14px;
+    padding: 18px 20px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 15px rgba(236, 92, 10, 0.08);
+  }
+
+  .vsblog-reader-hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #ec5c0a;
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 8px;
+  }
+
+  .vsblog-reader-hero-box h3 {
+    margin: 0 0 8px 0;
+    color: #9a3412;
+    font-size: 17px;
+    font-weight: 800;
+  }
+
+  .vsblog-reader-hero-box p {
+    margin: 0;
+    color: #475569;
+    font-size: 13.5px;
+    line-height: 1.65;
+  }
+
+  /* Section Title in Reader */
+  .vsblog-reader-sec-title {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 26px 0 18px 0;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #f1f5f9;
+  }
+
+  .vsblog-reader-sec-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #ec5c0a 0%, #ea580c 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 18px;
+    box-shadow: 0 4px 12px rgba(236, 92, 10, 0.28);
+    flex-shrink: 0;
+  }
+
+  .vsblog-reader-sec-title h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 800;
+    color: #0f172a;
+  }
+
+  .vsblog-reader-sec-title p {
+    margin: 2px 0 0 0;
+    font-size: 12.5px;
+    color: #64748b;
+  }
+
+  /* 10 TIPS GRID CARDS */
+  .vsblog-tips-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-bottom: 26px;
+  }
+
+  @media (min-width: 640px) {
+    .vsblog-tips-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+  }
+
+  .vs-tip-item {
+    background: #f8fafc;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 16px 18px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    transition: all 0.25s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .vs-tip-item:hover {
+    background: #ffffff;
+    border-color: #ec5c0a;
+    box-shadow: 0 8px 24px rgba(236, 92, 10, 0.12);
+    transform: translateY(-3px);
+  }
+
+  .vs-tip-item.highlight {
+    background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+    border-color: #86efac;
+    grid-column: 1 / -1;
+  }
+
+  .vs-tip-num {
+    background: #0f172a;
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 800;
+    width: 26px;
+    height: 26px;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  }
+
+  .vs-tip-item:hover .vs-tip-num {
+    background: #ec5c0a;
+  }
+
+  .vs-tip-icon-box {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: rgba(236, 92, 10, 0.1);
+    color: #ec5c0a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    flex-shrink: 0;
+    transition: all 0.25s ease;
+  }
+
+  .vs-tip-item:hover .vs-tip-icon-box {
+    background: #ec5c0a;
+    color: #ffffff;
+    transform: scale(1.05);
+  }
+
+  .vs-tip-content {
+    flex: 1;
+  }
+
+  .vs-tip-content h4 {
+    margin: 0 0 4px 0;
+    font-size: 14px;
+    font-weight: 800;
+    color: #0f172a;
+  }
+
+  .vs-tip-content p {
+    margin: 0;
+    font-size: 12.5px;
+    line-height: 1.55;
+    color: #475569;
+  }
+
+  /* TECH BREAKDOWN CARD */
+  .vs-tech-breakdown-card {
+    background: linear-gradient(135deg, #091220 0%, #0f1e36 100%);
+    border-radius: 16px;
+    padding: 22px;
+    color: #ffffff;
+    margin-bottom: 24px;
+    border: 1px solid rgba(236,92,10,0.3);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+  }
+
+  .vs-tech-breakdown-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .vs-tech-breakdown-header i {
+    font-size: 26px;
+    color: #ec5c0a;
+  }
+
+  .vs-tech-breakdown-header h3 {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 800;
+    color: #ffffff;
+  }
+
+  .vs-tech-breakdown-header span {
+    font-size: 12px;
+    color: #94a3b8;
+  }
+
+  .vs-tech-pillars {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  @media (min-width: 640px) {
+    .vs-tech-pillars {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .vs-pillar-col {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+    transition: all 0.25s ease;
+  }
+
+  .vs-pillar-col:hover {
+    background: rgba(255, 255, 255, 0.09);
+    border-color: #ec5c0a;
+    transform: translateY(-2px);
+  }
+
+  .vs-pillar-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ec5c0a 0%, #007b3e 100%);
+    margin: 0 auto 10px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: #ffffff;
+  }
+
+  .vs-pillar-col h5 {
+    margin: 0 0 5px 0;
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #f8fafc;
+  }
+
+  .vs-pillar-col p {
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #cbd5e1;
+  }
+
+  /* SLOGAN BOTTOM BANNER */
+  .vs-slogan-box {
+    background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+    border: 1.5px solid #fdba74;
+    border-radius: 16px;
+    padding: 20px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  @media (min-width: 640px) {
+    .vs-slogan-box {
+      flex-direction: row;
+      text-align: left;
+      justify-content: space-between;
+    }
+  }
+
+  .vs-slogan-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #007b3e;
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 6px;
+  }
+
+  .vs-slogan-left h3 {
+    margin: 0 0 4px 0;
+    font-size: 16px;
+    font-weight: 800;
+    color: #0f172a;
+  }
+
+  .vs-slogan-left p {
+    margin: 0 0 6px 0;
+    font-size: 12.5px;
+    color: #475569;
+  }
+
+  .vs-slogan-brand {
+    font-weight: 800;
+    color: #ec5c0a;
+    font-size: 13.5px;
+  }
+
+  .vs-slogan-btn {
+    background: linear-gradient(135deg, #ec5c0a 0%, #ff7800 100%);
+    color: #ffffff !important;
+    font-size: 13px;
+    font-weight: 800;
+    padding: 12px 24px;
+    border-radius: 50px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 6px 18px rgba(236, 92, 10, 0.35);
+    white-space: nowrap;
+    transition: all 0.25s ease;
+  }
+
+  .vs-slogan-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(236, 92, 10, 0.45);
   }
 
   .vsblog-modal-h3 {
@@ -1240,48 +1691,6 @@
   }
 
   .vsblog-modal-list li { margin-bottom: 6px; }
-
-  .vsblog-modal-footer-cta {
-    margin-top: 20px;
-    background: linear-gradient(135deg, #fff7ed 0%, #ffeede 100%);
-    border: 1.5px solid #ec5c0a;
-    border-radius: 16px;
-    padding: 18px;
-    color: #0f172a;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    gap: 12px;
-  }
-
-  @media (min-width: 640px) {
-    .vsblog-modal-footer-cta { flex-direction: row; text-align: left; align-items: center; justify-content: space-between; }
-  }
-
-  .vsblog-modal-footer-cta h4 {
-    margin: 0 0 4px 0;
-    font-size: 14.5px;
-    font-weight: 700;
-  }
-
-  .vsblog-modal-footer-cta p {
-    margin: 0;
-    font-size: 12px;
-    color: #475569;
-    font-weight: 400;
-  }
-
-  .vsblog-modal-footer-cta a {
-    background: linear-gradient(135deg, #ec5c0a 0%, #ff7b00 100%);
-    color: #ffffff;
-    font-size: 12.5px;
-    font-weight: 700;
-    padding: 11px 22px;
-    border-radius: 50px;
-    text-decoration: none;
-    box-shadow: 0 4px 14px rgba(236, 92, 10, 0.32);
-    white-space: nowrap;
-  }
 </style>
 
 <div class="vsblog-wrap">
@@ -1877,34 +2286,33 @@
   </div>
 </div>
 
-<!-- PURE LIGHT ARTICLE READING MODAL POPUP -->
+<!-- ULTRA-PREMIUM ARTICLE READING MODAL POPUP -->
 <div class="vsblog-modal-overlay" id="vsblog_modal_overlay" onclick="vsCloseArticleModal(event)">
   <div class="vsblog-modal-box" onclick="event.stopPropagation()">
-    <button type="button" class="vsblog-modal-close" onclick="vsCloseArticleModal()">&times;</button>
+    <button type="button" class="vsblog-modal-close" onclick="vsCloseArticleModal()" aria-label="Close modal">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
     <div class="vsblog-modal-header-banner">
-      <svg width="120" height="120" viewBox="0 0 100 100">
-        <polygon points="50,10 65,50 45,50 60,90" fill="#ec5c0a"/>
-      </svg>
-      <div class="vsblog-modal-header-title" id="vsmodal_header_title">Article Title</div>
+      <div class="vsblog-modal-header-glow"></div>
+      <div class="vsblog-modal-header-content">
+        <div class="vsblog-modal-meta-top">
+          <span class="vsmodal-badge-cat" id="vsmodal_cat"><i class="fa-solid fa-bolt"></i> Energy Savings</span>
+          <span class="vsmodal-badge-chip"><i class="fa-solid fa-clock"></i> <span id="vsmodal_readtime">6 min read</span></span>
+          <span class="vsmodal-badge-chip"><i class="fa-solid fa-calendar-days"></i> <span id="vsmodal_date">Sep 25, 2026</span></span>
+        </div>
+        <h2 class="vsblog-modal-header-title" id="vsmodal_header_title">Article Title</h2>
+        <div class="vsmodal-author-strip">
+          <div class="vsmodal-author-avatar"><i class="fa-solid fa-bolt"></i></div>
+          <div>
+            <div class="vsmodal-author-name" id="vsmodal_author">Vidhyut Saathi Team</div>
+            <div class="vsmodal-author-sub">Official Energy Efficiency Bulletin</div>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="vsblog-modal-body-content">
-      <div class="vsblog-modal-meta">
-        <span class="vsblog-cat-tag" id="vsmodal_cat">Category</span>
-        <span class="vsblog-meta-chip"><i class="fa-solid fa-calendar-days"></i> <span id="vsmodal_date">Date</span></span>
-        <span class="vsblog-meta-chip"><i class="fa-solid fa-user"></i> <span id="vsmodal_author">Author</span></span>
-        <span class="vsblog-meta-chip"><i class="fa-solid fa-clock"></i> <span id="vsmodal_readtime">5 min read</span></span>
-      </div>
-      
       <div id="vsmodal_full_html">
         <!-- Full Detailed Article Content Injected via JS -->
-      </div>
-      
-      <div class="vsblog-modal-footer-cta">
-        <div>
-          <h4>Ready to Join Vidhyut Saathi's Growth Mission?</h4>
-          <p>Apply for a District Franchise or request a product demonstration today.</p>
-        </div>
-        <a href="/pages/get-franchise"><i class="fa-solid fa-paper-plane"></i> Apply for Franchise</a>
       </div>
     </div>
   </div>
@@ -1921,33 +2329,163 @@
       readTime: "6 min read",
       url: "/blogs/news/how-to-reduce-electricity-bill-in-india",
       html: `
-        <div class="vsblog-modal-box-highlight" style="background: rgba(236,92,10,0.07); border: 1px solid rgba(236,92,10,0.25); border-left: 4px solid #ec5c0a; padding: 14px 18px; margin-bottom: 20px; border-radius: 8px;">
-          <h4 style="margin: 0 0 6px 0; color: #ec5c0a; font-size: 1.05rem;">Is Your Electricity Bill Increasing Every Month?</h4>
-          <p style="margin: 0; font-size: 0.95rem; line-height: 1.6; color: #334155;">Electricity is an essential part of our daily lives—but unnecessary power wastage can increase your monthly expenses. With <strong>Vidhyut Saathi Card</strong>, you can explore a modern approach to electricity saving through advanced technology and MCB-based installation.</p>
+        <!-- HERO CALLOUT -->
+        <div class="vsblog-reader-hero-box">
+          <div class="vsblog-reader-hero-badge"><i class="fa-solid fa-bolt-lightning"></i> Smart Energy Guide</div>
+          <h3>Is Your Electricity Bill Increasing Every Month?</h3>
+          <p>Electricity is an essential part of our daily lives—but unnecessary power wastage can drastically increase your monthly expenses. With the <strong>Vidhyut Saathi Card</strong>, you can explore a modern, certified approach to electricity saving through advanced <strong>US–German Nanotechnology</strong> and simple <strong>MCB-based installation</strong>.</p>
         </div>
 
-        <p style="font-size: 1rem; line-height: 1.7; color: #1e293b;">Here are <strong>10 smart tips</strong> to help you understand and improve electricity efficiency with Vidhyut Saathi:</p>
+        <!-- SECTION HEADING -->
+        <div class="vsblog-reader-sec-title">
+          <div class="vsblog-reader-sec-icon"><i class="fa-solid fa-list-check"></i></div>
+          <div>
+            <h3>10 Smart Tips for Better Electricity Efficiency</h3>
+            <p>Proven steps to optimize power factor, minimize line loss, and slash monthly bills by 20–30%</p>
+          </div>
+        </div>
 
-        <div class="vsblog-modal-h3"><i class="fa-solid fa-bolt" style="color:#ec5c0a;"></i> ⚡ 10 Smart Tips for Better Electricity Efficiency</div>
-        <ul class="vsblog-modal-list" style="margin-top: 10px; line-height: 1.8;">
-          <li><strong>1. Start with Your MCB:</strong> The MCB box is the central point of your electrical connection. Vidhyut Saathi Card is installed near the MCB to support power optimization.</li>
-          <li><strong>2. Explore Advanced Nanotechnology:</strong> Vidhyut Saathi Card uses US–German Nanotechnology to provide a modern electricity-saving solution.</li>
-          <li><strong>3. Understand Power Factor:</strong> The card’s Terahertz Chip helps stabilize the power factor, supporting efficient electricity usage.</li>
-          <li><strong>4. Minimize Electricity Leakage:</strong> The card features 20,000+ Negative Ions, which help minimize electricity leakage and unnecessary power wastage.</li>
-          <li><strong>5. Optimize Power Consumption:</strong> Vidhyut Saathi Card creates an energy aura around the MCB box to help optimize electricity consumption.</li>
-          <li><strong>6. Reduce Unnecessary Wastage:</strong> By supporting power efficiency, the card helps reduce avoidable electricity wastage in your electrical setup.</li>
-          <li><strong>7. Choose a Simple Installation:</strong> The card is installed near the MCB and does not require a plug-in connection.</li>
-          <li><strong>8. Make Energy Saving Convenient:</strong> Vidhyut Saathi Card is suitable for homes, shops, offices, and commercial establishments.</li>
-          <li><strong>9. Adopt a Modern Energy-Saving Approach:</strong> Combine responsible electricity usage with innovative solutions such as Vidhyut Saathi Card.</li>
-          <li><strong>10. Work Toward Lower Electricity Expenses:</strong> Vidhyut Saathi Card is designed to help reduce electricity bills by 20–30% through power optimization and reduced energy wastage.</li>
-        </ul>
+        <!-- 10 TIPS GRID CARDS -->
+        <div class="vsblog-tips-grid">
+          <!-- Tip 1 -->
+          <div class="vs-tip-item">
+            <div class="vs-tip-num">01</div>
+            <div class="vs-tip-icon-box"><i class="fa-solid fa-server"></i></div>
+            <div class="vs-tip-content">
+              <h4>Start with Your MCB</h4>
+              <p>The MCB box is the central distribution point of your electrical connection. Vidhyut Saathi Card is installed directly near the MCB to support immediate power optimization across all connected circuits.</p>
+            </div>
+          </div>
 
-        <div class="vsblog-modal-h3"><i class="fa-solid fa-battery-charging" style="color:#007b3e;"></i> 🔋 How Does Vidhyut Saathi Card Work?</div>
-        <p style="line-height: 1.7; color: #334155;">The card combines <strong>Terahertz Chip technology</strong> and <strong>20,000+ Negative Ions</strong> to support power efficiency. Installed near the MCB box, it creates an energy aura around the electrical setup, helping stabilize the power factor, minimize electricity leakage, and optimize power consumption.</p>
+          <!-- Tip 2 -->
+          <div class="vs-tip-item">
+            <div class="vs-tip-num">02</div>
+            <div class="vs-tip-icon-box"><i class="fa-solid fa-atom"></i></div>
+            <div class="vs-tip-content">
+              <h4>Explore Advanced Nanotechnology</h4>
+              <p>Vidhyut Saathi Card utilizes cutting-edge <strong>US–German Nanotechnology</strong> embedded layers to provide a modern, scientifically validated electricity-saving solution.</p>
+            </div>
+          </div>
 
-        <div class="vsblog-modal-box-highlight" style="background: linear-gradient(135deg, rgba(0,123,62,0.08) 0%, rgba(236,92,10,0.08) 100%); border: 1px solid rgba(0,123,62,0.25); border-left: 4px solid #007b3e; padding: 16px 20px; border-radius: 10px; margin-top: 24px;">
-          <h4 style="margin: 0 0 6px 0; color: #007b3e; font-size: 1.05rem;"><i class="fa-solid fa-rocket"></i> 🚀 Discover Smarter Electricity Saving</h4>
-          <p style="margin: 0; font-size: 0.95rem; line-height: 1.6; color: #1e293b;">Make electricity saving part of your everyday energy strategy with <strong>Vidhyut Saathi Card</strong>.<br><strong style="color: #ec5c0a; font-size: 1.02rem;">⚡ Vidhyut Saathi — Because Every Unit Matters.</strong></p>
+          <!-- Tip 3 -->
+          <div class="vs-tip-item">
+            <div class="vs-tip-num">03</div>
+            <div class="vs-tip-icon-box"><i class="fa-solid fa-wave-square"></i></div>
+            <div class="vs-tip-content">
+              <h4>Understand & Stabilize Power Factor</h4>
+              <p>The card’s embedded <strong>Terahertz Chip</strong> helps stabilize inductive power factor close to unity (0.98+), preventing apparent energy losses in heavy motors and inductive appliances.</p>
+            </div>
+          </div>
+
+          <!-- Tip 4 -->
+          <div class="vs-tip-item">
+            <div class="vs-tip-num">04</div>
+            <div class="vs-tip-icon-box"><i class="fa-solid fa-shield-halved"></i></div>
+            <div class="vs-tip-content">
+              <h4>Minimize Electricity Leakage</h4>
+              <p>Packed with <strong>20,000+ Negative Ions</strong>, the card generates an ionic field that helps minimize micro-leakage and suppress harmonic line distortions.</p>
+            </div>
+          </div>
+
+          <!-- Tip 5 -->
+          <div class="vs-tip-item">
+            <div class="vs-tip-num">05</div>
+            <div class="vs-tip-icon-box"><i class="fa-solid fa-circle-nodes"></i></div>
+            <div class="vs-tip-content">
+              <h4>Optimize Power Consumption</h4>
+              <p>Vidhyut Saathi Card creates an optimized energy aura around the MCB box, streamlining electron flow and eliminating wire resistance heating ($I^2R$).</p>
+            </div>
+          </div>
+
+          <!-- Tip 6 -->
+          <div class="vs-tip-item">
+            <div class="vs-tip-num">06</div>
+            <div class="vs-tip-icon-box"><i class="fa-solid fa-gauge-simple-high"></i></div>
+            <div class="vs-tip-content">
+              <h4>Reduce Unnecessary Power Wastage</h4>
+              <p>By preventing motor lag and voltage dips, the card cuts avoidable reactive energy billing, making your appliances run cooler and more efficiently.</p>
+            </div>
+          </div>
+
+          <!-- Tip 7 -->
+          <div class="vs-tip-item">
+            <div class="vs-tip-num">07</div>
+            <div class="vs-tip-icon-box"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+            <div class="vs-tip-content">
+              <h4>Choose a Simple 2-Minute Installation</h4>
+              <p>Zero wiring hassle or complex cutting. The card is effortlessly fixed beside or on the MCB cover using high-bond thermal tape — no plug-in or technician required.</p>
+            </div>
+          </div>
+
+          <!-- Tip 8 -->
+          <div class="vs-tip-item">
+            <div class="vs-tip-num">08</div>
+            <div class="vs-tip-icon-box"><i class="fa-solid fa-city"></i></div>
+            <div class="vs-tip-content">
+              <h4>Make Energy Saving Convenient Everywhere</h4>
+              <p>From 1BHK/2BHK/3BHK flats to retail shops, restaurants, commercial offices, and factories, Vidhyut Saathi scales easily for any power requirement.</p>
+            </div>
+          </div>
+
+          <!-- Tip 9 -->
+          <div class="vs-tip-item">
+            <div class="vs-tip-num">09</div>
+            <div class="vs-tip-icon-box"><i class="fa-solid fa-lightbulb"></i></div>
+            <div class="vs-tip-content">
+              <h4>Adopt a Modern Energy-Saving Approach</h4>
+              <p>Combine responsible electricity habits (smart thermostat, LED bulbs) with innovative hardware like Vidhyut Saathi for maximum compound monthly savings.</p>
+            </div>
+          </div>
+
+          <!-- Tip 10 -->
+          <div class="vs-tip-item highlight">
+            <div class="vs-tip-num">10</div>
+            <div class="vs-tip-icon-box"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+            <div class="vs-tip-content">
+              <h4>Work Toward 20%–30% Lower Electricity Bills</h4>
+              <p>Vidhyut Saathi is engineered specifically to deliver measurable <strong>20% to 30% savings</strong> month after month, recovering its cost in just a few billing cycles.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- TECH BREAKDOWN DIAGRAM -->
+        <div class="vs-tech-breakdown-card">
+          <div class="vs-tech-breakdown-header">
+            <i class="fa-solid fa-microchip"></i>
+            <div>
+              <h3>How Does Vidhyut Saathi Card Work?</h3>
+              <span>Inside the science of Terahertz chip & Negative Ion power optimization</span>
+            </div>
+          </div>
+          
+          <div class="vs-tech-pillars">
+            <div class="vs-pillar-col">
+              <div class="vs-pillar-icon"><i class="fa-solid fa-microchip"></i></div>
+              <h5>Terahertz Wave Chip</h5>
+              <p>Oscillates at ultra-high frequency to harmonize electron movement and improve power factor.</p>
+            </div>
+            <div class="vs-pillar-col">
+              <div class="vs-pillar-icon"><i class="fa-solid fa-shield-virus"></i></div>
+              <h5>20,000+ Negative Ions</h5>
+              <p>Neutralizes static voltage spikes, reduces micro-leakages, and cools conductor wiring.</p>
+            </div>
+            <div class="vs-pillar-col">
+              <div class="vs-pillar-icon"><i class="fa-solid fa-bolt"></i></div>
+              <h5>MCB Energy Aura</h5>
+              <p>Creates an electrodynamic stabilization zone around the main circuit breaker box.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- BOTTOM SLOGAN BANNER -->
+        <div class="vs-slogan-box">
+          <div class="vs-slogan-left">
+            <span class="vs-slogan-pill"><i class="fa-solid fa-award"></i> 100% Legal & Certified</span>
+            <h3>Discover Smarter Electricity Saving Today</h3>
+            <p>Make electricity saving part of your everyday energy strategy with Vidhyut Saathi Card.</p>
+            <div class="vs-slogan-brand">⚡ Vidhyut Saathi — <em>Because Every Unit Matters.</em></div>
+          </div>
+          <a href="/pages/get-franchise" class="vs-slogan-btn"><i class="fa-solid fa-paper-plane"></i> Apply for Franchise</a>
         </div>
       `
     },
@@ -2158,20 +2696,29 @@
 
   function vsOpenArticleModal(index) {
     var article = VS_ARTICLES[index] || VS_ARTICLES[0];
-    document.getElementById('vsmodal_header_title').innerText = article.title;
-    document.getElementById('vsmodal_cat').innerText = article.category;
-    document.getElementById('vsmodal_date').innerText = article.date;
-    document.getElementById('vsmodal_author').innerText = article.author;
-    document.getElementById('vsmodal_readtime').innerText = article.readTime;
-    document.getElementById('vsmodal_full_html').innerHTML = article.html;
+    var titleElem = document.getElementById('vsmodal_header_title');
+    var catElem = document.getElementById('vsmodal_cat');
+    var dateElem = document.getElementById('vsmodal_date');
+    var authorElem = document.getElementById('vsmodal_author');
+    var readTimeElem = document.getElementById('vsmodal_readtime');
+    var htmlElem = document.getElementById('vsmodal_full_html');
+
+    if (titleElem) titleElem.innerText = article.title;
+    if (catElem) catElem.innerHTML = '<i class="fa-solid fa-bolt"></i> ' + article.category;
+    if (dateElem) dateElem.innerText = article.date;
+    if (authorElem) authorElem.innerText = article.author;
+    if (readTimeElem) readTimeElem.innerText = article.readTime;
+    if (htmlElem) htmlElem.innerHTML = article.html;
     
     var overlay = document.getElementById('vsblog_modal_overlay');
     if (overlay) overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
   }
 
   function vsCloseArticleModal(e) {
     var overlay = document.getElementById('vsblog_modal_overlay');
     if (overlay) overlay.classList.remove('active');
+    document.body.style.overflow = '';
   }
 
   function vsSubscribeNewsletter(e) {
