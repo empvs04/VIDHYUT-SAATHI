@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&family=Work+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
   /* ─── VIDHYUT SAATHI ULTRA-LUCRATIVE LIGHT THEME BLOG HERO SECTION ─── */
@@ -107,20 +107,62 @@
     color: #ec5c0a;
   }
 
-  .vsblog-hero h1 {
-    font-size: clamp(32px, 5.2vw, 56px);
+  .vsblog-hero h1,
+  .vsblog-hero-heading {
+    font-family: 'Outfit', 'Plus Jakarta Sans', -apple-system, sans-serif;
+    font-size: clamp(34px, 5.2vw, 58px);
     font-weight: 900;
     color: #0f172a;
     line-height: 1.15;
     margin: 0 0 16px 0;
-    letter-spacing: -0.5px;
+    letter-spacing: -0.025em;
   }
 
-  .vsblog-hero h1 span {
-    background: linear-gradient(135deg, #ec5c0a 0%, #ff7800 100%);
+  .vsblog-hero h1 span,
+  .vsblog-hero-heading span,
+  .vs-energy-word {
+    position: relative;
+    display: inline-block;
+    background: linear-gradient(135deg, #ec5c0a 0%, #ff7800 45%, #ea580c 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    display: inline-block;
+    filter: drop-shadow(0 4px 14px rgba(236, 92, 10, 0.22));
+    white-space: nowrap;
+    padding-bottom: 2px;
+  }
+
+  .vs-energy-word::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    border-radius: 4px;
+    background: linear-gradient(90deg, #ec5c0a 0%, #ff7800 70%, #007b3e 100%);
+    box-shadow: 0 2px 8px rgba(236, 92, 10, 0.35);
+  }
+
+  .vs-bolt-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #ec5c0a 0%, #ff7800 100%);
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    font-size: 18px;
+    margin-left: 8px;
+    vertical-align: middle;
+    box-shadow: 0 4px 14px rgba(236, 92, 10, 0.35);
+    animation: vsBoltPulse 2.5s infinite ease-in-out;
+  }
+
+  @keyframes vsBoltPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.08); box-shadow: 0 6px 18px rgba(236, 92, 10, 0.5); }
   }
 
   .vsblog-hero-desc {
@@ -229,7 +271,16 @@
           </div>
         {% endif %}
 
-        <h1>{{ section.settings.hero_title | default: "Insights on Energy Savings" }}</h1>
+        {%- assign raw_title = section.settings.hero_title | default: "Insights on Energy Savings" -%}
+        <h1 class="vsblog-hero-heading">
+          {%- if raw_title contains '<span>' -%}
+            {{ raw_title }}
+          {%- elsif raw_title contains 'Energy Savings' -%}
+            {{ raw_title | replace: 'Energy Savings', '<span class="vs-energy-word">Energy Savings</span> <span class="vs-bolt-icon"><i class="fa-solid fa-bolt"></i></span>' }}
+          {%- else -%}
+            <span class="vs-energy-word">{{ raw_title }}</span> <span class="vs-bolt-icon"><i class="fa-solid fa-bolt"></i></span>
+          {%- endif -%}
+        </h1>
         <p class="vsblog-hero-desc">{{ section.settings.hero_subtitle | default: "Expert articles, franchise success stories, and tips to lower electricity bills across India." }}</p>
         
         <div class="vsblog-hero-pills">
