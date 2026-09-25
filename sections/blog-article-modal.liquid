@@ -477,6 +477,16 @@
     padding: 24px 20px;
     text-align: center;
     box-shadow: 0 2px 10px rgba(15, 23, 42, 0.02);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.25s ease;
+  }
+
+  .vs-pillar-card:hover {
+    border-color: #007b3e;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 123, 62, 0.08);
   }
 
   .vs-pillar-icon {
@@ -492,6 +502,11 @@
     font-size: 19px;
     margin: 0 auto 14px auto;
     box-shadow: 0 2px 8px rgba(0, 123, 62, 0.12);
+    flex-shrink: 0;
+  }
+
+  .vs-pillar-content {
+    width: 100%;
   }
 
   .vs-pillar-card h4 {
@@ -874,30 +889,52 @@
     }
 
     .vs-pillar-card {
-      padding: 18px 14px;
-      border-radius: 14px;
+      padding: 16px 16px;
+      border-radius: 16px;
       text-align: left;
       display: flex;
+      flex-direction: row;
       align-items: flex-start;
       gap: 14px;
+      background: #ffffff;
+      border: 1.5px solid #e2e8f0;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
     }
 
     .vs-pillar-icon {
       margin: 0;
       flex-shrink: 0;
-      width: 40px;
-      height: 40px;
-      font-size: 16px;
+      width: 44px;
+      height: 44px;
+      font-size: 18px;
+      border-radius: 12px;
+      background: #f0fdf4;
+      border: 1.5px solid #bbf7d0;
+      color: #007b3e;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .vs-pillar-content {
+      flex: 1;
+      min-width: 0;
+      text-align: left;
     }
 
     .vs-pillar-card h4 {
-      font-size: 14.5px;
-      margin-bottom: 4px;
+      font-size: 15px;
+      font-weight: 800;
+      color: #0f172a;
+      margin: 0 0 4px 0;
+      line-height: 1.35;
     }
 
     .vs-pillar-card p {
-      font-size: 12.5px;
-      line-height: 1.5;
+      font-size: 13px;
+      color: #64748b;
+      line-height: 1.55;
+      margin: 0;
     }
 
     /* Conclusion & Callout Card */
@@ -1202,18 +1239,24 @@
         <div class="vsblog-pillars-grid">
           <div class="vs-pillar-card">
             <div class="vs-pillar-icon"><i class="fa-solid fa-microchip"></i></div>
-            <h4>Terahertz Wave Technology</h4>
-            <p>Stabilizes current fluctuations and eliminates wire waveform distortions in real-time.</p>
+            <div class="vs-pillar-content">
+              <h4>Terahertz Wave Technology</h4>
+              <p>Stabilizes current fluctuations and eliminates wire waveform distortions in real-time.</p>
+            </div>
           </div>
           <div class="vs-pillar-card">
             <div class="vs-pillar-icon"><i class="fa-solid fa-shield-halved"></i></div>
-            <h4>20,000+ Negative Ions</h4>
-            <p>Suppresses electrical resistance heating and controls micro-leakages around circuits.</p>
+            <div class="vs-pillar-content">
+              <h4>20,000+ Negative Ions</h4>
+              <p>Suppresses electrical resistance heating and controls micro-leakages around circuits.</p>
+            </div>
           </div>
           <div class="vs-pillar-card">
             <div class="vs-pillar-icon"><i class="fa-solid fa-award"></i></div>
-            <h4>ISO & CE Certified</h4>
-            <p>Tested for flame retardance, electromagnetic compatibility, and consumer electrical safety.</p>
+            <div class="vs-pillar-content">
+              <h4>ISO & CE Certified</h4>
+              <p>Tested for flame retardance, electromagnetic compatibility, and consumer electrical safety.</p>
+            </div>
           </div>
         </div>
 
