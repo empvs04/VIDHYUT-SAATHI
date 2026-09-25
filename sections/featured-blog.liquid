@@ -126,16 +126,21 @@
   }
 
   .vsblog-feat-content h2 {
-    font-size: clamp(20px, 2.4vw, 28px);
+    font-size: clamp(18px, 2.1vw, 25px);
     font-weight: 800;
     color: #0f172a;
-    line-height: 1.28;
+    line-height: 1.34;
     margin: 0 0 14px 0;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.015em;
     transition: color 0.2s ease;
   }
 
   .vsblog-feat-card:hover .vsblog-feat-content h2 { color: #ea580c; }
+  
+  .vsblog-nowrap {
+    white-space: nowrap;
+    display: inline-block;
+  }
 
   .vsblog-feat-content p {
     color: #475569;
@@ -286,7 +291,8 @@
           {% endif %}
         </div>
         <div class="vsblog-feat-content">
-          <h2>{{ section.settings.article_title | default: "How to Reduce Your Electricity Bill in India: 10 Smart Tips with Vidhyut Saathi ⚡" }}</h2>
+          {% assign feat_title = section.settings.article_title | default: "How to Reduce Your Electricity Bill in India: 10 Smart Tips with Vidhyut Saathi ⚡" %}
+          <h2>{{ feat_title | replace: "Vidhyut Saathi ⚡", "<span class='vsblog-nowrap'>Vidhyut Saathi ⚡</span>" | replace: " ⚡", "&nbsp;⚡" }}</h2>
           <p>{{ section.settings.article_excerpt | default: "Is your electricity bill increasing every month? Unnecessary power wastage can increase your monthly expenses. With Vidhyut Saathi Card, explore a modern approach to electricity saving through advanced US–German Nanotechnology and MCB-based installation to reduce bills by 20–30%." }}</p>
           <div class="vsblog-meta-row">
             <span class="vsblog-meta-chip"><i class="fa-solid fa-calendar-days"></i> {{ section.settings.article_date | default: "Sep 25, 2026" }}</span>
