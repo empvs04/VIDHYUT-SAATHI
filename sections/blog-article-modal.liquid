@@ -1,6 +1,6 @@
 <style>
   /* ============================================================
-     ULTRA-PREMIUM MODAL READER STYLES
+     FULL-PAGE IMMERSIVE LUXURY ARTICLE READER
      ============================================================ */
   .vsblog-modal-overlay {
     position: fixed;
@@ -8,19 +8,16 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(8, 15, 28, 0.82);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    z-index: 999999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 16px;
+    background: #faf9f6;
+    z-index: 9999999;
+    overflow-y: auto;
+    overflow-x: hidden;
     opacity: 0;
     visibility: hidden;
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s ease;
     box-sizing: border-box;
-    font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    scroll-behavior: smooth;
   }
 
   .vsblog-modal-overlay *, .vsblog-modal-overlay *::before, .vsblog-modal-overlay *::after {
@@ -32,211 +29,302 @@
     visibility: visible;
   }
 
-  .vsblog-modal-box {
-    background: #ffffff;
-    border-radius: 24px;
-    max-width: 900px;
+  /* Sticky Top Navigation Bar */
+  .vs-reader-nav-header {
+    position: sticky;
+    top: 0;
+    left: 0;
     width: 100%;
-    max-height: 92vh;
-    overflow-y: auto;
-    position: relative;
-    box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(236, 92, 10, 0.25);
-    border: 1px solid rgba(236, 92, 10, 0.28);
-    animation: vsModalPopUp 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-    scrollbar-width: thin;
-    scrollbar-color: #ec5c0a #f1f5f9;
+    height: 64px;
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid #e2e8f0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
   }
 
-  .vsblog-modal-box::-webkit-scrollbar {
-    width: 6px;
-  }
-  .vsblog-modal-box::-webkit-scrollbar-thumb {
-    background: #ec5c0a;
-    border-radius: 4px;
-  }
-  .vsblog-modal-box::-webkit-scrollbar-track {
-    background: #f1f5f9;
-  }
-
-  @keyframes vsModalPopUp {
-    from { opacity: 0; transform: translateY(30px) scale(0.97); }
-    to { opacity: 1; transform: translateY(0) scale(1); }
-  }
-
-  .vsblog-modal-close {
+  .vs-reader-progress-line {
     position: absolute;
-    top: 16px;
-    right: 16px;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #ec5c0a 0%, #ff7800 50%, #007b3e 100%);
+    width: 0%;
+    transition: width 0.1s ease-out;
+  }
+
+  .vs-reader-nav-inner {
+    max-width: 1200px;
+    width: 100%;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .vs-reader-back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #f1f5f9;
+    color: #1e293b;
+    border: 1px solid #e2e8f0;
+    padding: 8px 18px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+
+  .vs-reader-back-btn:hover {
+    background: #0f172a;
+    color: #ffffff;
+    border-color: #0f172a;
+    transform: translateX(-3px);
+  }
+
+  .vs-reader-brand-pill {
+    display: none;
+    align-items: center;
+    gap: 7px;
+    color: #0f172a;
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+  }
+
+  @media (min-width: 768px) {
+    .vs-reader-brand-pill { display: inline-flex; }
+  }
+
+  .vs-reader-brand-pill i {
+    color: #ec5c0a;
+    font-size: 14px;
+  }
+
+  .vs-reader-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .vs-reader-share-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #fff7ed;
+    color: #ea580c;
+    border: 1px solid #ffedd5;
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+
+  .vs-reader-share-btn:hover {
+    background: #ea580c;
+    color: #ffffff;
+    border-color: #ea580c;
+  }
+
+  .vs-reader-close-btn {
     width: 38px;
     height: 38px;
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(8px);
-    color: #ffffff;
+    background: #f1f5f9;
+    color: #475569;
+    border: 1px solid #e2e8f0;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 16px;
+    font-size: 15px;
     cursor: pointer;
-    z-index: 30;
-    border: 1px solid rgba(255, 255, 255, 0.3);
     transition: all 0.25s ease;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.25);
   }
 
-  .vsblog-modal-close:hover {
+  .vs-reader-close-btn:hover {
     background: #ec5c0a;
     color: #ffffff;
-    transform: rotate(90deg) scale(1.08);
     border-color: #ec5c0a;
+    transform: rotate(90deg);
   }
 
-  .vsmodal-top-featured-img-wrap {
+  /* Main Article Wrapper */
+  .vs-reader-article-wrap {
+    max-width: 1160px;
     width: 100%;
-    max-height: 380px;
-    height: 320px;
-    overflow: hidden;
-    position: relative;
-    background: #0f172a;
-    border-top-left-radius: 24px;
-    border-top-right-radius: 24px;
+    margin: 0 auto;
+    padding: clamp(24px, 4vw, 48px) 20px 80px 20px;
   }
 
-  .vsmodal-top-featured-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.5s ease;
+  /* Article Header Area */
+  .vs-reader-header {
+    max-width: 860px;
+    margin: 0 auto;
+    text-align: left;
   }
 
-  .vsblog-modal-header-banner {
-    position: relative;
-    background: linear-gradient(135deg, #070d19 0%, #0f1c32 55%, #182b49 100%);
-    padding: 34px 28px 26px 28px;
-    border-bottom: 2px solid rgba(236, 92, 10, 0.35);
-    overflow: hidden;
-  }
-
-  .vsblog-modal-header-glow {
-    position: absolute;
-    top: -60px;
-    right: -60px;
-    width: 260px;
-    height: 260px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(236,92,10,0.4) 0%, rgba(236,92,10,0) 70%);
-    pointer-events: none;
-  }
-
-  .vsblog-modal-header-content {
-    position: relative;
-    z-index: 2;
-  }
-
-  .vsblog-modal-meta-top {
+  .vs-reader-meta-top {
     display: flex;
     align-items: center;
     gap: 10px;
     flex-wrap: wrap;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
   }
 
-  .vsmodal-badge-cat {
+  .vs-reader-cat-tag {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    background: linear-gradient(135deg, #ec5c0a 0%, #ff7b00 100%);
-    color: #ffffff;
-    font-size: 11px;
-    font-weight: 800;
+    background: #fff7ed;
+    color: #ea580c;
+    font-size: 11.5px;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.6px;
-    padding: 4px 12px;
+    letter-spacing: 0.8px;
+    padding: 5px 14px;
     border-radius: 50px;
-    box-shadow: 0 2px 10px rgba(236,92,10,0.4);
+    border: 1px solid #ffedd5;
   }
 
-  .vsmodal-badge-chip {
+  .vs-reader-chip {
     display: inline-flex;
     align-items: center;
-    gap: 5px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(4px);
-    color: #cbd5e1;
-    font-size: 12px;
+    gap: 6px;
+    color: #64748b;
+    font-size: 13px;
     font-weight: 500;
-    padding: 4px 11px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 4px 12px;
     border-radius: 50px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
   }
 
-  .vsmodal-badge-chip i {
-    color: #fb923c;
+  .vs-reader-chip i {
+    color: #94a3b8;
+    font-size: 12px;
   }
 
-  .vsblog-modal-header-title {
-    color: #ffffff;
-    font-size: clamp(18px, 3.2vw, 24px);
-    font-weight: 800;
-    line-height: 1.35;
-    margin: 0 0 14px 0;
-    letter-spacing: -0.3px;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  .vs-reader-title {
+    font-size: clamp(26px, 4.5vw, 44px);
+    font-weight: 900;
+    color: #0f172a;
+    line-height: 1.22;
+    letter-spacing: -0.025em;
+    margin: 0 0 24px 0;
   }
 
-  .vsmodal-author-strip {
+  .vs-reader-author-bar {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 14px;
+    padding: 16px 0 24px 0;
+    border-top: 1px solid #e2e8f0;
+    border-bottom: 1px solid #e2e8f0;
+    margin-bottom: 32px;
   }
 
-  .vsmodal-author-avatar {
-    width: 34px;
-    height: 34px;
+  .vs-reader-author-avatar {
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #ec5c0a 0%, #007b3e 100%);
+    background: linear-gradient(135deg, #ec5c0a 0%, #ff7800 100%);
     display: flex;
     align-items: center;
     justify-content: center;
     color: #ffffff;
-    font-size: 14px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    font-size: 18px;
+    box-shadow: 0 4px 14px rgba(236, 92, 10, 0.3);
   }
 
-  .vsmodal-author-name {
-    color: #f8fafc;
-    font-size: 13px;
+  .vs-reader-author-name {
+    font-size: 15px;
     font-weight: 700;
+    color: #0f172a;
   }
 
-  .vsmodal-author-sub {
-    color: #94a3b8;
-    font-size: 11px;
+  .vs-reader-author-badge {
+    font-size: 12px;
+    color: #64748b;
     font-weight: 500;
   }
 
-  .vsblog-modal-body-content {
-    padding: 24px 20px;
+  /* Full-Width Cinematic Hero Image */
+  .vs-reader-hero-img-wrap {
+    width: 100%;
+    max-width: 1040px;
+    margin: 0 auto 48px auto;
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: 0 16px 40px -8px rgba(15, 23, 42, 0.12);
+    border: 1px solid #e2e8f0;
+    background: #0f172a;
+    max-height: 520px;
+    height: auto;
+  }
+
+  .vs-reader-hero-img {
+    width: 100%;
+    height: 100%;
+    max-height: 520px;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Article Editorial Content Body */
+  .vs-reader-body {
+    max-width: 820px;
+    margin: 0 auto;
+    font-size: clamp(16px, 1.8vw, 18px);
+    line-height: 1.85;
     color: #334155;
-    font-size: 14.5px;
-    line-height: 1.7;
     background: #ffffff;
+    padding: clamp(24px, 4vw, 48px);
+    border-radius: 20px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 24px rgba(15, 23, 42, 0.03);
   }
 
-  @media (min-width: 768px) {
-    .vsblog-modal-body-content { padding: 30px 34px; font-size: 15px; }
+  .vs-reader-body h2 {
+    font-size: clamp(22px, 2.8vw, 28px);
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.3;
+    margin: 40px 0 16px 0;
+    letter-spacing: -0.015em;
+    border-left: 4px solid #ec5c0a;
+    padding-left: 14px;
   }
 
-  /* Reader Hero Highlight Box */
+  .vs-reader-body h3 {
+    font-size: clamp(18px, 2.2vw, 22px);
+    font-weight: 700;
+    color: #0f172a;
+    margin: 28px 0 12px 0;
+  }
+
+  .vs-reader-body p {
+    margin: 0 0 20px 0;
+  }
+
+  /* Highlight Callout Box */
   .vsblog-reader-hero-box {
-    background: linear-gradient(135deg, #fff7ed 0%, #fef3c7 100%);
+    background: #fff8f3;
     border: 1.5px solid #fed7aa;
     border-left: 5px solid #ec5c0a;
-    border-radius: 14px;
-    padding: 18px 20px;
-    margin-bottom: 24px;
-    box-shadow: 0 4px 15px rgba(236, 92, 10, 0.08);
+    border-radius: 16px;
+    padding: 22px 24px;
+    margin: 32px 0;
+    box-shadow: 0 4px 16px rgba(236, 92, 10, 0.05);
   }
 
   .vsblog-reader-hero-badge {
@@ -249,59 +337,63 @@
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    padding: 3px 10px;
+    padding: 4px 12px;
     border-radius: 50px;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
   }
 
   .vsblog-reader-hero-box h3 {
     margin: 0 0 8px 0;
-    font-size: 17px;
+    font-size: 18px;
     font-weight: 800;
     color: #9a3412;
+    border: none;
+    padding: 0;
   }
 
   .vsblog-reader-hero-box p {
     margin: 0;
-    font-size: 13.5px;
+    font-size: 14.5px;
     color: #7c2d12;
-    line-height: 1.6;
+    line-height: 1.65;
   }
 
   /* Reader Section Title */
   .vsblog-reader-sec-title {
     display: flex;
     align-items: center;
-    gap: 12px;
-    margin: 28px 0 18px 0;
-    padding-bottom: 12px;
+    gap: 14px;
+    margin: 36px 0 20px 0;
+    padding-bottom: 14px;
     border-bottom: 2px solid #f1f5f9;
   }
 
   .vsblog-reader-sec-icon {
-    width: 38px;
-    height: 38px;
-    background: linear-gradient(135deg, #ec5c0a 0%, #ff7b00 100%);
+    width: 42px;
+    height: 42px;
+    background: linear-gradient(135deg, #ec5c0a 0%, #ff7800 100%);
     color: #ffffff;
-    border-radius: 10px;
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 16px;
+    font-size: 18px;
     flex-shrink: 0;
-    box-shadow: 0 4px 12px rgba(236,92,10,0.3);
+    box-shadow: 0 4px 14px rgba(236, 92, 10, 0.3);
   }
 
   .vsblog-reader-sec-title h3 {
     margin: 0;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 800;
     color: #0f172a;
+    border: none;
+    padding: 0;
   }
 
   .vsblog-reader-sec-title p {
-    margin: 2px 0 0 0;
-    font-size: 12px;
+    margin: 3px 0 0 0;
+    font-size: 13px;
     color: #64748b;
   }
 
@@ -309,81 +401,81 @@
   .vsblog-tips-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 14px;
-    margin: 20px 0 28px 0;
+    gap: 16px;
+    margin: 24px 0 32px 0;
   }
 
   @media (min-width: 640px) {
     .vsblog-tips-grid {
       grid-template-columns: 1fr 1fr;
-      gap: 16px;
+      gap: 18px;
     }
   }
 
   .vs-tip-item {
     background: #ffffff;
     border: 1.5px solid #e2e8f0;
-    border-radius: 14px;
-    padding: 16px;
+    border-radius: 16px;
+    padding: 18px;
     position: relative;
     display: flex;
-    gap: 12px;
+    gap: 14px;
     align-items: flex-start;
     transition: all 0.25s ease;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
   }
 
   .vs-tip-item:hover {
     border-color: #ec5c0a;
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(236,92,10,0.1);
+    box-shadow: 0 8px 20px rgba(236, 92, 10, 0.1);
   }
 
   .vs-tip-num {
     position: absolute;
-    top: 10px;
-    right: 12px;
-    font-size: 18px;
+    top: 12px;
+    right: 14px;
+    font-size: 20px;
     font-weight: 900;
-    color: rgba(236, 92, 10, 0.15);
+    color: rgba(236, 92, 10, 0.18);
     line-height: 1;
   }
 
   .vs-tip-icon-box {
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
     background: #fff7ed;
     border: 1px solid #fed7aa;
     color: #ec5c0a;
-    border-radius: 10px;
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 15px;
+    font-size: 16px;
     flex-shrink: 0;
   }
 
   .vs-tip-content h4 {
-    margin: 0 0 5px 0;
-    font-size: 14px;
+    margin: 0 0 6px 0;
+    font-size: 15px;
     font-weight: 700;
     color: #0f172a;
-    padding-right: 20px;
+    padding-right: 24px;
   }
 
   .vs-tip-content p {
     margin: 0;
-    font-size: 12.5px;
+    font-size: 13.5px;
     color: #64748b;
-    line-height: 1.5;
+    line-height: 1.55;
   }
 
   /* 3 Pillars Grid */
   .vsblog-pillars-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 14px;
-    margin: 16px 0 24px 0;
+    gap: 16px;
+    margin: 20px 0 28px 0;
   }
 
   @media (min-width: 640px) {
@@ -395,14 +487,14 @@
   .vs-pillar-card {
     background: #f8fafc;
     border: 1.5px solid #e2e8f0;
-    border-radius: 14px;
-    padding: 16px;
+    border-radius: 16px;
+    padding: 18px;
     text-align: center;
   }
 
   .vs-pillar-icon {
-    width: 42px;
-    height: 42px;
+    width: 46px;
+    height: 46px;
     background: #ffffff;
     border: 1.5px solid #007b3e;
     color: #007b3e;
@@ -410,144 +502,187 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 16px;
-    margin: 0 auto 10px auto;
-    box-shadow: 0 2px 8px rgba(0,123,62,0.15);
+    font-size: 18px;
+    margin: 0 auto 12px auto;
+    box-shadow: 0 2px 8px rgba(0, 123, 62, 0.15);
   }
 
   .vs-pillar-card h4 {
     margin: 0 0 6px 0;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 700;
     color: #0f172a;
   }
 
   .vs-pillar-card p {
     margin: 0;
-    font-size: 12px;
+    font-size: 13px;
     color: #64748b;
-    line-height: 1.45;
+    line-height: 1.5;
   }
 
-  /* Conclusion Banner */
-  .vsblog-conclusion-card {
-    background: linear-gradient(135deg, #070d19 0%, #0f1c32 100%);
-    border: 1.5px solid rgba(236,92,10,0.4);
-    border-radius: 16px;
-    padding: 24px 22px;
+  /* Bottom Conversion Card */
+  .vs-reader-footer {
+    max-width: 820px;
+    margin: 40px auto 0 auto;
+  }
+
+  .vs-reader-bottom-card {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    border: 1.5px solid rgba(236, 92, 10, 0.35);
+    border-radius: 20px;
+    padding: 38px 32px;
     color: #ffffff;
-    margin: 28px 0 10px 0;
-    position: relative;
-    overflow: hidden;
+    text-align: center;
+    box-shadow: 0 16px 40px rgba(15, 23, 42, 0.15);
   }
 
-  .vsblog-conclusion-card h4 {
-    margin: 0 0 8px 0;
-    font-size: 16px;
+  .vs-reader-bottom-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(236, 92, 10, 0.2);
+    border: 1px solid rgba(236, 92, 10, 0.5);
+    color: #ff9d5c;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 4px 14px;
+    border-radius: 50px;
+    margin-bottom: 14px;
+  }
+
+  .vs-reader-bottom-card h3 {
+    margin: 0 0 10px 0;
+    font-size: clamp(20px, 3vw, 26px);
     font-weight: 800;
     color: #ffffff;
-    display: flex;
-    align-items: center;
-    gap: 8px;
   }
 
-  .vsblog-conclusion-card h4 i {
-    color: #ec5c0a;
-  }
-
-  .vsblog-conclusion-card p {
-    margin: 0 0 16px 0;
-    font-size: 13px;
+  .vs-reader-bottom-card p {
+    margin: 0 auto 24px auto;
+    font-size: 14.5px;
     color: #cbd5e1;
+    max-width: 580px;
     line-height: 1.6;
   }
 
-  .vsblog-conclusion-btn {
+  .vs-reader-bottom-btns {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .vs-reader-btn-primary {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: linear-gradient(135deg, #ec5c0a 0%, #ff7b00 100%);
+    background: linear-gradient(135deg, #ec5c0a 0%, #ff7800 100%);
     color: #ffffff;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 700;
-    padding: 10px 22px;
+    padding: 12px 28px;
     border-radius: 50px;
-    text-decoration: none;
-    box-shadow: 0 4px 15px rgba(236,92,10,0.4);
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(236, 92, 10, 0.4);
     transition: all 0.25s ease;
   }
 
-  .vsblog-conclusion-btn:hover {
-    transform: translateX(4px);
-    box-shadow: 0 6px 20px rgba(236,92,10,0.6);
+  .vs-reader-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(236, 92, 10, 0.55);
   }
 
-  /* General Modal Content Styling */
-  .vsblog-modal-h3 {
-    font-size: 16px;
-    font-weight: 700;
-    color: #0f172a;
-    margin: 22px 0 10px 0;
-    display: flex;
+  .vs-reader-btn-outline {
+    display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.08);
+    color: #f1f5f9;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 14px;
+    font-weight: 600;
+    padding: 12px 24px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.25s ease;
   }
 
-  .vsblog-modal-h3 i {
-    color: #ec5c0a;
+  .vs-reader-btn-outline:hover {
+    background: rgba(255, 255, 255, 0.16);
+    color: #ffffff;
   }
-
-  .vsblog-modal-highlight {
-    background: #fff8ef;
-    border-left: 4px solid #ec5c0a;
-    padding: 14px 16px;
-    border-radius: 10px;
-    margin: 16px 0;
-    font-weight: 500;
-    color: #1e293b;
-  }
-
-  .vsblog-modal-list {
-    margin: 12px 0 16px 0;
-    padding-left: 20px;
-  }
-
-  .vsblog-modal-list li { margin-bottom: 6px; }
 </style>
 
-<!-- ULTRA-PREMIUM ARTICLE READING MODAL POPUP -->
-<div class="vsblog-modal-overlay" id="vsblog_modal_overlay" onclick="vsCloseArticleModal(event)">
-  <div class="vsblog-modal-box" onclick="event.stopPropagation()">
-    <button type="button" class="vsblog-modal-close" onclick="vsCloseArticleModal()" aria-label="Close modal">
-      <i class="fa-solid fa-xmark"></i>
-    </button>
-    <div class="vsmodal-top-featured-img-wrap" id="vsmodal_top_img_wrap" style="display:none;">
-      <img id="vsmodal_top_img" src="" alt="Featured Article Header Image" class="vsmodal-top-featured-img">
-    </div>
-    <div class="vsblog-modal-header-banner">
-      <div class="vsblog-modal-header-glow"></div>
-      <div class="vsblog-modal-header-content">
-        <div class="vsblog-modal-meta-top">
-          <span class="vsmodal-badge-cat" id="vsmodal_cat"><i class="fa-solid fa-bolt"></i> Energy Savings</span>
-          <span class="vsmodal-badge-chip"><i class="fa-solid fa-clock"></i> <span id="vsmodal_readtime">6 min read</span></span>
-          <span class="vsmodal-badge-chip"><i class="fa-solid fa-calendar-days"></i> <span id="vsmodal_date">Sep 25, 2026</span></span>
-        </div>
-        <h2 class="vsblog-modal-header-title" id="vsmodal_header_title">Article Title</h2>
-        <div class="vsmodal-author-strip">
-          <div class="vsmodal-author-avatar"><i class="fa-solid fa-bolt"></i></div>
-          <div>
-            <div class="vsmodal-author-name" id="vsmodal_author">Vidhyut Saathi Team</div>
-            <div class="vsmodal-author-sub">Official Energy Efficiency Bulletin</div>
-          </div>
-        </div>
+<!-- FULL-PAGE IMMERSIVE LUXURY ARTICLE READER -->
+<div class="vsblog-modal-overlay" id="vsblog_modal_overlay">
+  <!-- Sticky Top Navigation -->
+  <div class="vs-reader-nav-header">
+    <div class="vs-reader-progress-line" id="vs_reader_progress"></div>
+    <div class="vs-reader-nav-inner">
+      <button type="button" class="vs-reader-back-btn" onclick="vsCloseArticleModal()" aria-label="Back to all articles">
+        <i class="fa-solid fa-arrow-left"></i> <span>Back to Insights</span>
+      </button>
+      <div class="vs-reader-brand-pill">
+        <i class="fa-solid fa-bolt"></i> Vidhyut Saathi Insights
       </div>
-    </div>
-    <div class="vsblog-modal-body-content">
-      <div id="vsmodal_full_html">
-        <!-- Full Detailed Article Content Injected via JS -->
+      <div class="vs-reader-actions">
+        <button type="button" class="vs-reader-share-btn" onclick="vsShareCurrentArticle()" title="Share Article">
+          <i class="fa-solid fa-share-nodes"></i> <span class="vs-share-btn-text">Share</span>
+        </button>
+        <button type="button" class="vs-reader-close-btn" onclick="vsCloseArticleModal()" aria-label="Close article">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
       </div>
     </div>
   </div>
+
+  <!-- Main Article Presentation -->
+  <article class="vs-reader-article-wrap">
+    <!-- Article Header -->
+    <header class="vs-reader-header">
+      <div class="vs-reader-meta-top">
+        <span class="vs-reader-cat-tag" id="vsmodal_cat"><i class="fa-solid fa-bolt"></i> Energy Savings</span>
+        <span class="vs-reader-chip"><i class="fa-solid fa-clock"></i> <span id="vsmodal_readtime">6 min read</span></span>
+        <span class="vs-reader-chip"><i class="fa-solid fa-calendar-days"></i> <span id="vsmodal_date">Sep 25, 2026</span></span>
+      </div>
+      <h1 class="vs-reader-title" id="vsmodal_header_title">How to Reduce Your Electricity Bill in India: 10 Smart Tips with Vidhyut Saathi ⚡</h1>
+      <div class="vs-reader-author-bar">
+        <div class="vs-reader-author-avatar"><i class="fa-solid fa-bolt"></i></div>
+        <div class="vs-reader-author-details">
+          <div class="vs-reader-author-name" id="vsmodal_author">Vidhyut Saathi Team</div>
+          <div class="vs-reader-author-badge">Official Energy Efficiency Bulletin</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Top Full-Width Hero Image -->
+    <div class="vs-reader-hero-img-wrap" id="vsmodal_top_img_wrap" style="display:none;">
+      <img id="vsmodal_top_img" src="" alt="Featured Article Header" class="vs-reader-hero-img">
+    </div>
+
+    <!-- Article Content -->
+    <div class="vs-reader-body" id="vsmodal_full_html">
+      <!-- Full Detailed Article Content Injected via JS -->
+    </div>
+
+    <!-- Bottom Conversion Banner -->
+    <footer class="vs-reader-footer">
+      <div class="vs-reader-bottom-card">
+        <div class="vs-reader-bottom-badge"><i class="fa-solid fa-bolt"></i> Vidhyut Saathi Official</div>
+        <h3>Save 20–30% on Monthly Electricity Bills</h3>
+        <p>Explore our ISO 9001:2015 certified residential & commercial energy saving cards or apply for an exclusive district franchise today.</p>
+        <div class="vs-reader-bottom-btns">
+          <button type="button" class="vs-reader-btn-primary" onclick="window.location.href='/collections/all'">Explore Power Savers <i class="fa-solid fa-arrow-right"></i></button>
+          <button type="button" class="vs-reader-btn-outline" onclick="vsCloseArticleModal()">← Back to All Articles</button>
+        </div>
+      </div>
+    </footer>
+  </article>
 </div>
 
 <script>
@@ -967,7 +1102,12 @@
     }
     
     var overlay = document.getElementById('vsblog_modal_overlay');
-    if (overlay) overlay.classList.add('active');
+    if (overlay) {
+      overlay.scrollTop = 0;
+      overlay.classList.add('active');
+    }
+    var prog = document.getElementById('vs_reader_progress');
+    if (prog) prog.style.width = '0%';
     document.body.style.overflow = 'hidden';
   }
 
@@ -976,6 +1116,45 @@
     if (overlay) overlay.classList.remove('active');
     document.body.style.overflow = '';
   }
+
+  function vsShareCurrentArticle() {
+    var title = document.getElementById('vsmodal_header_title') ? document.getElementById('vsmodal_header_title').innerText : 'Vidhyut Saathi Article';
+    var shareBtn = document.querySelector('.vs-reader-share-btn');
+    var shareText = document.querySelector('.vs-share-btn-text');
+    
+    if (navigator.share) {
+      navigator.share({
+        title: title,
+        text: 'Check out this energy saving guide from Vidhyut Saathi: ' + title,
+        url: window.location.href
+      }).catch(function() {});
+    } else if (navigator.clipboard) {
+      navigator.clipboard.writeText(window.location.href).then(function() {
+        if (shareText) {
+          var original = shareText.innerText;
+          shareText.innerText = 'Link Copied!';
+          setTimeout(function() {
+            shareText.innerText = original;
+          }, 2000);
+        }
+      });
+    }
+  }
+
+  // Reading progress tracking on full-page scroll
+  document.addEventListener('DOMContentLoaded', function() {
+    var overlay = document.getElementById('vsblog_modal_overlay');
+    var progressLine = document.getElementById('vs_reader_progress');
+    if (overlay && progressLine) {
+      overlay.addEventListener('scroll', function() {
+        var scrollH = overlay.scrollHeight - overlay.clientHeight;
+        if (scrollH > 0) {
+          var pct = (overlay.scrollTop / scrollH) * 100;
+          progressLine.style.width = Math.min(100, Math.max(0, pct)) + '%';
+        }
+      }, { passive: true });
+    }
+  });
 
   function vsSubscribeNewsletter(e) {
     if (e && e.preventDefault) e.preventDefault();
