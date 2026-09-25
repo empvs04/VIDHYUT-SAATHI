@@ -217,34 +217,31 @@
     padding: 0;
   }
 
+  .vs-theme-orange {
+    color: #ec5c0a;
+    background: linear-gradient(135deg, #ec5c0a 0%, #ff7800 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
   /* Clean Lucrative Intro Editorial Section */
   .vs-reader-intro-block {
-    margin: 0 0 40px 0;
-    padding: 20px 24px;
-    background: linear-gradient(135deg, #fffaf5 0%, #ffffff 100%);
-    border-left: 4px solid #ec5c0a;
-    border-radius: 0 16px 16px 0;
-    border-top: 1px solid #ffedd5;
-    border-right: 1px solid #ffedd5;
-    border-bottom: 1px solid #ffedd5;
-    box-shadow: 0 4px 16px rgba(236, 92, 10, 0.04);
+    margin: 0 0 36px 0;
   }
 
   .vs-reader-intro-title {
-    font-size: clamp(20px, 2.5vw, 26px);
-    font-weight: 800;
-    background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin: 0 0 10px 0;
-    line-height: 1.32;
-    letter-spacing: -0.02em;
+    font-size: clamp(24px, 3.4vw, 36px);
+    font-weight: 900;
+    color: #0f172a;
+    margin: 0 0 16px 0;
+    line-height: 1.28;
+    letter-spacing: -0.025em;
   }
 
   .vs-reader-intro-desc {
-    font-size: clamp(15.5px, 1.8vw, 17px);
+    font-size: clamp(16px, 1.8vw, 17.5px);
     color: #475569;
-    line-height: 1.8;
+    line-height: 1.85;
     margin: 0;
   }
 
@@ -610,9 +607,9 @@
       <img id="vsmodal_top_img" src="" alt="Featured Article Header" class="vs-reader-hero-img">
     </div>
 
-    <!-- 2. Article Header Details (Underneath Image) -->
-    <header class="vs-reader-header">
-      <h1 class="vs-reader-title" id="vsmodal_header_title">How to Reduce Your Electricity Bill in India: 10 Smart Tips with Vidhyut Saathi ⚡</h1>
+    <!-- 2. Article Header Details (Shown for articles 1+, hidden for featured article 0) -->
+    <header class="vs-reader-header" id="vsmodal_header_wrap" style="display:none;">
+      <h1 class="vs-reader-title" id="vsmodal_header_title"></h1>
     </header>
 
     <!-- 3. Article Body Content -->
@@ -646,10 +643,10 @@
       readTime: "6 min read",
       url: "/blogs/news/how-to-reduce-electricity-bill-in-india",
       html: `
-        <!-- INTRO EDITORIAL SECTION (CLEAN - NO BOX) -->
+        <!-- INTRO EDITORIAL SECTION (THEME BASE HEADLINE & DESCRIPTION) -->
         <div class="vs-reader-intro-block">
-          <h2 class="vs-reader-intro-title">Is Your Electricity Bill Increasing Every Month?</h2>
-          <p class="vs-reader-intro-desc">Electricity is an essential part of our daily lives—but unnecessary power wastage can drastically increase your monthly expenses. With the <strong>Vidhyut Saathi Card</strong>, you can explore a modern, certified approach to electricity saving through advanced <strong>US–German Nanotechnology</strong> and simple <strong>MCB-based installation</strong>.</p>
+          <h2 class="vs-reader-intro-title">Is Your <span class="vs-theme-orange">Electricity Bill</span> Increasing Every Month? ⚡</h2>
+          <p class="vs-reader-intro-desc">Electricity is an essential part of our daily lives—but unnecessary power wastage can drastically increase your monthly expenses. With the <strong style="color:#0f172a;">Vidhyut Saathi Card</strong>, you can explore a modern, certified approach to electricity saving through advanced <strong style="color:#ec5c0a;">US–German Nanotechnology</strong> and simple <strong style="color:#007b3e;">MCB-based installation</strong>.</p>
         </div>
 
         <!-- SECTION HEADING -->
@@ -1025,7 +1022,15 @@
     var topImgWrap = document.getElementById('vsmodal_top_img_wrap');
     var topImg = document.getElementById('vsmodal_top_img');
 
+    var headerWrap = document.getElementById('vsmodal_header_wrap');
     if (titleElem) titleElem.innerText = article.title;
+    if (headerWrap) {
+      if (index === 0) {
+        headerWrap.style.display = 'none';
+      } else {
+        headerWrap.style.display = 'block';
+      }
+    }
     if (catElem) catElem.innerHTML = '<i class="fa-solid fa-bolt"></i> ' + article.category;
     if (dateElem) dateElem.innerText = article.date;
     if (authorElem) authorElem.innerText = article.author;
