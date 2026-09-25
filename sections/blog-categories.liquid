@@ -1,0 +1,204 @@
+<style>
+  .vsblog-filter-section-wrap {
+    background: #fff8ef;
+    font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  .vsblog-filter-section-wrap *, .vsblog-filter-section-wrap *::before, .vsblog-filter-section-wrap *::after {
+    box-sizing: border-box;
+  }
+
+  .vsblog-filter-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 24px 16px 0 16px;
+  }
+
+  @media (min-width: 768px) {
+    .vsblog-filter-container {
+      padding: 32px 20px 0 20px;
+    }
+  }
+
+  /* ─── CATEGORY FILTER BAR & SEARCH ─── */
+  .vsblog-filter-bar {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 24px;
+    padding: 12px 14px;
+    background: #ffffff;
+    border-radius: 18px;
+    border: 1.5px solid #e2e8f0;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.03);
+    width: 100%;
+  }
+
+  @media (min-width: 768px) {
+    .vsblog-filter-bar {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      border-radius: 60px;
+      padding: 12px 24px;
+      margin-bottom: 30px;
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.04);
+    }
+  }
+
+  .vsblog-filter-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: #0f172a;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+  }
+
+  .vsblog-filter-label i { color: #ec5c0a; }
+
+  .vsblog-cats {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding-bottom: 2px;
+    width: 100%;
+  }
+
+  .vsblog-cats::-webkit-scrollbar { display: none; }
+
+  .vsblog-cat-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 16px;
+    border-radius: 50px;
+    background: #f8fafc;
+    border: 1.5px solid #e2e8f0;
+    color: #475569;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.22s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .vsblog-cat-btn:active {
+    transform: scale(0.96);
+  }
+
+  .vsblog-cat-btn:hover,
+  .vsblog-cat-btn.active {
+    background: linear-gradient(135deg, #ec5c0a 0%, #ff7b00 100%);
+    border-color: #ec5c0a;
+    color: #ffffff;
+    box-shadow: 0 4px 16px rgba(236, 92, 10, 0.32);
+  }
+
+  .vsblog-search {
+    display: flex;
+    position: relative;
+    width: 100%;
+  }
+
+  @media (min-width: 768px) {
+    .vsblog-search { width: auto; min-width: 240px; max-width: 280px; }
+  }
+
+  .vsblog-search input {
+    width: 100%;
+    height: 40px;
+    padding: 0 40px 0 16px;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 50px;
+    background: #f8fafc;
+    font-size: 12px;
+    font-family: inherit;
+    color: #0f172a;
+    font-weight: 400;
+    outline: none;
+    transition: all 0.2s ease;
+  }
+
+  .vsblog-search input:focus {
+    background: #ffffff;
+    border-color: #ec5c0a;
+    box-shadow: 0 0 0 3.5px rgba(236, 92, 10, 0.12);
+  }
+
+  .vsblog-search button {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #ec5c0a;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 0;
+  }
+</style>
+
+<div class="vsblog-filter-section-wrap">
+  <div class="vsblog-filter-container">
+    <!-- Category Filter Bar -->
+    <div class="vsblog-filter-bar">
+      <span class="vsblog-filter-label"><i class="fa-solid fa-filter"></i> {{ section.settings.filter_label | default: "Filter Topics:" }}</span>
+      <div class="vsblog-cats" id="vsblog_category_container">
+        <button class="vsblog-cat-btn active" data-cat="all" onclick="vsFilterArticles('all', this)">
+          <i class="fa-solid fa-th-large"></i> All
+        </button>
+        <button class="vsblog-cat-btn" data-cat="Energy Savings" onclick="vsFilterArticles('Energy Savings', this)">
+          <i class="fa-solid fa-bolt"></i> Energy Savings
+        </button>
+        <button class="vsblog-cat-btn" data-cat="Franchise" onclick="vsFilterArticles('Franchise', this)">
+          <i class="fa-solid fa-store"></i> Franchise
+        </button>
+        <button class="vsblog-cat-btn" data-cat="Technology" onclick="vsFilterArticles('Technology', this)">
+          <i class="fa-solid fa-microchip"></i> Tech
+        </button>
+      </div>
+
+      <div class="vsblog-search">
+        <input type="text" id="vsblog_search_input" placeholder="{{ section.settings.search_placeholder | default: 'Search articles...' }}" onkeyup="vsSearchArticles()">
+        <button type="button" onclick="vsSearchArticles()"><i class="fa-solid fa-magnifying-glass"></i></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Blog Categories",
+  "tag": "section",
+  "class": "vsblog-categories-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "filter_label",
+      "label": "Filter Topics Label",
+      "default": "Filter Topics:"
+    },
+    {
+      "type": "text",
+      "id": "search_placeholder",
+      "label": "Search Input Placeholder",
+      "default": "Search articles..."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Blog Categories"
+    }
+  ]
+}
+{% endschema %}

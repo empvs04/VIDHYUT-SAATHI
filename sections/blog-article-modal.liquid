@@ -1,0 +1,970 @@
+<style>
+  /* ============================================================
+     ULTRA-PREMIUM MODAL READER STYLES
+     ============================================================ */
+  .vsblog-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(8, 15, 28, 0.82);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-sizing: border-box;
+    font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  .vsblog-modal-overlay *, .vsblog-modal-overlay *::before, .vsblog-modal-overlay *::after {
+    box-sizing: border-box;
+  }
+
+  .vsblog-modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .vsblog-modal-box {
+    background: #ffffff;
+    border-radius: 24px;
+    max-width: 900px;
+    width: 100%;
+    max-height: 92vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(236, 92, 10, 0.25);
+    border: 1px solid rgba(236, 92, 10, 0.28);
+    animation: vsModalPopUp 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    scrollbar-width: thin;
+    scrollbar-color: #ec5c0a #f1f5f9;
+  }
+
+  .vsblog-modal-box::-webkit-scrollbar {
+    width: 6px;
+  }
+  .vsblog-modal-box::-webkit-scrollbar-thumb {
+    background: #ec5c0a;
+    border-radius: 4px;
+  }
+  .vsblog-modal-box::-webkit-scrollbar-track {
+    background: #f1f5f9;
+  }
+
+  @keyframes vsModalPopUp {
+    from { opacity: 0; transform: translateY(30px) scale(0.97); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  .vsblog-modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 38px;
+    height: 38px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    cursor: pointer;
+    z-index: 30;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+  }
+
+  .vsblog-modal-close:hover {
+    background: #ec5c0a;
+    color: #ffffff;
+    transform: rotate(90deg) scale(1.08);
+    border-color: #ec5c0a;
+  }
+
+  .vsblog-modal-header-banner {
+    position: relative;
+    background: linear-gradient(135deg, #070d19 0%, #0f1c32 55%, #182b49 100%);
+    padding: 34px 28px 26px 28px;
+    border-bottom: 2px solid rgba(236, 92, 10, 0.35);
+    overflow: hidden;
+  }
+
+  .vsblog-modal-header-glow {
+    position: absolute;
+    top: -60px;
+    right: -60px;
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(236,92,10,0.4) 0%, rgba(236,92,10,0) 70%);
+    pointer-events: none;
+  }
+
+  .vsblog-modal-header-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .vsblog-modal-meta-top {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .vsmodal-badge-cat {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: linear-gradient(135deg, #ec5c0a 0%, #ff7b00 100%);
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    padding: 4px 12px;
+    border-radius: 50px;
+    box-shadow: 0 2px 10px rgba(236,92,10,0.4);
+  }
+
+  .vsmodal-badge-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(4px);
+    color: #cbd5e1;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 4px 11px;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .vsmodal-badge-chip i {
+    color: #fb923c;
+  }
+
+  .vsblog-modal-header-title {
+    color: #ffffff;
+    font-size: clamp(18px, 3.2vw, 24px);
+    font-weight: 800;
+    line-height: 1.35;
+    margin: 0 0 14px 0;
+    letter-spacing: -0.3px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  }
+
+  .vsmodal-author-strip {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .vsmodal-author-avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ec5c0a 0%, #007b3e 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 14px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  }
+
+  .vsmodal-author-name {
+    color: #f8fafc;
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .vsmodal-author-sub {
+    color: #94a3b8;
+    font-size: 11px;
+    font-weight: 500;
+  }
+
+  .vsblog-modal-body-content {
+    padding: 24px 20px;
+    color: #334155;
+    font-size: 14.5px;
+    line-height: 1.7;
+    background: #ffffff;
+  }
+
+  @media (min-width: 768px) {
+    .vsblog-modal-body-content { padding: 30px 34px; font-size: 15px; }
+  }
+
+  /* Reader Hero Highlight Box */
+  .vsblog-reader-hero-box {
+    background: linear-gradient(135deg, #fff7ed 0%, #fef3c7 100%);
+    border: 1.5px solid #fed7aa;
+    border-left: 5px solid #ec5c0a;
+    border-radius: 14px;
+    padding: 18px 20px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 15px rgba(236, 92, 10, 0.08);
+  }
+
+  .vsblog-reader-hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #ec5c0a;
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 3px 10px;
+    border-radius: 50px;
+    margin-bottom: 8px;
+  }
+
+  .vsblog-reader-hero-box h3 {
+    margin: 0 0 8px 0;
+    font-size: 17px;
+    font-weight: 800;
+    color: #9a3412;
+  }
+
+  .vsblog-reader-hero-box p {
+    margin: 0;
+    font-size: 13.5px;
+    color: #7c2d12;
+    line-height: 1.6;
+  }
+
+  /* Reader Section Title */
+  .vsblog-reader-sec-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 28px 0 18px 0;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #f1f5f9;
+  }
+
+  .vsblog-reader-sec-icon {
+    width: 38px;
+    height: 38px;
+    background: linear-gradient(135deg, #ec5c0a 0%, #ff7b00 100%);
+    color: #ffffff;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(236,92,10,0.3);
+  }
+
+  .vsblog-reader-sec-title h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 800;
+    color: #0f172a;
+  }
+
+  .vsblog-reader-sec-title p {
+    margin: 2px 0 0 0;
+    font-size: 12px;
+    color: #64748b;
+  }
+
+  /* 10 TIPS GRID CARDS */
+  .vsblog-tips-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin: 20px 0 28px 0;
+  }
+
+  @media (min-width: 640px) {
+    .vsblog-tips-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+  }
+
+  .vs-tip-item {
+    background: #ffffff;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 16px;
+    position: relative;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    transition: all 0.25s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+  }
+
+  .vs-tip-item:hover {
+    border-color: #ec5c0a;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(236,92,10,0.1);
+  }
+
+  .vs-tip-num {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    font-size: 18px;
+    font-weight: 900;
+    color: rgba(236, 92, 10, 0.15);
+    line-height: 1;
+  }
+
+  .vs-tip-icon-box {
+    width: 36px;
+    height: 36px;
+    background: #fff7ed;
+    border: 1px solid #fed7aa;
+    color: #ec5c0a;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    flex-shrink: 0;
+  }
+
+  .vs-tip-content h4 {
+    margin: 0 0 5px 0;
+    font-size: 14px;
+    font-weight: 700;
+    color: #0f172a;
+    padding-right: 20px;
+  }
+
+  .vs-tip-content p {
+    margin: 0;
+    font-size: 12.5px;
+    color: #64748b;
+    line-height: 1.5;
+  }
+
+  /* 3 Pillars Grid */
+  .vsblog-pillars-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin: 16px 0 24px 0;
+  }
+
+  @media (min-width: 640px) {
+    .vsblog-pillars-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .vs-pillar-card {
+    background: #f8fafc;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 16px;
+    text-align: center;
+  }
+
+  .vs-pillar-icon {
+    width: 42px;
+    height: 42px;
+    background: #ffffff;
+    border: 1.5px solid #007b3e;
+    color: #007b3e;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    margin: 0 auto 10px auto;
+    box-shadow: 0 2px 8px rgba(0,123,62,0.15);
+  }
+
+  .vs-pillar-card h4 {
+    margin: 0 0 6px 0;
+    font-size: 14px;
+    font-weight: 700;
+    color: #0f172a;
+  }
+
+  .vs-pillar-card p {
+    margin: 0;
+    font-size: 12px;
+    color: #64748b;
+    line-height: 1.45;
+  }
+
+  /* Conclusion Banner */
+  .vsblog-conclusion-card {
+    background: linear-gradient(135deg, #070d19 0%, #0f1c32 100%);
+    border: 1.5px solid rgba(236,92,10,0.4);
+    border-radius: 16px;
+    padding: 24px 22px;
+    color: #ffffff;
+    margin: 28px 0 10px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .vsblog-conclusion-card h4 {
+    margin: 0 0 8px 0;
+    font-size: 16px;
+    font-weight: 800;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .vsblog-conclusion-card h4 i {
+    color: #ec5c0a;
+  }
+
+  .vsblog-conclusion-card p {
+    margin: 0 0 16px 0;
+    font-size: 13px;
+    color: #cbd5e1;
+    line-height: 1.6;
+  }
+
+  .vsblog-conclusion-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #ec5c0a 0%, #ff7b00 100%);
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 10px 22px;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(236,92,10,0.4);
+    transition: all 0.25s ease;
+  }
+
+  .vsblog-conclusion-btn:hover {
+    transform: translateX(4px);
+    box-shadow: 0 6px 20px rgba(236,92,10,0.6);
+  }
+
+  /* General Modal Content Styling */
+  .vsblog-modal-h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 22px 0 10px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .vsblog-modal-h3 i {
+    color: #ec5c0a;
+  }
+
+  .vsblog-modal-highlight {
+    background: #fff8ef;
+    border-left: 4px solid #ec5c0a;
+    padding: 14px 16px;
+    border-radius: 10px;
+    margin: 16px 0;
+    font-weight: 500;
+    color: #1e293b;
+  }
+
+  .vsblog-modal-list {
+    margin: 12px 0 16px 0;
+    padding-left: 20px;
+  }
+
+  .vsblog-modal-list li { margin-bottom: 6px; }
+</style>
+
+<!-- ULTRA-PREMIUM ARTICLE READING MODAL POPUP -->
+<div class="vsblog-modal-overlay" id="vsblog_modal_overlay" onclick="vsCloseArticleModal(event)">
+  <div class="vsblog-modal-box" onclick="event.stopPropagation()">
+    <button type="button" class="vsblog-modal-close" onclick="vsCloseArticleModal()" aria-label="Close modal">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    <div class="vsblog-modal-header-banner">
+      <div class="vsblog-modal-header-glow"></div>
+      <div class="vsblog-modal-header-content">
+        <div class="vsblog-modal-meta-top">
+          <span class="vsmodal-badge-cat" id="vsmodal_cat"><i class="fa-solid fa-bolt"></i> Energy Savings</span>
+          <span class="vsmodal-badge-chip"><i class="fa-solid fa-clock"></i> <span id="vsmodal_readtime">6 min read</span></span>
+          <span class="vsmodal-badge-chip"><i class="fa-solid fa-calendar-days"></i> <span id="vsmodal_date">Sep 25, 2026</span></span>
+        </div>
+        <h2 class="vsblog-modal-header-title" id="vsmodal_header_title">Article Title</h2>
+        <div class="vsmodal-author-strip">
+          <div class="vsmodal-author-avatar"><i class="fa-solid fa-bolt"></i></div>
+          <div>
+            <div class="vsmodal-author-name" id="vsmodal_author">Vidhyut Saathi Team</div>
+            <div class="vsmodal-author-sub">Official Energy Efficiency Bulletin</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="vsblog-modal-body-content">
+      <div id="vsmodal_full_html">
+        <!-- Full Detailed Article Content Injected via JS -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // DETAILED COMPREHENSIVE MULTI-ARTICLE DATABASE (12 ARTICLES)
+  var VS_ARTICLES = [
+    {
+      title: "How to Reduce Your Electricity Bill in India: 10 Smart Tips with Vidhyut Saathi ⚡",
+      category: "Energy Savings",
+      date: "Sep 25, 2026",
+      author: "Vidhyut Saathi Team",
+      readTime: "6 min read",
+      url: "/blogs/news/how-to-reduce-electricity-bill-in-india",
+      html: `
+        <!-- HERO CALLOUT -->
+        <div class="vsblog-reader-hero-box">
+          <div class="vsblog-reader-hero-badge"><i class="fa-solid fa-bolt-lightning"></i> Smart Energy Guide</div>
+          <h3>Is Your Electricity Bill Increasing Every Month?</h3>
+          <p>Electricity is an essential part of our daily lives—but unnecessary power wastage can drastically increase your monthly expenses. With the <strong>Vidhyut Saathi Card</strong>, you can explore a modern, certified approach to electricity saving through advanced <strong>US–German Nanotechnology</strong> and simple <strong>MCB-based installation</strong>.</p>
+        </div>
+
+        <!-- SECTION HEADING -->
+        <div class="vsblog-reader-sec-title">
+          <div class="vsblog-reader-sec-icon"><i class="fa-solid fa-list-check"></i></div>
+          <div>
+            <h3>10 Smart Tips for Better Electricity Efficiency</h3>
+            <p>Proven steps to optimize power factor, minimize line loss, and slash monthly bills by 20–30%</p>
+          </div>
+        </div>
+
+        <!-- 10 TIPS GRID CARDS -->
+        <div class="vsblog-tips-grid">
+          <!-- Tip 1 -->
+          <div class="vs-tip-item">
+            <div class="vs-tip-num">01</div>
+            <div class="vs-tip-icon-box"><i class="fa-solid fa-server"></i></div>
+            <div class="vs-tip-content">
+              <h4>Start with Your MCB</h4>
+              <p>The MCB box is the central distribution point of your electrical connection. Vidhyut Saathi Card is installed directly near the MCB to support immediate power optimization across all connected circuits.</p>
+            </div>
+          </div>
+
+          <!-- Tip 2 -->
+          <div class="vs-tip-item">
+            <div class="vs-tip-num">02</div>
+            <div class="vs-tip-icon-box"><i class="fa-solid fa-atom"></i></div>
+            <div class="vs-tip-content">
+              <h4>Explore Advanced Nanotechnology</h4>
+              <p>Vidhyut Saathi Card utilizes cutting-edge <strong>US–German Nanotechnology</strong> embedded layers to provide a modern, scientifically validated electricity-saving solution.</p>
+            </div>
+          </div>
+
+          <!-- Tip 3 -->
+          <div class="vs-tip-item">
+            <div class="vs-tip-num">03</div>
+            <div class="vs-tip-icon-box"><i class="fa-solid fa-wave-square"></i></div>
+            <div class="vs-tip-content">
+              <h4>Understand & Stabilize Power Factor</h4>
+              <p>The card’s embedded <strong>Terahertz Chip</strong> helps stabilize inductive power factor close to unity (0.98+), preventing apparent energy losses in heavy motors and inductive appliances.</p>
+            </div>
+          </div>
+
+          <!-- Tip 4 -->
+          <div class="vs-tip-item">
+            <div class="vs-tip-num">04</div>
+            <div class="vs-tip-icon-box"><i class="fa-solid fa-shield-halved"></i></div>
+            <div class="vs-tip-content">
+              <h4>Minimize Electricity Leakage</h4>
+              <p>Packed with <strong>20,000+ Negative Ions</strong>, the card generates an ionic field that helps minimize micro-leakage and suppress harmonic line distortions.</p>
+            </div>
+          </div>
+
+          <!-- Tip 5 -->
+          <div class="vs-tip-item">
+            <div class="vs-tip-num">05</div>
+            <div class="vs-tip-icon-box"><i class="fa-solid fa-circle-nodes"></i></div>
+            <div class="vs-tip-content">
+              <h4>Optimize Power Consumption</h4>
+              <p>Vidhyut Saathi Card creates an optimized energy aura around the MCB box, streamlining electron flow and eliminating wire resistance heating ($I^2R$).</p>
+            </div>
+          </div>
+
+          <!-- Tip 6 -->
+          <div class="vs-tip-item">
+            <div class="vs-tip-num">06</div>
+            <div class="vs-tip-icon-box"><i class="fa-solid fa-gauge-simple-high"></i></div>
+            <div class="vs-tip-content">
+              <h4>Reduce Unnecessary Power Wastage</h4>
+              <p>By preventing motor lag and voltage dips, the card cuts avoidable reactive energy billing, making your appliances run cooler and more efficiently.</p>
+            </div>
+          </div>
+
+          <!-- Tip 7 -->
+          <div class="vs-tip-item">
+            <div class="vs-tip-num">07</div>
+            <div class="vs-tip-icon-box"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+            <div class="vs-tip-content">
+              <h4>Choose a Simple 2-Minute Installation</h4>
+              <p>Zero wiring hassle or complex cutting. The card is effortlessly fixed beside or on the MCB cover using high-bond thermal tape — no plug-in or technician required.</p>
+            </div>
+          </div>
+
+          <!-- Tip 8 -->
+          <div class="vs-tip-item">
+            <div class="vs-tip-num">08</div>
+            <div class="vs-tip-icon-box"><i class="fa-solid fa-medal"></i></div>
+            <div class="vs-tip-content">
+              <h4>Rely on Certified Quality</h4>
+              <p>Certified under <strong>ISO 9001:2015</strong>, <strong>ISO 14001:2015</strong>, and <strong>ISO 45001:2018</strong> alongside European CE safety compliance protocols.</p>
+            </div>
+          </div>
+
+          <!-- Tip 9 -->
+          <div class="vs-tip-item">
+            <div class="vs-tip-num">09</div>
+            <div class="vs-tip-icon-box"><i class="fa-solid fa-infinity"></i></div>
+            <div class="vs-tip-content">
+              <h4>Long-Term Consistent Performance</h4>
+              <p>Engineered with zero internal moving mechanical parts, offering continuous active power regulation, thermal durability, and an extensive service lifespan.</p>
+            </div>
+          </div>
+
+          <!-- Tip 10 -->
+          <div class="vs-tip-item">
+            <div class="vs-tip-num">10</div>
+            <div class="vs-tip-icon-box"><i class="fa-solid fa-lightbulb"></i></div>
+            <div class="vs-tip-content">
+              <h4>Adopt Smart Energy Habits</h4>
+              <p>Complement Vidhyut Saathi Card with regular AC filter servicing, LED fixtures, and 5-star inverter-rated equipment for cumulative peak monthly savings.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 CORE PILLARS -->
+        <div class="vsblog-reader-sec-title">
+          <div class="vsblog-reader-sec-icon"><i class="fa-solid fa-cubes"></i></div>
+          <div>
+            <h3>Why Vidhyut Saathi Card Makes a Difference</h3>
+            <p>A multi-layered technological approach to electrical optimization</p>
+          </div>
+        </div>
+
+        <div class="vsblog-pillars-grid">
+          <div class="vs-pillar-card">
+            <div class="vs-pillar-icon"><i class="fa-solid fa-microchip"></i></div>
+            <h4>Terahertz Wave Technology</h4>
+            <p>Stabilizes current fluctuations and eliminates wire waveform distortions in real-time.</p>
+          </div>
+          <div class="vs-pillar-card">
+            <div class="vs-pillar-icon"><i class="fa-solid fa-shield-halved"></i></div>
+            <h4>20,000+ Negative Ions</h4>
+            <p>Suppresses electrical resistance heating and controls micro-leakages around circuits.</p>
+          </div>
+          <div class="vs-pillar-card">
+            <div class="vs-pillar-icon"><i class="fa-solid fa-award"></i></div>
+            <h4>ISO & CE Certified</h4>
+            <p>Tested for flame retardance, electromagnetic compatibility, and consumer electrical safety.</p>
+          </div>
+        </div>
+
+        <!-- CONCLUSION CALLOUT -->
+        <div class="vsblog-conclusion-card">
+          <h4><i class="fa-solid fa-circle-check"></i> Final Thoughts: Take Control of Your Electricity Expenses</h4>
+          <p>Saving electricity is not only about reducing bills—it is about smarter energy consumption, appliance longevity, and environmental sustainability. Start your journey toward energy efficiency today with <strong>Vidhyut Saathi Card</strong>.</p>
+          <a href="/pages/required-cards" class="vsblog-conclusion-btn">Explore Vidhyut Saathi Solutions <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      `
+    },
+    {
+      title: "Understanding the 3 Exclusive District Franchise Models of Vidhyut Saathi",
+      category: "Franchise",
+      date: "Aug 20, 2026",
+      author: "Vidhyut Saathi Team",
+      readTime: "7 min read",
+      url: "/blogs/news/understanding-the-3-exclusive-district-franchise-models",
+      html: `
+        <div class="vsblog-modal-highlight">
+          <strong>Key Takeaway:</strong> Vidhyut Saathi provides 3 lucrative, zero-royalty district franchise formats enabling partners to build profitable regional distribution networks.
+        </div>
+        <div class="vsblog-modal-h3"><i class="fa-solid fa-layer-group"></i> 1. Non-Exclusive District Franchise</div>
+        <p>Ideal for emerging entrepreneurs entering the energy efficiency market with flexible stock allocation and localized promotional marketing assets.</p>
+        <div class="vsblog-modal-h3"><i class="fa-solid fa-crown"></i> 2. Standard Exclusive District Franchise</div>
+        <p>Provides complete exclusivity across an entire assigned district. No other vendor or distributor can operate within your designated territory, guaranteeing full market share.</p>
+        <div class="vsblog-modal-h3"><i class="fa-solid fa-gem"></i> 3. Premium Exclusive District Franchise</div>
+        <p>Our top-tier partner tier with maximum wholesale margins, priority inventory dispatch, dedicated B2B institutional lead passing, and co-branded regional campaigns.</p>
+        <div class="vsblog-conclusion-card">
+          <h4><i class="fa-solid fa-store"></i> Ready to apply for your district?</h4>
+          <p>Lock your district before territory reservation closes. Zero royalty and guaranteed high ROI.</p>
+          <a href="/pages/get-franchise" class="vsblog-conclusion-btn">Apply for Franchise <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      `
+    },
+    {
+      title: "Why ISO 9001:2015 & ISO 14001 Certification Ensures Top Device Safety",
+      category: "Technology",
+      date: "Aug 18, 2026",
+      author: "Vidhyut Saathi Team",
+      readTime: "5 min read",
+      url: "/blogs/news/why-iso-certification-ensures-top-device-safety",
+      html: `
+        <div class="vsblog-modal-highlight">
+          <strong>Certified Quality:</strong> Every Vidhyut Saathi power saver device undergoes rigorous safety testing under ISO and European CE standards.
+        </div>
+        <div class="vsblog-modal-h3"><i class="fa-solid fa-certificate"></i> ISO 9001:2015 Quality Management</div>
+        <p>Guarantees strict manufacturing tolerances, component traceability, and zero-defect quality control across every batch.</p>
+        <div class="vsblog-modal-h3"><i class="fa-solid fa-leaf"></i> ISO 14001:2015 Environmental Standard</div>
+        <p>Ensures that our production, packaging, and non-toxic materials meet strict global ecological preservation protocols.</p>
+        <div class="vsblog-modal-h3"><i class="fa-solid fa-shield-virus"></i> ISO 45001:2018 & CE Compliance</div>
+        <p>Certified for complete electrical insulation, electromagnetic surge protection, and non-combustible casing safety in all climates.</p>
+      `
+    },
+    {
+      title: "How Residential & Commercial Establishments Cut Power Losses",
+      category: "Energy Savings",
+      date: "Aug 15, 2026",
+      author: "Vidhyut Saathi Team",
+      readTime: "6 min read",
+      url: "/blogs/news/how-residential-commercial-establishments-cut-power-losses",
+      html: `
+        <div class="vsblog-modal-highlight">
+          <strong>Understanding Reactive Losses:</strong> Inductive equipment (motors, compressors, pumps) creates reactive current, causing line heating and high bill penalties.
+        </div>
+        <div class="vsblog-modal-h3"><i class="fa-solid fa-house"></i> 1. Residential Homes & Apartments</div>
+        <p>Modern homes with multiple inverter ACs, refrigerators, and washing machines can cut line resistance losses by 20–30% with Vidhyut Saathi MCB integration.</p>
+        <div class="vsblog-modal-h3"><i class="fa-solid fa-building"></i> 2. Commercial Stores & Offices</div>
+        <p>Reduces continuous lighting harmonic distortion, stabilizes motor coils in elevators and HVAC units, and prevents appliance burnouts during voltage spikes.</p>
+      `
+    },
+    {
+      title: "KYC & Document Verification Guide for New Franchise Applicants",
+      category: "Franchise",
+      date: "Aug 10, 2026",
+      author: "Vidhyut Saathi Team",
+      readTime: "4 min read",
+      url: "/blogs/news/kyc-document-verification-guide",
+      html: `
+        <div class="vsblog-modal-highlight">
+          <strong>Fast-Track Onboarding:</strong> Learn the exact document checklist required to clear your District Franchise verification within 48 hours.
+        </div>
+        <ul class="vsblog-modal-list">
+          <li><strong>Identity Proof:</strong> Aadhaar Card, Passport, or Voter ID.</li>
+          <li><strong>Business Registration:</strong> GST Certificate or MSME Udyam Registration (if available).</li>
+          <li><strong>PAN Card:</strong> Individual or Firm PAN Card copy.</li>
+          <li><strong>Address Proof:</strong> Utility bill or commercial premises rent agreement.</li>
+        </ul>
+      `
+    },
+    {
+      title: "Power Factor Optimization: Active vs. Reactive Power Explained",
+      category: "Technology",
+      date: "Aug 05, 2026",
+      author: "Vidhyut Saathi Team",
+      readTime: "6 min read",
+      url: "/blogs/news/power-factor-optimization-explained",
+      html: `
+        <div class="vsblog-modal-highlight">
+          <strong>Physics of Electricity:</strong> Active Power (kW) performs real work, while Reactive Power (kVAR) creates magnetic fields. Poor power factor wastes money!
+        </div>
+        <p>When power factor drops below 0.85, the electricity utility must supply higher current, causing excessive conductor heating ($I^2R$). Vidhyut Saathi stabilizes cos φ close to 0.99.</p>
+      `
+    },
+    {
+      title: "10-Year Replacement Warranty & 24/7 Customer Support Network",
+      category: "Technology",
+      date: "Jul 28, 2026",
+      author: "Vidhyut Saathi Team",
+      readTime: "5 min read",
+      url: "/blogs/news/10-year-replacement-warranty-support",
+      html: `
+        <div class="vsblog-modal-highlight">
+          <strong>10-Year Assurance:</strong> Vidhyut Saathi provides a direct hassle-free replacement warranty on every certified card.
+        </div>
+        <p>No tedious repair queues. If your device malfunctions within the 10-year window, contact our nationwide support for an immediate swap.</p>
+      `
+    },
+    {
+      title: "Franchise Growth: Partner Success Across Rajasthan & UP",
+      category: "Franchise",
+      date: "Jul 20, 2026",
+      author: "Vidhyut Saathi Team",
+      readTime: "6 min read",
+      url: "/blogs/news/franchise-growth-success-stories",
+      html: `
+        <div class="vsblog-modal-highlight">
+          <strong>Real Partner Stories:</strong> Discover how district partners in Jaipur, Lucknow, and Indore built thriving local businesses with Vidhyut Saathi.
+        </div>
+        <p>Partners achieved consistent monthly sales by targeting residential complexes, cold storages, educational institutions, and retail markets.</p>
+      `
+    },
+    {
+      title: "Commercial & Industrial 3-Phase Power Saver Audit Guide",
+      category: "Energy Savings",
+      date: "Jul 12, 2026",
+      author: "Vidhyut Saathi Team",
+      readTime: "7 min read",
+      url: "/blogs/news/commercial-industrial-3-phase-audit-guide",
+      html: `
+        <div class="vsblog-modal-highlight">
+          <strong>Heavy Industrial Audits:</strong> Step-by-step procedures for auditing manufacturing units, cold storages, and commercial buildings.
+        </div>
+        <p>Learn how to measure kVAh demand, detect phase imbalances, and install 3-Phase Vidhyut Saathi units for 20–30% verified bill savings.</p>
+      `
+    },
+    {
+      title: "Understanding DISCOM Tariff Surcharges & Penalty Reduction",
+      category: "Energy Savings",
+      date: "Jul 05, 2026",
+      author: "Vidhyut Saathi Team",
+      readTime: "6 min read",
+      url: "/blogs/news/understanding-discom-tariff-surcharges",
+      html: `
+        <div class="vsblog-modal-highlight">
+          <strong>Eliminate Utility Penalties:</strong> State electricity boards impose steep tariff penalties on power factor below 0.90.
+        </div>
+        <p>Maintaining high power factor ensures you stay in the incentive slab and avoid thousands of rupees in avoidable penalty surcharges.</p>
+      `
+    },
+    {
+      title: "How Franchise District Partners Lock Exclusive Territory Rights",
+      category: "Franchise",
+      date: "Jun 28, 2026",
+      author: "Vidhyut Saathi Team",
+      readTime: "5 min read",
+      url: "/blogs/news/lock-exclusive-territory-rights",
+      html: `
+        <div class="vsblog-modal-highlight">
+          <strong>1 District = 1 Partner:</strong> Vidhyut Saathi enforces strict geographical territory protection with zero internal competition.
+        </div>
+        <p>Once your district agreement is signed, all incoming leads and retail orders from your zip codes are routed exclusively to your business.</p>
+      `
+    },
+    {
+      title: "Safety Protocols: V0-Grade Flame Retardant Casing & Surge Protection",
+      category: "Technology",
+      date: "Jun 20, 2026",
+      author: "Vidhyut Saathi Team",
+      readTime: "5 min read",
+      url: "/blogs/news/safety-protocols-flame-surge-protection",
+      html: `
+        <div class="vsblog-modal-highlight">
+          <strong>Uncompromising Safety:</strong> Engineered with German polycarbonate V0 fire-retardant outer shell and 6kV surge resistance.
+        </div>
+        <p>Designed to operate reliably in ambient temperatures up to 85°C without melting, smoking, or conducting hazardous stray currents.</p>
+      `
+    }
+  ];
+
+  function vsFilterArticles(catName, btnElem) {
+    if (btnElem) {
+      document.querySelectorAll('#vsblog_category_container .vsblog-cat-btn').forEach(function(b) {
+        b.classList.remove('active');
+      });
+      btnElem.classList.add('active');
+    }
+    
+    var cards = document.querySelectorAll('#vsblog_article_grid .vsblog-card');
+    cards.forEach(function(card) {
+      var cardCat = card.getAttribute('data-category');
+      if (catName === 'all' || cardCat === catName) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  function vsSearchArticles() {
+    var searchInput = document.getElementById('vsblog_search_input');
+    if (!searchInput) return;
+    var searchVal = searchInput.value.toLowerCase();
+    var cards = document.querySelectorAll('#vsblog_article_grid .vsblog-card');
+    
+    cards.forEach(function(card) {
+      var title = (card.getAttribute('data-title') || '').toLowerCase();
+      var cat = (card.getAttribute('data-category') || '').toLowerCase();
+      if (title.indexOf(searchVal) !== -1 || cat.indexOf(searchVal) !== -1) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  function vsOpenArticleModal(index) {
+    var article = VS_ARTICLES[index] || VS_ARTICLES[0];
+    var titleElem = document.getElementById('vsmodal_header_title');
+    var catElem = document.getElementById('vsmodal_cat');
+    var dateElem = document.getElementById('vsmodal_date');
+    var authorElem = document.getElementById('vsmodal_author');
+    var readTimeElem = document.getElementById('vsmodal_readtime');
+    var htmlElem = document.getElementById('vsmodal_full_html');
+
+    if (titleElem) titleElem.innerText = article.title;
+    if (catElem) catElem.innerHTML = '<i class="fa-solid fa-bolt"></i> ' + article.category;
+    if (dateElem) dateElem.innerText = article.date;
+    if (authorElem) authorElem.innerText = article.author;
+    if (readTimeElem) readTimeElem.innerText = article.readTime;
+    if (htmlElem) htmlElem.innerHTML = article.html;
+    
+    var overlay = document.getElementById('vsblog_modal_overlay');
+    if (overlay) overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function vsCloseArticleModal(e) {
+    var overlay = document.getElementById('vsblog_modal_overlay');
+    if (overlay) overlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function vsSubscribeNewsletter(e) {
+    if (e && e.preventDefault) e.preventDefault();
+    var emailInput = document.getElementById('vsblog_nl_email');
+    var msg = document.getElementById('vsblog_nl_msg');
+    if (emailInput && msg) {
+      var email = emailInput.value;
+      if (email) {
+        msg.innerHTML = '<i class="fa-solid fa-circle-check"></i> Thank you! You have successfully subscribed to Vidhyut Saathi updates.';
+        emailInput.value = '';
+      }
+    }
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      vsCloseArticleModal();
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Blog Article Modal",
+  "tag": "div",
+  "class": "vsblog-modal-section",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Blog Article Modal"
+    }
+  ]
+}
+{% endschema %}
