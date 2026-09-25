@@ -657,6 +657,328 @@
     background: rgba(255, 255, 255, 0.16);
     color: #ffffff;
   }
+
+  /* ============================================================
+     RESPONSIVE BREAKPOINTS & MOBILE VIEW PERFECT ALIGNMENT
+     ============================================================ */
+
+  /* ─── DESKTOP VIEW LOCK (>= 860px) ─── */
+  @media (min-width: 860px) {
+    .vs-reader-article-wrap {
+      padding: 40px 24px 90px 24px;
+      max-width: 1080px;
+    }
+    .vs-reader-hero-split-card {
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 32px;
+      padding: 34px 38px;
+    }
+    .vs-reader-hero-img-box {
+      max-height: 380px;
+    }
+    .vsblog-tips-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .vsblog-pillars-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+  }
+
+  /* ─── TABLET VIEW (768px - 859px) ─── */
+  @media (min-width: 768px) and (max-width: 859px) {
+    .vs-reader-article-wrap {
+      padding: 30px 20px 70px 20px;
+    }
+    .vs-reader-hero-split-card {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      padding: 28px 24px;
+    }
+    .vsblog-tips-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .vsblog-pillars-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+  }
+
+  /* ─── MOBILE VIEW PERFECT ALIGNMENT (<= 767px) ─── */
+  @media (max-width: 767px) {
+    .vsblog-modal-overlay {
+      padding: 0;
+    }
+
+    /* Sticky Navigation */
+    .vs-reader-nav-header {
+      height: 56px;
+    }
+
+    .vs-reader-nav-inner {
+      padding: 0 14px;
+      gap: 8px;
+    }
+
+    .vs-reader-back-btn {
+      padding: 6px 14px;
+      font-size: 12px;
+      gap: 6px;
+    }
+
+    .vs-reader-back-btn span {
+      display: inline-block;
+    }
+
+    .vs-reader-share-btn {
+      padding: 6px 12px;
+      font-size: 12px;
+    }
+
+    .vs-reader-close-btn {
+      width: 34px;
+      height: 34px;
+      font-size: 14px;
+    }
+
+    /* Main Article Wrap */
+    .vs-reader-article-wrap {
+      padding: 18px 14px 60px 14px;
+      max-width: 100%;
+    }
+
+    /* Hero Split Card */
+    .vs-reader-hero-split-card {
+      grid-template-columns: 1fr;
+      gap: 18px;
+      padding: 20px 16px;
+      border-radius: 18px;
+      margin-bottom: 24px;
+      box-shadow: 0 6px 20px rgba(15, 23, 42, 0.04);
+    }
+
+    .vs-reader-hero-tag {
+      font-size: 10.5px;
+      padding: 4px 12px;
+      margin-bottom: 10px;
+    }
+
+    .vs-reader-intro-title {
+      font-size: 21px;
+      line-height: 1.3;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+
+    .vs-reader-intro-desc {
+      font-size: 14px;
+      line-height: 1.65;
+      margin-bottom: 14px;
+    }
+
+    .vs-reader-hero-pills {
+      gap: 6px;
+    }
+
+    .vs-reader-hpill {
+      font-size: 11px;
+      padding: 4px 10px;
+      gap: 5px;
+    }
+
+    .vs-reader-hero-right {
+      width: 100%;
+    }
+
+    .vs-reader-hero-img-box {
+      border-radius: 14px;
+      max-height: 240px;
+      width: 100%;
+    }
+
+    .vs-reader-hero-img {
+      max-height: 240px;
+      object-fit: cover;
+    }
+
+    /* Section Headers */
+    .vsblog-reader-sec-title {
+      margin: 28px 0 16px 0;
+      gap: 12px;
+      padding-bottom: 12px;
+    }
+
+    .vsblog-reader-sec-icon {
+      width: 38px;
+      height: 38px;
+      font-size: 15px;
+      border-radius: 11px;
+    }
+
+    .vsblog-reader-sec-title h3 {
+      font-size: 17.5px;
+      line-height: 1.3;
+    }
+
+    .vsblog-reader-sec-title p {
+      font-size: 12px;
+      line-height: 1.45;
+      margin-top: 3px;
+    }
+
+    /* 10 Tips Grid */
+    .vsblog-tips-grid {
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin: 16px 0 28px 0;
+    }
+
+    .vs-tip-item {
+      padding: 16px 14px;
+      gap: 12px;
+      border-radius: 14px;
+    }
+
+    .vs-tip-num {
+      font-size: 16px;
+      top: 12px;
+      right: 12px;
+      opacity: 0.4;
+    }
+
+    .vs-tip-icon-box {
+      width: 36px;
+      height: 36px;
+      font-size: 14px;
+      border-radius: 10px;
+    }
+
+    .vs-tip-content h4 {
+      font-size: 14.5px;
+      margin-bottom: 4px;
+      padding-right: 22px;
+    }
+
+    .vs-tip-content p {
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    /* 3 Pillars Grid */
+    .vsblog-pillars-grid {
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin: 16px 0 26px 0;
+    }
+
+    .vs-pillar-card {
+      padding: 18px 14px;
+      border-radius: 14px;
+      text-align: left;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .vs-pillar-icon {
+      margin: 0;
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      font-size: 16px;
+    }
+
+    .vs-pillar-card h4 {
+      font-size: 14.5px;
+      margin-bottom: 4px;
+    }
+
+    .vs-pillar-card p {
+      font-size: 12.5px;
+      line-height: 1.5;
+    }
+
+    /* Conclusion & Callout Card */
+    .vsblog-conclusion-card {
+      padding: 20px 16px;
+      border-radius: 16px;
+      margin-top: 24px;
+    }
+
+    .vsblog-conclusion-card h3 {
+      font-size: 18px !important;
+    }
+
+    .vsblog-conclusion-card p {
+      font-size: 13.5px !important;
+      margin-bottom: 16px !important;
+    }
+
+    /* Bottom Conversion Banner */
+    .vs-reader-footer {
+      margin-top: 32px;
+    }
+
+    .vs-reader-bottom-card {
+      padding: 26px 16px;
+      border-radius: 18px;
+    }
+
+    .vs-reader-bottom-card h3 {
+      font-size: 19px;
+      line-height: 1.35;
+    }
+
+    .vs-reader-bottom-card p {
+      font-size: 13px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .vs-reader-bottom-btns {
+      flex-direction: column;
+      gap: 10px;
+      width: 100%;
+    }
+
+    .vs-reader-btn-primary,
+    .vs-reader-btn-outline {
+      width: 100%;
+      justify-content: center;
+      padding: 12px 18px;
+      font-size: 13.5px;
+    }
+  }
+
+  /* ─── EXTRA SMALL PHONES (<= 420px) ─── */
+  @media (max-width: 420px) {
+    .vs-reader-nav-inner {
+      padding: 0 10px;
+    }
+
+    .vs-reader-article-wrap {
+      padding: 14px 10px 50px 10px;
+    }
+
+    .vs-reader-hero-split-card {
+      padding: 16px 12px;
+    }
+
+    .vs-reader-intro-title {
+      font-size: 19px;
+    }
+
+    .vs-reader-hpill {
+      font-size: 10.5px;
+      padding: 3px 8px;
+    }
+
+    .vs-tip-item {
+      padding: 14px 12px;
+    }
+  }
 </style>
 
 <!-- FULL-PAGE IMMERSIVE LUXURY ARTICLE READER -->
