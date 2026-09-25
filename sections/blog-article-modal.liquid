@@ -595,6 +595,17 @@
     margin-top: 36px;
     box-shadow: 0 4px 16px rgba(15, 23, 42, 0.03);
     text-align: left;
+    box-sizing: border-box;
+  }
+
+  .vsblog-conclusion-card h3 {
+    margin: 0 0 10px 0;
+    font-size: clamp(20px, 2.5vw, 25px);
+    font-weight: 800;
+    color: #0f172a;
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
 
   .vsblog-conclusion-card h4 {
@@ -613,29 +624,68 @@
 
   .vsblog-conclusion-card p {
     margin: 0 0 20px 0;
-    font-size: 14.5px;
+    font-size: 15px;
     color: #475569;
-    line-height: 1.65;
+    line-height: 1.7;
+  }
+
+  .vsblog-conclusion-inner {
+    background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+    border: 1.5px solid #fed7aa;
+    border-radius: 16px;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  .vsblog-conclusion-info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .vsblog-conclusion-brand {
+    font-size: 18px;
+    font-weight: 900;
+    color: #9a3412;
+    letter-spacing: -0.01em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .vsblog-conclusion-slogan {
+    font-size: 14px;
+    font-weight: 700;
+    color: #c2410c;
+    margin-top: 3px;
   }
 
   .vsblog-conclusion-btn {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
     background: linear-gradient(135deg, #ec5c0a 0%, #ff7800 100%);
     color: #ffffff;
-    font-size: 13px;
+    font-size: 13.5px;
     font-weight: 700;
-    padding: 10px 22px;
+    padding: 11px 24px;
     border-radius: 50px;
     text-decoration: none;
     transition: all 0.25s ease;
     box-shadow: 0 4px 14px rgba(236, 92, 10, 0.3);
+    white-space: nowrap;
+    flex-shrink: 0;
   }
 
   .vsblog-conclusion-btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(236, 92, 10, 0.45);
+    color: #ffffff;
   }
 
   /* Bottom Conversion Card */
@@ -1001,18 +1051,75 @@
 
     /* Conclusion & Callout Card */
     .vsblog-conclusion-card {
-      padding: 20px 16px;
-      border-radius: 16px;
-      margin-top: 24px;
+      padding: 24px 18px !important;
+      border-radius: 18px !important;
+      margin-top: 24px !important;
+      box-sizing: border-box !important;
+      width: 100% !important;
+      text-align: left !important;
     }
 
     .vsblog-conclusion-card h3 {
       font-size: 18px !important;
+      line-height: 1.35 !important;
+      display: flex !important;
+      align-items: flex-start !important;
+      gap: 8px !important;
+      margin-bottom: 8px !important;
+    }
+
+    .vsblog-conclusion-card h3 span {
+      font-size: 20px !important;
+      line-height: 1.2 !important;
+      flex-shrink: 0 !important;
     }
 
     .vsblog-conclusion-card p {
       font-size: 13.5px !important;
+      line-height: 1.6 !important;
+      color: #475569 !important;
       margin-bottom: 16px !important;
+    }
+
+    .vsblog-conclusion-inner {
+      flex-direction: column !important;
+      align-items: center !important;
+      text-align: center !important;
+      padding: 18px 14px !important;
+      border-radius: 14px !important;
+      gap: 14px !important;
+      box-sizing: border-box !important;
+      width: 100% !important;
+    }
+
+    .vsblog-conclusion-info {
+      align-items: center !important;
+      text-align: center !important;
+      width: 100% !important;
+    }
+
+    .vsblog-conclusion-brand {
+      font-size: 17px !important;
+      justify-content: center !important;
+      text-align: center !important;
+      gap: 6px !important;
+    }
+
+    .vsblog-conclusion-slogan {
+      font-size: 13.5px !important;
+      text-align: center !important;
+      margin-top: 3px !important;
+    }
+
+    .vsblog-conclusion-btn {
+      width: 100% !important;
+      max-width: 260px !important;
+      justify-content: center !important;
+      text-align: center !important;
+      padding: 11px 20px !important;
+      font-size: 13px !important;
+      margin: 0 auto !important;
+      box-sizing: border-box !important;
     }
 
     /* Bottom Conversion Banner */
@@ -1293,20 +1400,20 @@
         </div>
 
         <!-- DISCOVER SMARTER SAVING SECTION -->
-        <div class="vsblog-conclusion-card" style="margin-top: 28px; background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 20px; padding: 32px 28px; box-shadow: 0 4px 18px rgba(15, 23, 42, 0.03);">
-          <h3 style="margin: 0 0 10px 0; font-size: clamp(20px, 2.5vw, 25px); font-weight: 800; color: #0f172a; display: flex; align-items: center; gap: 8px;">
+        <div class="vsblog-conclusion-card">
+          <h3>
             <span>🚀</span> Discover Smarter Electricity Saving
           </h3>
-          <p style="margin: 0 0 22px 0; font-size: 15px; color: #475569; line-height: 1.75;">Make electricity saving part of your everyday energy strategy with <strong>Vidhyut Saathi Card</strong>.</p>
+          <p>Make electricity saving part of your everyday energy strategy with <strong>Vidhyut Saathi Card</strong>.</p>
           
-          <div style="background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border: 1.5px solid #fed7aa; border-radius: 16px; padding: 20px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;">
-            <div>
-              <div style="font-size: 18px; font-weight: 900; color: #9a3412; letter-spacing: -0.01em; display: flex; align-items: center; gap: 6px;">
+          <div class="vsblog-conclusion-inner">
+            <div class="vsblog-conclusion-info">
+              <div class="vsblog-conclusion-brand">
                 <span>⚡</span> Vidhyut Saathi
               </div>
-              <div style="font-size: 14px; font-weight: 700; color: #c2410c; margin-top: 3px;">Because Every Unit Matters.</div>
+              <div class="vsblog-conclusion-slogan">Because Every Unit Matters.</div>
             </div>
-            <a href="/collections/all" class="vsblog-conclusion-btn" style="margin: 0; padding: 11px 24px;">Explore Solutions <i class="fa-solid fa-arrow-right"></i></a>
+            <a href="/collections/all" class="vsblog-conclusion-btn">Explore Solutions <i class="fa-solid fa-arrow-right"></i></a>
           </div>
         </div>
       `
@@ -1463,22 +1570,22 @@
         </div>
 
         <!-- 5. THE TAKEAWAY CONCLUSION -->
-        <div class="vsblog-conclusion-card" style="margin-top: 28px; background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 20px; padding: 32px 28px; box-shadow: 0 4px 18px rgba(15, 23, 42, 0.03);">
-          <h3 style="margin: 0 0 12px 0; font-size: clamp(20px, 2.5vw, 25px); font-weight: 800; color: #0f172a; display: flex; align-items: center; gap: 8px;">
+        <div class="vsblog-conclusion-card">
+          <h3>
             <span>💡</span> The Takeaway
           </h3>
-          <p style="margin: 0 0 10px 0; font-size: 15px; color: #475569; line-height: 1.75;">Your AC might be working hard—but it may not be working alone.</p>
-          <p style="margin: 0 0 14px 0; font-size: 15px; color: #475569; line-height: 1.75;">Your entire electrical setup deserves attention.</p>
-          <p style="margin: 0 0 24px 0; font-size: 15px; color: #0f172a; font-weight: 600; line-height: 1.75;">Start by understanding your electricity consumption, improve your energy habits, and explore modern solutions such as <strong style="color:#ec5c0a; font-weight:800;">Vidhyut Saathi Card</strong>.</p>
+          <p>Your AC might be working hard—but it may not be working alone.</p>
+          <p>Your entire electrical setup deserves attention.</p>
+          <p>Start by understanding your electricity consumption, improve your energy habits, and explore modern solutions such as <strong style="color:#ec5c0a; font-weight:800;">Vidhyut Saathi Card</strong>.</p>
           
-          <div style="background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border: 1.5px solid #fed7aa; border-radius: 16px; padding: 20px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;">
-            <div>
-              <div style="font-size: 18px; font-weight: 900; color: #9a3412; letter-spacing: -0.01em; display: flex; align-items: center; gap: 6px;">
+          <div class="vsblog-conclusion-inner">
+            <div class="vsblog-conclusion-info">
+              <div class="vsblog-conclusion-brand">
                 <span>⚡</span> Vidhyut Saathi
               </div>
-              <div style="font-size: 14px; font-weight: 700; color: #c2410c; margin-top: 3px;">Because Every Unit Matters.</div>
+              <div class="vsblog-conclusion-slogan">Because Every Unit Matters.</div>
             </div>
-            <a href="/collections/all" class="vsblog-conclusion-btn" style="margin: 0; padding: 11px 24px;">Explore Solutions <i class="fa-solid fa-arrow-right"></i></a>
+            <a href="/collections/all" class="vsblog-conclusion-btn">Explore Solutions <i class="fa-solid fa-arrow-right"></i></a>
           </div>
         </div>
       `
@@ -1688,26 +1795,26 @@
         </div>
 
         <!-- 6. SECTION 5: THE SMART TAKEAWAY & EXPLORE -->
-        <div class="vsblog-conclusion-card" style="margin-top: 28px; background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 20px; padding: 32px 28px; box-shadow: 0 4px 18px rgba(15, 23, 42, 0.03);">
-          <h3 style="margin: 0 0 12px 0; font-size: clamp(20px, 2.5vw, 25px); font-weight: 800; color: #0f172a; display: flex; align-items: center; gap: 8px;">
+        <div class="vsblog-conclusion-card">
+          <h3>
             <span>💡</span> The Smart Takeaway
           </h3>
-          <p style="margin: 0 0 12px 0; font-size: 15px; color: #475569; line-height: 1.75;">Power factor is one part of electrical efficiency—but it isn’t the only factor that determines your electricity bill.</p>
-          <p style="margin: 0 0 20px 0; font-size: 15px; color: #475569; line-height: 1.75;">Understanding your electrical system can help you make more informed energy-management decisions.</p>
+          <p>Power factor is one part of electrical efficiency—but it isn’t the only factor that determines your electricity bill.</p>
+          <p>Understanding your electrical system can help you make more informed energy-management decisions.</p>
 
-          <h4 style="margin: 0 0 8px 0; font-size: 17px; font-weight: 800; color: #0f172a; display: flex; align-items: center; gap: 6px;">
+          <h4>
             <span>🚀</span> Explore Vidhyut Saathi Card
           </h4>
-          <p style="margin: 0 0 24px 0; font-size: 15px; color: #0f172a; font-weight: 600; line-height: 1.75;">Discover a modern approach to electricity saving with <strong style="color:#ec5c0a; font-weight:800;">Vidhyut Saathi</strong>.</p>
+          <p>Discover a modern approach to electricity saving with <strong style="color:#ec5c0a; font-weight:800;">Vidhyut Saathi</strong>.</p>
           
-          <div style="background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border: 1.5px solid #fed7aa; border-radius: 16px; padding: 20px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;">
-            <div>
-              <div style="font-size: 18px; font-weight: 900; color: #9a3412; letter-spacing: -0.01em; display: flex; align-items: center; gap: 6px;">
+          <div class="vsblog-conclusion-inner">
+            <div class="vsblog-conclusion-info">
+              <div class="vsblog-conclusion-brand">
                 <span>⚡</span> Vidhyut Saathi
               </div>
-              <div style="font-size: 14px; font-weight: 700; color: #c2410c; margin-top: 3px;">Because Every Unit Matters.</div>
+              <div class="vsblog-conclusion-slogan">Because Every Unit Matters.</div>
             </div>
-            <a href="/collections/all" class="vsblog-conclusion-btn" style="margin: 0; padding: 11px 24px;">Explore Solutions <i class="fa-solid fa-arrow-right"></i></a>
+            <a href="/collections/all" class="vsblog-conclusion-btn">Explore Solutions <i class="fa-solid fa-arrow-right"></i></a>
           </div>
         </div>
       `
@@ -1941,24 +2048,24 @@
         </div>
 
         <!-- 6. SECTION 5: YOUR ELECTRICITY BILL IS ONLY THE BEGINNING -->
-        <div class="vsblog-conclusion-card" style="margin-top: 28px; background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 20px; padding: 32px 28px; box-shadow: 0 4px 18px rgba(15, 23, 42, 0.03);">
-          <h3 style="margin: 0 0 12px 0; font-size: clamp(20px, 2.5vw, 25px); font-weight: 800; color: #0f172a; display: flex; align-items: center; gap: 8px;">
+        <div class="vsblog-conclusion-card">
+          <h3>
             <span>🔍</span> Your Electricity Bill Is Only the Beginning
           </h3>
-          <p style="margin: 0 0 8px 0; font-size: 15px; color: #475569; line-height: 1.75;">The next time you receive your electricity bill, don't just ask:</p>
-          <p style="margin: 0 0 12px 0; font-size: 15.5px; font-weight: 700; color: #9a3412; background: #fff7ed; padding: 8px 14px; border-radius: 10px; width: fit-content; border: 1px solid #fed7aa;">“Why is it so high?”</p>
-          <p style="margin: 0 0 8px 0; font-size: 15px; color: #475569; line-height: 1.75;">Ask:</p>
-          <p style="margin: 0 0 18px 0; font-size: 15.5px; font-weight: 700; color: #065f46; background: #f0fdf4; padding: 8px 14px; border-radius: 10px; width: fit-content; border: 1px solid #bbf7d0;">“What is happening inside my electrical system?”</p>
-          <p style="margin: 0 0 24px 0; font-size: 15px; color: #0f172a; font-weight: 600; line-height: 1.75;">Because sometimes, saving electricity starts with understanding what you can't see.</p>
+          <p>The next time you receive your electricity bill, don't just ask:</p>
+          <p style="font-size: 15.5px; font-weight: 700; color: #9a3412; background: #fff7ed; padding: 8px 14px; border-radius: 10px; width: fit-content; border: 1px solid #fed7aa; margin-bottom: 12px;">“Why is it so high?”</p>
+          <p>Ask:</p>
+          <p style="font-size: 15.5px; font-weight: 700; color: #065f46; background: #f0fdf4; padding: 8px 14px; border-radius: 10px; width: fit-content; border: 1px solid #bbf7d0; margin-bottom: 18px;">“What is happening inside my electrical system?”</p>
+          <p>Because sometimes, saving electricity starts with understanding what you can't see.</p>
           
-          <div style="background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border: 1.5px solid #fed7aa; border-radius: 16px; padding: 20px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;">
-            <div>
-              <div style="font-size: 18px; font-weight: 900; color: #9a3412; letter-spacing: -0.01em; display: flex; align-items: center; gap: 6px;">
+          <div class="vsblog-conclusion-inner">
+            <div class="vsblog-conclusion-info">
+              <div class="vsblog-conclusion-brand">
                 <span>⚡</span> Discover Vidhyut Saathi
               </div>
-              <div style="font-size: 14px; font-weight: 700; color: #c2410c; margin-top: 3px;">Because Every Unit Matters.</div>
+              <div class="vsblog-conclusion-slogan">Because Every Unit Matters.</div>
             </div>
-            <a href="/collections/all" class="vsblog-conclusion-btn" style="margin: 0; padding: 11px 24px;">Explore Solutions <i class="fa-solid fa-arrow-right"></i></a>
+            <a href="/collections/all" class="vsblog-conclusion-btn">Explore Solutions <i class="fa-solid fa-arrow-right"></i></a>
           </div>
         </div>
       `
@@ -2183,21 +2290,21 @@
         </div>
 
         <!-- 6. SECTION 5: ELECTRICITY SAVING IS EVOLVING -->
-        <div class="vsblog-conclusion-card" style="margin-top: 28px; background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 20px; padding: 32px 28px; box-shadow: 0 4px 18px rgba(15, 23, 42, 0.03);">
-          <h3 style="margin: 0 0 12px 0; font-size: clamp(20px, 2.5vw, 25px); font-weight: 800; color: #0f172a; display: flex; align-items: center; gap: 8px;">
+        <div class="vsblog-conclusion-card">
+          <h3>
             <span>🚀</span> Electricity Saving Is Evolving
           </h3>
-          <p style="margin: 0 0 10px 0; font-size: 15px; color: #475569; line-height: 1.75;">The future of electricity saving isn't necessarily about using less of everything.</p>
-          <p style="margin: 0 0 24px 0; font-size: 15.5px; color: #0f172a; font-weight: 700; line-height: 1.75;">It's about becoming smarter about how electricity is used.</p>
+          <p>The future of electricity saving isn't necessarily about using less of everything.</p>
+          <p>It's about becoming smarter about how electricity is used.</p>
           
-          <div style="background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border: 1.5px solid #fed7aa; border-radius: 16px; padding: 20px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;">
-            <div>
-              <div style="font-size: 18px; font-weight: 900; color: #9a3412; letter-spacing: -0.01em; display: flex; align-items: center; gap: 6px;">
+          <div class="vsblog-conclusion-inner">
+            <div class="vsblog-conclusion-info">
+              <div class="vsblog-conclusion-brand">
                 <span>⚡</span> Vidhyut Saathi
               </div>
-              <div style="font-size: 14px; font-weight: 700; color: #c2410c; margin-top: 3px;">Because Every Unit Matters.</div>
+              <div class="vsblog-conclusion-slogan">Because Every Unit Matters.</div>
             </div>
-            <a href="/collections/all" class="vsblog-conclusion-btn" style="margin: 0; padding: 11px 24px;">Explore Solutions <i class="fa-solid fa-arrow-right"></i></a>
+            <a href="/collections/all" class="vsblog-conclusion-btn">Explore Solutions <i class="fa-solid fa-arrow-right"></i></a>
           </div>
         </div>
       `
