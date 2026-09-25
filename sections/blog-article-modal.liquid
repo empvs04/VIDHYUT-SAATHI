@@ -170,14 +170,14 @@
   .vs-reader-hero-split-card {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 20px;
     align-items: center;
     background: #ffffff;
     border: 1.5px solid #e2e8f0;
-    border-radius: 24px;
-    padding: clamp(20px, 3vw, 32px);
-    box-shadow: 0 10px 30px -4px rgba(15, 23, 42, 0.05);
-    margin-bottom: 36px;
+    border-radius: 20px;
+    padding: clamp(16px, 2vw, 22px);
+    box-shadow: 0 8px 24px -4px rgba(15, 23, 42, 0.05);
+    margin-bottom: 26px;
     width: 100%;
     max-width: 1040px;
     margin-left: auto;
@@ -186,9 +186,9 @@
 
   @media (min-width: 860px) {
     .vs-reader-hero-split-card {
-      grid-template-columns: 1.05fr 1fr;
-      gap: 32px;
-      padding: 32px 36px;
+      grid-template-columns: 1.15fr 0.95fr;
+      gap: 24px;
+      padding: 22px 26px;
     }
   }
 
@@ -196,6 +196,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding: 0;
   }
 
   .vs-reader-hero-tag {
@@ -205,14 +206,14 @@
     background: #fff7ed;
     color: #ea580c;
     border: 1px solid #ffedd5;
-    font-size: 11.5px;
+    font-size: 11px;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.8px;
-    padding: 5px 14px;
+    padding: 3.5px 11px;
     border-radius: 50px;
     width: fit-content;
-    margin-bottom: 14px;
+    margin-bottom: 8px;
   }
 
   .vs-reader-hero-tag i {
@@ -221,41 +222,49 @@
   }
 
   .vs-reader-intro-title {
-    font-size: clamp(22px, 2.5vw, 30px);
+    font-size: clamp(19px, 2vw, 23px);
     font-weight: 900;
     color: #0f172a;
-    margin: 0 0 14px 0;
+    margin: 0 0 8px 0;
     line-height: 1.25;
-    letter-spacing: -0.025em;
+    letter-spacing: -0.02em;
   }
 
   .vs-reader-intro-desc {
-    font-size: clamp(14.5px, 1.5vw, 15.5px);
+    font-size: clamp(13.5px, 1.25vw, 14.5px);
     color: #475569;
-    line-height: 1.75;
-    margin: 0 0 18px 0;
+    line-height: 1.55;
+    margin: 0 0 12px 0;
+  }
+
+  .vs-reader-intro-desc p {
+    margin: 0 0 5px 0;
+  }
+
+  .vs-reader-intro-desc p:last-child {
+    margin-bottom: 0;
   }
 
   .vs-reader-hero-pills {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     flex-wrap: wrap;
-    margin-top: 4px;
+    margin-top: 2px;
   }
 
   .vs-reader-hpill {
     display: inline-flex;
     align-items: center;
-    gap: 7px;
+    gap: 6px;
     background: #ffffff;
     border: 1.5px solid #fed7aa;
-    padding: 6px 14px;
+    padding: 5px 12px;
     border-radius: 50px;
-    font-size: 12px;
+    font-size: 11.5px;
     font-weight: 700;
     color: #1e293b;
-    box-shadow: 0 2px 8px rgba(236, 92, 10, 0.07);
+    box-shadow: 0 2px 6px rgba(236, 92, 10, 0.05);
     transition: all 0.25s ease;
   }
 
@@ -318,18 +327,23 @@
 
   .vs-reader-hero-img-box {
     width: 100%;
-    border-radius: 18px;
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 12px 28px -4px rgba(15, 23, 42, 0.12);
+    box-shadow: 0 8px 24px -4px rgba(15, 23, 42, 0.1);
     border: 1px solid #e2e8f0;
     background: #0f172a;
-    max-height: 360px;
+    height: 100%;
+    max-height: 290px;
+    aspect-ratio: 16/10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .vs-reader-hero-img {
     width: 100%;
     height: 100%;
-    max-height: 360px;
+    max-height: 290px;
     object-fit: cover;
     display: block;
     transition: transform 0.5s ease;
@@ -728,16 +742,16 @@
   /* ─── DESKTOP VIEW LOCK (>= 860px) ─── */
   @media (min-width: 860px) {
     .vs-reader-article-wrap {
-      padding: 40px 24px 90px 24px;
+      padding: 36px 20px 80px 20px;
       max-width: 1080px;
     }
     .vs-reader-hero-split-card {
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 32px;
-      padding: 34px 38px;
+      grid-template-columns: 1.15fr 0.95fr;
+      gap: 24px;
+      padding: 22px 26px;
     }
     .vs-reader-hero-img-box {
-      max-height: 380px;
+      max-height: 270px;
     }
     .vsblog-tips-grid {
       grid-template-columns: 1fr 1fr;
@@ -1097,7 +1111,10 @@
       <div class="vs-reader-hero-left">
         <div class="vs-reader-hero-tag"><i class="fa-solid fa-bolt-lightning"></i> Smart Energy Guide</div>
         <h2 class="vs-reader-intro-title">Is Your <span class="vs-theme-orange">Electricity Bill</span> Increasing Every Month? ⚡</h2>
-        <p class="vs-reader-intro-desc">Electricity is an essential part of our daily lives—but unnecessary power wastage can increase your monthly expenses. With <strong style="color:#ec5c0a; font-weight:800;">Vidhyut Saathi Card</strong>, you can explore a modern approach to electricity saving through advanced technology and MCB-based installation.</p>
+        <div class="vs-reader-intro-desc">
+          <p>Electricity is an essential part of our daily lives—but unnecessary power wastage can increase your monthly expenses.</p>
+          <p>With <strong style="color:#ec5c0a; font-weight:800;">Vidhyut Saathi Card</strong>, you can explore a modern approach to electricity saving through advanced technology and MCB-based installation.</p>
+        </div>
         
         <div class="vs-reader-hero-pills">
           <span class="vs-reader-hpill vs-hpill-savings"><i class="fa-solid fa-circle-check"></i> 20–30% Bill Savings</span>
@@ -1307,7 +1324,11 @@
           <div class="vs-reader-hero-left">
             <div class="vs-reader-hero-tag"><i class="fa-solid fa-snowflake"></i> AC & Power Optimization</div>
             <h2 class="vs-reader-intro-title">Think Your AC Is the Only Thing Increasing Your <span class="vs-theme-orange">Electricity Expenses?</span></h2>
-            <p class="vs-reader-intro-desc">Summer arrives, the AC starts running, and your electricity bill suddenly looks shocking. 😰<br><br>But here’s the interesting part: your AC may not be the only reason behind your rising electricity expenses.<br><br>From hidden energy wastage to inefficient equipment, several factors can increase your electricity consumption.</p>
+            <div class="vs-reader-intro-desc">
+              <p>Summer arrives, the AC starts running, and your electricity bill suddenly looks shocking. 😰</p>
+              <p>But here’s the interesting part: your AC may not be the only reason behind your rising electricity expenses.</p>
+              <p>From hidden energy wastage to inefficient equipment, several factors can increase your electricity consumption.</p>
+            </div>
             
             <div class="vs-reader-hero-pills">
               <span class="vs-reader-hpill vs-hpill-savings"><i class="fa-solid fa-circle-check"></i> 20–30% Bill Savings</span>
@@ -1475,7 +1496,11 @@
           <div class="vs-reader-hero-left">
             <div class="vs-reader-hero-tag"><i class="fa-solid fa-wave-square"></i> Power Factor & Efficiency Guide</div>
             <h2 class="vs-reader-intro-title">Your Electricity Bill Isn’t Just About <span class="vs-theme-orange">How Many Units You Use</span></h2>
-            <p class="vs-reader-intro-desc">When your electricity bill increases, you may immediately blame your AC, refrigerator, or other appliances.<br><br>But there’s another electrical term worth understanding: <strong>power factor</strong>.<br><br>You don’t need to be an electrical engineer to understand it. Let’s break it down simply.</p>
+            <div class="vs-reader-intro-desc">
+              <p>When your electricity bill increases, you may immediately blame your AC, refrigerator, or other appliances.</p>
+              <p>But there’s another electrical term worth understanding: <strong style="color:#ec5c0a; font-weight:800;">power factor</strong>.</p>
+              <p>You don’t need to be an electrical engineer to understand it. Let’s break it down simply.</p>
+            </div>
             
             <div class="vs-reader-hero-pills">
               <span class="vs-reader-hpill vs-hpill-savings"><i class="fa-solid fa-circle-check"></i> 20–30% Bill Savings</span>
@@ -1701,7 +1726,13 @@
           <div class="vs-reader-hero-left">
             <div class="vs-reader-hero-tag"><i class="fa-solid fa-eye-slash"></i> Electricity Intelligence</div>
             <h2 class="vs-reader-intro-title">You See the Bill. But Do You See the <span class="vs-theme-orange">Electricity Behind It?</span></h2>
-            <p class="vs-reader-intro-desc">Every month, one number gets your attention:<br><span style="font-size: 17px; font-weight: 800; color: #ec5c0a; display: inline-block; margin: 6px 0; background: #fff7ed; padding: 4px 12px; border-radius: 8px; border: 1px dashed #fed7aa;">₹____ Electricity Bill</span><br><br>But that number is the result—not the complete story.<br><br>Behind every electricity bill is a network of appliances, electrical loads, power flow, and energy usage. And sometimes, the biggest opportunity isn’t simply using fewer appliances.<br><br>It’s understanding how efficiently your electrical system is using power.</p>
+            <div class="vs-reader-intro-desc">
+              <p>Every month, one number gets your attention:</p>
+              <div style="margin: 4px 0 6px 0;"><span style="font-size: 15px; font-weight: 800; color: #ec5c0a; display: inline-block; background: #fff7ed; padding: 3px 10px; border-radius: 6px; border: 1px dashed #fed7aa;">₹____ Electricity Bill</span></div>
+              <p>But that number is the result—not the complete story.</p>
+              <p>Behind every electricity bill is a network of appliances, electrical loads, power flow, and energy usage. And sometimes, the biggest opportunity isn’t simply using fewer appliances.</p>
+              <p>It’s understanding how efficiently your electrical system is using power.</p>
+            </div>
             
             <div class="vs-reader-hero-pills">
               <span class="vs-reader-hpill vs-hpill-savings"><i class="fa-solid fa-circle-check"></i> 20–30% Bill Savings</span>
@@ -1946,7 +1977,12 @@
           <div class="vs-reader-hero-left">
             <div class="vs-reader-hero-tag"><i class="fa-solid fa-lightbulb"></i> Modern Energy Management</div>
             <h2 class="vs-reader-intro-title">We’ve Been Taught to Save Electricity the <span class="vs-theme-orange">Same Way for Years.</span></h2>
-            <p class="vs-reader-intro-desc">Switch off the light.<br>Switch off the fan.<br>Unplug the charger.<br><br>Yes, these habits matter.<br><br>But electricity saving can be a much bigger conversation than simply turning things OFF.<br><br>Because your electrical system is working even when you aren't thinking about it.</p>
+            <div class="vs-reader-intro-desc">
+              <p>Switch off the light. Switch off the fan. Unplug the charger.</p>
+              <p>Yes, these habits matter.</p>
+              <p>But electricity saving can be a much bigger conversation than simply turning things OFF.</p>
+              <p>Because your electrical system is working even when you aren't thinking about it.</p>
+            </div>
             
             <div class="vs-reader-hero-pills">
               <span class="vs-reader-hpill vs-hpill-savings"><i class="fa-solid fa-circle-check"></i> 20–30% Bill Savings</span>
