@@ -166,26 +166,129 @@
     padding: clamp(24px, 4vw, 44px) 20px 80px 20px;
   }
 
-  /* Full-Width Cinematic Hero Image */
-  .vs-reader-hero-img-wrap {
+  /* 2-Column Hero Split Card */
+  .vs-reader-hero-split-card {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    align-items: center;
+    background: #ffffff;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 24px;
+    padding: clamp(20px, 3vw, 32px);
+    box-shadow: 0 10px 30px -4px rgba(15, 23, 42, 0.05);
+    margin-bottom: 36px;
     width: 100%;
     max-width: 1040px;
-    margin: 0 auto 32px auto;
-    border-radius: 20px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @media (min-width: 860px) {
+    .vs-reader-hero-split-card {
+      grid-template-columns: 1.05fr 1fr;
+      gap: 32px;
+      padding: 32px 36px;
+    }
+  }
+
+  .vs-reader-hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .vs-reader-hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #fff7ed;
+    color: #ea580c;
+    border: 1px solid #ffedd5;
+    font-size: 11.5px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding: 5px 14px;
+    border-radius: 50px;
+    width: fit-content;
+    margin-bottom: 14px;
+  }
+
+  .vs-reader-hero-tag i {
+    font-size: 11px;
+    color: #ec5c0a;
+  }
+
+  .vs-reader-intro-title {
+    font-size: clamp(22px, 2.5vw, 30px);
+    font-weight: 900;
+    color: #0f172a;
+    margin: 0 0 14px 0;
+    line-height: 1.25;
+    letter-spacing: -0.025em;
+  }
+
+  .vs-reader-intro-desc {
+    font-size: clamp(14.5px, 1.5vw, 15.5px);
+    color: #475569;
+    line-height: 1.75;
+    margin: 0 0 18px 0;
+  }
+
+  .vs-reader-hero-pills {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .vs-reader-hpill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 5px 12px;
+    border-radius: 50px;
+    font-size: 11.5px;
+    font-weight: 600;
+    color: #334155;
+  }
+
+  .vs-reader-hpill i {
+    color: #007b3e;
+    font-size: 11px;
+  }
+
+  .vs-reader-hero-right {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .vs-reader-hero-img-box {
+    width: 100%;
+    border-radius: 18px;
     overflow: hidden;
-    box-shadow: 0 16px 40px -8px rgba(15, 23, 42, 0.10);
+    box-shadow: 0 12px 28px -4px rgba(15, 23, 42, 0.12);
     border: 1px solid #e2e8f0;
     background: #0f172a;
-    max-height: 480px;
-    height: auto;
+    max-height: 360px;
   }
 
   .vs-reader-hero-img {
     width: 100%;
     height: 100%;
-    max-height: 480px;
+    max-height: 360px;
     object-fit: cover;
     display: block;
+    transition: transform 0.5s ease;
+  }
+
+  .vs-reader-hero-img-box:hover .vs-reader-hero-img {
+    transform: scale(1.03);
   }
 
   /* Article Header Area */
@@ -222,27 +325,6 @@
     background: linear-gradient(135deg, #ec5c0a 0%, #ff7800 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-  }
-
-  /* Clean Lucrative Intro Editorial Section */
-  .vs-reader-intro-block {
-    margin: 0 0 36px 0;
-  }
-
-  .vs-reader-intro-title {
-    font-size: clamp(24px, 3.4vw, 36px);
-    font-weight: 900;
-    color: #0f172a;
-    margin: 0 0 16px 0;
-    line-height: 1.28;
-    letter-spacing: -0.025em;
-  }
-
-  .vs-reader-intro-desc {
-    font-size: clamp(16px, 1.8vw, 17.5px);
-    color: #475569;
-    line-height: 1.85;
-    margin: 0;
   }
 
   /* Reader Section Title */
@@ -602,9 +684,25 @@
 
   <!-- Main Article Presentation -->
   <article class="vs-reader-article-wrap">
-    <!-- 1. Top Full-Width Hero Image (First at very top) -->
-    <div class="vs-reader-hero-img-wrap" id="vsmodal_top_img_wrap" style="display:none;">
-      <img id="vsmodal_top_img" src="" alt="Featured Article Header" class="vs-reader-hero-img">
+    <!-- 1. 2-COLUMN HERO SPLIT CARD (Left: Intro text, Right: Image) -->
+    <div class="vs-reader-hero-split-card" id="vsmodal_hero_split_card">
+      <div class="vs-reader-hero-left">
+        <div class="vs-reader-hero-tag"><i class="fa-solid fa-bolt-lightning"></i> Smart Energy Guide</div>
+        <h2 class="vs-reader-intro-title">Is Your <span class="vs-theme-orange">Electricity Bill</span> Increasing Every Month? ⚡</h2>
+        <p class="vs-reader-intro-desc">Electricity is an essential part of our daily lives—but unnecessary power wastage can drastically increase your monthly expenses. With the <strong style="color:#0f172a;">Vidhyut Saathi Card</strong>, you can explore a modern, certified approach to electricity saving through advanced <strong style="color:#ec5c0a;">US–German Nanotechnology</strong> and simple <strong style="color:#007b3e;">MCB-based installation</strong>.</p>
+        
+        <div class="vs-reader-hero-pills">
+          <span class="vs-reader-hpill"><i class="fa-solid fa-circle-check"></i> 20–30% Bill Savings</span>
+          <span class="vs-reader-hpill"><i class="fa-solid fa-shield-halved"></i> 10-Year Warranty</span>
+          <span class="vs-reader-hpill"><i class="fa-solid fa-award"></i> ISO 9001:2015</span>
+        </div>
+      </div>
+
+      <div class="vs-reader-hero-right" id="vsmodal_top_img_wrap" style="display:flex;">
+        <div class="vs-reader-hero-img-box">
+          <img id="vsmodal_top_img" src="" alt="Featured Article Visual" class="vs-reader-hero-img">
+        </div>
+      </div>
     </div>
 
     <!-- 2. Article Header Details (Shown for articles 1+, hidden for featured article 0) -->
@@ -643,12 +741,6 @@
       readTime: "6 min read",
       url: "/blogs/news/how-to-reduce-electricity-bill-in-india",
       html: `
-        <!-- INTRO EDITORIAL SECTION (THEME BASE HEADLINE & DESCRIPTION) -->
-        <div class="vs-reader-intro-block">
-          <h2 class="vs-reader-intro-title">Is Your <span class="vs-theme-orange">Electricity Bill</span> Increasing Every Month? ⚡</h2>
-          <p class="vs-reader-intro-desc">Electricity is an essential part of our daily lives—but unnecessary power wastage can drastically increase your monthly expenses. With the <strong style="color:#0f172a;">Vidhyut Saathi Card</strong>, you can explore a modern, certified approach to electricity saving through advanced <strong style="color:#ec5c0a;">US–German Nanotechnology</strong> and simple <strong style="color:#007b3e;">MCB-based installation</strong>.</p>
-        </div>
-
         <!-- SECTION HEADING -->
         <div class="vsblog-reader-sec-title">
           <div class="vsblog-reader-sec-icon"><i class="fa-solid fa-list-check"></i></div>
@@ -1049,14 +1141,17 @@
     var topImg = document.getElementById('vsmodal_top_img');
 
     var headerWrap = document.getElementById('vsmodal_header_wrap');
+    var splitCard = document.getElementById('vsmodal_hero_split_card');
+
     if (titleElem) titleElem.innerText = article.title;
-    if (headerWrap) {
-      if (index === 0) {
-        headerWrap.style.display = 'none';
-      } else {
-        headerWrap.style.display = 'block';
-      }
+    if (index === 0) {
+      if (splitCard) splitCard.style.display = 'grid';
+      if (headerWrap) headerWrap.style.display = 'none';
+    } else {
+      if (splitCard) splitCard.style.display = 'none';
+      if (headerWrap) headerWrap.style.display = 'block';
     }
+
     if (catElem) catElem.innerHTML = '<i class="fa-solid fa-bolt"></i> ' + article.category;
     if (dateElem) dateElem.innerText = article.date;
     if (authorElem) authorElem.innerText = article.author;
@@ -1065,10 +1160,13 @@
     
     // Top Featured Image handling
     var customImg = document.getElementById('vsblog_featured_custom_img') || document.querySelector('.vsblog-feat-img img');
-    if (index === 0 && customImg && customImg.src && customImg.src.indexOf('svg') === -1) {
-      if (topImg && topImgWrap) {
-        topImg.src = customImg.src;
-        topImgWrap.style.display = 'block';
+    if (index === 0) {
+      if (customImg && customImg.src && customImg.src.indexOf('svg') === -1) {
+        if (topImg) topImg.src = customImg.src;
+        if (topImgWrap) topImgWrap.style.display = 'flex';
+      } else if (article.image) {
+        if (topImg) topImg.src = article.image;
+        if (topImgWrap) topImgWrap.style.display = 'flex';
       }
     } else if (article.image) {
       if (topImg && topImgWrap) {
