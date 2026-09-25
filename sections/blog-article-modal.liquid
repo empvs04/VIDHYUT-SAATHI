@@ -192,16 +192,16 @@
   .vs-reader-header {
     max-width: 1040px;
     width: 100%;
-    margin: 0 auto 28px auto;
+    margin: 0 auto 30px auto;
     text-align: left;
   }
 
   .vs-reader-title {
-    font-size: clamp(24px, 3.8vw, 38px);
+    font-size: clamp(26px, 4vw, 42px);
     font-weight: 900;
     color: #0f172a;
-    line-height: 1.25;
-    letter-spacing: -0.025em;
+    line-height: 1.24;
+    letter-spacing: -0.03em;
     margin: 0;
   }
 
@@ -217,18 +217,28 @@
     padding: 0;
   }
 
-  /* Clean Intro Editorial Section (No Box) */
+  /* Clean Lucrative Intro Editorial Section */
   .vs-reader-intro-block {
-    margin: 0 0 36px 0;
+    margin: 0 0 40px 0;
+    padding: 20px 24px;
+    background: linear-gradient(135deg, #fffaf5 0%, #ffffff 100%);
+    border-left: 4px solid #ec5c0a;
+    border-radius: 0 16px 16px 0;
+    border-top: 1px solid #ffedd5;
+    border-right: 1px solid #ffedd5;
+    border-bottom: 1px solid #ffedd5;
+    box-shadow: 0 4px 16px rgba(236, 92, 10, 0.04);
   }
 
   .vs-reader-intro-title {
-    font-size: clamp(20px, 2.6vw, 28px);
+    font-size: clamp(20px, 2.5vw, 26px);
     font-weight: 800;
-    color: #0f172a;
-    margin: 0 0 14px 0;
-    line-height: 1.35;
-    letter-spacing: -0.015em;
+    background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0 0 10px 0;
+    line-height: 1.32;
+    letter-spacing: -0.02em;
   }
 
   .vs-reader-intro-desc {
@@ -242,40 +252,42 @@
   .vsblog-reader-sec-title {
     display: flex;
     align-items: center;
-    gap: 14px;
-    margin: 36px 0 20px 0;
-    padding-bottom: 14px;
+    gap: 16px;
+    margin: 40px 0 24px 0;
+    padding-bottom: 16px;
     border-bottom: 2px solid #e2e8f0;
     width: 100%;
   }
 
   .vsblog-reader-sec-icon {
-    width: 42px;
-    height: 42px;
+    width: 46px;
+    height: 46px;
     background: linear-gradient(135deg, #ec5c0a 0%, #ff7800 100%);
     color: #ffffff;
-    border-radius: 12px;
+    border-radius: 14px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 18px;
+    font-size: 19px;
     flex-shrink: 0;
     box-shadow: 0 4px 14px rgba(236, 92, 10, 0.3);
   }
 
   .vsblog-reader-sec-title h3 {
     margin: 0;
-    font-size: 20px;
+    font-size: clamp(20px, 2.4vw, 25px);
     font-weight: 800;
     color: #0f172a;
+    letter-spacing: -0.02em;
     border: none;
     padding: 0;
   }
 
   .vsblog-reader-sec-title p {
-    margin: 3px 0 0 0;
-    font-size: 13px;
+    margin: 4px 0 0 0;
+    font-size: 13.5px;
     color: #64748b;
+    font-weight: 500;
   }
 
   /* 10 TIPS GRID CARDS (FULL WIDTH & CLEANLY ALIGNED) */
@@ -319,8 +331,14 @@
     right: 16px;
     font-size: 20px;
     font-weight: 900;
-    color: rgba(236, 92, 10, 0.18);
+    color: #ea580c;
+    opacity: 0.35;
     line-height: 1;
+    transition: opacity 0.2s ease;
+  }
+
+  .vs-tip-item:hover .vs-tip-num {
+    opacity: 0.85;
   }
 
   .vs-tip-icon-box {
@@ -343,6 +361,11 @@
     font-weight: 700;
     color: #0f172a;
     padding-right: 28px;
+    transition: color 0.2s ease;
+  }
+
+  .vs-tip-item:hover .vs-tip-content h4 {
+    color: #ea580c;
   }
 
   .vs-tip-content p {
