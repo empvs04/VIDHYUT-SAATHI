@@ -1,8 +1,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
-  /* ─── BLOG HERO SECTION ─── */
+  /* ─── VIDHYUT SAATHI BLOG HERO SECTION ─── */
   .vsblog-hero-wrap {
     background: #fff8ef;
     font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -18,20 +18,32 @@
 
   .vsblog-hero {
     position: relative;
-    background: linear-gradient(110deg, #420a75 0%, #221152 35%, #0f1c34 70%, #073844 100%);
-    padding: clamp(40px, 5.5vw, 68px) 16px clamp(48px, 6.5vw, 85px) 16px;
+    background: linear-gradient(115deg, #420a75 0%, #221152 35%, #0f1c34 70%, #073844 100%);
+    padding: clamp(42px, 5.5vw, 70px) 16px clamp(50px, 6.5vw, 88px) 16px;
     overflow: hidden;
     color: #ffffff;
   }
 
   .vsblog-hero-glow-orb {
     position: absolute;
-    width: 420px;
-    height: 420px;
+    width: 480px;
+    height: 480px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(236, 92, 10, 0.25) 0%, rgba(236, 72, 153, 0.15) 40%, transparent 70%);
-    top: -120px;
-    right: 12%;
+    background: radial-gradient(circle, rgba(236, 92, 10, 0.28) 0%, rgba(236, 72, 153, 0.16) 40%, transparent 70%);
+    top: -140px;
+    right: 10%;
+    pointer-events: none;
+    filter: blur(45px);
+  }
+
+  .vsblog-hero-glow-orb-left {
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 123, 62, 0.2) 0%, transparent 70%);
+    bottom: -60px;
+    left: -40px;
     pointer-events: none;
     filter: blur(40px);
   }
@@ -42,15 +54,15 @@
     display: grid;
     grid-template-columns: 1fr;
     align-items: center;
-    gap: 32px;
+    gap: 34px;
     position: relative;
     z-index: 5;
   }
 
-  @media (min-width: 900px) {
+  @media (min-width: 960px) {
     .vsblog-hero-container {
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 40px;
+      grid-template-columns: 1.12fr 0.88fr;
+      gap: 44px;
     }
   }
 
@@ -58,24 +70,51 @@
     text-align: left;
   }
 
+  .vsblog-hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(236, 92, 10, 0.18);
+    border: 1.5px solid rgba(236, 92, 10, 0.45);
+    color: #ff9d5c;
+    font-size: 11.5px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 6px 14px;
+    border-radius: 50px;
+    margin-bottom: 16px;
+    backdrop-filter: blur(6px);
+  }
+
+  .vsblog-hero-eyebrow i {
+    color: #ec5c0a;
+  }
+
   .vsblog-hero h1 {
-    font-size: clamp(32px, 5.2vw, 56px);
+    font-size: clamp(32px, 4.8vw, 54px);
     font-weight: 900;
     color: #ffffff;
-    line-height: 1.12;
+    line-height: 1.15;
     margin: 0 0 14px 0;
     letter-spacing: -0.5px;
-    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+    text-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  }
+
+  .vsblog-hero h1 span {
+    background: linear-gradient(135deg, #ff7b00 0%, #ec5c0a 50%, #facc15 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
   .vsblog-hero-desc {
     color: #e2e8f0;
-    font-size: clamp(15px, 2vw, 18px);
-    line-height: 1.55;
-    font-weight: 500;
+    font-size: clamp(15px, 1.9vw, 17.5px);
+    line-height: 1.6;
+    font-weight: 400;
     margin: 0 0 24px 0;
-    max-width: 580px;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    max-width: 590px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
   }
 
   .vsblog-hero-pills {
@@ -120,7 +159,7 @@
     color: #38bdf8;
   }
 
-  /* Right Illustration Graphic Container */
+  /* Right 3D Tech Card Showcase Graphic */
   .vsblog-hero-illustration {
     display: flex;
     align-items: center;
@@ -130,8 +169,8 @@
 
   .vsblog-hero-svg-wrap {
     width: 100%;
-    max-width: 460px;
-    filter: drop-shadow(0 20px 35px rgba(0, 0, 0, 0.45));
+    max-width: 480px;
+    filter: drop-shadow(0 20px 35px rgba(0, 0, 0, 0.5));
     animation: vsHeroFloat 4s ease-in-out infinite alternate;
   }
 
@@ -163,155 +202,180 @@
   <!-- ══ HERO BANNER ══ -->
   <section class="vsblog-hero">
     <div class="vsblog-hero-glow-orb"></div>
+    <div class="vsblog-hero-glow-orb-left"></div>
     
     <div class="vsblog-hero-container">
-      <!-- Left Column: Information & Badges -->
+      <!-- Left Column: Information & Brand Badges -->
       <div class="vsblog-hero-left">
-        <h1>{{ section.settings.hero_title | default: "Whats New?" }}</h1>
-        <p class="vsblog-hero-desc">{{ section.settings.hero_subtitle | default: "Checkout our latest updates, electricity saving guides & franchise insights." }}</p>
+        <div class="vsblog-hero-eyebrow">
+          <i class="fa-solid fa-bolt"></i> {{ section.settings.hero_badge | default: "VIDHYUT SAATHI KNOWLEDGE HUB" }}
+        </div>
+        
+        <h1>{{ section.settings.hero_title | default: "Insights on <span>Energy Savings</span> & Updates" }}</h1>
+        <p class="vsblog-hero-desc">{{ section.settings.hero_subtitle | default: "Explore expert electricity saving guides, US-German Nanotechnology breakthroughs, and lucrative district franchise opportunities across India." }}</p>
         
         <div class="vsblog-hero-pills">
           <span class="vsblog-hero-pill"><i class="fa-solid fa-bolt"></i> {{ section.settings.pill_1_text | default: "20–30% Bill Savings" }}</span>
-          <span class="vsblog-hero-pill green"><i class="fa-solid fa-microchip"></i> {{ section.settings.pill_2_text | default: "Terahertz Wave Tech" }}</span>
-          <span class="vsblog-hero-pill cyan"><i class="fa-solid fa-shield-halved"></i> {{ section.settings.pill_3_text | default: "ISO 9001:2015 Certified" }}</span>
+          <span class="vsblog-hero-pill green"><i class="fa-solid fa-microchip"></i> {{ section.settings.pill_2_text | default: "US–German Nanotech & THz" }}</span>
+          <span class="vsblog-hero-pill cyan"><i class="fa-solid fa-shield-halved"></i> {{ section.settings.pill_3_text | default: "10-Yr Warranty | ISO Certified" }}</span>
         </div>
       </div>
 
-      <!-- Right Column: 3D Isometric Digital Newsroom Graphic -->
+      <!-- Right Column: 3D Isometric Vidhyut Saathi Smart Tech Hub Graphic -->
       <div class="vsblog-hero-illustration">
         <div class="vsblog-hero-svg-wrap">
           <svg viewBox="0 0 540 380" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
             <defs>
-              <linearGradient id="vsLapBaseHero" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#93c5fd"/>
-                <stop offset="50%" stop-color="#60a5fa"/>
-                <stop offset="100%" stop-color="#1e3a8a"/>
+              <!-- Card Gradient -->
+              <linearGradient id="vsCardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#420a75"/>
+                <stop offset="45%" stop-color="#221152"/>
+                <stop offset="100%" stop-color="#0f172a"/>
               </linearGradient>
-              <linearGradient id="vsScreenGradHero" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stop-color="#0f172a"/>
-                <stop offset="100%" stop-color="#1e293b"/>
-              </linearGradient>
-              <linearGradient id="vsPaperGradHero" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#ffffff"/>
-                <stop offset="100%" stop-color="#f1f5f9"/>
-              </linearGradient>
-              <linearGradient id="vsFolderGradHero" x1="0%" y1="0%" x2="100%" y2="100%">
+              <!-- Gold Foil Border -->
+              <linearGradient id="vsGoldBorder" x1="0%" y1="0%" x2="100%" y2="100%">
                 <stop offset="0%" stop-color="#fbbf24"/>
+                <stop offset="50%" stop-color="#f59e0b"/>
                 <stop offset="100%" stop-color="#d97706"/>
               </linearGradient>
-              <linearGradient id="vsPhoneGradHero" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#06b6d4"/>
-                <stop offset="100%" stop-color="#0e7490"/>
+              <!-- Orange Electric Accent -->
+              <linearGradient id="vsOrangeGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#ff7b00"/>
+                <stop offset="100%" stop-color="#ec5c0a"/>
               </linearGradient>
-              <filter id="vsSvgShadowHero" x="-20%" y="-20%" width="140%" height="140%">
-                <feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#000000" flood-opacity="0.35"/>
+              <!-- Green Efficiency Gradient -->
+              <linearGradient id="vsGreenGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#10b981"/>
+                <stop offset="100%" stop-color="#007b3e"/>
+              </linearGradient>
+              <!-- Isometric Screen Backdrop -->
+              <linearGradient id="vsHudGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#070d19"/>
+                <stop offset="100%" stop-color="#111e33"/>
+              </linearGradient>
+              <filter id="vsSvgCardShadow" x="-20%" y="-20%" width="140%" height="140%">
+                <feDropShadow dx="0" dy="14" stdDeviation="14" flood-color="#000000" flood-opacity="0.45"/>
               </filter>
             </defs>
 
-            <!-- Back Floor Glow -->
-            <ellipse cx="270" cy="300" rx="190" ry="60" fill="rgba(6,182,212,0.18)" filter="blur(20px)"/>
+            <!-- Bottom Floor Energy Aura -->
+            <ellipse cx="270" cy="300" rx="200" ry="65" fill="rgba(236,92,10,0.18)" filter="blur(22px)"/>
+            <ellipse cx="270" cy="300" rx="140" ry="45" fill="rgba(0,123,62,0.16)" filter="blur(16px)"/>
 
-            <!-- Floating 3D Folder (Top Left) -->
-            <g transform="translate(140, 75)" filter="url(#vsSvgShadowHero)">
-              <polygon points="10,20 35,0 75,0 75,45 10,45" fill="url(#vsFolderGradHero)"/>
-              <polygon points="0,15 25,15 35,25 75,25 65,65 0,65" fill="#f59e0b"/>
-              <polygon points="0,15 65,15 75,25 10,25" fill="#fde68a"/>
-              <circle cx="20" cy="45" r="5" fill="#ffffff" opacity="0.9"/>
+            <!-- Floating Badge Top Left: US-German Nanotech -->
+            <g transform="translate(130, 65)" filter="url(#vsSvgCardShadow)">
+              <rect x="0" y="0" width="130" height="34" rx="17" fill="#0f172a" stroke="#ec5c0a" stroke-width="1.5"/>
+              <circle cx="17" cy="17" r="9" fill="#ec5c0a"/>
+              <path d="M14,17 L17,13 L20,17 L17,16 Z" fill="#ffffff"/>
+              <text x="34" y="21" fill="#ffffff" font-size="10" font-weight="700" font-family="sans-serif">US-GERMAN TECH</text>
             </g>
 
-            <!-- Floating 3D User Avatar Badge (Top Center) -->
-            <g transform="translate(260, 60)" filter="url(#vsSvgShadowHero)">
-              <rect x="0" y="0" width="32" height="32" rx="8" fill="#38bdf8" opacity="0.9"/>
-              <circle cx="16" cy="12" r="5" fill="#ffffff"/>
-              <path d="M8,26 Q16,18 24,26" fill="#ffffff"/>
+            <!-- Floating Badge Top Right: ISO & CE Certified -->
+            <g transform="translate(390, 75)" filter="url(#vsSvgCardShadow)">
+              <rect x="0" y="0" width="115" height="34" rx="17" fill="#0f172a" stroke="#10b981" stroke-width="1.5"/>
+              <circle cx="17" cy="17" r="9" fill="#10b981"/>
+              <polyline points="13,17 16,20 22,14" fill="none" stroke="#ffffff" stroke-width="2"/>
+              <text x="34" y="21" fill="#ffffff" font-size="10" font-weight="700" font-family="sans-serif">ISO CERTIFIED</text>
             </g>
 
-            <!-- Floating 3D Star Badge -->
-            <g transform="translate(155, 175)" filter="url(#vsSvgShadowHero)">
-              <rect x="0" y="0" width="34" height="34" rx="8" fill="#10b981"/>
-              <polygon points="17,7 20,13 27,14 22,19 23,26 17,23 11,26 12,19 7,14 14,13" fill="#ffffff"/>
+            <!-- Floating Badge Mid Right: 20-30% Savings Tag -->
+            <g transform="translate(420, 175)" filter="url(#vsSvgCardShadow)">
+              <rect x="0" y="0" width="105" height="36" rx="10" fill="url(#vsOrangeGlow)"/>
+              <text x="52" y="18" fill="#ffffff" font-size="12" font-weight="900" text-anchor="middle" font-family="sans-serif">20–30%</text>
+              <text x="52" y="29" fill="#ffffff" font-size="8.5" font-weight="700" text-anchor="middle" font-family="sans-serif">BILL SAVED</text>
             </g>
 
-            <!-- Floating 3D Message Bubble (Top Right) -->
-            <g transform="translate(420, 165)" filter="url(#vsSvgShadowHero)">
-              <rect x="0" y="0" width="30" height="24" rx="6" fill="#06b6d4"/>
-              <circle cx="9" cy="12" r="2" fill="#ffffff"/>
-              <circle cx="15" cy="12" r="2" fill="#ffffff"/>
-              <circle cx="21" cy="12" r="2" fill="#ffffff"/>
+            <!-- Floating Badge Mid Left: cos φ = 0.99 Active -->
+            <g transform="translate(100, 185)" filter="url(#vsSvgCardShadow)">
+              <rect x="0" y="0" width="95" height="34" rx="10" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5"/>
+              <text x="47" y="16" fill="#38bdf8" font-size="10" font-weight="800" text-anchor="middle" font-family="sans-serif">cos φ = 0.99</text>
+              <text x="47" y="27" fill="#94a3b8" font-size="8" font-weight="600" text-anchor="middle" font-family="sans-serif">Power Factor</text>
             </g>
 
-            <!-- Floating 3D Check/Data Tag (Mid Right) -->
-            <g transform="translate(450, 235)" filter="url(#vsSvgShadowHero)">
-              <rect x="0" y="0" width="28" height="28" rx="6" fill="#6366f1"/>
-              <polyline points="7,14 12,19 21,9" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-            </g>
+            <!-- ISOMETRIC 3D TECH BASE (MCB & DISTRIBUTION HUB) -->
+            <!-- Base Shadow -->
+            <polygon points="270,185 430,245 270,335 110,245" fill="rgba(0,0,0,0.35)"/>
+            <!-- Base Platform Surface -->
+            <polygon points="270,195 415,245 270,320 125,245" fill="#1e293b" stroke="#334155" stroke-width="2"/>
+            <!-- Base Platform Front Edges -->
+            <polygon points="125,245 270,320 270,330 125,255" fill="#0f172a"/>
+            <polygon points="270,320 415,245 415,255 270,330" fill="#182234"/>
 
-            <!-- ISOMETRIC LAPTOP BASE -->
-            <polygon points="270,180 430,240 270,330 110,240" fill="rgba(0,0,0,0.3)"/>
-            <polygon points="270,190 410,240 270,315 130,240" fill="url(#vsLapBaseHero)"/>
-            <polygon points="130,240 270,315 270,323 130,248" fill="#1d4ed8"/>
-            <polygon points="270,315 410,240 410,248 270,323" fill="#1e40af"/>
-            <polygon points="270,210 380,248 280,290 170,245" fill="#1e293b"/>
-            <polygon points="270,292 295,302 270,312 245,302" fill="#93c5fd" opacity="0.8"/>
+            <!-- Glowing Cyber Circuit Traces on Platform -->
+            <path d="M160,252 L270,305 L380,252" fill="none" stroke="#00e5ff" stroke-width="2" opacity="0.85"/>
+            <path d="M210,240 L270,268 L330,240" fill="none" stroke="#ec5c0a" stroke-width="2" opacity="0.8"/>
+            <circle cx="270" cy="305" r="4" fill="#00e5ff"/>
+            <circle cx="270" cy="268" r="3.5" fill="#ec5c0a"/>
 
-            <!-- ISOMETRIC SCREEN (UPRIGHT) -->
-            <g transform="translate(230, 95)" filter="url(#vsSvgShadowHero)">
-              <polygon points="0,30 120,0 120,130 0,160" fill="#0f172a" stroke="#60a5fa" stroke-width="3"/>
-              <polygon points="6,34 114,6 114,124 6,152" fill="url(#vsScreenGradHero)"/>
-              <polygon points="6,34 114,6 114,20 6,48" fill="#1e293b"/>
-              <circle cx="16" cy="40" r="2" fill="#ef4444"/>
-              <circle cx="22" cy="38" r="2" fill="#f59e0b"/>
-              <circle cx="28" cy="36" r="2" fill="#10b981"/>
-              <polygon points="14,58 90,38 90,44 14,64" fill="#38bdf8" opacity="0.8"/>
-              <polygon points="14,72 105,48 105,53 14,77" fill="#64748b"/>
-              <polygon points="14,84 95,64 95,69 14,89" fill="#64748b"/>
-              <polygon points="14,96 80,79 80,84 14,101" fill="#64748b"/>
-              <polygon points="14,115 105,92 105,108 14,131" fill="rgba(236,92,10,0.3)" stroke="#ec5c0a" stroke-width="1.5"/>
-              <polygon points="16,118 70,105 70,116 16,128" fill="#ec5c0a"/>
-            </g>
-
-            <!-- 3D FLOWING DIGITAL ARTICLE PAPER SHEET -->
-            <g filter="url(#vsSvgShadowHero)">
-              <path d="M260,110 L340,90 L340,240 C340,260 260,250 240,270 L140,240 C160,210 260,230 260,110 Z" fill="url(#vsPaperGradHero)" stroke="#cbd5e1" stroke-width="1.5"/>
-              <path d="M140,240 C180,220 220,280 280,260 L260,320 C200,340 160,280 120,300 Z" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
-              <rect x="268" y="115" width="55" height="7" rx="3" fill="#00e5ff" opacity="0.85"/>
-              <rect x="268" y="128" width="60" height="4" rx="2" fill="#94a3b8"/>
-              <rect x="268" y="136" width="58" height="4" rx="2" fill="#cbd5e1"/>
-              <rect x="268" y="144" width="45" height="4" rx="2" fill="#cbd5e1"/>
+            <!-- ISOMETRIC 3D HUD DISPLAY PANEL (UPRIGHT BACK) -->
+            <g transform="translate(230, 95)" filter="url(#vsSvgCardShadow)">
+              <polygon points="0,30 125,0 125,135 0,165" fill="#070d19" stroke="#38bdf8" stroke-width="2.5"/>
+              <polygon points="6,34 119,6 119,129 6,157" fill="url(#vsHudGrad)"/>
               
-              <rect x="268" y="154" width="62" height="14" rx="3" fill="#ec5c0a" opacity="0.9"/>
-              <rect x="272" y="158" width="40" height="3" rx="1.5" fill="#ffffff"/>
-              <rect x="272" y="163" width="52" height="2.5" rx="1.5" fill="#fed7aa"/>
+              <!-- Header Bar in HUD -->
+              <polygon points="6,34 119,6 119,22 6,50" fill="#1e293b"/>
+              <circle cx="16" cy="41" r="2.5" fill="#ef4444"/>
+              <circle cx="23" cy="39" r="2.5" fill="#f59e0b"/>
+              <circle cx="30" cy="37" r="2.5" fill="#10b981"/>
 
-              <rect x="268" y="174" width="58" height="4" rx="2" fill="#94a3b8"/>
-              <rect x="268" y="182" width="60" height="4" rx="2" fill="#cbd5e1"/>
-              <rect x="268" y="190" width="50" height="4" rx="2" fill="#cbd5e1"/>
+              <!-- Live Energy Waveform on HUD -->
+              <path d="M14,68 Q30,50 48,64 T80,56 T110,48" fill="none" stroke="#00e5ff" stroke-width="2.5"/>
+              <path d="M14,84 Q35,70 55,80 T90,72 T110,65" fill="none" stroke="#ec5c0a" stroke-width="2"/>
 
-              <path d="M150,265 Q190,250 230,285" fill="none" stroke="#06b6d4" stroke-width="3" stroke-linecap="round"/>
-              <path d="M145,278 Q185,263 225,298" fill="none" stroke="#94a3b8" stroke-width="2.5" stroke-linecap="round"/>
-              <path d="M140,290 Q175,276 210,310" fill="none" stroke="#cbd5e1" stroke-width="2.5" stroke-linecap="round"/>
+              <!-- Live Stat Box in Screen -->
+              <polygon points="14,102 110,78 110,125 14,149" fill="rgba(236,92,10,0.15)" stroke="#ec5c0a" stroke-width="1.2"/>
+              <polygon points="18,106 65,95 65,115 18,126" fill="#ec5c0a"/>
             </g>
 
-            <!-- Small 3D Smartphone on Table (Bottom Right) -->
-            <g transform="translate(370, 275)" filter="url(#vsSvgShadowHero)">
-              <polygon points="40,0 80,20 40,45 0,25" fill="url(#vsPhoneGradHero)"/>
+            <!-- ISOMETRIC 3D VIDHYUT SAATHI SMART CARD (HERO ELEMENT) -->
+            <g transform="translate(190, 155)" filter="url(#vsSvgCardShadow)">
+              <!-- Card Outer Shell -->
+              <polygon points="80,0 200,45 120,135 0,90" fill="url(#vsCardGrad)" stroke="url(#vsGoldBorder)" stroke-width="3"/>
+              <!-- Card Edge 3D Thickness -->
+              <polygon points="0,90 120,135 120,143 0,98" fill="#2e0754"/>
+              <polygon points="120,135 200,45 200,53 120,143" fill="#16042b"/>
+
+              <!-- Card Inner Gold Foil Border Accent -->
+              <polygon points="78,12 184,52 118,124 12,84" fill="none" stroke="url(#vsGoldBorder)" stroke-width="1.2" opacity="0.8"/>
+
+              <!-- Terahertz Microchip in Center of Card -->
+              <polygon points="98,42 138,57 114,84 74,69" fill="#0f172a" stroke="#fbbf24" stroke-width="2"/>
+              <circle cx="106" cy="63" r="7" fill="url(#vsOrangeGlow)"/>
+              <circle cx="106" cy="63" r="3" fill="#ffffff"/>
+
+              <!-- Lightning Bolt on Microchip -->
+              <path d="M104,59 L108,59 L105,63 L108,63 L103,68 L105,64 L102,64 Z" fill="#ffffff"/>
+
+              <!-- Card Text: VIDHYUT SAATHI -->
+              <g transform="rotate(18, 50, 70)">
+                <text x="38" y="44" fill="#fbbf24" font-size="9" font-weight="900" letter-spacing="1" font-family="sans-serif">VIDHYUT SAATHI</text>
+                <text x="38" y="54" fill="#ffffff" font-size="6.5" font-weight="700" letter-spacing="0.5" font-family="sans-serif">ELECTRICITY SAVER CARD</text>
+              </g>
+
+              <!-- Negative Ion Nano Aura Rings -->
+              <ellipse cx="106" cy="63" rx="22" ry="12" fill="none" stroke="rgba(0,229,255,0.6)" stroke-width="1.2" transform="rotate(-20, 106, 63)"/>
+            </g>
+
+            <!-- Small 3D Smartphone on Desk (Bottom Right) -->
+            <g transform="translate(375, 270)" filter="url(#vsSvgCardShadow)">
+              <polygon points="40,0 80,20 40,45 0,25" fill="url(#vsHudGrad)" stroke="#06b6d4" stroke-width="1.5"/>
               <polygon points="0,25 40,45 40,50 0,30" fill="#0891b2"/>
               <polygon points="40,45 80,20 80,25 40,50" fill="#0e7490"/>
-              <polygon points="38,5 72,21 40,39 8,23" fill="#0f172a"/>
+              <polygon points="38,5 72,21 40,39 8,23" fill="#070d19"/>
               <circle cx="40" cy="22" r="4" fill="#22c55e"/>
               <line x1="28" y1="16" x2="35" y2="19" stroke="#ffffff" stroke-width="1.5"/>
             </g>
 
-            <!-- Little 3D Data Cubes -->
+            <!-- 3D Energy Cubes -->
             <g transform="translate(360, 325)">
               <polygon points="10,0 20,5 10,10 0,5" fill="#00e5ff"/>
               <polygon points="0,5 10,10 10,18 0,13" fill="#0891b2"/>
               <polygon points="10,10 20,5 20,13 10,18" fill="#0e7490"/>
             </g>
             <g transform="translate(385, 335)">
-              <polygon points="8,0 16,4 8,8 0,4" fill="#ec4899"/>
-              <polygon points="0,4 8,8 8,14 0,10" fill="#db2777"/>
-              <polygon points="8,8 16,4 16,10 8,14" fill="#be185d"/>
+              <polygon points="8,0 16,4 8,8 0,4" fill="#ec5c0a"/>
+              <polygon points="0,4 8,8 8,14 0,10" fill="#ea580c"/>
+              <polygon points="8,8 16,4 16,10 8,14" fill="#c2410c"/>
             </g>
           </svg>
         </div>
@@ -340,15 +404,21 @@
   "settings": [
     {
       "type": "text",
-      "id": "hero_title",
-      "label": "Hero Title",
-      "default": "Whats New?"
+      "id": "hero_badge",
+      "label": "Hero Eyebrow Badge",
+      "default": "VIDHYUT SAATHI KNOWLEDGE HUB"
     },
     {
       "type": "text",
+      "id": "hero_title",
+      "label": "Hero Title (use <span> for highlight)",
+      "default": "Insights on <span>Energy Savings</span> & Updates"
+    },
+    {
+      "type": "textarea",
       "id": "hero_subtitle",
       "label": "Hero Subtitle",
-      "default": "Checkout our latest updates, electricity saving guides & franchise insights."
+      "default": "Explore expert electricity saving guides, US-German Nanotechnology breakthroughs, and lucrative district franchise opportunities across India."
     },
     {
       "type": "text",
@@ -360,13 +430,13 @@
       "type": "text",
       "id": "pill_2_text",
       "label": "Pill 2 Text",
-      "default": "Terahertz Wave Tech"
+      "default": "US–German Nanotech & THz"
     },
     {
       "type": "text",
       "id": "pill_3_text",
       "label": "Pill 3 Text",
-      "default": "ISO 9001:2015 Certified"
+      "default": "10-Yr Warranty | ISO Certified"
     }
   ],
   "presets": [
