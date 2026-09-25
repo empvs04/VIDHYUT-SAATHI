@@ -166,10 +166,24 @@
     padding: clamp(24px, 4vw, 48px) 20px 80px 20px;
   }
 
-  /* Article Header Area */
+  /* Full-Width Cinematic Hero Image */
+  .vs-reader-hero-img-wrap {
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto 36px auto;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 16px 40px -8px rgba(15, 23, 42, 0.10);
+    border: 1px solid #e2e8f0;
+    background: #0f172a;
+    max-height: 480px;
+    height: auto;
+  }
+
+  /* Article Header Area (Underneath Top Image) */
   .vs-reader-header {
-    max-width: 860px;
-    margin: 0 auto;
+    max-width: 820px;
+    margin: 0 auto 32px auto;
     text-align: left;
   }
 
@@ -215,22 +229,22 @@
   }
 
   .vs-reader-title {
-    font-size: clamp(26px, 4.5vw, 44px);
+    font-size: clamp(24px, 4vw, 40px);
     font-weight: 900;
     color: #0f172a;
-    line-height: 1.22;
+    line-height: 1.25;
     letter-spacing: -0.025em;
-    margin: 0 0 24px 0;
+    margin: 0 0 22px 0;
   }
 
   .vs-reader-author-bar {
     display: flex;
     align-items: center;
     gap: 14px;
-    padding: 16px 0 24px 0;
+    padding: 16px 0 20px 0;
     border-top: 1px solid #e2e8f0;
     border-bottom: 1px solid #e2e8f0;
-    margin-bottom: 32px;
+    margin-bottom: 28px;
   }
 
   .vs-reader-author-avatar {
@@ -256,20 +270,6 @@
     font-size: 12px;
     color: #64748b;
     font-weight: 500;
-  }
-
-  /* Full-Width Cinematic Hero Image */
-  .vs-reader-hero-img-wrap {
-    width: 100%;
-    max-width: 1040px;
-    margin: 0 auto 48px auto;
-    border-radius: 22px;
-    overflow: hidden;
-    box-shadow: 0 16px 40px -8px rgba(15, 23, 42, 0.12);
-    border: 1px solid #e2e8f0;
-    background: #0f172a;
-    max-height: 520px;
-    height: auto;
   }
 
   .vs-reader-hero-img {
@@ -643,7 +643,12 @@
 
   <!-- Main Article Presentation -->
   <article class="vs-reader-article-wrap">
-    <!-- Article Header -->
+    <!-- 1. Top Full-Width Hero Image (First at very top) -->
+    <div class="vs-reader-hero-img-wrap" id="vsmodal_top_img_wrap" style="display:none;">
+      <img id="vsmodal_top_img" src="" alt="Featured Article Header" class="vs-reader-hero-img">
+    </div>
+
+    <!-- 2. Article Header Details (Underneath Image) -->
     <header class="vs-reader-header">
       <div class="vs-reader-meta-top">
         <span class="vs-reader-cat-tag" id="vsmodal_cat"><i class="fa-solid fa-bolt"></i> Energy Savings</span>
@@ -660,12 +665,7 @@
       </div>
     </header>
 
-    <!-- Top Full-Width Hero Image -->
-    <div class="vs-reader-hero-img-wrap" id="vsmodal_top_img_wrap" style="display:none;">
-      <img id="vsmodal_top_img" src="" alt="Featured Article Header" class="vs-reader-hero-img">
-    </div>
-
-    <!-- Article Content -->
+    <!-- 3. Article Body Content -->
     <div class="vs-reader-body" id="vsmodal_full_html">
       <!-- Full Detailed Article Content Injected via JS -->
     </div>
