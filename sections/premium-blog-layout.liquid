@@ -1295,6 +1295,25 @@
     border-color: #ec5c0a;
   }
 
+  .vsmodal-top-featured-img-wrap {
+    width: 100%;
+    max-height: 380px;
+    height: 320px;
+    overflow: hidden;
+    position: relative;
+    background: #0f172a;
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+  }
+
+  .vsmodal-top-featured-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+
   .vsblog-modal-header-banner {
     position: relative;
     background: linear-gradient(135deg, #070d19 0%, #0f1c32 55%, #182b49 100%);
@@ -2089,7 +2108,7 @@
             <span class="vsblog-meta-chip"><i class="fa-solid fa-calendar-days"></i> Sep 25, 2026</span>
             <span class="vsblog-meta-chip"><i class="fa-solid fa-user"></i> Vidhyut Saathi Team</span>
           </div>
-          <button type="button" class="vsblog-read-btn">Read Full Article <i class="fa-solid fa-arrow-right"></i></button>
+          <button type="button" class="vsblog-read-btn" onclick="vsOpenArticleModal(0)">Read Full Article <i class="fa-solid fa-arrow-right"></i></button>
         </div>
       </div>
     </div>
@@ -2550,6 +2569,9 @@
     <button type="button" class="vsblog-modal-close" onclick="vsCloseArticleModal()" aria-label="Close modal">
       <i class="fa-solid fa-xmark"></i>
     </button>
+    <div class="vsmodal-top-featured-img-wrap" id="vsmodal_top_img_wrap" style="display:none;">
+      <img id="vsmodal_top_img" src="" alt="Featured Article Header Image" class="vsmodal-top-featured-img">
+    </div>
     <div class="vsblog-modal-header-banner">
       <div class="vsblog-modal-header-glow"></div>
       <div class="vsblog-modal-header-content">
@@ -2960,6 +2982,8 @@
     var authorElem = document.getElementById('vsmodal_author');
     var readTimeElem = document.getElementById('vsmodal_readtime');
     var htmlElem = document.getElementById('vsmodal_full_html');
+    var topImgWrap = document.getElementById('vsmodal_top_img_wrap');
+    var topImg = document.getElementById('vsmodal_top_img');
 
     if (titleElem) titleElem.innerText = article.title;
     if (catElem) catElem.innerHTML = '<i class="fa-solid fa-bolt"></i> ' + article.category;
@@ -2967,6 +2991,24 @@
     if (authorElem) authorElem.innerText = article.author;
     if (readTimeElem) readTimeElem.innerText = article.readTime;
     if (htmlElem) htmlElem.innerHTML = article.html;
+    
+    // Top Featured Image handling
+    var customImg = document.getElementById('vsblog_featured_custom_img') || document.querySelector('.vsblog-feat-img img');
+    if (index === 0 && customImg && customImg.src && customImg.src.indexOf('svg') === -1) {
+      if (topImg && topImgWrap) {
+        topImg.src = customImg.src;
+        topImgWrap.style.display = 'block';
+      }
+    } else if (article.image) {
+      if (topImg && topImgWrap) {
+        topImg.src = article.image;
+        topImgWrap.style.display = 'block';
+      }
+    } else {
+      if (topImgWrap) {
+        topImgWrap.style.display = 'none';
+      }
+    }
     
     var overlay = document.getElementById('vsblog_modal_overlay');
     if (overlay) overlay.classList.add('active');
