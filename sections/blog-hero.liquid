@@ -118,9 +118,9 @@
     letter-spacing: -0.025em;
   }
 
-  .vsblog-hero h1 span,
-  .vsblog-hero-heading span,
-  .vs-energy-word {
+  .vs-energy-word,
+  .vsblog-hero h1 span:not(.vs-bolt-icon),
+  .vsblog-hero-heading span:not(.vs-bolt-icon) {
     position: relative;
     display: inline-block;
     background: linear-gradient(135deg, #ec5c0a 0%, #ff7800 45%, #ea580c 100%);
@@ -144,20 +144,36 @@
   }
 
   .vs-bolt-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 38px;
-    height: 38px;
-    border-radius: 12px;
-    background: linear-gradient(135deg, #ec5c0a 0%, #ff7800 100%);
-    color: #ffffff !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: clamp(38px, 4.5vw, 44px) !important;
+    height: clamp(38px, 4.5vw, 44px) !important;
+    border-radius: 12px !important;
+    background: linear-gradient(135deg, #ec5c0a 0%, #ff7800 100%) !important;
+    -webkit-background-clip: unset !important;
+    background-clip: border-box !important;
     -webkit-text-fill-color: #ffffff !important;
-    font-size: 18px;
-    margin-left: 8px;
-    vertical-align: middle;
-    box-shadow: 0 4px 14px rgba(236, 92, 10, 0.35);
-    animation: vsBoltPulse 2.5s infinite ease-in-out;
+    color: #ffffff !important;
+    margin-left: 10px !important;
+    vertical-align: middle !important;
+    box-shadow: 0 6px 18px rgba(236, 92, 10, 0.45), inset 0 1px 2px rgba(255, 255, 255, 0.45) !important;
+    animation: vsBoltPulse 2.5s infinite ease-in-out !important;
+    border: 2px solid #ffffff !important;
+    flex-shrink: 0 !important;
+  }
+
+  .vs-bolt-icon svg,
+  .vs-bolt-icon i {
+    width: 22px !important;
+    height: 22px !important;
+    color: #ffffff !important;
+    fill: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    font-size: 20px !important;
+    line-height: 1 !important;
+    display: block !important;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3)) !important;
   }
 
   @keyframes vsBoltPulse {
@@ -276,9 +292,9 @@
           {%- if raw_title contains '<span>' -%}
             {{ raw_title }}
           {%- elsif raw_title contains 'Energy Savings' -%}
-            {{ raw_title | replace: 'Energy Savings', '<span class="vs-energy-word">Energy Savings</span> <span class="vs-bolt-icon"><i class="fa-solid fa-bolt"></i></span>' }}
+            {{ raw_title | replace: 'Energy Savings', '<span class="vs-energy-word">Energy Savings</span> <span class="vs-bolt-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="#ffffff"><path d="M13 2L3 14h8l-2 8 11-12h-8l2-8z"/></svg></span>' }}
           {%- else -%}
-            <span class="vs-energy-word">{{ raw_title }}</span> <span class="vs-bolt-icon"><i class="fa-solid fa-bolt"></i></span>
+            <span class="vs-energy-word">{{ raw_title }}</span> <span class="vs-bolt-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="#ffffff"><path d="M13 2L3 14h8l-2 8 11-12h-8l2-8z"/></svg></span>
           {%- endif -%}
         </h1>
         <p class="vsblog-hero-desc">{{ section.settings.hero_subtitle | default: "Expert articles, franchise success stories, and tips to lower electricity bills across India." }}</p>
